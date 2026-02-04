@@ -1,0 +1,57 @@
+{
+  "$id": "https://yourdomain/schema/base-block-props.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "BaseBlockProps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "anchor": { "type": "string" },
+        "paddingY": { "type": "string", "enum": ["sm", "md", "lg"] },
+        "background": { "type": "string", "enum": ["none", "muted", "gradient", "image"] },
+        "backgroundGradient": { "type": "string" },
+        "backgroundMedia": { "$ref": "#/$defs/BackgroundMedia" },
+        "backgroundOverlay": { "type": "string" },
+        "backgroundOverlayOpacity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "backgroundBlur": { "type": "number", "minimum": 0 },
+        "align": { "type": "string", "enum": ["left", "center"] },
+        "maxWidth": { "type": "string", "enum": ["lg", "xl", "2xl"] },
+        "emphasis": { "type": "string", "enum": ["normal", "high"] }
+      }
+    },
+    "BackgroundMedia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "src"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["image", "video"] },
+        "src": { "type": "string", "minLength": 1 },
+        "alt": { "type": "string" },
+        "poster": { "type": "string" }
+      }
+    },
+    "Image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["src", "alt"],
+      "properties": {
+        "src": { "type": "string", "pattern": "^/assets/[^\\s]+$" },
+        "alt": { "type": "string" },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "Link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "href"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "href": { "type": "string", "minLength": 1 },
+        "variant": { "type": "string", "enum": ["primary", "secondary", "link"] }
+      }
+    }
+  }
+}

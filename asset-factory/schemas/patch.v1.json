@@ -1,0 +1,100 @@
+{
+  "$id": "https://yourdomain/schema/patch.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Patch.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ops"],
+  "properties": {
+    "ops": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["op", "blockId", "path", "value"],
+            "properties": {
+              "op": { "const": "setBlockProp" },
+              "blockId": { "type": "string", "minLength": 1 },
+              "path": {
+                "type": "string",
+                "pattern": "^props\\.[A-Za-z0-9_.\\[\\]-]+$"
+              },
+              "value": {}
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["op", "blockId", "value"],
+            "properties": {
+              "op": { "const": "setBlockType" },
+              "blockId": { "type": "string", "minLength": 1 },
+              "value": { "type": "string", "minLength": 1 }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["op", "path", "value"],
+            "properties": {
+              "op": { "const": "setThemeToken" },
+              "path": {
+                "type": "string",
+                "pattern": "^root\\.props\\.[A-Za-z0-9_.\\[\\]-]+$"
+              },
+              "value": {}
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["op", "index", "block"],
+            "properties": {
+              "op": { "const": "insertBlock" },
+              "index": { "type": "integer", "minimum": 0 },
+              "block": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["type", "props"],
+                "properties": {
+                  "type": { "type": "string", "minLength": 1 },
+                  "variant": { "type": "string" },
+                  "props": { "type": "object" }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["op", "blockId"],
+            "properties": {
+              "op": { "const": "removeBlock" },
+              "blockId": { "type": "string", "minLength": 1 }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["op", "blockId", "index"],
+            "properties": {
+              "op": { "const": "moveBlock" },
+              "blockId": { "type": "string", "minLength": 1 },
+              "index": { "type": "integer", "minimum": 0 }
+            }
+          }
+        ]
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 8
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+  }
+}

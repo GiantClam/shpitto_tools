@@ -1,0 +1,21 @@
+{
+  "$id": "https://yourdomain/schema/blocks/atomic-text.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AtomicText.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["props"],
+  "properties": {
+    "props": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "text": { "type": "string", "minLength": 1 },
+        "size": { "type": "string", "enum": ["sm", "md", "lg"] },
+        "align": { "type": "string", "enum": ["left", "center"] }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "$id": "https://yourdomain/schema/blocks/feature-grid.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FeatureGrid.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["props"],
+  "properties": {
+    "props": {
+      "allOf": [
+        { "$ref": "../../../../schemas/base-block-props.json#/$defs/BaseBlockProps" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["items"],
+          "properties": {
+            "title": { "type": "string" },
+            "subtitle": { "type": "string" },
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 12,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["title"],
+                "properties": {
+                  "title": { "type": "string", "minLength": 1 },
+                  "desc": { "type": "string" },
+                  "icon": {
+                    "type": "string",
+                    "description": "Use an icon key from your icon map (lucide name, etc.)"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "variant": {
+      "type": "string",
+      "enum": ["2col", "3col", "4col"],
+      "default": "3col"
+    }
+  }
+}

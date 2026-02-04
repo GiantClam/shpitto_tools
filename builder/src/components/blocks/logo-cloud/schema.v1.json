@@ -1,0 +1,34 @@
+{
+  "$id": "https://yourdomain/schema/blocks/logo-cloud.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LogoCloud.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["props"],
+  "properties": {
+    "props": {
+      "allOf": [
+        { "$ref": "../../../../schemas/base-block-props.json#/$defs/BaseBlockProps" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["logos"],
+          "properties": {
+            "title": { "type": "string" },
+            "logos": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 20,
+              "items": { "$ref": "../../../../schemas/base-block-props.json#/$defs/Image" }
+            }
+          }
+        }
+      ]
+    },
+    "variant": {
+      "type": "string",
+      "enum": ["grid", "marquee"],
+      "default": "grid"
+    }
+  }
+}

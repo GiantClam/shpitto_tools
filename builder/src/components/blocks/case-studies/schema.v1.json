@@ -1,0 +1,45 @@
+{
+  "$id": "https://yourdomain/schema/blocks/case-studies.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CaseStudies.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["props"],
+  "properties": {
+    "props": {
+      "allOf": [
+        { "$ref": "../../../../schemas/base-block-props.json#/$defs/BaseBlockProps" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["items"],
+          "properties": {
+            "title": { "type": "string" },
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["title", "href"],
+                "properties": {
+                  "title": { "type": "string" },
+                  "summary": { "type": "string" },
+                  "href": { "type": "string" },
+                  "cover": { "$ref": "../../../../schemas/base-block-props.json#/$defs/Image" },
+                  "tags": { "type": "array", "items": { "type": "string" }, "maxItems": 6 }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "variant": {
+      "type": "string",
+      "enum": ["cards", "list"],
+      "default": "cards"
+    }
+  }
+}

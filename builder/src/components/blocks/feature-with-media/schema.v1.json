@@ -1,0 +1,70 @@
+{
+  "$id": "https://yourdomain/schema/blocks/feature-with-media.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FeatureWithMedia.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["props"],
+  "properties": {
+    "props": {
+      "allOf": [
+        { "$ref": "../../../../schemas/base-block-props.json#/$defs/BaseBlockProps" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "eyebrow": { "type": "string" },
+            "title": { "type": "string" },
+            "subtitle": { "type": "string" },
+            "body": { "type": "string" },
+            "ctas": {
+              "type": "array",
+              "maxItems": 2,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["label", "href"],
+                "properties": {
+                  "label": { "type": "string", "minLength": 1 },
+                  "href": { "type": "string", "minLength": 1 },
+                  "variant": { "type": "string", "enum": ["primary", "secondary", "link"] }
+                }
+              }
+            },
+            "items": {
+              "type": "array",
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["title"],
+                "properties": {
+                  "title": { "type": "string", "minLength": 1 },
+                  "desc": { "type": "string" }
+                }
+              }
+            },
+            "media": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["src", "kind"],
+              "properties": {
+                "src": { "type": "string", "minLength": 1 },
+                "alt": { "type": "string" },
+                "kind": { "type": "string", "enum": ["image", "video"] }
+              }
+            },
+            "mediaSrc": { "type": "string" },
+            "mediaAlt": { "type": "string" },
+            "mediaKind": { "type": "string", "enum": ["image", "video"] }
+          }
+        }
+      ]
+    },
+    "variant": {
+      "type": "string",
+      "enum": ["simple", "split", "reverse"],
+      "default": "split"
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "magic_ui": [
+    {
+      "name": "Particles",
+      "import": "@/components/magic/particles",
+      "desc": "背景粒子特效，用于增加深色页面的科技感和流动感。",
+      "best_for": ["Hero Section", "Footer", "Dark Mode Background"]
+    },
+    {
+      "name": "TextReveal",
+      "import": "@/components/magic/text-reveal",
+      "desc": "文字滚动渐显特效，用于页面核心 Slogan。",
+      "best_for": ["Page Title", "Section Heading"]
+    },
+    {
+      "name": "BentoGrid",
+      "import": "@/components/magic/bento-grid",
+      "desc": "Bento 风格网格布局，用于展示多个特性。",
+      "best_for": ["Features", "Portfolio", "Showcase"]
+    },
+    {
+      "name": "Marquee",
+      "import": "@/components/magic/marquee",
+      "desc": "无限滚动跑马灯。",
+      "best_for": ["Partner Logos", "Testimonials", "Gallery"]
+    },
+    {
+      "name": "BorderBeam",
+      "import": "@/components/magic/border-beam",
+      "desc": "高亮边框光束，用于增强卡片或视频容器。",
+      "best_for": ["Media", "Highlights"]
+    },
+    {
+      "name": "GlowCard",
+      "import": "@/components/magic/glow-card",
+      "desc": "营销型发光卡片容器，提升卖点区视觉聚焦。",
+      "best_for": ["Features", "Highlights", "Pricing"]
+    },
+    {
+      "name": "GradientText",
+      "import": "@/components/magic/gradient-text",
+      "desc": "渐变标题文本，用于强调关键卖点与品牌主张。",
+      "best_for": ["Hero", "Headings", "CTA"]
+    },
+    {
+      "name": "NumberTicker",
+      "import": "@/components/magic/number-ticker",
+      "desc": "数值滚动动效组件，用于规格与关键参数的动态呈现。",
+      "best_for": ["Specs", "Stats", "Highlights"]
+    },
+    {
+      "name": "AnimatedBeam",
+      "import": "@/components/magic/animated-beam",
+      "desc": "动态光束线条，用于强化参数区或分隔线视觉层级。",
+      "best_for": ["Specs", "Dividers", "Highlights"]
+    },
+    {
+      "name": "ComparisonSlider",
+      "import": "@/components/magic/comparison-slider",
+      "desc": "前后对比滑块，用于展示不同模式或工艺细节差异。",
+      "best_for": ["Specs", "Craft", "BeforeAfter"]
+    },
+    {
+      "name": "Magnifier",
+      "import": "@/components/magic/magnifier",
+      "desc": "图片放大镜交互，用于细节区域的局部放大展示。",
+      "best_for": ["Craft", "Detail", "Materials"]
+    },
+    {
+      "name": "SceneSwitcher",
+      "import": "@/components/magic/scene-switcher",
+      "desc": "场景切换组件，自动在 Tabs 与 Carousel 之间切换。",
+      "best_for": ["Showcase", "Scenes", "Gallery"]
+    }
+  ],
+  "shadcn": [
+    { "name": "Accordion", "import": "@/components/ui/accordion" },
+    { "name": "Alert", "import": "@/components/ui/alert" },
+    { "name": "Avatar", "import": "@/components/ui/avatar" },
+    { "name": "Badge", "import": "@/components/ui/badge" },
+    { "name": "Button", "import": "@/components/ui/button" },
+    { "name": "Card", "import": "@/components/ui/card" },
+    { "name": "Dialog", "import": "@/components/ui/dialog" },
+    { "name": "DropdownMenu", "import": "@/components/ui/dropdown-menu" },
+    { "name": "Input", "import": "@/components/ui/input" },
+    { "name": "Popover", "import": "@/components/ui/popover" },
+    { "name": "Progress", "import": "@/components/ui/progress" },
+    { "name": "Select", "import": "@/components/ui/select" },
+    { "name": "Separator", "import": "@/components/ui/separator" },
+    { "name": "Sheet", "import": "@/components/ui/sheet" },
+    { "name": "Skeleton", "import": "@/components/ui/skeleton" },
+    { "name": "Slider", "import": "@/components/ui/slider" },
+    { "name": "Switch", "import": "@/components/ui/switch" },
+    { "name": "Tabs", "import": "@/components/ui/tabs" },
+    { "name": "Label", "import": "@/components/ui/label" },
+    { "name": "Textarea", "import": "@/components/ui/textarea" },
+    { "name": "Toast", "import": "@/components/ui/toast" },
+    { "name": "Tooltip", "import": "@/components/ui/tooltip" }
+  ],
+  "libraries": [
+    { "name": "framer-motion", "import": "framer-motion" },
+    {
+      "name": "motion-hooks",
+      "import": "@/lib/motion",
+      "desc": "统一动效 hooks：useInViewReveal（区块入场），useParallaxY（首屏视差）。",
+      "best_for": ["Hero", "Features", "Gallery", "Specs", "CTA"]
+    }
+  ]
+}

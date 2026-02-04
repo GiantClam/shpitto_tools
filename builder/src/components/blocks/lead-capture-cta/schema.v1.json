@@ -1,0 +1,31 @@
+{
+  "$id": "https://yourdomain/schema/blocks/lead-capture-cta.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LeadCaptureCTA.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["props"],
+  "properties": {
+    "props": {
+      "allOf": [
+        { "$ref": "../../../../schemas/base-block-props.json#/$defs/BaseBlockProps" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["title", "cta"],
+          "properties": {
+            "title": { "type": "string" },
+            "subtitle": { "type": "string" },
+            "cta": { "$ref": "../../../../schemas/base-block-props.json#/$defs/Link" },
+            "note": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "variant": {
+      "type": "string",
+      "enum": ["banner", "card"],
+      "default": "banner"
+    }
+  }
+}

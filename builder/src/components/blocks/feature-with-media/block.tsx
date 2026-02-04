@@ -1,0 +1,232 @@
+"use client";
+
+import React from "react";
+import { cn } from "@/lib/cn";
+import { Button } from "@/components/atoms/button";
+import {
+  BaseBlockProps,
+  LinkProps,
+  backgroundMediaStyle,
+  backgroundVideoSource,
+  backgroundOverlayStyle,
+  backgroundGradientStyle,
+  maxWidthClass,
+} from "@/components/blocks/shared";
+import { useMotionMode } from "@/components/theme/motion";
+import { featureWithMediaSectionClass } from "./variants";
+
+type FeatureWithMediaItem = {
+  title: string;
+  desc?: string;
+};
+
+type FeatureWithMediaMedia = {
+  kind: "image" | "video";
+  src: string;
+  alt?: string;
+};
+
+export type FeatureWithMediaProps = BaseBlockProps & {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  body?: string;
+  ctas?: LinkProps[];
+  items?: FeatureWithMediaItem[];
+  media?: FeatureWithMediaMedia;
+  mediaSrc?: string;
+  mediaAlt?: string;
+  mediaKind?: "image" | "video";
+};
+
+export type FeatureWithMediaVariant = "simple" | "split" | "reverse";
+
+export function FeatureWithMediaBlock({
+  id,
+  anchor,
+  paddingY = "lg",
+  background = "none",
+  backgroundMedia,
+  backgroundGradient,
+  backgroundOverlay,
+  backgroundOverlayOpacity,
+  backgroundBlur,
+  align = "left",
+  maxWidth = "xl",
+  eyebrow,
+  title,
+  subtitle,
+  body,
+  ctas,
+  items,
+  media,
+  mediaSrc,
+  mediaAlt,
+  mediaKind = "image",
+  headingFont,
+  bodyFont,
+  emphasis = "normal",
+  variant = "split",
+}: FeatureWithMediaProps & { variant?: FeatureWithMediaVariant }) {
+  const motionMode = useMotionMode();
+  const motionClass =
+    motionMode === "off" ? "" : "transition-all duration-300 hover:-translate-y-1 hover:shadow-md";
+  const resolvedMedia =
+    media ?? (mediaSrc ? { kind: mediaKind, src: mediaSrc, alt: mediaAlt } : undefined);
+  const hasMedia = Boolean(resolvedMedia?.src);
+  const derivedTitle =
+    title ??
+    (anchor
+      ? anchor.length <= 3
+        ? anchor.toUpperCase()
+        : anchor
+            .replace(/-/g, " ")
+            .replace(/\b\w/g, (match) => match.toUpperCase())
+      : undefined);
+  const layoutClass =
+    variant === "simple" || !hasMedia
+      ? "flex flex-col"
+      : "grid md:grid-cols-2 md:items-center";
+  const textOrderClass = variant === "reverse" ? "md:order-2" : "md:order-1";
+  const mediaOrderClass = variant === "reverse" ? "md:order-1" : "md:order-2";
+  const backgroundStyle = {
+    ...(backgroundMediaStyle(background, backgroundMedia) || {}),
+    ...(backgroundGradientStyle(background, backgroundGradient) || {}),
+  };
+  const overlayStyle = backgroundOverlayStyle(
+    backgroundOverlay,
+    backgroundOverlayOpacity,
+    backgroundBlur
+  );
+  const backgroundVideo = backgroundVideoSource(background, backgroundMedia);
+  const hasBackgroundVideo = Boolean(backgroundVideo?.src);
+  const headingStyle = headingFont ? { fontFamily: headingFont } : undefined;
+  const bodyStyle = bodyFont ? { fontFamily: bodyFont } : undefined;
+
+  return (
+    <section
+      id={anchor}
+      data-block="FeatureWithMedia"
+      data-block-id={id}
+      data-block-variant={variant}
+      className={cn(
+        featureWithMediaSectionClass({ paddingY, background }),
+        hasBackgroundVideo ? "relative overflow-hidden" : ""
+      )}
+      style={backgroundStyle}
+    >
+      {hasBackgroundVideo ? (
+        <video
+          src={backgroundVideo?.src}
+          poster={backgroundVideo?.poster}
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      ) : null}
+      {overlayStyle ? (
+        <div className="absolute inset-0" style={{ ...overlayStyle, zIndex: 1 }} />
+      ) : null}
+      <div
+        className={cn(
+          "mx-auto px-4 sm:px-6",
+          maxWidthClass(maxWidth),
+          hasBackgroundVideo ? "relative z-10" : ""
+        )}
+      >
+        <div className={layoutClass} style={{ gap: "var(--space-4)" }}>
+          <div className={cn(textOrderClass, align === "center" ? "text-center" : "text-left")}>
+            {eyebrow ? (
+              <p className="text-sm text-muted-foreground" style={bodyStyle}>
+                {eyebrow}
+              </p>
+            ) : null}
+            {derivedTitle ? (
+              <h2
+                className={cn(
+                  "mt-3 text-2xl font-semibold tracking-tight sm:text-3xl",
+                  emphasis === "high" ? "text-gradient" : ""
+                )}
+                style={headingStyle}
+              >
+                {derivedTitle}
+              </h2>
+            ) : null}
+            {subtitle ? (
+              <p className="mt-3 text-base text-muted-foreground sm:text-lg" style={bodyStyle}>
+                {subtitle}
+              </p>
+            ) : null}
+            {body ? (
+              <p className="mt-4 text-base text-muted-foreground" style={bodyStyle}>
+                {body}
+              </p>
+            ) : null}
+            {items?.length ? (
+              <div className="mt-6 space-y-4">
+                {items.slice(0, 6).map((item, idx) => (
+                  <div key={idx}>
+                    <div className="text-sm font-medium" style={headingStyle}>
+                      {item.title}
+                    </div>
+                    {item.desc ? (
+                      <p className="mt-1 text-sm text-muted-foreground" style={bodyStyle}>
+                        {item.desc}
+                      </p>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            ) : null}
+            {ctas?.length ? (
+              <div
+                className={cn(
+                  "mt-6 flex flex-wrap gap-4",
+                  align === "center" ? "justify-center" : "justify-start"
+                )}
+              >
+                {ctas.slice(0, 2).map((cta, idx) => (
+                  <Button
+                    key={idx}
+                    asChild
+                    variant={cta.variant === "secondary" ? "secondary" : "default"}
+                    className={cn(emphasis === "high" && idx === 0 ? "btn-glow" : "")}
+                    size="lg"
+                  >
+                    <a href={cta.href}>{cta.label}</a>
+                  </Button>
+                ))}
+              </div>
+            ) : null}
+          </div>
+          {hasMedia ? (
+            <div
+              className={cn(
+                mediaOrderClass,
+                motionClass,
+                emphasis === "high" ? "card-glass hover-lift" : ""
+              )}
+            >
+              {resolvedMedia?.kind === "video" ? (
+                <video
+                  src={resolvedMedia.src}
+                  controls
+                  className="w-full rounded-[calc(var(--radius)+4px)] border border-border shadow-sm"
+                />
+              ) : (
+                <img
+                  src={resolvedMedia?.src}
+                  alt={resolvedMedia?.alt ?? ""}
+                  className="w-full rounded-[calc(var(--radius)+4px)] border border-border shadow-sm"
+                  loading="lazy"
+                />
+              )}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  );
+}

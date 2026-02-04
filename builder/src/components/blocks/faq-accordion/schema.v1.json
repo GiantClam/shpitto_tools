@@ -1,0 +1,42 @@
+{
+  "$id": "https://yourdomain/schema/blocks/faq-accordion.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FAQAccordion.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["props"],
+  "properties": {
+    "props": {
+      "allOf": [
+        { "$ref": "../../../../schemas/base-block-props.json#/$defs/BaseBlockProps" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["items"],
+          "properties": {
+            "title": { "type": "string" },
+            "items": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 12,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["q", "a"],
+                "properties": {
+                  "q": { "type": "string", "minLength": 1 },
+                  "a": { "type": "string", "minLength": 1 }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "variant": {
+      "type": "string",
+      "enum": ["singleOpen", "multiOpen"],
+      "default": "singleOpen"
+    }
+  }
+}

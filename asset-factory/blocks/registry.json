@@ -1,0 +1,503 @@
+{
+  "version": "1.0",
+  "baseProps": {
+    "id": "string",
+    "anchor": "string",
+    "paddingY": "sm|md|lg",
+    "background": "none|muted|gradient|image",
+    "align": "left|center",
+    "maxWidth": "lg|xl|2xl",
+    "emphasis": "normal|high"
+  },
+  "blocks": [
+    {
+      "type": "Navbar.v1",
+      "version": "1.0.0",
+      "variants": ["simple", "withDropdown", "withCTA"],
+      "propsSchema": {
+        "required": ["id", "logo", "links"],
+        "properties": {
+          "logo": {"src": "string", "alt": "string"},
+          "links": [
+            {
+              "label": "string",
+              "href": "string",
+              "children": [{"label": "string", "href": "string"}]
+            }
+          ],
+          "ctas": [{"label": "string", "href": "string", "variant": "primary|secondary"}],
+          "sticky": "boolean"
+        }
+      }
+    },
+    {
+      "type": "AnnouncementBar.v1",
+      "version": "1.0.0",
+      "variants": ["info", "promo"],
+      "propsSchema": {
+        "required": ["id", "text"],
+        "properties": {
+          "text": "string",
+          "link": {"label": "string", "href": "string"}
+        }
+      }
+    },
+    {
+      "type": "PageHeader.v1",
+      "version": "1.0.0",
+      "variants": ["simple", "withBreadcrumbs"],
+      "propsSchema": {
+        "required": ["id", "title"],
+        "properties": {
+          "title": "string",
+          "subtitle": "string",
+          "breadcrumbs": [{"label": "string", "href": "string"}]
+        }
+      }
+    },
+    {
+      "type": "Footer.v1",
+      "version": "1.0.0",
+      "variants": ["simple", "multiColumn"],
+      "slots": ["columns"],
+      "propsSchema": {
+        "required": ["id", "columns"],
+        "properties": {
+          "logo": {"src": "string", "alt": "string"},
+          "columns": [
+            {"title": "string", "links": [{"label": "string", "href": "string"}]}
+          ],
+          "socials": [
+            {
+              "type": "x|github|linkedin|youtube|facebook|instagram",
+              "href": "string"
+            }
+          ],
+          "legal": "string"
+        }
+      }
+    },
+    {
+      "type": "HeroCentered.v1",
+      "version": "1.0.0",
+      "variants": ["textOnly", "withMedia", "withBadges"],
+      "propsSchema": {
+        "required": ["id", "title", "ctas"],
+        "properties": {
+          "eyebrow": "string",
+          "title": "string",
+          "subtitle": "string",
+          "ctas": [{"label": "string", "href": "string", "variant": "primary|secondary"}],
+          "media": {"kind": "image|video", "src": "string", "alt": "string"},
+          "badges": [{"text": "string"}]
+        }
+      }
+    },
+    {
+      "type": "HeroSplit.v1",
+      "version": "1.0.0",
+      "variants": ["image", "video", "screenshot"],
+      "propsSchema": {
+        "required": ["id", "title", "ctas", "mediaPosition"],
+        "properties": {
+          "eyebrow": "string",
+          "title": "string",
+          "subtitle": "string",
+          "ctas": [{"label": "string", "href": "string", "variant": "primary|secondary"}],
+          "media": {"kind": "image|video", "src": "string", "alt": "string"},
+          "mediaPosition": "left|right"
+        }
+      }
+    },
+    {
+      "type": "HeroForm.v1",
+      "version": "1.0.0",
+      "variants": ["inline", "card"],
+      "propsSchema": {
+        "required": ["id", "title", "fields", "submitText"],
+        "properties": {
+          "title": "string",
+          "subtitle": "string",
+          "fields": [{"name": "string", "label": "string", "type": "text|email|tel"}],
+          "submitText": "string",
+          "privacyNote": "string"
+        }
+      }
+    },
+    {
+      "type": "HeroProduct.v1",
+      "version": "1.0.0",
+      "variants": ["galleryLeft", "galleryRight"],
+      "propsSchema": {
+        "required": ["id", "title", "gallery", "primaryCta"],
+        "properties": {
+          "title": "string",
+          "price": "string",
+          "rating": {"value": "number", "count": "number"},
+          "bullets": ["string"],
+          "gallery": [{"src": "string", "alt": "string"}],
+          "primaryCta": {"label": "string", "href": "string"}
+        }
+      }
+    },
+    {
+      "type": "HeroDemo.v1",
+      "version": "1.0.0",
+      "variants": ["screenshot", "browserFrame"],
+      "propsSchema": {
+        "required": ["id", "title", "screenshot", "ctas"],
+        "properties": {
+          "title": "string",
+          "subtitle": "string",
+          "screenshot": {"src": "string", "alt": "string"},
+          "highlights": [{"label": "string"}],
+          "ctas": [{"label": "string", "href": "string", "variant": "primary|secondary"}]
+        }
+      }
+    },
+    {
+      "type": "LogoCloud.v1",
+      "version": "1.0.0",
+      "variants": ["grid", "marquee"],
+      "slots": ["logos"],
+      "propsSchema": {
+        "required": ["id", "logos"],
+        "properties": {"logos": [{"src": "string", "alt": "string"}], "title": "string"}
+      }
+    },
+    {
+      "type": "TestimonialsGrid.v1",
+      "version": "1.0.0",
+      "variants": ["2col", "3col"],
+      "slots": ["items"],
+      "propsSchema": {
+        "required": ["id", "items"],
+        "properties": {
+          "title": "string",
+          "items": [
+            {
+              "quote": "string",
+              "name": "string",
+              "role": "string",
+              "avatar": {"src": "string", "alt": "string"}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "RatingsSummary.v1",
+      "version": "1.0.0",
+      "variants": ["simple", "withBadges"],
+      "propsSchema": {
+        "required": ["id", "rating", "count"],
+        "properties": {
+          "rating": "number",
+          "count": "number",
+          "source": "string",
+          "badges": [{"src": "string", "alt": "string"}]
+        }
+      }
+    },
+    {
+      "type": "CaseStudies.v1",
+      "version": "1.0.0",
+      "variants": ["cards", "list"],
+      "slots": ["items"],
+      "propsSchema": {
+        "required": ["id", "items"],
+        "properties": {
+          "title": "string",
+          "items": [
+            {
+              "title": "string",
+              "summary": "string",
+              "href": "string",
+              "cover": {"src": "string", "alt": "string"},
+              "tags": ["string"]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "FeatureGrid.v1",
+      "version": "1.0.0",
+      "variants": ["2col", "3col", "4col"],
+      "slots": ["items"],
+      "propsSchema": {
+        "required": ["id", "items"],
+        "properties": {
+          "title": "string",
+          "subtitle": "string",
+          "items": [{"title": "string", "desc": "string", "icon": "string"}]
+        }
+      }
+    },
+    {
+      "type": "CardsGrid.v1",
+      "version": "1.0.0",
+      "variants": ["product", "person", "media", "imageText", "poster"],
+      "slots": ["items"],
+      "propsSchema": {
+        "required": ["id", "items"],
+        "properties": {
+          "title": "string",
+          "subtitle": "string",
+          "variant": "product|person|media|imageText|poster",
+          "columns": "2col|3col|4col",
+          "imagePosition": "top|left|right",
+          "imageSize": "sm|md|lg",
+          "imageShape": "square|rounded|circle",
+          "headingSize": "sm|md|lg",
+          "bodySize": "sm|md|lg",
+          "headingFont": "string",
+          "bodyFont": "string",
+          "textAlign": "left|center",
+          "items": [
+            {
+              "title": "string",
+              "subtitle": "string",
+              "description": "string",
+              "eyebrow": "string",
+              "tag": "string",
+              "meta": "string",
+              "price": "string",
+              "role": "string",
+              "imageSrc": "string",
+              "imageAlt": "string",
+              "image": {"src": "string", "alt": "string"},
+              "cta": {"label": "string", "href": "string", "variant": "primary|secondary|link"}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "FeatureWithMedia.v1",
+      "version": "1.0.0",
+      "variants": ["image", "video", "screenshot"],
+      "propsSchema": {
+        "required": ["id", "title", "points", "media", "mediaPosition"],
+        "properties": {
+          "title": "string",
+          "subtitle": "string",
+          "points": [{"title": "string", "desc": "string"}],
+          "media": {"src": "string", "alt": "string", "kind": "image|video"},
+          "mediaPosition": "left|right"
+        }
+      }
+    },
+    {
+      "type": "StepsTimeline.v1",
+      "version": "1.0.0",
+      "variants": ["vertical", "horizontal"],
+      "slots": ["steps"],
+      "propsSchema": {
+        "required": ["id", "steps"],
+        "properties": {
+          "title": "string",
+          "steps": [{"title": "string", "desc": "string"}]
+        }
+      }
+    },
+    {
+      "type": "StatsKPI.v1",
+      "version": "1.0.0",
+      "variants": ["grid", "inline"],
+      "slots": ["items"],
+      "propsSchema": {
+        "required": ["id", "items"],
+        "properties": {
+          "title": "string",
+          "items": [{"label": "string", "value": "string", "note": "string"}]
+        }
+      }
+    },
+    {
+      "type": "IntegrationsGrid.v1",
+      "version": "1.0.0",
+      "variants": ["grid", "withDescriptions"],
+      "slots": ["items"],
+      "propsSchema": {
+        "required": ["id", "items"],
+        "properties": {
+          "title": "string",
+          "items": [
+            {"name": "string", "logo": {"src": "string", "alt": "string"}, "href": "string"}
+          ]
+        }
+      }
+    },
+    {
+      "type": "ComparisonTable.v1",
+      "version": "1.0.0",
+      "variants": ["simple", "highlightColumn"],
+      "slots": ["rows"],
+      "propsSchema": {
+        "required": ["id", "columns", "rows"],
+        "properties": {
+          "title": "string",
+          "columns": [{"key": "string", "label": "string"}],
+          "rows": [{"label": "string", "cells": ["string|boolean"]}]
+        }
+      }
+    },
+    {
+      "type": "UseCases.v1",
+      "version": "1.0.0",
+      "variants": ["cards", "tabs"],
+      "slots": ["items"],
+      "propsSchema": {
+        "required": ["id", "items"],
+        "properties": {
+          "title": "string",
+          "items": [{"title": "string", "desc": "string", "href": "string"}]
+        }
+      }
+    },
+    {
+      "type": "PricingCards.v1",
+      "version": "1.0.0",
+      "variants": ["3up", "2up", "withToggle"],
+      "slots": ["plans"],
+      "propsSchema": {
+        "required": ["id", "plans"],
+        "properties": {
+          "title": "string",
+          "billingToggle": "boolean",
+          "plans": [
+            {
+              "name": "string",
+              "price": "string",
+              "period": "mo|yr",
+              "features": ["string"],
+              "cta": {"label": "string", "href": "string", "variant": "primary|secondary"},
+              "highlighted": "boolean"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "PlanComparison.v1",
+      "version": "1.0.0",
+      "variants": ["table"],
+      "slots": ["features"],
+      "propsSchema": {
+        "required": ["id", "plans", "features"],
+        "properties": {
+          "title": "string",
+          "plans": ["string"],
+          "features": [{"label": "string", "availability": ["boolean"]}]
+        }
+      }
+    },
+    {
+      "type": "LeadCaptureCTA.v1",
+      "version": "1.0.0",
+      "variants": ["banner", "card"],
+      "propsSchema": {
+        "required": ["id", "title", "cta"],
+        "properties": {
+          "title": "string",
+          "subtitle": "string",
+          "cta": {"label": "string", "href": "string"},
+          "note": "string"
+        }
+      }
+    },
+    {
+      "type": "StickyCTA.v1",
+      "version": "1.0.0",
+      "variants": ["bottomBar"],
+      "propsSchema": {
+        "required": ["id", "text", "cta"],
+        "properties": {
+          "text": "string",
+          "cta": {"label": "string", "href": "string"},
+          "mobileOnly": "boolean"
+        }
+      }
+    },
+    {
+      "type": "FAQAccordion.v1",
+      "version": "1.0.0",
+      "variants": ["singleOpen", "multiOpen"],
+      "slots": ["items"],
+      "propsSchema": {
+        "required": ["id", "items"],
+        "properties": {
+          "title": "string",
+          "items": [{"q": "string", "a": "string"}]
+        }
+      }
+    },
+    {
+      "type": "SupportLinks.v1",
+      "version": "1.0.0",
+      "variants": ["grid", "list"],
+      "slots": ["links"],
+      "propsSchema": {
+        "required": ["id", "links"],
+        "properties": {
+          "title": "string",
+          "links": [{"label": "string", "href": "string", "desc": "string"}]
+        }
+      }
+    },
+    {
+      "type": "ContactSection.v1",
+      "version": "1.0.0",
+      "variants": ["infoOnly", "withForm"],
+      "propsSchema": {
+        "required": ["id"],
+        "properties": {
+          "title": "string",
+          "methods": [{"type": "email|phone|address", "value": "string"}],
+          "form": {
+            "fields": [
+              {"name": "string", "label": "string", "type": "text|email|tel|textarea"}
+            ],
+            "submitText": "string"
+          }
+        }
+      }
+    },
+    {
+      "type": "ProductBenefits.v1",
+      "version": "1.0.0",
+      "variants": ["leftAligned", "centered"],
+      "propsSchema": {
+        "required": ["id", "bullets"],
+        "properties": {
+          "title": "string",
+          "bullets": ["string"],
+          "badges": [{"src": "string", "alt": "string"}]
+        }
+      }
+    },
+    {
+      "type": "ShippingReturns.v1",
+      "version": "1.0.0",
+      "variants": ["cards", "accordion"],
+      "propsSchema": {
+        "required": ["id", "items"],
+        "properties": {"items": [{"title": "string", "desc": "string"}]}
+      }
+    },
+    {
+      "type": "BundleOffer.v1",
+      "version": "1.0.0",
+      "variants": ["simple"],
+      "propsSchema": {
+        "required": ["id", "items", "cta"],
+        "properties": {
+          "title": "string",
+          "items": [{"name": "string", "price": "string"}],
+          "cta": {"label": "string", "href": "string"}
+        }
+      }
+    }
+  ]
+}

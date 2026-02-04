@@ -1,0 +1,134 @@
+{
+  "name": "research-enhanced",
+  "version": "1.0.0",
+  "description": "Enhanced research workflow using Google Custom Search for discovery and Jina Reader for deep content extraction",
+  "commands": [
+    {
+      "name": "google-search",
+      "description": "Search the web using Google Custom Search API",
+      "usage": "Use this command when you need to find current information, trends, or verify facts online",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Search query (supports Chinese and English)"
+          },
+          "numResults": {
+            "type": "number",
+            "description": "Number of results (default: 10, max: 10)",
+            "default": 10
+          },
+          "output": {
+            "type": "string",
+            "description": "Output format: markdown, json, urls-only",
+            "default": "markdown"
+          }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "jina-extract",
+      "description": "Extract full content from URLs using Jina Reader API",
+      "usage": "Use this command to get complete article content from URLs discovered via Google Search",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "URL to extract content from"
+          },
+          "output": {
+            "type": "string",
+            "description": "Output format: markdown, findings",
+            "default": "markdown"
+          }
+        },
+        "required": ["url"]
+      }
+    },
+    {
+      "name": "batch-extract",
+      "description": "Extract content from multiple URLs",
+      "usage": "Use this command to extract content from a list of URLs",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "urls": {
+            "type": "array",
+            "description": "List of URLs to extract",
+            "items": { "type": "string" }
+          },
+          "outputDir": {
+            "type": "string",
+            "description": "Output directory for extracted files"
+          }
+        },
+        "required": ["urls"]
+      }
+    },
+    {
+      "name": "research-topic",
+      "description": "Complete research workflow for a topic",
+      "usage": "Use this command to research a topic comprehensively using both Google Search and Jina extraction",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "topic": {
+            "type": "string",
+            "description": "Research topic or question"
+          },
+          "subqueries": {
+            "type": "array",
+            "description": "Additional search queries (optional)"
+          },
+          "numSources": {
+            "type": "number",
+            "description": "Number of sources to extract (default: 5)",
+            "default": 5
+          }
+        },
+        "required": ["topic"]
+      }
+    }
+  ],
+  "envVars": [
+    {
+      "name": "GOOGLE_SEARCH_API_KEY",
+      "description": "Google Custom Search API Key (from Google Cloud Console)",
+      "required": false
+    },
+    {
+      "name": "GOOGLE_SEARCH_ENGINE_ID",
+      "description": "Google Search Engine ID (from Google Programmable Search Engine)",
+      "required": false
+    },
+    {
+      "name": "JINA_API_KEY",
+      "description": "Jina AI API Key (optional, for higher quota)",
+      "required": false
+    }
+  ],
+  "examples": [
+    {
+      "description": "Research latest AI trends",
+      "command": "research-topic",
+      "params": { "topic": "AI trends 2025", "numSources": 5 }
+    },
+    {
+      "description": "Search for competitive analysis",
+      "command": "google-search",
+      "params": { "query": "best AI website builders 2025", "numResults": 10, "output": "markdown" }
+    },
+    {
+      "description": "Extract article content",
+      "command": "jina-extract",
+      "params": { "url": "https://example.com/article", "output": "markdown" }
+    }
+  ],
+  "relatedSkills": [
+    "content-creation",
+    "web-artifacts-builder"
+  ]
+}

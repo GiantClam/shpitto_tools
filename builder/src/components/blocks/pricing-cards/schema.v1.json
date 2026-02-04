@@ -1,0 +1,58 @@
+{
+  "$id": "https://yourdomain/schema/blocks/pricing-cards.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PricingCards.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["props"],
+  "properties": {
+    "props": {
+      "allOf": [
+        { "$ref": "../../../../schemas/base-block-props.json#/$defs/BaseBlockProps" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["plans"],
+          "properties": {
+            "title": { "type": "string" },
+            "billingToggle": { "type": "boolean" },
+            "plans": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 4,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["name", "price", "features", "cta"],
+                "properties": {
+                  "name": { "type": "string", "minLength": 1 },
+                  "price": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Examples: '$29', '$29/mo', '¥199/月', 'Contact us'"
+                  },
+                  "period": { "type": "string", "enum": ["mo", "yr"] },
+                  "features": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 12,
+                    "items": { "type": "string", "minLength": 1 }
+                  },
+                  "cta": {
+                    "$ref": "../../../../schemas/base-block-props.json#/$defs/Link"
+                  },
+                  "highlighted": { "type": "boolean" }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "variant": {
+      "type": "string",
+      "enum": ["2up", "3up", "withToggle"],
+      "default": "3up"
+    }
+  }
+}

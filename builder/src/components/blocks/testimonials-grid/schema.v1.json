@@ -1,0 +1,44 @@
+{
+  "$id": "https://yourdomain/schema/blocks/testimonials-grid.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TestimonialsGrid.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["props"],
+  "properties": {
+    "props": {
+      "allOf": [
+        { "$ref": "../../../../schemas/base-block-props.json#/$defs/BaseBlockProps" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["items"],
+          "properties": {
+            "title": { "type": "string" },
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["quote", "name"],
+                "properties": {
+                  "quote": { "type": "string" },
+                  "name": { "type": "string" },
+                  "role": { "type": "string" },
+                  "avatar": { "$ref": "../../../../schemas/base-block-props.json#/$defs/Image" }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "variant": {
+      "type": "string",
+      "enum": ["2col", "3col"],
+      "default": "2col"
+    }
+  }
+}

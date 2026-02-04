@@ -1,0 +1,74 @@
+{
+  "$id": "https://yourdomain/schema/blocks/footer.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Footer.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["props"],
+  "properties": {
+    "props": {
+      "allOf": [
+        { "$ref": "../../../../schemas/base-block-props.json#/$defs/BaseBlockProps" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["columns"],
+          "properties": {
+            "logo": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["src", "alt"],
+              "properties": {
+                "src": { "type": "string", "pattern": "^/assets/[^\\s]+$" },
+                "alt": { "type": "string" }
+              }
+            },
+            "columns": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 5,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["title", "links"],
+                "properties": {
+                  "title": { "type": "string" },
+                  "links": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 10,
+                    "items": {
+                      "$ref": "../../../../schemas/base-block-props.json#/$defs/Link"
+                    }
+                  }
+                }
+              }
+            },
+            "socials": {
+              "type": "array",
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["type", "href"],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": ["x", "github", "linkedin", "youtube", "facebook", "instagram"]
+                  },
+                  "href": { "type": "string" }
+                }
+              }
+            },
+            "legal": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "variant": {
+      "type": "string",
+      "enum": ["simple", "multiColumn"],
+      "default": "multiColumn"
+    }
+  }
+}

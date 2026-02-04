@@ -1,0 +1,80 @@
+{
+  "$id": "https://yourdomain/schema/blocks/cards-grid.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CardsGrid.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["props"],
+  "properties": {
+    "props": {
+      "allOf": [
+        { "$ref": "../base-block-props.json#/$defs/BaseBlockProps" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["items"],
+          "properties": {
+            "title": { "type": "string" },
+            "subtitle": { "type": "string" },
+            "variant": {
+              "type": "string",
+              "enum": ["product", "person", "media", "imageText", "poster"]
+            },
+            "columns": { "type": "string", "enum": ["2col", "3col", "4col"] },
+            "density": { "type": "string", "enum": ["compact", "normal", "spacious"] },
+            "cardStyle": { "type": "string", "enum": ["glass", "solid", "muted"] },
+            "imagePosition": { "type": "string", "enum": ["top", "left", "right"] },
+            "imageSize": { "type": "string", "enum": ["sm", "md", "lg"] },
+            "imageShape": { "type": "string", "enum": ["square", "rounded", "circle"] },
+            "headingSize": { "type": "string", "enum": ["sm", "md", "lg"] },
+            "bodySize": { "type": "string", "enum": ["sm", "md", "lg"] },
+            "headingFont": { "type": "string" },
+            "bodyFont": { "type": "string" },
+            "textAlign": { "type": "string", "enum": ["left", "center"] },
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 12,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["title"],
+                "properties": {
+                  "title": { "type": "string", "minLength": 1 },
+                  "subtitle": { "type": "string" },
+                  "description": { "type": "string" },
+                  "eyebrow": { "type": "string" },
+                  "tag": { "type": "string" },
+                  "meta": { "type": "string" },
+                  "price": { "type": "string" },
+                  "role": { "type": "string" },
+                  "imageSrc": { "type": "string" },
+                  "imageAlt": { "type": "string" },
+                  "image": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["src"],
+                    "properties": {
+                      "src": { "type": "string", "minLength": 1 },
+                      "alt": { "type": "string" }
+                    }
+                  },
+                  "cta": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["label", "href"],
+                    "properties": {
+                      "label": { "type": "string" },
+                      "href": { "type": "string" },
+                      "variant": { "type": "string", "enum": ["primary", "secondary", "link"] }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "variants": [
+    {
+      "type": "HeroCentered.v1",
+      "variant": "textOnly",
+      "description": "Centered hero with title, subtitle, and two CTAs, no media."
+    },
+    {
+      "type": "HeroCentered.v1",
+      "variant": "withMedia",
+      "description": "Centered hero with title, subtitle, CTA buttons, and a single media asset."
+    },
+    {
+      "type": "HeroSplit.v1",
+      "variant": "image",
+      "description": "Split hero with image on one side and text on the other."
+    },
+    {
+      "type": "HeroSplit.v1",
+      "variant": "video",
+      "description": "Split hero with video media on one side and text on the other."
+    },
+    {
+      "type": "HeroSplit.v1",
+      "variant": "screenshot",
+      "description": "Split hero featuring a product screenshot in a browser frame."
+    },
+    {
+      "type": "FeatureGrid.v1",
+      "variant": "2col",
+      "description": "Feature grid with two columns of cards."
+    },
+    {
+      "type": "FeatureGrid.v1",
+      "variant": "3col",
+      "description": "Feature grid with three columns of cards."
+    },
+    {
+      "type": "FeatureGrid.v1",
+      "variant": "4col",
+      "description": "Feature grid with four columns of cards."
+    },
+    {
+      "type": "CardsGrid.v1",
+      "variant": "product",
+      "description": "Product cards with image, title, short description, and optional price."
+    },
+    {
+      "type": "CardsGrid.v1",
+      "variant": "person",
+      "description": "Team or profile cards with avatar, name, role, and bio."
+    },
+    {
+      "type": "CardsGrid.v1",
+      "variant": "media",
+      "description": "Media cards for articles or news with thumbnail and summary."
+    },
+    {
+      "type": "CardsGrid.v1",
+      "variant": "imageText",
+      "description": "Image-text object cards for documentation-style content."
+    },
+    {
+      "type": "CardsGrid.v1",
+      "variant": "poster",
+      "description": "Poster-style cards with large image emphasis."
+    },
+    {
+      "type": "PricingCards.v1",
+      "variant": "3up",
+      "description": "Pricing cards layout with three plans side by side."
+    },
+    {
+      "type": "PricingCards.v1",
+      "variant": "withToggle",
+      "description": "Pricing cards layout with monthly yearly toggle control."
+    },
+    {
+      "type": "FAQAccordion.v1",
+      "variant": "singleOpen",
+      "description": "FAQ accordion with only one item expanded at a time."
+    },
+    {
+      "type": "FAQAccordion.v1",
+      "variant": "multiOpen",
+      "description": "FAQ accordion allowing multiple items open simultaneously."
+    },
+    {
+      "type": "TestimonialsGrid.v1",
+      "variant": "2col",
+      "description": "Testimonials grid with two columns."
+    },
+    {
+      "type": "TestimonialsGrid.v1",
+      "variant": "3col",
+      "description": "Testimonials grid with three columns."
+    },
+    {
+      "type": "StatsKPI.v1",
+      "variant": "grid",
+      "description": "Stats KPIs displayed in a grid layout."
+    },
+    {
+      "type": "StatsKPI.v1",
+      "variant": "inline",
+      "description": "Stats KPIs displayed in a single row."
+    }
+  ]
+}

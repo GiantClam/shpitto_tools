@@ -1,0 +1,21 @@
+{
+  "$id": "https://yourdomain/schema/blocks/atomic-button.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AtomicButton.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["props"],
+  "properties": {
+    "props": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "href"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "href": { "type": "string", "minLength": 1 },
+        "variant": { "type": "string", "enum": ["primary", "secondary", "link"] }
+      }
+    }
+  }
+}
