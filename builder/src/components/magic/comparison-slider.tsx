@@ -4,8 +4,10 @@ import { cn } from "@/lib/cn";
 import { Slider } from "@/components/ui/slider";
 
 type ComparisonSliderProps = {
-  beforeSrc: string;
-  afterSrc: string;
+  beforeSrc?: string;
+  afterSrc?: string;
+  beforeImage?: string;
+  afterImage?: string;
   beforeAlt?: string;
   afterAlt?: string;
   defaultValue?: number;
@@ -18,6 +20,8 @@ type ComparisonSliderProps = {
 export function ComparisonSlider({
   beforeSrc,
   afterSrc,
+  beforeImage,
+  afterImage,
   beforeAlt = "",
   afterAlt = "",
   defaultValue = 50,
@@ -26,6 +30,9 @@ export function ComparisonSlider({
   className,
   imageClassName,
 }: ComparisonSliderProps) {
+  const resolvedBefore = beforeSrc ?? beforeImage;
+  const resolvedAfter = afterSrc ?? afterImage;
+  if (!resolvedBefore || !resolvedAfter) return null;
   const [internal, setInternal] = React.useState(defaultValue);
   const currentValue = typeof value === "number" ? value : internal;
   const clampedValue = Math.min(100, Math.max(0, currentValue));
@@ -34,7 +41,7 @@ export function ComparisonSlider({
     <div className={cn("w-full", className)}>
       <div className="relative overflow-hidden rounded-3xl bg-muted">
         <img
-          src={afterSrc}
+          src={resolvedAfter}
           alt={afterAlt}
           className={cn("h-full w-full object-cover", imageClassName)}
         />
@@ -43,7 +50,7 @@ export function ComparisonSlider({
           style={{ width: `${clampedValue}%` }}
         >
           <img
-            src={beforeSrc}
+            src={resolvedBefore}
             alt={beforeAlt}
             className={cn("h-full w-full object-cover", imageClassName)}
           />

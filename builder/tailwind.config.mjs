@@ -15,6 +15,8 @@ export default {
         "muted-foreground": "hsl(var(--muted-foreground))",
         primary: "hsl(var(--primary))",
         "primary-foreground": "hsl(var(--primary-foreground))",
+        accent: "hsl(var(--accent))",
+        "accent-foreground": "hsl(var(--accent-foreground))",
         border: "hsl(var(--border))",
         card: "hsl(var(--card))",
       },

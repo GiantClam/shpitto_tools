@@ -210,6 +210,8 @@ function adaptAsset(originalBlock, targetTheme) {
 - 结构校验：layoutHint + Composition Preset Rules 验证 grid/gap/对齐
 - 对齐约束：从 themeContract.layoutRules.sectionAlignOverrides 注入（按 section type/id），仅在 alignLocked=true 时强校验
 - 场景切换：Showcase/Scenes 统一使用 SceneSwitcher（≤3 Tabs，>3 Carousel），避免手写轮播
+- 组件 API 约束：在 builder prompt 中显式声明 SceneSwitcher/ComparisonSlider 的 props 形态，避免 LLM 产出错误字段
+- 组件兼容层：SceneSwitcher 兼容 label/imageUrl/content；ComparisonSlider 兼容 beforeImage/afterImage 别名，缺失图片时安全返回
 - 失败策略：最多 3 次重试；最终失败使用简化修复提示重试
 - 失败占位：插入 `CreationErrorSection`，errors 记录 failureType
 - 组件去重：按 name 去重，冲突记录 `builder_component_conflict:*`

@@ -120,5 +120,12 @@ export function useParallaxY(options: ParallaxOptions = {}) {
     return { transform: `translate3d(0, ${offset}px, 0)` } as const;
   }, [enabled, offset]);
 
-  return { ref, style, offset, y: offset } as const;
+  const result = { ref, style, offset, y: offset } as const;
+  (result as any)[Symbol.iterator] = function* () {
+    yield ref;
+    yield offset;
+    yield style;
+    yield offset;
+  };
+  return result;
 }

@@ -3,7 +3,7 @@ import path from "path";
 import { Annotation, END, START, StateGraph } from "@langchain/langgraph";
 import type { Tool, ToolChoice } from "@anthropic-ai/sdk/resources/messages/messages";
 
-import { llm } from "@/lib/agent/graph";
+import { llmProviders, type LlmProviderClient } from "@/lib/agent/graph";
 import { logError, logInfo, logWarn } from "@/lib/logger";
 import { formatSummary, normalizeBlockProps } from "@/lib/design-system-enforcer";
 import { ConsistencyGuardian } from "@/lib/consistency-guardian";
@@ -12,6 +12,7 @@ import {
   architectSystemPrompt,
   buildArchitectUserPrompt,
   builderSystemPrompt,
+  buildBuilderCompactUserPrompt,
   buildBuilderUserPrompt,
 } from "@/lib/agent/prompts";
 
@@ -23,6 +24,10 @@ const State = Annotation.Root({
   skillContext: Annotation<{ architect: string; builder: string }>({
     value: (_left, right) => right,
     default: () => ({ architect: "", builder: "" }),
+  }),
+  designSystemContext: Annotation<DesignSystemContext>({
+    value: (_left, right) => right,
+    default: () => ({ master: "", pages: {} }),
   }),
   components: Annotation<any[]>({ value: (_left, right) => right, default: () => [] }),
   pages: Annotation<any[]>({ value: (_left, right) => right, default: () => [] }),
@@ -39,11 +44,19 @@ type LlmOptions = {
   maxTokens?: number;
   tools?: Tool[];
   toolChoice?: ToolChoice;
+  modelOverride?: string;
+  requireToolUse?: boolean;
+  allowProviderFallbackOnAnyError?: boolean;
 };
 
 type SkillContext = {
   architect: string;
   builder: string;
+};
+
+type DesignSystemContext = {
+  master: string;
+  pages: Record<string, string>;
 };
 
 type SkillEntry = {
@@ -335,17 +348,66 @@ const builderTool: Tool = {
   },
 };
 
-const model = process.env.OPENROUTER_MODEL || "anthropic/claude-sonnet-4.5";
-const fallbackModel = process.env.OPENROUTER_MODEL_FALLBACK;
-const defaultMaxTokens = Number(process.env.OPENROUTER_MAX_TOKENS || 4096);
+const model = process.env.LLM_MODEL || process.env.OPENROUTER_MODEL || "anthropic/claude-sonnet-4.5";
+const fallbackModel = process.env.LLM_MODEL_FALLBACK || process.env.OPENROUTER_MODEL_FALLBACK;
+const defaultMaxTokens = Number(process.env.LLM_MAX_TOKENS || process.env.OPENROUTER_MAX_TOKENS || 4096);
 const logPrefix = "[creation:agent]";
-const defaultSectionConcurrency = Number(process.env.OPENROUTER_MAX_CONCURRENCY || 3);
+type CrossProviderFallbackMode = "all" | "network_only" | "none";
+const crossProviderFallbackMode = (
+  process.env.LLM_CROSS_PROVIDER_FALLBACK || "all"
+).toLowerCase() as CrossProviderFallbackMode;
+const defaultSectionConcurrency = Number(
+  process.env.LLM_MAX_CONCURRENCY || process.env.OPENROUTER_MAX_CONCURRENCY || 3
+);
 const architectMaxTokens = Number(process.env.ARCHITECT_MAX_TOKENS || 1800);
 const architectTimeoutMs = Number(process.env.ARCHITECT_TIMEOUT_MS || 25000);
 const builderMaxTokens = Number(process.env.BUILDER_MAX_TOKENS || 1200);
 const defaultMaxPages = Number(process.env.CREATION_MAX_PAGES || 1);
 const defaultMaxSectionsPerPage = Number(process.env.CREATION_MAX_SECTIONS_PER_PAGE || 2);
 const defaultMaxSectionsTotal = Number(process.env.CREATION_MAX_SECTIONS_TOTAL || 2);
+type BuilderRetryMode = "legacy" | "network_only" | "none";
+const builderRetryMode = ((process.env.LLM_RETRY_MODE || "legacy").toLowerCase() as BuilderRetryMode) ?? "legacy";
+
+const parseEnvBoolean = (value: string | undefined, fallback: boolean) => {
+  if (typeof value !== "string") return fallback;
+  const normalized = value.trim().toLowerCase();
+  if (["1", "true", "yes", "on"].includes(normalized)) return true;
+  if (["0", "false", "no", "off"].includes(normalized)) return false;
+  return fallback;
+};
+
+const configuredSectionMaxAttempts = Math.max(1, Number(process.env.LLM_SECTION_MAX_ATTEMPTS || 3));
+const configuredNetworkRetryAttempts = Math.max(0, Number(process.env.LLM_NETWORK_RETRY_ATTEMPTS || 1));
+const effectiveSectionMaxAttempts =
+  builderRetryMode === "legacy"
+    ? configuredSectionMaxAttempts
+    : Math.max(1, Number(process.env.LLM_SECTION_MAX_ATTEMPTS || 1));
+const allowNonNetworkRetries = builderRetryMode === "legacy";
+const enableBuilderRepair = parseEnvBoolean(process.env.LLM_ENABLE_REPAIR, builderRetryMode === "legacy");
+const enableBuilderRefinement = parseEnvBoolean(process.env.LLM_ENABLE_REFINEMENT, builderRetryMode === "legacy");
+
+const isNetworkOrRetryableProviderError = (error: unknown) => {
+  const message = String((error as any)?.message ?? "");
+  const code = String((error as any)?.code ?? "");
+  const status = Number((error as any)?.status);
+  const hasStatus = Number.isFinite(status);
+  if (/connection error|econn|etimedout|eai_again|socket|network|fetch failed|timeout/i.test(message)) {
+    return true;
+  }
+  if (/econn|etimedout|eai_again|enotfound/i.test(code)) {
+    return true;
+  }
+  if (hasStatus && (status >= 500 || status === 429 || status === 408)) {
+    return true;
+  }
+  return false;
+};
+
+const shouldFallbackToNextProvider = (error: unknown) => {
+  if (crossProviderFallbackMode === "none") return false;
+  if (crossProviderFallbackMode === "all") return true;
+  return isNetworkOrRetryableProviderError(error);
+};
 
 const errorComponentName = "CreationErrorSection";
 const errorComponentCode = `import * as React from "react";
@@ -382,6 +444,129 @@ export default function CreationErrorSection(props) {
   );
 }
 `;
+const fallbackComponentName = "CreationFallbackSection";
+const fallbackComponentCode = `import * as React from "react";
+import { Badge, Button, Card, CardContent, CardHeader, CardTitle, Input, Textarea } from "@/components/ui-exports";
+
+export const config = {
+  fields: {
+    title: { type: "text" },
+    subtitle: { type: "text" },
+    variant: { type: "select", options: ["content", "catalog", "contact"] },
+    ctaLabel: { type: "text" },
+    ctaHref: { type: "text" },
+    whatsapp: { type: "text" }
+  },
+  defaultProps: {
+    title: "Section",
+    subtitle: "Generated with safe fallback template.",
+    variant: "content",
+    ctaLabel: "Contact Sales",
+    ctaHref: "#contact",
+    whatsapp: ""
+  }
+};
+
+export default function CreationFallbackSection(props) {
+  const {
+    title = "Section",
+    subtitle = "",
+    variant = "content",
+    items = [],
+    ctaLabel = "Contact Sales",
+    ctaHref = "#contact",
+    whatsapp = "",
+  } = props || {};
+
+  const safeItems = Array.isArray(items) ? items.filter(Boolean) : [];
+  const catalogItems = safeItems.length
+    ? safeItems.slice(0, 8)
+    : [
+        { title: "Premium Towels", desc: "Fast sampling and custom branding." },
+        { title: "Bathrobes", desc: "Hotel-grade fabrics and stitching." },
+        { title: "Bath Mats", desc: "High-absorbency, anti-slip options." },
+        { title: "Beach Towels", desc: "Vibrant prints for resort programs." },
+      ];
+
+  if (variant === "catalog") {
+    return (
+      <section className="py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl font-semibold tracking-tight">{title}</h2>
+            {subtitle ? <p className="mt-2 text-muted-foreground">{subtitle}</p> : null}
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {catalogItems.map((item, index) => (
+              <Card key={index} className="border-border/70 bg-background/70">
+                <CardHeader>
+                  <CardTitle className="text-base">{item.title || "Product"}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">{item.desc || "Customizable specification available."}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (variant === "contact") {
+    return (
+      <section id="contact" className="py-20">
+        <div className="mx-auto w-full max-w-4xl px-6">
+          <Card className="border-border/70 bg-background/80">
+            <CardHeader>
+              <Badge variant="secondary" className="w-fit">Lead Capture</Badge>
+              <CardTitle className="text-2xl">{title}</CardTitle>
+              {subtitle ? <p className="text-sm text-muted-foreground">{subtitle}</p> : null}
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <Input placeholder="Name" />
+                <Input placeholder="Work Email" />
+                <Input placeholder="Company" />
+                <Input placeholder="Country" />
+              </div>
+              <Textarea placeholder="Tell us your product requirements..." rows={5} />
+              <div className="flex flex-wrap gap-3">
+                <Button asChild size="lg">
+                  <a href={ctaHref}>{ctaLabel}</a>
+                </Button>
+                {whatsapp ? (
+                  <Button asChild variant="secondary" size="lg">
+                    <a href={whatsapp.startsWith("http") ? whatsapp : \`https://wa.me/\${String(whatsapp).replace(/[^0-9]/g, "")}\`}>WhatsApp</a>
+                  </Button>
+                ) : null}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="py-20">
+      <div className="mx-auto w-full max-w-5xl px-6">
+        <Card className="border-border/70 bg-background/70">
+          <CardHeader>
+            <CardTitle className="text-2xl">{title}</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {subtitle ? <p className="text-muted-foreground">{subtitle}</p> : null}
+            <Button asChild>
+              <a href={ctaHref}>{ctaLabel}</a>
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
+`;
 const navbarComponentName = "Navbar";
 const navbarComponentCode = `import * as React from "react";
 import { NavbarBlock } from "@/components/blocks/navbar/block";
@@ -398,6 +583,79 @@ export const config = {
 
 export default function Navbar(props) {
   return <NavbarBlock {...props} />;
+}
+`;
+const footerFallbackComponentName = "CreationFooterFallback";
+const footerFallbackComponentCode = `import * as React from "react";
+
+export const config = {
+  fields: {
+    logoText: { type: "text" },
+    legal: { type: "text" },
+    columns: {
+      type: "array",
+      arrayFields: {
+        title: { type: "text" }
+      }
+    }
+  },
+  defaultProps: {
+    logoText: "Company",
+    legal: "© 2026 All rights reserved.",
+    columns: [
+      {
+        title: "Products",
+        links: [{ label: "Catalog", href: "#products" }, { label: "Cases", href: "#cases" }]
+      },
+      {
+        title: "Support",
+        links: [{ label: "Contact", href: "#contact" }, { label: "Request Quote", href: "#contact" }]
+      },
+      {
+        title: "Legal",
+        links: [{ label: "Privacy", href: "#privacy" }, { label: "Sitemap", href: "#top" }]
+      }
+    ]
+  }
+};
+
+export default function CreationFooterFallback(props) {
+  const {
+    anchor = "footer",
+    logoText = "Company",
+    legal = "© 2026 All rights reserved.",
+    columns = []
+  } = props || {};
+  const safeColumns = Array.isArray(columns) ? columns.slice(0, 4) : [];
+
+  return (
+    <footer id={anchor} className="border-t border-border bg-background py-12">
+      <div className="mx-auto w-full max-w-[1200px] px-6">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <div className="text-base font-semibold">{logoText || "Company"}</div>
+          </div>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:col-span-8 md:grid-cols-3">
+            {safeColumns.map((col, index) => (
+              <div key={\`${'${index}'}-\${col?.title || "col"}\`}>
+                <div className="text-sm font-medium">{col?.title || "Links"}</div>
+                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                  {(Array.isArray(col?.links) ? col.links : []).slice(0, 10).map((link, linkIndex) => (
+                    <li key={\`${'${index}'}-\${linkIndex}\`}>
+                      <a href={link?.href || "#"} className="hover:text-foreground transition-colors">
+                        {link?.label || "Link"}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="mt-10 border-t border-border pt-6 text-xs text-muted-foreground">{legal}</div>
+      </div>
+    </footer>
+  );
 }
 `;
 
@@ -450,6 +708,14 @@ const detectReferenceProfile = (prompt: string): ReferenceProfile => {
 };
 
 const skillCache = new Map<string, string>();
+const designSystemCache = new Map<string, DesignSystemContext>();
+const maxDesignSystemChars = Number(process.env.DESIGN_SYSTEM_PROMPT_MAX_CHARS || 6000);
+const compactDesignSystemMasterChars = Number(
+  process.env.DESIGN_SYSTEM_PROMPT_COMPACT_MASTER_MAX_CHARS || 1600
+);
+const compactDesignSystemPageChars = Number(
+  process.env.DESIGN_SYSTEM_PROMPT_COMPACT_PAGE_MAX_CHARS || 1000
+);
 
 const skillRoots = () => {
   const cwd = process.cwd();
@@ -461,7 +727,12 @@ const skillRoots = () => {
 
 const skillNamesForStage = (stage: "architect" | "builder") => {
   if (stage === "architect") {
-    return ["website-generation-workflow", "design-system-enforcement", "content-quality-guidelines"];
+    return [
+      "website-generation-workflow",
+      "design-system-enforcement",
+      "content-quality-guidelines",
+      "ui-ux-pro-max",
+    ];
   }
   return [
     "design-system-enforcement",
@@ -470,6 +741,7 @@ const skillNamesForStage = (stage: "architect" | "builder") => {
     "visual-qa-mandatory",
     "content-quality-guidelines",
     "end-to-end-validation",
+    "ui-ux-pro-max",
   ];
 };
 
@@ -521,6 +793,124 @@ const loadSkillContext = async (): Promise<SkillContext> => {
 
 const applySkillContext = (system: string, context: string) =>
   context ? `${system}\n\n${context}` : system;
+
+const designSystemRoots = () => {
+  const cwd = process.cwd();
+  return [
+    path.resolve(cwd, "design-system"),
+    path.resolve(cwd, "..", "design-system"),
+  ];
+};
+
+const truncateForPrompt = (value: string, maxChars = maxDesignSystemChars) => {
+  const text = value.trim();
+  if (!text) return "";
+  if (text.length <= maxChars) return text;
+  return `${text.slice(0, Math.max(0, maxChars - 40))}\n\n[truncated-for-prompt]`;
+};
+
+const readFileIfExists = async (filePath: string) => {
+  try {
+    const content = await fs.readFile(filePath, "utf-8");
+    return content.trim();
+  } catch (_error) {
+    return "";
+  }
+};
+
+const pageOverrideKeys = (pagePath?: string, pageName?: string) => {
+  const keys = new Set<string>();
+  const safePagePath = typeof pagePath === "string" ? pagePath : "";
+  const safePageName = typeof pageName === "string" ? pageName : "";
+
+  const normalizedPath = safePagePath
+    .split(/[?#]/)[0]
+    .replace(/^\/+|\/+$/g, "");
+
+  if (!normalizedPath) {
+    keys.add("home");
+    keys.add("index");
+    keys.add("root");
+    keys.add("landing");
+  } else {
+    keys.add(normalizeKey(normalizedPath));
+    keys.add(normalizeKey(normalizedPath.replace(/\//g, "-")));
+  }
+
+  if (safePageName.trim()) {
+    keys.add(normalizeKey(safePageName));
+  }
+
+  return Array.from(keys).filter(Boolean);
+};
+
+const loadDesignSystemContext = async (): Promise<DesignSystemContext> => {
+  const roots = designSystemRoots();
+  const cacheKey = roots.join("|");
+  const cached = designSystemCache.get(cacheKey);
+  if (cached) return cached;
+
+  let master = "";
+  for (const root of roots) {
+    master = await readFileIfExists(path.join(root, "MASTER.md"));
+    if (master) break;
+  }
+
+  const pages: Record<string, string> = {};
+  for (const root of roots) {
+    const pagesDir = path.join(root, "pages");
+    try {
+      const entries = await fs.readdir(pagesDir, { withFileTypes: true });
+      for (const entry of entries) {
+        if (!entry.isFile() || !entry.name.toLowerCase().endsWith(".md")) continue;
+        const key = normalizeKey(entry.name.replace(/\.md$/i, ""));
+        if (!key || pages[key]) continue;
+        const content = await readFileIfExists(path.join(pagesDir, entry.name));
+        if (content) pages[key] = content;
+      }
+    } catch (_error) {
+      continue;
+    }
+  }
+
+  const context: DesignSystemContext = { master, pages };
+  designSystemCache.set(cacheKey, context);
+  return context;
+};
+
+const buildDesignSystemPromptContext = (
+  context: DesignSystemContext | undefined,
+  options?: { pagePath?: string; pageName?: string; compact?: boolean }
+) => {
+  if (!context) return "";
+
+  const compact = Boolean(options?.compact);
+  const master = truncateForPrompt(
+    context.master,
+    compact ? compactDesignSystemMasterChars : maxDesignSystemChars
+  );
+  const keys = pageOverrideKeys(options?.pagePath, options?.pageName);
+  const pageOverride = keys.map((key) => context.pages[key]).find(Boolean) ?? "";
+  const pageText = truncateForPrompt(
+    pageOverride,
+    compact ? compactDesignSystemPageChars : maxDesignSystemChars
+  );
+
+  if (!master && !pageText) return "";
+  const lines: string[] = [];
+  lines.push("# Project Design System (必须优先遵守)");
+  if (master) {
+    lines.push("## MASTER");
+    lines.push(master);
+  }
+  if (pageText) {
+    lines.push("## PAGE_OVERRIDE");
+    lines.push(pageText);
+  }
+  lines.push("## RULE");
+  lines.push("若 PAGE_OVERRIDE 与 MASTER 冲突，以 PAGE_OVERRIDE 为准。");
+  return lines.join("\n");
+};
 
 const buildSectionKey = (context: SectionContext) =>
   `${context.pagePath}:${context.section.id}:${context.sectionIndex}`;
@@ -1085,10 +1475,18 @@ const applySectionAlignOverrides = (
   }));
 };
 
+const hasFooterSection = (sections: ArchitectSection[]) =>
+  sections.some((section) => {
+    const type = typeof section?.type === "string" ? section.type.toLowerCase() : "";
+    const id = typeof section?.id === "string" ? section.id.toLowerCase() : "";
+    return type.includes("footer") || id.includes("footer");
+  });
+
 const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>) => {
   const rawPages = Array.isArray((blueprint as ArchitectBlueprint)?.pages)
     ? ((blueprint as ArchitectBlueprint).pages as ArchitectPage[])
     : [];
+  let injectedFooterCount = 0;
   const pages = rawPages.map((page, pageIndex) => {
     const path =
       typeof page?.path === "string" && page.path.trim()
@@ -1128,6 +1526,27 @@ const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>)
       );
       return { id, type, intent, propsHints, layoutHint };
     });
+    if (!hasFooterSection(sections)) {
+      injectedFooterCount += 1;
+      const footerSeed = toSlug(`${name}-footer`) || `footer-${pageIndex + 1}`;
+      sections.push({
+        id: footerSeed,
+        type: "Footer",
+        intent: "Global footer with links, contact, and legal information.",
+        propsHints: {
+          columns: ["Products", "Support", "Legal"],
+          legal: `© ${new Date().getFullYear()} All rights reserved.`,
+        },
+        layoutHint: {
+          structure: "dual",
+          density: "compact",
+          align: "start",
+          media: "none",
+          list: "rows",
+          compositionPreset: "FT01",
+        },
+      });
+    }
     return { path, name, sections, root: page?.root };
   });
   const themeContract = (blueprint as ArchitectBlueprint)?.theme?.themeContract as ThemeContract | undefined;
@@ -1149,6 +1568,12 @@ const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>)
     totalSections += nextSections.length;
     return { ...page, sections: nextSections };
   });
+  if (injectedFooterCount > 0) {
+    logInfo(`${logPrefix} blueprint:footer_injected`, {
+      pages: injectedFooterCount,
+      reason: "missing_footer_section",
+    });
+  }
   return limitedPages;
 };
 
@@ -2228,10 +2653,17 @@ const collectLayoutIssues = (
   themeClassMap?: ThemeClassMapBase,
   compositionPreset?: CompositionPreset,
   breakoutRequired?: boolean,
-  layoutRules?: Record<string, string>
+  layoutRules?: Record<string, string>,
+  sectionMeta?: { id?: string; type?: string }
 ) => {
   const issues: string[] = [];
   if (!layoutHint) return issues;
+  const sectionToken = `${sectionMeta?.type ?? ""} ${sectionMeta?.id ?? ""}`.toLowerCase();
+  const isNavigationSection = /(?:^|\s)(navigation|navbar|header)\b/.test(sectionToken);
+  const isFooterSection = /(?:^|\s)footer\b/.test(sectionToken);
+  const isHeroSection = /(?:^|\s)hero\b/.test(sectionToken);
+  const isCtaSection = /(?:^|\s)(cta|call[-\s]?to[-\s]?action)\b/.test(sectionToken);
+  const isContentStorySection = /(?:^|\s)(content|story|studio-story|philosophy|editorial)\b/.test(sectionToken);
   const { structure, density, align, list } = layoutHint;
   const isBentoPreset = compositionPreset?.id === "F02";
   const isCarouselPreset = compositionPreset?.id === "G02";
@@ -2267,36 +2699,49 @@ const collectLayoutIssues = (
   const hasSimpleResponsiveGrid = /(md:|lg:|xl:)grid-cols-\d+/.test(code);
   const hasResponsiveGrid = hasResponsiveStack || hasSimpleResponsiveGrid;
   const hasAnyGridCols = /grid-cols-\d+/.test(code);
+  const hasFlex = /className=\"[^\"]*\bflex\b/.test(code);
+  const hasResponsiveFlexSplit =
+    /(md:|lg:|xl:)flex-(row|col)/.test(code) || /(md:|lg:|xl:)flex-\[[^\]]+\]/.test(code);
+  const allowFlexSplitLayout =
+    (isHeroSection || isCtaSection || isContentStorySection) && hasFlex && hasResponsiveFlexSplit;
+  const skipStructureChecks = isNavigationSection;
   const isSingle = structure === "single";
-  if (structure === "dual" || structure === "triple" || structure === "split") {
+  if (!skipStructureChecks && (structure === "dual" || structure === "triple" || structure === "split")) {
     if (isBentoPreset || isFlexiblePreset) {
       if (!hasGrid) issues.push("missing grid layout");
       if (!hasGap) issues.push("missing gap/spacing");
       if (!hasResponsiveGrid && !hasAnyGridCols) issues.push("missing responsive columns");
     } else {
-      if (!hasGrid) issues.push("missing grid layout");
-      if (!hasCols12) issues.push("missing grid-cols-12");
+      if (!hasGrid && !allowFlexSplitLayout) issues.push("missing grid layout");
+      if (!hasCols12 && !allowFlexSplitLayout) issues.push("missing grid-cols-12");
       if (!hasGap) issues.push("missing gap/spacing");
-      if (!hasResponsiveStack) issues.push("missing responsive stacked columns");
+      if (!hasResponsiveStack && !allowFlexSplitLayout) issues.push("missing responsive stacked columns");
     }
   }
-  if (density && !hasGap && !isSingle) issues.push("density requires gap/spacing");
+  if (density && !hasGap && !isSingle && !isNavigationSection) issues.push("density requires gap/spacing");
   const asymmetricSplit = layoutRules?.asymmetricSplit;
-  if (asymmetricSplit && (structure === "split" || structure === "dual") && !isBentoPreset) {
+  if (
+    asymmetricSplit &&
+    (structure === "split" || structure === "dual") &&
+    !isBentoPreset &&
+    !allowFlexSplitLayout &&
+    !isNavigationSection
+  ) {
     const hasSpan5 = /(?:^|\s)(?:\w+:)?col-span-5\b/.test(code);
     const hasSpan7 = /(?:^|\s)(?:\w+:)?col-span-7\b/.test(code);
     if (!(hasSpan5 && hasSpan7)) issues.push("missing asymmetric 5/7 grid split");
   }
   const shouldCheckAlign = !(list === "cards" || list === "tiles" || list === "rows");
+  const skipAlignCheck = isNavigationSection || isFooterSection;
   const alignLocked = Boolean(layoutHint.alignLocked);
-  if (alignLocked) {
+  if (alignLocked && !skipAlignCheck) {
     if (align === "center" && !/(items-center|text-center)/.test(code)) {
       issues.push("align center missing");
     }
     if (align === "start" && !/(items-start|text-left)/.test(code)) {
       issues.push("align start missing");
     }
-  } else if (!isBentoPreset && shouldCheckAlign) {
+  } else if (!skipAlignCheck && !isBentoPreset && shouldCheckAlign) {
     if (align === "start" && !/(items-start|text-left)/.test(code)) {
       issues.push("align start missing");
     }
@@ -2311,6 +2756,17 @@ const collectLayoutIssues = (
     if (!hasSceneSwitcher && !hasCarousel) issues.push("missing carousel");
   }
   if (themeClassMap) {
+    const isTrustStripPreset = compositionPreset?.id === "L01" || compositionPreset?.id === "L02";
+    const isTrustStripSection = /(?:^|\s)(trust|logo|badge|endorsement|cert)/.test(sectionToken);
+    const requireHeadingAndBody = !(
+      isTrustStripPreset ||
+      isTrustStripSection ||
+      isNavigationSection ||
+      isFooterSection ||
+      isCtaSection ||
+      isContentStorySection
+    );
+    const requireSectionShell = !(isNavigationSection || isFooterSection || isCtaSection);
     const hasSectionPadding =
       code.includes(themeClassMap.sectionPadding) ||
       /\bpy-\d+\b/.test(code) ||
@@ -2330,12 +2786,24 @@ const collectLayoutIssues = (
       /text-muted-foreground/.test(code) ||
       /\btext-(sm|base|lg|xl|2xl)\b/.test(code) ||
       /\btext-\[.*\]\b/.test(code);
-    if (!hasSectionPadding || !hasContainer) issues.push("missing section padding/container");
-    if (!hasHeading || !hasBody) issues.push("missing heading/body typography");
+    if (requireSectionShell && (!hasSectionPadding || !hasContainer)) {
+      issues.push("missing section padding/container");
+    }
+    if (requireHeadingAndBody && (!hasHeading || !hasBody)) {
+      issues.push("missing heading/body typography");
+    }
   }
   if (compositionPreset?.requiredClasses?.length) {
     const meetsPreset = compositionPreset.requiredClasses.every((token) => {
       if (token === "grid") return hasGrid;
+      if (token === "text-center") {
+        return /\btext-center\b/.test(code) || /\bitems-center\b/.test(code) || /\bjustify-center\b/.test(code);
+      }
+      if (token === "xl:grid-cols-12") {
+        if (/\bgrid-cols-12\b/.test(code)) return true;
+        if (allowFlexSplitLayout) return true;
+        return false;
+      }
       if (token.startsWith("space-y-")) {
         if (/\bspace-y-\d+\b/.test(code)) return true;
         if (/\bgap-(2|3|4|5|6|8|10|12)\b/.test(code)) return true;
@@ -2350,7 +2818,18 @@ const collectLayoutIssues = (
   }
   if (breakoutRequired && themeClassMap?.breakout) {
     const breakoutClasses = Object.values(themeClassMap.breakout);
-    const meetsBreakout = breakoutClasses.some((token) => token && code.includes(token));
+    const meetsDeclaredBreakout = breakoutClasses.some((token) => token && code.includes(token));
+    const hasFullBleedFallback =
+      /\bw-screen\b/.test(code) || /-mx-\[50vw\]/.test(code) || /\bleft-1\/2\b/.test(code);
+    const hasMinHeightFallback = /\bmin-h-(screen|\[[^\]]+\]|\d+)/.test(code);
+    const hasCtaBreakoutFallback =
+      isCtaSection &&
+      (code.includes(themeClassMap.sectionPadding) ||
+        /\bpy-(20|24|28|32|36|40)\b/.test(code) ||
+        /\bpt-(20|24|28|32|36|40)\b/.test(code) ||
+        /\bpb-(20|24|28|32|36|40)\b/.test(code));
+    const meetsBreakout =
+      meetsDeclaredBreakout || hasFullBleedFallback || hasMinHeightFallback || hasCtaBreakoutFallback;
     if (!meetsBreakout) issues.push("missing breakout classes");
   }
   return issues;
@@ -2362,11 +2841,19 @@ const validateLayout = (
   themeClassMap?: ThemeClassMapBase,
   compositionPreset?: CompositionPreset,
   breakoutRequired?: boolean,
-  layoutRules?: Record<string, string>
+  layoutRules?: Record<string, string>,
+  sectionMeta?: { id?: string; type?: string }
 ) => {
   return (
-    collectLayoutIssues(code, layoutHint, themeClassMap, compositionPreset, breakoutRequired, layoutRules).length ===
-    0
+    collectLayoutIssues(
+      code,
+      layoutHint,
+      themeClassMap,
+      compositionPreset,
+      breakoutRequired,
+      layoutRules,
+      sectionMeta
+    ).length === 0
   );
 };
 
@@ -2483,13 +2970,19 @@ const buildNavbarProps = (
   const bodyFont = typeof (theme as any)?.fontBody === "string" ? (theme as any).fontBody : undefined;
   const nameSeed = typeof page.name === "string" ? page.name : page.path || "home";
   const idSuffix = normalizeKey(nameSeed) || "home";
-  const ctas = buildNavbarCtas(page);
+  const links = buildNavbarLinks(page);
+  const ctas = buildNavbarCtas(page) ?? [];
+  const hasChildren = links.some(
+    (link) => Array.isArray((link as any).children) && (link as any).children.length > 0
+  );
+  const variant = ctas.length ? "withCTA" : hasChildren ? "withDropdown" : "simple";
   return {
     id: `navbar-${idSuffix}`,
     anchor: "top",
     logo: { alt: page.name || "Site" },
-    links: buildNavbarLinks(page),
+    links,
     ctas,
+    variant,
     sticky: true,
     paddingY: "sm",
     maxWidth: "xl",
@@ -2497,6 +2990,84 @@ const buildNavbarProps = (
     bodyFont,
   };
 };
+
+const buildFooterColumns = (page: ReturnType<typeof normalizePages>[number]) => {
+  const sections = Array.isArray(page.sections) ? page.sections : [];
+  const sectionLinks = sections
+    .filter((section) => {
+      const type = typeof section.type === "string" ? section.type.toLowerCase() : "";
+      const id = typeof section.id === "string" ? section.id.toLowerCase() : "";
+      if (!section.id) return false;
+      if (type.includes("footer") || id.includes("footer")) return false;
+      if (type.includes("navbar") || id.includes("navbar")) return false;
+      return true;
+    })
+    .slice(0, 5)
+    .map((section) => ({
+      label: humanizeLabel(String(section.id || section.type || "Section")) || "Section",
+      href: `#${section.id}`,
+      variant: "link" as const,
+    }));
+
+  return [
+    {
+      title: "Products",
+      links: sectionLinks.length
+        ? sectionLinks.slice(0, 2)
+        : [
+            { label: "Catalog", href: "#products", variant: "link" as const },
+            { label: "Cases", href: "#cases", variant: "link" as const },
+          ],
+    },
+    {
+      title: "Support",
+      links: [
+        { label: "Contact", href: "#contact", variant: "primary" as const },
+        { label: "Request Quote", href: "#contact", variant: "secondary" as const },
+      ],
+    },
+    {
+      title: "Legal",
+      links: [
+        { label: "Privacy", href: "#privacy", variant: "link" as const },
+        { label: "Sitemap", href: "#top", variant: "link" as const },
+      ],
+    },
+  ];
+};
+
+const buildFooterProps = (
+  page: ReturnType<typeof normalizePages>[number],
+  theme: Record<string, unknown>
+) => {
+  const headingFont = typeof (theme as any)?.fontHeading === "string" ? (theme as any).fontHeading : undefined;
+  const bodyFont = typeof (theme as any)?.fontBody === "string" ? (theme as any).fontBody : undefined;
+  const nameSeed = typeof page.name === "string" ? page.name : page.path || "home";
+  const idSuffix = normalizeKey(nameSeed) || "home";
+  return {
+    id: `footer-${idSuffix}`,
+    anchor: "footer",
+    logoText: page.name || "Company",
+    columns: buildFooterColumns(page),
+    legal: `© ${new Date().getFullYear()} ${page.name || "Company"}. All rights reserved.`,
+    headingFont,
+    bodyFont,
+    variant: "multiColumn" as const,
+    paddingY: "md" as const,
+    maxWidth: "xl" as const,
+  };
+};
+
+const pageHasFooterBlock = (content: Array<{ type?: string; props?: Record<string, unknown> }>) =>
+  content.some((item) => {
+    const type = typeof item?.type === "string" ? item.type.toLowerCase() : "";
+    if (type === fallbackComponentName.toLowerCase() || type === errorComponentName.toLowerCase()) {
+      return false;
+    }
+    const anchor = typeof item?.props?.anchor === "string" ? item.props.anchor.toLowerCase() : "";
+    const id = typeof item?.props?.id === "string" ? item.props.id.toLowerCase() : "";
+    return type.includes("footer") || anchor.includes("footer") || id.includes("footer");
+  });
 
 const parseNdjsonPayloads = (raw: string) => {
   const candidate = extractJsonCandidate(raw);
@@ -2836,7 +3407,87 @@ const buildDeterministicFallbackBlock = (
     },
   };
 };
+const toStringList = (value: unknown) =>
+  Array.isArray(value)
+    ? value
+        .map((item) => (typeof item === "string" ? item.trim() : ""))
+        .filter(Boolean)
+    : [];
 
+const buildFallbackSectionVariant = (context: SectionContext) => {
+  const token = `${context.section.type ?? ""} ${context.section.id ?? ""}`.toLowerCase();
+  if (/(contact|lead|form|inquiry|quote)/.test(token)) return "contact";
+  if (/(product|catalog|grid|collection|shop|sku)/.test(token)) return "catalog";
+  return "content";
+};
+
+const buildFallbackSectionItems = (
+  context: SectionContext,
+  designNorthStar?: Record<string, unknown>
+) => {
+  const hints =
+    context.section.propsHints && typeof context.section.propsHints === "object"
+      ? (context.section.propsHints as Record<string, unknown>)
+      : {};
+  const categories = toStringList(hints.categories);
+  const coreProducts = toStringList((designNorthStar as any)?.coreProducts);
+  const source = categories.length ? categories : coreProducts;
+  return source.slice(0, 8).map((item) => ({
+    title: humanizeLabel(item),
+    desc: "OEM / ODM ready, fast sampling, reliable lead times.",
+  }));
+};
+
+const buildFallbackSectionProps = (
+  context: SectionContext,
+  prompt: string,
+  designNorthStar?: Record<string, unknown>
+) => {
+  const variant = buildFallbackSectionVariant(context);
+  const hints =
+    context.section.propsHints && typeof context.section.propsHints === "object"
+      ? (context.section.propsHints as Record<string, unknown>)
+      : {};
+  const formFields = toStringList(hints.formFields);
+  const whatsappRaw = typeof hints.whatsappNumber === "string" ? hints.whatsappNumber : "";
+  const whatsapp = whatsappRaw.replace(/[^0-9+]/g, "");
+  const sectionLabel = humanizeLabel(String(context.section.id || context.section.type || "Section"));
+  const intent = typeof context.section.intent === "string" ? context.section.intent.trim() : "";
+  const title = sectionLabel || "Section";
+  const subtitle =
+    intent ||
+    (variant === "contact"
+      ? "Share your product requirements and we will respond quickly."
+      : variant === "catalog"
+        ? "Core product lines with customizable specifications."
+        : "This section is generated using a resilient fallback template.");
+  const ctaLabel = variant === "contact" ? "Send Inquiry" : "Get Started";
+  const ctaHref = variant === "contact" ? "#contact" : "#top";
+
+  return {
+    id: `${context.pagePath}:${context.section.id}:${context.sectionIndex}:fallback`,
+    anchor: context.section.id,
+    title,
+    subtitle,
+    variant,
+    items: variant === "catalog" ? buildFallbackSectionItems(context, designNorthStar) : [],
+    formFields: formFields.length ? formFields : ["name", "email", "company", "message"],
+    whatsapp,
+    ctaLabel,
+    ctaHref,
+    sourcePrompt: prompt.slice(0, 280),
+  };
+};
+
+const createFallbackBlock = (
+  context: SectionContext,
+  prompt: string,
+  designNorthStar?: Record<string, unknown>
+): { type: string; props: Record<string, unknown>; _key: string } => ({
+  type: fallbackComponentName,
+  props: buildFallbackSectionProps(context, prompt, designNorthStar),
+  _key: `${context.pagePath}:${context.section.id}:${context.sectionIndex}:fallback`,
+});
 const runWithConcurrency = async <T, R>(
   items: T[],
   limit: number,
@@ -2860,8 +3511,10 @@ const runWithConcurrency = async <T, R>(
 
 const extractJsonCandidate = (value: string) => {
   const trimmed = value.trim().replace(/^\uFEFF/, "");
-  if (trimmed.includes("```")) {
-    const firstFence = trimmed.indexOf("```");
+  const firstFence = trimmed.indexOf("```");
+  const firstBrace = trimmed.indexOf("{");
+  const fenceBeforeJson = firstFence >= 0 && (firstBrace < 0 || firstFence < firstBrace);
+  if (fenceBeforeJson) {
     const closeFence = trimmed.indexOf("```", firstFence + 3);
     if (closeFence > firstFence) {
       const inner = trimmed.slice(firstFence + 3, closeFence);
@@ -3072,17 +3725,31 @@ const extractJsonObjects = (value: string) => {
   return results;
 };
 
-const safeJsonParse = <T,>(value: string): T | null => {
+const coerceParsedJson = <T,>(value: unknown, depth: number): T | null => {
+  if (value && typeof value === "object") return value as T;
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    if (!trimmed) return null;
+    if ((trimmed.startsWith("{") || trimmed.startsWith("[")) && depth < 2) {
+      return safeJsonParse<T>(trimmed, depth + 1);
+    }
+  }
+  return null;
+};
+
+const safeJsonParse = <T,>(value: string, depth = 0): T | null => {
   const cleaned = extractJsonCandidate(value);
   try {
     const normalized = escapeNewlinesInStrings(cleaned);
-    return JSON.parse(normalized) as T;
+    const parsed = JSON.parse(normalized);
+    return coerceParsedJson<T>(parsed, depth);
   } catch (error) {
     try {
       const balanced = extractBalancedJsonObject(cleaned);
       const normalized = escapeNewlinesInStrings(balanced);
       const repaired = repairJson(normalized);
-      return JSON.parse(repaired) as T;
+      const parsed = JSON.parse(repaired);
+      return coerceParsedJson<T>(parsed, depth);
     } catch (innerError) {
       return null;
     }
@@ -3111,6 +3778,108 @@ const clampTokenBudget = (value: number) => {
   return Math.max(512, Math.min(8192, Math.floor(value)));
 };
 
+const isArchitectBlueprint = (value: unknown): value is ArchitectBlueprint => {
+  if (!value || typeof value !== "object") return false;
+  const blueprint = value as ArchitectBlueprint;
+  const hasTheme =
+    blueprint.theme && typeof blueprint.theme === "object" && Object.keys(blueprint.theme).length > 0;
+  if (!hasTheme) return false;
+  return normalizePages(blueprint).length > 0;
+};
+
+const collectNestedTextCandidates = (value: unknown, depth = 0): string[] => {
+  if (depth > 4 || value == null) return [];
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    return trimmed ? [trimmed] : [];
+  }
+  if (Array.isArray(value)) {
+    return value.flatMap((item) => collectNestedTextCandidates(item, depth + 1));
+  }
+  if (typeof value !== "object") return [];
+  const record = value as Record<string, unknown>;
+  const keys = [
+    "content",
+    "text",
+    "message",
+    "messages",
+    "output",
+    "output_text",
+    "choices",
+    "data",
+    "result",
+    "response",
+    "input",
+  ];
+  const preferred = keys.flatMap((key) =>
+    Object.prototype.hasOwnProperty.call(record, key)
+      ? collectNestedTextCandidates(record[key], depth + 1)
+      : []
+  );
+  const fallback = Object.values(record).flatMap((entry) =>
+    collectNestedTextCandidates(entry, depth + 1)
+  );
+  return [...preferred, ...fallback];
+};
+
+const parseArchitectBlueprint = (raw: string): ArchitectBlueprint | null => {
+  const queue: string[] = [raw];
+  const seen = new Set<string>();
+  let iterations = 0;
+
+  while (queue.length && iterations < 80) {
+    iterations += 1;
+    const candidate = queue.shift()?.trim();
+    if (!candidate || seen.has(candidate)) continue;
+    seen.add(candidate);
+
+    const parsed = safeJsonParse<unknown>(candidate);
+    if (isArchitectBlueprint(parsed)) {
+      return parsed;
+    }
+
+    if (parsed && typeof parsed === "object") {
+      const nested = collectNestedTextCandidates(parsed);
+      for (const text of nested) {
+        const trimmed = text.trim();
+        if (trimmed && !seen.has(trimmed)) {
+          queue.push(trimmed);
+        }
+      }
+    }
+
+    const extractedObjects = extractJsonObjects(candidate);
+    for (const objectText of extractedObjects) {
+      const trimmed = objectText.trim();
+      if (trimmed && !seen.has(trimmed)) {
+        queue.push(trimmed);
+      }
+    }
+  }
+
+  return null;
+};
+
+const normalizeLlmResponse = (response: unknown) => {
+  if (response && typeof response === "object") return response as any;
+  if (typeof response === "string") {
+    const parsed = safeJsonParse<Record<string, unknown>>(response);
+    if (parsed && typeof parsed === "object") return parsed as any;
+    return {
+      content: [{ type: "text", text: response }],
+      stop_reason: null,
+      stop_sequence: null,
+      usage: null,
+    } as any;
+  }
+  return {
+    content: [],
+    stop_reason: null,
+    stop_sequence: null,
+    usage: null,
+  } as any;
+};
+
 async function callLlm({
   system,
   prompt,
@@ -3118,18 +3887,31 @@ async function callLlm({
   maxTokens,
   tools,
   toolChoice,
+  modelOverride,
+  requireToolUse = false,
+  allowProviderFallbackOnAnyError = false,
 }: LlmOptions) {
+  if (!llmProviders.length) {
+    throw Object.assign(new Error("missing_api_key"), {
+      details: { message: "No LLM provider configured (AIBERM_API_KEY/OPENROUTER_API_KEY/ANTHROPIC_API_KEY)." },
+    });
+  }
   const toolOptions = tools && toolChoice ? { tools, tool_choice: toolChoice } : undefined;
   const requestedTokens = clampTokenBudget(maxTokens ?? defaultMaxTokens);
-  const call = async (modelName: string, tokenBudget: number) => {
+  const callWithProvider = async (
+    provider: LlmProviderClient,
+    modelName: string,
+    tokenBudget: number
+  ) => {
     const startedAt = Date.now();
     logInfo(`${logPrefix} request`, {
+      provider: provider.name,
       model: modelName,
       promptLength: prompt.length,
       maxTokens: tokenBudget,
       prompt,
     });
-    const response = await llm.messages.create({
+    const rawResponse = await provider.client.messages.create({
       model: modelName,
       max_tokens: tokenBudget,
       temperature,
@@ -3137,25 +3919,113 @@ async function callLlm({
       messages: [{ role: "user", content: prompt }],
       ...(toolOptions ?? {}),
     });
+    const response = normalizeLlmResponse(rawResponse);
     let content = extractText(response.content);
+    const rawText = content;
     let toolUsed = false;
+    const contentBlockTypes = Array.isArray(response.content)
+      ? response.content.map((block: any) => (block && typeof block === "object" ? block.type : typeof block))
+      : [];
+    const stopReason = (response as any)?.stop_reason ?? null;
+    const stopSequence = (response as any)?.stop_sequence ?? null;
+    const usageInputTokens = (response as any)?.usage?.input_tokens ?? null;
+    const usageOutputTokens = (response as any)?.usage?.output_tokens ?? null;
     if (Array.isArray(response.content)) {
       const toolBlock = response.content.find(
         (block: any) => block && typeof block === "object" && block.type === "tool_use"
       ) as { input?: unknown } | undefined;
       if (toolBlock?.input !== undefined) {
-        content = JSON.stringify(toolBlock.input);
+        content = typeof toolBlock.input === "string" ? toolBlock.input : JSON.stringify(toolBlock.input);
         toolUsed = true;
       }
     }
+    if (toolChoice && !toolUsed) {
+      logWarn(`${logPrefix} response:tool_missing`, {
+        provider: provider.name,
+        model: modelName,
+        latencyMs: Date.now() - startedAt,
+        stopReason,
+        stopSequence,
+        contentBlockTypes,
+        textLength: rawText.length,
+        textPreview: rawText.slice(0, 300),
+      });
+      if (requireToolUse) {
+        throw Object.assign(new Error("tool_missing"), {
+          code: "tool_missing",
+          details: {
+            provider: provider.name,
+            model: modelName,
+            stopReason,
+            stopSequence,
+            contentBlockTypes,
+            textLength: rawText.length,
+            textPreview: rawText.slice(0, 300),
+          },
+        });
+      }
+      // Some providers/models may ignore tool-use and still return valid JSON text.
+      // Keep the text payload so downstream parsers/fallbacks can recover instead of hard-failing with empty content.
+      content = rawText;
+    }
+    if (toolUsed) {
+      const trimmed = content.trim();
+      if (!trimmed || trimmed === "{}" || trimmed === "[]" || trimmed === "null") {
+        logWarn(`${logPrefix} response:tool_empty_payload`, {
+          provider: provider.name,
+          model: modelName,
+          latencyMs: Date.now() - startedAt,
+          stopReason,
+          stopSequence,
+          contentBlockTypes,
+          payloadPreview: trimmed,
+        });
+      }
+    }
     logInfo(`${logPrefix} response`, {
+      provider: provider.name,
       model: modelName,
       contentLength: content.length,
       latencyMs: Date.now() - startedAt,
       toolUsed,
+      stopReason,
+      stopSequence,
+      usageInputTokens,
+      usageOutputTokens,
+      contentBlockTypes,
       content,
     });
     return content;
+  };
+
+  const callAcrossProviders = async (modelName: string, tokenBudget: number) => {
+    let lastError: unknown = null;
+    for (let index = 0; index < llmProviders.length; index += 1) {
+      const provider = llmProviders[index];
+      try {
+        return await callWithProvider(provider, modelName, tokenBudget);
+      } catch (error) {
+        lastError = error;
+        logWarn(`${logPrefix} request:provider_failed`, {
+          provider: provider.name,
+          model: modelName,
+          message: (error as any)?.message ?? String(error),
+          status: (error as any)?.status,
+          code: (error as any)?.code,
+        });
+        const hasNextProvider = index < llmProviders.length - 1;
+        const canFallbackToNextProvider = allowProviderFallbackOnAnyError || shouldFallbackToNextProvider(error);
+        if (hasNextProvider && !canFallbackToNextProvider) {
+          logInfo(`${logPrefix} request:provider_fallback_skipped`, {
+            provider: provider.name,
+            model: modelName,
+            mode: crossProviderFallbackMode,
+          });
+          break;
+        }
+      }
+    }
+    throw lastError ?? new Error("llm_provider_unavailable");
   };
 
   const retryWithLowerBudget = async (modelName: string, error: unknown) => {
@@ -3176,7 +4046,7 @@ async function callLlm({
       message,
     });
     try {
-      return await call(modelName, lowered);
+      return await callAcrossProviders(modelName, lowered);
     } catch (loweredError) {
       logWarn(`${logPrefix} request:token_backoff_failed`, {
         model: modelName,
@@ -3187,19 +4057,20 @@ async function callLlm({
     }
   };
 
+  const primaryModel = modelOverride ?? model;
   try {
-    return await call(model, requestedTokens);
+    return await callAcrossProviders(primaryModel, requestedTokens);
   } catch (error) {
-    const loweredAttempt = await retryWithLowerBudget(model, error);
+    const loweredAttempt = await retryWithLowerBudget(primaryModel, error);
     if (typeof loweredAttempt === "string" && loweredAttempt.trim()) {
       return loweredAttempt;
     }
     const message = (error as any)?.message ?? "";
     const isConnectionError = /connection error|ECONN|ETIMEDOUT|EAI_AGAIN|socket/i.test(message);
-    if (fallbackModel && fallbackModel !== model) {
+    if (fallbackModel && fallbackModel !== primaryModel) {
       if (!isConnectionError) {
         try {
-          return await call(fallbackModel, requestedTokens);
+          return await callAcrossProviders(fallbackModel, requestedTokens);
         } catch (fallbackError) {
           const loweredFallbackAttempt = await retryWithLowerBudget(fallbackModel, fallbackError);
           if (typeof loweredFallbackAttempt === "string" && loweredFallbackAttempt.trim()) {
@@ -3216,7 +4087,7 @@ async function callLlm({
       code: (error as any)?.code,
       error: (error as any)?.error,
     };
-    throw Object.assign(new Error(details.message || "openrouter_error"), { details });
+    throw Object.assign(new Error(details.message || "llm_error"), { details });
   }
 }
 
@@ -3239,8 +4110,12 @@ async function architectNode(state: GraphState) {
       return { blueprint: existingBlueprint };
     }
   }
-  const prompt = buildArchitectUserPrompt(state.prompt ?? "", state.manifest ?? {});
+  const designSystemPrompt = buildDesignSystemPromptContext(state.designSystemContext);
+  const basePrompt = buildArchitectUserPrompt(state.prompt ?? "", state.manifest ?? {});
+  const prompt = designSystemPrompt ? `${basePrompt}\n\n${designSystemPrompt}` : basePrompt;
   const system = applySkillContext(architectSystemPrompt, state.skillContext?.architect ?? "");
+  const retryPrompt = `${prompt}\n\n重要：必须返回完整 JSON，不允许返回 {} 或空数组。至少包含 1 个 page 与 1 个 section。`;
+  const compactPrompt = `${prompt}\n\n重要：输出必须是紧凑 JSON（无多余解释）。propsHints 只保留 3-5 个短字段，列表最多 6 项；每页不超过 6 个 section，避免长文案与深层嵌套。`;
   let raw: string;
   try {
     raw = await Promise.race([
@@ -3251,6 +4126,8 @@ async function architectNode(state: GraphState) {
         maxTokens: architectMaxTokens,
         tools: [architectTool],
         toolChoice: { type: "tool", name: architectTool.name },
+        requireToolUse: true,
+        allowProviderFallbackOnAnyError: true,
       }),
       sleep(architectTimeoutMs).then(() => {
         throw new Error("architect_timeout");
@@ -3260,9 +4137,24 @@ async function architectNode(state: GraphState) {
     logWarn(`${logPrefix} architect:tool_failed`, {
       message: (error as any)?.message ?? String(error),
     });
-    raw = "{}";
+    try {
+      raw = await Promise.race([
+        callLlm({
+          system,
+          prompt: retryPrompt,
+          temperature: 0.3,
+          maxTokens: architectMaxTokens,
+          allowProviderFallbackOnAnyError: true,
+        }),
+        sleep(architectTimeoutMs).then(() => {
+          throw new Error("architect_retry_timeout");
+        }),
+      ]);
+    } catch {
+      raw = "{}";
+    }
   }
-  let blueprint = safeJsonParse<ArchitectBlueprint>(raw);
+  let blueprint = parseArchitectBlueprint(raw);
   const initialPages = normalizePages(blueprint ?? {});
   const hasTheme =
     blueprint?.theme && typeof blueprint.theme === "object" && Object.keys(blueprint.theme).length > 0;
@@ -3274,11 +4166,43 @@ async function architectNode(state: GraphState) {
       hasTheme,
       pages: initialPages.length,
     });
-    blueprint = buildFallbackBlueprint(state.prompt ?? "");
-    logInfo(`${logPrefix} architect:fallback_blueprint`, {
-      pages: normalizePages(blueprint).length,
-      reason: "invalid_or_empty_architect_response",
+    const fallbackRaw = await callLlm({
+      system,
+      prompt: retryPrompt,
+      temperature: 0.35,
+      maxTokens: architectMaxTokens,
+      allowProviderFallbackOnAnyError: true,
     });
+    blueprint = parseArchitectBlueprint(fallbackRaw);
+    const fallbackPages = normalizePages(blueprint ?? {});
+    const fallbackHasTheme =
+      blueprint?.theme &&
+      typeof blueprint.theme === "object" &&
+      Object.keys(blueprint.theme).length > 0;
+    if (!blueprint || !fallbackHasTheme || fallbackPages.length === 0) {
+      logWarn(`${logPrefix} architect:empty_response`, {
+        rawPreview: fallbackRaw.slice(0, 200),
+        rawTail: fallbackRaw.slice(-200),
+        rawLength: fallbackRaw.length,
+        hasTheme: fallbackHasTheme,
+        pages: fallbackPages.length,
+      });
+      const compactRaw = await callLlm({
+        system,
+        prompt: compactPrompt,
+        temperature: 0.2,
+        maxTokens: architectMaxTokens,
+        allowProviderFallbackOnAnyError: true,
+      });
+      blueprint = parseArchitectBlueprint(compactRaw);
+    }
+    if (!blueprint || normalizePages(blueprint).length === 0) {
+      blueprint = buildFallbackBlueprint(state.prompt ?? "");
+      logInfo(`${logPrefix} architect:fallback_blueprint`, {
+        pages: normalizePages(blueprint).length,
+        reason: "invalid_or_empty_architect_response",
+      });
+    }
   }
   if (!blueprint) {
     logWarn(`${logPrefix} architect:parse_failed`, {
@@ -3338,6 +4262,11 @@ async function builderNode(state: GraphState) {
     pages: pages.length,
     sections: allSections.length,
     pendingSections: sections.length,
+    retryMode: builderRetryMode,
+    sectionMaxAttempts: effectiveSectionMaxAttempts,
+    networkRetryAttempts: configuredNetworkRetryAttempts,
+    refinementEnabled: enableBuilderRefinement,
+    repairEnabled: enableBuilderRepair,
   });
   if (completedSectionKeys.size > 0) {
     logInfo(`${logPrefix} builder:resume`, {
@@ -3358,7 +4287,11 @@ async function builderNode(state: GraphState) {
     return !trimmed || trimmed === "{}" || trimmed === "[]" || trimmed === "null";
   };
 
-  const callBuilderLlm = async (promptText: string, temperature: number) => {
+  const callBuilderLlm = async (
+    promptText: string,
+    temperature: number,
+    compactPromptText?: string
+  ) => {
     const raw = await callLlm({
       system,
       prompt: promptText,
@@ -3368,6 +4301,9 @@ async function builderNode(state: GraphState) {
       toolChoice: { type: "tool", name: builderTool.name },
     });
     if (!isEmptyResponse(raw)) return raw;
+    if (!allowNonNetworkRetries) {
+      throw Object.assign(new Error("builder_section_empty"), { code: "parse" });
+    }
     const retryPrompt = `${promptText}\n\n必须通过工具返回 JSON，不要返回 {} 或空响应。只输出 component + block。`;
     const retryRaw = await callLlm({
       system,
@@ -3377,10 +4313,60 @@ async function builderNode(state: GraphState) {
       tools: [builderTool],
       toolChoice: { type: "tool", name: builderTool.name },
     });
-    if (isEmptyResponse(retryRaw)) {
-      throw Object.assign(new Error("builder_section_empty"), { code: "parse" });
+    if (!isEmptyResponse(retryRaw)) return retryRaw;
+    if (compactPromptText) {
+      const compactRetryPrompt = `${compactPromptText}\n\n必须通过工具返回 JSON，不要返回 {} 或空响应。只输出 component + block。`;
+      logInfo(`${logPrefix} builder:section:tool_compact_retry`, {
+        promptLength: compactRetryPrompt.length,
+      });
+      const compactRaw = await callLlm({
+        system,
+        prompt: compactRetryPrompt,
+        temperature: Math.max(0.15, temperature - 0.25),
+        tools: [builderTool],
+        toolChoice: { type: "tool", name: builderTool.name },
+      });
+      if (!isEmptyResponse(compactRaw)) return compactRaw;
+      if (fallbackModel && fallbackModel !== model) {
+        const compactFallbackRaw = await callLlm({
+          system,
+          prompt: compactRetryPrompt,
+          temperature: Math.max(0.1, temperature - 0.3),
+          tools: [builderTool],
+          toolChoice: { type: "tool", name: builderTool.name },
+          modelOverride: fallbackModel,
+        });
+        if (!isEmptyResponse(compactFallbackRaw)) return compactFallbackRaw;
+      }
     }
-    return retryRaw;
+    if (fallbackModel && fallbackModel !== model) {
+      const fallbackRaw = await callLlm({
+        system,
+        prompt: retryPrompt,
+        temperature: Math.max(0.1, temperature - 0.3),
+        tools: [builderTool],
+        toolChoice: { type: "tool", name: builderTool.name },
+        modelOverride: fallbackModel,
+      });
+      if (!isEmptyResponse(fallbackRaw)) return fallbackRaw;
+    }
+    const noToolPrompt = `${retryPrompt}\n\n如果工具调用不可用，直接输出严格 JSON（component + block），不要 Markdown 或解释文本。`;
+    const textRaw = await callLlm({
+      system,
+      prompt: noToolPrompt,
+      temperature: Math.max(0.1, temperature - 0.3),
+    });
+    if (!isEmptyResponse(textRaw)) return textRaw;
+    if (fallbackModel && fallbackModel !== model) {
+      const textFallbackRaw = await callLlm({
+        system,
+        prompt: noToolPrompt,
+        temperature: Math.max(0.1, temperature - 0.3),
+        modelOverride: fallbackModel,
+      });
+      if (!isEmptyResponse(textFallbackRaw)) return textFallbackRaw;
+    }
+    throw Object.assign(new Error("builder_section_empty"), { code: "parse" });
   };
 
   if (allSections.length === 0) {
@@ -3405,7 +4391,9 @@ async function builderNode(state: GraphState) {
       sectionId: context.section.id,
       sectionType: context.section.type,
     };
-    const maxAttempts = 3;
+    const maxAttempts = allowNonNetworkRetries
+      ? effectiveSectionMaxAttempts
+      : effectiveSectionMaxAttempts + configuredNetworkRetryAttempts;
     for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
       const compositionPreset = getCompositionPresetRules(
         context.section.type,
@@ -3423,7 +4411,7 @@ async function builderNode(state: GraphState) {
         id: context.section.id,
         type: context.section.type,
       });
-      const prompt = buildBuilderUserPrompt({
+      const promptOptions = {
         prompt: state.prompt ?? "",
         manifest: manifestForPrompt,
         theme,
@@ -3438,31 +4426,51 @@ async function builderNode(state: GraphState) {
         page: { path: context.pagePath, name: context.pageName },
         section: context.section,
         sectionIndex: context.sectionIndex,
+      };
+      const basePrompt = buildBuilderUserPrompt(promptOptions);
+      const compactBasePrompt = buildBuilderCompactUserPrompt(promptOptions);
+      const designSystemPrompt = buildDesignSystemPromptContext(state.designSystemContext, {
+        pagePath: context.pagePath,
+        pageName: context.pageName,
       });
+      const compactDesignSystemPrompt = buildDesignSystemPromptContext(state.designSystemContext, {
+        pagePath: context.pagePath,
+        pageName: context.pageName,
+        compact: true,
+      });
+      const prompt = designSystemPrompt ? `${basePrompt}\n\n${designSystemPrompt}` : basePrompt;
+      const compactPrompt = compactDesignSystemPrompt
+        ? `${compactBasePrompt}\n\n${compactDesignSystemPrompt}`
+        : compactBasePrompt;
       try {
         logInfo(`${logPrefix} builder:section:start`, { ...baseInfo, attempt });
-        let raw = await callBuilderLlm(prompt, 0.6);
+        let raw = await callBuilderLlm(prompt, 0.6, compactPrompt);
         let parsed = parseNdjsonPayloads(raw);
-        if (!parsed.length) {
-          const strictRaw = await callBuilderLlm(
-            `${prompt}\n\n只返回严格 JSON，不要 Markdown、不要解释文本。`,
-            0.3
-          );
-          parsed = parseNdjsonPayloads(strictRaw);
-        }
-        if (!parsed.length) {
-          logWarn(`${logPrefix} builder:section:parse_failed`, {
-            ...baseInfo,
-            rawLength: raw.length,
-            rawPreview: raw.slice(0, 400),
-            rawTail: raw.slice(-400),
-          });
-          throw Object.assign(new Error("builder_section_parse"), { code: "parse" });
-        }
-        const normalized = parsed
+        let normalized = parsed
           .map((payload) => normalizeSectionPayload(payload, compositionPreset))
           .find(Boolean);
+        if (!normalized && allowNonNetworkRetries) {
+          const strictRaw = await callBuilderLlm(
+            `${prompt}\n\n只返回严格 JSON，不要 Markdown、不要解释文本。`,
+            0.3,
+            compactPrompt
+          );
+          raw = strictRaw;
+          parsed = parseNdjsonPayloads(strictRaw);
+          normalized = parsed
+            .map((payload) => normalizeSectionPayload(payload, compositionPreset))
+            .find(Boolean);
+        }
         if (!normalized) {
+          if (!parsed.length) {
+            logWarn(`${logPrefix} builder:section:parse_failed`, {
+              ...baseInfo,
+              rawLength: raw.length,
+              rawPreview: raw.slice(0, 400),
+              rawTail: raw.slice(-400),
+            });
+            throw Object.assign(new Error("builder_section_parse"), { code: "parse" });
+          }
           logWarn(`${logPrefix} builder:section:invalid_payload`, {
             ...baseInfo,
             parsedCount: parsed.length,
@@ -3476,7 +4484,8 @@ async function builderNode(state: GraphState) {
           themeClassMapForPrompt,
           compositionPreset,
           breakoutRequired,
-          (themeContract?.layoutRules as Record<string, string> | undefined)
+          (themeContract?.layoutRules as Record<string, string> | undefined),
+          { id: context.section.id, type: context.section.type }
         );
         if (layoutIssues.length > 0) {
           logWarn(`${logPrefix} builder:section:layout_invalid`, {
@@ -3500,14 +4509,27 @@ async function builderNode(state: GraphState) {
           message,
           failureType,
         });
-        if (isLast && (failureType === "parse" || failureType === "layout")) {
+        if (enableBuilderRepair && isLast && (failureType === "parse" || failureType === "layout")) {
           try {
             const repairPrompt = buildRepairPrompt(prompt);
-            const repairRaw = await callBuilderLlm(repairPrompt, 0.3);
-            const repairParsed = parseNdjsonPayloads(repairRaw);
-            const repairNormalized = repairParsed
+            const compactRepairPrompt = buildRepairPrompt(compactPrompt);
+            let repairRaw = await callBuilderLlm(repairPrompt, 0.3, compactRepairPrompt);
+            let repairParsed = parseNdjsonPayloads(repairRaw);
+            let repairNormalized = repairParsed
               .map((payload) => normalizeSectionPayload(payload, compositionPreset))
               .find(Boolean);
+            if (!repairNormalized) {
+              const strictRepairRaw = await callBuilderLlm(
+                `${repairPrompt}\n\n只返回严格 JSON，不要 Markdown、不要解释文本。`,
+                0.2,
+                compactRepairPrompt
+              );
+              repairRaw = strictRepairRaw;
+              repairParsed = parseNdjsonPayloads(strictRepairRaw);
+              repairNormalized = repairParsed
+                .map((payload) => normalizeSectionPayload(payload, compositionPreset))
+                .find(Boolean);
+            }
             const repairIssues = repairNormalized
               ? collectLayoutIssues(
                   repairNormalized.component.code,
@@ -3515,7 +4537,8 @@ async function builderNode(state: GraphState) {
                   themeClassMapForPrompt,
                   compositionPreset,
                   breakoutRequired,
-                  (themeContract?.layoutRules as Record<string, string> | undefined)
+                  (themeContract?.layoutRules as Record<string, string> | undefined),
+                  { id: context.section.id, type: context.section.type }
                 )
               : ["invalid_repair_payload"];
             if (repairNormalized && repairIssues.length === 0) {
@@ -3535,9 +4558,11 @@ async function builderNode(state: GraphState) {
             });
           }
         }
-        if (isLast) {
-          const fallbackBlock = buildDeterministicFallbackBlock(context, state.prompt ?? "");
-          return { status: "fallback", block: fallbackBlock, error: message, failureType };
+        const shouldRetry =
+          !isLast &&
+          (allowNonNetworkRetries || (!allowNonNetworkRetries && failureType === "network"));
+        if (!shouldRetry) {
+          return { status: "error" as const, error: message, failureType };
         }
         const delay = attempt === 1 ? 500 : 2000;
         logInfo(`${logPrefix} builder:section:retry`, { ...baseInfo, delayMs: delay });
@@ -3613,15 +4638,23 @@ async function builderNode(state: GraphState) {
     });
   }
 
-  let needsErrorComponent = false;
   const planningUpdates: Array<Promise<void>> = [];
+  const refinementCandidates: Array<{
+    context: SectionContext;
+    failureType: FailureType;
+    message: string;
+  }> = [];
 
   results.forEach((result, index) => {
     const context = sections[index];
+    if (!context) {
+      errors.push(`builder_section_context_missing:${index}`);
+      return;
+    }
     const page = pagesOut[context.pageIndex];
     if (!page) return;
 
-    if (result.status === "ok") {
+    if (result && result.status === "ok") {
       const component = result.component;
       const block = result.block;
       const existing = componentsMap.get(component.name);
@@ -3690,35 +4723,313 @@ async function builderNode(state: GraphState) {
         );
       }
     } else {
-      needsErrorComponent = true;
-      const message = typeof result.error === "string" ? result.error : "builder_section_failed";
+      const message =
+        result && "error" in result && typeof result.error === "string"
+          ? result.error
+          : "builder_section_failed";
       const failureType =
-        typeof (result as any).failureType === "string" ? (result as any).failureType : "unknown";
-      errors.push(`builder_section_failed:${failureType}:${context.pagePath}:${context.section.id}`);
-      const placeholder = createPlaceholderBlock(context, message);
-      const propsWithAnchor = ensureAnchor(placeholder.props, context.section.id);
-      page.data.content.push({ ...placeholder, props: propsWithAnchor });
+        result && "failureType" in result && typeof result.failureType === "string"
+          ? (result.failureType as FailureType)
+          : "unknown";
+      const fallback = createFallbackBlock(context, state.prompt ?? "", designNorthStar as Record<string, unknown>);
+      const normalizedFallbackProps = normalizeBlockProps(
+        fallback.type,
+        fallback.props as Record<string, unknown>,
+        { logChanges: true, summary: normalizationSummary }
+      );
+      const key = buildSectionKey(context);
+      const propsWithId = ensurePropsId(normalizedFallbackProps, key);
+      const propsWithAnchor = ensureAnchor(propsWithId, context.section.id);
+      if (!existingKeys.has(key)) {
+        page.data.content.push({
+          type: fallback.type,
+          props: propsWithAnchor,
+          _key: key,
+        } as any);
+        existingKeys.add(key);
+      }
       if (planning) {
         planningUpdates.push(
-          planning.recordSectionFailure({
+          planning.recordSectionOutput(
+          {
             key: buildSectionKey(context),
             pagePath: context.pagePath,
             pageName: context.pageName,
-            type: context.section.type,
-          })
+            type: fallback.type,
+            props: propsWithId,
+            component: { name: fallbackComponentName, code: fallbackComponentCode },
+          },
+            "success"
+          )
         );
       }
+      refinementCandidates.push({ context, failureType, message });
+      logWarn(`${logPrefix} builder:section:fallback`, {
+        pagePath: context.pagePath,
+        sectionId: context.section.id,
+        sectionType: context.section.type,
+        message,
+        failureType,
+      });
     }
   });
   if (planningUpdates.length) {
     await Promise.all(planningUpdates);
   }
 
-  if (needsErrorComponent) {
-    if (componentsMap.has(errorComponentName)) {
-      errors.push(`builder_component_conflict:${errorComponentName}`);
+  if (refinementCandidates.length && !enableBuilderRefinement) {
+    logInfo(`${logPrefix} builder:refine:skipped`, {
+      sections: refinementCandidates.length,
+      reason: "refinement_disabled",
+      retryMode: builderRetryMode,
+    });
+    refinementCandidates.forEach((candidate) => {
+      const context = candidate.context;
+      errors.push(`builder_section_fallback:${candidate.failureType}:${context.pagePath}:${context.section.id}`);
+    });
+  }
+
+  if (refinementCandidates.length && enableBuilderRefinement) {
+    const refinementConcurrency = Math.max(
+      1,
+      Number(process.env.OPENROUTER_REFINEMENT_CONCURRENCY || 1)
+    );
+    logInfo(`${logPrefix} builder:refine:start`, {
+      sections: refinementCandidates.length,
+      concurrency: refinementConcurrency,
+    });
+    const refinementResults = await runWithConcurrency(
+      refinementCandidates,
+      refinementConcurrency,
+      async (candidate) => {
+        const context = candidate.context;
+        try {
+          const compositionPreset = getCompositionPresetRules(
+            context.section.type,
+            context.section.layoutHint?.compositionPreset
+          );
+          const breakoutRequired = isBreakoutSection(context.section, themeContract);
+          const constraints = guardian.buildConstraints(
+            {
+              type: context.section.type,
+              layoutHint: context.section.layoutHint as Record<string, unknown> | undefined,
+            },
+            themeContract
+          );
+          const creativeGuidance = guardian.buildCreativeGuidance({
+            id: context.section.id,
+            type: context.section.type,
+          });
+          const promptOptions = {
+            prompt: state.prompt ?? "",
+            manifest: manifestForPrompt,
+            theme,
+            designNorthStar,
+            themeClassMap: themeClassMapForPrompt,
+            motionPresets,
+            compositionPreset,
+            breakoutBudget: themeContract?.breakoutBudget ?? {},
+            breakoutRequired,
+            constraints,
+            creativeGuidance,
+            page: { path: context.pagePath, name: context.pageName },
+            section: context.section,
+            sectionIndex: context.sectionIndex,
+          };
+          const basePrompt = buildBuilderUserPrompt(promptOptions);
+          const compactBasePrompt = buildBuilderCompactUserPrompt(promptOptions);
+          const designSystemPrompt = buildDesignSystemPromptContext(state.designSystemContext, {
+            pagePath: context.pagePath,
+            pageName: context.pageName,
+          });
+          const compactDesignSystemPrompt = buildDesignSystemPromptContext(state.designSystemContext, {
+            pagePath: context.pagePath,
+            pageName: context.pageName,
+            compact: true,
+          });
+          const prompt = designSystemPrompt ? `${basePrompt}\n\n${designSystemPrompt}` : basePrompt;
+          const compactPrompt = compactDesignSystemPrompt
+            ? `${compactBasePrompt}\n\n${compactDesignSystemPrompt}`
+            : compactBasePrompt;
+          const refinePrompt = `${prompt}\n\n# Refinement Pass\n上一次输出为空或未通过校验。请返回一个简洁、可运行且满足 layoutHint 的 section。必须输出严格 JSON（component + block）。`;
+          const compactRefinePrompt = `${compactPrompt}\n\n# Refinement Pass\n上一次输出为空或未通过校验。请返回一个简洁、可运行且满足 layoutHint 的 section。必须输出严格 JSON（component + block）。`;
+          let raw = await callBuilderLlm(refinePrompt, 0.3, compactRefinePrompt);
+          let parsed = parseNdjsonPayloads(raw);
+          let normalized = parsed
+            .map((payload) => normalizeSectionPayload(payload, compositionPreset))
+            .find(Boolean);
+          if (!normalized) {
+            const strictRaw = await callBuilderLlm(
+              `${refinePrompt}\n\n只返回严格 JSON，不要 Markdown 或解释文本。`,
+              0.2,
+              compactRefinePrompt
+            );
+            raw = strictRaw;
+            parsed = parseNdjsonPayloads(strictRaw);
+            normalized = parsed
+              .map((payload) => normalizeSectionPayload(payload, compositionPreset))
+              .find(Boolean);
+          }
+          if (!normalized) {
+            return {
+              status: "error" as const,
+              context,
+              failureType: candidate.failureType,
+              message: "builder_section_empty",
+            };
+          }
+          const layoutIssues = collectLayoutIssues(
+            normalized.component.code,
+            context.section.layoutHint,
+            themeClassMapForPrompt,
+            compositionPreset,
+            breakoutRequired,
+            (themeContract?.layoutRules as Record<string, string> | undefined),
+            { id: context.section.id, type: context.section.type }
+          );
+          if (layoutIssues.length > 0) {
+            return {
+              status: "error" as const,
+              context,
+              failureType: "layout" as FailureType,
+              message: "builder_section_layout_invalid",
+            };
+          }
+          return {
+            status: "ok" as const,
+            context,
+            component: normalized.component,
+            block: normalized.block,
+          };
+        } catch (error) {
+          return {
+            status: "error" as const,
+            context,
+            failureType: classifySectionError(error),
+            message: (error as any)?.message ?? "builder_section_refine_failed",
+          };
+        }
+      }
+    );
+
+    const refinementPlanningUpdates: Array<Promise<void>> = [];
+    refinementResults.forEach((result) => {
+      const context = result.context;
+      const key = buildSectionKey(context);
+      const page = pagesOut[context.pageIndex];
+      if (!page) return;
+
+      if (result.status === "ok") {
+        const existing = componentsMap.get(result.component.name);
+        if (!existing) {
+          componentsMap.set(result.component.name, result.component);
+        } else if (existing.code !== result.component.code) {
+          errors.push(`builder_component_conflict:${result.component.name}`);
+        }
+        const normalizedProps = normalizeBlockProps(
+          result.block.type,
+          (result.block.props ?? {}) as Record<string, unknown>,
+          { logChanges: true, summary: normalizationSummary }
+        );
+        const propsWithId = ensurePropsId(normalizedProps, key);
+        const propsWithAnchor = ensureAnchor(propsWithId, context.section.id);
+        const index = page.data.content.findIndex((item: any) => item?._key === key);
+        const block = {
+          type: result.block.type,
+          props: propsWithAnchor,
+          _key: key,
+        } as any;
+        if (index >= 0) {
+          page.data.content[index] = block;
+        } else {
+          page.data.content.push(block);
+          existingKeys.add(key);
+        }
+        if (planning) {
+          refinementPlanningUpdates.push(
+            planning.recordSectionOutput(
+              {
+                key,
+                pagePath: context.pagePath,
+                pageName: context.pageName,
+                type: result.block.type,
+                props: propsWithId,
+                component: result.component,
+              },
+              "success"
+            )
+          );
+        }
+        logInfo(`${logPrefix} builder:section:refine_ok`, {
+          pagePath: context.pagePath,
+          sectionId: context.section.id,
+          sectionType: context.section.type,
+        });
+      } else {
+        errors.push(`builder_section_fallback:${result.failureType}:${context.pagePath}:${context.section.id}`);
+        logWarn(`${logPrefix} builder:section:refine_failed`, {
+          pagePath: context.pagePath,
+          sectionId: context.section.id,
+          sectionType: context.section.type,
+          failureType: result.failureType,
+          message: result.message,
+        });
+      }
+    });
+    if (refinementPlanningUpdates.length) {
+      await Promise.all(refinementPlanningUpdates);
     }
-    componentsMap.set(errorComponentName, { name: errorComponentName, code: errorComponentCode });
+  }
+
+  let injectedFooterBlocks = 0;
+  pagesOut.forEach((page, pageIndex) => {
+    const content = Array.isArray(page.data.content) ? page.data.content : [];
+    if (pageHasFooterBlock(content as any)) return;
+    const sourcePage = pages[pageIndex];
+    if (!sourcePage) return;
+    const key = `footer:${page.path ?? pageIndex}:injected`;
+    if (existingKeys.has(key)) return;
+
+    const baseProps = buildFooterProps(sourcePage, theme);
+    const normalizedProps = normalizeBlockProps(footerFallbackComponentName, baseProps, {
+      logChanges: true,
+      summary: normalizationSummary,
+    });
+    const propsWithId = ensurePropsId(normalizedProps, baseProps.id);
+    const propsWithAnchor = ensureAnchor(propsWithId, "footer");
+    page.data.content.push({
+      type: footerFallbackComponentName,
+      props: propsWithAnchor,
+      _key: key,
+    } as any);
+    existingKeys.add(key);
+    injectedFooterBlocks += 1;
+    logInfo(`${logPrefix} builder:footer_injected`, {
+      pagePath: page.path,
+      pageName: page.name,
+      reason: "missing_footer_block",
+      footer_injected: true,
+    });
+  });
+
+  const needsFallbackComponent = pagesOut.some((page) =>
+    page.data.content.some((item: any) => item?.type === fallbackComponentName)
+  );
+  if (needsFallbackComponent) {
+    if (componentsMap.has(fallbackComponentName)) {
+      errors.push(`builder_component_conflict:${fallbackComponentName}`);
+    }
+    componentsMap.set(fallbackComponentName, { name: fallbackComponentName, code: fallbackComponentCode });
+  }
+  if (injectedFooterBlocks > 0) {
+    if (componentsMap.has(footerFallbackComponentName)) {
+      errors.push(`builder_component_conflict:${footerFallbackComponentName}`);
+    } else {
+      componentsMap.set(footerFallbackComponentName, {
+        name: footerFallbackComponentName,
+        code: footerFallbackComponentCode,
+      });
+    }
   }
 
   const summaryText = formatSummary(normalizationSummary);
@@ -3749,7 +5060,10 @@ export async function generateP2WProject(input: {
   manifest: Record<string, unknown>;
   planning?: { dir: string; requestId?: string; batchSize?: number };
 }) {
-  const skillContext = await loadSkillContext();
+  const [skillContext, designSystemContext] = await Promise.all([
+    loadSkillContext(),
+    loadDesignSystemContext(),
+  ]);
   const graph = new StateGraph(State)
     .addNode("architect", architectNode)
     .addNode("builder", builderNode)
@@ -3772,6 +5086,7 @@ export async function generateP2WProject(input: {
     manifest: input.manifest,
     planning,
     skillContext,
+    designSystemContext,
     blueprint: planning?.getBlueprint() ?? undefined,
   });
 

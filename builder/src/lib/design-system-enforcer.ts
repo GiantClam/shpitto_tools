@@ -63,14 +63,18 @@ const isColorValue = (value: unknown) =>
   typeof value === "string" &&
   (/^#([0-9a-f]{3,8})$/i.test(value) || /^rgb/.test(value) || /^hsl/.test(value));
 
-const isMediaUrlKey = (key: string) =>
-  key === "src" ||
-  key.endsWith("src") ||
-  key.endsWith("url") ||
-  key.includes("image") ||
-  key.includes("avatar") ||
-  key.includes("logo") ||
-  key.includes("poster");
+const isMediaUrlKey = (key: string) => {
+  if (key.includes("alt")) return false;
+  return (
+    key === "src" ||
+    key.endsWith("src") ||
+    key.endsWith("url") ||
+    key.includes("image") ||
+    key.includes("avatar") ||
+    key.includes("logo") ||
+    key.includes("poster")
+  );
+};
 
 const isValidMediaUrl = (value: string) => {
   const trimmed = value.trim();
@@ -301,6 +305,87 @@ const clampItems = (items: unknown, max: number) => {
   return items.slice(0, max);
 };
 
+const normalizeAboutTrustProps = (props: BlockProps, options: { logChanges?: boolean } = {}) => {
+  const next = { ...props };
+  let statsNormalized = false;
+  let certificationsNormalized = false;
+
+  if (Array.isArray(next.stats)) {
+    next.stats = next.stats.slice(0, 6).map((entry, index) => {
+      const record =
+        entry && typeof entry === "object" ? ({ ...(entry as Record<string, unknown>) } as Record<string, unknown>) : {};
+      const parsedValue = parseNumber(record.value);
+      const value = parsedValue === undefined ? 0 : parsedValue;
+      const suffixFromValue =
+        typeof record.value === "string"
+          ? String(record.value)
+              .replace(/[\d.,\s]/g, "")
+              .trim()
+              .slice(0, 4)
+          : "";
+      const suffixRaw = typeof record.suffix === "string" ? record.suffix.trim() : "";
+      const suffix = suffixRaw || suffixFromValue;
+      const label =
+        typeof record.label === "string" && record.label.trim()
+          ? record.label.trim()
+          : `Metric ${index + 1}`;
+
+      if (record.value !== value || record.suffix !== suffix || record.label !== label) {
+        statsNormalized = true;
+      }
+
+      return {
+        ...record,
+        value,
+        ...(suffix ? { suffix } : {}),
+        label,
+      };
+    });
+  }
+
+  if (Array.isArray(next.certifications)) {
+    next.certifications = next.certifications.slice(0, 8).map((entry, index) => {
+      const record =
+        entry && typeof entry === "object"
+          ? ({ ...(entry as Record<string, unknown>) } as Record<string, unknown>)
+          : {};
+      const nameCandidate =
+        typeof entry === "string"
+          ? entry.trim()
+          : typeof record.name === "string"
+            ? record.name.trim()
+            : "";
+      const name = nameCandidate || `Certification ${index + 1}`;
+      const iconCandidate =
+        typeof record.icon === "string"
+          ? record.icon.trim()
+          : typeof record.iconName === "string"
+            ? record.iconName.trim()
+            : "";
+      const icon = iconCandidate || "award";
+
+      if (name !== nameCandidate || !iconCandidate) {
+        certificationsNormalized = true;
+      }
+
+      return {
+        ...record,
+        name,
+        icon,
+      };
+    });
+  }
+
+  if (options.logChanges && (statsNormalized || certificationsNormalized)) {
+    console.info("[design-system] abouttrust_normalized", {
+      statsNormalized,
+      certificationsNormalized,
+    });
+  }
+
+  return next;
+};
+
 export const normalizeBlockProps = (
   blockType: string,
   props: BlockProps | undefined,
@@ -397,6 +482,10 @@ export const normalizeBlockProps = (
     const valid = variant === "singleOpen" || variant === "multiOpen";
     if (!valid) base.variant = normalizeFaqVariant(count);
     base.items = clampItems(base.items, 8);
+  }
+  if (type.includes("abouttrust")) {
+    const normalizedAboutTrust = normalizeAboutTrustProps(base, { logChanges });
+    Object.assign(base, normalizedAboutTrust);
   }
   if (logChanges && props) {
     const diff = diffProps(seededProps, base);

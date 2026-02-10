@@ -121,12 +121,114 @@ type JITComponent = {
   config?: Record<string, any>;
 };
 
+const STRING_COERCION_KEYS = ["name", "label", "title", "text", "value"] as const;
+const STRING_METHODS = new Set([
+  "toLowerCase",
+  "toUpperCase",
+  "trim",
+  "split",
+  "replace",
+  "includes",
+  "startsWith",
+  "endsWith",
+  "slice",
+  "substring",
+]);
+
+const isPlainObject = (value: unknown): value is Record<string, unknown> => {
+  if (!value || typeof value !== "object") return false;
+  return Object.getPrototypeOf(value) === Object.prototype;
+};
+
+const resolveStringCoercionValue = (value: Record<string, unknown>): string | null => {
+  for (const key of STRING_COERCION_KEYS) {
+    const candidate = value[key];
+    if (typeof candidate === "string" && candidate.trim().length > 0) {
+      return candidate;
+    }
+  }
+  return null;
+};
+
+const toStringEnhancedObject = (value: Record<string, unknown>): Record<string, unknown> => {
+  const next: Record<string, unknown> = {};
+  for (const [key, item] of Object.entries(value)) {
+    next[key] = toRuntimeSafeValue(item);
+  }
+
+  const stringValue = resolveStringCoercionValue(next);
+  if (!stringValue) return next;
+
+  if (!Object.prototype.hasOwnProperty.call(next, "toString")) {
+    Object.defineProperty(next, "toString", {
+      enumerable: false,
+      configurable: true,
+      value: () => stringValue,
+    });
+  }
+  if (!Object.prototype.hasOwnProperty.call(next, "valueOf")) {
+    Object.defineProperty(next, "valueOf", {
+      enumerable: false,
+      configurable: true,
+      value: () => stringValue,
+    });
+  }
+  if (!Object.prototype.hasOwnProperty.call(next, "length")) {
+    Object.defineProperty(next, "length", {
+      enumerable: false,
+      configurable: true,
+      get: () => stringValue.length,
+    });
+  }
+  if (!(Symbol.toPrimitive in next)) {
+    Object.defineProperty(next, Symbol.toPrimitive, {
+      enumerable: false,
+      configurable: true,
+      value: () => stringValue,
+    });
+  }
+  for (const methodName of STRING_METHODS) {
+    if (Object.prototype.hasOwnProperty.call(next, methodName)) continue;
+    const method = (stringValue as any)[methodName];
+    if (typeof method !== "function") continue;
+    Object.defineProperty(next, methodName, {
+      enumerable: false,
+      configurable: true,
+      value: method.bind(stringValue),
+    });
+  }
+
+  return next;
+};
+
+const toRuntimeSafeValue = (value: unknown): unknown => {
+  if (Array.isArray(value)) {
+    return value.map((item) => toRuntimeSafeValue(item));
+  }
+  if (!isPlainObject(value)) return value;
+  return toStringEnhancedObject(value);
+};
+
 const lucideWithAliases = (() => {
   const icons = { ...Lucide } as Record<string, unknown>;
   if (!("Waveform" in icons) && "AudioWaveform" in icons) {
     icons.Waveform = icons.AudioWaveform;
   }
-  return icons;
+  if (!("Cube" in icons) && "Box" in icons) {
+    icons.Cube = icons.Box;
+  }
+  const fallbackIcon = (icons.Circle || icons.Box || (() => null)) as unknown;
+  return new Proxy(icons, {
+    get(target, prop, receiver) {
+      if (Reflect.has(target, prop)) {
+        return Reflect.get(target, prop, receiver);
+      }
+      if (typeof prop === "string" && /^[A-Z]/.test(prop)) {
+        return fallbackIcon;
+      }
+      return undefined;
+    },
+  });
 })();
 
 const moduleMap: Record<string, Record<string, unknown>> = {
@@ -262,9 +364,18 @@ const normalizeModule = (mod: Record<string, unknown> | undefined) => {
   return mod;
 };
 
+const normalizeImportPath = (value: string) => {
+  if (!value) return value;
+  return value
+    .trim()
+    .replace(/\/components\/magicui\//g, "/components/magic/")
+    .replace(/\/components\/magic-ui\//g, "/components/magic/");
+};
+
 const resolveModule = (path: string) => {
-  if (moduleMap[path]) return normalizeModule(moduleMap[path] as Record<string, unknown>);
-  const key = Object.keys(moduleMap).find((moduleKey) => path.endsWith(moduleKey));
+  const normalizedPath = normalizeImportPath(path);
+  if (moduleMap[normalizedPath]) return normalizeModule(moduleMap[normalizedPath] as Record<string, unknown>);
+  const key = Object.keys(moduleMap).find((moduleKey) => normalizedPath.endsWith(moduleKey));
   if (!key) return undefined;
   return normalizeModule(moduleMap[key] as Record<string, unknown>);
 };
@@ -420,11 +531,34 @@ export function compileJIT(rawCode: string): JITComponent | null {
       "Function",
       `"use strict";\n${transpiled}`
     );
-    fn(require, exports, React, undefined, undefined, undefined, undefined, undefined);
+    const runtimeGlobalThis =
+      typeof globalThis !== "undefined" ? (globalThis as typeof globalThis) : undefined;
+    const runtimeWindow =
+      typeof window !== "undefined"
+        ? window
+        : (runtimeGlobalThis as (Window & typeof globalThis) | undefined);
+    const runtimeDocument = typeof document !== "undefined" ? document : runtimeWindow?.document;
+    const runtimeSelf = typeof self !== "undefined" ? self : runtimeWindow;
+    const runtimeFunction = typeof Function !== "undefined" ? Function : runtimeGlobalThis?.Function;
+
+    fn(
+      require,
+      exports,
+      React,
+      runtimeWindow,
+      runtimeDocument,
+      runtimeGlobalThis,
+      runtimeSelf,
+      runtimeFunction
+    );
 
     if (!exports.default) return null;
+    const sourceRender = exports.default as React.ComponentType<any>;
+    const render: React.ComponentType<any> = (props) =>
+      React.createElement(sourceRender, toRuntimeSafeValue(props) as any);
+    (render as any).displayName = (sourceRender as any).displayName || sourceRender.name || "JITComponent";
     return {
-      render: exports.default,
+      render,
       config: exports.config,
     };
   } catch (error) {

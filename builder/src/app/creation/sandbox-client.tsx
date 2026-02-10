@@ -16,6 +16,7 @@ const DEFAULT_THEME_LIGHT = {
   muted: "210 40% 96%",
   mutedForeground: "215 16% 47%",
   border: "214 32% 91%",
+  card: "0 0% 100%",
 };
 
 const DEFAULT_THEME_DARK = {
@@ -24,6 +25,7 @@ const DEFAULT_THEME_DARK = {
   muted: "220 15% 16%",
   mutedForeground: "215 20% 65%",
   border: "220 13% 24%",
+  card: "222 47% 10%",
 };
 
 const hexToHsl = (hex?: string) => {
@@ -56,11 +58,43 @@ const buildThemeCss = (theme?: Record<string, any>) => {
     hexToHsl(theme?.primaryColor) || (mode === "dark" ? "262 83% 62%" : "222 89% 52%");
   const primaryForeground =
     Number(primary.split(" ")[2]?.replace("%", "")) > 60 ? "222 47% 11%" : "210 40% 98%";
+  const accent = primary;
+  const accentForeground = primaryForeground;
   const radius = theme?.radius || "14px";
   const fontHeading = theme?.fontHeading || "Inter";
   const fontBody = theme?.fontBody || "Inter";
-  return `:root{--background:${base.background};--foreground:${base.foreground};--muted:${base.muted};--muted-foreground:${base.mutedForeground};--border:${base.border};--primary:${primary};--primary-foreground:${primaryForeground};--card:${base.background};--radius:${radius};--font-heading:${fontHeading};--font-body:${fontBody};--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;}body{background:hsl(var(--background));color:hsl(var(--foreground));font-family:var(--font-body),ui-sans-serif,system-ui;} .font-heading{font-family:var(--font-heading),var(--font-body),ui-sans-serif,system-ui;} .font-body{font-family:var(--font-body),ui-sans-serif,system-ui;}`;
+  return `:root{--background:${base.background};--foreground:${base.foreground};--muted:${base.muted};--muted-foreground:${base.mutedForeground};--border:${base.border};--primary:${primary};--primary-foreground:${primaryForeground};--accent:${accent};--accent-foreground:${accentForeground};--card:${base.card};--radius:${radius};--font-heading:${fontHeading};--font-body:${fontBody};--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;}body{background:hsl(var(--background));color:hsl(var(--foreground));font-family:var(--font-body),ui-sans-serif,system-ui;} .font-heading{font-family:var(--font-heading),var(--font-body),ui-sans-serif,system-ui;} .font-body{font-family:var(--font-body),ui-sans-serif,system-ui;}`;
 };
+
+const tailwindRuntimeConfigScript = `
+window.tailwind = window.tailwind || {};
+window.tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        muted: "hsl(var(--muted))",
+        "muted-foreground": "hsl(var(--muted-foreground))",
+        primary: "hsl(var(--primary))",
+        "primary-foreground": "hsl(var(--primary-foreground))",
+        accent: "hsl(var(--accent))",
+        "accent-foreground": "hsl(var(--accent-foreground))",
+        border: "hsl(var(--border))",
+        card: "hsl(var(--card))"
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)"
+      }
+    }
+  }
+};
+console.info("[creation:sandbox] tailwind_runtime_config_loaded", {
+  tokens: ["background", "foreground", "muted", "primary", "accent", "border", "card"]
+});
+`;
 
 type IncomingMessage =
   | {
@@ -76,7 +110,7 @@ type IncomingMessage =
 
 export default function CreationSandboxClient() {
   const searchParams = useSearchParams();
-  const isPreview = searchParams.get("mode") === "preview";
+  const isEdit = searchParams.get("mode") === "edit";
   const [config, setConfig] = React.useState<Config | null>(null);
   const [data, setData] = React.useState<Data | null>(null);
   const [themeCss, setThemeCss] = React.useState<string>("");
@@ -89,6 +123,10 @@ export default function CreationSandboxClient() {
       window.opener.postMessage(message, "*");
     }
   }, []);
+
+  React.useEffect(() => {
+    console.info("[creation:sandbox] preview_mode", { mode: isEdit ? "edit" : "preview" });
+  }, [isEdit]);
 
   React.useEffect(() => {
     const onMessage = (event: MessageEvent<IncomingMessage>) => {
@@ -139,21 +177,24 @@ export default function CreationSandboxClient() {
 
   return (
     <div className="h-screen w-screen bg-background text-foreground">
+      <Script id="tailwind-runtime-config" strategy="beforeInteractive">
+        {tailwindRuntimeConfigScript}
+      </Script>
       <Script src="https://cdn.tailwindcss.com" strategy="beforeInteractive" />
       {themeCss ? <style dangerouslySetInnerHTML={{ __html: themeCss }} /> : null}
       {config && data ? (
         <MotionProvider mode={motionMode}>
-          {isPreview ? (
-            <main>
-              <Render config={config} data={normalizePuckData(data, { logChanges: true }) as any} />
-            </main>
-          ) : (
+          {isEdit ? (
             <Puck
               key={pageKey}
               config={config}
               data={normalizePuckData(data, { logChanges: true })}
               onPublish={handlePublish}
             />
+          ) : (
+            <main>
+              <Render config={config} data={normalizePuckData(data, { logChanges: true }) as any} />
+            </main>
           )}
         </MotionProvider>
       ) : (

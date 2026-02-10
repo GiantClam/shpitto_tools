@@ -4,15 +4,19 @@ import { cn } from "@/lib/cn";
 
 type CardProps = React.HTMLAttributes<HTMLDivElement>;
 
-export function Card({ className, ...props }: CardProps) {
+export function Card({ className, style, ...props }: CardProps) {
+  const hasExplicitBackgroundClass = typeof className === "string" && /\bbg-[^\s]+/.test(className);
+  const mergedStyle = hasExplicitBackgroundClass
+    ? style
+    : { background: "var(--card, hsl(var(--background)))", ...(style ?? {}) };
   return (
     <div
       className={cn(
         "rounded-[calc(var(--radius)+2px)] border border-border bg-background shadow-sm",
         className
       )}
-      style={{ background: "var(--card, hsl(var(--background)))" }}
       {...props}
+      style={mergedStyle}
     />
   );
 }

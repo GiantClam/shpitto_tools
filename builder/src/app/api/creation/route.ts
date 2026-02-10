@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
       logWarn("[creation] empty_prompt", { requestId });
       return NextResponse.json({ error: "prompt_required" }, { status: 400 });
     }
-    if (!process.env.OPENROUTER_API_KEY && !process.env.ANTHROPIC_API_KEY) {
+    if (!process.env.AIBERM_API_KEY && !process.env.OPENROUTER_API_KEY && !process.env.ANTHROPIC_API_KEY) {
       logError("[creation] missing_api_key", { requestId });
       return NextResponse.json({ error: "missing_api_key" }, { status: 500 });
     }

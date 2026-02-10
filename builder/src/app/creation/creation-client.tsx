@@ -321,7 +321,7 @@ export default function CreationClient() {
             <iframe
               ref={iframeRef}
               className="h-full w-full border-0"
-              src="/creation/sandbox"
+              src="/creation/sandbox?mode=preview"
               title="Creation Sandbox"
               sandbox="allow-scripts allow-same-origin"
               onLoad={() => {
