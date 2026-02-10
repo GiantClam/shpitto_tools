@@ -175,10 +175,17 @@ type SectionPayload = {
   block?: SectionBlock;
 };
 
+type BuilderSectionResult =
+  | { status: "ok"; component: SectionComponent; block: SectionBlock }
+  | { status: "fallback"; block: SectionBlock; error: string; failureType: FailureType }
+  | { status: "error"; error: string; failureType: FailureType };
+
 type NdjsonLinePayload = {
   component?: SectionComponent;
   block?: SectionBlock;
 };
+
+type ReferenceProfile = "analogue" | "breton" | null;
 
 const architectTool: Tool = {
   name: "architect_blueprint",
@@ -333,6 +340,12 @@ const fallbackModel = process.env.OPENROUTER_MODEL_FALLBACK;
 const defaultMaxTokens = Number(process.env.OPENROUTER_MAX_TOKENS || 4096);
 const logPrefix = "[creation:agent]";
 const defaultSectionConcurrency = Number(process.env.OPENROUTER_MAX_CONCURRENCY || 3);
+const architectMaxTokens = Number(process.env.ARCHITECT_MAX_TOKENS || 1800);
+const architectTimeoutMs = Number(process.env.ARCHITECT_TIMEOUT_MS || 25000);
+const builderMaxTokens = Number(process.env.BUILDER_MAX_TOKENS || 1200);
+const defaultMaxPages = Number(process.env.CREATION_MAX_PAGES || 1);
+const defaultMaxSectionsPerPage = Number(process.env.CREATION_MAX_SECTIONS_PER_PAGE || 2);
+const defaultMaxSectionsTotal = Number(process.env.CREATION_MAX_SECTIONS_TOTAL || 2);
 
 const errorComponentName = "CreationErrorSection";
 const errorComponentCode = `import * as React from "react";
@@ -416,6 +429,25 @@ const normalizeKey = (value: string) =>
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
+
+const clampPositiveInt = (value: number, fallback: number, min = 1, max = 100) => {
+  if (!Number.isFinite(value)) return fallback;
+  return Math.max(min, Math.min(max, Math.floor(value)));
+};
+
+const detectReferenceProfile = (prompt: string): ReferenceProfile => {
+  const normalized = String(prompt ?? "").toLowerCase();
+  if (!normalized) return null;
+  if (normalized.includes("analogue.co") || normalized.includes("analogue pocket")) return "analogue";
+  if (
+    normalized.includes("breton.it") ||
+    /\bbreton\b/.test(normalized) ||
+    /\bindustrial\b/.test(normalized)
+  ) {
+    return "breton";
+  }
+  return null;
+};
 
 const skillCache = new Map<string, string>();
 
@@ -1099,7 +1131,328 @@ const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>)
     return { path, name, sections, root: page?.root };
   });
   const themeContract = (blueprint as ArchitectBlueprint)?.theme?.themeContract as ThemeContract | undefined;
-  return applySectionAlignOverrides(pages, themeContract);
+  const alignedPages = applySectionAlignOverrides(pages, themeContract);
+  const maxPages = clampPositiveInt(defaultMaxPages, 3, 1, 10);
+  const maxSectionsPerPage = clampPositiveInt(defaultMaxSectionsPerPage, 6, 1, 12);
+  const maxSectionsTotal = clampPositiveInt(defaultMaxSectionsTotal, 10, 1, 24);
+  let totalSections = 0;
+  const limitedPages = alignedPages.slice(0, maxPages).map((page, pageIndex) => {
+    if (totalSections >= maxSectionsTotal) {
+      return { ...page, sections: pageIndex === 0 ? page.sections.slice(0, 1) : [] };
+    }
+    const budgetLeft = maxSectionsTotal - totalSections;
+    const keepCount = Math.max(
+      1,
+      Math.min(page.sections.length, maxSectionsPerPage, budgetLeft)
+    );
+    const nextSections = page.sections.slice(0, keepCount);
+    totalSections += nextSections.length;
+    return { ...page, sections: nextSections };
+  });
+  return limitedPages;
+};
+
+const buildBretonFallbackSection = (slot: {
+  id: string;
+  type: string;
+  intent: string;
+  preset: string;
+  align?: "start" | "center";
+}): ArchitectSection => {
+  const presetRules = compositionPresets[slot.preset];
+  const layoutHint = applyCompositionDefaults(
+    {
+      compositionPreset: slot.preset,
+      align: slot.align ?? presetRules?.layout?.align ?? "start",
+      alignLocked: true,
+    },
+    presetRules,
+    slot.type
+  );
+  return {
+    id: slot.id,
+    type: slot.type,
+    intent: slot.intent,
+    layoutHint,
+    propsHints: { visualWeight: "high", sourceMode: "reference-guided" },
+  };
+};
+
+const applyBretonBlueprintConstraints = (blueprint: ArchitectBlueprint): ArchitectBlueprint => {
+  const pages = normalizePages(blueprint ?? {});
+  const allSections = pages.flatMap((page) => (Array.isArray(page.sections) ? page.sections : []));
+  const used = new Set<string>();
+  const sectionFingerprint = (section: ArchitectSection) =>
+    `${section.id ?? ""} ${section.type ?? ""} ${section.intent ?? ""}`.toLowerCase();
+  const markKey = (section: ArchitectSection) => `${section.id ?? ""}::${section.type ?? ""}`;
+  const pick = (patterns: RegExp[]) => {
+    for (const section of allSections) {
+      const key = markKey(section);
+      if (used.has(key)) continue;
+      const fingerprint = sectionFingerprint(section);
+      if (patterns.some((pattern) => pattern.test(fingerprint))) {
+        used.add(key);
+        return section;
+      }
+    }
+    return null;
+  };
+
+  const slots: Array<{
+    id: string;
+    type: string;
+    intent: string;
+    preset: string;
+    align?: "start" | "center";
+    patterns: RegExp[];
+  }> = [
+    {
+      id: "hero",
+      type: "Hero",
+      intent: "Industrial hero banner with strong product photography and concise positioning.",
+      preset: "H02",
+      align: "start",
+      patterns: [/hero|header|banner|masthead/],
+    },
+    {
+      id: "industries",
+      type: "ProductCatalog",
+      intent: "Industry-focused cards showing key manufacturing domains and capabilities.",
+      preset: "P01",
+      patterns: [/industr|catalog|products?|solutions?|segments?|application|feature/],
+    },
+    {
+      id: "whats-new",
+      type: "News",
+      intent: "Recent updates and product launches in compact editorial card layout.",
+      preset: "B01",
+      patterns: [/what.?s[- ]?new|news|blog|article|update|release/],
+    },
+    {
+      id: "spotlight",
+      type: "Showcase",
+      intent: "One spotlight section combining narrative text with immersive industrial imagery.",
+      preset: "G01",
+      patterns: [/showcase|spotlight|technology|case|story|gallery/],
+    },
+    {
+      id: "numbers",
+      type: "Stats",
+      intent: "Credibility stats in high-contrast tiles for scale and operational metrics.",
+      preset: "ST01",
+      align: "center",
+      patterns: [/stats?|numbers?|kpi|metric|milestone|facts?/],
+    },
+    {
+      id: "contact",
+      type: "Contact",
+      intent: "Lead capture section with clear corporate contact pathways.",
+      preset: "CT01",
+      patterns: [/contact|inquiry|support|form|lead|cta/],
+    },
+    {
+      id: "footer",
+      type: "Footer",
+      intent: "Dense corporate footer with grouped links and legal/company information.",
+      preset: "FT01",
+      patterns: [/footer|legal|copyright/],
+    },
+  ];
+
+  const orderedSections = slots.map((slot) => {
+    const matched = pick(slot.patterns);
+    if (!matched) return buildBretonFallbackSection(slot);
+    const effectiveType = typeof matched.type === "string" && matched.type.trim() ? matched.type : slot.type;
+    const presetRules = compositionPresets[slot.preset];
+    const normalizedHint = normalizeLayoutHint(matched.layoutHint);
+    const layoutHint = applyCompositionDefaults(
+      {
+        ...(normalizedHint ?? {}),
+        compositionPreset: slot.preset,
+        align: slot.align ?? normalizedHint?.align ?? presetRules?.layout?.align ?? "start",
+        alignLocked: Boolean(slot.align ?? normalizedHint?.alignLocked),
+      },
+      presetRules,
+      effectiveType
+    );
+    return {
+      ...matched,
+      id: slot.id,
+      type: effectiveType,
+      intent: matched.intent?.trim() ? matched.intent : slot.intent,
+      layoutHint,
+    };
+  });
+
+  const theme = blueprint?.theme && typeof blueprint.theme === "object" ? { ...blueprint.theme } : {};
+  const contract = (theme?.themeContract as ThemeContract) ?? {};
+  const tokens = {
+    ...(contract.tokens ?? {}),
+    primary: "primary",
+    accent: "accent",
+    neutral: "neutral",
+    bg: "background",
+    text: "foreground",
+    textSecondary: "muted-foreground",
+  };
+  const layoutRules = {
+    ...(contract.layoutRules ?? {}),
+    maxWidth: "1280px",
+    sectionPadding: "py-16 md:py-24",
+    grid: "12-col",
+    sectionAlignOverrides: {
+      ...((contract.layoutRules?.sectionAlignOverrides as Record<string, "start" | "center"> | undefined) ?? {}),
+      Hero: "start",
+      ProductCatalog: "start",
+      News: "start",
+      Showcase: "start",
+      Contact: "start",
+      Footer: "start",
+      Stats: "center",
+    },
+  };
+  const nextTheme = {
+    ...theme,
+    mode: "light",
+    motion: "subtle",
+    radius: typeof (theme as any)?.radius === "string" ? (theme as any).radius : "0.25rem",
+    fontHeading:
+      typeof (theme as any)?.fontHeading === "string" && (theme as any).fontHeading.trim()
+        ? (theme as any).fontHeading
+        : "Manrope",
+    fontBody:
+      typeof (theme as any)?.fontBody === "string" && (theme as any).fontBody.trim()
+        ? (theme as any).fontBody
+        : "Manrope",
+    primaryColor: "#9b0a3d",
+    palette: {
+      ...(((theme as any)?.palette ?? {}) as Record<string, string>),
+      primary: "#9b0a3d",
+      accent: "#1f2329",
+      background: "#f4f5f6",
+      text: "#101113",
+      textSecondary: "#555b65",
+    },
+    themeContract: {
+      ...contract,
+      voice: "industrial",
+      tokens,
+      layoutRules,
+      breakoutBudget: {
+        ...(contract.breakoutBudget ?? {}),
+        allowedSections: ["hero", "showcase"],
+        colorBoost: 1.15,
+        motionBoost: 1.1,
+        layoutVariants: ["asymmetric", "full-bleed"],
+      },
+    },
+  };
+
+  const homePage = pages.find((page) => page.path === "/") ?? pages[0];
+  return {
+    ...blueprint,
+    theme: nextTheme as Record<string, unknown>,
+    pages: [
+      {
+        path: "/",
+        name: homePage?.name || "Home",
+        sections: orderedSections.slice(0, 9),
+        root: homePage?.root,
+      },
+    ],
+  };
+};
+
+const applyReferenceBlueprintConstraints = (
+  blueprint: ArchitectBlueprint,
+  prompt: string
+): ArchitectBlueprint => {
+  const profile = detectReferenceProfile(prompt);
+  if (profile === "breton") return applyBretonBlueprintConstraints(blueprint);
+  return blueprint;
+};
+
+const buildFallbackBlueprint = (prompt: string): ArchitectBlueprint => {
+  const normalized = String(prompt ?? "").toLowerCase();
+  const isMedical = /(medical|health|clinic|diagnostic|hospital|medtech)/i.test(normalized);
+  const sections: ArchitectSection[] = [
+    {
+      id: "hero",
+      type: "Hero",
+      intent: "Present the core value proposition with a clear headline and primary CTA.",
+      layoutHint: applyCompositionDefaults({ compositionPreset: "H01", align: "start" }, compositionPresets.H01, "Hero"),
+    },
+    {
+      id: "features",
+      type: "Features",
+      intent: "Show key differentiators with concise cards.",
+      layoutHint: applyCompositionDefaults({ compositionPreset: "F01", align: "start" }, compositionPresets.F01, "Features"),
+    },
+    {
+      id: "products",
+      type: "ProductCatalog",
+      intent: "Display the main product/service catalog with compact cards.",
+      layoutHint: applyCompositionDefaults(
+        { compositionPreset: "P01", align: "start" },
+        compositionPresets.P01,
+        "ProductCatalog"
+      ),
+    },
+    {
+      id: "contact",
+      type: "Contact",
+      intent: "Capture leads through a clear form and contact details.",
+      layoutHint: applyCompositionDefaults({ compositionPreset: "CT01", align: "start" }, compositionPresets.CT01, "Contact"),
+    },
+    {
+      id: "footer",
+      type: "Footer",
+      intent: "Provide navigation and legal links.",
+      layoutHint: applyCompositionDefaults({ compositionPreset: "FT01", align: "start" }, compositionPresets.FT01, "Footer"),
+    },
+  ];
+  return {
+    designNorthStar: {
+      styleDNA: isMedical ? ["clinical", "precise", "trustworthy"] : ["clean", "modern", "high-clarity"],
+      typographyScale: "clear hierarchy",
+      visualHierarchy: "headline-first",
+      imageMood: isMedical ? "clean laboratory and clinical scenes" : "clean product photography",
+      industry: isMedical ? "medical-diagnostics" : "technology",
+      coreProducts: isMedical ? ["diagnostic tests", "lab services", "screening"] : ["core service", "platform", "support"],
+    },
+    theme: {
+      mode: "light",
+      radius: "0.5rem",
+      fontHeading: "Manrope",
+      fontBody: "Manrope",
+      motion: "subtle",
+      tokens: { surface: "card", border: "soft", shadow: "soft", accent: "flat" },
+      themeContract: {
+        voice: isMedical ? "tech" : "minimal",
+        tokens: {
+          primary: "primary",
+          accent: "accent",
+          neutral: "neutral",
+          bg: "background",
+          text: "foreground",
+          textSecondary: "muted-foreground",
+        },
+        layoutRules: {
+          maxWidth: "1200px",
+          sectionPadding: "py-20",
+          grid: "12-col",
+          sectionAlignOverrides: {
+            Hero: "start",
+            Features: "start",
+            ProductCatalog: "start",
+            Contact: "start",
+            Footer: "start",
+          },
+        },
+      },
+    },
+    pages: [{ path: "/", name: "Home", sections }],
+  };
 };
 
 const buildThemeClassMap = (theme: Record<string, unknown>): ThemeClassMap => {
@@ -2187,6 +2540,303 @@ const createPlaceholderBlock = (
   _key: `${context.pagePath}:${context.section.id}:${context.sectionIndex}:error`,
 });
 
+const trimLine = (value: string, fallback: string, max = 72) => {
+  const compact = String(value ?? "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!compact) return fallback;
+  return compact.slice(0, max);
+};
+
+const sectionToken = (context: SectionContext) =>
+  `${context.section.type} ${context.section.id}`.toLowerCase();
+
+const buildDeterministicFallbackBlock = (
+  context: SectionContext,
+  prompt: string
+): SectionBlock => {
+  const token = sectionToken(context);
+  const shortPrompt = trimLine(prompt, "Industrial Automation Platform", 68);
+  const siteTitle = trimLine(prompt, "Breton-style industrial homepage", 52);
+  const idBase = `${toSlug(context.section.type || "section") || "section"}-${context.sectionIndex + 1}`;
+  const anchor = context.section.id;
+
+  if (/hero|pagehero|pageheader/.test(token)) {
+    return {
+      type: "HeroSplit",
+      props: {
+        id: idBase,
+        anchor,
+        eyebrow: "Industrial Solutions",
+        title: shortPrompt,
+        subtitle:
+          "High-performance machinery, precision engineering, and integrated digital workflows for modern factories.",
+        ctas: [
+          { label: "Explore Products", href: "#products", variant: "primary" },
+          { label: "Contact Sales", href: "#contact", variant: "secondary" },
+        ],
+        mediaPosition: "right",
+        paddingY: "lg",
+        maxWidth: "xl",
+      },
+    };
+  }
+
+  if (/product|catalog|bundle|comparison/.test(token)) {
+    return {
+      type: "CardsGrid",
+      props: {
+        id: idBase,
+        anchor,
+        title: "Product Lines",
+        subtitle: "Modular machines for cutting, finishing, and automated handling.",
+        variant: "product",
+        columns: "3col",
+        density: "normal",
+        cardStyle: "solid",
+        maxWidth: "xl",
+        items: [
+          {
+            title: "CNC Router Series",
+            description: "High-speed milling with repeatable accuracy for industrial workloads.",
+            cta: { label: "Details", href: "#", variant: "link" },
+          },
+          {
+            title: "Edge Processing Units",
+            description: "Stable edge finishing and profiling for continuous production lines.",
+            cta: { label: "Details", href: "#", variant: "link" },
+          },
+          {
+            title: "Automated Cells",
+            description: "Integrated robotics and software control for end-to-end throughput.",
+            cta: { label: "Details", href: "#", variant: "link" },
+          },
+        ],
+      },
+    };
+  }
+
+  if (/news|blog|article|case/.test(token)) {
+    return {
+      type: "CaseStudies",
+      props: {
+        id: idBase,
+        anchor,
+        title: "Latest Stories",
+        variant: "cards",
+        maxWidth: "xl",
+        items: [
+          {
+            title: "Factory throughput increased by 32%",
+            summary: "A production line upgrade combining motion control and predictive maintenance.",
+            href: "#",
+            tags: ["Automation", "Manufacturing"],
+          },
+          {
+            title: "Precision finishing with lower scrap rate",
+            summary: "How calibration and tooling strategy improved output quality.",
+            href: "#",
+            tags: ["Quality", "Operations"],
+          },
+          {
+            title: "Digital twin rollout in phased deployment",
+            summary: "Practical adoption path for plant-wide monitoring and diagnostics.",
+            href: "#",
+            tags: ["Digital Twin", "IIoT"],
+          },
+        ],
+      },
+    };
+  }
+
+  if (/testimonial|review/.test(token)) {
+    return {
+      type: "TestimonialsGrid",
+      props: {
+        id: idBase,
+        anchor,
+        title: "Customer Feedback",
+        variant: "2col",
+        maxWidth: "xl",
+        items: [
+          {
+            quote: "Deployment was fast and the stability under peak load is excellent.",
+            name: "Plant Director",
+            role: "Heavy Industry",
+          },
+          {
+            quote: "The interface is clean and operators became productive in days.",
+            name: "Production Manager",
+            role: "Advanced Manufacturing",
+          },
+        ],
+      },
+    };
+  }
+
+  if (/pricing/.test(token)) {
+    return {
+      type: "PricingCards",
+      props: {
+        id: idBase,
+        anchor,
+        title: "Service Plans",
+        variant: "3up",
+        maxWidth: "xl",
+        plans: [
+          {
+            name: "Starter",
+            price: "$299",
+            period: "mo",
+            features: ["Remote diagnostics", "Email support", "Weekly reports"],
+            cta: { label: "Choose Starter", href: "#contact", variant: "secondary" },
+          },
+          {
+            name: "Pro",
+            price: "$699",
+            period: "mo",
+            highlighted: true,
+            features: ["Priority support", "On-site tuning", "Advanced analytics"],
+            cta: { label: "Choose Pro", href: "#contact", variant: "primary" },
+          },
+          {
+            name: "Enterprise",
+            price: "Custom",
+            period: "mo",
+            features: ["Dedicated team", "SLA contract", "Custom integration"],
+            cta: { label: "Contact Sales", href: "#contact", variant: "link" },
+          },
+        ],
+      },
+    };
+  }
+
+  if (/faq|question/.test(token)) {
+    return {
+      type: "FAQAccordion",
+      props: {
+        id: idBase,
+        anchor,
+        title: "FAQ",
+        variant: "singleOpen",
+        maxWidth: "xl",
+        items: [
+          {
+            q: "How long does deployment take?",
+            a: "Typical setup takes 2 to 6 weeks based on the existing production environment.",
+          },
+          {
+            q: "Do you support existing PLC systems?",
+            a: "Yes, we provide integration options for common PLC and MES stacks.",
+          },
+          {
+            q: "Can we start with one line first?",
+            a: "Yes, phased rollout is supported to reduce risk and validate ROI early.",
+          },
+        ],
+      },
+    };
+  }
+
+  if (/contact|cta|lead|form|map/.test(token)) {
+    return {
+      type: "LeadCaptureCTA",
+      props: {
+        id: idBase,
+        anchor,
+        title: "Talk to our team",
+        subtitle: "Share your production goals and receive a tailored implementation plan.",
+        cta: { label: "Contact Sales", href: "mailto:sales@example.com", variant: "primary" },
+        note: siteTitle,
+        variant: "card",
+        maxWidth: "xl",
+      },
+    };
+  }
+
+  if (/footer/.test(token)) {
+    return {
+      type: "Footer",
+      props: {
+        id: idBase,
+        anchor,
+        variant: "multiColumn",
+        maxWidth: "xl",
+        columns: [
+          {
+            title: "Products",
+            links: [
+              { label: "Machines", href: "#" },
+              { label: "Automation", href: "#" },
+              { label: "Software", href: "#" },
+            ],
+          },
+          {
+            title: "Company",
+            links: [
+              { label: "About", href: "#" },
+              { label: "News", href: "#" },
+              { label: "Contact", href: "#contact" },
+            ],
+          },
+          {
+            title: "Legal",
+            links: [
+              { label: "Privacy", href: "#" },
+              { label: "Terms", href: "#" },
+            ],
+          },
+        ],
+      },
+    };
+  }
+
+  if (/feature|benefit|value|industry|spec|timeline|process|trust|logo|stat/.test(token)) {
+    return {
+      type: "FeatureGrid",
+      props: {
+        id: idBase,
+        anchor,
+        title: "Key Capabilities",
+        subtitle: "Designed for uptime, precision, and scalable production.",
+        variant: "3col",
+        maxWidth: "xl",
+        items: [
+          {
+            title: "Process Reliability",
+            desc: "Stable operation with predictable performance under continuous load.",
+            icon: "shield",
+          },
+          {
+            title: "Precision Control",
+            desc: "Tight tolerances through calibrated hardware and software workflows.",
+            icon: "target",
+          },
+          {
+            title: "Operational Visibility",
+            desc: "Actionable monitoring across machine states, maintenance, and throughput.",
+            icon: "activity",
+          },
+        ],
+      },
+    };
+  }
+
+  return {
+    type: "FeatureWithMedia",
+    props: {
+      id: idBase,
+      anchor,
+      title: shortPrompt,
+      subtitle: "Structured fallback section generated locally to keep the page usable.",
+      body: "Regenerate when the model endpoint is stable to replace this with a richer, custom section.",
+      ctas: [{ label: "Regenerate", href: "#top", variant: "primary" }],
+      variant: "split",
+      maxWidth: "xl",
+    },
+  };
+};
+
 const runWithConcurrency = async <T, R>(
   items: T[],
   limit: number,
@@ -2439,6 +3089,28 @@ const safeJsonParse = <T,>(value: string): T | null => {
   }
 };
 
+const parseAffordableMaxTokens = (message: string): number | null => {
+  if (!message) return null;
+  const patterns = [
+    /afford(?: up to)?\s*([0-9]{2,6})\s*(?:output\s*)?tokens/i,
+    /reduce max[_\s-]?tokens to\s*([0-9]{2,6})/i,
+    /max[_\s-]?tokens[^0-9]{0,20}([0-9]{2,6})/i,
+    /only\s*([0-9]{2,6})\s*(?:output\s*)?tokens/i,
+  ];
+  for (const pattern of patterns) {
+    const matched = message.match(pattern);
+    if (!matched) continue;
+    const value = Number(matched[1]);
+    if (Number.isFinite(value) && value > 0) return Math.floor(value);
+  }
+  return null;
+};
+
+const clampTokenBudget = (value: number) => {
+  if (!Number.isFinite(value)) return defaultMaxTokens;
+  return Math.max(512, Math.min(8192, Math.floor(value)));
+};
+
 async function callLlm({
   system,
   prompt,
@@ -2448,12 +3120,18 @@ async function callLlm({
   toolChoice,
 }: LlmOptions) {
   const toolOptions = tools && toolChoice ? { tools, tool_choice: toolChoice } : undefined;
-  const call = async (modelName: string) => {
+  const requestedTokens = clampTokenBudget(maxTokens ?? defaultMaxTokens);
+  const call = async (modelName: string, tokenBudget: number) => {
     const startedAt = Date.now();
-    logInfo(`${logPrefix} request`, { model: modelName, promptLength: prompt.length, prompt });
+    logInfo(`${logPrefix} request`, {
+      model: modelName,
+      promptLength: prompt.length,
+      maxTokens: tokenBudget,
+      prompt,
+    });
     const response = await llm.messages.create({
       model: modelName,
-      max_tokens: maxTokens ?? defaultMaxTokens,
+      max_tokens: tokenBudget,
       temperature,
       system,
       messages: [{ role: "user", content: prompt }],
@@ -2480,14 +3158,55 @@ async function callLlm({
     return content;
   };
 
+  const retryWithLowerBudget = async (modelName: string, error: unknown) => {
+    const message = String((error as any)?.message ?? "");
+    const status = Number((error as any)?.status ?? NaN);
+    const looksLikeBudgetError =
+      status === 402 || /insufficient|credit|quota|afford|max[_\s-]?tokens/i.test(message);
+    if (!looksLikeBudgetError) return null;
+    const affordable = parseAffordableMaxTokens(message);
+    if (!affordable) return null;
+    const lowered = clampTokenBudget(Math.min(affordable, requestedTokens - 128));
+    if (lowered >= requestedTokens) return null;
+    logWarn(`${logPrefix} request:token_backoff`, {
+      model: modelName,
+      requestedTokens,
+      loweredTokens: lowered,
+      status: Number.isFinite(status) ? status : undefined,
+      message,
+    });
+    try {
+      return await call(modelName, lowered);
+    } catch (loweredError) {
+      logWarn(`${logPrefix} request:token_backoff_failed`, {
+        model: modelName,
+        loweredTokens: lowered,
+        message: (loweredError as any)?.message ?? "token_backoff_failed",
+      });
+      return null;
+    }
+  };
+
   try {
-    return await call(model);
+    return await call(model, requestedTokens);
   } catch (error) {
+    const loweredAttempt = await retryWithLowerBudget(model, error);
+    if (typeof loweredAttempt === "string" && loweredAttempt.trim()) {
+      return loweredAttempt;
+    }
     const message = (error as any)?.message ?? "";
     const isConnectionError = /connection error|ECONN|ETIMEDOUT|EAI_AGAIN|socket/i.test(message);
     if (fallbackModel && fallbackModel !== model) {
       if (!isConnectionError) {
-        return await call(fallbackModel);
+        try {
+          return await call(fallbackModel, requestedTokens);
+        } catch (fallbackError) {
+          const loweredFallbackAttempt = await retryWithLowerBudget(fallbackModel, fallbackError);
+          if (typeof loweredFallbackAttempt === "string" && loweredFallbackAttempt.trim()) {
+            return loweredFallbackAttempt;
+          }
+          error = fallbackError;
+        }
       }
     }
     const details = {
@@ -2522,22 +3241,26 @@ async function architectNode(state: GraphState) {
   }
   const prompt = buildArchitectUserPrompt(state.prompt ?? "", state.manifest ?? {});
   const system = applySkillContext(architectSystemPrompt, state.skillContext?.architect ?? "");
-  const retryPrompt = `${prompt}\n\n重要：必须返回完整 JSON，不允许返回 {} 或空数组。至少包含 1 个 page 与 1 个 section。`;
-  const compactPrompt = `${prompt}\n\n重要：输出必须是紧凑 JSON（无多余解释）。propsHints 只保留 3-5 个短字段，列表最多 6 项；每页不超过 6 个 section，避免长文案与深层嵌套。`;
   let raw: string;
   try {
-    raw = await callLlm({
-      system,
-      prompt,
-      temperature: 0.4,
-      tools: [architectTool],
-      toolChoice: { type: "tool", name: architectTool.name },
-    });
+    raw = await Promise.race([
+      callLlm({
+        system,
+        prompt,
+        temperature: 0.4,
+        maxTokens: architectMaxTokens,
+        tools: [architectTool],
+        toolChoice: { type: "tool", name: architectTool.name },
+      }),
+      sleep(architectTimeoutMs).then(() => {
+        throw new Error("architect_timeout");
+      }),
+    ]);
   } catch (error) {
     logWarn(`${logPrefix} architect:tool_failed`, {
       message: (error as any)?.message ?? String(error),
     });
-    raw = await callLlm({ system, prompt, temperature: 0.4 });
+    raw = "{}";
   }
   let blueprint = safeJsonParse<ArchitectBlueprint>(raw);
   const initialPages = normalizePages(blueprint ?? {});
@@ -2551,32 +3274,11 @@ async function architectNode(state: GraphState) {
       hasTheme,
       pages: initialPages.length,
     });
-    const fallbackRaw = await callLlm({
-      system,
-      prompt: retryPrompt,
-      temperature: 0.4,
+    blueprint = buildFallbackBlueprint(state.prompt ?? "");
+    logInfo(`${logPrefix} architect:fallback_blueprint`, {
+      pages: normalizePages(blueprint).length,
+      reason: "invalid_or_empty_architect_response",
     });
-    blueprint = safeJsonParse<ArchitectBlueprint>(fallbackRaw);
-    const fallbackPages = normalizePages(blueprint ?? {});
-    const fallbackHasTheme =
-      blueprint?.theme &&
-      typeof blueprint.theme === "object" &&
-      Object.keys(blueprint.theme).length > 0;
-    if (!blueprint || !fallbackHasTheme || fallbackPages.length === 0) {
-      logWarn(`${logPrefix} architect:empty_response`, {
-        rawPreview: fallbackRaw.slice(0, 200),
-        rawTail: fallbackRaw.slice(-200),
-        rawLength: fallbackRaw.length,
-        hasTheme: fallbackHasTheme,
-        pages: fallbackPages.length,
-      });
-      const compactRaw = await callLlm({
-        system,
-        prompt: compactPrompt,
-        temperature: 0.2,
-      });
-      blueprint = safeJsonParse<ArchitectBlueprint>(compactRaw);
-    }
   }
   if (!blueprint) {
     logWarn(`${logPrefix} architect:parse_failed`, {
@@ -2587,6 +3289,7 @@ async function architectNode(state: GraphState) {
     return { errors: [...(state.errors ?? []), "architect_json_parse"] };
   }
   blueprint = applyUserThemeIntent(blueprint, state.prompt ?? "");
+  blueprint = applyReferenceBlueprintConstraints(blueprint, state.prompt ?? "");
   const pages = normalizePages(blueprint);
   const sectionCount = pages.reduce((total, page) => total + page.sections.length, 0);
   logInfo(`${logPrefix} architect:ok`, {
@@ -2660,6 +3363,7 @@ async function builderNode(state: GraphState) {
       system,
       prompt: promptText,
       temperature,
+      maxTokens: builderMaxTokens,
       tools: [builderTool],
       toolChoice: { type: "tool", name: builderTool.name },
     });
@@ -2669,6 +3373,7 @@ async function builderNode(state: GraphState) {
       system,
       prompt: retryPrompt,
       temperature: Math.max(0.2, temperature - 0.2),
+      maxTokens: builderMaxTokens,
       tools: [builderTool],
       toolChoice: { type: "tool", name: builderTool.name },
     });
@@ -2694,7 +3399,7 @@ async function builderNode(state: GraphState) {
     ? Math.max(1, defaultSectionConcurrency)
     : 3;
 
-  const results = await runWithConcurrency(sections, maxConcurrency, async (context) => {
+  const results = await runWithConcurrency(sections, maxConcurrency, async (context): Promise<BuilderSectionResult> => {
     const baseInfo = {
       pagePath: context.pagePath,
       sectionId: context.section.id,
@@ -2784,7 +3489,7 @@ async function builderNode(state: GraphState) {
           throw Object.assign(new Error("builder_section_layout_invalid"), { code: "layout" });
         }
         logInfo(`${logPrefix} builder:section:ok`, { ...baseInfo });
-        return { status: "ok" as const, ...normalized };
+          return { status: "ok", ...normalized };
       } catch (error) {
         const isLast = attempt === maxAttempts;
         const message = (error as any)?.message ?? "builder_section_failed";
@@ -2831,14 +3536,20 @@ async function builderNode(state: GraphState) {
           }
         }
         if (isLast) {
-          return { status: "error" as const, error: message, failureType };
+          const fallbackBlock = buildDeterministicFallbackBlock(context, state.prompt ?? "");
+          return { status: "fallback", block: fallbackBlock, error: message, failureType };
         }
         const delay = attempt === 1 ? 500 : 2000;
         logInfo(`${logPrefix} builder:section:retry`, { ...baseInfo, delayMs: delay });
         await sleep(delay);
       }
     }
-    return { status: "error" as const, error: "builder_section_failed" };
+    return {
+      status: "fallback",
+      block: buildDeterministicFallbackBlock(context, state.prompt ?? ""),
+      error: "builder_section_failed",
+      failureType: "unknown",
+    };
   });
 
   const componentsMap = new Map<string, { name: string; code: string }>();
@@ -2948,6 +3659,34 @@ async function builderNode(state: GraphState) {
           },
             "success"
           )
+        );
+      }
+    } else if (result.status === "fallback") {
+      const key = buildSectionKey(context);
+      const normalizedProps = normalizeBlockProps(
+        result.block.type,
+        (result.block.props ?? {}) as Record<string, unknown>,
+        { logChanges: true, summary: normalizationSummary }
+      );
+      const propsWithId = ensurePropsId(normalizedProps, key);
+      const propsWithAnchor = ensureAnchor(propsWithId, context.section.id);
+      if (!existingKeys.has(key)) {
+        page.data.content.push({
+          type: result.block.type,
+          props: propsWithAnchor,
+          _key: key,
+        } as any);
+        existingKeys.add(key);
+      }
+      errors.push(`builder_section_fallback:${result.failureType}:${context.pagePath}:${context.section.id}`);
+      if (planning) {
+        planningUpdates.push(
+          planning.recordSectionFailure({
+            key: buildSectionKey(context),
+            pagePath: context.pagePath,
+            pageName: context.pageName,
+            type: context.section.type,
+          })
         );
       }
     } else {
