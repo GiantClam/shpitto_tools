@@ -11,6 +11,114 @@ const ensureDir = async (dir: string) => {
   await fs.mkdir(dir, { recursive: true });
 };
 
+const generationRequestTimeoutMs = Number(process.env.CREATION_REQUEST_TIMEOUT_MS || 30000);
+
+const buildTimeoutFallbackResult = (prompt: string) => {
+  const title = prompt?.trim() ? prompt.trim().slice(0, 56) : "Generated Landing Page";
+  return {
+    blueprint: {
+      pages: [
+        {
+          path: "/",
+          name: "Home",
+          sections: [
+            { id: "hero", type: "HeroCentered", intent: "Fallback hero due timeout." },
+            { id: "features", type: "FeatureGrid", intent: "Fallback feature cards due timeout." },
+            { id: "footer", type: "Footer", intent: "Fallback footer due timeout." },
+          ],
+        },
+      ],
+    },
+    theme: {
+      mode: "light",
+      motion: "off",
+      radius: "0.5rem",
+      fontHeading: "Manrope",
+      fontBody: "Manrope",
+    },
+    components: [],
+    pages: [
+      {
+        path: "/",
+        name: "Home",
+        data: {
+          content: [
+            {
+              type: "Navbar",
+              props: {
+                id: "Navbar-1",
+                links: [
+                  { label: "Home", href: "#top" },
+                  { label: "Features", href: "#features" },
+                  { label: "Contact", href: "#contact" },
+                ],
+                ctas: [{ label: "Start", href: "#contact", variant: "primary" }],
+                sticky: true,
+                paddingY: "sm",
+                maxWidth: "xl",
+              },
+            },
+            {
+              type: "HeroCentered",
+              props: {
+                id: "HeroCentered-1",
+                title,
+                subtitle: "Fast fallback loaded. Retry generation to replace with full AI output.",
+                ctas: [{ label: "Retry Generate", href: "#top", variant: "primary" }],
+                align: "center",
+                paddingY: "lg",
+                maxWidth: "xl",
+              },
+            },
+            {
+              type: "FeatureGrid",
+              props: {
+                id: "FeatureGrid-1",
+                title: "Highlights",
+                items: [
+                  { title: "Stable", desc: "Timeout-safe fallback rendering.", icon: "shield" },
+                  { title: "Fast", desc: "Page stays usable when AI call is slow.", icon: "rocket" },
+                  { title: "Editable", desc: "You can continue editing in sandbox.", icon: "sparkles" },
+                ],
+                variant: "3col",
+                paddingY: "lg",
+                maxWidth: "xl",
+              },
+            },
+            {
+              type: "Footer",
+              props: {
+                id: "Footer-1",
+                columns: [
+                  { title: "Product", links: [{ label: "Overview", href: "#" }, { label: "Roadmap", href: "#" }] },
+                  { title: "Company", links: [{ label: "About", href: "#" }, { label: "Contact", href: "#" }] },
+                  { title: "Legal", links: [{ label: "Privacy", href: "#" }, { label: "Terms", href: "#" }] },
+                ],
+                variant: "multiColumn",
+                paddingY: "md",
+                maxWidth: "xl",
+              },
+            },
+          ],
+          root: {
+            props: {
+              title: "Home",
+              theme: {
+                mode: "light",
+                motion: "off",
+                radius: "0.5rem",
+                fontHeading: "Manrope",
+                fontBody: "Manrope",
+              },
+            },
+          },
+        },
+      },
+    ],
+    errors: ["generation_timeout_fallback"],
+  };
+};
+
 export async function POST(request: NextRequest) {
   const requestId = `creation_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   try {
@@ -37,11 +145,21 @@ export async function POST(request: NextRequest) {
     }
 
     logInfo("[creation] generate", { requestId, promptLength: prompt.length });
-    const result = await generateP2WProject({
-      prompt,
-      manifest,
-      planning: persistEnabled ? { dir: outDir, requestId } : undefined,
-    });
+    const generated = await Promise.race([
+      generateP2WProject({
+        prompt,
+        manifest,
+        planning: persistEnabled ? { dir: outDir, requestId } : undefined,
+      }).then((result) => ({ kind: "ok" as const, result })),
+      new Promise<{ kind: "timeout" }>((resolve) =>
+        setTimeout(() => resolve({ kind: "timeout" }), generationRequestTimeoutMs)
+      ),
+    ]);
+    const result =
+      generated.kind === "ok" ? generated.result : buildTimeoutFallbackResult(prompt);
+    if (generated.kind === "timeout") {
+      logWarn("[creation] timeout_fallback", { requestId, timeoutMs: generationRequestTimeoutMs });
+    }
     logInfo("[creation] generated", {
       requestId,
       id,
