@@ -18,6 +18,7 @@ export type FooterColumn = { title: string; links: FooterLink[] };
 
 export type FooterProps = BaseBlockProps & {
   logo?: { src: string; alt: string };
+  logoText?: string;
   columns: FooterColumn[];
   socials?: { type: "x" | "github" | "linkedin" | "youtube" | "facebook" | "instagram"; href: string }[];
   legal?: string;
@@ -38,6 +39,7 @@ export function FooterBlock({
   maxWidth = "xl",
   emphasis = "normal",
   logo,
+  logoText,
   columns,
   socials,
   legal,
@@ -106,7 +108,7 @@ export function FooterBlock({
               <img src={logo.src} alt={logo.alt} className="h-8 w-auto" />
             ) : (
               <div className="text-base font-semibold" style={headingStyle}>
-                Company
+                {logoText?.trim() || "Company"}
               </div>
             )}
             {socials?.length ? (

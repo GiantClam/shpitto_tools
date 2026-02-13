@@ -21,6 +21,7 @@ type NeonHeroBeamProps = BaseBlockProps & {
   backgroundOverlay?: string;
   backgroundMedia?: { kind?: "image" | "video"; src?: string; alt?: string };
   media?: { kind?: "image" | "video"; src?: string; alt?: string };
+  titleTransform?: "uppercase" | "none";
 };
 
 export function NeonHeroBeamBlock({
@@ -42,6 +43,7 @@ export function NeonHeroBeamBlock({
   backgroundOverlay,
   backgroundMedia,
   media,
+  titleTransform = "uppercase",
 }: NeonHeroBeamProps) {
   const resolvedImage = heroImageSrc || media?.src || backgroundMedia?.src;
   const resolvedMobileImage = mobileHeroImageSrc || resolvedImage;
@@ -87,7 +89,12 @@ export function NeonHeroBeamBlock({
             <div className="inline-flex rounded-xl border border-[#3b2717] bg-[#12161f]/80 px-4 py-2 text-sm text-[#f0d7bf]">
               {badge}
             </div>
-            <h1 className="max-w-[780px] text-[52px] font-semibold uppercase leading-[0.96] tracking-[-0.03em] text-[#f7f8fc] sm:text-[84px]">
+            <h1
+              className={cn(
+                "max-w-[780px] text-[52px] font-semibold leading-[0.96] tracking-[-0.03em] text-[#f7f8fc] sm:text-[84px]",
+                titleTransform === "uppercase" ? "uppercase" : ""
+              )}
+            >
               {title}
             </h1>
             {subtitle ? <p className="max-w-[640px] text-xl text-[#aeb5c3]">{subtitle}</p> : null}

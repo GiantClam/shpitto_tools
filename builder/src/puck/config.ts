@@ -20,6 +20,13 @@ import { NeonFeatureCardsBlock } from "@/components/blocks/neon-feature-cards/bl
 import { NeonResultsShowcaseBlock } from "@/components/blocks/neon-results-showcase/block";
 import { NeonPricingSplitBlock } from "@/components/blocks/neon-pricing-split/block";
 import { NeonFooterGlowBlock } from "@/components/blocks/neon-footer-glow/block";
+import { NexusNavPulseBlock } from "@/components/blocks/nexus-nav-pulse/block";
+import { NexusHeroDockBlock } from "@/components/blocks/nexus-hero-dock/block";
+import { NexusCapabilityStripBlock } from "@/components/blocks/nexus-capability-strip/block";
+import { NexusOpsMatrixBlock } from "@/components/blocks/nexus-ops-matrix/block";
+import { NexusControlPanelBlock } from "@/components/blocks/nexus-control-panel/block";
+import { NexusProofMosaicBlock } from "@/components/blocks/nexus-proof-mosaic/block";
+import { NexusFooterCommandBlock } from "@/components/blocks/nexus-footer-command/block";
 import { DesignerHeroEditorialBlock } from "@/components/blocks/designer-hero-editorial/block";
 import { DesignerCapabilitiesStripBlock } from "@/components/blocks/designer-capabilities-strip/block";
 import { DesignerProjectsSplitBlock } from "@/components/blocks/designer-projects-split/block";
@@ -102,6 +109,236 @@ export const puckConfig: Config = {
         }),
       },
     },
+    NexusNavPulse: {
+      render: renderBlock(NexusNavPulseBlock),
+      defaultProps: {
+        id: "NexusNavPulse-1",
+        logoText: "Nexus",
+        sticky: true,
+        maxWidth: "xl",
+        links: [
+          { label: "Home", href: "#top" },
+          { label: "Services", href: "#services" },
+          { label: "About", href: "#about" },
+          { label: "Contact", href: "#contact" },
+        ],
+        cta: { label: "Get Started", href: "#contact", variant: "primary" },
+      },
+      fields: {
+        logoText: textField("Logo Text"),
+        sticky: booleanField("Sticky"),
+        maxWidth: selectField("Max Width", ["lg", "xl", "2xl"]),
+        links: listField("Links", {
+          label: textField("Label"),
+          href: textField("Href"),
+        }),
+        cta: listField("CTA", {
+          label: textField("Label"),
+          href: textField("Href"),
+          variant: selectField("Variant", ["primary", "secondary", "link"]),
+        }),
+      },
+    },
+    NexusHeroDock: {
+      render: renderBlock(NexusHeroDockBlock),
+      defaultProps: {
+        id: "NexusHeroDock-1",
+        badge: "Nexus Platform",
+        title: "Nexus is a precision tool for orchestrating product releases",
+        subtitle:
+          "Ship with velocity while maintaining reliability, policy control, and measurable rollout quality.",
+        panelTag: "Performance",
+        panelTitle: "Release Velocity",
+        panelSubtitle: "Automated orchestration across environments.",
+        statValue: "+842%",
+        statDelta: "vs baseline",
+        ctas: [
+          { label: "Explore Platform", href: "#services", variant: "primary" },
+          { label: "View Metrics", href: "#proof", variant: "secondary" },
+        ],
+        maxWidth: "xl",
+      },
+      fields: {
+        badge: textField("Badge"),
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        panelTag: textField("Panel Tag"),
+        panelTitle: textField("Panel Title"),
+        panelSubtitle: textareaField("Panel Subtitle"),
+        statValue: textField("Stat Value"),
+        statDelta: textField("Stat Delta"),
+        heroImageSrc: textField("Hero Image Src"),
+        mobileHeroImageSrc: textField("Mobile Hero Image Src"),
+        heroImageAlt: textField("Hero Image Alt"),
+        ctas: listField("CTAs", {
+          label: textField("Label"),
+          href: textField("Href"),
+          variant: selectField("Variant", ["primary", "secondary", "link"]),
+        }),
+      },
+    },
+    NexusCapabilityStrip: {
+      render: renderBlock(NexusCapabilityStripBlock),
+      defaultProps: {
+        id: "NexusCapabilityStrip-1",
+        eyebrow: "Key Capabilities",
+        title: "Engineered for modern product teams",
+        subtitle: "Designed for scale, precision, and reliable execution.",
+        items: [
+          { title: "Precision targeting", description: "Policy-aware delivery mapped to measurable goals." },
+          { title: "Automated workflows", description: "Deterministic rollouts and rollback-ready stages." },
+          { title: "Brand safety", description: "Guardrails enforce reliability and compliance by default." },
+        ],
+      },
+      fields: {
+        eyebrow: textField("Eyebrow"),
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        items: listField("Items", {
+          title: textField("Title"),
+          description: textareaField("Description"),
+          badge: textField("Badge"),
+        }),
+      },
+    },
+    NexusOpsMatrix: {
+      render: renderBlock(NexusOpsMatrixBlock),
+      defaultProps: {
+        id: "NexusOpsMatrix-1",
+        eyebrow: "Wave 01",
+        title: "Deploy with velocity, scale without ceremony.",
+        subtitle: "Control release workflows without adding operational drag.",
+        items: [
+          {
+            title: "Zero-config infrastructure",
+            description: "Describe intent in TypeScript and let Nexus provision workers and policies.",
+          },
+          {
+            title: "Traffic-aware scaling",
+            description: "Continuously adapt workloads to demand signals and reduce noisy-neighbor impact.",
+          },
+          {
+            title: "Precision analytics",
+            description: "Observe every deploy in real time with rollout health and regional diagnostics.",
+          },
+          {
+            title: "Unified workflow control",
+            description: "Manage feature flags, canary rollouts, and instant rollback from one surface.",
+          },
+        ],
+      },
+      fields: {
+        eyebrow: textField("Eyebrow"),
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        items: listField("Items", {
+          title: textField("Title"),
+          description: textareaField("Description"),
+          imageSrc: textField("Image Src"),
+          imageAlt: textField("Image Alt"),
+        }),
+      },
+    },
+    NexusControlPanel: {
+      render: renderBlock(NexusControlPanelBlock),
+      defaultProps: {
+        id: "NexusControlPanel-1",
+        eyebrow: "Wave 02",
+        title: "AI-assisted product orchestration",
+        subtitle: "Guide releases with context-aware automation and operator oversight.",
+        tabs: [{ label: "Pipelines" }, { label: "Signals" }, { label: "Budgets" }, { label: "Teams" }],
+        metrics: [
+          { label: "Release Success", value: "99.4%" },
+          { label: "Error Budget Burn", value: "-42%" },
+          { label: "Mean Restore Time", value: "2m 18s" },
+        ],
+        kpis: [
+          { label: "Active Pipelines", value: "128" },
+          { label: "Guardrail Rules", value: "73" },
+          { label: "AI Recommendations", value: "312" },
+        ],
+      },
+      fields: {
+        eyebrow: textField("Eyebrow"),
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        dashboardImageSrc: textField("Dashboard Image Src"),
+        mobileDashboardImageSrc: textField("Mobile Dashboard Image Src"),
+        dashboardImageAlt: textField("Dashboard Image Alt"),
+        tabs: listField("Tabs", {
+          label: textField("Label"),
+        }),
+        metrics: listField("Metrics", {
+          label: textField("Label"),
+          value: textField("Value"),
+        }),
+        kpis: listField("KPIs", {
+          label: textField("Label"),
+          value: textField("Value"),
+        }),
+      },
+    },
+    NexusProofMosaic: {
+      render: renderBlock(NexusProofMosaicBlock),
+      defaultProps: {
+        id: "NexusProofMosaic-1",
+        title: "Ship faster with Nexus",
+        subtitle: "Engineering teams using Nexus report faster delivery with lower incident pressure.",
+        quote:
+          "Nexus gave us a single control plane for releases. We moved faster while reducing incident pressure across teams.",
+        author: "Claire",
+        role: "Engineering Lead",
+      },
+      fields: {
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        quote: textareaField("Quote"),
+        author: textField("Author"),
+        role: textField("Role"),
+        imageSrc: textField("Image Src"),
+        mobileImageSrc: textField("Mobile Image Src"),
+        imageAlt: textField("Image Alt"),
+      },
+    },
+    NexusFooterCommand: {
+      render: renderBlock(NexusFooterCommandBlock),
+      defaultProps: {
+        id: "NexusFooterCommand-1",
+        title: "Ready to streamline your workflow?",
+        subtitle: "Join high-performance engineering teams using Nexus to orchestrate product delivery.",
+        primaryCta: { label: "Start building for free", href: "#contact", variant: "primary" },
+        secondaryCta: { label: "Contact Sales", href: "#contact", variant: "secondary" },
+        columns: [
+          { title: "Product", links: [{ label: "Features", href: "#services" }, { label: "Integrations", href: "#services" }] },
+          { title: "Company", links: [{ label: "About", href: "#about" }, { label: "Careers", href: "#about" }] },
+          { title: "Resources", links: [{ label: "Community", href: "#resources" }, { label: "Help Center", href: "#resources" }] },
+          { title: "Legal", links: [{ label: "Privacy Policy", href: "#legal" }, { label: "Terms of Service", href: "#legal" }] },
+        ],
+        legal: "© 2024 Nexus Inc. All rights reserved.",
+      },
+      fields: {
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        legal: textField("Legal"),
+        primaryCta: listField("Primary CTA", {
+          label: textField("Label"),
+          href: textField("Href"),
+          variant: selectField("Variant", ["primary", "secondary", "link"]),
+        }),
+        secondaryCta: listField("Secondary CTA", {
+          label: textField("Label"),
+          href: textField("Href"),
+          variant: selectField("Variant", ["primary", "secondary", "link"]),
+        }),
+        columns: listField("Columns", {
+          title: textField("Title"),
+          links: listField("Links", {
+            label: textField("Label"),
+            href: textField("Href"),
+          }),
+        }),
+      },
+    },
     HeroCentered: {
       render: renderBlock(HeroCenteredBlock),
       defaultProps: {
@@ -162,6 +399,7 @@ export const puckConfig: Config = {
       render: renderBlock(NeonHeroBeamBlock),
       defaultProps: {
         id: "NeonHeroBeam-1",
+        titleTransform: "uppercase",
         title: "Social Reach. Automated Growth. Viral Results.",
         subtitle: "Scale campaigns with AI workflows, predictive insights, and measurable growth velocity.",
         badge: "Social Growth, Autopilot Mode",
@@ -185,7 +423,9 @@ export const puckConfig: Config = {
         panelSubtitle: textareaField("Panel Subtitle"),
         statValue: textField("Stat Value"),
         statDelta: textField("Stat Delta"),
+        titleTransform: selectField("Title Transform", ["uppercase", "none"]),
         heroImageSrc: textField("Hero Image Src"),
+        mobileHeroImageSrc: textField("Mobile Hero Image Src"),
         heroImageAlt: textField("Hero Image Alt"),
         ctas: listField("CTAs", {
           label: textField("Label"),
@@ -261,8 +501,10 @@ export const puckConfig: Config = {
       render: renderBlock(NeonFeatureCardsBlock),
       defaultProps: {
         id: "NeonFeatureCards-1",
+        eyebrow: "Wave 02",
         title: "Engineered for exponential growth",
         subtitle: "Modular capability blocks for velocity, safety, and omnichannel scale.",
+        highlightMode: "first",
         items: [
           { title: "Predictive Intelligence", description: "Model outcomes before spend.", highlight: true },
           { title: "Autonomous Velocity", description: "Orchestrate publishing with adaptive timing." },
@@ -271,13 +513,17 @@ export const puckConfig: Config = {
         ],
       },
       fields: {
+        eyebrow: textField("Eyebrow"),
         title: textField("Title"),
         subtitle: textareaField("Subtitle"),
+        highlightMode: selectField("Highlight Mode", ["first", "none"]),
         items: listField("Items", {
           title: textField("Title"),
           description: textareaField("Description"),
           badge: textField("Badge"),
           highlight: booleanField("Highlight"),
+          imageSrc: textField("Image Src"),
+          imageAlt: textField("Image Alt"),
         }),
       },
     },

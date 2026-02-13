@@ -1,0 +1,30 @@
+{
+  "runId": "tf-beauty-salon-29-aura-ref-20260213-bg-light",
+  "manifestPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/sites.beauty-salon-29.with-reference.json",
+  "sites": 1,
+  "runDir": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-beauty-salon-29-aura-ref-20260213-bg-light",
+  "runLibraryPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-beauty-salon-29-aura-ref-20260213-bg-light/style-profiles.generated.json",
+  "publishPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/library/style-profiles.generated.json",
+  "regressionPromptsPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-beauty-salon-29-aura-ref-20260213-bg-light/regression-prompts.json",
+  "regressionReportPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/compare-20260213-192434.json",
+  "scorecardPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-beauty-salon-29-aura-ref-20260213-bg-light/scorecard.json",
+  "overallScore": 97,
+  "previewBaseUrl": "http://127.0.0.1:3110",
+  "previewLinksPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-beauty-salon-29-aura-ref-20260213-bg-light/preview-links.json",
+  "previewLinks": [
+    {
+      "groupId": "C_template_first",
+      "caseId": "beauty-salon-29-aura-ref",
+      "responseId": "p2w_1770981879061",
+      "requestId": "creation_1770981879057_tc0a1d",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260213-192434_c-template-first_beauty-salon-29-aura-ref&page=home",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/beauty-salon-29-aura-ref.png"
+    }
+  ],
+  "previewServer": {
+    "origin": "http://127.0.0.1:3110",
+    "reachable": false,
+    "started": false
+  },
+  "previewStartCommand": "cd builder && npm run dev -- -p 3110"
+}

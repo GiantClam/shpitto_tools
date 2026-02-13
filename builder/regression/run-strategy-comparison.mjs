@@ -13,6 +13,9 @@ const REPORT_DIR = path.join(ROOT, "regression", "strategy-comparison");
 const SCREENSHOT_DIR = path.join(REPORT_DIR, "screenshots");
 const PORT = Number(process.env.STRATEGY_COMPARE_PORT || 3110);
 const BASE_URL = `http://localhost:${PORT}`;
+const SERVER_MODE = String(process.env.STRATEGY_COMPARE_SERVER_MODE || "dev")
+  .trim()
+  .toLowerCase();
 
 const parseArgs = (argv) => {
   const options = {
@@ -67,6 +70,48 @@ const safeJson = async (res) => {
   } catch {
     return null;
   }
+};
+
+const readJsonFile = async (filePath) => {
+  try {
+    const raw = await fs.readFile(filePath, "utf8");
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+};
+
+const hasRenderablePage = (payload) =>
+  Boolean(payload?.pages?.[0]?.data && Array.isArray(payload?.pages?.[0]?.data?.content) && payload.pages[0].data.content.length > 0);
+
+const getPersistedPayloadPath = (id) =>
+  path.join(REPO_ROOT, "asset-factory", "out", "p2w", String(id || ""), "sandbox", "payload.json");
+
+const waitForPersistedPayload = async (id, timeoutMs = 120000) => {
+  const payloadPath = getPersistedPayloadPath(id);
+  const startedAt = Date.now();
+  let latestPayload = null;
+  while (Date.now() - startedAt < timeoutMs) {
+    const nextPayload = await readJsonFile(payloadPath);
+    if (nextPayload) {
+      latestPayload = nextPayload;
+      if (hasRenderablePage(nextPayload)) {
+        return {
+          payload: nextPayload,
+          payloadPath,
+          timedOut: false,
+          waitedMs: Date.now() - startedAt,
+        };
+      }
+    }
+    await wait(1000);
+  }
+  return {
+    payload: latestPayload,
+    payloadPath,
+    timedOut: true,
+    waitedMs: Date.now() - startedAt,
+  };
 };
 
 const killPort = async (port) => {
@@ -152,6 +197,16 @@ const startServerWithScript = async (envOverrides, scriptName) => {
 };
 
 const startServer = async (envOverrides) => {
+  if (SERVER_MODE === "dev") {
+    return await startServerWithScript(envOverrides, "dev");
+  }
+  if (SERVER_MODE === "auto") {
+    try {
+      return await startServerWithScript(envOverrides, "start");
+    } catch {
+      return await startServerWithScript(envOverrides, "dev");
+    }
+  }
   try {
     return await startServerWithScript(envOverrides, "start");
   } catch (error) {
@@ -292,6 +347,7 @@ const run = async () => {
     runId,
     generatedAt: new Date().toISOString(),
     baseUrl: BASE_URL,
+    serverMode: SERVER_MODE,
     renderer: options.renderer,
     promptsFile: options.promptsFile,
     groups: [],
@@ -309,17 +365,45 @@ const run = async () => {
         const res = await fetch(`${BASE_URL}/api/creation`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt: c.prompt, persist: false }),
+          body: JSON.stringify({ prompt: c.prompt, persist: true }),
         });
         const payload = await safeJson(res);
+        let finalPayload = payload;
+        let persistWaitMs = 0;
+        let persistWaitTimedOut = false;
+        if (res.ok && typeof payload?.id === "string" && payload.id.trim()) {
+          const shouldWaitForPersisted =
+            Boolean(payload?.pending) ||
+            !hasRenderablePage(payload) ||
+            (Array.isArray(payload?.errors) && payload.errors.includes("generation_timeout_fallback"));
+          if (shouldWaitForPersisted) {
+            const persisted = await waitForPersistedPayload(payload.id, 150000);
+            persistWaitMs = persisted.waitedMs;
+            persistWaitTimedOut = persisted.timedOut;
+            if (persisted.payload) {
+              finalPayload = persisted.payload;
+            }
+          } else {
+            const persistedNow = await readJsonFile(getPersistedPayloadPath(payload.id));
+            if (hasRenderablePage(persistedNow)) {
+              finalPayload = persistedNow;
+            }
+          }
+        }
         const durationMs = Date.now() - startedAt;
-        const pageData = payload?.pages?.[0]?.data;
-        const ok = Boolean(res.ok && pageData && Array.isArray(pageData?.content) && pageData.content.length > 0);
+        const pageData = finalPayload?.pages?.[0]?.data;
+        const ok = Boolean(
+          res.ok &&
+            !persistWaitTimedOut &&
+            pageData &&
+            Array.isArray(pageData?.content) &&
+            pageData.content.length > 0
+        );
         const siteKey = `bench_${slug(runId)}_${slug(group.id)}_${slug(c.id)}`;
         let renderUrl = "";
         let screenshotPath = "";
         if (ok) {
-          await writeSandboxPayload(siteKey, payload);
+          await writeSandboxPayload(siteKey, finalPayload);
           await writeRenderablePage(siteKey, pageData);
           renderUrl =
             options.renderer === "render"
@@ -346,6 +430,8 @@ const run = async () => {
           statusCode: res.status,
           durationMs,
           errors: Array.isArray(payload?.errors) ? payload.errors : [],
+          persistWaitMs,
+          persistWaitTimedOut,
           requestId: payload?.requestId ?? null,
           responseId: payload?.id ?? null,
           url: renderUrl,

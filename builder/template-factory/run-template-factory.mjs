@@ -316,8 +316,8 @@ const RECIPES = {
   },
   nexus_engineering_neon: {
     id: "nexus_engineering_neon",
-    styleLabels: ["dark", "nexus", "engineering", "precision", "infra", "product"],
-    paletteProfile: "dark-neon-orange",
+    styleLabels: ["dark", "nexus", "engineering", "precision", "infra", "product", "gold-accent"],
+    paletteProfile: "dark-neon-gold",
     typographySignature: "bold-sans + compact-sans",
     layoutPatterns: [
       "minimal-nav-dark",
@@ -329,45 +329,45 @@ const RECIPES = {
       "workflow-footer-glow",
     ],
     componentSignature: [
-      "Navbar",
-      "NeonHeroBeam",
-      "NeonDashboardStrip",
-      "NeonFeatureCards",
-      "NeonResultsShowcase",
-      "NeonFooterGlow",
+      "NexusNavPulse",
+      "NexusHeroDock",
+      "NexusCapabilityStrip",
+      "NexusOpsMatrix",
+      "NexusControlPanel",
+      "NexusProofMosaic",
+      "NexusFooterCommand",
     ],
     requiredCategories: ["navigation", "hero", "story", "approach", "products", "socialproof", "footer"],
     sectionSpecs: {
       navigation: {
-        blockType: "Navbar",
+        blockType: "NexusNavPulse",
         defaults: {
-          variant: "withCTA",
           sticky: true,
-          paddingY: "sm",
           maxWidth: "xl",
-          background: "gradient",
+          logoText: "Nexus",
           links: [
-            { label: "Home", href: "#top", variant: "link" },
-            { label: "Services", href: "#services", variant: "link" },
-            { label: "About", href: "#about", variant: "link" },
-            { label: "Contact", href: "#contact", variant: "link" },
+            { label: "Home", href: "#top" },
+            { label: "Services", href: "#services" },
+            { label: "About", href: "#about" },
+            { label: "Contact", href: "#contact" },
           ],
-          ctas: [{ label: "Get Started", href: "#contact", variant: "primary" }],
+          cta: { label: "Get Started", href: "#contact", variant: "primary" },
         },
       },
       hero: {
-        blockType: "NeonHeroBeam",
+        blockType: "NexusHeroDock",
         defaults: {
-          paddingY: "lg",
           maxWidth: "xl",
-          badge: "Nexus Platform",
+          badge: "Release Orchestration",
           title: "Nexus is a precision tool for orchestrating product releases",
           subtitle: "Ship with velocity while maintaining reliability, policy control, and measurable rollout quality.",
-          panelTag: "Performance",
+          panelTag: "Live Rollout",
           panelTitle: "Release Velocity",
-          panelSubtitle: "Automated orchestration across environments.",
+          panelSubtitle: "Automated orchestration across environments and teams.",
           statValue: "+842%",
           statDelta: "vs baseline",
+          background: "none",
+          backgroundOverlay: "rgba(4,9,17,0.28)",
           ctas: [
             { label: "Explore Platform", href: "#services", variant: "primary" },
             { label: "View Metrics", href: "#proof", variant: "secondary" },
@@ -375,45 +375,56 @@ const RECIPES = {
         },
       },
       story: {
-        blockType: "NeonDashboardStrip",
+        blockType: "NexusCapabilityStrip",
         defaults: {
-          paddingY: "md",
           maxWidth: "xl",
-          eyebrow: "Wave 01",
+          eyebrow: "Key Capabilities",
           title: "Engineered for modern product teams",
-          subtitle: "Operational confidence through unified workflows, observability, and rollout controls.",
-          tabs: [{ label: "Releases" }, { label: "Policy" }, { label: "Insights" }, { label: "Safety" }, { label: "AI" }],
-          metrics: [
-            { label: "Deploy Frequency", value: "96/day" },
-            { label: "Rollback Window", value: "< 3 min" },
-            { label: "Policy Coverage", value: "99.2%" },
-          ],
-          kpis: [
-            { label: "Team Workspaces", value: "54" },
-            { label: "Services Managed", value: "216" },
-            { label: "Active Alerts", value: "7" },
+          subtitle: "Designed for scale, precision, and reliable execution.",
+          items: [
+            {
+              title: "Precision Targeting",
+              description: "Model workload placement and route policies around intent and business goals.",
+            },
+            {
+              title: "Automated Workflows",
+              description: "Ship faster with deterministic rollout stages and controls.",
+            },
+            {
+              title: "Brand Safety",
+              description: "Guardrails and policy checks keep changes reliable by default.",
+            },
           ],
         },
       },
       approach: {
-        blockType: "NeonFeatureCards",
+        blockType: "NexusOpsMatrix",
         defaults: {
-          paddingY: "lg",
           maxWidth: "xl",
+          eyebrow: "Wave 01",
           title: "Deploy with velocity, scale without ceremony.",
           subtitle: "Control release workflows without adding operational drag.",
           items: [
-            { title: "Zero-config infrastructure", description: "Provision workers, routes, and policies in one surface.", highlight: true },
+            { title: "Zero-config infrastructure", description: "Provision workers, routes, and policies in one surface." },
             { title: "Traffic-aware scaling", description: "Continuously adapt workloads to demand signals." },
-            { title: "Precision analytics", description: "Observe rollout health and budget impact in real time." },
-            { title: "Unified workflow control", description: "Feature flags, canary rollouts, and instant rollback." },
+            {
+              title: "Precision analytics",
+              description: "Observe every deploy in real time: rollout health and regional error budgets.",
+              imageSrc: "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-approach.png",
+              imageAlt: "Precision analytics",
+            },
+            {
+              title: "Unified workflow control",
+              description: "Feature flags, canary rollouts, and instant rollback from one surface.",
+              imageSrc: "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-approach.png",
+              imageAlt: "Unified workflow control",
+            },
           ],
         },
       },
       products: {
-        blockType: "NeonDashboardStrip",
+        blockType: "NexusControlPanel",
         defaults: {
-          paddingY: "md",
           maxWidth: "xl",
           eyebrow: "Wave 02",
           title: "AI-assisted product orchestration",
@@ -429,14 +440,16 @@ const RECIPES = {
             { label: "Guardrail Rules", value: "73" },
             { label: "AI Recommendations", value: "312" },
           ],
+          dashboardImageSrc: "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-products.png",
+          mobileDashboardImageSrc: "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-products.png",
+          dashboardImageAlt: "AI-assisted product orchestration",
         },
       },
       socialproof: {
-        blockType: "NeonResultsShowcase",
+        blockType: "NexusProofMosaic",
         defaults: {
-          paddingY: "lg",
           maxWidth: "xl",
-          title: "Ship faster with Nexus",
+          title: "Ship Faster with Nexus",
           subtitle: "Teams report higher confidence and lower operational load after rollout.",
           quote:
             "Nexus gave us a single control plane for releases. We moved faster while reducing incident pressure across teams.",
@@ -445,9 +458,8 @@ const RECIPES = {
         },
       },
       footer: {
-        blockType: "NeonFooterGlow",
+        blockType: "NexusFooterCommand",
         defaults: {
-          paddingY: "md",
           maxWidth: "xl",
           title: "Ready to streamline your workflow?",
           subtitle: "Join high-performance engineering teams using Nexus to orchestrate delivery from idea to shipping.",
@@ -711,6 +723,279 @@ const RECIPES = {
       },
     },
   },
+  beauty_salon_serene: {
+    id: "beauty_salon_serene",
+    styleLabels: ["beauty-salon", "wellness", "editorial", "soft-beige", "service-booking"],
+    paletteProfile: "soft-beige-neutral",
+    typographySignature: "elegant-sans + clean-body",
+    layoutPatterns: [
+      "minimal-nav-light",
+      "hero-split-portrait",
+      "service-cards-grid",
+      "contrast-feature-with-media",
+      "faq-single-open",
+      "consultation-split",
+      "blog-cards-strip",
+      "compact-multicol-footer",
+    ],
+    componentSignature: [
+      "Navbar",
+      "HeroSplit",
+      "CardsGrid",
+      "FeatureWithMedia",
+      "FAQAccordion",
+      "FeatureWithMedia",
+      "CardsGrid",
+      "LeadCaptureCTA",
+      "Footer",
+    ],
+    requiredCategories: ["navigation", "hero", "story", "approach", "products", "socialproof", "contact", "cta", "footer"],
+    sectionSpecs: {
+      navigation: {
+        blockType: "Navbar",
+        defaults: {
+          variant: "withCTA",
+          sticky: true,
+          paddingY: "sm",
+          maxWidth: "2xl",
+          background: "gradient",
+          backgroundGradient: "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+          logo: "BEAUTY SALON BANGKOK",
+          links: [
+            { label: "Home", href: "#top", variant: "link" },
+            { label: "Services", href: "#services", variant: "link" },
+            { label: "Blog", href: "#blog", variant: "link" },
+            { label: "Contact", href: "#contact", variant: "link" },
+          ],
+          ctas: [{ label: "Book Now", href: "#contact", variant: "primary" }],
+        },
+      },
+      hero: {
+        blockType: "HeroSplit",
+        defaults: {
+          paddingY: "md",
+          maxWidth: "2xl",
+          align: "left",
+          mediaPosition: "right",
+          headingSize: "lg",
+          bodySize: "md",
+          background: "gradient",
+          backgroundGradient: "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+          title: "Discover the best in beauty & wellness.",
+          subtitle: "Premium beauty services for every need. Experience care, style, and confidence.",
+          media: {
+            kind: "image",
+            src: "https://beautybodybangkok.com/wp-content/uploads/2024/06/beautiful-young-woman-smiling.webp",
+            alt: "Beauty salon portrait",
+          },
+          ctas: [
+            { label: "Book Appointment", href: "#contact", variant: "primary" },
+            { label: "Our Services", href: "#services", variant: "secondary" },
+          ],
+        },
+      },
+      story: {
+        blockType: "CardsGrid",
+        defaults: {
+          anchor: "services",
+          paddingY: "md",
+          maxWidth: "2xl",
+          background: "gradient",
+          backgroundGradient: "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+          title: "Our Services",
+          subtitle: "Tailored treatments for every style and skin journey.",
+          variant: "imageText",
+          columns: "3col",
+          density: "normal",
+          cardStyle: "solid",
+          imagePosition: "top",
+          imageShape: "rounded",
+          headingSize: "sm",
+          bodySize: "sm",
+          items: [
+            {
+              title: "Hair Services",
+              description: "Cut, style, treatment, and finishing by experienced stylists.",
+              imageSrc: "https://beautybodybangkok.com/wp-content/uploads/2024/06/lady-giving-a-hair-cut.webp",
+              imageAlt: "Hair service",
+            },
+            {
+              title: "Nail Services",
+              description: "Manicure and pedicure care with hygiene-first detail.",
+              imageSrc: "https://beautybodybangkok.com/wp-content/uploads/2024/06/lady-hand-with-nails-done-after-manicure.webp",
+              imageAlt: "Nail service",
+            },
+            {
+              title: "Makeup Services",
+              description: "Event-ready and daily makeup with personalized looks.",
+              imageSrc: "https://beautybodybangkok.com/wp-content/uploads/2024/06/Waxing-Services.webp",
+              imageAlt: "Makeup and beauty service",
+            },
+            {
+              title: "Massage Services",
+              description: "Relaxing body treatments for stress and recovery.",
+              imageSrc: "https://beautybodybangkok.com/wp-content/uploads/2024/06/foot-massage-and-head-massage-at-the-same-time.webp",
+              imageAlt: "Massage service",
+            },
+            {
+              title: "Facial Care",
+              description: "Customized facials for hydration, balance, and glow.",
+              imageSrc:
+                "https://beautybodybangkok.com/wp-content/uploads/2024/06/Beautician-with-a-brush-applies-a-white-moisturizing-mask-to-the-face-of-a-young-girl-client-in-a-sp_1.webp",
+              imageAlt: "Facial treatment",
+            },
+            {
+              title: "Skincare Services",
+              description: "Professional routines for long-term skin health.",
+              imageSrc: "https://beautybodybangkok.com/wp-content/uploads/2024/06/pedicure-chair-in-a-beauty-salon.webp",
+              imageAlt: "Skincare service",
+            },
+          ],
+        },
+      },
+      approach: {
+        blockType: "FeatureWithMedia",
+        defaults: {
+          anchor: "why-choose-us",
+          variant: "split",
+          paddingY: "md",
+          maxWidth: "2xl",
+          background: "gradient",
+          backgroundGradient: "linear-gradient(180deg,#18181b 0%,#18181b 100%)",
+          contentTone: "light",
+          media: {
+            kind: "image",
+            src: "https://beautybodybangkok.com/wp-content/uploads/2024/06/beauty-body-bangkok-salon.webp",
+            alt: "Salon interior",
+          },
+          eyebrow: "Why Choose Us",
+          title: "Why Choose Beauty Body Bangkok?",
+          subtitle: "Professional care with modern techniques and warm, attentive service.",
+          body: "From expert stylists to premium products and flexible booking, each visit is built around comfort and confidence.",
+          items: [],
+          ctas: [{ label: "Book Appointment", href: "#contact", variant: "secondary" }],
+        },
+      },
+      products: {
+        blockType: "FAQAccordion",
+        defaults: {
+          anchor: "faq",
+          paddingY: "md",
+          maxWidth: "2xl",
+          background: "gradient",
+          backgroundGradient: "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+          title: "Frequently Asked Questions",
+          variant: "singleOpen",
+          items: [
+            { q: "What are your opening hours?", a: "We are open daily, including weekends. Please check current hours before visiting." },
+            { q: "Do I need to book in advance?", a: "Advance booking is recommended for preferred time slots and specialist services." },
+            { q: "What products do you use?", a: "We use salon-grade products selected for safety, performance, and skin compatibility." },
+            { q: "Can I request a specific stylist?", a: "Yes. Mention your preferred stylist while booking and we will arrange it when available." },
+            { q: "Do you offer consultation before treatment?", a: "Yes. We provide consultation to align treatment plans with your goals." },
+          ],
+        },
+      },
+      socialproof: {
+        blockType: "FeatureWithMedia",
+        defaults: {
+          anchor: "consultation",
+          variant: "reverse",
+          paddingY: "md",
+          maxWidth: "2xl",
+          background: "gradient",
+          backgroundGradient: "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+          media: {
+            kind: "image",
+            src: "https://beautybodybangkok.com/wp-content/uploads/2024/06/pedicure-chair-in-a-beauty-salon.webp",
+            alt: "Consultation area",
+          },
+          eyebrow: "Consultation",
+          title: "Free Consultation.",
+          subtitle: "Book a short session to match services with your needs and schedule.",
+          body: "Our team helps you choose the right treatment path before your first appointment.",
+          items: [],
+          ctas: [{ label: "Book a Consultation", href: "#contact", variant: "primary" }],
+        },
+      },
+      contact: {
+        blockType: "CardsGrid",
+        defaults: {
+          anchor: "blog",
+          paddingY: "md",
+          maxWidth: "2xl",
+          background: "gradient",
+          backgroundGradient: "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+          title: "Latest from the Blog",
+          subtitle: "Trends, care routines, and practical beauty advice from our team.",
+          variant: "imageText",
+          columns: "3col",
+          density: "compact",
+          cardStyle: "solid",
+          imagePosition: "top",
+          imageShape: "rounded",
+          headingSize: "sm",
+          bodySize: "sm",
+          items: [
+            {
+              title: "Discover Why Thai Massage is Loved",
+              description: "Explore the history and wellness benefits of traditional Thai massage.",
+              tag: "Massage",
+              imageSrc: "https://beautybodybangkok.com/wp-content/uploads/2024/09/the-origin-of-thai-massage-768x432.webp",
+              imageAlt: "Thai massage guide",
+            },
+            {
+              title: "Eyelash Extensions in Bangkok",
+              description: "A practical guide to styles, retention, and aftercare.",
+              tag: "Eyelash",
+              imageSrc:
+                "https://beautybodybangkok.com/wp-content/uploads/2024/09/stunning-womans-long-eyelashes-768x432.webp",
+              imageAlt: "Eyelash extension close-up",
+            },
+            {
+              title: "How to Choose the Right Salon",
+              description: "Checklist for selecting a reliable salon with the right specialists.",
+              tag: "Salon",
+              imageSrc: "https://beautybodybangkok.com/wp-content/uploads/2024/06/image-7-768x384.jpeg",
+              imageAlt: "Salon styling scene",
+            },
+          ],
+        },
+      },
+      cta: {
+        blockType: "LeadCaptureCTA",
+        defaults: {
+          anchor: "book-now",
+          variant: "card",
+          paddingY: "sm",
+          maxWidth: "2xl",
+          background: "gradient",
+          backgroundGradient: "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+          title: "Ready for your next appointment?",
+          subtitle: "Choose your preferred service and reserve a time in minutes.",
+          cta: { label: "Book Now", href: "#contact", variant: "primary" },
+          note: "Same-day slots available for selected services.",
+        },
+      },
+      footer: {
+        blockType: "Footer",
+        defaults: {
+          anchor: "contact",
+          variant: "multiColumn",
+          paddingY: "md",
+          maxWidth: "2xl",
+          background: "gradient",
+          backgroundGradient: "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+          logoText: "BEAUTY SALON BANGKOK",
+          columns: [
+            { title: "Services", links: [{ label: "Hair", href: "#services" }, { label: "Nails", href: "#services" }, { label: "Facial", href: "#services" }] },
+            { title: "Company", links: [{ label: "About", href: "#why-choose-us" }, { label: "Blog", href: "#blog" }, { label: "Contact", href: "#contact" }] },
+            { title: "Legal", links: [{ label: "Privacy", href: "#privacy" }, { label: "Terms", href: "#terms" }] },
+          ],
+          legal: "© 2026 Beauty Salon Bangkok. All rights reserved.",
+        },
+      },
+    },
+  },
 };
 
 const nowStamp = () => {
@@ -841,7 +1126,7 @@ const ensurePreviewServer = async ({ previewBaseUrl }) => {
   const parsed = new URL(origin);
   const port = Number(parsed.port || (parsed.protocol === "https:" ? 443 : 80));
   const startLogPath = `/tmp/template-factory-preview-${port}.log`;
-  const startCmd = `cd ${JSON.stringify(ROOT)} && nohup npm run start -- -p ${Math.floor(port)} > ${JSON.stringify(
+  const startCmd = `cd ${JSON.stringify(ROOT)} && nohup npm run dev -- -p ${Math.floor(port)} > ${JSON.stringify(
     startLogPath
   )} 2>&1 < /dev/null &`;
 
@@ -856,13 +1141,8 @@ const ensurePreviewServer = async ({ previewBaseUrl }) => {
     return null;
   };
 
-  const fastStart = await tryStartAndWait("start");
+  const fastStart = await tryStartAndWait("dev");
   if (fastStart) return fastStart;
-
-  const buildCmd = `cd ${JSON.stringify(ROOT)} && npm run build`;
-  await runShell(buildCmd, { cwd: ROOT, allowFailure: true });
-  const buildThenStart = await tryStartAndWait("build+start", 45);
-  if (buildThenStart) return buildThenStart;
 
   return {
     origin,
@@ -1209,16 +1489,32 @@ const getImageDimensions = async (filePath) => {
   }
 };
 
-const createImageSlice = async ({ sourcePath, targetPath, topRatio, heightRatio }) => {
+const createImageSlice = async ({ sourcePath, targetPath, topRatio, heightRatio, leftRatio = 0, widthRatio = 1 }) => {
   const dims = await getImageDimensions(sourcePath);
   if (!dims) return null;
   const cropHeight = Math.max(64, Math.min(dims.height, Math.round(dims.height * heightRatio)));
+  const cropWidth = Math.max(64, Math.min(dims.width, Math.round(dims.width * widthRatio)));
   const maxTop = Math.max(0, dims.height - cropHeight);
-  const top = Math.max(0, Math.min(maxTop, Math.round(dims.height * topRatio)));
+  const maxLeft = Math.max(0, dims.width - cropWidth);
+  const topFromTop = Math.max(0, Math.min(maxTop, Math.round(dims.height * topRatio)));
+  const leftFromLeft = Math.max(0, Math.min(maxLeft, Math.round(dims.width * leftRatio)));
   await ensureDir(path.dirname(targetPath));
-  const cmd = `/usr/bin/sips -c ${cropHeight} ${dims.width} --cropOffset ${top} 0 ${JSON.stringify(sourcePath)} -o ${JSON.stringify(
-    targetPath
-  )}`;
+  const cmd = `python3 - <<'PY'
+from PIL import Image
+src = ${JSON.stringify(sourcePath)}
+dst = ${JSON.stringify(targetPath)}
+top = int(${topFromTop})
+left = int(${leftFromLeft})
+crop_h = int(${cropHeight})
+crop_w = int(${cropWidth})
+img = Image.open(src)
+w, h = img.size
+top = max(0, min(h - 1, top))
+left = max(0, min(w - 1, left))
+bottom = max(top + 1, min(h, top + crop_h))
+right = max(left + 1, min(w, left + crop_w))
+img.crop((left, top, right, bottom)).save(dst)
+PY`;
   await runShell(cmd, { cwd: ROOT });
   return targetPath;
 };
@@ -1230,6 +1526,7 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
 
   const isDesignerPreset = preset === "designer_portfolio_minimal";
   const isNexusPreset = preset === "nexus_engineering_neon";
+  const isBeautyPreset = preset === "beauty_salon_serene";
   const desktopRatios = isDesignerPreset
     ? {
         hero: { top: 0.0, height: 0.16 },
@@ -1249,6 +1546,16 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
           socialproof: { top: 0.73, height: 0.12 },
           cta: { top: 0.85, height: 0.06 },
           footer: { top: 0.9, height: 0.1 },
+        }
+    : isBeautyPreset
+      ? {
+          hero: { top: 0.0, height: 0.2, left: 0.52, width: 0.46 },
+          story: { top: 0.2, height: 0.22 },
+          approach: { top: 0.42, height: 0.15 },
+          products: { top: 0.57, height: 0.12 },
+          socialproof: { top: 0.69, height: 0.14 },
+          cta: { top: 0.83, height: 0.08 },
+          footer: { top: 0.91, height: 0.09 },
         }
     : {
         hero: { top: 0.0, height: 0.26 },
@@ -1279,6 +1586,16 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
           cta: { top: 0.86, height: 0.05 },
           footer: { top: 0.91, height: 0.09 },
         }
+    : isBeautyPreset
+      ? {
+          hero: { top: 0.0, height: 0.22 },
+          story: { top: 0.22, height: 0.24 },
+          approach: { top: 0.46, height: 0.14 },
+          products: { top: 0.6, height: 0.11 },
+          socialproof: { top: 0.71, height: 0.14 },
+          cta: { top: 0.85, height: 0.07 },
+          footer: { top: 0.92, height: 0.08 },
+        }
     : {
         hero: { top: 0.0, height: 0.28 },
         story: { top: 0.2, height: 0.22 },
@@ -1300,6 +1617,8 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
         targetPath: outPath,
         topRatio: ratio.top,
         heightRatio: ratio.height,
+        leftRatio: ratio.left ?? 0,
+        widthRatio: ratio.width ?? 1,
       });
       if (result) desktop[key] = `/assets/template-factory/${normalizedId}/slices/desktop-${key}.png`;
     }
@@ -1313,6 +1632,8 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
         targetPath: outPath,
         topRatio: ratio.top,
         heightRatio: ratio.height,
+        leftRatio: ratio.left ?? 0,
+        widthRatio: ratio.width ?? 1,
       });
       if (result) mobile[key] = `/assets/template-factory/${normalizedId}/slices/mobile-${key}.png`;
     }
@@ -1344,6 +1665,9 @@ const chooseRecipe = ({ prompt, title, url, siteId = "" }) => {
   if (/social-automation|socialautomation|luma/.test(siteFingerprint)) {
     return RECIPES.social_automation_neon;
   }
+  if (/beauty-salon-29|beautysalon29|beauty-salon|beauty salon bangkok/.test(siteFingerprint)) {
+    return RECIPES.beauty_salon_serene;
+  }
 
   if (has(/designer-portfolio-81|designer portfolio 81|nava moon|future of design content/i)) {
     return RECIPES.designer_portfolio_minimal;
@@ -1357,6 +1681,9 @@ const chooseRecipe = ({ prompt, title, url, siteId = "" }) => {
     return RECIPES.social_automation_neon;
   }
   if (has(/sixtine|gallery|editorial|luxury|spatial|interior/)) return RECIPES.editorial_luxury;
+  if (has(/beauty salon|beauty-salon|wellness salon|spa salon|salon bangkok|free consultation|nail services/)) {
+    return RECIPES.beauty_salon_serene;
+  }
   if (has(/wellness|clinic|hospitality|travel|hotel|retreat/)) return RECIPES.calm_service;
   if (has(/saas|ai|developer|fintech|platform|cloud|tooling|software/)) return RECIPES.modern_saas;
   return RECIPES.modern_saas;
@@ -1456,15 +1783,25 @@ const buildSectionDefaults = (kind, spec, site, summary, assets = {}) => {
     defaults.subtitle = defaults.subtitle || `Designed for ${pageTitle} with a high-consistency block architecture.`;
     defaults.ctas = defaults.ctas || [{ label: "Get Started", href: "#contact", variant: "primary" }];
     if (assets.desktopUrl) {
+      if (blockType === "NexusHeroDock") {
+        defaults.heroImageSrc = defaults.heroImageSrc || desktopSlices.hero || assets.desktopUrl;
+        defaults.mobileHeroImageSrc =
+          defaults.mobileHeroImageSrc || mobileSlices.hero || assets.mobileUrl || defaults.heroImageSrc;
+        defaults.heroImageAlt = defaults.heroImageAlt || `${pageTitle} hero visual`;
+        return defaults;
+      }
+      const usesImageBackground = !defaults.background || defaults.background === "image";
       if (!defaults.background && !defaults.backgroundMedia && !defaults.media) {
         defaults.background = "image";
       }
-      defaults.backgroundMedia = defaults.backgroundMedia || {
-        kind: "image",
-        src: desktopSlices.hero || assets.desktopUrl,
-        alt: `${pageTitle} reference`,
-      };
-      defaults.backgroundOverlay = defaults.backgroundOverlay || "rgba(5,8,18,0.55)";
+      if (usesImageBackground) {
+        defaults.backgroundMedia = defaults.backgroundMedia || {
+          kind: "image",
+          src: desktopSlices.hero || assets.desktopUrl,
+          alt: `${pageTitle} reference`,
+        };
+        defaults.backgroundOverlay = defaults.backgroundOverlay || "rgba(5,8,18,0.55)";
+      }
       defaults.media =
         defaults.media ||
         (desktopSlices.hero || assets.desktopUrl
@@ -1489,16 +1826,34 @@ const buildSectionDefaults = (kind, spec, site, summary, assets = {}) => {
     defaults.subtitle = defaults.subtitle || "Crafted experiences, measured outcomes, and durable visual language.";
     defaults.body = defaults.body || "This section is generated from a template profile and tuned with prompt context.";
     defaults.ctas = defaults.ctas || [{ label: "Explore", href: "#", variant: "link" }];
-    if (assets.desktopUrl && !defaults.dashboardImageSrc) {
+    if ((blockType === "ContentStory" || blockType === "NeonDashboardStrip" || blockType === "NexusControlPanel") && assets.desktopUrl && !defaults.dashboardImageSrc) {
       defaults.dashboardImageSrc = desktopSlices.story || assets.desktopUrl;
       defaults.dashboardImageAlt = defaults.dashboardImageAlt || `${pageTitle} dashboard visual`;
     }
-    if (!defaults.media?.src && desktopSlices.story) {
+    if ((blockType === "ContentStory" || blockType === "FeatureWithMedia") && !defaults.media?.src && desktopSlices.story) {
       defaults.media = { kind: "image", src: desktopSlices.story, alt: `${pageTitle} story visual` };
     }
-    if (!defaults.mediaSrc && desktopSlices.story) {
+    if ((blockType === "ContentStory" || blockType === "FeatureWithMedia") && !defaults.mediaSrc && desktopSlices.story) {
       defaults.mediaSrc = desktopSlices.story;
       defaults.mediaAlt = defaults.mediaAlt || `${pageTitle} story visual`;
+    }
+    if (blockType === "CardsGrid" && assets.desktopUrl && Array.isArray(defaults.items)) {
+      defaults.items = defaults.items.map((item, index) => {
+        const next = { ...(item || {}) };
+        const hasImage =
+          Boolean(next.image?.src) ||
+          (typeof next.imageSrc === "string" && next.imageSrc.trim().length > 0) ||
+          Boolean(next.cover?.src);
+        if (hasImage) return next;
+        const src =
+          index % 2 === 0
+            ? desktopSlices.story || assets.desktopUrl
+            : mobileSlices.story || assets.mobileUrl || desktopSlices.story || assets.desktopUrl;
+        next.image = { src, alt: next.title || `Service ${index + 1}` };
+        next.imageSrc = src;
+        next.imageAlt = next.title || `Service ${index + 1}`;
+        return next;
+      });
     }
   }
 
@@ -1512,7 +1867,7 @@ const buildSectionDefaults = (kind, spec, site, summary, assets = {}) => {
         { title: "Quality", desc: "Design and implementation quality gates.", icon: "shield" },
         { title: "Impact", desc: "Outcome-focused iteration loop.", icon: "chart" },
       ];
-    if (desktopSlices.approach && Array.isArray(defaults.items)) {
+    if (desktopSlices.approach && Array.isArray(defaults.items) && blockType !== "NexusOpsMatrix") {
       defaults.items = defaults.items.map((item, index) => ({
         ...(item || {}),
         image:
@@ -1529,12 +1884,27 @@ const buildSectionDefaults = (kind, spec, site, summary, assets = {}) => {
         imageAlt: item?.imageAlt || item?.title || `Capability ${index + 1}`,
       }));
     }
+    if ((blockType === "FeatureWithMedia" || blockType === "ContentStory") && !defaults.media?.src) {
+      const src = desktopSlices.approach || assets.desktopUrl;
+      if (src) {
+        defaults.media = { kind: "image", src, alt: `${pageTitle} approach visual` };
+        defaults.mediaSrc = defaults.mediaSrc || src;
+        defaults.mediaAlt = defaults.mediaAlt || `${pageTitle} approach visual`;
+      }
+    }
+    if (blockType === "FeatureWithMedia" && defaults.background === "image" && desktopSlices.approach && !defaults.backgroundMedia) {
+      defaults.backgroundMedia = {
+        kind: "image",
+        src: desktopSlices.approach,
+        alt: `${pageTitle} section background`,
+      };
+    }
   }
 
   if (kind === "products") {
     defaults.title = defaults.title || "Product Portfolio";
     defaults.subtitle = defaults.subtitle || "Modular blocks tailored to your site objectives.";
-    if (blockType === "NeonDashboardStrip" && assets.desktopUrl) {
+    if ((blockType === "NeonDashboardStrip" || blockType === "NexusControlPanel") && assets.desktopUrl) {
       defaults.dashboardImageSrc = defaults.dashboardImageSrc || desktopSlices.products || desktopSlices.story || assets.desktopUrl;
       defaults.mobileDashboardImageSrc =
         defaults.mobileDashboardImageSrc || mobileSlices.products || assets.mobileUrl || defaults.dashboardImageSrc;
@@ -1547,7 +1917,7 @@ const buildSectionDefaults = (kind, spec, site, summary, assets = {}) => {
         { title: "Growth Offer", description: "Expanded capabilities and integrations.", cta: { label: "Details", href: "#" } },
         { title: "Enterprise Offer", description: "Full-service delivery and support.", cta: { label: "Details", href: "#" } },
       ];
-    if (assets.desktopUrl && Array.isArray(defaults.items)) {
+    if (assets.desktopUrl && Array.isArray(defaults.items) && (blockType === "CardsGrid" || blockType === "CaseStudies" || blockType === "DesignerProjectsSplit")) {
       defaults.items = defaults.items.map((item, index) => {
         const next = { ...(item || {}) };
         const projectImage = desktopSlices.products || assets.desktopUrl;
@@ -1584,11 +1954,11 @@ const buildSectionDefaults = (kind, spec, site, summary, assets = {}) => {
           { quote: "They curated a lifestyle, not only a space.", name: "Alexander Vane", role: "CEO" },
           { quote: "A masterclass in restraint and elegance.", name: "Isabelle Dubois", role: "Founder" },
         ];
-      if (assets.desktopUrl && !defaults.imageSrc) {
+      if ((blockType === "TestimonialsGrid" || blockType === "NeonResultsShowcase" || blockType === "NexusProofMosaic") && assets.desktopUrl && !defaults.imageSrc) {
         defaults.imageSrc = desktopSlices.socialproof || assets.desktopUrl;
         defaults.imageAlt = defaults.imageAlt || "Results visual";
       }
-      if (assets.mobileUrl && Array.isArray(defaults.items)) {
+      if (blockType === "TestimonialsGrid" && assets.mobileUrl && Array.isArray(defaults.items)) {
         defaults.items = defaults.items.map((item, index) => ({
           ...(item || {}),
           avatar:
@@ -1600,6 +1970,43 @@ const buildSectionDefaults = (kind, spec, site, summary, assets = {}) => {
                 },
         }));
       }
+      if ((blockType === "FeatureWithMedia" || blockType === "ContentStory") && !defaults.media?.src) {
+        const src = desktopSlices.socialproof || assets.desktopUrl;
+        if (src) {
+          defaults.media = { kind: "image", src, alt: `${pageTitle} social proof visual` };
+          defaults.mediaSrc = defaults.mediaSrc || src;
+          defaults.mediaAlt = defaults.mediaAlt || `${pageTitle} social proof visual`;
+        }
+      }
+    }
+  }
+
+  if (kind === "contact") {
+    if ((blockType === "FeatureWithMedia" || blockType === "ContentStory") && !defaults.media?.src) {
+      const src = desktopSlices.cta || desktopSlices.footer || assets.desktopUrl;
+      if (src) {
+        defaults.media = { kind: "image", src, alt: `${pageTitle} contact visual` };
+        defaults.mediaSrc = defaults.mediaSrc || src;
+        defaults.mediaAlt = defaults.mediaAlt || `${pageTitle} contact visual`;
+      }
+    }
+    if (blockType === "CardsGrid" && assets.desktopUrl && Array.isArray(defaults.items)) {
+      defaults.items = defaults.items.map((item, index) => {
+        const next = { ...(item || {}) };
+        const hasImage =
+          Boolean(next.image?.src) ||
+          (typeof next.imageSrc === "string" && next.imageSrc.trim().length > 0) ||
+          Boolean(next.cover?.src);
+        if (hasImage) return next;
+        const src =
+          index % 2 === 0
+            ? desktopSlices.cta || desktopSlices.footer || assets.desktopUrl
+            : mobileSlices.cta || mobileSlices.footer || assets.mobileUrl || desktopSlices.cta || assets.desktopUrl;
+        next.image = { src, alt: next.title || `Article ${index + 1}` };
+        next.imageSrc = src;
+        next.imageAlt = next.title || `Article ${index + 1}`;
+        return next;
+      });
     }
   }
 
@@ -1619,7 +2026,7 @@ const buildSectionDefaults = (kind, spec, site, summary, assets = {}) => {
         { title: "Legal", links: [{ label: "Privacy", href: "#" }, { label: "Terms", href: "#" }] },
       ];
     defaults.legal = defaults.legal || "© 2026 All rights reserved.";
-    if (desktopSlices.footer && !defaults.backgroundMedia && blockType !== "Footer") {
+    if (desktopSlices.footer && !defaults.backgroundMedia && blockType === "NeonFooterGlow") {
       defaults.background = "image";
       defaults.backgroundMedia = {
         kind: "image",

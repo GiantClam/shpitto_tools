@@ -9,12 +9,17 @@ type NeonFeatureItem = {
   description?: string;
   badge?: string;
   highlight?: boolean;
+  image?: { src?: string; alt?: string };
+  imageSrc?: string;
+  imageAlt?: string;
 };
 
 type NeonFeatureCardsProps = BaseBlockProps & {
   title: string;
   subtitle?: string;
   items?: NeonFeatureItem[];
+  eyebrow?: string;
+  highlightMode?: "first" | "none";
 };
 
 export function NeonFeatureCardsBlock({
@@ -24,6 +29,8 @@ export function NeonFeatureCardsBlock({
   title,
   subtitle,
   items = [],
+  eyebrow = "Wave 02",
+  highlightMode = "first",
 }: NeonFeatureCardsProps) {
   const cards =
     items.length > 0
@@ -45,13 +52,15 @@ export function NeonFeatureCardsBlock({
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(249,115,22,0.22),transparent_45%),linear-gradient(180deg,#090f1b_0%,#0a121f_100%)]" />
       <div className={cn("relative z-10 mx-auto px-4 sm:px-6", maxWidthClass(maxWidth))}>
         <div className="mb-8">
-          <p className="text-xs uppercase tracking-[0.14em] text-[#f59e0b]">Wave 02</p>
+          <p className="text-xs uppercase tracking-[0.14em] text-[#f59e0b]">{eyebrow}</p>
           <h2 className="mt-2 text-5xl font-semibold tracking-tight text-[#f7f9fe]">{title}</h2>
           {subtitle ? <p className="mt-3 text-lg text-[#98a3b7]">{subtitle}</p> : null}
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
           {cards.map((item, index) => {
-            const highlight = Boolean(item.highlight || index === 0);
+            const imageSrc = item.imageSrc || item.image?.src;
+            const imageAlt = item.imageAlt || item.image?.alt || item.title;
+            const highlight = Boolean(item.highlight || (highlightMode !== "none" && index === 0));
             return (
               <article
                 key={`${item.title}-${index}`}
@@ -66,6 +75,11 @@ export function NeonFeatureCardsBlock({
                   <span className={cn("inline-flex rounded-full border px-2 py-1 text-xs", highlight ? "border-[#7a3c0f]/40 bg-[#fcb46e]/30" : "border-[#38445b] bg-[#141f31]")}>
                     {item.badge}
                   </span>
+                ) : null}
+                {imageSrc ? (
+                  <div className="mb-5 overflow-hidden rounded-2xl border border-[#273146] bg-[#0c1421]">
+                    <img src={imageSrc} alt={imageAlt} className="h-36 w-full object-cover opacity-95" loading="lazy" />
+                  </div>
                 ) : null}
                 <h3 className="mt-5 text-4xl font-semibold leading-tight">{item.title}</h3>
                 {item.description ? (

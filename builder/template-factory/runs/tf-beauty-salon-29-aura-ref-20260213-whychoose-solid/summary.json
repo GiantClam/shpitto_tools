@@ -1,0 +1,30 @@
+{
+  "runId": "tf-beauty-salon-29-aura-ref-20260213-whychoose-solid",
+  "manifestPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/sites.beauty-salon-29.with-reference.json",
+  "sites": 1,
+  "runDir": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-beauty-salon-29-aura-ref-20260213-whychoose-solid",
+  "runLibraryPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-beauty-salon-29-aura-ref-20260213-whychoose-solid/style-profiles.generated.json",
+  "publishPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/library/style-profiles.generated.json",
+  "regressionPromptsPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-beauty-salon-29-aura-ref-20260213-whychoose-solid/regression-prompts.json",
+  "regressionReportPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/compare-20260213-192830.json",
+  "scorecardPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-beauty-salon-29-aura-ref-20260213-whychoose-solid/scorecard.json",
+  "overallScore": 97,
+  "previewBaseUrl": "http://127.0.0.1:3110",
+  "previewLinksPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-beauty-salon-29-aura-ref-20260213-whychoose-solid/preview-links.json",
+  "previewLinks": [
+    {
+      "groupId": "C_template_first",
+      "caseId": "beauty-salon-29-aura-ref",
+      "responseId": "p2w_1770982114845",
+      "requestId": "creation_1770982114843_dub5wk",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260213-192830_c-template-first_beauty-salon-29-aura-ref&page=home",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/beauty-salon-29-aura-ref.png"
+    }
+  ],
+  "previewServer": {
+    "origin": "http://127.0.0.1:3110",
+    "reachable": false,
+    "started": false
+  },
+  "previewStartCommand": "cd builder && npm run dev -- -p 3110"
+}

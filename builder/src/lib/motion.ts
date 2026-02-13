@@ -62,7 +62,8 @@ export function useInViewReveal<T extends HTMLElement>(options: RevealOptions = 
 
   const className = useMemo(() => {
     if (!enabled || prefersReducedMotion()) return "";
-    if (!visible) return "opacity-0 translate-y-3";
+    // Keep content visible before intersection to avoid blank sections in long screenshots.
+    if (!visible) return "opacity-100 translate-y-0";
     if (preset === "fadeIn") return "opacity-100";
     if (preset === "stagger") return "opacity-100";
     return "opacity-100 translate-y-0";

@@ -31,6 +31,7 @@ export type FeatureWithMediaProps = BaseBlockProps & {
   title?: string;
   subtitle?: string;
   body?: string;
+  contentTone?: "default" | "light";
   ctas?: LinkProps[];
   items?: FeatureWithMediaItem[];
   media?: FeatureWithMediaMedia;
@@ -57,6 +58,7 @@ export function FeatureWithMediaBlock({
   title,
   subtitle,
   body,
+  contentTone = "default",
   ctas,
   items,
   media,
@@ -100,6 +102,7 @@ export function FeatureWithMediaBlock({
   );
   const backgroundVideo = backgroundVideoSource(background, backgroundMedia);
   const hasBackgroundVideo = Boolean(backgroundVideo?.src);
+  const isLightTone = contentTone === "light";
   const headingStyle = headingFont ? { fontFamily: headingFont } : undefined;
   const bodyStyle = bodyFont ? { fontFamily: bodyFont } : undefined;
 
@@ -137,9 +140,15 @@ export function FeatureWithMediaBlock({
         )}
       >
         <div className={layoutClass} style={{ gap: "var(--space-4)" }}>
-          <div className={cn(textOrderClass, align === "center" ? "text-center" : "text-left")}>
+          <div
+            className={cn(
+              textOrderClass,
+              align === "center" ? "text-center" : "text-left",
+              isLightTone ? "text-white" : ""
+            )}
+          >
             {eyebrow ? (
-              <p className="text-sm text-muted-foreground" style={bodyStyle}>
+              <p className={cn("text-sm", isLightTone ? "text-white/70" : "text-muted-foreground")} style={bodyStyle}>
                 {eyebrow}
               </p>
             ) : null}
@@ -147,7 +156,8 @@ export function FeatureWithMediaBlock({
               <h2
                 className={cn(
                   "mt-3 text-2xl font-semibold tracking-tight sm:text-3xl",
-                  emphasis === "high" ? "text-gradient" : ""
+                  emphasis === "high" && !isLightTone ? "text-gradient" : "",
+                  isLightTone ? "text-white" : ""
                 )}
                 style={headingStyle}
               >
@@ -155,12 +165,12 @@ export function FeatureWithMediaBlock({
               </h2>
             ) : null}
             {subtitle ? (
-              <p className="mt-3 text-base text-muted-foreground sm:text-lg" style={bodyStyle}>
+              <p className={cn("mt-3 text-base sm:text-lg", isLightTone ? "text-white/75" : "text-muted-foreground")} style={bodyStyle}>
                 {subtitle}
               </p>
             ) : null}
             {body ? (
-              <p className="mt-4 text-base text-muted-foreground" style={bodyStyle}>
+              <p className={cn("mt-4 text-base", isLightTone ? "text-white/75" : "text-muted-foreground")} style={bodyStyle}>
                 {body}
               </p>
             ) : null}
@@ -168,11 +178,11 @@ export function FeatureWithMediaBlock({
               <div className="mt-6 space-y-4">
                 {items.slice(0, 6).map((item, idx) => (
                   <div key={idx}>
-                    <div className="text-sm font-medium" style={headingStyle}>
+                    <div className={cn("text-sm font-medium", isLightTone ? "text-white" : "")} style={headingStyle}>
                       {item.title}
                     </div>
                     {item.desc ? (
-                      <p className="mt-1 text-sm text-muted-foreground" style={bodyStyle}>
+                      <p className={cn("mt-1 text-sm", isLightTone ? "text-white/75" : "text-muted-foreground")} style={bodyStyle}>
                         {item.desc}
                       </p>
                     ) : null}

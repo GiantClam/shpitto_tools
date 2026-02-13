@@ -1,0 +1,397 @@
+{
+  "generatedAt": "2026-02-13T09:09:55.771Z",
+  "runId": "tf-nexus-engineering-yellowfix2-20260213-170950",
+  "manifestPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/sites.nexus-engineering.with-reference.json",
+  "profiles": [
+    {
+      "id": "auto_nexus-engineering-aura-ref",
+      "name": "Dark engineering/corporate landing page with precision-grid sections and bright-yellow glow accents (reference screenshots included)",
+      "keywords": [
+        "nexusengineeringauraref",
+        "nexus",
+        "engineering",
+        "aura",
+        "ref",
+        "nexusengineeringaurabuild",
+        "build",
+        "dark",
+        "neon",
+        "landing",
+        "page",
+        "precision",
+        "systems",
+        "messaging",
+        "bright-yellow",
+        "glow",
+        "accents",
+        "dashboard-style",
+        "hero",
+        "metrics",
+        "strips",
+        "capability",
+        "cards",
+        "project"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "NexusNavPulse",
+          "props": {
+            "sticky": true,
+            "maxWidth": "xl",
+            "logoText": "Nexus",
+            "links": [
+              {
+                "label": "Home",
+                "href": "#top"
+              },
+              {
+                "label": "Services",
+                "href": "#services"
+              },
+              {
+                "label": "About",
+                "href": "#about"
+              },
+              {
+                "label": "Contact",
+                "href": "#contact"
+              }
+            ],
+            "cta": {
+              "label": "Get Started",
+              "href": "#contact",
+              "variant": "primary"
+            },
+            "logo": "Aura – AI Website Builder",
+            "ctas": [
+              {
+                "label": "Get Started",
+                "href": "#contact",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "NexusHeroDock",
+          "props": {
+            "maxWidth": "xl",
+            "badge": "Release Orchestration",
+            "title": "Nexus is a precision tool for orchestrating product releases",
+            "subtitle": "Ship with velocity while maintaining reliability, policy control, and measurable rollout quality.",
+            "panelTag": "Live Rollout",
+            "panelTitle": "Release Velocity",
+            "panelSubtitle": "Automated orchestration across environments and teams.",
+            "statValue": "+842%",
+            "statDelta": "vs baseline",
+            "background": "none",
+            "backgroundOverlay": "rgba(4,9,17,0.28)",
+            "ctas": [
+              {
+                "label": "Explore Platform",
+                "href": "#services",
+                "variant": "primary"
+              },
+              {
+                "label": "View Metrics",
+                "href": "#proof",
+                "variant": "secondary"
+              }
+            ],
+            "heroImageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-hero.png",
+            "mobileHeroImageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-hero.png",
+            "heroImageAlt": "Aura – AI Website Builder hero visual"
+          }
+        },
+        "story": {
+          "type": "NexusCapabilityStrip",
+          "props": {
+            "maxWidth": "xl",
+            "eyebrow": "Key Capabilities",
+            "title": "Engineered for modern product teams",
+            "subtitle": "Designed for scale, precision, and reliable execution.",
+            "items": [
+              {
+                "title": "Precision Targeting",
+                "description": "Model workload placement and route policies around intent and business goals."
+              },
+              {
+                "title": "Automated Workflows",
+                "description": "Ship faster with deterministic rollout stages and controls."
+              },
+              {
+                "title": "Brand Safety",
+                "description": "Guardrails and policy checks keep changes reliable by default."
+              }
+            ],
+            "body": "This section is generated from a template profile and tuned with prompt context.",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "#",
+                "variant": "link"
+              }
+            ],
+            "dashboardImageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-story.png",
+            "dashboardImageAlt": "Aura – AI Website Builder dashboard visual",
+            "media": {
+              "kind": "image",
+              "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-story.png",
+              "alt": "Aura – AI Website Builder story visual"
+            },
+            "mediaSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-story.png",
+            "mediaAlt": "Aura – AI Website Builder story visual"
+          }
+        },
+        "approach": {
+          "type": "NexusOpsMatrix",
+          "props": {
+            "maxWidth": "xl",
+            "eyebrow": "Wave 01",
+            "title": "Deploy with velocity, scale without ceremony.",
+            "subtitle": "Control release workflows without adding operational drag.",
+            "items": [
+              {
+                "title": "Zero-config infrastructure",
+                "description": "Provision workers, routes, and policies in one surface."
+              },
+              {
+                "title": "Traffic-aware scaling",
+                "description": "Continuously adapt workloads to demand signals."
+              },
+              {
+                "title": "Precision analytics",
+                "description": "Observe every deploy in real time: rollout health and regional error budgets.",
+                "imageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-approach.png",
+                "imageAlt": "Precision analytics"
+              },
+              {
+                "title": "Unified workflow control",
+                "description": "Feature flags, canary rollouts, and instant rollback from one surface.",
+                "imageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-approach.png",
+                "imageAlt": "Unified workflow control"
+              }
+            ]
+          }
+        },
+        "socialproof": {
+          "type": "NexusProofMosaic",
+          "props": {
+            "maxWidth": "xl",
+            "title": "Ship Faster with Nexus",
+            "subtitle": "Teams report higher confidence and lower operational load after rollout.",
+            "quote": "Nexus gave us a single control plane for releases. We moved faster while reducing incident pressure across teams.",
+            "author": "Claire",
+            "role": "Engineering Lead",
+            "items": [
+              {
+                "quote": "They curated a lifestyle, not only a space.",
+                "name": "Alexander Vane",
+                "role": "CEO",
+                "avatar": {
+                  "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-socialproof.png",
+                  "alt": "Alexander Vane"
+                }
+              },
+              {
+                "quote": "A masterclass in restraint and elegance.",
+                "name": "Isabelle Dubois",
+                "role": "Founder",
+                "avatar": {
+                  "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-socialproof.png",
+                  "alt": "Isabelle Dubois"
+                }
+              }
+            ],
+            "imageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-socialproof.png",
+            "imageAlt": "Results visual"
+          }
+        },
+        "products": {
+          "type": "NexusControlPanel",
+          "props": {
+            "maxWidth": "xl",
+            "eyebrow": "Wave 02",
+            "title": "AI-assisted product orchestration",
+            "subtitle": "Guide releases with context-aware automation and operator oversight.",
+            "tabs": [
+              {
+                "label": "Pipelines"
+              },
+              {
+                "label": "Signals"
+              },
+              {
+                "label": "Budgets"
+              },
+              {
+                "label": "Teams"
+              }
+            ],
+            "metrics": [
+              {
+                "label": "Release Success",
+                "value": "99.4%"
+              },
+              {
+                "label": "Error Budget Burn",
+                "value": "-42%"
+              },
+              {
+                "label": "Mean Restore Time",
+                "value": "2m 18s"
+              }
+            ],
+            "kpis": [
+              {
+                "label": "Active Pipelines",
+                "value": "128"
+              },
+              {
+                "label": "Guardrail Rules",
+                "value": "73"
+              },
+              {
+                "label": "AI Recommendations",
+                "value": "312"
+              }
+            ],
+            "dashboardImageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-products.png",
+            "mobileDashboardImageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-products.png",
+            "dashboardImageAlt": "AI-assisted product orchestration",
+            "items": [
+              {
+                "title": "Primary Offer",
+                "description": "High-demand offer package.",
+                "cta": {
+                  "label": "Details",
+                  "href": "#"
+                },
+                "image": {
+                  "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-products.png",
+                  "alt": "Primary Offer"
+                },
+                "cover": {
+                  "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-products.png",
+                  "alt": "Primary Offer"
+                },
+                "imageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-products.png",
+                "imageAlt": "Primary Offer"
+              },
+              {
+                "title": "Growth Offer",
+                "description": "Expanded capabilities and integrations.",
+                "cta": {
+                  "label": "Details",
+                  "href": "#"
+                },
+                "image": {
+                  "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-products.png",
+                  "alt": "Growth Offer"
+                },
+                "cover": {
+                  "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-products.png",
+                  "alt": "Growth Offer"
+                },
+                "imageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-products.png",
+                "imageAlt": "Growth Offer"
+              },
+              {
+                "title": "Enterprise Offer",
+                "description": "Full-service delivery and support.",
+                "cta": {
+                  "label": "Details",
+                  "href": "#"
+                },
+                "image": {
+                  "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-products.png",
+                  "alt": "Enterprise Offer"
+                },
+                "cover": {
+                  "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-products.png",
+                  "alt": "Enterprise Offer"
+                },
+                "imageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-products.png",
+                "imageAlt": "Enterprise Offer"
+              }
+            ]
+          }
+        },
+        "footer": {
+          "type": "NexusFooterCommand",
+          "props": {
+            "maxWidth": "xl",
+            "title": "Ready to streamline your workflow?",
+            "subtitle": "Join high-performance engineering teams using Nexus to orchestrate delivery from idea to shipping.",
+            "primaryCta": {
+              "label": "Start building for free",
+              "href": "#contact",
+              "variant": "primary"
+            },
+            "secondaryCta": {
+              "label": "Contact Sales",
+              "href": "#contact",
+              "variant": "secondary"
+            },
+            "columns": [
+              {
+                "title": "Product",
+                "links": [
+                  {
+                    "label": "Features",
+                    "href": "#services"
+                  },
+                  {
+                    "label": "Integrations",
+                    "href": "#services"
+                  }
+                ]
+              },
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "About",
+                    "href": "#about"
+                  },
+                  {
+                    "label": "Careers",
+                    "href": "#about"
+                  }
+                ]
+              },
+              {
+                "title": "Resources",
+                "links": [
+                  {
+                    "label": "Community",
+                    "href": "#resources"
+                  },
+                  {
+                    "label": "Help Center",
+                    "href": "#resources"
+                  }
+                ]
+              },
+              {
+                "title": "Legal",
+                "links": [
+                  {
+                    "label": "Privacy Policy",
+                    "href": "#legal"
+                  },
+                  {
+                    "label": "Terms of Service",
+                    "href": "#legal"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2024 Nexus Inc. All rights reserved.",
+            "logoText": "Aura – AI Website Builde"
+          }
+        }
+      }
+    }
+  ]
+}

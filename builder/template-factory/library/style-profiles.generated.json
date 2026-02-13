@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-02-13T04:56:06.500Z",
-  "sourceRunId": "tf-nexus-engineering-aura-ref-fix-20260213-2",
-  "profileCount": 6,
+  "generatedAt": "2026-02-13T11:28:30.249Z",
+  "sourceRunId": "tf-beauty-salon-29-aura-ref-20260213-whychoose-solid",
+  "profileCount": 7,
   "profiles": [
     {
       "id": "auto_sixtine-reference",
@@ -1404,7 +1404,7 @@
     },
     {
       "id": "auto_nexus-engineering-aura-ref",
-      "name": "Dark engineering/corporate landing page with precision-grid sections and orange glow accents (reference screenshots included)",
+      "name": "Dark engineering/corporate landing page with precision-grid sections and bright-yellow glow accents (reference screenshots included)",
       "keywords": [
         "nexusengineeringauraref",
         "nexus",
@@ -1420,7 +1420,7 @@
         "precision",
         "systems",
         "messaging",
-        "orange",
+        "bright-yellow",
         "glow",
         "accents",
         "dashboard-style",
@@ -1433,58 +1433,58 @@
       ],
       "templates": {
         "navigation": {
-          "type": "Navbar",
+          "type": "NexusNavPulse",
           "props": {
-            "variant": "withCTA",
             "sticky": true,
-            "paddingY": "sm",
             "maxWidth": "xl",
-            "background": "gradient",
+            "logoText": "Nexus",
             "links": [
               {
                 "label": "Home",
-                "href": "#top",
-                "variant": "link"
+                "href": "#top"
               },
               {
                 "label": "Services",
-                "href": "#services",
-                "variant": "link"
+                "href": "#services"
               },
               {
                 "label": "About",
-                "href": "#about",
-                "variant": "link"
+                "href": "#about"
               },
               {
                 "label": "Contact",
-                "href": "#contact",
-                "variant": "link"
+                "href": "#contact"
               }
             ],
+            "cta": {
+              "label": "Get Started",
+              "href": "#contact",
+              "variant": "primary"
+            },
+            "logo": "Aura – AI Website Builder",
             "ctas": [
               {
                 "label": "Get Started",
                 "href": "#contact",
                 "variant": "primary"
               }
-            ],
-            "logo": "Aura – AI Website Builder"
+            ]
           }
         },
         "hero": {
-          "type": "NeonHeroBeam",
+          "type": "NexusHeroDock",
           "props": {
-            "paddingY": "lg",
             "maxWidth": "xl",
-            "badge": "Nexus Platform",
+            "badge": "Release Orchestration",
             "title": "Nexus is a precision tool for orchestrating product releases",
             "subtitle": "Ship with velocity while maintaining reliability, policy control, and measurable rollout quality.",
-            "panelTag": "Performance",
+            "panelTag": "Live Rollout",
             "panelTitle": "Release Velocity",
-            "panelSubtitle": "Automated orchestration across environments.",
+            "panelSubtitle": "Automated orchestration across environments and teams.",
             "statValue": "+842%",
             "statDelta": "vs baseline",
+            "background": "none",
+            "backgroundOverlay": "rgba(4,9,17,0.28)",
             "ctas": [
               {
                 "label": "Explore Platform",
@@ -1497,71 +1497,30 @@
                 "variant": "secondary"
               }
             ],
-            "background": "image",
-            "backgroundMedia": {
-              "kind": "image",
-              "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-hero.png",
-              "alt": "Aura – AI Website Builder reference"
-            },
-            "backgroundOverlay": "rgba(5,8,18,0.55)",
-            "media": {
-              "kind": "image",
-              "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-hero.png",
-              "alt": "Aura – AI Website Builder hero visual"
-            }
+            "heroImageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-hero.png",
+            "mobileHeroImageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-hero.png",
+            "heroImageAlt": "Aura – AI Website Builder hero visual"
           }
         },
         "story": {
-          "type": "NeonDashboardStrip",
+          "type": "NexusCapabilityStrip",
           "props": {
-            "paddingY": "md",
             "maxWidth": "xl",
-            "eyebrow": "Wave 01",
+            "eyebrow": "Key Capabilities",
             "title": "Engineered for modern product teams",
-            "subtitle": "Operational confidence through unified workflows, observability, and rollout controls.",
-            "tabs": [
+            "subtitle": "Designed for scale, precision, and reliable execution.",
+            "items": [
               {
-                "label": "Releases"
+                "title": "Precision Targeting",
+                "description": "Model workload placement and route policies around intent and business goals."
               },
               {
-                "label": "Policy"
+                "title": "Automated Workflows",
+                "description": "Ship faster with deterministic rollout stages and controls."
               },
               {
-                "label": "Insights"
-              },
-              {
-                "label": "Safety"
-              },
-              {
-                "label": "AI"
-              }
-            ],
-            "metrics": [
-              {
-                "label": "Deploy Frequency",
-                "value": "96/day"
-              },
-              {
-                "label": "Rollback Window",
-                "value": "< 3 min"
-              },
-              {
-                "label": "Policy Coverage",
-                "value": "99.2%"
-              }
-            ],
-            "kpis": [
-              {
-                "label": "Team Workspaces",
-                "value": "54"
-              },
-              {
-                "label": "Services Managed",
-                "value": "216"
-              },
-              {
-                "label": "Active Alerts",
-                "value": "7"
+                "title": "Brand Safety",
+                "description": "Guardrails and policy checks keep changes reliable by default."
               }
             ],
             "body": "This section is generated from a template profile and tuned with prompt context.",
@@ -1584,51 +1543,30 @@
           }
         },
         "approach": {
-          "type": "NeonFeatureCards",
+          "type": "NexusOpsMatrix",
           "props": {
-            "paddingY": "lg",
             "maxWidth": "xl",
+            "eyebrow": "Wave 01",
             "title": "Deploy with velocity, scale without ceremony.",
             "subtitle": "Control release workflows without adding operational drag.",
             "items": [
               {
                 "title": "Zero-config infrastructure",
-                "description": "Provision workers, routes, and policies in one surface.",
-                "highlight": true,
-                "image": {
-                  "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-approach.png",
-                  "alt": "Zero-config infrastructure"
-                },
-                "imageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-approach.png",
-                "imageAlt": "Zero-config infrastructure"
+                "description": "Provision workers, routes, and policies in one surface."
               },
               {
                 "title": "Traffic-aware scaling",
-                "description": "Continuously adapt workloads to demand signals.",
-                "image": {
-                  "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-approach.png",
-                  "alt": "Traffic-aware scaling"
-                },
-                "imageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-approach.png",
-                "imageAlt": "Traffic-aware scaling"
+                "description": "Continuously adapt workloads to demand signals."
               },
               {
                 "title": "Precision analytics",
-                "description": "Observe rollout health and budget impact in real time.",
-                "image": {
-                  "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-approach.png",
-                  "alt": "Precision analytics"
-                },
-                "imageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-approach.png",
+                "description": "Observe every deploy in real time: rollout health and regional error budgets.",
+                "imageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-approach.png",
                 "imageAlt": "Precision analytics"
               },
               {
                 "title": "Unified workflow control",
-                "description": "Feature flags, canary rollouts, and instant rollback.",
-                "image": {
-                  "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-approach.png",
-                  "alt": "Unified workflow control"
-                },
+                "description": "Feature flags, canary rollouts, and instant rollback from one surface.",
                 "imageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-approach.png",
                 "imageAlt": "Unified workflow control"
               }
@@ -1636,11 +1574,10 @@
           }
         },
         "socialproof": {
-          "type": "NeonResultsShowcase",
+          "type": "NexusProofMosaic",
           "props": {
-            "paddingY": "lg",
             "maxWidth": "xl",
-            "title": "Ship faster with Nexus",
+            "title": "Ship Faster with Nexus",
             "subtitle": "Teams report higher confidence and lower operational load after rollout.",
             "quote": "Nexus gave us a single control plane for releases. We moved faster while reducing incident pressure across teams.",
             "author": "Claire",
@@ -1670,9 +1607,8 @@
           }
         },
         "products": {
-          "type": "NeonDashboardStrip",
+          "type": "NexusControlPanel",
           "props": {
-            "paddingY": "md",
             "maxWidth": "xl",
             "eyebrow": "Wave 02",
             "title": "AI-assisted product orchestration",
@@ -1721,7 +1657,7 @@
             ],
             "dashboardImageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-products.png",
             "mobileDashboardImageSrc": "/assets/template-factory/nexus-engineering-aura-ref/slices/mobile-products.png",
-            "dashboardImageAlt": "Aura – AI Website Builder dashboard visual",
+            "dashboardImageAlt": "AI-assisted product orchestration",
             "items": [
               {
                 "title": "Primary Offer",
@@ -1781,9 +1717,8 @@
           }
         },
         "footer": {
-          "type": "NeonFooterGlow",
+          "type": "NexusFooterCommand",
           "props": {
-            "paddingY": "md",
             "maxWidth": "xl",
             "title": "Ready to streamline your workflow?",
             "subtitle": "Join high-performance engineering teams using Nexus to orchestrate delivery from idea to shipping.",
@@ -1852,14 +1787,395 @@
               }
             ],
             "legal": "© 2024 Nexus Inc. All rights reserved.",
-            "logoText": "Aura – AI Website Builde",
-            "background": "image",
-            "backgroundMedia": {
+            "logoText": "Aura – AI Website Builde"
+          }
+        }
+      }
+    },
+    {
+      "id": "auto_beauty-salon-29-aura-ref",
+      "name": "Soft-light beauty salon and wellness clinic homepage with feminine editorial sections and service booking focus (reference screenshots included)",
+      "keywords": [
+        "beautysalonauraref",
+        "beauty",
+        "salon",
+        "aura",
+        "ref",
+        "beautysalonaurabuild",
+        "build",
+        "calm",
+        "wellness",
+        "clinic",
+        "landing",
+        "page",
+        "soft",
+        "neutral",
+        "tones",
+        "elegant",
+        "hero",
+        "signature",
+        "treatment",
+        "highlights",
+        "before-after",
+        "proof",
+        "stylist",
+        "intro"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "2xl",
+            "background": "gradient",
+            "backgroundGradient": "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+            "logo": "BEAUTY SALON BANGKOK",
+            "links": [
+              {
+                "label": "Home",
+                "href": "#top",
+                "variant": "link"
+              },
+              {
+                "label": "Services",
+                "href": "#services",
+                "variant": "link"
+              },
+              {
+                "label": "Blog",
+                "href": "#blog",
+                "variant": "link"
+              },
+              {
+                "label": "Contact",
+                "href": "#contact",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Book Now",
+                "href": "#contact",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "paddingY": "md",
+            "maxWidth": "2xl",
+            "align": "left",
+            "mediaPosition": "right",
+            "headingSize": "lg",
+            "bodySize": "md",
+            "background": "gradient",
+            "backgroundGradient": "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+            "title": "Discover the best in beauty & wellness.",
+            "subtitle": "Premium beauty services for every need. Experience care, style, and confidence.",
+            "media": {
               "kind": "image",
-              "src": "/assets/template-factory/nexus-engineering-aura-ref/slices/desktop-footer.png",
-              "alt": "Aura – AI Website Builder footer visual"
+              "src": "https://beautybodybangkok.com/wp-content/uploads/2024/06/beautiful-young-woman-smiling.webp",
+              "alt": "Beauty salon portrait"
             },
-            "backgroundOverlay": "rgba(0,0,0,0.15)"
+            "ctas": [
+              {
+                "label": "Book Appointment",
+                "href": "#contact",
+                "variant": "primary"
+              },
+              {
+                "label": "Our Services",
+                "href": "#services",
+                "variant": "secondary"
+              }
+            ]
+          }
+        },
+        "story": {
+          "type": "CardsGrid",
+          "props": {
+            "anchor": "services",
+            "paddingY": "md",
+            "maxWidth": "2xl",
+            "background": "gradient",
+            "backgroundGradient": "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+            "title": "Our Services",
+            "subtitle": "Tailored treatments for every style and skin journey.",
+            "variant": "imageText",
+            "columns": "3col",
+            "density": "normal",
+            "cardStyle": "solid",
+            "imagePosition": "top",
+            "imageShape": "rounded",
+            "headingSize": "sm",
+            "bodySize": "sm",
+            "items": [
+              {
+                "title": "Hair Services",
+                "description": "Cut, style, treatment, and finishing by experienced stylists.",
+                "imageSrc": "https://beautybodybangkok.com/wp-content/uploads/2024/06/lady-giving-a-hair-cut.webp",
+                "imageAlt": "Hair service"
+              },
+              {
+                "title": "Nail Services",
+                "description": "Manicure and pedicure care with hygiene-first detail.",
+                "imageSrc": "https://beautybodybangkok.com/wp-content/uploads/2024/06/lady-hand-with-nails-done-after-manicure.webp",
+                "imageAlt": "Nail service"
+              },
+              {
+                "title": "Makeup Services",
+                "description": "Event-ready and daily makeup with personalized looks.",
+                "imageSrc": "https://beautybodybangkok.com/wp-content/uploads/2024/06/Waxing-Services.webp",
+                "imageAlt": "Makeup and beauty service"
+              },
+              {
+                "title": "Massage Services",
+                "description": "Relaxing body treatments for stress and recovery.",
+                "imageSrc": "https://beautybodybangkok.com/wp-content/uploads/2024/06/foot-massage-and-head-massage-at-the-same-time.webp",
+                "imageAlt": "Massage service"
+              },
+              {
+                "title": "Facial Care",
+                "description": "Customized facials for hydration, balance, and glow.",
+                "imageSrc": "https://beautybodybangkok.com/wp-content/uploads/2024/06/Beautician-with-a-brush-applies-a-white-moisturizing-mask-to-the-face-of-a-young-girl-client-in-a-sp_1.webp",
+                "imageAlt": "Facial treatment"
+              },
+              {
+                "title": "Skincare Services",
+                "description": "Professional routines for long-term skin health.",
+                "imageSrc": "https://beautybodybangkok.com/wp-content/uploads/2024/06/pedicure-chair-in-a-beauty-salon.webp",
+                "imageAlt": "Skincare service"
+              }
+            ],
+            "eyebrow": "Our Story",
+            "body": "This section is generated from a template profile and tuned with prompt context.",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "#",
+                "variant": "link"
+              }
+            ]
+          }
+        },
+        "approach": {
+          "type": "FeatureWithMedia",
+          "props": {
+            "anchor": "why-choose-us",
+            "variant": "split",
+            "paddingY": "md",
+            "maxWidth": "2xl",
+            "background": "gradient",
+            "backgroundGradient": "linear-gradient(180deg,#18181b 0%,#18181b 100%)",
+            "contentTone": "light",
+            "media": {
+              "kind": "image",
+              "src": "https://beautybodybangkok.com/wp-content/uploads/2024/06/beauty-body-bangkok-salon.webp",
+              "alt": "Salon interior"
+            },
+            "eyebrow": "Why Choose Us",
+            "title": "Why Choose Beauty Body Bangkok?",
+            "subtitle": "Professional care with modern techniques and warm, attentive service.",
+            "body": "From expert stylists to premium products and flexible booking, each visit is built around comfort and confidence.",
+            "items": [],
+            "ctas": [
+              {
+                "label": "Book Appointment",
+                "href": "#contact",
+                "variant": "secondary"
+              }
+            ]
+          }
+        },
+        "socialproof": {
+          "type": "FeatureWithMedia",
+          "props": {
+            "anchor": "consultation",
+            "variant": "reverse",
+            "paddingY": "md",
+            "maxWidth": "2xl",
+            "background": "gradient",
+            "backgroundGradient": "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+            "media": {
+              "kind": "image",
+              "src": "https://beautybodybangkok.com/wp-content/uploads/2024/06/pedicure-chair-in-a-beauty-salon.webp",
+              "alt": "Consultation area"
+            },
+            "eyebrow": "Consultation",
+            "title": "Free Consultation.",
+            "subtitle": "Book a short session to match services with your needs and schedule.",
+            "body": "Our team helps you choose the right treatment path before your first appointment.",
+            "items": [],
+            "ctas": [
+              {
+                "label": "Book a Consultation",
+                "href": "#contact",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "products": {
+          "type": "FAQAccordion",
+          "props": {
+            "anchor": "faq",
+            "paddingY": "md",
+            "maxWidth": "2xl",
+            "background": "gradient",
+            "backgroundGradient": "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+            "title": "Frequently Asked Questions",
+            "variant": "singleOpen",
+            "items": [
+              {
+                "q": "What are your opening hours?",
+                "a": "We are open daily, including weekends. Please check current hours before visiting."
+              },
+              {
+                "q": "Do I need to book in advance?",
+                "a": "Advance booking is recommended for preferred time slots and specialist services."
+              },
+              {
+                "q": "What products do you use?",
+                "a": "We use salon-grade products selected for safety, performance, and skin compatibility."
+              },
+              {
+                "q": "Can I request a specific stylist?",
+                "a": "Yes. Mention your preferred stylist while booking and we will arrange it when available."
+              },
+              {
+                "q": "Do you offer consultation before treatment?",
+                "a": "Yes. We provide consultation to align treatment plans with your goals."
+              }
+            ],
+            "subtitle": "Modular blocks tailored to your site objectives."
+          }
+        },
+        "contact": {
+          "type": "CardsGrid",
+          "props": {
+            "anchor": "blog",
+            "paddingY": "md",
+            "maxWidth": "2xl",
+            "background": "gradient",
+            "backgroundGradient": "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+            "title": "Latest from the Blog",
+            "subtitle": "Trends, care routines, and practical beauty advice from our team.",
+            "variant": "imageText",
+            "columns": "3col",
+            "density": "compact",
+            "cardStyle": "solid",
+            "imagePosition": "top",
+            "imageShape": "rounded",
+            "headingSize": "sm",
+            "bodySize": "sm",
+            "items": [
+              {
+                "title": "Discover Why Thai Massage is Loved",
+                "description": "Explore the history and wellness benefits of traditional Thai massage.",
+                "tag": "Massage",
+                "imageSrc": "https://beautybodybangkok.com/wp-content/uploads/2024/09/the-origin-of-thai-massage-768x432.webp",
+                "imageAlt": "Thai massage guide"
+              },
+              {
+                "title": "Eyelash Extensions in Bangkok",
+                "description": "A practical guide to styles, retention, and aftercare.",
+                "tag": "Eyelash",
+                "imageSrc": "https://beautybodybangkok.com/wp-content/uploads/2024/09/stunning-womans-long-eyelashes-768x432.webp",
+                "imageAlt": "Eyelash extension close-up"
+              },
+              {
+                "title": "How to Choose the Right Salon",
+                "description": "Checklist for selecting a reliable salon with the right specialists.",
+                "tag": "Salon",
+                "imageSrc": "https://beautybodybangkok.com/wp-content/uploads/2024/06/image-7-768x384.jpeg",
+                "imageAlt": "Salon styling scene"
+              }
+            ]
+          }
+        },
+        "cta": {
+          "type": "LeadCaptureCTA",
+          "props": {
+            "anchor": "book-now",
+            "variant": "card",
+            "paddingY": "sm",
+            "maxWidth": "2xl",
+            "background": "gradient",
+            "backgroundGradient": "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+            "title": "Ready for your next appointment?",
+            "subtitle": "Choose your preferred service and reserve a time in minutes.",
+            "cta": {
+              "label": "Book Now",
+              "href": "#contact",
+              "variant": "primary"
+            },
+            "note": "Same-day slots available for selected services."
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "anchor": "contact",
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "2xl",
+            "background": "gradient",
+            "backgroundGradient": "linear-gradient(180deg,#fafaf9 0%,#f6f6f4 100%)",
+            "logoText": "BEAUTY SALON BANGKOK",
+            "columns": [
+              {
+                "title": "Services",
+                "links": [
+                  {
+                    "label": "Hair",
+                    "href": "#services"
+                  },
+                  {
+                    "label": "Nails",
+                    "href": "#services"
+                  },
+                  {
+                    "label": "Facial",
+                    "href": "#services"
+                  }
+                ]
+              },
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "About",
+                    "href": "#why-choose-us"
+                  },
+                  {
+                    "label": "Blog",
+                    "href": "#blog"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "#contact"
+                  }
+                ]
+              },
+              {
+                "title": "Legal",
+                "links": [
+                  {
+                    "label": "Privacy",
+                    "href": "#privacy"
+                  },
+                  {
+                    "label": "Terms",
+                    "href": "#terms"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 Beauty Salon Bangkok. All rights reserved."
           }
         }
       }

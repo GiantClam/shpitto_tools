@@ -3722,11 +3722,21 @@ const isCtaLikeBlock = (item: { type?: string; props?: Record<string, unknown> }
   return type.includes("leadcapture") || type.includes("cta") || anchor.includes("cta") || id.includes("cta");
 };
 
+const footerProvidesCta = (item: { type?: string; props?: Record<string, unknown> } | undefined) => {
+  if (!isFooterLikeBlock(item)) return false;
+  const props = (item?.props ?? {}) as Record<string, unknown>;
+  if (props.primaryCta && typeof props.primaryCta === "object") return true;
+  if (props.secondaryCta && typeof props.secondaryCta === "object") return true;
+  if (props.cta && typeof props.cta === "object") return true;
+  if (Array.isArray((props as any).ctas) && (props as any).ctas.length > 0) return true;
+  return false;
+};
+
 const pageHasFooterBlock = (content: Array<{ type?: string; props?: Record<string, unknown> }>) =>
   content.some((item) => isFooterLikeBlock(item));
 
 const pageHasCtaBlock = (content: Array<{ type?: string; props?: Record<string, unknown> }>) =>
-  content.some((item) => isCtaLikeBlock(item));
+  content.some((item) => isCtaLikeBlock(item) || footerProvidesCta(item));
 
 const pageHasNavigationSection = (page: ReturnType<typeof normalizePages>[number]) =>
   Array.isArray(page?.sections) &&
