@@ -31,7 +31,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "regression:creation": "node regression/run-creation-baseline.mjs",
+    "regression:strategy": "node regression/run-strategy-comparison.mjs",
+    "template:factory": "node template-factory/run-template-factory.mjs"
   },
   "devDependencies": {
     "@types/react": "19.2.9",

@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-02-11T17:01:36.766Z",
+  "options": {
+    "baseUrl": "http://localhost:3110",
+    "promptsFile": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/prompts.baseline.json",
+    "logFile": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/logs/creation.log",
+    "outDir": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/reports",
+    "maxCases": 1,
+    "delayMs": 350,
+    "persist": true
+  },
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "successRate": 1,
+    "fallbackRate": 0,
+    "timeoutRate": 0,
+    "avgDurationMs": 135471,
+    "p95DurationMs": 135471,
+    "totalUsageInputTokens": 42448,
+    "totalUsageOutputTokens": 13646,
+    "totalProviderFailures": 1,
+    "totalParseFailures": 0,
+    "totalLayoutInvalid": 1,
+    "totalToolMissing": 0,
+    "totalToolEmptyPayload": 0
+  },
+  "results": [
+    {
+      "id": "luxury-interior-sixtine",
+      "description": "高端住宅室内设计官网（偏编辑感）",
+      "requestId": "creation_1770829160999_wnykq2",
+      "responseId": "p2w_1770829161004",
+      "statusCode": 200,
+      "passed": true,
+      "durationMs": 135471,
+      "errors": [],
+      "missingRequired": [],
+      "blockTypes": [
+        "Navigation",
+        "Hero",
+        "StudioStory",
+        "ApproachMetrics",
+        "TestimonialsGrid",
+        "LeadCaptureCTA",
+        "Footer"
+      ],
+      "detectedCategories": [
+        "approach",
+        "cta",
+        "footer",
+        "hero",
+        "navigation",
+        "socialproof",
+        "story"
+      ],
+      "hasFallbackBlock": false,
+      "hasSectionFallbackError": false,
+      "hasTimeoutFallback": false,
+      "componentsCount": 5,
+      "pageCount": 1,
+      "requestError": null,
+      "logMetrics": {
+        "usageInputTokens": 42448,
+        "usageOutputTokens": 13646,
+        "sectionOk": 4,
+        "sectionFallback": 0,
+        "parseFailed": 0,
+        "layoutInvalid": 1,
+        "providerFailed": 1,
+        "toolMissing": 0,
+        "toolEmptyPayload": 0,
+        "timeoutFallback": 0
+      }
+    }
+  ]
+}

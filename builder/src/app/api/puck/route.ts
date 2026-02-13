@@ -2,9 +2,20 @@ import { promises as fs } from "fs";
 import path from "path";
 import { NextRequest, NextResponse } from "next/server";
 
+const normalizeSiteKey = (value: string) => {
+  const trimmed = value.trim();
+  if (!trimmed) return "demo";
+  try {
+    return decodeURIComponent(trimmed);
+  } catch {
+    return trimmed;
+  }
+};
+
 const resolveParams = (request: NextRequest) => {
   const { searchParams } = new URL(request.url);
-  const siteKey = searchParams.get("siteKey") ?? searchParams.get("site") ?? "demo";
+  const siteKeyRaw = searchParams.get("siteKey") ?? searchParams.get("site") ?? "demo";
+  const siteKey = normalizeSiteKey(siteKeyRaw);
   const page = searchParams.get("page") ?? "home";
   const iter = searchParams.get("iter");
   return { siteKey, page, iter };
@@ -55,7 +66,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const siteKey = body.siteKey ?? body.site ?? "demo";
+  const siteKey = normalizeSiteKey(String(body.siteKey ?? body.site ?? "demo"));
   const page = body.page ?? "home";
   const data = body.data;
   if (!data || typeof data !== "object") {

@@ -1,0 +1,242 @@
+{
+  "id": "auto_designer-portfolio-81-aura-ref",
+  "name": "Designer portfolio dark editorial landing page (reference screenshots included)",
+  "keywords": [
+    "designer",
+    "portfolio",
+    "landing",
+    "page",
+    "dark",
+    "editorial",
+    "style",
+    "strong",
+    "visual",
+    "hierarchy",
+    "high-contrast",
+    "hero",
+    "showcase",
+    "sections",
+    "testimonials",
+    "conversion",
+    "cta",
+    "structured",
+    "footer",
+    "reference"
+  ],
+  "templates": {
+    "navigation": {
+      "type": "Navbar",
+      "props": {
+        "variant": "withCTA",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "logo": "Aura – AI Website Builder",
+        "links": [
+          {
+            "label": "Home",
+            "href": "#top",
+            "variant": "link"
+          },
+          {
+            "label": "Services",
+            "href": "#services",
+            "variant": "link"
+          },
+          {
+            "label": "About",
+            "href": "#about",
+            "variant": "link"
+          },
+          {
+            "label": "Contact",
+            "href": "#contact",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Get Started",
+            "href": "#contact",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    "hero": {
+      "type": "HeroSplit",
+      "props": {
+        "mediaPosition": "right",
+        "paddingY": "lg",
+        "headingSize": "lg",
+        "maxWidth": "xl",
+        "title": "Create a designer portfolio landing page with dark editorial style, strong vis",
+        "subtitle": "Designed for Aura – AI Website Builder with a high-consistency block architecture.",
+        "ctas": [
+          {
+            "label": "Get Started",
+            "href": "#contact",
+            "variant": "primary"
+          }
+        ],
+        "background": "image",
+        "backgroundMedia": {
+          "kind": "image",
+          "src": "/assets/template-factory/designer-portfolio-81-aura-ref/desktop-reference.png",
+          "alt": "Aura – AI Website Builder reference"
+        },
+        "backgroundOverlay": "rgba(5,8,18,0.55)",
+        "media": {
+          "kind": "image",
+          "src": "/assets/template-factory/designer-portfolio-81-aura-ref/desktop-reference.png",
+          "alt": "Aura – AI Website Builder hero visual"
+        }
+      }
+    },
+    "story": {
+      "type": "ContentStory",
+      "props": {
+        "variant": "split",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "eyebrow": "Our Story",
+        "title": "Why Aura – AI Website Builder",
+        "subtitle": "Crafted experiences, measured outcomes, and durable visual language.",
+        "body": "This section is generated from a template profile and tuned with prompt context.",
+        "ctas": [
+          {
+            "label": "Explore",
+            "href": "#",
+            "variant": "link"
+          }
+        ],
+        "dashboardImageSrc": "/assets/template-factory/designer-portfolio-81-aura-ref/desktop-reference.png",
+        "dashboardImageAlt": "Aura – AI Website Builder dashboard visual"
+      }
+    },
+    "approach": {
+      "type": "FeatureGrid",
+      "props": {
+        "variant": "3col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Key Capabilities",
+        "subtitle": "Designed for scale, precision, and reliable execution.",
+        "items": [
+          {
+            "title": "Process",
+            "desc": "Structured delivery with measurable checkpoints.",
+            "icon": "layers"
+          },
+          {
+            "title": "Quality",
+            "desc": "Design and implementation quality gates.",
+            "icon": "shield"
+          },
+          {
+            "title": "Impact",
+            "desc": "Outcome-focused iteration loop.",
+            "icon": "chart"
+          }
+        ]
+      }
+    },
+    "socialproof": {
+      "type": "TestimonialsGrid",
+      "props": {
+        "variant": "2col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Building for world-class innovators",
+        "items": [
+          {
+            "quote": "They curated a lifestyle, not only a space.",
+            "name": "Alexander Vane",
+            "role": "CEO",
+            "avatar": {
+              "src": "/assets/template-factory/designer-portfolio-81-aura-ref/mobile-reference.png",
+              "alt": "Alexander Vane"
+            }
+          },
+          {
+            "quote": "A masterclass in restraint and elegance.",
+            "name": "Isabelle Dubois",
+            "role": "Founder",
+            "avatar": {
+              "src": "/assets/template-factory/designer-portfolio-81-aura-ref/mobile-reference.png",
+              "alt": "Isabelle Dubois"
+            }
+          }
+        ],
+        "imageSrc": "/assets/template-factory/designer-portfolio-81-aura-ref/desktop-reference.png",
+        "imageAlt": "Results visual"
+      }
+    },
+    "cta": {
+      "type": "LeadCaptureCTA",
+      "props": {
+        "variant": "banner",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Ready to define your space?",
+        "subtitle": "Book a private consultation or browse the lookbook.",
+        "cta": {
+          "label": "Inquire Now",
+          "href": "#contact",
+          "variant": "primary"
+        }
+      }
+    },
+    "footer": {
+      "type": "Footer",
+      "props": {
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "logoText": "Aura – AI Website Builde",
+        "columns": [
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "About",
+                "href": "#"
+              },
+              {
+                "label": "Contact",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "title": "Studio",
+            "links": [
+              {
+                "label": "Approach",
+                "href": "#"
+              },
+              {
+                "label": "Projects",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Privacy",
+                "href": "#"
+              },
+              {
+                "label": "Terms",
+                "href": "#"
+              }
+            ]
+          }
+        ],
+        "legal": "© 2026 All rights reserved."
+      }
+    }
+  }
+}

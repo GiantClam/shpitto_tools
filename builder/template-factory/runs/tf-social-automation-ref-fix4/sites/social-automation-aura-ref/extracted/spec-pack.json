@@ -1,0 +1,290 @@
+{
+  "template_id": "auto_social-automation-aura-ref",
+  "recipe_id": "social_automation_neon",
+  "section_specs": {
+    "navigation": {
+      "block_type": "Navbar",
+      "defaults": {
+        "variant": "withCTA",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "links": [
+          {
+            "label": "Platform",
+            "href": "#platform",
+            "variant": "link"
+          },
+          {
+            "label": "Features",
+            "href": "#features",
+            "variant": "link"
+          },
+          {
+            "label": "Pricing",
+            "href": "#pricing",
+            "variant": "link"
+          },
+          {
+            "label": "Resources",
+            "href": "#resources",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Get Started",
+            "href": "#pricing",
+            "variant": "primary"
+          }
+        ],
+        "logo": "Aura – AI Website Builder"
+      }
+    },
+    "hero": {
+      "block_type": "HeroSplit",
+      "defaults": {
+        "mediaPosition": "right",
+        "paddingY": "lg",
+        "headingSize": "lg",
+        "maxWidth": "xl",
+        "background": "image",
+        "eyebrow": "AI Social Automation",
+        "title": "Social Reach. Automated Growth. Viral Results.",
+        "subtitle": "Scale campaigns with AI workflows, predictive insights, and measurable growth velocity.",
+        "ctas": [
+          {
+            "label": "Explore Platform",
+            "href": "#platform",
+            "variant": "primary"
+          },
+          {
+            "label": "View Metrics",
+            "href": "#metrics",
+            "variant": "secondary"
+          }
+        ],
+        "backgroundMedia": {
+          "kind": "image",
+          "src": "/assets/template-factory/social-automation-aura-ref/desktop-reference.png",
+          "alt": "Aura – AI Website Builder reference"
+        },
+        "backgroundOverlay": "rgba(5,8,18,0.55)",
+        "media": {
+          "kind": "image",
+          "src": "/assets/template-factory/social-automation-aura-ref/desktop-reference.png",
+          "alt": "Aura – AI Website Builder hero visual"
+        }
+      }
+    },
+    "approach": {
+      "block_type": "FeatureGrid",
+      "defaults": {
+        "variant": "3col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "background": "muted",
+        "title": "Scale your reach instantly",
+        "subtitle": "Precision targeting, automated workflows, and brand safety controls.",
+        "items": [
+          {
+            "title": "Precision Targeting",
+            "desc": "Identify high-intent audiences across channels.",
+            "icon": "rocket"
+          },
+          {
+            "title": "Automated Workflows",
+            "desc": "Launch, monitor, and optimize without manual churn.",
+            "icon": "shield"
+          },
+          {
+            "title": "Brand Safety",
+            "desc": "Guardrails and approvals for every campaign run.",
+            "icon": "sparkles"
+          }
+        ]
+      }
+    },
+    "socialproof": {
+      "block_type": "TestimonialsGrid",
+      "defaults": {
+        "variant": "2col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Real results. Real growth.",
+        "items": [
+          {
+            "quote": "We doubled qualified reach in six weeks without increasing headcount.",
+            "name": "Claire",
+            "role": "Growth Lead",
+            "avatar": {
+              "src": "/assets/template-factory/social-automation-aura-ref/mobile-reference.png",
+              "alt": "Claire"
+            }
+          },
+          {
+            "quote": "Campaign operations became measurable, predictable, and scalable.",
+            "name": "Jordan",
+            "role": "Marketing Director",
+            "avatar": {
+              "src": "/assets/template-factory/social-automation-aura-ref/mobile-reference.png",
+              "alt": "Jordan"
+            }
+          }
+        ]
+      }
+    },
+    "products": {
+      "block_type": "CardsGrid",
+      "defaults": {
+        "variant": "product",
+        "columns": "2col",
+        "density": "normal",
+        "cardStyle": "solid",
+        "imagePosition": "top",
+        "imageSize": "md",
+        "imageShape": "rounded",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Engineered for exponential growth",
+        "subtitle": "Modular capability blocks for velocity, safety, and omnichannel scale.",
+        "items": [
+          {
+            "title": "Predictive Intelligence",
+            "description": "Model campaign outcomes before spend.",
+            "cta": {
+              "label": "Learn",
+              "href": "#"
+            },
+            "image": {
+              "src": "/assets/template-factory/social-automation-aura-ref/desktop-reference.png",
+              "alt": "Predictive Intelligence"
+            }
+          },
+          {
+            "title": "Autonomous Velocity",
+            "description": "Continuously optimize publishing cadence.",
+            "cta": {
+              "label": "Learn",
+              "href": "#"
+            },
+            "image": {
+              "src": "/assets/template-factory/social-automation-aura-ref/mobile-reference.png",
+              "alt": "Autonomous Velocity"
+            }
+          },
+          {
+            "title": "Safety by Design",
+            "description": "Apply policy and quality checks by default.",
+            "cta": {
+              "label": "Learn",
+              "href": "#"
+            },
+            "image": {
+              "src": "/assets/template-factory/social-automation-aura-ref/desktop-reference.png",
+              "alt": "Safety by Design"
+            }
+          },
+          {
+            "title": "Omnichannel Scale",
+            "description": "Coordinate campaigns across major platforms.",
+            "cta": {
+              "label": "Learn",
+              "href": "#"
+            },
+            "image": {
+              "src": "/assets/template-factory/social-automation-aura-ref/mobile-reference.png",
+              "alt": "Omnichannel Scale"
+            }
+          }
+        ]
+      }
+    },
+    "cta": {
+      "block_type": "LeadCaptureCTA",
+      "defaults": {
+        "variant": "banner",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Unlock viral growth",
+        "subtitle": "Choose your plan and activate automation in minutes.",
+        "cta": {
+          "label": "Start Free Trial",
+          "href": "#pricing",
+          "variant": "primary"
+        }
+      }
+    },
+    "footer": {
+      "block_type": "Footer",
+      "defaults": {
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "columns": [
+          {
+            "title": "Platform",
+            "links": [
+              {
+                "label": "Capabilities",
+                "href": "#features"
+              },
+              {
+                "label": "Pricing",
+                "href": "#pricing"
+              }
+            ]
+          },
+          {
+            "title": "Resources",
+            "links": [
+              {
+                "label": "Docs",
+                "href": "#docs"
+              },
+              {
+                "label": "Status",
+                "href": "#status"
+              }
+            ]
+          },
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "About",
+                "href": "#about"
+              },
+              {
+                "label": "Contact",
+                "href": "#contact"
+              }
+            ]
+          }
+        ],
+        "logoText": "Aura – AI Website Builde",
+        "legal": "© 2026 All rights reserved."
+      }
+    }
+  },
+  "fallback_rules": {
+    "missing_socialproof": "use_testimonials_grid_min_2",
+    "missing_cta_secondary": "hide_secondary_button"
+  },
+  "density_limits": {
+    "nav_items_max": 6,
+    "hero_cta_max": 2,
+    "testimonials_min": 2,
+    "cards_max": 8
+  },
+  "required_categories": [
+    "navigation",
+    "hero",
+    "approach",
+    "products",
+    "socialproof",
+    "cta",
+    "footer"
+  ]
+}

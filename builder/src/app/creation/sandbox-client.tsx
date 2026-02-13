@@ -9,6 +9,7 @@ import "@measured/puck/puck.css";
 import { compileJIT } from "@/lib/runtime";
 import { MotionProvider } from "@/components/theme/motion";
 import { normalizePuckData } from "@/lib/design-system-enforcer";
+import { puckConfig } from "@/puck/config";
 
 const DEFAULT_THEME_LIGHT = {
   background: "0 0% 100%",
@@ -28,9 +29,36 @@ const DEFAULT_THEME_DARK = {
   card: "222 47% 10%",
 };
 
+const GENERIC_FONT_FAMILIES = new Set([
+  "serif",
+  "sans-serif",
+  "monospace",
+  "cursive",
+  "fantasy",
+  "system-ui",
+  "ui-serif",
+  "ui-sans-serif",
+  "ui-monospace",
+]);
+
+const extractFontFamily = (value?: string) => {
+  if (!value || typeof value !== "string") return "";
+  const first = value.split(",")[0]?.replace(/["']/g, "").trim();
+  if (!first) return "";
+  if (GENERIC_FONT_FAMILIES.has(first.toLowerCase())) return "";
+  return first;
+};
+
 const hexToHsl = (hex?: string) => {
   if (!hex) return null;
-  const normalized = hex.replace("#", "");
+  const normalizedRaw = hex.replace("#", "").trim();
+  const normalized =
+    normalizedRaw.length === 3
+      ? normalizedRaw
+          .split("")
+          .map((char) => `${char}${char}`)
+          .join("")
+      : normalizedRaw;
   if (normalized.length !== 6) return null;
   const r = parseInt(normalized.slice(0, 2), 16) / 255;
   const g = parseInt(normalized.slice(2, 4), 16) / 255;
@@ -51,19 +79,61 @@ const hexToHsl = (hex?: string) => {
   return `${h} ${Math.round(s * 100)}% ${Math.round(l * 100)}%`;
 };
 
+const colorToHslTriplet = (value?: string | null) => {
+  if (!value || typeof value !== "string") return null;
+  const normalized = value.trim();
+  if (!normalized) return null;
+  if (normalized.startsWith("#")) return hexToHsl(normalized);
+  const hslWrapped = normalized.match(/^hsl\((.+)\)$/i);
+  const hslBody = hslWrapped?.[1]?.trim();
+  if (hslBody) {
+    return hslBody
+      .replace(/\s*\/\s*[\d.]+%?\s*$/, "")
+      .replace(/,/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+  if (/^\d+(\.\d+)?\s+\d+(\.\d+)?%\s+\d+(\.\d+)?%$/.test(normalized)) return normalized;
+  return null;
+};
+
+const lightnessFromHslTriplet = (triplet: string) => {
+  const parts = triplet.trim().split(/\s+/);
+  const lightness = Number(parts[2]?.replace("%", ""));
+  return Number.isFinite(lightness) ? lightness : 50;
+};
+
+const buildGoogleFontsImport = (fontHeading: string, fontBody: string) => {
+  const families = Array.from(new Set([extractFontFamily(fontHeading), extractFontFamily(fontBody)].filter(Boolean)));
+  if (!families.length) return "";
+  const query = families
+    .map((family) => `family=${encodeURIComponent(family).replace(/%20/g, "+")}:wght@300;400;500;600;700;800`)
+    .join("&");
+  return `@import url('https://fonts.googleapis.com/css2?${query}&display=swap');`;
+};
+
 const buildThemeCss = (theme?: Record<string, any>) => {
   const mode = theme?.mode === "dark" ? "dark" : "light";
   const base = mode === "dark" ? DEFAULT_THEME_DARK : DEFAULT_THEME_LIGHT;
+  const palette = theme?.palette && typeof theme.palette === "object" ? (theme.palette as Record<string, any>) : {};
+  const background = colorToHslTriplet(palette.bg || palette.background) || base.background;
+  const foreground = colorToHslTriplet(palette.text || palette.foreground) || base.foreground;
+  const muted = colorToHslTriplet(palette.neutral || palette.muted) || base.muted;
+  const mutedForeground = colorToHslTriplet(palette.textSecondary || palette.mutedForeground) || base.mutedForeground;
+  const border = colorToHslTriplet(palette.border || palette.neutral) || base.border;
+  const card = colorToHslTriplet(palette.card || palette.neutral || palette.bg) || base.card;
   const primary =
-    hexToHsl(theme?.primaryColor) || (mode === "dark" ? "262 83% 62%" : "222 89% 52%");
-  const primaryForeground =
-    Number(primary.split(" ")[2]?.replace("%", "")) > 60 ? "222 47% 11%" : "210 40% 98%";
-  const accent = primary;
-  const accentForeground = primaryForeground;
+    colorToHslTriplet(palette.primary) ||
+    colorToHslTriplet(theme?.primaryColor) ||
+    (mode === "dark" ? "262 83% 62%" : "222 89% 52%");
+  const accent = colorToHslTriplet(palette.accent) || primary;
+  const primaryForeground = lightnessFromHslTriplet(primary) > 58 ? "222 47% 11%" : "210 40% 98%";
+  const accentForeground = lightnessFromHslTriplet(accent) > 58 ? "222 47% 11%" : "210 40% 98%";
   const radius = theme?.radius || "14px";
   const fontHeading = theme?.fontHeading || "Inter";
   const fontBody = theme?.fontBody || "Inter";
-  return `:root{--background:${base.background};--foreground:${base.foreground};--muted:${base.muted};--muted-foreground:${base.mutedForeground};--border:${base.border};--primary:${primary};--primary-foreground:${primaryForeground};--accent:${accent};--accent-foreground:${accentForeground};--card:${base.card};--radius:${radius};--font-heading:${fontHeading};--font-body:${fontBody};--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;}body{background:hsl(var(--background));color:hsl(var(--foreground));font-family:var(--font-body),ui-sans-serif,system-ui;} .font-heading{font-family:var(--font-heading),var(--font-body),ui-sans-serif,system-ui;} .font-body{font-family:var(--font-body),ui-sans-serif,system-ui;}`;
+  const fontImport = buildGoogleFontsImport(fontHeading, fontBody);
+  return `${fontImport}:root{--background:${background};--foreground:${foreground};--muted:${muted};--muted-foreground:${mutedForeground};--border:${border};--primary:${primary};--primary-foreground:${primaryForeground};--accent:${accent};--accent-foreground:${accentForeground};--card:${card};--radius:${radius};--font-heading:${fontHeading};--font-body:${fontBody};--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;}body{background:hsl(var(--background));color:hsl(var(--foreground));font-family:var(--font-body),ui-sans-serif,system-ui;} .font-heading{font-family:var(--font-heading),var(--font-body),ui-serif,serif;} .font-body{font-family:var(--font-body),ui-sans-serif,system-ui;}`;
 };
 
 const tailwindRuntimeConfigScript = `
@@ -99,16 +169,121 @@ console.info("[creation:sandbox] tailwind_runtime_config_loaded", {
 type IncomingMessage =
   | {
       type: "puck:load";
-      payload: {
-        components: Array<{ name: string; code: string }>;
-        page: { data: Data };
-        theme?: Record<string, any>;
-        pageIndex?: number;
-      };
+      payload: SandboxLoadPayload;
     }
   | { type: "puck:ping" };
 
-export default function CreationSandboxClient() {
+type SandboxLoadPayload = {
+  components: Array<{ name: string; code: string }>;
+  page: { data: Data };
+  theme?: Record<string, any>;
+  pageIndex?: number;
+};
+
+type CreationSandboxClientProps = {
+  initialPayload?: SandboxLoadPayload;
+};
+
+const detectPrimitiveArrayFields = (code: string) => {
+  const fields = new Set<string>();
+  const pattern = /(\w+)\.map\(\((\w+)(?:\s*,\s*\w+)?\)\s*=>[\s\S]{0,260}\{\2\}/g;
+  let match: RegExpExecArray | null;
+  while ((match = pattern.exec(code)) !== null) {
+    const field = match[1]?.trim();
+    if (field) fields.add(field);
+  }
+  return Array.from(fields);
+};
+
+const coerceObjectArrayToStringArray = (value: unknown): string[] | null => {
+  if (!Array.isArray(value)) return null;
+  const next = value
+    .map((item) => {
+      if (typeof item === "string") return item;
+      if (!item || typeof item !== "object") return "";
+      const record = item as Record<string, unknown>;
+      const preferredKeys = ["paragraph", "text", "label", "title", "description", "value", "name"];
+      for (const key of preferredKeys) {
+        const candidate = record[key];
+        if (typeof candidate === "string" && candidate.trim()) return candidate;
+      }
+      const firstString = Object.values(record).find((entry) => typeof entry === "string" && entry.trim());
+      return typeof firstString === "string" ? firstString : "";
+    })
+    .filter((item) => typeof item === "string" && item.trim());
+  return next.length ? next : null;
+};
+
+const coercePageDataArrays = (
+  pageData: Data,
+  primitiveArrayFieldsByType: Map<string, string[]>
+): Data => {
+  if (!primitiveArrayFieldsByType.size) return pageData;
+  const cloned = structuredClone(pageData) as Record<string, any>;
+  const content = Array.isArray(cloned?.content) ? (cloned.content as Array<Record<string, any>>) : [];
+  content.forEach((item) => {
+    const type = typeof item?.type === "string" ? item.type : "";
+    const props = item?.props;
+    if (!type || !props || typeof props !== "object") return;
+    const fields = primitiveArrayFieldsByType.get(type);
+    if (!fields?.length) return;
+    fields.forEach((field) => {
+      const coerced = coerceObjectArrayToStringArray((props as Record<string, unknown>)[field]);
+      if (coerced) (props as Record<string, unknown>)[field] = coerced;
+    });
+  });
+  return cloned as Data;
+};
+
+const createMissingBlockComponent = (blockType: string): React.ComponentType<any> => {
+  const MissingBlock: React.FC<{ id?: string; anchor?: string }> = ({ id, anchor }) => (
+    <section
+      id={anchor}
+      data-block={blockType}
+      data-block-id={id || `${blockType}-missing`}
+      className="mx-auto my-6 w-full max-w-5xl rounded-lg border border-dashed border-amber-400/60 bg-amber-50 px-4 py-3 text-sm text-amber-700"
+    >
+      Missing block renderer: {blockType}
+    </section>
+  );
+  MissingBlock.displayName = `MissingBlock_${blockType}`;
+  return MissingBlock;
+};
+
+class BlockErrorBoundary extends React.Component<
+  { blockName: string; children: React.ReactNode },
+  { hasError: boolean; message?: string }
+> {
+  constructor(props: { blockName: string; children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false, message: undefined };
+  }
+
+  static getDerivedStateFromError(error: unknown) {
+    const message = error instanceof Error ? error.message : "runtime_error";
+    return { hasError: true, message };
+  }
+
+  componentDidCatch(error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("[creation:sandbox] block_runtime_error", {
+      block: this.props.blockName,
+      message,
+    });
+  }
+
+  render() {
+    if (!this.state.hasError) return this.props.children;
+    return (
+      <section className="mx-auto my-6 w-full max-w-5xl rounded-lg border border-dashed border-red-400/60 bg-red-50 px-4 py-3 text-sm text-red-700">
+        Block render failed: {this.props.blockName}
+        {this.state.message ? ` (${this.state.message})` : ""}
+      </section>
+    );
+  }
+}
+
+export default function CreationSandboxClient({ initialPayload }: CreationSandboxClientProps) {
   const searchParams = useSearchParams();
   const isEdit = searchParams.get("mode") === "edit";
   const [config, setConfig] = React.useState<Config | null>(null);
@@ -128,34 +303,85 @@ export default function CreationSandboxClient() {
     console.info("[creation:sandbox] preview_mode", { mode: isEdit ? "edit" : "preview" });
   }, [isEdit]);
 
+  const applyLoadPayload = React.useCallback(
+    (payload: SandboxLoadPayload) => {
+      pageIndexRef.current = payload.pageIndex ?? 0;
+      setPageKey(`page-${pageIndexRef.current}`);
+      const nextConfig: Config = {
+        components: {
+          ...((puckConfig as any)?.components ?? {}),
+        },
+      };
+      const failures: string[] = [];
+      const primitiveArrayFieldsByType = new Map<string, string[]>();
+      payload.components.forEach((component) => {
+        const primitiveArrayFields = detectPrimitiveArrayFields(component.code);
+        if (primitiveArrayFields.length) {
+          primitiveArrayFieldsByType.set(component.name, primitiveArrayFields);
+        }
+        const compiled = compileJIT(component.code);
+        if (!compiled) {
+          failures.push(component.name);
+          return;
+        }
+        const Comp = compiled.render as React.ComponentType<any>;
+        const WrappedComponent: React.FC<any> = (props) => (
+          <BlockErrorBoundary blockName={component.name}>
+            <Comp {...props} />
+          </BlockErrorBoundary>
+        );
+        WrappedComponent.displayName = `Wrapped_${component.name}`;
+        nextConfig.components[component.name] = {
+          ...(compiled.config ?? {}),
+          render: WrappedComponent,
+        } as any;
+      });
+
+      const rawContent = Array.isArray((payload.page as any)?.data?.content)
+        ? ((payload.page as any).data.content as Array<{ type?: unknown }>)
+        : [];
+      const requiredTypes = Array.from(
+        new Set(
+          rawContent
+            .map((item) => (typeof item?.type === "string" ? item.type.trim() : ""))
+            .filter(Boolean)
+        )
+      );
+      const missingTypes = requiredTypes.filter((type) => !(nextConfig.components as Record<string, unknown>)[type]);
+      missingTypes.forEach((type) => {
+        (nextConfig.components as Record<string, any>)[type] = {
+          render: createMissingBlockComponent(type),
+          fields: {},
+          defaultProps: { id: `${type}-missing`, anchor: `${type}-missing` },
+        };
+      });
+      if (missingTypes.length) {
+        failures.push(...missingTypes.map((type) => `${type}:missing_renderer`));
+      }
+
+      if (failures.length) {
+        postToHost({ type: "puck:compile", payload: { failures } });
+      }
+      const coercedPageData = coercePageDataArrays(payload.page.data, primitiveArrayFieldsByType);
+      setConfig(nextConfig);
+      setData(normalizePuckData(coercedPageData, { logChanges: true }));
+      setThemeCss(buildThemeCss(payload.theme));
+      setMotionMode((payload.theme?.motion as any) || "showcase");
+      document.documentElement.classList.toggle("dark", payload.theme?.mode === "dark");
+    },
+    [postToHost]
+  );
+
+  React.useEffect(() => {
+    if (!initialPayload) return;
+    applyLoadPayload(initialPayload);
+  }, [applyLoadPayload, initialPayload]);
+
   React.useEffect(() => {
     const onMessage = (event: MessageEvent<IncomingMessage>) => {
       if (!event.data || typeof event.data !== "object") return;
       if (event.data.type === "puck:load") {
-        const payload = event.data.payload;
-        pageIndexRef.current = payload.pageIndex ?? 0;
-        setPageKey(`page-${pageIndexRef.current}`);
-        const nextConfig: Config = { components: {} };
-        const failures: string[] = [];
-        payload.components.forEach((component) => {
-          const compiled = compileJIT(component.code);
-          if (!compiled) {
-            failures.push(component.name);
-            return;
-          }
-          nextConfig.components[component.name] = {
-            render: compiled.render,
-            ...(compiled.config ?? {}),
-          } as any;
-        });
-        if (failures.length) {
-          postToHost({ type: "puck:compile", payload: { failures } });
-        }
-        setConfig(nextConfig);
-        setData(normalizePuckData(payload.page.data, { logChanges: true }));
-        setThemeCss(buildThemeCss(payload.theme));
-        setMotionMode((payload.theme?.motion as any) || "showcase");
-        document.documentElement.classList.toggle("dark", payload.theme?.mode === "dark");
+        applyLoadPayload(event.data.payload);
         return;
       }
       if (event.data.type === "puck:ping") {
@@ -165,7 +391,7 @@ export default function CreationSandboxClient() {
     window.addEventListener("message", onMessage);
     postToHost({ type: "puck:ready" });
     return () => window.removeEventListener("message", onMessage);
-  }, [postToHost]);
+  }, [applyLoadPayload, postToHost]);
 
   const handlePublish = React.useCallback(
     (nextData: Data) => {
@@ -176,7 +402,14 @@ export default function CreationSandboxClient() {
   );
 
   return (
-    <div className="h-screen w-screen bg-background text-foreground">
+    <div
+      data-sandbox-ready={config && data ? "1" : "0"}
+      className={
+        isEdit
+          ? "h-screen w-screen overflow-hidden bg-background text-foreground"
+          : "min-h-screen w-full bg-background text-foreground"
+      }
+    >
       <Script id="tailwind-runtime-config" strategy="beforeInteractive">
         {tailwindRuntimeConfigScript}
       </Script>

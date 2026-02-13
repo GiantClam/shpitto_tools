@@ -80,6 +80,7 @@ const isValidMediaUrl = (value: string) => {
   const trimmed = value.trim();
   if (!trimmed) return false;
   if (trimmed.startsWith("data:")) return false;
+  if (trimmed.startsWith("/assets/")) return true;
   try {
     const url = new URL(trimmed);
     if (!["http:", "https:"].includes(url.protocol)) return false;
@@ -450,6 +451,12 @@ export const normalizeBlockProps = (
     const variant = base.variant;
     const valid = variant === "image" || variant === "video" || variant === "screenshot";
     if (!valid) base.variant = normalizeHeroSplitVariant(base);
+  }
+  if (type.includes("neonherobeam")) {
+    // Keep authored neon overlay colors; generic token normalization makes this hero look flat.
+    if (typeof seededProps.backgroundOverlay === "string" && seededProps.backgroundOverlay.trim()) {
+      base.backgroundOverlay = seededProps.backgroundOverlay.trim();
+    }
   }
   if (type.includes("leadcapturecta")) {
     const variant = base.variant;

@@ -1,0 +1,503 @@
+{
+  "generatedAt": "2026-02-11T15:50:16.588Z",
+  "options": {
+    "baseUrl": "http://localhost:3110",
+    "promptsFile": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/prompts.baseline.json",
+    "logFile": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/logs/creation.log",
+    "outDir": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/reports",
+    "maxCases": 0,
+    "delayMs": 350
+  },
+  "summary": {
+    "total": 10,
+    "passed": 0,
+    "failed": 10,
+    "successRate": 0,
+    "fallbackRate": 0.7,
+    "timeoutRate": 0.3,
+    "avgDurationMs": 168009,
+    "p95DurationMs": 181692,
+    "totalUsageInputTokens": 425901,
+    "totalUsageOutputTokens": 165010,
+    "totalProviderFailures": 90,
+    "totalParseFailures": 0,
+    "totalLayoutInvalid": 1,
+    "totalToolMissing": 1,
+    "totalToolEmptyPayload": 3
+  },
+  "results": [
+    {
+      "id": "luxury-interior-sixtine",
+      "description": "高端住宅室内设计官网（偏编辑感）",
+      "requestId": "creation_1770823334548_b68cmc",
+      "responseId": "p2w_1770823334551",
+      "statusCode": 200,
+      "passed": false,
+      "durationMs": 181692,
+      "errors": [
+        "generation_timeout_fallback"
+      ],
+      "missingRequired": [
+        "story",
+        "socialproof",
+        "cta"
+      ],
+      "blockTypes": [
+        "Navbar",
+        "HeroCentered",
+        "FeatureGrid",
+        "Footer"
+      ],
+      "detectedCategories": [
+        "approach",
+        "footer",
+        "hero",
+        "navigation"
+      ],
+      "hasFallbackBlock": false,
+      "hasSectionFallbackError": false,
+      "hasTimeoutFallback": true,
+      "componentsCount": 0,
+      "pageCount": 1,
+      "requestError": null,
+      "logMetrics": {
+        "usageInputTokens": 27275,
+        "usageOutputTokens": 8123,
+        "sectionOk": 3,
+        "sectionFallback": 0,
+        "parseFailed": 0,
+        "layoutInvalid": 0,
+        "providerFailed": 9,
+        "toolMissing": 0,
+        "toolEmptyPayload": 0,
+        "timeoutFallback": 2
+      }
+    },
+    {
+      "id": "industrial-b2b",
+      "description": "工业制造 B2B 官网",
+      "requestId": "creation_1770823514999_rtgi78",
+      "responseId": "p2w_1770823515000",
+      "statusCode": 200,
+      "passed": false,
+      "durationMs": 180058,
+      "errors": [
+        "generation_timeout_fallback"
+      ],
+      "missingRequired": [
+        "products",
+        "socialproof",
+        "cta"
+      ],
+      "blockTypes": [
+        "Navbar",
+        "HeroCentered",
+        "FeatureGrid",
+        "Footer"
+      ],
+      "detectedCategories": [
+        "approach",
+        "footer",
+        "hero",
+        "navigation"
+      ],
+      "hasFallbackBlock": false,
+      "hasSectionFallbackError": false,
+      "hasTimeoutFallback": true,
+      "componentsCount": 0,
+      "pageCount": 1,
+      "requestError": null,
+      "logMetrics": {
+        "usageInputTokens": 49603,
+        "usageOutputTokens": 18280,
+        "sectionOk": 6,
+        "sectionFallback": 0,
+        "parseFailed": 0,
+        "layoutInvalid": 0,
+        "providerFailed": 11,
+        "toolMissing": 0,
+        "toolEmptyPayload": 1,
+        "timeoutFallback": 2
+      }
+    },
+    {
+      "id": "ai-saas",
+      "description": "AI SaaS 营销首页",
+      "requestId": "creation_1770823695438_yo7iu8",
+      "responseId": "p2w_1770823695441",
+      "statusCode": 200,
+      "passed": false,
+      "durationMs": 165352,
+      "errors": [],
+      "missingRequired": [
+        "socialproof",
+        "cta"
+      ],
+      "blockTypes": [
+        "Navigation",
+        "Hero",
+        "CreationFallbackSection",
+        "Features",
+        "Stats",
+        "CreationFallbackSection",
+        "CreationFallbackSection",
+        "Footer"
+      ],
+      "detectedCategories": [
+        "approach",
+        "footer",
+        "hero",
+        "navigation"
+      ],
+      "hasFallbackBlock": true,
+      "hasSectionFallbackError": false,
+      "hasTimeoutFallback": false,
+      "componentsCount": 6,
+      "pageCount": 1,
+      "requestError": null,
+      "logMetrics": {
+        "usageInputTokens": 53949,
+        "usageOutputTokens": 24021,
+        "sectionOk": 7,
+        "sectionFallback": 0,
+        "parseFailed": 0,
+        "layoutInvalid": 0,
+        "providerFailed": 14,
+        "toolMissing": 1,
+        "toolEmptyPayload": 2,
+        "timeoutFallback": 0
+      }
+    },
+    {
+      "id": "fintech-app",
+      "description": "金融科技产品官网",
+      "requestId": "creation_1770823861124_vz86y0",
+      "responseId": "p2w_1770823861126",
+      "statusCode": 200,
+      "passed": false,
+      "durationMs": 163675,
+      "errors": [],
+      "missingRequired": [
+        "socialproof",
+        "cta"
+      ],
+      "blockTypes": [
+        "Navigation",
+        "HeroSection",
+        "StatsSection",
+        "FeaturesSection",
+        "CreationFallbackSection",
+        "CreationFallbackSection",
+        "Footer"
+      ],
+      "detectedCategories": [
+        "approach",
+        "footer",
+        "hero",
+        "navigation"
+      ],
+      "hasFallbackBlock": true,
+      "hasSectionFallbackError": false,
+      "hasTimeoutFallback": false,
+      "componentsCount": 6,
+      "pageCount": 1,
+      "requestError": null,
+      "logMetrics": {
+        "usageInputTokens": 42040,
+        "usageOutputTokens": 17201,
+        "sectionOk": 5,
+        "sectionFallback": 0,
+        "parseFailed": 0,
+        "layoutInvalid": 0,
+        "providerFailed": 8,
+        "toolMissing": 0,
+        "toolEmptyPayload": 0,
+        "timeoutFallback": 0
+      }
+    },
+    {
+      "id": "wellness-clinic",
+      "description": "高端健康诊所官网",
+      "requestId": "creation_1770824025163_4o91s1",
+      "responseId": "p2w_1770824025164",
+      "statusCode": 200,
+      "passed": false,
+      "durationMs": 180061,
+      "errors": [
+        "generation_timeout_fallback"
+      ],
+      "missingRequired": [
+        "story",
+        "socialproof",
+        "cta"
+      ],
+      "blockTypes": [
+        "Navbar",
+        "HeroCentered",
+        "FeatureGrid",
+        "Footer"
+      ],
+      "detectedCategories": [
+        "approach",
+        "footer",
+        "hero",
+        "navigation"
+      ],
+      "hasFallbackBlock": false,
+      "hasSectionFallbackError": false,
+      "hasTimeoutFallback": true,
+      "componentsCount": 0,
+      "pageCount": 1,
+      "requestError": null,
+      "logMetrics": {
+        "usageInputTokens": 35087,
+        "usageOutputTokens": 11899,
+        "sectionOk": 3,
+        "sectionFallback": 0,
+        "parseFailed": 0,
+        "layoutInvalid": 1,
+        "providerFailed": 9,
+        "toolMissing": 0,
+        "toolEmptyPayload": 0,
+        "timeoutFallback": 2
+      }
+    },
+    {
+      "id": "ecommerce-brand",
+      "description": "消费品牌电商首页",
+      "requestId": "creation_1770824205577_zmow71",
+      "responseId": "p2w_1770824205579",
+      "statusCode": 200,
+      "passed": false,
+      "durationMs": 152751,
+      "errors": [],
+      "missingRequired": [
+        "socialproof",
+        "cta"
+      ],
+      "blockTypes": [
+        "Navigation",
+        "Hero",
+        "ProductShowcase",
+        "CreationFallbackSection",
+        "CreationFallbackSection",
+        "Footer"
+      ],
+      "detectedCategories": [
+        "footer",
+        "hero",
+        "navigation",
+        "products"
+      ],
+      "hasFallbackBlock": true,
+      "hasSectionFallbackError": false,
+      "hasTimeoutFallback": false,
+      "componentsCount": 5,
+      "pageCount": 1,
+      "requestError": null,
+      "logMetrics": {
+        "usageInputTokens": 50108,
+        "usageOutputTokens": 20150,
+        "sectionOk": 6,
+        "sectionFallback": 1,
+        "parseFailed": 0,
+        "layoutInvalid": 0,
+        "providerFailed": 7,
+        "toolMissing": 0,
+        "toolEmptyPayload": 0,
+        "timeoutFallback": 0
+      }
+    },
+    {
+      "id": "agency-portfolio",
+      "description": "创意工作室官网",
+      "requestId": "creation_1770824358679_1atllw",
+      "responseId": "p2w_1770824358680",
+      "statusCode": 200,
+      "passed": false,
+      "durationMs": 148072,
+      "errors": [],
+      "missingRequired": [
+        "socialproof",
+        "cta"
+      ],
+      "blockTypes": [
+        "Navbar",
+        "HeroSection",
+        "StudioStory",
+        "ProcessMetrics",
+        "CreationFallbackSection",
+        "CreationFallbackSection",
+        "Footer"
+      ],
+      "detectedCategories": [
+        "approach",
+        "footer",
+        "hero",
+        "navigation",
+        "story"
+      ],
+      "hasFallbackBlock": true,
+      "hasSectionFallbackError": false,
+      "hasTimeoutFallback": false,
+      "componentsCount": 6,
+      "pageCount": 1,
+      "requestError": null,
+      "logMetrics": {
+        "usageInputTokens": 34328,
+        "usageOutputTokens": 13731,
+        "sectionOk": 4,
+        "sectionFallback": 0,
+        "parseFailed": 0,
+        "layoutInvalid": 0,
+        "providerFailed": 7,
+        "toolMissing": 0,
+        "toolEmptyPayload": 0,
+        "timeoutFallback": 0
+      }
+    },
+    {
+      "id": "education-platform",
+      "description": "在线教育平台首页",
+      "requestId": "creation_1770824507107_hrrwoo",
+      "responseId": "p2w_1770824507109",
+      "statusCode": 200,
+      "passed": false,
+      "durationMs": 168468,
+      "errors": [],
+      "missingRequired": [
+        "socialproof",
+        "cta"
+      ],
+      "blockTypes": [
+        "Navigation",
+        "HeroSection",
+        "ValuePropsSection",
+        "StatsSection",
+        "CreationFallbackSection",
+        "CreationFallbackSection",
+        "Footer"
+      ],
+      "detectedCategories": [
+        "approach",
+        "footer",
+        "hero",
+        "navigation"
+      ],
+      "hasFallbackBlock": true,
+      "hasSectionFallbackError": false,
+      "hasTimeoutFallback": false,
+      "componentsCount": 6,
+      "pageCount": 1,
+      "requestError": null,
+      "logMetrics": {
+        "usageInputTokens": 41692,
+        "usageOutputTokens": 16485,
+        "sectionOk": 5,
+        "sectionFallback": 0,
+        "parseFailed": 0,
+        "layoutInvalid": 0,
+        "providerFailed": 8,
+        "toolMissing": 0,
+        "toolEmptyPayload": 0,
+        "timeoutFallback": 0
+      }
+    },
+    {
+      "id": "travel-hospitality",
+      "description": "旅行酒店品牌官网",
+      "requestId": "creation_1770824675931_zgkjwp",
+      "responseId": "p2w_1770824675933",
+      "statusCode": 200,
+      "passed": false,
+      "durationMs": 174661,
+      "errors": [],
+      "missingRequired": [
+        "story",
+        "socialproof",
+        "cta"
+      ],
+      "blockTypes": [
+        "Navigation",
+        "HeroSection",
+        "PhilosophySection",
+        "ShowcaseGallery",
+        "FeaturesSection",
+        "CreationFallbackSection",
+        "CreationFallbackSection",
+        "Footer"
+      ],
+      "detectedCategories": [
+        "approach",
+        "footer",
+        "hero",
+        "navigation"
+      ],
+      "hasFallbackBlock": true,
+      "hasSectionFallbackError": false,
+      "hasTimeoutFallback": false,
+      "componentsCount": 7,
+      "pageCount": 1,
+      "requestError": null,
+      "logMetrics": {
+        "usageInputTokens": 49675,
+        "usageOutputTokens": 19894,
+        "sectionOk": 6,
+        "sectionFallback": 0,
+        "parseFailed": 0,
+        "layoutInvalid": 0,
+        "providerFailed": 9,
+        "toolMissing": 0,
+        "toolEmptyPayload": 0,
+        "timeoutFallback": 0
+      }
+    },
+    {
+      "id": "developer-tooling",
+      "description": "开发者工具官网",
+      "requestId": "creation_1770824850944_f2yrum",
+      "responseId": "p2w_1770824850946",
+      "statusCode": 200,
+      "passed": false,
+      "durationMs": 165301,
+      "errors": [],
+      "missingRequired": [
+        "socialproof",
+        "cta"
+      ],
+      "blockTypes": [
+        "Navigation",
+        "HeroSection",
+        "CapabilitiesSection",
+        "MetricsSection",
+        "CreationFallbackSection",
+        "CreationFallbackSection",
+        "FooterSection"
+      ],
+      "detectedCategories": [
+        "approach",
+        "footer",
+        "hero",
+        "navigation"
+      ],
+      "hasFallbackBlock": true,
+      "hasSectionFallbackError": false,
+      "hasTimeoutFallback": false,
+      "componentsCount": 6,
+      "pageCount": 1,
+      "requestError": null,
+      "logMetrics": {
+        "usageInputTokens": 42144,
+        "usageOutputTokens": 15226,
+        "sectionOk": 5,
+        "sectionFallback": 0,
+        "parseFailed": 0,
+        "layoutInvalid": 0,
+        "providerFailed": 8,
+        "toolMissing": 0,
+        "toolEmptyPayload": 0,
+        "timeoutFallback": 0
+      }
+    }
+  ]
+}

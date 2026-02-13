@@ -1,0 +1,280 @@
+{
+  "id": "auto_designer-portfolio-81-aura-ref",
+  "name": "Designer portfolio minimal editorial landing page (reference screenshots included)",
+  "keywords": [
+    "light",
+    "minimal",
+    "editorial",
+    "designer",
+    "portfolio",
+    "monochrome",
+    "palette",
+    "asymmetric",
+    "hero",
+    "profile",
+    "story",
+    "block",
+    "capability",
+    "cards",
+    "recent",
+    "projects",
+    "testimonial",
+    "band",
+    "compact",
+    "cta"
+  ],
+  "templates": {
+    "navigation": {
+      "type": "Navbar",
+      "props": {
+        "variant": "withCTA",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "background": "none",
+        "logo": "Nava moon",
+        "links": [
+          {
+            "label": "Home",
+            "href": "#top",
+            "variant": "link"
+          },
+          {
+            "label": "Services",
+            "href": "#capabilities",
+            "variant": "link"
+          },
+          {
+            "label": "About",
+            "href": "#about",
+            "variant": "link"
+          },
+          {
+            "label": "Contact",
+            "href": "#contact",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Get Started",
+            "href": "#contact",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    "hero": {
+      "type": "DesignerHeroEditorial",
+      "props": {
+        "paddingY": "lg",
+        "headingSize": "lg",
+        "bodySize": "sm",
+        "maxWidth": "xl",
+        "eyebrow": "Since 2003",
+        "title": "the future of design & content",
+        "subtitle": "A multidisciplinary creative practice crafting visual systems, product interfaces, and narrative-first brand experiences.",
+        "detail": "Design direction, product systems, and frontend delivery across high-growth digital products.",
+        "ctas": [
+          {
+            "label": "View Work",
+            "href": "#projects",
+            "variant": "primary"
+          },
+          {
+            "label": "Read Story",
+            "href": "#about",
+            "variant": "secondary"
+          }
+        ],
+        "background": "image",
+        "backgroundMedia": {
+          "kind": "image",
+          "src": "/assets/template-factory/designer-portfolio-81-aura-ref/slices/desktop-hero.png",
+          "alt": "Aura – AI Website Builder reference"
+        },
+        "backgroundOverlay": "rgba(5,8,18,0.55)",
+        "media": {
+          "kind": "image",
+          "src": "/assets/template-factory/designer-portfolio-81-aura-ref/slices/desktop-hero.png",
+          "alt": "Aura – AI Website Builder hero visual"
+        },
+        "meshImageSrc": "/assets/template-factory/designer-portfolio-81-aura-ref/slices/desktop-hero.png",
+        "previewImageSrc": "/assets/template-factory/designer-portfolio-81-aura-ref/slices/desktop-story.png",
+        "mobilePreviewImageSrc": "/assets/template-factory/designer-portfolio-81-aura-ref/slices/mobile-hero.png"
+      }
+    },
+    "story": {
+      "type": "FeatureWithMedia",
+      "props": {
+        "variant": "split",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "background": "none",
+        "eyebrow": "Profile",
+        "title": "Design Engineer",
+        "subtitle": "I build elegant product experiences and scalable brand systems.",
+        "body": "Across UI/UX, interaction, and frontend delivery, each project is shaped by clarity, craftsmanship, and long-term maintainability.",
+        "ctas": [
+          {
+            "label": "See full story",
+            "href": "#about",
+            "variant": "secondary"
+          }
+        ],
+        "dashboardImageSrc": "/assets/template-factory/designer-portfolio-81-aura-ref/slices/desktop-story.png",
+        "dashboardImageAlt": "Aura – AI Website Builder dashboard visual",
+        "media": {
+          "kind": "image",
+          "src": "/assets/template-factory/designer-portfolio-81-aura-ref/slices/desktop-story.png",
+          "alt": "Aura – AI Website Builder story visual"
+        },
+        "mediaSrc": "/assets/template-factory/designer-portfolio-81-aura-ref/slices/desktop-story.png",
+        "mediaAlt": "Aura – AI Website Builder story visual"
+      }
+    },
+    "approach": {
+      "type": "DesignerCapabilitiesStrip",
+      "props": {
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Capabilities",
+        "subtitle": "Digital design, development, and growth services with a product mindset.",
+        "items": [
+          {
+            "title": "UI/UX Design",
+            "description": "Research-driven interfaces for web and mobile products.",
+            "ctaLabel": "Read more",
+            "imageSrc": "/assets/template-factory/designer-portfolio-81-aura-ref/slices/desktop-approach.png",
+            "imageAlt": "UI/UX Design"
+          },
+          {
+            "title": "Web Development",
+            "description": "Modern frontend architecture with production-ready quality.",
+            "ctaLabel": "Read more",
+            "imageSrc": "/assets/template-factory/designer-portfolio-81-aura-ref/slices/mobile-approach.png",
+            "imageAlt": "Web Development"
+          },
+          {
+            "title": "Brand Identity",
+            "description": "Visual language systems that scale across digital touchpoints.",
+            "ctaLabel": "Read more",
+            "imageSrc": "/assets/template-factory/designer-portfolio-81-aura-ref/slices/mobile-approach.png",
+            "imageAlt": "Brand Identity"
+          }
+        ]
+      }
+    },
+    "socialproof": {
+      "type": "DesignerQuoteBand",
+      "props": {
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "eyebrow": "Testimonial",
+        "quote": "\"Working with Jeremi was a game-changer. He translated our vision into a polished product and delivered beyond expectations.\"",
+        "author": "Client",
+        "role": "Founder"
+      }
+    },
+    "products": {
+      "type": "DesignerProjectsSplit",
+      "props": {
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Recent Projects",
+        "subtitle": "A selection of latest design and development work.",
+        "items": [
+          {
+            "title": "SaaS Dashboard",
+            "summary": "A product analytics dashboard focused on clarity, trust, and retention.",
+            "href": "#projects",
+            "tags": [
+              "SaaS",
+              "Dashboard"
+            ],
+            "imageSrc": "/assets/template-factory/designer-portfolio-81-aura-ref/slices/desktop-products.png",
+            "imageAlt": "SaaS Dashboard"
+          },
+          {
+            "title": "Fashion Platform",
+            "summary": "A conversion-first ecommerce redesign with improved storytelling and flow.",
+            "href": "#projects",
+            "tags": [
+              "Ecommerce",
+              "Platform"
+            ],
+            "imageSrc": "/assets/template-factory/designer-portfolio-81-aura-ref/slices/mobile-products.png",
+            "imageAlt": "Fashion Platform"
+          }
+        ]
+      }
+    },
+    "cta": {
+      "type": "LeadCaptureCTA",
+      "props": {
+        "variant": "banner",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "title": "Have a project in mind?",
+        "subtitle": "Share a few details and get a structured implementation plan.",
+        "cta": {
+          "label": "Start a Conversation",
+          "href": "#contact",
+          "variant": "primary"
+        }
+      }
+    },
+    "footer": {
+      "type": "Footer",
+      "props": {
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "background": "none",
+        "logoText": "Nava moon",
+        "columns": [
+          {
+            "title": "Explore",
+            "links": [
+              {
+                "label": "Home",
+                "href": "#top"
+              },
+              {
+                "label": "Projects",
+                "href": "#projects"
+              }
+            ]
+          },
+          {
+            "title": "Services",
+            "links": [
+              {
+                "label": "Capabilities",
+                "href": "#capabilities"
+              },
+              {
+                "label": "About",
+                "href": "#about"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Privacy",
+                "href": "#privacy"
+              },
+              {
+                "label": "Terms",
+                "href": "#terms"
+              }
+            ]
+          }
+        ],
+        "legal": "© 2026 Nava moon. All rights reserved."
+      }
+    }
+  }
+}

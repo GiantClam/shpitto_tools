@@ -1,0 +1,215 @@
+{
+  "template_id": "auto_sixtine-reference",
+  "recipe_id": "editorial_luxury",
+  "section_specs": {
+    "navigation": {
+      "block_type": "Navbar",
+      "defaults": {
+        "variant": "withCTA",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "logo": "Aura – AI Website Builde",
+        "links": [
+          {
+            "label": "Home",
+            "href": "#top",
+            "variant": "link"
+          },
+          {
+            "label": "Services",
+            "href": "#services",
+            "variant": "link"
+          },
+          {
+            "label": "About",
+            "href": "#about",
+            "variant": "link"
+          },
+          {
+            "label": "Contact",
+            "href": "#contact",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Get Started",
+            "href": "#contact",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    "hero": {
+      "block_type": "HeroSplit",
+      "defaults": {
+        "mediaPosition": "right",
+        "paddingY": "lg",
+        "headingSize": "lg",
+        "maxWidth": "xl",
+        "title": "Generate a premium editorial luxury interior-design homepage with navigation, ",
+        "subtitle": "Designed for Aura – AI Website Builder with a high-consistency block architecture.",
+        "ctas": [
+          {
+            "label": "Get Started",
+            "href": "#contact",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    "story": {
+      "block_type": "ContentStory",
+      "defaults": {
+        "variant": "split",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "eyebrow": "Our Story",
+        "title": "Why Aura – AI Website Builder",
+        "subtitle": "Crafted experiences, measured outcomes, and durable visual language.",
+        "body": "This section is generated from a template profile and tuned with prompt context.",
+        "ctas": [
+          {
+            "label": "Explore",
+            "href": "#",
+            "variant": "link"
+          }
+        ]
+      }
+    },
+    "approach": {
+      "block_type": "FeatureGrid",
+      "defaults": {
+        "variant": "3col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Key Capabilities",
+        "subtitle": "Designed for scale, precision, and reliable execution.",
+        "items": [
+          {
+            "title": "Process",
+            "desc": "Structured delivery with measurable checkpoints.",
+            "icon": "layers"
+          },
+          {
+            "title": "Quality",
+            "desc": "Design and implementation quality gates.",
+            "icon": "shield"
+          },
+          {
+            "title": "Impact",
+            "desc": "Outcome-focused iteration loop.",
+            "icon": "chart"
+          }
+        ]
+      }
+    },
+    "socialproof": {
+      "block_type": "TestimonialsGrid",
+      "defaults": {
+        "variant": "2col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Building for world-class innovators",
+        "items": [
+          {
+            "quote": "They curated a lifestyle, not only a space.",
+            "name": "Alexander Vane",
+            "role": "CEO"
+          },
+          {
+            "quote": "A masterclass in restraint and elegance.",
+            "name": "Isabelle Dubois",
+            "role": "Founder"
+          }
+        ]
+      }
+    },
+    "cta": {
+      "block_type": "LeadCaptureCTA",
+      "defaults": {
+        "variant": "banner",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Ready to define your space?",
+        "subtitle": "Book a private consultation or browse the lookbook.",
+        "cta": {
+          "label": "Inquire Now",
+          "href": "#contact",
+          "variant": "primary"
+        }
+      }
+    },
+    "footer": {
+      "block_type": "Footer",
+      "defaults": {
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "logoText": "Aura – AI Website Builde",
+        "columns": [
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "About",
+                "href": "#"
+              },
+              {
+                "label": "Contact",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "title": "Studio",
+            "links": [
+              {
+                "label": "Approach",
+                "href": "#"
+              },
+              {
+                "label": "Projects",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Privacy",
+                "href": "#"
+              },
+              {
+                "label": "Terms",
+                "href": "#"
+              }
+            ]
+          }
+        ],
+        "legal": "© 2026 All rights reserved."
+      }
+    }
+  },
+  "fallback_rules": {
+    "missing_socialproof": "use_testimonials_grid_min_2",
+    "missing_cta_secondary": "hide_secondary_button"
+  },
+  "density_limits": {
+    "nav_items_max": 6,
+    "hero_cta_max": 2,
+    "testimonials_min": 2,
+    "cards_max": 8
+  },
+  "required_categories": [
+    "navigation",
+    "hero",
+    "story",
+    "approach",
+    "socialproof",
+    "cta",
+    "footer"
+  ]
+}

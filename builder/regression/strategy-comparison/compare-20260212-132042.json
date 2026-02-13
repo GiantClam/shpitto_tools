@@ -1,0 +1,93 @@
+{
+  "runId": "compare-20260212-132042",
+  "generatedAt": "2026-02-12T05:20:42.434Z",
+  "baseUrl": "http://localhost:3110",
+  "renderer": "sandbox",
+  "promptsFile": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-social-automation-v2/regression-prompts.json",
+  "groups": [
+    {
+      "id": "A_hybrid_legacy",
+      "label": "A: Hybrid Legacy",
+      "env": {
+        "BUILDER_SECTION_GENERATION_STRATEGY": "hybrid",
+        "BUILDER_TEMPLATE_SECTIONS": "footercta,footer-cta,cta,socialproof,social-proof,testimonial,trustlogo",
+        "BUILDER_LLM_SECTIONS": "",
+        "BUILDER_TEMPLATE_FIRST_VARIANTS": "cta,socialproof",
+        "CREATION_REQUEST_TIMEOUT_MS": "180000",
+        "CREATION_PERSIST_REQUEST_TIMEOUT_MS": "180000"
+      },
+      "total": 1,
+      "passed": 1,
+      "avgDurationMs": 121615,
+      "results": [
+        {
+          "caseId": "social-automation-aura",
+          "ok": true,
+          "statusCode": 200,
+          "durationMs": 121615,
+          "errors": [],
+          "requestId": "creation_1770873643462_7iv3gd",
+          "responseId": "p2w_1770873643464",
+          "url": "http://localhost:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260212-132042_a-hybrid-legacy_social-automation-aura&page=home",
+          "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/A_hybrid_legacy/social-automation-aura.png"
+        }
+      ]
+    },
+    {
+      "id": "B_hybrid_split",
+      "label": "B: Hybrid Split (Template-first + LLM Hero/Story)",
+      "env": {
+        "BUILDER_SECTION_GENERATION_STRATEGY": "hybrid",
+        "BUILDER_TEMPLATE_SECTIONS": "navigation,footer,footercta,footer-cta,cta,socialproof,social-proof,testimonial,trustlogo,products,catalog,metrics,stats,contact",
+        "BUILDER_LLM_SECTIONS": "hero,studiostory,story,showcase",
+        "BUILDER_TEMPLATE_FIRST_VARIANTS": "cta,socialproof,contact,catalog",
+        "CREATION_REQUEST_TIMEOUT_MS": "180000",
+        "CREATION_PERSIST_REQUEST_TIMEOUT_MS": "180000"
+      },
+      "total": 1,
+      "passed": 1,
+      "avgDurationMs": 94176,
+      "results": [
+        {
+          "caseId": "social-automation-aura",
+          "ok": true,
+          "statusCode": 200,
+          "durationMs": 94176,
+          "errors": [],
+          "requestId": "creation_1770873773120_l7mwg6",
+          "responseId": "p2w_1770873773122",
+          "url": "http://localhost:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260212-132042_b-hybrid-split_social-automation-aura&page=home",
+          "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/B_hybrid_split/social-automation-aura.png"
+        }
+      ]
+    },
+    {
+      "id": "C_template_first",
+      "label": "C: Template First",
+      "env": {
+        "BUILDER_SECTION_GENERATION_STRATEGY": "template_first",
+        "BUILDER_TEMPLATE_SECTIONS": "navigation,footer,footercta,footer-cta,cta,socialproof,social-proof,testimonial,trustlogo,products,catalog,metrics,stats,contact",
+        "BUILDER_LLM_SECTIONS": "",
+        "BUILDER_TEMPLATE_FIRST_VARIANTS": "cta,socialproof,contact,catalog",
+        "CREATION_REQUEST_TIMEOUT_MS": "180000",
+        "CREATION_PERSIST_REQUEST_TIMEOUT_MS": "180000"
+      },
+      "total": 1,
+      "passed": 1,
+      "avgDurationMs": 109074,
+      "results": [
+        {
+          "caseId": "social-automation-aura",
+          "ok": true,
+          "statusCode": 200,
+          "durationMs": 109074,
+          "errors": [],
+          "requestId": "creation_1770873876168_i4epyt",
+          "responseId": "p2w_1770873876170",
+          "url": "http://localhost:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260212-132042_c-template-first_social-automation-aura&page=home",
+          "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/social-automation-aura.png"
+        }
+      ]
+    }
+  ]
+}

@@ -173,3 +173,22 @@
 - Run `p2w_1770213779892` failed `immersive-gallery` with parse error; logs show toolUsed response where `component` is a string containing JSON-like text (backtick code) instead of an object, causing normalizeSectionPayload to reject it (`builder_section_invalid` → `builder_section_failed:parse`).
 - Run `p2w_1770215219340` failed `design-showcase` layout with issue `align start missing`; `alignLocked` was being set whenever align was present, which over-enforced align even for tile grids. Align lock should only be set via explicit `alignLocked` or sectionAlignOverrides.
 - Run `p2w_1770216068018` failed `product-catalog` + `contact-form` parse; logs show empty responses (`contentLength: 0` or `{}`) and malformed JSON (code with unescaped quotes/markdown). Root fix: retry on empty/{} and enforce strict JSON tool output before parse failure.
+- Added dedicated regression case file `builder/regression/prompts.sixtine.abtest.json` with full Sixtine long-form prompt for controlled A/B/C comparison.
+- Strategy run `compare-20260212-104001` completed with all groups passing 1/1:
+  - A_hybrid_legacy: 127203ms
+  - B_hybrid_split: 104042ms
+  - C_template_first: 107425ms
+- Screenshot artifacts for this run:
+  - `builder/regression/strategy-comparison/screenshots/A_hybrid_legacy/sixtine-long-spec.png`
+  - `builder/regression/strategy-comparison/screenshots/B_hybrid_split/sixtine-long-spec.png`
+  - `builder/regression/strategy-comparison/screenshots/C_template_first/sixtine-long-spec.png`
+- Regression renderer now supports sandbox mode and defaults to sandbox (`--renderer sandbox|render`), so screenshots are based on `/creation/sandbox` instead of `/render`.
+- Added server-side sandbox payload loading via `siteKey`:
+  - `builder/src/app/creation/sandbox/page.tsx` reads `asset-factory/out/<siteKey>/sandbox/payload.json`
+  - Passes `initialPayload` into sandbox client for non-postMessage runs.
+- Added sandbox runtime resilience:
+  - `builder/src/app/creation/sandbox-client.tsx` merges base `puckConfig` + JIT components.
+  - Adds missing block renderer fallback to prevent empty-page waits when block types are not registered.
+  - Exposes `data-sandbox-ready="1"` once config+data are ready for deterministic screenshot waits.
+- `run-strategy-comparison.mjs` now writes `sandbox/payload.json` and waits for `[data-sandbox-ready='1']` before screenshot capture in sandbox mode.
+- Verified latest run `compare-20260212-114525` renders via sandbox with full-page screenshot height 3091px (previously 720px/empty waiting screen).

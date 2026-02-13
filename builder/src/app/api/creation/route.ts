@@ -11,7 +11,81 @@ const ensureDir = async (dir: string) => {
   await fs.mkdir(dir, { recursive: true });
 };
 
-const generationRequestTimeoutMs = Number(process.env.CREATION_REQUEST_TIMEOUT_MS || 30000);
+const parseTimeoutMs = (value: number, fallbackMs: number) => {
+  if (!Number.isFinite(value)) return fallbackMs;
+  if (value <= 0) return 0;
+  return Math.floor(value);
+};
+
+const generationRequestTimeoutMs = parseTimeoutMs(
+  Number(process.env.CREATION_REQUEST_TIMEOUT_MS || 120000),
+  120000
+);
+const persistRequestTimeoutMs = parseTimeoutMs(
+  Number(process.env.CREATION_PERSIST_REQUEST_TIMEOUT_MS || 0),
+  0
+);
+
+type GenerationResult = Awaited<ReturnType<typeof generateP2WProject>>;
+
+type SandboxPayload = {
+  components: Array<{ name: string; code: string }>;
+  pages: Array<{ path: string; name: string; data: unknown }>;
+  theme?: Record<string, unknown>;
+};
+
+const toSandboxPayload = (value: unknown): SandboxPayload => {
+  const payload = (value && typeof value === "object" ? value : {}) as Record<string, unknown>;
+  const components = Array.isArray(payload.components)
+    ? payload.components.filter(
+        (item): item is { name: string; code: string } =>
+          Boolean(
+            item &&
+              typeof item === "object" &&
+              typeof (item as Record<string, unknown>).name === "string" &&
+              typeof (item as Record<string, unknown>).code === "string"
+          )
+      )
+    : [];
+  const pages = Array.isArray(payload.pages)
+    ? payload.pages.filter(
+        (item): item is { path: string; name: string; data: unknown } =>
+          Boolean(
+            item &&
+              typeof item === "object" &&
+              typeof (item as Record<string, unknown>).path === "string" &&
+              typeof (item as Record<string, unknown>).name === "string" &&
+              typeof (item as Record<string, unknown>).data === "object"
+          )
+      )
+    : [];
+  const theme =
+    payload.theme && typeof payload.theme === "object" ? (payload.theme as Record<string, unknown>) : undefined;
+  return { components, pages, theme };
+};
+
+const persistSandboxPayload = async (outDir: string, value: unknown) => {
+  const sandboxDir = path.join(outDir, "sandbox");
+  await ensureDir(sandboxDir);
+  const sandboxPayload = toSandboxPayload(value);
+  await fs.writeFile(path.join(sandboxDir, "payload.json"), JSON.stringify(sandboxPayload, null, 2));
+};
+
+const persistGeneratedResult = async (options: {
+  outDir: string;
+  prompt: string;
+  requestId: string;
+  id: string;
+  result: GenerationResult;
+  logLabel?: "persisted" | "persisted_after_timeout";
+}) => {
+  const { outDir, prompt, requestId, id, result, logLabel = "persisted" } = options;
+  await fs.writeFile(path.join(outDir, "result.json"), JSON.stringify({ prompt, ...result }, null, 2));
+  await persistSandboxPayload(outDir, result);
+  logInfo("[creation] " + logLabel, { requestId, id, outDir });
+  const planner = await PlanningFiles.init({ rootDir: outDir, prompt, requestId });
+  await planner.markPersistComplete();
+};
 
 const buildTimeoutFallbackResult = (prompt: string) => {
   const title = prompt?.trim() ? prompt.trim().slice(0, 56) : "Generated Landing Page";
@@ -121,6 +195,7 @@ const buildTimeoutFallbackResult = (prompt: string) => {
 
 export async function POST(request: NextRequest) {
   const requestId = `creation_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+  const startedAt = Date.now();
   try {
     logInfo("[creation] start", { requestId });
     const body = await request.json();
@@ -128,11 +203,11 @@ export async function POST(request: NextRequest) {
     const resumeId = typeof body.resumeId === "string" ? body.resumeId.trim() : "";
     if (!prompt) {
       logWarn("[creation] empty_prompt", { requestId });
-      return NextResponse.json({ error: "prompt_required" }, { status: 400 });
+      return NextResponse.json({ error: "prompt_required", requestId }, { status: 400 });
     }
     if (!process.env.AIBERM_API_KEY && !process.env.OPENROUTER_API_KEY && !process.env.ANTHROPIC_API_KEY) {
       logError("[creation] missing_api_key", { requestId });
-      return NextResponse.json({ error: "missing_api_key" }, { status: 500 });
+      return NextResponse.json({ error: "missing_api_key", requestId }, { status: 500 });
     }
 
     const id = resumeId || `p2w_${Date.now()}`;
@@ -144,22 +219,78 @@ export async function POST(request: NextRequest) {
       await ensureDir(outDir);
     }
 
-    logInfo("[creation] generate", { requestId, promptLength: prompt.length });
-    const generated = await Promise.race([
-      generateP2WProject({
-        prompt,
-        manifest,
-        planning: persistEnabled ? { dir: outDir, requestId } : undefined,
-      }).then((result) => ({ kind: "ok" as const, result })),
-      new Promise<{ kind: "timeout" }>((resolve) =>
-        setTimeout(() => resolve({ kind: "timeout" }), generationRequestTimeoutMs)
-      ),
-    ]);
-    const result =
-      generated.kind === "ok" ? generated.result : buildTimeoutFallbackResult(prompt);
+    const requestTimeoutMs = persistEnabled ? persistRequestTimeoutMs : generationRequestTimeoutMs;
+    logInfo("[creation] generate", {
+      requestId,
+      promptLength: prompt.length,
+      timeoutMs: requestTimeoutMs,
+      persistEnabled,
+    });
+    const generationPromise = generateP2WProject({
+      prompt,
+      manifest,
+      planning: persistEnabled ? { dir: outDir, requestId } : undefined,
+    });
+
+    const generated =
+      requestTimeoutMs > 0
+        ? await Promise.race([
+            generationPromise.then((result) => ({ kind: "ok" as const, result })),
+            new Promise<{ kind: "timeout" }>((resolve) =>
+              setTimeout(() => resolve({ kind: "timeout" }), requestTimeoutMs)
+            ),
+          ])
+        : ({ kind: "ok" as const, result: await generationPromise });
+
     if (generated.kind === "timeout") {
-      logWarn("[creation] timeout_fallback", { requestId, timeoutMs: generationRequestTimeoutMs });
+      logWarn("[creation] timeout_fallback", { requestId, timeoutMs: requestTimeoutMs, persistEnabled });
+      if (persistEnabled) {
+        logInfo("[creation] persist_deferred", {
+          requestId,
+          id,
+          reason: "timeout_fallback",
+        });
+        void generationPromise
+          .then((resolved) =>
+            persistGeneratedResult({
+              outDir,
+              prompt,
+              requestId,
+              id,
+              result: resolved,
+              logLabel: "persisted_after_timeout",
+            })
+          )
+          .catch((error: any) => {
+            logError("[creation] persist_deferred_failed", {
+              requestId,
+              id,
+              message: error?.message ?? String(error),
+              details: error?.details,
+            });
+          });
+      }
+      const timeoutResult = buildTimeoutFallbackResult(prompt);
+      logInfo("[creation] generated", {
+        requestId,
+        id,
+        pages: Array.isArray(timeoutResult.pages) ? timeoutResult.pages.length : 0,
+        components: Array.isArray(timeoutResult.components) ? timeoutResult.components.length : 0,
+        errors: timeoutResult.errors,
+        timeoutFallback: true,
+      });
+      return NextResponse.json({
+        requestId,
+        id,
+        prompt,
+        durationMs: Date.now() - startedAt,
+        pending: persistEnabled,
+        timeoutMs: requestTimeoutMs,
+        ...timeoutResult,
+      });
     }
+
+    const result = generated.result;
     logInfo("[creation] generated", {
       requestId,
       id,
@@ -168,13 +299,17 @@ export async function POST(request: NextRequest) {
       errors: result.errors,
     });
     if (persistEnabled) {
-      await fs.writeFile(path.join(outDir, "result.json"), JSON.stringify({ prompt, ...result }, null, 2));
-      logInfo("[creation] persisted", { requestId, id, outDir });
-      const planner = await PlanningFiles.init({ rootDir: outDir, prompt, requestId });
-      await planner.markPersistComplete();
+      await persistGeneratedResult({
+        outDir,
+        prompt,
+        requestId,
+        id,
+        result,
+        logLabel: "persisted",
+      });
     }
 
-    return NextResponse.json({ id, prompt, ...result });
+    return NextResponse.json({ requestId, id, prompt, durationMs: Date.now() - startedAt, ...result });
   } catch (error: any) {
     logError("[creation] error", {
       requestId,
@@ -185,6 +320,6 @@ export async function POST(request: NextRequest) {
       process.env.NODE_ENV !== "production"
         ? { message: error?.message ?? String(error), details: error?.details }
         : undefined;
-    return NextResponse.json({ error: "generation_failed", detail }, { status: 500 });
+    return NextResponse.json({ error: "generation_failed", detail, requestId }, { status: 500 });
   }
 }

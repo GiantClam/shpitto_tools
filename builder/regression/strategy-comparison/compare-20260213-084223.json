@@ -1,0 +1,37 @@
+{
+  "runId": "compare-20260213-084223",
+  "generatedAt": "2026-02-13T00:42:23.206Z",
+  "baseUrl": "http://localhost:3110",
+  "renderer": "sandbox",
+  "promptsFile": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-nexus-engineering-auto-regression-test-v4/regression-prompts.json",
+  "groups": [
+    {
+      "id": "C_template_first",
+      "label": "C: Template First",
+      "env": {
+        "BUILDER_SECTION_GENERATION_STRATEGY": "template_first",
+        "BUILDER_TEMPLATE_SECTIONS": "navigation,footer,footercta,footer-cta,cta,socialproof,social-proof,testimonial,trustlogo,products,catalog,metrics,stats,contact",
+        "BUILDER_LLM_SECTIONS": "",
+        "BUILDER_TEMPLATE_FIRST_VARIANTS": "cta,socialproof,contact,catalog",
+        "CREATION_REQUEST_TIMEOUT_MS": "180000",
+        "CREATION_PERSIST_REQUEST_TIMEOUT_MS": "180000"
+      },
+      "total": 1,
+      "passed": 1,
+      "avgDurationMs": 86556,
+      "results": [
+        {
+          "caseId": "nexus-engineering-aura-ref",
+          "ok": true,
+          "statusCode": 200,
+          "durationMs": 86556,
+          "errors": [],
+          "requestId": "creation_1770943347944_v0583f",
+          "responseId": "p2w_1770943347947",
+          "url": "http://localhost:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260213-084223_c-template-first_nexus-engineering-aura-ref&page=home",
+          "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/nexus-engineering-aura-ref.png"
+        }
+      ]
+    }
+  ]
+}

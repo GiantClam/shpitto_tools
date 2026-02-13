@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "luxury-interior-sixtine",
+      "description": "高端住宅室内设计官网（偏编辑感）",
+      "requiredCategories": ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
+      "prompt": "为一家高端住宅室内设计工作室生成首页。必须包含：固定导航、非对称 Hero、Studio Story、Approach & Metrics、Social Proof、Footer CTA、Footer。视觉风格：画廊式极简，暖米白背景，衬线标题+无衬线正文，低调奢华。"
+    },
+    {
+      "id": "industrial-b2b",
+      "description": "工业制造 B2B 官网",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "socialproof", "cta", "footer"],
+      "prompt": "生成工业设备制造商官网首页，面向B2B采购。需要：导航、Hero、能力与指标、产品目录、客户背书、行动召唤、页脚。视觉：硬朗、理性、现代工业风。"
+    },
+    {
+      "id": "ai-saas",
+      "description": "AI SaaS 营销首页",
+      "requiredCategories": ["navigation", "hero", "approach", "socialproof", "cta", "footer"],
+      "prompt": "Create a premium AI SaaS homepage with navigation, hero, features/stats, trust/testimonials, CTA, and footer. Keep it conversion-focused but clean."
+    },
+    {
+      "id": "fintech-app",
+      "description": "金融科技产品官网",
+      "requiredCategories": ["navigation", "hero", "approach", "socialproof", "cta", "footer"],
+      "prompt": "生成金融科技产品官网首页。必须有导航、Hero、产品优势/指标、客户信任背书、页脚CTA、页脚。风格专业可信、不过度花哨。"
+    },
+    {
+      "id": "wellness-clinic",
+      "description": "高端健康诊所官网",
+      "requiredCategories": ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
+      "prompt": "为高端健康诊所生成官网首页，强调服务故事与用户信任。包含导航、Hero、品牌故事、方法与指标、口碑、咨询CTA、Footer。"
+    },
+    {
+      "id": "ecommerce-brand",
+      "description": "消费品牌电商首页",
+      "requiredCategories": ["navigation", "hero", "products", "socialproof", "cta", "footer"],
+      "prompt": "生成消费品牌电商首页，必须包含：导航、Hero、产品展示区、社交证明、购买CTA、页脚。视觉简洁但有品牌辨识度。"
+    },
+    {
+      "id": "agency-portfolio",
+      "description": "创意工作室官网",
+      "requiredCategories": ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
+      "prompt": "Create a creative studio portfolio homepage with a strong editorial hero, studio story, process/metrics, testimonials, CTA banner, and footer."
+    },
+    {
+      "id": "education-platform",
+      "description": "在线教育平台首页",
+      "requiredCategories": ["navigation", "hero", "approach", "socialproof", "cta", "footer"],
+      "prompt": "生成在线教育平台首页。包含导航、Hero、课程价值点、学员背书、主CTA、Footer，风格现代清晰，移动端友好。"
+    },
+    {
+      "id": "travel-hospitality",
+      "description": "旅行酒店品牌官网",
+      "requiredCategories": ["navigation", "hero", "story", "socialproof", "cta", "footer"],
+      "prompt": "为精品旅行与酒店品牌生成官网首页，包含导航、沉浸式Hero、品牌故事、信任背书、预订CTA、Footer。"
+    },
+    {
+      "id": "developer-tooling",
+      "description": "开发者工具官网",
+      "requiredCategories": ["navigation", "hero", "approach", "socialproof", "cta", "footer"],
+      "prompt": "Create a developer tooling landing page with navigation, hero, capabilities/metrics, user trust, CTA, and footer. Keep copy concise and technical."
+    }
+  ]
+}

@@ -139,3 +139,13 @@ Phase 4
 - Update phase status as you progress: pending → in_progress → complete
 - Re-read this plan before major decisions (attention manipulation)
 - Log ALL errors - they help avoid repetition
+
+## Session Addendum (2026-02-12)
+- [x] Create dedicated single-case regression prompt file for Sixtine long spec
+- [x] Run strategy comparison for groups A/B/C using the dedicated prompt file
+- [x] Confirm screenshot artifacts exist for all three groups
+- [x] Record report paths and runtime metrics for user review
+- [x] Switch strategy regression default renderer to sandbox
+- [x] Add sandbox payload loading by siteKey for non-interactive regression runs
+- [x] Add sandbox-ready marker + missing renderer fallback for stable screenshot capture
+- [x] Validate sandbox screenshot full-page capture in regression run

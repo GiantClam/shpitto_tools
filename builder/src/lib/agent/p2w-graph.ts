@@ -15,6 +15,7 @@ import {
   buildBuilderCompactUserPrompt,
   buildBuilderUserPrompt,
 } from "@/lib/agent/prompts";
+import { resolveSectionTemplateBlock, selectStyleProfile } from "@/lib/agent/section-template-registry";
 
 const State = Annotation.Root({
   prompt: Annotation<string>,
@@ -47,6 +48,7 @@ type LlmOptions = {
   modelOverride?: string;
   requireToolUse?: boolean;
   allowProviderFallbackOnAnyError?: boolean;
+  requestSignal?: AbortSignal;
 };
 
 type SkillContext = {
@@ -348,8 +350,30 @@ const builderTool: Tool = {
   },
 };
 
-const model = process.env.LLM_MODEL || process.env.OPENROUTER_MODEL || "anthropic/claude-sonnet-4.5";
-const fallbackModel = process.env.LLM_MODEL_FALLBACK || process.env.OPENROUTER_MODEL_FALLBACK;
+const primaryModelDefault = process.env.LLM_MODEL || process.env.OPENROUTER_MODEL || "anthropic/claude-sonnet-4.5";
+const fallbackModelDefault = process.env.LLM_MODEL_FALLBACK || process.env.OPENROUTER_MODEL_FALLBACK;
+type ProviderModelName = LlmProviderClient["name"];
+const providerPrimaryModelOverrides: Partial<Record<ProviderModelName, string>> = {
+  aiberm: process.env.LLM_MODEL_AIBERM || process.env.AIBERM_MODEL || "",
+  openrouter: process.env.LLM_MODEL_OPENROUTER || process.env.OPENROUTER_MODEL || "",
+  anthropic: process.env.LLM_MODEL_ANTHROPIC || process.env.ANTHROPIC_MODEL || "",
+};
+const providerFallbackModelOverrides: Partial<Record<ProviderModelName, string>> = {
+  aiberm: process.env.LLM_MODEL_FALLBACK_AIBERM || process.env.AIBERM_MODEL_FALLBACK || "",
+  openrouter: process.env.LLM_MODEL_FALLBACK_OPENROUTER || process.env.OPENROUTER_MODEL_FALLBACK || "",
+  anthropic: process.env.LLM_MODEL_FALLBACK_ANTHROPIC || process.env.ANTHROPIC_MODEL_FALLBACK || "",
+};
+const resolveProviderModel = (provider: ProviderModelName, requestedModel: string) => {
+  const providerPrimary = providerPrimaryModelOverrides[provider];
+  const providerFallback = providerFallbackModelOverrides[provider];
+  if (requestedModel === fallbackModelDefault) {
+    return providerFallback || providerPrimary || requestedModel;
+  }
+  if (requestedModel === primaryModelDefault) {
+    return providerPrimary || requestedModel;
+  }
+  return requestedModel;
+};
 const defaultMaxTokens = Number(process.env.LLM_MAX_TOKENS || process.env.OPENROUTER_MAX_TOKENS || 4096);
 const logPrefix = "[creation:agent]";
 type CrossProviderFallbackMode = "all" | "network_only" | "none";
@@ -362,11 +386,17 @@ const defaultSectionConcurrency = Number(
 const architectMaxTokens = Number(process.env.ARCHITECT_MAX_TOKENS || 1800);
 const architectTimeoutMs = Number(process.env.ARCHITECT_TIMEOUT_MS || 25000);
 const builderMaxTokens = Number(process.env.BUILDER_MAX_TOKENS || 1200);
+const configuredBuilderRecoveryMaxTokens = Number(process.env.BUILDER_RECOVERY_MAX_TOKENS || 2200);
+const builderRecoveryMaxTokens = Number.isFinite(configuredBuilderRecoveryMaxTokens)
+  ? Math.max(builderMaxTokens, Math.floor(configuredBuilderRecoveryMaxTokens))
+  : Math.max(builderMaxTokens, 2200);
 const defaultMaxPages = Number(process.env.CREATION_MAX_PAGES || 1);
-const defaultMaxSectionsPerPage = Number(process.env.CREATION_MAX_SECTIONS_PER_PAGE || 2);
-const defaultMaxSectionsTotal = Number(process.env.CREATION_MAX_SECTIONS_TOTAL || 2);
+const defaultMaxSectionsPerPage = Number(process.env.CREATION_MAX_SECTIONS_PER_PAGE || 6);
+const defaultMaxSectionsTotal = Number(process.env.CREATION_MAX_SECTIONS_TOTAL || 10);
 type BuilderRetryMode = "legacy" | "network_only" | "none";
 const builderRetryMode = ((process.env.LLM_RETRY_MODE || "legacy").toLowerCase() as BuilderRetryMode) ?? "legacy";
+type SectionGenerationStrategy = "llm_first" | "hybrid" | "template_first";
+const normalizeRouteToken = (value: string) => value.trim().toLowerCase().replace(/[^a-z0-9]+/g, "");
 
 const parseEnvBoolean = (value: string | undefined, fallback: boolean) => {
   if (typeof value !== "string") return fallback;
@@ -375,6 +405,50 @@ const parseEnvBoolean = (value: string | undefined, fallback: boolean) => {
   if (["0", "false", "no", "off"].includes(normalized)) return false;
   return fallback;
 };
+const parseEnvCsv = (value: string | undefined, fallback: string[]) => {
+  if (typeof value !== "string" || !value.trim()) return fallback;
+  const parsed = value
+    .split(",")
+    .map((item) => item.trim().toLowerCase())
+    .filter(Boolean);
+  return parsed.length ? parsed : fallback;
+};
+const parseSectionGenerationStrategy = (
+  value: string | undefined,
+  fallback: SectionGenerationStrategy
+): SectionGenerationStrategy => {
+  const normalized = String(value ?? "").trim().toLowerCase();
+  if (normalized === "llm_first" || normalized === "hybrid" || normalized === "template_first") {
+    return normalized;
+  }
+  return fallback;
+};
+
+const useCompactDesignSystemForBuilder = parseEnvBoolean(
+  process.env.BUILDER_USE_COMPACT_DESIGN_SYSTEM_PROMPT,
+  true
+);
+const sectionGenerationStrategy = parseSectionGenerationStrategy(
+  process.env.BUILDER_SECTION_GENERATION_STRATEGY,
+  "hybrid"
+);
+const templateFirstSectionTokens = parseEnvCsv(
+  process.env.BUILDER_TEMPLATE_SECTIONS || process.env.BUILDER_TEMPLATE_FIRST_SECTIONS,
+  ["footercta", "footer-cta", "cta", "socialproof", "social-proof", "testimonial", "trustlogo"]
+);
+const llmFirstSectionTokens = parseEnvCsv(
+  process.env.BUILDER_LLM_SECTIONS,
+  sectionGenerationStrategy === "template_first"
+    ? []
+    : ["hero", "studiostory", "story", "showcase"]
+);
+const templateFirstVariantTokens = new Set(
+  parseEnvCsv(process.env.BUILDER_TEMPLATE_FIRST_VARIANTS, ["cta", "socialproof", "contact", "catalog"])
+);
+const templateRecoveryFailureTypes = new Set(
+  parseEnvCsv(process.env.BUILDER_TEMPLATE_RECOVERY_FAILURE_TYPES, ["parse", "layout"])
+);
+const enableTemplateShadowRun = parseEnvBoolean(process.env.BUILDER_TEMPLATE_SHADOW_RUN, false);
 
 const configuredSectionMaxAttempts = Math.max(1, Number(process.env.LLM_SECTION_MAX_ATTEMPTS || 3));
 const configuredNetworkRetryAttempts = Math.max(0, Number(process.env.LLM_NETWORK_RETRY_ATTEMPTS || 1));
@@ -385,6 +459,8 @@ const effectiveSectionMaxAttempts =
 const allowNonNetworkRetries = builderRetryMode === "legacy";
 const enableBuilderRepair = parseEnvBoolean(process.env.LLM_ENABLE_REPAIR, builderRetryMode === "legacy");
 const enableBuilderRefinement = parseEnvBoolean(process.env.LLM_ENABLE_REFINEMENT, builderRetryMode === "legacy");
+const providerDisableMs = Math.max(0, Number(process.env.LLM_PROVIDER_DISABLE_MS || 300000));
+const providerDisabledUntil = new Map<ProviderModelName, number>();
 
 const isNetworkOrRetryableProviderError = (error: unknown) => {
   const message = String((error as any)?.message ?? "");
@@ -403,9 +479,37 @@ const isNetworkOrRetryableProviderError = (error: unknown) => {
   return false;
 };
 
+const isAuthOrQuotaProviderError = (error: unknown) => {
+  const message = String((error as any)?.message ?? "");
+  const code = String((error as any)?.code ?? "");
+  const status = Number((error as any)?.status);
+  if (Number.isFinite(status) && (status === 401 || status === 402 || status === 403)) {
+    return true;
+  }
+  if (/tokenstatusexhausted|insufficient|quota|credit|exhausted|unauthorized|invalid[_\s-]?api[_\s-]?key/i.test(message)) {
+    return true;
+  }
+  if (/invalid_api_key|invalidapikey|authentication_error|auth_error|insufficient_quota/i.test(code)) {
+    return true;
+  }
+  return false;
+};
+
+const isAbortLikeError = (error: unknown) => {
+  const name = String((error as any)?.name ?? "");
+  const code = String((error as any)?.code ?? "");
+  const message = String((error as any)?.message ?? "");
+  return (
+    name === "AbortError" ||
+    code === "ABORT_ERR" ||
+    /aborted|aborterror|signal is aborted|request aborted/i.test(message)
+  );
+};
+
 const shouldFallbackToNextProvider = (error: unknown) => {
   if (crossProviderFallbackMode === "none") return false;
   if (crossProviderFallbackMode === "all") return true;
+  if (isAuthOrQuotaProviderError(error)) return true;
   return isNetworkOrRetryableProviderError(error);
 };
 
@@ -452,33 +556,52 @@ export const config = {
   fields: {
     title: { type: "text" },
     subtitle: { type: "text" },
-    variant: { type: "select", options: ["content", "catalog", "contact"] },
+    variant: { type: "select", options: ["content", "catalog", "contact", "cta", "socialProof"] },
+    ctaStyle: { type: "select", options: ["auto", "surface", "contrast"] },
     ctaLabel: { type: "text" },
     ctaHref: { type: "text" },
+    secondaryCtaLabel: { type: "text" },
+    secondaryCtaHref: { type: "text" },
+    legal: { type: "text" },
     whatsapp: { type: "text" }
   },
   defaultProps: {
     title: "Section",
     subtitle: "Generated with safe fallback template.",
     variant: "content",
+    ctaStyle: "auto",
     ctaLabel: "Contact Sales",
     ctaHref: "#contact",
+    secondaryCtaLabel: "",
+    secondaryCtaHref: "",
+    legal: "",
     whatsapp: ""
   }
 };
 
 export default function CreationFallbackSection(props) {
   const {
+    anchor = "section",
     title = "Section",
     subtitle = "",
     variant = "content",
+    ctaStyle = "auto",
     items = [],
     ctaLabel = "Contact Sales",
     ctaHref = "#contact",
+    secondaryCtaLabel = "",
+    secondaryCtaHref = "",
+    legal = "",
+    footerLinks = [],
+    logos = [],
+    testimonials = [],
     whatsapp = "",
   } = props || {};
 
   const safeItems = Array.isArray(items) ? items.filter(Boolean) : [];
+  const safeFooterLinks = Array.isArray(footerLinks) ? footerLinks.slice(0, 4) : [];
+  const safeLogos = Array.isArray(logos) ? logos.filter(Boolean).slice(0, 8) : [];
+  const safeTestimonials = Array.isArray(testimonials) ? testimonials.filter(Boolean).slice(0, 3) : [];
   const catalogItems = safeItems.length
     ? safeItems.slice(0, 8)
     : [
@@ -543,6 +666,134 @@ export default function CreationFallbackSection(props) {
               </div>
             </CardContent>
           </Card>
+        </div>
+      </section>
+    );
+  }
+
+  if (variant === "cta") {
+    const normalizedStyle = ["auto", "surface", "contrast"].includes(String(ctaStyle))
+      ? String(ctaStyle)
+      : "auto";
+    const hasSecondary = Boolean(
+      typeof secondaryCtaLabel === "string" &&
+        secondaryCtaLabel.trim() &&
+        typeof secondaryCtaHref === "string" &&
+        secondaryCtaHref.trim()
+    );
+    const hasMeta = Boolean((typeof legal === "string" && legal.trim()) || safeFooterLinks.length);
+    const sectionToneClass =
+      normalizedStyle === "contrast"
+        ? "bg-foreground text-background"
+        : normalizedStyle === "surface"
+          ? "bg-muted/40 text-foreground"
+          : "bg-background text-foreground";
+    const primaryBtnClass =
+      normalizedStyle === "contrast"
+        ? "rounded-full bg-background text-foreground hover:bg-background/90 px-8"
+        : "rounded-full px-8";
+    const secondaryBtnClass =
+      normalizedStyle === "contrast"
+        ? "rounded-full border-background/40 text-background hover:bg-background hover:text-foreground px-8"
+        : "rounded-full px-8";
+
+    return (
+      <section id={anchor} className={\`\${sectionToneClass} py-20 md:py-24 lg:py-28\`}>
+        <div className="mx-auto w-full max-w-[1200px] px-6 text-center space-y-8">
+          <div className="space-y-4">
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl tracking-tight">{title}</h2>
+            {subtitle ? (
+              <p className={\`mx-auto max-w-2xl text-sm md:text-base \${normalizedStyle === "contrast" ? "text-background/75" : "text-muted-foreground"}\`}>
+                {subtitle}
+              </p>
+            ) : null}
+          </div>
+          <div className={\`flex flex-col items-center justify-center gap-3 \${hasSecondary ? "sm:flex-row" : ""}\`}>
+            <Button asChild size="lg" className={primaryBtnClass}>
+              <a href={ctaHref}>{ctaLabel}</a>
+            </Button>
+            {hasSecondary ? (
+              <Button asChild size="lg" variant="outline" className={secondaryBtnClass}>
+                <a href={secondaryCtaHref}>{secondaryCtaLabel}</a>
+              </Button>
+            ) : null}
+          </div>
+          {hasMeta ? (
+            <div className={\`pt-8 border-t flex flex-col gap-4 text-xs md:flex-row md:items-center md:justify-between \${normalizedStyle === "contrast" ? "border-background/15 text-background/60" : "border-border text-muted-foreground"}\`}>
+              <span>{legal}</span>
+              {safeFooterLinks.length ? (
+                <div className="flex items-center justify-center gap-4 md:justify-end">
+                  {safeFooterLinks.map((item, index) => (
+                    <a
+                      key={index}
+                      href={item?.href || "#"}
+                      className={\`transition-colors \${normalizedStyle === "contrast" ? "hover:text-background" : "hover:text-foreground"}\`}
+                    >
+                      {item?.label || "Link"}
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+      </section>
+    );
+  }
+
+  if (variant === "socialProof") {
+    const fallbackLogos = safeLogos.length
+      ? safeLogos
+      : ["NASA", "SpaceX", "Uber", "VISA", "Airbnb", "Meta"];
+    const fallbackTestimonials = safeTestimonials.length
+      ? safeTestimonials
+      : [
+          {
+            name: "Alexander Vane",
+            role: "CEO at Aura",
+            quote:
+              "Sixtine didn't just design a house; they curated a lifestyle.",
+          },
+          {
+            name: "Isabelle Dubois",
+            role: "Founder of ArtHouse",
+            quote:
+              "An absolute masterclass in restraint and elegance for premium spaces.",
+          },
+        ];
+    return (
+      <section id={anchor} className="py-20 bg-muted/30">
+        <div className="mx-auto w-full max-w-[1200px] px-6 space-y-10">
+          <div className="text-center space-y-2">
+            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Collaborators</p>
+            <h2 className="font-heading text-3xl md:text-4xl tracking-tight">{title || "Building for world-class innovators"}</h2>
+            {subtitle ? <p className="text-muted-foreground">{subtitle}</p> : null}
+          </div>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-6 md:gap-6">
+            {fallbackLogos.map((logo, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-center rounded-md border border-border/50 bg-background/60 px-4 py-3 text-sm text-muted-foreground"
+              >
+                {typeof logo === "string" ? logo : logo?.name || "Brand"}
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {fallbackTestimonials.map((item, index) => (
+              <Card key={index} className="border-border/60 bg-background/80">
+                <CardHeader className="space-y-1">
+                  <CardTitle className="text-base">{item?.name || "Client"}</CardTitle>
+                  <p className="text-xs text-muted-foreground">{item?.role || "Client"}</p>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {item?.quote || "Trusted by teams that expect premium execution and clear outcomes."}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
     );
@@ -1110,14 +1361,14 @@ const compositionPresets: Record<string, CompositionPreset> = {
   CN01: {
     id: "CN01",
     name: "Content centered",
-    sectionTypes: ["Content"],
+    sectionTypes: ["Content", "StudioStory", "ContentPhilosophy", "EditorialStory"],
     layout: { structure: "single", density: "spacious", align: "center", list: "rows" },
     requiredClasses: ["min-h-"],
   },
   CN02: {
     id: "CN02",
     name: "Content split",
-    sectionTypes: ["Content"],
+    sectionTypes: ["Content", "StudioStory", "ContentPhilosophy", "EditorialStory"],
     layout: { structure: "dual", density: "spacious", align: "start", media: "image-right" },
   },
   C03: {
@@ -1452,10 +1703,19 @@ const applySectionAlignOverrides = (
 ) => {
   const overrides = themeContract?.layoutRules?.sectionAlignOverrides;
   if (!overrides || typeof overrides !== "object") return pages;
+  const normalizeAlignOverride = (value: unknown): "start" | "center" | undefined => {
+    const token = String(value ?? "").trim().toLowerCase();
+    if (!token) return undefined;
+    if (token === "center" || token === "centre" || token === "middle") return "center";
+    if (token === "start" || token === "left" || token === "right" || token === "leading") return "start";
+    return undefined;
+  };
   const normalizedOverrides = new Map<string, "start" | "center">();
   Object.entries(overrides).forEach(([key, value]) => {
-    if (!key || (value !== "start" && value !== "center")) return;
-    normalizedOverrides.set(key.toLowerCase(), value);
+    if (!key) return;
+    const normalizedValue = normalizeAlignOverride(value);
+    if (!normalizedValue) return;
+    normalizedOverrides.set(key.toLowerCase(), normalizedValue);
   });
   if (!normalizedOverrides.size) return pages;
   return pages.map((page) => ({
@@ -1475,12 +1735,21 @@ const applySectionAlignOverrides = (
   }));
 };
 
-const hasFooterSection = (sections: ArchitectSection[]) =>
-  sections.some((section) => {
-    const type = typeof section?.type === "string" ? section.type.toLowerCase() : "";
-    const id = typeof section?.id === "string" ? section.id.toLowerCase() : "";
-    return type.includes("footer") || id.includes("footer");
-  });
+const normalizeSectionToken = (section: ArchitectSection | undefined) =>
+  `${typeof section?.type === "string" ? section.type : ""} ${typeof section?.id === "string" ? section.id : ""}`
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
+
+const isFooterLikeSection = (section: ArchitectSection | undefined) => normalizeSectionToken(section).includes("footer");
+
+const isCtaLikeSection = (section: ArchitectSection | undefined) => {
+  const token = normalizeSectionToken(section);
+  return token.includes("footercta") || token.includes("leadcapture") || token.includes("calltoaction") || token.includes("cta");
+};
+
+const hasFooterSection = (sections: ArchitectSection[]) => sections.some((section) => isFooterLikeSection(section));
+
+const hasCtaSection = (sections: ArchitectSection[]) => sections.some((section) => isCtaLikeSection(section));
 
 const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>) => {
   const rawPages = Array.isArray((blueprint as ArchitectBlueprint)?.pages)
@@ -1551,6 +1820,8 @@ const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>)
   });
   const themeContract = (blueprint as ArchitectBlueprint)?.theme?.themeContract as ThemeContract | undefined;
   const alignedPages = applySectionAlignOverrides(pages, themeContract);
+  const originalPageCount = alignedPages.length;
+  const originalSectionsTotal = alignedPages.reduce((sum, page) => sum + page.sections.length, 0);
   const maxPages = clampPositiveInt(defaultMaxPages, 3, 1, 10);
   const maxSectionsPerPage = clampPositiveInt(defaultMaxSectionsPerPage, 6, 1, 12);
   const maxSectionsTotal = clampPositiveInt(defaultMaxSectionsTotal, 10, 1, 24);
@@ -1565,9 +1836,35 @@ const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>)
       Math.min(page.sections.length, maxSectionsPerPage, budgetLeft)
     );
     const nextSections = page.sections.slice(0, keepCount);
+    if (keepCount > 1 && hasFooterSection(page.sections) && !hasFooterSection(nextSections)) {
+      const footerSection = [...page.sections].reverse().find((section) => isFooterLikeSection(section));
+      if (footerSection) {
+        nextSections[nextSections.length - 1] = footerSection;
+      }
+    }
+    if (keepCount > 1 && hasCtaSection(page.sections) && !hasCtaSection(nextSections)) {
+      const ctaSection = [...page.sections].reverse().find((section) => isCtaLikeSection(section));
+      if (ctaSection) {
+        const footerIndex = nextSections.findIndex((section) => isFooterLikeSection(section));
+        const targetIndex = footerIndex > 0 ? footerIndex - 1 : nextSections.length - 1;
+        nextSections[Math.max(0, targetIndex)] = ctaSection;
+      }
+    }
     totalSections += nextSections.length;
     return { ...page, sections: nextSections };
   });
+  const limitedSectionsTotal = limitedPages.reduce((sum, page) => sum + page.sections.length, 0);
+  if (originalPageCount !== limitedPages.length || originalSectionsTotal !== limitedSectionsTotal) {
+    logWarn(`${logPrefix} blueprint:sections_limited`, {
+      originalPages: originalPageCount,
+      keptPages: limitedPages.length,
+      originalSections: originalSectionsTotal,
+      keptSections: limitedSectionsTotal,
+      maxPages,
+      maxSectionsPerPage,
+      maxSectionsTotal,
+    });
+  }
   if (injectedFooterCount > 0) {
     logInfo(`${logPrefix} blueprint:footer_injected`, {
       pages: injectedFooterCount,
@@ -1575,6 +1872,141 @@ const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>)
     });
   }
   return limitedPages;
+};
+
+type TemplatePlanSectionKind =
+  | "navigation"
+  | "hero"
+  | "story"
+  | "approach"
+  | "products"
+  | "socialproof"
+  | "contact"
+  | "cta"
+  | "footer";
+
+const templatePlanSectionOrder: TemplatePlanSectionKind[] = [
+  "navigation",
+  "hero",
+  "story",
+  "approach",
+  "products",
+  "socialproof",
+  "contact",
+  "cta",
+  "footer",
+];
+
+const templatePlanKindPatterns: Record<TemplatePlanSectionKind, RegExp[]> = {
+  navigation: [/navigation|navbar|header|topnav|menu/],
+  hero: [/hero|masthead|pagehero|banner|intro/],
+  story: [/story|about|narrative|philosophy|studio|editorial|mission|vision|who/],
+  approach: [/approach|metric|stats|feature|value|process|capability|benefit|numbers?/],
+  products: [/product|catalog|collection|pricing|plan|showcase|gallery|module|offer|package/],
+  socialproof: [/social|proof|testimonial|review|trust|logo|collaborator|partner/],
+  contact: [/contact|lead|inquiry|form|quote|consult/],
+  cta: [/cta|calltoaction|call-to-action|footercta|start|trial|getstarted/],
+  footer: [/footer|legal|copyright|bottom/],
+};
+
+const templatePlanTypeByKind: Record<TemplatePlanSectionKind, string> = {
+  navigation: "Navigation",
+  hero: "Hero",
+  story: "Content",
+  approach: "Features",
+  products: "ProductCatalog",
+  socialproof: "SocialProof",
+  contact: "Contact",
+  cta: "CTA",
+  footer: "Footer",
+};
+
+const templatePlanIdByKind: Record<TemplatePlanSectionKind, string> = {
+  navigation: "navigation",
+  hero: "hero",
+  story: "story",
+  approach: "approach",
+  products: "products",
+  socialproof: "social-proof",
+  contact: "contact",
+  cta: "footer-cta",
+  footer: "footer",
+};
+
+const normalizeTemplatePlanKind = (value: string): TemplatePlanSectionKind | null => {
+  const token = String(value ?? "")
+    .trim()
+    .toLowerCase() as TemplatePlanSectionKind;
+  return templatePlanSectionOrder.includes(token) ? token : null;
+};
+
+const sectionMatchesTemplateKind = (section: ArchitectSection, kind: TemplatePlanSectionKind) => {
+  const token = `${section.type ?? ""} ${section.id ?? ""} ${section.intent ?? ""}`.toLowerCase();
+  return templatePlanKindPatterns[kind].some((pattern) => pattern.test(token));
+};
+
+const cloneLayoutHint = (layoutHint: ArchitectSection["layoutHint"]) =>
+  layoutHint && typeof layoutHint === "object" ? { ...layoutHint } : undefined;
+
+const createSyntheticTemplateSection = (kind: TemplatePlanSectionKind): ArchitectSection => ({
+  id: templatePlanIdByKind[kind],
+  type: templatePlanTypeByKind[kind],
+  intent: `${humanizeLabel(kind)} section`,
+  layoutHint: cloneLayoutHint(undefined),
+});
+
+const canonicalizeTemplateSection = (
+  section: ArchitectSection,
+  kind: TemplatePlanSectionKind
+): ArchitectSection => {
+  const fallbackId = templatePlanIdByKind[kind];
+  const baseId = typeof section.id === "string" && section.id.trim() ? section.id : fallbackId;
+  const normalizedId = toSlug(baseId) || fallbackId;
+  const nextId = sectionMatchesTemplateKind(section, kind) ? normalizedId : fallbackId;
+  return {
+    ...section,
+    id: nextId,
+    type: templatePlanTypeByKind[kind],
+    intent:
+      typeof section.intent === "string" && section.intent.trim()
+        ? section.intent
+        : `${humanizeLabel(kind)} section`,
+    layoutHint: cloneLayoutHint(section.layoutHint),
+  };
+};
+
+const applyTemplateFirstSectionPlan = (
+  pages: ReturnType<typeof normalizePages>,
+  prompt: string
+) => {
+  if (sectionGenerationStrategy !== "template_first") return { pages, profileId: null as string | null };
+  const profile = selectStyleProfile(prompt);
+  if (!profile?.templates) return { pages, profileId: null as string | null };
+  const templateKinds = Object.keys(profile.templates)
+    .map((key) => normalizeTemplatePlanKind(key))
+    .filter((kind): kind is TemplatePlanSectionKind => Boolean(kind));
+  if (!templateKinds.length) return { pages, profileId: profile.id };
+
+  const orderedKinds = templatePlanSectionOrder.filter((kind) => templateKinds.includes(kind));
+  if (!orderedKinds.length) return { pages, profileId: profile.id };
+
+  const nextPages = pages.map((page) => {
+    const sourceSections = Array.isArray(page.sections) ? page.sections : [];
+    const used = new Set<number>();
+    const planned = orderedKinds.map((kind) => {
+      const index = sourceSections.findIndex(
+        (section, sectionIndex) => !used.has(sectionIndex) && sectionMatchesTemplateKind(section, kind)
+      );
+      if (index >= 0) {
+        used.add(index);
+        return canonicalizeTemplateSection(sourceSections[index], kind);
+      }
+      return createSyntheticTemplateSection(kind);
+    });
+    return { ...page, sections: planned };
+  });
+
+  return { pages: nextPages, profileId: profile.id };
 };
 
 const buildBretonFallbackSection = (slot: {
@@ -2145,6 +2577,16 @@ const flattenSections = (pages: ReturnType<typeof normalizePages>): SectionConte
 
 const normalizeGeneratedComponentCode = (code: string, componentName?: string) => {
   let next = code;
+  // Canonicalize common wrong imports from generated code.
+  // Some models emit magic components under "@/components/ui/*", which is invalid in our runtime.
+  next = next.replace(
+    /@\/components\/ui\/(animated-beam|bento-grid|border-beam|carousel|comparison-slider|scene-switcher|glow-card|gradient-text|magnifier|marquee|number-ticker|particles|text-reveal)/g,
+    "@/components/magic/$1"
+  );
+  next = next.replace(
+    /from\s+['"]@\/components\/magic\/(text-reveal|particles|number-ticker|marquee)['"]/g,
+    "from '@/components/magic/$1'"
+  );
   if (!/lg:grid-cols-12/.test(next) && /xl:grid-cols-12/.test(next)) {
     next = next.replace(/xl:grid-cols-12/g, "lg:grid-cols-12 xl:grid-cols-12");
   }
@@ -2282,6 +2724,22 @@ const normalizeGeneratedComponentCode = (code: string, componentName?: string) =
   }
   if (name.includes("hero")) {
     next = next.replace(/<Button(?![^>]*\\bsize=)/g, '<Button size="lg"');
+    next = next.replace(
+      /heading:\s*'font-heading text-4xl md:text-6xl tracking-tight text-foreground'/g,
+      "heading: 'font-heading text-[56px] md:text-[88px] lg:text-[112px] leading-[0.9] tracking-[-0.02em] text-foreground'"
+    );
+    next = next.replace(
+      /heading:\s*"font-heading text-4xl md:text-6xl tracking-tight text-foreground"/g,
+      'heading: "font-heading text-[56px] md:text-[88px] lg:text-[112px] leading-[0.9] tracking-[-0.02em] text-foreground"'
+    );
+    next = next.replace(
+      /\bfont-heading\s+text-4xl\s+md:text-6xl\b/g,
+      "font-heading text-[56px] md:text-[88px] lg:text-[112px] leading-[0.9] tracking-[-0.02em]"
+    );
+    next = next.replace(
+      /\bfont-heading\s+text-5xl\s+md:text-7xl\b/g,
+      "font-heading text-[56px] md:text-[88px] lg:text-[112px] leading-[0.9] tracking-[-0.02em]"
+    );
   }
   if (name.includes("comparison")) {
     next = next.replace(/<Badge(?![^>]*className=)/g, '<Badge className="absolute top-4 right-4 bg-primary text-primary-foreground shadow-sm">');
@@ -2379,6 +2837,55 @@ const extractColorWords = (prompt: string) => {
   return Array.from(new Set(colors));
 };
 
+const extractLabeledThemeColors = (prompt: string) => {
+  const text = String(prompt ?? "").slice(0, 3600);
+  const matches = Array.from(text.matchAll(/#[0-9a-fA-F]{6}/g));
+  const labeled: Partial<Record<"bg" | "neutral" | "text" | "accent" | "textSecondary", string>> = {};
+  for (const match of matches) {
+    const hex = String(match[0]).toUpperCase();
+    const index = match.index ?? 0;
+    const context = text.slice(Math.max(0, index - 40), index).toLowerCase();
+    if (
+      !labeled.bg &&
+      /(主背景|背景色|warm off-white|background|bg)/i.test(context) &&
+      !/(次级|secondary)/i.test(context)
+    ) {
+      labeled.bg = hex;
+      continue;
+    }
+    if (
+      !labeled.neutral &&
+      /(次级背景|secondary background|greige|neutral|辅助背景|副背景)/i.test(context)
+    ) {
+      labeled.neutral = hex;
+      continue;
+    }
+    if (
+      !labeled.text &&
+      /(主文字|main text|charcoal|foreground|文字色|text)/i.test(context) &&
+      !/(辅助|secondary|muted)/i.test(context)
+    ) {
+      labeled.text = hex;
+      continue;
+    }
+    if (
+      !labeled.accent &&
+      /(强调色|accent|ochre|sienna|brand|主色)/i.test(context)
+    ) {
+      labeled.accent = hex;
+      continue;
+    }
+    if (
+      !labeled.textSecondary &&
+      /(辅助灰|muted|secondary text|text secondary|sub text|副文字)/i.test(context)
+    ) {
+      labeled.textSecondary = hex;
+      continue;
+    }
+  }
+  return labeled;
+};
+
 const inferTone = (prompt: string, designNorthStar?: Record<string, unknown>) => {
   const context = `${prompt} ${JSON.stringify(designNorthStar ?? {})}`.toLowerCase();
   const warmKeywords = [
@@ -2439,12 +2946,11 @@ const applyUserThemeIntent = (
 
   const explicitHex = extractHexColors(prompt);
   const explicitWords = extractColorWords(prompt);
+  const labeledColors = extractLabeledThemeColors(prompt);
   const explicitColors = [...explicitHex, ...explicitWords];
-  const primary =
-    explicitColors[0] ||
+  const fallbackPrimary =
     (typeof (theme as any)?.primaryColor === "string" ? String((theme as any).primaryColor) : undefined) ||
     existingPalette.primary;
-  const accent = explicitColors[1] || existingPalette.accent || primary;
 
   const mode =
     detectMode(prompt) ?? (typeof (theme as any)?.mode === "string" ? String((theme as any).mode) : "light");
@@ -2455,6 +2961,14 @@ const applyUserThemeIntent = (
     ...basePalette,
     ...existingPalette,
   } as Record<string, string>;
+  if (labeledColors.bg) nextPalette.bg = labeledColors.bg;
+  if (labeledColors.neutral) nextPalette.neutral = labeledColors.neutral;
+  if (labeledColors.text) nextPalette.text = labeledColors.text;
+  if (labeledColors.textSecondary) nextPalette.textSecondary = labeledColors.textSecondary;
+
+  const accent =
+    labeledColors.accent || explicitColors[1] || explicitColors[0] || existingPalette.accent || fallbackPrimary;
+  const primary = labeledColors.accent || fallbackPrimary || accent;
   if (primary) nextPalette.primary = primary;
   if (accent) nextPalette.accent = accent;
   if (!nextPalette.primary) nextPalette.primary = nextPalette.text;
@@ -2468,14 +2982,12 @@ const applyUserThemeIntent = (
     ...theme,
     mode,
     palette: nextPalette,
+    primaryColor: nextPalette.primary,
     themeContract: {
       ...contract,
       tokens,
     },
   };
-  if (!(nextTheme as any).primaryColor && nextPalette.primary) {
-    (nextTheme as any).primaryColor = nextPalette.primary;
-  }
   return { ...blueprint, theme: nextTheme };
 };
 
@@ -2572,9 +3084,15 @@ const ensureCompositionPresetClasses = (code: string, compositionPreset?: Compos
   };
   const patterns: RegExp[] = [
     /className=\\{`([^`]*grid[^`]*)`\\}/,
+    /className=\\{'([^']*grid[^']*)'\\}/,
+    /className=\\{\"([^\"]*grid[^\"]*)\"\\}/,
     /className=\"([^\"]*grid[^\"]*)\"/,
+    /className='([^']*grid[^']*)'/,
     /className=\\{`([^`]*)`\\}/,
+    /className=\\{'([^']*)'\\}/,
+    /className=\\{\"([^\"]*)\"\\}/,
     /className=\"([^\"]*)\"/,
+    /className='([^']*)'/,
   ];
   for (const pattern of patterns) {
     if (replaceOnce(pattern, appendTokens)) return next;
@@ -2611,28 +3129,91 @@ const coerceComponentPayload = (component: unknown) => {
   return component as any;
 };
 
+const inferComponentNameFromCode = (code: string) => {
+  const patterns = [
+    /export\s+default\s+function\s+([A-Za-z_$][A-Za-z0-9_$]*)\s*\(/,
+    /function\s+([A-Za-z_$][A-Za-z0-9_$]*)\s*\(/,
+    /const\s+([A-Za-z_$][A-Za-z0-9_$]*)\s*=\s*\(/,
+    /const\s+([A-Za-z_$][A-Za-z0-9_$]*)\s*=\s*React\.memo\s*\(/,
+  ];
+  for (const pattern of patterns) {
+    const match = code.match(pattern);
+    if (match?.[1]) return match[1];
+  }
+  return "";
+};
+
+const extractComponentCode = (component: unknown): string | undefined => {
+  const source = component as any;
+  const candidates: unknown[] = [
+    source?.code,
+    source?.source,
+    source?.tsx,
+    source?.jsx,
+    source?.content,
+    source?.implementation,
+    source?.componentCode,
+    source?.reactCode,
+    source?.render,
+    source?.template,
+    source?.code?.content,
+    source?.content?.code,
+    source?.content?.tsx,
+    source?.content?.jsx,
+  ];
+  for (const item of candidates) {
+    if (typeof item === "string" && item.trim()) return item;
+  }
+  if (Array.isArray(source?.code)) {
+    const joined = source.code.filter((item: unknown) => typeof item === "string").join("\n");
+    if (joined.trim()) return joined;
+  }
+  return undefined;
+};
+
+const normalizeBlockPayload = (block: unknown): SectionBlock | undefined => {
+  if (!block) return undefined;
+  if (typeof block === "string") return { type: block, props: {} };
+  if (typeof block !== "object" || Array.isArray(block)) return undefined;
+  const source = block as Record<string, unknown>;
+  const type =
+    typeof source.type === "string"
+      ? source.type
+      : typeof source.component === "string"
+        ? source.component
+        : typeof source.name === "string"
+          ? source.name
+          : typeof source.blockType === "string"
+            ? source.blockType
+            : undefined;
+  const props =
+    source.props && typeof source.props === "object" && !Array.isArray(source.props)
+      ? (source.props as Record<string, unknown>)
+      : source.defaultProps && typeof source.defaultProps === "object" && !Array.isArray(source.defaultProps)
+        ? (source.defaultProps as Record<string, unknown>)
+        : source.data && typeof source.data === "object" && !Array.isArray(source.data)
+          ? (source.data as Record<string, unknown>)
+          : {};
+  if (!type) return undefined;
+  return { type, props };
+};
+
 const normalizeSectionPayload = (
   payload: SectionPayload,
   compositionPreset?: CompositionPreset
 ) => {
   const component = coerceComponentPayload(payload.component);
-  const block = payload.block ?? undefined;
-  const name =
+  const block = normalizeBlockPayload(payload.block);
+  let name =
     typeof component?.name === "string"
       ? component.name
       : typeof block?.type === "string"
         ? block.type
         : undefined;
-  let rawCode =
-    typeof component?.code === "string"
-      ? component.code
-      : typeof (component as any)?.source === "string"
-        ? (component as any).source
-        : typeof (component as any)?.tsx === "string"
-          ? (component as any).tsx
-          : typeof (component as any)?.jsx === "string"
-            ? (component as any).jsx
-            : undefined;
+  let rawCode = extractComponentCode(component);
+  if (!name && rawCode) {
+    name = inferComponentNameFromCode(rawCode) || undefined;
+  }
   if (!name || !rawCode) return null;
   rawCode = normalizeGeneratedComponentCode(rawCode, name);
   rawCode = ensureCompositionPresetClasses(rawCode, compositionPreset);
@@ -2658,13 +3239,56 @@ const collectLayoutIssues = (
 ) => {
   const issues: string[] = [];
   if (!layoutHint) return issues;
-  const sectionToken = `${sectionMeta?.type ?? ""} ${sectionMeta?.id ?? ""}`.toLowerCase();
-  const isNavigationSection = /(?:^|\s)(navigation|navbar|header)\b/.test(sectionToken);
-  const isFooterSection = /(?:^|\s)footer\b/.test(sectionToken);
-  const isHeroSection = /(?:^|\s)hero\b/.test(sectionToken);
-  const isCtaSection = /(?:^|\s)(cta|call[-\s]?to[-\s]?action)\b/.test(sectionToken);
-  const isContentStorySection = /(?:^|\s)(content|story|studio-story|philosophy|editorial)\b/.test(sectionToken);
+  const normalizeStructure = (value?: string) => {
+    const raw = String(value ?? "").toLowerCase().trim();
+    if (!raw) return "";
+    if (
+      /single|center|centered|stack|vertical|banner|mono|one-col|onecol|hero/.test(raw)
+    ) {
+      return "single";
+    }
+    if (/dual|split|asymmetric|two-col|twocol|horizontal/.test(raw)) {
+      return "dual";
+    }
+    if (/triple|three|3-col|3col/.test(raw)) {
+      return "triple";
+    }
+    return raw;
+  };
+  const sectionSource = `${sectionMeta?.type ?? ""} ${sectionMeta?.id ?? ""}`;
+  const sectionToken = sectionSource.toLowerCase();
+  const sectionSpacedToken = sectionSource
+    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+    .replace(/[^a-z0-9]+/gi, " ")
+    .toLowerCase()
+    .trim();
+  const sectionCompactToken = normalizeKey(sectionSource).replace(/-/g, "");
+  const hasSectionKeyword = (...keywords: string[]) => {
+    return keywords.some((keyword) => {
+      const normalized = String(keyword).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+      if (!normalized) return false;
+      const compact = normalized.replace(/\s+/g, "");
+      const boundaryPattern = new RegExp(`(?:^|\\s)${escapeRegex(normalized)}(?:$|\\s)`, "i");
+      return (
+        boundaryPattern.test(sectionToken) ||
+        boundaryPattern.test(sectionSpacedToken) ||
+        sectionCompactToken.includes(compact)
+      );
+    });
+  };
+  const isNavigationSection = hasSectionKeyword("navigation", "navbar", "header");
+  const isFooterSection = hasSectionKeyword("footer");
+  const isHeroSection = hasSectionKeyword("hero");
+  const isCtaSection = hasSectionKeyword("cta", "call to action");
+  const isContentStorySection = hasSectionKeyword(
+    "content",
+    "story",
+    "studio story",
+    "content philosophy",
+    "editorial"
+  );
   const { structure, density, align, list } = layoutHint;
+  const normalizedStructure = normalizeStructure(structure);
   const isBentoPreset = compositionPreset?.id === "F02";
   const isCarouselPreset = compositionPreset?.id === "G02";
   const flexiblePresetIds = new Set([
@@ -2689,7 +3313,7 @@ const collectLayoutIssues = (
     "CS01",
   ]);
   const isFlexiblePreset = compositionPreset?.id ? flexiblePresetIds.has(compositionPreset.id) : false;
-  const hasGrid = /className=\"[^\"]*grid\b/.test(code);
+  const hasGrid = /\bgrid\b/.test(code) || /\bgrid-cols-\d+\b/.test(code);
   const hasCols12 = /grid-cols-12/.test(code);
   const hasGap = /\b(gap-(2|3|4|5|6|8|10|12)|gap-y-(2|3|4|5|6|8|10|12)|space-y-(2|3|4|5|6|8|10|12))\b/.test(
     code
@@ -2699,14 +3323,17 @@ const collectLayoutIssues = (
   const hasSimpleResponsiveGrid = /(md:|lg:|xl:)grid-cols-\d+/.test(code);
   const hasResponsiveGrid = hasResponsiveStack || hasSimpleResponsiveGrid;
   const hasAnyGridCols = /grid-cols-\d+/.test(code);
-  const hasFlex = /className=\"[^\"]*\bflex\b/.test(code);
+  const hasFlex = /\bflex\b/.test(code) || /\bflex-(row|col)\b/.test(code);
   const hasResponsiveFlexSplit =
     /(md:|lg:|xl:)flex-(row|col)/.test(code) || /(md:|lg:|xl:)flex-\[[^\]]+\]/.test(code);
   const allowFlexSplitLayout =
     (isHeroSection || isCtaSection || isContentStorySection) && hasFlex && hasResponsiveFlexSplit;
   const skipStructureChecks = isNavigationSection;
-  const isSingle = structure === "single";
-  if (!skipStructureChecks && (structure === "dual" || structure === "triple" || structure === "split")) {
+  const isSingle = normalizedStructure === "single";
+  if (
+    !skipStructureChecks &&
+    (normalizedStructure === "dual" || normalizedStructure === "triple" || normalizedStructure === "split")
+  ) {
     if (isBentoPreset || isFlexiblePreset) {
       if (!hasGrid) issues.push("missing grid layout");
       if (!hasGap) issues.push("missing gap/spacing");
@@ -2722,7 +3349,7 @@ const collectLayoutIssues = (
   const asymmetricSplit = layoutRules?.asymmetricSplit;
   if (
     asymmetricSplit &&
-    (structure === "split" || structure === "dual") &&
+    (normalizedStructure === "split" || normalizedStructure === "dual") &&
     !isBentoPreset &&
     !allowFlexSplitLayout &&
     !isNavigationSection
@@ -2734,18 +3361,20 @@ const collectLayoutIssues = (
   const shouldCheckAlign = !(list === "cards" || list === "tiles" || list === "rows");
   const skipAlignCheck = isNavigationSection || isFooterSection;
   const alignLocked = Boolean(layoutHint.alignLocked);
+  const hasCenterAlignment = /(items-center|text-center|justify-center|mx-auto)/.test(code);
+  const hasStartAlignment = /(items-start|text-left|justify-start|mr-auto)/.test(code);
   if (alignLocked && !skipAlignCheck) {
-    if (align === "center" && !/(items-center|text-center)/.test(code)) {
+    if (align === "center" && !hasCenterAlignment) {
       issues.push("align center missing");
     }
-    if (align === "start" && !/(items-start|text-left)/.test(code)) {
+    if (align === "start" && !hasStartAlignment) {
       issues.push("align start missing");
     }
   } else if (!skipAlignCheck && !isBentoPreset && shouldCheckAlign) {
-    if (align === "start" && !/(items-start|text-left)/.test(code)) {
+    if (align === "start" && !hasStartAlignment) {
       issues.push("align start missing");
     }
-    if (align === "center" && !/(items-center|text-center)/.test(code)) {
+    if (align === "center" && !hasCenterAlignment) {
       issues.push("align center missing");
     }
   }
@@ -2757,7 +3386,7 @@ const collectLayoutIssues = (
   }
   if (themeClassMap) {
     const isTrustStripPreset = compositionPreset?.id === "L01" || compositionPreset?.id === "L02";
-    const isTrustStripSection = /(?:^|\s)(trust|logo|badge|endorsement|cert)/.test(sectionToken);
+    const isTrustStripSection = hasSectionKeyword("trust", "logo", "badge", "endorsement", "cert");
     const requireHeadingAndBody = !(
       isTrustStripPreset ||
       isTrustStripSection ||
@@ -2825,9 +3454,9 @@ const collectLayoutIssues = (
     const hasCtaBreakoutFallback =
       isCtaSection &&
       (code.includes(themeClassMap.sectionPadding) ||
-        /\bpy-(20|24|28|32|36|40)\b/.test(code) ||
-        /\bpt-(20|24|28|32|36|40)\b/.test(code) ||
-        /\bpb-(20|24|28|32|36|40)\b/.test(code));
+        /\bpy-(16|18|20|24|28|32|36|40)\b/.test(code) ||
+        /\bpt-(16|18|20|24|28|32|36|40)\b/.test(code) ||
+        /\bpb-(16|18|20|24|28|32|36|40)\b/.test(code));
     const meetsBreakout =
       meetsDeclaredBreakout || hasFullBleedFallback || hasMinHeightFallback || hasCtaBreakoutFallback;
     if (!meetsBreakout) issues.push("missing breakout classes");
@@ -2861,10 +3490,11 @@ type FailureType = "parse" | "layout" | "style" | "module" | "runtime" | "rate_l
 
 const classifySectionError = (error: unknown): FailureType => {
   const message = ((error as any)?.message ?? String(error)).toLowerCase();
-  const code = (error as any)?.code;
+  const code = String((error as any)?.code ?? "").toLowerCase();
   if (code === "parse") return "parse";
   if (code === "layout") return "layout";
   if (code === "style") return "style";
+  if (code === "tool_missing" || code === "tool_empty_payload") return "parse";
   if (message.includes("missing module") || message.includes("cannot find module")) return "module";
   if (message.includes("typeerror") || message.includes("referenceerror")) return "runtime";
   if (message.includes("rate limit") || message.includes("key limit") || message.includes(" 429")) return "rate_limit";
@@ -3058,16 +3688,319 @@ const buildFooterProps = (
   };
 };
 
+const isFooterLikeBlock = (item: { type?: string; props?: Record<string, unknown> } | undefined) => {
+  const type = typeof item?.type === "string" ? item.type.toLowerCase() : "";
+  const anchor = typeof item?.props?.anchor === "string" ? item.props.anchor.toLowerCase() : "";
+  const id = typeof item?.props?.id === "string" ? item.props.id.toLowerCase() : "";
+  const variant = typeof item?.props?.variant === "string" ? item.props.variant.toLowerCase() : "";
+  if (type === errorComponentName.toLowerCase()) {
+    return false;
+  }
+  if (type === fallbackComponentName.toLowerCase()) {
+    return (
+      anchor.includes("footer") ||
+      id.includes("footer") ||
+      variant === "cta" ||
+      (Array.isArray((item?.props as any)?.footerLinks) && (item?.props as any).footerLinks.length > 0) ||
+      Boolean((item?.props as any)?.legal)
+    );
+  }
+  return type.includes("footer") || anchor.includes("footer") || id.includes("footer");
+};
+
+const isCtaLikeBlock = (item: { type?: string; props?: Record<string, unknown> } | undefined) => {
+  const type = typeof item?.type === "string" ? item.type.toLowerCase() : "";
+  const anchor = typeof item?.props?.anchor === "string" ? item.props.anchor.toLowerCase() : "";
+  const id = typeof item?.props?.id === "string" ? item.props.id.toLowerCase() : "";
+  const variant = typeof item?.props?.variant === "string" ? item.props.variant.toLowerCase() : "";
+  if (type === errorComponentName.toLowerCase()) {
+    return false;
+  }
+  if (type === fallbackComponentName.toLowerCase()) {
+    return variant === "cta" || anchor.includes("cta") || id.includes("cta");
+  }
+  return type.includes("leadcapture") || type.includes("cta") || anchor.includes("cta") || id.includes("cta");
+};
+
 const pageHasFooterBlock = (content: Array<{ type?: string; props?: Record<string, unknown> }>) =>
-  content.some((item) => {
-    const type = typeof item?.type === "string" ? item.type.toLowerCase() : "";
-    if (type === fallbackComponentName.toLowerCase() || type === errorComponentName.toLowerCase()) {
-      return false;
-    }
-    const anchor = typeof item?.props?.anchor === "string" ? item.props.anchor.toLowerCase() : "";
-    const id = typeof item?.props?.id === "string" ? item.props.id.toLowerCase() : "";
-    return type.includes("footer") || anchor.includes("footer") || id.includes("footer");
+  content.some((item) => isFooterLikeBlock(item));
+
+const pageHasCtaBlock = (content: Array<{ type?: string; props?: Record<string, unknown> }>) =>
+  content.some((item) => isCtaLikeBlock(item));
+
+const pageHasNavigationSection = (page: ReturnType<typeof normalizePages>[number]) =>
+  Array.isArray(page?.sections) &&
+  page.sections.some((section) => {
+    const token = `${section?.type ?? ""} ${section?.id ?? ""}`.toLowerCase();
+    return /(?:^|\s)(navigation|navbar|nav|header)\b/.test(token);
   });
+
+const isObjectRecord = (value: unknown): value is Record<string, unknown> =>
+  Boolean(value) && typeof value === "object" && !Array.isArray(value);
+
+const hasRenderableComponentShape = (value: unknown) => {
+  if (!isObjectRecord(value)) return false;
+  const code =
+    typeof value.code === "string"
+      ? value.code
+      : typeof value.source === "string"
+        ? value.source
+        : typeof value.tsx === "string"
+          ? value.tsx
+          : typeof value.jsx === "string"
+            ? value.jsx
+            : undefined;
+  return typeof value.name === "string" && Boolean(code);
+};
+
+const coercePayloadFromUnknown = (value: unknown): SectionPayload | null => {
+  if (!isObjectRecord(value)) return null;
+  const payload = value as Record<string, unknown>;
+
+  let component: unknown =
+    payload.component ?? payload.sectionComponent ?? payload.generatedComponent ?? payload.componentPayload;
+  if (!component && hasRenderableComponentShape(payload)) {
+    component = payload;
+  }
+  component = coerceComponentPayload(component);
+
+  let block: unknown = payload.block ?? payload.sectionBlock ?? payload.generatedBlock ?? payload.blockPayload;
+  if (!block) {
+    const inferredType =
+      typeof payload.type === "string"
+        ? payload.type
+        : typeof payload.blockType === "string"
+          ? payload.blockType
+          : typeof payload.component === "string"
+            ? payload.component
+            : typeof payload.block === "string"
+              ? payload.block
+              : undefined;
+    if (inferredType) {
+      block = {
+        type: inferredType,
+        props: isObjectRecord(payload.props)
+          ? payload.props
+          : isObjectRecord(payload.defaultProps)
+            ? payload.defaultProps
+            : {},
+      };
+    }
+  }
+
+  if (!component && !block) return null;
+  return {
+    component: component as SectionComponent | undefined,
+    block: block as SectionBlock | undefined,
+  };
+};
+
+const collectPayloadCandidates = (value: unknown, depth = 0): SectionPayload[] => {
+  if (depth > 5 || value == null) return [];
+  if (typeof value === "string") {
+    const parsed = safeJsonParse<unknown>(value);
+    if (!parsed) return [];
+    return collectPayloadCandidates(parsed, depth + 1);
+  }
+  if (Array.isArray(value)) {
+    return value.flatMap((entry) => collectPayloadCandidates(entry, depth + 1));
+  }
+  if (!isObjectRecord(value)) return [];
+
+  const results: SectionPayload[] = [];
+  const direct = coercePayloadFromUnknown(value);
+  if (direct) results.push(direct);
+
+  const preferredKeys = [
+    "payload",
+    "result",
+    "data",
+    "response",
+    "output",
+    "input",
+    "arguments",
+    "json",
+    "value",
+    "message",
+    "content",
+    "tool_input",
+    "toolUse",
+    "tool_use",
+  ];
+  const keySet = new Set(preferredKeys);
+  for (const key of preferredKeys) {
+    if (Object.prototype.hasOwnProperty.call(value, key)) {
+      results.push(...collectPayloadCandidates((value as Record<string, unknown>)[key], depth + 1));
+    }
+  }
+  for (const [key, nestedValue] of Object.entries(value)) {
+    if (keySet.has(key)) continue;
+    results.push(...collectPayloadCandidates(nestedValue, depth + 1));
+  }
+
+  return results;
+};
+
+const dedupePayloads = (items: SectionPayload[]) => {
+  const seen = new Set<string>();
+  const out: SectionPayload[] = [];
+  for (const item of items) {
+    const key = JSON.stringify({
+      componentName: (item.component as any)?.name ?? "",
+      componentCodeLen:
+        typeof (item.component as any)?.code === "string"
+          ? (item.component as any).code.length
+          : typeof (item.component as any)?.source === "string"
+            ? (item.component as any).source.length
+            : 0,
+      blockType: item.block?.type ?? "",
+      blockPropsKeys:
+        item.block?.props && typeof item.block.props === "object"
+          ? Object.keys(item.block.props).sort()
+          : [],
+    });
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(item);
+  }
+  return out;
+};
+
+const decodeJsonLikeString = (value: string) => {
+  let out = "";
+  for (let i = 0; i < value.length; i += 1) {
+    const char = value[i];
+    if (char !== "\\") {
+      out += char;
+      continue;
+    }
+    const next = value[i + 1];
+    if (!next) {
+      out += "\\";
+      break;
+    }
+    if (next === "n") {
+      out += "\n";
+      i += 1;
+      continue;
+    }
+    if (next === "r") {
+      out += "\r";
+      i += 1;
+      continue;
+    }
+    if (next === "t") {
+      out += "\t";
+      i += 1;
+      continue;
+    }
+    if (next === "\"" || next === "'" || next === "\\" || next === "/") {
+      out += next;
+      i += 1;
+      continue;
+    }
+    if (next === "u") {
+      const unicodeHex = value.slice(i + 2, i + 6);
+      if (/^[0-9a-fA-F]{4}$/.test(unicodeHex)) {
+        out += String.fromCharCode(Number.parseInt(unicodeHex, 16));
+        i += 5;
+        continue;
+      }
+    }
+    out += next;
+    i += 1;
+  }
+  return out;
+};
+
+const extractBalancedObjectFrom = (value: string, start: number) => {
+  if (start < 0 || start >= value.length || value[start] !== "{") return "";
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+  for (let i = start; i < value.length; i += 1) {
+    const char = value[i];
+    if (escaped) {
+      escaped = false;
+      continue;
+    }
+    if (char === "\\") {
+      escaped = true;
+      continue;
+    }
+    if (char === "\"") {
+      inString = !inString;
+      continue;
+    }
+    if (inString) continue;
+    if (char === "{") depth += 1;
+    if (char === "}") {
+      depth -= 1;
+      if (depth === 0) return value.slice(start, i + 1);
+    }
+  }
+  return "";
+};
+
+const extractJsonLikeStringField = (
+  value: string,
+  field: string,
+  sentinels: string[]
+) => {
+  const fieldMatch = new RegExp(`"${escapeRegex(field)}"\\s*:\\s*"`, "m").exec(value);
+  if (!fieldMatch) return "";
+  const start = fieldMatch.index + fieldMatch[0].length;
+  let end = -1;
+  for (const sentinel of sentinels) {
+    const idx = value.indexOf(sentinel, start);
+    if (idx < 0) continue;
+    end = end < 0 ? idx : Math.min(end, idx);
+  }
+  let segment = end >= 0 ? value.slice(start, end) : value.slice(start);
+  segment = segment.replace(/"\s*,\s*$/, "");
+  segment = segment.replace(/"\s*$/, "");
+  if (!segment.trim()) return "";
+  return decodeJsonLikeString(segment);
+};
+
+const extractJsonLikeObjectField = (value: string, field: string) => {
+  const fieldMatch = new RegExp(`"${escapeRegex(field)}"\\s*:\\s*`, "m").exec(value);
+  if (!fieldMatch) return null;
+  const rest = value.slice(fieldMatch.index + fieldMatch[0].length);
+  const objectStartOffset = rest.indexOf("{");
+  if (objectStartOffset < 0) return null;
+  const objectText = extractBalancedObjectFrom(rest, objectStartOffset);
+  if (!objectText) return null;
+  return safeJsonParse<Record<string, unknown>>(objectText);
+};
+
+const parseJsonishSectionPayload = (raw: string): SectionPayload | null => {
+  const candidate = extractJsonCandidate(raw);
+  if (!candidate.includes("\"component\"")) return null;
+
+  const componentNameMatch = candidate.match(
+    /"component"\s*:\s*\{[\s\S]*?"name"\s*:\s*"([^"]+)"/m
+  );
+  const componentName = componentNameMatch?.[1]?.trim();
+  const componentCode = extractJsonLikeStringField(candidate, "code", [
+    "\n    \"defaultProps\"",
+    "\n  },\n  \"block\"",
+    "\n    \"schema\"",
+    "\n    \"config\"",
+    "\n  }\n}",
+  ]);
+  if (!componentName || !componentCode) return null;
+
+  const defaultProps = extractJsonLikeObjectField(candidate, "defaultProps") ?? undefined;
+  const blockTypeMatch = candidate.match(/"block"\s*:\s*\{[\s\S]*?"type"\s*:\s*"([^"]+)"/m);
+  const blockType = blockTypeMatch?.[1]?.trim() || componentName;
+  const blockProps = extractJsonLikeObjectField(candidate, "props") ?? defaultProps ?? {};
+
+  return {
+    component: { name: componentName, code: componentCode, defaultProps },
+    block: { type: blockType, props: blockProps },
+  };
+};
 
 const parseNdjsonPayloads = (raw: string) => {
   const candidate = extractJsonCandidate(raw);
@@ -3082,18 +4015,40 @@ const parseNdjsonPayloads = (raw: string) => {
   if (parsedLines.length) {
     const component = parsedLines.find((item) => item.component)?.component;
     const block = parsedLines.find((item) => item.block)?.block;
-    if (component || block) {
-      return [{ component, block }];
-    }
-    return parsedLines as SectionPayload[];
+    const combined = component || block ? [{ component, block }] : [];
+    const linewise = parsedLines
+      .map((entry) => ({
+        component: entry.component,
+        block: entry.block,
+      }))
+      .filter((entry) => entry.component || entry.block);
+    const extracted = parsedLines.flatMap((entry) => collectPayloadCandidates(entry));
+    const merged = dedupePayloads([...combined, ...linewise, ...extracted]);
+    if (merged.length) return merged;
   }
 
-  const fallback = safeJsonParse<SectionPayload>(candidate);
-  if (fallback) return [fallback];
-  const extracted = extractJsonObjects(candidate)
-    .map((item) => safeJsonParse<SectionPayload>(item))
-    .filter((item): item is SectionPayload => Boolean(item));
-  return extracted;
+  const parsedRoots: unknown[] = [];
+  const fallback = safeJsonParse<unknown>(candidate);
+  if (fallback) parsedRoots.push(fallback);
+  extractJsonObjects(candidate).forEach((item) => {
+    const parsed = safeJsonParse<unknown>(item);
+    if (parsed) parsedRoots.push(parsed);
+  });
+  if (!parsedRoots.length) return [];
+
+  const extracted = dedupePayloads(
+    parsedRoots.flatMap((item) => collectPayloadCandidates(item))
+  );
+  if (extracted.length) {
+    const component = extracted.find((entry) => entry.component)?.component;
+    const block = extracted.find((entry) => entry.block)?.block;
+    if (component || block) {
+      return [{ component, block }, ...extracted.filter((entry) => entry.component || entry.block)];
+    }
+  }
+  if (extracted.length) return extracted;
+  const jsonishPayload = parseJsonishSectionPayload(candidate);
+  return jsonishPayload ? [jsonishPayload] : extracted;
 };
 
 const createPlaceholderBlock = (
@@ -3131,6 +4086,40 @@ const buildDeterministicFallbackBlock = (
   const siteTitle = trimLine(prompt, "Breton-style industrial homepage", 52);
   const idBase = `${toSlug(context.section.type || "section") || "section"}-${context.sectionIndex + 1}`;
   const anchor = context.section.id;
+  const registryTemplate = resolveSectionTemplateBlock({
+    prompt,
+    pageName: context.pageName,
+    sectionType: context.section.type,
+    sectionId: context.section.id,
+    sectionIntent: context.section.intent,
+    idBase,
+    anchor,
+  });
+  if (registryTemplate) {
+    return registryTemplate;
+  }
+
+  if (/navigation|navbar|header|topnav/.test(token)) {
+    return {
+      type: "Navbar",
+      props: {
+        id: idBase,
+        anchor: "top",
+        logo: trimLine(context.pageName || "Brand", "Brand", 24),
+        links: [
+          { label: "Home", href: "#top", variant: "link" },
+          { label: "Services", href: "#services", variant: "link" },
+          { label: "About", href: "#about", variant: "link" },
+          { label: "Contact", href: "#contact", variant: "link" },
+        ],
+        ctas: [{ label: "Get Started", href: "#contact", variant: "primary" }],
+        variant: "simple",
+        sticky: true,
+        paddingY: "sm",
+        maxWidth: "xl",
+      },
+    };
+  }
 
   if (/hero|pagehero|pageheader/.test(token)) {
     return {
@@ -3241,6 +4230,66 @@ const buildDeterministicFallbackBlock = (
             role: "Advanced Manufacturing",
           },
         ],
+      },
+    };
+  }
+
+  if (/social|proof|collab|endorse/.test(token)) {
+    return {
+      type: "TestimonialsGrid",
+      props: {
+        id: idBase,
+        anchor,
+        title: "What collaborators say",
+        variant: "2col",
+        maxWidth: "xl",
+        items: [
+          {
+            quote: "Execution quality and communication remained consistent from concept through delivery.",
+            name: "Partner Team",
+            role: "Enterprise Client",
+          },
+          {
+            quote: "The result balanced brand expression and conversion clarity with minimal iteration.",
+            name: "Design Lead",
+            role: "Product Organization",
+          },
+        ],
+      },
+    };
+  }
+
+  if (/trust|logo|badge/.test(token)) {
+    return {
+      type: "LogoCloud",
+      props: {
+        id: idBase,
+        anchor,
+        title: "Trusted by leading teams",
+        variant: "grid",
+        maxWidth: "xl",
+        logos: [
+          { src: "/assets/logo-1.svg", alt: "Partner 1" },
+          { src: "/assets/logo-2.svg", alt: "Partner 2" },
+          { src: "/assets/logo-3.svg", alt: "Partner 3" },
+          { src: "/assets/logo-4.svg", alt: "Partner 4" },
+        ],
+      },
+    };
+  }
+
+  if (/story|editorial|narrative|philosophy|studio/.test(token)) {
+    return {
+      type: "ContentStory",
+      props: {
+        id: idBase,
+        anchor,
+        title: "Our Story",
+        subtitle: "A concise narrative that connects brand intent, craft, and client outcomes.",
+        body: "We combine strategic clarity, visual refinement, and execution discipline to create enduring digital experiences.",
+        ctas: [{ label: "Explore More", href: "#", variant: "link" }],
+        variant: "split",
+        maxWidth: "xl",
       },
     };
   }
@@ -3362,7 +4411,7 @@ const buildDeterministicFallbackBlock = (
     };
   }
 
-  if (/feature|benefit|value|industry|spec|timeline|process|trust|logo|stat/.test(token)) {
+  if (/feature|benefit|value|industry|spec|timeline|process|stat/.test(token)) {
     return {
       type: "FeatureGrid",
       props: {
@@ -3416,6 +4465,8 @@ const toStringList = (value: unknown) =>
 
 const buildFallbackSectionVariant = (context: SectionContext) => {
   const token = `${context.section.type ?? ""} ${context.section.id ?? ""}`.toLowerCase();
+  if (/(cta|call[-_\s]?to[-_\s]?action|footercta|footer-cta)/.test(token)) return "cta";
+  if (/(social|proof|testimonial|trust|logo|endorse|collab)/.test(token)) return "socialProof";
   if (/(contact|lead|form|inquiry|quote)/.test(token)) return "contact";
   if (/(product|catalog|grid|collection|shop|sku)/.test(token)) return "catalog";
   return "content";
@@ -3438,10 +4489,48 @@ const buildFallbackSectionItems = (
   }));
 };
 
+const normalizeFallbackVariant = (value: string) => value.trim().toLowerCase().replace(/[^a-z0-9]+/g, "");
+const sectionMatchesTokenList = (context: SectionContext, tokens: string[]) => {
+  const sectionToken = normalizeRouteToken(`${context.section.type ?? ""} ${context.section.id ?? ""}`);
+  return tokens.some((token) => {
+    const normalized = normalizeRouteToken(token);
+    return normalized.length > 0 && sectionToken.includes(normalized);
+  });
+};
+
+const isDetailedDesignBrief = (prompt: string) => {
+  const text = String(prompt ?? "").trim();
+  if (text.length < 1200) return false;
+  let score = 0;
+  if (/section\s*\d|section specifications|section\s+\d+\s*:|三、section|详细规格/i.test(text)) score += 2;
+  if (/(design theme|north star metrics|响应式断点|色彩系统|字体策略|技术实现备注)/i.test(text)) score += 2;
+  const sectionHits =
+    text.match(/hero|navigation|studio|story|approach|metrics|social|testimonial|footer|cta/gi)?.length ?? 0;
+  if (sectionHits >= 8) score += 2;
+  return score >= 4;
+};
+
+const resolveTemplateCtaStyle = (
+  hints: Record<string, unknown>,
+  theme?: Record<string, unknown>
+): "auto" | "surface" | "contrast" => {
+  const hinted = typeof hints.ctaStyle === "string" ? hints.ctaStyle.trim().toLowerCase() : "";
+  if (hinted === "auto" || hinted === "surface" || hinted === "contrast") return hinted;
+  const mode = typeof (theme as any)?.mode === "string" ? String((theme as any).mode).toLowerCase() : "";
+  if (mode === "dark") return "contrast";
+  const voice =
+    typeof (theme as any)?.themeContract?.voice === "string"
+      ? String((theme as any).themeContract.voice).toLowerCase()
+      : "";
+  if (/(luxury|fashion|editorial)/.test(voice)) return "surface";
+  return "auto";
+};
+
 const buildFallbackSectionProps = (
   context: SectionContext,
   prompt: string,
-  designNorthStar?: Record<string, unknown>
+  designNorthStar?: Record<string, unknown>,
+  theme?: Record<string, unknown>
 ) => {
   const variant = buildFallbackSectionVariant(context);
   const hints =
@@ -3451,18 +4540,71 @@ const buildFallbackSectionProps = (
   const formFields = toStringList(hints.formFields);
   const whatsappRaw = typeof hints.whatsappNumber === "string" ? hints.whatsappNumber : "";
   const whatsapp = whatsappRaw.replace(/[^0-9+]/g, "");
+  const secondaryCtaLabel =
+    typeof hints.secondaryCtaLabel === "string" && hints.secondaryCtaLabel.trim()
+      ? hints.secondaryCtaLabel.trim().slice(0, 48)
+      : undefined;
+  const secondaryCtaHref =
+    typeof hints.secondaryCtaHref === "string" && hints.secondaryCtaHref.trim()
+      ? hints.secondaryCtaHref.trim().slice(0, 200)
+      : undefined;
+  const legal =
+    typeof hints.legal === "string" && hints.legal.trim() ? hints.legal.trim().slice(0, 120) : undefined;
+  const footerLinks = Array.isArray((hints as any).footerLinks)
+    ? ((hints as any).footerLinks as Array<Record<string, unknown>>)
+        .map((item) => ({
+          label: typeof item?.label === "string" ? item.label.trim().slice(0, 24) : "",
+          href: typeof item?.href === "string" ? item.href.trim().slice(0, 200) : "#",
+        }))
+        .filter((item) => item.label)
+        .slice(0, 4)
+    : undefined;
+  const logos = Array.isArray((hints as any).logos)
+    ? ((hints as any).logos as Array<Record<string, unknown> | string>)
+        .map((item) => {
+          if (typeof item === "string") {
+            const name = item.trim().slice(0, 32);
+            return name ? { name } : null;
+          }
+          return {
+            name: typeof item?.name === "string" ? item.name.trim().slice(0, 32) : "",
+            src: typeof item?.src === "string" ? item.src.trim().slice(0, 200) : "",
+          };
+        })
+        .filter((item) => Boolean(item && typeof item.name === "string" && item.name.trim()))
+        .slice(0, 8)
+    : undefined;
+  const testimonials = Array.isArray((hints as any).testimonials)
+    ? ((hints as any).testimonials as Array<Record<string, unknown>>)
+        .map((item) => ({
+          name: typeof item?.name === "string" ? item.name.trim().slice(0, 48) : "",
+          role: typeof item?.role === "string" ? item.role.trim().slice(0, 64) : "",
+          quote: typeof item?.quote === "string" ? item.quote.trim().slice(0, 220) : "",
+        }))
+        .filter((item) => item.name || item.quote)
+        .slice(0, 4)
+    : undefined;
   const sectionLabel = humanizeLabel(String(context.section.id || context.section.type || "Section"));
   const intent = typeof context.section.intent === "string" ? context.section.intent.trim() : "";
-  const title = sectionLabel || "Section";
+  const title =
+    variant === "cta"
+      ? intent || "Ready to define your space?"
+      : sectionLabel || "Section";
   const subtitle =
     intent ||
+    (variant === "cta"
+      ? "Book a private consultation or browse our curated portfolio."
+      : variant === "socialProof"
+        ? "Building trust with collaborators and client stories."
+      : "") ||
     (variant === "contact"
       ? "Share your product requirements and we will respond quickly."
       : variant === "catalog"
         ? "Core product lines with customizable specifications."
         : "This section is generated using a resilient fallback template.");
-  const ctaLabel = variant === "contact" ? "Send Inquiry" : "Get Started";
-  const ctaHref = variant === "contact" ? "#contact" : "#top";
+  const ctaLabel = variant === "cta" ? "Inquire Now" : variant === "contact" ? "Send Inquiry" : "Get Started";
+  const ctaHref = variant === "cta" ? "#contact" : variant === "contact" ? "#contact" : "#top";
+  const ctaStyleHint = resolveTemplateCtaStyle(hints, theme);
 
   return {
     id: `${context.pagePath}:${context.section.id}:${context.sectionIndex}:fallback`,
@@ -3470,8 +4612,23 @@ const buildFallbackSectionProps = (
     title,
     subtitle,
     variant,
+    ctaStyle: variant === "cta" ? ctaStyleHint : undefined,
     items: variant === "catalog" ? buildFallbackSectionItems(context, designNorthStar) : [],
     formFields: formFields.length ? formFields : ["name", "email", "company", "message"],
+    secondaryCtaLabel,
+    secondaryCtaHref,
+    legal: variant === "cta" ? legal ?? "© 2026 All rights reserved." : legal,
+    footerLinks:
+      variant === "cta"
+        ? footerLinks ??
+          [
+            { label: "Privacy", href: "#privacy" },
+            { label: "Terms", href: "#terms" },
+            { label: "Instagram", href: "#instagram" },
+          ]
+        : footerLinks,
+    logos: variant === "socialProof" ? logos : undefined,
+    testimonials: variant === "socialProof" ? testimonials : undefined,
     whatsapp,
     ctaLabel,
     ctaHref,
@@ -3482,12 +4639,66 @@ const buildFallbackSectionProps = (
 const createFallbackBlock = (
   context: SectionContext,
   prompt: string,
-  designNorthStar?: Record<string, unknown>
+  designNorthStar?: Record<string, unknown>,
+  theme?: Record<string, unknown>
 ): { type: string; props: Record<string, unknown>; _key: string } => ({
   type: fallbackComponentName,
-  props: buildFallbackSectionProps(context, prompt, designNorthStar),
+  props: buildFallbackSectionProps(context, prompt, designNorthStar, theme),
   _key: `${context.pagePath}:${context.section.id}:${context.sectionIndex}:fallback`,
 });
+
+const shouldTemplateFirstForSection = (
+  context: SectionContext,
+  options?: { preferLlmForDesignFidelity?: boolean }
+) => {
+  if (sectionGenerationStrategy === "template_first") return true;
+
+  const variantToken = normalizeFallbackVariant(buildFallbackSectionVariant(context));
+  const explicitTokenMatch = sectionMatchesTokenList(context, templateFirstSectionTokens);
+  const llmTokenMatch = sectionMatchesTokenList(context, llmFirstSectionTokens);
+  const variantMatch = templateFirstVariantTokens.has(variantToken);
+  const hintTemplatePreferred =
+    context.section.propsHints &&
+    typeof context.section.propsHints === "object" &&
+    parseEnvBoolean(String((context.section.propsHints as Record<string, unknown>).templatePreferred ?? ""), false);
+  const hintLlmPreferred =
+    context.section.propsHints &&
+    typeof context.section.propsHints === "object" &&
+    parseEnvBoolean(String((context.section.propsHints as Record<string, unknown>).llmPreferred ?? ""), false);
+
+  if (hintLlmPreferred || llmTokenMatch) return false;
+  if (hintTemplatePreferred) return true;
+  if (options?.preferLlmForDesignFidelity && llmTokenMatch) {
+    return false;
+  }
+  if (sectionGenerationStrategy === "llm_first") return Boolean(hintTemplatePreferred);
+  return Boolean(explicitTokenMatch || variantMatch);
+};
+
+const shouldTemplateRecoverFromFailure = (
+  context: SectionContext,
+  failureType: FailureType,
+  options?: { preferLlmForDesignFidelity?: boolean }
+) => {
+  if (sectionGenerationStrategy === "llm_first") return false;
+  if (!templateRecoveryFailureTypes.has(String(failureType))) return false;
+  if (sectionGenerationStrategy === "template_first") return true;
+  return shouldTemplateFirstForSection(context, options);
+};
+
+const createTemplateSectionResult = (
+  context: SectionContext,
+  prompt: string,
+  _designNorthStar?: Record<string, unknown>,
+  _theme?: Record<string, unknown>
+): BuilderSectionResult => {
+  const templateBlock = buildDeterministicFallbackBlock(context, prompt);
+  return {
+    status: "ok",
+    component: { name: fallbackComponentName, code: fallbackComponentCode },
+    block: { type: templateBlock.type, props: templateBlock.props },
+  };
+};
 const runWithConcurrency = async <T, R>(
   items: T[],
   limit: number,
@@ -3890,6 +5101,7 @@ async function callLlm({
   modelOverride,
   requireToolUse = false,
   allowProviderFallbackOnAnyError = false,
+  requestSignal,
 }: LlmOptions) {
   if (!llmProviders.length) {
     throw Object.assign(new Error("missing_api_key"), {
@@ -3900,25 +5112,27 @@ async function callLlm({
   const requestedTokens = clampTokenBudget(maxTokens ?? defaultMaxTokens);
   const callWithProvider = async (
     provider: LlmProviderClient,
-    modelName: string,
+    requestedModelName: string,
+    providerModelName: string,
     tokenBudget: number
   ) => {
     const startedAt = Date.now();
     logInfo(`${logPrefix} request`, {
       provider: provider.name,
-      model: modelName,
+      model: providerModelName,
+      requestedModel: requestedModelName,
       promptLength: prompt.length,
       maxTokens: tokenBudget,
       prompt,
     });
     const rawResponse = await provider.client.messages.create({
-      model: modelName,
+      model: providerModelName,
       max_tokens: tokenBudget,
       temperature,
       system,
       messages: [{ role: "user", content: prompt }],
       ...(toolOptions ?? {}),
-    });
+    }, requestSignal ? { signal: requestSignal } : undefined);
     const response = normalizeLlmResponse(rawResponse);
     let content = extractText(response.content);
     const rawText = content;
@@ -3942,7 +5156,8 @@ async function callLlm({
     if (toolChoice && !toolUsed) {
       logWarn(`${logPrefix} response:tool_missing`, {
         provider: provider.name,
-        model: modelName,
+        model: providerModelName,
+        requestedModel: requestedModelName,
         latencyMs: Date.now() - startedAt,
         stopReason,
         stopSequence,
@@ -3950,17 +5165,22 @@ async function callLlm({
         textLength: rawText.length,
         textPreview: rawText.slice(0, 300),
       });
-      if (requireToolUse) {
+      const rawTrimmed = rawText.trim();
+      const shouldFailOnMissingTool =
+        requireToolUse || !rawTrimmed || stopReason === "max_tokens";
+      if (shouldFailOnMissingTool) {
         throw Object.assign(new Error("tool_missing"), {
           code: "tool_missing",
           details: {
             provider: provider.name,
-            model: modelName,
+            model: providerModelName,
+            requestedModel: requestedModelName,
             stopReason,
             stopSequence,
             contentBlockTypes,
             textLength: rawText.length,
             textPreview: rawText.slice(0, 300),
+            reason: !rawTrimmed ? "empty_text" : stopReason === "max_tokens" ? "max_tokens" : "required",
           },
         });
       }
@@ -3970,21 +5190,36 @@ async function callLlm({
     }
     if (toolUsed) {
       const trimmed = content.trim();
-      if (!trimmed || trimmed === "{}" || trimmed === "[]" || trimmed === "null") {
+      const isEmptyPayload = !trimmed || trimmed === "{}" || trimmed === "[]" || trimmed === "null";
+      if (isEmptyPayload) {
         logWarn(`${logPrefix} response:tool_empty_payload`, {
           provider: provider.name,
-          model: modelName,
+          model: providerModelName,
+          requestedModel: requestedModelName,
           latencyMs: Date.now() - startedAt,
           stopReason,
           stopSequence,
           contentBlockTypes,
           payloadPreview: trimmed,
         });
+        throw Object.assign(new Error("tool_empty_payload"), {
+          code: "tool_empty_payload",
+          details: {
+            provider: provider.name,
+            model: providerModelName,
+            requestedModel: requestedModelName,
+            stopReason,
+            stopSequence,
+            contentBlockTypes,
+            payloadPreview: trimmed,
+          },
+        });
       }
     }
     logInfo(`${logPrefix} response`, {
       provider: provider.name,
-      model: modelName,
+      model: providerModelName,
+      requestedModel: requestedModelName,
       contentLength: content.length,
       latencyMs: Date.now() - startedAt,
       toolUsed,
@@ -4002,13 +5237,36 @@ async function callLlm({
     let lastError: unknown = null;
     for (let index = 0; index < llmProviders.length; index += 1) {
       const provider = llmProviders[index];
+      const disabledUntil = providerDisabledUntil.get(provider.name) ?? 0;
+      if (disabledUntil > Date.now() && llmProviders.length > 1) {
+        logInfo(`${logPrefix} request:provider_temporarily_disabled`, {
+          provider: provider.name,
+          requestedModel: modelName,
+          disabledForMs: Math.max(0, disabledUntil - Date.now()),
+        });
+        continue;
+      }
+      const providerModelName = resolveProviderModel(provider.name, modelName);
       try {
-        return await callWithProvider(provider, modelName, tokenBudget);
+        return await callWithProvider(provider, modelName, providerModelName, tokenBudget);
       } catch (error) {
+        if (isAbortLikeError(error)) {
+          throw error;
+        }
         lastError = error;
+        if (providerDisableMs > 0 && isAuthOrQuotaProviderError(error) && llmProviders.length > 1) {
+          providerDisabledUntil.set(provider.name, Date.now() + providerDisableMs);
+          logWarn(`${logPrefix} request:provider_disabled`, {
+            provider: provider.name,
+            requestedModel: modelName,
+            disableMs: providerDisableMs,
+            reason: "auth_or_quota",
+          });
+        }
         logWarn(`${logPrefix} request:provider_failed`, {
           provider: provider.name,
-          model: modelName,
+          model: providerModelName,
+          requestedModel: modelName,
           message: (error as any)?.message ?? String(error),
           status: (error as any)?.status,
           code: (error as any)?.code,
@@ -4018,7 +5276,8 @@ async function callLlm({
         if (hasNextProvider && !canFallbackToNextProvider) {
           logInfo(`${logPrefix} request:provider_fallback_skipped`, {
             provider: provider.name,
-            model: modelName,
+            model: providerModelName,
+            requestedModel: modelName,
             mode: crossProviderFallbackMode,
           });
           break;
@@ -4057,7 +5316,7 @@ async function callLlm({
     }
   };
 
-  const primaryModel = modelOverride ?? model;
+  const primaryModel = modelOverride ?? primaryModelDefault;
   try {
     return await callAcrossProviders(primaryModel, requestedTokens);
   } catch (error) {
@@ -4067,12 +5326,12 @@ async function callLlm({
     }
     const message = (error as any)?.message ?? "";
     const isConnectionError = /connection error|ECONN|ETIMEDOUT|EAI_AGAIN|socket/i.test(message);
-    if (fallbackModel && fallbackModel !== primaryModel) {
+    if (fallbackModelDefault && fallbackModelDefault !== primaryModel) {
       if (!isConnectionError) {
         try {
-          return await callAcrossProviders(fallbackModel, requestedTokens);
+          return await callAcrossProviders(fallbackModelDefault, requestedTokens);
         } catch (fallbackError) {
-          const loweredFallbackAttempt = await retryWithLowerBudget(fallbackModel, fallbackError);
+          const loweredFallbackAttempt = await retryWithLowerBudget(fallbackModelDefault, fallbackError);
           if (typeof loweredFallbackAttempt === "string" && loweredFallbackAttempt.trim()) {
             return loweredFallbackAttempt;
           }
@@ -4088,6 +5347,28 @@ async function callLlm({
       error: (error as any)?.error,
     };
     throw Object.assign(new Error(details.message || "llm_error"), { details });
+  }
+}
+
+async function callLlmWithLocalTimeout(
+  options: LlmOptions,
+  timeoutMs: number,
+  timeoutErrorMessage: string
+) {
+  if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) {
+    return callLlm(options);
+  }
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(timeoutErrorMessage), timeoutMs);
+  try {
+    return await callLlm({ ...options, requestSignal: controller.signal });
+  } catch (error) {
+    if (isAbortLikeError(error)) {
+      throw new Error(timeoutErrorMessage);
+    }
+    throw error;
+  } finally {
+    clearTimeout(timer);
   }
 }
 
@@ -4118,8 +5399,8 @@ async function architectNode(state: GraphState) {
   const compactPrompt = `${prompt}\n\n重要：输出必须是紧凑 JSON（无多余解释）。propsHints 只保留 3-5 个短字段，列表最多 6 项；每页不超过 6 个 section，避免长文案与深层嵌套。`;
   let raw: string;
   try {
-    raw = await Promise.race([
-      callLlm({
+    raw = await callLlmWithLocalTimeout(
+      {
         system,
         prompt,
         temperature: 0.4,
@@ -4128,28 +5409,26 @@ async function architectNode(state: GraphState) {
         toolChoice: { type: "tool", name: architectTool.name },
         requireToolUse: true,
         allowProviderFallbackOnAnyError: true,
-      }),
-      sleep(architectTimeoutMs).then(() => {
-        throw new Error("architect_timeout");
-      }),
-    ]);
+      },
+      architectTimeoutMs,
+      "architect_timeout"
+    );
   } catch (error) {
     logWarn(`${logPrefix} architect:tool_failed`, {
       message: (error as any)?.message ?? String(error),
     });
     try {
-      raw = await Promise.race([
-        callLlm({
+      raw = await callLlmWithLocalTimeout(
+        {
           system,
           prompt: retryPrompt,
           temperature: 0.3,
           maxTokens: architectMaxTokens,
           allowProviderFallbackOnAnyError: true,
-        }),
-        sleep(architectTimeoutMs).then(() => {
-          throw new Error("architect_retry_timeout");
-        }),
-      ]);
+        },
+        architectTimeoutMs,
+        "architect_retry_timeout"
+      );
     } catch {
       raw = "{}";
     }
@@ -4229,7 +5508,9 @@ async function architectNode(state: GraphState) {
 
 async function builderNode(state: GraphState) {
   const blueprint = (state.blueprint ?? {}) as ArchitectBlueprint;
-  const pages = normalizePages(blueprint);
+  let pages = normalizePages(blueprint);
+  const templatePlan = applyTemplateFirstSectionPlan(pages, state.prompt ?? "");
+  pages = templatePlan.pages;
   const allSections = flattenSections(pages);
   const theme =
     blueprint?.theme && typeof blueprint.theme === "object" ? blueprint.theme : {};
@@ -4262,12 +5543,27 @@ async function builderNode(state: GraphState) {
     pages: pages.length,
     sections: allSections.length,
     pendingSections: sections.length,
+    compactDesignSystemPrompt: useCompactDesignSystemForBuilder,
+    sectionGenerationStrategy,
+    templateFirstSections: templateFirstSectionTokens.join(","),
+    llmFirstSections: llmFirstSectionTokens.join(","),
+    templateFirstVariants: Array.from(templateFirstVariantTokens).join(","),
     retryMode: builderRetryMode,
     sectionMaxAttempts: effectiveSectionMaxAttempts,
     networkRetryAttempts: configuredNetworkRetryAttempts,
+    builderRecoveryMaxTokens,
     refinementEnabled: enableBuilderRefinement,
     repairEnabled: enableBuilderRepair,
+    templatePlanProfile: templatePlan.profileId,
   });
+  if (templatePlan.profileId) {
+    logInfo(`${logPrefix} builder:template_plan_applied`, {
+      profileId: templatePlan.profileId,
+      pages: pages.length,
+      sections: allSections.length,
+      sectionIds: allSections.map((section) => `${section.pagePath}:${section.section.id}`).join(","),
+    });
+  }
   if (completedSectionKeys.size > 0) {
     logInfo(`${logPrefix} builder:resume`, {
       completed: completedSectionKeys.size,
@@ -4292,26 +5588,101 @@ async function builderNode(state: GraphState) {
     temperature: number,
     compactPromptText?: string
   ) => {
-    const raw = await callLlm({
-      system,
+    const isToolProtocolError = (error: unknown) => {
+      const code = String((error as any)?.code ?? "");
+      const message = String((error as any)?.message ?? "");
+      return code === "tool_missing" || code === "tool_empty_payload" || /tool_missing|tool_empty_payload/i.test(message);
+    };
+
+    const callWithBuilderTool = async (options: {
+      prompt: string;
+      temp: number;
+      maxTokens?: number;
+      modelOverride?: string;
+    }) => {
+      try {
+        return await callLlm({
+          system,
+          prompt: options.prompt,
+          temperature: options.temp,
+          maxTokens: options.maxTokens ?? builderMaxTokens,
+          tools: [builderTool],
+          toolChoice: { type: "tool", name: builderTool.name },
+          modelOverride: options.modelOverride,
+        });
+      } catch (error) {
+        if (!isToolProtocolError(error)) throw error;
+        logWarn(`${logPrefix} builder:section:tool_protocol_error`, {
+          code: (error as any)?.code,
+          message: (error as any)?.message ?? String(error),
+          reason: (error as any)?.details?.reason,
+          stopReason: (error as any)?.details?.stopReason,
+        });
+        return "";
+      }
+    };
+
+    const raw = await callWithBuilderTool({
       prompt: promptText,
-      temperature,
+      temp: temperature,
       maxTokens: builderMaxTokens,
-      tools: [builderTool],
-      toolChoice: { type: "tool", name: builderTool.name },
     });
     if (!isEmptyResponse(raw)) return raw;
+
     if (!allowNonNetworkRetries) {
+      if (compactPromptText) {
+        const compactRetryPrompt = `${compactPromptText}\n\n必须通过工具返回 JSON，不要返回 {} 或空响应。只输出 component + block。`;
+        logInfo(`${logPrefix} builder:section:tool_compact_recovery`, {
+          promptLength: compactRetryPrompt.length,
+          maxTokens: builderRecoveryMaxTokens,
+        });
+        const compactRaw = await callWithBuilderTool({
+          prompt: compactRetryPrompt,
+          temp: Math.max(0.15, temperature - 0.25),
+          maxTokens: builderRecoveryMaxTokens,
+        });
+        if (!isEmptyResponse(compactRaw)) return compactRaw;
+        if (fallbackModelDefault && fallbackModelDefault !== primaryModelDefault) {
+          const compactFallbackRaw = await callWithBuilderTool({
+            prompt: compactRetryPrompt,
+            temp: Math.max(0.1, temperature - 0.3),
+            maxTokens: builderRecoveryMaxTokens,
+            modelOverride: fallbackModelDefault,
+          });
+          if (!isEmptyResponse(compactFallbackRaw)) return compactFallbackRaw;
+        }
+      }
+      const emergencyBase = compactPromptText || promptText;
+      const emergencyNoToolPrompt = `${emergencyBase}\n\n仅输出严格 JSON（component + block），不要 Markdown 或解释文本。组件保持最小可运行，避免超长 defaultProps。`;
+      logInfo(`${logPrefix} builder:section:no_tool_emergency_retry`, {
+        promptLength: emergencyNoToolPrompt.length,
+        maxTokens: builderRecoveryMaxTokens,
+      });
+      const emergencyTextRaw = await callLlm({
+        system,
+        prompt: emergencyNoToolPrompt,
+        temperature: Math.max(0.1, temperature - 0.3),
+        maxTokens: builderRecoveryMaxTokens,
+      });
+      if (!isEmptyResponse(emergencyTextRaw)) return emergencyTextRaw;
+      if (fallbackModelDefault && fallbackModelDefault !== primaryModelDefault) {
+        const emergencyTextFallbackRaw = await callLlm({
+          system,
+          prompt: emergencyNoToolPrompt,
+          temperature: Math.max(0.1, temperature - 0.3),
+          maxTokens: builderRecoveryMaxTokens,
+          modelOverride: fallbackModelDefault,
+        });
+        if (!isEmptyResponse(emergencyTextFallbackRaw)) return emergencyTextFallbackRaw;
+      }
       throw Object.assign(new Error("builder_section_empty"), { code: "parse" });
     }
+
     const retryPrompt = `${promptText}\n\n必须通过工具返回 JSON，不要返回 {} 或空响应。只输出 component + block。`;
-    const retryRaw = await callLlm({
-      system,
+    const retryRaw = await callWithBuilderTool({
       prompt: retryPrompt,
-      temperature: Math.max(0.2, temperature - 0.2),
+      temp: Math.max(0.2, temperature - 0.2),
       maxTokens: builderMaxTokens,
-      tools: [builderTool],
-      toolChoice: { type: "tool", name: builderTool.name },
     });
     if (!isEmptyResponse(retryRaw)) return retryRaw;
     if (compactPromptText) {
@@ -4319,34 +5690,28 @@ async function builderNode(state: GraphState) {
       logInfo(`${logPrefix} builder:section:tool_compact_retry`, {
         promptLength: compactRetryPrompt.length,
       });
-      const compactRaw = await callLlm({
-        system,
+      const compactRaw = await callWithBuilderTool({
         prompt: compactRetryPrompt,
-        temperature: Math.max(0.15, temperature - 0.25),
-        tools: [builderTool],
-        toolChoice: { type: "tool", name: builderTool.name },
+        temp: Math.max(0.15, temperature - 0.25),
+        maxTokens: builderRecoveryMaxTokens,
       });
       if (!isEmptyResponse(compactRaw)) return compactRaw;
-      if (fallbackModel && fallbackModel !== model) {
-        const compactFallbackRaw = await callLlm({
-          system,
+      if (fallbackModelDefault && fallbackModelDefault !== primaryModelDefault) {
+        const compactFallbackRaw = await callWithBuilderTool({
           prompt: compactRetryPrompt,
-          temperature: Math.max(0.1, temperature - 0.3),
-          tools: [builderTool],
-          toolChoice: { type: "tool", name: builderTool.name },
-          modelOverride: fallbackModel,
+          temp: Math.max(0.1, temperature - 0.3),
+          maxTokens: builderRecoveryMaxTokens,
+          modelOverride: fallbackModelDefault,
         });
         if (!isEmptyResponse(compactFallbackRaw)) return compactFallbackRaw;
       }
     }
-    if (fallbackModel && fallbackModel !== model) {
-      const fallbackRaw = await callLlm({
-        system,
+    if (fallbackModelDefault && fallbackModelDefault !== primaryModelDefault) {
+      const fallbackRaw = await callWithBuilderTool({
         prompt: retryPrompt,
-        temperature: Math.max(0.1, temperature - 0.3),
-        tools: [builderTool],
-        toolChoice: { type: "tool", name: builderTool.name },
-        modelOverride: fallbackModel,
+        temp: Math.max(0.1, temperature - 0.3),
+        maxTokens: builderRecoveryMaxTokens,
+        modelOverride: fallbackModelDefault,
       });
       if (!isEmptyResponse(fallbackRaw)) return fallbackRaw;
     }
@@ -4355,14 +5720,16 @@ async function builderNode(state: GraphState) {
       system,
       prompt: noToolPrompt,
       temperature: Math.max(0.1, temperature - 0.3),
+      maxTokens: builderRecoveryMaxTokens,
     });
     if (!isEmptyResponse(textRaw)) return textRaw;
-    if (fallbackModel && fallbackModel !== model) {
+    if (fallbackModelDefault && fallbackModelDefault !== primaryModelDefault) {
       const textFallbackRaw = await callLlm({
         system,
         prompt: noToolPrompt,
         temperature: Math.max(0.1, temperature - 0.3),
-        modelOverride: fallbackModel,
+        maxTokens: builderRecoveryMaxTokens,
+        modelOverride: fallbackModelDefault,
       });
       if (!isEmptyResponse(textFallbackRaw)) return textFallbackRaw;
     }
@@ -4385,12 +5752,43 @@ async function builderNode(state: GraphState) {
     ? Math.max(1, defaultSectionConcurrency)
     : 3;
 
+  const preferLlmForDesignFidelity = isDetailedDesignBrief(state.prompt ?? "");
+  if (preferLlmForDesignFidelity) {
+    logInfo(`${logPrefix} builder:quality_mode`, {
+      mode: "detailed_design_brief",
+      strategy: sectionGenerationStrategy,
+      llmRoutedSections: llmFirstSectionTokens.join(","),
+    });
+  }
+
   const results = await runWithConcurrency(sections, maxConcurrency, async (context): Promise<BuilderSectionResult> => {
     const baseInfo = {
       pagePath: context.pagePath,
       sectionId: context.section.id,
       sectionType: context.section.type,
     };
+    const templateVariant = normalizeFallbackVariant(buildFallbackSectionVariant(context));
+    const templatePrimary = shouldTemplateFirstForSection(context, { preferLlmForDesignFidelity });
+    if (templatePrimary && !enableTemplateShadowRun) {
+      logInfo(`${logPrefix} builder:section:template_primary`, {
+        ...baseInfo,
+        strategy: sectionGenerationStrategy,
+        variant: templateVariant,
+      });
+      return createTemplateSectionResult(
+        context,
+        state.prompt ?? "",
+        designNorthStar as Record<string, unknown>,
+        theme as Record<string, unknown>
+      );
+    }
+    if (templatePrimary && enableTemplateShadowRun) {
+      logInfo(`${logPrefix} builder:section:template_shadow_start`, {
+        ...baseInfo,
+        strategy: sectionGenerationStrategy,
+        variant: templateVariant,
+      });
+    }
     const maxAttempts = allowNonNetworkRetries
       ? effectiveSectionMaxAttempts
       : effectiveSectionMaxAttempts + configuredNetworkRetryAttempts;
@@ -4432,6 +5830,7 @@ async function builderNode(state: GraphState) {
       const designSystemPrompt = buildDesignSystemPromptContext(state.designSystemContext, {
         pagePath: context.pagePath,
         pageName: context.pageName,
+        compact: useCompactDesignSystemForBuilder,
       });
       const compactDesignSystemPrompt = buildDesignSystemPromptContext(state.designSystemContext, {
         pagePath: context.pagePath,
@@ -4497,8 +5896,20 @@ async function builderNode(state: GraphState) {
           });
           throw Object.assign(new Error("builder_section_layout_invalid"), { code: "layout" });
         }
+        if (templatePrimary && enableTemplateShadowRun) {
+          logInfo(`${logPrefix} builder:section:template_shadow_ok`, {
+            ...baseInfo,
+            variant: templateVariant,
+          });
+          return createTemplateSectionResult(
+            context,
+            state.prompt ?? "",
+            designNorthStar as Record<string, unknown>,
+            theme as Record<string, unknown>
+          );
+        }
         logInfo(`${logPrefix} builder:section:ok`, { ...baseInfo });
-          return { status: "ok", ...normalized };
+        return { status: "ok", ...normalized };
       } catch (error) {
         const isLast = attempt === maxAttempts;
         const message = (error as any)?.message ?? "builder_section_failed";
@@ -4562,6 +5973,34 @@ async function builderNode(state: GraphState) {
           !isLast &&
           (allowNonNetworkRetries || (!allowNonNetworkRetries && failureType === "network"));
         if (!shouldRetry) {
+          if (templatePrimary && enableTemplateShadowRun) {
+            logWarn(`${logPrefix} builder:section:template_shadow_failed`, {
+              ...baseInfo,
+              variant: templateVariant,
+              failureType,
+              message,
+            });
+            return createTemplateSectionResult(
+              context,
+              state.prompt ?? "",
+              designNorthStar as Record<string, unknown>,
+              theme as Record<string, unknown>
+            );
+          }
+          if (shouldTemplateRecoverFromFailure(context, failureType, { preferLlmForDesignFidelity })) {
+            logInfo(`${logPrefix} builder:section:template_recovery`, {
+              ...baseInfo,
+              strategy: sectionGenerationStrategy,
+              variant: templateVariant,
+              failureType,
+            });
+            return createTemplateSectionResult(
+              context,
+              state.prompt ?? "",
+              designNorthStar as Record<string, unknown>,
+              theme as Record<string, unknown>
+            );
+          }
           return { status: "error" as const, error: message, failureType };
         }
         const delay = attempt === 1 ? 500 : 2000;
@@ -4577,11 +6016,15 @@ async function builderNode(state: GraphState) {
     };
   });
 
+  const needsAutoNavbarByPage = pages.map((page) => !pageHasNavigationSection(page));
+  const shouldRegisterAutoNavbar = needsAutoNavbarByPage.some(Boolean);
   const componentsMap = new Map<string, { name: string; code: string }>();
-  if (componentsMap.has(navbarComponentName)) {
-    errors.push(`builder_component_conflict:${navbarComponentName}`);
-  } else {
-    componentsMap.set(navbarComponentName, { name: navbarComponentName, code: navbarComponentCode });
+  if (shouldRegisterAutoNavbar) {
+    if (componentsMap.has(navbarComponentName)) {
+      errors.push(`builder_component_conflict:${navbarComponentName}`);
+    } else {
+      componentsMap.set(navbarComponentName, { name: navbarComponentName, code: navbarComponentCode });
+    }
   }
   const normalizationSummary: Record<string, number> = {};
   const pagesOut = pages.map((page) => ({
@@ -4600,6 +6043,7 @@ async function builderNode(state: GraphState) {
   pagesOut.forEach((page, index) => {
     const source = pages[index];
     if (!source) return;
+    if (!needsAutoNavbarByPage[index]) return;
     const key = `navbar:${page.path ?? index}`;
     if (existingKeys.has(key)) return;
     const baseProps = buildNavbarProps(source, theme);
@@ -4731,7 +6175,7 @@ async function builderNode(state: GraphState) {
         result && "failureType" in result && typeof result.failureType === "string"
           ? (result.failureType as FailureType)
           : "unknown";
-      const fallback = createFallbackBlock(context, state.prompt ?? "", designNorthStar as Record<string, unknown>);
+      const fallback = buildDeterministicFallbackBlock(context, state.prompt ?? "");
       const normalizedFallbackProps = normalizeBlockProps(
         fallback.type,
         fallback.props as Record<string, unknown>,
@@ -4762,6 +6206,17 @@ async function builderNode(state: GraphState) {
             "success"
           )
         );
+      }
+      if (fallback.type !== fallbackComponentName) {
+        logInfo(`${logPrefix} builder:section:local_recovery`, {
+          pagePath: context.pagePath,
+          sectionId: context.section.id,
+          sectionType: context.section.type,
+          variant: normalizeFallbackVariant(buildFallbackSectionVariant(context)),
+          blockType: fallback.type,
+          failureType,
+        });
+        return;
       }
       refinementCandidates.push({ context, failureType, message });
       logWarn(`${logPrefix} builder:section:fallback`, {
@@ -4841,6 +6296,7 @@ async function builderNode(state: GraphState) {
           const designSystemPrompt = buildDesignSystemPromptContext(state.designSystemContext, {
             pagePath: context.pagePath,
             pageName: context.pageName,
+            compact: useCompactDesignSystemForBuilder,
           });
           const compactDesignSystemPrompt = buildDesignSystemPromptContext(state.designSystemContext, {
             pagePath: context.pagePath,
@@ -4871,6 +6327,15 @@ async function builderNode(state: GraphState) {
               .find(Boolean);
           }
           if (!normalized) {
+            logWarn(`${logPrefix} builder:section:refine_parse_failed`, {
+              pagePath: context.pagePath,
+              sectionId: context.section.id,
+              sectionType: context.section.type,
+              parsedCount: parsed.length,
+              rawLength: raw.length,
+              rawPreview: raw.slice(0, 320),
+              rawTail: raw.slice(-320),
+            });
             return {
               status: "error" as const,
               context,
@@ -4981,6 +6446,72 @@ async function builderNode(state: GraphState) {
     }
   }
 
+  let injectedCtaBlocks = 0;
+  pagesOut.forEach((page, pageIndex) => {
+    const content = Array.isArray(page.data.content) ? page.data.content : [];
+    if (pageHasCtaBlock(content as any)) return;
+    const sourcePage = pages[pageIndex];
+    if (!sourcePage) return;
+    const key = `cta:${page.path ?? pageIndex}:injected`;
+    if (existingKeys.has(key)) return;
+
+    const sourceSection =
+      [...(Array.isArray(sourcePage.sections) ? sourcePage.sections : [])].reverse().find((section) =>
+        isCtaLikeSection(section)
+      ) ?? null;
+    const sectionId = toSlug(sourceSection?.id || "footer-cta") || "footer-cta";
+    const sectionType = typeof sourceSection?.type === "string" && sourceSection.type.trim() ? sourceSection.type : "CTABanner";
+    const sectionIntent =
+      typeof sourceSection?.intent === "string" && sourceSection.intent.trim()
+        ? sourceSection.intent
+        : "Prompt users to take the next step with a clear call to action.";
+
+    const ctaContext: SectionContext = {
+      pageIndex,
+      pagePath: page.path || sourcePage.path || "/",
+      pageName: page.name || sourcePage.name || `Page ${pageIndex + 1}`,
+      sectionIndex: sourcePage.sections.length,
+      section: {
+        id: sectionId,
+        type: sectionType,
+        intent: sectionIntent,
+        propsHints: sourceSection?.propsHints,
+        layoutHint: sourceSection?.layoutHint,
+      },
+    };
+    const baseBlock = buildDeterministicFallbackBlock(ctaContext, state.prompt ?? "");
+    const normalizedProps = normalizeBlockProps(baseBlock.type, baseBlock.props, {
+      logChanges: true,
+      summary: normalizationSummary,
+    });
+    const fallbackId =
+      typeof normalizedProps?.id === "string" && normalizedProps.id
+        ? normalizedProps.id
+        : `${sectionId}-injected`;
+    const propsWithId = ensurePropsId(normalizedProps, fallbackId);
+    const propsWithAnchor = ensureAnchor(propsWithId, sectionId);
+    const block = {
+      type: baseBlock.type,
+      props: propsWithAnchor,
+      _key: key,
+    } as any;
+
+    const footerIndex = content.findIndex((item: any) => isFooterLikeBlock(item));
+    if (footerIndex >= 0) {
+      content.splice(footerIndex, 0, block);
+    } else {
+      content.push(block);
+    }
+    existingKeys.add(key);
+    injectedCtaBlocks += 1;
+    logInfo(`${logPrefix} builder:cta_injected`, {
+      pagePath: page.path,
+      pageName: page.name,
+      reason: "missing_cta_block",
+      cta_injected: true,
+    });
+  });
+
   let injectedFooterBlocks = 0;
   pagesOut.forEach((page, pageIndex) => {
     const content = Array.isArray(page.data.content) ? page.data.content : [];
@@ -5016,20 +6547,29 @@ async function builderNode(state: GraphState) {
     page.data.content.some((item: any) => item?.type === fallbackComponentName)
   );
   if (needsFallbackComponent) {
-    if (componentsMap.has(fallbackComponentName)) {
+    const existing = componentsMap.get(fallbackComponentName);
+    if (existing && existing.code !== fallbackComponentCode) {
       errors.push(`builder_component_conflict:${fallbackComponentName}`);
+    } else if (!existing) {
+      componentsMap.set(fallbackComponentName, { name: fallbackComponentName, code: fallbackComponentCode });
     }
-    componentsMap.set(fallbackComponentName, { name: fallbackComponentName, code: fallbackComponentCode });
   }
   if (injectedFooterBlocks > 0) {
-    if (componentsMap.has(footerFallbackComponentName)) {
+    const existing = componentsMap.get(footerFallbackComponentName);
+    if (existing && existing.code !== footerFallbackComponentCode) {
       errors.push(`builder_component_conflict:${footerFallbackComponentName}`);
-    } else {
+    } else if (!existing) {
       componentsMap.set(footerFallbackComponentName, {
         name: footerFallbackComponentName,
         code: footerFallbackComponentCode,
       });
     }
+  }
+  if (injectedCtaBlocks > 0) {
+    logInfo(`${logPrefix} builder:cta_injected_summary`, {
+      pages: injectedCtaBlocks,
+      reason: "missing_cta_block",
+    });
   }
 
   const summaryText = formatSummary(normalizationSummary);

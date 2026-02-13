@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2026-02-12T01:00:14.812Z",
+  "options": {
+    "baseUrl": "http://localhost:3110",
+    "promptsFile": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/prompts.baseline.json",
+    "logFile": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/logs/creation.log",
+    "outDir": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/reports",
+    "maxCases": 2,
+    "delayMs": 200,
+    "persist": false
+  },
+  "summary": {
+    "total": 2,
+    "passed": 0,
+    "failed": 2,
+    "successRate": 0,
+    "fallbackRate": 0,
+    "timeoutRate": 0,
+    "avgDurationMs": 727,
+    "p95DurationMs": 1439,
+    "totalUsageInputTokens": 0,
+    "totalUsageOutputTokens": 0,
+    "totalProviderFailures": 2,
+    "totalParseFailures": 0,
+    "totalLayoutInvalid": 0,
+    "totalToolMissing": 0,
+    "totalToolEmptyPayload": 0
+  },
+  "results": [
+    {
+      "id": "luxury-interior-sixtine",
+      "description": "高端住宅室内设计官网（偏编辑感）",
+      "requestId": "creation_1770858012979_gkxt02",
+      "responseId": null,
+      "statusCode": 500,
+      "passed": false,
+      "durationMs": 1439,
+      "errors": [],
+      "missingRequired": [
+        "navigation",
+        "hero",
+        "story",
+        "approach",
+        "socialproof",
+        "cta",
+        "footer"
+      ],
+      "blockTypes": [],
+      "detectedCategories": [],
+      "hasFallbackBlock": false,
+      "hasSectionFallbackError": false,
+      "hasTimeoutFallback": false,
+      "componentsCount": 0,
+      "pageCount": 0,
+      "requestError": null,
+      "logMetrics": {
+        "usageInputTokens": 0,
+        "usageOutputTokens": 0,
+        "sectionOk": 0,
+        "sectionFallback": 0,
+        "parseFailed": 0,
+        "layoutInvalid": 0,
+        "providerFailed": 2,
+        "toolMissing": 0,
+        "toolEmptyPayload": 0,
+        "timeoutFallback": 0
+      }
+    },
+    {
+      "id": "industrial-b2b",
+      "description": "工业制造 B2B 官网",
+      "requestId": "creation_1770858014602_epfuzl",
+      "responseId": null,
+      "statusCode": 500,
+      "passed": false,
+      "durationMs": 14,
+      "errors": [],
+      "missingRequired": [
+        "navigation",
+        "hero",
+        "approach",
+        "products",
+        "socialproof",
+        "cta",
+        "footer"
+      ],
+      "blockTypes": [],
+      "detectedCategories": [],
+      "hasFallbackBlock": false,
+      "hasSectionFallbackError": false,
+      "hasTimeoutFallback": false,
+      "componentsCount": 0,
+      "pageCount": 0,
+      "requestError": null,
+      "logMetrics": {
+        "usageInputTokens": 0,
+        "usageOutputTokens": 0,
+        "sectionOk": 0,
+        "sectionFallback": 0,
+        "parseFailed": 0,
+        "layoutInvalid": 0,
+        "providerFailed": 0,
+        "toolMissing": 0,
+        "toolEmptyPayload": 0,
+        "timeoutFallback": 0
+      }
+    }
+  ]
+}

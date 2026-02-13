@@ -209,3 +209,39 @@
 - 2026-02-04: Investigated p2w_1770213779892; immersive-gallery parse failed because LLM returned component as stringified object with backtick code. Added component coercion in normalizeSectionPayload to extract name/code from string and recover payload.
 - 2026-02-04: Investigated p2w_1770215219340; design-showcase layout failed due to align start missing from alignLocked being set for any align. Updated normalizeLayoutHint to only lock when alignLocked flag present.
 - 2026-02-04: Investigated p2w_1770216068018; builder parse failed due to empty/{} tool responses and malformed JSON. Added builder-level retries on empty outputs, strict JSON retry, and enforced tool output in repair prompt.
+
+## Session: 2026-02-12 (A/B/C Sixtine Long Prompt Regression)
+- **Status:** complete
+- Actions taken:
+  - Created `builder/regression/prompts.sixtine.abtest.json` with the provided long-form Sixtine prompt.
+  - Ran `npm run regression:strategy -- --prompts regression/prompts.sixtine.abtest.json`.
+  - Verified reports and screenshots were generated for A/B/C groups.
+- Files created/modified:
+  - `builder/regression/prompts.sixtine.abtest.json` (created)
+  - `builder/regression/strategy-comparison/compare-20260212-104001.json` (generated)
+  - `builder/regression/strategy-comparison/compare-20260212-104001.md` (generated)
+  - `builder/regression/strategy-comparison/screenshots/A_hybrid_legacy/sixtine-long-spec.png` (generated)
+  - `builder/regression/strategy-comparison/screenshots/B_hybrid_split/sixtine-long-spec.png` (generated)
+  - `builder/regression/strategy-comparison/screenshots/C_template_first/sixtine-long-spec.png` (generated)
+
+## Test Results (2026-02-12)
+| Test | Input | Expected | Actual | Status |
+|------|-------|----------|--------|--------|
+| A/B/C strategy compare (single Sixtine long prompt) | `npm run regression:strategy -- --prompts regression/prompts.sixtine.abtest.json` | A/B/C all generate renderable output with screenshots | A/B/C all PASS (1/1 each), screenshots generated, reports persisted | ✓ |
+| Sandbox renderer smoke test | `npm run regression:strategy -- --max-cases 1 --groups C_template_first --renderer sandbox` | Strategy screenshot should come from `/creation/sandbox` and capture full-page content | PASS; report `compare-20260212-114525`, sandbox URL used, screenshot size 1280x3091 | ✓ |
+
+## Session: 2026-02-12 (Regression Default Sandbox)
+- **Status:** complete
+- Actions taken:
+  - Added `siteKey`-based payload loading for `/creation/sandbox`.
+  - Added `initialPayload` support in sandbox client and unified payload application path.
+  - Merged base `puckConfig` into sandbox runtime config and injected missing block fallback renderers.
+  - Added `data-sandbox-ready` marker for deterministic screenshot readiness.
+  - Updated strategy runner to default `--renderer sandbox`, write sandbox payload, and wait for sandbox-ready selector.
+  - Re-ran strategy smoke test to confirm full-page sandbox capture.
+- Files modified:
+  - `builder/src/app/creation/sandbox/page.tsx`
+  - `builder/src/app/creation/sandbox-client.tsx`
+  - `builder/regression/run-strategy-comparison.mjs`
+  - `findings.md`
+  - `progress.md`

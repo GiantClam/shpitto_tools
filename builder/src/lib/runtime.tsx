@@ -369,7 +369,11 @@ const normalizeImportPath = (value: string) => {
   return value
     .trim()
     .replace(/\/components\/magicui\//g, "/components/magic/")
-    .replace(/\/components\/magic-ui\//g, "/components/magic/");
+    .replace(/\/components\/magic-ui\//g, "/components/magic/")
+    .replace(
+      /\/components\/ui\/(animated-beam|bento-grid|border-beam|carousel|comparison-slider|scene-switcher|glow-card|gradient-text|magnifier|marquee|number-ticker|particles|text-reveal)\b/g,
+      "/components/magic/$1"
+    );
 };
 
 const resolveModule = (path: string) => {

@@ -29,6 +29,8 @@ type GenerationResponse = {
 };
 
 export default function CreationClient() {
+  const iframeSandboxMode = "edit";
+  const newTabSandboxMode = "preview";
   const [prompt, setPrompt] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
@@ -195,7 +197,7 @@ export default function CreationClient() {
 
   const handleOpenPreview = React.useCallback(() => {
     if (!result || !currentPage) return;
-    const previewWindow = window.open("/creation/sandbox?mode=preview", "puck-preview");
+    const previewWindow = window.open(`/creation/sandbox?mode=${newTabSandboxMode}`, "puck-preview");
     if (!previewWindow) {
       setError("请允许浏览器打开新标签页");
       return;
@@ -206,7 +208,7 @@ export default function CreationClient() {
     if (payload) {
       previewWindow.postMessage({ type: "puck:load", payload }, "*");
     }
-  }, [buildLoadPayload, currentPage, result]);
+  }, [buildLoadPayload, currentPage, result, newTabSandboxMode]);
 
   return (
     <div className="flex h-screen flex-col bg-background text-foreground">
@@ -321,7 +323,7 @@ export default function CreationClient() {
             <iframe
               ref={iframeRef}
               className="h-full w-full border-0"
-              src="/creation/sandbox?mode=preview"
+              src={`/creation/sandbox?mode=${iframeSandboxMode}`}
               title="Creation Sandbox"
               sandbox="allow-scripts allow-same-origin"
               onLoad={() => {

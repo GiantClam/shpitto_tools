@@ -180,6 +180,67 @@ const buildCompactManifest = (manifest: unknown) => {
   };
 };
 
+const buildMagicImportHints = (manifest: unknown, limit = 20) => {
+  const source = manifest as Record<string, unknown>;
+  const entries = Array.isArray(source?.magic_ui) ? source.magic_ui : [];
+  return entries
+    .map((entry) => {
+      const name = typeof (entry as ManifestEntry)?.name === "string" ? String((entry as ManifestEntry).name) : "";
+      const importPath =
+        typeof (entry as ManifestEntry)?.import === "string" ? String((entry as ManifestEntry).import) : "";
+      if (!name || !importPath) return null;
+      return { name, import: importPath };
+    })
+    .filter(Boolean)
+    .slice(0, limit);
+};
+
+const builderPromptUserMaxChars = Number(process.env.BUILDER_PROMPT_USER_MAX_CHARS || 420);
+
+const summarizeUserRequest = (prompt: string, maxChars = builderPromptUserMaxChars) => {
+  const lines = String(prompt || "")
+    .split(/\r?\n/)
+    .map((line) => line.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+  if (!lines.length) return "";
+
+  const picked: string[] = [];
+  const keywordPattern =
+    /(品牌|风格|语气|视觉|配色|字体|行业|产品|受众|目标|section|hero|navigation|footer|cta|social|story)/i;
+
+  for (const line of lines) {
+    if (!picked.length) {
+      picked.push(line);
+      continue;
+    }
+    if (keywordPattern.test(line)) picked.push(line);
+    if (picked.join(" | ").length >= maxChars) break;
+    if (picked.length >= 8) break;
+  }
+
+  const summary = picked.join(" | ");
+  if (summary.length <= maxChars) return summary;
+  return `${summary.slice(0, Math.max(0, maxChars - 16))}...[truncated]`;
+};
+
+const buildBrandConsistencyBrief = (prompt: string, designNorthStar: unknown, theme: unknown) => {
+  const dns = summarizeDesignNorthStar(designNorthStar);
+  const themed = summarizeTheme(theme);
+  return {
+    requestSummary: summarizeUserRequest(prompt),
+    styleDNA: Array.isArray((dns as any)?.styleDNA) ? (dns as any).styleDNA.slice(0, 3) : [],
+    imageMood: (dns as any)?.imageMood,
+    visualHierarchy: (dns as any)?.visualHierarchy,
+    industry: (dns as any)?.industry,
+    voice: (themed as any)?.themeContract?.voice,
+    consistencyGuardrails: [
+      "跨 section 保持同一品牌语气与色彩语义",
+      "保持统一字体体系与动效节奏",
+      "禁止跨行业和与用户意图无关内容",
+    ],
+  };
+};
+
 export function buildArchitectUserPrompt(prompt: string, manifest: unknown) {
   return `用户需求：${prompt}
 
@@ -323,6 +384,13 @@ const summarizeConstraints = (value: unknown) => {
   };
 };
 
+const shouldIncludeAssetPromptPack = (section: unknown) => {
+  const type = typeof (section as any)?.type === "string" ? String((section as any).type) : "";
+  const id = typeof (section as any)?.id === "string" ? String((section as any).id) : "";
+  const token = `${type} ${id}`.toLowerCase();
+  return /(hero|showcase|gallery|social|testimonial|story|studio|product|catalog|case|portfolio|cta)/.test(token);
+};
+
 export function buildBuilderUserPrompt(options: BuilderPromptOptions) {
   const {
     prompt,
@@ -341,12 +409,23 @@ export function buildBuilderUserPrompt(options: BuilderPromptOptions) {
     sectionIndex,
   } = options;
   const sectionRules = buildSectionQualityRules(section);
-  return `# Context\n用户需求：${prompt}\n\n可用组件：\n${JSON.stringify(
-    buildCompactManifest(manifest),
+  const brandBrief = buildBrandConsistencyBrief(prompt, designNorthStar, theme);
+  const includeAssetPromptPack = shouldIncludeAssetPromptPack(section);
+  const magicImportHints = buildMagicImportHints(manifest);
+  return `# Context\n品牌与一致性简报：\n${JSON.stringify(brandBrief, null, 2)}\n\n可用组件（名称）：\n${JSON.stringify(
+    buildNameOnlyManifest(manifest),
     null,
     2
-  )}\n\n${magicComponentApiGuide}\n\n设计北极星：\n${JSON.stringify(designNorthStar ?? {}, null, 2)}\n\n主题：\n${JSON.stringify(
-    theme,
+  )}\n\nMagic 组件导入映射（必须使用）：\n${JSON.stringify(
+    magicImportHints,
+    null,
+    2
+  )}\n\n${magicComponentApiGuide}\n\n设计北极星（摘要）：\n${JSON.stringify(
+    summarizeDesignNorthStar(designNorthStar),
+    null,
+    2
+  )}\n\n主题（摘要）：\n${JSON.stringify(
+    summarizeTheme(theme),
     null,
     2
   )}\n\n页面：\n${JSON.stringify(
@@ -365,15 +444,15 @@ export function buildBuilderUserPrompt(options: BuilderPromptOptions) {
     compositionPreset ?? {},
     null,
     2
-  )}\n\nConstraints (Tokens/Variants/Layout/MaxItems)：\n${JSON.stringify(
-    constraints ?? {},
+  )}\n\nConstraints（摘要）：\n${JSON.stringify(
+    summarizeConstraints(constraints),
     null,
     2
   )}\n\nCreative Guidance：\n${JSON.stringify(
     creativeGuidance ?? {},
     null,
     2
-  )}\n\n${assetPromptPack}\n\n# Section Shell (必须严格使用)\n- sectionPadding: ${String((themeClassMap as any)?.sectionPadding ?? "")}\n- container: ${String((themeClassMap as any)?.container ?? "")}\n- heading: ${String((themeClassMap as any)?.heading ?? "")}\n- body: ${String((themeClassMap as any)?.body ?? "")}\n\nSection（序号 ${sectionIndex + 1}）：\n${JSON.stringify(
+  )}\n\n${includeAssetPromptPack ? `${assetPromptPack}\n\n` : ""}# Section Shell (必须严格使用)\n- sectionPadding: ${String((themeClassMap as any)?.sectionPadding ?? "")}\n- container: ${String((themeClassMap as any)?.container ?? "")}\n- heading: ${String((themeClassMap as any)?.heading ?? "")}\n- body: ${String((themeClassMap as any)?.body ?? "")}\n\nSection（序号 ${sectionIndex + 1}）：\n${JSON.stringify(
     section,
     null,
     2
@@ -412,12 +491,16 @@ export function buildBuilderCompactUserPrompt(options: BuilderPromptOptions) {
     sectionIndex,
   } = options;
   const sectionRules = buildSectionQualityRules(section);
+  const brandBrief = buildBrandConsistencyBrief(prompt, designNorthStar, theme);
+  const magicImportHints = buildMagicImportHints(manifest);
   return `# Compact Tool Context
 你必须调用工具 builder_section，并返回严格 JSON（component + block）。
 
-用户需求：${prompt}
+品牌与一致性简报：${JSON.stringify(brandBrief, null, 2)}
 
 可用组件（名称）：${JSON.stringify(buildNameOnlyManifest(manifest), null, 2)}
+
+Magic 组件导入映射（必须使用）：${JSON.stringify(magicImportHints, null, 2)}
 
 ${magicComponentApiGuide}
 

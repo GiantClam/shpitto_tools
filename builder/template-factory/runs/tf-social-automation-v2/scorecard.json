@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "overallScore": 97,
+  "groups": [
+    {
+      "id": "A_hybrid_legacy",
+      "label": "A: Hybrid Legacy",
+      "total": 1,
+      "passed": 1,
+      "passRate": 100,
+      "errorRate": 0,
+      "fallbackRate": 0,
+      "avgDurationMs": 121615,
+      "score": 97
+    },
+    {
+      "id": "B_hybrid_split",
+      "label": "B: Hybrid Split (Template-first + LLM Hero/Story)",
+      "total": 1,
+      "passed": 1,
+      "passRate": 100,
+      "errorRate": 0,
+      "fallbackRate": 0,
+      "avgDurationMs": 94176,
+      "score": 97
+    },
+    {
+      "id": "C_template_first",
+      "label": "C: Template First",
+      "total": 1,
+      "passed": 1,
+      "passRate": 100,
+      "errorRate": 0,
+      "fallbackRate": 0,
+      "avgDurationMs": 109074,
+      "score": 97
+    }
+  ]
+}

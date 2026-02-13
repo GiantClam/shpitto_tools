@@ -13,6 +13,17 @@ import { CaseStudiesBlock } from "@/components/blocks/case-studies/block";
 import { LeadCaptureCTABlock } from "@/components/blocks/lead-capture-cta/block";
 import { CardsGridBlock } from "@/components/blocks/cards-grid/block";
 import { NavbarBlock } from "@/components/blocks/navbar/block";
+import { NeonHeroBeamBlock } from "@/components/blocks/neon-hero-beam/block";
+import { NeonDashboardStripBlock } from "@/components/blocks/neon-dashboard-strip/block";
+import { NeonMetricsOrbitBlock } from "@/components/blocks/neon-metrics-orbit/block";
+import { NeonFeatureCardsBlock } from "@/components/blocks/neon-feature-cards/block";
+import { NeonResultsShowcaseBlock } from "@/components/blocks/neon-results-showcase/block";
+import { NeonPricingSplitBlock } from "@/components/blocks/neon-pricing-split/block";
+import { NeonFooterGlowBlock } from "@/components/blocks/neon-footer-glow/block";
+import { DesignerHeroEditorialBlock } from "@/components/blocks/designer-hero-editorial/block";
+import { DesignerCapabilitiesStripBlock } from "@/components/blocks/designer-capabilities-strip/block";
+import { DesignerProjectsSplitBlock } from "@/components/blocks/designer-projects-split/block";
+import { DesignerQuoteBandBlock } from "@/components/blocks/designer-quote-band/block";
 import { AtomicTextBlock } from "@/components/blocks/atomic-text/block";
 import { AtomicButtonBlock } from "@/components/blocks/atomic-button/block";
 import { AtomicImageBlock } from "@/components/blocks/atomic-image/block";
@@ -147,6 +158,292 @@ export const puckConfig: Config = {
         }),
       },
     },
+    NeonHeroBeam: {
+      render: renderBlock(NeonHeroBeamBlock),
+      defaultProps: {
+        id: "NeonHeroBeam-1",
+        title: "Social Reach. Automated Growth. Viral Results.",
+        subtitle: "Scale campaigns with AI workflows, predictive insights, and measurable growth velocity.",
+        badge: "Social Growth, Autopilot Mode",
+        ctas: [
+          { label: "Explore Platform", href: "#platform", variant: "primary" },
+          { label: "View Metrics", href: "#metrics", variant: "secondary" },
+        ],
+        panelTag: "Viral Result",
+        panelTitle: "Growth Velocity",
+        panelSubtitle: "Automated engagement hitting viral peaks.",
+        statValue: "+842%",
+        statDelta: "vs last week",
+        maxWidth: "xl",
+      },
+      fields: {
+        badge: textField("Badge"),
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        panelTag: textField("Panel Tag"),
+        panelTitle: textField("Panel Title"),
+        panelSubtitle: textareaField("Panel Subtitle"),
+        statValue: textField("Stat Value"),
+        statDelta: textField("Stat Delta"),
+        heroImageSrc: textField("Hero Image Src"),
+        heroImageAlt: textField("Hero Image Alt"),
+        ctas: listField("CTAs", {
+          label: textField("Label"),
+          href: textField("Href"),
+          variant: selectField("Variant", ["primary", "secondary", "link"]),
+        }),
+      },
+    },
+    NeonMetricsOrbit: {
+      render: renderBlock(NeonMetricsOrbitBlock),
+      defaultProps: {
+        id: "NeonMetricsOrbit-1",
+        title: "Scale your reach instantly",
+        subtitle: "Precision targeting, automated workflows, and brand safety controls.",
+        metrics: [
+          { label: "Campaign Velocity", value: "96k / week" },
+          { label: "Reach Lift", value: "+842%" },
+          { label: "Brand-safe Coverage", value: "99.2%" },
+        ],
+        chips: [{ label: "TikTok" }, { label: "Instagram" }, { label: "YouTube" }, { label: "X" }],
+      },
+      fields: {
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        metrics: listField("Metrics", {
+          label: textField("Label"),
+          value: textField("Value"),
+        }),
+        chips: listField("Chips", {
+          label: textField("Label"),
+        }),
+      },
+    },
+    NeonDashboardStrip: {
+      render: renderBlock(NeonDashboardStripBlock),
+      defaultProps: {
+        id: "NeonDashboardStrip-1",
+        eyebrow: "Wave 01",
+        title: "Scale your reach instantly",
+        subtitle: "Precision targeting, automated workflows, and brand safety controls.",
+        tabs: [{ label: "Overview" }, { label: "Campaigns" }, { label: "Insights" }, { label: "Safety" }, { label: "AI" }],
+        metrics: [
+          { label: "Campaign Velocity", value: "+842%" },
+          { label: "Total Reach", value: "2.4M" },
+          { label: "Safety Score", value: "99.2%" },
+        ],
+        kpis: [
+          { label: "Live Campaigns", value: "54" },
+          { label: "Active Markets", value: "16" },
+          { label: "Avg CTR", value: "4.8%" },
+        ],
+      },
+      fields: {
+        eyebrow: textField("Eyebrow"),
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        dashboardImageSrc: textField("Dashboard Image Src"),
+        dashboardImageAlt: textField("Dashboard Image Alt"),
+        tabs: listField("Tabs", {
+          label: textField("Label"),
+        }),
+        metrics: listField("Metrics", {
+          label: textField("Label"),
+          value: textField("Value"),
+        }),
+        kpis: listField("KPIs", {
+          label: textField("Label"),
+          value: textField("Value"),
+        }),
+      },
+    },
+    NeonFeatureCards: {
+      render: renderBlock(NeonFeatureCardsBlock),
+      defaultProps: {
+        id: "NeonFeatureCards-1",
+        title: "Engineered for exponential growth",
+        subtitle: "Modular capability blocks for velocity, safety, and omnichannel scale.",
+        items: [
+          { title: "Predictive Intelligence", description: "Model outcomes before spend.", highlight: true },
+          { title: "Autonomous Velocity", description: "Orchestrate publishing with adaptive timing." },
+          { title: "Safety by Design", description: "Brand-safe automation with policy guardrails." },
+          { title: "Omnichannel Scale", description: "Coordinate every channel from one control layer." },
+        ],
+      },
+      fields: {
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        items: listField("Items", {
+          title: textField("Title"),
+          description: textareaField("Description"),
+          badge: textField("Badge"),
+          highlight: booleanField("Highlight"),
+        }),
+      },
+    },
+    NeonResultsShowcase: {
+      render: renderBlock(NeonResultsShowcaseBlock),
+      defaultProps: {
+        id: "NeonResultsShowcase-1",
+        title: "Real results. Real growth.",
+        subtitle: "Proof that strategy and structure drive meaningful outcomes.",
+        quote: "We watched 56 creators double qualified reach while cutting manual operations effort in half.",
+        author: "Claire",
+        role: "Growth Director",
+      },
+      fields: {
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        quote: textareaField("Quote"),
+        author: textField("Author"),
+        role: textField("Role"),
+        imageSrc: textField("Image Src"),
+        imageAlt: textField("Image Alt"),
+      },
+    },
+    NeonPricingSplit: {
+      render: renderBlock(NeonPricingSplitBlock),
+      defaultProps: {
+        id: "NeonPricingSplit-1",
+        title: "Unlock viral growth",
+        subtitle: "Choose your plan and activate automation in minutes.",
+        items: [
+          { name: "Creator", price: "$29" },
+          { name: "Pro Growth", price: "$79" },
+          { name: "Agency", price: "$199" },
+        ],
+        featuredName: "Creator",
+        featuredPrice: "$29.00 / mo",
+        features: [
+          { label: "AI campaign orchestration" },
+          { label: "Multi-channel scheduler" },
+          { label: "Attribution insights" },
+        ],
+        cta: { label: "Start Free Trial", href: "#contact", variant: "primary" },
+      },
+      fields: {
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        featuredName: textField("Featured Name"),
+        featuredPrice: textField("Featured Price"),
+        items: listField("Items", {
+          name: textField("Name"),
+          price: textField("Price"),
+        }),
+        features: listField("Features", {
+          label: textField("Label"),
+        }),
+      },
+    },
+    NeonFooterGlow: {
+      render: renderBlock(NeonFooterGlowBlock),
+      defaultProps: {
+        id: "NeonFooterGlow-1",
+        title: "Join our newsletter",
+        subtitle: "Get strategic updates on digital media growth, automation, and creator insights.",
+        primaryCta: { label: "Get Started", href: "#contact", variant: "primary" },
+        secondaryCta: { label: "Learn More", href: "#features", variant: "secondary" },
+        legal: "© 2026 All rights reserved.",
+      },
+      fields: {
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        legal: textField("Legal"),
+      },
+    },
+    DesignerHeroEditorial: {
+      render: renderBlock(DesignerHeroEditorialBlock),
+      defaultProps: {
+        id: "DesignerHeroEditorial-1",
+        eyebrow: "Since 2003",
+        title: "the future of design & content",
+        subtitle: "A multidisciplinary creative practice crafting visual systems.",
+        detail: "Focused on product clarity and narrative-first communication.",
+        ctas: [
+          { label: "View Work", href: "#projects", variant: "primary" },
+          { label: "Read Story", href: "#about", variant: "secondary" },
+        ],
+      },
+      fields: {
+        eyebrow: textField("Eyebrow"),
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        detail: textareaField("Detail"),
+        meshImageSrc: textField("Mesh Image Src"),
+        previewImageSrc: textField("Preview Image Src"),
+        mobilePreviewImageSrc: textField("Mobile Preview Image Src"),
+        previewImageAlt: textField("Preview Image Alt"),
+        ctas: listField("CTAs", {
+          label: textField("Label"),
+          href: textField("Href"),
+          variant: selectField("Variant", ["primary", "secondary", "link"]),
+        }),
+      },
+    },
+    DesignerCapabilitiesStrip: {
+      render: renderBlock(DesignerCapabilitiesStripBlock),
+      defaultProps: {
+        id: "DesignerCapabilitiesStrip-1",
+        title: "Capabilities",
+        subtitle: "Digital design, development, and growth services with a product mindset.",
+        items: [
+          { title: "UI/UX Design", description: "Research-driven interfaces for web and mobile products." },
+          { title: "Web Development", description: "Modern frontend architecture with production-ready quality." },
+          { title: "Brand Identity", description: "Visual language systems that scale across digital touchpoints." },
+        ],
+      },
+      fields: {
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        items: listField("Items", {
+          title: textField("Title"),
+          description: textareaField("Description"),
+          imageSrc: textField("Image Src"),
+          imageAlt: textField("Image Alt"),
+          ctaLabel: textField("CTA Label"),
+        }),
+      },
+    },
+    DesignerProjectsSplit: {
+      render: renderBlock(DesignerProjectsSplitBlock),
+      defaultProps: {
+        id: "DesignerProjectsSplit-1",
+        title: "Recent Projects",
+        subtitle: "A selection of recent design and development work.",
+        items: [
+          { title: "SaaS Dashboard", summary: "A product analytics dashboard focused on clarity." },
+          { title: "Fashion Platform", summary: "A conversion-first ecommerce redesign with improved storytelling." },
+        ],
+      },
+      fields: {
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        items: listField("Items", {
+          title: textField("Title"),
+          summary: textareaField("Summary"),
+          href: textField("Href"),
+          imageSrc: textField("Image Src"),
+          imageAlt: textField("Image Alt"),
+        }),
+      },
+    },
+    DesignerQuoteBand: {
+      render: renderBlock(DesignerQuoteBandBlock),
+      defaultProps: {
+        id: "DesignerQuoteBand-1",
+        eyebrow: "Testimonial",
+        quote:
+          "\"Working with Jeremi was a game-changer. He translated our vision into a polished product and delivered beyond expectations.\"",
+        author: "Client",
+        role: "Founder",
+      },
+      fields: {
+        eyebrow: textField("Eyebrow"),
+        quote: textareaField("Quote"),
+        author: textField("Author"),
+        role: textField("Role"),
+      },
+    },
     FeatureGrid: {
       render: renderBlock(FeatureGridBlock),
       defaultProps: {
@@ -208,6 +505,35 @@ export const puckConfig: Config = {
         mediaSrc: textField("Media Src"),
         mediaAlt: textField("Media Alt"),
         mediaKind: selectField("Media Kind", ["image", "video"]),
+      },
+    },
+    ContentStory: {
+      render: renderBlock(FeatureWithMediaBlock),
+      defaultProps: {
+        id: "ContentStory-1",
+        eyebrow: "Our Story",
+        title: "Designing meaningful experiences",
+        subtitle: "A concise narrative section for brand story and positioning.",
+        body: "Use this section to communicate philosophy, process, and the why behind the product.",
+        ctas: [{ label: "Learn more", href: "#", variant: "link" }],
+        variant: "split",
+        paddingY: "lg",
+        maxWidth: "xl",
+      },
+      fields: {
+        eyebrow: textField("Eyebrow"),
+        title: textField("Title"),
+        subtitle: textareaField("Subtitle"),
+        body: textareaField("Body"),
+        variant: selectField("Layout", ["simple", "split", "reverse"]),
+        paddingY: selectField("Padding", ["sm", "md", "lg"]),
+        background: selectField("Background", ["none", "muted", "gradient", "image"]),
+        maxWidth: selectField("Max Width", ["lg", "xl", "2xl"]),
+        ctas: listField("CTAs", {
+          label: textField("Label"),
+          href: textField("Href"),
+          variant: selectField("Variant", ["primary", "secondary", "link"]),
+        }),
       },
     },
     PricingCards: {

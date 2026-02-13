@@ -63,6 +63,16 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
 
 const isStringArray = (value: unknown): value is string[] => Array.isArray(value);
 
+const normalizeSiteKey = (value: string) => {
+  const trimmed = value.trim();
+  if (!trimmed) return "demo";
+  try {
+    return decodeURIComponent(trimmed);
+  } catch {
+    return trimmed;
+  }
+};
+
 const demoData: PuckData = {
   content: [
     {
@@ -353,10 +363,11 @@ async function loadThemeCss(siteKey: string) {
 
 export default async function RenderPage({ searchParams }: PageProps) {
   const resolvedSearchParams = searchParams ? await searchParams : undefined;
-  const siteKey =
+  const siteKeyRaw =
     (resolvedSearchParams?.siteKey as string) ??
     (resolvedSearchParams?.site as string) ??
     "demo";
+  const siteKey = normalizeSiteKey(siteKeyRaw);
   const page = (resolvedSearchParams?.page as string) ?? "home";
   const iter = resolvedSearchParams?.iter as string | undefined;
   const [rawData, extract] = await Promise.all([
