@@ -1,0 +1,163 @@
+{
+  "runId": "tf-siemens-pixel-20260214-150200",
+  "manifestPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/sites.siemens.json",
+  "sites": 1,
+  "crawlSite": false,
+  "crawlMaxPages": 16,
+  "crawlMaxDepth": 1,
+  "antiCrawlPrecheck": true,
+  "antiCrawlTimeoutMs": 25000,
+  "fastMode": false,
+  "fidelityMode": "strict",
+  "fidelityThreshold": 82,
+  "fidelityEnforcement": "warn",
+  "autoRepairIterations": 2,
+  "pixelMode": true,
+  "runDir": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-pixel-20260214-150200",
+  "runLibraryPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-pixel-20260214-150200/style-profiles.generated.json",
+  "publishPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/library/style-profiles.generated.json",
+  "regressionPromptsPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-pixel-20260214-150200/regression-prompts.json",
+  "regressionReportPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/compare-20260214-150032.json",
+  "regressionAttemptsPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-pixel-20260214-150200/regression-attempts.json",
+  "scorecardPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-pixel-20260214-150200/scorecard.json",
+  "overallScore": 95,
+  "fidelityReportPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-pixel-20260214-150200/fidelity-report.json",
+  "overallSimilarity": 91.51,
+  "fidelityGatePassed": true,
+  "fidelityGateWouldFail": false,
+  "strictFidelityFailures": [],
+  "strictFidelityMissing": [],
+  "blockingFidelityFailures": [],
+  "manualFixesPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-pixel-20260214-150200/manual-fix-tasks.json",
+  "manualFixesCount": 0,
+  "previewBaseUrl": "http://127.0.0.1:3110",
+  "previewLinksPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-pixel-20260214-150200/preview-links.json",
+  "previewLinks": [
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home",
+      "pagePath": "/",
+      "pageName": "Siemens",
+      "responseId": "p2w_1771052436911",
+      "requestId": "creation_1771052436906_p7x1oh",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260214-150032_c-template-first_siemens-home&page=home",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png"
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home",
+      "pagePath": "/en-us",
+      "pageName": "Siemens",
+      "responseId": "p2w_1771052436911",
+      "requestId": "creation_1771052436906_p7x1oh",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260214-150032_c-template-first_siemens-home&page=%2Fen-us",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png"
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home",
+      "pagePath": "/en-us/company/artificial-intelligence",
+      "pageName": "Artificial intelligence solutions",
+      "responseId": "p2w_1771052436911",
+      "requestId": "creation_1771052436906_p7x1oh",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260214-150032_c-template-first_siemens-home&page=%2Fen-us%2Fcompany%2Fartificial-intelligence",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png"
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home",
+      "pagePath": "/en-us/company/digital-twin",
+      "pageName": "Digital twin technology",
+      "responseId": "p2w_1771052436911",
+      "requestId": "creation_1771052436906_p7x1oh",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260214-150032_c-template-first_siemens-home&page=%2Fen-us%2Fcompany%2Fdigital-twin",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png"
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home",
+      "pagePath": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+      "pageName": "Siemens Electronics Works Amberg",
+      "responseId": "p2w_1771052436911",
+      "requestId": "creation_1771052436906_p7x1oh",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260214-150032_c-template-first_siemens-home&page=%2Fen-us%2Fcompany%2Finsights%2Felectronics-digital-enterprise-future-technologies",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png"
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home",
+      "pagePath": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+      "pageName": "Virtual PLC is revolutionizing production at Audi",
+      "responseId": "p2w_1771052436911",
+      "requestId": "creation_1771052436906_p7x1oh",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260214-150032_c-template-first_siemens-home&page=%2Fen-us%2Fcompany%2Finsights%2Ffactory-automation-virtual-plc-audi",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png"
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home",
+      "pagePath": "/en-us/company/insights/hymer-digital-first-recreational-vehicle",
+      "pageName": "The digital-first recreational vehicle: Hymer",
+      "responseId": "p2w_1771052436911",
+      "requestId": "creation_1771052436906_p7x1oh",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260214-150032_c-template-first_siemens-home&page=%2Fen-us%2Fcompany%2Finsights%2Fhymer-digital-first-recreational-vehicle",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png"
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home",
+      "pagePath": "/en-us/company/insights/va-syd-water-artificial-intelligence",
+      "pageName": "A case for AI: Water pipeline leaks",
+      "responseId": "p2w_1771052436911",
+      "requestId": "creation_1771052436906_p7x1oh",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260214-150032_c-template-first_siemens-home&page=%2Fen-us%2Fcompany%2Finsights%2Fva-syd-water-artificial-intelligence",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png"
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home",
+      "pagePath": "/en-us/industries/water/non-revenue-water",
+      "pageName": "Non-revenue Water",
+      "responseId": "p2w_1771052436911",
+      "requestId": "creation_1771052436906_p7x1oh",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260214-150032_c-template-first_siemens-home&page=%2Fen-us%2Findustries%2Fwater%2Fnon-revenue-water",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png"
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home",
+      "pagePath": "/en-us/products/gridscale-x",
+      "pageName": "Gridscale X",
+      "responseId": "p2w_1771052436911",
+      "requestId": "creation_1771052436906_p7x1oh",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260214-150032_c-template-first_siemens-home&page=%2Fen-us%2Fproducts%2Fgridscale-x",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png"
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home",
+      "pagePath": "/en-us/products/simatic/s7-1500v",
+      "pageName": "SIMATIC S7-1500V Virtual PLC",
+      "responseId": "p2w_1771052436911",
+      "requestId": "creation_1771052436906_p7x1oh",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260214-150032_c-template-first_siemens-home&page=%2Fen-us%2Fproducts%2Fsimatic%2Fs7-1500v",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png"
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home",
+      "pagePath": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html",
+      "pageName": "Robot dogs revolutionize industrial maintenance",
+      "responseId": "p2w_1771052436911",
+      "requestId": "creation_1771052436906_p7x1oh",
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260214-150032_c-template-first_siemens-home&page=%2Fglobal%2Fen%2Fcompany%2Fstories%2Findustry%2F2024%2Fanybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html",
+      "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png"
+    }
+  ],
+  "previewServer": {
+    "origin": "http://127.0.0.1:3110",
+    "reachable": false,
+    "started": false
+  },
+  "previewStartCommand": "cd builder && npm run dev -- -p 3110"
+}

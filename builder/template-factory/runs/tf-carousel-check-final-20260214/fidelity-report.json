@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-02-14T11:56:31.921Z",
+  "runId": "tf-carousel-check-final-20260214",
+  "available": true,
+  "overallSimilarity": 91.51,
+  "rows": [
+    {
+      "caseId": "siemens-home-carousel-check",
+      "referencePath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-carousel-check-final-20260214/sites/siemens-home-carousel-check/ingest/desktop.auto.png",
+      "screenshotPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home-carousel-check.png",
+      "similarity": 91.51,
+      "mode": "standard",
+      "threshold": 72,
+      "enforcement": "warn",
+      "comparable": true,
+      "pass": true
+    }
+  ],
+  "reason": "ok",
+  "attempts": [
+    {
+      "attempt": 0,
+      "reportPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/compare-20260214-195445.json",
+      "overallSimilarity": 91.51,
+      "strictFailures": 0,
+      "strictMissing": 0
+    }
+  ],
+  "strict": {
+    "requiredCases": [],
+    "missingComparableCases": [],
+    "failedCases": [],
+    "gatePassed": true,
+    "gateWouldFail": false,
+    "blockingRequiredCases": [],
+    "blockingMissingComparableCases": [],
+    "blockingFailedCases": []
+  }
+}

@@ -176,6 +176,7 @@ type IncomingMessage =
 type SandboxLoadPayload = {
   components: Array<{ name: string; code: string }>;
   page: { data: Data };
+  availablePagePaths?: string[];
   theme?: Record<string, any>;
   pageIndex?: number;
 };
@@ -250,6 +251,67 @@ const createMissingBlockComponent = (blockType: string): React.ComponentType<any
   return MissingBlock;
 };
 
+const normalizePreviewPagePath = (rawPath: string) => {
+  const trimmed = String(rawPath || "").trim();
+  if (!trimmed || trimmed === "/" || trimmed === "home" || trimmed === "index") return "/";
+  return trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+};
+
+const normalizePreviewPageParam = (rawPath: string) => {
+  const normalized = normalizePreviewPagePath(rawPath);
+  return normalized === "/" ? "home" : normalized;
+};
+
+const isNonNavigationalHref = (href: string) => {
+  const lowered = href.toLowerCase();
+  return (
+    lowered.startsWith("#") ||
+    lowered.startsWith("mailto:") ||
+    lowered.startsWith("tel:") ||
+    lowered.startsWith("javascript:") ||
+    lowered.startsWith("data:")
+  );
+};
+
+const toSandboxPreviewHref = (
+  rawHref: string,
+  siteKey: string,
+  mode: string,
+  currentUrl: URL,
+  availablePagePaths: Set<string>
+) => {
+  if (!rawHref || !siteKey || mode !== "preview") return "";
+  const href = rawHref.trim();
+  if (!href || isNonNavigationalHref(href)) return "";
+
+  let parsed: URL;
+  try {
+    parsed = new URL(href, currentUrl.origin);
+  } catch {
+    return "";
+  }
+
+  const candidatePagePath = normalizePreviewPagePath(parsed.pathname);
+  const knownPage = availablePagePaths.has(candidatePagePath);
+  if (parsed.origin !== currentUrl.origin && !knownPage) {
+    return "";
+  }
+  if (parsed.pathname === "/creation/sandbox" && parsed.searchParams.get("mode") === "preview") {
+    return "";
+  }
+  if (!knownPage && parsed.origin === currentUrl.origin) {
+    return "";
+  }
+
+  const next = new URL(currentUrl.toString());
+  next.pathname = "/creation/sandbox";
+  next.searchParams.set("mode", "preview");
+  next.searchParams.set("siteKey", siteKey);
+  next.searchParams.set("page", normalizePreviewPageParam(candidatePagePath));
+  next.hash = parsed.hash || "";
+  return next.toString();
+};
+
 class BlockErrorBoundary extends React.Component<
   { blockName: string; children: React.ReactNode },
   { hasError: boolean; message?: string }
@@ -285,9 +347,12 @@ class BlockErrorBoundary extends React.Component<
 
 export default function CreationSandboxClient({ initialPayload }: CreationSandboxClientProps) {
   const searchParams = useSearchParams();
-  const isEdit = searchParams.get("mode") === "edit";
+  const mode = searchParams.get("mode") === "edit" ? "edit" : "preview";
+  const isEdit = mode === "edit";
+  const siteKey = searchParams.get("siteKey") || "";
   const [config, setConfig] = React.useState<Config | null>(null);
   const [data, setData] = React.useState<Data | null>(null);
+  const [availablePagePaths, setAvailablePagePaths] = React.useState<string[]>([]);
   const [themeCss, setThemeCss] = React.useState<string>("");
   const [motionMode, setMotionMode] = React.useState<"off" | "subtle" | "showcase">("showcase");
   const [pageKey, setPageKey] = React.useState<string>("page-0");
@@ -302,6 +367,61 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
   React.useEffect(() => {
     console.info("[creation:sandbox] preview_mode", { mode: isEdit ? "edit" : "preview" });
   }, [isEdit]);
+
+  React.useEffect(() => {
+    if (mode !== "preview" || !siteKey) return;
+    const availablePathSet = new Set(
+      (availablePagePaths.length ? availablePagePaths : ["/"]).map((item) =>
+        normalizePreviewPagePath(item)
+      )
+    );
+
+    const rewriteAnchors = () => {
+      const currentUrl = new URL(window.location.href);
+      const anchors = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[href]'));
+      anchors.forEach((anchor) => {
+        const original = anchor.getAttribute("href");
+        if (!original) return;
+        const rewritten = toSandboxPreviewHref(original, siteKey, mode, currentUrl, availablePathSet);
+        if (!rewritten) return;
+        anchor.setAttribute("href", rewritten);
+      });
+    };
+
+    const handleClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const target = event.target as HTMLElement | null;
+      const anchor = target?.closest?.("a[href]") as HTMLAnchorElement | null;
+      if (!anchor) return;
+      if (anchor.target && anchor.target !== "_self") return;
+      if (anchor.hasAttribute("download")) return;
+
+      const href = anchor.getAttribute("href");
+      if (!href) return;
+      const rewritten = toSandboxPreviewHref(
+        href,
+        siteKey,
+        mode,
+        new URL(window.location.href),
+        availablePathSet
+      );
+      if (!rewritten) return;
+
+      event.preventDefault();
+      window.location.assign(rewritten);
+    };
+
+    rewriteAnchors();
+    const observer = new MutationObserver(() => rewriteAnchors());
+    observer.observe(document.body, { childList: true, subtree: true });
+    document.addEventListener("click", handleClick, true);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("click", handleClick, true);
+    };
+  }, [mode, siteKey, availablePagePaths, config, data]);
 
   const applyLoadPayload = React.useCallback(
     (payload: SandboxLoadPayload) => {
@@ -365,6 +485,16 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
       const coercedPageData = coercePageDataArrays(payload.page.data, primitiveArrayFieldsByType);
       setConfig(nextConfig);
       setData(normalizePuckData(coercedPageData, { logChanges: true }));
+      const nextPagePaths = Array.isArray(payload.availablePagePaths)
+        ? Array.from(
+            new Set(
+              payload.availablePagePaths
+                .map((value) => normalizePreviewPagePath(String(value || "")))
+                .filter(Boolean)
+            )
+          )
+        : ["/"];
+      setAvailablePagePaths(nextPagePaths.length ? nextPagePaths : ["/"]);
       setThemeCss(buildThemeCss(payload.theme));
       setMotionMode((payload.theme?.motion as any) || "showcase");
       document.documentElement.classList.toggle("dark", payload.theme?.mode === "dark");

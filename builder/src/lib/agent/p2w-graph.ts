@@ -750,7 +750,7 @@ export default function CreationFallbackSection(props) {
       : [
           {
             name: "Alexander Vane",
-            role: "CEO at Aura",
+            role: "CEO at Shpitto",
             quote:
               "Sixtine didn't just design a house; they curated a lifestyle.",
           },
@@ -948,11 +948,7 @@ const detectReferenceProfile = (prompt: string): ReferenceProfile => {
   const normalized = String(prompt ?? "").toLowerCase();
   if (!normalized) return null;
   if (normalized.includes("analogue.co") || normalized.includes("analogue pocket")) return "analogue";
-  if (
-    normalized.includes("breton.it") ||
-    /\bbreton\b/.test(normalized) ||
-    /\bindustrial\b/.test(normalized)
-  ) {
+  if (normalized.includes("breton.it") || /\bbreton\b/.test(normalized)) {
     return "breton";
   }
   return null;
@@ -1940,6 +1936,63 @@ const normalizeTemplatePlanKind = (value: string): TemplatePlanSectionKind | nul
   return templatePlanSectionOrder.includes(token) ? token : null;
 };
 
+type ProfileSiteTemplatePage = {
+  path: string;
+  name: string;
+  kinds: TemplatePlanSectionKind[];
+};
+
+const normalizeTemplatePagePath = (value: unknown) => {
+  const raw = typeof value === "string" ? value.trim() : "";
+  if (!raw) return "/";
+  const withSlash = raw.startsWith("/") ? raw : `/${raw}`;
+  const normalized = withSlash.replace(/\/{2,}/g, "/").replace(/\/+$/g, "") || "/";
+  return normalized === "" ? "/" : normalized;
+};
+
+const toTemplateKinds = (values: unknown[]): TemplatePlanSectionKind[] =>
+  templatePlanSectionOrder.filter((kind) =>
+    values
+      .map((value) => normalizeTemplatePlanKind(String(value ?? "")))
+      .filter((entry): entry is TemplatePlanSectionKind => Boolean(entry))
+      .includes(kind)
+  );
+
+const readProfileSiteTemplatePages = (profile: unknown): ProfileSiteTemplatePage[] => {
+  if (!profile || typeof profile !== "object") return [];
+  const record = profile as Record<string, unknown>;
+  const rawPages = Array.isArray(record.siteTemplates)
+    ? record.siteTemplates
+    : Array.isArray(record.site_templates)
+      ? record.site_templates
+      : Array.isArray(record.pageSpecs)
+        ? record.pageSpecs
+        : Array.isArray(record.page_specs)
+          ? record.page_specs
+      : [];
+  const out: ProfileSiteTemplatePage[] = [];
+  for (const rawPage of rawPages) {
+    if (!rawPage || typeof rawPage !== "object") continue;
+    const pageRecord = rawPage as Record<string, unknown>;
+    const path = normalizeTemplatePagePath(pageRecord.path);
+    const name =
+      typeof pageRecord.name === "string" && pageRecord.name.trim()
+        ? pageRecord.name.trim()
+        : path === "/"
+          ? "Home"
+          : `Page ${out.length + 1}`;
+    const rawKinds = Array.isArray(pageRecord.requiredCategories)
+      ? pageRecord.requiredCategories
+      : Array.isArray(pageRecord.required_categories)
+        ? pageRecord.required_categories
+        : [];
+    const kinds = toTemplateKinds(rawKinds);
+    if (!kinds.length) continue;
+    out.push({ path, name, kinds });
+  }
+  return out;
+};
+
 const sectionMatchesTemplateKind = (section: ArchitectSection, kind: TemplatePlanSectionKind) => {
   const token = `${section.type ?? ""} ${section.id ?? ""} ${section.intent ?? ""}`.toLowerCase();
   return templatePlanKindPatterns[kind].some((pattern) => pattern.test(token));
@@ -1989,11 +2042,47 @@ const applyTemplateFirstSectionPlan = (
 
   const orderedKinds = templatePlanSectionOrder.filter((kind) => templateKinds.includes(kind));
   if (!orderedKinds.length) return { pages, profileId: profile.id };
+  const profilePages = readProfileSiteTemplatePages(profile);
+  const profilePageByPath = new Map(profilePages.map((page) => [normalizeTemplatePagePath(page.path), page]));
+  let sourcePages = pages;
+  if (profilePages.length) {
+    const existingByPath = new Map(
+      pages.map((page) => [normalizeTemplatePagePath(page.path), page] as const)
+    );
+    const consumed = new Set<string>();
+    const mergedPages: ReturnType<typeof normalizePages> = profilePages.map((pageTemplate) => {
+      const key = normalizeTemplatePagePath(pageTemplate.path);
+      const existing = existingByPath.get(key);
+      consumed.add(key);
+      if (existing) {
+        return {
+          ...existing,
+          path: key,
+          name: pageTemplate.name || existing.name,
+        };
+      }
+      return {
+        path: key,
+        name: pageTemplate.name || (key === "/" ? "Home" : "Page"),
+        sections: [],
+      };
+    });
+    for (const page of pages) {
+      const key = normalizeTemplatePagePath(page.path);
+      if (consumed.has(key)) continue;
+      mergedPages.push(page);
+    }
+    sourcePages = mergedPages;
+  }
 
-  const nextPages = pages.map((page) => {
+  const nextPages = sourcePages.map((page) => {
     const sourceSections = Array.isArray(page.sections) ? page.sections : [];
+    const pageTemplate = profilePageByPath.get(normalizeTemplatePagePath(page.path));
+    const pageKinds = pageTemplate?.kinds?.length ? pageTemplate.kinds : orderedKinds;
+    const orderedPageKinds = templatePlanSectionOrder.filter((kind) => pageKinds.includes(kind));
+    if (!orderedPageKinds.length) return { ...page, sections: sourceSections };
     const used = new Set<number>();
-    const planned = orderedKinds.map((kind) => {
+    const planned = orderedPageKinds.map((kind) => {
       const index = sourceSections.findIndex(
         (section, sectionIndex) => !used.has(sectionIndex) && sectionMatchesTemplateKind(section, kind)
       );
@@ -4098,6 +4187,7 @@ const buildDeterministicFallbackBlock = (
   const anchor = context.section.id;
   const registryTemplate = resolveSectionTemplateBlock({
     prompt,
+    pagePath: context.pagePath,
     pageName: context.pageName,
     sectionType: context.section.type,
     sectionId: context.section.id,

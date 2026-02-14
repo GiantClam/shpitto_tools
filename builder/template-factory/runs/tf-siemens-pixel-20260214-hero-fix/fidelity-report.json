@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-02-14T11:10:32.417Z",
+  "runId": "tf-siemens-pixel-20260214-hero-fix",
+  "available": true,
+  "overallSimilarity": 91.54,
+  "rows": [
+    {
+      "caseId": "siemens-home",
+      "referencePath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-pixel-20260214-hero-fix/sites/siemens-home/ingest/desktop.auto.png",
+      "screenshotPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png",
+      "similarity": 91.54,
+      "mode": "strict",
+      "threshold": 82,
+      "enforcement": "warn",
+      "comparable": true,
+      "pass": true
+    }
+  ],
+  "reason": "ok",
+  "attempts": [
+    {
+      "attempt": 0,
+      "reportPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/compare-20260214-190723.json",
+      "overallSimilarity": 91.54,
+      "strictFailures": 0,
+      "strictMissing": 0
+    }
+  ],
+  "strict": {
+    "requiredCases": [
+      "siemens-home"
+    ],
+    "missingComparableCases": [],
+    "failedCases": [],
+    "gatePassed": true,
+    "gateWouldFail": false,
+    "blockingRequiredCases": [],
+    "blockingMissingComparableCases": [],
+    "blockingFailedCases": []
+  }
+}

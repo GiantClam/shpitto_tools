@@ -10,6 +10,7 @@ type NexusNavPulseProps = BaseBlockProps & {
   links?: Array<{ label?: string; href?: string }>;
   cta?: LinkProps | LinkProps[];
   sticky?: boolean;
+  accentTone?: "gold" | "green";
 };
 
 export function NexusNavPulseBlock({
@@ -20,6 +21,7 @@ export function NexusNavPulseBlock({
   links = [],
   cta,
   sticky = true,
+  accentTone = "gold",
 }: NexusNavPulseProps) {
   const navItems = (links.length ? links : [
     { label: "Home", href: "#top" },
@@ -39,6 +41,10 @@ export function NexusNavPulseBlock({
     href: "#contact",
     variant: "primary" as const,
   };
+  const ctaClass =
+    accentTone === "green"
+      ? "rounded-md bg-[#00ff00] px-4 text-[#001400] hover:bg-[#00ff00]"
+      : "rounded-md bg-[#f8c84b] px-4 text-[#17120a] hover:bg-[#ffdd7a]";
 
   return (
     <header
@@ -67,7 +73,7 @@ export function NexusNavPulseBlock({
           ))}
         </nav>
 
-        <Button asChild variant="ghost" size="sm" className="rounded-md bg-[#f8c84b] px-4 text-[#17120a] hover:bg-[#ffdd7a]">
+        <Button asChild variant="ghost" size="sm" className={ctaClass}>
           <a href={action.href}>{action.label}</a>
         </Button>
       </div>

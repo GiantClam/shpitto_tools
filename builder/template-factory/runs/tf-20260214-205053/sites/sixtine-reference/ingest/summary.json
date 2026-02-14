@@ -1,0 +1,100 @@
+{
+  "site": {
+    "id": "sixtine-reference",
+    "url": "https://www.aura.build/templates/digital-design-13",
+    "prompt": "Generate a premium editorial luxury interior-design homepage with navigation, hero, studio story, approach metrics, social proof, CTA, and footer.",
+    "description": "Luxury editorial interior design homepage",
+    "desktopScreenshot": "",
+    "mobileScreenshot": "",
+    "imageSourcePolicy": "",
+    "disableScreenshotImages": false,
+    "crawlSite": false,
+    "crawlMaxPages": 0,
+    "crawlMaxDepth": -1,
+    "antiCrawlPrecheck": true,
+    "antiCrawlTimeoutMs": 0,
+    "fidelityMode": "standard",
+    "fidelityThreshold": -1,
+    "fidelityEnforcement": "warn"
+  },
+  "screenshots": {
+    "desktopAuto": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-20260214-205053/sites/sixtine-reference/ingest/desktop.auto.png",
+    "mobileAuto": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-20260214-205053/sites/sixtine-reference/ingest/mobile.auto.png",
+    "desktopReference": null,
+    "mobileReference": null,
+    "desktopPreferred": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-20260214-205053/sites/sixtine-reference/ingest/desktop.auto.png",
+    "mobilePreferred": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-20260214-205053/sites/sixtine-reference/ingest/mobile.auto.png"
+  },
+  "publishedAssets": {
+    "desktopUrl": "/assets/template-factory/sixtine-reference/desktop-reference.png",
+    "mobileUrl": "/assets/template-factory/sixtine-reference/mobile-reference.png"
+  },
+  "referenceSlices": {
+    "desktop": {
+      "hero": "/assets/template-factory/sixtine-reference/slices/desktop-hero.png",
+      "story": "/assets/template-factory/sixtine-reference/slices/desktop-story.png",
+      "approach": "/assets/template-factory/sixtine-reference/slices/desktop-approach.png",
+      "products": "/assets/template-factory/sixtine-reference/slices/desktop-products.png",
+      "socialproof": "/assets/template-factory/sixtine-reference/slices/desktop-socialproof.png",
+      "cta": "/assets/template-factory/sixtine-reference/slices/desktop-cta.png",
+      "footer": "/assets/template-factory/sixtine-reference/slices/desktop-footer.png"
+    },
+    "mobile": {
+      "hero": "/assets/template-factory/sixtine-reference/slices/mobile-hero.png",
+      "story": "/assets/template-factory/sixtine-reference/slices/mobile-story.png",
+      "approach": "/assets/template-factory/sixtine-reference/slices/mobile-approach.png",
+      "products": "/assets/template-factory/sixtine-reference/slices/mobile-products.png",
+      "socialproof": "/assets/template-factory/sixtine-reference/slices/mobile-socialproof.png",
+      "cta": "/assets/template-factory/sixtine-reference/slices/mobile-cta.png",
+      "footer": "/assets/template-factory/sixtine-reference/slices/mobile-footer.png"
+    }
+  },
+  "antiCrawlPrecheck": {
+    "enabled": true,
+    "path": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-20260214-205053/sites/sixtine-reference/ingest/anti-crawl-precheck.json",
+    "checked": true,
+    "blocked": false,
+    "status": 200,
+    "url": "https://www.aura.build/templates/digital-design-13",
+    "finalUrl": "https://www.aura.build/templates/digital-design-13",
+    "reason": "ok",
+    "server": "Netlify",
+    "referenceError": "",
+    "bodySignals": false
+  },
+  "recipeResolution": {
+    "selectedRecipeId": "dynamic_editorial_luxury_aura-build",
+    "synthesized": true,
+    "baseRecipeId": "editorial_luxury",
+    "fitScore": 5,
+    "fitMismatches": []
+  },
+  "htmlSummary": {
+    "title": "Aura – AI Website Builder",
+    "h1": [],
+    "h2": [],
+    "links": [],
+    "images": [
+      "https://aura.build/share-preview.jpg"
+    ],
+    "footerLinks": [],
+    "navMenuDepth": 1,
+    "heroPresentation": {
+      "mode": "split",
+      "hasHeading": false,
+      "hasForegroundImage": false,
+      "hasBackgroundImage": false
+    },
+    "heroCarousel": {
+      "enabled": false,
+      "signalCount": 0,
+      "signals": [],
+      "images": []
+    },
+    "htmlChars": 4376,
+    "status": 200
+  },
+  "crawl": {
+    "enabled": false
+  }
+}

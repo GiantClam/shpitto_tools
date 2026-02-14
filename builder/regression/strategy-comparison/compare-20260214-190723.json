@@ -1,0 +1,40 @@
+{
+  "runId": "compare-20260214-190723",
+  "generatedAt": "2026-02-14T11:07:23.705Z",
+  "baseUrl": "http://localhost:3110",
+  "serverMode": "dev",
+  "renderer": "sandbox",
+  "promptsFile": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-pixel-20260214-hero-fix/regression-prompts.json",
+  "groups": [
+    {
+      "id": "C_template_first",
+      "label": "C: Template First",
+      "env": {
+        "BUILDER_SECTION_GENERATION_STRATEGY": "template_first",
+        "BUILDER_TEMPLATE_SECTIONS": "navigation,footer,footercta,footer-cta,cta,socialproof,social-proof,testimonial,trustlogo,products,catalog,metrics,stats,contact",
+        "BUILDER_LLM_SECTIONS": "",
+        "BUILDER_TEMPLATE_FIRST_VARIANTS": "cta,socialproof,contact,catalog",
+        "CREATION_REQUEST_TIMEOUT_MS": "180000",
+        "CREATION_PERSIST_REQUEST_TIMEOUT_MS": "180000"
+      },
+      "total": 1,
+      "passed": 1,
+      "avgDurationMs": 172035,
+      "results": [
+        {
+          "caseId": "siemens-home",
+          "ok": true,
+          "statusCode": 200,
+          "durationMs": 172035,
+          "errors": [],
+          "persistWaitMs": 0,
+          "persistWaitTimedOut": false,
+          "requestId": "creation_1771067248266_xyedaw",
+          "responseId": "p2w_1771067248270",
+          "url": "http://localhost:3110/creation/sandbox?mode=preview&siteKey=bench_compare-20260214-190723_c-template-first_siemens-home&page=home",
+          "screenshot": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home.png"
+        }
+      ]
+    }
+  ]
+}

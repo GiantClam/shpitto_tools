@@ -22,6 +22,13 @@ export type HeroSplitProps = BaseBlockProps & {
   subtitle?: string;
   ctas: LinkProps[];
   media?: { kind: "image" | "video"; src: string; alt?: string };
+  heroSlides?: Array<{
+    src: string;
+    mobileSrc?: string;
+    alt?: string;
+    label?: string;
+  }>;
+  heroCarouselAutoplayMs?: number;
   mediaPosition?: "left" | "right";
   headingSize?: "sm" | "md" | "lg";
   bodySize?: "sm" | "md" | "lg";
@@ -45,6 +52,8 @@ export function HeroSplitBlock({
   subtitle,
   ctas,
   media,
+  heroSlides = [],
+  heroCarouselAutoplayMs = 4500,
   mediaPosition = "right",
   headingFont,
   bodyFont,
@@ -84,6 +93,39 @@ export function HeroSplitBlock({
   const headingEffect = emphasis === "high" ? "text-gradient" : "";
   const bodyClass =
     bodySize === "sm" ? "text-sm sm:text-base" : bodySize === "lg" ? "text-lg sm:text-xl" : "text-base sm:text-lg";
+  const slides = React.useMemo(
+    () =>
+      (Array.isArray(heroSlides) ? heroSlides : []).filter(
+        (slide) => typeof slide?.src === "string" && slide.src.trim().length > 0
+      ),
+    [heroSlides]
+  );
+  const [activeSlide, setActiveSlide] = React.useState(0);
+  React.useEffect(() => {
+    setActiveSlide(0);
+  }, [slides.length]);
+  React.useEffect(() => {
+    if (slides.length < 2) return;
+    const intervalMs = Number(heroCarouselAutoplayMs) > 1200 ? Number(heroCarouselAutoplayMs) : 4500;
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % slides.length);
+    }, intervalMs);
+    return () => window.clearInterval(timer);
+  }, [slides.length, heroCarouselAutoplayMs]);
+  const currentSlide = slides[activeSlide] || null;
+  const resolvedMedia =
+    currentSlide?.src && media?.kind !== "video"
+      ? { kind: "image" as const, src: currentSlide.src, alt: currentSlide.alt || media?.alt || "" }
+      : media;
+  const hasMedia = Boolean(resolvedMedia?.src);
+  const dynamicBackgroundStyle =
+    !hasMedia && currentSlide?.src
+      ? {
+          backgroundImage: `url(${currentSlide.src})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }
+      : undefined;
 
   const textOrderClass = mediaPosition === "left" ? "md:order-2" : "md:order-1";
   const mediaOrderClass = mediaPosition === "left" ? "md:order-1" : "md:order-2";
@@ -95,7 +137,7 @@ export function HeroSplitBlock({
       data-block-id={id}
       data-block-variant={variant}
       className={cn(heroSplitClass({ paddingY, background }), "relative overflow-hidden")}
-      style={backgroundStyle}
+      style={{ ...backgroundStyle, ...(dynamicBackgroundStyle || {}) }}
     >
       {hasBackgroundVideo ? (
         <video
@@ -112,7 +154,7 @@ export function HeroSplitBlock({
         <div className="absolute inset-0" style={{ ...overlayStyle, zIndex: 1 }} />
       ) : null}
       <div className={cn("mx-auto px-4 sm:px-6 relative z-10", maxWidthClass(maxWidth))}>
-        <div className="grid gap-8 md:grid-cols-2 md:items-center">
+        <div className={cn("grid gap-8", hasMedia ? "md:grid-cols-2 md:items-center" : "")}>
           <div className={cn(textOrderClass, align === "center" ? "text-center" : "text-left")}>
             {eyebrow ? (
               <p className="text-sm text-muted-foreground" style={bodyStyle}>
@@ -153,25 +195,61 @@ export function HeroSplitBlock({
                 </Button>
               ))}
             </div>
+            {!hasMedia && slides.length > 1 ? (
+              <div className={cn("mt-5 flex flex-wrap items-center gap-2", align === "center" ? "justify-center" : "justify-start")}>
+                {slides.map((slide, index) => (
+                  <button
+                    key={`${slide.src}-${index}`}
+                    type="button"
+                    aria-label={slide.label || `Slide ${index + 1}`}
+                    onClick={() => setActiveSlide(index)}
+                    className={cn(
+                      "h-2.5 w-2.5 rounded-full border transition",
+                      index === activeSlide ? "border-primary bg-primary" : "border-border bg-transparent"
+                    )}
+                  />
+                ))}
+              </div>
+            ) : null}
           </div>
-          {media?.src ? (
+          {resolvedMedia?.src ? (
             <div
               className={cn(mediaOrderClass, motionMode !== "off" ? "will-change-transform" : "")}
               style={parallax.style}
             >
-              {media.kind === "video" ? (
+              {resolvedMedia.kind === "video" ? (
                 <video
-                  src={media.src}
+                  src={resolvedMedia.src}
                   controls
                   className="w-full rounded-[calc(var(--radius)+6px)] border border-border shadow-sm"
                 />
               ) : (
-                <img
-                  src={media.src}
-                  alt={media.alt ?? ""}
-                  className="w-full rounded-[calc(var(--radius)+6px)] border border-border shadow-sm"
-                  loading="lazy"
-                />
+                <>
+                  <img
+                    src={resolvedMedia.src}
+                    alt={resolvedMedia.alt ?? ""}
+                    className="w-full rounded-[calc(var(--radius)+6px)] border border-border shadow-sm"
+                    loading="lazy"
+                  />
+                  {slides.length > 1 ? (
+                    <div className="mt-3 flex flex-wrap items-center gap-2">
+                      {slides.map((slide, index) => (
+                        <button
+                          key={`${slide.src}-${index}`}
+                          type="button"
+                          aria-label={slide.label || `Slide ${index + 1}`}
+                          onClick={() => setActiveSlide(index)}
+                          className={cn(
+                            "h-2.5 w-2.5 rounded-full border transition",
+                            index === activeSlide
+                              ? "border-primary bg-primary"
+                              : "border-border bg-transparent"
+                          )}
+                        />
+                      ))}
+                    </div>
+                  ) : null}
+                </>
               )}
             </div>
           ) : null}

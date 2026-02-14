@@ -1,0 +1,163 @@
+{
+  "runId": "tf-siemens-structure-fix-20260214-v3",
+  "manifestPath": "/tmp/tf-carousel-test-manifest.json",
+  "sites": 1,
+  "crawlSite": true,
+  "crawlMaxPages": 12,
+  "crawlMaxDepth": 1,
+  "antiCrawlPrecheck": true,
+  "antiCrawlTimeoutMs": 25000,
+  "fastMode": true,
+  "fidelityMode": "standard",
+  "fidelityThreshold": 72,
+  "fidelityEnforcement": "warn",
+  "autoRepairIterations": 0,
+  "pixelMode": false,
+  "runDir": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-structure-fix-20260214-v3",
+  "runLibraryPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-structure-fix-20260214-v3/style-profiles.generated.json",
+  "publishPath": "",
+  "regressionPromptsPath": null,
+  "regressionReportPath": null,
+  "regressionAttemptsPath": null,
+  "scorecardPath": null,
+  "overallScore": null,
+  "fidelityReportPath": null,
+  "overallSimilarity": null,
+  "fidelityGatePassed": null,
+  "fidelityGateWouldFail": null,
+  "strictFidelityFailures": [],
+  "strictFidelityMissing": [],
+  "blockingFidelityFailures": [],
+  "manualFixesPath": null,
+  "manualFixesCount": 0,
+  "previewBaseUrl": "http://127.0.0.1:3110",
+  "previewLinksPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-structure-fix-20260214-v3/preview-links.json",
+  "previewLinks": [
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-carousel-check",
+      "pagePath": "/",
+      "pageName": "Siemens",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-carousel-check&page=home",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-carousel-check",
+      "pagePath": "/en-us",
+      "pageName": "Siemens",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-carousel-check&page=%2Fen-us",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-carousel-check",
+      "pagePath": "/en-us/company/artificial-intelligence",
+      "pageName": "Artificial Intelligence",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-carousel-check&page=%2Fen-us%2Fcompany%2Fartificial-intelligence",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-carousel-check",
+      "pagePath": "/en-us/company/digital-transformation",
+      "pageName": "Digital Transformation",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-carousel-check&page=%2Fen-us%2Fcompany%2Fdigital-transformation",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-carousel-check",
+      "pagePath": "/en-us/company/digital-twin",
+      "pageName": "Digital Twin",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-carousel-check&page=%2Fen-us%2Fcompany%2Fdigital-twin",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-carousel-check",
+      "pagePath": "/en-us/company/infrastructure",
+      "pageName": "Infrastructure",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-carousel-check&page=%2Fen-us%2Fcompany%2Finfrastructure",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-carousel-check",
+      "pagePath": "/en-us/company/insights/digital-enterprise",
+      "pageName": "Digital Enterprise",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-carousel-check&page=%2Fen-us%2Fcompany%2Finsights%2Fdigital-enterprise",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-carousel-check",
+      "pagePath": "/en-us/company/insights/digital-transformation-siemens-xcelerator-carbon-footprint",
+      "pageName": "Digital Transformation Siemens Xcelerator Carbon Footprint",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-carousel-check&page=%2Fen-us%2Fcompany%2Finsights%2Fdigital-transformation-siemens-xcelerator-carbon-footprint",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-carousel-check",
+      "pagePath": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+      "pageName": "Electronics Digital Enterprise Future Technologies",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-carousel-check&page=%2Fen-us%2Fcompany%2Finsights%2Felectronics-digital-enterprise-future-technologies",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-carousel-check",
+      "pagePath": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+      "pageName": "Factory Automation Virtual Plc Audi",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-carousel-check&page=%2Fen-us%2Fcompany%2Finsights%2Ffactory-automation-virtual-plc-audi",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-carousel-check",
+      "pagePath": "/en-us/company/insights/hymer-digital-first-recreational-vehicle",
+      "pageName": "Hymer Digital First Recreational Vehicle",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-carousel-check&page=%2Fen-us%2Fcompany%2Finsights%2Fhymer-digital-first-recreational-vehicle",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-carousel-check",
+      "pagePath": "/en-us/company/insights/va-syd-water-artificial-intelligence",
+      "pageName": "Va Syd Water Artificial Intelligence",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-carousel-check&page=%2Fen-us%2Fcompany%2Finsights%2Fva-syd-water-artificial-intelligence",
+      "screenshot": ""
+    }
+  ],
+  "previewServer": {
+    "origin": "http://127.0.0.1:3110",
+    "reachable": false,
+    "started": false
+  },
+  "previewStartCommand": "cd builder && npm run dev -- -p 3110"
+}

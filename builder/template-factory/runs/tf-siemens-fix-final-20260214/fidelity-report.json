@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-02-14T12:28:16.082Z",
+  "runId": "tf-siemens-fix-final-20260214",
+  "available": true,
+  "overallSimilarity": 91.54,
+  "rows": [
+    {
+      "caseId": "siemens-home-carousel-check",
+      "referencePath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-siemens-fix-final-20260214/sites/siemens-home-carousel-check/ingest/desktop.auto.png",
+      "screenshotPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/siemens-home-carousel-check.png",
+      "similarity": 91.54,
+      "mode": "standard",
+      "threshold": 72,
+      "enforcement": "warn",
+      "comparable": true,
+      "pass": true
+    }
+  ],
+  "reason": "ok",
+  "attempts": [
+    {
+      "attempt": 0,
+      "reportPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/compare-20260214-202509.json",
+      "overallSimilarity": 91.54,
+      "strictFailures": 0,
+      "strictMissing": 0
+    }
+  ],
+  "strict": {
+    "requiredCases": [],
+    "missingComparableCases": [],
+    "failedCases": [],
+    "gatePassed": true,
+    "gateWouldFail": false,
+    "blockingRequiredCases": [],
+    "blockingMissingComparableCases": [],
+    "blockingFailedCases": []
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "runId": "tf-smoke-siemens-fix-min",
+  "manifestPath": "/tmp/tf-siemens-smoke-min.json",
+  "sites": 1,
+  "crawlSite": false,
+  "crawlMaxPages": 16,
+  "crawlMaxDepth": 1,
+  "antiCrawlPrecheck": true,
+  "antiCrawlTimeoutMs": 25000,
+  "fastMode": true,
+  "fidelityMode": "standard",
+  "fidelityThreshold": 72,
+  "fidelityEnforcement": "warn",
+  "runDir": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-smoke-siemens-fix-min",
+  "runLibraryPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-smoke-siemens-fix-min/style-profiles.generated.json",
+  "publishPath": "",
+  "regressionPromptsPath": null,
+  "regressionReportPath": null,
+  "scorecardPath": null,
+  "overallScore": null,
+  "fidelityReportPath": null,
+  "overallSimilarity": null,
+  "fidelityGatePassed": null,
+  "fidelityGateWouldFail": null,
+  "strictFidelityFailures": [],
+  "strictFidelityMissing": [],
+  "blockingFidelityFailures": [],
+  "manualFixesPath": null,
+  "manualFixesCount": 0,
+  "previewBaseUrl": "http://127.0.0.1:3110",
+  "previewLinksPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-smoke-siemens-fix-min/preview-links.json",
+  "previewLinks": [
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-smoke-min",
+      "pagePath": "/",
+      "pageName": "Siemens",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-smoke-min&page=home",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-smoke-min",
+      "pagePath": "/about",
+      "pageName": "About",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-smoke-min&page=%2Fabout",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-smoke-min",
+      "pagePath": "/services",
+      "pageName": "Services",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-smoke-min&page=%2Fservices",
+      "screenshot": ""
+    },
+    {
+      "groupId": "C_template_first",
+      "caseId": "siemens-home-smoke-min",
+      "pagePath": "/contact",
+      "pageName": "Contact",
+      "responseId": null,
+      "requestId": null,
+      "url": "http://127.0.0.1:3110/creation/sandbox?mode=preview&siteKey=siemens-home-smoke-min&page=%2Fcontact",
+      "screenshot": ""
+    }
+  ],
+  "previewServer": {
+    "origin": "http://127.0.0.1:3110",
+    "reachable": false,
+    "started": false
+  },
+  "previewStartCommand": "cd builder && npm run dev -- -p 3110"
+}

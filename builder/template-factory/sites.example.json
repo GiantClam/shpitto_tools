@@ -10,10 +10,13 @@
       "mobileScreenshot": ""
     },
     {
-      "id": "industrial-reference",
-      "url": "https://example.com",
-      "description": "Industrial B2B homepage",
-      "prompt": "Generate an industrial B2B homepage with navigation, hero, capabilities, product catalog, social proof, CTA, and footer.",
+      "id": "siemens-reference",
+      "url": "https://www.siemens.com",
+      "description": "Industrial technology homepage",
+      "prompt": "Generate an industrial technology homepage with navigation, hero, solutions overview, innovation highlights, social proof, CTA, and footer.",
+      "crawlSite": true,
+      "crawlMaxPages": 40,
+      "crawlMaxDepth": 2,
       "desktopScreenshot": "",
       "mobileScreenshot": ""
     }

@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "siemens-home",
+      "description": "Siemens official website homepage template",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "products",
+        "socialproof",
+        "cta",
+        "footer"
+      ],
+      "routes": [
+        "/",
+        "/about",
+        "/services",
+        "/contact",
+        "/en-us",
+        "/en-us/company/artificial-intelligence",
+        "/en-us/company/digital-twin",
+        "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+        "/en-us/company/insights/factory-automation-virtual-plc-audi",
+        "/en-us/company/insights/hymer-digital-first-recreational-vehicle",
+        "/en-us/company/insights/va-syd-water-artificial-intelligence",
+        "/en-us/industries/water/non-revenue-water"
+      ],
+      "prompt": "Template selector token: profile_selector_auto-siemens-home.\nGenerate an enterprise industrial technology homepage template with navigation, hero, capabilities, product highlights, trust proof, CTA, and footer.\nBuild a multi-page site with routes: /, /about, /services, /contact, /en-us, /en-us/company/artificial-intelligence, /en-us/company/digital-twin, /en-us/company/insights/electronics-digital-enterprise-future-technologies, /en-us/company/insights/factory-automation-virtual-plc-audi, /en-us/company/insights/hymer-digital-first-recreational-vehicle, /en-us/company/insights/va-syd-water-artificial-intelligence, /en-us/industries/water/non-revenue-water. Keep navigation and CTA links using these routes (not only hash anchors).\nTotal routes to realize: 12.\nRoute section blueprint: /: navigation > hero > approach > products > socialproof > cta > footer; /about: navigation > hero > approach > socialproof > cta > footer; /services: navigation > hero > approach > products > socialproof > cta > footer; /contact: navigation > hero > cta > footer; /en-us: navigation > hero > cta > footer; /en-us/company/artificial-intelligence: navigation > hero > approach > socialproof > cta > footer; /en-us/company/digital-twin: navigation > hero > approach > socialproof > cta > footer; /en-us/company/insights/electronics-digital-enterprise-future-technologies: navigation > hero > approach > socialproof > cta > footer; /en-us/company/insights/factory-automation-virtual-plc-audi: navigation > hero > approach > socialproof > cta > footer; /en-us/company/insights/hymer-digital-first-recreational-vehicle: navigation > hero > approach > socialproof > cta > footer; /en-us/company/insights/va-syd-water-artificial-intelligence: navigation > hero > approach > socialproof > cta > footer; /en-us/industries/water/non-revenue-water: navigation > hero > cta > footer.\nTemplate identity hints: siemens-home | siemens.com | auto_siemens-home | Siemens home | Siemens.\nStyle constraints: palette=steel-neutral, typography=sans-bold + sans-body.\nLayout motifs: hero-split, metrics-grid, product-cards, trust-grid, banner-cta.\nPrimary copy cues (H1): Audi is virtualizing the shop floor with virtual PLC | Audi virtualizes shop floor with Siemens PLC | Gridscale X | Guarding plant: safety &amp; reliability with Robot dogs.\nSecondary copy cues (H2): Decoding the future of energy | Guarding the plant: Robot dogs improve safety | Report: The next era of generative AI | Upgrade reality | Discover products and services | A network of problem solvers.\nMatch the source site with high fidelity: theme colors, section ordering, copy tone, spacing rhythm, and block hierarchy should closely follow source references."
+    }
+  ]
+}

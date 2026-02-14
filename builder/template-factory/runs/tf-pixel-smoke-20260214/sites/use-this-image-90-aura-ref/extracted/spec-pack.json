@@ -1,0 +1,397 @@
+{
+  "template_id": "auto_use-this-image-90-aura-ref",
+  "recipe_id": "powerbeat_fitness_neon",
+  "section_specs": {
+    "navigation": {
+      "block_type": "NexusNavPulse",
+      "defaults": {
+        "sticky": true,
+        "maxWidth": "xl",
+        "accentTone": "green",
+        "logoText": "PowerBeat",
+        "links": [
+          {
+            "label": "Products",
+            "href": "#products"
+          },
+          {
+            "label": "Features",
+            "href": "#approach"
+          },
+          {
+            "label": "Reviews",
+            "href": "#socialproof"
+          },
+          {
+            "label": "Resources",
+            "href": "#footer"
+          }
+        ],
+        "cta": {
+          "label": "Shop Now",
+          "href": "#products",
+          "variant": "primary"
+        },
+        "logo": "Shpitto – AI Website Builder",
+        "ctas": [
+          {
+            "label": "Get Started",
+            "href": "#contact",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    "hero": {
+      "block_type": "NexusHeroDock",
+      "defaults": {
+        "maxWidth": "xl",
+        "accentTone": "green",
+        "heroImageHeightScale": 2,
+        "badge": "Premium Sports Equipment",
+        "title": "Forged for Intensity. Built for Growth.",
+        "subtitle": "Elevate your training with precision-engineered systems and relentless performance design.",
+        "panelTag": "Training Metrics",
+        "panelTitle": "Move Better",
+        "panelSubtitle": "Optimized strength workflows and intelligent training progression.",
+        "statValue": "+30%",
+        "statDelta": "mode",
+        "backgroundOverlay": "rgba(2, 10, 8, 0.45)",
+        "ctas": [
+          {
+            "label": "Shop Equipment",
+            "href": "#products",
+            "variant": "primary"
+          },
+          {
+            "label": "View Features",
+            "href": "#approach",
+            "variant": "secondary"
+          }
+        ],
+        "heroImageSrc": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=2000&q=80",
+        "mobileHeroImageSrc": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=2000&q=80",
+        "heroImageAlt": "Shpitto – AI Website Builder hero visual"
+      }
+    },
+    "story": {
+      "block_type": "FeatureGrid",
+      "defaults": {
+        "variant": "4col",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#050709 0%,#080d10 100%)",
+        "title": "Trusted by Performance Teams",
+        "subtitle": "Purpose-built equipment stacks for serious athletes and modern studios.",
+        "items": [
+          {
+            "title": "Molecule Lab",
+            "desc": "Elite conditioning cycles.",
+            "icon": "sparkles"
+          },
+          {
+            "title": "Apex",
+            "desc": "Strength and movement science.",
+            "icon": "shield"
+          },
+          {
+            "title": "Velocity",
+            "desc": "Speed and reaction programs.",
+            "icon": "chart"
+          },
+          {
+            "title": "Titan",
+            "desc": "Durability-first hardware.",
+            "icon": "layers"
+          }
+        ],
+        "eyebrow": "Our Story",
+        "body": "This section is generated from source page signals.",
+        "ctas": [
+          {
+            "label": "Explore",
+            "href": "#",
+            "variant": "link"
+          }
+        ]
+      }
+    },
+    "approach": {
+      "block_type": "NexusCapabilityStrip",
+      "defaults": {
+        "maxWidth": "xl",
+        "accentTone": "green",
+        "eyebrow": "Performance DNA",
+        "title": "Engineered for Human Potential",
+        "subtitle": "We don't just build gear. We optimize your movement and progression ecosystem.",
+        "items": [
+          {
+            "title": "Military-grade Durability",
+            "description": "Heavy-duty frames and tested stress resistance for high-volume training.",
+            "image": {
+              "src": "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=1600&q=80",
+              "alt": "Military-grade Durability"
+            },
+            "imageSrc": "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=1600&q=80",
+            "imageAlt": "Military-grade Durability"
+          },
+          {
+            "title": "Ergonomic Precision",
+            "description": "Biomechanics-tuned geometry for safer, stronger, repeatable motion.",
+            "image": {
+              "src": "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=1600&q=80",
+              "alt": "Ergonomic Precision"
+            },
+            "imageSrc": "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=1600&q=80",
+            "imageAlt": "Ergonomic Precision"
+          },
+          {
+            "title": "Anywhere. Anytime",
+            "description": "Modular systems designed for gyms, studios, and home training setups.",
+            "image": {
+              "src": "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=1600&q=80",
+              "alt": "Anywhere. Anytime"
+            },
+            "imageSrc": "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=1600&q=80",
+            "imageAlt": "Anywhere. Anytime"
+          }
+        ]
+      }
+    },
+    "socialproof": {
+      "block_type": "TestimonialsGrid",
+      "defaults": {
+        "anchor": "socialproof",
+        "variant": "3col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#06080d 0%,#090e13 100%)",
+        "title": "Community Feedback",
+        "items": [
+          {
+            "quote": "This gear changed our studio's performance baseline in weeks.",
+            "name": "Maya",
+            "role": "Head Coach",
+            "avatar": {
+              "src": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=80",
+              "alt": "Maya"
+            }
+          },
+          {
+            "quote": "Design quality is on another level. Durable, clean, and seriously effective.",
+            "name": "Leo",
+            "role": "Gym Owner",
+            "avatar": {
+              "src": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=80",
+              "alt": "Leo"
+            }
+          },
+          {
+            "quote": "From setup to daily use, every detail feels intentional and athlete-first.",
+            "name": "Rina",
+            "role": "Athlete",
+            "avatar": {
+              "src": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=80",
+              "alt": "Rina"
+            }
+          }
+        ],
+        "imageSrc": "https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=1200&q=80",
+        "imageAlt": "Results visual"
+      }
+    },
+    "products": {
+      "block_type": "CardsGrid",
+      "defaults": {
+        "anchor": "products",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#050709 0%,#0a0f14 100%)",
+        "title": "The Collection",
+        "subtitle": "Minimalist design. Maximum output. Choose your weapon.",
+        "variant": "imageText",
+        "columns": "3col",
+        "featureFirst": true,
+        "density": "normal",
+        "cardStyle": "glass",
+        "imagePosition": "top",
+        "imageShape": "rounded",
+        "headingSize": "md",
+        "bodySize": "sm",
+        "items": [
+          {
+            "title": "Resistance Series",
+            "description": "Our professional-grade gym machines are built to withstand the toughest workouts.",
+            "cta": {
+              "label": "Shop Now",
+              "href": "#products",
+              "variant": "primary"
+            },
+            "image": {
+              "src": "https://images.unsplash.com/photo-1598289431512-b97b0917affc?auto=format&fit=crop&w=1200&q=80",
+              "alt": "Resistance Series"
+            },
+            "cover": {
+              "src": "https://images.unsplash.com/photo-1598289431512-b97b0917affc?auto=format&fit=crop&w=1200&q=80",
+              "alt": "Resistance Series"
+            },
+            "imageSrc": "https://images.unsplash.com/photo-1598289431512-b97b0917affc?auto=format&fit=crop&w=1200&q=80",
+            "imageAlt": "Resistance Series"
+          },
+          {
+            "title": "Cardio Sprint",
+            "description": "Lightweight cardio rigs engineered for interval intensity and repeatable output.",
+            "cta": {
+              "label": "Shop Now",
+              "href": "#products",
+              "variant": "primary"
+            },
+            "image": {
+              "src": "https://images.unsplash.com/photo-1620188467120-5042ed1eb5da?auto=format&fit=crop&w=600&q=80",
+              "alt": "Cardio Sprint"
+            },
+            "cover": {
+              "src": "https://images.unsplash.com/photo-1620188467120-5042ed1eb5da?auto=format&fit=crop&w=600&q=80",
+              "alt": "Cardio Sprint"
+            },
+            "imageSrc": "https://images.unsplash.com/photo-1620188467120-5042ed1eb5da?auto=format&fit=crop&w=600&q=80",
+            "imageAlt": "Cardio Sprint"
+          },
+          {
+            "title": "Performance Agent",
+            "description": "High-performance systems for athletes who push the limit.",
+            "cta": {
+              "label": "Shop Now",
+              "href": "#products",
+              "variant": "primary"
+            },
+            "image": {
+              "src": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=600&q=80",
+              "alt": "Performance Agent"
+            },
+            "cover": {
+              "src": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=600&q=80",
+              "alt": "Performance Agent"
+            },
+            "imageSrc": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=600&q=80",
+            "imageAlt": "Performance Agent"
+          }
+        ]
+      }
+    },
+    "cta": {
+      "block_type": "LeadCaptureCTA",
+      "defaults": {
+        "variant": "banner",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#070b10 0%,#07090c 100%)",
+        "title": "Ready to Level Up?",
+        "titleClassName": "!text-[#00ff00]",
+        "titleColor": "rgb(0 255 0 / var(--tw-bg-opacity, 1))",
+        "subtitle": "Join thousands of athletes training smarter with premium sports systems.",
+        "cta": {
+          "label": "Get Your Gear",
+          "href": "#products",
+          "variant": "primary"
+        },
+        "ctaBackgroundColor": "rgb(0 255 0 / var(--tw-bg-opacity, 1))",
+        "ctaTextColor": "#001400",
+        "ctaClassName": "!bg-[#00ff00] !text-[#001400] hover:!bg-[#00ff00]",
+        "note": "Built for consistency, speed, and measurable progress."
+      }
+    },
+    "footer": {
+      "block_type": "Footer",
+      "defaults": {
+        "anchor": "footer",
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#040608 0%,#020304 100%)",
+        "logoText": "PowerBeat",
+        "columns": [
+          {
+            "title": "Shop",
+            "links": [
+              {
+                "label": "Collections",
+                "href": "#products"
+              },
+              {
+                "label": "Best Sellers",
+                "href": "#products"
+              }
+            ]
+          },
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "About",
+                "href": "#story"
+              },
+              {
+                "label": "Contact",
+                "href": "#footer"
+              }
+            ]
+          },
+          {
+            "title": "Resources",
+            "links": [
+              {
+                "label": "Support",
+                "href": "#footer"
+              },
+              {
+                "label": "Terms",
+                "href": "#footer"
+              }
+            ]
+          }
+        ],
+        "socials": [
+          {
+            "type": "x",
+            "href": "#"
+          },
+          {
+            "type": "instagram",
+            "href": "#"
+          },
+          {
+            "type": "youtube",
+            "href": "#"
+          }
+        ],
+        "legal": "© 2026 PowerBeat. All rights reserved."
+      }
+    }
+  },
+  "fallback_rules": {
+    "missing_socialproof": "use_testimonials_grid_min_2",
+    "missing_cta_secondary": "hide_secondary_button"
+  },
+  "density_limits": {
+    "nav_items_max": 6,
+    "hero_cta_max": 2,
+    "testimonials_min": 2,
+    "cards_max": 8
+  },
+  "required_categories": [
+    "navigation",
+    "hero",
+    "story",
+    "approach",
+    "products",
+    "socialproof",
+    "cta",
+    "footer"
+  ]
+}

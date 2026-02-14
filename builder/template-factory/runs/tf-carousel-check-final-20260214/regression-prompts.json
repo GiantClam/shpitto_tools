@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "siemens-home-carousel-check",
+      "description": "siemens-home-carousel-check",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "socialproof",
+        "cta",
+        "footer"
+      ],
+      "routes": [
+        "/",
+        "/en-us"
+      ],
+      "prompt": "Template selector token: profile_selector_auto-siemens-home-carousel-check.\nreplicate source site structure\nBuild a multi-page site with routes: /, /en-us. Keep navigation and CTA links using these routes (not only hash anchors).\nTotal routes to realize: 2.\nRoute section blueprint: /: navigation > hero > approach > socialproof > cta > footer; /en-us: navigation > hero > approach > cta > footer.\nTemplate identity hints: siemens-home-carousel-check | siemens.com | auto_siemens-home-carousel-check | Siemens home | Siemens.\nStyle constraints: palette=cool-neutral, typography=sans-display + sans-body.\nLayout motifs: hero-split, feature-grid, trust-grid, cta-banner.\nPrimary copy cues (H1): Audi is virtualizing the shop floor with virtual PLC.\nSecondary copy cues (H2): Decoding the future of energy | Guarding the plant: Robot dogs improve safety | Report: The next era of generative AI | Upgrade reality | Discover products and services | A network of problem solvers.\nPer-page copy blueprint: / => Siemens | hero: Audi is virtualizing the shop floor with virtual PLC | sub: Decoding the future of energy; /en-us => Siemens | hero: Decoding the future of energy | sub: Guarding the plant: Robot dogs improve safety\nSource visual fingerprint: dominant colors=#ffffff, #d1bba8, #e8e1db, #f9f8f7, #cd964b, #fffffe, luminance=0.994, darkTheme=false.\nMatch the source site with high fidelity: theme colors, section ordering, copy tone, spacing rhythm, and block hierarchy should closely follow source references."
+    }
+  ]
+}

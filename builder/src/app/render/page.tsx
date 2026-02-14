@@ -5,6 +5,14 @@ import { notFound } from "next/navigation";
 
 import { type MotionMode } from "@/components/theme/motion";
 import { RenderClient } from "@/app/render/render-client";
+import CreationSandboxClient from "@/app/creation/sandbox-client";
+import {
+  buildSandboxInitialPayload,
+  loadSandboxPayload,
+  normalizePagePath,
+  normalizeSiteKey,
+  parseMotionMode,
+} from "@/lib/sandbox-payload";
 
 export const dynamic = "force-dynamic";
 
@@ -62,16 +70,6 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null;
 
 const isStringArray = (value: unknown): value is string[] => Array.isArray(value);
-
-const normalizeSiteKey = (value: string) => {
-  const trimmed = value.trim();
-  if (!trimmed) return "demo";
-  try {
-    return decodeURIComponent(trimmed);
-  } catch {
-    return trimmed;
-  }
-};
 
 const demoData: PuckData = {
   content: [
@@ -367,8 +365,26 @@ export default async function RenderPage({ searchParams }: PageProps) {
     (resolvedSearchParams?.siteKey as string) ??
     (resolvedSearchParams?.site as string) ??
     "demo";
-  const siteKey = normalizeSiteKey(siteKeyRaw);
+  const siteKey = normalizeSiteKey(siteKeyRaw, "demo");
   const page = (resolvedSearchParams?.page as string) ?? "home";
+  const requestedPage = normalizePagePath(page);
+  const requestedMotion = parseMotionMode(
+    typeof resolvedSearchParams?.motion === "string"
+      ? resolvedSearchParams.motion.trim()
+      : undefined
+  );
+
+  // Keep /render visually aligned with /creation/sandbox when sandbox payload exists.
+  const sandboxPayload = await loadSandboxPayload(siteKey);
+  const initialPayload = buildSandboxInitialPayload(
+    sandboxPayload,
+    requestedPage,
+    requestedMotion
+  );
+  if (initialPayload) {
+    return <CreationSandboxClient initialPayload={initialPayload} />;
+  }
+
   const iter = resolvedSearchParams?.iter as string | undefined;
   const [rawData, extract] = await Promise.all([
     loadPuckData(siteKey, page, iter),
@@ -382,13 +398,12 @@ export default async function RenderPage({ searchParams }: PageProps) {
     ? rawData.meta.font_links.filter((link: unknown) => typeof link === "string")
     : [];
   const fontCss = typeof rawData?.meta?.font_css === "string" ? rawData.meta.font_css : "";
-  const requestedMotion =
-    (resolvedSearchParams?.motion as string) ??
-    data.root?.props?.theme?.motion ??
-    "off";
+  const effectiveRequestedMotion = requestedMotion ?? data.root?.props?.theme?.motion ?? "off";
   const motionMode: MotionMode =
-    requestedMotion === "subtle" || requestedMotion === "showcase" || requestedMotion === "off"
-      ? requestedMotion
+    effectiveRequestedMotion === "subtle" ||
+    effectiveRequestedMotion === "showcase" ||
+    effectiveRequestedMotion === "off"
+      ? effectiveRequestedMotion
       : "off";
   const safeBranding = normalizeBranding(data.root?.props?.branding);
   const [themeCssFromFile, brandingCss] = await Promise.all([

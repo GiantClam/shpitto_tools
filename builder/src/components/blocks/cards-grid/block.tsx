@@ -48,6 +48,7 @@ export type CardsGridProps = BaseBlockProps & {
   headingFont?: string;
   bodyFont?: string;
   textAlign?: "left" | "center";
+  featureFirst?: boolean;
 };
 
 const sizeClass = (value?: "sm" | "md" | "lg") => {
@@ -114,6 +115,7 @@ export function CardsGridBlock({
   headingFont,
   bodyFont,
   textAlign,
+  featureFirst = false,
 }: CardsGridProps) {
   const motionMode = useMotionMode();
   const reveal = useInViewReveal<HTMLDivElement>({
@@ -136,6 +138,9 @@ export function CardsGridBlock({
   const headingStyle = headingFont ? { fontFamily: headingFont } : undefined;
   const bodyStyle = bodyFont ? { fontFamily: bodyFont } : undefined;
   const imageClass = cn("object-cover", imageShapeClass(imageShape));
+  const visibleItems = items.slice(0, 12);
+  const useFeatureRailLayout =
+    variant === "imageText" && featureFirst && columns === "3col" && visibleItems.length === 3;
 
   return (
     <section
@@ -188,9 +193,14 @@ export function CardsGridBlock({
 
         <div
           ref={reveal.ref}
-          className={cn("grid", columnsClass(columns), densityGapClass(density))}
+          className={cn(
+            "grid",
+            columnsClass(columns),
+            densityGapClass(density),
+            useFeatureRailLayout ? "lg:grid-rows-[1.15fr_0.85fr] lg:auto-rows-fr" : ""
+          )}
         >
-          {items.slice(0, 12).map((item, idx) => {
+          {visibleItems.map((item, idx) => {
             const resolvedImage =
               item.image?.src || item.imageSrc
                 ? {
@@ -200,11 +210,22 @@ export function CardsGridBlock({
                 : null;
             const hasImage = Boolean(resolvedImage?.src);
             const isHorizontal = imagePosition === "left" || imagePosition === "right";
+            const isFeatureCard = useFeatureRailLayout && idx === 0;
+            const isRailTopCard = useFeatureRailLayout && idx === 1;
+            const isRailBottomCard = useFeatureRailLayout && idx === 2;
+            const isRailCard = isRailTopCard || isRailBottomCard;
+            const useRailImageOverlay = isRailCard && hasImage && variant === "imageText";
             return (
               <Card
                 key={idx}
                 className={cn(
                   cardStyleClass(cardStyle),
+                  isFeatureCard ? "sm:col-span-2 lg:col-span-2 lg:row-span-2 overflow-hidden p-0 lg:min-h-[31rem]" : "",
+                  isRailTopCard ? "overflow-hidden lg:col-start-3 lg:row-start-1 lg:min-h-[16rem]" : "",
+                  isRailBottomCard ? "overflow-hidden lg:col-start-3 lg:row-start-2 lg:min-h-[12rem]" : "",
+                  !useFeatureRailLayout && featureFirst && idx === 0 && variant === "imageText" && columns === "3col"
+                    ? "sm:col-span-2 lg:col-span-2"
+                    : "",
                   cardStyle === "glass" ? "card-glass" : "",
                   emphasis === "high" ? "hover-lift" : "",
                   reveal.className
@@ -215,71 +236,132 @@ export function CardsGridBlock({
                     : undefined
                 }
               >
-                <div className={cn(isHorizontal ? "flex gap-4 p-4" : "")}>
-                  {hasImage ? (
-                    <div
-                      className={cn(
-                        isHorizontal ? "shrink-0" : "",
-                        imagePosition === "right" && "order-2"
-                      )}
-                    >
-                      <img
-                        src={resolvedImage?.src}
-                        alt={resolvedImage?.alt || item.title}
+                {isFeatureCard && hasImage ? (
+                  <div className="relative h-full min-h-[20rem] sm:min-h-[24rem] lg:min-h-[31rem]">
+                    <img
+                      src={resolvedImage?.src}
+                      alt={resolvedImage?.alt || item.title}
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 border-t border-white/10 bg-[linear-gradient(180deg,rgba(3,8,12,0.06)_0%,rgba(3,8,12,0.8)_44%,rgba(2,5,8,0.95)_100%)] p-5 sm:p-6">
+                      {item.tag ? (
+                        <p className="text-xs uppercase tracking-[0.16em] text-primary">{item.tag}</p>
+                      ) : null}
+                      <h3 className="mt-2 text-xl font-semibold text-white" style={headingStyle}>
+                        {item.title}
+                      </h3>
+                      {item.description ? (
+                        <p className={cn("mt-2 text-sm text-white/70", sizeClass(bodySize))} style={bodyStyle}>
+                          {item.description}
+                        </p>
+                      ) : null}
+                      {item.cta ? (
+                        <a href={item.cta.href} className="mt-4 inline-block text-sm font-medium text-primary">
+                          {item.cta.label}
+                        </a>
+                      ) : null}
+                    </div>
+                  </div>
+                ) : useRailImageOverlay ? (
+                  <div className="relative h-full min-h-[12rem]">
+                    <img
+                      src={resolvedImage?.src}
+                      alt={resolvedImage?.alt || item.title}
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 border-t border-white/10 bg-[linear-gradient(180deg,rgba(3,8,12,0.08)_0%,rgba(3,8,12,0.82)_48%,rgba(2,5,8,0.95)_100%)] p-4">
+                      <h3 className="text-base font-semibold text-white" style={headingStyle}>
+                        {item.title}
+                      </h3>
+                      {item.description ? (
+                        <p className={cn("mt-1 text-xs text-white/70", sizeClass(bodySize))} style={bodyStyle}>
+                          {item.description}
+                        </p>
+                      ) : null}
+                      {item.cta ? (
+                        <a href={item.cta.href} className="mt-2 inline-block text-xs font-medium text-primary">
+                          {item.cta.label}
+                        </a>
+                      ) : null}
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    className={cn(
+                      isHorizontal ? "flex gap-4 p-4" : "",
+                      isRailCard && hasImage ? "grid h-full grid-rows-[minmax(8.5rem,1fr)_auto]" : ""
+                    )}
+                  >
+                    {hasImage ? (
+                      <div
                         className={cn(
+                          isHorizontal ? "shrink-0" : "",
+                          imagePosition === "right" && "order-2",
+                          isRailCard ? "row-start-1 h-full overflow-hidden" : ""
+                        )}
+                      >
+                        <img
+                          src={resolvedImage?.src}
+                          alt={resolvedImage?.alt || item.title}
+                          className={cn(
                           imageClass,
-                          isHorizontal ? imageSizeClass(imageSize) : "h-44 w-full",
+                          isHorizontal
+                            ? imageSizeClass(imageSize)
+                            : isRailCard
+                                ? "h-full min-h-[8.5rem] w-full"
+                                : "h-44 w-full",
                           variant === "poster" ? "h-52" : ""
                         )}
                       />
                     </div>
-                  ) : null}
-                  <div className={cn(isHorizontal ? "flex-1" : "")}>
-                    <CardHeader className={cn(isHorizontal ? "px-0 pb-2" : "")}>
-                      {item.tag ? (
-                        <p className="text-xs uppercase tracking-wide text-muted-foreground">{item.tag}</p>
-                      ) : null}
-                      {item.eyebrow ? (
-                        <p className="text-xs text-muted-foreground">{item.eyebrow}</p>
-                      ) : null}
-                      <CardTitle
-                        className={cn(sizeClass(headingSize))}
-                        style={headingStyle}
-                      >
-                        {item.title}
-                      </CardTitle>
-                      {item.subtitle ? (
-                        <p className={cn("text-muted-foreground", sizeClass(bodySize))} style={bodyStyle}>
-                          {item.subtitle}
-                        </p>
-                      ) : null}
-                      {item.role ? (
-                        <p className="text-xs text-muted-foreground">{item.role}</p>
-                      ) : null}
-                      {item.price ? (
-                        <p className="text-base font-semibold">{item.price}</p>
-                      ) : null}
-                    </CardHeader>
-                    {item.description ? (
-                      <CardContent className={cn(isHorizontal ? "px-0" : "")}>
-                        <p className={cn("text-muted-foreground", sizeClass(bodySize))} style={bodyStyle}>
-                          {item.description}
-                        </p>
-                        {item.meta ? (
-                          <p className="mt-2 text-xs text-muted-foreground">{item.meta}</p>
-                        ) : null}
-                        {item.cta ? (
-                          <a
-                            href={item.cta.href}
-                            className="mt-3 inline-block text-sm text-primary"
-                          >
-                            {item.cta.label}
-                          </a>
-                        ) : null}
-                      </CardContent>
                     ) : null}
+                    <div className={cn(isHorizontal ? "flex-1" : "", isRailCard ? "row-start-2" : "")}>
+                      <CardHeader className={cn(isHorizontal ? "px-0 pb-2" : "", isRailCard ? "pb-2" : "")}>
+                        {item.tag ? (
+                          <p className="text-xs uppercase tracking-wide text-muted-foreground">{item.tag}</p>
+                        ) : null}
+                        {item.eyebrow ? (
+                          <p className="text-xs text-muted-foreground">{item.eyebrow}</p>
+                        ) : null}
+                        <CardTitle
+                          className={cn(sizeClass(headingSize))}
+                          style={headingStyle}
+                        >
+                          {item.title}
+                        </CardTitle>
+                        {item.subtitle ? (
+                          <p className={cn("text-muted-foreground", sizeClass(bodySize))} style={bodyStyle}>
+                            {item.subtitle}
+                          </p>
+                        ) : null}
+                        {item.role ? (
+                          <p className="text-xs text-muted-foreground">{item.role}</p>
+                        ) : null}
+                        {item.price ? (
+                          <p className="text-base font-semibold">{item.price}</p>
+                        ) : null}
+                      </CardHeader>
+                      {item.description ? (
+                        <CardContent className={cn(isHorizontal ? "px-0" : "")}>
+                          <p className={cn("text-muted-foreground", sizeClass(bodySize))} style={bodyStyle}>
+                            {item.description}
+                          </p>
+                          {item.meta ? (
+                            <p className="mt-2 text-xs text-muted-foreground">{item.meta}</p>
+                          ) : null}
+                          {item.cta ? (
+                            <a
+                              href={item.cta.href}
+                              className="mt-3 inline-block text-sm text-primary"
+                            >
+                              {item.cta.label}
+                            </a>
+                          ) : null}
+                        </CardContent>
+                      ) : null}
+                    </div>
                   </div>
-                </div>
+                )}
               </Card>
             );
           })}

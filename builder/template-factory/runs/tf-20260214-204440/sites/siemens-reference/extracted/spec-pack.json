@@ -1,0 +1,387 @@
+{
+  "template_id": "auto_siemens-reference",
+  "recipe_id": "enterprise_blue_cyan",
+  "section_specs": {
+    "navigation": {
+      "block_type": "Navbar",
+      "defaults": {
+        "variant": "withDropdown",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "2xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#03122e 0%,#071b45 100%)",
+        "backgroundOverlay": "rgba(2,10,24,0.24)",
+        "logo": "Siemens home",
+        "links": [
+          {
+            "label": "Home",
+            "href": "#top",
+            "variant": "link"
+          },
+          {
+            "label": "Services",
+            "href": "#services",
+            "variant": "link"
+          },
+          {
+            "label": "About",
+            "href": "#about",
+            "variant": "link"
+          },
+          {
+            "label": "Contact",
+            "href": "#contact",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Get Started",
+            "href": "#contact",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    "hero": {
+      "block_type": "HeroSplit",
+      "defaults": {
+        "mediaPosition": "right",
+        "paddingY": "lg",
+        "headingSize": "lg",
+        "bodySize": "md",
+        "maxWidth": "2xl",
+        "background": "image",
+        "backgroundOverlay": "rgba(3, 16, 40, 0.58)",
+        "title": "Audi is virtualizing the shop floor with virtual PLC",
+        "subtitle": "Decoding the future of energy",
+        "ctas": [
+          {
+            "label": "Get Started",
+            "href": "#contact",
+            "variant": "primary"
+          }
+        ],
+        "heroSlides": [
+          {
+            "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&fit=crop&crop=faces,edges&w=2560&h=1440&q=60",
+            "mobileSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&fit=crop&crop=faces,edges&w=2560&h=1440&q=60",
+            "alt": "Siemens home | Siemens hero slide 1",
+            "label": "Slide 1"
+          },
+          {
+            "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&fit=crop&crop=faces,edges&w=2560&h=1440&q=60",
+            "mobileSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&fit=crop&crop=faces,edges&w=2560&h=1440&q=60",
+            "alt": "Siemens home | Siemens hero slide 2",
+            "label": "Slide 2"
+          },
+          {
+            "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+            "mobileSrc": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+            "alt": "Siemens home | Siemens hero slide 3",
+            "label": "Slide 3"
+          },
+          {
+            "src": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+            "mobileSrc": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+            "alt": "Siemens home | Siemens hero slide 4",
+            "label": "Slide 4"
+          },
+          {
+            "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1hiCcpREAHFb8fXxrkQBxH/en-US/robot-dog-safety-shero-2560x1440.jpg?auto=format,compress&fit=crop&crop=faces,edges&w=2560&h=1440&q=60",
+            "mobileSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1hiCcpREAHFb8fXxrkQBxH/en-US/robot-dog-safety-shero-2560x1440.jpg?auto=format,compress&fit=crop&crop=faces,edges&w=2560&h=1440&q=60",
+            "alt": "Siemens home | Siemens hero slide 5",
+            "label": "Slide 5"
+          },
+          {
+            "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/qd6j45dyXFHDJjKplB9IY/en-US/next-era-gen-ai-report-shero-2560x1440.jpg?auto=format,compress&fit=crop&crop=faces,edges&w=2560&h=1440&q=60",
+            "mobileSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/qd6j45dyXFHDJjKplB9IY/en-US/next-era-gen-ai-report-shero-2560x1440.jpg?auto=format,compress&fit=crop&crop=faces,edges&w=2560&h=1440&q=60",
+            "alt": "Siemens home | Siemens hero slide 6",
+            "label": "Slide 6"
+          }
+        ],
+        "heroCarouselAutoplayMs": 4500,
+        "backgroundMedia": {
+          "kind": "image",
+          "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&fit=crop&crop=faces,edges&w=2560&h=1440&q=60",
+          "alt": "Siemens home | Siemens hero background"
+        }
+      }
+    },
+    "story": {
+      "block_type": "FeatureGrid",
+      "defaults": {
+        "variant": "4col",
+        "paddingY": "md",
+        "maxWidth": "2xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#04152f 0%,#071d43 100%)",
+        "eyebrow": "Our Story",
+        "title": "Audi is virtualizing the shop floor with virtual PLC",
+        "subtitle": "Decoding the future of energy",
+        "body": "Decoding the future of energy",
+        "ctas": [
+          {
+            "label": "Explore",
+            "href": "#",
+            "variant": "link"
+          }
+        ]
+      }
+    },
+    "approach": {
+      "block_type": "FeatureGrid",
+      "defaults": {
+        "variant": "3col",
+        "paddingY": "lg",
+        "maxWidth": "2xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#071d43 0%,#082752 100%)",
+        "title": "Audi is virtualizing the shop floor with virtual PLC",
+        "subtitle": "Decoding the future of energy",
+        "items": [
+          {
+            "title": "Decoding the future of energy",
+            "desc": "Decoding the future of energy",
+            "description": "Decoding the future of energy",
+            "icon": "layers",
+            "image": {
+              "src": "/assets/template-factory/siemens-reference/slices/desktop-approach.png",
+              "alt": "Decoding the future of energy"
+            },
+            "imageSrc": "/assets/template-factory/siemens-reference/slices/desktop-approach.png",
+            "imageAlt": "Decoding the future of energy"
+          },
+          {
+            "title": "Guarding the plant",
+            "desc": "Robot dogs improve safety",
+            "description": "Robot dogs improve safety",
+            "icon": "shield",
+            "image": {
+              "src": "/assets/template-factory/siemens-reference/slices/mobile-approach.png",
+              "alt": "Guarding the plant"
+            },
+            "imageSrc": "/assets/template-factory/siemens-reference/slices/mobile-approach.png",
+            "imageAlt": "Guarding the plant"
+          },
+          {
+            "title": "Report",
+            "desc": "The next era of generative AI",
+            "description": "The next era of generative AI",
+            "icon": "chart",
+            "image": {
+              "src": "/assets/template-factory/siemens-reference/slices/mobile-approach.png",
+              "alt": "Report"
+            },
+            "imageSrc": "/assets/template-factory/siemens-reference/slices/mobile-approach.png",
+            "imageAlt": "Report"
+          }
+        ]
+      }
+    },
+    "socialproof": {
+      "block_type": "TestimonialsGrid",
+      "defaults": {
+        "variant": "3col",
+        "paddingY": "lg",
+        "maxWidth": "2xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#04152f 0%,#061f45 100%)",
+        "title": "Building for world-class innovators",
+        "items": [
+          {
+            "quote": "They curated a lifestyle, not only a space.",
+            "name": "Alexander Vane",
+            "role": "CEO",
+            "avatar": {
+              "src": "/assets/template-factory/siemens-reference/slices/mobile-socialproof.png",
+              "alt": "Alexander Vane"
+            }
+          },
+          {
+            "quote": "A masterclass in restraint and elegance.",
+            "name": "Isabelle Dubois",
+            "role": "Founder",
+            "avatar": {
+              "src": "/assets/template-factory/siemens-reference/slices/mobile-socialproof.png",
+              "alt": "Isabelle Dubois"
+            }
+          }
+        ],
+        "imageSrc": "/assets/template-factory/siemens-reference/slices/desktop-socialproof.png",
+        "imageAlt": "Results visual"
+      }
+    },
+    "products": {
+      "block_type": "CardsGrid",
+      "defaults": {
+        "variant": "imageText",
+        "columns": "3col",
+        "density": "normal",
+        "cardStyle": "solid",
+        "imagePosition": "top",
+        "imageShape": "rounded",
+        "paddingY": "lg",
+        "maxWidth": "2xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#051a3a 0%,#08234c 100%)",
+        "title": "Audi is virtualizing the shop floor with virtual PLC",
+        "subtitle": "Decoding the future of energy",
+        "items": [
+          {
+            "title": "Decoding the future of energy",
+            "description": "Decoding the future of energy",
+            "summary": "Decoding the future of energy",
+            "cta": {
+              "label": "Details",
+              "href": "#"
+            },
+            "image": {
+              "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+              "alt": "Decoding the future of energy"
+            },
+            "cover": {
+              "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+              "alt": "Decoding the future of energy"
+            },
+            "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+            "imageAlt": "Decoding the future of energy"
+          },
+          {
+            "title": "Guarding the plant",
+            "description": "Robot dogs improve safety",
+            "summary": "Robot dogs improve safety",
+            "cta": {
+              "label": "Details",
+              "href": "#"
+            },
+            "image": {
+              "src": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+              "alt": "Guarding the plant"
+            },
+            "cover": {
+              "src": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+              "alt": "Guarding the plant"
+            },
+            "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+            "imageAlt": "Guarding the plant"
+          },
+          {
+            "title": "Report",
+            "description": "The next era of generative AI",
+            "summary": "The next era of generative AI",
+            "cta": {
+              "label": "Details",
+              "href": "#"
+            },
+            "image": {
+              "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&fit=crop&crop=faces,edges&w=2560&h=1440&q=60",
+              "alt": "Report"
+            },
+            "cover": {
+              "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&fit=crop&crop=faces,edges&w=2560&h=1440&q=60",
+              "alt": "Report"
+            },
+            "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&fit=crop&crop=faces,edges&w=2560&h=1440&q=60",
+            "imageAlt": "Report"
+          }
+        ]
+      }
+    },
+    "cta": {
+      "block_type": "LeadCaptureCTA",
+      "defaults": {
+        "variant": "banner",
+        "paddingY": "md",
+        "maxWidth": "2xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#07214b 0%,#092a5a 100%)",
+        "titleColor": "#e6faff",
+        "ctaBackgroundColor": "#00c6d8",
+        "ctaTextColor": "#031628",
+        "ctaClassName": "!bg-[#00c6d8] !text-[#031628] hover:!bg-[#00d7e8]",
+        "title": "Audi is virtualizing the shop floor with virtual PLC",
+        "subtitle": "Decoding the future of energy",
+        "cta": {
+          "label": "Inquire Now",
+          "href": "#contact",
+          "variant": "primary"
+        }
+      }
+    },
+    "footer": {
+      "block_type": "Footer",
+      "defaults": {
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "2xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#03122e 0%,#020a1d 100%)",
+        "logoText": "Siemens home",
+        "columns": [
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "About",
+                "href": "#"
+              },
+              {
+                "label": "Contact",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "title": "Studio",
+            "links": [
+              {
+                "label": "Approach",
+                "href": "#"
+              },
+              {
+                "label": "Projects",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Privacy",
+                "href": "#"
+              },
+              {
+                "label": "Terms",
+                "href": "#"
+              }
+            ]
+          }
+        ],
+        "legal": "© 2026 All rights reserved."
+      }
+    }
+  },
+  "fallback_rules": {
+    "missing_socialproof": "use_testimonials_grid_min_2",
+    "missing_cta_secondary": "hide_secondary_button"
+  },
+  "density_limits": {
+    "nav_items_max": 6,
+    "hero_cta_max": 2,
+    "testimonials_min": 2,
+    "cards_max": 8
+  },
+  "required_categories": [
+    "navigation",
+    "hero",
+    "story",
+    "approach",
+    "products",
+    "socialproof",
+    "cta",
+    "footer"
+  ]
+}

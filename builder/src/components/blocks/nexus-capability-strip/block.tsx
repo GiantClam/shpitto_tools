@@ -15,6 +15,7 @@ type NexusCapabilityStripProps = BaseBlockProps & {
   title?: string;
   subtitle?: string;
   items?: CapabilityItem[];
+  accentTone?: "gold" | "green";
 };
 
 export function NexusCapabilityStripBlock({
@@ -25,6 +26,7 @@ export function NexusCapabilityStripBlock({
   title = "Engineered for modern product teams",
   subtitle = "Designed for scale, precision, and reliable execution.",
   items = [],
+  accentTone = "gold",
 }: NexusCapabilityStripProps) {
   const cards = (items.length
     ? items
@@ -34,6 +36,14 @@ export function NexusCapabilityStripBlock({
         { title: "Brand safety", description: "Guardrails enforce reliability and compliance by default." },
       ]
   ).slice(0, 4);
+  const isGreen = accentTone === "green";
+  const backgroundClass = isGreen
+    ? "bg-[radial-gradient(circle_at_82%_14%,rgba(0,255,0,0.22),transparent_40%),linear-gradient(180deg,#050a0d_0%,#05070c_100%)]"
+    : "bg-[radial-gradient(circle_at_82%_14%,rgba(248,200,75,0.16),transparent_40%),linear-gradient(180deg,#070a11_0%,#05070c_100%)]";
+  const eyebrowClass = isGreen ? "text-[#00ff00]" : "text-[#f8c84b]";
+  const highlightCardClass = isGreen
+    ? "border-[#00ff00]/55 bg-[linear-gradient(140deg,rgba(0,255,0,0.22),rgba(11,13,18,0.96))]"
+    : "border-[#f8c84b]/55 bg-[linear-gradient(140deg,rgba(248,200,75,0.2),rgba(11,13,18,0.96))]";
 
   return (
     <section
@@ -42,9 +52,9 @@ export function NexusCapabilityStripBlock({
       data-block-id={id}
       className="relative overflow-hidden border-b border-[#181d24] bg-[#05070b] py-14"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_14%,rgba(248,200,75,0.16),transparent_40%),linear-gradient(180deg,#070a11_0%,#05070c_100%)]" />
+      <div className={cn("pointer-events-none absolute inset-0", backgroundClass)} />
       <div className={cn("relative z-10 mx-auto px-4 sm:px-6", maxWidthClass(maxWidth))}>
-        <p className="text-[11px] uppercase tracking-[0.16em] text-[#f8c84b]">{eyebrow}</p>
+        <p className={cn("text-[11px] uppercase tracking-[0.16em]", eyebrowClass)}>{eyebrow}</p>
         <h2 className="mt-2 text-[36px] font-semibold tracking-tight text-[#f5f7fb] sm:text-[46px]">{title}</h2>
         {subtitle ? <p className="mt-3 max-w-3xl text-base text-[#9ca3af]">{subtitle}</p> : null}
 
@@ -55,7 +65,7 @@ export function NexusCapabilityStripBlock({
               className={cn(
                 "rounded-2xl border p-5",
                 index === 0
-                  ? "border-[#f8c84b]/55 bg-[linear-gradient(140deg,rgba(248,200,75,0.2),rgba(11,13,18,0.96))]"
+                  ? highlightCardClass
                   : "border-[#232830] bg-[#0a0d13]"
               )}
             >

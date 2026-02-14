@@ -18,6 +18,18 @@ type NeonHeroBeamProps = BaseBlockProps & {
   heroImageSrc?: string;
   mobileHeroImageSrc?: string;
   heroImageAlt?: string;
+  heroSlides?: Array<{
+    src: string;
+    mobileSrc?: string;
+    alt?: string;
+    label?: string;
+    panelTag?: string;
+    panelTitle?: string;
+    panelSubtitle?: string;
+    statValue?: string;
+    statDelta?: string;
+  }>;
+  heroCarouselAutoplayMs?: number;
   backgroundOverlay?: string;
   backgroundMedia?: { kind?: "image" | "video"; src?: string; alt?: string };
   media?: { kind?: "image" | "video"; src?: string; alt?: string };
@@ -40,14 +52,42 @@ export function NeonHeroBeamBlock({
   heroImageSrc,
   mobileHeroImageSrc,
   heroImageAlt = "Hero visual",
+  heroSlides = [],
+  heroCarouselAutoplayMs = 4500,
   backgroundOverlay,
   backgroundMedia,
   media,
   titleTransform = "uppercase",
 }: NeonHeroBeamProps) {
-  const resolvedImage = heroImageSrc || media?.src || backgroundMedia?.src;
-  const resolvedMobileImage = mobileHeroImageSrc || resolvedImage;
-  const resolvedAlt = heroImageAlt || media?.alt || backgroundMedia?.alt || "Hero visual";
+  const slides = React.useMemo(
+    () =>
+      (Array.isArray(heroSlides) ? heroSlides : []).filter(
+        (slide) => typeof slide?.src === "string" && slide.src.trim().length > 0
+      ),
+    [heroSlides]
+  );
+  const [activeSlide, setActiveSlide] = React.useState(0);
+  React.useEffect(() => {
+    setActiveSlide(0);
+  }, [slides.length]);
+  React.useEffect(() => {
+    if (slides.length < 2) return;
+    const intervalMs = Number(heroCarouselAutoplayMs) > 1200 ? Number(heroCarouselAutoplayMs) : 4500;
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % slides.length);
+    }, intervalMs);
+    return () => window.clearInterval(timer);
+  }, [slides.length, heroCarouselAutoplayMs]);
+
+  const currentSlide = slides[activeSlide] || null;
+  const resolvedImage = currentSlide?.src || heroImageSrc || media?.src || backgroundMedia?.src;
+  const resolvedMobileImage = currentSlide?.mobileSrc || mobileHeroImageSrc || resolvedImage;
+  const resolvedAlt = currentSlide?.alt || heroImageAlt || media?.alt || backgroundMedia?.alt || "Hero visual";
+  const resolvedPanelTag = currentSlide?.panelTag || panelTag;
+  const resolvedPanelTitle = currentSlide?.panelTitle || panelTitle;
+  const resolvedPanelSubtitle = currentSlide?.panelSubtitle || panelSubtitle;
+  const resolvedStatValue = currentSlide?.statValue || statValue;
+  const resolvedStatDelta = currentSlide?.statDelta || statDelta;
   const primary = ctas[0] || { label: "Explore Platform", href: "#platform", variant: "primary" };
   const secondary = ctas[1] || { label: "View Metrics", href: "#metrics", variant: "secondary" };
 
@@ -109,18 +149,34 @@ export function NeonHeroBeamBlock({
           </div>
           <aside className="rounded-[28px] border border-[#f59e0b] bg-[linear-gradient(180deg,#111621_0%,#0a0f18_100%)] p-6 shadow-[0_20px_70px_rgba(249,115,22,0.22)]">
             <span className="inline-flex rounded-md border border-[#3f2d1e] bg-[#22170f] px-3 py-1 text-xs uppercase tracking-[0.08em] text-[#f6b06d]">
-              {panelTag}
+              {resolvedPanelTag}
             </span>
-            <h3 className="mt-6 text-4xl font-semibold text-[#f9fbff]">{panelTitle}</h3>
-            <p className="mt-2 text-base text-[#9ea8ba]">{panelSubtitle}</p>
+            <h3 className="mt-6 text-4xl font-semibold text-[#f9fbff]">{resolvedPanelTitle}</h3>
+            <p className="mt-2 text-base text-[#9ea8ba]">{resolvedPanelSubtitle}</p>
             <div className="mt-6 flex items-center gap-3">
-              <span className="text-6xl font-semibold text-[#fff1de]">{statValue}</span>
-              <span className="rounded-md bg-[#2e1b0d] px-3 py-1 text-sm text-[#f9a350]">{statDelta}</span>
+              <span className="text-6xl font-semibold text-[#fff1de]">{resolvedStatValue}</span>
+              <span className="rounded-md bg-[#2e1b0d] px-3 py-1 text-sm text-[#f9a350]">{resolvedStatDelta}</span>
             </div>
             <svg className="mt-8 h-24 w-full" viewBox="0 0 320 90" fill="none" preserveAspectRatio="none">
               <path d="M0 76 C 48 76, 60 54, 102 56 C 158 60, 186 30, 226 34 C 268 37, 292 16, 320 12" stroke="#f97316" strokeWidth="3" />
               <circle cx="320" cy="12" r="4" fill="#ffedd5" />
             </svg>
+            {slides.length > 1 ? (
+              <div className="mt-5 flex flex-wrap items-center gap-2">
+                {slides.map((slide, index) => (
+                  <button
+                    key={`${slide.src}-${index}`}
+                    type="button"
+                    aria-label={slide.label || `Slide ${index + 1}`}
+                    onClick={() => setActiveSlide(index)}
+                    className={cn(
+                      "h-2.5 w-2.5 rounded-full border transition",
+                      index === activeSlide ? "border-[#f97316] bg-[#f97316]" : "border-[#5a4a3a] bg-[#151b24]"
+                    )}
+                  />
+                ))}
+              </div>
+            ) : null}
             <Button asChild size="lg" className="mt-7 w-full rounded-full bg-[#f97316] text-[#1c1208] hover:bg-[#fb8f3e]">
               <a href="#pricing">Analyze Trends</a>
             </Button>

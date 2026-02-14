@@ -1,0 +1,3513 @@
+{
+  "id": "auto_siemens-home",
+  "name": "Siemens official website homepage template",
+  "keywords": [
+    "siemenshome",
+    "siemens",
+    "home",
+    "siemenscom",
+    "com",
+    "enterprise",
+    "industrial",
+    "technology",
+    "template",
+    "navigation",
+    "hero",
+    "capabilities",
+    "product",
+    "highlights",
+    "trust",
+    "proof",
+    "cta",
+    "footer",
+    "official",
+    "audi",
+    "virtualizing",
+    "shop",
+    "floor",
+    "virtual",
+    "profile_selector_auto-siemens-home",
+    "auto_siemens-home",
+    "siemens-home"
+  ],
+  "templates": {
+    "navigation": {
+      "type": "Navbar",
+      "props": {
+        "variant": "withCTA",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "logo": "Siemens home",
+        "links": [
+          {
+            "label": "Siemens",
+            "href": "/",
+            "variant": "link"
+          },
+          {
+            "label": "Siemens",
+            "href": "/en-us",
+            "variant": "link"
+          },
+          {
+            "label": "Artificial intelligence solutions",
+            "href": "/en-us/company/artificial-intelligence",
+            "variant": "link"
+          },
+          {
+            "label": "Digital twin technology",
+            "href": "/en-us/company/digital-twin",
+            "variant": "link"
+          },
+          {
+            "label": "Siemens Electronics Works Amberg",
+            "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+            "variant": "link"
+          },
+          {
+            "label": "Virtual PLC is revolutionizing production at Audi",
+            "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Explore",
+            "href": "/en-us",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    "hero": {
+      "type": "HeroSplit",
+      "props": {
+        "mediaPosition": "right",
+        "paddingY": "lg",
+        "headingSize": "md",
+        "maxWidth": "xl",
+        "title": "Audi is virtualizing the shop floor with virtual PLC",
+        "subtitle": "Decoding the future of energy",
+        "ctas": [
+          {
+            "label": "Explore",
+            "href": "/en-us",
+            "variant": "primary"
+          }
+        ],
+        "background": "image",
+        "backgroundMedia": {
+          "kind": "image",
+          "src": "/assets/template-factory/siemens-home/slices/desktop-hero.png",
+          "alt": "Siemens home | Siemens reference"
+        },
+        "backgroundOverlay": "rgba(5,8,18,0.55)",
+        "media": {
+          "kind": "image",
+          "src": "/assets/template-factory/siemens-home/slices/desktop-hero.png",
+          "alt": "Siemens home | Siemens hero visual"
+        }
+      }
+    },
+    "approach": {
+      "type": "FeatureGrid",
+      "props": {
+        "variant": "3col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Audi is virtualizing the shop floor with virtual PLC",
+        "subtitle": "Decoding the future of energy",
+        "items": [
+          {
+            "title": "Decoding the future of energy",
+            "desc": "Decoding the future of energy",
+            "description": "Decoding the future of energy",
+            "icon": "layers",
+            "image": {
+              "src": "/assets/template-factory/siemens-home/slices/desktop-approach.png",
+              "alt": "Decoding the future of energy"
+            },
+            "imageSrc": "/assets/template-factory/siemens-home/slices/desktop-approach.png",
+            "imageAlt": "Decoding the future of energy"
+          },
+          {
+            "title": "Guarding the plant",
+            "desc": "Robot dogs improve safety",
+            "description": "Robot dogs improve safety",
+            "icon": "shield",
+            "image": {
+              "src": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+              "alt": "Guarding the plant"
+            },
+            "imageSrc": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+            "imageAlt": "Guarding the plant"
+          },
+          {
+            "title": "Report",
+            "desc": "The next era of generative AI",
+            "description": "The next era of generative AI",
+            "icon": "chart",
+            "image": {
+              "src": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+              "alt": "Report"
+            },
+            "imageSrc": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+            "imageAlt": "Report"
+          }
+        ]
+      }
+    },
+    "socialproof": {
+      "type": "TestimonialsGrid",
+      "props": {
+        "variant": "2col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Building for world-class innovators",
+        "items": [
+          {
+            "quote": "They curated a lifestyle, not only a space.",
+            "name": "Alexander Vane",
+            "role": "CEO",
+            "avatar": {
+              "src": "/assets/template-factory/siemens-home/slices/mobile-socialproof.png",
+              "alt": "Alexander Vane"
+            }
+          },
+          {
+            "quote": "A masterclass in restraint and elegance.",
+            "name": "Isabelle Dubois",
+            "role": "Founder",
+            "avatar": {
+              "src": "/assets/template-factory/siemens-home/slices/mobile-socialproof.png",
+              "alt": "Isabelle Dubois"
+            }
+          }
+        ],
+        "imageSrc": "/assets/template-factory/siemens-home/slices/desktop-socialproof.png",
+        "imageAlt": "Results visual"
+      }
+    },
+    "products": {
+      "type": "CardsGrid",
+      "props": {
+        "variant": "product",
+        "columns": "3col",
+        "density": "normal",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Audi is virtualizing the shop floor with virtual PLC",
+        "subtitle": "Decoding the future of energy",
+        "items": [
+          {
+            "title": "Decoding the future of energy",
+            "description": "Decoding the future of energy",
+            "summary": "Decoding the future of energy",
+            "cta": {
+              "label": "Details",
+              "href": "#"
+            },
+            "image": {
+              "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+              "alt": "Decoding the future of energy"
+            },
+            "cover": {
+              "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+              "alt": "Decoding the future of energy"
+            },
+            "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+            "imageAlt": "Decoding the future of energy"
+          },
+          {
+            "title": "Guarding the plant",
+            "description": "Robot dogs improve safety",
+            "summary": "Robot dogs improve safety",
+            "cta": {
+              "label": "Details",
+              "href": "#"
+            },
+            "image": {
+              "src": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+              "alt": "Guarding the plant"
+            },
+            "cover": {
+              "src": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+              "alt": "Guarding the plant"
+            },
+            "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+            "imageAlt": "Guarding the plant"
+          },
+          {
+            "title": "Report",
+            "description": "The next era of generative AI",
+            "summary": "The next era of generative AI",
+            "cta": {
+              "label": "Details",
+              "href": "#"
+            },
+            "image": {
+              "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+              "alt": "Report"
+            },
+            "cover": {
+              "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+              "alt": "Report"
+            },
+            "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+            "imageAlt": "Report"
+          }
+        ]
+      }
+    },
+    "cta": {
+      "type": "LeadCaptureCTA",
+      "props": {
+        "variant": "banner",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Audi is virtualizing the shop floor with virtual PLC",
+        "subtitle": "Decoding the future of energy",
+        "cta": {
+          "label": "Explore",
+          "href": "/en-us",
+          "variant": "primary"
+        }
+      }
+    },
+    "footer": {
+      "type": "Footer",
+      "props": {
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "logoText": "Siemens home",
+        "columns": [
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/en-us"
+              },
+              {
+                "label": "Siemens Electronics Works Amberg",
+                "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies"
+              },
+              {
+                "label": "A case for AI: Water pipeline leaks",
+                "href": "/en-us/company/insights/va-syd-water-artificial-intelligence"
+              },
+              {
+                "label": "SIMATIC S7-1500V Virtual PLC",
+                "href": "/en-us/products/simatic/s7-1500v"
+              }
+            ]
+          },
+          {
+            "title": "Explore",
+            "links": [
+              {
+                "label": "Artificial intelligence solutions",
+                "href": "/en-us/company/artificial-intelligence"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+              },
+              {
+                "label": "Non-revenue Water",
+                "href": "/en-us/industries/water/non-revenue-water"
+              },
+              {
+                "label": "Robot dogs revolutionize industrial maintenance",
+                "href": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+              }
+            ]
+          },
+          {
+            "title": "Support",
+            "links": [
+              {
+                "label": "Digital twin technology",
+                "href": "/en-us/company/digital-twin"
+              },
+              {
+                "label": "The digital-first recreational vehicle: Hymer",
+                "href": "/en-us/company/insights/hymer-digital-first-recreational-vehicle"
+              },
+              {
+                "label": "Gridscale X",
+                "href": "/en-us/products/gridscale-x"
+              }
+            ]
+          }
+        ],
+        "legal": "© 2026 All rights reserved."
+      }
+    }
+  },
+  "pageSpecs": [
+    {
+      "path": "/",
+      "name": "Siemens",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "products",
+        "socialproof",
+        "cta",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "Siemens home",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Artificial intelligence solutions",
+                "href": "/en-us/company/artificial-intelligence",
+                "variant": "link"
+              },
+              {
+                "label": "Digital twin technology",
+                "href": "/en-us/company/digital-twin",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens Electronics Works Amberg",
+                "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/en-us",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Audi is virtualizing the shop floor with virtual PLC",
+            "subtitle": "Decoding the future of energy",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/en-us",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+              "alt": "Siemens home | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+              "alt": "Siemens home | Siemens hero visual"
+            }
+          }
+        },
+        "approach": {
+          "type": "FeatureGrid",
+          "props": {
+            "variant": "3col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Audi is virtualizing the shop floor with virtual PLC",
+            "subtitle": "Decoding the future of energy",
+            "items": [
+              {
+                "title": "Decoding the future of energy",
+                "desc": "Decoding the future of energy",
+                "description": "Decoding the future of energy",
+                "icon": "layers",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Decoding the future of energy"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Decoding the future of energy"
+              },
+              {
+                "title": "Guarding the plant",
+                "desc": "Robot dogs improve safety",
+                "description": "Robot dogs improve safety",
+                "icon": "shield",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Guarding the plant"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Guarding the plant"
+              },
+              {
+                "title": "Report",
+                "desc": "The next era of generative AI",
+                "description": "The next era of generative AI",
+                "icon": "chart",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Report"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Report"
+              }
+            ]
+          }
+        },
+        "products": {
+          "type": "CardsGrid",
+          "props": {
+            "variant": "product",
+            "columns": "3col",
+            "density": "normal",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Audi is virtualizing the shop floor with virtual PLC",
+            "subtitle": "Decoding the future of energy",
+            "items": [
+              {
+                "title": "Decoding the future of energy",
+                "description": "Decoding the future of energy",
+                "summary": "Decoding the future of energy",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                  "alt": "Decoding the future of energy"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                  "alt": "Decoding the future of energy"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                "imageAlt": "Decoding the future of energy"
+              },
+              {
+                "title": "Guarding the plant",
+                "description": "Robot dogs improve safety",
+                "summary": "Robot dogs improve safety",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+                  "alt": "Guarding the plant"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+                  "alt": "Guarding the plant"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+                "imageAlt": "Guarding the plant"
+              },
+              {
+                "title": "Report",
+                "description": "The next era of generative AI",
+                "summary": "The next era of generative AI",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Report"
+                },
+                "cover": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Report"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Report"
+              }
+            ]
+          }
+        },
+        "socialproof": {
+          "type": "TestimonialsGrid",
+          "props": {
+            "variant": "2col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Building for world-class innovators",
+            "items": [
+              {
+                "quote": "They curated a lifestyle, not only a space.",
+                "name": "Alexander Vane",
+                "role": "CEO",
+                "avatar": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/qd6j45dyXFHDJjKplB9IY/en-US/next-era-gen-ai-report-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Alexander Vane"
+                }
+              },
+              {
+                "quote": "A masterclass in restraint and elegance.",
+                "name": "Isabelle Dubois",
+                "role": "Founder",
+                "avatar": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/qd6j45dyXFHDJjKplB9IY/en-US/next-era-gen-ai-report-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Isabelle Dubois"
+                }
+              }
+            ],
+            "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1hiCcpREAHFb8fXxrkQBxH/en-US/robot-dog-safety-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+            "imageAlt": "Results visual"
+          }
+        },
+        "cta": {
+          "type": "LeadCaptureCTA",
+          "props": {
+            "variant": "banner",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Audi is virtualizing the shop floor with virtual PLC",
+            "subtitle": "Decoding the future of energy",
+            "cta": {
+              "label": "Explore",
+              "href": "/en-us",
+              "variant": "primary"
+            }
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "Siemens home",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  },
+                  {
+                    "label": "Siemens Electronics Works Amberg",
+                    "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies"
+                  },
+                  {
+                    "label": "A case for AI: Water pipeline leaks",
+                    "href": "/en-us/company/insights/va-syd-water-artificial-intelligence"
+                  },
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Artificial intelligence solutions",
+                    "href": "/en-us/company/artificial-intelligence"
+                  },
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  },
+                  {
+                    "label": "Non-revenue Water",
+                    "href": "/en-us/industries/water/non-revenue-water"
+                  },
+                  {
+                    "label": "Robot dogs revolutionize industrial maintenance",
+                    "href": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "Digital twin technology",
+                    "href": "/en-us/company/digital-twin"
+                  },
+                  {
+                    "label": "The digital-first recreational vehicle: Hymer",
+                    "href": "/en-us/company/insights/hymer-digital-first-recreational-vehicle"
+                  },
+                  {
+                    "label": "Gridscale X",
+                    "href": "/en-us/products/gridscale-x"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/en-us",
+      "name": "Siemens",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "cta",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "Siemens home",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Artificial intelligence solutions",
+                "href": "/en-us/company/artificial-intelligence",
+                "variant": "link"
+              },
+              {
+                "label": "Digital twin technology",
+                "href": "/en-us/company/digital-twin",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens Electronics Works Amberg",
+                "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Audi is virtualizing the shop floor with virtual PLC",
+            "subtitle": "Decoding the future of energy",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+              "alt": "Siemens home | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+              "alt": "Siemens home | Siemens hero visual"
+            }
+          }
+        },
+        "approach": {
+          "type": "FeatureGrid",
+          "props": {
+            "variant": "3col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Audi is virtualizing the shop floor with virtual PLC",
+            "subtitle": "Decoding the future of energy",
+            "items": [
+              {
+                "title": "Decoding the future of energy",
+                "desc": "Decoding the future of energy",
+                "description": "Decoding the future of energy",
+                "icon": "layers",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Decoding the future of energy"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Decoding the future of energy"
+              },
+              {
+                "title": "Guarding the plant",
+                "desc": "Robot dogs improve safety",
+                "description": "Robot dogs improve safety",
+                "icon": "shield",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Guarding the plant"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Guarding the plant"
+              },
+              {
+                "title": "Report",
+                "desc": "The next era of generative AI",
+                "description": "The next era of generative AI",
+                "icon": "chart",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Report"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Report"
+              }
+            ]
+          }
+        },
+        "cta": {
+          "type": "LeadCaptureCTA",
+          "props": {
+            "variant": "banner",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Audi is virtualizing the shop floor with virtual PLC",
+            "subtitle": "Decoding the future of energy",
+            "cta": {
+              "label": "Explore",
+              "href": "/",
+              "variant": "primary"
+            }
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "Siemens home",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  },
+                  {
+                    "label": "Siemens Electronics Works Amberg",
+                    "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies"
+                  },
+                  {
+                    "label": "A case for AI: Water pipeline leaks",
+                    "href": "/en-us/company/insights/va-syd-water-artificial-intelligence"
+                  },
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Artificial intelligence solutions",
+                    "href": "/en-us/company/artificial-intelligence"
+                  },
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  },
+                  {
+                    "label": "Non-revenue Water",
+                    "href": "/en-us/industries/water/non-revenue-water"
+                  },
+                  {
+                    "label": "Robot dogs revolutionize industrial maintenance",
+                    "href": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "Digital twin technology",
+                    "href": "/en-us/company/digital-twin"
+                  },
+                  {
+                    "label": "The digital-first recreational vehicle: Hymer",
+                    "href": "/en-us/company/insights/hymer-digital-first-recreational-vehicle"
+                  },
+                  {
+                    "label": "Gridscale X",
+                    "href": "/en-us/products/gridscale-x"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/en-us/company/artificial-intelligence",
+      "name": "Artificial intelligence solutions",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "products",
+        "cta",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "Artificial intelligence solutions",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Artificial intelligence solutions",
+                "href": "/en-us/company/artificial-intelligence",
+                "variant": "link"
+              },
+              {
+                "label": "Digital twin technology",
+                "href": "/en-us/company/digital-twin",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens Electronics Works Amberg",
+                "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Siemens is accelerating the Industrial AI revolution",
+            "subtitle": "Industrial AI in the real world",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/11nGOuGqog3Bt2IhL1NSnp/aa36b796e95bde57e5fe209632edc02f/industrial-ai-header-og-1200x630.png",
+              "alt": "Artificial intelligence solutions | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/11nGOuGqog3Bt2IhL1NSnp/aa36b796e95bde57e5fe209632edc02f/industrial-ai-header-og-1200x630.png",
+              "alt": "Artificial intelligence solutions | Siemens hero visual"
+            }
+          }
+        },
+        "approach": {
+          "type": "FeatureGrid",
+          "props": {
+            "variant": "3col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Siemens is accelerating the Industrial AI revolution",
+            "subtitle": "Industrial AI in the real world",
+            "items": [
+              {
+                "title": "Industrial AI in the real world",
+                "desc": "Industrial AI in the real world",
+                "description": "Industrial AI in the real world",
+                "icon": "layers",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5ano6H6DHGgyWxcIxy9e7y/en-US/industrial-ai-header-visual-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Industrial AI in the real world"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5ano6H6DHGgyWxcIxy9e7y/en-US/industrial-ai-header-visual-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Industrial AI in the real world"
+              },
+              {
+                "title": "What is industrial AI?",
+                "desc": "What is industrial AI?",
+                "description": "What is industrial AI?",
+                "icon": "shield",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/29BCY5lEjGGDIM4NUGfVdB/en-US/69bff248-4475-4196-bf54-c9d7b87b3ac6%20-%20Private-Industrial-5g-networks_original.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                  "alt": "What is industrial AI?"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/29BCY5lEjGGDIM4NUGfVdB/en-US/69bff248-4475-4196-bf54-c9d7b87b3ac6%20-%20Private-Industrial-5g-networks_original.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                "imageAlt": "What is industrial AI?"
+              },
+              {
+                "title": "The impact of AI on industry and infrastructure",
+                "desc": "The impact of AI on industry and infrastructure",
+                "description": "The impact of AI on industry and infrastructure",
+                "icon": "chart",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/29BCY5lEjGGDIM4NUGfVdB/en-US/69bff248-4475-4196-bf54-c9d7b87b3ac6%20-%20Private-Industrial-5g-networks_original.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                  "alt": "The impact of AI on industry and infrastructure"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/29BCY5lEjGGDIM4NUGfVdB/en-US/69bff248-4475-4196-bf54-c9d7b87b3ac6%20-%20Private-Industrial-5g-networks_original.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                "imageAlt": "The impact of AI on industry and infrastructure"
+              }
+            ]
+          }
+        },
+        "products": {
+          "type": "CardsGrid",
+          "props": {
+            "variant": "product",
+            "columns": "3col",
+            "density": "normal",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Siemens is accelerating the Industrial AI revolution",
+            "subtitle": "Industrial AI in the real world",
+            "items": [
+              {
+                "title": "Industrial AI in the real world",
+                "description": "Industrial AI in the real world",
+                "summary": "Industrial AI in the real world",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/11nGOuGqog3Bt2IhL1NSnp/aa36b796e95bde57e5fe209632edc02f/industrial-ai-header-og-1200x630.png",
+                  "alt": "Industrial AI in the real world"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/11nGOuGqog3Bt2IhL1NSnp/aa36b796e95bde57e5fe209632edc02f/industrial-ai-header-og-1200x630.png",
+                  "alt": "Industrial AI in the real world"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/11nGOuGqog3Bt2IhL1NSnp/aa36b796e95bde57e5fe209632edc02f/industrial-ai-header-og-1200x630.png",
+                "imageAlt": "Industrial AI in the real world"
+              },
+              {
+                "title": "What is industrial AI?",
+                "description": "What is industrial AI?",
+                "summary": "What is industrial AI?",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/4dFsmY3oS1ONx4N3ISLq5I/8fc0e29405c252e717b298e4582fdebd/industrial-ai-header-tc-1200x600.png",
+                  "alt": "What is industrial AI?"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/4dFsmY3oS1ONx4N3ISLq5I/8fc0e29405c252e717b298e4582fdebd/industrial-ai-header-tc-1200x600.png",
+                  "alt": "What is industrial AI?"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/4dFsmY3oS1ONx4N3ISLq5I/8fc0e29405c252e717b298e4582fdebd/industrial-ai-header-tc-1200x600.png",
+                "imageAlt": "What is industrial AI?"
+              },
+              {
+                "title": "The impact of AI on industry and infrastructure",
+                "description": "The impact of AI on industry and infrastructure",
+                "summary": "The impact of AI on industry and infrastructure",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5ano6H6DHGgyWxcIxy9e7y/en-US/industrial-ai-header-visual-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "The impact of AI on industry and infrastructure"
+                },
+                "cover": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5ano6H6DHGgyWxcIxy9e7y/en-US/industrial-ai-header-visual-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "The impact of AI on industry and infrastructure"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5ano6H6DHGgyWxcIxy9e7y/en-US/industrial-ai-header-visual-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "The impact of AI on industry and infrastructure"
+              }
+            ]
+          }
+        },
+        "cta": {
+          "type": "LeadCaptureCTA",
+          "props": {
+            "variant": "banner",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Siemens is accelerating the Industrial AI revolution",
+            "subtitle": "Industrial AI in the real world",
+            "cta": {
+              "label": "Explore",
+              "href": "/",
+              "variant": "primary"
+            }
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "Artificial intelligence ",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  },
+                  {
+                    "label": "Siemens Electronics Works Amberg",
+                    "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies"
+                  },
+                  {
+                    "label": "A case for AI: Water pipeline leaks",
+                    "href": "/en-us/company/insights/va-syd-water-artificial-intelligence"
+                  },
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Artificial intelligence solutions",
+                    "href": "/en-us/company/artificial-intelligence"
+                  },
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  },
+                  {
+                    "label": "Non-revenue Water",
+                    "href": "/en-us/industries/water/non-revenue-water"
+                  },
+                  {
+                    "label": "Robot dogs revolutionize industrial maintenance",
+                    "href": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "Digital twin technology",
+                    "href": "/en-us/company/digital-twin"
+                  },
+                  {
+                    "label": "The digital-first recreational vehicle: Hymer",
+                    "href": "/en-us/company/insights/hymer-digital-first-recreational-vehicle"
+                  },
+                  {
+                    "label": "Gridscale X",
+                    "href": "/en-us/products/gridscale-x"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/en-us/company/digital-twin",
+      "name": "Digital twin technology",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "socialproof",
+        "cta",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "Digital twin technology",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Artificial intelligence solutions",
+                "href": "/en-us/company/artificial-intelligence",
+                "variant": "link"
+              },
+              {
+                "label": "Digital twin technology",
+                "href": "/en-us/company/digital-twin",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens Electronics Works Amberg",
+                "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Digital twin technology",
+            "subtitle": "Doing more with digital twins",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.sw.cdn.siemens.com/shared/siemens-opengraph-1200x630.jpg",
+              "alt": "Digital twin technology | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.sw.cdn.siemens.com/shared/siemens-opengraph-1200x630.jpg",
+              "alt": "Digital twin technology | Siemens hero visual"
+            }
+          }
+        },
+        "approach": {
+          "type": "FeatureGrid",
+          "props": {
+            "variant": "3col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Digital twin technology",
+            "subtitle": "Doing more with digital twins",
+            "items": [
+              {
+                "title": "Doing more with digital twins",
+                "desc": "Doing more with digital twins",
+                "description": "Doing more with digital twins",
+                "icon": "layers",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4qwHpbTdUobHr3mhRkjlTU/en-US/digital-twin-key-visual-vr-headset-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Doing more with digital twins"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4qwHpbTdUobHr3mhRkjlTU/en-US/digital-twin-key-visual-vr-headset-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Doing more with digital twins"
+              },
+              {
+                "title": "Empower innovation with digital twin use cases",
+                "desc": "Empower innovation with digital twin use cases",
+                "description": "Empower innovation with digital twin use cases",
+                "icon": "shield",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4MNA0XgHn6JlFCgYNE5Rei/en-US/digital-twin-automotive-manufacturing-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                  "alt": "Empower innovation with digital twin use cases"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4MNA0XgHn6JlFCgYNE5Rei/en-US/digital-twin-automotive-manufacturing-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                "imageAlt": "Empower innovation with digital twin use cases"
+              },
+              {
+                "title": "Discover how companies use digital twin technology",
+                "desc": "Discover how companies use digital twin technology",
+                "description": "Discover how companies use digital twin technology",
+                "icon": "chart",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4MNA0XgHn6JlFCgYNE5Rei/en-US/digital-twin-automotive-manufacturing-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                  "alt": "Discover how companies use digital twin technology"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4MNA0XgHn6JlFCgYNE5Rei/en-US/digital-twin-automotive-manufacturing-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                "imageAlt": "Discover how companies use digital twin technology"
+              }
+            ]
+          }
+        },
+        "socialproof": {
+          "type": "TestimonialsGrid",
+          "props": {
+            "variant": "2col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Building for world-class innovators",
+            "items": [
+              {
+                "quote": "They curated a lifestyle, not only a space.",
+                "name": "Alexander Vane",
+                "role": "CEO",
+                "avatar": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/43XT6DowO0EIOGuqbwkelV/en-US/digital-twin-tech-activation-lp-digital-twin-commercial-buildings-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                  "alt": "Alexander Vane"
+                }
+              },
+              {
+                "quote": "A masterclass in restraint and elegance.",
+                "name": "Isabelle Dubois",
+                "role": "Founder",
+                "avatar": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/43XT6DowO0EIOGuqbwkelV/en-US/digital-twin-tech-activation-lp-digital-twin-commercial-buildings-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                  "alt": "Isabelle Dubois"
+                }
+              }
+            ],
+            "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/45wVU4gA109ZuW4VtG2YWQ/en-US/digital-twin-software-laptop-screenshot-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+            "imageAlt": "Results visual"
+          }
+        },
+        "cta": {
+          "type": "LeadCaptureCTA",
+          "props": {
+            "variant": "banner",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Digital twin technology",
+            "subtitle": "Doing more with digital twins",
+            "cta": {
+              "label": "Explore",
+              "href": "/",
+              "variant": "primary"
+            }
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "Digital twin technology",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  },
+                  {
+                    "label": "Siemens Electronics Works Amberg",
+                    "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies"
+                  },
+                  {
+                    "label": "A case for AI: Water pipeline leaks",
+                    "href": "/en-us/company/insights/va-syd-water-artificial-intelligence"
+                  },
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Artificial intelligence solutions",
+                    "href": "/en-us/company/artificial-intelligence"
+                  },
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  },
+                  {
+                    "label": "Non-revenue Water",
+                    "href": "/en-us/industries/water/non-revenue-water"
+                  },
+                  {
+                    "label": "Robot dogs revolutionize industrial maintenance",
+                    "href": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "Digital twin technology",
+                    "href": "/en-us/company/digital-twin"
+                  },
+                  {
+                    "label": "The digital-first recreational vehicle: Hymer",
+                    "href": "/en-us/company/insights/hymer-digital-first-recreational-vehicle"
+                  },
+                  {
+                    "label": "Gridscale X",
+                    "href": "/en-us/products/gridscale-x"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+      "name": "Siemens Electronics Works Amberg",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "products",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "Siemens Electronics Works Amberg",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Artificial intelligence solutions",
+                "href": "/en-us/company/artificial-intelligence",
+                "variant": "link"
+              },
+              {
+                "label": "Digital twin technology",
+                "href": "/en-us/company/digital-twin",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens Electronics Works Amberg",
+                "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Digital transformation: Leading by example",
+            "subtitle": "Industrial Edge computing and AI for increased throughput",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/4EWLut0dwos8hhBsA4MW5h/348a2e11c3c4e1a2313cebba24157bee/Amberg-MG-0788.jpg",
+              "alt": "Siemens Electronics Works Amberg | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/4EWLut0dwos8hhBsA4MW5h/348a2e11c3c4e1a2313cebba24157bee/Amberg-MG-0788.jpg",
+              "alt": "Siemens Electronics Works Amberg | Siemens hero visual"
+            }
+          }
+        },
+        "products": {
+          "type": "CardsGrid",
+          "props": {
+            "variant": "product",
+            "columns": "3col",
+            "density": "normal",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Digital transformation: Leading by example",
+            "subtitle": "Industrial Edge computing and AI for increased throughput",
+            "items": [
+              {
+                "title": "Industrial Edge computing and AI for increased throughpu",
+                "description": "Industrial Edge computing and AI for increased throughput",
+                "summary": "Industrial Edge computing and AI for increased throughput",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/4EWLut0dwos8hhBsA4MW5h/348a2e11c3c4e1a2313cebba24157bee/Amberg-MG-0788.jpg",
+                  "alt": "Industrial Edge computing and AI for increased throughpu"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/4EWLut0dwos8hhBsA4MW5h/348a2e11c3c4e1a2313cebba24157bee/Amberg-MG-0788.jpg",
+                  "alt": "Industrial Edge computing and AI for increased throughpu"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/4EWLut0dwos8hhBsA4MW5h/348a2e11c3c4e1a2313cebba24157bee/Amberg-MG-0788.jpg",
+                "imageAlt": "Industrial Edge computing and AI for increased throughpu"
+              },
+              {
+                "title": "Early warning system prevents unpleasant surprises",
+                "description": "Early warning system prevents unpleasant surprises",
+                "summary": "Early warning system prevents unpleasant surprises",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4EWLut0dwos8hhBsA4MW5h/en-US/Amberg-MG-0788.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Early warning system prevents unpleasant surprises"
+                },
+                "cover": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4EWLut0dwos8hhBsA4MW5h/en-US/Amberg-MG-0788.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Early warning system prevents unpleasant surprises"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4EWLut0dwos8hhBsA4MW5h/en-US/Amberg-MG-0788.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Early warning system prevents unpleasant surprises"
+              },
+              {
+                "title": "Digital twins and proof of concept (PoC)",
+                "description": "Digital twins and proof of concept (PoC)",
+                "summary": "Digital twins and proof of concept (PoC)",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1g9VDQLoUiCd7VFu98Hy4R/en-US/4e6376d837573f90b6b06e7b3e66684dd1770ead%20-%20pcb-production-ai-controlled-model_large.jpeg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                  "alt": "Digital twins and proof of concept (PoC)"
+                },
+                "cover": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1g9VDQLoUiCd7VFu98Hy4R/en-US/4e6376d837573f90b6b06e7b3e66684dd1770ead%20-%20pcb-production-ai-controlled-model_large.jpeg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                  "alt": "Digital twins and proof of concept (PoC)"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1g9VDQLoUiCd7VFu98Hy4R/en-US/4e6376d837573f90b6b06e7b3e66684dd1770ead%20-%20pcb-production-ai-controlled-model_large.jpeg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                "imageAlt": "Digital twins and proof of concept (PoC)"
+              }
+            ]
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "Siemens Electronics Work",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  },
+                  {
+                    "label": "Siemens Electronics Works Amberg",
+                    "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies"
+                  },
+                  {
+                    "label": "A case for AI: Water pipeline leaks",
+                    "href": "/en-us/company/insights/va-syd-water-artificial-intelligence"
+                  },
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Artificial intelligence solutions",
+                    "href": "/en-us/company/artificial-intelligence"
+                  },
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  },
+                  {
+                    "label": "Non-revenue Water",
+                    "href": "/en-us/industries/water/non-revenue-water"
+                  },
+                  {
+                    "label": "Robot dogs revolutionize industrial maintenance",
+                    "href": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "Digital twin technology",
+                    "href": "/en-us/company/digital-twin"
+                  },
+                  {
+                    "label": "The digital-first recreational vehicle: Hymer",
+                    "href": "/en-us/company/insights/hymer-digital-first-recreational-vehicle"
+                  },
+                  {
+                    "label": "Gridscale X",
+                    "href": "/en-us/products/gridscale-x"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+      "name": "Virtual PLC is revolutionizing production at Audi",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "products",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "Virtual PLC is revolutionizing production at Aud",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Artificial intelligence solutions",
+                "href": "/en-us/company/artificial-intelligence",
+                "variant": "link"
+              },
+              {
+                "label": "Digital twin technology",
+                "href": "/en-us/company/digital-twin",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens Electronics Works Amberg",
+                "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Audi virtualizes shop floor with Siemens PLC",
+            "subtitle": "Siemens’ solutions meet Audi’s goals",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/5Ikdd2hMPDnFe4btmcdMUR/3dd1c83a420c4f074986c761a1204c0e/b5f5c308-b1b4-401c-9067-4dfd5436239f_-_A223280-medium-16x9.jpeg",
+              "alt": "Virtual PLC is revolutionizing production at Audi | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/5Ikdd2hMPDnFe4btmcdMUR/3dd1c83a420c4f074986c761a1204c0e/b5f5c308-b1b4-401c-9067-4dfd5436239f_-_A223280-medium-16x9.jpeg",
+              "alt": "Virtual PLC is revolutionizing production at Audi | Siemens hero visual"
+            }
+          }
+        },
+        "products": {
+          "type": "CardsGrid",
+          "props": {
+            "variant": "product",
+            "columns": "3col",
+            "density": "normal",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Audi virtualizes shop floor with Siemens PLC",
+            "subtitle": "Siemens’ solutions meet Audi’s goals",
+            "items": [
+              {
+                "title": "Siemens’ solutions meet Audi’s goals",
+                "description": "Siemens’ solutions meet Audi’s goals",
+                "summary": "Siemens’ solutions meet Audi’s goals",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/5Ikdd2hMPDnFe4btmcdMUR/3dd1c83a420c4f074986c761a1204c0e/b5f5c308-b1b4-401c-9067-4dfd5436239f_-_A223280-medium-16x9.jpeg",
+                  "alt": "Siemens’ solutions meet Audi’s goals"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/5Ikdd2hMPDnFe4btmcdMUR/3dd1c83a420c4f074986c761a1204c0e/b5f5c308-b1b4-401c-9067-4dfd5436239f_-_A223280-medium-16x9.jpeg",
+                  "alt": "Siemens’ solutions meet Audi’s goals"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/5Ikdd2hMPDnFe4btmcdMUR/3dd1c83a420c4f074986c761a1204c0e/b5f5c308-b1b4-401c-9067-4dfd5436239f_-_A223280-medium-16x9.jpeg",
+                "imageAlt": "Siemens’ solutions meet Audi’s goals"
+              },
+              {
+                "title": "Benefits for Audi",
+                "description": "Benefits for Audi",
+                "summary": "Benefits for Audi",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5Ikdd2hMPDnFe4btmcdMUR/en-US/b5f5c308-b1b4-401c-9067-4dfd5436239f%20-%20A223280-medium-16x9.jpeg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Benefits for Audi"
+                },
+                "cover": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5Ikdd2hMPDnFe4btmcdMUR/en-US/b5f5c308-b1b4-401c-9067-4dfd5436239f%20-%20A223280-medium-16x9.jpeg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Benefits for Audi"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5Ikdd2hMPDnFe4btmcdMUR/en-US/b5f5c308-b1b4-401c-9067-4dfd5436239f%20-%20A223280-medium-16x9.jpeg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Benefits for Audi"
+              },
+              {
+                "title": "On the path to IT-based production",
+                "description": "On the path to IT-based production",
+                "summary": "On the path to IT-based production",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/13N63BaqGqtWvypodGrC68/en-US/icon-virtual-plc-use.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                  "alt": "On the path to IT-based production"
+                },
+                "cover": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/13N63BaqGqtWvypodGrC68/en-US/icon-virtual-plc-use.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                  "alt": "On the path to IT-based production"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/13N63BaqGqtWvypodGrC68/en-US/icon-virtual-plc-use.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                "imageAlt": "On the path to IT-based production"
+              }
+            ]
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "Virtual PLC is revolutio",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  },
+                  {
+                    "label": "Siemens Electronics Works Amberg",
+                    "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies"
+                  },
+                  {
+                    "label": "A case for AI: Water pipeline leaks",
+                    "href": "/en-us/company/insights/va-syd-water-artificial-intelligence"
+                  },
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Artificial intelligence solutions",
+                    "href": "/en-us/company/artificial-intelligence"
+                  },
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  },
+                  {
+                    "label": "Non-revenue Water",
+                    "href": "/en-us/industries/water/non-revenue-water"
+                  },
+                  {
+                    "label": "Robot dogs revolutionize industrial maintenance",
+                    "href": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "Digital twin technology",
+                    "href": "/en-us/company/digital-twin"
+                  },
+                  {
+                    "label": "The digital-first recreational vehicle: Hymer",
+                    "href": "/en-us/company/insights/hymer-digital-first-recreational-vehicle"
+                  },
+                  {
+                    "label": "Gridscale X",
+                    "href": "/en-us/products/gridscale-x"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/en-us/company/insights/hymer-digital-first-recreational-vehicle",
+      "name": "The digital-first recreational vehicle: Hymer",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "products",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "The digital-first recreational vehicle: Hymer",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Artificial intelligence solutions",
+                "href": "/en-us/company/artificial-intelligence",
+                "variant": "link"
+              },
+              {
+                "label": "Digital twin technology",
+                "href": "/en-us/company/digital-twin",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens Electronics Works Amberg",
+                "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "The digital-first recreational vehicle: Hymer",
+            "subtitle": "Fully digitalized product creation",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/52tywaHDvVOGIcEfTG6fMn/8cd300fa2403962860a9d91cc67c1dd7/hymer-vemture-s-landscape.jpg",
+              "alt": "The digital-first recreational vehicle: Hymer | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/52tywaHDvVOGIcEfTG6fMn/8cd300fa2403962860a9d91cc67c1dd7/hymer-vemture-s-landscape.jpg",
+              "alt": "The digital-first recreational vehicle: Hymer | Siemens hero visual"
+            }
+          }
+        },
+        "products": {
+          "type": "CardsGrid",
+          "props": {
+            "variant": "product",
+            "columns": "3col",
+            "density": "normal",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "The digital-first recreational vehicle: Hymer",
+            "subtitle": "Fully digitalized product creation",
+            "items": [
+              {
+                "title": "Fully digitalized product creation",
+                "description": "Fully digitalized product creation",
+                "summary": "Fully digitalized product creation",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/52tywaHDvVOGIcEfTG6fMn/8cd300fa2403962860a9d91cc67c1dd7/hymer-vemture-s-landscape.jpg",
+                  "alt": "Fully digitalized product creation"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/52tywaHDvVOGIcEfTG6fMn/8cd300fa2403962860a9d91cc67c1dd7/hymer-vemture-s-landscape.jpg",
+                  "alt": "Fully digitalized product creation"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/52tywaHDvVOGIcEfTG6fMn/8cd300fa2403962860a9d91cc67c1dd7/hymer-vemture-s-landscape.jpg",
+                "imageAlt": "Fully digitalized product creation"
+              },
+              {
+                "title": "Virtual prototyping",
+                "description": "Virtual prototyping",
+                "summary": "Virtual prototyping",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/52tywaHDvVOGIcEfTG6fMn/en-US/hymer-vemture-s-landscape.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Virtual prototyping"
+                },
+                "cover": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/52tywaHDvVOGIcEfTG6fMn/en-US/hymer-vemture-s-landscape.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Virtual prototyping"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/52tywaHDvVOGIcEfTG6fMn/en-US/hymer-vemture-s-landscape.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Virtual prototyping"
+              },
+              {
+                "title": "Bringing the digital twin alive",
+                "description": "Bringing the digital twin alive",
+                "summary": "Bringing the digital twin alive",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4fVfCKSbl900ZO7weMlFnN/en-US/Hymer-Solid-Edge-2023-06-30-11-39-12.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                  "alt": "Bringing the digital twin alive"
+                },
+                "cover": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4fVfCKSbl900ZO7weMlFnN/en-US/Hymer-Solid-Edge-2023-06-30-11-39-12.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                  "alt": "Bringing the digital twin alive"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4fVfCKSbl900ZO7weMlFnN/en-US/Hymer-Solid-Edge-2023-06-30-11-39-12.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                "imageAlt": "Bringing the digital twin alive"
+              }
+            ]
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "The digital-first recrea",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  },
+                  {
+                    "label": "Siemens Electronics Works Amberg",
+                    "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies"
+                  },
+                  {
+                    "label": "A case for AI: Water pipeline leaks",
+                    "href": "/en-us/company/insights/va-syd-water-artificial-intelligence"
+                  },
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Artificial intelligence solutions",
+                    "href": "/en-us/company/artificial-intelligence"
+                  },
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  },
+                  {
+                    "label": "Non-revenue Water",
+                    "href": "/en-us/industries/water/non-revenue-water"
+                  },
+                  {
+                    "label": "Robot dogs revolutionize industrial maintenance",
+                    "href": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "Digital twin technology",
+                    "href": "/en-us/company/digital-twin"
+                  },
+                  {
+                    "label": "The digital-first recreational vehicle: Hymer",
+                    "href": "/en-us/company/insights/hymer-digital-first-recreational-vehicle"
+                  },
+                  {
+                    "label": "Gridscale X",
+                    "href": "/en-us/products/gridscale-x"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/en-us/company/insights/va-syd-water-artificial-intelligence",
+      "name": "A case for AI: Water pipeline leaks",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "products",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "A case for AI: Water pipeline leaks",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Artificial intelligence solutions",
+                "href": "/en-us/company/artificial-intelligence",
+                "variant": "link"
+              },
+              {
+                "label": "Digital twin technology",
+                "href": "/en-us/company/digital-twin",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens Electronics Works Amberg",
+                "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Artificial Intelligence: Saving water the smart way",
+            "subtitle": "Small leaks with great impact",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/6SSLo6Bz9Ad92z8VxXl1SI/177cf88d28cf8ba7a1a7e90d481c3553/iStock-845980790-1-.jpg",
+              "alt": "A case for AI: Water pipeline leaks | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/6SSLo6Bz9Ad92z8VxXl1SI/177cf88d28cf8ba7a1a7e90d481c3553/iStock-845980790-1-.jpg",
+              "alt": "A case for AI: Water pipeline leaks | Siemens hero visual"
+            }
+          }
+        },
+        "products": {
+          "type": "CardsGrid",
+          "props": {
+            "variant": "product",
+            "columns": "3col",
+            "density": "normal",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Artificial Intelligence: Saving water the smart way",
+            "subtitle": "Small leaks with great impact",
+            "items": [
+              {
+                "title": "Small leaks with great impact",
+                "description": "Small leaks with great impact",
+                "summary": "Small leaks with great impact",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/6SSLo6Bz9Ad92z8VxXl1SI/177cf88d28cf8ba7a1a7e90d481c3553/iStock-845980790-1-.jpg",
+                  "alt": "Small leaks with great impact"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/6SSLo6Bz9Ad92z8VxXl1SI/177cf88d28cf8ba7a1a7e90d481c3553/iStock-845980790-1-.jpg",
+                  "alt": "Small leaks with great impact"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/6SSLo6Bz9Ad92z8VxXl1SI/177cf88d28cf8ba7a1a7e90d481c3553/iStock-845980790-1-.jpg",
+                "imageAlt": "Small leaks with great impact"
+              },
+              {
+                "title": "Improved customer service",
+                "description": "Improved customer service",
+                "summary": "Improved customer service",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/6SSLo6Bz9Ad92z8VxXl1SI/en-US/iStock-845980790-1-.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Improved customer service"
+                },
+                "cover": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/6SSLo6Bz9Ad92z8VxXl1SI/en-US/iStock-845980790-1-.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Improved customer service"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/6SSLo6Bz9Ad92z8VxXl1SI/en-US/iStock-845980790-1-.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Improved customer service"
+              },
+              {
+                "title": "Collaboration leads to an optimal AI solution",
+                "description": "Collaboration leads to an optimal AI solution",
+                "summary": "Collaboration leads to an optimal AI solution",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/0OrQzrUUgaa52D3brShHC/en-US/dd930924-b4e8-41a4-ad70-3f04e0c8e3aa%20-%20VA-SYD-hero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                  "alt": "Collaboration leads to an optimal AI solution"
+                },
+                "cover": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/0OrQzrUUgaa52D3brShHC/en-US/dd930924-b4e8-41a4-ad70-3f04e0c8e3aa%20-%20VA-SYD-hero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                  "alt": "Collaboration leads to an optimal AI solution"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/0OrQzrUUgaa52D3brShHC/en-US/dd930924-b4e8-41a4-ad70-3f04e0c8e3aa%20-%20VA-SYD-hero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                "imageAlt": "Collaboration leads to an optimal AI solution"
+              }
+            ]
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "A case for AI: Water pip",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  },
+                  {
+                    "label": "Siemens Electronics Works Amberg",
+                    "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies"
+                  },
+                  {
+                    "label": "A case for AI: Water pipeline leaks",
+                    "href": "/en-us/company/insights/va-syd-water-artificial-intelligence"
+                  },
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Artificial intelligence solutions",
+                    "href": "/en-us/company/artificial-intelligence"
+                  },
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  },
+                  {
+                    "label": "Non-revenue Water",
+                    "href": "/en-us/industries/water/non-revenue-water"
+                  },
+                  {
+                    "label": "Robot dogs revolutionize industrial maintenance",
+                    "href": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "Digital twin technology",
+                    "href": "/en-us/company/digital-twin"
+                  },
+                  {
+                    "label": "The digital-first recreational vehicle: Hymer",
+                    "href": "/en-us/company/insights/hymer-digital-first-recreational-vehicle"
+                  },
+                  {
+                    "label": "Gridscale X",
+                    "href": "/en-us/products/gridscale-x"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/en-us/industries/water/non-revenue-water",
+      "name": "Non-revenue Water",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "cta",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "Non-revenue Water",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Artificial intelligence solutions",
+                "href": "/en-us/company/artificial-intelligence",
+                "variant": "link"
+              },
+              {
+                "label": "Digital twin technology",
+                "href": "/en-us/company/digital-twin",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens Electronics Works Amberg",
+                "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Reduce non-revenue water by up to 50%",
+            "subtitle": "Unlock significant cost savings",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/6eqdThPM63JsIeiNEJFEjx/368ab2673f3bfe42ffca5a0250dcd61e/non-revenue-water-key-visual-drinking-water-ss665214613-product-og-1200x630.jpg",
+              "alt": "Non-revenue Water | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/6eqdThPM63JsIeiNEJFEjx/368ab2673f3bfe42ffca5a0250dcd61e/non-revenue-water-key-visual-drinking-water-ss665214613-product-og-1200x630.jpg",
+              "alt": "Non-revenue Water | Siemens hero visual"
+            }
+          }
+        },
+        "approach": {
+          "type": "FeatureGrid",
+          "props": {
+            "variant": "3col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Reduce non-revenue water by up to 50%",
+            "subtitle": "Unlock significant cost savings",
+            "items": [
+              {
+                "title": "Unlock significant cost savings",
+                "desc": "Unlock significant cost savings",
+                "description": "Unlock significant cost savings",
+                "icon": "layers",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/3vuQKTI5AmYrSWeDe9l7al/en-US/non-revenue-water-key-visual-drinking-water-ss665214613-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Unlock significant cost savings"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/3vuQKTI5AmYrSWeDe9l7al/en-US/non-revenue-water-key-visual-drinking-water-ss665214613-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Unlock significant cost savings"
+              },
+              {
+                "title": "Skip to main content",
+                "desc": "Skip to main content",
+                "description": "Skip to main content",
+                "icon": "shield",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1o9ngBHstB8LtWXwqtdfNO/en-US/non-revenue-water-siwa-leak-finder-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                  "alt": "Skip to main content"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1o9ngBHstB8LtWXwqtdfNO/en-US/non-revenue-water-siwa-leak-finder-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                "imageAlt": "Skip to main content"
+              },
+              {
+                "title": "Industries",
+                "desc": "Industries",
+                "description": "Industries",
+                "icon": "chart",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1o9ngBHstB8LtWXwqtdfNO/en-US/non-revenue-water-siwa-leak-finder-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                  "alt": "Industries"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1o9ngBHstB8LtWXwqtdfNO/en-US/non-revenue-water-siwa-leak-finder-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                "imageAlt": "Industries"
+              }
+            ]
+          }
+        },
+        "cta": {
+          "type": "LeadCaptureCTA",
+          "props": {
+            "variant": "banner",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Reduce non-revenue water by up to 50%",
+            "subtitle": "Unlock significant cost savings",
+            "cta": {
+              "label": "Explore",
+              "href": "/",
+              "variant": "primary"
+            }
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "Non-revenue Water",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  },
+                  {
+                    "label": "Siemens Electronics Works Amberg",
+                    "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies"
+                  },
+                  {
+                    "label": "A case for AI: Water pipeline leaks",
+                    "href": "/en-us/company/insights/va-syd-water-artificial-intelligence"
+                  },
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Artificial intelligence solutions",
+                    "href": "/en-us/company/artificial-intelligence"
+                  },
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  },
+                  {
+                    "label": "Non-revenue Water",
+                    "href": "/en-us/industries/water/non-revenue-water"
+                  },
+                  {
+                    "label": "Robot dogs revolutionize industrial maintenance",
+                    "href": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "Digital twin technology",
+                    "href": "/en-us/company/digital-twin"
+                  },
+                  {
+                    "label": "The digital-first recreational vehicle: Hymer",
+                    "href": "/en-us/company/insights/hymer-digital-first-recreational-vehicle"
+                  },
+                  {
+                    "label": "Gridscale X",
+                    "href": "/en-us/products/gridscale-x"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/en-us/products/gridscale-x",
+      "name": "Gridscale X",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "products",
+        "cta",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "Gridscale X",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Artificial intelligence solutions",
+                "href": "/en-us/company/artificial-intelligence",
+                "variant": "link"
+              },
+              {
+                "label": "Digital twin technology",
+                "href": "/en-us/company/digital-twin",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens Electronics Works Amberg",
+                "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Gridscale X",
+            "subtitle": "Rethink grid management in radically new ways",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/3KxTpGdAWvwHHrduVb5h0w/043e051d18926c0230881dcbf39b6452/gridscale-x-city-grid-software-illustration-product-og-1200x630.jpg",
+              "alt": "Gridscale X | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/3KxTpGdAWvwHHrduVb5h0w/043e051d18926c0230881dcbf39b6452/gridscale-x-city-grid-software-illustration-product-og-1200x630.jpg",
+              "alt": "Gridscale X | Siemens hero visual"
+            }
+          }
+        },
+        "products": {
+          "type": "CardsGrid",
+          "props": {
+            "variant": "product",
+            "columns": "3col",
+            "density": "normal",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Gridscale X",
+            "subtitle": "Rethink grid management in radically new ways",
+            "items": [
+              {
+                "title": "Rethink grid management in radically new ways",
+                "description": "Rethink grid management in radically new ways",
+                "summary": "Rethink grid management in radically new ways",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/3KxTpGdAWvwHHrduVb5h0w/043e051d18926c0230881dcbf39b6452/gridscale-x-city-grid-software-illustration-product-og-1200x630.jpg",
+                  "alt": "Rethink grid management in radically new ways"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/3KxTpGdAWvwHHrduVb5h0w/043e051d18926c0230881dcbf39b6452/gridscale-x-city-grid-software-illustration-product-og-1200x630.jpg",
+                  "alt": "Rethink grid management in radically new ways"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/3KxTpGdAWvwHHrduVb5h0w/043e051d18926c0230881dcbf39b6452/gridscale-x-city-grid-software-illustration-product-og-1200x630.jpg",
+                "imageAlt": "Rethink grid management in radically new ways"
+              },
+              {
+                "title": "Explore products",
+                "description": "Explore products",
+                "summary": "Explore products",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/2B5q7L1aK6Jynr3MQwwpnH/341ce44b65b1ce7604428b64b45d40fd/gridscale-x-city-grid-software-illustration-product-tc-1200x600.jpg",
+                  "alt": "Explore products"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/2B5q7L1aK6Jynr3MQwwpnH/341ce44b65b1ce7604428b64b45d40fd/gridscale-x-city-grid-software-illustration-product-tc-1200x600.jpg",
+                  "alt": "Explore products"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/2B5q7L1aK6Jynr3MQwwpnH/341ce44b65b1ce7604428b64b45d40fd/gridscale-x-city-grid-software-illustration-product-tc-1200x600.jpg",
+                "imageAlt": "Explore products"
+              },
+              {
+                "title": "Skip to main content",
+                "description": "Skip to main content",
+                "summary": "Skip to main content",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4fLOp3Jvw7SFhezMC7cbpk/en-US/gridscale-x-city-grid-software-illustration-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Skip to main content"
+                },
+                "cover": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4fLOp3Jvw7SFhezMC7cbpk/en-US/gridscale-x-city-grid-software-illustration-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Skip to main content"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4fLOp3Jvw7SFhezMC7cbpk/en-US/gridscale-x-city-grid-software-illustration-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Skip to main content"
+              }
+            ]
+          }
+        },
+        "cta": {
+          "type": "LeadCaptureCTA",
+          "props": {
+            "variant": "banner",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Gridscale X",
+            "subtitle": "Rethink grid management in radically new ways",
+            "cta": {
+              "label": "Explore",
+              "href": "/",
+              "variant": "primary"
+            }
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "Gridscale X",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  },
+                  {
+                    "label": "Siemens Electronics Works Amberg",
+                    "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies"
+                  },
+                  {
+                    "label": "A case for AI: Water pipeline leaks",
+                    "href": "/en-us/company/insights/va-syd-water-artificial-intelligence"
+                  },
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Artificial intelligence solutions",
+                    "href": "/en-us/company/artificial-intelligence"
+                  },
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  },
+                  {
+                    "label": "Non-revenue Water",
+                    "href": "/en-us/industries/water/non-revenue-water"
+                  },
+                  {
+                    "label": "Robot dogs revolutionize industrial maintenance",
+                    "href": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "Digital twin technology",
+                    "href": "/en-us/company/digital-twin"
+                  },
+                  {
+                    "label": "The digital-first recreational vehicle: Hymer",
+                    "href": "/en-us/company/insights/hymer-digital-first-recreational-vehicle"
+                  },
+                  {
+                    "label": "Gridscale X",
+                    "href": "/en-us/products/gridscale-x"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/en-us/products/simatic/s7-1500v",
+      "name": "SIMATIC S7-1500V Virtual PLC",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "products",
+        "cta",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "SIMATIC S7-1500V Virtual PLC - Software PLC",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Artificial intelligence solutions",
+                "href": "/en-us/company/artificial-intelligence",
+                "variant": "link"
+              },
+              {
+                "label": "Digital twin technology",
+                "href": "/en-us/company/digital-twin",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens Electronics Works Amberg",
+                "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "SIMATIC S7-1500V Virtual PLC",
+            "subtitle": "Why Virtual PLC?",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/7nb7ns5FQKQiSwvMugXRKR/e7228b0a0a1525ed86ee5d735f993e07/simatic-s7-1500v-product-og-1200x630.jpg",
+              "alt": "SIMATIC S7-1500V Virtual PLC - Software PLC | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/7nb7ns5FQKQiSwvMugXRKR/e7228b0a0a1525ed86ee5d735f993e07/simatic-s7-1500v-product-og-1200x630.jpg",
+              "alt": "SIMATIC S7-1500V Virtual PLC - Software PLC | Siemens hero visual"
+            }
+          }
+        },
+        "products": {
+          "type": "CardsGrid",
+          "props": {
+            "variant": "product",
+            "columns": "3col",
+            "density": "normal",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "SIMATIC S7-1500V Virtual PLC",
+            "subtitle": "Why Virtual PLC?",
+            "items": [
+              {
+                "title": "Why Virtual PLC?",
+                "description": "Why Virtual PLC?",
+                "summary": "Why Virtual PLC?",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/7nb7ns5FQKQiSwvMugXRKR/e7228b0a0a1525ed86ee5d735f993e07/simatic-s7-1500v-product-og-1200x630.jpg",
+                  "alt": "Why Virtual PLC?"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/7nb7ns5FQKQiSwvMugXRKR/e7228b0a0a1525ed86ee5d735f993e07/simatic-s7-1500v-product-og-1200x630.jpg",
+                  "alt": "Why Virtual PLC?"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/7nb7ns5FQKQiSwvMugXRKR/e7228b0a0a1525ed86ee5d735f993e07/simatic-s7-1500v-product-og-1200x630.jpg",
+                "imageAlt": "Why Virtual PLC?"
+              },
+              {
+                "title": "Key benefits",
+                "description": "Key benefits",
+                "summary": "Key benefits",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/5sNfU2M5ZkNELttmziUNvs/176049846c479b0e44d97c029e3beefc/simatic-s7-1500v-product-tc-1200x600.jpg",
+                  "alt": "Key benefits"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/5sNfU2M5ZkNELttmziUNvs/176049846c479b0e44d97c029e3beefc/simatic-s7-1500v-product-tc-1200x600.jpg",
+                  "alt": "Key benefits"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/5sNfU2M5ZkNELttmziUNvs/176049846c479b0e44d97c029e3beefc/simatic-s7-1500v-product-tc-1200x600.jpg",
+                "imageAlt": "Key benefits"
+              },
+              {
+                "title": "Get started",
+                "description": "Get started",
+                "summary": "Get started",
+                "cta": {
+                  "label": "Details",
+                  "href": "/"
+                },
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/6R64q5RHEjbQQ8YX5UlglI/en-US/Icon-nahtlose-Integration-TIA-Portal.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                  "alt": "Get started"
+                },
+                "cover": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/6R64q5RHEjbQQ8YX5UlglI/en-US/Icon-nahtlose-Integration-TIA-Portal.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                  "alt": "Get started"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/6R64q5RHEjbQQ8YX5UlglI/en-US/Icon-nahtlose-Integration-TIA-Portal.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                "imageAlt": "Get started"
+              }
+            ]
+          }
+        },
+        "cta": {
+          "type": "LeadCaptureCTA",
+          "props": {
+            "variant": "banner",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "SIMATIC S7-1500V Virtual PLC",
+            "subtitle": "Why Virtual PLC?",
+            "cta": {
+              "label": "Explore",
+              "href": "/",
+              "variant": "primary"
+            }
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "SIMATIC S7-1500V Virtual",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  },
+                  {
+                    "label": "Siemens Electronics Works Amberg",
+                    "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies"
+                  },
+                  {
+                    "label": "A case for AI: Water pipeline leaks",
+                    "href": "/en-us/company/insights/va-syd-water-artificial-intelligence"
+                  },
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Artificial intelligence solutions",
+                    "href": "/en-us/company/artificial-intelligence"
+                  },
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  },
+                  {
+                    "label": "Non-revenue Water",
+                    "href": "/en-us/industries/water/non-revenue-water"
+                  },
+                  {
+                    "label": "Robot dogs revolutionize industrial maintenance",
+                    "href": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "Digital twin technology",
+                    "href": "/en-us/company/digital-twin"
+                  },
+                  {
+                    "label": "The digital-first recreational vehicle: Hymer",
+                    "href": "/en-us/company/insights/hymer-digital-first-recreational-vehicle"
+                  },
+                  {
+                    "label": "Gridscale X",
+                    "href": "/en-us/products/gridscale-x"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html",
+      "name": "Robot dogs revolutionize industrial maintenance",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "socialproof",
+        "cta",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "Robot dogs revolutionize industrial maintenance",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Artificial intelligence solutions",
+                "href": "/en-us/company/artificial-intelligence",
+                "variant": "link"
+              },
+              {
+                "label": "Digital twin technology",
+                "href": "/en-us/company/digital-twin",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens Electronics Works Amberg",
+                "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Guarding plant: safety &amp; reliability with Robot dogs",
+            "subtitle": "Collaboration: More than the sum of its parts",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/6yNxJ8scc06fPBuKrGVGJl/ace0c2a15e91206484eb31a596b19b84/anymal-robot-going-to-inspection-mission.jpg",
+              "alt": "Robot dogs revolutionize industrial maintenance | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/6yNxJ8scc06fPBuKrGVGJl/ace0c2a15e91206484eb31a596b19b84/anymal-robot-going-to-inspection-mission.jpg",
+              "alt": "Robot dogs revolutionize industrial maintenance | Siemens hero visual"
+            }
+          }
+        },
+        "approach": {
+          "type": "FeatureGrid",
+          "props": {
+            "variant": "3col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Guarding plant: safety &amp; reliability with Robot dogs",
+            "subtitle": "Collaboration: More than the sum of its parts",
+            "items": [
+              {
+                "title": "Collaboration",
+                "desc": "More than the sum of its parts",
+                "description": "More than the sum of its parts",
+                "icon": "layers",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1izNEADUEHa0HVghnncqF6/en-US/anymal-x-inspecting-mission-outdoors.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                  "alt": "Collaboration"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1izNEADUEHa0HVghnncqF6/en-US/anymal-x-inspecting-mission-outdoors.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                "imageAlt": "Collaboration"
+              },
+              {
+                "title": "Inspection on command",
+                "desc": "AMRs eases data collection and improves sustainability",
+                "description": "AMRs eases data collection and improves sustainability",
+                "icon": "shield",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/3UBM6vOK33rCMTNos8HJzR/en-US/comos-mobile-worker-icon-product-dam-tc-1200x600.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                  "alt": "Inspection on command"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/3UBM6vOK33rCMTNos8HJzR/en-US/comos-mobile-worker-icon-product-dam-tc-1200x600.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                "imageAlt": "Inspection on command"
+              },
+              {
+                "title": "Real-time data provides insight and reduces backlog",
+                "desc": "Real-time data provides insight and reduces backlog",
+                "description": "Real-time data provides insight and reduces backlog",
+                "icon": "chart",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/3UBM6vOK33rCMTNos8HJzR/en-US/comos-mobile-worker-icon-product-dam-tc-1200x600.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                  "alt": "Real-time data provides insight and reduces backlog"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/3UBM6vOK33rCMTNos8HJzR/en-US/comos-mobile-worker-icon-product-dam-tc-1200x600.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                "imageAlt": "Real-time data provides insight and reduces backlog"
+              }
+            ]
+          }
+        },
+        "socialproof": {
+          "type": "TestimonialsGrid",
+          "props": {
+            "variant": "2col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Building for world-class innovators",
+            "items": [
+              {
+                "quote": "They curated a lifestyle, not only a space.",
+                "name": "Alexander Vane",
+                "role": "CEO",
+                "avatar": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/6yNxJ8scc06fPBuKrGVGJl/en-US/anymal-robot-going-to-inspection-mission.jpg?auto=format%2Ccompress&amp;fit=crop&amp;crop=faces%2Cedges&amp;w=320&amp;h=360&amp;q=60",
+                  "alt": "Alexander Vane"
+                }
+              },
+              {
+                "quote": "A masterclass in restraint and elegance.",
+                "name": "Isabelle Dubois",
+                "role": "Founder",
+                "avatar": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/6yNxJ8scc06fPBuKrGVGJl/en-US/anymal-robot-going-to-inspection-mission.jpg?auto=format%2Ccompress&amp;fit=crop&amp;crop=faces%2Cedges&amp;w=320&amp;h=360&amp;q=60",
+                  "alt": "Isabelle Dubois"
+                }
+              }
+            ],
+            "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/65JJ7XIrbbX4Dk5FXhPyyA/en-US/partner-ecosystem-key-visual-product-tc-1200x600.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+            "imageAlt": "Results visual"
+          }
+        },
+        "cta": {
+          "type": "LeadCaptureCTA",
+          "props": {
+            "variant": "banner",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Guarding plant: safety &amp; reliability with Robot dogs",
+            "subtitle": "Collaboration: More than the sum of its parts",
+            "cta": {
+              "label": "Explore",
+              "href": "/",
+              "variant": "primary"
+            }
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "Robot dogs revolutionize",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  },
+                  {
+                    "label": "Siemens Electronics Works Amberg",
+                    "href": "/en-us/company/insights/electronics-digital-enterprise-future-technologies"
+                  },
+                  {
+                    "label": "A case for AI: Water pipeline leaks",
+                    "href": "/en-us/company/insights/va-syd-water-artificial-intelligence"
+                  },
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Artificial intelligence solutions",
+                    "href": "/en-us/company/artificial-intelligence"
+                  },
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  },
+                  {
+                    "label": "Non-revenue Water",
+                    "href": "/en-us/industries/water/non-revenue-water"
+                  },
+                  {
+                    "label": "Robot dogs revolutionize industrial maintenance",
+                    "href": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "Digital twin technology",
+                    "href": "/en-us/company/digital-twin"
+                  },
+                  {
+                    "label": "The digital-first recreational vehicle: Hymer",
+                    "href": "/en-us/company/insights/hymer-digital-first-recreational-vehicle"
+                  },
+                  {
+                    "label": "Gridscale X",
+                    "href": "/en-us/products/gridscale-x"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    }
+  ],
+  "siteTemplates": [
+    {
+      "path": "/",
+      "name": "Siemens",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "products",
+        "socialproof",
+        "cta",
+        "footer"
+      ]
+    },
+    {
+      "path": "/en-us",
+      "name": "Siemens",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "cta",
+        "footer"
+      ]
+    },
+    {
+      "path": "/en-us/company/artificial-intelligence",
+      "name": "Artificial intelligence solutions",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "products",
+        "cta",
+        "footer"
+      ]
+    },
+    {
+      "path": "/en-us/company/digital-twin",
+      "name": "Digital twin technology",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "socialproof",
+        "cta",
+        "footer"
+      ]
+    },
+    {
+      "path": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+      "name": "Siemens Electronics Works Amberg",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "products",
+        "footer"
+      ]
+    },
+    {
+      "path": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+      "name": "Virtual PLC is revolutionizing production at Audi",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "products",
+        "footer"
+      ]
+    },
+    {
+      "path": "/en-us/company/insights/hymer-digital-first-recreational-vehicle",
+      "name": "The digital-first recreational vehicle: Hymer",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "products",
+        "footer"
+      ]
+    },
+    {
+      "path": "/en-us/company/insights/va-syd-water-artificial-intelligence",
+      "name": "A case for AI: Water pipeline leaks",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "products",
+        "footer"
+      ]
+    },
+    {
+      "path": "/en-us/industries/water/non-revenue-water",
+      "name": "Non-revenue Water",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "cta",
+        "footer"
+      ]
+    },
+    {
+      "path": "/en-us/products/gridscale-x",
+      "name": "Gridscale X",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "products",
+        "cta",
+        "footer"
+      ]
+    },
+    {
+      "path": "/en-us/products/simatic/s7-1500v",
+      "name": "SIMATIC S7-1500V Virtual PLC",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "products",
+        "cta",
+        "footer"
+      ]
+    },
+    {
+      "path": "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html",
+      "name": "Robot dogs revolutionize industrial maintenance",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "socialproof",
+        "cta",
+        "footer"
+      ]
+    }
+  ]
+}

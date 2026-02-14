@@ -29,6 +29,7 @@
             "headingFont": { "type": "string" },
             "bodyFont": { "type": "string" },
             "textAlign": { "type": "string", "enum": ["left", "center"] },
+            "featureFirst": { "type": "boolean" },
             "items": {
               "type": "array",
               "minItems": 2,

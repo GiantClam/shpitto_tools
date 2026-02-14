@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "siemens-home",
+      "description": "Siemens official website homepage template",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "story",
+        "approach",
+        "products",
+        "socialproof",
+        "cta",
+        "footer"
+      ],
+      "routes": [
+        "/",
+        "/en-us",
+        "/en-us/company",
+        "/en-us/company/about",
+        "/en-us/company/artificial-intelligence",
+        "/en-us/company/artificial-intelligence/ai-glossary",
+        "/en-us/company/digital-transformation",
+        "/en-us/company/digital-twin",
+        "/en-us/company/history-heritage",
+        "/en-us/company/infrastructure",
+        "/en-us/company/insights",
+        "/en-us/company/insights/bustanica-smart-sustainable-food-production"
+      ],
+      "prompt": "Template selector token: profile_selector_auto-siemens-home.\nGenerate an enterprise industrial technology homepage template with navigation, hero, capabilities, product highlights, trust proof, CTA, and footer.\nBuild a multi-page site with routes: /, /en-us, /en-us/company, /en-us/company/about, /en-us/company/artificial-intelligence, /en-us/company/artificial-intelligence/ai-glossary, /en-us/company/digital-transformation, /en-us/company/digital-twin, /en-us/company/history-heritage, /en-us/company/infrastructure, /en-us/company/insights, /en-us/company/insights/bustanica-smart-sustainable-food-production. Keep navigation and CTA links using these routes (not only hash anchors).\nTotal routes to realize: 12.\nRoute section blueprint: /: navigation > hero > story > approach > products > socialproof > cta > footer; /en-us: navigation > hero > story > approach > cta > footer; /en-us/company: navigation > hero > story > approach > socialproof > cta > footer; /en-us/company/about: navigation > hero > story > approach > socialproof > cta > footer; /en-us/company/artificial-intelligence: navigation > hero > story > approach > products > cta > footer; /en-us/company/artificial-intelligence/ai-glossary: navigation > hero > story > approach > socialproof > cta > footer; /en-us/company/digital-transformation: navigation > hero > story > approach > socialproof > cta > footer; /en-us/company/digital-twin: navigation > hero > story > approach > socialproof > cta > footer; /en-us/company/history-heritage: navigation > hero > story > approach > socialproof > cta > footer; /en-us/company/infrastructure: navigation > hero > story > approach > socialproof > cta > footer; /en-us/company/insights: navigation > hero > story > products > footer; /en-us/company/insights/bustanica-smart-sustainable-food-production: navigation > hero > story > products > footer.\nTemplate identity hints: siemens-home | siemens.com | auto_siemens-home | Siemens home | Siemens.\nStyle constraints: palette=deep-blue-cyan, typography=clean-sans + strong-heading.\nLayout motifs: mega-nav, hero-background-text, feature-grid, product-cards, banner-cta, structured-footer.\nPrimary copy cues (H1): Audi is virtualizing the shop floor with virtual PLC | Audi virtualizes shop floor with Siemens PLC | Gridscale X | Guarding plant: safety &amp; reliability with Robot dogs.\nSecondary copy cues (H2): Decoding the future of energy | Guarding the plant: Robot dogs improve safety | Report: The next era of generative AI | Upgrade reality | Discover products and services | A network of problem solvers.\nPer-page copy blueprint: / => Siemens | hero: Audi is virtualizing the shop floor with virtual PLC | sub: Decoding the future of energy; /en-us => Siemens | hero: Decoding the future of energy | sub: Guarding the plant: Robot dogs improve safety; /en-us/company => Company | hero: Audi virtualizes shop floor with Siemens PLC | sub: Decoding the future of energy; /en-us/company/about => About | hero: Gridscale X | sub: Decoding the future of energy; /en-us/company/artificial-intelligence => Artificial intelligence solutions | hero: Siemens is accelerating the Industrial AI revolution | sub: Industrial AI in the real world; /en-us/company/artificial-intelligence/ai-glossary => Ai Glossary | hero: Guarding plant: safety & reliability with Robot dogs | sub: Decoding the future of energy; /en-us/company/digital-transformation => Digital Transformation | hero: Artificial Intelligence: Saving water the smart way | sub: Decoding the future of energy; /en-us/company/digital-twin => Digital twin technology | hero: Digital twin technology | sub: Doing more with digital twins; /en-us/company/history-heritage => History Heritage | hero: Reduce non-revenue water by up to 50% | sub: Decoding the future of energy; /en-us/company/infrastructure => Infrastructure | hero: The digital-first recreational vehicle: Hymer | sub: Decoding the future of energy\nSource visual fingerprint: dominant colors=#ffffff, #d1bba8, #e8e1db, #f9f8f7, #cd964b, #fffffe, luminance=0.994, darkTheme=false.\nNavigation structure requirement: build multi-level menu (dropdown/mega-menu) with visible child links, not flat single-level nav.\nHero structure requirement: use background-image + text overlay composition first (not a plain split with detached card).\nHero interaction requirement: if source hero rotates, implement hero carousel/slide switching with source-like images.\nBrand palette requirement: deep navy + cyan + white (avoid generic grayscale or random accent colors).\nMatch the source site with high fidelity: theme colors, section ordering, copy tone, spacing rhythm, and block hierarchy should closely follow source references."
+    }
+  ]
+}

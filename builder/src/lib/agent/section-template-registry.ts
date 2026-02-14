@@ -19,11 +19,26 @@ export type SectionTemplateBlock = {
   props: Record<string, unknown>;
 };
 
+export type SiteTemplatePage = {
+  path: string;
+  name: string;
+  requiredCategories: SectionKind[];
+};
+
+export type PageTemplateSpec = {
+  path: string;
+  name: string;
+  requiredCategories: SectionKind[];
+  templates: Partial<Record<SectionKind, SectionTemplateBlock>>;
+};
+
 export type StyleProfile = {
   id: string;
   name: string;
   keywords: string[];
   templates: Partial<Record<SectionKind, SectionTemplateBlock>>;
+  siteTemplates?: SiteTemplatePage[];
+  pageSpecs?: PageTemplateSpec[];
 };
 
 const normalizeToken = (value: string) => value.trim().toLowerCase().replace(/[^a-z0-9]+/g, "");
@@ -64,7 +79,7 @@ const inferSectionKind = (sectionType: string, sectionId: string): SectionKind |
 
 const auraEditorialProfile: StyleProfile = {
   id: "aura_editorial_luxury",
-  name: "Aura Editorial Luxury",
+  name: "Shpitto Editorial Luxury",
   keywords: [
     "aura",
     "sixtine",
@@ -141,7 +156,7 @@ const auraEditorialProfile: StyleProfile = {
           {
             quote: "They curated a lifestyle, not only a space.",
             name: "Alexander Vane",
-            role: "CEO at Aura",
+            role: "CEO at Shpitto",
           },
           {
             quote: "A masterclass in restraint and elegance.",
@@ -205,6 +220,117 @@ const validateTemplateBlock = (value: unknown): SectionTemplateBlock | null => {
   return { type: value.type.trim(), props: value.props };
 };
 
+const toRequiredCategories = (value: unknown): SectionKind[] => {
+  const rawCategories = Array.isArray((value as Record<string, unknown>)?.requiredCategories)
+    ? ((value as Record<string, unknown>).requiredCategories as unknown[])
+    : Array.isArray((value as Record<string, unknown>)?.required_categories)
+      ? ((value as Record<string, unknown>).required_categories as unknown[])
+      : [];
+  const requiredCategories = rawCategories
+    .map((entry) => normalizeSectionKindToken(entry))
+    .filter((entry): entry is SectionKind => Boolean(entry));
+  return Array.from(new Set(requiredCategories));
+};
+
+const validateTemplateMap = (value: unknown): Partial<Record<SectionKind, SectionTemplateBlock>> => {
+  if (!isRecord(value)) return {};
+  const templates: Partial<Record<SectionKind, SectionTemplateBlock>> = {};
+  for (const kind of sectionKinds) {
+    if (!(kind in value)) continue;
+    const block = validateTemplateBlock(value[kind]);
+    if (!block) continue;
+    templates[kind] = block;
+  }
+  return templates;
+};
+
+const validateSectionSpecsMap = (value: unknown): Partial<Record<SectionKind, SectionTemplateBlock>> => {
+  if (!isRecord(value)) return {};
+  const templates: Partial<Record<SectionKind, SectionTemplateBlock>> = {};
+  for (const kind of sectionKinds) {
+    if (!(kind in value)) continue;
+    const entry = value[kind];
+    if (!isRecord(entry)) continue;
+    const blockType =
+      typeof entry.block_type === "string" && entry.block_type.trim()
+        ? entry.block_type.trim()
+        : typeof entry.blockType === "string" && entry.blockType.trim()
+          ? entry.blockType.trim()
+          : "";
+    const props = isRecord(entry.defaults)
+      ? entry.defaults
+      : isRecord(entry.props)
+        ? entry.props
+        : null;
+    if (!blockType || !props) continue;
+    templates[kind] = { type: blockType, props };
+  }
+  return templates;
+};
+
+const normalizeTemplatePagePath = (value: unknown) => {
+  const raw = typeof value === "string" ? value.trim() : "";
+  if (!raw) return "/";
+  const withSlash = raw.startsWith("/") ? raw : `/${raw}`;
+  const normalized = withSlash.replace(/\/{2,}/g, "/").replace(/\/+$/g, "") || "/";
+  return normalized === "" ? "/" : normalized;
+};
+
+const normalizeSectionKindToken = (value: unknown): SectionKind | null => {
+  const token = normalizeToken(typeof value === "string" ? value : "");
+  const found = sectionKinds.find((kind) => normalizeToken(kind) === token);
+  return found ?? null;
+};
+
+const validateSiteTemplatePage = (value: unknown): SiteTemplatePage | null => {
+  if (!isRecord(value)) return null;
+  const path = normalizeTemplatePagePath(value.path);
+  const name =
+    typeof value.name === "string" && value.name.trim()
+      ? value.name.trim()
+      : path === "/"
+        ? "Home"
+        : path
+            .split("/")
+            .filter(Boolean)
+            .pop()
+            ?.replace(/[-_]+/g, " ")
+            .replace(/\b\w/g, (ch) => ch.toUpperCase()) || "Page";
+  const requiredCategories = toRequiredCategories(value);
+  if (!requiredCategories.length) return null;
+  return { path, name, requiredCategories: Array.from(new Set(requiredCategories)) };
+};
+
+const validatePageTemplateSpec = (value: unknown): PageTemplateSpec | null => {
+  if (!isRecord(value)) return null;
+  const path = normalizeTemplatePagePath(value.path);
+  const name =
+    typeof value.name === "string" && value.name.trim()
+      ? value.name.trim()
+      : path === "/"
+        ? "Home"
+        : path
+            .split("/")
+            .filter(Boolean)
+            .pop()
+            ?.replace(/[-_]+/g, " ")
+            .replace(/\b\w/g, (ch) => ch.toUpperCase()) || "Page";
+  let requiredCategories = toRequiredCategories(value);
+  const templatesFromTemplates = validateTemplateMap(value.templates);
+  const templatesFromSectionSpecs = validateSectionSpecsMap(value.section_specs ?? value.sectionSpecs);
+  const templates = Object.keys(templatesFromTemplates).length ? templatesFromTemplates : templatesFromSectionSpecs;
+  if (!requiredCategories.length && Object.keys(templates).length) {
+    requiredCategories = sectionKinds.filter((kind) => Boolean(templates[kind]));
+  }
+  if (!requiredCategories.length) return null;
+  return {
+    path,
+    name,
+    requiredCategories,
+    templates,
+  };
+};
+
 const validateStyleProfile = (value: unknown): StyleProfile | null => {
   if (!isRecord(value)) return null;
   if (typeof value.id !== "string" || !value.id.trim()) return null;
@@ -216,20 +342,32 @@ const validateStyleProfile = (value: unknown): StyleProfile | null => {
   if (!keywords.length) return null;
   if (!isRecord(value.templates)) return null;
 
-  const templates: Partial<Record<SectionKind, SectionTemplateBlock>> = {};
-  for (const kind of sectionKinds) {
-    if (!(kind in value.templates)) continue;
-    const block = validateTemplateBlock(value.templates[kind]);
-    if (!block) continue;
-    templates[kind] = block;
-  }
+  const templates = validateTemplateMap(value.templates);
   if (!Object.keys(templates).length) return null;
+  const rawSiteTemplates = Array.isArray(value.siteTemplates)
+    ? value.siteTemplates
+    : Array.isArray(value.site_templates)
+      ? value.site_templates
+      : [];
+  const siteTemplates = rawSiteTemplates
+    .map((entry) => validateSiteTemplatePage(entry))
+    .filter((entry): entry is SiteTemplatePage => Boolean(entry));
+  const rawPageSpecs = Array.isArray(value.pageSpecs)
+    ? value.pageSpecs
+    : Array.isArray(value.page_specs)
+      ? value.page_specs
+      : [];
+  const pageSpecs = rawPageSpecs
+    .map((entry) => validatePageTemplateSpec(entry))
+    .filter((entry): entry is PageTemplateSpec => Boolean(entry));
 
   return {
     id: value.id.trim(),
     name: value.name.trim(),
     keywords,
     templates,
+    ...(siteTemplates.length ? { siteTemplates } : {}),
+    ...(pageSpecs.length ? { pageSpecs } : {}),
   };
 };
 
@@ -342,6 +480,7 @@ export const selectStyleProfile = (prompt: string): StyleProfile | null => {
 
 export const resolveSectionTemplateBlock = (input: {
   prompt: string;
+  pagePath?: string;
   pageName: string;
   sectionType: string;
   sectionId: string;
@@ -355,7 +494,11 @@ export const resolveSectionTemplateBlock = (input: {
   const kind = inferSectionKind(input.sectionType, input.sectionId);
   if (!kind) return null;
 
-  const template = profile.templates[kind];
+  const normalizedPagePath = normalizeTemplatePagePath(input.pagePath);
+  const pageSpec =
+    Array.isArray(profile.pageSpecs) &&
+    profile.pageSpecs.find((entry) => normalizeTemplatePagePath(entry.path) === normalizedPagePath);
+  const template = pageSpec?.templates?.[kind] ?? profile.templates[kind];
   if (!template) return null;
 
   const props = cloneProps(template.props);

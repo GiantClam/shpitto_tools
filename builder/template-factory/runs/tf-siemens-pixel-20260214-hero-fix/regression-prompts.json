@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "siemens-home",
+      "description": "Siemens official website homepage template",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "products",
+        "socialproof",
+        "cta",
+        "footer"
+      ],
+      "routes": [
+        "/",
+        "/en-us",
+        "/en-us/company/artificial-intelligence",
+        "/en-us/company/digital-twin",
+        "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+        "/en-us/company/insights/factory-automation-virtual-plc-audi",
+        "/en-us/company/insights/hymer-digital-first-recreational-vehicle",
+        "/en-us/company/insights/va-syd-water-artificial-intelligence",
+        "/en-us/industries/water/non-revenue-water",
+        "/en-us/products/gridscale-x",
+        "/en-us/products/simatic/s7-1500v",
+        "/global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html"
+      ],
+      "prompt": "Template selector token: profile_selector_auto-siemens-home.\nGenerate an enterprise industrial technology homepage template with navigation, hero, capabilities, product highlights, trust proof, CTA, and footer.\nBuild a multi-page site with routes: /, /en-us, /en-us/company/artificial-intelligence, /en-us/company/digital-twin, /en-us/company/insights/electronics-digital-enterprise-future-technologies, /en-us/company/insights/factory-automation-virtual-plc-audi, /en-us/company/insights/hymer-digital-first-recreational-vehicle, /en-us/company/insights/va-syd-water-artificial-intelligence, /en-us/industries/water/non-revenue-water, /en-us/products/gridscale-x, /en-us/products/simatic/s7-1500v, /global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html. Keep navigation and CTA links using these routes (not only hash anchors).\nTotal routes to realize: 12.\nRoute section blueprint: /: navigation > hero > approach > products > socialproof > cta > footer; /en-us: navigation > hero > approach > cta > footer; /en-us/company/artificial-intelligence: navigation > hero > approach > products > cta > footer; /en-us/company/digital-twin: navigation > hero > approach > socialproof > cta > footer; /en-us/company/insights/electronics-digital-enterprise-future-technologies: navigation > hero > products > footer; /en-us/company/insights/factory-automation-virtual-plc-audi: navigation > hero > products > footer; /en-us/company/insights/hymer-digital-first-recreational-vehicle: navigation > hero > products > footer; /en-us/company/insights/va-syd-water-artificial-intelligence: navigation > hero > products > footer; /en-us/industries/water/non-revenue-water: navigation > hero > approach > cta > footer; /en-us/products/gridscale-x: navigation > hero > products > cta > footer; /en-us/products/simatic/s7-1500v: navigation > hero > products > cta > footer; /global/en/company/stories/industry/2024/anybotics-roboverse-reply-amr-autonomous-mobile-robot-maintenance-ai.html: navigation > hero > approach > socialproof > cta > footer.\nTemplate identity hints: siemens-home | siemens.com | auto_siemens-home | Siemens home | Siemens.\nStyle constraints: palette=steel-neutral, typography=sans-bold + sans-body.\nLayout motifs: hero-split, metrics-grid, product-cards, trust-grid, banner-cta.\nPrimary copy cues (H1): Audi is virtualizing the shop floor with virtual PLC | Audi virtualizes shop floor with Siemens PLC | Gridscale X | Guarding plant: safety &amp; reliability with Robot dogs.\nSecondary copy cues (H2): Decoding the future of energy | Guarding the plant: Robot dogs improve safety | Report: The next era of generative AI | Upgrade reality | Discover products and services | A network of problem solvers.\nPer-page copy blueprint: / => Siemens | hero: Audi is virtualizing the shop floor with virtual PLC | sub: Decoding the future of energy; /en-us => Siemens | hero: Siemens home | sub: Decoding the future of energy; /en-us/company/artificial-intelligence => Artificial intelligence solutions | hero: Siemens is accelerating the Industrial AI revolution | sub: Industrial AI in the real world; /en-us/company/digital-twin => Digital twin technology | hero: Digital twin technology | sub: Doing more with digital twins; /en-us/company/insights/electronics-digital-enterprise-future-technologies => Siemens Electronics Works Amberg | hero: Digital transformation: Leading by example | sub: Industrial Edge computing and AI for increased throughput; /en-us/company/insights/factory-automation-virtual-plc-audi => Virtual PLC is revolutionizing production at Audi | hero: Audi virtualizes shop floor with Siemens PLC | sub: Siemens’ solutions meet Audi’s goals; /en-us/company/insights/hymer-digital-first-recreational-vehicle => The digital-first recreational vehicle: Hymer | hero: The digital-first recreational vehicle: Hymer | sub: Fully digitalized product creation; /en-us/company/insights/va-syd-water-artificial-intelligence => A case for AI: Water pipeline leaks | hero: Artificial Intelligence: Saving water the smart way | sub: Small leaks with great impact; /en-us/industries/water/non-revenue-water => Non-revenue Water | hero: Reduce non-revenue water by up to 50% | sub: Unlock significant cost savings; /en-us/products/gridscale-x => Gridscale X | hero: Gridscale X | sub: Rethink grid management in radically new ways\nSource visual fingerprint: dominant colors=#ffffff, #d1bba8, #e8e1db, #f9f8f7, #cd964b, #fffffe, luminance=0.994, darkTheme=false.\nMatch the source site with high fidelity: theme colors, section ordering, copy tone, spacing rhythm, and block hierarchy should closely follow source references."
+    }
+  ]
+}

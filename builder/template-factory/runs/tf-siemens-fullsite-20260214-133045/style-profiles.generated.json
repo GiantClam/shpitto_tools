@@ -1,0 +1,3069 @@
+{
+  "generatedAt": "2026-02-14T05:36:01.699Z",
+  "runId": "tf-siemens-fullsite-20260214-133045",
+  "manifestPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/sites.siemens.json",
+  "profiles": [
+    {
+      "id": "auto_siemens-home",
+      "name": "Siemens official website homepage template",
+      "keywords": [
+        "siemenshome",
+        "siemens",
+        "home",
+        "siemenscom",
+        "com",
+        "enterprise",
+        "industrial",
+        "technology",
+        "template",
+        "navigation",
+        "hero",
+        "capabilities",
+        "product",
+        "highlights",
+        "trust",
+        "proof",
+        "cta",
+        "footer",
+        "official",
+        "audi",
+        "virtualizing",
+        "shop",
+        "floor",
+        "virtual",
+        "profile_selector_auto-siemens-home",
+        "auto_siemens-home",
+        "siemens-home"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "Siemens home",
+            "links": [
+              {
+                "label": "Home",
+                "href": "#top",
+                "variant": "link"
+              },
+              {
+                "label": "Services",
+                "href": "#services",
+                "variant": "link"
+              },
+              {
+                "label": "About",
+                "href": "#about",
+                "variant": "link"
+              },
+              {
+                "label": "Contact",
+                "href": "#contact",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Get Started",
+                "href": "#contact",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Generate an enterprise industrial technology homepage template with navigation",
+            "subtitle": "Designed for Siemens home | Siemens with a high-consistency block architecture.",
+            "ctas": [
+              {
+                "label": "Get Started",
+                "href": "#contact",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "/assets/template-factory/siemens-home/slices/desktop-hero.png",
+              "alt": "Siemens home | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "/assets/template-factory/siemens-home/slices/desktop-hero.png",
+              "alt": "Siemens home | Siemens hero visual"
+            }
+          }
+        },
+        "approach": {
+          "type": "FeatureGrid",
+          "props": {
+            "variant": "3col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Key Capabilities",
+            "subtitle": "Designed for scale, precision, and reliable execution.",
+            "items": [
+              {
+                "title": "Process",
+                "desc": "Structured delivery with measurable checkpoints.",
+                "icon": "layers",
+                "image": {
+                  "src": "/assets/template-factory/siemens-home/slices/desktop-approach.png",
+                  "alt": "Process"
+                },
+                "imageSrc": "/assets/template-factory/siemens-home/slices/desktop-approach.png",
+                "imageAlt": "Process"
+              },
+              {
+                "title": "Quality",
+                "desc": "Design and implementation quality gates.",
+                "icon": "shield",
+                "image": {
+                  "src": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+                  "alt": "Quality"
+                },
+                "imageSrc": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+                "imageAlt": "Quality"
+              },
+              {
+                "title": "Impact",
+                "desc": "Outcome-focused iteration loop.",
+                "icon": "chart",
+                "image": {
+                  "src": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+                  "alt": "Impact"
+                },
+                "imageSrc": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+                "imageAlt": "Impact"
+              }
+            ]
+          }
+        },
+        "socialproof": {
+          "type": "TestimonialsGrid",
+          "props": {
+            "variant": "2col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Building for world-class innovators",
+            "items": [
+              {
+                "quote": "They curated a lifestyle, not only a space.",
+                "name": "Alexander Vane",
+                "role": "CEO",
+                "avatar": {
+                  "src": "/assets/template-factory/siemens-home/slices/mobile-socialproof.png",
+                  "alt": "Alexander Vane"
+                }
+              },
+              {
+                "quote": "A masterclass in restraint and elegance.",
+                "name": "Isabelle Dubois",
+                "role": "Founder",
+                "avatar": {
+                  "src": "/assets/template-factory/siemens-home/slices/mobile-socialproof.png",
+                  "alt": "Isabelle Dubois"
+                }
+              }
+            ],
+            "imageSrc": "/assets/template-factory/siemens-home/slices/desktop-socialproof.png",
+            "imageAlt": "Results visual"
+          }
+        },
+        "products": {
+          "type": "CardsGrid",
+          "props": {
+            "variant": "product",
+            "columns": "3col",
+            "density": "normal",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Product Portfolio",
+            "subtitle": "Modular blocks tailored to your site objectives.",
+            "items": [
+              {
+                "title": "Primary Offer",
+                "description": "High-demand offer package.",
+                "cta": {
+                  "label": "Details",
+                  "href": "#"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                  "alt": "Primary Offer"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                  "alt": "Primary Offer"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                "imageAlt": "Primary Offer"
+              },
+              {
+                "title": "Growth Offer",
+                "description": "Expanded capabilities and integrations.",
+                "cta": {
+                  "label": "Details",
+                  "href": "#"
+                },
+                "image": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+                  "alt": "Growth Offer"
+                },
+                "cover": {
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+                  "alt": "Growth Offer"
+                },
+                "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+                "imageAlt": "Growth Offer"
+              },
+              {
+                "title": "Enterprise Offer",
+                "description": "Full-service delivery and support.",
+                "cta": {
+                  "label": "Details",
+                  "href": "#"
+                },
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Enterprise Offer"
+                },
+                "cover": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Enterprise Offer"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Enterprise Offer"
+              }
+            ]
+          }
+        },
+        "cta": {
+          "type": "LeadCaptureCTA",
+          "props": {
+            "variant": "banner",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Ready to define your space?",
+            "subtitle": "Book a private consultation or browse the lookbook.",
+            "cta": {
+              "label": "Inquire Now",
+              "href": "#contact",
+              "variant": "primary"
+            }
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "Siemens home",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "About",
+                    "href": "#"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "#"
+                  }
+                ]
+              },
+              {
+                "title": "Studio",
+                "links": [
+                  {
+                    "label": "Approach",
+                    "href": "#"
+                  },
+                  {
+                    "label": "Projects",
+                    "href": "#"
+                  }
+                ]
+              },
+              {
+                "title": "Legal",
+                "links": [
+                  {
+                    "label": "Privacy",
+                    "href": "#"
+                  },
+                  {
+                    "label": "Terms",
+                    "href": "#"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      },
+      "pageSpecs": [
+        {
+          "path": "/",
+          "name": "Siemens home",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "products",
+            "socialproof",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "Navbar",
+              "props": {
+                "variant": "withCTA",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "logo": "Siemens home",
+                "links": [
+                  {
+                    "label": "Home",
+                    "href": "/",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Services",
+                    "href": "/services",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "About",
+                    "href": "/about",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "/contact",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ]
+              }
+            },
+            "hero": {
+              "type": "HeroSplit",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "title": "Generate an enterprise industrial technology homepage template with navigation",
+                "subtitle": "Designed for Siemens home | Siemens with a high-consistency block architecture.",
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ],
+                "background": "image",
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                  "alt": "Siemens home | Siemens reference"
+                },
+                "backgroundOverlay": "rgba(5,8,18,0.55)",
+                "media": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                  "alt": "Siemens home | Siemens hero visual"
+                }
+              }
+            },
+            "approach": {
+              "type": "FeatureGrid",
+              "props": {
+                "variant": "3col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Key Capabilities",
+                "subtitle": "Designed for scale, precision, and reliable execution.",
+                "items": [
+                  {
+                    "title": "Process",
+                    "desc": "Structured delivery with measurable checkpoints.",
+                    "icon": "layers",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                      "alt": "Process"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                    "imageAlt": "Process"
+                  },
+                  {
+                    "title": "Quality",
+                    "desc": "Design and implementation quality gates.",
+                    "icon": "shield",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                      "alt": "Quality"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                    "imageAlt": "Quality"
+                  },
+                  {
+                    "title": "Impact",
+                    "desc": "Outcome-focused iteration loop.",
+                    "icon": "chart",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                      "alt": "Impact"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                    "imageAlt": "Impact"
+                  }
+                ]
+              }
+            },
+            "products": {
+              "type": "CardsGrid",
+              "props": {
+                "variant": "product",
+                "columns": "3col",
+                "density": "normal",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Product Portfolio",
+                "subtitle": "Modular blocks tailored to your site objectives.",
+                "items": [
+                  {
+                    "title": "Primary Offer",
+                    "description": "High-demand offer package.",
+                    "cta": {
+                      "label": "Details",
+                      "href": "/"
+                    },
+                    "image": {
+                      "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                      "alt": "Primary Offer"
+                    },
+                    "cover": {
+                      "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                      "alt": "Primary Offer"
+                    },
+                    "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                    "imageAlt": "Primary Offer"
+                  },
+                  {
+                    "title": "Growth Offer",
+                    "description": "Expanded capabilities and integrations.",
+                    "cta": {
+                      "label": "Details",
+                      "href": "/"
+                    },
+                    "image": {
+                      "src": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+                      "alt": "Growth Offer"
+                    },
+                    "cover": {
+                      "src": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+                      "alt": "Growth Offer"
+                    },
+                    "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+                    "imageAlt": "Growth Offer"
+                  },
+                  {
+                    "title": "Enterprise Offer",
+                    "description": "Full-service delivery and support.",
+                    "cta": {
+                      "label": "Details",
+                      "href": "/"
+                    },
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                      "alt": "Enterprise Offer"
+                    },
+                    "cover": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                      "alt": "Enterprise Offer"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                    "imageAlt": "Enterprise Offer"
+                  }
+                ]
+              }
+            },
+            "socialproof": {
+              "type": "TestimonialsGrid",
+              "props": {
+                "variant": "2col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Building for world-class innovators",
+                "items": [
+                  {
+                    "quote": "They curated a lifestyle, not only a space.",
+                    "name": "Alexander Vane",
+                    "role": "CEO",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/qd6j45dyXFHDJjKplB9IY/en-US/next-era-gen-ai-report-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                      "alt": "Alexander Vane"
+                    }
+                  },
+                  {
+                    "quote": "A masterclass in restraint and elegance.",
+                    "name": "Isabelle Dubois",
+                    "role": "Founder",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/qd6j45dyXFHDJjKplB9IY/en-US/next-era-gen-ai-report-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                      "alt": "Isabelle Dubois"
+                    }
+                  }
+                ],
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1hiCcpREAHFb8fXxrkQBxH/en-US/robot-dog-safety-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Results visual"
+              }
+            },
+            "cta": {
+              "type": "LeadCaptureCTA",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Ready to define your space?",
+                "subtitle": "Book a private consultation or browse the lookbook.",
+                "cta": {
+                  "label": "Inquire Now",
+                  "href": "/contact",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "Footer",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "logoText": "Siemens home",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "About",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Contact",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Studio",
+                    "links": [
+                      {
+                        "label": "Approach",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Projects",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Privacy",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Terms",
+                        "href": "/"
+                      }
+                    ]
+                  }
+                ],
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/about",
+          "name": "About",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "Navbar",
+              "props": {
+                "variant": "withCTA",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "logo": "Siemens home",
+                "links": [
+                  {
+                    "label": "Home",
+                    "href": "/",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Services",
+                    "href": "/services",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "About",
+                    "href": "/about",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "/contact",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ]
+              }
+            },
+            "hero": {
+              "type": "HeroSplit",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "title": "Generate an enterprise industrial technology homepage template with navigation",
+                "subtitle": "Designed for Siemens home | Siemens with a high-consistency block architecture.",
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ],
+                "background": "image",
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "/assets/template-factory/siemens-home/slices/desktop-hero.png",
+                  "alt": "Siemens home | Siemens reference"
+                },
+                "backgroundOverlay": "rgba(5,8,18,0.55)",
+                "media": {
+                  "kind": "image",
+                  "src": "/assets/template-factory/siemens-home/slices/desktop-hero.png",
+                  "alt": "Siemens home | Siemens hero visual"
+                }
+              }
+            },
+            "approach": {
+              "type": "FeatureGrid",
+              "props": {
+                "variant": "3col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Key Capabilities",
+                "subtitle": "Designed for scale, precision, and reliable execution.",
+                "items": [
+                  {
+                    "title": "Process",
+                    "desc": "Structured delivery with measurable checkpoints.",
+                    "icon": "layers",
+                    "image": {
+                      "src": "/assets/template-factory/siemens-home/slices/desktop-approach.png",
+                      "alt": "Process"
+                    },
+                    "imageSrc": "/assets/template-factory/siemens-home/slices/desktop-approach.png",
+                    "imageAlt": "Process"
+                  },
+                  {
+                    "title": "Quality",
+                    "desc": "Design and implementation quality gates.",
+                    "icon": "shield",
+                    "image": {
+                      "src": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+                      "alt": "Quality"
+                    },
+                    "imageSrc": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+                    "imageAlt": "Quality"
+                  },
+                  {
+                    "title": "Impact",
+                    "desc": "Outcome-focused iteration loop.",
+                    "icon": "chart",
+                    "image": {
+                      "src": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+                      "alt": "Impact"
+                    },
+                    "imageSrc": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+                    "imageAlt": "Impact"
+                  }
+                ]
+              }
+            },
+            "socialproof": {
+              "type": "TestimonialsGrid",
+              "props": {
+                "variant": "2col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Building for world-class innovators",
+                "items": [
+                  {
+                    "quote": "They curated a lifestyle, not only a space.",
+                    "name": "Alexander Vane",
+                    "role": "CEO",
+                    "avatar": {
+                      "src": "/assets/template-factory/siemens-home/slices/mobile-socialproof.png",
+                      "alt": "Alexander Vane"
+                    }
+                  },
+                  {
+                    "quote": "A masterclass in restraint and elegance.",
+                    "name": "Isabelle Dubois",
+                    "role": "Founder",
+                    "avatar": {
+                      "src": "/assets/template-factory/siemens-home/slices/mobile-socialproof.png",
+                      "alt": "Isabelle Dubois"
+                    }
+                  }
+                ],
+                "imageSrc": "/assets/template-factory/siemens-home/slices/desktop-socialproof.png",
+                "imageAlt": "Results visual"
+              }
+            },
+            "cta": {
+              "type": "LeadCaptureCTA",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Ready to define your space?",
+                "subtitle": "Book a private consultation or browse the lookbook.",
+                "cta": {
+                  "label": "Inquire Now",
+                  "href": "/contact",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "Footer",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "logoText": "Siemens home",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "About",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Contact",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Studio",
+                    "links": [
+                      {
+                        "label": "Approach",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Projects",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Privacy",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Terms",
+                        "href": "/"
+                      }
+                    ]
+                  }
+                ],
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/services",
+          "name": "Services",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "products",
+            "socialproof",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "Navbar",
+              "props": {
+                "variant": "withCTA",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "logo": "Siemens home",
+                "links": [
+                  {
+                    "label": "Home",
+                    "href": "/",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Services",
+                    "href": "/services",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "About",
+                    "href": "/about",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "/contact",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ]
+              }
+            },
+            "hero": {
+              "type": "HeroSplit",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "title": "Generate an enterprise industrial technology homepage template with navigation",
+                "subtitle": "Designed for Siemens home | Siemens with a high-consistency block architecture.",
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ],
+                "background": "image",
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "/assets/template-factory/siemens-home/slices/desktop-hero.png",
+                  "alt": "Siemens home | Siemens reference"
+                },
+                "backgroundOverlay": "rgba(5,8,18,0.55)",
+                "media": {
+                  "kind": "image",
+                  "src": "/assets/template-factory/siemens-home/slices/desktop-hero.png",
+                  "alt": "Siemens home | Siemens hero visual"
+                }
+              }
+            },
+            "approach": {
+              "type": "FeatureGrid",
+              "props": {
+                "variant": "3col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Key Capabilities",
+                "subtitle": "Designed for scale, precision, and reliable execution.",
+                "items": [
+                  {
+                    "title": "Process",
+                    "desc": "Structured delivery with measurable checkpoints.",
+                    "icon": "layers",
+                    "image": {
+                      "src": "/assets/template-factory/siemens-home/slices/desktop-approach.png",
+                      "alt": "Process"
+                    },
+                    "imageSrc": "/assets/template-factory/siemens-home/slices/desktop-approach.png",
+                    "imageAlt": "Process"
+                  },
+                  {
+                    "title": "Quality",
+                    "desc": "Design and implementation quality gates.",
+                    "icon": "shield",
+                    "image": {
+                      "src": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+                      "alt": "Quality"
+                    },
+                    "imageSrc": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+                    "imageAlt": "Quality"
+                  },
+                  {
+                    "title": "Impact",
+                    "desc": "Outcome-focused iteration loop.",
+                    "icon": "chart",
+                    "image": {
+                      "src": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+                      "alt": "Impact"
+                    },
+                    "imageSrc": "/assets/template-factory/siemens-home/slices/mobile-approach.png",
+                    "imageAlt": "Impact"
+                  }
+                ]
+              }
+            },
+            "products": {
+              "type": "CardsGrid",
+              "props": {
+                "variant": "product",
+                "columns": "3col",
+                "density": "normal",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Product Portfolio",
+                "subtitle": "Modular blocks tailored to your site objectives.",
+                "items": [
+                  {
+                    "title": "Primary Offer",
+                    "description": "High-demand offer package.",
+                    "cta": {
+                      "label": "Details",
+                      "href": "/"
+                    },
+                    "image": {
+                      "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                      "alt": "Primary Offer"
+                    },
+                    "cover": {
+                      "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                      "alt": "Primary Offer"
+                    },
+                    "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                    "imageAlt": "Primary Offer"
+                  },
+                  {
+                    "title": "Growth Offer",
+                    "description": "Expanded capabilities and integrations.",
+                    "cta": {
+                      "label": "Details",
+                      "href": "/"
+                    },
+                    "image": {
+                      "src": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+                      "alt": "Growth Offer"
+                    },
+                    "cover": {
+                      "src": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+                      "alt": "Growth Offer"
+                    },
+                    "imageSrc": "https://images.ctfassets.net/17si5cpawjzf/3px7fbFNhCfap8w563AtI8/34d8acc08dfbf818370f2970fdd1a7c8/audi-factory-floor-tc-1200x600.jpg",
+                    "imageAlt": "Growth Offer"
+                  },
+                  {
+                    "title": "Enterprise Offer",
+                    "description": "Full-service delivery and support.",
+                    "cta": {
+                      "label": "Details",
+                      "href": "/"
+                    },
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                      "alt": "Enterprise Offer"
+                    },
+                    "cover": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                      "alt": "Enterprise Offer"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                    "imageAlt": "Enterprise Offer"
+                  }
+                ]
+              }
+            },
+            "socialproof": {
+              "type": "TestimonialsGrid",
+              "props": {
+                "variant": "2col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Building for world-class innovators",
+                "items": [
+                  {
+                    "quote": "They curated a lifestyle, not only a space.",
+                    "name": "Alexander Vane",
+                    "role": "CEO",
+                    "avatar": {
+                      "src": "/assets/template-factory/siemens-home/slices/mobile-socialproof.png",
+                      "alt": "Alexander Vane"
+                    }
+                  },
+                  {
+                    "quote": "A masterclass in restraint and elegance.",
+                    "name": "Isabelle Dubois",
+                    "role": "Founder",
+                    "avatar": {
+                      "src": "/assets/template-factory/siemens-home/slices/mobile-socialproof.png",
+                      "alt": "Isabelle Dubois"
+                    }
+                  }
+                ],
+                "imageSrc": "/assets/template-factory/siemens-home/slices/desktop-socialproof.png",
+                "imageAlt": "Results visual"
+              }
+            },
+            "cta": {
+              "type": "LeadCaptureCTA",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Ready to define your space?",
+                "subtitle": "Book a private consultation or browse the lookbook.",
+                "cta": {
+                  "label": "Inquire Now",
+                  "href": "/contact",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "Footer",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "logoText": "Siemens home",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "About",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Contact",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Studio",
+                    "links": [
+                      {
+                        "label": "Approach",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Projects",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Privacy",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Terms",
+                        "href": "/"
+                      }
+                    ]
+                  }
+                ],
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/contact",
+          "name": "Contact",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "Navbar",
+              "props": {
+                "variant": "withCTA",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "logo": "Siemens home",
+                "links": [
+                  {
+                    "label": "Home",
+                    "href": "/",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Services",
+                    "href": "/services",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "About",
+                    "href": "/about",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "/contact",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ]
+              }
+            },
+            "hero": {
+              "type": "HeroSplit",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "title": "Generate an enterprise industrial technology homepage template with navigation",
+                "subtitle": "Designed for Siemens home | Siemens with a high-consistency block architecture.",
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ],
+                "background": "image",
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "/assets/template-factory/siemens-home/slices/desktop-hero.png",
+                  "alt": "Siemens home | Siemens reference"
+                },
+                "backgroundOverlay": "rgba(5,8,18,0.55)",
+                "media": {
+                  "kind": "image",
+                  "src": "/assets/template-factory/siemens-home/slices/desktop-hero.png",
+                  "alt": "Siemens home | Siemens hero visual"
+                }
+              }
+            },
+            "cta": {
+              "type": "LeadCaptureCTA",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Ready to define your space?",
+                "subtitle": "Book a private consultation or browse the lookbook.",
+                "cta": {
+                  "label": "Inquire Now",
+                  "href": "/contact",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "Footer",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "logoText": "Siemens home",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "About",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Contact",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Studio",
+                    "links": [
+                      {
+                        "label": "Approach",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Projects",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Privacy",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Terms",
+                        "href": "/"
+                      }
+                    ]
+                  }
+                ],
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/en-us",
+          "name": "Siemens home",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "Navbar",
+              "props": {
+                "variant": "withCTA",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "logo": "Siemens home",
+                "links": [
+                  {
+                    "label": "Home",
+                    "href": "/",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Services",
+                    "href": "/services",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "About",
+                    "href": "/about",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "/contact",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ]
+              }
+            },
+            "hero": {
+              "type": "HeroSplit",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "title": "Generate an enterprise industrial technology homepage template with navigation",
+                "subtitle": "Designed for Siemens home | Siemens with a high-consistency block architecture.",
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ],
+                "background": "image",
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                  "alt": "Siemens home | Siemens reference"
+                },
+                "backgroundOverlay": "rgba(5,8,18,0.55)",
+                "media": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+                  "alt": "Siemens home | Siemens hero visual"
+                }
+              }
+            },
+            "cta": {
+              "type": "LeadCaptureCTA",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Ready to define your space?",
+                "subtitle": "Book a private consultation or browse the lookbook.",
+                "cta": {
+                  "label": "Inquire Now",
+                  "href": "/contact",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "Footer",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "logoText": "Siemens home",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "About",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Contact",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Studio",
+                    "links": [
+                      {
+                        "label": "Approach",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Projects",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Privacy",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Terms",
+                        "href": "/"
+                      }
+                    ]
+                  }
+                ],
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/en-us/company/artificial-intelligence",
+          "name": "Artificial intelligence solutions",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "Navbar",
+              "props": {
+                "variant": "withCTA",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "logo": "Artificial intelligence solutions",
+                "links": [
+                  {
+                    "label": "Home",
+                    "href": "/",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Services",
+                    "href": "/services",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "About",
+                    "href": "/about",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "/contact",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ]
+              }
+            },
+            "hero": {
+              "type": "HeroSplit",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "title": "Generate an enterprise industrial technology homepage template with navigation",
+                "subtitle": "Designed for Artificial intelligence solutions | Siemens with a high-consistency block architecture.",
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ],
+                "background": "image",
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/11nGOuGqog3Bt2IhL1NSnp/aa36b796e95bde57e5fe209632edc02f/industrial-ai-header-og-1200x630.png",
+                  "alt": "Artificial intelligence solutions | Siemens reference"
+                },
+                "backgroundOverlay": "rgba(5,8,18,0.55)",
+                "media": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/11nGOuGqog3Bt2IhL1NSnp/aa36b796e95bde57e5fe209632edc02f/industrial-ai-header-og-1200x630.png",
+                  "alt": "Artificial intelligence solutions | Siemens hero visual"
+                }
+              }
+            },
+            "approach": {
+              "type": "FeatureGrid",
+              "props": {
+                "variant": "3col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Key Capabilities",
+                "subtitle": "Designed for scale, precision, and reliable execution.",
+                "items": [
+                  {
+                    "title": "Process",
+                    "desc": "Structured delivery with measurable checkpoints.",
+                    "icon": "layers",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5ano6H6DHGgyWxcIxy9e7y/en-US/industrial-ai-header-visual-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                      "alt": "Process"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5ano6H6DHGgyWxcIxy9e7y/en-US/industrial-ai-header-visual-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                    "imageAlt": "Process"
+                  },
+                  {
+                    "title": "Quality",
+                    "desc": "Design and implementation quality gates.",
+                    "icon": "shield",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/29BCY5lEjGGDIM4NUGfVdB/en-US/69bff248-4475-4196-bf54-c9d7b87b3ac6%20-%20Private-Industrial-5g-networks_original.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                      "alt": "Quality"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/29BCY5lEjGGDIM4NUGfVdB/en-US/69bff248-4475-4196-bf54-c9d7b87b3ac6%20-%20Private-Industrial-5g-networks_original.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                    "imageAlt": "Quality"
+                  },
+                  {
+                    "title": "Impact",
+                    "desc": "Outcome-focused iteration loop.",
+                    "icon": "chart",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/29BCY5lEjGGDIM4NUGfVdB/en-US/69bff248-4475-4196-bf54-c9d7b87b3ac6%20-%20Private-Industrial-5g-networks_original.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                      "alt": "Impact"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/29BCY5lEjGGDIM4NUGfVdB/en-US/69bff248-4475-4196-bf54-c9d7b87b3ac6%20-%20Private-Industrial-5g-networks_original.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                    "imageAlt": "Impact"
+                  }
+                ]
+              }
+            },
+            "socialproof": {
+              "type": "TestimonialsGrid",
+              "props": {
+                "variant": "2col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Building for world-class innovators",
+                "items": [
+                  {
+                    "quote": "They curated a lifestyle, not only a space.",
+                    "name": "Alexander Vane",
+                    "role": "CEO",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/3jczrKuD3hpJAFhBqzVEVa/en-US/TeamcenterQuality_trial2_640x480.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                      "alt": "Alexander Vane"
+                    }
+                  },
+                  {
+                    "quote": "A masterclass in restraint and elegance.",
+                    "name": "Isabelle Dubois",
+                    "role": "Founder",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/3jczrKuD3hpJAFhBqzVEVa/en-US/TeamcenterQuality_trial2_640x480.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                      "alt": "Isabelle Dubois"
+                    }
+                  }
+                ],
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5qvR5SfhFPDzRJPAVfKHw2/en-US/PoT-Industry-resilience.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                "imageAlt": "Results visual"
+              }
+            },
+            "cta": {
+              "type": "LeadCaptureCTA",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Ready to define your space?",
+                "subtitle": "Book a private consultation or browse the lookbook.",
+                "cta": {
+                  "label": "Inquire Now",
+                  "href": "/contact",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "Footer",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "logoText": "Artificial intelligence ",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "About",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Contact",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Studio",
+                    "links": [
+                      {
+                        "label": "Approach",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Projects",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Privacy",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Terms",
+                        "href": "/"
+                      }
+                    ]
+                  }
+                ],
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/en-us/company/digital-twin",
+          "name": "Digital twin technology",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "Navbar",
+              "props": {
+                "variant": "withCTA",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "logo": "Digital twin technology",
+                "links": [
+                  {
+                    "label": "Home",
+                    "href": "/",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Services",
+                    "href": "/services",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "About",
+                    "href": "/about",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "/contact",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ]
+              }
+            },
+            "hero": {
+              "type": "HeroSplit",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "title": "Generate an enterprise industrial technology homepage template with navigation",
+                "subtitle": "Designed for Digital twin technology | Siemens with a high-consistency block architecture.",
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ],
+                "background": "image",
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "https://images.sw.cdn.siemens.com/shared/siemens-opengraph-1200x630.jpg",
+                  "alt": "Digital twin technology | Siemens reference"
+                },
+                "backgroundOverlay": "rgba(5,8,18,0.55)",
+                "media": {
+                  "kind": "image",
+                  "src": "https://images.sw.cdn.siemens.com/shared/siemens-opengraph-1200x630.jpg",
+                  "alt": "Digital twin technology | Siemens hero visual"
+                }
+              }
+            },
+            "approach": {
+              "type": "FeatureGrid",
+              "props": {
+                "variant": "3col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Key Capabilities",
+                "subtitle": "Designed for scale, precision, and reliable execution.",
+                "items": [
+                  {
+                    "title": "Process",
+                    "desc": "Structured delivery with measurable checkpoints.",
+                    "icon": "layers",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4qwHpbTdUobHr3mhRkjlTU/en-US/digital-twin-key-visual-vr-headset-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                      "alt": "Process"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4qwHpbTdUobHr3mhRkjlTU/en-US/digital-twin-key-visual-vr-headset-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edge&amp;w=2560&amp;h=1440&amp;q=60",
+                    "imageAlt": "Process"
+                  },
+                  {
+                    "title": "Quality",
+                    "desc": "Design and implementation quality gates.",
+                    "icon": "shield",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4MNA0XgHn6JlFCgYNE5Rei/en-US/digital-twin-automotive-manufacturing-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Quality"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4MNA0XgHn6JlFCgYNE5Rei/en-US/digital-twin-automotive-manufacturing-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                    "imageAlt": "Quality"
+                  },
+                  {
+                    "title": "Impact",
+                    "desc": "Outcome-focused iteration loop.",
+                    "icon": "chart",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4MNA0XgHn6JlFCgYNE5Rei/en-US/digital-twin-automotive-manufacturing-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Impact"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4MNA0XgHn6JlFCgYNE5Rei/en-US/digital-twin-automotive-manufacturing-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                    "imageAlt": "Impact"
+                  }
+                ]
+              }
+            },
+            "socialproof": {
+              "type": "TestimonialsGrid",
+              "props": {
+                "variant": "2col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Building for world-class innovators",
+                "items": [
+                  {
+                    "quote": "They curated a lifestyle, not only a space.",
+                    "name": "Alexander Vane",
+                    "role": "CEO",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/43XT6DowO0EIOGuqbwkelV/en-US/digital-twin-tech-activation-lp-digital-twin-commercial-buildings-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                      "alt": "Alexander Vane"
+                    }
+                  },
+                  {
+                    "quote": "A masterclass in restraint and elegance.",
+                    "name": "Isabelle Dubois",
+                    "role": "Founder",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/43XT6DowO0EIOGuqbwkelV/en-US/digital-twin-tech-activation-lp-digital-twin-commercial-buildings-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                      "alt": "Isabelle Dubois"
+                    }
+                  }
+                ],
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/45wVU4gA109ZuW4VtG2YWQ/en-US/digital-twin-software-laptop-screenshot-mhero-1280x720.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                "imageAlt": "Results visual"
+              }
+            },
+            "cta": {
+              "type": "LeadCaptureCTA",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Ready to define your space?",
+                "subtitle": "Book a private consultation or browse the lookbook.",
+                "cta": {
+                  "label": "Inquire Now",
+                  "href": "/contact",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "Footer",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "logoText": "Digital twin technology",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "About",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Contact",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Studio",
+                    "links": [
+                      {
+                        "label": "Approach",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Projects",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Privacy",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Terms",
+                        "href": "/"
+                      }
+                    ]
+                  }
+                ],
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+          "name": "Siemens Electronics Works Amberg",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "Navbar",
+              "props": {
+                "variant": "withCTA",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "logo": "Siemens Electronics Works Amberg",
+                "links": [
+                  {
+                    "label": "Home",
+                    "href": "/",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Services",
+                    "href": "/services",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "About",
+                    "href": "/about",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "/contact",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ]
+              }
+            },
+            "hero": {
+              "type": "HeroSplit",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "title": "Generate an enterprise industrial technology homepage template with navigation",
+                "subtitle": "Designed for Siemens Electronics Works Amberg | Siemens with a high-consistency block architecture.",
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ],
+                "background": "image",
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/4EWLut0dwos8hhBsA4MW5h/348a2e11c3c4e1a2313cebba24157bee/Amberg-MG-0788.jpg",
+                  "alt": "Siemens Electronics Works Amberg | Siemens reference"
+                },
+                "backgroundOverlay": "rgba(5,8,18,0.55)",
+                "media": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/4EWLut0dwos8hhBsA4MW5h/348a2e11c3c4e1a2313cebba24157bee/Amberg-MG-0788.jpg",
+                  "alt": "Siemens Electronics Works Amberg | Siemens hero visual"
+                }
+              }
+            },
+            "approach": {
+              "type": "FeatureGrid",
+              "props": {
+                "variant": "3col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Key Capabilities",
+                "subtitle": "Designed for scale, precision, and reliable execution.",
+                "items": [
+                  {
+                    "title": "Process",
+                    "desc": "Structured delivery with measurable checkpoints.",
+                    "icon": "layers",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1g9VDQLoUiCd7VFu98Hy4R/en-US/4e6376d837573f90b6b06e7b3e66684dd1770ead%20-%20pcb-production-ai-controlled-model_large.jpeg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Process"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1g9VDQLoUiCd7VFu98Hy4R/en-US/4e6376d837573f90b6b06e7b3e66684dd1770ead%20-%20pcb-production-ai-controlled-model_large.jpeg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                    "imageAlt": "Process"
+                  },
+                  {
+                    "title": "Quality",
+                    "desc": "Design and implementation quality gates.",
+                    "icon": "shield",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/7ldPNiNT8pWQb00ylENoBc/en-US/96c334f0-dea3-4d5b-b8b5-f707006d04f2%20-%20the-impulse-amberg-visitor-center.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Quality"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/7ldPNiNT8pWQb00ylENoBc/en-US/96c334f0-dea3-4d5b-b8b5-f707006d04f2%20-%20the-impulse-amberg-visitor-center.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                    "imageAlt": "Quality"
+                  },
+                  {
+                    "title": "Impact",
+                    "desc": "Outcome-focused iteration loop.",
+                    "icon": "chart",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/7ldPNiNT8pWQb00ylENoBc/en-US/96c334f0-dea3-4d5b-b8b5-f707006d04f2%20-%20the-impulse-amberg-visitor-center.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Impact"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/7ldPNiNT8pWQb00ylENoBc/en-US/96c334f0-dea3-4d5b-b8b5-f707006d04f2%20-%20the-impulse-amberg-visitor-center.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                    "imageAlt": "Impact"
+                  }
+                ]
+              }
+            },
+            "socialproof": {
+              "type": "TestimonialsGrid",
+              "props": {
+                "variant": "2col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Building for world-class innovators",
+                "items": [
+                  {
+                    "quote": "They curated a lifestyle, not only a space.",
+                    "name": "Alexander Vane",
+                    "role": "CEO",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4EWLut0dwos8hhBsA4MW5h/en-US/Amberg-MG-0788.jpg?auto=format%2Ccompress&amp;fit=crop&amp;crop=faces%2Cedges&amp;w=320&amp;h=360&amp;q=60",
+                      "alt": "Alexander Vane"
+                    }
+                  },
+                  {
+                    "quote": "A masterclass in restraint and elegance.",
+                    "name": "Isabelle Dubois",
+                    "role": "Founder",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4EWLut0dwos8hhBsA4MW5h/en-US/Amberg-MG-0788.jpg?auto=format%2Ccompress&amp;fit=crop&amp;crop=faces%2Cedges&amp;w=320&amp;h=360&amp;q=60",
+                      "alt": "Isabelle Dubois"
+                    }
+                  }
+                ],
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5InqqvqF6FvXQtenOeKnS8/en-US/1f9b3ccbbe2a81c19cba94427e3c7e26dcb1f82a%20-%20siemens-electronics-works-amberg-facility_large.jpeg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                "imageAlt": "Results visual"
+              }
+            },
+            "cta": {
+              "type": "LeadCaptureCTA",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Ready to define your space?",
+                "subtitle": "Book a private consultation or browse the lookbook.",
+                "cta": {
+                  "label": "Inquire Now",
+                  "href": "/contact",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "Footer",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "logoText": "Siemens Electronics Work",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "About",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Contact",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Studio",
+                    "links": [
+                      {
+                        "label": "Approach",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Projects",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Privacy",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Terms",
+                        "href": "/"
+                      }
+                    ]
+                  }
+                ],
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+          "name": "Virtual PLC is revolutionizing production at Audi",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "Navbar",
+              "props": {
+                "variant": "withCTA",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "logo": "Virtual PLC is revolutionizing production at Aud",
+                "links": [
+                  {
+                    "label": "Home",
+                    "href": "/",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Services",
+                    "href": "/services",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "About",
+                    "href": "/about",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "/contact",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ]
+              }
+            },
+            "hero": {
+              "type": "HeroSplit",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "title": "Generate an enterprise industrial technology homepage template with navigation",
+                "subtitle": "Designed for Virtual PLC is revolutionizing production at Audi | Siemens with a high-consistency block architecture.",
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ],
+                "background": "image",
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/5Ikdd2hMPDnFe4btmcdMUR/3dd1c83a420c4f074986c761a1204c0e/b5f5c308-b1b4-401c-9067-4dfd5436239f_-_A223280-medium-16x9.jpeg",
+                  "alt": "Virtual PLC is revolutionizing production at Audi | Siemens reference"
+                },
+                "backgroundOverlay": "rgba(5,8,18,0.55)",
+                "media": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/5Ikdd2hMPDnFe4btmcdMUR/3dd1c83a420c4f074986c761a1204c0e/b5f5c308-b1b4-401c-9067-4dfd5436239f_-_A223280-medium-16x9.jpeg",
+                  "alt": "Virtual PLC is revolutionizing production at Audi | Siemens hero visual"
+                }
+              }
+            },
+            "approach": {
+              "type": "FeatureGrid",
+              "props": {
+                "variant": "3col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Key Capabilities",
+                "subtitle": "Designed for scale, precision, and reliable execution.",
+                "items": [
+                  {
+                    "title": "Process",
+                    "desc": "Structured delivery with measurable checkpoints.",
+                    "icon": "layers",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/13N63BaqGqtWvypodGrC68/en-US/icon-virtual-plc-use.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                      "alt": "Process"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/13N63BaqGqtWvypodGrC68/en-US/icon-virtual-plc-use.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                    "imageAlt": "Process"
+                  },
+                  {
+                    "title": "Quality",
+                    "desc": "Design and implementation quality gates.",
+                    "icon": "shield",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5WrVxw2KM5e7PpZXARtxzj/en-US/icon-virtual-plc-management.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                      "alt": "Quality"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5WrVxw2KM5e7PpZXARtxzj/en-US/icon-virtual-plc-management.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                    "imageAlt": "Quality"
+                  },
+                  {
+                    "title": "Impact",
+                    "desc": "Outcome-focused iteration loop.",
+                    "icon": "chart",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5WrVxw2KM5e7PpZXARtxzj/en-US/icon-virtual-plc-management.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                      "alt": "Impact"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5WrVxw2KM5e7PpZXARtxzj/en-US/icon-virtual-plc-management.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                    "imageAlt": "Impact"
+                  }
+                ]
+              }
+            },
+            "socialproof": {
+              "type": "TestimonialsGrid",
+              "props": {
+                "variant": "2col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Building for world-class innovators",
+                "items": [
+                  {
+                    "quote": "They curated a lifestyle, not only a space.",
+                    "name": "Alexander Vane",
+                    "role": "CEO",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4y7GhtvKFlSLwRHAWZ5dTV/en-US/A218285-medium-4x3.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Alexander Vane"
+                    }
+                  },
+                  {
+                    "quote": "A masterclass in restraint and elegance.",
+                    "name": "Isabelle Dubois",
+                    "role": "Founder",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4y7GhtvKFlSLwRHAWZ5dTV/en-US/A218285-medium-4x3.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Isabelle Dubois"
+                    }
+                  }
+                ],
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/5yxElRoYJoD2Oh1CxyH5wv/en-US/icon-virtual-plc-adjustable.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                "imageAlt": "Results visual"
+              }
+            },
+            "cta": {
+              "type": "LeadCaptureCTA",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Ready to define your space?",
+                "subtitle": "Book a private consultation or browse the lookbook.",
+                "cta": {
+                  "label": "Inquire Now",
+                  "href": "/contact",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "Footer",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "logoText": "Virtual PLC is revolutio",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "About",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Contact",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Studio",
+                    "links": [
+                      {
+                        "label": "Approach",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Projects",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Privacy",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Terms",
+                        "href": "/"
+                      }
+                    ]
+                  }
+                ],
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/en-us/company/insights/hymer-digital-first-recreational-vehicle",
+          "name": "The digital-first recreational vehicle: Hymer",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "Navbar",
+              "props": {
+                "variant": "withCTA",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "logo": "The digital-first recreational vehicle: Hymer",
+                "links": [
+                  {
+                    "label": "Home",
+                    "href": "/",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Services",
+                    "href": "/services",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "About",
+                    "href": "/about",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "/contact",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ]
+              }
+            },
+            "hero": {
+              "type": "HeroSplit",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "title": "Generate an enterprise industrial technology homepage template with navigation",
+                "subtitle": "Designed for The digital-first recreational vehicle: Hymer | Siemens with a high-consistency block architecture.",
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ],
+                "background": "image",
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/52tywaHDvVOGIcEfTG6fMn/8cd300fa2403962860a9d91cc67c1dd7/hymer-vemture-s-landscape.jpg",
+                  "alt": "The digital-first recreational vehicle: Hymer | Siemens reference"
+                },
+                "backgroundOverlay": "rgba(5,8,18,0.55)",
+                "media": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/52tywaHDvVOGIcEfTG6fMn/8cd300fa2403962860a9d91cc67c1dd7/hymer-vemture-s-landscape.jpg",
+                  "alt": "The digital-first recreational vehicle: Hymer | Siemens hero visual"
+                }
+              }
+            },
+            "approach": {
+              "type": "FeatureGrid",
+              "props": {
+                "variant": "3col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Key Capabilities",
+                "subtitle": "Designed for scale, precision, and reliable execution.",
+                "items": [
+                  {
+                    "title": "Process",
+                    "desc": "Structured delivery with measurable checkpoints.",
+                    "icon": "layers",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4fVfCKSbl900ZO7weMlFnN/en-US/Hymer-Solid-Edge-2023-06-30-11-39-12.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Process"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4fVfCKSbl900ZO7weMlFnN/en-US/Hymer-Solid-Edge-2023-06-30-11-39-12.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                    "imageAlt": "Process"
+                  },
+                  {
+                    "title": "Quality",
+                    "desc": "Design and implementation quality gates.",
+                    "icon": "shield",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4DLcyu4CVPLQr3HFe25d6O/en-US/SDIS-Hymer-03.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Quality"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4DLcyu4CVPLQr3HFe25d6O/en-US/SDIS-Hymer-03.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                    "imageAlt": "Quality"
+                  },
+                  {
+                    "title": "Impact",
+                    "desc": "Outcome-focused iteration loop.",
+                    "icon": "chart",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4DLcyu4CVPLQr3HFe25d6O/en-US/SDIS-Hymer-03.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Impact"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4DLcyu4CVPLQr3HFe25d6O/en-US/SDIS-Hymer-03.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                    "imageAlt": "Impact"
+                  }
+                ]
+              }
+            },
+            "socialproof": {
+              "type": "TestimonialsGrid",
+              "props": {
+                "variant": "2col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Building for world-class innovators",
+                "items": [
+                  {
+                    "quote": "They curated a lifestyle, not only a space.",
+                    "name": "Alexander Vane",
+                    "role": "CEO",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/7pyFMASYrtldHqHKHS4dlP/en-US/03-TC-Visualization-mit-Umgebung-3.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Alexander Vane"
+                    }
+                  },
+                  {
+                    "quote": "A masterclass in restraint and elegance.",
+                    "name": "Isabelle Dubois",
+                    "role": "Founder",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/7pyFMASYrtldHqHKHS4dlP/en-US/03-TC-Visualization-mit-Umgebung-3.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Isabelle Dubois"
+                    }
+                  }
+                ],
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/42zdXTMbAkyosMwt5dVzdw/en-US/Hymer-screen-new.png?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                "imageAlt": "Results visual"
+              }
+            },
+            "cta": {
+              "type": "LeadCaptureCTA",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Ready to define your space?",
+                "subtitle": "Book a private consultation or browse the lookbook.",
+                "cta": {
+                  "label": "Inquire Now",
+                  "href": "/contact",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "Footer",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "logoText": "The digital-first recrea",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "About",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Contact",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Studio",
+                    "links": [
+                      {
+                        "label": "Approach",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Projects",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Privacy",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Terms",
+                        "href": "/"
+                      }
+                    ]
+                  }
+                ],
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/en-us/company/insights/va-syd-water-artificial-intelligence",
+          "name": "A case for AI: Water pipeline leaks",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "Navbar",
+              "props": {
+                "variant": "withCTA",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "logo": "A case for AI: Water pipeline leaks",
+                "links": [
+                  {
+                    "label": "Home",
+                    "href": "/",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Services",
+                    "href": "/services",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "About",
+                    "href": "/about",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "/contact",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ]
+              }
+            },
+            "hero": {
+              "type": "HeroSplit",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "title": "Generate an enterprise industrial technology homepage template with navigation",
+                "subtitle": "Designed for A case for AI: Water pipeline leaks | Siemens with a high-consistency block architecture.",
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ],
+                "background": "image",
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/6SSLo6Bz9Ad92z8VxXl1SI/177cf88d28cf8ba7a1a7e90d481c3553/iStock-845980790-1-.jpg",
+                  "alt": "A case for AI: Water pipeline leaks | Siemens reference"
+                },
+                "backgroundOverlay": "rgba(5,8,18,0.55)",
+                "media": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/6SSLo6Bz9Ad92z8VxXl1SI/177cf88d28cf8ba7a1a7e90d481c3553/iStock-845980790-1-.jpg",
+                  "alt": "A case for AI: Water pipeline leaks | Siemens hero visual"
+                }
+              }
+            },
+            "approach": {
+              "type": "FeatureGrid",
+              "props": {
+                "variant": "3col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Key Capabilities",
+                "subtitle": "Designed for scale, precision, and reliable execution.",
+                "items": [
+                  {
+                    "title": "Process",
+                    "desc": "Structured delivery with measurable checkpoints.",
+                    "icon": "layers",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/0OrQzrUUgaa52D3brShHC/en-US/dd930924-b4e8-41a4-ad70-3f04e0c8e3aa%20-%20VA-SYD-hero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Process"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/0OrQzrUUgaa52D3brShHC/en-US/dd930924-b4e8-41a4-ad70-3f04e0c8e3aa%20-%20VA-SYD-hero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                    "imageAlt": "Process"
+                  },
+                  {
+                    "title": "Quality",
+                    "desc": "Design and implementation quality gates.",
+                    "icon": "shield",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/23C01fHIMEQFESaCBvemVu/en-US/50436ee2-44c1-4c4a-a7f6-e1542822777c%20-%20Simon-Viktor-VASyd_original.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Quality"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/23C01fHIMEQFESaCBvemVu/en-US/50436ee2-44c1-4c4a-a7f6-e1542822777c%20-%20Simon-Viktor-VASyd_original.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                    "imageAlt": "Quality"
+                  },
+                  {
+                    "title": "Impact",
+                    "desc": "Outcome-focused iteration loop.",
+                    "icon": "chart",
+                    "image": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/23C01fHIMEQFESaCBvemVu/en-US/50436ee2-44c1-4c4a-a7f6-e1542822777c%20-%20Simon-Viktor-VASyd_original.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                      "alt": "Impact"
+                    },
+                    "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/23C01fHIMEQFESaCBvemVu/en-US/50436ee2-44c1-4c4a-a7f6-e1542822777c%20-%20Simon-Viktor-VASyd_original.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=1280&amp;h=720&amp;q=60",
+                    "imageAlt": "Impact"
+                  }
+                ]
+              }
+            },
+            "socialproof": {
+              "type": "TestimonialsGrid",
+              "props": {
+                "variant": "2col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Building for world-class innovators",
+                "items": [
+                  {
+                    "quote": "They curated a lifestyle, not only a space.",
+                    "name": "Alexander Vane",
+                    "role": "CEO",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/2mqyEaQmPNIKfTxT2JnhPD/en-US/Sustainable-Water-Keyvisual.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                      "alt": "Alexander Vane"
+                    }
+                  },
+                  {
+                    "quote": "A masterclass in restraint and elegance.",
+                    "name": "Isabelle Dubois",
+                    "role": "Founder",
+                    "avatar": {
+                      "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/2mqyEaQmPNIKfTxT2JnhPD/en-US/Sustainable-Water-Keyvisual.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                      "alt": "Isabelle Dubois"
+                    }
+                  }
+                ],
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4uIHwT98ZSJbHJjz7MYKs3/en-US/NonRevenue-Water-Overall-without-Graphics.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=640&amp;h=360&amp;q=60",
+                "imageAlt": "Results visual"
+              }
+            },
+            "cta": {
+              "type": "LeadCaptureCTA",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Ready to define your space?",
+                "subtitle": "Book a private consultation or browse the lookbook.",
+                "cta": {
+                  "label": "Inquire Now",
+                  "href": "/contact",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "Footer",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "logoText": "A case for AI: Water pip",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "About",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Contact",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Studio",
+                    "links": [
+                      {
+                        "label": "Approach",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Projects",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Privacy",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Terms",
+                        "href": "/"
+                      }
+                    ]
+                  }
+                ],
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/en-us/industries/water/non-revenue-water",
+          "name": "Non-revenue Water",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "Navbar",
+              "props": {
+                "variant": "withCTA",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "logo": "Non-revenue Water",
+                "links": [
+                  {
+                    "label": "Home",
+                    "href": "/",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Services",
+                    "href": "/services",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "About",
+                    "href": "/about",
+                    "variant": "link"
+                  },
+                  {
+                    "label": "Contact",
+                    "href": "/contact",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ]
+              }
+            },
+            "hero": {
+              "type": "HeroSplit",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "title": "Generate an enterprise industrial technology homepage template with navigation",
+                "subtitle": "Designed for Non-revenue Water | Siemens with a high-consistency block architecture.",
+                "ctas": [
+                  {
+                    "label": "Get Started",
+                    "href": "/contact",
+                    "variant": "primary"
+                  }
+                ],
+                "background": "image",
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/6eqdThPM63JsIeiNEJFEjx/368ab2673f3bfe42ffca5a0250dcd61e/non-revenue-water-key-visual-drinking-water-ss665214613-product-og-1200x630.jpg",
+                  "alt": "Non-revenue Water | Siemens reference"
+                },
+                "backgroundOverlay": "rgba(5,8,18,0.55)",
+                "media": {
+                  "kind": "image",
+                  "src": "https://images.ctfassets.net/17si5cpawjzf/6eqdThPM63JsIeiNEJFEjx/368ab2673f3bfe42ffca5a0250dcd61e/non-revenue-water-key-visual-drinking-water-ss665214613-product-og-1200x630.jpg",
+                  "alt": "Non-revenue Water | Siemens hero visual"
+                }
+              }
+            },
+            "cta": {
+              "type": "LeadCaptureCTA",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Ready to define your space?",
+                "subtitle": "Book a private consultation or browse the lookbook.",
+                "cta": {
+                  "label": "Inquire Now",
+                  "href": "/contact",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "Footer",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "logoText": "Non-revenue Water",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "About",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Contact",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Studio",
+                    "links": [
+                      {
+                        "label": "Approach",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Projects",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Privacy",
+                        "href": "/"
+                      },
+                      {
+                        "label": "Terms",
+                        "href": "/"
+                      }
+                    ]
+                  }
+                ],
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        }
+      ],
+      "siteTemplates": [
+        {
+          "path": "/",
+          "name": "Siemens home",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "products",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/about",
+          "name": "About",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/services",
+          "name": "Services",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "products",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/contact",
+          "name": "Contact",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/en-us",
+          "name": "Siemens home",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/en-us/company/artificial-intelligence",
+          "name": "Artificial intelligence solutions",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/en-us/company/digital-twin",
+          "name": "Digital twin technology",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/en-us/company/insights/electronics-digital-enterprise-future-technologies",
+          "name": "Siemens Electronics Works Amberg",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+          "name": "Virtual PLC is revolutionizing production at Audi",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/en-us/company/insights/hymer-digital-first-recreational-vehicle",
+          "name": "The digital-first recreational vehicle: Hymer",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/en-us/company/insights/va-syd-water-artificial-intelligence",
+          "name": "A case for AI: Water pipeline leaks",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/en-us/industries/water/non-revenue-water",
+          "name": "Non-revenue Water",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "cta",
+            "footer"
+          ]
+        }
+      ]
+    }
+  ]
+}

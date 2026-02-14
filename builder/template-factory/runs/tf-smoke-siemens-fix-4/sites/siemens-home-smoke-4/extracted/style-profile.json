@@ -1,0 +1,937 @@
+{
+  "id": "auto_siemens-home-smoke-4",
+  "name": "Siemens smoke 4",
+  "keywords": [
+    "siemenshomesmoke",
+    "siemens",
+    "home",
+    "smoke",
+    "siemenscom",
+    "com",
+    "enterprise",
+    "template",
+    "source",
+    "pages",
+    "audi",
+    "virtualizing",
+    "shop",
+    "floor",
+    "virtual",
+    "plc",
+    "virtualizes",
+    "decoding",
+    "future",
+    "energy",
+    "guarding",
+    "plant",
+    "robot",
+    "dogs",
+    "profile_selector_auto-siemens-home-smoke-4",
+    "auto_siemens-home-smoke-4",
+    "siemens-home-smoke-4"
+  ],
+  "templates": {
+    "navigation": {
+      "type": "Navbar",
+      "props": {
+        "variant": "withCTA",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "logo": "Siemens home",
+        "links": [
+          {
+            "label": "Siemens",
+            "href": "/",
+            "variant": "link"
+          },
+          {
+            "label": "Siemens",
+            "href": "/en-us",
+            "variant": "link"
+          },
+          {
+            "label": "Virtual PLC is revolutionizing production at Audi",
+            "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+            "variant": "link"
+          },
+          {
+            "label": "SIMATIC S7-1500V Virtual PLC",
+            "href": "/en-us/products/simatic/s7-1500v",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Explore",
+            "href": "/en-us",
+            "variant": "primary"
+          }
+        ]
+      }
+    },
+    "hero": {
+      "type": "HeroSplit",
+      "props": {
+        "mediaPosition": "right",
+        "paddingY": "lg",
+        "headingSize": "md",
+        "maxWidth": "xl",
+        "title": "Audi is virtualizing the shop floor with virtual PLC",
+        "subtitle": "Decoding the future of energy",
+        "ctas": [
+          {
+            "label": "Explore",
+            "href": "/en-us",
+            "variant": "primary"
+          }
+        ],
+        "background": "image",
+        "backgroundMedia": {
+          "kind": "image",
+          "src": "/assets/template-factory/siemens-home-smoke-4/slices/desktop-hero.png",
+          "alt": "Siemens home | Siemens reference"
+        },
+        "backgroundOverlay": "rgba(5,8,18,0.55)",
+        "media": {
+          "kind": "image",
+          "src": "/assets/template-factory/siemens-home-smoke-4/slices/desktop-hero.png",
+          "alt": "Siemens home | Siemens hero visual"
+        }
+      }
+    },
+    "approach": {
+      "type": "FeatureGrid",
+      "props": {
+        "variant": "3col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Audi is virtualizing the shop floor with virtual PLC",
+        "subtitle": "Decoding the future of energy",
+        "items": [
+          {
+            "title": "Decoding the future of energy",
+            "desc": "Decoding the future of energy",
+            "description": "Decoding the future of energy",
+            "icon": "layers",
+            "image": {
+              "src": "/assets/template-factory/siemens-home-smoke-4/slices/desktop-approach.png",
+              "alt": "Decoding the future of energy"
+            },
+            "imageSrc": "/assets/template-factory/siemens-home-smoke-4/slices/desktop-approach.png",
+            "imageAlt": "Decoding the future of energy"
+          },
+          {
+            "title": "Guarding the plant",
+            "desc": "Robot dogs improve safety",
+            "description": "Robot dogs improve safety",
+            "icon": "shield",
+            "image": {
+              "src": "/assets/template-factory/siemens-home-smoke-4/slices/mobile-approach.png",
+              "alt": "Guarding the plant"
+            },
+            "imageSrc": "/assets/template-factory/siemens-home-smoke-4/slices/mobile-approach.png",
+            "imageAlt": "Guarding the plant"
+          },
+          {
+            "title": "Report",
+            "desc": "The next era of generative AI",
+            "description": "The next era of generative AI",
+            "icon": "chart",
+            "image": {
+              "src": "/assets/template-factory/siemens-home-smoke-4/slices/mobile-approach.png",
+              "alt": "Report"
+            },
+            "imageSrc": "/assets/template-factory/siemens-home-smoke-4/slices/mobile-approach.png",
+            "imageAlt": "Report"
+          }
+        ]
+      }
+    },
+    "socialproof": {
+      "type": "TestimonialsGrid",
+      "props": {
+        "variant": "2col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Building for world-class innovators",
+        "items": [
+          {
+            "quote": "They curated a lifestyle, not only a space.",
+            "name": "Alexander Vane",
+            "role": "CEO",
+            "avatar": {
+              "src": "/assets/template-factory/siemens-home-smoke-4/slices/mobile-socialproof.png",
+              "alt": "Alexander Vane"
+            }
+          },
+          {
+            "quote": "A masterclass in restraint and elegance.",
+            "name": "Isabelle Dubois",
+            "role": "Founder",
+            "avatar": {
+              "src": "/assets/template-factory/siemens-home-smoke-4/slices/mobile-socialproof.png",
+              "alt": "Isabelle Dubois"
+            }
+          }
+        ],
+        "imageSrc": "/assets/template-factory/siemens-home-smoke-4/slices/desktop-socialproof.png",
+        "imageAlt": "Results visual"
+      }
+    },
+    "cta": {
+      "type": "LeadCaptureCTA",
+      "props": {
+        "variant": "banner",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Audi is virtualizing the shop floor with virtual PLC",
+        "subtitle": "Decoding the future of energy",
+        "cta": {
+          "label": "Explore",
+          "href": "/en-us",
+          "variant": "primary"
+        }
+      }
+    },
+    "footer": {
+      "type": "Footer",
+      "props": {
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "logoText": "Siemens home",
+        "columns": [
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/en-us"
+              }
+            ]
+          },
+          {
+            "title": "Explore",
+            "links": [
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+              }
+            ]
+          },
+          {
+            "title": "Support",
+            "links": [
+              {
+                "label": "SIMATIC S7-1500V Virtual PLC",
+                "href": "/en-us/products/simatic/s7-1500v"
+              }
+            ]
+          }
+        ],
+        "legal": "© 2026 All rights reserved."
+      }
+    }
+  },
+  "pageSpecs": [
+    {
+      "path": "/",
+      "name": "Siemens",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "socialproof",
+        "cta",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "Siemens home",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              },
+              {
+                "label": "SIMATIC S7-1500V Virtual PLC",
+                "href": "/en-us/products/simatic/s7-1500v",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/en-us",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Audi is virtualizing the shop floor with virtual PLC",
+            "subtitle": "Decoding the future of energy",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/en-us",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+              "alt": "Siemens home | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+              "alt": "Siemens home | Siemens hero visual"
+            }
+          }
+        },
+        "approach": {
+          "type": "FeatureGrid",
+          "props": {
+            "variant": "3col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Audi is virtualizing the shop floor with virtual PLC",
+            "subtitle": "Decoding the future of energy",
+            "items": [
+              {
+                "title": "Decoding the future of energy",
+                "desc": "Decoding the future of energy",
+                "description": "Decoding the future of energy",
+                "icon": "layers",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Decoding the future of energy"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Decoding the future of energy"
+              },
+              {
+                "title": "Guarding the plant",
+                "desc": "Robot dogs improve safety",
+                "description": "Robot dogs improve safety",
+                "icon": "shield",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Guarding the plant"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Guarding the plant"
+              },
+              {
+                "title": "Report",
+                "desc": "The next era of generative AI",
+                "description": "The next era of generative AI",
+                "icon": "chart",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Report"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Report"
+              }
+            ]
+          }
+        },
+        "socialproof": {
+          "type": "TestimonialsGrid",
+          "props": {
+            "variant": "2col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Building for world-class innovators",
+            "items": [
+              {
+                "quote": "They curated a lifestyle, not only a space.",
+                "name": "Alexander Vane",
+                "role": "CEO",
+                "avatar": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/qd6j45dyXFHDJjKplB9IY/en-US/next-era-gen-ai-report-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Alexander Vane"
+                }
+              },
+              {
+                "quote": "A masterclass in restraint and elegance.",
+                "name": "Isabelle Dubois",
+                "role": "Founder",
+                "avatar": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/qd6j45dyXFHDJjKplB9IY/en-US/next-era-gen-ai-report-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Isabelle Dubois"
+                }
+              }
+            ],
+            "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/1hiCcpREAHFb8fXxrkQBxH/en-US/robot-dog-safety-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+            "imageAlt": "Results visual"
+          }
+        },
+        "cta": {
+          "type": "LeadCaptureCTA",
+          "props": {
+            "variant": "banner",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Audi is virtualizing the shop floor with virtual PLC",
+            "subtitle": "Decoding the future of energy",
+            "cta": {
+              "label": "Explore",
+              "href": "/en-us",
+              "variant": "primary"
+            }
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "Siemens home",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/en-us",
+      "name": "Siemens",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "cta",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "Siemens home",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              },
+              {
+                "label": "SIMATIC S7-1500V Virtual PLC",
+                "href": "/en-us/products/simatic/s7-1500v",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Audi is virtualizing the shop floor with virtual PLC",
+            "subtitle": "Decoding the future of energy",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+              "alt": "Siemens home | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/Y2FnRgpo3feg0cubFQRWa/9d48766d3e2bbecebd4b2476c1482014/audi-factory-floor-og-1200x630.jpg",
+              "alt": "Siemens home | Siemens hero visual"
+            }
+          }
+        },
+        "approach": {
+          "type": "FeatureGrid",
+          "props": {
+            "variant": "3col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Audi is virtualizing the shop floor with virtual PLC",
+            "subtitle": "Decoding the future of energy",
+            "items": [
+              {
+                "title": "Decoding the future of energy",
+                "desc": "Decoding the future of energy",
+                "description": "Decoding the future of energy",
+                "icon": "layers",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Decoding the future of energy"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/010IENXcvq7BPdNUqWUzgU/en-US/audi-factory-floor-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Decoding the future of energy"
+              },
+              {
+                "title": "Guarding the plant",
+                "desc": "Robot dogs improve safety",
+                "description": "Robot dogs improve safety",
+                "icon": "shield",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Guarding the plant"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Guarding the plant"
+              },
+              {
+                "title": "Report",
+                "desc": "The next era of generative AI",
+                "description": "The next era of generative AI",
+                "icon": "chart",
+                "image": {
+                  "src": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                  "alt": "Report"
+                },
+                "imageSrc": "https://images.sw.cdn.siemens.com/siemens-disw-assets/public/4pdixNxxEPvZQ1jlOtY6FL/en-US/xcelerator-decoding-future-energy-shero-2560x1440.jpg?auto=format,compress&amp;fit=crop&amp;crop=faces,edges&amp;w=2560&amp;h=1440&amp;q=60",
+                "imageAlt": "Report"
+              }
+            ]
+          }
+        },
+        "cta": {
+          "type": "LeadCaptureCTA",
+          "props": {
+            "variant": "banner",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Audi is virtualizing the shop floor with virtual PLC",
+            "subtitle": "Decoding the future of energy",
+            "cta": {
+              "label": "Explore",
+              "href": "/",
+              "variant": "primary"
+            }
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "Siemens home",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+      "name": "Virtual PLC is revolutionizing production at Audi",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "Virtual PLC is revolutionizing production at Aud",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              },
+              {
+                "label": "SIMATIC S7-1500V Virtual PLC",
+                "href": "/en-us/products/simatic/s7-1500v",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "Audi virtualizes shop floor with Siemens PLC",
+            "subtitle": "Siemens’ solutions meet Audi’s goals",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/5Ikdd2hMPDnFe4btmcdMUR/3dd1c83a420c4f074986c761a1204c0e/b5f5c308-b1b4-401c-9067-4dfd5436239f_-_A223280-medium-16x9.jpeg",
+              "alt": "Virtual PLC is revolutionizing production at Audi | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/5Ikdd2hMPDnFe4btmcdMUR/3dd1c83a420c4f074986c761a1204c0e/b5f5c308-b1b4-401c-9067-4dfd5436239f_-_A223280-medium-16x9.jpeg",
+              "alt": "Virtual PLC is revolutionizing production at Audi | Siemens hero visual"
+            }
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "Virtual PLC is revolutio",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    },
+    {
+      "path": "/en-us/products/simatic/s7-1500v",
+      "name": "SIMATIC S7-1500V Virtual PLC",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "cta",
+        "footer"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "Navbar",
+          "props": {
+            "variant": "withCTA",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "logo": "SIMATIC S7-1500V Virtual PLC - Software PLC",
+            "links": [
+              {
+                "label": "Siemens",
+                "href": "/",
+                "variant": "link"
+              },
+              {
+                "label": "Siemens",
+                "href": "/en-us",
+                "variant": "link"
+              },
+              {
+                "label": "Virtual PLC is revolutionizing production at Audi",
+                "href": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+                "variant": "link"
+              },
+              {
+                "label": "SIMATIC S7-1500V Virtual PLC",
+                "href": "/en-us/products/simatic/s7-1500v",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ]
+          }
+        },
+        "hero": {
+          "type": "HeroSplit",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "title": "SIMATIC S7-1500V Virtual PLC",
+            "subtitle": "Why Virtual PLC?",
+            "ctas": [
+              {
+                "label": "Explore",
+                "href": "/",
+                "variant": "primary"
+              }
+            ],
+            "background": "image",
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/7nb7ns5FQKQiSwvMugXRKR/e7228b0a0a1525ed86ee5d735f993e07/simatic-s7-1500v-product-og-1200x630.jpg",
+              "alt": "SIMATIC S7-1500V Virtual PLC - Software PLC | Siemens reference"
+            },
+            "backgroundOverlay": "rgba(5,8,18,0.55)",
+            "media": {
+              "kind": "image",
+              "src": "https://images.ctfassets.net/17si5cpawjzf/7nb7ns5FQKQiSwvMugXRKR/e7228b0a0a1525ed86ee5d735f993e07/simatic-s7-1500v-product-og-1200x630.jpg",
+              "alt": "SIMATIC S7-1500V Virtual PLC - Software PLC | Siemens hero visual"
+            }
+          }
+        },
+        "cta": {
+          "type": "LeadCaptureCTA",
+          "props": {
+            "variant": "banner",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "SIMATIC S7-1500V Virtual PLC",
+            "subtitle": "Why Virtual PLC?",
+            "cta": {
+              "label": "Explore",
+              "href": "/",
+              "variant": "primary"
+            }
+          }
+        },
+        "footer": {
+          "type": "Footer",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "logoText": "SIMATIC S7-1500V Virtual",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Siemens",
+                    "href": "/en-us"
+                  }
+                ]
+              },
+              {
+                "title": "Explore",
+                "links": [
+                  {
+                    "label": "Virtual PLC is revolutionizing production at Audi",
+                    "href": "/en-us/company/insights/factory-automation-virtual-plc-audi"
+                  }
+                ]
+              },
+              {
+                "title": "Support",
+                "links": [
+                  {
+                    "label": "SIMATIC S7-1500V Virtual PLC",
+                    "href": "/en-us/products/simatic/s7-1500v"
+                  }
+                ]
+              }
+            ],
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      }
+    }
+  ],
+  "siteTemplates": [
+    {
+      "path": "/",
+      "name": "Siemens",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "socialproof",
+        "cta",
+        "footer"
+      ]
+    },
+    {
+      "path": "/en-us",
+      "name": "Siemens",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "approach",
+        "cta",
+        "footer"
+      ]
+    },
+    {
+      "path": "/en-us/company/insights/factory-automation-virtual-plc-audi",
+      "name": "Virtual PLC is revolutionizing production at Audi",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "footer"
+      ]
+    },
+    {
+      "path": "/en-us/products/simatic/s7-1500v",
+      "name": "SIMATIC S7-1500V Virtual PLC",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "cta",
+        "footer"
+      ]
+    }
+  ]
+}

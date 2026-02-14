@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "sixtine-reference",
+      "description": "Luxury editorial interior design homepage",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "story",
+        "approach",
+        "socialproof",
+        "cta",
+        "footer"
+      ],
+      "routes": [],
+      "prompt": "Template selector token: profile_selector_auto-sixtine-reference.\nGenerate a premium editorial luxury interior-design homepage with navigation, hero, studio story, approach metrics, social proof, CTA, and footer.\nBuild the homepage first, with production-ready sections and coherent brand style.\nTemplate identity hints: sixtine-reference | aura.build | auto_sixtine-reference | Shpitto – AI Website Builder.\nStyle constraints: palette=cool-neutral, typography=serif-display + sans-body.\nLayout motifs: hero-editorial-split, story-sticky-media, metrics-two-col, social-proof-grid, dark-footer-cta.\nSource visual fingerprint: dominant colors=#ffffff, #fbfbfc, #0a0a0b, #c0bebd, #feffff, #fffffd, luminance=0.7566, darkTheme=false.\nMatch the source site with high fidelity: theme colors, section ordering, copy tone, spacing rhythm, and block hierarchy should closely follow source references."
+    },
+    {
+      "id": "siemens-reference",
+      "description": "Industrial technology homepage",
+      "requiredCategories": [
+        "navigation",
+        "hero",
+        "story",
+        "approach",
+        "products",
+        "socialproof",
+        "cta",
+        "footer"
+      ],
+      "routes": [],
+      "prompt": "Template selector token: profile_selector_auto-siemens-reference.\nGenerate an industrial technology homepage with navigation, hero, solutions overview, innovation highlights, social proof, CTA, and footer.\nBuild the homepage first, with production-ready sections and coherent brand style.\nTemplate identity hints: siemens-reference | siemens.com | auto_siemens-reference | Siemens home | Siemens.\nStyle constraints: palette=deep-blue-cyan, typography=clean-sans + strong-heading.\nLayout motifs: mega-nav, hero-background-text, feature-grid, product-cards, banner-cta, structured-footer.\nPrimary copy cues (H1): Audi is virtualizing the shop floor with virtual PLC.\nSecondary copy cues (H2): Decoding the future of energy | Guarding the plant: Robot dogs improve safety | Report: The next era of generative AI | Upgrade reality | Discover products and services | A network of problem solvers.\nSource visual fingerprint: dominant colors=#ffffff, #d1bba8, #e8e1db, #f9f8f7, #cd964b, #fffffe, luminance=0.994, darkTheme=false.\nHero interaction requirement: if source hero rotates, implement hero carousel/slide switching with source-like images.\nBrand palette requirement: deep navy + cyan + white (avoid generic grayscale or random accent colors).\nMatch the source site with high fidelity: theme colors, section ordering, copy tone, spacing rhythm, and block hierarchy should closely follow source references."
+    }
+  ]
+}

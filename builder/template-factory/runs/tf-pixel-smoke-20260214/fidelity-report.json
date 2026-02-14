@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-02-14T06:54:27.705Z",
+  "runId": "tf-pixel-smoke-20260214",
+  "available": true,
+  "overallSimilarity": 88.57,
+  "rows": [
+    {
+      "caseId": "use-this-image-90-aura-ref",
+      "referencePath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/template-factory/runs/tf-pixel-smoke-20260214/sites/use-this-image-90-aura-ref/ingest/desktop.reference.png",
+      "screenshotPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/screenshots/C_template_first/use-this-image-90-aura-ref.png",
+      "similarity": 88.57,
+      "mode": "strict",
+      "threshold": 82,
+      "enforcement": "warn",
+      "comparable": true,
+      "pass": true
+    }
+  ],
+  "reason": "ok",
+  "attempts": [
+    {
+      "attempt": 0,
+      "reportPath": "/Users/beihuang/Documents/opencode/shpitto_tools/builder/regression/strategy-comparison/compare-20260214-145251.json",
+      "overallSimilarity": 88.57,
+      "strictFailures": 0,
+      "strictMissing": 0
+    }
+  ],
+  "strict": {
+    "requiredCases": [
+      "use-this-image-90-aura-ref"
+    ],
+    "missingComparableCases": [],
+    "failedCases": [],
+    "gatePassed": true,
+    "gateWouldFail": false,
+    "blockingRequiredCases": [],
+    "blockingMissingComparableCases": [],
+    "blockingFailedCases": []
+  }
+}

@@ -20,6 +20,11 @@ export type LeadCaptureCTAProps = BaseBlockProps & {
   subtitle?: string;
   cta: LinkProps;
   note?: string;
+  titleColor?: string;
+  titleClassName?: string;
+  ctaBackgroundColor?: string;
+  ctaTextColor?: string;
+  ctaClassName?: string;
 };
 
 export type LeadCaptureVariant = "banner" | "card";
@@ -39,17 +44,25 @@ export function LeadCaptureCTABlock({
   subtitle,
   cta,
   note,
+  titleColor,
+  titleClassName,
+  ctaBackgroundColor,
+  ctaTextColor,
+  ctaClassName,
   emphasis = "normal",
   variant = "banner",
 }: LeadCaptureCTAProps & { variant?: LeadCaptureVariant }) {
+  const shouldUseGradientTitle = emphasis === "high" && !titleColor && !titleClassName;
   const content = (
     <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <div>
         <h2
           className={cn(
             "text-2xl font-semibold tracking-tight sm:text-3xl",
-            emphasis === "high" ? "text-gradient" : ""
+            shouldUseGradientTitle ? "text-gradient" : "",
+            titleClassName
           )}
+          style={titleColor ? { color: titleColor } : undefined}
         >
           {title}
         </h2>
@@ -61,7 +74,15 @@ export function LeadCaptureCTABlock({
       <Button
         asChild
         variant={cta.variant === "secondary" ? "secondary" : "default"}
-        className={cn(emphasis === "high" ? "btn-glow" : "")}
+        className={cn(emphasis === "high" ? "btn-glow" : "", ctaClassName)}
+        style={
+          ctaBackgroundColor || ctaTextColor
+            ? {
+                backgroundColor: ctaBackgroundColor || undefined,
+                color: ctaTextColor || undefined,
+              }
+            : undefined
+        }
         size="lg"
       >
         <a href={cta.href}>{cta.label}</a>
