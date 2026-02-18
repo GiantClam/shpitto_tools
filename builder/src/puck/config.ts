@@ -41,6 +41,7 @@ import {
   textField,
   textareaField,
 } from "@/puck/field-adapters";
+import { generatedComponents } from "./config.generated";
 
 const renderBlock = (Block: React.ComponentType<any>) => (props: any) =>
   React.createElement(Block, props);
@@ -1063,3 +1064,5 @@ export const puckConfig: Config = {
     },
   },
 };
+
+Object.assign(puckConfig.components, generatedComponents);

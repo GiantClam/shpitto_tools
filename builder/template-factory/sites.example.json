@@ -17,6 +17,42 @@
       "crawlSite": true,
       "crawlMaxPages": 40,
       "crawlMaxDepth": 2,
+      "specialRules": {
+        "templateBlockVariants": {
+          "hero": {
+            "blockType": "NexusHeroDock",
+            "variant": "panel",
+            "maxWidth": "2xl"
+          },
+          "products": [
+            {
+              "blockType": "CardsGrid",
+              "variant": "imageText",
+              "columns": "3col",
+              "density": "normal"
+            },
+            {
+              "blockType": "CardsGrid",
+              "variant": "product",
+              "columns": "4col",
+              "density": "compact"
+            }
+          ]
+        },
+        "pageTemplateBlockVariants": {
+          "/en/products": {
+            "hero": {
+              "blockType": "HeroSplit",
+              "mediaPosition": "right"
+            },
+            "products": {
+              "variant": "product",
+              "columns": "4col",
+              "density": "compact"
+            }
+          }
+        }
+      },
       "desktopScreenshot": "",
       "mobileScreenshot": ""
     }

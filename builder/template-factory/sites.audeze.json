@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "sites": [
+    {
+      "id": "audeze-home",
+      "url": "https://www.audeze.com/",
+      "description": "Audeze full website template with mega navigation and product showcase",
+      "prompt": "Generate a high-fidelity full-site template for Audeze. Preserve multi-level dropdown navigation with image+text style content cues. Include one representative product detail page for product display only (no cart/checkout/e-commerce flow). Include a technology/blog page using markdown-friendly article structure. Include a support page with content only; do not implement download actions. Exclude failed extraction pages from template output and record them in extraction_failures report.",
+      "crawlSite": true,
+      "crawlMaxPages": 24,
+      "crawlMaxDepth": 2
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import React from "react";
 
 import { cn } from "@/lib/cn";
 
-type ButtonVariant = "default" | "secondary" | "link" | "ghost";
+type ButtonVariant = "default" | "secondary" | "outline" | "link" | "ghost";
 type ButtonSize = "default" | "sm" | "lg";
 
 type ButtonProps =
@@ -31,6 +31,7 @@ const sizeClasses: Record<ButtonSize, string> = {
 const variantClasses: Record<ButtonVariant, string> = {
   default: "bg-primary text-primary-foreground hover:opacity-90",
   secondary: "border border-foreground/30 bg-transparent text-foreground hover:bg-muted/60",
+  outline: "border border-border bg-transparent text-foreground hover:bg-muted/60",
   link: "text-primary underline-offset-4 hover:underline",
   ghost: "text-foreground hover:bg-muted/60",
 };

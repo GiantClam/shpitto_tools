@@ -46,7 +46,7 @@ export function FeatureGridBlock({
   emphasis = "normal",
   title,
   subtitle,
-  items,
+  items = [],
   headingFont,
   bodyFont,
   variant = "3col",
@@ -74,6 +74,7 @@ export function FeatureGridBlock({
   const hasBackgroundVideo = Boolean(backgroundVideo?.src);
   const headingStyle = headingFont ? { fontFamily: headingFont } : undefined;
   const bodyStyle = bodyFont ? { fontFamily: bodyFont } : undefined;
+  const safeItems = Array.isArray(items) ? items : [];
   return (
     <section
       id={anchor}
@@ -123,7 +124,7 @@ export function FeatureGridBlock({
         ) : null}
 
         <div ref={reveal.ref} className={featureGridClass({ variant })} style={{ gap: "var(--space-3)" }}>
-          {items.slice(0, 12).map((it, idx) => (
+          {safeItems.slice(0, 12).map((it, idx) => (
             <Card
               key={idx}
               className={cn(
@@ -145,10 +146,10 @@ export function FeatureGridBlock({
                   </div>
                 ) : null}
                 <CardTitle className="text-base" style={headingStyle}>
-                  {it.title}
+                  {it?.title || "Feature"}
                 </CardTitle>
               </CardHeader>
-              {it.desc ? (
+              {it?.desc ? (
                 <CardContent className="pt-0">
                   <p className="text-sm text-muted-foreground" style={bodyStyle}>
                     {it.desc}

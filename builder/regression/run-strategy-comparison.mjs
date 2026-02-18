@@ -5,6 +5,7 @@ import path from "node:path";
 import process from "node:process";
 import { spawn } from "node:child_process";
 import fetch from "node-fetch";
+import { captureSectionScreenshots } from "./capture-section-screenshots.mjs";
 
 const ROOT = process.cwd();
 const REPO_ROOT = path.resolve(ROOT, "..");
@@ -13,6 +14,8 @@ const REPORT_DIR = path.join(ROOT, "regression", "strategy-comparison");
 const SCREENSHOT_DIR = path.join(REPORT_DIR, "screenshots");
 const PORT = Number(process.env.STRATEGY_COMPARE_PORT || 3110);
 const BASE_URL = `http://localhost:${PORT}`;
+const CREATION_TIMEOUT_MS = Math.max(60000, Number(process.env.STRATEGY_COMPARE_CREATION_TIMEOUT_MS || 420000));
+const PERSIST_WAIT_TIMEOUT_MS = Math.max(60000, Number(process.env.STRATEGY_COMPARE_PERSIST_WAIT_TIMEOUT_MS || 420000));
 const SERVER_MODE = String(process.env.STRATEGY_COMPARE_SERVER_MODE || "dev")
   .trim()
   .toLowerCase();
@@ -81,8 +84,19 @@ const readJsonFile = async (filePath) => {
   }
 };
 
-const hasRenderablePage = (payload) =>
-  Boolean(payload?.pages?.[0]?.data && Array.isArray(payload?.pages?.[0]?.data?.content) && payload.pages[0].data.content.length > 0);
+const hasRenderablePage = (payload) => {
+  const pages = Array.isArray(payload?.pages) ? payload.pages : [];
+  return pages.some(
+    (page) => page?.data && Array.isArray(page?.data?.content) && page.data.content.length > 0
+  );
+};
+
+const getRenderablePages = (payload) => {
+  const pages = Array.isArray(payload?.pages) ? payload.pages : [];
+  return pages.filter(
+    (page) => page?.data && Array.isArray(page?.data?.content) && page.data.content.length > 0
+  );
+};
 
 const getPersistedPayloadPath = (id) =>
   path.join(REPO_ROOT, "asset-factory", "out", "p2w", String(id || ""), "sandbox", "payload.json");
@@ -219,10 +233,35 @@ const startServer = async (envOverrides) => {
   }
 };
 
-const writeRenderablePage = async (siteKey, pageData) => {
-  const outDir = path.join(REPO_ROOT, "asset-factory", "out", siteKey, "pages", "home");
+const normalizePagePath = (raw) => {
+  const trimmed = String(raw || "").trim().replace(/\/+$/, "") || "/";
+  return trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+};
+
+const pagePathToSlug = (pagePath) => {
+  const normalized = normalizePagePath(pagePath);
+  if (normalized === "/") return "home";
+  return normalized.replace(/^\//, "").replace(/[^a-z0-9]+/gi, "-").replace(/^-+|-+$/g, "").toLowerCase() || "page";
+};
+
+const pagePathToParam = (pagePath) => {
+  const normalized = normalizePagePath(pagePath);
+  return normalized === "/" ? "home" : normalized;
+};
+
+const writeRenderablePage = async (siteKey, pagePath, pageData) => {
+  const pageDir = pagePathToParam(pagePath);
+  const outDir = path.join(REPO_ROOT, "asset-factory", "out", siteKey, "pages", pageDir);
   await fs.mkdir(outDir, { recursive: true });
   await fs.writeFile(path.join(outDir, "page.json"), JSON.stringify(pageData, null, 2));
+};
+
+const writeRenderablePages = async (siteKey, pages) => {
+  const renderable = Array.isArray(pages) ? pages : [];
+  for (const page of renderable) {
+    const pagePath = normalizePagePath(page?.path || "/");
+    await writeRenderablePage(siteKey, pagePath, page.data);
+  }
 };
 
 const writeSandboxPayload = async (siteKey, payload) => {
@@ -265,8 +304,8 @@ const groups = [
       BUILDER_TEMPLATE_SECTIONS: "footercta,footer-cta,cta,socialproof,social-proof,testimonial,trustlogo",
       BUILDER_LLM_SECTIONS: "",
       BUILDER_TEMPLATE_FIRST_VARIANTS: "cta,socialproof",
-      CREATION_REQUEST_TIMEOUT_MS: "180000",
-      CREATION_PERSIST_REQUEST_TIMEOUT_MS: "180000",
+      CREATION_REQUEST_TIMEOUT_MS: String(CREATION_TIMEOUT_MS),
+      CREATION_PERSIST_REQUEST_TIMEOUT_MS: String(CREATION_TIMEOUT_MS),
     },
   },
   {
@@ -278,8 +317,8 @@ const groups = [
         "navigation,footer,footercta,footer-cta,cta,socialproof,social-proof,testimonial,trustlogo,products,catalog,metrics,stats,contact",
       BUILDER_LLM_SECTIONS: "hero,studiostory,story,showcase",
       BUILDER_TEMPLATE_FIRST_VARIANTS: "cta,socialproof,contact,catalog",
-      CREATION_REQUEST_TIMEOUT_MS: "180000",
-      CREATION_PERSIST_REQUEST_TIMEOUT_MS: "180000",
+      CREATION_REQUEST_TIMEOUT_MS: String(CREATION_TIMEOUT_MS),
+      CREATION_PERSIST_REQUEST_TIMEOUT_MS: String(CREATION_TIMEOUT_MS),
     },
   },
   {
@@ -291,8 +330,8 @@ const groups = [
         "navigation,footer,footercta,footer-cta,cta,socialproof,social-proof,testimonial,trustlogo,products,catalog,metrics,stats,contact",
       BUILDER_LLM_SECTIONS: "",
       BUILDER_TEMPLATE_FIRST_VARIANTS: "cta,socialproof,contact,catalog",
-      CREATION_REQUEST_TIMEOUT_MS: "180000",
-      CREATION_PERSIST_REQUEST_TIMEOUT_MS: "180000",
+      CREATION_REQUEST_TIMEOUT_MS: String(CREATION_TIMEOUT_MS),
+      CREATION_PERSIST_REQUEST_TIMEOUT_MS: String(CREATION_TIMEOUT_MS),
     },
   },
 ];
@@ -377,7 +416,7 @@ const run = async () => {
             !hasRenderablePage(payload) ||
             (Array.isArray(payload?.errors) && payload.errors.includes("generation_timeout_fallback"));
           if (shouldWaitForPersisted) {
-            const persisted = await waitForPersistedPayload(payload.id, 150000);
+            const persisted = await waitForPersistedPayload(payload.id, PERSIST_WAIT_TIMEOUT_MS);
             persistWaitMs = persisted.waitedMs;
             persistWaitTimedOut = persisted.timedOut;
             if (persisted.payload) {
@@ -391,54 +430,106 @@ const run = async () => {
           }
         }
         const durationMs = Date.now() - startedAt;
-        const pageData = finalPayload?.pages?.[0]?.data;
+        const renderablePages = getRenderablePages(finalPayload);
+        const primaryPage = renderablePages.find((page) => normalizePagePath(page?.path || "/") === "/") || renderablePages[0] || null;
         const ok = Boolean(
           res.ok &&
             !persistWaitTimedOut &&
-            pageData &&
-            Array.isArray(pageData?.content) &&
-            pageData.content.length > 0
+            primaryPage?.data &&
+            Array.isArray(primaryPage?.data?.content) &&
+            primaryPage.data.content.length > 0
         );
         const siteKey = `bench_${slug(runId)}_${slug(group.id)}_${slug(c.id)}`;
         let renderUrl = "";
         let screenshotPath = "";
+        const pageScreenshots = [];
         if (ok) {
           await writeSandboxPayload(siteKey, finalPayload);
-          await writeRenderablePage(siteKey, pageData);
-          renderUrl =
-            options.renderer === "render"
-              ? `${BASE_URL}/render?siteKey=${encodeURIComponent(siteKey)}&page=home&motion=off`
-              : `${BASE_URL}/creation/sandbox?mode=preview&siteKey=${encodeURIComponent(siteKey)}&page=home`;
-          screenshotPath = path.join(SCREENSHOT_DIR, group.id, `${c.id}.png`);
+          await writeRenderablePages(siteKey, renderablePages);
+
           const screenshotOptions =
             options.renderer === "sandbox"
               ? {
                   waitForSelector: "[data-sandbox-ready='1']",
-                  waitForTimeout: 1800,
-                  timeout: 60000,
+                  waitForTimeout: 1200,
+                  timeout: 90000,
                 }
               : {
                   waitForSelector: "main",
                   waitForTimeout: 500,
                   timeout: 30000,
                 };
-          await captureScreenshot(renderUrl, screenshotPath, screenshotOptions);
+
+          for (const page of renderablePages) {
+            const pagePath = normalizePagePath(page?.path || "/");
+            const pageSlug = pagePathToSlug(pagePath);
+            const pageParam = pagePathToParam(pagePath);
+            const pageRenderUrl =
+              options.renderer === "render"
+                ? `${BASE_URL}/render?siteKey=${encodeURIComponent(siteKey)}&page=${encodeURIComponent(pageParam)}&motion=off`
+                : `${BASE_URL}/creation/sandbox?mode=preview&siteKey=${encodeURIComponent(siteKey)}&page=${encodeURIComponent(pageParam)}`;
+            const pageScreenshotPath = path.join(SCREENSHOT_DIR, group.id, c.id, `${pageSlug}.png`);
+
+            try {
+              await captureScreenshot(pageRenderUrl, pageScreenshotPath, screenshotOptions);
+              // Capture per-section screenshots from the rendered page
+              let sectionScreenshots = [];
+              try {
+                const sectionOutDir = path.join(SCREENSHOT_DIR, group.id, c.id, `${pageSlug}-sections`);
+                const sectionResult = await captureSectionScreenshots({
+                  url: pageRenderUrl,
+                  outDir: sectionOutDir,
+                  fullPageScreenshot: pageScreenshotPath,
+                  timeout: screenshotOptions.timeout || 30000,
+                  waitForTimeout: screenshotOptions.waitForTimeout || 2000,
+                });
+                sectionScreenshots = sectionResult.sections || [];
+              } catch (sectionErr) {
+                console.warn(
+                  `[group:${group.id}] ${c.id} page=${pagePath} section screenshots failed: ${sectionErr?.message || sectionErr}`
+                );
+              }
+              pageScreenshots.push({
+                pagePath,
+                pageSlug,
+                url: pageRenderUrl,
+                screenshot: pageScreenshotPath,
+                sectionScreenshots,
+              });
+            } catch (err) {
+              console.warn(
+                `[group:${group.id}] ${c.id} page=${pagePath} screenshot failed: ${err?.message || err}`
+              );
+              pageScreenshots.push({
+                pagePath,
+                pageSlug,
+                url: pageRenderUrl,
+                screenshot: "",
+                error: String(err?.message || err),
+              });
+            }
+          }
+
+          const homeEntry = pageScreenshots.find((p) => p.pagePath === "/");
+          renderUrl = homeEntry?.url || pageScreenshots[0]?.url || "";
+          screenshotPath = homeEntry?.screenshot || pageScreenshots[0]?.screenshot || "";
         }
         groupRows.push({
           caseId: c.id,
           ok,
           statusCode: res.status,
           durationMs,
-          errors: Array.isArray(payload?.errors) ? payload.errors : [],
+          errors: Array.isArray(finalPayload?.errors) ? finalPayload.errors : [],
           persistWaitMs,
           persistWaitTimedOut,
           requestId: payload?.requestId ?? null,
           responseId: payload?.id ?? null,
           url: renderUrl,
           screenshot: screenshotPath,
+          pageScreenshots,
         });
         console.log(
-          `[group:${group.id}] ${i + 1}/${cases.length} ${c.id} ${ok ? "PASS" : "FAIL"} duration=${durationMs}ms`
+          `[group:${group.id}] ${i + 1}/${cases.length} ${c.id} ${ok ? "PASS" : "FAIL"} duration=${durationMs}ms pages=${pageScreenshots.length}`
         );
       }
     } finally {

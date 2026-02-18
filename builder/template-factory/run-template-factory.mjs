@@ -4,8 +4,15 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { spawn } from "node:child_process";
+import { SECTION_BLOCK_REGISTRY, getAlternativeVariants } from "./variant-registry.mjs";
+import { buildCustomSectionPrompt, buildPuckFieldsForCustomComponent } from "./generate-custom-section.mjs";
+import { materializeFromPayload, writeGeneratedConfig } from "./materialize-custom-components.mjs";
+import { resolveCliOptions } from "./config/resolve-options.mjs";
+import { evaluateRunGates } from "./gates/evaluate-run-gates.mjs";
+import { selectRequiredCases, selectRequiredPagesForSite } from "./regression/select-required-cases.mjs";
 
 const ROOT = process.cwd();
+const SCRIPTS_DIR = path.resolve(ROOT, "..", "scripts");
 const FACTORY_DIR = path.join(ROOT, "template-factory");
 const RUNS_DIR = path.join(FACTORY_DIR, "runs");
 const LIB_DIR = path.join(FACTORY_DIR, "library");
@@ -15,6 +22,7 @@ const DEFAULT_PUBLISH_PATH = path.join(LIB_DIR, "style-profiles.generated.json")
 const DEFAULT_TEMPLATE_FIRST_GROUP = "C_template_first";
 const DEFAULT_PREVIEW_BASE_URL = process.env.TEMPLATE_FACTORY_PREVIEW_BASE_URL || "http://127.0.0.1:3110";
 const DEFAULT_PREVIEW_START_COMMAND = "cd builder && npm run dev -- -p 3110";
+const HYBRID_CRAWL_SCRIPT = path.join(SCRIPTS_DIR, "crawlers", "hybrid_crawl_pipeline.py");
 const DEFAULT_HTTP_USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36";
 const DISABLE_SITE_FINGERPRINT_ROUTING = process.env.TEMPLATE_FACTORY_DISABLE_SITE_FINGERPRINT_ROUTING !== "0";
@@ -1396,14 +1404,6 @@ const RECIPES = {
   },
 };
 
-const nowStamp = () => {
-  const d = new Date();
-  const pad = (v) => String(v).padStart(2, "0");
-  return `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}${pad(
-    d.getSeconds()
-  )}`;
-};
-
 const slug = (value) =>
   String(value || "")
     .toLowerCase()
@@ -1412,156 +1412,96 @@ const slug = (value) =>
     .replace(/^-+|-+$/g, "")
     .slice(0, 80);
 
-const parseArgs = (argv) => {
-  const options = {
-    manifest: DEFAULT_MANIFEST,
-    runId: `tf-${nowStamp()}`,
-    skipIngest: false,
-    requestedSkipRegression: false,
-    publish: true,
-    groups: DEFAULT_TEMPLATE_FIRST_GROUP,
-    renderer: "sandbox",
-    maxCases: 0,
-    previewBaseUrl: DEFAULT_PREVIEW_BASE_URL,
-    launchPreviewServer: true,
-    crawlSite: false,
-    crawlMaxPages: 16,
-    crawlMaxDepth: 1,
-    antiCrawlPrecheck: true,
-    antiCrawlTimeoutMs: 25000,
-    fastMode: false,
-    fidelityMode: "standard",
-    fidelityThreshold: 72,
-    fidelityEnforcement: "warn",
-    autoRepairIterations: 0,
-    pixelMode: false,
-  };
-
-  for (let i = 2; i < argv.length; i += 1) {
-    const arg = argv[i];
-    const next = argv[i + 1];
-    if (arg === "--manifest" && next) {
-      options.manifest = path.resolve(ROOT, next);
-      i += 1;
-      continue;
-    }
-    if (arg === "--run-id" && next) {
-      options.runId = slug(next) || options.runId;
-      i += 1;
-      continue;
-    }
-    if (arg === "--groups" && next) {
-      options.groups = String(next).trim();
-      i += 1;
-      continue;
-    }
-    if (arg === "--renderer" && next) {
-      options.renderer = String(next).trim().toLowerCase() === "render" ? "render" : "sandbox";
-      i += 1;
-      continue;
-    }
-    if (arg === "--preview-base-url" && next) {
-      options.previewBaseUrl = String(next).trim() || options.previewBaseUrl;
-      i += 1;
-      continue;
-    }
-    if (arg === "--max-cases" && next) {
-      options.maxCases = Number(next) || 0;
-      i += 1;
-      continue;
-    }
-    if (arg === "--skip-ingest") {
-      options.skipIngest = true;
-      continue;
-    }
-    if (arg === "--skip-regression") {
-      options.requestedSkipRegression = true;
-      continue;
-    }
-    if (arg === "--crawl-site") {
-      options.crawlSite = true;
-      continue;
-    }
-    if (arg === "--crawl-max-pages" && next) {
-      options.crawlMaxPages = Math.max(1, Math.floor(Number(next) || 0)) || options.crawlMaxPages;
-      i += 1;
-      continue;
-    }
-    if (arg === "--crawl-max-depth" && next) {
-      options.crawlMaxDepth = Math.max(0, Math.floor(Number(next) || 0));
-      i += 1;
-      continue;
-    }
-    if (arg === "--anti-crawl-precheck") {
-      options.antiCrawlPrecheck = true;
-      continue;
-    }
-    if (arg === "--no-anti-crawl-precheck") {
-      options.antiCrawlPrecheck = false;
-      continue;
-    }
-    if (arg === "--anti-crawl-timeout-ms" && next) {
-      options.antiCrawlTimeoutMs = Math.max(1000, Math.floor(Number(next) || 0)) || options.antiCrawlTimeoutMs;
-      i += 1;
-      continue;
-    }
-    if (arg === "--fast") {
-      options.fastMode = true;
-      continue;
-    }
-    if (arg === "--fidelity-mode" && next) {
-      const mode = String(next).trim().toLowerCase();
-      options.fidelityMode = mode === "strict" ? "strict" : "standard";
-      i += 1;
-      continue;
-    }
-    if (arg === "--fidelity-threshold" && next) {
-      const threshold = Math.floor(Number(next));
-      if (Number.isFinite(threshold)) {
-        options.fidelityThreshold = Math.max(0, Math.min(100, threshold));
-      }
-      i += 1;
-      continue;
-    }
-    if (arg === "--fidelity-enforcement" && next) {
-      const enforcement = String(next).trim().toLowerCase();
-      options.fidelityEnforcement = enforcement === "fail" ? "fail" : "warn";
-      i += 1;
-      continue;
-    }
-    if (arg === "--auto-repair-iterations" && next) {
-      const count = Math.floor(Number(next));
-      if (Number.isFinite(count)) {
-        options.autoRepairIterations = Math.max(0, Math.min(5, count));
-      }
-      i += 1;
-      continue;
-    }
-    if (arg === "--pixel-mode") {
-      options.pixelMode = true;
-      continue;
-    }
-    if (arg === "--no-publish") {
-      options.publish = false;
-      continue;
-    }
-    if (arg === "--no-preview-server") {
-      options.launchPreviewServer = false;
-      continue;
-    }
-  }
-
-  if (options.pixelMode) {
-    options.fidelityMode = "strict";
-    options.fidelityThreshold = Math.max(82, Number(options.fidelityThreshold || 0));
-    options.fidelityEnforcement = "warn";
-    options.autoRepairIterations = Math.max(2, Number(options.autoRepairIterations || 0));
-  }
-
-  return options;
-};
+const parseArgs = (argv) =>
+  resolveCliOptions(argv, {
+    root: ROOT,
+    defaultManifest: DEFAULT_MANIFEST,
+    defaultTemplateFirstGroup: DEFAULT_TEMPLATE_FIRST_GROUP,
+    defaultPreviewBaseUrl: DEFAULT_PREVIEW_BASE_URL,
+  });
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const formatElapsed = (ms) => {
+  const total = Math.max(0, Math.floor(Number(ms) || 0));
+  const sec = Math.floor(total / 1000);
+  const min = Math.floor(sec / 60);
+  const rem = sec % 60;
+  if (min > 0) return `${min}m${String(rem).padStart(2, "0")}s`;
+  return `${rem}s`;
+};
+
+const runWithProgress = async (label, work, options = {}) => {
+  const heartbeatMs = Math.max(5000, Math.floor(Number(options.heartbeatMs) || 20000));
+  const started = Date.now();
+  const prefix = options.prefix ? `${options.prefix} ` : "";
+  console.log(`${prefix}${label} ...`);
+  const timer = setInterval(() => {
+    const elapsed = formatElapsed(Date.now() - started);
+    console.log(`${prefix}${label} in progress (${elapsed})`);
+  }, heartbeatMs);
+
+  try {
+    const result = await work();
+    clearInterval(timer);
+    const elapsed = formatElapsed(Date.now() - started);
+    console.log(`${prefix}${label} done (${elapsed})`);
+    return result;
+  } catch (error) {
+    clearInterval(timer);
+    const elapsed = formatElapsed(Date.now() - started);
+    console.error(`${prefix}${label} failed (${elapsed})`);
+    throw error;
+  }
+};
+
+const runWithSemaphore = async (semaphore, work) => {
+  if (!semaphore) return work();
+  await semaphore.acquire();
+  try {
+    return await work();
+  } finally {
+    semaphore.release();
+  }
+};
+
+const runSiteWithRetries = async ({
+  site,
+  siteIndex,
+  sites,
+  options,
+  execute,
+}) => {
+  const maxAttempts = Math.max(1, Math.floor(Number(options?.siteRetryCount || 0)) + 1);
+  const retryDelayMs = Math.max(0, Math.floor(Number(options?.siteRetryDelayMs || 0)));
+  const breakerThreshold = Math.max(1, Math.floor(Number(options?.siteCircuitBreakerThreshold || 1)));
+  const prefix = `[template-factory][${siteIndex + 1}/${sites.length}][${site?.id || "site"}]`;
+
+  let failureCount = 0;
+  let lastError = null;
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    try {
+      if (attempt > 1) {
+        console.log(`${prefix} retry attempt ${attempt}/${maxAttempts}`);
+      }
+      return await execute({ attempt, maxAttempts });
+    } catch (error) {
+      lastError = error;
+      failureCount += 1;
+      const message = error instanceof Error ? error.message : String(error);
+      const breakerReached = failureCount >= breakerThreshold;
+      const canRetry = attempt < maxAttempts && !breakerReached;
+      console.warn(
+        `${prefix} attempt ${attempt}/${maxAttempts} failed: ${message}${breakerReached ? " (circuit-breaker reached)" : ""}`
+      );
+      if (!canRetry) break;
+      if (retryDelayMs > 0) {
+        await wait(retryDelayMs);
+      }
+    }
+  }
+  throw lastError || new Error(`${prefix} failed`);
+};
 
 const normalizePreviewBaseUrl = (raw) => {
   try {
@@ -1645,14 +1585,34 @@ const runShell = (cmd, options = {}) =>
     });
     let stdout = "";
     let stderr = "";
+    let killed = false;
+    const timeoutMs = options.timeoutMs || 0;
+    let timer = null;
+    if (timeoutMs > 0) {
+      timer = setTimeout(() => {
+        killed = true;
+        child.kill("SIGTERM");
+        setTimeout(() => {
+          try { child.kill("SIGKILL"); } catch {}
+        }, 5000);
+      }, timeoutMs);
+    }
     child.stdout.on("data", (chunk) => {
       stdout += String(chunk);
     });
     child.stderr.on("data", (chunk) => {
       stderr += String(chunk);
     });
-    child.on("error", reject);
+    child.on("error", (err) => {
+      if (timer) clearTimeout(timer);
+      reject(err);
+    });
     child.on("close", (code) => {
+      if (timer) clearTimeout(timer);
+      if (killed && options.allowFailure) {
+        resolve({ code: code ?? 1, stdout, stderr: stderr + "\n[runShell] killed: timeout exceeded" });
+        return;
+      }
       if (code !== 0 && !options.allowFailure) {
         reject(new Error(`Command failed (${code}): ${cmd}\n${stderr || stdout}`));
         return;
@@ -1660,6 +1620,126 @@ const runShell = (cmd, options = {}) =>
       resolve({ code: code ?? 0, stdout, stderr });
     });
   });
+
+const readJsonIfExists = async (filePath) => {
+  if (!filePath) return null;
+  try {
+    const raw = await fs.readFile(filePath, "utf8");
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+};
+
+const parseJsonLine = (value) => {
+  const text = String(value || "").trim();
+  if (!text) return null;
+  const lines = text.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+  for (let i = lines.length - 1; i >= 0; i -= 1) {
+    const line = lines[i];
+    if (!line.startsWith("{")) continue;
+    try {
+      return JSON.parse(line);
+    } catch {
+      continue;
+    }
+  }
+  return null;
+};
+
+const normalizeColorToken = (value) => {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  const rgba = raw.match(/^rgba?\(([^)]+)\)$/i);
+  if (rgba) {
+    const channels = rgba[1].split(",").map((item) => Number(item.trim())).filter((item) => Number.isFinite(item));
+    if (channels.length >= 3) {
+      const toHex = (n) => Math.max(0, Math.min(255, Math.round(n))).toString(16).padStart(2, "0");
+      return `#${toHex(channels[0])}${toHex(channels[1])}${toHex(channels[2])}`;
+    }
+  }
+  if (/^#[0-9a-f]{3}$/i.test(raw)) {
+    const token = raw.slice(1).toLowerCase();
+    return `#${token[0]}${token[0]}${token[1]}${token[1]}${token[2]}${token[2]}`;
+  }
+  if (/^#[0-9a-f]{6}$/i.test(raw)) return raw.toLowerCase();
+  return "";
+};
+
+const mergeThemeColors = (summary, styleFused) => {
+  const existing = Array.isArray(summary?.themeColors) ? summary.themeColors : [];
+  const fusedColors = Array.isArray(styleFused?.tokens?.colors)
+    ? styleFused.tokens.colors.map((entry) => normalizeColorToken(entry?.value || entry)).filter(Boolean)
+    : [];
+  const merged = dedupeUrls([...existing, ...fusedColors], 20);
+  return merged;
+};
+
+const runHybridCrawlerPipeline = async ({ site, ingestDir, maxPages, maxDepth, timeoutMs = 20000, preferLanguage = "en" }) => {
+  if (!site?.url) return { ok: false, reason: "missing_url" };
+  const scriptExists = await fs
+    .access(HYBRID_CRAWL_SCRIPT)
+    .then(() => true)
+    .catch(() => false);
+  if (!scriptExists) {
+    return { ok: false, reason: "script_missing", error: `Missing script: ${HYBRID_CRAWL_SCRIPT}` };
+  }
+  const outputDir = path.join(ingestDir, "hybrid");
+  await ensureDir(outputDir);
+  const cmd = [
+    "python3",
+    JSON.stringify(HYBRID_CRAWL_SCRIPT),
+    "--url",
+    JSON.stringify(site.url),
+    "--output-dir",
+    JSON.stringify(outputDir),
+    "--max-pages",
+    String(Math.max(1, Math.floor(Number(maxPages) || 1))),
+    "--max-depth",
+    String(Math.max(0, Math.floor(Number(maxDepth) || 0))),
+    "--concurrency",
+    "3",
+    "--timeout-ms",
+    String(Math.max(1000, Math.floor(Number(timeoutMs) || 20000))),
+    "--prefer-language",
+    String(preferLanguage || "en"),
+  ].join(" ");
+
+  const pipelineTimeoutMs = Math.max(60000, Math.floor(Number(maxPages) || 1) * timeoutMs * 2 + 120000);
+  const result = await runShell(cmd, { cwd: ROOT, allowFailure: true, timeoutMs: pipelineTimeoutMs });
+  const parsed = parseJsonLine(result.stdout) || parseJsonLine(result.stderr);
+  if (result.code !== 0 || !parsed?.ok) {
+    return {
+      ok: false,
+      reason: "execution_failed",
+      code: result.code,
+      stdout: result.stdout,
+      stderr: result.stderr,
+      parsed,
+    };
+  }
+
+  const crawlReport = await readJsonIfExists(parsed.crawl_report_path);
+  const crawlResult = await readJsonIfExists(parsed.crawl_result_path);
+  const visualAnalysis = await readJsonIfExists(parsed.visual_analysis_path);
+  const styleFused = await readJsonIfExists(parsed.style_fused_path);
+
+  return {
+    ok: true,
+    outputDir,
+    crawlReport,
+    crawlResult,
+    visualAnalysis,
+    styleFused,
+    paths: {
+      crawlReportPath: parsed.crawl_report_path || path.join(outputDir, "crawl_report.json"),
+      crawlResultPath: parsed.crawl_result_path || path.join(outputDir, "crawl_result.json"),
+      visualAnalysisPath: parsed.visual_analysis_path || path.join(outputDir, "visual_analysis.json"),
+      styleFusedPath: parsed.style_fused_path || path.join(outputDir, "style_fused.json"),
+    },
+    warnings: Array.isArray(parsed.warnings) ? parsed.warnings : [],
+  };
+};
 
 const parseCsvLine = (line) => {
   const values = [];
@@ -1762,6 +1842,19 @@ const normalizeSite = (raw, index) => {
   const crawlSite = parseBool(raw.crawlSite ?? raw.crawl_site ?? false);
   const crawlMaxPages = parsePositiveInt(raw.crawlMaxPages ?? raw.crawl_max_pages, 0);
   const crawlMaxDepth = parseNonNegativeInt(raw.crawlMaxDepth ?? raw.crawl_max_depth, -1);
+  const crawlCapturePages = parseNonNegativeInt(raw.crawlCapturePages ?? raw.crawl_capture_pages, -1);
+  const maxDiscoveredPages = parsePositiveInt(raw.maxDiscoveredPages ?? raw.max_discovered_pages, 0);
+  const maxNavLinks = parsePositiveInt(raw.maxNavLinks ?? raw.max_nav_links, 0);
+  const mustIncludePatternsRaw = Array.isArray(raw.mustIncludePatterns)
+    ? raw.mustIncludePatterns
+    : Array.isArray(raw.must_include_patterns)
+      ? raw.must_include_patterns
+      : typeof raw.mustIncludePatterns === "string"
+        ? raw.mustIncludePatterns.split(",")
+        : typeof raw.must_include_patterns === "string"
+          ? raw.must_include_patterns.split(",")
+          : [];
+  const mustIncludePatterns = mustIncludePatternsRaw.map((entry) => String(entry || "").trim()).filter(Boolean);
   const antiCrawlPrecheck = parseBool(raw.antiCrawlPrecheck ?? raw.anti_crawl_precheck ?? true);
   const antiCrawlTimeoutMs = parsePositiveInt(raw.antiCrawlTimeoutMs ?? raw.anti_crawl_timeout_ms, 0);
   const fidelityModeRaw =
@@ -1772,6 +1865,8 @@ const normalizeSite = (raw, index) => {
         : "";
   const fidelityMode = String(fidelityModeRaw || "").trim().toLowerCase() === "strict" ? "strict" : "standard";
   const fidelityThreshold = parseNonNegativeInt(raw.fidelityThreshold ?? raw.fidelity_threshold, -1);
+  const fidelityPageThreshold = parseNonNegativeInt(raw.fidelityPageThreshold ?? raw.fidelity_page_threshold, -1);
+  const requiredPagesPerSite = parsePositiveInt(raw.requiredPagesPerSite ?? raw.required_pages_per_site, 0);
   const fidelityEnforcementRaw =
     typeof raw.fidelityEnforcement === "string"
       ? raw.fidelityEnforcement
@@ -1779,6 +1874,8 @@ const normalizeSite = (raw, index) => {
         ? raw.fidelity_enforcement
         : "";
   const fidelityEnforcement = String(fidelityEnforcementRaw || "").trim().toLowerCase() === "fail" ? "fail" : "warn";
+  const specialRules = raw?.specialRules && typeof raw.specialRules === "object" ? raw.specialRules : {};
+  const featureToggles = raw?.featureToggles && typeof raw.featureToggles === "object" ? raw.featureToggles : {};
 
   return {
     id: id || `site-${index + 1}`,
@@ -1792,12 +1889,194 @@ const normalizeSite = (raw, index) => {
     crawlSite,
     crawlMaxPages,
     crawlMaxDepth,
+    crawlCapturePages,
+    maxDiscoveredPages,
+    maxNavLinks,
+    mustIncludePatterns,
     antiCrawlPrecheck,
     antiCrawlTimeoutMs,
     fidelityMode,
     fidelityThreshold,
+    fidelityPageThreshold,
+    requiredPagesPerSite,
     fidelityEnforcement,
+    specialRules,
+    featureToggles,
   };
+};
+
+const normalizeRulePath = (pathValue) => {
+  const normalized = normalizeTemplatePagePath(pathValue || "/");
+  return normalized.toLowerCase();
+};
+
+const isBlogLikePath = (pathValue) => {
+  const p = normalizeRulePath(pathValue);
+  return p.includes("/blogs/") || p.includes("/blog/") || /\/technology\/?$/.test(p) || p.includes("/technology/");
+};
+
+const isProductLikePath = (pathValue) => {
+  const p = normalizeRulePath(pathValue);
+  return p.includes("/products/") || p.includes("/headphones/") || p.includes("/collections/");
+};
+
+const isSupportLikePath = (pathValue) => {
+  const p = normalizeRulePath(pathValue);
+  return p.includes("/support") || p.includes("/help") || p.includes("/downloads") || p.includes("/docs") || p.includes("/contact");
+};
+
+const tokenizeSimilarityText = (value) =>
+  String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .split(/\s+/)
+    .map((token) => token.trim())
+    .filter((token) => token.length >= 4);
+
+const buildSimilarityTokenSet = ({ site, summary, context }) => {
+  const parts = [
+    site?.url || "",
+    site?.description || "",
+    site?.prompt || "",
+    summary?.title || "",
+    ...(Array.isArray(summary?.h1) ? summary.h1 : []),
+    ...(Array.isArray(summary?.h2) ? summary.h2 : []),
+    context?.currentPath || "",
+  ];
+  const tokens = new Set();
+  for (const part of parts) {
+    for (const token of tokenizeSimilarityText(part)) tokens.add(token);
+  }
+  return tokens;
+};
+
+const rankGalleryBySimilarity = (gallery = [], tokenSet = new Set()) => {
+  const ranked = [];
+  for (const src of Array.isArray(gallery) ? gallery : []) {
+    const value = String(src || "").trim();
+    if (!/^https?:\/\//i.test(value)) continue;
+    const srcTokens = tokenizeSimilarityText(value);
+    const score = srcTokens.reduce((acc, token) => acc + (tokenSet.has(token) ? 1 : 0), 0);
+    ranked.push({ src: value, score });
+  }
+  ranked.sort((a, b) => b.score - a.score);
+  return {
+    matched: ranked.filter((row) => row.score > 0).map((row) => row.src),
+    all: ranked.map((row) => row.src),
+  };
+};
+
+const applySiteSpecialRulesToPages = ({ site, pages = [], crawl = null }) => {
+  if (!Array.isArray(pages) || !pages.length) {
+    return {
+      pages: [],
+      failed: [],
+      notes: [],
+    };
+  }
+
+  const notes = [
+    "Global rule: e-commerce routes are display-only and keep one representative product template page.",
+    "Global rule: blog/technology/article routes use markdown-friendly content format.",
+    "Global rule: support/help routes are content-only; download/cart/checkout flows are excluded.",
+    "Global rule: extraction-failed pages are omitted from templates and recorded in extraction_failures.",
+    "Global rule: repeated page structures (article/blog/product) keep one representative template page.",
+  ];
+
+  const failed = [];
+  const crawlErrors = Array.isArray(crawl?.errors) ? crawl.errors : [];
+  for (const err of crawlErrors) {
+    const pathValue = routePathFromUrl(err?.url || "");
+    failed.push({
+      path: pathValue,
+      reason: String(err?.error || "crawl_failed"),
+      url: String(err?.url || ""),
+      source: "crawl_error",
+    });
+  }
+
+  const enriched = pages.map((page) => {
+    const path = normalizeTemplatePagePath(page?.path || "/");
+    const next = {
+      ...page,
+      required_categories: Array.isArray(page?.required_categories) ? [...page.required_categories] : [],
+      special_rules: {
+        ...(page?.special_rules && typeof page.special_rules === "object" ? page.special_rules : {}),
+      },
+    };
+
+    if (path === "/") {
+      next.special_rules.navMegaMenu = true;
+      next.special_rules.navMenuPresentation = "image_text_dropdown";
+    }
+
+    const pageType = classifyTemplatePageType(path, String(page?.name || ""));
+    if (pageType === "blog" || isBlogLikePath(path)) {
+      next.special_rules.contentFormat = "markdown";
+      next.special_rules.blogMode = true;
+      next.required_categories = unique(["navigation", "hero", "story", "footer"].filter(Boolean));
+    }
+
+    if (pageType === "contact" || isSupportLikePath(path)) {
+      next.special_rules.supportContentOnly = true;
+      next.special_rules.excludeDownloads = true;
+      next.special_rules.excludeCommerce = true;
+      next.required_categories = unique(["navigation", "hero", "story", "contact", "footer"].filter(Boolean));
+    }
+
+    if (pageType === "products" || isProductLikePath(path)) {
+      next.special_rules.ecommerceDisplayOnly = true;
+      next.special_rules.excludeCart = true;
+      next.special_rules.excludeCheckout = true;
+    }
+
+    return next;
+  });
+
+  const filteredByFlow = enriched.filter((page) => {
+    const path = normalizeTemplatePagePath(page?.path || "/");
+    const token = path.toLowerCase();
+    if (/(^|\/)cart(\/|$)|(^|\/)checkout(\/|$)|(^|\/)account(\/|$)|(^|\/)orders?(\/|$)/.test(token)) {
+      failed.push({
+        path,
+        reason: "excluded_flow_cart_checkout_account",
+        url: "",
+        source: "global_rule",
+      });
+      return false;
+    }
+    if (isLikelyDownloadPath(path)) {
+      failed.push({
+        path,
+        reason: "excluded_download_flow",
+        url: "",
+        source: "global_rule",
+      });
+      return false;
+    }
+    return true;
+  });
+
+  const dedupeByTemplateType = new Set(["products", "blog"]);
+  const seenType = new Set();
+  const filtered = filteredByFlow.filter((page) => {
+    const path = normalizeTemplatePagePath(page?.path || "/");
+    const pageType = classifyTemplatePageType(path, String(page?.name || ""));
+    if (!dedupeByTemplateType.has(pageType)) return true;
+    if (!seenType.has(pageType)) {
+      seenType.add(pageType);
+      return true;
+    }
+    failed.push({
+      path,
+      reason: `excluded_by_template_structure_dedupe_${pageType}`,
+      url: "",
+      source: "global_rule",
+    });
+    return false;
+  });
+
+  return { pages: filtered, failed, notes };
 };
 
 const loadManifest = async (manifestPath) => {
@@ -2218,6 +2497,7 @@ const fetchHtmlSummary = async (url) => {
     const navMenuDepth = detectHeaderMenuDepth(html);
     const heroPresentation = detectHeroPresentation(html);
     const heroCarousel = detectHeroCarousel(html, url);
+    const themeColors = extractThemeColorsFromHtml(html);
     return {
       title,
       h1,
@@ -2228,6 +2508,7 @@ const fetchHtmlSummary = async (url) => {
       navMenuDepth,
       heroPresentation,
       heroCarousel,
+      themeColors,
       htmlChars: html.length,
       status: res.status,
     };
@@ -2258,6 +2539,87 @@ const dedupeTextValues = (items, limit = 24) => {
     if (out.length >= limit) break;
   }
   return out;
+};
+
+const detectUrlLanguage = (value) => {
+  const raw = String(value || "").trim().toLowerCase();
+  if (!raw) return "neutral";
+  if (/[?&](?:lang|locale)=zh(?:-[a-z]{2})?\b/.test(raw)) return "zh";
+  if (/[?&](?:lang|locale)=en(?:-[a-z]{2})?\b/.test(raw)) return "en";
+  if (/\/(?:zh|zh-cn|zh-hans|zh-hant)(?:\/|$)/.test(raw)) return "zh";
+  if (/\/(?:en|en-us|en-gb|global\/en)(?:\/|$)/.test(raw)) return "en";
+  return "neutral";
+};
+
+const extractHrefValues = (html) => {
+  const hrefs = [];
+  let match;
+  const hrefRegex = /<a[^>]+href=["']([^"']+)["'][^>]*>/gi;
+  while ((match = hrefRegex.exec(String(html || "")))) {
+    const href = String(match[1] || "").trim();
+    if (href) hrefs.push(href);
+  }
+  return hrefs;
+};
+
+const resolvePreferredSiteUrl = async ({ url, timeoutMs = 10000 }) => {
+  if (!url) return { url: "", reason: "missing" };
+  let entry;
+  try {
+    entry = new URL(url);
+  } catch {
+    return { url, reason: "invalid_url" };
+  }
+
+  const rootOrigin = entry.origin;
+  const normalizedEntry = normalizeInternalPageUrl(entry.toString(), rootOrigin, rootOrigin) || entry.toString();
+
+  const fetchHtml = async (targetUrl) => {
+    const ctrl = new AbortController();
+    const timeout = setTimeout(() => ctrl.abort(), timeoutMs);
+    try {
+      const res = await fetch(targetUrl, {
+        signal: ctrl.signal,
+        redirect: "follow",
+        headers: { 
+          "user-agent": DEFAULT_HTTP_USER_AGENT,
+          "accept": "text/html,application/xhtml+xml",
+        },
+      });
+      clearTimeout(timeout);
+      const html = await res.text();
+      return html;
+    } catch (err) {
+      clearTimeout(timeout);
+      throw err;
+    }
+  };
+
+  try {
+    const html = await fetchHtml(normalizedEntry);
+    const normalizedLinks = dedupeUrls(
+      extractHrefValues(html)
+        .map((href) => normalizeInternalPageUrl(href, rootOrigin, normalizedEntry))
+        .filter(Boolean),
+      300
+    );
+
+    const englishLinks = normalizedLinks.filter((item) => detectUrlLanguage(item) === "en");
+    if (englishLinks.length) {
+      const best = englishLinks.sort((a, b) => a.length - b.length)[0];
+      return { url: best, reason: "english" };
+    }
+
+    const chineseLinks = normalizedLinks.filter((item) => detectUrlLanguage(item) === "zh");
+    if (chineseLinks.length) {
+      const best = chineseLinks.sort((a, b) => a.length - b.length)[0];
+      return { url: best, reason: "chinese_fallback" };
+    }
+  } catch (err) {
+    return { url: normalizedEntry, reason: "probe_failed", error: String(err) };
+  }
+
+  return { url: normalizedEntry, reason: "entry_default" };
 };
 
 const SKIPPED_CRAWL_EXT_RE =
@@ -2380,6 +2742,35 @@ const crawlSitePages = async ({
   const startUrl = normalizeInternalPageUrl(entry.toString(), rootOrigin, rootOrigin) || entry.toString();
   const queue = [{ url: startUrl, depth: 0, from: "" }];
   const seen = new Set([startUrl]);
+  const dedupeKinds = new Set(["products", "blog"]);
+  const dedupeKindTaken = new Set();
+  let dedupeSkipped = 0;
+
+  const classifyDedupeKindFromPath = (pathValue) => {
+    const path = normalizeTemplatePagePath(pathValue || "/").toLowerCase();
+    if (
+      /\/products?\//.test(path) ||
+      /\/shop\//.test(path) ||
+      /\/store\//.test(path) ||
+      /\/collections?\//.test(path)
+    ) {
+      return "products";
+    }
+    if (
+      /\/blog\//.test(path) ||
+      /\/blogs\//.test(path) ||
+      /\/article\//.test(path) ||
+      /\/articles\//.test(path) ||
+      /\/news\//.test(path) ||
+      /\/journal\//.test(path) ||
+      /\/insight\//.test(path) ||
+      /\/technology\//.test(path)
+    ) {
+      return "blog";
+    }
+    return "generic";
+  };
+
   const pages = [];
   const errors = [];
   let antiCrawl = null;
@@ -2427,6 +2818,13 @@ const crawlSitePages = async ({
     if (current.depth >= maxDepth) continue;
     for (const nextUrl of page.internalLinks) {
       if (seen.has(nextUrl)) continue;
+      const nextPath = routePathFromUrl(nextUrl);
+      const nextKind = classifyDedupeKindFromPath(nextPath);
+      if (dedupeKinds.has(nextKind) && dedupeKindTaken.has(nextKind)) {
+        dedupeSkipped += 1;
+        continue;
+      }
+      if (dedupeKinds.has(nextKind)) dedupeKindTaken.add(nextKind);
       seen.add(nextUrl);
       queue.push({ url: nextUrl, depth: current.depth + 1, from: current.url });
       if (seen.size >= maxPages * 12) break;
@@ -2444,6 +2842,7 @@ const crawlSitePages = async ({
       discovered: seen.size,
       crawled: pages.length,
       failed: errors.length,
+      dedupeSkipped,
     },
     pages,
     errors,
@@ -2654,7 +3053,7 @@ const choosePreferredScreenshot = async (candidates) => {
   return best;
 };
 
-const captureWithBrowser = async ({ url, outPath, mobile, browser, waitMs = 3500 }) => {
+const captureWithBrowser = async ({ url, outPath, mobile, browser, waitMs = 3500, timeoutMs = 90000 }) => {
   const device = mobile ? ' --device "iPhone 13"' : "";
   const browserArg = browser ? ` --browser ${browser}` : "";
   const cmd = `cd ${JSON.stringify(
@@ -2662,10 +3061,10 @@ const captureWithBrowser = async ({ url, outPath, mobile, browser, waitMs = 3500
   )} && npx playwright screenshot --full-page${browserArg}${device} --wait-for-timeout ${Math.floor(
     waitMs
   )} ${JSON.stringify(url)} ${JSON.stringify(outPath)}`;
-  await runShell(cmd, { cwd: ROOT });
+  await runShell(cmd, { cwd: ROOT, timeoutMs });
 };
 
-const captureWithPuppeteer = async ({ url, outPath, mobile }) => {
+const captureWithPuppeteer = async ({ url, outPath, mobile, timeoutMs = 90000 }) => {
   const mod = await import("puppeteer");
   const puppeteer = mod?.default ?? mod;
   if (!puppeteer?.launch) {
@@ -2695,7 +3094,7 @@ const captureWithPuppeteer = async ({ url, outPath, mobile }) => {
       });
     }
 
-    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: Math.max(5000, Math.floor(timeoutMs * 0.5)) });
     await page.waitForTimeout(3000);
 
     // Trigger lazy sections by scrolling through the page once.
@@ -2726,16 +3125,16 @@ const captureWithPuppeteer = async ({ url, outPath, mobile }) => {
   }
 };
 
-const captureScreenshot = async ({ url, outPath, mobile = false }) => {
+const captureScreenshot = async ({ url, outPath, mobile = false, timeoutMs = 90000 }) => {
   if (!url) return null;
   await ensureDir(path.dirname(outPath));
 
   try {
-    await captureWithPuppeteer({ url, outPath, mobile });
+    await captureWithPuppeteer({ url, outPath, mobile, timeoutMs });
   } catch {
-    await captureWithBrowser({ url, outPath, mobile, browser: "chromium", waitMs: 3500 });
+    await captureWithBrowser({ url, outPath, mobile, browser: "chromium", waitMs: 3500, timeoutMs });
     if (await isLikelyBlankScreenshot(outPath)) {
-      await captureWithBrowser({ url, outPath, mobile, browser: "webkit", waitMs: 5000 });
+      await captureWithBrowser({ url, outPath, mobile, browser: "webkit", waitMs: 5000, timeoutMs });
     }
   }
 
@@ -2799,22 +3198,96 @@ const publishCrawledPageAssets = async ({ siteId, routeSlug, desktopSource, mobi
   }
 };
 
-const captureScreenshotSafe = async ({ url, outPath, mobile }) => {
+const captureScreenshotSafe = async ({ url, outPath, mobile, timeoutMs = 90000 }) => {
   try {
-    return await captureScreenshot({ url, outPath, mobile });
+    return await captureScreenshot({ url, outPath, mobile, timeoutMs });
   } catch {
     return null;
   }
 };
 
-const buildCrawledPageAssetPack = async ({ siteId, crawl, ingestDir }) => {
+const buildCrawledPageAssetPack = async ({
+  siteId,
+  crawl,
+  ingestDir,
+  captureLimit = 12,
+  screenshotTimeoutMs = 90000,
+  screenshotSemaphore = null,
+  logPrefix = "[template-factory]",
+}) => {
   if (!crawl?.enabled) return null;
+
+  const SKIP_ROUTE_PATTERNS = [
+    /(^|\/)login(\/|$)/i,
+    /(^|\/)auth(\/|$)/i,
+    /(^|\/)signin(\/|$)/i,
+    /(^|\/)signup(\/|$)/i,
+    /(^|\/)account(\/|$)/i,
+    /(^|\/)cart(\/|$)/i,
+    /(^|\/)checkout(\/|$)/i,
+    /(^|\/)orders?(\/|$)/i,
+    /(^|\/)policies(\/|$)/i,
+    /(^|\/)privacy(\/|$)/i,
+    /(^|\/)terms(\/|$)/i,
+    /(^|\/)legal(\/|$)/i,
+    /(^|\/)cookie(?:s|-policy)?(\/|$)/i,
+  ];
+
+  const classifyRouteTemplateKind = (pathValue) => {
+    const p = normalizeTemplatePagePath(pathValue || "/").toLowerCase();
+    if (/(^|\/)products?(\/|$)|(^|\/)collections?(\/|$)|(^|\/)shop(\/|$)|(^|\/)store(\/|$)/.test(p)) return "products";
+    if (/(^|\/)blogs?(\/|$)|(^|\/)articles?(\/|$)|(^|\/)news(\/|$)|(^|\/)journal(\/|$)|(^|\/)insights?(\/|$)|(^|\/)technology(\/|$)/.test(p)) return "blog";
+    return "generic";
+  };
 
   const pagesDir = path.join(ingestDir, "pages");
   await ensureDir(pagesDir);
-  const successfulPages = Array.isArray(crawl?.pages)
-    ? crawl.pages.filter((page) => page && !page.error && Number(page.status || 0) > 0 && Number(page.status || 0) < 500)
-    : [];
+  const filterStats = {
+    totalCandidates: Array.isArray(crawl?.pages) ? crawl.pages.length : 0,
+    excludedByErrorOrStatus: 0,
+    excludedByRoutePolicy: 0,
+    excludedByDownloadPolicy: 0,
+    excludedByTemplateDedupe: 0,
+  };
+
+  const successfulPagesRaw = [];
+  for (const page of Array.isArray(crawl?.pages) ? crawl.pages : []) {
+    if (!page || page.error || !Number(page.status || 0) > 0 || Number(page.status || 0) >= 500) {
+      filterStats.excludedByErrorOrStatus += 1;
+      continue;
+    }
+    const routePath = routePathFromUrl(page.url);
+    const routeFiltered = SKIP_ROUTE_PATTERNS.some((pattern) => pattern.test(routePath));
+    if (routeFiltered) {
+      filterStats.excludedByRoutePolicy += 1;
+      continue;
+    }
+    if (isLikelyDownloadPath(routePath)) {
+      filterStats.excludedByDownloadPolicy += 1;
+      continue;
+    }
+    successfulPagesRaw.push(page);
+  }
+
+  const successfulPages = [];
+  const keepOneKinds = new Set(["products", "blog"]);
+  const seenKinds = new Set();
+  for (const page of successfulPagesRaw) {
+    const routePath = routePathFromUrl(page.url);
+    const kind = classifyRouteTemplateKind(routePath);
+    if (keepOneKinds.has(kind)) {
+      if (seenKinds.has(kind)) {
+        filterStats.excludedByTemplateDedupe += 1;
+        continue;
+      }
+      seenKinds.add(kind);
+    }
+    successfulPages.push(page);
+  }
+
+  console.log(
+    `${logPrefix} crawl asset filter stats: total=${filterStats.totalCandidates}, kept=${successfulPages.length}, excluded=status_or_error:${filterStats.excludedByErrorOrStatus}, route_policy:${filterStats.excludedByRoutePolicy}, download_policy:${filterStats.excludedByDownloadPolicy}, template_dedupe:${filterStats.excludedByTemplateDedupe}`
+  );
   if (!successfulPages.length) {
     const emptyPack = {
       generatedAt: new Date().toISOString(),
@@ -2830,6 +3303,9 @@ const buildCrawledPageAssetPack = async ({ siteId, crawl, ingestDir }) => {
   const pages = [];
   const byPath = new Map();
 
+  const limit = Math.max(0, Math.floor(Number(captureLimit) || 0));
+  const total = successfulPages.length;
+
   for (const [index, page] of successfulPages.entries()) {
     const routePath = routePathFromUrl(page.url);
     if (byPath.has(routePath)) continue;
@@ -2839,8 +3315,30 @@ const buildCrawledPageAssetPack = async ({ siteId, crawl, ingestDir }) => {
 
     const desktopPath = path.join(pageDir, "desktop.auto.png");
     const mobilePath = path.join(pageDir, "mobile.auto.png");
-    const desktopShot = await captureScreenshotSafe({ url: page.url, outPath: desktopPath, mobile: false });
-    const mobileShot = await captureScreenshotSafe({ url: page.url, outPath: mobilePath, mobile: true });
+    const shouldCapture = index < limit;
+    console.log(
+      `${logPrefix} page asset ${index + 1}/${total} route=${routePath} capture=${shouldCapture ? "yes" : "no"}`
+    );
+    const desktopShot = shouldCapture
+      ? await runWithSemaphore(screenshotSemaphore, () =>
+          captureScreenshotSafe({
+            url: page.url,
+            outPath: desktopPath,
+            mobile: false,
+            timeoutMs: screenshotTimeoutMs,
+          })
+        )
+      : null;
+    const mobileShot = shouldCapture
+      ? await runWithSemaphore(screenshotSemaphore, () =>
+          captureScreenshotSafe({
+            url: page.url,
+            outPath: mobilePath,
+            mobile: true,
+            timeoutMs: screenshotTimeoutMs,
+          })
+        )
+      : null;
     const published = await publishCrawledPageAssets({
       siteId,
       routeSlug,
@@ -2893,6 +3391,7 @@ const buildCrawledPageAssetPack = async ({ siteId, crawl, ingestDir }) => {
     entryUrl: crawl?.entryUrl || "",
     homePath: pages[0]?.path || "/",
     pageCount: pages.length,
+    filterStats,
     pages,
   };
   const manifestPath = path.join(pagesDir, "pages.json");
@@ -3156,17 +3655,72 @@ const cloneJson = (value) => JSON.parse(JSON.stringify(value));
 
 const HERO_CAROUSEL_CAPABLE_BLOCKS = new Set(["NexusHeroDock", "HeroSplit", "NeonHeroBeam"]);
 
-const inferPaletteProfileFromVisualSignature = (visualSignature) => {
+/**
+ * Extract brand/theme colors from HTML inline styles, CSS custom properties,
+ * and meta theme-color tags. Returns an array of hex color strings.
+ */
+const extractThemeColorsFromHtml = (html) => {
+  if (!html) return [];
+  const colors = [];
+  // 1. meta theme-color
+  const metaMatch = html.match(/<meta[^>]+name=["']theme-color["'][^>]+content=["']([^"']+)["']/i) ||
+    html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+name=["']theme-color["']/i);
+  if (metaMatch?.[1]) colors.push(metaMatch[1].trim());
+  // 2. CSS custom properties (--primary, --brand, --accent, --color-primary, etc.)
+  const cssVarRegex = /--(?:primary|brand|accent|color-primary|theme-color|main-color|brand-color)\s*:\s*([^;}\n]+)/gi;
+  let match;
+  while ((match = cssVarRegex.exec(html)) && colors.length < 12) {
+    const val = match[1].trim();
+    if (/^#[0-9a-f]{3,8}$/i.test(val) || /^rgb/i.test(val)) colors.push(val);
+  }
+  // 3. Prominent background-color in header/nav/hero areas
+  const headerChunk = html.slice(0, 80000);
+  const bgColorRegex = /(?:header|nav|hero|banner)[^}]{0,2000}?background(?:-color)?\s*:\s*(#[0-9a-f]{3,8})/gi;
+  while ((match = bgColorRegex.exec(headerChunk)) && colors.length < 16) {
+    colors.push(match[1].trim());
+  }
+  // 4. Inline style brand colors on prominent elements
+  const inlineRegex = /style=["'][^"']*(?:background|color)\s*:\s*(#[0-9a-f]{3,8})/gi;
+  while ((match = inlineRegex.exec(headerChunk)) && colors.length < 20) {
+    const hex = match[1].trim().toLowerCase();
+    // Skip near-black, near-white, and gray colors
+    if (/^#(?:0{3,6}|f{3,6}|(?:(?:[0-9a-f])\1{2,5}))$/i.test(hex)) continue;
+    colors.push(hex);
+  }
+  return [...new Set(colors.map(c => c.toLowerCase()))];
+};
+
+const inferPaletteProfileFromVisualSignature = (visualSignature, htmlColors = []) => {
   const isDark = Boolean(visualSignature?.isDark);
   const colors = Array.isArray(visualSignature?.dominantColors)
     ? visualSignature.dominantColors.map((item) => String(item || "").toLowerCase())
     : [];
-  const joined = colors.join(" ");
+  const allColors = [...colors, ...htmlColors.map(c => String(c || "").toLowerCase())];
+  const joined = allColors.join(" ");
   const blueCyan =
     /#0|#1|#2|#3/.test(joined) &&
-    colors.some((hex) => /^#?[0-9a-f]{6}$/i.test(hex || ""));
+    allColors.some((hex) => /^#?[0-9a-f]{6}$/i.test(hex || ""));
+  // Detect teal/cyan brand color (like Siemens #009999)
+  const hasTeal = allColors.some((hex) => {
+    const m = hex.match(/^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
+    if (!m) return false;
+    const r = parseInt(m[1], 16), g = parseInt(m[2], 16), b = parseInt(m[3], 16);
+    return g > 100 && b > 100 && r < 80 && Math.abs(g - b) < 60;
+  });
+  // Pick the first non-gray, non-black, non-white color as accent
+  const extractedAccent = allColors.find((hex) => {
+    if (!/^#[0-9a-f]{6}$/i.test(hex)) return false;
+    const m = hex.match(/^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
+    if (!m) return false;
+    const r = parseInt(m[1], 16), g = parseInt(m[2], 16), b = parseInt(m[3], 16);
+    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    // Skip near-gray (low saturation) and near-black/white
+    if (max - min < 30) return false;
+    if (max < 30 || min > 225) return false;
+    return true;
+  });
 
-  if (isDark && blueCyan) {
+  if (isDark && (blueCyan || hasTeal)) {
     return {
       paletteProfile: "deep-blue-cyan",
       navGradient: "linear-gradient(180deg,#03122e 0%,#071b45 100%)",
@@ -3174,7 +3728,7 @@ const inferPaletteProfileFromVisualSignature = (visualSignature) => {
       footerGradient: "linear-gradient(180deg,#03122e 0%,#020a1d 100%)",
       overlayStrong: "rgba(3, 16, 40, 0.58)",
       overlaySoft: "rgba(2,10,24,0.24)",
-      accent: "#00c6d8",
+      accent: extractedAccent || (hasTeal ? "#009999" : "#00c6d8"),
       accentText: "#031628",
     };
   }
@@ -3186,7 +3740,7 @@ const inferPaletteProfileFromVisualSignature = (visualSignature) => {
       footerGradient: "linear-gradient(180deg,#0a1020 0%,#060a16 100%)",
       overlayStrong: "rgba(9, 16, 30, 0.56)",
       overlaySoft: "rgba(8,10,16,0.2)",
-      accent: "#38bdf8",
+      accent: extractedAccent || "#38bdf8",
       accentText: "#08111e",
     };
   }
@@ -3197,7 +3751,7 @@ const inferPaletteProfileFromVisualSignature = (visualSignature) => {
     footerGradient: "linear-gradient(180deg,#e7f2ff 0%,#dcecff 100%)",
     overlayStrong: "rgba(230, 240, 255, 0.32)",
     overlaySoft: "rgba(235,240,248,0.18)",
-    accent: "#0ea5e9",
+    accent: extractedAccent || "#0ea5e9",
     accentText: "#031628",
   };
 };
@@ -3264,7 +3818,8 @@ const synthesizeDynamicRecipe = ({ site, baseRecipe, summary = {}, visualSignatu
   const next = cloneJson(baseRecipe || RECIPES.modern_saas);
   const host = hostFromUrl(site?.url || "");
   const suffix = slug(host || site?.id || "site") || "site";
-  const palette = inferPaletteProfileFromVisualSignature(visualSignature);
+  const htmlColors = Array.isArray(summary?.themeColors) ? summary.themeColors : [];
+  const palette = inferPaletteProfileFromVisualSignature(visualSignature, htmlColors);
   const navDepth = Number(summary?.navMenuDepth || 1);
   const heroPresentation = normalizeHeroPresentation(summary?.heroPresentation);
   const hasHeroCarousel =
@@ -3462,6 +4017,41 @@ const summarySubhead = (summary, fallback = "") =>
     ...(Array.isArray(summary?.links) ? summary.links : []),
   ], fallback);
 
+/**
+ * Return a section-specific headline by picking from different h2 entries
+ * instead of always returning h1[0] for every section.
+ * sectionIndex: 0=hero, 1=story, 2=approach, 3=products, 4=socialproof, etc.
+ */
+const sectionSpecificHeadline = (summary, sectionIndex = 0, fallback = "") => {
+  const h1 = Array.isArray(summary?.h1) ? summary.h1 : [];
+  const h2 = Array.isArray(summary?.h2) ? summary.h2 : [];
+  const titleParts = splitTitleCandidates(summary?.title || "");
+  // Hero (index 0) gets h1[0]; other sections pick from h2 pool
+  if (sectionIndex === 0) {
+    return firstNonEmpty([...h1, ...titleParts], fallback);
+  }
+  // For non-hero sections, pick a distinct h2 entry offset by sectionIndex
+  const pool = [...h2, ...titleParts.slice(1), ...h1];
+  const offset = Math.max(0, sectionIndex - 1);
+  if (pool.length > offset) {
+    return pool[offset] || fallback;
+  }
+  return pool[0] || fallback;
+};
+
+const sectionSpecificSubhead = (summary, sectionIndex = 0, fallback = "") => {
+  const h2 = Array.isArray(summary?.h2) ? summary.h2 : [];
+  const links = Array.isArray(summary?.links) ? summary.links : [];
+  const titleParts = splitTitleCandidates(summary?.title || "").slice(1);
+  const pool = [...h2, ...titleParts, ...links];
+  // Pick a different subhead for each section
+  const offset = Math.min(sectionIndex, pool.length - 1);
+  if (pool.length > offset && offset >= 0) {
+    return pool[offset] || fallback;
+  }
+  return pool[0] || fallback;
+};
+
 const summaryItems = (summary, maxItems = 3) => {
   const seeds = dedupeTextValues(
     [
@@ -3626,7 +4216,88 @@ const navLabelFromPage = (page) => {
   return fallback.slice(0, 28) || formatTemplatePageName(page?.path || "/");
 };
 
-const buildNavigationFromSitePages = (sitePages = [], currentPath = "/") => {
+const normalizePatternMatcher = (pattern) => {
+  const token = String(pattern || "").trim();
+  if (!token) return null;
+  if (token.startsWith("/") && token.lastIndexOf("/") > 0) {
+    const last = token.lastIndexOf("/");
+    const body = token.slice(1, last);
+    const flags = token.slice(last + 1) || "i";
+    try {
+      return new RegExp(body, flags.includes("i") ? flags : `${flags}i`);
+    } catch {
+      return null;
+    }
+  }
+  const escaped = token
+    .replace(/[.+?^${}()|[\]\\]/g, "\\$&")
+    .replace(/\*/g, ".*");
+  try {
+    return new RegExp(escaped, "i");
+  } catch {
+    return null;
+  }
+};
+
+const extractSpecialRuleValue = (site, key) => {
+  const specialRules = site?.specialRules && typeof site.specialRules === "object" ? site.specialRules : {};
+  if (specialRules[key] !== undefined) return specialRules[key];
+  const snake = key.replace(/[A-Z]/g, (m) => `_${m.toLowerCase()}`);
+  if (specialRules[snake] !== undefined) return specialRules[snake];
+  return undefined;
+};
+
+const resolveDiscoveryPolicy = ({ site = {}, options = {} }) => {
+  const siteMaxDiscoveredPages =
+    Number(site?.maxDiscoveredPages || 0) > 0
+      ? Math.floor(Number(site.maxDiscoveredPages))
+      : Number(extractSpecialRuleValue(site, "maxDiscoveredPages") || 0) > 0
+        ? Math.floor(Number(extractSpecialRuleValue(site, "maxDiscoveredPages")))
+        : 0;
+  const siteMaxNavLinks =
+    Number(site?.maxNavLinks || 0) > 0
+      ? Math.floor(Number(site.maxNavLinks))
+      : Number(extractSpecialRuleValue(site, "maxNavLinks") || 0) > 0
+        ? Math.floor(Number(extractSpecialRuleValue(site, "maxNavLinks")))
+        : 0;
+  const globalMaxDiscoveredPages = Math.max(4, Math.floor(Number(options?.maxDiscoveredPages || 0) || 24));
+  const globalMaxNavLinks = Math.max(3, Math.floor(Number(options?.maxNavLinks || 0) || 8));
+  const mergedPatterns = [
+    ...(Array.isArray(options?.mustIncludePatterns) ? options.mustIncludePatterns : []),
+    ...(Array.isArray(site?.mustIncludePatterns) ? site.mustIncludePatterns : []),
+    ...(Array.isArray(extractSpecialRuleValue(site, "mustIncludePatterns"))
+      ? extractSpecialRuleValue(site, "mustIncludePatterns")
+      : typeof extractSpecialRuleValue(site, "mustIncludePatterns") === "string"
+        ? String(extractSpecialRuleValue(site, "mustIncludePatterns")).split(",")
+        : []),
+  ]
+    .map((entry) => String(entry || "").trim())
+    .filter(Boolean);
+  const uniquePatterns = Array.from(new Set(mergedPatterns));
+  const mustIncludeMatchers = uniquePatterns.map((entry) => normalizePatternMatcher(entry)).filter(Boolean);
+  return {
+    maxDiscoveredPages: siteMaxDiscoveredPages > 0 ? siteMaxDiscoveredPages : globalMaxDiscoveredPages,
+    maxNavLinks: siteMaxNavLinks > 0 ? siteMaxNavLinks : globalMaxNavLinks,
+    maxDiscoverySeedScan: Math.max(80, (siteMaxDiscoveredPages > 0 ? siteMaxDiscoveredPages : globalMaxDiscoveredPages) * 20),
+    mustIncludePatterns: uniquePatterns,
+    mustIncludeMatchers,
+  };
+};
+
+const matchesMustIncludePolicy = ({ pathValue = "/", name = "", raw = "", policy = null }) => {
+  const matchers = Array.isArray(policy?.mustIncludeMatchers) ? policy.mustIncludeMatchers : [];
+  if (!matchers.length) return false;
+  const haystack = `${normalizeTemplatePagePath(pathValue)} ${String(name || "")} ${String(raw || "")}`;
+  return matchers.some((matcher) => {
+    try {
+      return matcher.test(haystack);
+    } catch {
+      return false;
+    }
+  });
+};
+
+const buildNavigationFromSitePages = (sitePages = [], currentPath = "/", navigationPolicy = {}) => {
   const uniquePages = [];
   const seen = new Set();
   for (const page of Array.isArray(sitePages) ? sitePages : []) {
@@ -3665,6 +4336,7 @@ const buildNavigationFromSitePages = (sitePages = [], currentPath = "/") => {
   const links = [];
   const usedLabels = new Set();
   let hasDropdown = false;
+  const maxNavLinks = Math.max(3, Math.floor(Number(navigationPolicy?.maxNavLinks || 0) || 6));
   for (const candidate of navCandidates) {
     const page = candidate.page;
     const category = candidate.category;
@@ -3689,7 +4361,7 @@ const buildNavigationFromSitePages = (sitePages = [], currentPath = "/") => {
       variant: "link",
       ...(children.length ? { children } : {}),
     });
-    if (links.length >= 6) break;
+    if (links.length >= maxNavLinks) break;
   }
 
   const contactPage = uniquePages.find((page) => pageCategory(page.path) === "contact") || uniquePages.find((page) =>
@@ -3707,7 +4379,7 @@ const buildNavigationFromSitePages = (sitePages = [], currentPath = "/") => {
   };
 };
 
-const buildFooterColumnsFromSitePages = (sitePages = [], footerLinks = []) => {
+const buildFooterColumnsFromSitePages = (sitePages = [], footerLinks = [], navigationPolicy = {}) => {
   const normalizedFooterLinks = dedupeLinkItems(footerLinks, 24);
   if (normalizedFooterLinks.length >= 4) {
     const columns = [
@@ -3746,11 +4418,14 @@ const buildFooterColumnsFromSitePages = (sitePages = [], footerLinks = []) => {
     { title: "Explore", links: [] },
     { title: "Support", links: [] },
   ];
-  for (const [index, page] of pages.slice(0, 12).entries()) {
+  const maxFooterLinks = Math.max(8, Math.floor(Number(navigationPolicy?.maxNavLinks || 0) || 8) * 2);
+  for (const [index, page] of pages.slice(0, maxFooterLinks).entries()) {
     columns[index % columns.length].links.push(page);
   }
   return columns.filter((column) => column.links.length > 0);
 };
+
+const SECTION_KIND_INDEX = { hero: 0, story: 1, approach: 2, products: 3, socialproof: 4, cta: 5, footer: 6, navigation: 7, contact: 5 };
 
 const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, recipe = null, context = {}) => {
   const pageTitle = summary.title || site.id || "Site";
@@ -3759,9 +4434,12 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
   const blockType = String(spec?.blockType || "");
   const currentPath = normalizeTemplatePagePath(context?.currentPath || "/");
   const sitePages = Array.isArray(context?.sitePages) ? context.sitePages : [];
-  const pageHeadline = summaryHeadline(summary, promptLine || `Welcome to ${pageTitle}`);
-  const pageSubhead = summarySubhead(
+  const discoveryPolicy = context?.discoveryPolicy && typeof context.discoveryPolicy === "object" ? context.discoveryPolicy : {};
+  const sectionIdx = SECTION_KIND_INDEX[kind] ?? 0;
+  const pageHeadline = sectionSpecificHeadline(summary, sectionIdx, promptLine || `Welcome to ${pageTitle}`);
+  const pageSubhead = sectionSpecificSubhead(
     summary,
+    sectionIdx,
     site.description || `Designed for ${pageTitle} with a high-consistency block architecture.`
   );
   const imageSourcePolicy = String(site?.imageSourcePolicy || "").trim().toLowerCase();
@@ -3773,11 +4451,14 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
     ? summary.images.filter((item) => /^https?:\/\//i.test(String(item || "").trim()))
     : [];
   const galleryBySection = recipe && typeof recipe === "object" ? recipe.imageLibrary || {} : {};
+  const similarityTokens = buildSimilarityTokenSet({ site, summary, context });
 
   const poolFor = (sectionKey) => {
     const gallery = Array.isArray(galleryBySection?.[sectionKey]) ? galleryBySection[sectionKey] : [];
-    if (imageSourcePolicy === "source_or_gallery") return [...sourceImages, ...gallery];
-    return [...gallery, ...sourceImages];
+    const rankedGallery = rankGalleryBySimilarity(gallery, similarityTokens);
+    const galleryOrdered = rankedGallery.matched.length ? rankedGallery.matched : rankedGallery.all;
+    if (imageSourcePolicy === "source_or_gallery") return [...sourceImages, ...galleryOrdered];
+    return [...galleryOrdered, ...sourceImages];
   };
   const imageFor = (sectionKey, index = 0) => {
     const pool = poolFor(sectionKey).filter((item) => /^https?:\/\//i.test(String(item || "").trim()));
@@ -3845,7 +4526,9 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
 
   if (kind === "navigation") {
     defaults.logo = defaults.logo || pageTitle.split("|")[0].trim().slice(0, 48) || "Site";
-    const navFromSitePages = buildNavigationFromSitePages(sitePages, currentPath);
+    const navFromSitePages = buildNavigationFromSitePages(sitePages, currentPath, {
+      maxNavLinks: discoveryPolicy.maxNavLinks,
+    });
     if (navFromSitePages?.hasDropdown) {
       defaults.variant = "withDropdown";
     } else if (!defaults.variant) {
@@ -3860,14 +4543,24 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
         variant: "link",
       }));
     defaults.ctas = defaults.ctas || navFromSitePages?.ctas || [{ label: "Get Started", href: "#contact", variant: "primary" }];
+    if (navFromSitePages?.hasDropdown) {
+      defaults.variant = "withDropdown";
+      defaults.menuStyle = "image_text";
+      defaults.multiLevel = true;
+    }
   }
 
   if (kind === "hero") {
     defaults.title = defaults.title || pageHeadline.slice(0, 96);
     defaults.subtitle = defaults.subtitle || pageSubhead.slice(0, 160);
-    const navFromSitePages = buildNavigationFromSitePages(sitePages, currentPath);
+    const navFromSitePages = buildNavigationFromSitePages(sitePages, currentPath, {
+      maxNavLinks: discoveryPolicy.maxNavLinks,
+    });
     defaults.ctas = defaults.ctas || navFromSitePages?.ctas || [{ label: "Get Started", href: "#contact", variant: "primary" }];
+    // Only apply carousel slides on the homepage or locale root, not on subpages
+    const isHomePage = currentPath === "/" || isLocaleRootPath(currentPath);
     const shouldUseCarousel =
+      isHomePage &&
       carouselCapableHeroBlocks.has(blockType) && Boolean(heroCarousel.enabled) && generatedHeroSlides.length >= 2;
     if (shouldUseCarousel) {
       const existingSlides = Array.isArray(defaults.heroSlides)
@@ -3875,6 +4568,10 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
         : [];
       defaults.heroSlides = existingSlides.length >= 2 ? existingSlides : generatedHeroSlides;
       defaults.heroCarouselAutoplayMs = Number(defaults.heroCarouselAutoplayMs || 4500);
+    } else if (!isHomePage) {
+      // Subpages should not inherit homepage carousel slides
+      delete defaults.heroSlides;
+      delete defaults.heroCarouselAutoplayMs;
     }
     if (desktopAsset) {
       const shouldBackgroundHero =
@@ -3941,8 +4638,8 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
 
   if (kind === "story") {
     defaults.eyebrow = defaults.eyebrow || "Our Story";
-    defaults.title = defaults.title || summaryHeadline(summary, `Why ${pageTitle}`).slice(0, 92);
-    defaults.subtitle = defaults.subtitle || summarySubhead(summary, "Crafted experiences, measured outcomes, and durable visual language.").slice(0, 180);
+    defaults.title = defaults.title || sectionSpecificHeadline(summary, SECTION_KIND_INDEX.story, `Why ${pageTitle}`).slice(0, 92);
+    defaults.subtitle = defaults.subtitle || sectionSpecificSubhead(summary, SECTION_KIND_INDEX.story, "Crafted experiences, measured outcomes, and durable visual language.").slice(0, 180);
     defaults.body =
       defaults.body ||
       firstNonEmpty(
@@ -3953,6 +4650,11 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
         "This section is generated from source page signals."
       ).slice(0, 220);
     defaults.ctas = defaults.ctas || [{ label: "Explore", href: "#", variant: "link" }];
+    if (isBlogLikePath(currentPath)) {
+      defaults.contentFormat = "markdown";
+      defaults.markdownEnabled = true;
+      defaults.variant = defaults.variant || "editorial";
+    }
     if ((blockType === "ContentStory" || blockType === "NeonDashboardStrip" || blockType === "NexusControlPanel") && desktopAsset && !defaults.dashboardImageSrc) {
       defaults.dashboardImageSrc = desktopSlices.story || desktopAsset;
       defaults.dashboardImageAlt = defaults.dashboardImageAlt || `${pageTitle} dashboard visual`;
@@ -3985,8 +4687,8 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
   }
 
   if (kind === "approach") {
-    defaults.title = defaults.title || summaryHeadline(summary, "Key Capabilities").slice(0, 88);
-    defaults.subtitle = defaults.subtitle || summarySubhead(summary, "Designed for scale, precision, and reliable execution.").slice(0, 160);
+    defaults.title = defaults.title || sectionSpecificHeadline(summary, SECTION_KIND_INDEX.approach, "Key Capabilities").slice(0, 88);
+    defaults.subtitle = defaults.subtitle || sectionSpecificSubhead(summary, SECTION_KIND_INDEX.approach, "Designed for scale, precision, and reliable execution.").slice(0, 160);
     const seededItems = summaryItems(summary, 3);
     defaults.items =
       defaults.items ||
@@ -4037,8 +4739,14 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
   }
 
   if (kind === "products") {
-    defaults.title = defaults.title || summaryHeadline(summary, "Product Portfolio").slice(0, 92);
-    defaults.subtitle = defaults.subtitle || summarySubhead(summary, "Modular blocks tailored to your site objectives.").slice(0, 180);
+    defaults.title = defaults.title || sectionSpecificHeadline(summary, SECTION_KIND_INDEX.products, "Product Portfolio").slice(0, 92);
+    defaults.subtitle = defaults.subtitle || sectionSpecificSubhead(summary, SECTION_KIND_INDEX.products, "Modular blocks tailored to your site objectives.").slice(0, 180);
+    if (classifyTemplatePageType(currentPath, String(summary?.title || "")) === "products" || isProductLikePath(currentPath)) {
+      defaults.commerceMode = "display_only";
+      defaults.hideCart = true;
+      defaults.hideCheckout = true;
+      defaults.hideBuyNow = true;
+    }
     if ((blockType === "NeonDashboardStrip" || blockType === "NexusControlPanel") && desktopAsset) {
       defaults.dashboardImageSrc = defaults.dashboardImageSrc || desktopSlices.products || desktopSlices.story || desktopAsset;
       defaults.mobileDashboardImageSrc =
@@ -4156,12 +4864,19 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
         return next;
       });
     }
+    if (classifyTemplatePageType(currentPath, String(summary?.title || "")) === "contact" || isSupportLikePath(currentPath)) {
+      defaults.supportContentOnly = true;
+      defaults.excludeDownloads = true;
+      defaults.excludeCommerce = true;
+    }
   }
 
   if (kind === "cta") {
-    defaults.title = defaults.title || summaryHeadline(summary, "Ready to define your space?").slice(0, 88);
-    defaults.subtitle = defaults.subtitle || summarySubhead(summary, "Book a private consultation or browse the lookbook.").slice(0, 170);
-    const navFromSitePages = buildNavigationFromSitePages(sitePages, currentPath);
+    defaults.title = defaults.title || sectionSpecificHeadline(summary, SECTION_KIND_INDEX.cta, "Ready to define your space?").slice(0, 88);
+    defaults.subtitle = defaults.subtitle || sectionSpecificSubhead(summary, SECTION_KIND_INDEX.cta, "Book a private consultation or browse the lookbook.").slice(0, 170);
+    const navFromSitePages = buildNavigationFromSitePages(sitePages, currentPath, {
+      maxNavLinks: discoveryPolicy.maxNavLinks,
+    });
     defaults.cta = defaults.cta || navFromSitePages?.ctas?.[0] || { label: "Inquire Now", href: "#contact", variant: "primary" };
   }
 
@@ -4169,7 +4884,11 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
     defaults.logoText = defaults.logoText || pageTitle.split("|")[0].trim().slice(0, 24) || "Site";
     defaults.columns =
       defaults.columns ||
-      buildFooterColumnsFromSitePages(sitePages, Array.isArray(summary?.footerLinks) ? summary.footerLinks : []) || [
+      buildFooterColumnsFromSitePages(
+        sitePages,
+        Array.isArray(summary?.footerLinks) ? summary.footerLinks : [],
+        { maxNavLinks: discoveryPolicy.maxNavLinks }
+      ) || [
       { title: "Company", links: [{ label: "About", href: "#" }, { label: "Contact", href: "#" }] },
       { title: "Studio", links: [{ label: "Approach", href: "#" }, { label: "Projects", href: "#" }] },
       { title: "Legal", links: [{ label: "Privacy", href: "#" }, { label: "Terms", href: "#" }] },
@@ -4190,9 +4909,19 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
 };
 
 const normalizeTemplatePagePath = (value) => {
-  const raw = String(value || "").trim();
-  if (!raw) return "/";
-  const withSlash = raw.startsWith("/") ? raw : `/${raw}`;
+  const rawInput = String(value || "").trim();
+  if (!rawInput) return "/";
+  let raw = rawInput;
+  if (/^https?:\/\//i.test(rawInput)) {
+    try {
+      raw = new URL(rawInput).pathname || "/";
+    } catch {
+      raw = rawInput;
+    }
+  }
+  const withoutHash = raw.split("#")[0] || "";
+  const withoutQuery = withoutHash.split("?")[0] || "";
+  const withSlash = withoutQuery.startsWith("/") ? withoutQuery : `/${withoutQuery}`;
   const normalized = withSlash.replace(/\/{2,}/g, "/").replace(/\/+$/g, "") || "/";
   return normalized === "" ? "/" : normalized;
 };
@@ -4208,12 +4937,214 @@ const formatTemplatePageName = (pathValue, fallback = "Page") => {
     .replace(/\b\w/g, (ch) => ch.toUpperCase());
 };
 
+const toKebab = (value) =>
+  String(value || "")
+    .replace(/([a-z])([A-Z])/g, "$1-$2")
+    .replace(/[^a-zA-Z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .toLowerCase();
+
+const toPascal = (value) =>
+  String(value || "")
+    .replace(/[^a-zA-Z0-9]+/g, " ")
+    .split(" ")
+    .filter(Boolean)
+    .map((token) => token.charAt(0).toUpperCase() + token.slice(1).toLowerCase())
+    .join("");
+
+const TEMPLATE_EXCLUSIVE_IMPORT_BLOCK_ALIAS = {
+  ContentStory: "feature-with-media",
+};
+
+const resolveTemplateExclusiveKebabName = (baseBlockType, availableBlockFolders = new Set()) => {
+  const raw = String(baseBlockType || "").trim();
+  if (!raw) return "";
+  const alias = TEMPLATE_EXCLUSIVE_IMPORT_BLOCK_ALIAS[raw];
+  if (alias) return alias;
+  const kebab = toKebab(raw);
+  if (!kebab) return "";
+  if (!availableBlockFolders.size) return kebab;
+  return availableBlockFolders.has(kebab) ? kebab : "";
+};
+
+const buildTemplateExclusiveComponentName = ({ siteId, pagePath = "/", sectionKind, baseBlockType, rank = 0 }) => {
+  const siteToken = toPascal(siteId || "site") || "Site";
+  const pageToken =
+    normalizeTemplatePagePath(pagePath || "/") === "/" ? "Home" : toPascal(normalizeTemplatePagePath(pagePath).replace(/\//g, " "));
+  const sectionToken = toPascal(sectionKind || "section") || "Section";
+  const blockToken = toPascal(baseBlockType || "Block") || "Block";
+  const rankToken = rank > 0 ? `Alt${rank}` : "Primary";
+  return `TemplateExclusive${siteToken}${pageToken}${sectionToken}${blockToken}${rankToken}`.slice(0, 120);
+};
+
+const isValidIdentifier = (value) => /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(String(value || ""));
+
+const buildTemplateExclusiveFieldCode = (defaults = {}) => {
+  const lines = [`        id: textField("Id"),`];
+  for (const [key, value] of Object.entries(defaults || {})) {
+    if (key === "id" || !isValidIdentifier(key)) continue;
+    if (typeof value === "boolean") {
+      lines.push(`        ${key}: booleanField("${toPascal(key)}"),`);
+      continue;
+    }
+    if (typeof value === "string" || typeof value === "number") {
+      lines.push(`        ${key}: textField("${toPascal(key)}"),`);
+    }
+  }
+  return lines.join("\n");
+};
+
+const normalizeTemplateVariantCandidates = (entry) => {
+  const candidates = Array.isArray(entry?.template_variant?.candidates) ? entry.template_variant.candidates : [];
+  return candidates
+    .map((candidate) => {
+      const blockType = String(candidate?.block_type || "").trim();
+      const defaults = candidate?.defaults && typeof candidate.defaults === "object" ? candidate.defaults : {};
+      if (!blockType) return null;
+      return {
+        block_type: blockType,
+        defaults,
+        source: String(candidate?.source || "").trim(),
+        rank: Number.isFinite(Number(candidate?.rank)) ? Number(candidate.rank) : null,
+        description: String(candidate?.description || "").trim(),
+      };
+    })
+    .filter(Boolean);
+};
+
+const injectTemplateExclusiveComponents = ({ processed = [], availableBlockFolders = new Set() }) => {
+  const componentMap = new Map();
+  const componentUsage = [];
+
+  const registerComponent = ({ siteId, pagePath, sectionKind, blockType, defaults, rank = 0, source = "" }) => {
+    const kebabName = resolveTemplateExclusiveKebabName(blockType, availableBlockFolders);
+    if (!kebabName) return null;
+    const name = buildTemplateExclusiveComponentName({
+      siteId,
+      pagePath,
+      sectionKind,
+      baseBlockType: blockType,
+      rank,
+    });
+    const component = {
+      name,
+      kebabName,
+      fieldCode: buildTemplateExclusiveFieldCode(defaults),
+      defaultProps: { id: `${name}-1`, ...(defaults || {}) },
+      templateExclusive: {
+        siteId,
+        pagePath: normalizeTemplatePagePath(pagePath || "/"),
+        sectionKind,
+        baseBlockType: String(blockType || ""),
+        source: source || "template_exclusive",
+        rank: rank > 0 ? rank : 0,
+      },
+    };
+    if (!componentMap.has(name)) componentMap.set(name, component);
+    componentUsage.push(component.templateExclusive);
+    return name;
+  };
+
+  const mutateSectionEntry = ({ siteId, pagePath, sectionKind, entry }) => {
+    if (!entry || typeof entry !== "object") return;
+    const baseType = String(entry.block_type || "").trim();
+    const defaults = entry.defaults && typeof entry.defaults === "object" ? cloneJson(entry.defaults) : {};
+    if (!baseType) return;
+
+    const primaryName = registerComponent({
+      siteId,
+      pagePath,
+      sectionKind,
+      blockType: baseType,
+      defaults,
+      rank: 0,
+      source: "primary",
+    });
+    if (!primaryName) return;
+
+    entry.template_exclusive = {
+      component_name: primaryName,
+      base_block_type: baseType,
+    };
+    entry.block_type = primaryName;
+
+    const candidates = normalizeTemplateVariantCandidates(entry);
+    if (candidates.length) {
+      const patchedCandidates = [];
+      for (const [index, candidate] of candidates.entries()) {
+        const candidateName = registerComponent({
+          siteId,
+          pagePath,
+          sectionKind,
+          blockType: candidate.block_type,
+          defaults: cloneJson(candidate.defaults),
+          rank: index + 1,
+          source: candidate.source || "candidate",
+        });
+        if (!candidateName) continue;
+        patchedCandidates.push({
+          ...candidate,
+          block_type: candidateName,
+          template_exclusive: {
+            component_name: candidateName,
+            base_block_type: candidate.block_type,
+          },
+        });
+      }
+      if (patchedCandidates.length) {
+        entry.template_variant = {
+          ...(entry.template_variant && typeof entry.template_variant === "object" ? entry.template_variant : {}),
+          candidates: patchedCandidates,
+        };
+      }
+    }
+  };
+
+  for (const item of processed) {
+    const siteId = String(item?.site?.id || "");
+    const specPack = item?.specPack;
+    if (!siteId || !specPack || typeof specPack !== "object") continue;
+    const rootSpecs = specPack?.section_specs && typeof specPack.section_specs === "object" ? specPack.section_specs : {};
+    for (const [sectionKind, entry] of Object.entries(rootSpecs)) {
+      mutateSectionEntry({ siteId, pagePath: "/", sectionKind, entry });
+    }
+    const pageSpecs = Array.isArray(specPack?.page_specs) ? specPack.page_specs : [];
+    for (const page of pageSpecs) {
+      const pagePath = normalizeTemplatePagePath(page?.path || "/");
+      const sectionSpecs = page?.section_specs && typeof page.section_specs === "object" ? page.section_specs : {};
+      for (const [sectionKind, entry] of Object.entries(sectionSpecs)) {
+        mutateSectionEntry({ siteId, pagePath, sectionKind, entry });
+      }
+    }
+  }
+
+  return {
+    components: Array.from(componentMap.values()),
+    usage: componentUsage,
+  };
+};
+
+const mergeTemplateExclusiveComponents = (existing = [], incoming = []) => {
+  const merged = new Map();
+  for (const row of Array.isArray(existing) ? existing : []) {
+    const name = String(row?.name || "").trim();
+    if (!name) continue;
+    merged.set(name, row);
+  }
+  for (const row of Array.isArray(incoming) ? incoming : []) {
+    const name = String(row?.name || "").trim();
+    if (!name) continue;
+    merged.set(name, row);
+  }
+  return Array.from(merged.values());
+};
+
 const classifyTemplatePageType = (pathValue, title = "") => {
   const path = normalizeTemplatePagePath(pathValue);
   const token = `${path} ${title}`.toLowerCase();
   if (path === "/") return "home";
   if (/privacy|terms|policy|legal|cookies?/.test(token)) return "legal";
-  if (/blog|journal|news|insight|article|resource|press|media/.test(token)) return "blog";
+  if (/blog|journal|news|insight|article|resource|press|media|technology/.test(token)) return "blog";
   if (/career|careers|job|jobs|vacanc|hiring|talent/.test(token)) return "careers";
   if (/product|products|shop|store|catalog|collection|pricing|plans?|portfolio/.test(token)) return "products";
   if (/service|services|solution|capabilit|offer|program|work/.test(token)) return "services";
@@ -4248,20 +5179,32 @@ const resolveTemplatePageKinds = ({ pageType, recipe }) => {
   return Array.from(availableKinds).slice(0, 4);
 };
 
-const buildSitePagesFromCrawl = ({ recipe, summary, crawl }) => {
+const buildSitePagesFromCrawl = ({ recipe, summary, crawl, discoveryPolicy = null }) => {
   if (!crawl?.enabled) return [];
 
+  const policy =
+    discoveryPolicy && typeof discoveryPolicy === "object"
+      ? discoveryPolicy
+      : { maxDiscoveredPages: 12, maxDiscoverySeedScan: 120, mustIncludeMatchers: [] };
+  const maxDiscoveredPages = Math.max(4, Math.floor(Number(policy.maxDiscoveredPages || 0) || 12));
+  const maxDiscoverySeedScan = Math.max(
+    maxDiscoveredPages * 5,
+    Math.floor(Number(policy.maxDiscoverySeedScan || 0) || 120)
+  );
+
   const pageMap = new Map();
-  const upsert = ({ pathValue, name, pageType, source }) => {
+  const upsert = ({ pathValue, name, pageType, source, forceInclude = false, raw = "" }) => {
     const path = normalizeTemplatePagePath(pathValue);
     const kinds = resolveTemplatePageKinds({ pageType, recipe });
     if (!kinds.length) return;
+    const forced = Boolean(forceInclude) || matchesMustIncludePolicy({ pathValue: path, name, raw, policy });
     const current = pageMap.get(path);
     const next = {
       path,
       name: String(name || "").trim() || formatTemplatePageName(path),
       required_categories: kinds,
       source,
+      forceInclude: forced,
     };
     if (!current) {
       pageMap.set(path, next);
@@ -4269,8 +5212,10 @@ const buildSitePagesFromCrawl = ({ recipe, summary, crawl }) => {
     }
     // Prefer crawl-derived naming over default naming for the same path.
     if (current.source === "default" && source === "crawl") {
-      pageMap.set(path, { ...current, ...next });
+      pageMap.set(path, { ...current, ...next, forceInclude: current.forceInclude || next.forceInclude });
+      return;
     }
+    if (forced && !current.forceInclude) pageMap.set(path, { ...current, forceInclude: true });
   };
 
   upsert({ pathValue: "/", name: "Home", pageType: "home", source: "default" });
@@ -4303,11 +5248,12 @@ const buildSitePagesFromCrawl = ({ recipe, summary, crawl }) => {
       name: titleSeed || formatTemplatePageName(pagePath),
       pageType,
       source: "crawl",
+      raw: page.url,
     });
   }
 
   const discoveredUrls = Array.isArray(crawl?.discoveredUrls) ? crawl.discoveredUrls : [];
-  for (const rawUrl of discoveredUrls.slice(0, 80)) {
+  for (const rawUrl of discoveredUrls.slice(0, maxDiscoverySeedScan)) {
     let pagePath = "/";
     try {
       const parsed = new URL(String(rawUrl || "").trim());
@@ -4323,6 +5269,35 @@ const buildSitePagesFromCrawl = ({ recipe, summary, crawl }) => {
       name: formatTemplatePageName(pagePath),
       pageType,
       source: "crawl_discovered",
+      raw: rawUrl,
+    });
+  }
+
+  const summaryLinks = Array.isArray(summary?.links) ? summary.links : [];
+  for (const rawLink of summaryLinks.slice(0, maxDiscoverySeedScan)) {
+    const raw = String(rawLink || "").trim();
+    if (!raw || raw.startsWith("#") || raw.startsWith("mailto:") || raw.startsWith("tel:")) continue;
+    let pagePath = "";
+    if (raw.startsWith("/")) {
+      pagePath = normalizeTemplatePagePath(raw);
+    } else if (/^https?:\/\//i.test(raw)) {
+      try {
+        pagePath = normalizeTemplatePagePath(new URL(raw).pathname || "/");
+      } catch {
+        pagePath = "";
+      }
+    } else {
+      continue;
+    }
+    if (!pagePath) continue;
+    const existing = pageMap.get(pagePath);
+    if (existing) continue;
+    upsert({
+      pathValue: pagePath,
+      name: formatTemplatePageName(pagePath),
+      pageType: classifyTemplatePageType(pagePath, ""),
+      source: "summary_links",
+      raw,
     });
   }
 
@@ -4342,11 +5317,40 @@ const buildSitePagesFromCrawl = ({ recipe, summary, crawl }) => {
     return a.path.localeCompare(b.path);
   });
 
-  return pages.slice(0, 12).map((page) => ({
+  const selected = [];
+  const selectedPaths = new Set();
+  const pushPage = (entry) => {
+    if (!entry?.path || selectedPaths.has(entry.path)) return;
+    selectedPaths.add(entry.path);
+    selected.push(entry);
+  };
+
+  for (const p of orderedPaths) {
+    const found = pages.find((entry) => entry.path === p);
+    if (found) pushPage(found);
+  }
+  for (const page of pages.filter((entry) => entry.forceInclude)) pushPage(page);
+  for (const page of pages) {
+    if (selected.length >= maxDiscoveredPages && !page.forceInclude) continue;
+    pushPage(page);
+  }
+
+  return selected.map((page) => ({
     path: page.path,
     name: page.name,
     required_categories: page.required_categories,
   }));
+};
+
+const isLikelyDownloadPath = (pathValue) => {
+  const p = normalizeTemplatePagePath(pathValue || "/").toLowerCase();
+  return /\.(zip|dmg|exe|msi|pkg|pdf|iso|rar|7z|tar|gz)$/.test(p) || /\/download[s]?\//.test(p);
+};
+
+const stripLocalePrefix = (pathValue) => {
+  const normalized = normalizeTemplatePagePath(pathValue || "/");
+  const stripped = normalized.replace(/^\/[a-z]{2}(?:-[a-z]{2})?(?=\/|$)/i, "");
+  return stripped || "/";
 };
 
 const buildRouteAliasMap = (sitePages = []) => {
@@ -4364,38 +5368,188 @@ const buildRouteAliasMap = (sitePages = []) => {
 
   for (const page of Array.isArray(sitePages) ? sitePages : []) {
     const routePath = normalizeTemplatePagePath(page?.path || "/");
+    const routePathLocaleLess = stripLocalePrefix(routePath);
     const name = String(page?.name || "").trim();
     const leaf = routePath.split("/").filter(Boolean).pop() || "";
     const segmentTokens = routePath.split("/").filter(Boolean);
+    const segmentTokensLocaleLess = routePathLocaleLess.split("/").filter(Boolean);
     setAlias(name, routePath);
     setAlias(routePath, routePath);
+    setAlias(routePathLocaleLess, routePath);
     setAlias(leaf, routePath);
     for (const segment of segmentTokens) setAlias(segment, routePath);
+    for (const segment of segmentTokensLocaleLess) setAlias(segment, routePath);
   }
   return aliasMap;
 };
 
-const rewriteAnchorHrefToRoute = (href, aliasMap) => {
+const rewriteAnchorHrefToRoute = (href, aliasMap, routeContext = {}) => {
   const raw = String(href || "").trim();
-  if (!raw || !raw.startsWith("#")) return href;
-  const token = raw.slice(1).trim();
-  if (!token) return "/";
-  const lookup = slug(token);
-  return aliasMap.get(lookup) || raw;
+  if (!raw) return href;
+  if (/^(javascript:|data:)/i.test(raw)) return href;
+  if (raw.startsWith("#")) {
+    const token = raw.slice(1).trim();
+    if (!token) return "/";
+    const lookup = slug(token);
+    return aliasMap.get(lookup) || raw;
+  }
+  if (raw.startsWith("/")) {
+    const normalizedPath = normalizeTemplatePagePath(raw);
+    const aliased = aliasMap.get(slug(normalizedPath)) || aliasMap.get(slug(stripLocalePrefix(normalizedPath)));
+    return aliased || normalizedPath;
+  }
+  if (/^https?:\/\//i.test(raw)) {
+    try {
+      const parsed = new URL(raw);
+      const inputHost = parsed.host.toLowerCase();
+      const targetHost = String(routeContext?.siteHost || "").toLowerCase();
+      if (targetHost && inputHost !== targetHost) return href;
+      const normalizedPath = normalizeTemplatePagePath(parsed.pathname || "/");
+      const aliased = aliasMap.get(slug(normalizedPath)) || aliasMap.get(slug(stripLocalePrefix(normalizedPath)));
+      return aliased || normalizedPath;
+    } catch {
+      return href;
+    }
+  }
+  if (/^\.{1,2}\//.test(raw)) return href;
+  return href;
 };
 
-const rewriteAnchorLinksDeep = (value, aliasMap) => {
-  if (Array.isArray(value)) return value.map((item) => rewriteAnchorLinksDeep(item, aliasMap));
+const rewriteAnchorLinksDeep = (value, aliasMap, routeContext = {}) => {
+  if (Array.isArray(value)) return value.map((item) => rewriteAnchorLinksDeep(item, aliasMap, routeContext));
   if (!value || typeof value !== "object") return value;
   const out = {};
   for (const [k, v] of Object.entries(value)) {
     if (k === "href" && typeof v === "string") {
-      out[k] = rewriteAnchorHrefToRoute(v, aliasMap);
+      out[k] = rewriteAnchorHrefToRoute(v, aliasMap, routeContext);
       continue;
     }
-    out[k] = rewriteAnchorLinksDeep(v, aliasMap);
+    out[k] = rewriteAnchorLinksDeep(v, aliasMap, routeContext);
   }
   return out;
+};
+
+const collectHrefRowsDeep = (value, scope = "$", rows = []) => {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => collectHrefRowsDeep(item, `${scope}[${index}]`, rows));
+    return rows;
+  }
+  if (!value || typeof value !== "object") return rows;
+  for (const [key, next] of Object.entries(value)) {
+    const nextScope = `${scope}.${key}`;
+    if (key === "href" && typeof next === "string") {
+      rows.push({ href: next, scope: nextScope });
+      continue;
+    }
+    collectHrefRowsDeep(next, nextScope, rows);
+  }
+  return rows;
+};
+
+const buildLinkReport = ({ site = {}, specPack = {}, sitePages = [] }) => {
+  const siteHost = (() => {
+    try {
+      return new URL(String(site?.url || "")).host.toLowerCase();
+    } catch {
+      return "";
+    }
+  })();
+  const routePathSet = new Set(["/"]);
+  for (const page of Array.isArray(sitePages) ? sitePages : []) {
+    const normalized = normalizeTemplatePagePath(page?.path || "/");
+    routePathSet.add(normalized);
+    routePathSet.add(stripLocalePrefix(normalized));
+  }
+
+  const rows = [];
+  const rootSpecs = specPack?.section_specs && typeof specPack.section_specs === "object" ? specPack.section_specs : {};
+  for (const [sectionKind, entry] of Object.entries(rootSpecs)) {
+    collectHrefRowsDeep(entry?.defaults || {}, `root.${sectionKind}`, rows);
+  }
+  const pageSpecs = Array.isArray(specPack?.page_specs) ? specPack.page_specs : [];
+  for (const page of pageSpecs) {
+    const pagePath = normalizeTemplatePagePath(page?.path || "/");
+    const sections = page?.section_specs && typeof page.section_specs === "object" ? page.section_specs : {};
+    for (const [sectionKind, entry] of Object.entries(sections)) {
+      collectHrefRowsDeep(entry?.defaults || {}, `page:${pagePath}.${sectionKind}`, rows);
+    }
+  }
+
+  const problems = [];
+  let empty = 0;
+  let invalidScheme = 0;
+  let internalTotal = 0;
+  let internalValid = 0;
+  let internalMissing = 0;
+  let externalTotal = 0;
+
+  for (const row of rows) {
+    const href = String(row.href || "").trim();
+    if (!href) {
+      empty += 1;
+      problems.push({ type: "empty", scope: row.scope, href });
+      continue;
+    }
+    if (/^(javascript:|data:)/i.test(href)) {
+      invalidScheme += 1;
+      problems.push({ type: "invalid_scheme", scope: row.scope, href });
+      continue;
+    }
+    if (href.startsWith("#")) continue;
+    if (href.startsWith("/")) {
+      internalTotal += 1;
+      const normalized = normalizeTemplatePagePath(href);
+      const valid = routePathSet.has(normalized) || routePathSet.has(stripLocalePrefix(normalized));
+      if (valid) internalValid += 1;
+      else {
+        internalMissing += 1;
+        problems.push({ type: "internal_missing", scope: row.scope, href: normalized });
+      }
+      continue;
+    }
+    if (/^https?:\/\//i.test(href)) {
+      try {
+        const parsed = new URL(href);
+        const host = parsed.host.toLowerCase();
+        if (siteHost && host === siteHost) {
+          internalTotal += 1;
+          const normalized = normalizeTemplatePagePath(parsed.pathname || "/");
+          const valid = routePathSet.has(normalized) || routePathSet.has(stripLocalePrefix(normalized));
+          if (valid) internalValid += 1;
+          else {
+            internalMissing += 1;
+            problems.push({ type: "internal_missing", scope: row.scope, href: normalized });
+          }
+        } else {
+          externalTotal += 1;
+        }
+      } catch {
+        externalTotal += 1;
+      }
+      continue;
+    }
+    externalTotal += 1;
+  }
+
+  const stats = {
+    totalLinks: rows.length,
+    internalTotal,
+    internalValid,
+    internalMissing,
+    internalSuccessRate: internalTotal > 0 ? Number(((internalValid / internalTotal) * 100).toFixed(2)) : 100,
+    externalTotal,
+    empty,
+    invalidScheme,
+    passed: internalMissing === 0 && empty === 0 && invalidScheme === 0,
+  };
+
+  return {
+    generatedAt: new Date().toISOString(),
+    siteId: String(site?.id || ""),
+    siteUrl: String(site?.url || ""),
+    stats,
+    problems: problems.slice(0, 500),
+  };
 };
 
 const normalizeSectionKind = (value) => {
@@ -4410,6 +5564,214 @@ const normalizeRequiredCategories = (value) =>
     .map((entry) => normalizeSectionKind(entry))
     .filter(Boolean);
 
+const isObjectRecord = (value) =>
+  Boolean(value) && typeof value === "object" && !Array.isArray(value);
+
+const TEMPLATE_VARIANT_META_KEYS = new Set([
+  "blockType",
+  "block_type",
+  "componentName",
+  "component_name",
+  "defaults",
+  "variantProps",
+  "variant_props",
+  "name",
+  "description",
+  "note",
+]);
+
+const normalizeTemplateVariantEntry = (value) => {
+  if (typeof value === "string" && value.trim()) {
+    return { blockType: value.trim(), defaults: {} };
+  }
+  if (!isObjectRecord(value)) return null;
+
+  const blockTypeCandidates = [
+    value.blockType,
+    value.block_type,
+    value.componentName,
+    value.component_name,
+  ];
+  const blockType =
+    blockTypeCandidates.find((entry) => typeof entry === "string" && entry.trim())?.trim() || "";
+
+  const inlineDefaults = {};
+  for (const [key, entry] of Object.entries(value)) {
+    if (TEMPLATE_VARIANT_META_KEYS.has(key)) continue;
+    if (entry === undefined) continue;
+    inlineDefaults[key] = entry;
+  }
+  const defaultsFromWrapper =
+    (isObjectRecord(value.defaults) && value.defaults) ||
+    (isObjectRecord(value.variantProps) && value.variantProps) ||
+    (isObjectRecord(value.variant_props) && value.variant_props) ||
+    {};
+  const defaults = { ...inlineDefaults, ...defaultsFromWrapper };
+
+  if (!blockType && !Object.keys(defaults).length) return null;
+  return { blockType, defaults };
+};
+
+const normalizeTemplateVariantEntries = (value) => {
+  if (Array.isArray(value)) {
+    return value
+      .map((entry) => normalizeTemplateVariantEntry(entry))
+      .filter((entry) => Boolean(entry));
+  }
+  const single = normalizeTemplateVariantEntry(value);
+  return single ? [single] : [];
+};
+
+const resolveTemplateVariantRuleSources = (site) => {
+  const specialRules = isObjectRecord(site?.specialRules) ? site.specialRules : {};
+  const globalRules =
+    (isObjectRecord(specialRules.templateBlockVariants) && specialRules.templateBlockVariants) ||
+    (isObjectRecord(specialRules.template_block_variants) && specialRules.template_block_variants) ||
+    {};
+  const pageRules =
+    (isObjectRecord(specialRules.pageTemplateBlockVariants) && specialRules.pageTemplateBlockVariants) ||
+    (isObjectRecord(specialRules.page_template_block_variants) && specialRules.page_template_block_variants) ||
+    {};
+
+  return { globalRules, pageRules };
+};
+
+const findPageTemplateVariantRules = (pageRules, currentPath = "/") => {
+  if (!isObjectRecord(pageRules)) return null;
+  const normalizedPath = normalizeTemplatePagePath(currentPath || "/");
+  let wildcard = null;
+  for (const [rulePath, ruleSet] of Object.entries(pageRules)) {
+    if (!isObjectRecord(ruleSet)) continue;
+    const token = String(rulePath || "").trim();
+    if (token === "*") {
+      wildcard = ruleSet;
+      continue;
+    }
+    if (normalizeTemplatePagePath(token) === normalizedPath) {
+      return ruleSet;
+    }
+  }
+  return wildcard;
+};
+
+const resolveSectionSpecForSiteVariant = ({ site, kind, baseSpec, currentPath = "/" }) => {
+  const fallback = {
+    blockType: String(baseSpec?.blockType || ""),
+    defaults: { ...(baseSpec?.defaults || {}) },
+    variantScopes: [],
+    variantCandidates: [],
+  };
+  if (!fallback.blockType) return fallback;
+
+  const { globalRules, pageRules } = resolveTemplateVariantRuleSources(site);
+  const normalizedPath = normalizeTemplatePagePath(currentPath || "/");
+  const pageRuleSet = findPageTemplateVariantRules(pageRules, normalizedPath);
+  const scopes = [];
+  const overrideDefaults = {};
+  let overrideBlockType = "";
+  const variantCandidates = [];
+  const candidateKeys = new Set();
+
+  const pushVariantCandidate = (candidate) => {
+    if (!isObjectRecord(candidate)) return;
+    const blockType = typeof candidate.block_type === "string" ? candidate.block_type.trim() : "";
+    if (!blockType) return;
+    const defaults = isObjectRecord(candidate.defaults) ? candidate.defaults : {};
+    const source = typeof candidate.source === "string" ? candidate.source.trim() : "";
+    const rank = Number.isFinite(candidate.rank) ? Number(candidate.rank) : undefined;
+    const description = typeof candidate.description === "string" ? candidate.description.trim() : "";
+    const key = `${blockType}:${JSON.stringify(defaults)}`;
+    if (candidateKeys.has(key)) return;
+    candidateKeys.add(key);
+    variantCandidates.push({
+      block_type: blockType,
+      defaults,
+      ...(source ? { source } : {}),
+      ...(Number.isFinite(rank) ? { rank } : {}),
+      ...(description ? { description } : {}),
+    });
+  };
+
+  const applyRuleSet = (ruleSet, scopeLabel) => {
+    if (!isObjectRecord(ruleSet)) return;
+    const entries = normalizeTemplateVariantEntries(ruleSet[kind]);
+    if (!entries.length) return;
+    const primary = entries[0];
+    if (primary.blockType) overrideBlockType = primary.blockType;
+    if (primary.defaults && Object.keys(primary.defaults).length) {
+      Object.assign(overrideDefaults, primary.defaults);
+    }
+    for (const [index, entry] of entries.entries()) {
+      pushVariantCandidate({
+        block_type: entry.blockType || fallback.blockType,
+        defaults: entry.defaults || {},
+        source: scopeLabel,
+        rank: index + 1,
+      });
+    }
+    scopes.push(scopeLabel);
+  };
+
+  applyRuleSet(globalRules, "global");
+  applyRuleSet(pageRuleSet, `page:${normalizedPath}`);
+
+  if (!scopes.length) return fallback;
+  const selectedBlockType = overrideBlockType || fallback.blockType;
+  const selectedDefaults = { ...fallback.defaults, ...overrideDefaults };
+  const registryAlternatives = getAlternativeVariants(kind, selectedBlockType, selectedDefaults).slice(0, 8);
+  for (const [index, alt] of registryAlternatives.entries()) {
+    pushVariantCandidate({
+      block_type: alt.blockType,
+      defaults: alt.variantProps || {},
+      source: "registry_alternative",
+      rank: index + 1,
+      description: alt.description || "",
+    });
+  }
+  return {
+    blockType: selectedBlockType,
+    defaults: selectedDefaults,
+    variantScopes: scopes,
+    variantCandidates,
+  };
+};
+
+const buildTemplateVariantMeta = (resolvedSpec) => {
+  const scopes = Array.isArray(resolvedSpec?.variantScopes) ? resolvedSpec.variantScopes.filter(Boolean) : [];
+  const candidates = Array.isArray(resolvedSpec?.variantCandidates)
+    ? resolvedSpec.variantCandidates.filter((entry) => isObjectRecord(entry))
+    : [];
+  if (!scopes.length && !candidates.length) return null;
+  return {
+    ...(scopes.length ? { scopes } : {}),
+    ...(candidates.length ? { candidates } : {}),
+  };
+};
+
+/**
+ * Build a synthetic page summary from the page name/path when no crawl data
+ * is available. This prevents every uncrawled page from inheriting the
+ * homepage h1/h2 verbatim.
+ */
+const buildSyntheticPageSummary = (page, globalSummary) => {
+  const pageName = String(page?.name || "").trim() || formatTemplatePageName(page?.path || "/");
+  const globalTitle = String(globalSummary?.title || "").split(/[|•·]/)[0].trim();
+  const brandName = globalTitle || "Site";
+  return {
+    ...globalSummary,
+    title: `${pageName} | ${brandName}`,
+    h1: [pageName],
+    h2: [
+      `Explore ${pageName} solutions`,
+      `Learn more about ${pageName}`,
+      `${pageName} overview`,
+    ],
+    // Keep global images/footerLinks/navMenuDepth for layout consistency
+    heroPresentation: normalizeHeroPresentation({ mode: "split", hasHeading: true, hasForegroundImage: false, hasBackgroundImage: false }),
+    heroCarousel: normalizeHeroCarousel(null),
+  };
+};
+
 const buildPageSpecsFromSitePages = ({
   site,
   recipe,
@@ -4417,8 +5779,18 @@ const buildPageSpecsFromSitePages = ({
   assets = {},
   sitePages = [],
   crawlAssetPack = null,
+  discoveryPolicy = null,
 }) => {
   const routeAliasMap = buildRouteAliasMap(sitePages);
+  const routeContext = {
+    siteHost: (() => {
+      try {
+        return new URL(String(site?.url || "")).host || "";
+      } catch {
+        return "";
+      }
+    })(),
+  };
   const crawledPages = Array.isArray(crawlAssetPack?.pages) ? crawlAssetPack.pages : [];
   const pageAssetMap = new Map(
     crawledPages.map((page) => [
@@ -4435,24 +5807,38 @@ const buildPageSpecsFromSitePages = ({
       const requiredCategories = normalizeRequiredCategories(page?.required_categories);
       if (!requiredCategories.length) return null;
       const pageAsset = pageAssetMap.get(path) || (path === "/" ? homeFallbackAsset : null);
-      const pageSummary = pageAsset?.summary ? { ...summary, ...pageAsset.summary } : summary;
+      // For pages with crawl data, merge with global summary.
+      // For uncrawled pages, build a synthetic summary from the page name
+      // instead of falling back to the homepage content.
+      const pageSummary = pageAsset?.summary
+        ? { ...summary, ...pageAsset.summary }
+        : (path === "/" ? summary : buildSyntheticPageSummary(page, summary));
       const pageAssets = pageAsset?.assetContext || assets || {};
       const sectionSpecs = {};
       for (const kind of requiredCategories) {
         const spec = recipe?.sectionSpecs?.[kind];
         if (!spec) continue;
+        const resolvedSpec = resolveSectionSpecForSiteVariant({
+          site,
+          kind,
+          baseSpec: spec,
+          currentPath: path,
+        });
+        const variantMeta = buildTemplateVariantMeta(resolvedSpec);
         sectionSpecs[kind] = {
-          block_type: spec.blockType,
-          defaults: buildSectionDefaults(kind, spec, site, pageSummary, pageAssets, recipe, {
+          block_type: resolvedSpec.blockType,
+          defaults: buildSectionDefaults(kind, resolvedSpec, site, pageSummary, pageAssets, recipe, {
             currentPath: path,
             sitePages,
+            discoveryPolicy,
           }),
+          ...(variantMeta ? { template_variant: variantMeta } : {}),
         };
       }
       for (const kind of Object.keys(sectionSpecs)) {
         const entry = sectionSpecs[kind];
         if (!entry?.defaults || typeof entry.defaults !== "object") continue;
-        entry.defaults = rewriteAnchorLinksDeep(entry.defaults, routeAliasMap);
+        entry.defaults = rewriteAnchorLinksDeep(entry.defaults, routeAliasMap, routeContext);
       }
       if (!Object.keys(sectionSpecs).length) return null;
 
@@ -4486,29 +5872,92 @@ const buildPageSpecsFromSitePages = ({
     .filter(Boolean);
 };
 
-const buildSpecPack = ({ site, recipe, summary, assets = {}, crawl = null, crawlAssetPack = null }) => {
-  const sitePages = buildSitePagesFromCrawl({ recipe, summary, crawl });
+const buildSpecPack = ({ site, recipe, summary, assets = {}, crawl = null, crawlAssetPack = null, options = {} }) => {
+  const discoveryPolicy = resolveDiscoveryPolicy({ site, options });
+  const generatedSitePages = buildSitePagesFromCrawl({ recipe, summary, crawl, discoveryPolicy });
+  const specialRuleResult = applySiteSpecialRulesToPages({
+    site,
+    pages: generatedSitePages,
+    crawl,
+  });
+  const successfulPathSet = new Set(
+    (Array.isArray(crawl?.pages) ? crawl.pages : [])
+      .filter((page) => page && !page.error && Number(page.status || 0) < 500)
+      .map((page) => routePathFromUrl(page.url))
+  );
+  const sitePages = Array.isArray(specialRuleResult?.pages) ? specialRuleResult.pages : generatedSitePages;
+  const extractionFailures = [
+    ...(Array.isArray(specialRuleResult?.failed) ? specialRuleResult.failed : []),
+    ...sitePages
+      .filter((page) => page?.path && page.path !== "/" && !successfulPathSet.has(normalizeTemplatePagePath(page.path)))
+      .map((page) => ({
+        path: normalizeTemplatePagePath(page.path),
+        reason: "excluded_not_extracted",
+        url: "",
+        source: "special_rule",
+      })),
+  ].filter((row, index, arr) => arr.findIndex((x) => `${x.path}:${x.reason}` === `${row.path}:${row.reason}`) === index);
+
+  const filteredSitePages = sitePages.filter((page) => {
+    if (!page?.path) return false;
+    const normalizedPath = normalizeTemplatePagePath(page.path);
+    if (normalizedPath === "/") return true;
+    return successfulPathSet.has(normalizedPath);
+  });
   const sectionSpecs = {};
   for (const kind of SECTION_KINDS) {
     const spec = recipe.sectionSpecs[kind];
     if (!spec) continue;
+    const resolvedSpec = resolveSectionSpecForSiteVariant({
+      site,
+      kind,
+      baseSpec: spec,
+      currentPath: "/",
+    });
+    const variantMeta = buildTemplateVariantMeta(resolvedSpec);
     sectionSpecs[kind] = {
-      block_type: spec.blockType,
-      defaults: buildSectionDefaults(kind, spec, site, summary, assets, recipe, {
+      block_type: resolvedSpec.blockType,
+      defaults: buildSectionDefaults(kind, resolvedSpec, site, summary, assets, recipe, {
         currentPath: "/",
         sitePages,
+        discoveryPolicy,
       }),
+      ...(variantMeta ? { template_variant: variantMeta } : {}),
     };
+  }
+  const routeAliasMap = buildRouteAliasMap(filteredSitePages);
+  const routeContext = {
+    siteHost: (() => {
+      try {
+        return new URL(String(site?.url || "")).host || "";
+      } catch {
+        return "";
+      }
+    })(),
+  };
+  for (const kind of Object.keys(sectionSpecs)) {
+    const entry = sectionSpecs[kind];
+    if (!entry?.defaults || typeof entry.defaults !== "object") continue;
+    entry.defaults = rewriteAnchorLinksDeep(entry.defaults, routeAliasMap, routeContext);
   }
   const pageSpecs = buildPageSpecsFromSitePages({
     site,
     recipe,
     summary,
     assets,
-    sitePages,
+    sitePages: filteredSitePages,
     crawlAssetPack,
+    discoveryPolicy,
   });
   const normalizedPageSpecs = enforceDistinctHeroes(pageSpecs);
+  const linkReport = buildLinkReport({
+    site,
+    sitePages: filteredSitePages,
+    specPack: {
+      section_specs: sectionSpecs,
+      page_specs: normalizedPageSpecs,
+    },
+  });
 
   return {
     template_id: `auto_${site.id}`,
@@ -4525,8 +5974,13 @@ const buildSpecPack = ({ site, recipe, summary, assets = {}, crawl = null, crawl
       cards_max: 8,
     },
     required_categories: recipe.requiredCategories,
-    ...(sitePages.length ? { site_pages: sitePages } : {}),
+    ...(filteredSitePages.length ? { site_pages: filteredSitePages } : {}),
     ...(normalizedPageSpecs.length ? { page_specs: normalizedPageSpecs } : {}),
+    link_integrity: linkReport.stats,
+    ...(extractionFailures.length ? { extraction_failures: extractionFailures } : {}),
+    ...(Array.isArray(specialRuleResult?.notes) && specialRuleResult.notes.length
+      ? { special_notes: specialRuleResult.notes }
+      : {}),
   };
 };
 
@@ -4603,6 +6057,48 @@ const specPackToStyleProfile = ({ site, indexCard, specPack }) => {
   };
 };
 
+const profileNumericField = (value, fallback = 0) => {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : fallback;
+};
+
+const computeCoverageScore = (specPack) => {
+  const sitePages = Array.isArray(specPack?.site_pages) ? specPack.site_pages : [];
+  const pageSpecs = Array.isArray(specPack?.page_specs) ? specPack.page_specs : [];
+  const coverageRate = sitePages.length > 0 ? Math.min(100, (pageSpecs.length / sitePages.length) * 100) : pageSpecs.length > 0 ? 100 : 0;
+  const roleKinds = new Set();
+  for (const page of sitePages) {
+    const pagePath = normalizeTemplatePagePath(page?.path || "/");
+    const role = classifyTemplatePageType(pagePath, String(page?.name || ""));
+    if (role === "home" || role === "contact") roleKinds.add(role);
+    if (role === "products" || role === "services" || role === "blog") roleKinds.add("listing");
+    if (pagePath !== "/" && pagePath.split("/").filter(Boolean).length >= 2) roleKinds.add("detail");
+  }
+  const roleScore = (roleKinds.size / 4) * 100;
+  return Number((coverageRate * 0.7 + roleScore * 0.3).toFixed(2));
+};
+
+const computeLinkIntegrityScore = (linkReport = null, specPack = null) => {
+  const stats = linkReport?.stats || specPack?.link_integrity || null;
+  if (!stats) return 0;
+  const internalSuccess = Number(stats.internalSuccessRate || 0);
+  const emptyPenalty = Math.max(0, Number(stats.empty || 0)) * 2;
+  const invalidPenalty = Math.max(0, Number(stats.invalidScheme || 0)) * 5;
+  const missingPenalty = Math.max(0, Number(stats.internalMissing || 0)) * 2;
+  const raw = internalSuccess - emptyPenalty - invalidPenalty - missingPenalty;
+  return Number(Math.max(0, Math.min(100, raw)).toFixed(2));
+};
+
+const computeQualityScore = ({ coverageScore, linkIntegrityScore, fidelitySimilarity }) => {
+  const coverage = profileNumericField(coverageScore);
+  const link = profileNumericField(linkIntegrityScore);
+  const fidelity = profileNumericField(fidelitySimilarity, NaN);
+  if (!Number.isFinite(fidelity)) {
+    return Number((coverage * 0.55 + link * 0.45).toFixed(2));
+  }
+  return Number((fidelity * 0.55 + coverage * 0.25 + link * 0.2).toFixed(2));
+};
+
 const mergeProfiles = (existingProfiles, incomingProfiles) => {
   const map = new Map();
   for (const profile of existingProfiles || []) {
@@ -4611,9 +6107,157 @@ const mergeProfiles = (existingProfiles, incomingProfiles) => {
   }
   for (const profile of incomingProfiles || []) {
     if (!profile?.id) continue;
-    map.set(String(profile.id), profile);
+    const id = String(profile.id);
+    const current = map.get(id);
+    if (!current) {
+      map.set(id, profile);
+      continue;
+    }
+    const currentQuality = profileNumericField(current?.qualityScore, -1);
+    const nextQuality = profileNumericField(profile?.qualityScore, -1);
+    if (nextQuality > currentQuality) {
+      map.set(id, profile);
+      continue;
+    }
+    if (nextQuality < currentQuality) {
+      continue;
+    }
+    const currentCreated = Date.parse(String(current?.createdAt || "")) || 0;
+    const nextCreated = Date.parse(String(profile?.createdAt || "")) || 0;
+    if (nextCreated >= currentCreated) {
+      map.set(id, profile);
+    }
   }
   return Array.from(map.values());
+};
+
+const buildRunLibraryOutput = ({
+  processed = [],
+  runId = "",
+  manifestPath = "",
+  fidelityRows = [],
+  templateExclusiveComponents = [],
+}) => {
+  const fidelityByCase = new Map(
+    (Array.isArray(fidelityRows) ? fidelityRows : []).map((row) => [String(row?.caseId || ""), row])
+  );
+  const profiles = (Array.isArray(processed) ? processed : []).map((item) => {
+    const caseId = String(item?.site?.id || "");
+    const fidelityRow = fidelityByCase.get(caseId) || null;
+    const fidelitySimilarity = parseSimilarityNumber(fidelityRow?.similarity);
+    const coverageScore = computeCoverageScore(item?.specPack);
+    const linkIntegrityScore = computeLinkIntegrityScore(item?.linkReport, item?.specPack);
+    const qualityScore = computeQualityScore({
+      coverageScore,
+      linkIntegrityScore,
+      fidelitySimilarity,
+    });
+    const sourceDomain = hostFromUrl(item?.site?.url || "");
+    const metadata = {
+      qualityScore,
+      coverageScore,
+      linkIntegrityScore,
+      sourceDomain,
+      version: `run-${runId}`,
+      createdAt: new Date().toISOString(),
+    };
+    const sanitizedSite = rewriteBrandTextDeep(item.site || {});
+    const profile = rewriteBrandTextDeep(
+      specPackToStyleProfile({
+        site: sanitizedSite,
+        indexCard: item.indexCard,
+        specPack: item.specPack,
+      })
+    );
+    const enriched = {
+      ...profile,
+      ...metadata,
+    };
+    item.styleProfile = enriched;
+    item.assetScores = metadata;
+    return enriched;
+  });
+
+  return {
+    generatedAt: new Date().toISOString(),
+    runId,
+    manifestPath,
+    profileCount: profiles.length,
+    profiles,
+    templateExclusiveComponents: templateExclusiveComponents.map((component) => ({
+      name: component.name,
+      kebabName: component.kebabName,
+      defaultProps: component.defaultProps,
+      templateExclusive: component.templateExclusive,
+    })),
+  };
+};
+
+const mergeAndPublishRunLibrary = async ({
+  runLibrary,
+  allowPublish,
+  runId,
+}) => {
+  if (!allowPublish) {
+    return {
+      publishPath: "",
+      publishTemplateExclusiveComponentsPath: "",
+      published: false,
+      reason: "publish_disabled_or_blocked",
+    };
+  }
+
+  let existingProfiles = [];
+  let existingTemplateExclusiveComponents = [];
+  try {
+    const raw = await fs.readFile(DEFAULT_PUBLISH_PATH, "utf8");
+    const parsed = JSON.parse(raw);
+    existingProfiles = Array.isArray(parsed?.profiles) ? parsed.profiles : [];
+    existingTemplateExclusiveComponents = Array.isArray(parsed?.templateExclusiveComponents)
+      ? parsed.templateExclusiveComponents
+      : [];
+  } catch {
+    existingProfiles = [];
+    existingTemplateExclusiveComponents = [];
+  }
+
+  const mergedProfiles = mergeProfiles(existingProfiles, runLibrary.profiles);
+  const mergedTemplateExclusiveComponents = mergeTemplateExclusiveComponents(
+    existingTemplateExclusiveComponents,
+    runLibrary.templateExclusiveComponents
+  );
+  const published = {
+    generatedAt: new Date().toISOString(),
+    sourceRunId: runId,
+    profileCount: mergedProfiles.length,
+    profiles: mergedProfiles,
+    templateExclusiveComponentCount: mergedTemplateExclusiveComponents.length,
+    templateExclusiveComponents: mergedTemplateExclusiveComponents,
+  };
+  await fs.writeFile(DEFAULT_PUBLISH_PATH, JSON.stringify(published, null, 2));
+  let publishTemplateExclusiveComponentsPath = "";
+  if (mergedTemplateExclusiveComponents.length) {
+    publishTemplateExclusiveComponentsPath = path.join(LIB_DIR, "template-exclusive-components.generated.json");
+    await fs.writeFile(
+      publishTemplateExclusiveComponentsPath,
+      JSON.stringify(
+        {
+          generatedAt: new Date().toISOString(),
+          sourceRunId: runId,
+          count: mergedTemplateExclusiveComponents.length,
+          components: mergedTemplateExclusiveComponents,
+        },
+        null,
+        2
+      )
+    );
+  }
+  return {
+    publishPath: DEFAULT_PUBLISH_PATH,
+    publishTemplateExclusiveComponentsPath,
+    published: true,
+    reason: "ok",
+  };
 };
 
 const toRequiredCategories = (specPack) =>
@@ -4716,8 +6360,38 @@ const buildRepairHint = (repairContext) => {
     parts.push(`Previous similarity=${similarity.toFixed(2)}; target>=${threshold.toFixed(2)}.`);
   }
   if (Number.isFinite(gap) && gap > 0) parts.push(`Close at least ${gap.toFixed(2)} points.`);
+
+  // Section-level repair hints
+  const sectionHints = Array.isArray(repairContext.sectionHints) ? repairContext.sectionHints : [];
+  if (sectionHints.length) {
+    parts.push("Per-section issues:");
+    for (const hint of sectionHints.slice(0, 6)) {
+      const sim = typeof hint.similarity === "number" ? ` (similarity=${hint.similarity.toFixed(1)})` : "";
+      parts.push(`  - ${hint.sectionType || hint.sectionKind}${sim}: ${hint.issue || "low fidelity, try alternative variant or custom component"}`);
+    }
+  }
+  const issueSummary = repairContext?.issueSummary && typeof repairContext.issueSummary === "object" ? repairContext.issueSummary : {};
+  const layoutCount = Number(issueSummary.layout || 0);
+  const colorCount = Number(issueSummary.color || 0);
+  const copyDensityCount = Number(issueSummary.copy_density || 0);
+  if (layoutCount > 0 || colorCount > 0 || copyDensityCount > 0) {
+    parts.push(
+      `Failure categories: layout=${layoutCount}, color=${colorCount}, copy_density=${copyDensityCount}.`
+    );
+  }
+  if (layoutCount > 0) {
+    parts.push("Layout repair priority: restore section order, hero/nav/footer hierarchy, and spacing rhythm to match source.");
+  }
+  if (colorCount > 0) {
+    parts.push("Color repair priority: align dominant palette, contrast, and surface accents to source screenshot mood.");
+  }
+  if (copyDensityCount > 0) {
+    parts.push("Copy-density repair priority: align heading length, paragraph density, and CTA count with source.");
+  }
+
   parts.push(
-    "Preserve route structure, but tighten spacing scale, color tokens, typography weight, and hero/image composition toward source."
+    "Preserve route structure, but tighten spacing scale, color tokens, typography weight, and hero/image composition toward source.",
+    "Generate custom React components for sections that don't match well with standard blocks. Ensure all text content is passed via props for Puck editor editability."
   );
   return parts.join(" ");
 };
@@ -4744,12 +6418,47 @@ const buildRegressionPrompt = ({ site, indexCard, specPack, summary, visualSigna
     ? `Template identity hints: ${identityHints.join(" | ")}.`
     : "";
   const hostToken = hostFromUrl(site.url);
+  const isAudezeHost = /(^|\.)audeze\.com$/i.test(hostToken);
   const navDepth = Number(summary?.navMenuDepth || 1);
   const heroMode = normalizeHeroPresentation(summary?.heroPresentation)?.mode;
   const hasHeroCarousel =
     Boolean(summary?.heroCarousel?.enabled) &&
     Array.isArray(summary?.heroCarousel?.images) &&
     summary.heroCarousel.images.length >= 2;
+
+  // Build per-section spec hints for higher fidelity generation
+  const sectionSpecs = specPack?.section_specs && typeof specPack.section_specs === "object" ? specPack.section_specs : {};
+  const sectionSpecLines = Object.entries(sectionSpecs)
+    .slice(0, 10)
+    .map(([kind, spec]) => {
+      if (!spec?.block_type) return "";
+      const defaults = spec.defaults || {};
+      const variant = defaults.variant ? ` variant=${defaults.variant}` : "";
+      const bg = defaults.background ? ` bg=${defaults.background}` : "";
+      const title = defaults.title ? ` title="${String(defaults.title).slice(0, 60)}"` : "";
+      const itemCount = Array.isArray(defaults.items) ? ` items=${defaults.items.length}` : "";
+      return `  ${kind}: ${spec.block_type}${variant}${bg}${title}${itemCount}`;
+    })
+    .filter(Boolean);
+  const sectionSpecBlock = sectionSpecLines.length
+    ? `Section specifications (match these exactly):\n${sectionSpecLines.join("\n")}`
+    : "";
+
+  // Build alternative variant hints from registry
+  const alternativeHints = Object.entries(sectionSpecs)
+    .slice(0, 8)
+    .map(([kind, spec]) => {
+      if (!spec?.block_type) return "";
+      const alts = getAlternativeVariants(kind, spec.block_type);
+      if (!alts.length) return "";
+      const altNames = alts.slice(0, 4).map((a) => `${a.blockType}(${Object.entries(a.variantProps || {}).map(([k, v]) => `${k}=${v}`).join(",") || "default"})`).join(", ");
+      return `  ${kind}: alternatives=[${altNames}]`;
+    })
+    .filter(Boolean);
+  const alternativeBlock = alternativeHints.length
+    ? `If a section doesn't match the source well, consider these alternatives:\n${alternativeHints.join("\n")}`
+    : "";
+
   const visualHints = [
     `Style constraints: palette=${String(indexCard?.palette_profile || "").trim() || "source-driven"}, typography=${String(
       indexCard?.typography_signature || ""
@@ -4775,6 +6484,20 @@ const buildRegressionPrompt = ({ site, indexCard, specPack, summary, visualSigna
     /(^|\.)siemens\.com$/i.test(hostToken)
       ? "Brand palette requirement: deep navy + cyan + white (avoid generic grayscale or random accent colors)."
       : "",
+    isAudezeHost
+      ? "Audeze extraction constraints: keep multi-level dropdown navigation and preserve menu children; support image+text style menu cues in nav content model."
+      : "",
+    isAudezeHost
+      ? "Audeze extraction constraints: include one representative product detail page for display only; do NOT include cart/checkout/e-commerce actions."
+      : "",
+    isAudezeHost
+      ? "Audeze extraction constraints: technology/blog routes should use markdown-friendly content flow (article-like structure)."
+      : "",
+    isAudezeHost
+      ? "Audeze extraction constraints: support routes are content-only; remove download workflows and executable/file-download interactions."
+      : "",
+    sectionSpecBlock,
+    alternativeBlock,
     buildRepairHint(repairContext),
   ]
     .filter(Boolean)
@@ -4788,6 +6511,7 @@ const buildRegressionPrompt = ({ site, indexCard, specPack, summary, visualSigna
     hintLine,
     visualHints,
     "Match the source site with high fidelity: theme colors, section ordering, copy tone, spacing rhythm, and block hierarchy should closely follow source references.",
+    "Generate custom React components when needed to achieve pixel-accurate section rendering. All text content must be passed via props for Puck editor editability.",
   ]
     .filter(Boolean)
     .join("\n");
@@ -4799,6 +6523,7 @@ const runRegression = async ({
   renderer,
   groups,
   maxCases,
+  regressionTimeoutMs,
   attempt = 0,
   repairContextByCase = new Map(),
 }) => {
@@ -4831,7 +6556,10 @@ const runRegression = async ({
   if (maxCases > 0) args.push(`--max-cases ${Math.floor(maxCases)}`);
 
   const cmd = `cd ${JSON.stringify(ROOT)} && ${args.join(" ")}`;
-  const { stdout, stderr } = await runShell(cmd, { cwd: ROOT });
+  const { stdout, stderr } = await runShell(cmd, {
+    cwd: ROOT,
+    timeoutMs: Number(regressionTimeoutMs) > 0 ? Math.floor(Number(regressionTimeoutMs)) : 0,
+  });
   const out = `${stdout}\n${stderr}`;
   const match = out.match(/\[done\] report\(json\):\s+(.+)\s*$/m);
   const reportPath = match?.[1]?.trim() || "";
@@ -4841,6 +6569,104 @@ const runRegression = async ({
     reportPath,
     rawOutput: out,
   };
+};
+
+const runSingleSiteRegression = async ({
+  siteItem,
+  runDir,
+  renderer,
+  port,
+  regressionTimeoutMs,
+  attempt = 0,
+  repairContext = null,
+}) => {
+  const caseId = String(siteItem?.site?.id || "");
+  if (!caseId) {
+    return { ok: false, caseId: "", error: "missing_case_id" };
+  }
+
+  const promptsDir = path.join(runDir, "pipeline-regression");
+  await ensureDir(promptsDir);
+  const promptsPath = path.join(
+    promptsDir,
+    attempt > 0 ? `${caseId}.attempt-${attempt}.json` : `${caseId}.json`
+  );
+
+  const payload = {
+    version: "1.0.0",
+    cases: [
+      {
+        id: caseId,
+        description: siteItem.site.description || caseId,
+        requiredCategories: toRequiredCategories(siteItem.specPack),
+        routes: toSiteRoutes(siteItem.specPack),
+        prompt: buildRegressionPrompt({
+          site: siteItem.site,
+          indexCard: siteItem.indexCard,
+          specPack: siteItem.specPack,
+          summary: siteItem.summary,
+          visualSignature: siteItem.visualSignature || null,
+          repairContext,
+        }),
+      },
+    ],
+  };
+  await fs.writeFile(promptsPath, JSON.stringify(payload, null, 2));
+
+  const args = [
+    "node regression/run-strategy-comparison.mjs",
+    `--prompts ${JSON.stringify(promptsPath)}`,
+    `--renderer ${renderer}`,
+    `--groups ${JSON.stringify(DEFAULT_TEMPLATE_FIRST_GROUP)}`,
+    "--max-cases 1",
+  ];
+
+  const env = {};
+  if (port && port !== 3110) {
+    env.STRATEGY_COMPARE_PORT = String(port);
+  }
+
+  const cmd = `cd ${JSON.stringify(ROOT)} && ${args.join(" ")}`;
+  const { stdout, stderr } = await runShell(cmd, {
+    cwd: ROOT,
+    env,
+    timeoutMs: Number(regressionTimeoutMs) > 0 ? Math.floor(Number(regressionTimeoutMs)) : 0,
+  });
+  const out = `${stdout}\n${stderr}`;
+  const match = out.match(/\[done\] report\(json\):\s+(.+)\s*$/m);
+  const reportPath = match?.[1]?.trim() || "";
+
+  let result = {
+    ok: Boolean(reportPath),
+    caseId,
+    promptsPath,
+    reportPath,
+    rawOutput: out,
+    error: reportPath ? null : "missing_report",
+  };
+
+  if (reportPath) {
+    try {
+      const raw = await fs.readFile(reportPath, "utf8");
+      const report = JSON.parse(raw);
+      const groups = Array.isArray(report?.groups) ? report.groups : [];
+      const targetGroup = groups.find((g) => String(g?.id || "") === DEFAULT_TEMPLATE_FIRST_GROUP);
+      const rows = Array.isArray(targetGroup?.results) ? targetGroup.results : [];
+      const caseRow = rows.find((r) => String(r?.caseId || "") === caseId);
+      if (caseRow) {
+        result.ok = Boolean(caseRow.ok);
+        result.screenshot = caseRow.screenshot || "";
+        result.url = caseRow.url || "";
+        result.durationMs = caseRow.durationMs || 0;
+        result.errors = caseRow.errors || [];
+        result.pageScreenshots = Array.isArray(caseRow.pageScreenshots) ? caseRow.pageScreenshots : [];
+      }
+    } catch {
+      result.error = "failed_to_parse_report";
+    }
+  }
+
+  return result;
 };
 
 const collectTemplateFirstPreviewLinks = async ({ reportPath, previewBaseUrl }) => {
@@ -4894,11 +6720,16 @@ const collectTemplateFirstPreviewLinks = async ({ reportPath, previewBaseUrl }) 
       }))
       .filter((page, index, arr) => arr.findIndex((item) => item.pagePath === page.pagePath) === index);
 
+    const pageScreenshots = Array.isArray(row?.pageScreenshots) ? row.pageScreenshots : [];
+
     if (pageEntries.length > 1 && parsedUrl) {
       for (const page of pageEntries) {
         const pageParam = page.pagePath === "/" ? "home" : page.pagePath;
         const nextUrl = new URL(parsedUrl.toString());
         nextUrl.searchParams.set("page", pageParam);
+        const pageShot = pageScreenshots.find(
+          (shot) => normalizeTemplatePagePath(shot?.pagePath || "/") === page.pagePath
+        );
         links.push({
           groupId: DEFAULT_TEMPLATE_FIRST_GROUP,
           caseId,
@@ -4907,7 +6738,7 @@ const collectTemplateFirstPreviewLinks = async ({ reportPath, previewBaseUrl }) 
           responseId: row.responseId || null,
           requestId: row.requestId || null,
           url: nextUrl.toString(),
-          screenshot: typeof row.screenshot === "string" ? row.screenshot : "",
+          screenshot: typeof pageShot?.screenshot === "string" ? pageShot.screenshot : "",
         });
       }
       continue;
@@ -4995,12 +6826,261 @@ PY`;
   }
 };
 
-const evaluateVisualFidelity = async ({ reportPath, processed }) => {
+const parseSimilarityNumber = (value) =>
+  typeof value === "number" && Number.isFinite(value)
+    ? value
+    : typeof value === "string" && value.trim() && Number.isFinite(Number(value))
+      ? Number(value)
+      : null;
+
+const clamp01 = (value, fallback = 0) => {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return fallback;
+  if (n < 0) return 0;
+  if (n > 1) return 1;
+  return n;
+};
+
+const combineSimilarityScores = ({ visualSimilarity = null, structureSimilarity = null, structureWeight = 0.2 }) => {
+  const visual = parseSimilarityNumber(visualSimilarity);
+  const structure = parseSimilarityNumber(structureSimilarity);
+  if (visual === null && structure === null) return null;
+  if (visual !== null && structure === null) return Number(visual.toFixed(2));
+  if (visual === null && structure !== null) return Number(structure.toFixed(2));
+  const weight = clamp01(structureWeight, 0.2);
+  return Number((visual * (1 - weight) + structure * weight).toFixed(2));
+};
+
+const resolveExpectedSectionsForPath = (item, pagePath) => {
+  const normalizedPath = normalizePagePathForFidelity(pagePath);
+  const specPack = item?.specPack && typeof item.specPack === "object" ? item.specPack : {};
+  const rootSectionSpecs = specPack?.section_specs && typeof specPack.section_specs === "object" ? specPack.section_specs : {};
+  const pageSpecs = Array.isArray(specPack?.page_specs) ? specPack.page_specs : [];
+  const pageSpec = pageSpecs.find((entry) => normalizePagePathForFidelity(entry?.path || "/") === normalizedPath) || null;
+  const expectedCategories = normalizeRequiredCategories(pageSpec?.required_categories);
+  const expectedFromRoot = normalizeRequiredCategories(specPack?.required_categories);
+  const expectedKinds = expectedCategories.length
+    ? expectedCategories
+    : normalizedPath === "/"
+      ? expectedFromRoot
+      : [];
+  const pageSectionSpecs =
+    pageSpec?.section_specs && typeof pageSpec.section_specs === "object"
+      ? pageSpec.section_specs
+      : normalizedPath === "/"
+        ? rootSectionSpecs
+        : {};
+  return {
+    expectedKinds,
+    expectedSectionSpecs: pageSectionSpecs,
+  };
+};
+
+const inferSectionKindFromScreenshot = (section) => {
+  const idToken = String(section?.id || "").trim();
+  const idKind = normalizeSectionKind(idToken);
+  if (idKind) return idKind;
+  const typeToken = String(section?.type || "").trim();
+  const typeKind = normalizeSectionKind(typeToken);
+  if (typeKind) return typeKind;
+  const guessSource = slug(`${idToken} ${typeToken}`);
+  for (const kind of SECTION_KINDS) {
+    if (guessSource.includes(kind)) return kind;
+  }
+  return null;
+};
+
+const computePageStructureSimilarity = ({ expectedKinds = [], expectedSectionSpecs = {}, sectionScreenshots = [] }) => {
+  const expected = normalizeRequiredCategories(expectedKinds);
+  const expectedSet = new Set(expected);
+  const expectedCount = expected.length;
+  const actualKinds = (Array.isArray(sectionScreenshots) ? sectionScreenshots : [])
+    .map((section) => inferSectionKindFromScreenshot(section))
+    .filter(Boolean);
+  const actualCount = actualKinds.length;
+  if (!expectedCount && !actualCount) {
+    return {
+      similarity: null,
+      comparable: false,
+      expectedCount: 0,
+      actualCount: 0,
+      missingKinds: [],
+      matchedKinds: [],
+      reason: "no_expected_or_actual_sections",
+    };
+  }
+
+  if (!expectedCount && actualCount) {
+    return {
+      similarity: 82,
+      comparable: true,
+      expectedCount: 0,
+      actualCount,
+      missingKinds: [],
+      matchedKinds: Array.from(new Set(actualKinds)),
+      reason: "no_expected_sections_fallback",
+    };
+  }
+
+  if (!actualCount) {
+    return {
+      similarity: 0,
+      comparable: true,
+      expectedCount,
+      actualCount: 0,
+      missingKinds: expected,
+      matchedKinds: [],
+      reason: "no_actual_sections",
+    };
+  }
+
+  const matchedKinds = expected.filter((kind) => actualKinds.includes(kind));
+  const missingKinds = expected.filter((kind) => !actualKinds.includes(kind));
+  const coverageScore = expectedCount > 0 ? (matchedKinds.length / expectedCount) * 100 : 100;
+
+  let orderedMatches = 0;
+  let lastIndex = -1;
+  for (const kind of expected) {
+    const idx = actualKinds.indexOf(kind);
+    if (idx >= 0 && idx >= lastIndex) {
+      orderedMatches += 1;
+      lastIndex = idx;
+    }
+  }
+  const orderScore = expectedCount > 0 ? (orderedMatches / expectedCount) * 100 : 100;
+  const countGap = Math.abs(actualCount - expectedCount);
+  const countScore = Math.max(0, 100 - countGap * 18);
+
+  const similarity = Number((coverageScore * 0.55 + orderScore * 0.3 + countScore * 0.15).toFixed(2));
+
+  const expectedBlockTypes = Object.entries(expectedSectionSpecs || {})
+    .map(([kind, spec]) => ({ kind: normalizeSectionKind(kind), type: String(spec?.block_type || "").trim() }))
+    .filter((entry) => entry.kind && entry.type);
+
+  return {
+    similarity,
+    comparable: true,
+    expectedCount,
+    actualCount,
+    missingKinds,
+    matchedKinds,
+    expectedBlockTypes,
+    reason: "ok",
+  };
+};
+
+const classifyFidelityIssue = ({ visualSimilarity = null, structureSimilarity = null, structureMeta = null }) => {
+  const visual = parseSimilarityNumber(visualSimilarity);
+  const structure = parseSimilarityNumber(structureSimilarity);
+  if (structure !== null && structure < 62) return "layout";
+  if (structureMeta?.missingKinds?.length) return "layout";
+  if (visual !== null && visual < 70 && (structure === null || visual + 8 < structure)) return "color";
+  return "copy_density";
+};
+
+const evaluateCaseFidelityFromPageScreenshots = async ({
+  item,
+  pageScreenshots = [],
+  crawlPagesByPath = new Map(),
+  structureWeight = 0.2,
+}) => {
+  const pageRows = [];
+  for (const pageShot of Array.isArray(pageScreenshots) ? pageScreenshots : []) {
+    const pagePath = normalizePagePathForFidelity(pageShot?.pagePath || "/");
+    const candidatePath = typeof pageShot?.screenshot === "string" ? pageShot.screenshot.trim() : "";
+    if (!candidatePath) continue;
+
+    let referencePath = "";
+    if (pagePath === "/") {
+      referencePath = String(item?.referenceDesktopPath || "").trim();
+    }
+    if (!referencePath) {
+      const crawlPage = crawlPagesByPath.get(pagePath);
+      referencePath = String(crawlPage?.screenshots?.desktopPath || crawlPage?.publishedAssets?.desktopPath || "").trim();
+    }
+    if (!referencePath) continue;
+
+    const visualSimilarity = await computeImageSimilarity(referencePath, candidatePath);
+    const weight = PAGE_FIDELITY_WEIGHTS[pagePath] ?? DEFAULT_PAGE_FIDELITY_WEIGHT;
+    const sectionScreenshots = Array.isArray(pageShot?.sectionScreenshots) ? pageShot.sectionScreenshots : [];
+    const expected = resolveExpectedSectionsForPath(item, pagePath);
+    const structureMeta = computePageStructureSimilarity({
+      expectedKinds: expected.expectedKinds,
+      expectedSectionSpecs: expected.expectedSectionSpecs,
+      sectionScreenshots,
+    });
+    const structureSimilarity = parseSimilarityNumber(structureMeta?.similarity);
+    const similarity = combineSimilarityScores({
+      visualSimilarity,
+      structureSimilarity,
+      structureWeight,
+    });
+    const issueType = classifyFidelityIssue({
+      visualSimilarity,
+      structureSimilarity,
+      structureMeta,
+    });
+
+    pageRows.push({
+      caseId: String(item?.site?.id || ""),
+      pagePath,
+      referencePath,
+      screenshotPath: candidatePath,
+      visualSimilarity,
+      structureSimilarity,
+      similarity,
+      weight,
+      issueType,
+      sectionDetails: sectionScreenshots
+        .map((section) => ({
+          sectionId: section?.id || "",
+          sectionType: section?.type || "",
+          sectionIndex: section?.index ?? -1,
+          screenshotPath: section?.screenshotPath || "",
+          bounds: section?.bounds || null,
+          similarity: null,
+          referencePath: "",
+        }))
+        .filter((section) => section.screenshotPath),
+      structure: structureMeta,
+    });
+  }
+
+  const numericCombined = pageRows.filter((row) => parseSimilarityNumber(row.similarity) !== null);
+  const numericVisual = pageRows.filter((row) => parseSimilarityNumber(row.visualSimilarity) !== null);
+  const numericStructure = pageRows.filter((row) => parseSimilarityNumber(row.structureSimilarity) !== null);
+  const weighted = (rows, key) => {
+    const valid = rows.filter((row) => parseSimilarityNumber(row?.[key]) !== null);
+    if (!valid.length) return null;
+    const weightedSum = valid.reduce((acc, row) => acc + Number(row[key]) * Number(row.weight || 1), 0);
+    const totalWeight = valid.reduce((acc, row) => acc + Number(row.weight || 1), 0);
+    return totalWeight > 0 ? Number((weightedSum / totalWeight).toFixed(2)) : null;
+  };
+
+  return {
+    pageRows,
+    pageCount: pageRows.length,
+    similarity: weighted(numericCombined, "similarity"),
+    visualSimilarity: weighted(numericVisual, "visualSimilarity"),
+    structureSimilarity: weighted(numericStructure, "structureSimilarity"),
+  };
+};
+
+const PAGE_FIDELITY_WEIGHTS = { "/": 2.0 };
+const DEFAULT_PAGE_FIDELITY_WEIGHT = 1.0;
+
+const normalizePagePathForFidelity = (raw) => {
+  const trimmed = String(raw || "").trim().replace(/\/+$/, "") || "/";
+  return trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+};
+
+const evaluateVisualFidelity = async ({ reportPath, processed, options = {} }) => {
   if (!reportPath) {
     return {
       available: false,
       overallSimilarity: null,
       rows: [],
+      pageRows: [],
       reason: "missing_regression_report",
     };
   }
@@ -5014,20 +7094,64 @@ const evaluateVisualFidelity = async ({ reportPath, processed }) => {
   );
 
   const scoredRows = [];
+  const allPageRows = [];
+  const structureWeight = clamp01(options?.fidelityStructureWeight, 0.2);
+
   for (const row of rows) {
     const caseId = String(row?.caseId || "");
     if (!caseId) continue;
     const item = processedByCase.get(caseId);
     if (!item) continue;
-    const referencePath = String(item?.referenceDesktopPath || "").trim();
-    const screenshotPath = typeof row?.screenshot === "string" ? row.screenshot.trim() : "";
-    const similarity = await computeImageSimilarity(referencePath, screenshotPath);
-    scoredRows.push({
-      caseId,
-      referencePath,
-      screenshotPath,
-      similarity,
-    });
+
+    const pageScreenshots = Array.isArray(row?.pageScreenshots) ? row.pageScreenshots : [];
+    const crawlAssetPack = item?.crawlAssetPack || null;
+    const crawlPagesByPath = crawlAssetPack?.byPath || (
+      crawlAssetPack?.pages
+        ? new Map((Array.isArray(crawlAssetPack.pages) ? crawlAssetPack.pages : []).map(
+            (p) => [normalizePagePathForFidelity(p?.path || "/"), p]
+          ))
+        : new Map()
+    );
+
+    if (pageScreenshots.length > 0 && crawlPagesByPath.size > 0) {
+      const evaluated = await evaluateCaseFidelityFromPageScreenshots({
+        item,
+        pageScreenshots,
+        crawlPagesByPath,
+        structureWeight,
+      });
+
+      allPageRows.push(...evaluated.pageRows);
+      scoredRows.push({
+        caseId,
+        referencePath: String(item?.referenceDesktopPath || "").trim(),
+        screenshotPath: pageScreenshots[0]?.screenshot || "",
+        similarity: evaluated.similarity,
+        visualSimilarity: evaluated.visualSimilarity,
+        structureSimilarity: evaluated.structureSimilarity,
+        pageCount: evaluated.pageCount,
+        pageDetails: evaluated.pageRows,
+      });
+    } else {
+      const referencePath = String(item?.referenceDesktopPath || "").trim();
+      const screenshotPath = typeof row?.screenshot === "string" ? row.screenshot.trim() : "";
+      const visualSimilarity = await computeImageSimilarity(referencePath, screenshotPath);
+      const similarity = combineSimilarityScores({
+        visualSimilarity,
+        structureSimilarity: null,
+        structureWeight,
+      });
+      scoredRows.push({
+        caseId,
+        referencePath,
+        screenshotPath,
+        similarity,
+        visualSimilarity,
+        structureSimilarity: null,
+        pageCount: 0,
+        pageDetails: [],
+      });
+    }
   }
 
   const numeric = scoredRows
@@ -5040,6 +7164,7 @@ const evaluateVisualFidelity = async ({ reportPath, processed }) => {
     available: numeric.length > 0,
     overallSimilarity,
     rows: scoredRows,
+    pageRows: allPageRows,
     reason: numeric.length > 0 ? "ok" : "no_comparable_rows",
   };
 };
@@ -5048,14 +7173,179 @@ const resolveFidelitySettings = (site, options) => {
   const globalMode = String(options?.fidelityMode || "").trim().toLowerCase() === "strict" ? "strict" : "standard";
   const siteMode = String(site?.fidelityMode || "").trim().toLowerCase() === "strict" ? "strict" : "standard";
   const mode = globalMode === "strict" || siteMode === "strict" ? "strict" : "standard";
+  const strictAvgMin = Math.max(0, Math.min(100, Math.floor(Number(options?.strictAvgSimilarityMin) || 85)));
+  const strictPageMin = Math.max(0, Math.min(100, Math.floor(Number(options?.strictPageSimilarityMin) || 78)));
   const siteThresholdRaw = Number(site?.fidelityThreshold);
   const globalThresholdRaw = Number(options?.fidelityThreshold);
   const thresholdBase = Number.isFinite(siteThresholdRaw) && siteThresholdRaw >= 0 ? siteThresholdRaw : globalThresholdRaw;
-  const threshold = Math.max(0, Math.min(100, Math.floor(Number.isFinite(thresholdBase) ? thresholdBase : 72)));
+  const thresholdRaw = Math.max(0, Math.min(100, Math.floor(Number.isFinite(thresholdBase) ? thresholdBase : 72)));
+  const threshold = mode === "strict" ? Math.max(strictAvgMin, thresholdRaw) : thresholdRaw;
+  const sitePageThresholdRaw = Number(site?.fidelityPageThreshold);
+  const pageThresholdBase =
+    Number.isFinite(sitePageThresholdRaw) && sitePageThresholdRaw >= 0 ? sitePageThresholdRaw : strictPageMin;
+  const pageThresholdRaw = Math.max(0, Math.min(100, Math.floor(Number(pageThresholdBase) || strictPageMin)));
+  const pageThreshold = mode === "strict" ? Math.max(strictPageMin, pageThresholdRaw) : pageThresholdRaw;
+  const requiredPagesPerSiteBase =
+    Number.isFinite(Number(site?.requiredPagesPerSite)) && Number(site?.requiredPagesPerSite) > 0
+      ? Number(site.requiredPagesPerSite)
+      : Number(options?.requiredPagesPerSite || 4);
+  const requiredPagesPerSite = Math.max(1, Math.min(12, Math.floor(Number(requiredPagesPerSiteBase) || 4)));
   const globalEnforcement = String(options?.fidelityEnforcement || "").trim().toLowerCase() === "fail" ? "fail" : "warn";
   const siteEnforcement = String(site?.fidelityEnforcement || "").trim().toLowerCase() === "fail" ? "fail" : "warn";
   const enforcement = siteEnforcement === "fail" ? "fail" : globalEnforcement;
-  return { mode, threshold, enforcement };
+  return { mode, threshold, pageThreshold, enforcement, requiredPagesPerSite };
+};
+
+const evaluateFidelityRowsAgainstPolicies = ({
+  fidelityRows = [],
+  fidelityByCase,
+  strictCaseIds = [],
+  strictFailCaseIds = [],
+  strictRequiredPageCases = [],
+  options = {},
+}) => {
+  const structureWeight = clamp01(options?.fidelityStructureWeight, 0.2);
+  const normalizedRows = (Array.isArray(fidelityRows) ? fidelityRows : []).map((row) => {
+    const caseId = String(row?.caseId || "");
+    const config = fidelityByCase.get(caseId) || {
+      mode: "standard",
+      threshold: Number(options?.fidelityThreshold || 72),
+      pageThreshold: Number(options?.strictPageSimilarityMin || 78),
+      enforcement: options?.fidelityEnforcement || "warn",
+    };
+    const similarityRaw =
+      parseSimilarityNumber(row?.similarity) ??
+      combineSimilarityScores({
+        visualSimilarity: row?.visualSimilarity,
+        structureSimilarity: row?.structureSimilarity,
+        structureWeight,
+      });
+    const similarity = parseSimilarityNumber(similarityRaw);
+    const comparable = similarity !== null;
+    const pass = comparable && similarity >= Number(config.threshold || 0);
+    const pageThreshold = Math.max(0, Math.min(100, Number(config.pageThreshold || 0)));
+    const pageDetails = (Array.isArray(row?.pageDetails) ? row.pageDetails : []).map((page) => {
+      const pagePath = normalizePagePathForFidelity(page?.pagePath || "/");
+      const pageSimilarityRaw =
+        parseSimilarityNumber(page?.similarity) ??
+        combineSimilarityScores({
+          visualSimilarity: page?.visualSimilarity,
+          structureSimilarity: page?.structureSimilarity,
+          structureWeight,
+        });
+      const pageSimilarity = parseSimilarityNumber(pageSimilarityRaw);
+      const pageComparable = pageSimilarity !== null;
+      const pagePass = pageComparable && pageSimilarity >= pageThreshold;
+      const issueType =
+        String(page?.issueType || "").trim() ||
+        classifyFidelityIssue({
+          visualSimilarity: page?.visualSimilarity,
+          structureSimilarity: page?.structureSimilarity,
+          structureMeta: page?.structure || null,
+        });
+      return {
+        ...page,
+        pagePath,
+        similarity: pageSimilarity,
+        comparable: pageComparable,
+        threshold: pageThreshold,
+        pass: pagePass,
+        issueType,
+      };
+    });
+    return {
+      ...row,
+      caseId,
+      similarity,
+      mode: config.mode,
+      threshold: Number(config.threshold || 0),
+      pageThreshold,
+      enforcement: config.enforcement || "warn",
+      comparable,
+      pass,
+      pageDetails,
+    };
+  });
+
+  const rowByCase = new Map(normalizedRows.map((row) => [String(row.caseId || ""), row]));
+  const strictFidelityFailures = normalizedRows.filter((row) => row.mode === "strict" && row.comparable && !row.pass);
+  const blockingFidelityFailures = strictFidelityFailures.filter((row) => row.enforcement === "fail");
+  const strictFidelityMissing = strictCaseIds.filter((caseId) => !normalizedRows.some((row) => row.caseId === caseId && row.comparable));
+  const blockingMissing = strictFidelityMissing.filter((caseId) => strictFailCaseIds.includes(caseId));
+
+  const requiredCases = (Array.isArray(strictRequiredPageCases) ? strictRequiredPageCases : [])
+    .map((entry) => ({
+      id: String(entry?.id || ""),
+      caseId: String(entry?.caseId || ""),
+      pagePath: normalizePagePathForFidelity(entry?.pagePath || "/"),
+      pageName: String(entry?.pageName || "").trim() || formatTemplatePageName(entry?.pagePath || "/"),
+      role: String(entry?.role || "generic"),
+      reason: String(entry?.reason || "selected"),
+    }))
+    .filter((entry) => entry.id && entry.caseId);
+
+  const strictPageFidelityFailures = [];
+  const strictPageFidelityMissing = [];
+  for (const required of requiredCases) {
+    const caseRow = rowByCase.get(required.caseId);
+    if (!caseRow || !caseRow.comparable) {
+      strictPageFidelityMissing.push({
+        ...required,
+        issue: "case_not_comparable",
+        enforcement: strictFailCaseIds.includes(required.caseId) ? "fail" : "warn",
+      });
+      continue;
+    }
+    const pageRow = (Array.isArray(caseRow.pageDetails) ? caseRow.pageDetails : []).find(
+      (entry) => normalizePagePathForFidelity(entry?.pagePath || "/") === required.pagePath
+    );
+    if (!pageRow || !pageRow.comparable) {
+      strictPageFidelityMissing.push({
+        ...required,
+        issue: "page_not_comparable",
+        enforcement: caseRow.enforcement || "warn",
+      });
+      continue;
+    }
+    if (!pageRow.pass) {
+      strictPageFidelityFailures.push({
+        ...required,
+        similarity: pageRow.similarity,
+        threshold: pageRow.threshold,
+        issueType: pageRow.issueType || "copy_density",
+        visualSimilarity: parseSimilarityNumber(pageRow.visualSimilarity),
+        structureSimilarity: parseSimilarityNumber(pageRow.structureSimilarity),
+        enforcement: caseRow.enforcement || "warn",
+      });
+    }
+  }
+
+  const blockingPageFidelityFailures = strictPageFidelityFailures.filter((row) => row.enforcement === "fail");
+  const blockingPageMissing = strictPageFidelityMissing.filter((row) => row.enforcement === "fail");
+  const fidelityGateWouldFail =
+    strictFidelityFailures.length > 0 ||
+    strictFidelityMissing.length > 0 ||
+    strictPageFidelityFailures.length > 0 ||
+    strictPageFidelityMissing.length > 0;
+  const fidelityGatePassed =
+    blockingFidelityFailures.length === 0 &&
+    blockingMissing.length === 0 &&
+    blockingPageFidelityFailures.length === 0 &&
+    blockingPageMissing.length === 0;
+
+  return {
+    fidelityRowsEvaluated: normalizedRows,
+    strictFidelityFailures,
+    blockingFidelityFailures,
+    strictFidelityMissing,
+    strictPageFidelityFailures,
+    strictPageFidelityMissing,
+    blockingPageFidelityFailures,
+    blockingPageMissing,
+    fidelityGateWouldFail,
+    fidelityGatePassed,
+    blockingMissing,
+  };
 };
 
 const evaluateRegressionOutcome = async ({
@@ -5064,62 +7354,60 @@ const evaluateRegressionOutcome = async ({
   fidelityByCase,
   strictCaseIds,
   strictFailCaseIds,
+  strictRequiredPageCases,
   options,
 }) => {
   const score = await scoreRegressionReport(reportPath);
   const fidelity = await evaluateVisualFidelity({
     reportPath,
     processed,
+    options,
   });
-  const fidelityRowsEvaluated = (Array.isArray(fidelity?.rows) ? fidelity.rows : []).map((row) => {
-    const config = fidelityByCase.get(String(row.caseId || "")) || {
-      mode: "standard",
-      threshold: options.fidelityThreshold,
-      enforcement: options.fidelityEnforcement,
-    };
-    const rawSimilarity = row?.similarity;
-    const similarity =
-      typeof rawSimilarity === "number" && Number.isFinite(rawSimilarity)
-        ? rawSimilarity
-        : typeof rawSimilarity === "string" && rawSimilarity.trim() && Number.isFinite(Number(rawSimilarity))
-          ? Number(rawSimilarity)
-          : null;
-    const comparable = typeof similarity === "number" && Number.isFinite(similarity);
-    const pass = comparable && similarity >= Number(config.threshold || 0);
-    return {
-      ...row,
-      similarity,
-      mode: config.mode,
-      threshold: Number(config.threshold || 0),
-      enforcement: config.enforcement || "warn",
-      comparable,
-      pass,
-    };
+  const policyEval = evaluateFidelityRowsAgainstPolicies({
+    fidelityRows: Array.isArray(fidelity?.rows) ? fidelity.rows : [],
+    fidelityByCase,
+    strictCaseIds,
+    strictFailCaseIds,
+    strictRequiredPageCases,
+    options,
   });
-
-  const strictFidelityFailures = fidelityRowsEvaluated.filter((row) => row.mode === "strict" && row.comparable && !row.pass);
-  const blockingFidelityFailures = strictFidelityFailures.filter((row) => row.enforcement === "fail");
-  const strictFidelityMissing = strictCaseIds.filter(
-    (caseId) => !fidelityRowsEvaluated.some((row) => row.caseId === caseId && row.comparable)
-  );
-  const blockingMissing = strictFidelityMissing.filter((caseId) => strictFailCaseIds.includes(caseId));
-  const fidelityGateWouldFail = strictFidelityFailures.length > 0 || strictFidelityMissing.length > 0;
-  const fidelityGatePassed = blockingFidelityFailures.length === 0 && blockingMissing.length === 0;
 
   return {
     score,
     fidelity,
-    fidelityRowsEvaluated,
-    strictFidelityFailures,
-    blockingFidelityFailures,
-    strictFidelityMissing,
-    fidelityGateWouldFail,
-    fidelityGatePassed,
-    blockingMissing,
+    ...policyEval,
   };
 };
 
-const buildFidelityManualFixTasks = ({ fidelityRows, missingCaseIds, previewLinks }) => {
+const repairActionsForIssue = (issueType) => {
+  if (issueType === "layout") {
+    return [
+      "Restore section order and hierarchy (nav/hero/content/cta/footer) to match source.",
+      "Adjust spacing scale and block proportions using source screenshot as baseline.",
+      "Use more suitable block variant/custom component when section structure is mismatched.",
+    ];
+  }
+  if (issueType === "color") {
+    return [
+      "Align palette and surface contrast with source dominant colors.",
+      "Correct background/overlay tint and CTA emphasis color usage.",
+      "Ensure image treatment and gradient tone are source-consistent.",
+    ];
+  }
+  return [
+    "Align heading/body text density and line lengths with source.",
+    "Reduce or expand CTA/button count to match source content rhythm.",
+    "Adjust cards/testimonials/item count to source-like information density.",
+  ];
+};
+
+const buildFidelityManualFixTasks = ({
+  fidelityRows,
+  missingCaseIds,
+  failedPageCases = [],
+  missingPageCases = [],
+  previewLinks,
+}) => {
   const casePreview = new Map();
   for (const link of Array.isArray(previewLinks) ? previewLinks : []) {
     const caseId = String(link?.caseId || "");
@@ -5152,6 +7440,29 @@ const buildFidelityManualFixTasks = ({ fidelityRows, missingCaseIds, previewLink
     })
     .sort((a, b) => (Number(b.gap) || 0) - (Number(a.gap) || 0));
 
+  const pageFailureTasks = (Array.isArray(failedPageCases) ? failedPageCases : [])
+    .map((row) => {
+      const similarity = Number(row?.similarity);
+      const threshold = Number(row?.threshold || 0);
+      const issueType = String(row?.issueType || "copy_density");
+      const gap = Number.isFinite(similarity) ? Number((threshold - similarity).toFixed(2)) : null;
+      return {
+        caseId: String(row?.caseId || ""),
+        pagePath: normalizeTemplatePagePath(row?.pagePath || "/"),
+        pageName: String(row?.pageName || "").trim() || formatTemplatePageName(row?.pagePath || "/"),
+        issue: "low_page_similarity",
+        issueType,
+        mode: "strict",
+        enforcement: String(row?.enforcement || "warn"),
+        similarity: Number.isFinite(similarity) ? similarity : null,
+        threshold,
+        gap,
+        previewUrl: casePreview.get(String(row?.caseId || "")) || "",
+        actions: repairActionsForIssue(issueType),
+      };
+    })
+    .sort((a, b) => (Number(b.gap) || 0) - (Number(a.gap) || 0));
+
   const missingTasks = (Array.isArray(missingCaseIds) ? missingCaseIds : []).map((caseId) => ({
     caseId: String(caseId || ""),
     issue: "missing_comparison",
@@ -5167,7 +7478,24 @@ const buildFidelityManualFixTasks = ({ fidelityRows, missingCaseIds, previewLink
     ],
   }));
 
-  return [...lowSimilarityTasks, ...missingTasks];
+  const missingPageTasks = (Array.isArray(missingPageCases) ? missingPageCases : []).map((row) => ({
+    caseId: String(row?.caseId || ""),
+    pagePath: normalizeTemplatePagePath(row?.pagePath || "/"),
+    pageName: String(row?.pageName || "").trim() || formatTemplatePageName(row?.pagePath || "/"),
+    issue: "missing_page_comparison",
+    mode: "strict",
+    enforcement: String(row?.enforcement || "warn"),
+    similarity: null,
+    threshold: null,
+    gap: null,
+    previewUrl: casePreview.get(String(row?.caseId || "")) || "",
+    actions: [
+      "Ensure this required page route is generated and reachable in preview.",
+      "Capture page screenshot and include section screenshots for this route.",
+    ],
+  }));
+
+  return [...lowSimilarityTasks, ...pageFailureTasks, ...missingTasks, ...missingPageTasks];
 };
 
 const scoreRegressionReport = async (reportPath) => {
@@ -5220,271 +7548,751 @@ const scoreRegressionReport = async (reportPath) => {
   };
 };
 
-const main = async () => {
-  const options = parseArgs(process.argv);
-  const manifestPath = options.manifest;
-  const sites = await loadManifest(manifestPath);
-  if (!sites.length) {
-    throw new Error(`No valid sites in manifest: ${manifestPath}`);
+const processSiteWithPipelineRegression = async ({
+  site,
+  siteIndex,
+  sites,
+  options,
+  runDir,
+  siteRoot,
+  availablePorts,
+  screenshotSemaphore,
+  crawlSemaphore,
+  regressionSemaphore,
+  fidelityByCase,
+}) => {
+  const sitePrefix = `[template-factory][${siteIndex + 1}/${sites.length}][${site.id}]`;
+  const siteStartedAt = Date.now();
+  const siteForRun = { ...site };
+  console.log(`${sitePrefix} start url=${siteForRun.url || "(no-url)"}`);
+  const siteDir = path.join(siteRoot, site.id);
+  const ingestDir = path.join(siteDir, "ingest");
+  const extractedDir = path.join(siteDir, "extracted");
+  await ensureDir(ingestDir);
+  await ensureDir(extractedDir);
+
+  const antiCrawlPrecheckEnabled =
+    Boolean(siteForRun.url) &&
+    !options.skipIngest &&
+    options.antiCrawlPrecheck &&
+    site.antiCrawlPrecheck !== false;
+  const antiCrawlTimeoutMs =
+    Number(site.antiCrawlTimeoutMs || 0) > 0
+      ? Math.floor(Number(site.antiCrawlTimeoutMs))
+      : Math.max(1000, Math.floor(Number(options.antiCrawlTimeoutMs || 0) || 25000));
+  const antiCrawlPrecheck = antiCrawlPrecheckEnabled
+    ? await runWithProgress(
+        "anti-crawl precheck",
+        () =>
+          precheckAntiCrawl({
+            url: siteForRun.url,
+            timeoutMs: antiCrawlTimeoutMs,
+          }),
+        { prefix: sitePrefix, heartbeatMs: 15000 }
+      )
+    : {
+        checked: false,
+        blocked: false,
+        reason: antiCrawlPrecheckEnabled ? "skipped" : "disabled",
+        status: 0,
+        url: siteForRun.url || "",
+        finalUrl: "",
+      };
+  await fs.writeFile(path.join(ingestDir, "anti-crawl-precheck.json"), JSON.stringify(antiCrawlPrecheck, null, 2));
+  if (antiCrawlPrecheckEnabled && antiCrawlPrecheck.blocked) {
+    const details = antiCrawlPrecheck.reason || "anti_crawl_detected";
+    throw new Error(
+      `[template-factory] anti-crawl detected for ${site.id} (${siteForRun.url}) during precheck: ${details}. Template generation terminated.`
+    );
+  }
+  if (antiCrawlPrecheckEnabled) {
+    console.log(
+      `[template-factory] anti-crawl precheck ${site.id}: status=${antiCrawlPrecheck.status || 0}, result=${antiCrawlPrecheck.reason}`
+    );
   }
 
-  const runDir = path.join(RUNS_DIR, options.runId);
-  const siteRoot = path.join(runDir, "sites");
-  await ensureDir(siteRoot);
-  await ensureDir(LIB_DIR);
+  let desktopShot = null;
+  let mobileShot = null;
 
-  const processed = [];
+  if (!options.skipIngest) {
+    if (siteForRun.url) {
+      desktopShot = await runWithSemaphore(screenshotSemaphore, () =>
+        runWithProgress(
+          "capture desktop screenshot",
+          () =>
+            captureScreenshot({
+              url: siteForRun.url,
+              outPath: path.join(ingestDir, "desktop.auto.png"),
+              mobile: false,
+              timeoutMs: options.screenshotTimeoutMs,
+            }),
+          { prefix: sitePrefix, heartbeatMs: 12000 }
+        )
+      );
+      mobileShot = await runWithSemaphore(screenshotSemaphore, () =>
+        runWithProgress(
+          "capture mobile screenshot",
+          () =>
+            captureScreenshot({
+              url: siteForRun.url,
+              outPath: path.join(ingestDir, "mobile.auto.png"),
+              mobile: true,
+              timeoutMs: options.screenshotTimeoutMs,
+            }),
+          { prefix: sitePrefix, heartbeatMs: 12000 }
+        )
+      );
+    }
+  }
 
-  for (const site of sites) {
-    const siteDir = path.join(siteRoot, site.id);
-    const ingestDir = path.join(siteDir, "ingest");
-    const extractedDir = path.join(siteDir, "extracted");
-    await ensureDir(ingestDir);
-    await ensureDir(extractedDir);
+  const copiedDesktop = await safeCopy(site.desktopScreenshot, path.join(ingestDir, "desktop.reference.png"));
+  const copiedMobile = await safeCopy(site.mobileScreenshot, path.join(ingestDir, "mobile.reference.png"));
+  const preferredDesktop = await choosePreferredScreenshot([copiedDesktop, desktopShot]);
+  const preferredMobile = await choosePreferredScreenshot([copiedMobile, mobileShot]);
+  const publishedAssets = await publishReferenceAssets({
+    siteId: site.id,
+    desktopSource: preferredDesktop,
+    mobileSource: preferredMobile,
+  });
+  const visualSignature = await extractImageVisualSignature(preferredDesktop || copiedDesktop || desktopShot || "");
+  const crawlEnabled = Boolean(siteForRun.url) && !options.skipIngest && (options.crawlSite || siteForRun.crawlSite || site.crawlSite);
+  const crawlMaxPages =
+    Number(site.crawlMaxPages || 0) > 0
+      ? Math.floor(Number(site.crawlMaxPages))
+      : Math.max(1, Math.floor(Number(options.crawlMaxPages || 0) || 0));
+  const crawlMaxDepth =
+    Number(site.crawlMaxDepth) >= 0
+      ? Math.floor(Number(site.crawlMaxDepth))
+      : Math.max(0, Math.floor(Number(options.crawlMaxDepth || 0) || 0));
+  const crawlCapturePages =
+    Number(site.crawlCapturePages) >= 0
+      ? Math.floor(Number(site.crawlCapturePages))
+      : Math.max(0, Math.floor(Number(options.crawlCapturePages || 0) || 0));
+  let crawlReport = null;
+  let crawlAssetPack = null;
+  let crawlPipeline = null;
+  if (crawlEnabled) {
+    await runWithSemaphore(crawlSemaphore, async () => {
+      crawlPipeline = await runWithProgress(
+        `hybrid crawl pipeline (pages=${crawlMaxPages}, depth=${crawlMaxDepth})`,
+        () =>
+            runHybridCrawlerPipeline({
+              site: siteForRun,
+              ingestDir,
+              maxPages: crawlMaxPages,
+              maxDepth: crawlMaxDepth,
+              timeoutMs: options.crawlTimeoutMs,
+          }),
+        { prefix: sitePrefix, heartbeatMs: 25000 }
+      );
+      if (crawlPipeline?.ok && crawlPipeline.crawlReport) {
+        crawlReport = crawlPipeline.crawlReport;
+      } else {
+        if (crawlPipeline && !crawlPipeline.ok) {
+          const reason = crawlPipeline.reason || "hybrid_pipeline_failed";
+          console.warn(`[template-factory] hybrid crawl pipeline fallback for ${site.id}: ${reason}`);
+        }
+        crawlReport = await runWithProgress(
+          `fallback crawl (pages=${crawlMaxPages}, depth=${crawlMaxDepth})`,
+          () =>
+            crawlSitePages({
+              entryUrl: siteForRun.url,
+              maxPages: crawlMaxPages,
+              maxDepth: crawlMaxDepth,
+              timeoutMs: options.crawlTimeoutMs,
+            }),
+          { prefix: sitePrefix, heartbeatMs: 25000 }
+        );
+      }
+    });
+  }
+  if (crawlReport?.blocked) {
+    await fs.writeFile(path.join(ingestDir, "crawl.json"), JSON.stringify(crawlReport, null, 2));
+    const reason = crawlReport?.antiCrawl?.reason || "anti_crawl_detected";
+    throw new Error(
+      `[template-factory] anti-crawl detected for ${site.id} (${siteForRun.url}) during crawl: ${reason}. Template generation terminated.`
+    );
+  }
+  crawlAssetPack = crawlReport
+    ? await runWithProgress(
+        "build crawled page asset pack",
+        () =>
+          buildCrawledPageAssetPack({
+            siteId: site.id,
+            crawl: crawlReport,
+            ingestDir,
+            captureLimit: crawlCapturePages,
+            screenshotTimeoutMs: options.screenshotTimeoutMs,
+            screenshotSemaphore,
+            logPrefix: sitePrefix,
+          }),
+        { prefix: sitePrefix, heartbeatMs: 25000 }
+      )
+    : null;
+  if (crawlReport) {
+    await fs.writeFile(path.join(ingestDir, "crawl.json"), JSON.stringify(crawlReport, null, 2));
+    console.log(
+      `[template-factory] crawl ${site.id}: pages=${crawlReport?.stats?.crawled || 0}, discovered=${crawlReport?.stats?.discovered || 0}, failed=${crawlReport?.stats?.failed || 0}`
+    );
+  }
+  const summary = await runWithProgress("fetch html summary", () => fetchHtmlSummary(siteForRun.url), {
+    prefix: sitePrefix,
+    heartbeatMs: 12000,
+  });
+  const mergedSummary = crawlReport ? mergeSummaryWithCrawl(summary, crawlReport) : summary;
+  if (crawlPipeline?.ok) {
+    const mergedThemeColors = mergeThemeColors(mergedSummary, crawlPipeline.styleFused);
+    if (mergedThemeColors.length) mergedSummary.themeColors = mergedThemeColors;
+  }
+  const resolvedRecipe = resolveRecipeForSite({
+    site: siteForRun,
+    summary: mergedSummary,
+    visualSignature,
+  });
+  const recipe = resolvedRecipe.recipe;
+  const referenceSlices = await runWithProgress(
+    "create reference slices",
+    () =>
+      createReferenceSlices({
+        siteId: site.id,
+        desktopSource: preferredDesktop,
+        mobileSource: preferredMobile,
+        preset: recipe?.id,
+      }),
+    { prefix: sitePrefix, heartbeatMs: 15000 }
+  );
+  if (resolvedRecipe.synthesized) {
+    console.log(
+      `[template-factory] dynamic recipe synthesized for ${site.id}: base=${resolvedRecipe.baseRecipeId}, score=${resolvedRecipe.fit.score}, mismatches=${resolvedRecipe.fit.mismatches.join(
+        ","
+      )}`
+    );
+  }
+  await fs.writeFile(
+    path.join(ingestDir, "summary.json"),
+    JSON.stringify(
+      {
+        site: siteForRun,
+        urlUsed: siteForRun.url,
+        screenshots: {
+          desktopAuto: desktopShot,
+          mobileAuto: mobileShot,
+          desktopReference: copiedDesktop,
+          mobileReference: copiedMobile,
+          desktopPreferred: preferredDesktop,
+          mobilePreferred: preferredMobile,
+        },
+        publishedAssets,
+        referenceSlices,
+        antiCrawlPrecheck: {
+          enabled: antiCrawlPrecheckEnabled,
+          path: path.join(ingestDir, "anti-crawl-precheck.json"),
+          ...antiCrawlPrecheck,
+        },
+        recipeResolution: {
+          selectedRecipeId: recipe.id,
+          synthesized: Boolean(resolvedRecipe.synthesized),
+          baseRecipeId: resolvedRecipe.baseRecipeId,
+          fitScore: resolvedRecipe.fit?.score ?? null,
+          fitMismatches: Array.isArray(resolvedRecipe.fit?.mismatches) ? resolvedRecipe.fit.mismatches : [],
+        },
+        htmlSummary: mergedSummary,
+        crawl: crawlReport
+          ? {
+              enabled: true,
+              path: path.join(ingestDir, "crawl.json"),
+              pagesPath: crawlAssetPack?.manifestPath || "",
+              pageAssets: Array.isArray(crawlAssetPack?.pages) ? crawlAssetPack.pages.length : 0,
+              ...crawlReport.stats,
+            }
+          : { enabled: false },
+        hybridPipeline: crawlPipeline?.ok
+          ? {
+              enabled: true,
+              outputDir: crawlPipeline.outputDir,
+              crawlResultPath: crawlPipeline.paths?.crawlResultPath || "",
+              crawlReportPath: crawlPipeline.paths?.crawlReportPath || "",
+              visualAnalysisPath: crawlPipeline.paths?.visualAnalysisPath || "",
+              styleFusedPath: crawlPipeline.paths?.styleFusedPath || "",
+              warnings: Array.isArray(crawlPipeline.warnings) ? crawlPipeline.warnings : [],
+            }
+          : {
+              enabled: false,
+              reason: crawlPipeline?.reason || "disabled_or_fallback",
+            },
+      },
+      null,
+      2
+    )
+  );
 
-    const antiCrawlPrecheckEnabled =
-      Boolean(site.url) &&
-      !options.skipIngest &&
-      options.antiCrawlPrecheck &&
-      site.antiCrawlPrecheck !== false;
-    const antiCrawlTimeoutMs =
-      Number(site.antiCrawlTimeoutMs || 0) > 0
-        ? Math.floor(Number(site.antiCrawlTimeoutMs))
-        : Math.max(1000, Math.floor(Number(options.antiCrawlTimeoutMs || 0) || 25000));
-    const antiCrawlPrecheck = antiCrawlPrecheckEnabled
-      ? await precheckAntiCrawl({
-          url: site.url,
-          timeoutMs: antiCrawlTimeoutMs,
-        })
-      : {
-          checked: false,
-          blocked: false,
-          reason: antiCrawlPrecheckEnabled ? "skipped" : "disabled",
-          status: 0,
-          url: site.url || "",
-          finalUrl: "",
+  const indexCardRaw = buildIndexCard({
+    site: siteForRun,
+    recipe,
+    summary: mergedSummary,
+    evidence: {
+      desktop: Boolean(desktopShot || copiedDesktop || site.desktopScreenshot),
+      mobile: Boolean(mobileShot || copiedMobile || site.mobileScreenshot),
+    },
+  });
+  const specPackRaw = buildSpecPack({
+    site: siteForRun,
+    recipe,
+    summary: mergedSummary,
+    assets: { ...publishedAssets, slices: referenceSlices },
+    crawl: crawlReport,
+    crawlAssetPack,
+    options,
+  });
+  const indexCard = rewriteBrandTextDeep(indexCardRaw);
+  const specPack = rewriteBrandTextDeep(specPackRaw);
+  const linkReport = buildLinkReport({
+    site: siteForRun,
+    specPack,
+    sitePages: Array.isArray(specPack?.site_pages) ? specPack.site_pages : [],
+  });
+  const sanitizedSite = rewriteBrandTextDeep(siteForRun);
+  const styleProfile = rewriteBrandTextDeep(specPackToStyleProfile({ site: sanitizedSite, indexCard, specPack }));
+
+  await fs.writeFile(path.join(extractedDir, "index-card.json"), JSON.stringify(indexCard, null, 2));
+  await fs.writeFile(path.join(extractedDir, "spec-pack.json"), JSON.stringify(specPack, null, 2));
+  await fs.writeFile(path.join(extractedDir, "style-profile.json"), JSON.stringify(styleProfile, null, 2));
+  await fs.writeFile(path.join(extractedDir, "link-report.json"), JSON.stringify(linkReport, null, 2));
+
+  const processedItem = {
+    site: siteForRun,
+    indexCard,
+    specPack,
+    styleProfile,
+    siteDir,
+    summary: mergedSummary,
+    recipeResolution: {
+      selectedRecipeId: recipe.id,
+      synthesized: Boolean(resolvedRecipe.synthesized),
+      baseRecipeId: resolvedRecipe.baseRecipeId,
+      fitScore: resolvedRecipe.fit?.score ?? null,
+      fitMismatches: Array.isArray(resolvedRecipe.fit?.mismatches) ? resolvedRecipe.fit.mismatches : [],
+    },
+    visualSignature,
+    referenceDesktopPath: preferredDesktop || copiedDesktop || desktopShot || "",
+    referenceMobilePath: preferredMobile || copiedMobile || mobileShot || "",
+    crawlAssetPack: crawlAssetPack || null,
+    linkReport,
+  };
+
+  console.log(
+    `${sitePrefix} processed recipe=${recipe.id} elapsed=${formatElapsed(Date.now() - siteStartedAt)}`
+  );
+
+  if (!options.fastMode && options.pipelineParallel) {
+    await regressionSemaphore.acquire();
+    const assignedPort = availablePorts.pop() || 3111;
+    try {
+      console.log(`${sitePrefix} starting pipeline regression on port ${assignedPort}`);
+      
+      const fidelityConfig = fidelityByCase.get(String(site.id)) || {
+        mode: options.fidelityMode,
+        threshold: options.fidelityThreshold,
+        pageThreshold: options.strictPageSimilarityMin,
+        enforcement: options.fidelityEnforcement,
+        requiredPagesPerSite: options.requiredPagesPerSite,
+      };
+      const strictRequiredPagesForCase =
+        String(fidelityConfig.mode || "").toLowerCase() === "strict"
+          ? selectRequiredPagesForSite({
+              siteItem: processedItem,
+              maxPagesPerSite: Number(fidelityConfig.requiredPagesPerSite || options.requiredPagesPerSite || 4),
+            })
+          : [];
+      
+      const maxRepairIterations = Math.max(0, Math.min(5, Number(options.autoRepairIterations || 0)));
+      let repairContext = null;
+      let regressionResult = null;
+      let similarity = null;
+      let fidelityPass = false;
+      let visualSimilarity = null;
+      let structureSimilarity = null;
+      let pageDetails = [];
+      let failedRequiredPages = [];
+      let missingRequiredPages = [];
+
+      for (let attempt = 0; attempt <= maxRepairIterations; attempt += 1) {
+        console.log(`${sitePrefix} regression attempt ${attempt + 1}/${maxRepairIterations + 1} on port ${assignedPort}`);
+        
+        regressionResult = await runWithProgress(
+          `run single-site regression attempt ${attempt + 1}/${maxRepairIterations + 1}`,
+          () =>
+            runSingleSiteRegression({
+              siteItem: processedItem,
+              runDir,
+              renderer: options.renderer,
+              port: assignedPort,
+              regressionTimeoutMs: options.regressionTimeoutMs,
+              attempt,
+              repairContext,
+            }),
+          { prefix: sitePrefix, heartbeatMs: 30000 }
+        );
+
+        if (!regressionResult?.ok || !regressionResult?.reportPath) {
+          console.log(`${sitePrefix} regression failed, no report generated`);
+          break;
+        }
+
+        const pageScreenshots = Array.isArray(regressionResult?.pageScreenshots) ? regressionResult.pageScreenshots : [];
+        const crawlPagesByPath = crawlAssetPack?.byPath || (
+          crawlAssetPack?.pages
+            ? new Map((Array.isArray(crawlAssetPack.pages) ? crawlAssetPack.pages : []).map(
+                (p) => [normalizePagePathForFidelity(p?.path || "/"), p]
+              ))
+            : new Map()
+        );
+
+        let fidelityResult = null;
+        let fidelityVisual = null;
+        let fidelityStructure = null;
+        let fidelityPageDetails = [];
+        if (pageScreenshots.length > 0 && crawlPagesByPath.size > 0) {
+          const evaluated = await evaluateCaseFidelityFromPageScreenshots({
+            item: processedItem,
+            pageScreenshots,
+            crawlPagesByPath,
+            structureWeight: options.fidelityStructureWeight,
+          });
+          fidelityResult = evaluated.similarity;
+          fidelityVisual = evaluated.visualSimilarity;
+          fidelityStructure = evaluated.structureSimilarity;
+          fidelityPageDetails = evaluated.pageRows;
+          console.log(
+            `${sitePrefix} per-page fidelity combined=${fidelityResult ?? "n/a"} visual=${fidelityVisual ?? "n/a"} structure=${fidelityStructure ?? "n/a"}`
+          );
+        } else {
+          fidelityVisual = await computeImageSimilarity(
+            processedItem.referenceDesktopPath,
+            regressionResult.screenshot
+          );
+          fidelityResult = combineSimilarityScores({
+            visualSimilarity: fidelityVisual,
+            structureSimilarity: null,
+            structureWeight: options.fidelityStructureWeight,
+          });
+          fidelityPageDetails = [];
+        }
+        similarity = fidelityResult;
+        visualSimilarity = fidelityVisual;
+        structureSimilarity = fidelityStructure;
+        pageDetails = fidelityPageDetails;
+        const avgPass = typeof similarity === "number" && similarity >= Number(fidelityConfig.threshold || 0);
+        failedRequiredPages = [];
+        missingRequiredPages = [];
+        if (String(fidelityConfig.mode || "").toLowerCase() === "strict" && strictRequiredPagesForCase.length) {
+          const pageByPath = new Map(
+            (Array.isArray(pageDetails) ? pageDetails : []).map((entry) => [
+              normalizePagePathForFidelity(entry?.pagePath || "/"),
+              entry,
+            ])
+          );
+          for (const required of strictRequiredPagesForCase) {
+            const pagePath = normalizePagePathForFidelity(required?.path || "/");
+            const pageRow = pageByPath.get(pagePath);
+            if (!pageRow || parseSimilarityNumber(pageRow?.similarity) === null) {
+              missingRequiredPages.push({
+                caseId: String(site.id || ""),
+                pagePath,
+                pageName: String(required?.name || "").trim() || formatTemplatePageName(pagePath),
+                role: String(required?.role || "generic"),
+                issue: "page_not_comparable",
+                enforcement: fidelityConfig.enforcement || "warn",
+              });
+              continue;
+            }
+            if (Number(pageRow.similarity) < Number(fidelityConfig.pageThreshold || 0)) {
+              failedRequiredPages.push({
+                caseId: String(site.id || ""),
+                pagePath,
+                pageName: String(required?.name || "").trim() || formatTemplatePageName(pagePath),
+                role: String(required?.role || "generic"),
+                similarity: Number(pageRow.similarity),
+                threshold: Number(fidelityConfig.pageThreshold || 0),
+                issueType: String(pageRow?.issueType || "copy_density"),
+                enforcement: fidelityConfig.enforcement || "warn",
+              });
+            }
+          }
+        }
+        fidelityPass = avgPass && failedRequiredPages.length === 0 && missingRequiredPages.length === 0;
+
+        console.log(
+          `${sitePrefix} regression attempt ${attempt + 1} similarity=${similarity ?? "n/a"} threshold=${fidelityConfig.threshold} pageThreshold=${fidelityConfig.pageThreshold} pageFailures=${failedRequiredPages.length} pageMissing=${missingRequiredPages.length} pass=${fidelityPass}`
+        );
+
+        if (fidelityPass || attempt >= maxRepairIterations) {
+          break;
+        }
+
+        repairContext = {
+          attempt: attempt + 1,
+          threshold: Number(fidelityConfig.threshold || 0),
+          similarity,
+          gap: Number((Number(fidelityConfig.threshold || 0) - (similarity || 0)).toFixed(2)),
+          issueSummary: failedRequiredPages.reduce(
+            (acc, row) => ({ ...acc, [row.issueType || "copy_density"]: Number(acc[row.issueType || "copy_density"] || 0) + 1 }),
+            {}
+          ),
+          sectionHints: failedRequiredPages.slice(0, 6).map((row) => ({
+            sectionType: row.pagePath,
+            sectionKind: row.pageName,
+            similarity: row.similarity,
+            issue: row.issueType || "low fidelity",
+          })),
         };
-    await fs.writeFile(path.join(ingestDir, "anti-crawl-precheck.json"), JSON.stringify(antiCrawlPrecheck, null, 2));
-    if (antiCrawlPrecheckEnabled && antiCrawlPrecheck.blocked) {
-      const details = antiCrawlPrecheck.reason || "anti_crawl_detected";
-      throw new Error(
-        `[template-factory] anti-crawl detected for ${site.id} (${site.url}) during precheck: ${details}. Template generation terminated.`
-      );
+      }
+
+      processedItem.pipelineRegression = {
+        ok: regressionResult?.ok || false,
+        reportPath: regressionResult?.reportPath || "",
+        screenshot: regressionResult?.screenshot || "",
+        url: regressionResult?.url || "",
+        similarity,
+        visualSimilarity,
+        structureSimilarity,
+        pageDetails,
+        threshold: fidelityConfig.threshold,
+        pageThreshold: fidelityConfig.pageThreshold,
+        pass: fidelityPass,
+        requiredPages: strictRequiredPagesForCase.map((row) => ({
+          path: normalizeTemplatePagePath(row?.path || "/"),
+          name: String(row?.name || "").trim() || formatTemplatePageName(row?.path || "/"),
+          role: String(row?.role || "generic"),
+        })),
+        failedPages: failedRequiredPages,
+        missingPages: missingRequiredPages,
+        mode: fidelityConfig.mode,
+        enforcement: fidelityConfig.enforcement,
+        port: assignedPort,
+      };
+    } finally {
+      availablePorts.push(assignedPort);
+      regressionSemaphore.release();
     }
-    if (antiCrawlPrecheckEnabled) {
+  }
+
+  return processedItem;
+};
+
+class Semaphore {
+  constructor(maxConcurrency) {
+    this.maxConcurrency = maxConcurrency;
+    this.currentCount = 0;
+    this.waitQueue = [];
+  }
+
+  acquire() {
+    return new Promise((resolve) => {
+      if (this.currentCount < this.maxConcurrency) {
+        this.currentCount += 1;
+        resolve();
+      } else {
+        this.waitQueue.push(resolve);
+      }
+    });
+  }
+
+  release() {
+    const next = this.waitQueue.shift();
+    if (next) {
+      next();
+    } else {
+      this.currentCount = Math.max(0, this.currentCount - 1);
+    }
+  }
+}
+
+const main = async () => {
+  const runStartedAt = Date.now();
+  const options = parseArgs(process.argv);
+
+  const runMain = async () => {
+    const manifestPath = options.manifest;
+    const sites = await loadManifest(manifestPath);
+    if (!sites.length) {
+      throw new Error(`No valid sites in manifest: ${manifestPath}`);
+    }
+
+    const runDir = path.join(RUNS_DIR, options.runId);
+    const siteRoot = path.join(runDir, "sites");
+    await ensureDir(siteRoot);
+    await ensureDir(LIB_DIR);
+
+    console.log(
+      `[template-factory] run start id=${options.runId} sites=${sites.length} crawlSite=${options.crawlSite} fastMode=${options.fastMode} pipelineParallel=${options.pipelineParallel} maxDiscoveredPages=${options.maxDiscoveredPages} maxNavLinks=${options.maxNavLinks} strictAvgMin=${options.strictAvgSimilarityMin} strictPageMin=${options.strictPageSimilarityMin}`
+    );
+
+    const processed = [];
+    const fidelityByCaseBySiteId = new Map(
+      sites.map((site) => [String(site?.id || ""), resolveFidelitySettings(site, options)])
+    );
+    const screenshotSemaphore = new Semaphore(Math.max(1, Number(options.screenshotConcurrency || 1)));
+    const crawlSemaphore = new Semaphore(Math.max(1, Number(options.crawlConcurrency || 1)));
+    const regressionConcurrency = Math.max(1, Number(options.regressionConcurrency || 1));
+    const regressionSemaphore = new Semaphore(regressionConcurrency);
+    const availablePorts = [];
+    for (let i = 0; i < regressionConcurrency; i += 1) {
+      availablePorts.push(3111 + i);
+    }
+
+    if (options.pipelineParallel && !options.fastMode) {
+      const pipelineConcurrency = Math.max(1, Number(options.pipelineParallelConcurrency || 1));
       console.log(
-        `[template-factory] anti-crawl precheck ${site.id}: status=${antiCrawlPrecheck.status || 0}, result=${antiCrawlPrecheck.reason}`
+        `[template-factory] pipeline parallel enabled: pipeline=${pipelineConcurrency} screenshot=${options.screenshotConcurrency} crawl=${options.crawlConcurrency} regression=${options.regressionConcurrency} ports=${availablePorts.join(",")}`
       );
-    }
-
-    let desktopShot = null;
-    let mobileShot = null;
-
-    if (!options.skipIngest) {
-      if (site.url) {
-        desktopShot = await captureScreenshot({
-          url: site.url,
-          outPath: path.join(ingestDir, "desktop.auto.png"),
-          mobile: false,
+      const orderedResults = new Array(sites.length).fill(null);
+      let nextSiteIndex = 0;
+      const workerCount = Math.min(pipelineConcurrency, sites.length);
+      const workers = Array.from({ length: workerCount }, async () => {
+        while (true) {
+          const siteIndex = nextSiteIndex;
+          nextSiteIndex += 1;
+          if (siteIndex >= sites.length) break;
+          const site = sites[siteIndex];
+          try {
+            orderedResults[siteIndex] = await runSiteWithRetries({
+              site,
+              siteIndex,
+              sites,
+              options,
+              execute: () =>
+                processSiteWithPipelineRegression({
+                  site,
+                  siteIndex,
+                  sites,
+                  options,
+                  runDir,
+                  siteRoot,
+                  availablePorts,
+                  screenshotSemaphore,
+                  crawlSemaphore,
+                  regressionSemaphore,
+                  fidelityByCase: fidelityByCaseBySiteId,
+                }),
+            });
+          } catch (error) {
+            const errorMessage = error instanceof Error ? error.message : String(error);
+            console.error(`[template-factory][${siteIndex + 1}/${sites.length}][${site.id}] failed: ${errorMessage}`);
+            orderedResults[siteIndex] = null;
+          }
+        }
+      });
+      await Promise.all(workers);
+      for (const item of orderedResults) {
+        if (item) processed.push(item);
+      }
+    } else {
+      for (const [siteIndex, site] of sites.entries()) {
+        const item = await runSiteWithRetries({
+          site,
+          siteIndex,
+          sites,
+          options,
+          execute: () =>
+            processSiteWithPipelineRegression({
+              site,
+              siteIndex,
+              sites,
+              options,
+              runDir,
+              siteRoot,
+              availablePorts,
+              screenshotSemaphore,
+              crawlSemaphore,
+              regressionSemaphore,
+              fidelityByCase: fidelityByCaseBySiteId,
+            }),
         });
-        mobileShot = await captureScreenshot({
-          url: site.url,
-          outPath: path.join(ingestDir, "mobile.auto.png"),
-          mobile: true,
-        });
+        if (item) processed.push(item);
       }
     }
 
-    const copiedDesktop = await safeCopy(site.desktopScreenshot, path.join(ingestDir, "desktop.reference.png"));
-    const copiedMobile = await safeCopy(site.mobileScreenshot, path.join(ingestDir, "mobile.reference.png"));
-    const preferredDesktop = await choosePreferredScreenshot([copiedDesktop, desktopShot]);
-    const preferredMobile = await choosePreferredScreenshot([copiedMobile, mobileShot]);
-    const publishedAssets = await publishReferenceAssets({
-      siteId: site.id,
-      desktopSource: preferredDesktop,
-      mobileSource: preferredMobile,
+  let templateExclusiveComponents = [];
+  let templateExclusiveUsage = [];
+  let templateExclusiveComponentsPath = null;
+  if (options.templateExclusiveBlocks !== false && processed.length) {
+    const blocksDir = path.join(ROOT, "src", "components", "blocks");
+    let availableFolders = [];
+    try {
+      const entries = await fs.readdir(blocksDir, { withFileTypes: true });
+      availableFolders = entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
+    } catch {
+      availableFolders = [];
+    }
+    const injected = injectTemplateExclusiveComponents({
+      processed,
+      availableBlockFolders: new Set(availableFolders),
     });
-    const visualSignature = await extractImageVisualSignature(preferredDesktop || copiedDesktop || desktopShot || "");
-    const crawlEnabled = Boolean(site.url) && !options.skipIngest && (options.crawlSite || site.crawlSite);
-    const crawlMaxPages =
-      Number(site.crawlMaxPages || 0) > 0
-        ? Math.floor(Number(site.crawlMaxPages))
-        : Math.max(1, Math.floor(Number(options.crawlMaxPages || 0) || 0));
-    const crawlMaxDepth =
-      Number(site.crawlMaxDepth) >= 0
-        ? Math.floor(Number(site.crawlMaxDepth))
-        : Math.max(0, Math.floor(Number(options.crawlMaxDepth || 0) || 0));
-    const crawlReport = crawlEnabled
-      ? await crawlSitePages({
-          entryUrl: site.url,
-          maxPages: crawlMaxPages,
-          maxDepth: crawlMaxDepth,
+    templateExclusiveComponents = injected.components;
+    templateExclusiveUsage = injected.usage;
+
+    for (const item of processed) {
+      const sanitizedSite = rewriteBrandTextDeep(item.site || {});
+      item.styleProfile = rewriteBrandTextDeep(
+        specPackToStyleProfile({
+          site: sanitizedSite,
+          indexCard: item.indexCard,
+          specPack: item.specPack,
         })
-      : null;
-    if (crawlReport?.blocked) {
-      await fs.writeFile(path.join(ingestDir, "crawl.json"), JSON.stringify(crawlReport, null, 2));
-      const reason = crawlReport?.antiCrawl?.reason || "anti_crawl_detected";
-      throw new Error(
-        `[template-factory] anti-crawl detected for ${site.id} (${site.url}) during crawl: ${reason}. Template generation terminated.`
       );
+      const siteId = String(item?.site?.id || "");
+      item.templateExclusiveComponents = templateExclusiveComponents.filter(
+        (component) => String(component?.templateExclusive?.siteId || "") === siteId
+      );
+      const extractedDir = path.join(item.siteDir, "extracted");
+      await fs.writeFile(path.join(extractedDir, "spec-pack.json"), JSON.stringify(item.specPack, null, 2));
+      await fs.writeFile(path.join(extractedDir, "style-profile.json"), JSON.stringify(item.styleProfile, null, 2));
     }
-    const crawlAssetPack = crawlReport
-      ? await buildCrawledPageAssetPack({
-          siteId: site.id,
-          crawl: crawlReport,
-          ingestDir,
-        })
-      : null;
-    if (crawlReport) {
-      await fs.writeFile(path.join(ingestDir, "crawl.json"), JSON.stringify(crawlReport, null, 2));
+
+    if (templateExclusiveComponents.length) {
+      templateExclusiveComponentsPath = path.join(runDir, "template-exclusive-components.json");
+      await fs.writeFile(
+        templateExclusiveComponentsPath,
+        JSON.stringify(
+          {
+            generatedAt: new Date().toISOString(),
+            runId: options.runId,
+            count: templateExclusiveComponents.length,
+            components: templateExclusiveComponents.map((component) => ({
+              name: component.name,
+              kebabName: component.kebabName,
+              defaultProps: component.defaultProps,
+              templateExclusive: component.templateExclusive,
+            })),
+            usage: templateExclusiveUsage,
+          },
+          null,
+          2
+        )
+      );
       console.log(
-        `[template-factory] crawl ${site.id}: pages=${crawlReport?.stats?.crawled || 0}, discovered=${crawlReport?.stats?.discovered || 0}, failed=${crawlReport?.stats?.failed || 0}`
+        `[template-factory] template-exclusive components: ${templateExclusiveComponents.length} → ${templateExclusiveComponentsPath}`
       );
     }
-    const summary = await fetchHtmlSummary(site.url);
-    const mergedSummary = crawlReport ? mergeSummaryWithCrawl(summary, crawlReport) : summary;
-    const resolvedRecipe = resolveRecipeForSite({
-      site,
-      summary: mergedSummary,
-      visualSignature,
-    });
-    const recipe = resolvedRecipe.recipe;
-    const referenceSlices = await createReferenceSlices({
-      siteId: site.id,
-      desktopSource: preferredDesktop,
-      mobileSource: preferredMobile,
-      preset: recipe?.id,
-    });
-    if (resolvedRecipe.synthesized) {
-      console.log(
-        `[template-factory] dynamic recipe synthesized for ${site.id}: base=${resolvedRecipe.baseRecipeId}, score=${resolvedRecipe.fit.score}, mismatches=${resolvedRecipe.fit.mismatches.join(
-          ","
-        )}`
-      );
-    }
-    await fs.writeFile(
-      path.join(ingestDir, "summary.json"),
-      JSON.stringify(
-        {
-          site,
-          screenshots: {
-            desktopAuto: desktopShot,
-            mobileAuto: mobileShot,
-            desktopReference: copiedDesktop,
-            mobileReference: copiedMobile,
-            desktopPreferred: preferredDesktop,
-            mobilePreferred: preferredMobile,
-          },
-          publishedAssets,
-          referenceSlices,
-          antiCrawlPrecheck: {
-            enabled: antiCrawlPrecheckEnabled,
-            path: path.join(ingestDir, "anti-crawl-precheck.json"),
-            ...antiCrawlPrecheck,
-          },
-          recipeResolution: {
-            selectedRecipeId: recipe.id,
-            synthesized: Boolean(resolvedRecipe.synthesized),
-            baseRecipeId: resolvedRecipe.baseRecipeId,
-            fitScore: resolvedRecipe.fit?.score ?? null,
-            fitMismatches: Array.isArray(resolvedRecipe.fit?.mismatches) ? resolvedRecipe.fit.mismatches : [],
-          },
-          htmlSummary: mergedSummary,
-          crawl: crawlReport
-            ? {
-                enabled: true,
-                path: path.join(ingestDir, "crawl.json"),
-                pagesPath: crawlAssetPack?.manifestPath || "",
-                pageAssets: Array.isArray(crawlAssetPack?.pages) ? crawlAssetPack.pages.length : 0,
-                ...crawlReport.stats,
-              }
-            : { enabled: false },
-        },
-        null,
-        2
-      )
-    );
-
-    const indexCardRaw = buildIndexCard({
-      site,
-      recipe,
-      summary: mergedSummary,
-      evidence: {
-        desktop: Boolean(desktopShot || copiedDesktop || site.desktopScreenshot),
-        mobile: Boolean(mobileShot || copiedMobile || site.mobileScreenshot),
-      },
-    });
-    const specPackRaw = buildSpecPack({
-      site,
-      recipe,
-      summary: mergedSummary,
-      assets: { ...publishedAssets, slices: referenceSlices },
-      crawl: crawlReport,
-      crawlAssetPack,
-    });
-    const indexCard = rewriteBrandTextDeep(indexCardRaw);
-    const specPack = rewriteBrandTextDeep(specPackRaw);
-    const sanitizedSite = rewriteBrandTextDeep(site);
-    const styleProfile = rewriteBrandTextDeep(specPackToStyleProfile({ site: sanitizedSite, indexCard, specPack }));
-
-    await fs.writeFile(path.join(extractedDir, "index-card.json"), JSON.stringify(indexCard, null, 2));
-    await fs.writeFile(path.join(extractedDir, "spec-pack.json"), JSON.stringify(specPack, null, 2));
-    await fs.writeFile(path.join(extractedDir, "style-profile.json"), JSON.stringify(styleProfile, null, 2));
-
-    processed.push({
-      site,
-      indexCard,
-      specPack,
-      styleProfile,
-      siteDir,
-      summary: mergedSummary,
-      recipeResolution: {
-        selectedRecipeId: recipe.id,
-        synthesized: Boolean(resolvedRecipe.synthesized),
-        baseRecipeId: resolvedRecipe.baseRecipeId,
-        fitScore: resolvedRecipe.fit?.score ?? null,
-        fitMismatches: Array.isArray(resolvedRecipe.fit?.mismatches) ? resolvedRecipe.fit.mismatches : [],
-      },
-      visualSignature,
-      referenceDesktopPath: preferredDesktop || copiedDesktop || desktopShot || "",
-      referenceMobilePath: preferredMobile || copiedMobile || mobileShot || "",
-    });
-    console.log(`[template-factory] processed ${site.id} -> recipe=${recipe.id}`);
   }
 
-  const runLibrary = {
-    generatedAt: new Date().toISOString(),
-    runId: options.runId,
-    manifestPath,
-    profiles: processed.map((item) => item.styleProfile),
-  };
-
   const runLibraryPath = path.join(runDir, "style-profiles.generated.json");
-  await fs.writeFile(runLibraryPath, JSON.stringify(runLibrary, null, 2));
-
+  let runLibrary = null;
   let publishPath = "";
-  if (options.publish) {
-    let existingProfiles = [];
-    try {
-      const raw = await fs.readFile(DEFAULT_PUBLISH_PATH, "utf8");
-      const parsed = JSON.parse(raw);
-      existingProfiles = Array.isArray(parsed?.profiles) ? parsed.profiles : [];
-    } catch {
-      existingProfiles = [];
-    }
+  let publishTemplateExclusiveComponentsPath = "";
 
-    const mergedProfiles = mergeProfiles(existingProfiles, runLibrary.profiles);
-    const published = {
-      generatedAt: new Date().toISOString(),
-      sourceRunId: options.runId,
-      profileCount: mergedProfiles.length,
-      profiles: mergedProfiles,
-    };
-    await fs.writeFile(DEFAULT_PUBLISH_PATH, JSON.stringify(published, null, 2));
-    publishPath = DEFAULT_PUBLISH_PATH;
+  let templateExclusiveConfigSeeded = false;
+  if (templateExclusiveComponents.length) {
+    await writeGeneratedConfig(templateExclusiveComponents);
+    templateExclusiveConfigSeeded = true;
+    console.log(
+      `[template-factory] seeded config.generated.ts with template-exclusive components=${templateExclusiveComponents.length} (for regression compatibility)`
+    );
   }
 
   let regression = null;
+  let regressionElapsedMs = 0;
   let score = null;
   let fidelity = null;
   let fidelityReportPath = null;
@@ -5492,7 +8300,10 @@ const main = async () => {
   let fidelityGateWouldFail = null;
   let strictFidelityFailures = [];
   let strictFidelityMissing = [];
+  let strictPageFidelityFailures = [];
+  let strictPageFidelityMissing = [];
   let blockingFidelityFailures = [];
+  let blockingPageFidelityFailures = [];
   let fidelityRowsEvaluated = [];
   let regressionAttempts = [];
   let manualFixesPath = null;
@@ -5500,9 +8311,15 @@ const main = async () => {
   let previewLinks = [];
   let previewServer = null;
   const fidelityByCase = new Map(processed.map((item) => [String(item.site?.id || ""), resolveFidelitySettings(item.site, options)]));
-  const strictCaseIds = processed
-    .map((item) => String(item.site?.id || ""))
-    .filter((id) => id && (fidelityByCase.get(id)?.mode || "standard") === "strict");
+  const requiredCasesSelection = selectRequiredCases({
+    processed,
+    fidelityByCase,
+    maxPagesPerSite: Number(options.requiredPagesPerSite || 4),
+  });
+  const strictCaseIds = Array.isArray(requiredCasesSelection.strictCaseIds) ? requiredCasesSelection.strictCaseIds : [];
+  const strictRequiredPageCases = Array.isArray(requiredCasesSelection.requiredPageCases)
+    ? requiredCasesSelection.requiredPageCases
+    : [];
   const strictFailCaseIds = strictCaseIds.filter((id) => (fidelityByCase.get(id)?.enforcement || "warn") === "fail");
   if (options.fastMode && strictCaseIds.length) {
     console.log(
@@ -5518,36 +8335,167 @@ const main = async () => {
       `[template-factory] groups overridden to ${DEFAULT_TEMPLATE_FIRST_GROUP} (requested=${options.groups.trim()}).`
     );
   }
-  if (!options.fastMode) {
+
+  if (options.pipelineParallel && !options.fastMode) {
+    const regressionStartedAt = Date.now();
+    console.log("[template-factory] pipeline parallel mode: regression already completed during site processing");
+    const pipelineFidelityRows = processed
+      .filter((item) => item?.pipelineRegression)
+      .map((item) => ({
+        caseId: String(item.site?.id || ""),
+        referencePath: item.referenceDesktopPath,
+        screenshotPath: item.pipelineRegression.screenshot,
+        similarity: item.pipelineRegression.similarity,
+        visualSimilarity: item.pipelineRegression.visualSimilarity,
+        structureSimilarity: item.pipelineRegression.structureSimilarity,
+        pageDetails: Array.isArray(item.pipelineRegression.pageDetails) ? item.pipelineRegression.pageDetails : [],
+        mode: item.pipelineRegression.mode,
+        threshold: item.pipelineRegression.threshold,
+        pageThreshold: item.pipelineRegression.pageThreshold,
+        enforcement: item.pipelineRegression.enforcement,
+        comparable: typeof item.pipelineRegression.similarity === "number",
+        pass: item.pipelineRegression.pass,
+      }));
+
+    const numericSimilarities = pipelineFidelityRows
+      .map((row) => row.similarity)
+      .filter((s) => typeof s === "number");
+    const overallSimilarity = numericSimilarities.length
+      ? Number((numericSimilarities.reduce((a, b) => a + b, 0) / numericSimilarities.length).toFixed(2))
+      : null;
+
+    fidelity = {
+      available: numericSimilarities.length > 0,
+      overallSimilarity,
+      rows: pipelineFidelityRows,
+      reason: numericSimilarities.length > 0 ? "ok" : "no_comparable_rows",
+    };
+    const policyEval = evaluateFidelityRowsAgainstPolicies({
+      fidelityRows: pipelineFidelityRows,
+      fidelityByCase,
+      strictCaseIds,
+      strictFailCaseIds,
+      strictRequiredPageCases,
+      options,
+    });
+    fidelityRowsEvaluated = policyEval.fidelityRowsEvaluated;
+    strictFidelityFailures = policyEval.strictFidelityFailures;
+    blockingFidelityFailures = policyEval.blockingFidelityFailures;
+    strictFidelityMissing = policyEval.strictFidelityMissing;
+    strictPageFidelityFailures = policyEval.strictPageFidelityFailures;
+    strictPageFidelityMissing = policyEval.strictPageFidelityMissing;
+    blockingPageFidelityFailures = policyEval.blockingPageFidelityFailures;
+    fidelityGateWouldFail = policyEval.fidelityGateWouldFail;
+    fidelityGatePassed = policyEval.fidelityGatePassed;
+
+    const fidelityReport = {
+      generatedAt: new Date().toISOString(),
+      runId: options.runId,
+      ...fidelity,
+      rows: fidelityRowsEvaluated,
+      attempts: [],
+      strict: {
+        requiredCases: strictRequiredPageCases.map((entry) => entry.id),
+        requiredCaseSites: strictCaseIds,
+        requiredCaseDetails: strictRequiredPageCases,
+        missingComparableCases: strictFidelityMissing,
+        failedCases: strictFidelityFailures,
+        missingComparablePages: strictPageFidelityMissing,
+        failedPages: strictPageFidelityFailures,
+        gatePassed: fidelityGatePassed,
+        gateWouldFail: fidelityGateWouldFail,
+        blockingRequiredCases: strictFailCaseIds,
+        blockingMissingComparableCases: policyEval.blockingMissing,
+        blockingFailedCases: blockingFidelityFailures,
+        blockingMissingComparablePages: policyEval.blockingPageMissing,
+        blockingFailedPages: blockingPageFidelityFailures,
+      },
+    };
+    fidelityReportPath = path.join(runDir, "fidelity-report.json");
+    await fs.writeFile(fidelityReportPath, JSON.stringify(fidelityReport, null, 2));
+
+    previewLinks = [];
+    for (const item of processed) {
+      if (item?.pipelineRegression?.url) {
+        previewLinks.push({
+          groupId: DEFAULT_TEMPLATE_FIRST_GROUP,
+          caseId: String(item.site?.id || ""),
+          pagePath: "/",
+          pageName: "Home",
+          responseId: null,
+          requestId: null,
+          url: item.pipelineRegression.url,
+          screenshot: item.pipelineRegression.screenshot,
+        });
+      }
+    }
+
+    if (previewLinks.length) {
+      await fs.writeFile(path.join(runDir, "preview-links.json"), JSON.stringify(previewLinks, null, 2));
+      if (options.launchPreviewServer) {
+        previewServer = await ensurePreviewServer({ previewBaseUrl: options.previewBaseUrl });
+      } else {
+        previewServer = { origin: normalizePreviewBaseUrl(options.previewBaseUrl), reachable: false, started: false };
+      }
+    }
+
+    manualFixes = buildFidelityManualFixTasks({
+      fidelityRows: fidelityRowsEvaluated,
+      missingCaseIds: strictFidelityMissing,
+      failedPageCases: strictPageFidelityFailures,
+      missingPageCases: strictPageFidelityMissing,
+      previewLinks,
+    });
+    manualFixesPath = path.join(runDir, "manual-fix-tasks.json");
+    await fs.writeFile(manualFixesPath, JSON.stringify(manualFixes, null, 2));
+    regressionElapsedMs = Date.now() - regressionStartedAt;
+  } else if (!options.fastMode) {
+    const regressionStartedAt = Date.now();
     const maxRepairIterations = Math.max(0, Math.min(5, Number(options.autoRepairIterations || 0)));
     let repairContextByCase = new Map();
 
     for (let attempt = 0; attempt <= maxRepairIterations; attempt += 1) {
-      regression = await runRegression({
-        runDir,
-        sites: processed,
-        renderer: options.renderer,
-        groups: DEFAULT_TEMPLATE_FIRST_GROUP,
-        maxCases: options.maxCases,
-        attempt,
-        repairContextByCase,
-      });
+      console.log(`[template-factory] regression attempt ${attempt + 1}/${maxRepairIterations + 1} start`);
+      regression = await runWithProgress(
+        `run regression attempt ${attempt + 1}/${maxRepairIterations + 1}`,
+        () =>
+          runRegression({
+            runDir,
+            sites: processed,
+            renderer: options.renderer,
+            groups: DEFAULT_TEMPLATE_FIRST_GROUP,
+            maxCases: options.maxCases,
+            regressionTimeoutMs: options.regressionTimeoutMs,
+            attempt,
+            repairContextByCase,
+          }),
+        { prefix: "[template-factory]", heartbeatMs: 30000 }
+      );
       if (!regression.reportPath) break;
 
-      const outcome = await evaluateRegressionOutcome({
-        reportPath: regression.reportPath,
-        processed,
-        fidelityByCase,
-        strictCaseIds,
-        strictFailCaseIds,
-        options,
-      });
+      const outcome = await runWithProgress(
+        `evaluate regression attempt ${attempt + 1}/${maxRepairIterations + 1}`,
+        () =>
+          evaluateRegressionOutcome({
+            reportPath: regression.reportPath,
+            processed,
+            fidelityByCase,
+            strictCaseIds,
+            strictFailCaseIds,
+            strictRequiredPageCases,
+            options,
+          }),
+        { prefix: "[template-factory]", heartbeatMs: 20000 }
+      );
       score = outcome.score;
       fidelity = outcome.fidelity;
       fidelityRowsEvaluated = outcome.fidelityRowsEvaluated;
       strictFidelityFailures = outcome.strictFidelityFailures;
       blockingFidelityFailures = outcome.blockingFidelityFailures;
       strictFidelityMissing = outcome.strictFidelityMissing;
+      strictPageFidelityFailures = outcome.strictPageFidelityFailures;
+      strictPageFidelityMissing = outcome.strictPageFidelityMissing;
+      blockingPageFidelityFailures = outcome.blockingPageFidelityFailures;
       fidelityGateWouldFail = outcome.fidelityGateWouldFail;
       fidelityGatePassed = outcome.fidelityGatePassed;
 
@@ -5557,24 +8505,89 @@ const main = async () => {
         overallSimilarity: outcome.fidelity?.overallSimilarity ?? null,
         strictFailures: strictFidelityFailures.length,
         strictMissing: strictFidelityMissing.length,
+        strictPageFailures: strictPageFidelityFailures.length,
+        strictPageMissing: strictPageFidelityMissing.length,
       });
+      console.log(
+        `[template-factory] regression attempt ${attempt + 1} summary similarity=${
+          outcome.fidelity?.overallSimilarity ?? "n/a"
+        } strictFailures=${strictFidelityFailures.length} strictMissing=${strictFidelityMissing.length} strictPageFailures=${strictPageFidelityFailures.length} strictPageMissing=${strictPageFidelityMissing.length}`
+      );
 
       const shouldRepair =
         attempt < maxRepairIterations &&
         strictCaseIds.length > 0 &&
-        (strictFidelityFailures.length > 0 || strictFidelityMissing.length > 0);
+        (
+          strictFidelityFailures.length > 0 ||
+          strictFidelityMissing.length > 0 ||
+          strictPageFidelityFailures.length > 0 ||
+          strictPageFidelityMissing.length > 0
+        );
       if (!shouldRepair) break;
 
       const nextRepair = new Map();
       for (const row of strictFidelityFailures) {
         const threshold = Number(row?.threshold || 0);
         const similarity = Number(row?.similarity || 0);
+        // Collect section-level hints for repair
+        const pageDetails = Array.isArray(row?.pageDetails) ? row.pageDetails : [];
+        const sectionHints = [];
+        for (const pageRow of pageDetails) {
+          const sections = Array.isArray(pageRow?.sectionDetails) ? pageRow.sectionDetails : [];
+          for (const section of sections) {
+            if (typeof section.similarity === "number" && section.similarity < threshold) {
+              sectionHints.push({
+                sectionType: section.sectionType || "",
+                sectionKind: section.sectionId || "",
+                similarity: section.similarity,
+                issue: "low fidelity",
+              });
+            }
+          }
+        }
         nextRepair.set(String(row.caseId || ""), {
           attempt: attempt + 1,
           threshold,
           similarity,
           gap: Number((threshold - similarity).toFixed(2)),
+          sectionHints,
         });
+      }
+      for (const pageFailure of strictPageFidelityFailures) {
+        const caseId = String(pageFailure?.caseId || "");
+        if (!caseId) continue;
+        const existing = nextRepair.get(caseId) || {
+          attempt: attempt + 1,
+          threshold: Number(pageFailure?.threshold || options?.strictPageSimilarityMin || 78),
+          similarity: null,
+          gap: null,
+          sectionHints: [],
+          issueSummary: {},
+        };
+        existing.sectionHints = [
+          ...(Array.isArray(existing.sectionHints) ? existing.sectionHints : []),
+          {
+            sectionType: pageFailure.pagePath || "",
+            sectionKind: pageFailure.pageName || "",
+            similarity: pageFailure.similarity,
+            issue: pageFailure.issueType || "low fidelity",
+          },
+        ].slice(0, 10);
+        const issueKey = String(pageFailure.issueType || "copy_density");
+        existing.issueSummary = {
+          ...(existing.issueSummary || {}),
+          [issueKey]: Number(existing.issueSummary?.[issueKey] || 0) + 1,
+        };
+        if (typeof pageFailure.similarity === "number") {
+          const diff = Number(pageFailure.threshold || 0) - Number(pageFailure.similarity || 0);
+          if (!Number.isFinite(existing.gap) || diff > Number(existing.gap || 0)) {
+            existing.gap = Number(diff.toFixed(2));
+          }
+          if (!Number.isFinite(existing.similarity)) {
+            existing.similarity = Number(pageFailure.similarity);
+          }
+        }
+        nextRepair.set(caseId, existing);
       }
       for (const caseId of strictFidelityMissing) {
         if (!nextRepair.has(String(caseId || ""))) {
@@ -5583,12 +8596,35 @@ const main = async () => {
             threshold: Number(options.fidelityThreshold || 0),
             similarity: null,
             gap: null,
+            issueSummary: { layout: 1 },
+            sectionHints: [],
           });
         }
       }
+      for (const pageMissing of strictPageFidelityMissing) {
+        const caseId = String(pageMissing?.caseId || "");
+        if (!caseId) continue;
+        if (!nextRepair.has(caseId)) {
+          nextRepair.set(caseId, {
+            attempt: attempt + 1,
+            threshold: Number(options.strictPageSimilarityMin || 78),
+            similarity: null,
+            gap: null,
+            issueSummary: { layout: 1 },
+            sectionHints: [],
+          });
+          continue;
+        }
+        const existing = nextRepair.get(caseId);
+        existing.issueSummary = {
+          ...(existing.issueSummary || {}),
+          layout: Number(existing.issueSummary?.layout || 0) + 1,
+        };
+        nextRepair.set(caseId, existing);
+      }
       repairContextByCase = nextRepair;
       console.log(
-        `[template-factory] auto-repair retry ${attempt + 1}/${maxRepairIterations}: strict_failures=${strictFidelityFailures.length}, missing=${strictFidelityMissing.length}`
+        `[template-factory] auto-repair retry ${attempt + 1}/${maxRepairIterations}: strict_failures=${strictFidelityFailures.length}, missing=${strictFidelityMissing.length}, page_failures=${strictPageFidelityFailures.length}, page_missing=${strictPageFidelityMissing.length}`
       );
     }
 
@@ -5600,6 +8636,7 @@ const main = async () => {
     }
     if (regression?.reportPath && fidelity) {
       const blockingMissing = strictFidelityMissing.filter((caseId) => strictFailCaseIds.includes(caseId));
+      const blockingPageMissing = strictPageFidelityMissing.filter((row) => row.enforcement === "fail");
       const fidelityReport = {
         generatedAt: new Date().toISOString(),
         runId: options.runId,
@@ -5607,18 +8644,116 @@ const main = async () => {
         rows: fidelityRowsEvaluated,
         attempts: regressionAttempts,
         strict: {
-          requiredCases: strictCaseIds,
+          requiredCases: strictRequiredPageCases.map((entry) => entry.id),
+          requiredCaseSites: strictCaseIds,
+          requiredCaseDetails: strictRequiredPageCases,
           missingComparableCases: strictFidelityMissing,
           failedCases: strictFidelityFailures,
+          missingComparablePages: strictPageFidelityMissing,
+          failedPages: strictPageFidelityFailures,
           gatePassed: fidelityGatePassed,
           gateWouldFail: fidelityGateWouldFail,
           blockingRequiredCases: strictFailCaseIds,
           blockingMissingComparableCases: blockingMissing,
           blockingFailedCases: blockingFidelityFailures,
+          blockingMissingComparablePages: blockingPageMissing,
+          blockingFailedPages: blockingPageFidelityFailures,
         },
       };
       fidelityReportPath = path.join(runDir, "fidelity-report.json");
       await fs.writeFile(fidelityReportPath, JSON.stringify(fidelityReport, null, 2));
+
+      // Generate custom component manifests for each processed site
+      // (Aggressive strategy: generate for every section to maximize fidelity)
+      const customComponentManifests = [];
+      for (const item of processed) {
+        const siteId = String(item?.site?.id || "");
+        if (!siteId) continue;
+        const specPack = item?.specPack;
+        const sectionSpecs = specPack?.section_specs && typeof specPack.section_specs === "object" ? specPack.section_specs : {};
+        const pageSpecs = Array.isArray(specPack?.page_specs) ? specPack.page_specs : [];
+
+        // Collect section-level fidelity data from the report
+        const fidelityRow = fidelityRowsEvaluated.find((r) => String(r?.caseId || "") === siteId);
+        const pageDetails = Array.isArray(fidelityRow?.pageDetails) ? fidelityRow.pageDetails : [];
+        const sectionFidelityMap = new Map();
+        for (const pageRow of pageDetails) {
+          const sections = Array.isArray(pageRow?.sectionDetails) ? pageRow.sectionDetails : [];
+          for (const section of sections) {
+            const key = `${pageRow.pagePath || "/"}:${section.sectionType || section.sectionId || ""}`;
+            sectionFidelityMap.set(key, section);
+          }
+        }
+
+        // Build custom component prompts for homepage sections
+        const siteManifest = {
+          siteId,
+          sections: [],
+        };
+        for (const [kind, spec] of Object.entries(sectionSpecs)) {
+          if (!spec?.block_type || !spec?.defaults) continue;
+          const prompt = buildCustomSectionPrompt({
+            sectionKind: kind,
+            sectionType: spec.block_type,
+            defaults: spec.defaults,
+            summary: item.summary || {},
+            sourceScreenshotUrl: item.referenceDesktopPath || "",
+            visualSignature: item.visualSignature || null,
+          });
+          const puckFields = buildPuckFieldsForCustomComponent(spec.defaults);
+          siteManifest.sections.push({
+            sectionKind: kind,
+            blockType: spec.block_type,
+            customComponentName: `Custom${spec.block_type}_${slug(siteId)}_${kind}`,
+            prompt,
+            puckFields,
+            defaults: spec.defaults,
+            alternatives: getAlternativeVariants(kind, spec.block_type),
+          });
+        }
+
+        // Also build for page-specific sections
+        for (const page of pageSpecs) {
+          const pagePath = normalizeTemplatePagePath(page?.path || "/");
+          if (pagePath === "/") continue; // Already handled above
+          const pageSectionSpecs = page?.section_specs && typeof page.section_specs === "object" ? page.section_specs : {};
+          for (const [kind, spec] of Object.entries(pageSectionSpecs)) {
+            if (!spec?.block_type || !spec?.defaults) continue;
+            const prompt = buildCustomSectionPrompt({
+              sectionKind: kind,
+              sectionType: spec.block_type,
+              defaults: spec.defaults,
+              summary: page.summary || item.summary || {},
+              sourceScreenshotUrl: "",
+              visualSignature: item.visualSignature || null,
+            });
+            const puckFields = buildPuckFieldsForCustomComponent(spec.defaults);
+            siteManifest.sections.push({
+              pagePath,
+              sectionKind: kind,
+              blockType: spec.block_type,
+              customComponentName: `Custom${spec.block_type}_${slug(siteId)}_${slug(pagePath)}_${kind}`,
+              prompt,
+              puckFields,
+              defaults: spec.defaults,
+              alternatives: getAlternativeVariants(kind, spec.block_type),
+            });
+          }
+        }
+
+        if (siteManifest.sections.length) {
+          customComponentManifests.push(siteManifest);
+        }
+      }
+
+      if (customComponentManifests.length) {
+        const manifestPath = path.join(runDir, "custom-component-manifests.json");
+        await fs.writeFile(manifestPath, JSON.stringify(customComponentManifests, null, 2));
+        console.log(
+          `[template-factory] custom component manifests: ${customComponentManifests.length} sites, ${customComponentManifests.reduce((acc, m) => acc + m.sections.length, 0)} sections → ${manifestPath}`
+        );
+      }
+
       previewLinks = await collectTemplateFirstPreviewLinks({
         reportPath: regression.reportPath,
         previewBaseUrl: options.previewBaseUrl,
@@ -5641,11 +8776,14 @@ const main = async () => {
       manualFixes = buildFidelityManualFixTasks({
         fidelityRows: fidelityRowsEvaluated,
         missingCaseIds: strictFidelityMissing,
+        failedPageCases: strictPageFidelityFailures,
+        missingPageCases: strictPageFidelityMissing,
         previewLinks,
       });
       manualFixesPath = path.join(runDir, "manual-fix-tasks.json");
       await fs.writeFile(manualFixesPath, JSON.stringify(manualFixes, null, 2));
     }
+    regressionElapsedMs = Date.now() - regressionStartedAt;
   } else {
     previewLinks = await collectPreviewLinksFromRunArtifacts({
       runDir,
@@ -5662,6 +8800,134 @@ const main = async () => {
     }
   }
 
+  // Materialize custom components from payload.json → static .tsx files + Puck config
+  let materializedComponents = [];
+  let generatedConfigComponents = [];
+  try {
+    const namingRegistry = new Map();
+    for (const item of processed) {
+      const siteId = String(item?.site?.id || "");
+      if (!siteId) continue;
+      const siteKey = `bench_${slug(options.runId)}_${DEFAULT_TEMPLATE_FIRST_GROUP}_${slug(siteId)}`;
+      const payloadPath = path.join(ROOT, "..", "asset-factory", "out", siteKey, "sandbox", "payload.json");
+      try {
+        await fs.access(payloadPath);
+      } catch {
+        // Also try without bench_ prefix
+        const altSiteKey = siteId;
+        const altPayloadPath = path.join(ROOT, "..", "asset-factory", "out", altSiteKey, "sandbox", "payload.json");
+        try {
+          await fs.access(altPayloadPath);
+          const result = await materializeFromPayload(altPayloadPath, altSiteKey, { namingRegistry });
+          if (result.components.length) {
+            materializedComponents.push(...result.components);
+            console.log(
+              `[template-factory] materialized ${result.components.length} components from ${altSiteKey}`
+            );
+          }
+          continue;
+        } catch {
+          continue;
+        }
+      }
+      const result = await materializeFromPayload(payloadPath, siteKey, { namingRegistry });
+      if (result.components.length) {
+        materializedComponents.push(...result.components);
+        console.log(
+          `[template-factory] materialized ${result.components.length} components from ${siteKey}`
+        );
+      }
+    }
+    generatedConfigComponents = mergeTemplateExclusiveComponents(materializedComponents, templateExclusiveComponents);
+    if (generatedConfigComponents.length) {
+      await writeGeneratedConfig(generatedConfigComponents);
+      const materializeReport = {
+        generatedAt: new Date().toISOString(),
+        runId: options.runId,
+        components: generatedConfigComponents.map((c) => {
+          if (c?.templateExclusive) {
+            return {
+              name: c.name,
+              blockDir: c.blockDir || `@/components/blocks/${c.kebabName}/block`,
+              collisionFrom: c.collisionFrom || null,
+              signature: c.signature || null,
+              configEntry: true,
+              source: "template_exclusive",
+              templateExclusive: c.templateExclusive,
+            };
+          }
+          return {
+            name: c.name,
+            blockDir: c.blockDir,
+            collisionFrom: c.collisionFrom || null,
+            signature: c.signature || null,
+            configEntry: c.configEntry ? true : false,
+            source: "payload_materialized",
+          };
+        }),
+      };
+      await fs.writeFile(
+        path.join(runDir, "materialized-components.json"),
+        JSON.stringify(materializeReport, null, 2)
+      );
+      console.log(
+        `[template-factory] generated config components=${generatedConfigComponents.length} (materialized=${materializedComponents.length}, template-exclusive=${templateExclusiveComponents.length}) → src/puck/config.generated.ts`
+      );
+    }
+  } catch (materializeErr) {
+    console.warn(
+      `[template-factory] component materialization failed (non-fatal): ${materializeErr?.message || materializeErr}`
+    );
+  }
+
+  const blockingMissingCases = strictFidelityMissing.filter((caseId) => strictFailCaseIds.includes(caseId));
+  const blockingMissingPages = strictPageFidelityMissing.filter((row) => row.enforcement === "fail");
+  const gateReport = evaluateRunGates({
+    runId: options.runId,
+    options: {
+      fidelityMode: options.fidelityMode,
+      strictRequiredCasesPolicy: options.strictRequiredCasesPolicy,
+    },
+    fidelity: {
+      overallSimilarity: fidelity?.overallSimilarity ?? null,
+    },
+    strict: {
+      requiredCases: strictRequiredPageCases.map((entry) => entry.id),
+      requiredCaseSites: strictCaseIds,
+      missingComparableCases: strictFidelityMissing,
+      failedCases: strictFidelityFailures,
+      missingComparablePages: strictPageFidelityMissing,
+      failedPages: strictPageFidelityFailures,
+      blockingRequiredCases: strictFailCaseIds,
+      blockingMissingComparableCases: blockingMissingCases,
+      blockingFailedCases: blockingFidelityFailures,
+      blockingMissingComparablePages: blockingMissingPages,
+      blockingFailedPages: blockingPageFidelityFailures,
+    },
+  });
+  const gateReportPath = path.join(runDir, "gate-report.json");
+  await fs.writeFile(gateReportPath, JSON.stringify(gateReport, null, 2));
+
+  runLibrary = buildRunLibraryOutput({
+    processed,
+    runId: options.runId,
+    manifestPath,
+    fidelityRows: fidelityRowsEvaluated,
+    templateExclusiveComponents,
+  });
+  await fs.writeFile(runLibraryPath, JSON.stringify(runLibrary, null, 2));
+
+  const publishResult = await mergeAndPublishRunLibrary({
+    runLibrary,
+    allowPublish: Boolean(options.publish) && Boolean(gateReport.gatePassed),
+    runId: options.runId,
+  });
+  publishPath = publishResult.publishPath;
+  publishTemplateExclusiveComponentsPath = publishResult.publishTemplateExclusiveComponentsPath;
+  if (options.publish && !gateReport.gatePassed) {
+    console.warn("[template-factory] publish skipped: run gate not passed.");
+  }
+
   const summary = {
     runId: options.runId,
     manifestPath,
@@ -5669,17 +8935,41 @@ const main = async () => {
     crawlSite: options.crawlSite,
     crawlMaxPages: options.crawlMaxPages,
     crawlMaxDepth: options.crawlMaxDepth,
+    crawlCapturePages: options.crawlCapturePages,
+    maxDiscoveredPages: options.maxDiscoveredPages,
+    maxNavLinks: options.maxNavLinks,
+    mustIncludePatterns: options.mustIncludePatterns,
     antiCrawlPrecheck: options.antiCrawlPrecheck,
     antiCrawlTimeoutMs: options.antiCrawlTimeoutMs,
     fastMode: options.fastMode,
     fidelityMode: options.fidelityMode,
     fidelityThreshold: options.fidelityThreshold,
+    strictAvgSimilarityMin: options.strictAvgSimilarityMin,
+    strictPageSimilarityMin: options.strictPageSimilarityMin,
+    fidelityStructureWeight: options.fidelityStructureWeight,
+    requiredPagesPerSite: options.requiredPagesPerSite,
     fidelityEnforcement: options.fidelityEnforcement,
+    strictRequiredCasesPolicy: options.strictRequiredCasesPolicy,
+    templateExclusiveBlocks: options.templateExclusiveBlocks,
     autoRepairIterations: options.autoRepairIterations,
     pixelMode: options.pixelMode,
+    pipelineParallelConcurrency: options.pipelineParallelConcurrency,
+    screenshotConcurrency: options.screenshotConcurrency,
+    crawlConcurrency: options.crawlConcurrency,
+    regressionConcurrency: options.regressionConcurrency,
+    screenshotTimeoutMs: options.screenshotTimeoutMs,
+    crawlTimeoutMs: options.crawlTimeoutMs,
+    siteRetryCount: options.siteRetryCount,
+    siteRetryDelayMs: options.siteRetryDelayMs,
+    siteCircuitBreakerThreshold: options.siteCircuitBreakerThreshold,
+    regressionTimeoutMs: options.regressionTimeoutMs,
+    regressionElapsedMs,
+    regressionElapsed: formatElapsed(regressionElapsedMs),
     runDir,
     runLibraryPath,
     publishPath,
+    publishTemplateExclusiveComponentsPath,
+    publishReason: publishResult.reason,
     regressionPromptsPath: regression?.promptsPath || null,
     regressionReportPath: regression?.reportPath || null,
     regressionAttemptsPath: regressionAttempts.length ? path.join(runDir, "regression-attempts.json") : null,
@@ -5689,9 +8979,19 @@ const main = async () => {
     overallSimilarity: fidelity?.overallSimilarity ?? null,
     fidelityGatePassed,
     fidelityGateWouldFail,
+    runGatePassed: gateReport.gatePassed,
+    gateReportPath,
+    templateExclusiveComponentsPath,
+    templateExclusiveComponentCount: templateExclusiveComponents.length,
+    templateExclusiveConfigSeeded,
+    generatedConfigComponentCount: generatedConfigComponents.length,
     strictFidelityFailures,
     strictFidelityMissing,
+    strictPageFidelityFailures,
+    strictPageFidelityMissing,
+    strictRequiredPageCases,
     blockingFidelityFailures,
+    blockingPageFidelityFailures,
     manualFixesPath,
     manualFixesCount: manualFixes.length,
     previewBaseUrl: normalizePreviewBaseUrl(options.previewBaseUrl),
@@ -5699,16 +8999,42 @@ const main = async () => {
     previewLinks,
     previewServer,
     previewStartCommand: DEFAULT_PREVIEW_START_COMMAND,
+    extractionFailures: processed.flatMap((item) => {
+      const rows = Array.isArray(item?.specPack?.extraction_failures) ? item.specPack.extraction_failures : [];
+      return rows.map((row) => ({
+        caseId: String(item?.site?.id || ""),
+        path: String(row?.path || ""),
+        reason: String(row?.reason || "unknown"),
+        source: String(row?.source || ""),
+        url: String(row?.url || ""),
+      }));
+    }),
+    linkIntegrity: processed.map((item) => ({
+      caseId: String(item?.site?.id || ""),
+      stats: item?.linkReport?.stats || null,
+    })),
   };
 
   await fs.writeFile(path.join(runDir, "summary.json"), JSON.stringify(summary, null, 2));
+  console.log(
+    `[template-factory] run finished id=${options.runId} elapsed=${formatElapsed(Date.now() - runStartedAt)} summary=${path.join(
+      runDir,
+      "summary.json"
+    )}`
+  );
   if (strictCaseIds.length && fidelityGateWouldFail) {
     const failedDetail = strictFidelityFailures
       .map((row) => `${row.caseId}(${row.similarity} < ${row.threshold})`)
       .join(", ");
     const missingDetail = strictFidelityMissing.join(", ");
+    const failedPageDetail = strictPageFidelityFailures
+      .map((row) => `${row.caseId}${row.pagePath}(${row.similarity} < ${row.threshold})`)
+      .join(", ");
+    const missingPageDetail = strictPageFidelityMissing
+      .map((row) => `${row.caseId}${row.pagePath}`)
+      .join(", ");
     console.log(
-      `[template-factory] fidelity warning: strict targets below threshold. failed=[${failedDetail || "none"}], missing=[${missingDetail || "none"}].`
+      `[template-factory] fidelity warning: strict targets below threshold. failed=[${failedDetail || "none"}], missing=[${missingDetail || "none"}], failedPages=[${failedPageDetail || "none"}], missingPages=[${missingPageDetail || "none"}].`
     );
   }
 
@@ -5716,6 +9042,9 @@ const main = async () => {
   console.log(`[template-factory] runDir: ${runDir}`);
   console.log(`[template-factory] run library: ${runLibraryPath}`);
   if (publishPath) console.log(`[template-factory] published library: ${publishPath}`);
+  if (publishTemplateExclusiveComponentsPath) {
+    console.log(`[template-factory] published template-exclusive components: ${publishTemplateExclusiveComponentsPath}`);
+  }
   if (regression?.reportPath) console.log(`[template-factory] regression report: ${regression.reportPath}`);
   if (score?.overallScore !== undefined && score?.overallScore !== null) {
     console.log(`[template-factory] overall score: ${score.overallScore}`);
@@ -5735,6 +9064,29 @@ const main = async () => {
     }
     console.log(`[template-factory] if links are not reachable, run: ${DEFAULT_PREVIEW_START_COMMAND}`);
   }
+  if (!gateReport.gatePassed) {
+    const issues = Array.isArray(gateReport.issues) ? gateReport.issues : [];
+    const detail = issues.map((issue) => `${issue.code}:${issue.message}`).join("; ");
+    throw new Error(`[template-factory] run gate failed (${gateReportPath}) ${detail}`);
+  }
+  };
+
+  if (Number(options.totalTimeoutMs) > 0) {
+    const timeoutMs = Math.floor(Number(options.totalTimeoutMs));
+    console.log(`[template-factory] total timeout set: ${formatElapsed(timeoutMs)}`);
+    let timeoutId = null;
+    const timeoutPromise = new Promise((_, reject) => {
+      timeoutId = setTimeout(() => reject(new Error(`Total timeout exceeded: ${formatElapsed(timeoutMs)}`)), timeoutMs);
+    });
+    try {
+      await Promise.race([runMain(), timeoutPromise]);
+    } finally {
+      if (timeoutId) clearTimeout(timeoutId);
+    }
+    return;
+  }
+
+  await runMain();
 };
 
 main().catch((error) => {

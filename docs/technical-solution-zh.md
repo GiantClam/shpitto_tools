@@ -351,6 +351,44 @@ After:
 - 生成 `extracted.json` / `enriched.json` / `requirement.json` / `plan.json`
 - 通过 `--plan-input/--plan-output` 在 pipeline 入口执行（无多轮对话）
 
+### 7.8 整站模板静态组件注册链路（已落地）
+
+为保证整站模板在生产环境可构建、可部署、可编辑，新增与单页模板一致的静态化链路：
+
+`LLM 生成代码 -> 写入 src/components/blocks/*/block.tsx -> 注册到 puck/config.ts -> next build`
+
+**目标与收益（与单页模板做法对齐）**
+- 视觉保真度：高（仍由 LLM 生成组件代码）
+- Puck 编辑：`fields/defaultProps` 在配置中显式注册，编辑能力完整
+- 构建可用性：标准 Next.js 构建链路可直接消费
+- 部署兼容：可直接衔接 Cloudflare Pages 的静态部署流程
+- 性能：首屏无运行时 JIT 编译开销
+- SSR/SSG：继续使用 `<Render config={config} data={data} />`
+
+**实现要点**
+1. **模板工厂主流程接线**
+   - `run-template-factory` 在生成完成后调用物化流程：
+     - 从 `payload.json` 读取组件代码
+     - 写入 `src/components/blocks/<kebab>/block.tsx`
+     - 生成并覆盖 `src/puck/config.generated.ts`
+2. **Puck 配置合并策略**
+   - `src/puck/config.ts` 静态导入 `./config.generated`
+   - 使用 `Object.assign(puckConfig.components, generatedComponents)` 合并
+   - 新增 `src/puck/config.generated.ts` 空导出兜底，避免首轮无生成文件时报错
+3. **多站/多页命名冲突治理**
+   - 同名同代码：去重跳过
+   - 同名不同代码：自动追加哈希后缀（如 `_a1b2c3d4`）生成新组件名
+   - 产出冲突追踪字段：`collisionFrom`、`signature`
+4. **构建验证门禁**
+   - 脚本语法检查：`node --check`
+   - 构建检查：`next build` 必须通过
+
+**关键文件（本次新增/改造）**
+- `builder/template-factory/run-template-factory.mjs`
+- `builder/template-factory/materialize-custom-components.mjs`
+- `builder/src/puck/config.ts`
+- `builder/src/puck/config.generated.ts`
+
 ---
 
 ## 8. 运行指南（Runbook）
@@ -386,6 +424,18 @@ python3 asset-factory/pipelines/run.py \
   --url https://kymetacorp.com \
   --plan-input "你的产品需求描述" \
   --plan-output asset-factory/out/kymetacorp.com/planning
+```
+
+### 8.5 整站模板静态组件物化与构建验证
+```bash
+# 在 builder 目录执行
+node template-factory/materialize-custom-components.mjs --run-dir template-factory/runs/<run-id>
+npm run build
+```
+
+如需覆盖已存在 block 文件：
+```bash
+node template-factory/materialize-custom-components.mjs --run-dir template-factory/runs/<run-id> --overwrite
 ```
 
 ---

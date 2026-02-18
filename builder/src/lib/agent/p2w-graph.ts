@@ -15,7 +15,11 @@ import {
   buildBuilderCompactUserPrompt,
   buildBuilderUserPrompt,
 } from "@/lib/agent/prompts";
-import { resolveSectionTemplateBlock, selectStyleProfile } from "@/lib/agent/section-template-registry";
+import {
+  resolveSectionTemplateBlock,
+  selectStyleProfile,
+  type TemplatePersonalizationContext,
+} from "@/lib/agent/section-template-registry";
 
 const State = Annotation.Root({
   prompt: Annotation<string>,
@@ -449,6 +453,9 @@ const templateRecoveryFailureTypes = new Set(
   parseEnvCsv(process.env.BUILDER_TEMPLATE_RECOVERY_FAILURE_TYPES, ["parse", "layout"])
 );
 const enableTemplateShadowRun = parseEnvBoolean(process.env.BUILDER_TEMPLATE_SHADOW_RUN, false);
+const enableTemplateRefinement = parseEnvBoolean(process.env.BUILDER_TEMPLATE_REFINEMENT, true);
+const templateRefinementMaxTokens = Math.max(512, Number(process.env.BUILDER_TEMPLATE_REFINEMENT_MAX_TOKENS || 2048));
+const templateRefinementTimeoutMs = Math.max(5000, Number(process.env.BUILDER_TEMPLATE_REFINEMENT_TIMEOUT_MS || 15000));
 
 const configuredSectionMaxAttempts = Math.max(1, Number(process.env.LLM_SECTION_MAX_ATTEMPTS || 3));
 const configuredNetworkRetryAttempts = Math.max(0, Number(process.env.LLM_NETWORK_RETRY_ATTEMPTS || 1));
@@ -4178,13 +4185,19 @@ const sectionToken = (context: SectionContext) =>
 
 const buildDeterministicFallbackBlock = (
   context: SectionContext,
-  prompt: string
+  prompt: string,
+  designNorthStar?: Record<string, unknown>,
+  theme?: Record<string, unknown>
 ): SectionBlock => {
   const token = sectionToken(context);
   const shortPrompt = trimLine(prompt, "Industrial Automation Platform", 68);
   const siteTitle = trimLine(prompt, "Breton-style industrial homepage", 52);
   const idBase = `${toSlug(context.section.type || "section") || "section"}-${context.sectionIndex + 1}`;
   const anchor = context.section.id;
+  const propsHints =
+    context.section.propsHints && typeof context.section.propsHints === "object"
+      ? (context.section.propsHints as Record<string, unknown>)
+      : undefined;
   const registryTemplate = resolveSectionTemplateBlock({
     prompt,
     pagePath: context.pagePath,
@@ -4194,6 +4207,9 @@ const buildDeterministicFallbackBlock = (
     sectionIntent: context.section.intent,
     idBase,
     anchor,
+    designNorthStar,
+    theme,
+    propsHints,
   });
   if (registryTemplate) {
     return registryTemplate;
@@ -4789,16 +4805,98 @@ const shouldTemplateRecoverFromFailure = (
 const createTemplateSectionResult = (
   context: SectionContext,
   prompt: string,
-  _designNorthStar?: Record<string, unknown>,
-  _theme?: Record<string, unknown>
+  designNorthStar?: Record<string, unknown>,
+  theme?: Record<string, unknown>
 ): BuilderSectionResult => {
-  const templateBlock = buildDeterministicFallbackBlock(context, prompt);
+  const templateBlock = buildDeterministicFallbackBlock(context, prompt, designNorthStar, theme);
   return {
     status: "ok",
     component: { name: fallbackComponentName, code: fallbackComponentCode },
     block: { type: templateBlock.type, props: templateBlock.props },
   };
 };
+
+// ---------------------------------------------------------------------------
+// LLM lightweight refinement: takes a template block and refines text content
+// using a fast, low-token LLM call. Falls back to original on any failure.
+// ---------------------------------------------------------------------------
+const templateRefinementSystemPrompt = `你是一个网站文案专家。你的任务是根据用户需求，对已有的网站模板 props 进行文案精修。
+规则：
+1. 只修改文本类字段（title, subtitle, body, eyebrow, label, desc, quote, name, role 等）
+2. 不要修改结构类字段（variant, columns, maxWidth, paddingY, sticky, href 等）
+3. 不要添加或删除任何字段
+4. 所有文案必须与用户描述的行业/品牌/产品高度相关
+5. 保持原有文案的长度和风格基调
+6. 只返回修改后的 JSON props 对象，不要解释`;
+
+const buildTemplateRefinementPrompt = (
+  prompt: string,
+  sectionType: string,
+  sectionIntent: string | undefined,
+  blockType: string,
+  props: Record<string, unknown>,
+  designNorthStar?: Record<string, unknown>
+): string => {
+  const northStarSnippet = designNorthStar
+    ? `\n行业: ${(designNorthStar as any).industry ?? "未知"}\n核心产品: ${JSON.stringify((designNorthStar as any).coreProducts ?? [])}\n风格DNA: ${JSON.stringify((designNorthStar as any).styleDNA ?? [])}`
+    : "";
+  const intentLine = sectionIntent ? `\nSection 意图: ${sectionIntent}` : "";
+  // Only include text-relevant props to keep prompt small
+  const propsJson = JSON.stringify(props, null, 2);
+  return `用户需求: ${prompt.slice(0, 500)}${northStarSnippet}${intentLine}
+Section 类型: ${sectionType} (组件: ${blockType})
+
+当前模板 props:
+${propsJson.slice(0, 3000)}
+
+请根据用户需求精修上述 props 中的文案内容，返回完整的 JSON props 对象。`;
+};
+
+const applyRefinedProps = (
+  original: Record<string, unknown>,
+  refined: Record<string, unknown>
+): Record<string, unknown> => {
+  const result = JSON.parse(JSON.stringify(original)) as Record<string, unknown>;
+  // Structural keys that must not be overwritten
+  const structuralKeys = new Set([
+    "variant", "columns", "maxWidth", "paddingY", "paddingX", "sticky",
+    "background", "backgroundGradient", "backgroundOverlay", "mediaPosition",
+    "headingSize", "bodySize", "density", "cardStyle", "id", "anchor",
+    "formFields", "whatsapp", "href", "ctaStyle",
+  ]);
+
+  const mergeLevel = (target: Record<string, unknown>, source: Record<string, unknown>) => {
+    for (const key of Object.keys(source)) {
+      if (structuralKeys.has(key)) continue;
+      if (!(key in target)) continue; // Don't add new keys
+      const sourceVal = source[key];
+      const targetVal = target[key];
+      if (typeof sourceVal === "string" && typeof targetVal === "string") {
+        target[key] = sourceVal;
+      } else if (Array.isArray(sourceVal) && Array.isArray(targetVal)) {
+        // Merge arrays item by item (for items, ctas, testimonials, etc.)
+        for (let i = 0; i < Math.min(sourceVal.length, targetVal.length); i++) {
+          if (
+            sourceVal[i] && typeof sourceVal[i] === "object" &&
+            targetVal[i] && typeof targetVal[i] === "object" &&
+            !Array.isArray(sourceVal[i])
+          ) {
+            mergeLevel(targetVal[i] as Record<string, unknown>, sourceVal[i] as Record<string, unknown>);
+          }
+        }
+      } else if (
+        sourceVal && typeof sourceVal === "object" && !Array.isArray(sourceVal) &&
+        targetVal && typeof targetVal === "object" && !Array.isArray(targetVal)
+      ) {
+        mergeLevel(targetVal as Record<string, unknown>, sourceVal as Record<string, unknown>);
+      }
+    }
+  };
+
+  mergeLevel(result, refined);
+  return result;
+};
+
 const runWithConcurrency = async <T, R>(
   items: T[],
   limit: number,
@@ -4833,6 +4931,65 @@ const extractJsonCandidate = (value: string) => {
     }
   }
   return trimmed;
+};
+
+// ---------------------------------------------------------------------------
+// LLM lightweight refinement (placed after extractJsonCandidate for const ordering)
+// ---------------------------------------------------------------------------
+const refineTemplateWithLlm = async (
+  context: SectionContext,
+  prompt: string,
+  block: SectionBlock,
+  designNorthStar?: Record<string, unknown>
+): Promise<SectionBlock> => {
+  if (!enableTemplateRefinement) return block;
+  if (!block.props || !Object.keys(block.props).length) return block;
+
+  const refinementPrompt = buildTemplateRefinementPrompt(
+    prompt,
+    context.section.type,
+    context.section.intent,
+    block.type,
+    block.props as Record<string, unknown>,
+    designNorthStar
+  );
+
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), templateRefinementTimeoutMs);
+    const raw = await callLlm({
+      system: templateRefinementSystemPrompt,
+      prompt: refinementPrompt,
+      temperature: 0.3,
+      maxTokens: templateRefinementMaxTokens,
+      allowProviderFallbackOnAnyError: true,
+      requestSignal: controller.signal,
+    });
+    clearTimeout(timer);
+
+    const candidate = extractJsonCandidate(raw);
+    const parsed = JSON.parse(candidate);
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      const refinedProps = applyRefinedProps(
+        block.props as Record<string, unknown>,
+        parsed as Record<string, unknown>
+      );
+      logInfo(`${logPrefix} builder:template_refinement:success`, {
+        sectionType: context.section.type,
+        sectionId: context.section.id,
+        blockType: block.type,
+      });
+      return { type: block.type, props: refinedProps };
+    }
+  } catch (error) {
+    logWarn(`${logPrefix} builder:template_refinement:failed`, {
+      sectionType: context.section.type,
+      sectionId: context.section.id,
+      message: (error as any)?.message ?? String(error),
+    });
+  }
+  // Fallback: return original block unchanged
+  return block;
 };
 
 const stripJsonComments = (value: string) => {
@@ -5874,13 +6031,28 @@ async function builderNode(state: GraphState) {
         ...baseInfo,
         strategy: sectionGenerationStrategy,
         variant: templateVariant,
+        refinementEnabled: enableTemplateRefinement,
       });
-      return createTemplateSectionResult(
+      const baseResult = createTemplateSectionResult(
         context,
         state.prompt ?? "",
         designNorthStar as Record<string, unknown>,
         theme as Record<string, unknown>
       );
+      // LLM lightweight refinement: refine text content while keeping structure
+      if (enableTemplateRefinement && baseResult.status === "ok") {
+        const refinedBlock = await refineTemplateWithLlm(
+          context,
+          state.prompt ?? "",
+          baseResult.block,
+          designNorthStar as Record<string, unknown>
+        );
+        return {
+          ...baseResult,
+          block: refinedBlock,
+        };
+      }
+      return baseResult;
     }
     if (templatePrimary && enableTemplateShadowRun) {
       logInfo(`${logPrefix} builder:section:template_shadow_start`, {
@@ -6110,7 +6282,12 @@ async function builderNode(state: GraphState) {
     }
     return {
       status: "fallback",
-      block: buildDeterministicFallbackBlock(context, state.prompt ?? ""),
+      block: buildDeterministicFallbackBlock(
+        context,
+        state.prompt ?? "",
+        designNorthStar as Record<string, unknown>,
+        theme as Record<string, unknown>
+      ),
       error: "builder_section_failed",
       failureType: "unknown",
     };
@@ -6275,7 +6452,12 @@ async function builderNode(state: GraphState) {
         result && "failureType" in result && typeof result.failureType === "string"
           ? (result.failureType as FailureType)
           : "unknown";
-      const fallback = buildDeterministicFallbackBlock(context, state.prompt ?? "");
+      const fallback = buildDeterministicFallbackBlock(
+        context,
+        state.prompt ?? "",
+        designNorthStar as Record<string, unknown>,
+        theme as Record<string, unknown>
+      );
       const normalizedFallbackProps = normalizeBlockProps(
         fallback.type,
         fallback.props as Record<string, unknown>,
@@ -6579,7 +6761,12 @@ async function builderNode(state: GraphState) {
         layoutHint: sourceSection?.layoutHint,
       },
     };
-    const baseBlock = buildDeterministicFallbackBlock(ctaContext, state.prompt ?? "");
+    const baseBlock = buildDeterministicFallbackBlock(
+      ctaContext,
+      state.prompt ?? "",
+      designNorthStar as Record<string, unknown>,
+      theme as Record<string, unknown>
+    );
     const normalizedProps = normalizeBlockProps(baseBlock.type, baseBlock.props, {
       logChanges: true,
       summary: normalizationSummary,

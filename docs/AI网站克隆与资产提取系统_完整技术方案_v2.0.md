@@ -926,6 +926,38 @@ class LayoutTopologyClassifier:
         return None
 ```
 
+### 7.4 整站模板静态组件注册（与单页模板对齐）
+
+为保证整站模板在生产环境具备可构建、可部署、可编辑能力，新增并落地静态组件注册链路：
+
+`LLM 生成组件代码 -> 写入 src/components/blocks/*/block.tsx -> 注册到 src/puck/config.ts -> next build`
+
+#### 关键设计
+
+1. **物化入口（template-factory）**
+   - 从 `payload.json` 读取 `components[].code`
+   - 写入 `builder/src/components/blocks/<kebab-name>/block.tsx`
+   - 生成 `builder/src/puck/config.generated.ts`
+2. **Puck 注册合并**
+   - `builder/src/puck/config.ts` 静态导入 `./config.generated`
+   - 通过 `Object.assign(puckConfig.components, generatedComponents)` 合并
+   - 提供空的 `config.generated.ts` 兜底，避免首次构建时模块缺失
+3. **冲突治理（多站/多页）**
+   - 同名同代码：去重
+   - 同名不同代码：自动追加哈希后缀（如 `_a1b2c3d4`）
+   - 输出 `collisionFrom/signature` 便于追踪
+
+#### 验收标准
+
+| 维度 | 评估 |
+|------|------|
+| 视觉保真度 | 高（同样由 LLM 生成组件） |
+| Puck 编辑 | ✅ `fields/defaultProps` 显式注册 |
+| 构建时可用 | ✅ 标准 Next.js 构建链路 |
+| Cloudflare Pages | ✅ `next build` 后可衔接静态部署 |
+| 首屏性能 | ✅ 无运行时 JIT 编译开销 |
+| SSR/SSG | ✅ `<Render config={config} data={data} />` |
+
 ---
 
 ## 8. 质量保证体系
@@ -1033,6 +1065,28 @@ search.export_asset(
     target_project="/path/to/new-project",
     adapt_theme=True  # 自动适配新主题
 )
+```
+
+### 9.4 整站模板静态组件物化（Builder）
+
+```bash
+# 在 builder 目录执行
+cd builder
+
+# 1) 从 template-factory 某次 run 结果物化静态组件
+node template-factory/materialize-custom-components.mjs \
+  --run-dir template-factory/runs/<run-id>
+
+# 2) 验证生产构建
+npm run build
+```
+
+如需覆盖已存在 block 文件：
+
+```bash
+node template-factory/materialize-custom-components.mjs \
+  --run-dir template-factory/runs/<run-id> \
+  --overwrite
 ```
 
 ---
