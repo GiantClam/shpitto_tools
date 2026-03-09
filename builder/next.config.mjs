@@ -6,4 +6,5 @@ const __dirname = path.dirname(__filename);
 
 export default {
   outputFileTracingRoot: __dirname,
+  distDir: process.env.NEXT_DIST_DIR || ".next",
 };

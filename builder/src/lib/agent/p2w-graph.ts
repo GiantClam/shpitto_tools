@@ -4863,7 +4863,7 @@ const buildDeterministicFallbackBlock = (
         anchor,
         title,
         subtitle,
-        cta: { label: ctaLabel, href: "mailto:sales@example.com", variant: "primary" },
+        cta: { label: ctaLabel, href: "/contact", variant: "primary" },
         note: safeSiteTitle,
         variant: "card",
         maxWidth: "xl",
@@ -5257,6 +5257,14 @@ const shouldSkipGeneratedPropSanitization = (key: string) =>
     key
   );
 
+const normalizeSanitizedText = (value: string) =>
+  String(value || "")
+    .replace(/\b([A-Za-z][A-Za-z0-9 &/-]{2,})\.COM\b/g, "$1")
+    .replace(/\bmanufacturing operations\b/gi, "general industrial manufacturing")
+    .replace(/\bshop floor & machine tools\b/gi, "machine tool builders")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+
 const sanitizeGeneratedProps = (
   value: unknown,
   input: { prompt: string; designNorthStar?: Record<string, unknown> }
@@ -5267,7 +5275,12 @@ const sanitizeGeneratedProps = (
   const walk = (entry: unknown, keyPath: string[]): unknown => {
     if (typeof entry === "string") {
       const key = String(keyPath[keyPath.length - 1] || "");
-      if (shouldSkipGeneratedPropSanitization(key)) return entry;
+      if (shouldSkipGeneratedPropSanitization(key)) {
+        if (/href|url|path/i.test(key)) {
+          if (/^mailto:(sales|info|contact)@example\.com$/i.test(entry.trim())) return "/contact";
+        }
+        return entry;
+      }
       let next = entry;
       sourceTokens.forEach((token) => {
         if (!token) return;
@@ -5277,7 +5290,7 @@ const sanitizeGeneratedProps = (
       replacements.forEach((item) => {
         next = next.replace(item.pattern, item.value);
       });
-      return next.replace(/\s{2,}/g, " ").trim();
+      return normalizeSanitizedText(next);
     }
     if (Array.isArray(entry)) return entry.map((item, index) => walk(item, [...keyPath, String(index)]));
     if (!entry || typeof entry !== "object") return entry;
@@ -5306,8 +5319,94 @@ const sanitizeFinalPagesOutput = (
 ): GeneratedPage[] =>
   pages.map((page) => ({
     ...page,
-    data: sanitizeGeneratedProps(page.data, input) as GeneratedPage["data"],
+      data: sanitizeGeneratedProps(page.data, input) as GeneratedPage["data"],
   }));
+
+const contextualFallbackHref = (
+  keyPath: string[],
+  currentValue: string,
+  graph: SiteLinkGraph,
+  pagePath: string
+) => {
+  const key = keyPath.join(".").toLowerCase();
+  const leafKey = String(keyPath[keyPath.length - 1] || "").toLowerCase();
+  const raw = currentValue.trim();
+  if (!raw) return graph.homeHref;
+  if (/^mailto:(sales|info|contact)@example\.com$/i.test(raw)) return "/contact";
+  const isPlaceholder = raw === "/" || raw === "#" || raw === "#top";
+  if (!isPlaceholder) return raw;
+  const isNavbarHomeLink = /(navl?1href|links\.(0|home)\.href|homehref)/.test(key);
+  const isFooterHomeLink = /(policyhome\d*href|columns\.\d+\.links\.(0|home)\.href)/.test(key);
+  if (isNavbarHomeLink || isFooterHomeLink) return graph.homeHref;
+  const prefersProducts =
+    /(product|catalog|machine|equipment|sku|shop|prod(btn|uct)?|learnbtn|discoverbtn|explorebtn)/.test(key) ||
+    (pagePath === "/products" && /(href|cta|button|btn|card\d+href)/.test(key));
+  const prefersSolutions =
+    /(solution|service|capability|workflow|process|automation)/.test(key) ||
+    (pagePath === "/solutions" && /(href|cta|button|btn|card\d+href)/.test(key));
+  const prefersIndustries =
+    /(industry|application|market|usecard|sector)/.test(key) ||
+    (pagePath === "/industries" && /(href|cta|button|btn|card\d+href)/.test(key));
+  const prefersCases =
+    /(case|study|customer|project|proof|result|card\d+href)/.test(key) ||
+    (pagePath === "/cases" && /(href|cta|button|btn)/.test(key));
+  const prefersAbout =
+    /(about|company|team|story|mission|vision|history)/.test(key) ||
+    (pagePath === "/about" && /(href|cta|button|btn)/.test(key));
+  const prefersContact =
+    /(contact|quote|sales|consult|orderbtn|request|inquire|book|demo)/.test(key) ||
+    (pagePath === "/contact" && /(href|cta|button|btn)/.test(key));
+  if (prefersProducts && graph.validInternalHrefs.has("/products")) {
+    return "/products";
+  }
+  if (prefersSolutions && graph.validInternalHrefs.has("/solutions")) {
+    return "/solutions";
+  }
+  if (prefersIndustries && graph.validInternalHrefs.has("/industries")) {
+    return "/industries";
+  }
+  if (prefersCases && graph.validInternalHrefs.has("/cases")) {
+    return "/cases";
+  }
+  if (prefersAbout && graph.validInternalHrefs.has("/about")) {
+    return "/about";
+  }
+  if (prefersContact && graph.validInternalHrefs.has("/contact")) {
+    return "/contact";
+  }
+  if (leafKey === "href" && pagePath !== "/" && graph.validInternalHrefs.has(pagePath)) {
+    return pagePath;
+  }
+  if (pagePath === "/contact" && graph.validInternalHrefs.has("/contact")) {
+    return "/contact";
+  }
+  return graph.homeHref;
+};
+
+const sanitizeSemanticProps = (
+  value: unknown,
+  graph: SiteLinkGraph,
+  pagePath: string,
+  keyPath: string[] = []
+): unknown => {
+  if (Array.isArray(value)) {
+    return value.map((item, index) => sanitizeSemanticProps(item, graph, pagePath, [...keyPath, String(index)]));
+  }
+  if (typeof value === "string") {
+    const key = String(keyPath[keyPath.length - 1] || "");
+    if (/href|url|path/i.test(key)) {
+      return contextualFallbackHref(keyPath, value, graph, pagePath);
+    }
+    return normalizeSanitizedText(value);
+  }
+  if (!value || typeof value !== "object") return value;
+  const record = value as Record<string, unknown>;
+  const next: Record<string, unknown> = {};
+  Object.entries(record).forEach(([key, child]) => {
+    next[key] = sanitizeSemanticProps(child, graph, pagePath, [...keyPath, key]);
+  });
+  return next;
+};
 
 const isContactLikeBlock = (item: { type?: string; props?: Record<string, unknown> } | undefined) => {
   const type = typeof item?.type === "string" ? item.type.toLowerCase() : "";
@@ -7867,7 +7966,11 @@ async function builderNode(state: GraphState) {
         demotedThemeDrivenBlocks += 1;
         return;
       }
-      item.props = sanitizeInternalHrefsInProps(sanitizedExistingProps, linkGraph);
+      item.props = sanitizeSemanticProps(
+        sanitizeInternalHrefsInProps(sanitizedExistingProps, linkGraph),
+        linkGraph,
+        page.path || "/"
+      ) as Record<string, unknown>;
       sanitizedContentLinkBlocks += 1;
     });
   });
@@ -7910,10 +8013,17 @@ async function builderNode(state: GraphState) {
           sanitizedExistingProps,
           variant
         );
-        const normalizedProps = normalizeBlockProps(fallback.type, sanitizeInternalHrefsInProps(mergedProps, linkGraph), {
-          logChanges: true,
-          summary: normalizationSummary,
-        });
+        const normalizedProps = normalizeBlockProps(
+          fallback.type,
+          sanitizeSemanticProps(sanitizeInternalHrefsInProps(mergedProps, linkGraph), linkGraph, page.path || "/") as Record<
+            string,
+            unknown
+          >,
+          {
+            logChanges: true,
+            summary: normalizationSummary,
+          }
+        );
         const fallbackId =
           typeof sanitizedExistingProps.id === "string" && String(sanitizedExistingProps.id).trim()
             ? String(sanitizedExistingProps.id)
@@ -7929,7 +8039,11 @@ async function builderNode(state: GraphState) {
       }
       return {
         ...item,
-        props: sanitizeInternalHrefsInProps(sanitizedExistingProps, linkGraph),
+        props: sanitizeSemanticProps(
+          sanitizeInternalHrefsInProps(sanitizedExistingProps, linkGraph),
+          linkGraph,
+          page.path || "/"
+        ) as Record<string, unknown>,
       };
     });
   });

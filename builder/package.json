@@ -29,9 +29,9 @@
     "react-dom": "19.2.3"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "node --max-old-space-size=8192 ./node_modules/next/dist/bin/next build",
-    "start": "next start",
+    "dev": "NEXT_DIST_DIR=.next-dev next dev",
+    "build": "NEXT_DIST_DIR=.next-prod node --max-old-space-size=8192 ./node_modules/next/dist/bin/next build",
+    "start": "NEXT_DIST_DIR=.next-prod next start",
     "regression:creation": "node regression/run-creation-baseline.mjs",
     "regression:strategy": "node regression/run-strategy-comparison.mjs",
     "template:factory": "node template-factory/run-template-factory.mjs"
