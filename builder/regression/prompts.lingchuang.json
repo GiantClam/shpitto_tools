@@ -1,0 +1,8 @@
+{
+  "cases": [
+    {
+      "id": "lingchuang-smart-home",
+      "prompt": "为灵创智能生成完整企业官网，强制使用模板关键词：profile_selector_unistellar-home；参考 https://www.unistellar.com 的信息架构与视觉节奏（深色科技感、图文叠加、产品卡片矩阵、品牌背书、底部 CTA、深色 footer），但业务语义必须完全替换为数控机床与精密制造，不得保留星空、望远镜、双筒镜、机器视觉、AI视觉、天文观测等源模板行业词汇；灵创智能是一家数控机床与精密加工装备生产厂家，核心产品包括五轴加工中心、高速钻攻中心、卧式加工中心、自动化产线单元与主轴刀库配套系统，目标客户为汽车零部件、3C 精密制造、模具、航空航天与通用机械企业；生成以下页面：/（Home）、/solutions（解决方案）、/products（产品中心）、/industries（行业场景）、/cases（客户案例）、/about（关于我们）、/contact（联系咨询）；所有页面默认输出英文，导航顺序优先为 Products、Solutions、Industries、Case Studies、About、Contact；导航与 footer 在全站共用，且仅保留指向已生成页面的有效链接；优先复用整站模板，整站不完全匹配时按 pageType 复用页面模板；背景图优先使用符合数控机床、金属切削、工厂车间、精密制造语义的工业图片；保留可编辑结构化 block，不使用整段截图贴图。"
+    }
+  ]
+}

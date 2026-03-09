@@ -2,6 +2,7 @@ import * as Babel from "@babel/standalone";
 import * as React from "react";
 import * as Lucide from "lucide-react";
 import * as Motion from "framer-motion";
+import { usePathname, useSearchParams } from "next/navigation";
 
 import { cn } from "@/lib/cn";
 import { NavbarBlock } from "@/components/blocks/navbar/block";
@@ -21,6 +22,7 @@ import {
   TextReveal,
   SceneSwitcher,
 } from "@/components/magic-exports";
+import { useMotionMode } from "@/components/theme/motion";
 import { useInViewReveal, useParallaxY } from "@/lib/motion";
 import {
   uiImportMap,
@@ -344,7 +346,9 @@ const moduleMap: Record<string, Record<string, unknown>> = {
   },
   "@/lib/cn": { cn },
   "@/lib/utils": { cn },
+  "@/components/theme/motion": { useMotionMode },
   "@/lib/motion": { useInViewReveal, useParallaxY },
+  "next/navigation": { usePathname, useSearchParams },
   react: React,
   React,
   "lucide-react": lucideWithAliases,

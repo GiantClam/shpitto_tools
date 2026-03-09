@@ -4,28 +4,51 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { spawn } from "node:child_process";
+import { fileURLToPath } from "node:url";
 import { SECTION_BLOCK_REGISTRY, getAlternativeVariants } from "./variant-registry.mjs";
 import { buildCustomSectionPrompt, buildPuckFieldsForCustomComponent } from "./generate-custom-section.mjs";
-import { materializeFromPayload, writeGeneratedConfig } from "./materialize-custom-components.mjs";
+import { materializeComponent, materializeFromPayload, writeGeneratedConfig } from "./materialize-custom-components.mjs";
 import { resolveCliOptions } from "./config/resolve-options.mjs";
 import { evaluateRunGates } from "./gates/evaluate-run-gates.mjs";
 import { selectRequiredCases, selectRequiredPagesForSite } from "./regression/select-required-cases.mjs";
+import { buildDesignContract, evaluateDesignContractCompliance } from "./quality/design-contract.mjs";
+import { buildAssemblyManifest, evaluateKeyFlowIntegrity } from "./quality/assembly.mjs";
+import { evaluateAccessibilityFromSpecPack } from "./quality/accessibility.mjs";
+import {
+  buildTemplateAssetManifest,
+  buildTemplateDedupFingerprints,
+  evaluateTemplateAssetContracts,
+} from "./contracts/index.mjs";
+import {
+  DEDUPE_RULES,
+  PAGE_TAXONOMY,
+  classifyPagesByTaxonomy,
+  dedupePagesByTaxonomy,
+} from "./taxonomy/index.mjs";
 
-const ROOT = process.cwd();
-const SCRIPTS_DIR = path.resolve(ROOT, "..", "scripts");
+const CURRENT_FILE_DIR = path.dirname(fileURLToPath(import.meta.url));
+const BUILDER_ROOT = path.resolve(CURRENT_FILE_DIR, "..");
+const ROOT = BUILDER_ROOT;
+const SCRIPTS_DIR = path.resolve(BUILDER_ROOT, "..", "scripts");
 const FACTORY_DIR = path.join(ROOT, "template-factory");
 const RUNS_DIR = path.join(FACTORY_DIR, "runs");
 const LIB_DIR = path.join(FACTORY_DIR, "library");
 const PUBLIC_TEMPLATE_ASSETS_DIR = path.join(ROOT, "public", "assets", "template-factory");
+const PUBLIC_PEN_ASSETS_DIR = path.join(ROOT, "public", "generated-pen-assets");
 const DEFAULT_MANIFEST = path.join(FACTORY_DIR, "sites.example.json");
 const DEFAULT_PUBLISH_PATH = path.join(LIB_DIR, "style-profiles.generated.json");
 const DEFAULT_TEMPLATE_FIRST_GROUP = "C_template_first";
 const DEFAULT_PREVIEW_BASE_URL = process.env.TEMPLATE_FACTORY_PREVIEW_BASE_URL || "http://127.0.0.1:3110";
 const DEFAULT_PREVIEW_START_COMMAND = "cd builder && npm run dev -- -p 3110";
+const PEN_SCHEMA_VERSION = "template-factory.pen.v1";
+const PEN_REVIEW_SCHEMA_VERSION = "template-factory.pen-review.v1";
+const DEFAULT_PENCIL_BRIDGE_SCRIPT = path.join(FACTORY_DIR, "pencil-mcp-bridge.mjs");
+const DEFAULT_PENCIL_EXPORT_SCRIPT = path.join(FACTORY_DIR, "pencil-export-payload.mjs");
+const DEFAULT_PENCIL_APP = process.env.TEMPLATE_FACTORY_PENCIL_APP || "desktop";
 const HYBRID_CRAWL_SCRIPT = path.join(SCRIPTS_DIR, "crawlers", "hybrid_crawl_pipeline.py");
+const REGRESSION_RUNNER_SCRIPT = path.join(BUILDER_ROOT, "regression", "run-strategy-comparison.mjs");
 const DEFAULT_HTTP_USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36";
-const DISABLE_SITE_FINGERPRINT_ROUTING = process.env.TEMPLATE_FACTORY_DISABLE_SITE_FINGERPRINT_ROUTING !== "0";
 
 const SECTION_KINDS = [
   "navigation",
@@ -115,6 +138,82 @@ const replaceBrandToken = (value) =>
     if (match[0] === match[0].toUpperCase()) return "Shpitto";
     return "shpitto";
   });
+
+const TEMPLATE_INSTRUCTION_NOISE_RE =
+  /(profile_selector|template[_-]?first|run-template-factory|强制使用模板关键词|不要照搬|仅生成|保留可编辑|导航与\s*footer|reference\s+https?:\/\/|参考\s*https?:\/\/)/i;
+
+const normalizeSiteBrandToken = (siteId = "") => {
+  const raw = String(siteId || "").trim().toLowerCase();
+  if (!raw) return "Company";
+  const parts = raw
+    .split(/[^a-z0-9]+/g)
+    .filter(Boolean)
+    .filter((entry) => !["home", "site", "page", "template", "pen"].includes(entry));
+  const token = parts[0] || "company";
+  return token.slice(0, 1).toUpperCase() + token.slice(1);
+};
+
+const pickInstructionNoiseFallback = ({ keyPath = [], sectionKind = "", siteId = "" } = {}) => {
+  const keyToken = String(keyPath[keyPath.length - 1] || "").toLowerCase();
+  const brandName = normalizeSiteBrandToken(siteId);
+  const year = new Date().getFullYear();
+  const kind = String(sectionKind || "").toLowerCase();
+  const titleByKind = {
+    hero: `${brandName} Solutions`,
+    story: `${brandName} Story`,
+    approach: "Key Capabilities",
+    socialproof: "Trusted by Customers",
+    products: "Product Highlights",
+    contact: `Contact ${brandName}`,
+    cta: "Get Started",
+    navigation: brandName,
+    footer: brandName,
+  };
+  const subtitleByKind = {
+    hero: "Built for real-world scenarios with reliable delivery.",
+    story: "Clear positioning, consistent delivery, and measurable outcomes.",
+    approach: "Structured methods to move from pilot to production.",
+    socialproof: "Validated by teams across critical business scenarios.",
+    products: "Modular building blocks designed for scalable adoption.",
+    contact: "Share your requirements and receive an implementation proposal.",
+    cta: "Start with a focused consultation and roadmap.",
+    navigation: brandName,
+    footer: `© ${year} ${brandName}. All rights reserved.`,
+  };
+  const titleFallback = titleByKind[kind] || `${brandName} Overview`;
+  const subtitleFallback = subtitleByKind[kind] || "Content refined for reusable template assets.";
+
+  if (/(href|src|url|path|link)/.test(keyToken)) return "/";
+  if (/(logo|brand|site(name)?)/.test(keyToken)) return brandName;
+  if (/(copyright|legal|copy(text)?)/.test(keyToken)) return `© ${year} ${brandName}. All rights reserved.`;
+  if (/(cta|button|btn|label|text)/.test(keyToken)) return "Learn More";
+  if (/(title|headline|eyebrow|tag)/.test(keyToken)) return titleFallback;
+  if (/(subtitle|description|desc|body|note|meta|summary|content|copy)/.test(keyToken)) return subtitleFallback;
+  return subtitleFallback;
+};
+
+const sanitizeTemplateAssetTextDeep = (value, ctx = {}, keyPath = []) => {
+  if (Array.isArray(value)) {
+    return value.map((entry, index) => sanitizeTemplateAssetTextDeep(entry, ctx, [...keyPath, String(index)]));
+  }
+  if (value && typeof value === "object") {
+    const out = {};
+    for (const [k, v] of Object.entries(value)) {
+      out[k] = sanitizeTemplateAssetTextDeep(v, ctx, [...keyPath, k]);
+    }
+    return out;
+  }
+  if (typeof value !== "string") return value;
+  const text = value.trim();
+  if (!text) return value;
+  if (isLikelyUrlOrAssetPath(text)) return value;
+  if (!TEMPLATE_INSTRUCTION_NOISE_RE.test(text)) return value;
+  return pickInstructionNoiseFallback({
+    keyPath,
+    sectionKind: ctx.sectionKind || "",
+    siteId: ctx.siteId || "",
+  });
+};
 
 const rewriteBrandTextDeep = (value, key = "") => {
   if (Array.isArray(value)) {
@@ -1666,6 +1765,21 @@ const normalizeColorToken = (value) => {
   return "";
 };
 
+const normalizeCssColorToken = (value) => {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  if (/^rgba?\(([^)]+)\)$/i.test(raw)) {
+    const channels = raw
+      .replace(/^rgba?\(/i, "")
+      .replace(/\)$/i, "")
+      .split(",")
+      .map((entry) => String(entry || "").trim());
+    if (channels.length >= 3) return `${raw.toLowerCase().startsWith("rgba(") ? "rgba" : "rgb"}(${channels.join(",")})`;
+  }
+  if (/^#[0-9a-f]{3}$/i.test(raw) || /^#[0-9a-f]{6}$/i.test(raw)) return normalizeColorToken(raw);
+  return normalizeColorToken(raw);
+};
+
 const mergeThemeColors = (summary, styleFused) => {
   const existing = Array.isArray(summary?.themeColors) ? summary.themeColors : [];
   const fusedColors = Array.isArray(styleFused?.tokens?.colors)
@@ -1673,6 +1787,34 @@ const mergeThemeColors = (summary, styleFused) => {
     : [];
   const merged = dedupeUrls([...existing, ...fusedColors], 20);
   return merged;
+};
+
+const mergeTypographySignals = (summary, styleFused) => {
+  const existingFamilies = Array.isArray(summary?.fontFamilies)
+    ? summary.fontFamilies.map((entry) => normalizeToCommercialFreeFont(entry, { role: "body" })).filter(Boolean)
+    : [];
+  const fusedFamilies = Array.isArray(styleFused?.tokens?.typography)
+    ? styleFused.tokens.typography
+        .map((entry) => normalizeToCommercialFreeFont(entry?.value || entry, { role: "body" }))
+        .filter(Boolean)
+    : [];
+  const fontFamilies = dedupeTextValues([...existingFamilies, ...fusedFamilies], 8, {
+    allowSingleWord: true,
+  });
+  const headingFontFamily =
+    normalizeToCommercialFreeFont(summary?.headingFontFamily || "", { role: "heading" }) ||
+    fontFamilies[0] ||
+    "Montserrat";
+  const bodyFontFamily =
+    normalizeToCommercialFreeFont(summary?.bodyFontFamily || "", { role: "body" }) ||
+    fontFamilies[1] ||
+    fontFamilies[0] ||
+    "Manrope";
+  return {
+    fontFamilies,
+    headingFontFamily,
+    bodyFontFamily,
+  };
 };
 
 const runHybridCrawlerPipeline = async ({ site, ingestDir, maxPages, maxDepth, timeoutMs = 20000, preferLanguage = "en" }) => {
@@ -1795,6 +1937,12 @@ const parseBool = (value) => {
   return token === "1" || token === "true" || token === "yes" || token === "y";
 };
 
+const parseOptionalBool = (value) => {
+  if (value === undefined || value === null) return undefined;
+  if (typeof value === "string" && value.trim() === "") return undefined;
+  return parseBool(value);
+};
+
 const parsePositiveInt = (value, fallback) => {
   if (value === undefined || value === null || String(value).trim() === "") return fallback;
   const n = Math.floor(Number(value));
@@ -1840,6 +1988,7 @@ const normalizeSite = (raw, index) => {
     raw.disableScreenshotImages ?? raw.disable_screenshot_images ?? false
   );
   const crawlSite = parseBool(raw.crawlSite ?? raw.crawl_site ?? false);
+  const homeOnly = parseBool(raw.homeOnly ?? raw.home_only ?? false);
   const crawlMaxPages = parsePositiveInt(raw.crawlMaxPages ?? raw.crawl_max_pages, 0);
   const crawlMaxDepth = parseNonNegativeInt(raw.crawlMaxDepth ?? raw.crawl_max_depth, -1);
   const crawlCapturePages = parseNonNegativeInt(raw.crawlCapturePages ?? raw.crawl_capture_pages, -1);
@@ -1876,6 +2025,20 @@ const normalizeSite = (raw, index) => {
   const fidelityEnforcement = String(fidelityEnforcementRaw || "").trim().toLowerCase() === "fail" ? "fail" : "warn";
   const specialRules = raw?.specialRules && typeof raw.specialRules === "object" ? raw.specialRules : {};
   const featureToggles = raw?.featureToggles && typeof raw.featureToggles === "object" ? raw.featureToggles : {};
+  const siteStyleProfileRaw =
+    typeof raw.siteStyleProfile === "string"
+      ? raw.siteStyleProfile
+      : typeof raw.site_style_profile === "string"
+        ? raw.site_style_profile
+        : typeof specialRules.siteStyleProfile === "string"
+          ? specialRules.siteStyleProfile
+          : typeof specialRules.site_style_profile === "string"
+            ? specialRules.site_style_profile
+            : "";
+  const siteStyleProfile = String(siteStyleProfileRaw || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_");
 
   return {
     id: id || `site-${index + 1}`,
@@ -1887,6 +2050,7 @@ const normalizeSite = (raw, index) => {
     imageSourcePolicy,
     disableScreenshotImages,
     crawlSite,
+    homeOnly,
     crawlMaxPages,
     crawlMaxDepth,
     crawlCapturePages,
@@ -1900,6 +2064,7 @@ const normalizeSite = (raw, index) => {
     fidelityPageThreshold,
     requiredPagesPerSite,
     fidelityEnforcement,
+    siteStyleProfile,
     specialRules,
     featureToggles,
   };
@@ -1925,6 +2090,30 @@ const isSupportLikePath = (pathValue) => {
   return p.includes("/support") || p.includes("/help") || p.includes("/downloads") || p.includes("/docs") || p.includes("/contact");
 };
 
+const detectImageHeavySignals = ({ summary = {}, crawl = null } = {}) => {
+  const summaryImageCount = Array.isArray(summary?.images) ? summary.images.length : 0;
+  const crawlPages = Array.isArray(crawl?.pages) ? crawl.pages : [];
+  const imageCounts = crawlPages
+    .map((page) => (Array.isArray(page?.images) ? page.images.length : 0))
+    .filter((count) => Number.isFinite(count) && count >= 0);
+  const crawlPageCount = imageCounts.length;
+  const crawlImageAvg =
+    crawlPageCount > 0
+      ? imageCounts.reduce((acc, count) => acc + count, 0) / crawlPageCount
+      : 0;
+  const richPageCount = imageCounts.filter((count) => count >= 12).length;
+  const richPageRatio = crawlPageCount > 0 ? richPageCount / crawlPageCount : 0;
+  const isImageHeavy = summaryImageCount >= 60 || crawlImageAvg >= 14 || richPageRatio >= 0.35;
+  return {
+    summaryImageCount,
+    crawlPageCount,
+    crawlImageAvg: Number(crawlImageAvg.toFixed(2)),
+    richPageCount,
+    richPageRatio: Number(richPageRatio.toFixed(4)),
+    isImageHeavy,
+  };
+};
+
 const tokenizeSimilarityText = (value) =>
   String(value || "")
     .toLowerCase()
@@ -1941,6 +2130,7 @@ const buildSimilarityTokenSet = ({ site, summary, context }) => {
     summary?.title || "",
     ...(Array.isArray(summary?.h1) ? summary.h1 : []),
     ...(Array.isArray(summary?.h2) ? summary.h2 : []),
+    ...(Array.isArray(summary?.links) ? summary.links.slice(0, 24) : []),
     context?.currentPath || "",
   ];
   const tokens = new Set();
@@ -1966,6 +2156,141 @@ const rankGalleryBySimilarity = (gallery = [], tokenSet = new Set()) => {
   };
 };
 
+const SOURCE_IMAGE_SECTION_HINTS = Object.freeze({
+  hero: ["hero", "banner", "slider", "slide", "carousel", "masthead", "homepage", "desktop"],
+  story: ["about", "story", "lifestyle", "team", "studio", "craft"],
+  approach: ["feature", "technology", "innovation", "engineering", "capability"],
+  products: ["product", "products", "collection", "headphone", "gaming", "audiophile", "shop"],
+  socialproof: ["artist", "review", "testimonial", "press", "publication", "endorse"],
+  cta: ["contact", "newsletter", "signup", "subscribe", "lead", "cta"],
+  footer: ["footer", "brand", "logo", "community"],
+});
+
+const isLikelyRenderableImageUrl = (src) => {
+  const value = String(src || "").trim();
+  if (!value || !/^https?:\/\//i.test(value)) return false;
+  try {
+    const parsed = new URL(value);
+    const host = String(parsed.hostname || "").toLowerCase();
+    const pathname = String(parsed.pathname || "").toLowerCase();
+    const query = String(parsed.search || "").toLowerCase();
+    if (
+      /(?:^|\.)bat\.bing\.com$|(?:^|\.)google-analytics\.com$|(?:^|\.)doubleclick\.net$|(?:^|\.)googletagmanager\.com$|(?:^|\.)facebook\.com$/i.test(
+        host
+      )
+    ) {
+      return false;
+    }
+    if (/\.(png|jpe?g|webp|gif|avif|bmp)(?:$|[?#])/i.test(pathname)) return true;
+    if (
+      /(?:images\.unsplash\.com|cdn\.shopify\.com|res\.cloudinary\.com|images\.ctfassets\.net|imgix\.net|wixstatic\.com|cloudfront\.net)$/i.test(
+        host
+      )
+    ) {
+      return true;
+    }
+    if (/[?&](?:format|fm|auto)=/i.test(query)) return true;
+    return false;
+  } catch {
+    return false;
+  }
+};
+
+const extractEmbeddedImageDimensionsFromUrl = (src) => {
+  const value = String(src || "").trim().toLowerCase();
+  if (!value) return null;
+  const filename = value.split("/").pop() || "";
+  const patterns = [
+    /(?:^|[_-])(\d{2,5})x(\d{2,5})(?:[_-]|\.|$)/,
+    /[?&](?:w|width)=(\d{2,5})[^\n]*?[?&](?:h|height)=(\d{2,5})/,
+    /[?&](?:h|height)=(\d{2,5})[^\n]*?[?&](?:w|width)=(\d{2,5})/,
+  ];
+  for (const pattern of patterns) {
+    const match = filename.match(pattern) || value.match(pattern);
+    if (!match) continue;
+    const first = Number(match[1] || 0);
+    const second = Number(match[2] || 0);
+    if (first > 0 && second > 0) {
+      return { width: Math.max(first, second), height: Math.min(first, second) };
+    }
+  }
+  return null;
+};
+
+const isLikelyLowValueSourceImage = (src) => {
+  const value = String(src || "").trim();
+  if (!value) return true;
+  const lower = value.toLowerCase();
+  if (!/^https?:\/\//i.test(value)) return true;
+  if (!isLikelyRenderableImageUrl(value)) return true;
+  if (/\.(svg|ico)(?:$|[?#])/i.test(lower)) return true;
+  if (/(?:^|[_\-/])(logo|icon|sprite|favicon|badge|placeholder|blank)(?:[_\-/]|$)/i.test(lower)) return true;
+  if (/(?:^|[_\-/])(site[_-]?default|default[_-]?site|fallback|sample|demo)(?:[_\-/]|$)/i.test(lower)) return true;
+  if (/(?:^|[_\-/])(megamenu|mega-menu|mob[_-]?menu|submenu|menuitem|menu-item)(?:[_\-/\.]|$)/i.test(lower)) return true;
+  if (/(?:^|[_\-/])(preloader|loader|spinner|tracking|pixel)(?:[_\-/\.]|$)/i.test(lower)) return true;
+  if (/(?:^|[_\-/])id-[a-z0-9-]{2,}(?:[_\-/\.]|$)/i.test(lower) && /\.png(?:$|[?#])/i.test(lower)) return true;
+  if (/(?:^|[_\-/])(press|badge|flag)(?:[_\-/]|$)/i.test(lower) && /(copy|small|mini|thumb)/i.test(lower)) return true;
+  if (/\/menu(?:\/|$)/i.test(lower)) return true;
+  if (/[?&](?:w|width|h|height)=(?:16|20|24|28|32|40|48|56|64)\b/i.test(lower)) return true;
+  if (/(?:-|_)(?:16|20|24|28|32|40|48|56|64)x(?:16|20|24|28|32|40|48|56|64)(?:-|_|\.|$)/i.test(lower)) return true;
+  const dims = extractEmbeddedImageDimensionsFromUrl(lower);
+  if (dims?.width && dims?.height) {
+    const shortEdge = Math.min(dims.width, dims.height);
+    const aspect = dims.width / Math.max(1, dims.height);
+    if (shortEdge <= 120 && aspect >= 3.8) return true;
+    if (shortEdge <= 80 && aspect >= 2.2) return true;
+  }
+  return false;
+};
+
+const isLikelyDecorativeHeroImageUrl = (src) => {
+  const value = String(src || "").trim();
+  if (!value) return true;
+  const lower = value.toLowerCase();
+  if (!/^https?:\/\//i.test(value)) return true;
+  if (!isLikelyRenderableImageUrl(value)) return true;
+  if (/\.(svg|ico)(?:$|[?#])/i.test(lower)) return true;
+  if (/(?:^|[_\-/])(logo|icon|sprite|favicon|badge|placeholder|blank|watermark)(?:[_\-/]|$)/i.test(lower)) return true;
+  if (/(?:megamenu|mega-menu|submenu|menuitem|menu-item|mob[_-]?menu)/i.test(lower)) return true;
+  if (/[_\-/]mob[_-]?menu(?:[_\-/\.]|$)/i.test(lower)) return true;
+  if (/(?:site[_-]?default|default[_-]?site|overlay|mask|gradient|texture|pattern|sparkle|flare|noise|skeleton)/i.test(lower)) {
+    return true;
+  }
+  if (/(?:_|-)p\.(?:png|jpe?g|webp|gif|avif)(?:$|[?#])/.test(lower)) return true;
+  if (/\.png(?:$|[?#])/.test(lower) && /(overlay|mask|menu|logo|banner[_-]?layer|sprite)/i.test(lower)) return true;
+  if (/(?:^|[_\-/])(thumb|thumbnail|tile|swatch|colorway|chip)(?:[_\-/]|$)/i.test(lower)) return true;
+  if (/[?&](?:w|width|h|height)=(?:16|20|24|28|32|40|48|56|64|96|120)\b/i.test(lower)) return true;
+  return false;
+};
+
+const rankSourceImagesBySection = ({ images = [], tokenSet = new Set(), sectionKey = "", isHomeContext = false } = {}) => {
+  const sectionHints = SOURCE_IMAGE_SECTION_HINTS[String(sectionKey || "").trim()] || [];
+  const ranked = [];
+  for (const src of Array.isArray(images) ? images : []) {
+    const value = String(src || "").trim();
+    if (!/^https?:\/\//i.test(value)) continue;
+    if (isLikelyLowValueSourceImage(value)) continue;
+    const srcTokens = tokenizeSimilarityText(value);
+    let score = srcTokens.reduce((acc, token) => acc + (tokenSet.has(token) ? 1 : 0), 0);
+    for (const hint of sectionHints) {
+      if (!hint) continue;
+      if (value.toLowerCase().includes(String(hint).toLowerCase())) score += 3;
+    }
+    if (isHomeContext && String(sectionKey || "") === "hero" && /(hero|banner|slider|slide|carousel|home)/i.test(value)) {
+      score += 4;
+    }
+    if (String(sectionKey || "") === "hero" && /(megamenu|mega-menu|mob[_-]?menu|submenu|menuitem|menu-item)/i.test(value)) {
+      score -= 12;
+    }
+    ranked.push({ src: value, score });
+  }
+  ranked.sort((a, b) => b.score - a.score);
+  return {
+    matched: ranked.filter((row) => row.score > 0).map((row) => row.src),
+    all: ranked.map((row) => row.src),
+  };
+};
+
 const applySiteSpecialRulesToPages = ({ site, pages = [], crawl = null }) => {
   if (!Array.isArray(pages) || !pages.length) {
     return {
@@ -1975,18 +2300,29 @@ const applySiteSpecialRulesToPages = ({ site, pages = [], crawl = null }) => {
     };
   }
 
+  const specialRules = site?.specialRules && typeof site.specialRules === "object" ? site.specialRules : {};
+  const keepRepresentativeTemplatePages = parseBool(
+    specialRules.keepRepresentativeTemplatePages ??
+      specialRules.keep_representative_template_pages ??
+      specialRules.keepRepresentativeTemplatesOnly ??
+      specialRules.keep_representative_templates_only ??
+      false
+  );
+
   const notes = [
-    "Global rule: e-commerce routes are display-only and keep one representative product template page.",
+    `Global rule: e-commerce routes are display-only${keepRepresentativeTemplatePages ? " and keep one representative product template page." : "."}`,
     "Global rule: blog/technology/article routes use markdown-friendly content format.",
     "Global rule: support/help routes are content-only; download/cart/checkout flows are excluded.",
     "Global rule: extraction-failed pages are omitted from templates and recorded in extraction_failures.",
-    "Global rule: repeated page structures (article/blog/product) keep one representative template page.",
+    keepRepresentativeTemplatePages
+      ? "Global rule: repeated page structures (article/blog/product) keep one representative template page."
+      : "Global rule: repeated page structures are retained to maximize route coverage and link integrity.",
   ];
 
   const failed = [];
   const crawlErrors = Array.isArray(crawl?.errors) ? crawl.errors : [];
   for (const err of crawlErrors) {
-    const pathValue = routePathFromUrl(err?.url || "");
+    const pathValue = routePathFromUrl(err?.url || "") || normalizeTemplatePagePath(err?.path || "/");
     failed.push({
       path: pathValue,
       reason: String(err?.error || "crawl_failed"),
@@ -2008,6 +2344,9 @@ const applySiteSpecialRulesToPages = ({ site, pages = [], crawl = null }) => {
     if (path === "/") {
       next.special_rules.navMegaMenu = true;
       next.special_rules.navMenuPresentation = "image_text_dropdown";
+      next.special_rules.lockHeroMedia = true;
+      next.special_rules.lockNavFooterStyle = true;
+      next.special_rules.lockPaletteToSource = true;
     }
 
     const pageType = classifyTemplatePageType(path, String(page?.name || ""));
@@ -2036,7 +2375,11 @@ const applySiteSpecialRulesToPages = ({ site, pages = [], crawl = null }) => {
   const filteredByFlow = enriched.filter((page) => {
     const path = normalizeTemplatePagePath(page?.path || "/");
     const token = path.toLowerCase();
-    if (/(^|\/)cart(\/|$)|(^|\/)checkout(\/|$)|(^|\/)account(\/|$)|(^|\/)orders?(\/|$)/.test(token)) {
+    if (
+      /(^|\/)cart(\/|$)|(^|\/)checkout(\/|$)|(^|\/)account(\/|$)|(^|\/)orders?(\/|$)|(^|\/)customer_authentication(\/|$)/.test(
+        token
+      )
+    ) {
       failed.push({
         path,
         reason: "excluded_flow_cart_checkout_account",
@@ -2056,6 +2399,10 @@ const applySiteSpecialRulesToPages = ({ site, pages = [], crawl = null }) => {
     }
     return true;
   });
+
+  if (!keepRepresentativeTemplatePages) {
+    return { pages: filteredByFlow, failed, notes };
+  }
 
   const dedupeByTemplateType = new Set(["products", "blog"]);
   const seenType = new Set();
@@ -2092,6 +2439,46 @@ const loadManifest = async (manifestPath) => {
   return rows.map((row, index) => normalizeSite(row, index)).filter((item) => item.url || item.prompt);
 };
 
+const normalizeSiteScopedRecordMap = (value = null) => {
+  if (!value || typeof value !== "object") return new Map();
+  const rows = [];
+  if (Array.isArray(value)) {
+    rows.push(...value);
+  } else if (Array.isArray(value?.sites)) {
+    rows.push(...value.sites);
+  } else if (value?.sites && typeof value.sites === "object") {
+    for (const [siteId, payload] of Object.entries(value.sites)) {
+      if (!payload || typeof payload !== "object") continue;
+      rows.push({ id: siteId, ...payload });
+    }
+  } else {
+    for (const [siteId, payload] of Object.entries(value)) {
+      if (!payload || typeof payload !== "object") continue;
+      rows.push({ id: siteId, ...payload });
+    }
+  }
+  const byId = new Map();
+  for (const row of rows) {
+    const rawId = String(row?.id || row?.siteId || row?.site_id || "").trim();
+    if (!rawId) continue;
+    byId.set(slug(rawId), row);
+  }
+  return byId;
+};
+
+const loadSiteScopedWorkflowFile = async (filePath) => {
+  const normalized = String(filePath || "").trim();
+  if (!normalized) return new Map();
+  try {
+    const raw = await fs.readFile(normalized, "utf8");
+    const parsed = JSON.parse(raw);
+    return normalizeSiteScopedRecordMap(parsed);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(`Failed to load workflow file ${normalized}: ${message}`);
+  }
+};
+
 const stripHtml = (value) =>
   String(value || "")
     .replace(/<script[\s\S]*?<\/script>/gi, " ")
@@ -2102,10 +2489,23 @@ const stripHtml = (value) =>
 
 const extractFirstMatches = (html, regex, limit = 8) => {
   const out = [];
+  const seen = new Set();
   let match;
   while ((match = regex.exec(html)) && out.length < limit) {
-    const value = stripHtml(match[1] || "");
-    if (value) out.push(value);
+    const value = stripHtml(match[1] || "").replace(/\s+/g, " ").trim();
+    if (!value) continue;
+    if (value.length > 180) continue;
+    if (
+      /(?:@keyframes|function\s*\(|=>|var\s+\w+|const\s+\w+|display\s*:|transform\s*:|document\.|window\.)/i.test(
+        value
+      )
+    ) {
+      continue;
+    }
+    const key = value.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(value);
   }
   return out;
 };
@@ -2146,9 +2546,28 @@ const dedupeUrls = (items, limit = 24) => {
 
 const extractImageUrls = (html, pageUrl) => {
   const candidates = [];
+  const isLikelyImageAssetUrl = (value) => {
+    const token = String(value || "").trim();
+    if (!token) return false;
+    if (!/^https?:\/\//i.test(token)) return false;
+    if (/fonts\.googleapis\.com|fonts\.gstatic\.com|\.css(?:$|[?#])/i.test(token)) return false;
+    try {
+      const pathname = new URL(token).pathname.toLowerCase();
+      return /\.(?:png|jpe?g|webp|gif|avif)(?:$|[?#])/i.test(pathname);
+    } catch {
+      return /\.(?:png|jpe?g|webp|gif|avif)(?:$|[?#])/i.test(token);
+    }
+  };
   const collect = (value) => {
-    const next = toAbsoluteUrl(value, pageUrl);
+    const normalizedValue = String(value || "")
+      .replace(/\\u002f/gi, "/")
+      .replace(/\\\//g, "/")
+      .trim();
+    if (!normalizedValue) return;
+    const withProtocol = normalizedValue.startsWith("cdn.") ? `https://${normalizedValue}` : normalizedValue;
+    const next = toAbsoluteUrl(withProtocol, pageUrl);
     if (!next) return;
+    if (!isLikelyImageAssetUrl(next)) return;
     candidates.push(next);
   };
 
@@ -2177,6 +2596,18 @@ const extractImageUrls = (html, pageUrl) => {
     collect(best);
   }
 
+  const cssUrlRegex = /url\((['"]?)([^'")]+)\1\)/gi;
+  while ((match = cssUrlRegex.exec(html))) collect(match[2] || "");
+
+  const escapedAbsoluteRegex = /(https?:\\\/\\\/[^"'\\s<>]+?\.(?:png|jpe?g|webp|gif|avif)(?:\\?[^"'\\s<>]*)?)/gi;
+  while ((match = escapedAbsoluteRegex.exec(html))) collect(match[1] || "");
+
+  const absoluteRegex = /(https?:\/\/[^"'\\s<>]+?\.(?:png|jpe?g|webp|gif|avif)(?:\?[^"'\\s<>]*)?)/gi;
+  while ((match = absoluteRegex.exec(html))) collect(match[1] || "");
+
+  const bareCdnRegex = /(cdn\.[a-z0-9.\-]+\/[^"'\\s<>]+?\.(?:png|jpe?g|webp|gif|avif)(?:\?[^"'\\s<>]*)?)/gi;
+  while ((match = bareCdnRegex.exec(html))) collect(match[1] || "");
+
   return dedupeUrls(candidates, 40);
 };
 
@@ -2186,6 +2617,17 @@ const dedupeLinkItems = (items, limit = 24) => {
   for (const item of Array.isArray(items) ? items : []) {
     const label = String(item?.label || "").replace(/\s+/g, " ").trim();
     const href = String(item?.href || "").trim();
+    let normalizedHref = href.toLowerCase();
+    try {
+      normalizedHref = decodeURIComponent(href).toLowerCase();
+    } catch {}
+    const hasTemplateToken =
+      /(?:\{\{|\}\}|\{%-?|-%\}|\[\[|\]\]|<%|%>)/.test(label) ||
+      /(?:\{\{|\}\}|\{%-?|-%\}|\[\[|\]\]|<%|%>)/.test(normalizedHref);
+    const hasPlaceholderToken =
+      /\b(?:placeholder|lorem ipsum|your link|example\.com)\b/i.test(label) ||
+      /(?:\bundefined\b|\bnull\b|%7b|%7d|{{{|}}}|\{\s*title\s*\}|\{\s*link\s*\})/i.test(normalizedHref);
+    if (hasTemplateToken || hasPlaceholderToken) continue;
     if (!label || !href) continue;
     const key = `${label.toLowerCase()}::${href.toLowerCase()}`;
     if (seen.has(key)) continue;
@@ -2194,6 +2636,151 @@ const dedupeLinkItems = (items, limit = 24) => {
     if (out.length >= limit) break;
   }
   return out;
+};
+
+const pruneSemanticLinks = (items, { keepRoot = 1, limit = 24 } = {}) => {
+  const rows = dedupeLinkItems(items, Math.max(limit * 3, 24));
+  if (!rows.length) return [];
+  const normalized = rows
+    .map((item) => {
+      const href = routePathFromUrl(item?.href || "");
+      if (!href) return null;
+      return {
+        label: String(item?.label || "").trim(),
+        href,
+      };
+    })
+    .filter(Boolean);
+  if (!normalized.length) return [];
+
+  const nonRoot = normalized.filter((item) => item.href !== "/");
+  const root = normalized.filter((item) => item.href === "/").slice(0, Math.max(0, Math.floor(Number(keepRoot) || 0)));
+  const ordered = [...nonRoot, ...root];
+  return dedupeLinkItems(ordered, limit);
+};
+
+const sanitizeNavLinks = (links = [], maxLinks = 8) => {
+  const out = [];
+  const seen = new Set();
+  for (const raw of Array.isArray(links) ? links : []) {
+    const label = String(raw?.label || "").replace(/\s+/g, " ").trim();
+    const href = normalizeTemplatePagePath(routePathFromUrl(raw?.href || ""));
+    const rawHrefToken = String(raw?.href || "").trim();
+    const hasTemplateToken =
+      /(?:\{\{|\}\}|\{%-?|-%\}|\[\[|\]\]|<%|%>)/.test(label) ||
+      /(?:\{\{|\}\}|\{%-?|-%\}|\[\[|\]\]|<%|%>)/.test(rawHrefToken);
+    const decodedRawHref = (() => {
+      try {
+        return decodeURIComponent(rawHrefToken).toLowerCase();
+      } catch {
+        return rawHrefToken.toLowerCase();
+      }
+    })();
+    const hasPlaceholderToken =
+      /\b(?:placeholder|lorem ipsum|your link|example\.com)\b/i.test(label) ||
+      /(?:\bundefined\b|\bnull\b|%7b|%7d|{{{|}}}|\{\s*title\s*\}|\{\s*link\s*\})/i.test(decodedRawHref);
+    if (hasTemplateToken || hasPlaceholderToken) continue;
+    if (!label || !href) continue;
+    const key = `${label.toLowerCase()}::${href.toLowerCase()}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const childRows = dedupeLinkItems(
+      (Array.isArray(raw?.children) ? raw.children : [])
+        .map((item) => ({
+          label: String(item?.label || "").replace(/\s+/g, " ").trim(),
+          href: normalizeTemplatePagePath(routePathFromUrl(item?.href || "")),
+        }))
+        .filter((item) => item.label && item.href && item.href !== "/"),
+      6
+    );
+    out.push({
+      label,
+      href,
+      variant: "link",
+      ...(childRows.length ? { children: childRows } : {}),
+    });
+    if (out.length >= maxLinks) break;
+  }
+  return out;
+};
+
+const navRootShare = (links = []) => {
+  const rows = sanitizeNavLinks(links, 24);
+  if (!rows.length) return { rootCount: 0, total: 0, share: 0, uniqueNonRoot: 0 };
+  const rootCount = rows.filter((item) => item.href === "/").length;
+  const uniqueNonRoot = new Set(rows.filter((item) => item.href !== "/").map((item) => item.href)).size;
+  return {
+    rootCount,
+    total: rows.length,
+    share: Number((rootCount / rows.length).toFixed(4)),
+    uniqueNonRoot,
+  };
+};
+
+const normalizeNavLinksForSemanticCoverage = ({
+  existingLinks = [],
+  fallbackLinks = [],
+  maxLinks = 8,
+}) => {
+  const existing = sanitizeNavLinks(existingLinks, maxLinks);
+  const coverage = navRootShare(existing);
+  const existingHealthy = coverage.uniqueNonRoot >= 3 && coverage.share <= 0.5;
+  if (existingHealthy) return existing;
+
+  const fallback = sanitizeNavLinks(fallbackLinks, maxLinks);
+  const merged = [];
+  const seenHref = new Set();
+  const pushEntry = (entry) => {
+    if (!entry || !entry.href) return;
+    const key = `${entry.label.toLowerCase()}::${entry.href.toLowerCase()}`;
+    if (seenHref.has(key)) return;
+    if (entry.href === "/" && merged.some((item) => item.href === "/")) return;
+    seenHref.add(key);
+    merged.push(entry);
+  };
+
+  for (const entry of fallback) pushEntry(entry);
+  for (const entry of existing.filter((item) => item.href !== "/")) pushEntry(entry);
+  for (const entry of existing.filter((item) => item.href === "/")) pushEntry(entry);
+
+  const trimmed = merged.slice(0, maxLinks);
+  const normalized = sanitizeNavLinks(trimmed, maxLinks);
+  return normalized.length ? normalized : existing;
+};
+
+const flattenFooterLinks = (columns = []) => {
+  const rows = [];
+  for (const column of Array.isArray(columns) ? columns : []) {
+    const links = Array.isArray(column?.links) ? column.links : [];
+    for (const item of links) {
+      const label = String(item?.label || "").replace(/\s+/g, " ").trim();
+      const href = normalizeTemplatePagePath(routePathFromUrl(item?.href || ""));
+      if (!label || !href) continue;
+      rows.push({ label, href });
+    }
+  }
+  return dedupeLinkItems(rows, 48);
+};
+
+const normalizeFooterColumnsForSemanticCoverage = ({
+  existingColumns = [],
+  fallbackColumns = [],
+  maxLinksPerColumn = 8,
+}) => {
+  const existingRows = flattenFooterLinks(existingColumns);
+  const rootCount = existingRows.filter((item) => item.href === "/").length;
+  const uniqueNonRoot = new Set(existingRows.filter((item) => item.href !== "/").map((item) => item.href)).size;
+  const rootShare = existingRows.length > 0 ? rootCount / existingRows.length : 0;
+  const useFallback = existingRows.length === 0 || uniqueNonRoot < 3 || rootShare > 0.35;
+  const baseColumns = useFallback && Array.isArray(fallbackColumns) && fallbackColumns.length ? fallbackColumns : existingColumns;
+
+  return (Array.isArray(baseColumns) ? baseColumns : [])
+    .map((column) => ({
+      title: String(column?.title || "").replace(/\s+/g, " ").trim() || "Links",
+      links: pruneSemanticLinks(Array.isArray(column?.links) ? column.links : [], { keepRoot: 1, limit: maxLinksPerColumn }),
+    }))
+    .filter((column) => column.links.length > 0)
+    .slice(0, 4);
 };
 
 const extractAnchorPairs = (html, pageUrl, limit = 80) => {
@@ -2220,13 +2807,15 @@ const extractFooterLinks = (html, pageUrl, rootOrigin) => {
     .map((pair) => {
       const href = normalizeInternalPageUrl(pair.href, rootOrigin, pageUrl);
       if (!href) return null;
+      const routePath = routePathFromUrl(href);
+      if (!routePath) return null;
       return {
         label: pair.label,
-        href: routePathFromUrl(href),
+        href: routePath,
       };
     })
     .filter(Boolean);
-  return dedupeLinkItems(normalized, 24);
+  return pruneSemanticLinks(normalized, { keepRoot: 1, limit: 24 });
 };
 
 const detectHeaderMenuDepth = (html) => {
@@ -2236,8 +2825,157 @@ const detectHeaderMenuDepth = (html) => {
   const navHtml = navMatch?.[0] || top.slice(0, 80000);
   const nestedList = /<ul[\s\S]*?<ul/i.test(navHtml) || /<li[\s\S]*?<ul/i.test(navHtml);
   const hasAriaPopup = /aria-haspopup=["'](?:true|menu)["']/i.test(navHtml) || /role=["']menu["']/i.test(navHtml);
-  if (nestedList || hasAriaPopup) return 2;
+  const hasMegaMenuSignals =
+    /mega[-_ ]?menu|site-nav__dropdown|submenu|has-submenu|menu-drawer|data-mega-menu|data-nav-submenu|dropdown-menu/i.test(
+      navHtml
+    ) ||
+    /aria-expanded=["'](?:true|false)["']/i.test(navHtml);
+  if (nestedList || hasAriaPopup || hasMegaMenuSignals) return 2;
   return 1;
+};
+
+const extractClassScopedTextSignals = ({ markup = "", classToken = "", limit = 8 } = {}) => {
+  const html = String(markup || "");
+  const token = String(classToken || "").trim();
+  if (!html || !token) return { titles: [], bodies: [] };
+  const escaped = token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const classRegex = new RegExp(`class=["'][^"']*${escaped}[^"']*["']`, "gi");
+  const chunks = [];
+  const seenRanges = new Set();
+  const maxChunks = Math.max(2, limit * 2);
+  const windowRadiusBefore = 600;
+  const windowRadiusAfter = 28000;
+  let match;
+  while ((match = classRegex.exec(html)) && chunks.length < maxChunks) {
+    const idx = Number(match.index || 0);
+    const start = Math.max(0, idx - windowRadiusBefore);
+    const end = Math.min(html.length, idx + windowRadiusAfter);
+    const key = `${start}:${end}`;
+    if (seenRanges.has(key)) continue;
+    seenRanges.add(key);
+    chunks.push(html.slice(start, end));
+  }
+  if (!chunks.length) return { titles: [], bodies: [] };
+
+  const toSignalText = (value) =>
+    String(stripHtml(value || ""))
+      .replace(/\s+/g, " ")
+      .trim();
+  const titleNoise = /\b(shop now|view category|learn more|get started|contact|login|form builder)\b/i;
+  const titles = [];
+  const bodies = [];
+  for (const chunk of chunks) {
+    const headingCandidates = extractFirstMatches(chunk, /<h[1-4][^>]*>([\s\S]*?)<\/h[1-4]>/gi, 10);
+    for (const item of headingCandidates) {
+      const text = toSignalText(item);
+      if (!text || text.length < 6 || text.length > 140 || titleNoise.test(text)) continue;
+      titles.push(text);
+    }
+
+    const paragraphRegex = /<p[^>]*>([\s\S]*?)<\/p>/gi;
+    let paragraphMatch;
+    while ((paragraphMatch = paragraphRegex.exec(chunk))) {
+      const htmlLine = String(paragraphMatch[0] || "");
+      const text = toSignalText(paragraphMatch[1] || "");
+      if (!text) continue;
+      const sizeHits = [...htmlLine.matchAll(/font-size\s*:\s*(\d+(?:\.\d+)?)px/gi)]
+        .map((entry) => Number(entry[1]))
+        .filter((px) => Number.isFinite(px) && px > 0);
+      const maxPx = sizeHits.length ? Math.max(...sizeHits) : 0;
+      const headingLike =
+        maxPx >= 22 || /data-fontfamily=["'][^"']*verbatim/i.test(htmlLine) || /font-family\s*:\s*['"]?verbatim/i.test(htmlLine);
+      if (headingLike) {
+        if (text.length >= 6 && text.length <= 140 && !titleNoise.test(text)) {
+          titles.push(text);
+        }
+      } else if (text.length >= 20 && text.length <= 420) {
+        bodies.push(text);
+      }
+    }
+  }
+  return {
+    titles: dedupeTextValues(titles, Math.max(2, limit)),
+    bodies: dedupeTextValues(bodies, Math.max(3, limit * 2)),
+  };
+};
+
+const detectSourceSectionHints = (html) => {
+  const markup = String(html || "");
+  if (!markup) {
+    return {
+      shgBoxCount: 0,
+      shgVerticalAlignWrapperCount: 0,
+      shgSliderCount: 0,
+      megaMenuSignals: false,
+      darkFooterSignals: false,
+      hasShgBox: false,
+      hasShgVerticalAlignWrapper: false,
+      shgBoxTitles: [],
+      shgBoxBodies: [],
+      shgVerticalTitles: [],
+      shgVerticalBodies: [],
+      sectionSignals: [],
+    };
+  }
+  const sectionSignals = [];
+  const sectionRegex = /<(section|div|main)\b([^>]*)>/gi;
+  let sectionMatch;
+  while ((sectionMatch = sectionRegex.exec(markup)) && sectionSignals.length < 48) {
+    const attrs = String(sectionMatch[2] || "");
+    const idMatch = attrs.match(/\bid=["']([^"']+)["']/i);
+    const classMatch = attrs.match(/\bclass=["']([^"']+)["']/i);
+    const id = String(idMatch?.[1] || "").trim();
+    const className = String(classMatch?.[1] || "").trim();
+    const joined = `${id} ${className}`.trim();
+    if (!joined) continue;
+    const kind = normalizeSectionKind(joined) || inferSectionKindFromTokens(joined);
+    if (!kind) continue;
+    sectionSignals.push({
+      index: sectionSignals.length,
+      id,
+      className: className.slice(0, 200),
+      kind,
+    });
+  }
+  const shgBoxCount = (markup.match(/\bshg-box\b/gi) || []).length;
+  const shgVerticalAlignWrapperCount = (markup.match(/\bshg-box-vertical-align-wrapper\b/gi) || []).length;
+  const shgSliderCount = (markup.match(/\b(?:swiper|slick-slider|carousel|slider)\b/gi) || []).length;
+  const megaMenuSignals = /mega[-_ ]?menu|site-nav__dropdown|submenu|has-submenu|menu-drawer|data-mega-menu|data-nav-submenu/i.test(
+    markup.slice(0, 220000)
+  );
+  const footerChunk = (() => {
+    const footerMatch = markup.match(/<footer[\s\S]*?<\/footer>/i);
+    if (footerMatch?.[0]) return footerMatch[0];
+    return markup.slice(Math.max(0, markup.length - 220000));
+  })();
+  const darkFooterSignals =
+    /background(?:-color)?\s*:\s*(?:#0(?:0|1|2|3|4|5|6|7|8|9|a|b|c|d|e|f){2,6}|rgb\(\s*(?:0|1|2|3|4|5|6|7|8|9|1\d|2\d|3\d)\s*,\s*(?:0|1|2|3|4|5|6|7|8|9|1\d|2\d|3\d)\s*,\s*(?:0|1|2|3|4|5|6|7|8|9|1\d|2\d|3\d)\s*\))/i.test(
+      footerChunk
+    ) || /footer--dark|bg-black|text-white/i.test(footerChunk);
+  const shgBoxTexts = extractClassScopedTextSignals({
+    markup,
+    classToken: "shg-box-content",
+    limit: 8,
+  });
+  const shgVerticalTexts = extractClassScopedTextSignals({
+    markup,
+    classToken: "shg-box-vertical-align-wrapper",
+    limit: 8,
+  });
+  return {
+    shgBoxCount,
+    shgVerticalAlignWrapperCount,
+    shgSliderCount,
+    megaMenuSignals,
+    darkFooterSignals,
+    hasShgBox: shgBoxCount > 0,
+    hasShgVerticalAlignWrapper: shgVerticalAlignWrapperCount > 0,
+    shgBoxTitles: shgBoxTexts.titles,
+    shgBoxBodies: shgBoxTexts.bodies,
+    shgVerticalTitles: shgVerticalTexts.titles,
+    shgVerticalBodies: shgVerticalTexts.bodies,
+    sectionSignals,
+  };
 };
 
 const normalizeHeroPresentation = (value) => {
@@ -2289,7 +3027,7 @@ const isLikelyDecorativeImage = (urlValue) => {
   const value = String(urlValue || "").toLowerCase();
   if (!value) return true;
   if (/\.(svg|ico)(?:$|\?)/i.test(value)) return true;
-  if (/(logo|favicon|icon|sprite|avatar|placeholder)/i.test(value)) return true;
+  if (/(logo|favicon|icon|sprite|avatar|placeholder|preloader|flag|spinner|badge)/i.test(value)) return true;
   return false;
 };
 
@@ -2323,7 +3061,7 @@ const extractCarouselCandidatesFromHtml = (html, pageUrl) => {
 const detectHeroCarousel = (html, pageUrl) => {
   const markup = String(html || "");
   if (!markup) {
-    return { enabled: false, signalCount: 0, signals: [], images: [] };
+    return { enabled: false, signalCount: 0, signals: [], images: [], slides: [] };
   }
 
   const topChunk = markup.slice(0, 150000);
@@ -2343,31 +3081,209 @@ const detectHeroCarousel = (html, pageUrl) => {
   const hasSlideToken = /\b(slide|slides|carousel|slider)\b/i.test(topChunk);
   if (hasHeroContext && hasSlideToken) signals.push("hero-context");
 
-  const images = extractCarouselCandidatesFromHtml(topChunk, pageUrl);
-  if (images.length >= 2) signals.push("multi-image");
+  const extractSlideRowsFromHtml = (rawMarkup, baseUrl) => {
+    const input = String(rawMarkup || "");
+    if (!input) return [];
+    const origin = (() => {
+      try {
+        return new URL(baseUrl).origin;
+      } catch {
+        return "";
+      }
+    })();
+    const slideChunks = [];
+    const pushSlideChunks = (regex) => {
+      let match;
+      while ((match = regex.exec(input)) && slideChunks.length < 20) {
+        const chunk = String(match[0] || "");
+        if (chunk) slideChunks.push(chunk);
+      }
+    };
+    pushSlideChunks(
+      /<(?:div|section|article|li)[^>]*class=["'][^"']*(?:swiper-slide|slick-slide|splide__slide|keen-slider__slide|carousel-item|slide-item|shg-slick-slide|shg-slider-item)[^"']*["'][^>]*>[\s\S]{0,120000}?<\/(?:div|section|article|li)>/gi
+    );
+    if (!slideChunks.length) {
+      pushSlideChunks(
+        /<(?:div|section|article|li)[^>]*class=["'][^"']*(?:carousel|slider)[^"']*["'][^>]*>[\s\S]{0,120000}?<\/(?:div|section|article|li)>/gi
+      );
+    }
+    if (!slideChunks.length) {
+      const parts = input.split(/<div[^>]*class=["'][^"']*swiper-slide[^"']*["'][^>]*>/gi);
+      for (let i = 1; i < parts.length && slideChunks.length < 20; i += 1) {
+        const chunk = String(parts[i] || "").slice(0, 120000);
+        if (chunk) slideChunks.push(chunk);
+      }
+    }
+    if (!slideChunks.length) return [];
+    const slides = [];
+    const seen = new Set();
+    const pickAnchor = (chunk) => {
+      const ctaRegex = /<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+      let match;
+      const rows = [];
+      while ((match = ctaRegex.exec(chunk)) && rows.length < 12) {
+        const label = normalizeTextLine(stripHtml(match[2] || ""));
+        const hrefRaw = String(match[1] || "").trim();
+        if (!label || label.length > 72) continue;
+        if (/^(login|sign in|register|account|menu)$/i.test(label)) continue;
+        const hrefAbs = origin ? normalizeInternalPageUrl(hrefRaw, origin, baseUrl) : hrefRaw;
+        const hrefPath = normalizeTemplatePagePath(routePathFromUrl(hrefAbs || ""));
+        rows.push({
+          label,
+          href: hrefPath || hrefRaw || "#",
+          variant: /shop|buy|get|order|contact|demo|explore/i.test(label) ? "primary" : "link",
+        });
+      }
+      return rows[0] || null;
+    };
+    for (const rawChunk of slideChunks) {
+      if (slides.length >= 10) break;
+      const chunk = String(rawChunk || "").slice(0, 90000);
+      if (!chunk) continue;
+      const imageCandidates = dedupeUrls(
+        extractImageUrls(chunk, baseUrl).filter((urlValue) => !isLikelyDecorativeImage(urlValue) && !isLikelyLowValueSourceImage(urlValue)),
+        10
+      );
+      const src = String(imageCandidates[0] || "").trim();
+      if (!src) continue;
+      const headingRows = extractFirstMatches(chunk, /<h[1-4][^>]*>([\s\S]*?)<\/h[1-4]>/gi, 8);
+      const richRows = [];
+      const richRegex = /<(?:p|span|div)[^>]*>([\s\S]*?)<\/(?:p|span|div)>/gi;
+      let richMatch;
+      while ((richMatch = richRegex.exec(chunk)) && richRows.length < 24) {
+        const whole = String(richMatch[0] || "");
+        const text = normalizeTextLine(stripHtml(richMatch[1] || ""));
+        if (!text || text.length < 4 || text.length > 300) continue;
+        const pxRows = [...whole.matchAll(/font-size\s*:\s*(\d+(?:\.\d+)?)px/gi)]
+          .map((row) => Number(row[1]))
+          .filter((num) => Number.isFinite(num) && num > 0);
+        const maxPx = pxRows.length ? Math.max(...pxRows) : 0;
+        const looksTitleClass = /\b(?:title|heading|headline|hero-title)\b/i.test(whole);
+        const looksBodyClass = /\b(?:subtitle|desc|description|caption|content|hero-text)\b/i.test(whole);
+        richRows.push({
+          text,
+          score:
+            (maxPx >= 26 ? 30 : maxPx >= 20 ? 16 : 8) +
+            (/data-fontfamily=["'][^"']*verbatim/i.test(whole) ? 18 : 0) +
+            (/data-fontfamily=["'][^"']*visby/i.test(whole) ? 10 : 0) +
+            (looksTitleClass ? 12 : 0) +
+            (looksBodyClass ? 4 : 0) +
+            (text.length <= 90 ? 6 : 0),
+        });
+      }
+      const titleNoise = /\b(shop now|view category|get started|login|form builder|slide \d+|support|products?)\b/i;
+      const titleFromHeading = headingRows.find((row) => {
+        const text = normalizeTextLine(row);
+        return text && text.length >= 6 && text.length <= 110 && !titleNoise.test(text);
+      });
+      const titleFromRich = richRows
+        .filter((row) => row.text.length >= 6 && row.text.length <= 110 && !titleNoise.test(row.text))
+        .sort((a, b) => b.score - a.score)
+        .map((row) => row.text)[0];
+      const title = titleFromHeading || titleFromRich || "";
+      const subtitle = richRows
+        .map((row) => row.text)
+        .find((text) => text !== title && text.length >= 22 && text.length <= 260 && !titleNoise.test(text));
+      const cta = pickAnchor(chunk);
+      const key = `${src}::${title}::${subtitle || ""}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      slides.push({
+        src,
+        mobileSrc: src,
+        alt: title || "Hero slide",
+        label: `Slide ${slides.length + 1}`,
+        title: !isWeakSectionCopySeed(title) ? title : undefined,
+        subtitle: !isWeakSectionCopySeed(subtitle) ? subtitle : undefined,
+        ctas: cta ? [cta] : undefined,
+      });
+    }
+    return slides;
+  };
 
-  const enabled =
-    signals.includes("hero-context") && (signals.includes("library") || signals.includes("indicators") || images.length >= 2);
+  const slides = extractSlideRowsFromHtml(topChunk, pageUrl);
+  const images = dedupeUrls(
+    [
+      ...slides.map((slide) => String(slide?.src || "").trim()).filter(Boolean),
+      ...extractCarouselCandidatesFromHtml(topChunk, pageUrl),
+    ],
+    24
+  );
+  if (images.length >= 2) signals.push("multi-image");
+  if (slides.length >= 2) signals.push("slide-content");
+
+  const hasStrongCarouselSignal =
+    signals.includes("library") ||
+    signals.includes("indicators") ||
+    signals.includes("aria-slide") ||
+    signals.includes("slide-content");
+  const enabled = (signals.includes("hero-context") || slides.length >= 2) && hasStrongCarouselSignal && images.length >= 2;
 
   return {
     enabled,
     signalCount: signals.length,
     signals,
-    images: enabled ? images : [],
+    images,
+    slides: slides.slice(0, 8),
   };
 };
 
 const normalizeHeroCarousel = (value) => {
-  const enabled = Boolean(value?.enabled);
-  const signalCount = Number(value?.signalCount || 0);
+  const signalCountInput = Number(value?.signalCount || 0);
   const signals = Array.isArray(value?.signals) ? dedupeTextValues(value.signals, 8) : [];
+  const strongSignals = new Set([
+    "library",
+    "indicators",
+    "aria-slide",
+    "slide-content",
+    "runtime-slide-content",
+    "runtime-carousel-shell",
+    "runtime-indicators",
+  ]);
   const images = dedupeUrls(
     Array.isArray(value?.images)
       ? value.images.filter((item) => /^https?:\/\//i.test(String(item || "").trim()))
       : [],
     12
-  );
-  return { enabled, signalCount, signals, images };
+  ).filter((item) => !isLikelyDecorativeImage(item));
+  const slides = Array.isArray(value?.slides)
+    ? value.slides
+        .map((row) => {
+          const src = String(row?.src || "").trim();
+          if (!/^https?:\/\//i.test(src) || isLikelyDecorativeImage(src)) return null;
+          const mobileSrc = String(row?.mobileSrc || "").trim() || src;
+          const title = normalizeTextLine(row?.title || "");
+          const subtitle = normalizeTextLine(row?.subtitle || "");
+          const ctas = Array.isArray(row?.ctas)
+            ? row.ctas
+                .map((cta) => ({
+                  label: normalizeTextLine(cta?.label || ""),
+                  href: String(cta?.href || "").trim() || "#",
+                  variant:
+                    String(cta?.variant || "").trim().toLowerCase() === "secondary" ||
+                    String(cta?.variant || "").trim().toLowerCase() === "link"
+                      ? String(cta?.variant || "").trim().toLowerCase()
+                      : "primary",
+                }))
+                .filter((cta) => cta.label)
+            : [];
+          return {
+            src,
+            mobileSrc,
+            alt: normalizeTextLine(row?.alt || title || "Hero slide"),
+            label: normalizeTextLine(row?.label || ""),
+            title: title || undefined,
+            subtitle: subtitle || undefined,
+            ctas: ctas.length ? ctas : undefined,
+          };
+        })
+        .filter(Boolean)
+        .slice(0, 8)
+    : [];
+  const hasStrongSignal = signals.some((signal) => strongSignals.has(String(signal || "").trim().toLowerCase()));
+  const enabled = slides.length >= 2 || (images.length >= 2 && hasStrongSignal);
+  const signalCount = enabled ? Math.max(signalCountInput, signals.length) : 0;
+  return { enabled, signalCount, signals: enabled ? signals : [], images, slides };
 };
 
 const mergeHeroCarouselSignals = (values = []) => {
@@ -2376,7 +3292,342 @@ const mergeHeroCarouselSignals = (values = []) => {
   const signalCount = Math.max(0, ...normalized.map((item) => Number(item.signalCount || 0)));
   const signals = dedupeTextValues(normalized.flatMap((item) => item.signals || []), 12);
   const images = dedupeUrls(normalized.flatMap((item) => item.images || []), 12);
-  return { enabled, signalCount, signals, images };
+  const slidesBySrc = new Map();
+  for (const row of normalized) {
+    const slides = Array.isArray(row?.slides) ? row.slides : [];
+    for (const slide of slides) {
+      const src = String(slide?.src || "").trim();
+      if (!src || slidesBySrc.has(src)) continue;
+      slidesBySrc.set(src, slide);
+      if (slidesBySrc.size >= 8) break;
+    }
+    if (slidesBySrc.size >= 8) break;
+  }
+  return { enabled, signalCount, signals, images, slides: Array.from(slidesBySrc.values()) };
+};
+
+const mergeSourceSectionHints = (values = []) => {
+  const rows = (Array.isArray(values) ? values : []).map((value) =>
+    value && typeof value === "object" ? value : detectSourceSectionHints("")
+  );
+  const mergedSectionSignals = [];
+  const seenSectionSignals = new Set();
+  for (const row of rows) {
+    const sectionSignals = Array.isArray(row?.sectionSignals) ? row.sectionSignals : [];
+    for (const signal of sectionSignals) {
+      const id = String(signal?.id || "").trim().toLowerCase();
+      const className = String(signal?.className || "").trim().toLowerCase();
+      const kind = String(signal?.kind || "").trim().toLowerCase();
+      const key = `${id}::${className}::${kind}`;
+      if (seenSectionSignals.has(key)) continue;
+      seenSectionSignals.add(key);
+      mergedSectionSignals.push({
+        index: Number(signal?.index ?? mergedSectionSignals.length),
+        id: String(signal?.id || "").trim(),
+        className: String(signal?.className || "").trim(),
+        kind,
+      });
+      if (mergedSectionSignals.length >= 64) break;
+    }
+    if (mergedSectionSignals.length >= 64) break;
+  }
+  const orderedKinds = ["navigation", "hero", "story", "approach", "products", "socialproof", "cta", "footer"];
+  const allowedKinds = new Set(orderedKinds);
+  const kindLimits = {
+    navigation: 2,
+    hero: 1,
+    story: 2,
+    approach: 2,
+    products: 2,
+    socialproof: 2,
+    cta: 2,
+    footer: 1,
+  };
+  const compactSectionSignals = [];
+  const perKindCount = new Map();
+  const seenCompact = new Set();
+  for (const signal of mergedSectionSignals) {
+    const kind = String(signal?.kind || "").trim().toLowerCase();
+    if (!allowedKinds.has(kind)) continue;
+    const currentCount = Number(perKindCount.get(kind) || 0);
+    const maxAllowed = Number(kindLimits[kind] || 1);
+    if (currentCount >= maxAllowed) continue;
+    const id = String(signal?.id || "").trim();
+    const className = String(signal?.className || "").trim();
+    const dedupeKey = `${kind}::${id}::${className}`;
+    if (seenCompact.has(dedupeKey)) continue;
+    seenCompact.add(dedupeKey);
+    perKindCount.set(kind, currentCount + 1);
+    compactSectionSignals.push({
+      index: compactSectionSignals.length,
+      id,
+      className,
+      kind,
+    });
+  }
+  const compactSectionSignalsSorted = compactSectionSignals.sort((a, b) => {
+    const kindA = orderedKinds.indexOf(String(a?.kind || ""));
+    const kindB = orderedKinds.indexOf(String(b?.kind || ""));
+    if (kindA !== kindB) return kindA - kindB;
+    return Number(a?.index || 0) - Number(b?.index || 0);
+  });
+
+  return {
+    shgBoxCount: rows.reduce((acc, row) => acc + Number(row?.shgBoxCount || 0), 0),
+    shgVerticalAlignWrapperCount: rows.reduce((acc, row) => acc + Number(row?.shgVerticalAlignWrapperCount || 0), 0),
+    shgSliderCount: rows.reduce((acc, row) => acc + Number(row?.shgSliderCount || 0), 0),
+    megaMenuSignals: rows.some((row) => Boolean(row?.megaMenuSignals)),
+    darkFooterSignals: rows.some((row) => Boolean(row?.darkFooterSignals)),
+    hasShgBox: rows.some((row) => Boolean(row?.hasShgBox) || Number(row?.shgBoxCount || 0) > 0),
+    hasShgVerticalAlignWrapper: rows.some(
+      (row) => Boolean(row?.hasShgVerticalAlignWrapper) || Number(row?.shgVerticalAlignWrapperCount || 0) > 0
+    ),
+    shgBoxTitles: dedupeTextValues(rows.flatMap((row) => (Array.isArray(row?.shgBoxTitles) ? row.shgBoxTitles : [])), 12),
+    shgBoxBodies: dedupeTextValues(rows.flatMap((row) => (Array.isArray(row?.shgBoxBodies) ? row.shgBoxBodies : [])), 16),
+    shgVerticalTitles: dedupeTextValues(
+      rows.flatMap((row) => (Array.isArray(row?.shgVerticalTitles) ? row.shgVerticalTitles : [])),
+      12
+    ),
+    shgVerticalBodies: dedupeTextValues(
+      rows.flatMap((row) => (Array.isArray(row?.shgVerticalBodies) ? row.shgVerticalBodies : [])),
+      16
+    ),
+    sectionSignals: compactSectionSignalsSorted,
+  };
+};
+
+const RUNTIME_COMPUTED_SECTION_KINDS = ["navigation", "hero", "story", "approach", "products", "cta", "footer"];
+const RUNTIME_COMPUTED_STYLE_PARTS = ["root", "title", "content", "textPanel"];
+const RUNTIME_SECTION_LAYOUT_KINDS = [
+  "navigation",
+  "hero",
+  "story",
+  "approach",
+  "products",
+  "socialproof",
+  "contact",
+  "cta",
+  "footer",
+];
+
+const numericRuntimeStyleValue = (value) => {
+  const raw = String(value ?? "").trim();
+  if (!raw) return null;
+  const parsed = Number.parseFloat(raw.replace(/px$/i, ""));
+  return Number.isFinite(parsed) ? Number(parsed.toFixed(2)) : null;
+};
+
+const runtimeColorAlpha = (value) => {
+  const token = String(value || "").trim().toLowerCase();
+  if (!token || token === "transparent") return 0;
+  const rgbaMatch = token.match(/^rgba\(\s*([0-9.\s]+),\s*([0-9.\s]+),\s*([0-9.\s]+),\s*([0-9.]+)\s*\)$/i);
+  if (rgbaMatch) {
+    const alpha = Number(rgbaMatch[4]);
+    if (Number.isFinite(alpha)) return Math.max(0, Math.min(1, Number(alpha.toFixed(3))));
+    return null;
+  }
+  const rgbMatch = token.match(/^rgb\(\s*([0-9.\s]+),\s*([0-9.\s]+),\s*([0-9.\s]+)\s*\)$/i);
+  if (rgbMatch) return 1;
+  if (/^#[0-9a-f]{3}$/i.test(token) || /^#[0-9a-f]{6}$/i.test(token)) return 1;
+  return null;
+};
+
+const sanitizeRuntimeSurfaceStyle = (value) => {
+  if (!value || typeof value !== "object") return null;
+  const backgroundColorRaw = String(value?.backgroundColor || "").trim();
+  const backgroundColor = normalizeColorToken(backgroundColorRaw);
+  const backgroundAlpha = runtimeColorAlpha(backgroundColorRaw);
+  const backgroundImage = String(value?.backgroundImage || "").trim();
+  const colorRaw = String(value?.color || "").trim();
+  const color = normalizeColorToken(colorRaw);
+  const output = {
+    ...(backgroundColorRaw ? { backgroundColorRaw } : {}),
+    ...(backgroundColor ? { backgroundColor } : {}),
+    ...(backgroundAlpha !== null ? { backgroundAlpha } : {}),
+    ...(backgroundImage && backgroundImage.toLowerCase() !== "none" ? { backgroundImage: backgroundImage.slice(0, 480) } : {}),
+    ...(colorRaw ? { colorRaw } : {}),
+    ...(color ? { color } : {}),
+  };
+  const numberFields = {
+    minHeightPx: numericRuntimeStyleValue(value?.minHeightPx ?? value?.minHeight),
+    borderRadiusPx: numericRuntimeStyleValue(value?.borderRadiusPx ?? value?.borderRadius),
+    opacity: numericRuntimeStyleValue(value?.opacity),
+    paddingLeftPx: numericRuntimeStyleValue(value?.paddingLeftPx ?? value?.paddingLeft),
+    paddingRightPx: numericRuntimeStyleValue(value?.paddingRightPx ?? value?.paddingRight),
+    paddingTopPx: numericRuntimeStyleValue(value?.paddingTopPx ?? value?.paddingTop),
+    paddingBottomPx: numericRuntimeStyleValue(value?.paddingBottomPx ?? value?.paddingBottom),
+  };
+  for (const [key, numericValue] of Object.entries(numberFields)) {
+    if (numericValue === null) continue;
+    output[key] = numericValue;
+  }
+  const backdropFilter = String(value?.backdropFilter || "").trim();
+  if (backdropFilter && backdropFilter.toLowerCase() !== "none") output.backdropFilter = backdropFilter.slice(0, 160);
+  const textAlign = String(value?.textAlign || "").trim().toLowerCase();
+  if (textAlign) output.textAlign = textAlign.slice(0, 24);
+  return Object.keys(output).length ? output : null;
+};
+
+const sanitizeRuntimeTextStyle = (value) => {
+  if (!value || typeof value !== "object") return null;
+  const fontFamilyRaw = String(value?.fontFamily || "").trim();
+  const fontFamily = fontFamilyRaw
+    ? fontFamilyRaw
+        .split(",")
+        .map((item) => item.replace(/["']/g, "").trim())
+        .filter(Boolean)[0] || ""
+    : "";
+  const colorRaw = String(value?.color || "").trim();
+  const color = normalizeColorToken(colorRaw);
+  const backgroundColorRaw = String(value?.backgroundColor || "").trim();
+  const backgroundColor = normalizeColorToken(backgroundColorRaw);
+  const backgroundAlpha = runtimeColorAlpha(backgroundColorRaw);
+  const output = {
+    ...(fontFamily ? { fontFamily: normalizeToCommercialFreeFont(fontFamily, { role: "body" }) || fontFamily } : {}),
+    ...(colorRaw ? { colorRaw } : {}),
+    ...(color ? { color } : {}),
+    ...(backgroundColorRaw ? { backgroundColorRaw } : {}),
+    ...(backgroundColor ? { backgroundColor } : {}),
+    ...(backgroundAlpha !== null ? { backgroundAlpha } : {}),
+  };
+  const fontSizePx = numericRuntimeStyleValue(value?.fontSizePx ?? value?.fontSize);
+  if (fontSizePx !== null && fontSizePx > 0) output.fontSizePx = fontSizePx;
+  const lineHeightPx = numericRuntimeStyleValue(value?.lineHeightPx ?? value?.lineHeight);
+  if (lineHeightPx !== null && lineHeightPx > 0) output.lineHeightPx = lineHeightPx;
+  const fontWeightRaw = String(value?.fontWeight || "").trim();
+  if (fontWeightRaw) output.fontWeight = fontWeightRaw.slice(0, 24);
+  const letterSpacingRaw = String(value?.letterSpacing || "").trim();
+  if (letterSpacingRaw) output.letterSpacing = letterSpacingRaw.slice(0, 24);
+  const textTransform = String(value?.textTransform || "").trim().toLowerCase();
+  if (textTransform && textTransform !== "none") output.textTransform = textTransform.slice(0, 24);
+  return Object.keys(output).length ? output : null;
+};
+
+const normalizeRuntimeSectionComputedStyles = (value) => {
+  if (!value || typeof value !== "object") return {};
+  const out = {};
+  for (const kind of RUNTIME_COMPUTED_SECTION_KINDS) {
+    const row = value?.[kind];
+    if (!row || typeof row !== "object") continue;
+    const normalized = {};
+    const root = sanitizeRuntimeSurfaceStyle(row?.root);
+    const title = sanitizeRuntimeTextStyle(row?.title);
+    const content = sanitizeRuntimeTextStyle(row?.content);
+    const textPanel = sanitizeRuntimeSurfaceStyle(row?.textPanel);
+    if (root) normalized.root = root;
+    if (title) normalized.title = title;
+    if (content) normalized.content = content;
+    if (textPanel) normalized.textPanel = textPanel;
+    if (Object.keys(normalized).length) out[kind] = normalized;
+  }
+  return out;
+};
+
+const mergeRuntimeSectionComputedStyles = (values = []) => {
+  const normalizedRows = (Array.isArray(values) ? values : [])
+    .map((value) => normalizeRuntimeSectionComputedStyles(value))
+    .filter((row) => row && typeof row === "object" && Object.keys(row).length > 0);
+  if (!normalizedRows.length) return {};
+  const merged = {};
+  const hasValue = (value) => !(value === undefined || value === null || (typeof value === "string" && !value.trim()));
+  for (const kind of RUNTIME_COMPUTED_SECTION_KINDS) {
+    const sectionOut = {};
+    for (const part of RUNTIME_COMPUTED_STYLE_PARTS) {
+      const partOut = {};
+      for (const row of normalizedRows) {
+        const payload = row?.[kind]?.[part];
+        if (!payload || typeof payload !== "object") continue;
+        for (const [key, value] of Object.entries(payload)) {
+          if (hasValue(partOut[key])) continue;
+          if (!hasValue(value)) continue;
+          partOut[key] = value;
+        }
+      }
+      if (Object.keys(partOut).length) sectionOut[part] = partOut;
+    }
+    if (Object.keys(sectionOut).length) merged[kind] = sectionOut;
+  }
+  return merged;
+};
+
+const normalizeRuntimeSectionLayout = (value) => {
+  if (!value || typeof value !== "object") return {};
+  const docHeight = Math.max(1, Math.round(Number(value?.documentHeightPx || 0) || 0));
+  const docWidth = Math.max(1, Math.round(Number(value?.documentWidthPx || 0) || 0));
+  const out = {};
+  for (const kind of RUNTIME_SECTION_LAYOUT_KINDS) {
+    const row = value?.[kind];
+    if (!row || typeof row !== "object") continue;
+    const topPx = Math.max(0, Math.round(Number(row?.topPx || 0) || 0));
+    const heightPx = Math.max(0, Math.round(Number(row?.heightPx || 0) || 0));
+    const leftPx = Math.max(0, Math.round(Number(row?.leftPx || 0) || 0));
+    const widthPx = Math.max(0, Math.round(Number(row?.widthPx || 0) || 0));
+    const topRatioRaw = Number(row?.topRatio);
+    const heightRatioRaw = Number(row?.heightRatio);
+    const topRatio =
+      Number.isFinite(topRatioRaw) && topRatioRaw >= 0
+        ? Number(topRatioRaw.toFixed(6))
+        : Number((topPx / Math.max(1, docHeight || 1)).toFixed(6));
+    const heightRatio =
+      Number.isFinite(heightRatioRaw) && heightRatioRaw > 0
+        ? Number(heightRatioRaw.toFixed(6))
+        : Number((heightPx / Math.max(1, docHeight || 1)).toFixed(6));
+    if (heightPx < 40 && heightRatio < 0.01) continue;
+    out[kind] = {
+      topPx,
+      heightPx,
+      leftPx,
+      widthPx,
+      topRatio: Math.max(0, Math.min(1, topRatio)),
+      heightRatio: Math.max(0.005, Math.min(1, heightRatio)),
+      ...(docHeight ? { documentHeightPx: docHeight } : {}),
+      ...(docWidth ? { documentWidthPx: docWidth } : {}),
+    };
+  }
+  return out;
+};
+
+const mergeRuntimeSectionLayout = (values = []) => {
+  const normalizedRows = (Array.isArray(values) ? values : [])
+    .map((value) => normalizeRuntimeSectionLayout(value))
+    .filter((row) => row && typeof row === "object" && Object.keys(row).length > 0);
+  if (!normalizedRows.length) return {};
+  const merged = {};
+  let mergedDocumentHeight = 0;
+  let mergedDocumentWidth = 0;
+  for (const kind of RUNTIME_SECTION_LAYOUT_KINDS) {
+    for (const row of normalizedRows) {
+      const layout = row?.[kind];
+      if (!layout) continue;
+      if (!merged[kind]) {
+        merged[kind] = layout;
+        if (!mergedDocumentHeight && Number(layout?.documentHeightPx || 0) > 0) {
+          mergedDocumentHeight = Math.round(Number(layout.documentHeightPx));
+        }
+        if (!mergedDocumentWidth && Number(layout?.documentWidthPx || 0) > 0) {
+          mergedDocumentWidth = Math.round(Number(layout.documentWidthPx));
+        }
+      }
+    }
+  }
+  if (mergedDocumentHeight > 0) merged.documentHeightPx = mergedDocumentHeight;
+  if (mergedDocumentWidth > 0) merged.documentWidthPx = mergedDocumentWidth;
+  return merged;
+};
+
+const extractBackgroundImageUrls = (value) => {
+  const token = String(value || "").trim();
+  if (!token || token.toLowerCase() === "none") return [];
+  const urls = [];
+  const regex = /url\((['"]?)([^'")]+)\1\)/gi;
+  let match;
+  while ((match = regex.exec(token))) {
+    const urlValue = String(match[2] || "").trim();
+    if (!/^https?:\/\//i.test(urlValue)) continue;
+    if (/^data:|^blob:/i.test(urlValue)) continue;
+    urls.push(urlValue);
+  }
+  return dedupeUrls(urls, 8);
 };
 
 const ANTI_CRAWL_BODY_PATTERNS = [
@@ -2464,11 +3715,19 @@ const fetchHtmlSummary = async (url) => {
       h1: [],
       h2: [],
       links: [],
+      linkHrefs: [],
       images: [],
       footerLinks: [],
+      navLinks: [],
       navMenuDepth: 1,
       heroPresentation: normalizeHeroPresentation(null),
       heroCarousel: normalizeHeroCarousel(null),
+      sourceSectionHints: detectSourceSectionHints(""),
+      fontFamilies: [],
+      headingFontFamily: "",
+      bodyFontFamily: "",
+      headingFontPx: 0,
+      bodyFontPx: 0,
     };
   try {
     const ctrl = new AbortController();
@@ -2494,21 +3753,44 @@ const fetchHtmlSummary = async (url) => {
       }
     })();
     const footerLinks = rootOrigin ? extractFooterLinks(html, url, rootOrigin) : [];
+    const linkHrefs = rootOrigin ? extractInternalPageLinks(html, url, rootOrigin) : [];
+    const navLinks = rootOrigin
+      ? extractHeaderNavLinks({
+          html,
+          pageUrl: url,
+          rootOrigin,
+          maxLinks: 12,
+        })
+      : [];
     const navMenuDepth = detectHeaderMenuDepth(html);
     const heroPresentation = detectHeroPresentation(html);
     const heroCarousel = detectHeroCarousel(html, url);
+    const sourceSectionHints = detectSourceSectionHints(html);
     const themeColors = extractThemeColorsFromHtml(html);
+    const typography = extractTypographyFromHtml(html);
+    const navBackgroundColor = extractSectionBackgroundColorFromHtml(html, "nav");
+    const footerBackgroundColor = extractSectionBackgroundColorFromHtml(html, "footer");
     return {
       title,
       h1,
       h2,
       links,
+      linkHrefs,
       images,
       footerLinks,
+      navLinks,
       navMenuDepth,
       heroPresentation,
       heroCarousel,
+      sourceSectionHints,
       themeColors,
+      fontFamilies: typography.fontFamilies,
+      headingFontFamily: typography.headingFontFamily,
+      bodyFontFamily: typography.bodyFontFamily,
+      headingFontPx: typography.headingFontPx,
+      bodyFontPx: typography.bodyFontPx,
+      navBackgroundColor,
+      footerBackgroundColor,
       htmlChars: html.length,
       status: res.status,
     };
@@ -2518,23 +3800,739 @@ const fetchHtmlSummary = async (url) => {
       h1: [],
       h2: [],
       links: [],
+      linkHrefs: [],
       images: [],
       footerLinks: [],
+      navLinks: [],
       navMenuDepth: 1,
       heroPresentation: normalizeHeroPresentation(null),
       heroCarousel: normalizeHeroCarousel(null),
+      sourceSectionHints: detectSourceSectionHints(""),
+      fontFamilies: [],
+      headingFontFamily: "",
+      bodyFontFamily: "",
+      headingFontPx: 0,
+      bodyFontPx: 0,
       error: error instanceof Error ? error.message : String(error),
     };
   }
 };
 
-const dedupeTextValues = (items, limit = 24) => {
+const fetchRuntimeHeroMediaUrls = async (url, { timeoutMs = 30000 } = {}) => {
+  if (!url) return [];
+  const mod = await import("puppeteer");
+  const puppeteer = mod?.default ?? mod;
+  if (!puppeteer?.launch) return [];
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
+  try {
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
+    await page.goto(url, {
+      waitUntil: "domcontentloaded",
+      timeout: Math.max(8000, Math.floor(timeoutMs * 0.7)),
+    });
+    await new Promise((resolve) => setTimeout(resolve, 2500));
+    const urls = await page.evaluate(() => {
+      const out = new Set();
+      const addUrl = (raw) => {
+        const token = String(raw || "").trim();
+        if (!token) return;
+        if (/^data:|^blob:/i.test(token)) return;
+        try {
+          const absolute = new URL(token, window.location.href).toString();
+          out.add(absolute);
+        } catch {}
+      };
+      const addBgUrls = (node) => {
+        if (!(node instanceof Element)) return;
+        const style = window.getComputedStyle(node);
+        const bg = String(style?.backgroundImage || "");
+        if (!bg || bg === "none") return;
+        const regex = /url\((['"]?)([^'")]+)\1\)/gi;
+        let match;
+        while ((match = regex.exec(bg))) addUrl(match[2]);
+      };
+
+      const heroRoots = Array.from(
+        document.querySelectorAll(
+          "section,div,main,header,[class*='hero' i],[class*='banner' i],[class*='slider' i],[class*='carousel' i]"
+        )
+      ).filter((node) => {
+        if (!(node instanceof HTMLElement)) return false;
+        const rect = node.getBoundingClientRect();
+        const inTopViewport = rect.bottom >= 0 && rect.top <= window.innerHeight * 1.4;
+        if (!inTopViewport) return false;
+        const attrs = `${node.id || ""} ${node.className || ""}`.toLowerCase();
+        const heroLike = /(hero|banner|slider|carousel|masthead|showcase|slide)/.test(attrs);
+        return heroLike || rect.height >= 260;
+      });
+
+      const candidates = heroRoots.length
+        ? heroRoots
+        : Array.from(document.querySelectorAll("main,header,section,div")).slice(0, 80);
+
+      for (const root of candidates) {
+        addBgUrls(root);
+        const mediaNodes = root.querySelectorAll("img,source,picture,video,[style*='background-image']");
+        for (const node of Array.from(mediaNodes)) {
+          if (node instanceof HTMLImageElement) {
+            addUrl(node.currentSrc || node.src || "");
+            const srcset = String(node.srcset || "");
+            for (const chunk of srcset.split(",")) {
+              const [src] = chunk.trim().split(/\s+/, 2);
+              addUrl(src || "");
+            }
+            addBgUrls(node);
+            continue;
+          }
+          if (node instanceof HTMLSourceElement) {
+            addUrl(node.src || "");
+            const srcset = String(node.srcset || "");
+            for (const chunk of srcset.split(",")) {
+              const [src] = chunk.trim().split(/\s+/, 2);
+              addUrl(src || "");
+            }
+            continue;
+          }
+          if (node instanceof HTMLVideoElement) {
+            addUrl(node.poster || "");
+          }
+          addBgUrls(node);
+        }
+      }
+
+      return Array.from(out);
+    });
+    return dedupeUrls(
+      (Array.isArray(urls) ? urls : []).filter((item) => /\.(?:png|jpe?g|webp|gif|avif)(?:$|[?#])/i.test(String(item || ""))),
+      60
+    );
+  } catch {
+    return [];
+  } finally {
+    await browser.close();
+  }
+};
+
+const fetchRuntimeSectionSignals = async (url, { timeoutMs = 30000 } = {}) => {
+  if (!url) return null;
+  const mod = await import("puppeteer");
+  const puppeteer = mod?.default ?? mod;
+  if (!puppeteer?.launch) return null;
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
+  try {
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
+    await page.goto(url, {
+      waitUntil: "networkidle2",
+      timeout: Math.max(10000, Math.floor(timeoutMs * 0.7)),
+    });
+    await new Promise((resolve) => setTimeout(resolve, 2500));
+    await page.evaluate(() => {
+      window.scrollTo(0, document.body.scrollHeight || 0);
+    });
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    await page.evaluate(() => {
+      window.scrollTo(0, 0);
+    });
+    const runtime = await page.evaluate(() => {
+      const isTransparent = (value) => {
+        const token = String(value || "").trim().toLowerCase();
+        return !token || token === "transparent" || token === "rgba(0, 0, 0, 0)" || token === "rgba(0,0,0,0)";
+      };
+      const resolveBackgroundColor = (node) => {
+        let current = node instanceof Element ? node : null;
+        for (let depth = 0; depth < 6 && current; depth += 1) {
+          const style = window.getComputedStyle(current);
+          const color = String(style?.backgroundColor || "").trim();
+          if (!isTransparent(color)) return color;
+          current = current.parentElement;
+        }
+        return "";
+      };
+      const pickLikelyNavRoot = () => {
+        const direct =
+          document.querySelector("header nav, nav, header, [role='navigation'], .header, .site-header, .navbar") ||
+          null;
+        if (direct) return direct;
+        const candidates = Array.from(document.querySelectorAll("header,nav,div,section")).filter((node) => {
+          if (!(node instanceof HTMLElement)) return false;
+          const rect = node.getBoundingClientRect();
+          if (rect.top > window.innerHeight * 0.35 || rect.height < 32 || rect.height > 220) return false;
+          const links = node.querySelectorAll("a").length;
+          return links >= 3;
+        });
+        return candidates[0] || null;
+      };
+      const pickLikelyFooterRoot = () => {
+        const direct = document.querySelector("footer, .footer, #footer") || null;
+        if (direct) return direct;
+        const candidates = Array.from(document.querySelectorAll("footer,div,section")).filter((node) => {
+          if (!(node instanceof HTMLElement)) return false;
+          const text = `${node.id || ""} ${node.className || ""}`.toLowerCase();
+          if (!/footer|copyright|legal|social/i.test(text)) return false;
+          const rect = node.getBoundingClientRect();
+          return rect.height >= 64;
+        });
+        return candidates[candidates.length - 1] || null;
+      };
+      const navRoot = pickLikelyNavRoot();
+      const footerRoot = pickLikelyFooterRoot();
+      const inferBottomBackgroundColor = () => {
+        const rows = Array.from(document.querySelectorAll("footer,section,div")).filter((node) => {
+          if (!(node instanceof HTMLElement)) return false;
+          const rect = node.getBoundingClientRect();
+          return rect.height >= 48 && rect.width >= window.innerWidth * 0.6 && rect.top <= window.innerHeight * 1.2;
+        });
+        let best = { color: "", luminance: 255, top: -Infinity };
+        const parseRgb = (color) => {
+          const rgb = String(color || "").match(/rgba?\(([^)]+)\)/i);
+          if (!rgb) return null;
+          const channels = rgb[1].split(",").map((v) => Number(v.trim())).filter((v) => Number.isFinite(v));
+          if (channels.length < 3) return null;
+          return channels;
+        };
+        for (const row of rows) {
+          const color = resolveBackgroundColor(row);
+          if (!color) continue;
+          const channels = parseRgb(color);
+          if (!channels) continue;
+          const luminance = 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+          const rect = row.getBoundingClientRect();
+          if (rect.top > best.top || (Math.abs(rect.top - best.top) < 1 && luminance < best.luminance)) {
+            best = { color, luminance, top: rect.top };
+          }
+        }
+        return best.color;
+      };
+      const resolvedNavBackgroundColor = resolveBackgroundColor(navRoot);
+      const resolvedFooterBackgroundColor = resolveBackgroundColor(footerRoot) || inferBottomBackgroundColor();
+      const navMenuDepth = (() => {
+        const scope = navRoot || document.body;
+        if (!scope) return 1;
+        if (scope.querySelector("ul ul, li ul, [role='menu'] [role='menuitem'], .mega-menu, .site-nav__dropdown")) return 2;
+        if (scope.querySelector("[aria-haspopup='true'], [aria-expanded], .has-submenu, .submenu, .dropdown-menu, .menu-drawer")) return 2;
+        return 1;
+      })();
+      const normalizeKindToken = (value) =>
+        String(value || "")
+          .trim()
+          .toLowerCase()
+          .replace(/[_\s]+/g, "-");
+      const inferSectionKindFromNode = (node, index = 0) => {
+        if (!(node instanceof HTMLElement)) return "";
+        const attrs = `${node.id || ""} ${node.className || ""} ${node.getAttribute("data-section-type") || ""}`.toLowerCase();
+        const text = String(node.textContent || "")
+          .replace(/\s+/g, " ")
+          .trim()
+          .toLowerCase()
+          .slice(0, 260);
+        if (/(footer|copyright|colophon|legal|site-footer)/.test(attrs)) return "footer";
+        if (/(hero|banner|masthead|showcase|carousel|slider|shg-slider)/.test(attrs)) return "hero";
+        if (/(product|catalog|collection|shop|card-grid|product-grid|featured-products|cards-grid)/.test(attrs)) return "products";
+        if (/(testimonial|review|quote|social-proof|partner|customer|logo-wall)/.test(attrs)) return "socialproof";
+        if (/(newsletter|cta|contact|subscribe|join)/.test(attrs) || /contact|newsletter|subscribe/.test(text)) return "cta";
+        const cardLikeCount = node.querySelectorAll(
+          "article,[class*='card' i],[class*='product' i],[class*='tile' i]"
+        ).length;
+        if (cardLikeCount >= 3) return "products";
+        if (/(feature|approach|capability|benefit|solution|vertical|split|shg-box-vertical-align-wrapper|media)/.test(attrs)) {
+          return "approach";
+        }
+        if (/(story|about|intro|welcome|overview|shg-box|content|description|copy)/.test(attrs)) return "story";
+        if (index <= 0) return "hero";
+        if (index === 1) return "story";
+        if (index <= 2) return "approach";
+        return "";
+      };
+      const parseCssNumber = (value) => {
+        const parsed = Number.parseFloat(String(value || "").replace(/px$/i, ""));
+        return Number.isFinite(parsed) ? Number(parsed.toFixed(2)) : null;
+      };
+      const pickTextNode = (root, selectors = []) => {
+        if (!(root instanceof Element)) return null;
+        const nodes = Array.from(root.querySelectorAll(selectors.join(","))).filter(
+          (node) => node instanceof HTMLElement && String(node.textContent || "").replace(/\s+/g, " ").trim().length >= 8
+        );
+        if (!nodes.length) return null;
+        return nodes[0] || null;
+      };
+      const extractTextStyle = (node) => {
+        if (!(node instanceof Element)) return null;
+        const style = window.getComputedStyle(node);
+        return {
+          fontFamily: style?.fontFamily || "",
+          fontSizePx: parseCssNumber(style?.fontSize),
+          fontWeight: style?.fontWeight || "",
+          lineHeightPx: parseCssNumber(style?.lineHeight),
+          letterSpacing: style?.letterSpacing || "",
+          textTransform: style?.textTransform || "",
+          color: style?.color || "",
+          backgroundColor: style?.backgroundColor || "",
+        };
+      };
+      const extractSurfaceStyle = (node) => {
+        if (!(node instanceof Element)) return null;
+        const style = window.getComputedStyle(node);
+        return {
+          backgroundColor: style?.backgroundColor || "",
+          backgroundImage: style?.backgroundImage || "",
+          color: style?.color || "",
+          minHeightPx: parseCssNumber(style?.minHeight),
+          borderRadiusPx: parseCssNumber(style?.borderRadius),
+          opacity: parseCssNumber(style?.opacity),
+          paddingLeftPx: parseCssNumber(style?.paddingLeft),
+          paddingRightPx: parseCssNumber(style?.paddingRight),
+          paddingTopPx: parseCssNumber(style?.paddingTop),
+          paddingBottomPx: parseCssNumber(style?.paddingBottom),
+          backdropFilter: style?.backdropFilter || "",
+          textAlign: style?.textAlign || "",
+        };
+      };
+      const resolveTextPanelNode = (root, anchors = []) => {
+        if (!(root instanceof HTMLElement)) return null;
+        const classHintSelectors = [
+          "[class*='content' i]",
+          "[class*='text' i]",
+          "[class*='copy' i]",
+          "[class*='caption' i]",
+          "[class*='panel' i]",
+          "[class*='box' i]",
+          "[class*='overlay' i]",
+          ".shg-box-content",
+        ];
+        const hinted = Array.from(root.querySelectorAll(classHintSelectors.join(","))).find((node) => {
+          if (!(node instanceof HTMLElement)) return false;
+          const style = window.getComputedStyle(node);
+          const bg = String(style?.backgroundColor || "").trim().toLowerCase();
+          const hasBg = bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)" && bg !== "rgba(0,0,0,0)";
+          const hasBackdrop = String(style?.backdropFilter || "").trim().toLowerCase() !== "none";
+          return hasBg || hasBackdrop;
+        });
+        if (hinted) return hinted;
+        for (const anchor of anchors) {
+          if (!(anchor instanceof HTMLElement)) continue;
+          let current = anchor;
+          for (let depth = 0; depth < 5; depth += 1) {
+            if (!(current instanceof HTMLElement)) break;
+            if (current === root) break;
+            const style = window.getComputedStyle(current);
+            const bg = String(style?.backgroundColor || "").trim().toLowerCase();
+            const hasBg = bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)" && bg !== "rgba(0,0,0,0)";
+            const hasBackdrop = String(style?.backdropFilter || "").trim().toLowerCase() !== "none";
+            if (hasBg || hasBackdrop) return current;
+            current = current.parentElement;
+          }
+        }
+        return null;
+      };
+      const rootSectionSelector =
+        "main section, main article, main > div, body > main section, body > section, .et_pb_section, [data-section], [class*='section' i]";
+      const rawSectionElements = Array.from(document.querySelectorAll(rootSectionSelector)).filter((node) => {
+        if (!(node instanceof HTMLElement)) return false;
+        if (node.closest("header,nav,[role='navigation']")) return false;
+        const attrs = `${node.id || ""} ${node.className || ""}`.toLowerCase();
+        if (/(^|[\s_-])(tb_header|header|menu|nav|submenu|mega|topbar|toolbar|mobile_nav|drawer|popup|modal)([\s_-]|$)/.test(attrs)) {
+          return false;
+        }
+        const rect = node.getBoundingClientRect();
+        if (rect.height < 120 || rect.width < window.innerWidth * 0.62) return false;
+        if (rect.bottom <= 0) return false;
+        const linkCount = node.querySelectorAll("a[href]").length;
+        if (rect.top <= window.innerHeight * 0.28 && linkCount >= 8 && rect.height <= 360) return false;
+        return true;
+      });
+      const sectionElements = [];
+      for (const node of rawSectionElements) {
+        const rect = node.getBoundingClientRect();
+        const top = Math.round(rect.top);
+        const height = Math.round(rect.height);
+        const containedByExisting = sectionElements.some((entry) => {
+          if (!(entry instanceof HTMLElement)) return false;
+          if (entry.contains(node)) return true;
+          const existingRect = entry.getBoundingClientRect();
+          const topGap = Math.abs(Math.round(existingRect.top) - top);
+          const heightGap = Math.abs(Math.round(existingRect.height) - height);
+          return topGap <= 36 && heightGap <= 64;
+        });
+        if (containedByExisting) continue;
+        sectionElements.push(node);
+      }
+      const sectionCandidates = sectionElements
+        .map((node, index) => {
+          let kind = normalizeKindToken(inferSectionKindFromNode(node, index));
+          if (!kind) {
+            if (index === 0) kind = "hero";
+            else if (index === 1) kind = "story";
+            else if (index === 2) kind = "approach";
+            else if (index === 3) kind = "products";
+          }
+          return {
+            node,
+            index,
+            kind,
+          };
+        })
+        .filter((row) => row.node instanceof HTMLElement);
+      const shgBoxCount = document.querySelectorAll(".shg-box").length;
+      const shgVerticalAlignWrapperCount = document.querySelectorAll(".shg-box-vertical-align-wrapper").length;
+      const shgSliderCount = document.querySelectorAll(".swiper, .slick-slider, [class*='carousel'], [class*='slider']").length;
+      const darkFooterSignals = (() => {
+        const color = resolvedFooterBackgroundColor;
+        if (!color) return false;
+        const rgb = color.match(/rgba?\(([^)]+)\)/i);
+        if (!rgb) return false;
+        const channels = rgb[1].split(",").map((v) => Number(v.trim())).filter((v) => Number.isFinite(v));
+        if (channels.length < 3) return false;
+        const luminance = 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+        return luminance < 90;
+      })();
+      const normalizeText = (value) => String(value || "").replace(/\s+/g, " ").trim();
+      const isLikelyNoiseText = (value) => {
+        const text = normalizeText(value).toLowerCase();
+        if (!text) return true;
+        if (text.length < 3 || text.length > 280) return true;
+        if (/^(?:menu|account|login|support|home|products?)$/.test(text)) return true;
+        if (/^(?:shop now|get started|learn more|view details|explore)$/i.test(text) && text.length <= 16) return true;
+        return false;
+      };
+      const toAbsoluteUrl = (raw) => {
+        const token = String(raw || "").trim();
+        if (!token || /^data:|^blob:/i.test(token)) return "";
+        try {
+          return new URL(token, window.location.href).toString();
+        } catch {
+          return "";
+        }
+      };
+      const isUsefulImageUrl = (value) =>
+        Boolean(value) &&
+        /^https?:\/\//i.test(String(value || "")) &&
+        /\.(?:png|jpe?g|webp|gif|avif)(?:$|[?#])/i.test(String(value || "")) &&
+        !/(?:logo|icon|sprite|favicon|placeholder)/i.test(String(value || ""));
+      const collectImageUrlsFromNode = (node) => {
+        if (!(node instanceof Element)) return [];
+        const urls = [];
+        const pushUrl = (raw) => {
+          const abs = toAbsoluteUrl(raw);
+          if (isUsefulImageUrl(abs)) urls.push(abs);
+        };
+        if (node instanceof HTMLImageElement) {
+          pushUrl(node.currentSrc || node.src || "");
+          for (const chunk of String(node.srcset || "").split(",")) {
+            const [src] = chunk.trim().split(/\s+/, 2);
+            pushUrl(src || "");
+          }
+        }
+        if (node instanceof HTMLSourceElement) {
+          pushUrl(node.src || "");
+          for (const chunk of String(node.srcset || "").split(",")) {
+            const [src] = chunk.trim().split(/\s+/, 2);
+            pushUrl(src || "");
+          }
+        }
+        if (node instanceof HTMLVideoElement) {
+          pushUrl(node.poster || "");
+        }
+        const style = window.getComputedStyle(node);
+        const bg = String(style?.backgroundImage || "");
+        const bgRegex = /url\((['"]?)([^'")]+)\1\)/gi;
+        let bgMatch;
+        while ((bgMatch = bgRegex.exec(bg))) {
+          pushUrl(bgMatch[2]);
+        }
+        return urls;
+      };
+      const pickLikelyHeroRoot = () => {
+        const direct =
+          document.querySelector(
+            "main [class*='hero' i], section[class*='hero' i], div[class*='hero' i], .swiper, .slick-slider, .splide, [class*='carousel' i], [class*='slider' i]"
+          ) || null;
+        if (direct) return direct;
+        const candidates = Array.from(document.querySelectorAll("section,div,main,header")).filter((node) => {
+          if (!(node instanceof HTMLElement)) return false;
+          const rect = node.getBoundingClientRect();
+          if (rect.bottom <= 0 || rect.top >= window.innerHeight * 1.4) return false;
+          if (rect.height < 220 || rect.width < window.innerWidth * 0.6) return false;
+          const attrs = `${node.id || ""} ${node.className || ""}`.toLowerCase();
+          return /(hero|banner|masthead|showcase|carousel|slider|slide)/.test(attrs);
+        });
+        return candidates[0] || null;
+      };
+      const heroRoot = pickLikelyHeroRoot();
+      const findSectionCandidate = (kind) => sectionCandidates.find((row) => row.kind === kind)?.node || null;
+      const primaryContentSections = sectionCandidates.filter((row) => row.kind !== "hero" && row.kind !== "footer");
+      const storyRoot = findSectionCandidate("story") || primaryContentSections[0]?.node || null;
+      const approachRoot =
+        findSectionCandidate("approach") || primaryContentSections[1]?.node || primaryContentSections[0]?.node || null;
+      const sectionRootByKind = {
+        navigation: navRoot || null,
+        hero: findSectionCandidate("hero") || heroRoot || sectionElements[0] || null,
+        story: storyRoot,
+        approach: approachRoot,
+        products: findSectionCandidate("products") || primaryContentSections[2]?.node || null,
+        socialproof: findSectionCandidate("socialproof") || primaryContentSections[3]?.node || null,
+        contact: findSectionCandidate("contact") || null,
+        cta: findSectionCandidate("cta") || primaryContentSections[3]?.node || null,
+        footer: footerRoot || findSectionCandidate("footer") || null,
+      };
+      const documentHeightPx = Math.max(
+        Math.round(
+          Math.max(
+            document.documentElement?.scrollHeight || 0,
+            document.documentElement?.offsetHeight || 0,
+            document.body?.scrollHeight || 0,
+            document.body?.offsetHeight || 0,
+            window.innerHeight || 0
+          )
+        ),
+        1
+      );
+      const documentWidthPx = Math.max(
+        Math.round(
+          Math.max(
+            document.documentElement?.scrollWidth || 0,
+            document.documentElement?.offsetWidth || 0,
+            document.body?.scrollWidth || 0,
+            document.body?.offsetWidth || 0,
+            window.innerWidth || 0
+          )
+        ),
+        1
+      );
+      const extractNodeBounds = (node) => {
+        if (!(node instanceof HTMLElement)) return null;
+        const rect = node.getBoundingClientRect();
+        const topPx = Math.max(0, Math.round(rect.top + window.scrollY));
+        const leftPx = Math.max(0, Math.round(rect.left + window.scrollX));
+        const widthPx = Math.max(0, Math.round(rect.width));
+        const heightPx = Math.max(0, Math.round(rect.height));
+        if (heightPx < 40 || widthPx < Math.max(120, Math.round(window.innerWidth * 0.35))) return null;
+        return {
+          topPx,
+          leftPx,
+          widthPx,
+          heightPx,
+          topRatio: Number((topPx / Math.max(1, documentHeightPx)).toFixed(6)),
+          heightRatio: Number((heightPx / Math.max(1, documentHeightPx)).toFixed(6)),
+        };
+      };
+      const sectionLayout = {};
+      for (const kind of ["navigation", "hero", "story", "approach", "products", "socialproof", "contact", "cta", "footer"]) {
+        const bounds = extractNodeBounds(sectionRootByKind[kind]);
+        if (!bounds) continue;
+        sectionLayout[kind] = bounds;
+      }
+      if (Object.keys(sectionLayout).length) {
+        sectionLayout.documentHeightPx = documentHeightPx;
+        sectionLayout.documentWidthPx = documentWidthPx;
+      }
+      const rawSlideNodes = Array.from(
+        (heroRoot || document).querySelectorAll(
+          ".swiper-slide, .slick-slide, .splide__slide, .keen-slider__slide, [class*='carousel-item' i], [class*='slide-item' i], [class*='shg-slider' i]"
+        )
+      ).filter((node) => {
+        if (!(node instanceof HTMLElement)) return false;
+        const rect = node.getBoundingClientRect();
+        return rect.width >= Math.max(160, window.innerWidth * 0.25) && rect.height >= 120;
+      });
+      const heroSlides = [];
+      const seenSlides = new Set();
+      const slideNodes = rawSlideNodes.length ? rawSlideNodes.slice(0, 14) : heroRoot ? [heroRoot] : [];
+      for (const slideNode of slideNodes) {
+        const mediaNodes = [
+          ...(slideNode instanceof Element ? [slideNode] : []),
+          ...Array.from(slideNode.querySelectorAll("img,picture source,video,[style*='background-image']")),
+        ];
+        const imageCandidates = [];
+        for (const mediaNode of mediaNodes) {
+          imageCandidates.push(...collectImageUrlsFromNode(mediaNode));
+          if (imageCandidates.length >= 8) break;
+        }
+        const uniqueImageCandidates = Array.from(new Set(imageCandidates));
+        const src = uniqueImageCandidates[0] || "";
+        if (!isUsefulImageUrl(src)) continue;
+
+        const headingRows = Array.from(slideNode.querySelectorAll("h1,h2,h3,h4"))
+          .map((node) => normalizeText(node.textContent || ""))
+          .filter((text) => !isLikelyNoiseText(text) && text.length >= 6 && text.length <= 120);
+        const richRows = Array.from(slideNode.querySelectorAll("p,span,div,strong"))
+          .map((node) => normalizeText(node.textContent || ""))
+          .filter((text) => !isLikelyNoiseText(text) && text.length >= 6 && text.length <= 280);
+        const title = headingRows[0] || richRows.find((text) => text.length <= 120) || "";
+        const subtitle = richRows.find((text) => text !== title && text.length >= 24) || "";
+        const ctaNode = slideNode.querySelector("a[href], button");
+        const ctaLabel = normalizeText(ctaNode?.textContent || "");
+        const ctaHrefRaw =
+          ctaNode instanceof HTMLAnchorElement
+            ? ctaNode.getAttribute("href") || ctaNode.href || ""
+            : ctaNode instanceof HTMLButtonElement
+              ? ""
+              : "";
+        const ctaHref = toAbsoluteUrl(ctaHrefRaw) || "#";
+        const cta =
+          ctaLabel && ctaLabel.length <= 52
+            ? {
+                label: ctaLabel,
+                href: ctaHref,
+                variant: /shop|buy|get|order|contact|demo|explore/i.test(ctaLabel) ? "primary" : "link",
+              }
+            : null;
+        const key = `${src}::${title}::${subtitle}`;
+        if (seenSlides.has(key)) continue;
+        seenSlides.add(key);
+        heroSlides.push({
+          src,
+          mobileSrc: src,
+          alt: title || "Hero slide",
+          label: `Slide ${heroSlides.length + 1}`,
+          title: title || undefined,
+          subtitle: subtitle || undefined,
+          ctas: cta ? [cta] : undefined,
+        });
+        if (heroSlides.length >= 8) break;
+      }
+      const heroImages = Array.from(new Set(heroSlides.map((slide) => String(slide?.src || "").trim()).filter(Boolean)));
+      const hasRuntimeCarouselShell = Boolean(
+        (heroRoot || document).querySelector(
+          ".swiper, .slick-slider, .splide, .keen-slider, [class*='carousel' i], [class*='slider' i], [aria-roledescription='carousel'], [aria-roledescription='slide']"
+        )
+      );
+      const hasRuntimeIndicators = Boolean(
+        (heroRoot || document).querySelector(
+          ".swiper-pagination, .slick-dots, .splide__pagination, [class*='indicator' i], [aria-label*='slide' i]"
+        )
+      );
+      const runtimeCarouselEnabled =
+        heroSlides.length >= 2 || ((hasRuntimeCarouselShell || hasRuntimeIndicators) && heroImages.length >= 2);
+      const sectionComputedStyles = {};
+      for (const kind of ["navigation", "hero", "story", "approach", "products", "cta", "footer"]) {
+        const rootNode = sectionRootByKind[kind];
+        if (!(rootNode instanceof HTMLElement)) continue;
+        const titleNode = pickTextNode(rootNode, ["h1", "h2", "h3", "[class*='title' i]", "[class*='heading' i]"]);
+        const contentNode = pickTextNode(rootNode, ["p", "[class*='content' i]", "[class*='description' i]", "[class*='subtitle' i]"]);
+        const textPanelNode = resolveTextPanelNode(rootNode, [titleNode, contentNode]);
+        sectionComputedStyles[kind] = {
+          root: extractSurfaceStyle(rootNode),
+          title: extractTextStyle(titleNode),
+          content: extractTextStyle(contentNode),
+          ...(textPanelNode ? { textPanel: extractSurfaceStyle(textPanelNode) } : {}),
+        };
+      }
+      const sectionSignalRows = [];
+      const pushSectionSignal = (node, indexHint = 0, kindHint = "") => {
+        if (!(node instanceof HTMLElement)) return;
+        const id = String(node.id || "").trim();
+        const className = String(node.className || "").trim().slice(0, 200);
+        const inferredKind = normalizeKindToken(kindHint || inferSectionKindFromNode(node, indexHint));
+        if (!inferredKind) return;
+        const token = `${id}::${className}::${inferredKind}`;
+        if (sectionSignalRows.some((row) => `${row.id}::${row.className}::${row.kind}` === token)) return;
+        sectionSignalRows.push({
+          index: sectionSignalRows.length,
+          id,
+          className,
+          kind: inferredKind,
+        });
+      };
+      pushSectionSignal(navRoot, 0, "navigation");
+      for (const row of sectionCandidates.slice(0, 10)) {
+        pushSectionSignal(row.node, row.index, row.kind);
+      }
+      pushSectionSignal(footerRoot, 999, "footer");
+      return {
+        navBackgroundColor: resolvedNavBackgroundColor,
+        footerBackgroundColor: resolvedFooterBackgroundColor,
+        navMenuDepth,
+        heroCarousel: {
+          enabled: runtimeCarouselEnabled,
+          signalCount: runtimeCarouselEnabled ? 1 : 0,
+          signals: runtimeCarouselEnabled
+            ? [
+                ...(heroSlides.length >= 2 ? ["runtime-slide-content"] : []),
+                ...(hasRuntimeCarouselShell ? ["runtime-carousel-shell"] : []),
+                ...(hasRuntimeIndicators ? ["runtime-indicators"] : []),
+              ]
+            : [],
+          images: heroImages,
+          slides: heroSlides,
+        },
+        sectionSignals: sectionSignalRows,
+        sectionComputedStyles,
+        sourceSectionHints: {
+          shgBoxCount,
+          shgVerticalAlignWrapperCount,
+          shgSliderCount,
+          megaMenuSignals: navMenuDepth >= 2,
+          darkFooterSignals,
+          hasShgBox: shgBoxCount > 0,
+          hasShgVerticalAlignWrapper: shgVerticalAlignWrapperCount > 0,
+        },
+        sectionLayout,
+      };
+    });
+    if (!runtime || typeof runtime !== "object") return null;
+    return {
+      navBackgroundColorRaw: String(runtime?.navBackgroundColor || "").trim(),
+      footerBackgroundColorRaw: String(runtime?.footerBackgroundColor || "").trim(),
+      navBackgroundColor:
+        normalizeCssColorToken(runtime?.navBackgroundColor || "") || normalizeColorToken(runtime?.navBackgroundColor || ""),
+      footerBackgroundColor:
+        normalizeCssColorToken(runtime?.footerBackgroundColor || "") || normalizeColorToken(runtime?.footerBackgroundColor || ""),
+      navMenuDepth: Number(runtime?.navMenuDepth || 0) > 0 ? Math.max(1, Math.floor(Number(runtime.navMenuDepth))) : 0,
+      heroCarousel: normalizeHeroCarousel(runtime?.heroCarousel || null),
+      sectionComputedStyles: normalizeRuntimeSectionComputedStyles(runtime?.sectionComputedStyles || {}),
+      sectionLayout: normalizeRuntimeSectionLayout(runtime?.sectionLayout || {}),
+      sourceSectionHints: mergeSourceSectionHints([
+        {
+          ...(runtime?.sourceSectionHints && typeof runtime.sourceSectionHints === "object" ? runtime.sourceSectionHints : {}),
+          sectionSignals: Array.isArray(runtime?.sectionSignals) ? runtime.sectionSignals : [],
+        },
+      ]),
+    };
+  } catch {
+    return null;
+  } finally {
+    await browser.close();
+  }
+};
+
+const LOW_QUALITY_TEXT_SIGNAL_PATTERNS = [
+  /please wait|just a moment|checking your browser|verify(?:ing)? you are human|connection needs to be verified/i,
+  /cloudflare|access denied|forbidden|too many requests|rate limit/i,
+  /captcha|robot|security check|ddos/i,
+  /购物车|加入购物车|add to cart|checkout/i,
+];
+
+const isLowQualityTextSignal = (value, { allowSingleWord = false } = {}) => {
+  const text = String(value || "").replace(/\s+/g, " ").trim();
+  if (!text) return true;
+  if (LOW_QUALITY_TEXT_SIGNAL_PATTERNS.some((pattern) => pattern.test(text))) return true;
+  if (!/[a-zA-Z0-9\u4e00-\u9fa5]/.test(text)) return true;
+  const hasCjk = /[\u4e00-\u9fa5]/.test(text);
+  const words = text.split(/\s+/).filter(Boolean);
+  if (!allowSingleWord) {
+    if (!hasCjk && words.length <= 1 && text.length <= 24 && !/[0-9]/.test(text)) return true;
+    if (words.length <= 2 && text === text.toUpperCase() && /[A-Z]/.test(text)) return true;
+  }
+  return false;
+};
+
+const dedupeTextValues = (items, limit = 24, options = {}) => {
   const seen = new Set();
   const out = [];
   for (const item of items || []) {
     const next = String(item || "").replace(/\s+/g, " ").trim();
-    if (!next || seen.has(next)) continue;
-    seen.add(next);
+    if (!next || isLowQualityTextSignal(next, options)) continue;
+    const key = next.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
     out.push(next);
     if (out.length >= limit) break;
   }
@@ -2625,11 +4623,22 @@ const resolvePreferredSiteUrl = async ({ url, timeoutMs = 10000 }) => {
 const SKIPPED_CRAWL_EXT_RE =
   /\.(?:jpg|jpeg|png|gif|webp|svg|ico|css|js|mjs|map|pdf|zip|rar|7z|mp4|webm|mp3|wav|woff|woff2|ttf|otf|xml|rss|txt)$/i;
 
+const normalizeHostToken = (value) => String(value || "").trim().toLowerCase().replace(/^www\./, "");
+
+const isEquivalentInternalHost = (candidateHost, rootHost) => {
+  const candidate = normalizeHostToken(candidateHost);
+  const root = normalizeHostToken(rootHost);
+  return Boolean(candidate && root && candidate === root);
+};
+
 const normalizeInternalPageUrl = (value, rootOrigin, baseUrl = rootOrigin) => {
   try {
     const absolute = new URL(String(value || "").trim(), baseUrl);
     if (!/^https?:$/i.test(absolute.protocol)) return "";
-    if (absolute.origin !== rootOrigin) return "";
+    const root = new URL(String(rootOrigin || "").trim());
+    if (!isEquivalentInternalHost(absolute.hostname, root.hostname)) return "";
+    absolute.protocol = root.protocol;
+    absolute.host = root.host;
     if (SKIPPED_CRAWL_EXT_RE.test(absolute.pathname || "")) return "";
     absolute.hash = "";
     absolute.search = "";
@@ -2653,6 +4662,311 @@ const extractInternalPageLinks = (html, pageUrl, rootOrigin) => {
   return dedupeUrls(urls, 200);
 };
 
+const decodeMarkdownEntities = (value) =>
+  String(value || "")
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">");
+
+const normalizeMarkdownLabel = (value) =>
+  decodeMarkdownEntities(String(value || "").replace(/\*\*/g, "").replace(/[_`~]/g, ""))
+    .replace(/\s+/g, " ")
+    .trim();
+
+const isLikelyUtilityNavToken = (label = "", href = "") => {
+  const token = `${label} ${href}`.toLowerCase();
+  return (
+    /login|log in|signin|sign in|register|account|wishlist|cart|checkout|subtotal|tax|shipping|currency|language|search/.test(
+      token
+    ) || /^\$[\d,.]+/.test(String(label || "").trim())
+  );
+};
+
+const extractMarkdownSignals = ({ markdown = "", pageUrl = "", rootOrigin = "" } = {}) => {
+  const lines = String(markdown || "").split(/\r?\n/).slice(0, 900);
+  const h1 = [];
+  const h2 = [];
+  const links = [];
+  const images = [];
+  const internalLinks = [];
+  const navLinks = [];
+  let currentTop = null;
+
+  const pushText = (bucket, value, limit = 24) => {
+    const text = normalizeMarkdownLabel(value);
+    if (!text) return;
+    if (bucket.some((entry) => entry.toLowerCase() === text.toLowerCase())) return;
+    bucket.push(text);
+    if (bucket.length > limit) bucket.length = limit;
+  };
+
+  const normalizeMdHref = (rawHref = "") => {
+    const token = String(rawHref || "")
+      .trim()
+      .replace(/^<|>$/g, "")
+      .split(/\s+/)[0];
+    if (!token) return { absolute: "", routePath: "" };
+    const absolute = normalizeInternalPageUrl(token, rootOrigin, pageUrl);
+    const routePath = absolute ? routePathFromUrl(absolute) : "";
+    return { absolute, routePath };
+  };
+
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  for (const rawLine of lines) {
+    const line = String(rawLine || "");
+    const headingMatch = line.match(/^\s*#{1}\s+(.+)$/);
+    if (headingMatch) pushText(h1, headingMatch[1], 8);
+    const subHeadingMatch = line.match(/^\s*#{2,3}\s+(.+)$/);
+    if (subHeadingMatch) pushText(h2, subHeadingMatch[1], 16);
+
+    let linkMatch;
+    while ((linkMatch = linkRegex.exec(line))) {
+      const label = normalizeMarkdownLabel(linkMatch[1] || "");
+      const hrefMeta = normalizeMdHref(linkMatch[2] || "");
+      if (label) pushText(links, label, 40);
+      if (hrefMeta.absolute) internalLinks.push(hrefMeta.absolute);
+      const imageLike = /!\[/.test(line.slice(Math.max(0, linkMatch.index - 2), linkMatch.index + 2));
+      if (imageLike && hrefMeta.absolute) images.push(hrefMeta.absolute);
+    }
+    linkRegex.lastIndex = 0;
+
+    const bullet = line.match(/^(\s*)(?:[-*+]|\d+\.)\s+(.+)$/);
+    if (!bullet) continue;
+    const indent = Number((bullet[1] || "").length);
+    const body = String(bullet[2] || "");
+    const link = body.match(/\[([^\]]+)\]\(([^)]+)\)/);
+    const label = normalizeMarkdownLabel(link?.[1] || body.replace(/\[[^\]]+\]\([^)]+\)/g, ""));
+    const hrefMeta = normalizeMdHref(link?.[2] || "");
+    const routePath = normalizeTemplatePagePath(hrefMeta.routePath || "");
+    if (!label || isLikelyUtilityNavToken(label, routePath)) continue;
+    if (!routePath) {
+      if (indent <= 2) {
+        currentTop = {
+          label,
+          href: "",
+          variant: "link",
+          children: [],
+        };
+        navLinks.push(currentTop);
+      }
+      continue;
+    }
+    if (indent <= 2) {
+      currentTop = {
+        label,
+        href: routePath,
+        variant: "link",
+        children: [],
+      };
+      navLinks.push(currentTop);
+      continue;
+    }
+    if (!currentTop) continue;
+    if (!currentTop.href) currentTop.href = routePath;
+    currentTop.children.push({ label, href: routePath });
+  }
+
+  const normalizedNavLinks = sanitizeNavLinks(
+    navLinks
+      .map((entry) => ({
+        label: String(entry?.label || "").trim(),
+        href: String(entry?.href || "").trim(),
+        variant: "link",
+        children: Array.isArray(entry?.children) ? dedupeLinkItems(entry.children, 10) : [],
+      }))
+      .filter((entry) => entry.label && entry.href),
+    12
+  );
+
+  return {
+    h1: dedupeTextValues(h1, 8),
+    h2: dedupeTextValues(h2, 16),
+    links: dedupeTextValues(links, 40, { allowSingleWord: true }),
+    images: dedupeUrls(images, 40),
+    internalLinks: dedupeUrls(internalLinks, 300),
+    navLinks: normalizedNavLinks,
+    navDepth: normalizedNavLinks.some((entry) => Array.isArray(entry?.children) && entry.children.length > 0) ? 2 : 1,
+  };
+};
+
+const extractSitemapLocUrls = (xml = "") => {
+  const urls = [];
+  const locRe = /<loc[^>]*>([\s\S]*?)<\/loc>/gi;
+  let match;
+  while ((match = locRe.exec(String(xml || "")))) {
+    const token = stripHtml(match[1] || "").trim();
+    if (token) urls.push(token);
+  }
+  return dedupeUrls(urls, 2000);
+};
+
+const fetchTextWithTimeout = async ({ url, timeoutMs = 15000 }) => {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), Math.max(1000, Math.floor(Number(timeoutMs) || 15000)));
+  try {
+    const res = await fetch(url, {
+      signal: ctrl.signal,
+      redirect: "follow",
+      headers: { "user-agent": DEFAULT_HTTP_USER_AGENT },
+    });
+    const text = await res.text();
+    return {
+      ok: res.ok,
+      status: Number(res.status || 0),
+      finalUrl: String(res.url || url),
+      text,
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      status: 0,
+      finalUrl: "",
+      text: "",
+      error: error instanceof Error ? error.message : String(error),
+    };
+  } finally {
+    clearTimeout(timer);
+  }
+};
+
+const discoverEntryInternalUrls = async ({ entryUrl, rootOrigin, timeoutMs = 15000 }) => {
+  const response = await fetchTextWithTimeout({ url: entryUrl, timeoutMs });
+  if (!response?.ok || !response.text) return [];
+  return extractInternalPageLinks(response.text, response.finalUrl || entryUrl, rootOrigin);
+};
+
+const discoverSitemapPageUrls = async ({
+  entryUrl,
+  rootOrigin,
+  timeoutMs = 15000,
+  maxSitemaps = 8,
+  maxUrls = 600,
+}) => {
+  const root = new URL(rootOrigin);
+  const robotsUrl = new URL("/robots.txt", rootOrigin).toString();
+  const sitemapQueue = [];
+  const enqueueSitemap = (value) => {
+    const raw = String(value || "").trim();
+    if (!raw) return;
+    let absolute = "";
+    try {
+      absolute = new URL(raw, rootOrigin).toString();
+    } catch {
+      return;
+    }
+    const parsed = new URL(absolute);
+    if (!isEquivalentInternalHost(parsed.hostname, root.hostname)) return;
+    if (!/\.xml(\?|#|$)/i.test(parsed.pathname || "")) return;
+    sitemapQueue.push(absolute);
+  };
+
+  enqueueSitemap(new URL("/sitemap.xml", rootOrigin).toString());
+  enqueueSitemap(new URL("/sitemap_index.xml", rootOrigin).toString());
+
+  const robots = await fetchTextWithTimeout({ url: robotsUrl, timeoutMs });
+  if (robots?.ok && robots.text) {
+    for (const line of String(robots.text || "").split(/\r?\n/)) {
+      const match = line.match(/^\s*Sitemap:\s*(.+)\s*$/i);
+      if (!match) continue;
+      enqueueSitemap(match[1] || "");
+    }
+  }
+
+  const visitedSitemaps = new Set();
+  const collectedPageUrls = [];
+
+  while (sitemapQueue.length && visitedSitemaps.size < Math.max(1, maxSitemaps)) {
+    const sitemapUrl = sitemapQueue.shift();
+    if (!sitemapUrl || visitedSitemaps.has(sitemapUrl)) continue;
+    visitedSitemaps.add(sitemapUrl);
+    const response = await fetchTextWithTimeout({ url: sitemapUrl, timeoutMs });
+    if (!response?.ok || !response.text) continue;
+    const locUrls = extractSitemapLocUrls(response.text);
+    for (const loc of locUrls) {
+      let parsed;
+      try {
+        parsed = new URL(loc, response.finalUrl || sitemapUrl);
+      } catch {
+        continue;
+      }
+      if (!isEquivalentInternalHost(parsed.hostname, root.hostname)) continue;
+      const absolute = parsed.toString();
+      if (/\.xml(\?|#|$)/i.test(parsed.pathname || "")) {
+        if (!visitedSitemaps.has(absolute)) sitemapQueue.push(absolute);
+        continue;
+      }
+      const normalized = normalizeInternalPageUrl(absolute, rootOrigin, rootOrigin);
+      if (!normalized) continue;
+      collectedPageUrls.push(normalized);
+      if (collectedPageUrls.length >= Math.max(20, maxUrls)) break;
+    }
+    if (collectedPageUrls.length >= Math.max(20, maxUrls)) break;
+  }
+
+  return dedupeUrls(collectedPageUrls, Math.max(20, maxUrls));
+};
+
+const extractHeaderNavLinks = ({ html = "", pageUrl = "", rootOrigin = "", maxLinks = 12 }) => {
+  const text = String(html || "").slice(0, 220000);
+  if (!text) return [];
+  const fragments = [];
+  let match;
+  const navRegex = /<nav[\s\S]{0,120000}?<\/nav>/gi;
+  while ((match = navRegex.exec(text)) && fragments.length < 3) {
+    fragments.push(match[0]);
+  }
+  if (!fragments.length) {
+    const headerMatch = text.match(/<header[\s\S]{0,120000}?<\/header>/i);
+    if (headerMatch?.[0]) fragments.push(headerMatch[0]);
+  }
+  if (!fragments.length) return [];
+
+  const pairs = [];
+  const normalizePairAnchor = (hrefRaw, labelRaw) => {
+    const label = normalizeMarkdownLabel(stripHtml(labelRaw || ""));
+    const hrefAbsolute = normalizeInternalPageUrl(hrefRaw || "", rootOrigin, pageUrl);
+    const href = normalizeTemplatePagePath(routePathFromUrl(hrefAbsolute || ""));
+    if (!label || !href) return null;
+    if (label.length > 64) return null;
+    if (isLikelyUtilityNavToken(label, href)) return null;
+    return { label, href, variant: "link" };
+  };
+  const anchorRegex = /<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+  const listItemRegex = /<li\b[^>]*>([\s\S]{0,12000}?)<\/li>/gi;
+  for (const fragment of fragments) {
+    let listMatch;
+    while ((listMatch = listItemRegex.exec(fragment)) && pairs.length < maxLinks * 6) {
+      const listHtml = String(listMatch[0] || "");
+      if (!/(?:mega[-_ ]?menu|submenu|dropdown|site-nav__dropdown|has-submenu|aria-haspopup)/i.test(listHtml)) continue;
+      const anchors = Array.from(listHtml.matchAll(/<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi));
+      if (!anchors.length) continue;
+      const parent = normalizePairAnchor(anchors[0]?.[1] || "", anchors[0]?.[2] || "");
+      if (!parent) continue;
+      const children = anchors
+        .slice(1)
+        .map((anchorRow) => normalizePairAnchor(anchorRow?.[1] || "", anchorRow?.[2] || ""))
+        .filter((item) => item && item.href && item.href !== "/" && item.label !== parent.label);
+      if (children.length) {
+        pairs.push({
+          ...parent,
+          children: dedupeLinkItems(children, 6),
+        });
+      }
+    }
+    listItemRegex.lastIndex = 0;
+    let anchorMatch;
+    while ((anchorMatch = anchorRegex.exec(fragment)) && pairs.length < maxLinks * 5) {
+      const pair = normalizePairAnchor(anchorMatch[1] || "", anchorMatch[2] || "");
+      if (!pair) continue;
+      pairs.push(pair);
+    }
+    anchorRegex.lastIndex = 0;
+  }
+  return sanitizeNavLinks(pairs, maxLinks);
+};
+
 const fetchPageWithLinks = async ({ url, rootOrigin, timeoutMs = 15000 }) => {
   const result = {
     url,
@@ -2663,9 +4977,11 @@ const fetchPageWithLinks = async ({ url, rootOrigin, timeoutMs = 15000 }) => {
     links: [],
     images: [],
     footerLinks: [],
+    navLinks: [],
     navMenuDepth: 1,
     heroPresentation: normalizeHeroPresentation(null),
     heroCarousel: normalizeHeroCarousel(null),
+    sourceSectionHints: detectSourceSectionHints(""),
     htmlChars: 0,
     internalLinks: [],
     error: "",
@@ -2688,9 +5004,16 @@ const fetchPageWithLinks = async ({ url, rootOrigin, timeoutMs = 15000 }) => {
     result.links = extractFirstMatches(html, /<a[^>]*>([\s\S]*?)<\/a>/gi, 24);
     result.images = extractImageUrls(html, url);
     result.footerLinks = extractFooterLinks(html, url, rootOrigin);
+    result.navLinks = extractHeaderNavLinks({
+      html,
+      pageUrl: url,
+      rootOrigin,
+      maxLinks: 12,
+    });
     result.navMenuDepth = detectHeaderMenuDepth(html);
     result.heroPresentation = detectHeroPresentation(html);
     result.heroCarousel = detectHeroCarousel(html, url);
+    result.sourceSectionHints = detectSourceSectionHints(html);
     result.htmlChars = html.length;
     result.internalLinks = extractInternalPageLinks(html, url, rootOrigin);
     return result;
@@ -2742,34 +5065,7 @@ const crawlSitePages = async ({
   const startUrl = normalizeInternalPageUrl(entry.toString(), rootOrigin, rootOrigin) || entry.toString();
   const queue = [{ url: startUrl, depth: 0, from: "" }];
   const seen = new Set([startUrl]);
-  const dedupeKinds = new Set(["products", "blog"]);
-  const dedupeKindTaken = new Set();
   let dedupeSkipped = 0;
-
-  const classifyDedupeKindFromPath = (pathValue) => {
-    const path = normalizeTemplatePagePath(pathValue || "/").toLowerCase();
-    if (
-      /\/products?\//.test(path) ||
-      /\/shop\//.test(path) ||
-      /\/store\//.test(path) ||
-      /\/collections?\//.test(path)
-    ) {
-      return "products";
-    }
-    if (
-      /\/blog\//.test(path) ||
-      /\/blogs\//.test(path) ||
-      /\/article\//.test(path) ||
-      /\/articles\//.test(path) ||
-      /\/news\//.test(path) ||
-      /\/journal\//.test(path) ||
-      /\/insight\//.test(path) ||
-      /\/technology\//.test(path)
-    ) {
-      return "blog";
-    }
-    return "generic";
-  };
 
   const pages = [];
   const errors = [];
@@ -2792,6 +5088,7 @@ const crawlSitePages = async ({
       h1: page.h1,
       h2: page.h2,
       links: page.links,
+      linksOut: page.internalLinks,
       images: page.images,
       footerLinks: page.footerLinks,
       navMenuDepth: page.navMenuDepth,
@@ -2818,13 +5115,6 @@ const crawlSitePages = async ({
     if (current.depth >= maxDepth) continue;
     for (const nextUrl of page.internalLinks) {
       if (seen.has(nextUrl)) continue;
-      const nextPath = routePathFromUrl(nextUrl);
-      const nextKind = classifyDedupeKindFromPath(nextPath);
-      if (dedupeKinds.has(nextKind) && dedupeKindTaken.has(nextKind)) {
-        dedupeSkipped += 1;
-        continue;
-      }
-      if (dedupeKinds.has(nextKind)) dedupeKindTaken.add(nextKind);
       seen.add(nextUrl);
       queue.push({ url: nextUrl, depth: current.depth + 1, from: current.url });
       if (seen.size >= maxPages * 12) break;
@@ -2851,9 +5141,261 @@ const crawlSitePages = async ({
   };
 };
 
+const enrichCrawlReportCoverage = async ({
+  crawlReport,
+  entryUrl,
+  maxPages = 16,
+  maxDepth = 1,
+  timeoutMs = 15000,
+  mustIncludePatterns = [],
+  logPrefix = "[template-factory]",
+}) => {
+  if (!crawlReport?.enabled || !entryUrl) return crawlReport;
+  let rootOrigin = "";
+  try {
+    rootOrigin = String(crawlReport.origin || new URL(entryUrl).origin || "").trim();
+  } catch {
+    rootOrigin = String(crawlReport.origin || "").trim();
+  }
+  if (!rootOrigin) return crawlReport;
+
+  const discoveredSet = new Set(
+    (Array.isArray(crawlReport.discoveredUrls) ? crawlReport.discoveredUrls : [])
+      .map((url) => normalizeInternalPageUrl(url, rootOrigin, rootOrigin))
+      .filter(Boolean)
+  );
+  const knownPageUrlSet = new Set(
+    (Array.isArray(crawlReport.pages) ? crawlReport.pages : [])
+      .map((page) => normalizeInternalPageUrl(page?.url || "", rootOrigin, rootOrigin))
+      .filter(Boolean)
+  );
+
+  const entrySeedUrls = await discoverEntryInternalUrls({
+    entryUrl,
+    rootOrigin,
+    timeoutMs,
+  });
+  const sitemapUrls = await discoverSitemapPageUrls({
+    entryUrl,
+    rootOrigin,
+    timeoutMs,
+    maxSitemaps: 10,
+    maxUrls: Math.max(120, Math.floor(Number(maxPages || 0) || 16) * 16),
+  });
+  const supplementalUrls = dedupeUrls([...entrySeedUrls, ...sitemapUrls], 2000)
+    .map((url) => normalizeInternalPageUrl(url, rootOrigin, rootOrigin))
+    .filter(Boolean);
+  const matchers = (Array.isArray(mustIncludePatterns) ? mustIncludePatterns : [])
+    .map((pattern) => normalizePatternMatcher(pattern))
+    .filter(Boolean);
+  const matchesRequiredPattern = (pathValue) => {
+    if (!matchers.length) return false;
+    const path = normalizeTemplatePagePath(pathValue || "/");
+    return matchers.some((matcher) => {
+      try {
+        return matcher.test(path);
+      } catch {
+        return false;
+      }
+    });
+  };
+  const supplementalSorted = [...supplementalUrls].sort((a, b) => {
+    const pathA = routePathFromUrl(a);
+    const pathB = routePathFromUrl(b);
+    const mustA = matchesRequiredPattern(pathA);
+    const mustB = matchesRequiredPattern(pathB);
+    if (mustA !== mustB) return mustA ? -1 : 1;
+    const depthA = normalizeTemplatePagePath(pathA || "/").split("/").filter(Boolean).length;
+    const depthB = normalizeTemplatePagePath(pathB || "/").split("/").filter(Boolean).length;
+    return depthA - depthB;
+  });
+
+  let supplementalDiscovered = 0;
+  for (const url of supplementalSorted) {
+    if (discoveredSet.has(url)) continue;
+    discoveredSet.add(url);
+    supplementalDiscovered += 1;
+  }
+
+  const currentPages = Array.isArray(crawlReport.pages) ? [...crawlReport.pages] : [];
+  const crawlBudget = Math.max(0, Math.min(8, Math.floor(Number(maxPages || 0) || 16) - currentPages.length));
+  let supplementalCrawled = 0;
+  if (crawlBudget > 0) {
+    const crawlCandidates = supplementalSorted
+      .filter((url) => !knownPageUrlSet.has(url))
+      .slice(0, crawlBudget);
+    for (const targetUrl of crawlCandidates) {
+      const page = await fetchPageWithLinks({
+        url: targetUrl,
+        rootOrigin,
+        timeoutMs: Math.max(4000, Math.floor(Number(timeoutMs || 0) || 15000)),
+      });
+      currentPages.push({
+        url: targetUrl,
+        depth: Math.min(1, Math.max(0, Math.floor(Number(maxDepth || 0) || 0))),
+        from: String(crawlReport.entryUrl || entryUrl),
+        status: page.status,
+        title: page.title,
+        h1: page.h1,
+        h2: page.h2,
+        links: page.links,
+        linksOut: page.internalLinks,
+        images: page.images,
+        footerLinks: page.footerLinks,
+        navMenuDepth: page.navMenuDepth,
+        heroPresentation: normalizeHeroPresentation(page.heroPresentation),
+        heroCarousel: page.heroCarousel,
+        htmlChars: page.htmlChars,
+        internalLinksCount: Array.isArray(page.internalLinks) ? page.internalLinks.length : 0,
+        error: page.error || "",
+      });
+      knownPageUrlSet.add(targetUrl);
+      supplementalCrawled += 1;
+      for (const discovered of Array.isArray(page.internalLinks) ? page.internalLinks : []) {
+        const normalized = normalizeInternalPageUrl(discovered, rootOrigin, rootOrigin);
+        if (!normalized) continue;
+        discoveredSet.add(normalized);
+      }
+    }
+  }
+
+  const errors = Array.isArray(crawlReport.errors) ? [...crawlReport.errors] : [];
+  const failedPages = currentPages.filter((page) => page?.error).length;
+  const enrichedReport = {
+    ...crawlReport,
+    entryUrl: String(crawlReport.entryUrl || entryUrl),
+    origin: rootOrigin,
+    discoveredUrls: Array.from(discoveredSet),
+    pages: currentPages,
+    errors,
+    stats: {
+      discovered: discoveredSet.size,
+      crawled: currentPages.length,
+      failed: failedPages,
+      dedupeSkipped: Number(crawlReport?.stats?.dedupeSkipped || 0),
+    },
+    enrichment: {
+      entrySeedUrls: entrySeedUrls.length,
+      sitemapUrls: sitemapUrls.length,
+      supplementalDiscovered,
+      supplementalCrawled,
+      mustIncludePatterns: Array.isArray(mustIncludePatterns) ? mustIncludePatterns : [],
+    },
+  };
+  if (supplementalDiscovered > 0 || supplementalCrawled > 0) {
+    console.log(
+      `${logPrefix} crawl enrichment: +${supplementalDiscovered} discovered, +${supplementalCrawled} crawled (entry=${entrySeedUrls.length}, sitemap=${sitemapUrls.length})`
+    );
+  }
+  return enrichedReport;
+};
+
+const mergeCrawlReportWithHybridResult = ({ crawlReport = null, crawlResult = null } = {}) => {
+  if (!crawlReport || !Array.isArray(crawlReport.pages) || !crawlReport.pages.length) return crawlReport;
+  const hybridPages = Array.isArray(crawlResult?.pages) ? crawlResult.pages : [];
+  if (!hybridPages.length) return crawlReport;
+
+  const rootOrigin = (() => {
+    try {
+      if (crawlReport?.origin) return String(crawlReport.origin);
+      if (crawlReport?.entryUrl) return new URL(String(crawlReport.entryUrl)).origin;
+    } catch {
+      return "";
+    }
+    return "";
+  })();
+
+  const hybridByUrl = new Map();
+  for (const page of hybridPages) {
+    const normalized = normalizeInternalPageUrl(page?.url || "", rootOrigin, rootOrigin);
+    if (!normalized) continue;
+    if (!hybridByUrl.has(normalized)) hybridByUrl.set(normalized, page);
+  }
+
+  const mergedPages = crawlReport.pages.map((page) => {
+    const normalized = normalizeInternalPageUrl(page?.url || "", rootOrigin, rootOrigin);
+    if (!normalized) return page;
+    const hybrid = hybridByUrl.get(normalized);
+    if (!hybrid) return page;
+    const markdownSignals = extractMarkdownSignals({
+      markdown: hybrid?.markdown || "",
+      pageUrl: normalized,
+      rootOrigin,
+    });
+    const hybridInternalLinks = dedupeUrls(
+      (Array.isArray(hybrid?.links_out) ? hybrid.links_out : [])
+        .map((entry) => normalizeInternalPageUrl(entry, rootOrigin, normalized))
+        .filter(Boolean),
+      300
+    );
+    const mergedInternalLinks = dedupeUrls(
+      [
+        ...(Array.isArray(page?.linksOut) ? page.linksOut : []),
+        ...(Array.isArray(page?.links_out) ? page.links_out : []),
+        ...markdownSignals.internalLinks,
+        ...hybridInternalLinks,
+      ],
+      300
+    );
+    const mergedNavLinks = normalizeNavLinksForSemanticCoverage({
+      existingLinks: Array.isArray(page?.navLinks) ? page.navLinks : [],
+      fallbackLinks: markdownSignals.navLinks,
+      maxLinks: 12,
+    });
+    const mergedNavDepth = Math.max(
+      Number(page?.navMenuDepth || 1),
+      Number(markdownSignals.navDepth || 1),
+      mergedNavLinks.some((entry) => Array.isArray(entry?.children) && entry.children.length > 0) ? 2 : 1
+    );
+    return {
+      ...page,
+      title: String(page?.title || "").trim() || String(hybrid?.title || "").trim(),
+      h1: dedupeTextValues([...(Array.isArray(page?.h1) ? page.h1 : []), ...markdownSignals.h1], 10),
+      h2: dedupeTextValues([...(Array.isArray(page?.h2) ? page.h2 : []), ...markdownSignals.h2], 18),
+      links: dedupeTextValues([...(Array.isArray(page?.links) ? page.links : []), ...markdownSignals.links], 30, {
+        allowSingleWord: true,
+      }),
+      images: dedupeUrls([...(Array.isArray(page?.images) ? page.images : []), ...markdownSignals.images], 60),
+      linksOut: mergedInternalLinks,
+      links_out: mergedInternalLinks,
+      internalLinksCount: mergedInternalLinks.length,
+      navLinks: mergedNavLinks,
+      navMenuDepth: mergedNavDepth,
+      markdownSignals: {
+        h1: markdownSignals.h1.length,
+        h2: markdownSignals.h2.length,
+        links: markdownSignals.links.length,
+        images: markdownSignals.images.length,
+        navLinks: markdownSignals.navLinks.length,
+      },
+    };
+  });
+
+  const mergedDiscovered = dedupeUrls(
+    [
+      ...(Array.isArray(crawlReport?.discoveredUrls) ? crawlReport.discoveredUrls : []),
+      ...mergedPages.flatMap((page) =>
+        Array.isArray(page?.linksOut) ? page.linksOut : Array.isArray(page?.links_out) ? page.links_out : []
+      ),
+    ],
+    2400
+  );
+
+  return {
+    ...crawlReport,
+    discoveredUrls: mergedDiscovered,
+    pages: mergedPages,
+    stats: {
+      ...(crawlReport?.stats || {}),
+      discovered: Math.max(Number(crawlReport?.stats?.discovered || 0), mergedDiscovered.length),
+      crawled: mergedPages.length,
+    },
+  };
+};
+
 const mergeSummaryWithCrawl = (summary, crawl) => {
   if (!crawl?.pages?.length) return summary;
-  const successful = crawl.pages.filter((page) => !page.error);
+  const successful = crawl.pages.filter((page) => !page?.error && isSuccessfulCrawlStatus(page?.status));
   if (!successful.length) return summary;
   const inferNavDepthFromUrls = () => {
     const urls = [
@@ -2886,51 +5428,116 @@ const mergeSummaryWithCrawl = (summary, crawl) => {
     return topLevelCount >= 3 && hasSecondLevelBreadth ? 2 : 1;
   };
   const homePage = successful[0] || null;
+  const summarySignalPages = (() => {
+    const filtered = successful.filter((page) => {
+      const routePath = normalizeTemplatePagePath(routePathFromUrl(page?.url || "") || "/");
+      const pageType = classifyTemplatePageType(routePath, String(page?.title || ""));
+      return routePath === "/" || pageType === "home" || pageType === "about" || pageType === "services";
+    });
+    if (filtered.length) return filtered;
+    return homePage ? [homePage] : successful.slice(0, 1);
+  })();
   const mergedHeroCarousel = mergeHeroCarouselSignals([
     summary?.heroCarousel,
     homePage?.heroCarousel,
-    ...successful.map((page) => page?.heroCarousel),
+    ...summarySignalPages.map((page) => page?.heroCarousel),
+  ]);
+  const mergedSourceSectionHints = mergeSourceSectionHints([
+    summary?.sourceSectionHints,
+    homePage?.sourceSectionHints,
+    ...summarySignalPages.map((page) => page?.sourceSectionHints),
+  ]);
+  const mergedSectionLayout = mergeRuntimeSectionLayout([
+    summary?.sectionLayout,
+    homePage?.sectionLayout,
+    ...summarySignalPages.map((page) => page?.sectionLayout),
   ]);
   const baseHeroPresentation = normalizeHeroPresentation(
     homePage?.heroPresentation || summary?.heroPresentation || null
   );
-  const mergedHeroPresentation =
+  const shouldPromoteSplitToBackgroundText =
     baseHeroPresentation.mode === "split" &&
     !baseHeroPresentation.hasHeading &&
-    (Boolean(mergedHeroCarousel?.enabled) || successful.some((page) => Array.isArray(page?.images) && page.images.length > 0))
-      ? normalizeHeroPresentation({
-          mode: "background_text",
-          hasHeading: true,
-          hasForegroundImage: true,
-          hasBackgroundImage: true,
-        })
-      : baseHeroPresentation;
+    (Boolean(mergedHeroCarousel?.enabled) ||
+      Number(mergedHeroCarousel?.signalCount || 0) >= 1 ||
+      Boolean(mergedSourceSectionHints?.hasShgBox) ||
+      Boolean(mergedSourceSectionHints?.hasShgVerticalAlignWrapper));
+  const mergedHeroPresentation = shouldPromoteSplitToBackgroundText
+    ? normalizeHeroPresentation({
+        mode: "background_text",
+        hasHeading: true,
+        hasForegroundImage: true,
+        hasBackgroundImage: true,
+      })
+    : baseHeroPresentation;
   const navMenuDepth = Math.max(
     Number(summary?.navMenuDepth || 1),
     inferNavDepthFromUrls(),
-    ...successful.map((page) => Number(page?.navMenuDepth || 1))
+    ...successful.map((page) => Number(page?.navMenuDepth || 1)),
+    mergedSourceSectionHints.megaMenuSignals ? 2 : 1
   );
-  const footerLinks = dedupeLinkItems(
+  const navLinks = normalizeNavLinksForSemanticCoverage({
+    existingLinks: Array.isArray(summary?.navLinks) ? summary.navLinks : [],
+    fallbackLinks: successful.flatMap((page) => (Array.isArray(page?.navLinks) ? page.navLinks : [])),
+    maxLinks: 12,
+  });
+  const navDepthFromLinks = navLinks.some((entry) => Array.isArray(entry?.children) && entry.children.length > 0) ? 2 : 1;
+  const footerLinks = pruneSemanticLinks(
     [
       ...(Array.isArray(summary?.footerLinks) ? summary.footerLinks : []),
       ...successful.flatMap((page) => (Array.isArray(page?.footerLinks) ? page.footerLinks : [])),
     ],
-    24
+    { keepRoot: 1, limit: 24 }
+  );
+  const crawlLinkHrefs = dedupeUrls(
+    successful.flatMap((page) =>
+      Array.isArray(page?.links_out) ? page.links_out : Array.isArray(page?.linksOut) ? page.linksOut : []
+    ),
+    400
+  );
+  const mergedTitle =
+    [
+      String(homePage?.title || "").trim(),
+      ...successful.map((page) => String(page?.title || "").trim()),
+      String(summary?.title || "").trim(),
+    ].find(
+      (title) =>
+        title &&
+        !isLowQualityPageTitle(title) &&
+        !isLowQualityTextSignal(title, { allowSingleWord: true })
+    ) || String(summary?.title || "").trim();
+  const mergedThemeColors = dedupeUrls(
+    (Array.isArray(summary?.themeColors) ? summary.themeColors : [])
+      .map((entry) => normalizeColorToken(entry))
+      .filter(Boolean),
+    20
   );
   return {
     ...summary,
+    ...(mergedTitle ? { title: mergedTitle } : {}),
     h1: dedupeTextValues([
       ...(Array.isArray(summary?.h1) ? summary.h1 : []),
-      ...successful.flatMap((page) => page.h1 || []),
+      ...summarySignalPages.flatMap((page) => page.h1 || []),
     ], 12),
     h2: dedupeTextValues([
       ...(Array.isArray(summary?.h2) ? summary.h2 : []),
-      ...successful.flatMap((page) => page.h2 || []),
+      ...summarySignalPages.flatMap((page) => page.h2 || []),
     ], 16),
-    links: dedupeTextValues([
-      ...(Array.isArray(summary?.links) ? summary.links : []),
-      ...successful.flatMap((page) => page.links || []),
-    ], 24),
+    links: dedupeTextValues(
+      [
+        ...(Array.isArray(summary?.links) ? summary.links : []),
+        ...successful.flatMap((page) => page.links || []),
+      ],
+      24,
+      { allowSingleWord: true }
+    ),
+    linkHrefs: dedupeUrls(
+      [
+        ...(Array.isArray(summary?.linkHrefs) ? summary.linkHrefs : []),
+        ...crawlLinkHrefs,
+      ],
+      400
+    ),
     images: dedupeUrls(
       [
         ...(Array.isArray(summary?.images) ? summary.images : []),
@@ -2938,10 +5545,14 @@ const mergeSummaryWithCrawl = (summary, crawl) => {
       ],
       80
     ),
+    navLinks,
     footerLinks,
-    navMenuDepth,
+    ...(mergedThemeColors.length ? { themeColors: mergedThemeColors } : {}),
+    navMenuDepth: Math.max(navMenuDepth, navDepthFromLinks),
     heroPresentation: mergedHeroPresentation,
     heroCarousel: mergedHeroCarousel,
+    sourceSectionHints: mergedSourceSectionHints,
+    ...(Object.keys(mergedSectionLayout).length ? { sectionLayout: mergedSectionLayout } : {}),
     crawl: {
       crawledPages: successful.length,
       discoveredPages: Number(crawl?.stats?.discovered || 0),
@@ -2951,14 +5562,37 @@ const mergeSummaryWithCrawl = (summary, crawl) => {
 };
 
 const routePathFromUrl = (value) => {
-  try {
-    const parsed = new URL(String(value || "").trim());
-    const pathname = parsed.pathname || "/";
-    const normalized = pathname.replace(/\/{2,}/g, "/").replace(/\/+$/g, "") || "/";
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  if (raw.startsWith("#")) return "";
+  if (/^(mailto|tel|javascript|data):/i.test(raw)) return "";
+  const normalizePathname = (pathname) => {
+    const normalized = String(pathname || "/")
+      .split("?")[0]
+      .split("#")[0]
+      .replace(/\/{2,}/g, "/")
+      .replace(/\/+$/g, "") || "/";
     return normalized.startsWith("/") ? normalized : `/${normalized}`;
-  } catch {
-    return "/";
+  };
+  if (raw.startsWith("/")) return normalizePathname(raw);
+  if (/^https?:\/\//i.test(raw)) {
+    try {
+      const parsed = new URL(raw);
+      return normalizePathname(parsed.pathname || "/");
+    } catch {
+      return "";
+    }
   }
+  if (/^[a-z][a-z0-9+.-]*:/i.test(raw)) return "";
+  if (raw.startsWith("./") || raw.startsWith("../")) {
+    try {
+      const parsed = new URL(raw, "https://template.local/");
+      return normalizePathname(parsed.pathname || "/");
+    } catch {
+      return "";
+    }
+  }
+  return normalizePathname(`/${raw}`);
 };
 
 const routeSlugFromPath = (pathValue) => {
@@ -3036,6 +5670,132 @@ const isLikelyBlankScreenshot = async (filePath) => {
   return size > 0 && size <= 12000;
 };
 
+const sampleBandStats = async (filePath, { bandRatio = 0.1, position = "bottom" } = {}) => {
+  if (!filePath) return null;
+  const normalizedRatio = Math.max(0.04, Math.min(0.35, Number(bandRatio) || 0.1));
+  const bandPosition = String(position || "bottom").trim().toLowerCase() === "top" ? "top" : "bottom";
+  try {
+    const cmd = `python3 - <<'PY'
+from PIL import Image, ImageStat
+import json
+img = Image.open(${JSON.stringify(filePath)}).convert("RGB")
+w, h = img.size
+band_h = max(1, int(h * ${normalizedRatio}))
+top = 0 if ${JSON.stringify(bandPosition)} == "top" else max(0, h - band_h)
+crop = img.crop((0, top, w, h))
+stat = ImageStat.Stat(crop)
+means = stat.mean if stat.mean else [255,255,255]
+stddev = stat.stddev if stat.stddev else [0,0,0]
+r, g, b = [max(0, min(255, int(round(v)))) for v in means[:3]]
+lum = (0.2126 * r + 0.7152 * g + 0.0722 * b)
+std = (sum(stddev[:3]) / 3.0) if stddev else 0.0
+print(json.dumps({
+  "avgColor": "#{:02x}{:02x}{:02x}".format(r, g, b),
+  "luminance": round(lum, 2),
+  "stddev": round(std, 2),
+  "width": w,
+  "height": h
+}))
+PY`;
+    const { stdout } = await runShell(cmd, { cwd: ROOT, allowFailure: true, timeoutMs: 12000 });
+    const parsed = parseJsonLine(stdout);
+    return parsed && typeof parsed === "object" ? parsed : null;
+  } catch {
+    return null;
+  }
+};
+
+const sampleBottomBandStats = async (filePath, options = {}) =>
+  sampleBandStats(filePath, { ...options, position: "bottom" });
+
+const sampleTopBandStats = async (filePath, options = {}) =>
+  sampleBandStats(filePath, { ...options, position: "top" });
+
+const isLowInformationScreenshot = async (filePath = "") => {
+  if (!filePath) return true;
+  if (await isLikelyBlankScreenshot(filePath)) return true;
+  const bottomStats = await sampleBottomBandStats(filePath);
+  if (
+    bottomStats &&
+    Number.isFinite(Number(bottomStats?.luminance)) &&
+    Number(bottomStats.luminance) >= 246 &&
+    Number(bottomStats?.stddev || 0) <= 4
+  ) {
+    return true;
+  }
+  const signature = await extractImageVisualSignature(filePath);
+  if (!signature || typeof signature !== "object") return false;
+  const dominantColors = Array.isArray(signature?.dominantColors) ? signature.dominantColors.filter(Boolean) : [];
+  const dhash = String(signature?.dhash || "").trim().toLowerCase();
+  const uniformHash = Boolean(dhash) && /^([0-9a-f])\1+$/.test(dhash);
+  const nearUniform = dominantColors.length <= 1 && (uniformHash || /^0+$/.test(dhash));
+  return nearUniform;
+};
+
+const resolvePersistedReferenceScreenshot = async ({ siteId, stem = "desktop-reference" } = {}) => {
+  const normalizedId = slug(siteId || "site") || "site";
+  const baseDir = path.join(PUBLIC_TEMPLATE_ASSETS_DIR, normalizedId);
+  const candidates = [".png", ".webp", ".jpg", ".jpeg", ".avif"].map((ext) =>
+    path.join(baseDir, `${stem}${ext}`)
+  );
+  for (const filePath of candidates) {
+    if (!(await fileExists(filePath))) continue;
+    const size = await getFileSize(filePath);
+    if (size <= 0) continue;
+    return filePath;
+  }
+  return null;
+};
+
+const resolveHistoricalReferenceScreenshot = async ({
+  siteId,
+  mobile = false,
+  currentRunId = "",
+  maxRuns = 100,
+} = {}) => {
+  const normalizedId = slug(siteId || "");
+  if (!normalizedId) return null;
+  let entries = [];
+  try {
+    entries = await fs.readdir(RUNS_DIR, { withFileTypes: true });
+  } catch {
+    return null;
+  }
+  const runNames = entries
+    .filter((entry) => entry?.isDirectory?.())
+    .map((entry) => String(entry.name || "").trim())
+    .filter((name) => name && name !== String(currentRunId || "").trim())
+    .slice(-Math.max(1, Math.floor(Number(maxRuns) || 100)))
+    .reverse();
+  const relCandidates = mobile
+    ? ["ingest/pages/home/mobile.auto.png", "ingest/mobile.reference.png", "ingest/mobile.auto.png"]
+    : ["ingest/pages/home/desktop.auto.png", "ingest/desktop.reference.png", "ingest/desktop.auto.png"];
+  for (const runName of runNames) {
+    for (const rel of relCandidates) {
+      const filePath = path.join(RUNS_DIR, runName, "sites", normalizedId, rel);
+      if (!(await fileExists(filePath))) continue;
+      const size = await getFileSize(filePath);
+      if (!size) continue;
+      if (await isLowInformationScreenshot(filePath)) continue;
+      return filePath;
+    }
+  }
+  return null;
+};
+
+const chooseReferenceScreenshotByPriority = async (candidates = []) => {
+  let firstValid = null;
+  for (const candidate of Array.isArray(candidates) ? candidates : []) {
+    if (!candidate) continue;
+    const size = await getFileSize(candidate);
+    if (size <= 0) continue;
+    if (!firstValid) firstValid = candidate;
+    if (await isLowInformationScreenshot(candidate)) continue;
+    return candidate;
+  }
+  return null;
+};
+
 const choosePreferredScreenshot = async (candidates) => {
   let best = null;
   let bestScore = -1;
@@ -3043,8 +5803,8 @@ const choosePreferredScreenshot = async (candidates) => {
     if (!candidate) continue;
     const size = await getFileSize(candidate);
     if (!size) continue;
-    const isBlankLike = size <= 12000;
-    const score = (isBlankLike ? 0 : 1_000_000) + size;
+    const lowInfo = await isLowInformationScreenshot(candidate);
+    const score = (lowInfo ? 0 : 1_000_000) + size;
     if (score > bestScore) {
       bestScore = score;
       best = candidate;
@@ -3053,12 +5813,23 @@ const choosePreferredScreenshot = async (candidates) => {
   return best;
 };
 
+const resolveReferenceSource = ({ selected = "", provided = "", captured = "", persisted = "", historical = "" } = {}) => {
+  const target = String(selected || "").trim();
+  if (!target) return "missing";
+  if (target && target === String(provided || "").trim()) return "provided";
+  if (target && target === String(captured || "").trim()) return "captured";
+  if (target && target === String(persisted || "").trim()) return "persisted";
+  if (target && target === String(historical || "").trim()) return "historical";
+  return "unknown";
+};
+
 const captureWithBrowser = async ({ url, outPath, mobile, browser, waitMs = 3500, timeoutMs = 90000 }) => {
   const device = mobile ? ' --device "iPhone 13"' : "";
+  const viewport = mobile ? "" : ' --viewport-size "1440,900"';
   const browserArg = browser ? ` --browser ${browser}` : "";
   const cmd = `cd ${JSON.stringify(
     ROOT
-  )} && npx playwright screenshot --full-page${browserArg}${device} --wait-for-timeout ${Math.floor(
+  )} && npx playwright screenshot --full-page${browserArg}${device}${viewport} --wait-for-timeout ${Math.floor(
     waitMs
   )} ${JSON.stringify(url)} ${JSON.stringify(outPath)}`;
   await runShell(cmd, { cwd: ROOT, timeoutMs });
@@ -3095,11 +5866,97 @@ const captureWithPuppeteer = async ({ url, outPath, mobile, timeoutMs = 90000 })
     }
 
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: Math.max(5000, Math.floor(timeoutMs * 0.5)) });
-    await page.waitForTimeout(3000);
+    try {
+      await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
+    } catch {}
+    await page.addStyleTag({
+      content: `
+*, *::before, *::after { animation: none !important; transition: none !important; caret-color: transparent !important; }
+video, canvas, iframe[src*="youtube"], iframe[src*="vimeo"] { visibility: hidden !important; }
+[aria-live], [class*="ticker"], [class*="marquee"] { visibility: hidden !important; }
+`,
+    });
+    await page.evaluate(() => {
+      const keywordRe =
+        /(cookie|consent|privacy|gdpr|modal|popup|newsletter|subscribe|accept all|allow all|agree|dismiss|close)/i;
+      const backdropRe = /(backdrop|overlay|scrim|veil)/i;
+      const consentRe = /(cookie|consent|privacy|gdpr|tracking|preference)/i;
+      const removeNode = (node) => {
+        try {
+          node?.parentNode?.removeChild(node);
+        } catch {}
+      };
+      for (const selector of [
+        "[id*='cookie' i]",
+        "[class*='cookie' i]",
+        "[id*='consent' i]",
+        "[class*='consent' i]",
+        "[id*='gdpr' i]",
+        "[class*='gdpr' i]",
+        "[data-testid*='cookie' i]",
+        "[data-testid*='consent' i]",
+      ]) {
+        for (const node of Array.from(document.querySelectorAll(selector))) {
+          if (!(node instanceof HTMLElement)) continue;
+          let target = node;
+          for (let i = 0; i < 5; i += 1) {
+            const parent = target.parentElement;
+            if (!parent) break;
+            const rect = parent.getBoundingClientRect();
+            if (rect.width * rect.height > target.getBoundingClientRect().width * target.getBoundingClientRect().height * 1.2) {
+              target = parent;
+              continue;
+            }
+            break;
+          }
+          removeNode(target);
+        }
+      }
+      const nodes = Array.from(document.querySelectorAll("body *"));
+      for (const node of nodes) {
+        if (!(node instanceof HTMLElement)) continue;
+        const style = window.getComputedStyle(node);
+        if (!style || style.display === "none" || style.visibility === "hidden") continue;
+        const rect = node.getBoundingClientRect();
+        const width = Math.max(0, Number(rect.width || 0));
+        const height = Math.max(0, Number(rect.height || 0));
+        const area = width * height;
+        const viewportArea = Math.max(1, window.innerWidth * window.innerHeight);
+        if (area < viewportArea * 0.06) continue;
+        const attrs = `${node.id || ""} ${node.className || ""} ${node.getAttribute("role") || ""} ${
+          node.getAttribute("aria-label") || ""
+        } ${node.getAttribute("data-testid") || ""} ${String(node.textContent || "").slice(0, 220)}`.toLowerCase();
+        const fixedLike = style.position === "fixed" || style.position === "sticky";
+        const zIndex = Number.parseFloat(style.zIndex || "0");
+        const dialogLike = node.getAttribute("role") === "dialog" || /dialog|modal|popup/.test(attrs);
+        const keywordMatch = keywordRe.test(attrs);
+        const consentMatch = consentRe.test(attrs);
+        const backdropLike = backdropRe.test(attrs);
+        const largeOverlay = area >= viewportArea * 0.2;
+        if (
+          (dialogLike && (keywordMatch || largeOverlay)) ||
+          (fixedLike && zIndex >= 40 && (keywordMatch || backdropLike) && area >= viewportArea * 0.12) ||
+          (consentMatch && area >= viewportArea * 0.08)
+        ) {
+          removeNode(node);
+        }
+      }
+      try {
+        document.documentElement.style.overflow = "auto";
+        document.body.style.overflow = "auto";
+      } catch {}
+    });
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     // Trigger lazy sections by scrolling through the page once.
     await page.evaluate(async () => {
       const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+      for (const media of Array.from(document.querySelectorAll("video, audio"))) {
+        try {
+          media.pause();
+          media.currentTime = 0;
+        } catch {}
+      }
       const maxScroll = Math.max(
         0,
         document.documentElement.scrollHeight - window.innerHeight
@@ -3233,18 +6090,12 @@ const buildCrawledPageAssetPack = async ({
     /(^|\/)cookie(?:s|-policy)?(\/|$)/i,
   ];
 
-  const classifyRouteTemplateKind = (pathValue) => {
-    const p = normalizeTemplatePagePath(pathValue || "/").toLowerCase();
-    if (/(^|\/)products?(\/|$)|(^|\/)collections?(\/|$)|(^|\/)shop(\/|$)|(^|\/)store(\/|$)/.test(p)) return "products";
-    if (/(^|\/)blogs?(\/|$)|(^|\/)articles?(\/|$)|(^|\/)news(\/|$)|(^|\/)journal(\/|$)|(^|\/)insights?(\/|$)|(^|\/)technology(\/|$)/.test(p)) return "blog";
-    return "generic";
-  };
-
   const pagesDir = path.join(ingestDir, "pages");
   await ensureDir(pagesDir);
   const filterStats = {
     totalCandidates: Array.isArray(crawl?.pages) ? crawl.pages.length : 0,
     excludedByErrorOrStatus: 0,
+    excludedByLowQualityTitle: 0,
     excludedByRoutePolicy: 0,
     excludedByDownloadPolicy: 0,
     excludedByTemplateDedupe: 0,
@@ -3252,11 +6103,19 @@ const buildCrawledPageAssetPack = async ({
 
   const successfulPagesRaw = [];
   for (const page of Array.isArray(crawl?.pages) ? crawl.pages : []) {
-    if (!page || page.error || !Number(page.status || 0) > 0 || Number(page.status || 0) >= 500) {
+    if (!page || page.error || !isSuccessfulCrawlStatus(page.status)) {
       filterStats.excludedByErrorOrStatus += 1;
       continue;
     }
     const routePath = routePathFromUrl(page.url);
+    if (!routePath) {
+      filterStats.excludedByRoutePolicy += 1;
+      continue;
+    }
+    if (routePath !== "/" && isLowQualityPageTitle(page.title)) {
+      filterStats.excludedByLowQualityTitle += 1;
+      continue;
+    }
     const routeFiltered = SKIP_ROUTE_PATTERNS.some((pattern) => pattern.test(routePath));
     if (routeFiltered) {
       filterStats.excludedByRoutePolicy += 1;
@@ -3269,24 +6128,10 @@ const buildCrawledPageAssetPack = async ({
     successfulPagesRaw.push(page);
   }
 
-  const successfulPages = [];
-  const keepOneKinds = new Set(["products", "blog"]);
-  const seenKinds = new Set();
-  for (const page of successfulPagesRaw) {
-    const routePath = routePathFromUrl(page.url);
-    const kind = classifyRouteTemplateKind(routePath);
-    if (keepOneKinds.has(kind)) {
-      if (seenKinds.has(kind)) {
-        filterStats.excludedByTemplateDedupe += 1;
-        continue;
-      }
-      seenKinds.add(kind);
-    }
-    successfulPages.push(page);
-  }
+  const successfulPages = successfulPagesRaw;
 
   console.log(
-    `${logPrefix} crawl asset filter stats: total=${filterStats.totalCandidates}, kept=${successfulPages.length}, excluded=status_or_error:${filterStats.excludedByErrorOrStatus}, route_policy:${filterStats.excludedByRoutePolicy}, download_policy:${filterStats.excludedByDownloadPolicy}, template_dedupe:${filterStats.excludedByTemplateDedupe}`
+    `${logPrefix} crawl asset filter stats: total=${filterStats.totalCandidates}, kept=${successfulPages.length}, excluded=status_or_error:${filterStats.excludedByErrorOrStatus}, low_quality_title:${filterStats.excludedByLowQualityTitle}, route_policy:${filterStats.excludedByRoutePolicy}, download_policy:${filterStats.excludedByDownloadPolicy}, template_dedupe:${filterStats.excludedByTemplateDedupe}`
   );
   if (!successfulPages.length) {
     const emptyPack = {
@@ -3305,9 +6150,39 @@ const buildCrawledPageAssetPack = async ({
 
   const limit = Math.max(0, Math.floor(Number(captureLimit) || 0));
   const total = successfulPages.length;
+  const routeCapturePriority = (routePath) => {
+    if (!routePath || routePath === "/") return 0;
+    if (/^\/contact(?:\/|$)/i.test(routePath)) return 1;
+    if (/^\/blogs\/[^/]+\/[^/]+/i.test(routePath)) return 2;
+    if (/^\/collections\/[^/]+\/products\/[^/]+/i.test(routePath) || /^\/products\/[^/]+/i.test(routePath)) return 3;
+    if (/^\/blogs(?:\/|$)/i.test(routePath)) return 4;
+    if (/^\/collections(?:\/|$)/i.test(routePath)) return 5;
+    return 9;
+  };
+  const captureRouteSet = (() => {
+    if (limit <= 0) return new Set();
+    const ranked = successfulPages
+      .map((page, index) => {
+        const routePath = routePathFromUrl(page?.url);
+        return {
+          index,
+          routePath,
+          depth: Number(page?.depth || 0),
+          priority: routeCapturePriority(routePath),
+        };
+      })
+      .filter((entry) => Boolean(entry.routePath))
+      .sort((a, b) => {
+        if (a.priority !== b.priority) return a.priority - b.priority;
+        if (a.depth !== b.depth) return a.depth - b.depth;
+        return a.index - b.index;
+      });
+    return new Set(ranked.slice(0, limit).map((entry) => entry.routePath));
+  })();
 
   for (const [index, page] of successfulPages.entries()) {
     const routePath = routePathFromUrl(page.url);
+    if (!routePath) continue;
     if (byPath.has(routePath)) continue;
     const routeSlug = routeSlugFromPath(routePath) || `page-${index + 1}`;
     const pageDir = path.join(pagesDir, routeSlug);
@@ -3315,7 +6190,7 @@ const buildCrawledPageAssetPack = async ({
 
     const desktopPath = path.join(pageDir, "desktop.auto.png");
     const mobilePath = path.join(pageDir, "mobile.auto.png");
-    const shouldCapture = index < limit;
+    const shouldCapture = captureRouteSet.has(routePath);
     console.log(
       `${logPrefix} page asset ${index + 1}/${total} route=${routePath} capture=${shouldCapture ? "yes" : "no"}`
     );
@@ -3345,6 +6220,7 @@ const buildCrawledPageAssetPack = async ({
       desktopSource: desktopShot,
       mobileSource: mobileShot,
     });
+    const pageVisualSignature = await extractImageVisualSignature(desktopShot || "");
 
     const summary = {
       title: String(page.title || "").trim(),
@@ -3359,6 +6235,7 @@ const buildCrawledPageAssetPack = async ({
       htmlChars: Number(page.htmlChars || 0),
       internalLinksCount: Number(page.internalLinksCount || 0),
       status: Number(page.status || 0),
+      visualSignature: pageVisualSignature || null,
     };
     const assetContext = buildPageAssetContext({
       images: summary.images,
@@ -3374,6 +6251,7 @@ const buildCrawledPageAssetPack = async ({
       status: Number(page.status || 0),
       from: String(page.from || "").trim(),
       summary,
+      visualSignature: pageVisualSignature || null,
       screenshots: {
         desktopPath: desktopShot || null,
         mobilePath: mobileShot || null,
@@ -3397,6 +6275,396 @@ const buildCrawledPageAssetPack = async ({
   const manifestPath = path.join(pagesDir, "pages.json");
   await fs.writeFile(manifestPath, JSON.stringify(payload, null, 2));
   return { manifestPath, pages, byPath, homePath: payload.homePath };
+};
+
+const mergeCrawlAssetPacks = ({ primary = null, fallback = null } = {}) => {
+  const toRows = (pack) => (Array.isArray(pack?.pages) ? pack.pages : []);
+  const merged = new Map();
+  for (const row of toRows(fallback)) {
+    const pathValue = normalizeTemplatePagePath(row?.path || routePathFromUrl(row?.url || "") || "/");
+    if (!pathValue || merged.has(pathValue)) continue;
+    merged.set(pathValue, row);
+  }
+  for (const row of toRows(primary)) {
+    const pathValue = normalizeTemplatePagePath(row?.path || routePathFromUrl(row?.url || "") || "/");
+    if (!pathValue) continue;
+    merged.set(pathValue, row);
+  }
+  const pages = Array.from(merged.values());
+  return {
+    ...(primary && typeof primary === "object" ? primary : {}),
+    ...(fallback && typeof fallback === "object" ? { reusedFromRunId: fallback.reusedFromRunId || "" } : {}),
+    pages,
+    byPath: new Map(
+      pages.map((row) => [normalizeTemplatePagePath(row?.path || routePathFromUrl(row?.url || "") || "/"), row])
+    ),
+    homePath:
+      String(primary?.homePath || "").trim() ||
+      String(fallback?.homePath || "").trim() ||
+      normalizeTemplatePagePath(pages[0]?.path || "/"),
+  };
+};
+
+const loadFallbackCrawlAssetPack = async ({ siteId, siteUrl = "", currentRunId = "", minPages = 0 } = {}) => {
+  const requiredMin = Math.max(1, Math.floor(Number(minPages || 0) || 0));
+  if (!siteId || requiredMin <= 0) return null;
+  const normalizeOrigin = (value) => {
+    const raw = String(value || "").trim();
+    if (!raw) return "";
+    try {
+      return new URL(raw).origin;
+    } catch {
+      return "";
+    }
+  };
+  const expectedOrigin = normalizeOrigin(siteUrl);
+  let entries = [];
+  try {
+    entries = await fs.readdir(RUNS_DIR, { withFileTypes: true });
+  } catch {
+    return null;
+  }
+  const candidates = entries
+    .filter((entry) => entry?.isDirectory?.())
+    .map((entry) => String(entry.name || "").trim())
+    .filter((name) => name && name !== currentRunId)
+    .sort((a, b) => b.localeCompare(a));
+  for (const runId of candidates) {
+    const manifestPath = path.join(RUNS_DIR, runId, "sites", siteId, "ingest", "pages", "pages.json");
+    try {
+      const raw = await fs.readFile(manifestPath, "utf8");
+      const parsed = JSON.parse(raw);
+      const rows = Array.isArray(parsed?.pages) ? parsed.pages : [];
+      if (expectedOrigin) {
+        const fallbackOrigin = normalizeOrigin(parsed?.entryUrl || rows[0]?.url || "");
+        if (fallbackOrigin && fallbackOrigin !== expectedOrigin) continue;
+      }
+      const validRows = rows.filter((row) =>
+        isSuccessfulCrawlStatus(Number(row?.status || row?.summary?.status || 0))
+      );
+      if (validRows.length < requiredMin) continue;
+      return {
+        manifestPath,
+        pages: validRows,
+        byPath: new Map(
+          validRows.map((row) => [
+            normalizeTemplatePagePath(row?.path || routePathFromUrl(row?.url || "") || "/"),
+            row,
+          ])
+        ),
+        homePath: normalizeTemplatePagePath(parsed?.homePath || validRows[0]?.path || "/"),
+        reusedFromRunId: runId,
+      };
+    } catch {
+      continue;
+    }
+  }
+  return null;
+};
+
+const summaryTextList = (value) =>
+  (Array.isArray(value) ? value : [])
+    .map((entry) => String(entry || "").trim())
+    .filter(Boolean);
+
+const isLikelyBlockedHtmlSummary = (summary = null) => {
+  const row = summary && typeof summary === "object" ? summary : {};
+  const title = String(row?.title || "").trim();
+  const h1 = summaryTextList(row?.h1);
+  const h2 = summaryTextList(row?.h2);
+  const links = summaryTextList(row?.links);
+  const images = dedupeUrls(Array.isArray(row?.images) ? row.images : [], 120);
+  const status = Number(row?.status || 0);
+  const htmlChars = Number(row?.htmlChars || 0);
+  const combined = [title, ...h1, ...h2].join(" ").trim();
+  const titleLowQuality =
+    isLowQualityPageTitle(title) || isLowQualityTextSignal(title, { allowSingleWord: true });
+  const antiCrawlText =
+    hasAntiCrawlSignals(combined) ||
+    /请稍候|稍候|just a moment|verify(?:ing)? you are human|checking your browser|connection needs to be verified/i.test(
+      combined
+    );
+  const sparseHeadings = h1.length === 0 && h2.length === 0;
+  const sparseLinks = links.length <= 1;
+  const sparseImages = images.length <= 1;
+  const blockedStatus = status === 301 || status === 302 || status === 303 || status === 307 || status === 308 || status === 401 || status === 403 || status === 429;
+  const lowHtmlDensity = htmlChars > 0 && htmlChars < 15000;
+  if (antiCrawlText) return true;
+  if (titleLowQuality && sparseHeadings && sparseLinks) return true;
+  if ((sparseHeadings && sparseLinks && sparseImages) && (blockedStatus || lowHtmlDensity)) return true;
+  return false;
+};
+
+const isUsableHistoricalHtmlSummary = (summary = null) => {
+  const row = summary && typeof summary === "object" ? summary : {};
+  if (isLikelyBlockedHtmlSummary(row)) return false;
+  const title = String(row?.title || "").trim();
+  const h1Count = summaryTextList(row?.h1).length;
+  const h2Count = summaryTextList(row?.h2).length;
+  const linksCount = summaryTextList(row?.links).length;
+  const imagesCount = Array.isArray(row?.images) ? row.images.length : 0;
+  const titleLowQuality =
+    !title || isLowQualityPageTitle(title) || isLowQualityTextSignal(title, { allowSingleWord: true });
+  if (titleLowQuality && h1Count === 0 && h2Count === 0) return false;
+  return h1Count > 0 || h2Count > 0 || linksCount >= 4 || imagesCount >= 6;
+};
+
+const extractSummaryCandidatesFromPayload = (payload = null) => {
+  const parsed = payload && typeof payload === "object" ? payload : {};
+  const candidates = [];
+  const pushCandidate = (summary, sourceUrl = "") => {
+    if (!summary || typeof summary !== "object") return;
+    candidates.push({
+      summary,
+      sourceUrl: String(sourceUrl || "").trim(),
+    });
+  };
+
+  pushCandidate(parsed?.htmlSummary, parsed?.urlUsed || parsed?.site?.url || parsed?.sourceUrl);
+  pushCandidate(parsed?.summary, parsed?.url || parsed?.urlUsed || parsed?.sourceUrl);
+
+  const pageSpecs = Array.isArray(parsed?.page_specs) ? parsed.page_specs : [];
+  const homeSpec =
+    pageSpecs.find((page) => normalizeTemplatePagePath(page?.path || "/") === "/") || pageSpecs[0] || null;
+  if (homeSpec?.summary && typeof homeSpec.summary === "object") {
+    pushCandidate(homeSpec.summary, homeSpec?.source_url || parsed?.sourceUrl || parsed?.urlUsed || "");
+  }
+
+  return candidates;
+};
+
+const mergeSummaryWithHistoricalFallback = ({ current = null, historical = null } = {}) => {
+  const currentSummary = current && typeof current === "object" ? current : {};
+  const historicalSummary = historical && typeof historical === "object" ? historical : {};
+  if (!Object.keys(historicalSummary).length) return currentSummary;
+  const preferHistorical = isLikelyBlockedHtmlSummary(currentSummary);
+  const chooseTextArray = (primary, fallback, limit, options = undefined) => {
+    const rows = preferHistorical
+      ? [...summaryTextList(fallback), ...summaryTextList(primary)]
+      : [...summaryTextList(primary), ...summaryTextList(fallback)];
+    return dedupeTextValues(rows, limit, options);
+  };
+  const chooseLinks = (primary, fallback, limit = 24) => {
+    const rows = preferHistorical
+      ? [...summaryTextList(fallback), ...summaryTextList(primary)]
+      : [...summaryTextList(primary), ...summaryTextList(fallback)];
+    return dedupeTextValues(rows, limit, { allowSingleWord: true });
+  };
+  const chooseUrlList = (primary, fallback, limit) => {
+    const rows = preferHistorical
+      ? [...(Array.isArray(fallback) ? fallback : []), ...(Array.isArray(primary) ? primary : [])]
+      : [...(Array.isArray(primary) ? primary : []), ...(Array.isArray(fallback) ? fallback : [])];
+    return dedupeUrls(rows, limit);
+  };
+  const chooseTitle = () => {
+    const currentTitle = String(currentSummary?.title || "").trim();
+    if (
+      currentTitle &&
+      !isLowQualityPageTitle(currentTitle) &&
+      !isLowQualityTextSignal(currentTitle, { allowSingleWord: true })
+    ) {
+      return currentTitle;
+    }
+    const fallbackTitle = String(historicalSummary?.title || "").trim();
+    if (fallbackTitle) return fallbackTitle;
+    return currentTitle;
+  };
+
+  return {
+    ...historicalSummary,
+    ...currentSummary,
+    title: chooseTitle(),
+    h1: chooseTextArray(currentSummary?.h1, historicalSummary?.h1, 12),
+    h2: chooseTextArray(currentSummary?.h2, historicalSummary?.h2, 16),
+    links: chooseLinks(currentSummary?.links, historicalSummary?.links, 40),
+    images: chooseUrlList(currentSummary?.images, historicalSummary?.images, 80),
+    footerLinks: dedupeLinkItems(
+      preferHistorical
+        ? [
+            ...(Array.isArray(historicalSummary?.footerLinks) ? historicalSummary.footerLinks : []),
+            ...(Array.isArray(currentSummary?.footerLinks) ? currentSummary.footerLinks : []),
+          ]
+        : [
+            ...(Array.isArray(currentSummary?.footerLinks) ? currentSummary.footerLinks : []),
+            ...(Array.isArray(historicalSummary?.footerLinks) ? historicalSummary.footerLinks : []),
+          ],
+      24
+    ),
+    navMenuDepth: Math.max(Number(currentSummary?.navMenuDepth || 1), Number(historicalSummary?.navMenuDepth || 1)),
+    heroPresentation:
+      normalizeHeroPresentation(currentSummary?.heroPresentation)?.mode !== "unknown"
+        ? normalizeHeroPresentation(currentSummary?.heroPresentation)
+        : normalizeHeroPresentation(historicalSummary?.heroPresentation),
+    heroCarousel: mergeHeroCarouselSignals([historicalSummary?.heroCarousel, currentSummary?.heroCarousel]),
+    sourceSectionHints: mergeSourceSectionHints([historicalSummary?.sourceSectionHints, currentSummary?.sourceSectionHints]),
+    sectionComputedStyles: mergeRuntimeSectionComputedStyles([
+      currentSummary?.sectionComputedStyles,
+      historicalSummary?.sectionComputedStyles,
+    ]),
+    sectionLayout: mergeRuntimeSectionLayout([
+      currentSummary?.sectionLayout,
+      historicalSummary?.sectionLayout,
+    ]),
+    navBackgroundColorRaw:
+      String(currentSummary?.navBackgroundColorRaw || "").trim() ||
+      String(historicalSummary?.navBackgroundColorRaw || "").trim(),
+    footerBackgroundColorRaw:
+      String(currentSummary?.footerBackgroundColorRaw || "").trim() ||
+      String(historicalSummary?.footerBackgroundColorRaw || "").trim(),
+    navBackgroundColor:
+      normalizeCssColorToken(currentSummary?.navBackgroundColor || currentSummary?.navBackgroundColorRaw || "") ||
+      normalizeCssColorToken(historicalSummary?.navBackgroundColor || historicalSummary?.navBackgroundColorRaw || "") ||
+      normalizeColorToken(currentSummary?.navBackgroundColor || "") ||
+      normalizeColorToken(historicalSummary?.navBackgroundColor || ""),
+    footerBackgroundColor:
+      normalizeCssColorToken(currentSummary?.footerBackgroundColor || currentSummary?.footerBackgroundColorRaw || "") ||
+      normalizeCssColorToken(historicalSummary?.footerBackgroundColor || historicalSummary?.footerBackgroundColorRaw || "") ||
+      normalizeColorToken(currentSummary?.footerBackgroundColor || "") ||
+      normalizeColorToken(historicalSummary?.footerBackgroundColor || ""),
+    themeColors: dedupeUrls(
+      [
+        ...(Array.isArray(currentSummary?.themeColors) ? currentSummary.themeColors : []),
+        ...(Array.isArray(historicalSummary?.themeColors) ? historicalSummary.themeColors : []),
+      ]
+        .map((entry) => normalizeColorToken(entry))
+        .filter(Boolean),
+      20
+    ),
+    fontFamilies: dedupeTextValues(
+      [
+        ...(Array.isArray(currentSummary?.fontFamilies) ? currentSummary.fontFamilies : []),
+        ...(Array.isArray(historicalSummary?.fontFamilies) ? historicalSummary.fontFamilies : []),
+      ]
+        .map((entry) => normalizeToCommercialFreeFont(entry, { role: "body" }))
+        .filter(Boolean),
+      8,
+      { allowSingleWord: true }
+    ),
+    headingFontFamily:
+      normalizeToCommercialFreeFont(String(currentSummary?.headingFontFamily || "").trim(), { role: "heading" }) ||
+      normalizeToCommercialFreeFont(String(historicalSummary?.headingFontFamily || "").trim(), { role: "heading" }),
+    bodyFontFamily:
+      normalizeToCommercialFreeFont(String(currentSummary?.bodyFontFamily || "").trim(), { role: "body" }) ||
+      normalizeToCommercialFreeFont(String(historicalSummary?.bodyFontFamily || "").trim(), { role: "body" }),
+    headingFontPx: Math.max(
+      Number(currentSummary?.headingFontPx || 0),
+      Number(historicalSummary?.headingFontPx || 0)
+    ),
+    bodyFontPx: Math.max(
+      Number(currentSummary?.bodyFontPx || 0),
+      Number(historicalSummary?.bodyFontPx || 0)
+    ),
+  };
+};
+
+const loadHistoricalHtmlSummaryFallback = async ({ siteId, siteUrl = "", currentRunId = "" } = {}) => {
+  const normalizedId = slug(siteId || "");
+  if (!normalizedId) return null;
+  const normalizeOrigin = (value) => {
+    const raw = String(value || "").trim();
+    if (!raw) return "";
+    try {
+      return new URL(raw).origin;
+    } catch {
+      return "";
+    }
+  };
+  const expectedOrigin = normalizeOrigin(siteUrl);
+  let entries = [];
+  try {
+    entries = await fs.readdir(RUNS_DIR, { withFileTypes: true });
+  } catch {
+    return null;
+  }
+  const runIds = entries
+    .filter((entry) => entry?.isDirectory?.())
+    .map((entry) => String(entry.name || "").trim())
+    .filter((name) => name && name !== currentRunId)
+    .sort((a, b) => b.localeCompare(a));
+  const relativeCandidates = [
+    "ingest/summary.json",
+    "ingest/pages/home/summary.json",
+    "extracted/spec-pack.json",
+  ];
+  for (const runId of runIds) {
+    for (const relativePath of relativeCandidates) {
+      const filePath = path.join(RUNS_DIR, runId, "sites", normalizedId, relativePath);
+      const payload = await readJsonIfExists(filePath);
+      if (!payload || typeof payload !== "object") continue;
+      const summaryCandidates = extractSummaryCandidatesFromPayload(payload);
+      for (const candidate of summaryCandidates) {
+        const candidateOrigin = normalizeOrigin(candidate?.sourceUrl || "");
+        if (expectedOrigin && candidateOrigin && candidateOrigin !== expectedOrigin) continue;
+        if (!isUsableHistoricalHtmlSummary(candidate?.summary)) continue;
+        return {
+          summary: candidate.summary,
+          runId,
+          filePath,
+        };
+      }
+    }
+  }
+  return null;
+};
+
+const summarizeRequiredSelection = (pages = []) => {
+  const rows = Array.isArray(pages) ? pages : [];
+  const roleSet = new Set(
+    rows
+      .map((row) => String(row?.role || "").trim().toLowerCase())
+      .filter(Boolean)
+  );
+  const count = rows.length;
+  const roleCount = roleSet.size;
+  // Prefer more required pages first, then better role coverage.
+  const score = count * 10 + roleCount;
+  return { count, roleCount, score };
+};
+
+const injectSyntheticPageSpecRows = ({ siteItem, crawlAssetPack } = {}) => {
+  const specPages = Array.isArray(siteItem?.specPack?.page_specs) ? siteItem.specPack.page_specs : [];
+  if (!specPages.length) return crawlAssetPack;
+
+  const currentPages = Array.isArray(crawlAssetPack?.pages) ? crawlAssetPack.pages : [];
+  const byPath = new Map(
+    currentPages.map((row) => [normalizeTemplatePagePath(row?.path || routePathFromUrl(row?.url || "") || "/"), row])
+  );
+  let injected = 0;
+  for (const specPage of specPages) {
+    const pathValue = normalizeTemplatePagePath(specPage?.path || "/");
+    if (!pathValue || byPath.has(pathValue)) continue;
+    const siteUrl = String(siteItem?.site?.url || "").trim();
+    let pageUrl = "";
+    if (siteUrl) {
+      try {
+        pageUrl = new URL(pathValue, siteUrl).toString();
+      } catch {
+        pageUrl = "";
+      }
+    }
+    const synthetic = {
+      path: pathValue,
+      name: String(specPage?.name || "").trim() || formatTemplatePageName(pathValue),
+      url: pageUrl,
+      depth: Math.max(0, pathValue.split("/").filter(Boolean).length),
+      status: 200,
+      summary: {
+        title: String(specPage?.name || "").trim() || formatTemplatePageName(pathValue),
+        status: 200,
+      },
+      syntheticFromPageSpec: true,
+    };
+    byPath.set(pathValue, synthetic);
+    injected += 1;
+  }
+  if (!injected) return crawlAssetPack;
+  const mergedPages = Array.from(byPath.values());
+  return {
+    ...(crawlAssetPack && typeof crawlAssetPack === "object" ? crawlAssetPack : {}),
+    pages: mergedPages,
+    byPath: new Map(mergedPages.map((row) => [normalizeTemplatePagePath(row?.path || "/"), row])),
+    syntheticPageSpecRows: injected,
+  };
 };
 
 const getImageDimensions = async (filePath) => {
@@ -3442,10 +6710,160 @@ right = max(left + 1, min(w, left + crop_w))
 img.crop((left, top, right, bottom)).save(dst)
 PY`;
   await runShell(cmd, { cwd: ROOT });
-  return targetPath;
+  return {
+    path: targetPath,
+    widthPx: cropWidth,
+    heightPx: cropHeight,
+    topPx: topFromTop,
+    leftPx: leftFromLeft,
+    sourceWidthPx: dims.width,
+    sourceHeightPx: dims.height,
+    topRatio,
+    heightRatio,
+    leftRatio,
+    widthRatio,
+  };
 };
 
-const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, preset }) => {
+const clampSlicePx = (value, minValue, maxValue) =>
+  Math.max(minValue, Math.min(maxValue, Number.isFinite(Number(value)) ? Number(value) : minValue));
+
+const computeAdaptiveSliceRatios = ({ dimensions, mobile = false }) => {
+  const width = Number(dimensions?.width || 0);
+  const height = Number(dimensions?.height || 0);
+  if (!width || !height) return null;
+  const aspect = height / Math.max(1, width);
+  if (!Number.isFinite(aspect) || aspect < 1.8) return null;
+
+  const navHeight = clampSlicePx(mobile ? 58 : 68, mobile ? 48 : 56, Math.max(mobile ? 64 : 72, Math.floor(height * 0.09)));
+  const footerHeight = clampSlicePx(
+    mobile ? 260 : 340,
+    mobile ? 180 : 220,
+    Math.max(mobile ? 220 : 260, Math.floor(height * 0.24))
+  );
+  const minHero = mobile ? 240 : 300;
+  const heroMax = Math.max(minHero, height - navHeight - footerHeight - (mobile ? 220 : 320));
+  const heroHeight = clampSlicePx(mobile ? 460 : 560, minHero, heroMax);
+  const middleTop = Math.round(navHeight + heroHeight);
+  const middleBottom = Math.max(middleTop + (mobile ? 200 : 280), height - footerHeight);
+  const middleSpan = Math.max(mobile ? 200 : 280, middleBottom - middleTop);
+  const weights = [1.05, 1, 0.95, 0.85, 0.75];
+  const weightSum = weights.reduce((sum, value) => sum + value, 0);
+  const middleHeights = weights.map((weight, index) => {
+    if (index === weights.length - 1) return 0;
+    return Math.max(64, Math.round((middleSpan * weight) / weightSum));
+  });
+  const consumed = middleHeights.reduce((sum, value) => sum + value, 0);
+  middleHeights[middleHeights.length - 1] = Math.max(64, middleSpan - consumed);
+  const middleTops = [];
+  let cursor = middleTop;
+  for (const heightValue of middleHeights) {
+    middleTops.push(cursor);
+    cursor += heightValue;
+  }
+
+  const pxToRatio = (px) => Number((Math.max(0, px) / height).toFixed(6));
+  return {
+    navigation: { top: 0, height: pxToRatio(navHeight) },
+    hero: { top: pxToRatio(navHeight), height: pxToRatio(heroHeight) },
+    story: { top: pxToRatio(middleTops[0]), height: pxToRatio(middleHeights[0]) },
+    approach: { top: pxToRatio(middleTops[1]), height: pxToRatio(middleHeights[1]) },
+    products: { top: pxToRatio(middleTops[2]), height: pxToRatio(middleHeights[2]) },
+    socialproof: { top: pxToRatio(middleTops[3]), height: pxToRatio(middleHeights[3]) },
+    cta: { top: pxToRatio(middleTops[4]), height: pxToRatio(middleHeights[4]) },
+    footer: { top: pxToRatio(height - footerHeight), height: pxToRatio(footerHeight) },
+  };
+};
+
+const buildSectionRatiosFromRuntimeLayout = ({ sectionLayout = null, dimensions = null, mobile = false } = {}) => {
+  if (!sectionLayout || typeof sectionLayout !== "object") return null;
+  const width = Number(dimensions?.width || 0);
+  const height = Number(dimensions?.height || 0);
+  if (!width || !height) return null;
+  const docHeight =
+    Math.max(
+      1,
+      Math.round(Number(sectionLayout?.documentHeightPx || 0) || 0),
+      Math.round(height)
+    );
+  const ratioForKind = (kind) => {
+    const row = sectionLayout?.[kind];
+    if (!row || typeof row !== "object") return null;
+    const topPx = Number(row?.topPx || 0);
+    const heightPx = Number(row?.heightPx || 0);
+    const topRatioRaw = Number(row?.topRatio);
+    const heightRatioRaw = Number(row?.heightRatio);
+    const topRatio = Number.isFinite(topRatioRaw) ? topRatioRaw : topPx / docHeight;
+    const heightRatio = Number.isFinite(heightRatioRaw) ? heightRatioRaw : heightPx / docHeight;
+    if (!Number.isFinite(heightRatio) || heightRatio < 0.008) return null;
+    return {
+      top: Number(Math.max(0, Math.min(1, topRatio)).toFixed(6)),
+      height: Number(Math.max(0.008, Math.min(1, heightRatio)).toFixed(6)),
+    };
+  };
+  const base = {};
+  const accepted = [];
+  const minHeightRatioByKind = {
+    hero: 0.08,
+    story: 0.05,
+    approach: 0.06,
+    products: 0.06,
+    socialproof: 0.03,
+    contact: 0.03,
+    cta: 0.03,
+    footer: 0.04,
+    navigation: 0.008,
+  };
+  const orderedKinds = ["navigation", "hero", "story", "approach", "products", "socialproof", "cta", "footer"];
+  for (const kind of orderedKinds) {
+    const ratio = ratioForKind(kind);
+    if (ratio) base[kind] = ratio;
+    if (!ratio) continue;
+    const minRatio = Number(minHeightRatioByKind[kind] || 0.01);
+    if (ratio.height < minRatio) {
+      delete base[kind];
+      continue;
+    }
+    const duplicated = accepted.some(
+      (entry) => Math.abs(entry.top - ratio.top) < 0.02 && Math.abs(entry.height - ratio.height) < 0.02
+    );
+    if (kind !== "navigation" && kind !== "footer" && duplicated) {
+      delete base[kind];
+      continue;
+    }
+    accepted.push(ratio);
+  }
+  const nav = base.navigation || null;
+  const footer = base.footer || null;
+  if (!nav && !footer && !base.hero) return null;
+  const fallbackRatios = computeAdaptiveSliceRatios({ dimensions, mobile }) || {};
+  const merged = {
+    ...fallbackRatios,
+    ...base,
+  };
+  if (merged.navigation && merged.hero) {
+    const navBottom = Number(merged.navigation.top || 0) + Number(merged.navigation.height || 0);
+    const heroTop = Number(merged.hero.top || 0);
+    if (heroTop < navBottom - 0.005) {
+      const heroBottom = heroTop + Number(merged.hero.height || 0);
+      const nextTop = Math.max(0, Math.min(0.96, navBottom));
+      const nextHeight = Math.max(0.08, Math.min(0.95 - nextTop, heroBottom - nextTop));
+      merged.hero = {
+        top: Number(nextTop.toFixed(6)),
+        height: Number(nextHeight.toFixed(6)),
+      };
+    }
+  }
+  if (nav && nav.top + nav.height > 0.18) {
+    merged.navigation = fallbackRatios.navigation || { top: 0, height: mobile ? 0.06 : 0.05 };
+  }
+  if (footer && footer.height > 0.26) {
+    merged.footer = fallbackRatios.footer || { top: mobile ? 0.91 : 0.9, height: mobile ? 0.09 : 0.1 };
+  }
+  return merged;
+};
+
+const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, preset, sectionLayout = null }) => {
   const normalizedId = slug(siteId || "site") || "site";
   const targetDir = path.join(PUBLIC_TEMPLATE_ASSETS_DIR, normalizedId, "slices");
   await ensureDir(targetDir);
@@ -3456,7 +6874,8 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
   const isPowerbeatPreset = preset === "powerbeat_fitness_neon";
   const desktopRatios = isDesignerPreset
     ? {
-        hero: { top: 0.0, height: 0.16 },
+        navigation: { top: 0.0, height: 0.05 },
+        hero: { top: 0.05, height: 0.16 },
         story: { top: 0.16, height: 0.2 },
         approach: { top: 0.34, height: 0.2 },
         products: { top: 0.52, height: 0.2 },
@@ -3466,7 +6885,8 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
       }
     : isNexusPreset
       ? {
-          hero: { top: 0.0, height: 0.2 },
+          navigation: { top: 0.0, height: 0.05 },
+          hero: { top: 0.05, height: 0.2 },
           story: { top: 0.2, height: 0.14 },
           approach: { top: 0.34, height: 0.23 },
           products: { top: 0.57, height: 0.16 },
@@ -3476,7 +6896,8 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
         }
     : isBeautyPreset
       ? {
-          hero: { top: 0.0, height: 0.2, left: 0.52, width: 0.46 },
+          navigation: { top: 0.0, height: 0.05 },
+          hero: { top: 0.05, height: 0.2, left: 0.52, width: 0.46 },
           story: { top: 0.2, height: 0.22 },
           approach: { top: 0.42, height: 0.15 },
           products: { top: 0.57, height: 0.12 },
@@ -3486,7 +6907,8 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
         }
     : isPowerbeatPreset
       ? {
-          hero: { top: 0.0, height: 0.24 },
+          navigation: { top: 0.0, height: 0.06 },
+          hero: { top: 0.06, height: 0.24 },
           story: { top: 0.24, height: 0.08 },
           approach: { top: 0.32, height: 0.16 },
           products: { top: 0.48, height: 0.2 },
@@ -3495,7 +6917,8 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
           footer: { top: 0.9, height: 0.1 },
         }
     : {
-        hero: { top: 0.0, height: 0.26 },
+        navigation: { top: 0.0, height: 0.05 },
+        hero: { top: 0.05, height: 0.26 },
         story: { top: 0.18, height: 0.22 },
         approach: { top: 0.37, height: 0.18 },
         products: { top: 0.54, height: 0.18 },
@@ -3505,7 +6928,8 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
       };
   const mobileRatios = isDesignerPreset
     ? {
-        hero: { top: 0.0, height: 0.18 },
+        navigation: { top: 0.0, height: 0.06 },
+        hero: { top: 0.06, height: 0.18 },
         story: { top: 0.18, height: 0.2 },
         approach: { top: 0.37, height: 0.2 },
         products: { top: 0.56, height: 0.2 },
@@ -3515,7 +6939,8 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
       }
     : isNexusPreset
       ? {
-          hero: { top: 0.0, height: 0.24 },
+          navigation: { top: 0.0, height: 0.06 },
+          hero: { top: 0.06, height: 0.24 },
           story: { top: 0.24, height: 0.14 },
           approach: { top: 0.38, height: 0.2 },
           products: { top: 0.58, height: 0.16 },
@@ -3525,7 +6950,8 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
         }
     : isBeautyPreset
       ? {
-          hero: { top: 0.0, height: 0.22 },
+          navigation: { top: 0.0, height: 0.06 },
+          hero: { top: 0.06, height: 0.22 },
           story: { top: 0.22, height: 0.24 },
           approach: { top: 0.46, height: 0.14 },
           products: { top: 0.6, height: 0.11 },
@@ -3535,7 +6961,8 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
         }
     : isPowerbeatPreset
       ? {
-          hero: { top: 0.0, height: 0.25 },
+          navigation: { top: 0.0, height: 0.06 },
+          hero: { top: 0.06, height: 0.25 },
           story: { top: 0.25, height: 0.08 },
           approach: { top: 0.33, height: 0.18 },
           products: { top: 0.51, height: 0.18 },
@@ -3544,7 +6971,8 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
           footer: { top: 0.91, height: 0.09 },
         }
     : {
-        hero: { top: 0.0, height: 0.28 },
+        navigation: { top: 0.0, height: 0.06 },
+        hero: { top: 0.06, height: 0.28 },
         story: { top: 0.2, height: 0.22 },
         approach: { top: 0.42, height: 0.16 },
         products: { top: 0.57, height: 0.18 },
@@ -3553,11 +6981,34 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
         footer: { top: 0.91, height: 0.09 },
       };
 
+  const desktopDimensions = desktopSource ? await getImageDimensions(desktopSource) : null;
+  const mobileDimensions = mobileSource ? await getImageDimensions(mobileSource) : null;
+  const runtimeDesktopRatios = buildSectionRatiosFromRuntimeLayout({
+    sectionLayout,
+    dimensions: desktopDimensions,
+    mobile: false,
+  });
+  const runtimeMobileRatios = buildSectionRatiosFromRuntimeLayout({
+    sectionLayout,
+    dimensions: mobileDimensions,
+    mobile: true,
+  });
+  const adaptiveDesktopRatios = computeAdaptiveSliceRatios({ dimensions: desktopDimensions, mobile: false });
+  const adaptiveMobileRatios = computeAdaptiveSliceRatios({ dimensions: mobileDimensions, mobile: true });
+  const effectiveDesktopRatios = runtimeDesktopRatios || adaptiveDesktopRatios || desktopRatios;
+  const effectiveMobileRatios = runtimeMobileRatios || adaptiveMobileRatios || mobileRatios;
+
   const desktop = {};
   const mobile = {};
+  const desktopMeta = {};
+  const mobileMeta = {};
+  const desktopMiddle = {};
+  const mobileMiddle = {};
+  const desktopMiddleMeta = {};
+  const mobileMiddleMeta = {};
 
   if (desktopSource) {
-    for (const [key, ratio] of Object.entries(desktopRatios)) {
+    for (const [key, ratio] of Object.entries(effectiveDesktopRatios)) {
       const outPath = path.join(targetDir, `desktop-${key}.png`);
       const result = await createImageSlice({
         sourcePath: desktopSource,
@@ -3567,12 +7018,67 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
         leftRatio: ratio.left ?? 0,
         widthRatio: ratio.width ?? 1,
       });
-      if (result) desktop[key] = `/assets/template-factory/${normalizedId}/slices/desktop-${key}.png`;
+      if (result) {
+        desktop[key] = `/assets/template-factory/${normalizedId}/slices/desktop-${key}.png`;
+        desktopMeta[key] = {
+          widthPx: result.widthPx,
+          heightPx: result.heightPx,
+          topPx: result.topPx,
+          leftPx: result.leftPx,
+          sourceWidthPx: result.sourceWidthPx,
+          sourceHeightPx: result.sourceHeightPx,
+          topRatio: result.topRatio,
+          heightRatio: result.heightRatio,
+          leftRatio: result.leftRatio,
+          widthRatio: result.widthRatio,
+        };
+      }
+    }
+  }
+
+  if (desktopSource) {
+    const navTop = Number(effectiveDesktopRatios?.navigation?.top || 0);
+    const navHeight = Number(effectiveDesktopRatios?.navigation?.height || 0);
+    const footerTop = Number(effectiveDesktopRatios?.footer?.top || 0.9);
+    const middleTop = Math.max(0, Math.min(0.98, navTop + navHeight));
+    const middleBottom = Math.max(middleTop + 0.02, Math.min(1, footerTop));
+    const middleSpan = Math.max(0.02, middleBottom - middleTop);
+    for (let count = 1; count <= 6; count += 1) {
+      const countKey = String(count);
+      desktopMiddle[countKey] = {};
+      desktopMiddleMeta[countKey] = {};
+      for (let index = 0; index < count; index += 1) {
+        const indexKey = String(index + 1);
+        const topRatio = middleTop + (middleSpan * index) / count;
+        const nextTopRatio = index === count - 1 ? middleBottom : middleTop + (middleSpan * (index + 1)) / count;
+        const heightRatio = Math.max(0.01, nextTopRatio - topRatio);
+        const outPath = path.join(targetDir, `desktop-middle-${count}-${index + 1}.png`);
+        const result = await createImageSlice({
+          sourcePath: desktopSource,
+          targetPath: outPath,
+          topRatio,
+          heightRatio,
+        });
+        if (!result) continue;
+        desktopMiddle[countKey][indexKey] = `/assets/template-factory/${normalizedId}/slices/desktop-middle-${count}-${index + 1}.png`;
+        desktopMiddleMeta[countKey][indexKey] = {
+          widthPx: result.widthPx,
+          heightPx: result.heightPx,
+          topPx: result.topPx,
+          leftPx: result.leftPx,
+          sourceWidthPx: result.sourceWidthPx,
+          sourceHeightPx: result.sourceHeightPx,
+          topRatio: result.topRatio,
+          heightRatio: result.heightRatio,
+          leftRatio: result.leftRatio,
+          widthRatio: result.widthRatio,
+        };
+      }
     }
   }
 
   if (mobileSource) {
-    for (const [key, ratio] of Object.entries(mobileRatios)) {
+    for (const [key, ratio] of Object.entries(effectiveMobileRatios)) {
       const outPath = path.join(targetDir, `mobile-${key}.png`);
       const result = await createImageSlice({
         sourcePath: mobileSource,
@@ -3582,11 +7088,75 @@ const createReferenceSlices = async ({ siteId, desktopSource, mobileSource, pres
         leftRatio: ratio.left ?? 0,
         widthRatio: ratio.width ?? 1,
       });
-      if (result) mobile[key] = `/assets/template-factory/${normalizedId}/slices/mobile-${key}.png`;
+      if (result) {
+        mobile[key] = `/assets/template-factory/${normalizedId}/slices/mobile-${key}.png`;
+        mobileMeta[key] = {
+          widthPx: result.widthPx,
+          heightPx: result.heightPx,
+          topPx: result.topPx,
+          leftPx: result.leftPx,
+          sourceWidthPx: result.sourceWidthPx,
+          sourceHeightPx: result.sourceHeightPx,
+          topRatio: result.topRatio,
+          heightRatio: result.heightRatio,
+          leftRatio: result.leftRatio,
+          widthRatio: result.widthRatio,
+        };
+      }
     }
   }
 
-  return { desktop, mobile };
+  if (mobileSource) {
+    const navTop = Number(effectiveMobileRatios?.navigation?.top || 0);
+    const navHeight = Number(effectiveMobileRatios?.navigation?.height || 0);
+    const footerTop = Number(effectiveMobileRatios?.footer?.top || 0.91);
+    const middleTop = Math.max(0, Math.min(0.98, navTop + navHeight));
+    const middleBottom = Math.max(middleTop + 0.02, Math.min(1, footerTop));
+    const middleSpan = Math.max(0.02, middleBottom - middleTop);
+    for (let count = 1; count <= 6; count += 1) {
+      const countKey = String(count);
+      mobileMiddle[countKey] = {};
+      mobileMiddleMeta[countKey] = {};
+      for (let index = 0; index < count; index += 1) {
+        const indexKey = String(index + 1);
+        const topRatio = middleTop + (middleSpan * index) / count;
+        const nextTopRatio = index === count - 1 ? middleBottom : middleTop + (middleSpan * (index + 1)) / count;
+        const heightRatio = Math.max(0.01, nextTopRatio - topRatio);
+        const outPath = path.join(targetDir, `mobile-middle-${count}-${index + 1}.png`);
+        const result = await createImageSlice({
+          sourcePath: mobileSource,
+          targetPath: outPath,
+          topRatio,
+          heightRatio,
+        });
+        if (!result) continue;
+        mobileMiddle[countKey][indexKey] = `/assets/template-factory/${normalizedId}/slices/mobile-middle-${count}-${index + 1}.png`;
+        mobileMiddleMeta[countKey][indexKey] = {
+          widthPx: result.widthPx,
+          heightPx: result.heightPx,
+          topPx: result.topPx,
+          leftPx: result.leftPx,
+          sourceWidthPx: result.sourceWidthPx,
+          sourceHeightPx: result.sourceHeightPx,
+          topRatio: result.topRatio,
+          heightRatio: result.heightRatio,
+          leftRatio: result.leftRatio,
+          widthRatio: result.widthRatio,
+        };
+      }
+    }
+  }
+
+  return {
+    desktop,
+    mobile,
+    desktopMeta,
+    mobileMeta,
+    desktopMiddle,
+    mobileMiddle,
+    desktopMiddleMeta,
+    mobileMiddleMeta,
+  };
 };
 
 const textTokens = (value) =>
@@ -3600,30 +7170,6 @@ const textTokens = (value) =>
 const chooseRecipe = ({ prompt, title, url, siteId = "" }) => {
   const joined = `${prompt} ${title} ${url} ${siteId}`.toLowerCase();
   const has = (pattern) => pattern.test(joined);
-  const siteFingerprint = `${siteId} ${url}`.toLowerCase();
-  const host = hostFromUrl(url);
-
-  // Strong explicit routing by source identity first.
-  if (!DISABLE_SITE_FINGERPRINT_ROUTING) {
-    if (/designer-portfolio-81|nava-moon|nava moon/.test(siteFingerprint)) {
-      return RECIPES.designer_portfolio_minimal;
-    }
-    if (/nexus-engineering|nexusengineering|nexus/.test(siteFingerprint)) {
-      return RECIPES.nexus_engineering_neon;
-    }
-    if (/social-automation|socialautomation|luma/.test(siteFingerprint)) {
-      return RECIPES.social_automation_neon;
-    }
-    if (/beauty-salon-29|beautysalon29|beauty-salon|beauty salon bangkok/.test(siteFingerprint)) {
-      return RECIPES.beauty_salon_serene;
-    }
-    if (/use-this-image-90|usethisimage90|powerbeat/.test(siteFingerprint)) {
-      return RECIPES.powerbeat_fitness_neon;
-    }
-    if (/siemens|siemens-home|xcelerator|simatic|gridscale/.test(siteFingerprint) || /(^|\.)siemens\.com$/i.test(host)) {
-      return RECIPES.enterprise_blue_cyan;
-    }
-  }
 
   if (has(/designer-portfolio-81|designer portfolio 81|nava moon|future of design content/i)) {
     return RECIPES.designer_portfolio_minimal;
@@ -3654,6 +7200,38 @@ const unique = (items) => Array.from(new Set(items.filter(Boolean)));
 const cloneJson = (value) => JSON.parse(JSON.stringify(value));
 
 const HERO_CAROUSEL_CAPABLE_BLOCKS = new Set(["NexusHeroDock", "HeroSplit", "NeonHeroBeam"]);
+const CANONICAL_BLOCK_TYPES = Array.from(
+  new Set(
+    Object.values(SECTION_BLOCK_REGISTRY || {})
+      .flatMap((entries) => (Array.isArray(entries) ? entries : []))
+      .map((entry) => String(entry?.blockType || "").trim())
+      .filter(Boolean)
+  )
+);
+
+const normalizeBlockTypeToken = (value) => String(value || "").replace(/[^a-z0-9]/gi, "").toLowerCase();
+
+const resolveCanonicalBlockType = (blockType = "") => {
+  const raw = String(blockType || "").trim();
+  if (!raw) return "";
+  if (CANONICAL_BLOCK_TYPES.includes(raw)) return raw;
+  const normalizedRaw = normalizeBlockTypeToken(raw);
+  if (!normalizedRaw) return raw;
+  const matched = [...CANONICAL_BLOCK_TYPES]
+    .sort((a, b) => normalizeBlockTypeToken(b).length - normalizeBlockTypeToken(a).length)
+    .find((candidate) => {
+      const normalizedCandidate = normalizeBlockTypeToken(candidate);
+      return normalizedCandidate && normalizedRaw.includes(normalizedCandidate);
+    });
+  return matched || raw;
+};
+
+const isCarouselCapableBlockType = (blockType = "") => {
+  const raw = String(blockType || "").trim();
+  const canonical = resolveCanonicalBlockType(raw);
+  if (HERO_CAROUSEL_CAPABLE_BLOCKS.has(canonical)) return true;
+  return /hero/i.test(raw) && /split|dock|beam/i.test(raw);
+};
 
 /**
  * Extract brand/theme colors from HTML inline styles, CSS custom properties,
@@ -3688,6 +7266,436 @@ const extractThemeColorsFromHtml = (html) => {
     colors.push(hex);
   }
   return [...new Set(colors.map(c => c.toLowerCase()))];
+};
+
+const GENERIC_FONT_FAMILIES = new Set([
+  "sans-serif",
+  "serif",
+  "monospace",
+  "system-ui",
+  "-apple-system",
+  "ui-sans-serif",
+  "ui-serif",
+  "ui-monospace",
+  "inherit",
+  "initial",
+  "unset",
+]);
+
+const FREE_COMMERCIAL_FONT_CANONICAL = new Map(
+  [
+    "Inter",
+    "Manrope",
+    "Montserrat",
+    "Poppins",
+    "DM Sans",
+    "Work Sans",
+    "Outfit",
+    "Plus Jakarta Sans",
+    "Space Grotesk",
+    "Barlow",
+    "Barlow Condensed",
+    "Archivo",
+    "Noto Sans",
+    "Source Sans 3",
+    "IBM Plex Sans",
+    "IBM Plex Mono",
+    "Source Serif 4",
+    "Cormorant Garamond",
+    "Roboto",
+    "Open Sans",
+    "Lato",
+  ].map((name) => [name.toLowerCase(), name])
+);
+
+const FONT_FALLBACK_RULES = [
+  { pattern: /\bverbatim\b/i, heading: "Barlow Condensed", body: "Manrope" },
+  { pattern: /\bvisby\b/i, heading: "Montserrat", body: "Manrope" },
+  { pattern: /\bproxima\b/i, heading: "Montserrat", body: "Manrope" },
+  { pattern: /\bavenir\b/i, heading: "Montserrat", body: "Manrope" },
+  { pattern: /\bgotham\b/i, heading: "Montserrat", body: "Manrope" },
+  { pattern: /\bgraphik\b/i, heading: "Manrope", body: "Manrope" },
+  { pattern: /\beuclid\b/i, heading: "Plus Jakarta Sans", body: "Manrope" },
+  { pattern: /\bcircular\b/i, heading: "DM Sans", body: "DM Sans" },
+  { pattern: /\bneue haas\b|\bhelvetica\b/i, heading: "Inter", body: "Inter" },
+  { pattern: /\bsf pro\b|\bsegoe\b|\barial\b/i, heading: "Inter", body: "Inter" },
+  { pattern: /\bfutura\b|\bfranklin\b|\btrade gothic\b/i, heading: "Barlow", body: "Work Sans" },
+  { pattern: /\bdidot\b|\bbodoni\b|\bgaramond\b|\bcaslon\b|\bgeorgia\b/i, heading: "Cormorant Garamond", body: "Source Serif 4" },
+  { pattern: /\bcourier\b|\bmenlo\b|\bconsolas\b|\bmono\b/i, heading: "IBM Plex Mono", body: "IBM Plex Mono" },
+];
+
+const normalizeFontStack = (value) => {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  const cleaned = raw
+    .replace(/!important/gi, "")
+    .replace(/\\+/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!cleaned) return "";
+  const first = cleaned
+    .split(",")
+    .map((token) => token.replace(/^['"]|['"]$/g, "").replace(/\\+/g, "").trim().toLowerCase())
+    .find(Boolean);
+  if (!first || first.startsWith("var(") || GENERIC_FONT_FAMILIES.has(first)) return "";
+  if (!/[a-z0-9]/i.test(first)) return "";
+  return cleaned;
+};
+
+const primaryFontToken = (value) =>
+  String(value || "")
+    .split(",")[0]
+    ?.replace(/^['"]|['"]$/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase() || "";
+
+const normalizeToCommercialFreeFont = (value, { role = "body" } = {}) => {
+  const normalized = normalizeFontStack(value);
+  if (!normalized) return "";
+  const token = primaryFontToken(normalized);
+  if (!token) return "";
+  const direct = FREE_COMMERCIAL_FONT_CANONICAL.get(token);
+  if (direct) return direct;
+  const mapped = FONT_FALLBACK_RULES.find((row) => row.pattern.test(token));
+  if (mapped) return role === "heading" ? mapped.heading : mapped.body;
+  if (/(serif|times|roman)/i.test(token)) {
+    return role === "heading" ? "Cormorant Garamond" : "Source Serif 4";
+  }
+  if (/(mono|code|terminal)/i.test(token)) return "IBM Plex Mono";
+  if (/(condensed|narrow|extended|display|headline|grotesk|gothic)/i.test(token)) {
+    return role === "heading" ? "Barlow Condensed" : "Inter";
+  }
+  return role === "heading" ? "Montserrat" : "Manrope";
+};
+
+const parseCssPx = (value) => {
+  const raw = String(value || "").trim();
+  const match = raw.match(/(-?\d+(?:\.\d+)?)px/i);
+  if (!match) return 0;
+  const px = Number(match[1]);
+  if (!Number.isFinite(px)) return 0;
+  return Math.max(0, Math.min(120, px));
+};
+
+const extractTypographyFromHtml = (html = "") => {
+  const rows = [];
+  const headingRows = [];
+  const bodyRows = [];
+  const sizes = { heading: [], body: [] };
+  const pushFont = (value, weight = 1, role = "any") => {
+    const normalized = normalizeToCommercialFreeFont(value, {
+      role: role === "heading" ? "heading" : "body",
+    });
+    if (!normalized) return;
+    rows.push({ value: normalized, weight });
+    if (role === "heading") headingRows.push({ value: normalized, weight });
+    if (role === "body") bodyRows.push({ value: normalized, weight });
+  };
+
+  const inlineFontRegex = /font-family\s*:\s*([^;}\n]+)/gi;
+  let match;
+  while ((match = inlineFontRegex.exec(html))) {
+    pushFont(match[1], 1);
+  }
+  const dataFontRegex = /\bdata-fontfamily=["']([^"']+)["']/gi;
+  while ((match = dataFontRegex.exec(html))) {
+    const idx = Number(match.index || 0);
+    const context = html.slice(Math.max(0, idx - 120), Math.min(html.length, idx + 220));
+    const role = /<h[1-4]\b/i.test(context) ? "heading" : /<p\b/i.test(context) ? "body" : "any";
+    pushFont(match[1], role === "heading" ? 4 : 2, role);
+  }
+
+  const styleAttrRegex = /style=["']([^"']+)["']/gi;
+  while ((match = styleAttrRegex.exec(html))) {
+    const styleValue = String(match[1] || "");
+    const styleFont = styleValue.match(/font-family\s*:\s*([^;]+)/i);
+    const styleSize = styleValue.match(/font-size\s*:\s*([^;]+)/i);
+    const idx = Number(match.index || 0);
+    const context = html.slice(Math.max(0, idx - 140), Math.min(html.length, idx + 240));
+    const px = styleSize ? parseCssPx(styleSize[1]) : 0;
+    const headingByContext = /<h[1-4]\b/i.test(context);
+    const headingByStyle = px >= 22 || /font-family\s*:\s*['"]?verbatim/i.test(styleValue);
+    const role = headingByContext || headingByStyle ? "heading" : /<p\b|rich-text|description|subtitle/i.test(context) ? "body" : "any";
+    if (styleFont?.[1]) {
+      pushFont(styleFont[1], role === "heading" ? 3 : 2, role);
+    }
+    if (px > 0) {
+      if (role === "heading") sizes.heading.push(px);
+      else sizes.body.push(px);
+    }
+  }
+
+  const googleFontRegex = /fonts\.googleapis\.com\/css[^"' )]*\?([^"' )]+)/gi;
+  while ((match = googleFontRegex.exec(html))) {
+    const query = match[1] || "";
+    const familyMatches = query.match(/family=([^&]+)/gi) || [];
+    for (const fam of familyMatches) {
+      const token = decodeURIComponent(String(fam).replace(/^family=/i, ""))
+        .split(":")[0]
+        .replace(/\+/g, " ")
+        .trim();
+      if (!token) continue;
+      pushFont(`"${token}"`, 3);
+    }
+  }
+
+  const h1SizeRegex = /(?:^|[,{]\s*)(?:h1|\.h1|#h1)[^{]{0,120}\{[^}]{0,240}?font-size\s*:\s*([^;}\n]+)/gi;
+  while ((match = h1SizeRegex.exec(html))) {
+    const px = parseCssPx(match[1]);
+    if (px > 0) sizes.heading.push(px);
+  }
+  const h2SizeRegex = /(?:^|[,{]\s*)(?:h2|\.h2|#h2)[^{]{0,120}\{[^}]{0,240}?font-size\s*:\s*([^;}\n]+)/gi;
+  while ((match = h2SizeRegex.exec(html))) {
+    const px = parseCssPx(match[1]);
+    if (px > 0) sizes.heading.push(px);
+  }
+  const bodySizeRegex = /(?:^|[,{]\s*)(?:body|p|\.body|\.text|\.content)[^{]{0,120}\{[^}]{0,240}?font-size\s*:\s*([^;}\n]+)/gi;
+  while ((match = bodySizeRegex.exec(html))) {
+    const px = parseCssPx(match[1]);
+    if (px > 0) sizes.body.push(px);
+  }
+
+  const orderFontsByWeight = (inputRows = [], limit = 6) => {
+    const weighted = new Map();
+    for (const row of inputRows) {
+      const key = row.value;
+      const prev = weighted.get(key) || 0;
+      weighted.set(key, prev + Number(row.weight || 1));
+    }
+    return [...weighted.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([value]) => value)
+      .slice(0, limit);
+  };
+  const orderedHeadingFonts = orderFontsByWeight(headingRows, 4);
+  const orderedBodyFonts = orderFontsByWeight(bodyRows, 4);
+  const orderedAnyFonts = orderFontsByWeight(rows, 8);
+  const orderedFonts = dedupeTextValues([...orderedHeadingFonts, ...orderedBodyFonts, ...orderedAnyFonts], 8, {
+    allowSingleWord: true,
+  });
+  const headingFontFamily = orderedHeadingFonts[0] || orderedFonts[0] || "";
+  const bodyFontFamily = orderedBodyFonts[0] || orderedFonts[1] || orderedFonts[0] || "";
+  const headingFontPx = sizes.heading.length
+    ? Number((sizes.heading.reduce((acc, px) => acc + px, 0) / sizes.heading.length).toFixed(2))
+    : 0;
+  const bodyFontPx = sizes.body.length
+    ? Number((sizes.body.reduce((acc, px) => acc + px, 0) / sizes.body.length).toFixed(2))
+    : 0;
+
+  return {
+    fontFamilies: orderedFonts,
+    headingFontFamily,
+    bodyFontFamily,
+    headingFontPx,
+    bodyFontPx,
+  };
+};
+
+const extractColorLiteralFromCssValue = (value) => {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  const rgbaMatch = raw.match(/rgba?\(([^)]+)\)/i);
+  if (rgbaMatch) {
+    const channels = rgbaMatch[1].split(",").map((item) => Number(item.trim()));
+    if (channels.length >= 4 && Number.isFinite(channels[3]) && channels[3] <= 0.08) return "";
+    return normalizeCssColorToken(rgbaMatch[0]);
+  }
+  const hexMatch = raw.match(/#[0-9a-f]{3,8}/i);
+  if (hexMatch) return normalizeCssColorToken(hexMatch[0]);
+  return "";
+};
+
+const extractSectionBackgroundColorFromHtml = (html, section = "nav") => {
+  if (!html) return "";
+  const isFooter = section === "footer";
+  const headChunk = html.slice(0, 220000);
+  const tailChunk = html.slice(Math.max(0, html.length - 220000));
+  const candidates = [];
+
+  const pushFromRegex = (input, regex, max = 20) => {
+    let match;
+    let guard = 0;
+    while ((match = regex.exec(input)) && guard < max) {
+      guard += 1;
+      const color = extractColorLiteralFromCssValue(match[1] || "");
+      if (color) candidates.push(color);
+    }
+  };
+
+  if (isFooter) {
+    pushFromRegex(
+      tailChunk,
+      /<footer\b[^>]*style=["'][^"']*background(?:-color)?\s*:\s*([^;"']+)/gi,
+      16
+    );
+    pushFromRegex(
+      `${tailChunk}\n${headChunk}`,
+      /(?:^|[,{]\s*)(?:footer|\.footer|#footer)[^{]{0,140}\{[^}]{0,480}?background(?:-color)?\s*:\s*([^;}\n]+)/gi,
+      20
+    );
+  } else {
+    pushFromRegex(
+      headChunk,
+      /<(?:header|nav)\b[^>]*style=["'][^"']*background(?:-color)?\s*:\s*([^;"']+)/gi,
+      20
+    );
+    pushFromRegex(
+      headChunk,
+      /(?:^|[,{]\s*)(?:header|nav|\.header|\.navbar|#header|#nav)[^{]{0,140}\{[^}]{0,480}?background(?:-color)?\s*:\s*([^;}\n]+)/gi,
+      24
+    );
+  }
+
+  const normalized = dedupeUrls(candidates.map((item) => normalizeCssColorToken(item)).filter(Boolean), 24);
+  if (!normalized.length) return "";
+  if (isFooter) {
+    const ranked = normalized
+      .map((color) => {
+        const parsed = parseHexRgb(color);
+        const luminance = parsed ? colorLuminance(parsed) : 255;
+        return { color, luminance };
+      })
+      .sort((a, b) => a.luminance - b.luminance);
+    return ranked[0]?.color || normalized[0];
+  }
+  const nonWhite = normalized.find((color) => color !== "#ffffff" && color !== "#fefefe");
+  return nonWhite || normalized[0];
+};
+
+const parseHexRgb = (value) => {
+  const raw = String(value || "").trim().toLowerCase();
+  const rgbMatch = raw.match(/^rgba?\(([^)]+)\)$/i);
+  if (rgbMatch) {
+    const channels = rgbMatch[1]
+      .split(",")
+      .map((entry) => Number(entry.trim()))
+      .filter((entry) => Number.isFinite(entry));
+    if (channels.length >= 3) {
+      const r = Math.max(0, Math.min(255, Math.round(channels[0])));
+      const g = Math.max(0, Math.min(255, Math.round(channels[1])));
+      const b = Math.max(0, Math.min(255, Math.round(channels[2])));
+      const hex = `#${[r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("")}`;
+      return { hex, r, g, b };
+    }
+  }
+  const normalizedHex = normalizeColorToken(raw);
+  const m = normalizedHex.match(/^#([0-9a-f]{6})$/i);
+  if (!m) return null;
+  const hex = m[1];
+  return {
+    hex: `#${hex}`,
+    r: parseInt(hex.slice(0, 2), 16),
+    g: parseInt(hex.slice(2, 4), 16),
+    b: parseInt(hex.slice(4, 6), 16),
+  };
+};
+
+const rgbToHex = ({ r = 0, g = 0, b = 0 }) =>
+  `#${[r, g, b]
+    .map((v) => Math.max(0, Math.min(255, Math.round(Number(v) || 0))).toString(16).padStart(2, "0"))
+    .join("")}`;
+
+const colorLuminance = ({ r, g, b }) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+const isBrightColorToken = (value, threshold = 205) => {
+  const parsed = parseHexRgb(normalizeColorToken(value));
+  if (!parsed) return false;
+  return colorLuminance(parsed) >= threshold;
+};
+
+const extractPrimaryColorTokenFromGradient = (value) => {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  const hexMatch = raw.match(/#(?:[0-9a-f]{3}|[0-9a-f]{6})\b/i);
+  if (hexMatch?.[0]) {
+    const normalizedHex = normalizeColorToken(hexMatch[0]);
+    if (normalizedHex) return normalizedHex;
+  }
+  const rgbMatch = raw.match(/rgba?\([^)]+\)/i);
+  if (rgbMatch?.[0]) {
+    const normalizedRgb = normalizeColorToken(rgbMatch[0]);
+    if (normalizedRgb) return normalizedRgb;
+  }
+  return "";
+};
+
+const isBrightGradientToken = (value, threshold = 170) => {
+  const primary = extractPrimaryColorTokenFromGradient(value);
+  if (!primary) return false;
+  return isBrightColorToken(primary, threshold);
+};
+
+const inferSurfaceSignalsFromScreenshot = async (filePath = "") => {
+  if (!filePath) {
+    return {
+      navBackgroundColor: "",
+      footerBackgroundColor: "",
+      navLuminance: null,
+      footerLuminance: null,
+      darkFooterSignals: false,
+    };
+  }
+  const [topStats, bottomStats] = await Promise.all([
+    sampleTopBandStats(filePath, { bandRatio: 0.08 }),
+    sampleBottomBandStats(filePath, { bandRatio: 0.12 }),
+  ]);
+  const navBackgroundColor = normalizeColorToken(topStats?.avgColor || "");
+  const footerBackgroundColor = normalizeColorToken(bottomStats?.avgColor || "");
+  const navLuminance = Number.isFinite(Number(topStats?.luminance)) ? Number(topStats.luminance) : null;
+  const footerLuminance = Number.isFinite(Number(bottomStats?.luminance)) ? Number(bottomStats.luminance) : null;
+  return {
+    navBackgroundColor,
+    footerBackgroundColor,
+    navLuminance,
+    footerLuminance,
+    darkFooterSignals: footerLuminance !== null ? footerLuminance <= 118 : false,
+  };
+};
+
+const colorSaturation = ({ r, g, b }) => {
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  return max === 0 ? 0 : (max - min) / max;
+};
+
+const chooseDarkStops = (colors = [], fallback = ["#0d0d0d", "#1b1b1b", "#050505"]) => {
+  const parsed = colors.map(parseHexRgb).filter(Boolean);
+  const dark = parsed
+    .filter((row) => colorLuminance(row) <= 90)
+    .sort((a, b) => colorLuminance(a) - colorLuminance(b));
+  const first = dark[0]?.hex || fallback[0];
+  const second = dark[Math.min(1, dark.length - 1)]?.hex || fallback[1];
+  const third = dark[Math.min(2, dark.length - 1)]?.hex || fallback[2];
+  return [first, second, third];
+};
+
+const chooseAccentColor = (colors = [], fallback = "#8b6227") => {
+  const parsed = colors.map(parseHexRgb).filter(Boolean);
+  const ranked = parsed
+    .map((row) => {
+      const lum = colorLuminance(row);
+      const sat = colorSaturation(row);
+      const notNeutral = Math.max(row.r, row.g, row.b) - Math.min(row.r, row.g, row.b);
+      const score = sat * 100 + Math.max(0, 65 - Math.abs(135 - lum)) + Math.min(35, notNeutral);
+      return { ...row, lum, sat, score };
+    })
+    .filter((row) => row.lum >= 35 && row.lum <= 210 && row.sat >= 0.18)
+    .sort((a, b) => b.score - a.score);
+  return ranked[0]?.hex || fallback;
+};
+
+const chooseReadableAccentText = (accentHex, fallback = "#f5f5f5") => {
+  const parsed = parseHexRgb(accentHex);
+  if (!parsed) return fallback;
+  return colorLuminance(parsed) > 145 ? "#0f172a" : "#f5f5f5";
+};
+
+const hexToRgba = (hex, alpha = 1) => {
+  const parsed = parseHexRgb(hex);
+  if (!parsed) return `rgba(0,0,0,${alpha})`;
+  const a = Math.max(0, Math.min(1, Number(alpha) || 0));
+  return `rgba(${parsed.r}, ${parsed.g}, ${parsed.b}, ${a})`;
 };
 
 const inferPaletteProfileFromVisualSignature = (visualSignature, htmlColors = []) => {
@@ -3745,14 +7753,80 @@ const inferPaletteProfileFromVisualSignature = (visualSignature, htmlColors = []
     };
   }
   return {
-    paletteProfile: "cool-neutral",
-    navGradient: "linear-gradient(180deg,#e8f1ff 0%,#d7ebff 100%)",
-    bodyGradient: "linear-gradient(180deg,#f7fbff 0%,#edf6ff 100%)",
-    footerGradient: "linear-gradient(180deg,#e7f2ff 0%,#dcecff 100%)",
-    overlayStrong: "rgba(230, 240, 255, 0.32)",
-    overlaySoft: "rgba(235,240,248,0.18)",
-    accent: extractedAccent || "#0ea5e9",
-    accentText: "#031628",
+    paletteProfile: "light-neutral",
+    navGradient: "linear-gradient(180deg,#f8f8f8 0%,#efefef 100%)",
+    bodyGradient: "linear-gradient(180deg,#ffffff 0%,#f4f4f4 100%)",
+    footerGradient: "linear-gradient(180deg,#f3f3f3 0%,#e8e8e8 100%)",
+    overlayStrong: "rgba(20, 20, 20, 0.22)",
+    overlaySoft: "rgba(18,18,18,0.12)",
+    accent: extractedAccent || "#111827",
+    accentText: "#f8fafc",
+  };
+};
+
+const resolveAdaptivePaletteForPage = ({
+  site,
+  summary = {},
+  pathValue = "/",
+  pageVisualSignature = null,
+  siteVisualSignature = null,
+}) => {
+  const imageIndependentTheme = parseBool(
+    extractSpecialRuleValue(site, "imageIndependentTheme") ??
+      extractSpecialRuleValue(site, "imageIndependentTemplate") ??
+      false
+  );
+  const normalizedPath = normalizeTemplatePagePath(pathValue || "/");
+  const pageType = classifyTemplatePageType(normalizedPath, String(summary?.title || ""));
+  const isPolicyPath = /^\/policies(?:\/|$)/.test(normalizedPath);
+  const heuristicDark =
+    pageType === "blog" ||
+    /\/blogs\/[^/]+\/[^/]+/.test(normalizedPath) ||
+    /\/technology(?:\/|$)/.test(normalizedPath);
+  const heuristicLight = pageType === "legal" || isPolicyPath;
+
+  const sourceSignature = imageIndependentTheme
+    ? null
+    : (pageVisualSignature && typeof pageVisualSignature === "object" ? pageVisualSignature : null) ||
+      (siteVisualSignature && typeof siteVisualSignature === "object" ? siteVisualSignature : null) ||
+      null;
+  const forcedTone = heuristicDark ? "dark" : heuristicLight ? "light" : null;
+  const effectiveSignature =
+    forcedTone === null
+      ? sourceSignature
+      : {
+          ...(sourceSignature || {}),
+          isDark: forcedTone === "dark",
+        };
+  const htmlColors = Array.isArray(summary?.themeColors) ? summary.themeColors : [];
+  let palette = inferPaletteProfileFromVisualSignature(effectiveSignature, htmlColors);
+  if (htmlColors.length) {
+    const toneIsDark = forcedTone ? forcedTone === "dark" : Boolean(effectiveSignature?.isDark);
+    const accent = chooseAccentColor(htmlColors, palette.accent || (toneIsDark ? "#38bdf8" : "#111827"));
+    if (toneIsDark) {
+      const [darkA, darkB, darkC] = chooseDarkStops(htmlColors, ["#0d0d0d", "#1b1b1b", "#050505"]);
+      palette = {
+        ...palette,
+        navGradient: `linear-gradient(180deg,${darkA} 0%,${darkB} 100%)`,
+        bodyGradient: `linear-gradient(180deg,${darkB} 0%,${darkC} 100%)`,
+        footerGradient: `linear-gradient(180deg,${darkB} 0%,${darkC} 100%)`,
+        overlayStrong: hexToRgba(darkA, 0.62),
+        overlaySoft: hexToRgba(darkB, 0.34),
+        accent,
+        accentText: chooseReadableAccentText(accent, "#f5f5f5"),
+      };
+    } else {
+      palette = {
+        ...palette,
+        accent,
+        accentText: chooseReadableAccentText(accent, "#0f172a"),
+      };
+    }
+  }
+
+  return {
+    ...palette,
+    tone: forcedTone || (Boolean(effectiveSignature?.isDark) ? "dark" : "light"),
   };
 };
 
@@ -3767,13 +7841,40 @@ const evaluateRecipeFit = ({ recipe, summary = {}, visualSignature = null, site 
     summary.heroCarousel.images.length >= 2;
   const navBlock = String(recipe?.sectionSpecs?.navigation?.blockType || "");
   const navVariant = String(recipe?.sectionSpecs?.navigation?.defaults?.variant || "");
-  const heroBlock = String(recipe?.sectionSpecs?.hero?.blockType || "");
+  const heroBlock = resolveCanonicalBlockType(String(recipe?.sectionSpecs?.hero?.blockType || ""));
   const heroBackground = String(recipe?.sectionSpecs?.hero?.defaults?.background || "");
   const footerBlock = String(recipe?.sectionSpecs?.footer?.blockType || "");
   const footerLinksCount = Array.isArray(summary?.footerLinks) ? summary.footerLinks.length : 0;
-  const host = hostFromUrl(site?.url || "");
-  const wantsBlueCyan = /(^|\.)siemens\.com$/i.test(host) || recipe?.id === "enterprise_blue_cyan";
+  const wantsBlueCyan = recipe?.id === "enterprise_blue_cyan";
   const paletteToken = `${recipe?.paletteProfile || ""} ${(recipe?.styleLabels || []).join(" ")}`.toLowerCase();
+  const themeColors = Array.isArray(summary?.themeColors) ? summary.themeColors : [];
+  const hasBlueCyanThemeColor = themeColors.some((color) => {
+    const match = String(color || "").trim().toLowerCase().match(/^#?([0-9a-f]{6})$/i);
+    if (!match) return false;
+    const hex = match[1];
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+    return b >= 96 && g >= 88 && r <= 96;
+  });
+  const darkThemeColorCount = themeColors.reduce((acc, color) => {
+    const match = String(color || "").trim().toLowerCase().match(/^#?([0-9a-f]{6})$/i);
+    if (!match) return acc;
+    const hex = match[1];
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+    const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    return luminance < 95 ? acc + 1 : acc;
+  }, 0);
+  const darkThemeRatio = themeColors.length > 0 ? darkThemeColorCount / themeColors.length : 0;
+  const prefersDarkPalette = Boolean(visualSignature?.isDark) || darkThemeRatio >= 0.5;
+  const crawlToken = `${summary?.title || ""} ${(Array.isArray(summary?.h1) ? summary.h1.join(" ") : "")} ${
+    Array.isArray(summary?.h2) ? summary.h2.join(" ") : ""
+  }`.toLowerCase();
+  const hasEcommerceSignals =
+    /collection|collections|products?|shop|store|audiophile|gaming|professional/.test(crawlToken) ||
+    Boolean(summary?.crawl?.discoveredPages && Number(summary.crawl.discoveredPages) >= 12);
 
   if (navDepth >= 2) {
     if (navBlock === "Navbar" && navVariant === "withDropdown") score += 2;
@@ -3790,7 +7891,7 @@ const evaluateRecipeFit = ({ recipe, summary = {}, visualSignature = null, site 
   }
 
   if (hasHeroCarousel) {
-    if (HERO_CAROUSEL_CAPABLE_BLOCKS.has(heroBlock)) score += 2;
+    if (isCarouselCapableBlockType(heroBlock)) score += 2;
     else mismatches.push("hero_carousel");
   } else {
     score += 1;
@@ -3803,11 +7904,22 @@ const evaluateRecipeFit = ({ recipe, summary = {}, visualSignature = null, site 
     score += 1;
   }
 
-  if (wantsBlueCyan) {
+  if (wantsBlueCyan || hasBlueCyanThemeColor) {
     if (/blue|cyan|navy|enterprise/.test(paletteToken)) score += 2;
     else mismatches.push("palette_blue_cyan");
   } else if (visualSignature) {
     score += 1;
+  }
+
+  if (prefersDarkPalette) {
+    if (/dark|neon|deep|navy|black/.test(paletteToken)) score += 1;
+    else mismatches.push("palette_dark_theme");
+  }
+
+  if (hasEcommerceSignals) {
+    const layoutToken = Array.isArray(recipe?.layoutPatterns) ? recipe.layoutPatterns.join(" ").toLowerCase() : "";
+    if (/product|catalog|cards|commerce|collection/.test(layoutToken)) score += 1;
+    else mismatches.push("ecommerce_layout");
   }
 
   const needsDynamic = mismatches.length >= 2 || score < 6;
@@ -3818,8 +7930,13 @@ const synthesizeDynamicRecipe = ({ site, baseRecipe, summary = {}, visualSignatu
   const next = cloneJson(baseRecipe || RECIPES.modern_saas);
   const host = hostFromUrl(site?.url || "");
   const suffix = slug(host || site?.id || "site") || "site";
-  const htmlColors = Array.isArray(summary?.themeColors) ? summary.themeColors : [];
-  const palette = inferPaletteProfileFromVisualSignature(visualSignature, htmlColors);
+  const palette = resolveAdaptivePaletteForPage({
+    site,
+    summary,
+    pathValue: "/",
+    pageVisualSignature: visualSignature,
+    siteVisualSignature: visualSignature,
+  });
   const navDepth = Number(summary?.navMenuDepth || 1);
   const heroPresentation = normalizeHeroPresentation(summary?.heroPresentation);
   const hasHeroCarousel =
@@ -3852,13 +7969,13 @@ const synthesizeDynamicRecipe = ({ site, baseRecipe, summary = {}, visualSignatu
     maxWidth: navSpec.defaults?.maxWidth || "2xl",
     variant: navDepth >= 2 ? "withDropdown" : navSpec.defaults?.variant || "withCTA",
     background: "gradient",
-    backgroundGradient: navSpec.defaults?.backgroundGradient || palette.navGradient,
-    backgroundOverlay: navSpec.defaults?.backgroundOverlay || palette.overlaySoft,
+    backgroundGradient: palette.navGradient,
+    backgroundOverlay: palette.overlaySoft,
   };
   next.sectionSpecs.navigation = navSpec;
 
   const heroSpec = next.sectionSpecs.hero || { blockType: "HeroSplit", defaults: {} };
-  if ((heroPresentation.mode === "background_text" || hasHeroCarousel) && !HERO_CAROUSEL_CAPABLE_BLOCKS.has(heroSpec.blockType)) {
+  if ((heroPresentation.mode === "background_text" || hasHeroCarousel) && !isCarouselCapableBlockType(heroSpec.blockType)) {
     heroSpec.blockType = "HeroSplit";
   }
   heroSpec.defaults = {
@@ -3869,7 +7986,7 @@ const synthesizeDynamicRecipe = ({ site, baseRecipe, summary = {}, visualSignatu
   if (heroPresentation.mode === "background_text" || hasHeroCarousel) {
     heroSpec.blockType = "HeroSplit";
     heroSpec.defaults.background = "image";
-    heroSpec.defaults.backgroundOverlay = heroSpec.defaults?.backgroundOverlay || palette.overlayStrong;
+    heroSpec.defaults.backgroundOverlay = palette.overlayStrong;
   }
   next.sectionSpecs.hero = heroSpec;
 
@@ -3880,7 +7997,7 @@ const synthesizeDynamicRecipe = ({ site, baseRecipe, summary = {}, visualSignatu
     variant: "multiColumn",
     maxWidth: footerSpec.defaults?.maxWidth || "2xl",
     background: "gradient",
-    backgroundGradient: footerSpec.defaults?.backgroundGradient || palette.footerGradient,
+    backgroundGradient: palette.footerGradient,
   };
   if (footerLinksCount >= 6) {
     footerSpec.defaults.columns = undefined;
@@ -3889,10 +8006,9 @@ const synthesizeDynamicRecipe = ({ site, baseRecipe, summary = {}, visualSignatu
 
   const ctaSpec = next.sectionSpecs.cta;
   if (ctaSpec?.defaults && typeof ctaSpec.defaults === "object") {
-    ctaSpec.defaults.ctaBackgroundColor = ctaSpec.defaults.ctaBackgroundColor || palette.accent;
-    ctaSpec.defaults.ctaTextColor = ctaSpec.defaults.ctaTextColor || palette.accentText;
-    ctaSpec.defaults.ctaClassName =
-      ctaSpec.defaults.ctaClassName || `!bg-[${palette.accent}] !text-[${palette.accentText}]`;
+    ctaSpec.defaults.ctaBackgroundColor = palette.accent;
+    ctaSpec.defaults.ctaTextColor = palette.accentText;
+    ctaSpec.defaults.ctaClassName = `!bg-[${palette.accent}] !text-[${palette.accentText}]`;
   }
 
   next._dynamic = {
@@ -3901,6 +8017,297 @@ const synthesizeDynamicRecipe = ({ site, baseRecipe, summary = {}, visualSignatu
     fitScore: Number(fit?.score || 0),
     mismatches: Array.isArray(fit?.mismatches) ? fit.mismatches : [],
   };
+  return next;
+};
+
+const applySourceSectionHintsToRecipe = ({ recipe, summary = {} }) => {
+  const baseRecipe = recipe && typeof recipe === "object" ? recipe : null;
+  if (!baseRecipe) return recipe;
+  const hints = mergeSourceSectionHints([summary?.sourceSectionHints]);
+  const heroCarousel = normalizeHeroCarousel(summary?.heroCarousel);
+  const sectionComputedStyles = mergeRuntimeSectionComputedStyles([summary?.sectionComputedStyles]);
+  const sectionSignalKinds = unique(
+    (Array.isArray(hints.sectionSignals) ? hints.sectionSignals : [])
+      .map((signal) => normalizeSectionKind(signal?.kind || signal?.className || signal?.id || ""))
+      .filter(Boolean)
+  );
+  const sectionSignalKindsSet = new Set(sectionSignalKinds);
+  const storyRootStyle = sectionComputedStyles?.story?.root && typeof sectionComputedStyles.story.root === "object"
+    ? sectionComputedStyles.story.root
+    : null;
+  const approachRootStyle = sectionComputedStyles?.approach?.root && typeof sectionComputedStyles.approach.root === "object"
+    ? sectionComputedStyles.approach.root
+    : null;
+  const storyHasBackgroundImage = Boolean(
+    Array.isArray(extractBackgroundImageUrls(storyRootStyle?.backgroundImage || ""))
+      ? extractBackgroundImageUrls(storyRootStyle?.backgroundImage || "").length
+      : false
+  );
+  const approachHasBackgroundImage = Boolean(
+    Array.isArray(extractBackgroundImageUrls(approachRootStyle?.backgroundImage || ""))
+      ? extractBackgroundImageUrls(approachRootStyle?.backgroundImage || "").length
+      : false
+  );
+  const summaryText = [
+    String(summary?.title || ""),
+    ...(Array.isArray(summary?.h1) ? summary.h1 : []),
+    ...(Array.isArray(summary?.h2) ? summary.h2 : []),
+    ...(Array.isArray(summary?.links) ? summary.links : []),
+    ...(Array.isArray(summary?.linkHrefs) ? summary.linkHrefs : []),
+  ]
+    .map((entry) => String(entry || "").trim())
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  const hasProductSignals =
+    /(product|products|shop|store|collection|collections|headphone|speaker|audiophile|gaming|professional|catalog)/i.test(
+      summaryText
+    ) || sectionSignalKindsSet.has("products");
+  const hasStorySignals =
+    /(about|story|welcome|intro|experience|mission|vision|history|who we are|company)/i.test(summaryText) ||
+    sectionSignalKindsSet.has("story");
+  const hasCtaSignals =
+    /(contact us|book now|request demo|get in touch|start now|join now|subscribe|newsletter|talk to us)/i.test(summaryText) ||
+    sectionSignalKindsSet.has("cta") ||
+    sectionSignalKindsSet.has("contact");
+  const hasSocialproofSignals =
+    /(testimonial|reviews?|trusted|awards?|clients?|partners?|case stud)/i.test(summaryText) ||
+    sectionSignalKindsSet.has("socialproof");
+  const navDepth = Math.max(Number(summary?.navMenuDepth || 1), hints.megaMenuSignals ? 2 : 1);
+  const next = cloneJson(baseRecipe);
+  next.sectionSpecs = next.sectionSpecs && typeof next.sectionSpecs === "object" ? next.sectionSpecs : {};
+  const ensureRequiredCategories = (...kinds) => {
+    const rows = Array.isArray(next.requiredCategories) ? next.requiredCategories : [];
+    const merged = unique([...rows, ...kinds].map((item) => normalizeSectionKind(item)).filter(Boolean));
+    const ordered = SECTION_KINDS.filter((kind) => merged.includes(kind));
+    next.requiredCategories = ordered.length ? ordered : merged;
+  };
+
+  if (navDepth >= 2) {
+    const navSpec = next.sectionSpecs.navigation || { blockType: "Navbar", defaults: {} };
+    navSpec.blockType = "Navbar";
+    navSpec.defaults = {
+      ...(navSpec.defaults || {}),
+      variant: "withDropdown",
+      multiLevel: true,
+      menuStyle: "image_text",
+    };
+    next.sectionSpecs.navigation = navSpec;
+    ensureRequiredCategories("navigation");
+  }
+
+  if (heroCarousel.enabled && Array.isArray(heroCarousel.images) && heroCarousel.images.length >= 2) {
+    const heroSpec = next.sectionSpecs.hero || { blockType: "HeroSplit", defaults: {} };
+    if (!isCarouselCapableBlockType(heroSpec.blockType)) {
+      heroSpec.blockType = "HeroSplit";
+    }
+    heroSpec.defaults = {
+      ...(heroSpec.defaults || {}),
+      background: "image",
+      mediaPosition: String(heroSpec?.defaults?.mediaPosition || "right"),
+    };
+    next.sectionSpecs.hero = heroSpec;
+    ensureRequiredCategories("hero");
+  }
+
+  if (hints.hasShgBox) {
+    const baseStoryDefaults =
+      next.sectionSpecs.story && typeof next.sectionSpecs.story === "object" && next.sectionSpecs.story.defaults
+        ? next.sectionSpecs.story.defaults
+        : {};
+    next.sectionSpecs.story = {
+      ...(next.sectionSpecs.story && typeof next.sectionSpecs.story === "object" ? next.sectionSpecs.story : {}),
+      blockType: "HeroCentered",
+      defaults: {
+        ...(baseStoryDefaults || {}),
+        variant: "textOnly",
+        align: "center",
+        headingSize: "sm",
+        bodySize: "sm",
+        paddingY: "md",
+        maxWidth: "2xl",
+        background: "none",
+        ctas: [],
+      },
+    };
+    ensureRequiredCategories("story");
+  }
+
+  if (!next.sectionSpecs.story && hasStorySignals) {
+    next.sectionSpecs.story = {
+      blockType: storyHasBackgroundImage ? "FeatureWithMedia" : "HeroCentered",
+      defaults: {
+        variant: storyHasBackgroundImage ? "split" : "textOnly",
+        align: "center",
+        headingSize: "sm",
+        bodySize: "md",
+        paddingY: "md",
+        maxWidth: "2xl",
+        background: storyHasBackgroundImage ? "image" : "none",
+        ctas: [],
+      },
+    };
+    ensureRequiredCategories("story");
+  }
+
+  if (!next.sectionSpecs.products && hasProductSignals) {
+    next.sectionSpecs.products = {
+      blockType: "CardsGrid",
+      defaults: {
+        variant: "imageText",
+        columns: "3col",
+        paddingY: "lg",
+        maxWidth: "2xl",
+        title: "Product Highlights",
+        subtitle: "Explore core products",
+        items: [
+          { title: "Flagship", description: "Premium performance and design.", imageSrc: "" },
+          { title: "Series", description: "Balanced capability for daily use.", imageSrc: "" },
+          { title: "Accessories", description: "Extend the core experience.", imageSrc: "" },
+        ],
+      },
+    };
+    ensureRequiredCategories("products");
+  }
+
+  if (hints.hasShgVerticalAlignWrapper) {
+    const baseApproachDefaults =
+      next.sectionSpecs.approach && typeof next.sectionSpecs.approach === "object" && next.sectionSpecs.approach.defaults
+        ? next.sectionSpecs.approach.defaults
+        : {};
+    next.sectionSpecs.approach = {
+      ...(next.sectionSpecs.approach && typeof next.sectionSpecs.approach === "object" ? next.sectionSpecs.approach : {}),
+      blockType: "FeatureWithMedia",
+      defaults: {
+        ...(baseApproachDefaults || {}),
+        variant: "split",
+        mediaPosition: "right",
+        paddingY: "md",
+        maxWidth: "2xl",
+        background: "image",
+      },
+    };
+    ensureRequiredCategories("approach");
+  }
+
+  if (storyHasBackgroundImage && next.sectionSpecs.story && typeof next.sectionSpecs.story === "object") {
+    const storySpec = next.sectionSpecs.story;
+    storySpec.blockType = "FeatureWithMedia";
+    storySpec.defaults = {
+      ...(storySpec.defaults || {}),
+      variant: "split",
+      align: String(storySpec?.defaults?.align || "left"),
+      mediaPosition: String(storySpec?.defaults?.mediaPosition || "right"),
+      background: "image",
+      contentTone: "light",
+      textPanel: true,
+      textPanelBackground: String(storySpec?.defaults?.textPanelBackground || "rgba(8, 12, 20, 0.44)"),
+      textPanelBorderColor: String(storySpec?.defaults?.textPanelBorderColor || "rgba(255,255,255,0.16)"),
+    };
+    ensureRequiredCategories("story");
+  }
+
+  if (approachHasBackgroundImage) {
+    const approachSpec = next.sectionSpecs.approach || { blockType: "FeatureWithMedia", defaults: {} };
+    approachSpec.blockType = "FeatureWithMedia";
+    approachSpec.defaults = {
+      ...(approachSpec.defaults || {}),
+      variant: "split",
+      mediaPosition: String(approachSpec?.defaults?.mediaPosition || "right"),
+      align: String(approachSpec?.defaults?.align || "left"),
+      background: "image",
+      contentTone: "light",
+      textPanel: true,
+      textPanelBackground: String(approachSpec?.defaults?.textPanelBackground || "rgba(8, 12, 20, 0.42)"),
+      textPanelBorderColor: String(approachSpec?.defaults?.textPanelBorderColor || "rgba(255,255,255,0.14)"),
+    };
+    next.sectionSpecs.approach = approachSpec;
+    ensureRequiredCategories("approach");
+  }
+
+  if (!next.sectionSpecs.products && hasProductSignals) {
+    next.sectionSpecs.products = {
+      blockType: "CardsGrid",
+      defaults: {
+        variant: "imageText",
+        columns: "3col",
+        paddingY: "lg",
+        maxWidth: "2xl",
+      },
+    };
+    ensureRequiredCategories("products");
+  }
+
+  if (!next.sectionSpecs.socialproof && hasSocialproofSignals) {
+    next.sectionSpecs.socialproof = {
+      blockType: "TestimonialsGrid",
+      defaults: {
+        variant: "2col",
+        paddingY: "lg",
+        maxWidth: "2xl",
+      },
+    };
+    ensureRequiredCategories("socialproof");
+  }
+
+  if (!next.sectionSpecs.cta && hasCtaSignals) {
+    next.sectionSpecs.cta = {
+      blockType: "LeadCaptureCTA",
+      defaults: {
+        variant: "banner",
+        paddingY: "md",
+        maxWidth: "2xl",
+      },
+    };
+    ensureRequiredCategories("cta");
+  }
+
+  if (hints.darkFooterSignals) {
+    const footerSpec = next.sectionSpecs.footer || { blockType: "Footer", defaults: {} };
+    footerSpec.blockType = "Footer";
+    footerSpec.defaults = {
+      ...(footerSpec.defaults || {}),
+      background: "gradient",
+      backgroundGradient: "linear-gradient(180deg,#05070c 0%,#05070c 100%)",
+      surfaceTone: "dark",
+    };
+    next.sectionSpecs.footer = footerSpec;
+    ensureRequiredCategories("footer");
+  }
+
+  if (!next.sectionSpecs.navigation) {
+    next.sectionSpecs.navigation = {
+      blockType: "Navbar",
+      defaults: {
+        variant: navDepth >= 2 ? "withDropdown" : "withCTA",
+        sticky: true,
+      },
+    };
+    ensureRequiredCategories("navigation");
+  }
+
+  if (!next.sectionSpecs.hero) {
+    next.sectionSpecs.hero = {
+      blockType: "HeroSplit",
+      defaults: {
+        background: "image",
+        mediaPosition: "right",
+      },
+    };
+    ensureRequiredCategories("hero");
+  }
+
+  if (!next.sectionSpecs.footer) {
+    next.sectionSpecs.footer = {
+      blockType: "Footer",
+      defaults: {
+        variant: "multiColumn",
+        surfaceTone: "dark",
+      },
+    };
+    ensureRequiredCategories("footer");
+  }
+
   return next;
 };
 
@@ -3913,7 +8320,8 @@ const resolveRecipeForSite = ({ site, summary, visualSignature }) => {
   });
   const fit = evaluateRecipeFit({ recipe: baseRecipe, summary, visualSignature, site });
   if (!fit.needsDynamic) {
-    return { recipe: baseRecipe, fit, synthesized: false, baseRecipeId: baseRecipe.id };
+    const patched = applySourceSectionHintsToRecipe({ recipe: baseRecipe, summary });
+    return { recipe: patched, fit, synthesized: false, baseRecipeId: baseRecipe.id };
   }
   const dynamicRecipe = synthesizeDynamicRecipe({
     site,
@@ -3922,7 +8330,8 @@ const resolveRecipeForSite = ({ site, summary, visualSignature }) => {
     visualSignature,
     fit,
   });
-  return { recipe: dynamicRecipe, fit, synthesized: true, baseRecipeId: baseRecipe.id };
+  const patched = applySourceSectionHintsToRecipe({ recipe: dynamicRecipe, summary });
+  return { recipe: patched, fit, synthesized: true, baseRecipeId: baseRecipe.id };
 };
 
 const identityTokens = (value) => {
@@ -4025,10 +8434,29 @@ const summarySubhead = (summary, fallback = "") =>
 const sectionSpecificHeadline = (summary, sectionIndex = 0, fallback = "") => {
   const h1 = Array.isArray(summary?.h1) ? summary.h1 : [];
   const h2 = Array.isArray(summary?.h2) ? summary.h2 : [];
+  const links = Array.isArray(summary?.links) ? summary.links : [];
   const titleParts = splitTitleCandidates(summary?.title || "");
   // Hero (index 0) gets h1[0]; other sections pick from h2 pool
   if (sectionIndex === 0) {
-    return firstNonEmpty([...h1, ...titleParts], fallback);
+    const scoredHeroCandidates = links
+      .map((value) => String(value || "").replace(/\s+/g, " ").trim())
+      .filter((text) => {
+        if (!text) return false;
+        if (text.length > 42) return false;
+        if (/(shop now|learn more|read more|support|login|form builder)/i.test(text)) return false;
+        return /[a-z0-9]/i.test(text);
+      })
+      .map((text) => {
+        let score = 0;
+        if (/(maxwell|lcd|mm-\\d+|crbn|gx|s\\d+|headphones|speaker|wireless)/i.test(text)) score += 8;
+        if (/\\d/.test(text)) score += 6;
+        if (/^[A-Z0-9][A-Z0-9\\-\\s]{3,24}$/.test(text)) score += 3;
+        if (/(gaming|professional audio|software|accessories|apparel|audiophile|about audeze)/i.test(text)) score -= 6;
+        return { text, score };
+      })
+      .sort((a, b) => b.score - a.score)
+      .map((row) => row.text);
+    return firstNonEmpty([summary?.heroRuntime?.headline || "", ...scoredHeroCandidates, ...h1, ...titleParts], fallback);
   }
   // For non-hero sections, pick a distinct h2 entry offset by sectionIndex
   const pool = [...h2, ...titleParts.slice(1), ...h1];
@@ -4043,6 +8471,16 @@ const sectionSpecificSubhead = (summary, sectionIndex = 0, fallback = "") => {
   const h2 = Array.isArray(summary?.h2) ? summary.h2 : [];
   const links = Array.isArray(summary?.links) ? summary.links : [];
   const titleParts = splitTitleCandidates(summary?.title || "").slice(1);
+  if (sectionIndex === 0) {
+    const heroCopyCandidates = links.filter((value) => {
+      const text = String(value || "").replace(/\s+/g, " ").trim();
+      if (!text) return false;
+      if (text.length < 8 || text.length > 72) return false;
+      if (/(shop now|learn more|read more|login|form builder)/i.test(text)) return false;
+      return /[a-z]/.test(text);
+    });
+    return firstNonEmpty([summary?.heroRuntime?.subtitle || "", ...heroCopyCandidates, ...h2, ...titleParts], fallback);
+  }
   const pool = [...h2, ...titleParts, ...links];
   // Pick a different subhead for each section
   const offset = Math.min(sectionIndex, pool.length - 1);
@@ -4094,6 +8532,118 @@ const isWeakHeroTitleCandidate = (value) => {
   if (!token || token.length < 5) return true;
   return false;
 };
+
+const isWeakSectionCopySeed = (value) => {
+  const text = normalizeTextLine(value);
+  if (!text) return true;
+  if (text.length < 6) return true;
+  if (/^(?:products?|resources?|company|support|gaming|professional audio|form builder|login)$/i.test(text)) return true;
+  if (/(?:placeholder|lorem ipsum|click here)/i.test(text)) return true;
+  const slugged = slug(text);
+  return !slugged || slugged.length < 5;
+};
+
+const inferHeroTitleFromImageUrl = (value) => {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  let fileName = raw;
+  try {
+    const parsed = new URL(raw);
+    fileName = decodeURIComponent(parsed.pathname.split("/").pop() || "");
+  } catch {}
+  const base = fileName.replace(/\.(?:png|jpe?g|webp|gif|avif|svg)(?:$|\?.*)/i, "");
+  const cleaned = base
+    .replace(/[_]+/g, " ")
+    .replace(/-(?=\d)/g, "-")
+    .replace(/-/g, " ")
+    .replace(/\b\d{3,4}x\b/gi, " ")
+    .replace(/\b(?:bg|background|hero|slide|desktop|mobile|mob|menu|site|default|banner|image|v\d+|w\d+|p)\b/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!cleaned || cleaned.length < 3) return "";
+  if (/[a-f0-9]{8,}-[a-f0-9-]{8,}/i.test(base)) return "";
+  if (/^(?:adz|audio|site)$/i.test(cleaned)) return "";
+  if (/^[a-z]{2,5}-?\d+[a-z0-9-]*$/i.test(cleaned)) return cleaned.toUpperCase();
+  const words = cleaned.split(/\s+/).filter(Boolean);
+  if (!words.length) return "";
+  const hasProductSignal = /(?:lcd|maxwell|crbn|headphone|audeze|mm\d+|s20|mx4|xc)\b/i.test(cleaned);
+  const alphaChars = cleaned.replace(/[^a-z]/gi, "").length;
+  const numericChars = cleaned.replace(/[^0-9]/g, "").length;
+  if (!hasProductSignal && numericChars > 0 && alphaChars > 0 && numericChars / Math.max(1, alphaChars + numericChars) > 0.35) {
+    return "";
+  }
+  const normalized = words
+    .slice(0, 4)
+    .map((token) => (/^[a-z]{1,4}\d+[a-z0-9-]*$/i.test(token) ? token.toUpperCase() : token.charAt(0).toUpperCase() + token.slice(1)))
+    .join(" ");
+  return normalized.length >= 4 ? normalized : "";
+};
+
+const scoreHeroImageCandidate = (value) => {
+  const src = String(value || "").trim();
+  if (!src) return Number.NEGATIVE_INFINITY;
+  if (isLikelyDecorativeHeroImageUrl(src)) return -120;
+  const lower = src.toLowerCase();
+  let score = 0;
+  if (/(?:hero|banner|slider|carousel|masthead|showcase)/i.test(lower)) score += 5;
+  if (/(?:_bg|background|hero)/i.test(lower)) score += 4;
+  if (/(?:headphone|speaker|product|model|series|collection|pro|studio|max|ultra|lcd|crbn|mm[-_]?\d+)/i.test(lower)) score += 4;
+  if (/[0-9]/.test(lower)) score += 2;
+  if (/(?:site[_-]?default|default[_-]?site|overlay|mask|gradient|texture|pattern)/i.test(lower)) score -= 12;
+  if (/(?:megamenu|mega-menu|submenu|menuitem|menu-item|mob[_-]?menu)/i.test(lower)) score -= 14;
+  if (/(?:_|-)p\.(?:png|jpe?g|webp|gif|avif)(?:$|[?#])/.test(lower)) score -= 10;
+  if (/\.png(?:$|[?#])/.test(lower) && !/(?:_bg|background|hero)/i.test(lower)) score -= 6;
+  if (/(?:team|about|blog|news|event|artist|review|story|press|careers|contact|support|legal|policy)/i.test(lower)) {
+    score -= 5;
+  }
+  const derived = inferHeroTitleFromImageUrl(src);
+  if (derived) {
+    const words = derived.split(/\s+/).filter(Boolean);
+    const hasProductSignal = /(?:headphone|speaker|product|model|series|pro|studio|max|ultra|lcd|crbn|mm\d+|\d)/i.test(
+      derived
+    );
+    if (hasProductSignal) score += 3;
+    if (words.length === 1 && !hasProductSignal) score -= 3;
+  } else {
+    score -= 2;
+  }
+  return score;
+};
+
+const rankHeroImageCandidates = (items, limit = 24) => {
+  const deduped = dedupeUrls(Array.isArray(items) ? items : [], Math.max(8, limit * 3));
+  const nonDecorative = deduped.filter((src) => !isLikelyDecorativeHeroImageUrl(src));
+  const candidatePool = nonDecorative.length >= 2 ? nonDecorative : deduped;
+  const scored = candidatePool.map((src, index) => ({ src, index, score: scoreHeroImageCandidate(src) }));
+  scored.sort((a, b) => (b.score === a.score ? a.index - b.index : b.score - a.score));
+  return scored.map((row) => row.src).slice(0, Math.max(1, limit));
+};
+
+const hostFromUrl = (value) => {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  try {
+    return new URL(raw).hostname.toLowerCase();
+  } catch {
+    return "";
+  }
+};
+
+const dominantHostsFromUrls = (items, { minCount = 2, maxHosts = 3 } = {}) => {
+  const counts = new Map();
+  for (const item of Array.isArray(items) ? items : []) {
+    const host = hostFromUrl(item);
+    if (!host) continue;
+    counts.set(host, Number(counts.get(host) || 0) + 1);
+  }
+  return Array.from(counts.entries())
+    .filter(([, count]) => count >= minCount)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, Math.max(1, maxHosts))
+    .map(([host]) => host);
+};
+
+const isStockImageHost = (host) => /(?:unsplash|pexels|pixabay|shutterstock|freepik|stock)/i.test(String(host || ""));
 
 const heroTitleCandidatesFromPageSpec = (pageSpec) => {
   const summary = pageSpec?.summary && typeof pageSpec.summary === "object" ? pageSpec.summary : {};
@@ -4192,13 +8742,52 @@ const isLocaleRootPath = (pathValue) => /^\/[a-z]{2}(?:-[a-z]{2})?$/i.test(norma
 const pageCategory = (pathValue) => {
   const path = normalizeTemplatePagePath(pathValue).toLowerCase();
   if (path === "/" || isLocaleRootPath(path)) return "home";
-  if (path.includes("/products/")) return "products";
+  if (
+    path.includes("/products/") ||
+    path.includes("/collections/") ||
+    path.includes("/shop/") ||
+    path.includes("/store/")
+  ) {
+    return "products";
+  }
   if (path.includes("/industries/")) return "industries";
   if (path.includes("/company/insights/")) return "insights";
-  if (path.includes("/company/")) return "company";
-  if (path.includes("/services/")) return "services";
-  if (path.includes("/support/") || path.includes("/contact/")) return "contact";
-  if (path.includes("/resources/") || path.includes("/news/") || path.includes("/blog/")) return "resources";
+  if (
+    path.includes("/company/") ||
+    path.includes("/about") ||
+    path.includes("/pages/about") ||
+    path.includes("/team") ||
+    path.includes("/mission")
+  ) {
+    return "company";
+  }
+  if (
+    path.includes("/services/") ||
+    path.includes("/solution") ||
+    path.includes("/professional") ||
+    path.includes("/audiophile") ||
+    path.includes("/gaming")
+  ) {
+    return "services";
+  }
+  if (
+    path.includes("/support/") ||
+    path.includes("/contact/") ||
+    path.includes("/help") ||
+    path.includes("/pages/user-guides")
+  ) {
+    return "contact";
+  }
+  if (
+    path.includes("/resources/") ||
+    path.includes("/news/") ||
+    path.includes("/blog/") ||
+    path.includes("/blogs/") ||
+    path.includes("/journal/") ||
+    path.includes("/technology/")
+  ) {
+    return "resources";
+  }
   return "other";
 };
 
@@ -4245,6 +8834,64 @@ const extractSpecialRuleValue = (site, key) => {
   const snake = key.replace(/[A-Z]/g, (m) => `_${m.toLowerCase()}`);
   if (specialRules[snake] !== undefined) return specialRules[snake];
   return undefined;
+};
+
+const resolveSiteBooleanPolicy = ({ site = {}, options = {}, key = "", fallback = false } = {}) => {
+  if (!key) return Boolean(fallback);
+  const snake = key.replace(/[A-Z]/g, (m) => `_${m.toLowerCase()}`);
+  const candidates = [
+    site?.[key],
+    site?.[snake],
+    extractSpecialRuleValue(site, key),
+    extractSpecialRuleValue(site, snake),
+    options?.[key],
+    options?.[snake],
+  ];
+  for (const candidate of candidates) {
+    const parsed = parseOptionalBool(candidate);
+    if (parsed !== undefined) return parsed;
+  }
+  return Boolean(fallback);
+};
+
+const resolveStructureFirstPolicy = ({ site = {}, options = {} } = {}) => {
+  const structureFirstPipeline = resolveSiteBooleanPolicy({
+    site,
+    options,
+    key: "structureFirstPipeline",
+    fallback: true,
+  });
+  const structureFirstDisableImages = resolveSiteBooleanPolicy({
+    site,
+    options,
+    key: "structureFirstDisableImages",
+    fallback: true,
+  });
+  const structureFirstDisableMotion = resolveSiteBooleanPolicy({
+    site,
+    options,
+    key: "structureFirstDisableMotion",
+    fallback: true,
+  });
+  const structureFirstBackfillImages = resolveSiteBooleanPolicy({
+    site,
+    options,
+    key: "structureFirstBackfillImages",
+    fallback: true,
+  });
+  const structureFirstBackfillMotion = resolveSiteBooleanPolicy({
+    site,
+    options,
+    key: "structureFirstBackfillMotion",
+    fallback: true,
+  });
+  return {
+    structureFirstPipeline,
+    structureFirstDisableImages,
+    structureFirstDisableMotion,
+    structureFirstBackfillImages,
+    structureFirstBackfillMotion,
+  };
 };
 
 const resolveDiscoveryPolicy = ({ site = {}, options = {} }) => {
@@ -4297,23 +8944,128 @@ const matchesMustIncludePolicy = ({ pathValue = "/", name = "", raw = "", policy
   });
 };
 
+const toTitleToken = (value) =>
+  String(value || "")
+    .trim()
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/\b\w/g, (ch) => ch.toUpperCase());
+
+const deriveSiteBrandLabel = ({ site = {}, summary = {}, pageTitle = "" } = {}) => {
+  const footerLinks = Array.isArray(summary?.footerLinks) ? summary.footerLinks : [];
+  const footerRoot = footerLinks.find((item) => {
+    const href = normalizeTemplatePagePath(routePathFromUrl(item?.href || "") || item?.href || "");
+    return href === "/" && String(item?.label || "").trim().length >= 2;
+  });
+  if (footerRoot?.label) return String(footerRoot.label).trim().slice(0, 32);
+
+  const hostToken = (() => {
+    try {
+      const host = String(new URL(String(site?.url || "")).hostname || "")
+        .replace(/^www\./i, "")
+        .split(".")[0]
+        .trim();
+      return host ? toTitleToken(host) : "";
+    } catch {
+      return "";
+    }
+  })();
+  if (hostToken) return hostToken.slice(0, 32);
+
+  const titleToken = toTitleToken(String(pageTitle || "").split(/[|•·]/)[0] || "");
+  if (titleToken && titleToken.split(/\s+/).length <= 3 && titleToken.length <= 32) return titleToken;
+
+  const siteToken = toTitleToken(String(site?.id || ""));
+  if (siteToken) return siteToken.slice(0, 32);
+  return "Site";
+};
+
+const buildNavigationFallbackLinksFromFooter = ({ footerLinks = [], maxLinks = 6 } = {}) => {
+  const policyLike = /policy|privacy|terms|refund|shipping|cookie|accessibility|legal|statement/i;
+  const contactLike = /contact|support|help|about/i;
+  const rows = Array.isArray(footerLinks) ? footerLinks : [];
+  const cleaned = [];
+  const seen = new Set();
+  for (const row of rows) {
+    const label = String(row?.label || "").replace(/\s+/g, " ").trim();
+    if (!label || label.length < 2 || label.length > 40) continue;
+    const hrefRaw = String(row?.href || "").trim();
+    const href = normalizeTemplatePagePath(routePathFromUrl(hrefRaw) || hrefRaw);
+    if (!href || href === "/") continue;
+    if (!href.startsWith("/")) continue;
+    if (policyLike.test(`${label} ${href}`)) continue;
+    const key = `${slug(label)}|${href}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    cleaned.push({ label: label.slice(0, 30), href, variant: "link" });
+  }
+  cleaned.sort((a, b) => {
+    const depthGap = pageDepth(a.href) - pageDepth(b.href);
+    if (depthGap !== 0) return depthGap;
+    const contactBias = Number(contactLike.test(`${a.label} ${a.href}`)) - Number(contactLike.test(`${b.label} ${b.href}`));
+    if (contactBias !== 0) return contactBias;
+    return a.label.localeCompare(b.label);
+  });
+  return cleaned.slice(0, Math.max(3, Math.floor(Number(maxLinks || 6) || 6)));
+};
+
 const buildNavigationFromSitePages = (sitePages = [], currentPath = "/", navigationPolicy = {}) => {
-  const uniquePages = [];
+  const sourcePages = [];
   const seen = new Set();
   for (const page of Array.isArray(sitePages) ? sitePages : []) {
     const path = normalizeTemplatePagePath(page?.path || "/");
     if (seen.has(path)) continue;
     seen.add(path);
-    uniquePages.push({
+    sourcePages.push({
       path,
       name: String(page?.name || "").trim() || formatTemplatePageName(path),
     });
   }
-  if (!uniquePages.length) return null;
+  const targetSource = Array.isArray(navigationPolicy?.targetPages) && navigationPolicy.targetPages.length
+    ? navigationPolicy.targetPages
+    : sourcePages;
+  const targetPages = [];
+  const targetSeen = new Set();
+  for (const page of targetSource) {
+    const path = normalizeTemplatePagePath(page?.path || "/");
+    if (targetSeen.has(path)) continue;
+    targetSeen.add(path);
+    targetPages.push({
+      path,
+      name: String(page?.name || "").trim() || formatTemplatePageName(path),
+    });
+  }
+  if (!sourcePages.length) return null;
+
+  const targetByCategory = new Map();
+  for (const page of targetPages) {
+    const category = pageCategory(page.path);
+    const current = targetByCategory.get(category);
+    if (!current) {
+      targetByCategory.set(category, page.path);
+      continue;
+    }
+    const currentDepth = pageDepth(current);
+    const nextDepth = pageDepth(page.path);
+    if (nextDepth < currentDepth) {
+      targetByCategory.set(category, page.path);
+    }
+  }
+  const fallbackTargetPath =
+    targetPages.find((page) => page.path !== normalizeTemplatePagePath(currentPath || "/"))?.path ||
+    targetPages.find((page) => page.path !== "/")?.path ||
+    "/";
+  const mapToTargetPath = (pathValue) => {
+    const normalized = normalizeTemplatePagePath(pathValue || "/");
+    if (targetSeen.has(normalized)) return normalized;
+    if (navigationPolicy?.preserveSourcePaths && normalized !== "/") return normalized;
+    const category = pageCategory(normalized);
+    return targetByCategory.get(category) || fallbackTargetPath || "/";
+  };
 
   const categoryOrder = ["home", "products", "industries", "company", "insights", "services", "resources", "contact", "other"];
   const bestByCategory = new Map();
-  for (const page of uniquePages) {
+  for (const page of sourcePages) {
     const category = pageCategory(page.path);
     const current = bestByCategory.get(category);
     if (!current) {
@@ -4347,57 +9099,98 @@ const buildNavigationFromSitePages = (sitePages = [], currentPath = "/", navigat
     const childPages =
       category === "home"
         ? []
-        : uniquePages
+        : sourcePages
             .filter((item) => item.path !== page.path && pageCategory(item.path) === category)
             .slice(0, 5);
     const children = childPages.map((child) => ({
-      label: navLabelFromPage(child),
-      href: child.path,
+      label: String(child?.name || formatTemplatePageName(child?.path || "/")).replace(/\s+/g, " ").trim().slice(0, 42),
+      href: mapToTargetPath(child.path),
     }));
     if (children.length) hasDropdown = true;
     links.push({
       label,
-      href: page.path,
+      href: mapToTargetPath(page.path),
       variant: "link",
       ...(children.length ? { children } : {}),
     });
     if (links.length >= maxNavLinks) break;
   }
 
-  const contactPage = uniquePages.find((page) => pageCategory(page.path) === "contact") || uniquePages.find((page) =>
+  if (links.length < maxNavLinks) {
+    const usedPaths = new Set(links.map((entry) => normalizeTemplatePagePath(entry?.href || "/")));
+    const extras = sourcePages
+      .filter((page) => !usedPaths.has(mapToTargetPath(page.path)))
+      .sort((a, b) => {
+        const depthGap = pageDepth(a.path) - pageDepth(b.path);
+        if (depthGap !== 0) return depthGap;
+        return a.name.localeCompare(b.name);
+      });
+    for (const extra of extras) {
+      const label = navLabelFromPage(extra);
+      const key = slug(label);
+      if (!key || usedLabels.has(key)) continue;
+      usedLabels.add(key);
+      const mappedHref = mapToTargetPath(extra.path);
+      if (!mappedHref || usedPaths.has(mappedHref)) continue;
+      usedPaths.add(mappedHref);
+      links.push({
+        label,
+        href: mappedHref,
+        variant: "link",
+      });
+      if (links.length >= maxNavLinks) break;
+    }
+  }
+
+  const contactPage = sourcePages.find((page) => pageCategory(page.path) === "contact") || sourcePages.find((page) =>
     /contact|quote|support|get[-\s]?in[-\s]?touch|help/.test(`${page.path} ${page.name}`.toLowerCase())
   );
-  const fallbackTarget = uniquePages.find((page) => page.path !== currentPath) || uniquePages[0];
+  const fallbackTarget = sourcePages.find((page) => page.path !== currentPath) || sourcePages[0];
   const ctaTarget = contactPage || fallbackTarget;
 
   return {
     links,
     hasDropdown,
     ctas: ctaTarget
-      ? [{ label: contactPage ? "Contact" : "Explore", href: ctaTarget.path, variant: "primary" }]
+      ? [{ label: contactPage ? "Contact" : "Explore", href: mapToTargetPath(ctaTarget.path), variant: "primary" }]
       : [],
   };
 };
 
 const buildFooterColumnsFromSitePages = (sitePages = [], footerLinks = [], navigationPolicy = {}) => {
-  const normalizedFooterLinks = dedupeLinkItems(footerLinks, 24);
-  if (normalizedFooterLinks.length >= 4) {
+  const normalizedFooterLinks = pruneSemanticLinks(footerLinks, { keepRoot: 1, limit: 24 });
+  const footerRootCount = normalizedFooterLinks.filter((item) => normalizeTemplatePagePath(item?.href || "") === "/").length;
+  const footerRootShare = normalizedFooterLinks.length > 0 ? footerRootCount / normalizedFooterLinks.length : 0;
+  const footerUniqueNonRoot = new Set(
+    normalizedFooterLinks
+      .map((item) => normalizeTemplatePagePath(item?.href || ""))
+      .filter((href) => href && href !== "/")
+  ).size;
+  const useFooterLinkSeed =
+    normalizedFooterLinks.length >= 4 && footerUniqueNonRoot >= 3 && footerRootShare <= 0.4;
+  if (useFooterLinkSeed) {
     const columns = [
       { title: "Company", links: [] },
       { title: "Resources", links: [] },
       { title: "Legal", links: [] },
     ];
     for (const link of normalizedFooterLinks) {
-      const token = `${link.label} ${link.href}`.toLowerCase();
+      const route = normalizeTemplatePagePath(link.href || "");
+      const token = `${link.label} ${route}`.toLowerCase();
       if (/privacy|terms|legal|compliance|cookie|policy|imprint/.test(token)) {
         columns[2].links.push(link);
-      } else if (/support|help|resource|download|docs|insight|news/.test(token)) {
+      } else if (/support|help|resource|download|docs|insight|news|blog|journal|technology/.test(token)) {
         columns[1].links.push(link);
-      } else {
+      } else if (/^\/collections|^\/products|^\/shop|^\/store/.test(route)) {
         columns[0].links.push(link);
+      } else {
+        const target = columns[0].links.length <= columns[1].links.length ? columns[0] : columns[1];
+        target.links.push(link);
       }
     }
-    return columns.filter((column) => column.links.length > 0);
+    return columns
+      .map((column) => ({ ...column, links: dedupeLinkItems(column.links, 8) }))
+      .filter((column) => column.links.length > 0);
   }
 
   const pages = [];
@@ -4427,14 +9220,1100 @@ const buildFooterColumnsFromSitePages = (sitePages = [], footerLinks = [], navig
 
 const SECTION_KIND_INDEX = { hero: 0, story: 1, approach: 2, products: 3, socialproof: 4, cta: 5, footer: 6, navigation: 7, contact: 5 };
 
+const STRUCTURE_MEDIA_EXACT_KEYS = new Set([
+  "backgroundMedia",
+  "media",
+  "image",
+  "avatar",
+  "cover",
+  "heroSlides",
+  "heroImageSrc",
+  "mobileHeroImageSrc",
+  "previewImageSrc",
+  "mobilePreviewImageSrc",
+  "meshImageSrc",
+  "dashboardImageSrc",
+  "mobileDashboardImageSrc",
+  "desktopImageSrc",
+  "mobileImageSrc",
+  "videoSrc",
+]);
+
+const STRUCTURE_MOTION_EXACT_KEYS = new Set([
+  "motionMode",
+  "autoplay",
+  "autoRotate",
+  "enableParallax",
+  "animate",
+  "animation",
+  "transition",
+  "marquee",
+]);
+
+const isStructureMediaKey = (key) => {
+  const token = String(key || "").trim();
+  if (!token) return false;
+  if (STRUCTURE_MEDIA_EXACT_KEYS.has(token)) return true;
+  if (/^(?:imagePosition|imageSize|imageShape|mediaPosition|mediaKind)$/i.test(token)) return false;
+  if (/(?:Image|Media|Video|Poster|Thumbnail|Thumb)(?:Src|Alt|Url|Path|Id|Ref)?$/i.test(token)) return true;
+  if (/(?:^|_)(?:image|media|video|poster|thumbnail|thumb)(?:_|$)/i.test(token)) return true;
+  if (/(?:^|_)(?:image|media|video)(?:src|alt|url|path|id|ref)$/i.test(token)) return true;
+  return false;
+};
+
+const isStructureMotionKey = (key) => {
+  const token = String(key || "").trim();
+  if (!token) return false;
+  if (STRUCTURE_MOTION_EXACT_KEYS.has(token)) return true;
+  return /(?:^|_)(?:motion|animate|animation|autoplay|parallax|transition)(?:_|$)|(?:Motion|Animate|Animation|Autoplay|Parallax|Transition)$/.test(
+    token
+  );
+};
+
+const stripStructureVisualNoiseDeep = (value, { disableImages = false, disableMotion = false } = {}) => {
+  if (Array.isArray(value)) {
+    return value
+      .map((item) => stripStructureVisualNoiseDeep(item, { disableImages, disableMotion }))
+      .filter((item) => item !== undefined);
+  }
+  if (!value || typeof value !== "object") return value;
+  const next = {};
+  for (const [key, rawVal] of Object.entries(value)) {
+    if (disableImages && isStructureMediaKey(key)) continue;
+    if (disableMotion && isStructureMotionKey(key)) continue;
+    const sanitized = stripStructureVisualNoiseDeep(rawVal, { disableImages, disableMotion });
+    if (sanitized === undefined) continue;
+    next[key] = sanitized;
+  }
+  return next;
+};
+
+const applyStructureFirstToSectionDefaults = ({
+  defaults = {},
+  kind = "",
+  palette = {},
+  structureFirstPipeline = false,
+  structureFirstDisableImages = false,
+  structureFirstDisableMotion = false,
+}) => {
+  if (!structureFirstPipeline) return defaults;
+  const preservedHeroSlides =
+    kind === "hero" && Array.isArray(defaults?.heroSlides)
+      ? defaults.heroSlides
+          .map((slide) => (slide && typeof slide === "object" ? { ...slide } : null))
+          .filter((slide) => {
+            if (!slide) return false;
+            const hasImage = typeof slide?.src === "string" && slide.src.trim();
+            const hasText =
+              (typeof slide?.title === "string" && slide.title.trim()) ||
+              (typeof slide?.subtitle === "string" && slide.subtitle.trim()) ||
+              (typeof slide?.label === "string" && slide.label.trim()) ||
+              (Array.isArray(slide?.ctas) && slide.ctas.length > 0);
+            return Boolean(hasImage || hasText);
+          })
+      : [];
+  const preservedHeroCarouselAutoplayMs =
+    kind === "hero" && Number(defaults?.heroCarouselAutoplayMs || 0) > 0
+      ? Number(defaults.heroCarouselAutoplayMs)
+      : 0;
+  const preservedApproachBackgroundMedia =
+    kind === "approach" && defaults?.backgroundMedia && typeof defaults.backgroundMedia === "object" && defaults.backgroundMedia.src
+      ? isTemplateFactoryReferenceAssetUrl(defaults.backgroundMedia.src)
+        ? null
+        : cloneJson(defaults.backgroundMedia)
+      : null;
+  const preservedBackgroundMedia =
+    ["hero", "story", "approach", "products", "socialproof", "cta", "contact"].includes(String(kind || "").trim()) &&
+    defaults?.backgroundMedia &&
+    typeof defaults.backgroundMedia === "object" &&
+    typeof defaults.backgroundMedia.src === "string" &&
+    /^https?:\/\//i.test(String(defaults.backgroundMedia.src || "").trim()) &&
+    !isTemplateFactoryReferenceAssetUrl(defaults.backgroundMedia.src) &&
+    !isLikelyLowValueSourceImage(defaults.backgroundMedia.src)
+      ? cloneJson(defaults.backgroundMedia)
+      : null;
+  const preservedApproachBackgroundOverlay =
+    kind === "approach" && typeof defaults?.backgroundOverlay === "string"
+      ? String(defaults.backgroundOverlay || "")
+      : "";
+  const next = stripStructureVisualNoiseDeep(defaults, {
+    disableImages: structureFirstDisableImages,
+    disableMotion: structureFirstDisableMotion,
+  });
+  if (structureFirstDisableImages) {
+    next.referenceSliceMode = false;
+    const calibratedMinHeight = Number(next.referenceSliceMinHeight || 0);
+    if (!(calibratedMinHeight > 0)) {
+      delete next.referenceSliceMinHeight;
+    }
+    if (String(next.background || "").toLowerCase() === "image" || String(next.background || "").toLowerCase() === "video") {
+      next.background = "gradient";
+    }
+    if ((kind === "navigation" || kind === "footer") && next.backgroundGradient) {
+      // keep nav/footer color lock when available
+    } else if (!next.backgroundGradient) {
+      const primary = normalizeColorToken(palette?.surface || "") || "#f3f4f6";
+      const secondary = normalizeColorToken(palette?.surfaceMuted || "") || "#e5e7eb";
+      next.background = "gradient";
+      next.backgroundGradient = `linear-gradient(180deg,${primary} 0%,${secondary} 100%)`;
+      next.backgroundOverlay = "";
+      next.backgroundOverlayOpacity = 0;
+      next.backgroundBlur = 0;
+    }
+    if (preservedBackgroundMedia && !next.backgroundMedia?.src) {
+      next.background = "image";
+      next.backgroundMedia = preservedBackgroundMedia;
+      if (!String(next.backgroundOverlay || "").trim()) {
+        next.backgroundOverlay =
+          kind === "hero"
+            ? "rgba(2, 8, 18, 0.24)"
+            : kind === "story" || kind === "approach"
+              ? "rgba(2, 8, 18, 0.18)"
+              : "rgba(8, 12, 22, 0.12)";
+      }
+      next.surfaceTone = String(next.surfaceTone || "").trim() || "dark";
+      if (["hero", "story", "approach", "products", "socialproof", "cta", "contact"].includes(String(kind || "").trim())) {
+        next.contentTone = String(next.contentTone || "").trim() || "light";
+      }
+    }
+  }
+  if (structureFirstDisableMotion) {
+    next.motionMode = "off";
+  }
+  const darkSectionKinds = new Set(["hero", "story", "approach", "products", "socialproof", "cta", "contact"]);
+  const prefersDarkTone =
+    String(next?.surfaceTone || "").trim().toLowerCase() === "dark" ||
+    String(palette?.tone || "").trim().toLowerCase() === "dark";
+  if (prefersDarkTone && darkSectionKinds.has(String(kind || "").trim().toLowerCase())) {
+    const currentBgMode = String(next?.background || "").trim().toLowerCase();
+    const gradientToken = String(next?.backgroundGradient || "").trim();
+    const brightGradient = isBrightGradientToken(gradientToken, 170);
+    if (currentBgMode !== "image" && (!gradientToken || brightGradient)) {
+      const fallbackGradient =
+        kind === "hero"
+          ? String(palette?.heroGradient || palette?.bodyGradient || palette?.footerGradient || "").trim()
+          : String(palette?.bodyGradient || palette?.footerGradient || "").trim();
+      if (fallbackGradient) {
+        next.background = "gradient";
+        next.backgroundGradient = fallbackGradient;
+      }
+    }
+    next.surfaceTone = "dark";
+    if (!String(next?.contentTone || "").trim()) next.contentTone = "light";
+  }
+  if (kind === "hero" && preservedHeroSlides.length >= 2) {
+    next.heroSlides = preservedHeroSlides.map((slide) => {
+      const src = String(slide?.src || "").trim();
+      const keepSrc =
+        /^https?:\/\//i.test(src) &&
+        !isTemplateFactoryReferenceAssetUrl(src) &&
+        !isLikelyDecorativeHeroImageUrl(src);
+      return {
+        ...slide,
+        src: keepSrc ? src : "",
+        mobileSrc: keepSrc ? String(slide?.mobileSrc || "").trim() || src : "",
+      };
+    });
+    next.heroCarouselAutoplayMs = preservedHeroCarouselAutoplayMs > 0 ? preservedHeroCarouselAutoplayMs : 4500;
+  }
+  if (
+    kind === "approach" &&
+    structureFirstDisableImages &&
+    preservedApproachBackgroundMedia &&
+    String(defaults?.contentTone || "").toLowerCase() === "light"
+  ) {
+    next.background = "image";
+    next.backgroundMedia = preservedApproachBackgroundMedia;
+    if (preservedApproachBackgroundOverlay) {
+      next.backgroundOverlay = preservedApproachBackgroundOverlay;
+    }
+  }
+  return next;
+};
+
+const REMOTE_IMAGE_SIGNATURE_CACHE = new Map();
+
+const hammingHexDistance = (left, right) => {
+  const a = String(left || "").trim().toLowerCase();
+  const b = String(right || "").trim().toLowerCase();
+  if (!a || !b || a.length !== b.length) return Number.POSITIVE_INFINITY;
+  const hexToBits = (hex) =>
+    hex
+      .split("")
+      .map((ch) => Number.parseInt(ch, 16))
+      .filter(Number.isFinite)
+      .map((n) => n.toString(2).padStart(4, "0"))
+      .join("");
+  const bitsA = hexToBits(a);
+  const bitsB = hexToBits(b);
+  if (!bitsA || !bitsB || bitsA.length !== bitsB.length) return Number.POSITIVE_INFINITY;
+  let dist = 0;
+  for (let i = 0; i < bitsA.length; i += 1) {
+    if (bitsA[i] !== bitsB[i]) dist += 1;
+  }
+  return dist;
+};
+
+const fetchRemoteImageSignatures = async ({ urls = [], timeoutMs = 7000 } = {}) => {
+  const targets = dedupeUrls(
+    (Array.isArray(urls) ? urls : []).filter((item) => /^https?:\/\//i.test(String(item || "").trim())),
+    16
+  );
+  if (!targets.length) return [];
+  const uncached = targets.filter((url) => !REMOTE_IMAGE_SIGNATURE_CACHE.has(url));
+  if (uncached.length) {
+    try {
+      const timeoutSeconds = Math.max(3, Math.min(12, Math.round(Number(timeoutMs || 7000) / 1000)));
+      const cmd = `python3 - <<'PY'
+import io, json, ssl, urllib.request
+from PIL import Image, ImageStat
+
+urls = json.loads(${JSON.stringify(JSON.stringify(uncached))})
+timeout_s = ${timeoutSeconds}
+headers = {"User-Agent": "Mozilla/5.0"}
+ctx = ssl.create_default_context()
+rows = []
+
+def dhash_hex(img):
+    gray = img.convert("L").resize((9, 8))
+    px = list(gray.getdata())
+    bits = []
+    for y in range(8):
+        row_offset = y * 9
+        for x in range(8):
+            left = px[row_offset + x]
+            right = px[row_offset + x + 1]
+            bits.append(1 if left > right else 0)
+    value = 0
+    for bit in bits:
+        value = (value << 1) | bit
+    return f"{value:016x}"
+
+for url in urls:
+    try:
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, timeout=timeout_s, context=ctx) as resp:
+            ctype = (resp.headers.get("Content-Type") or "").lower()
+            if "image" not in ctype and not url.lower().split("?")[0].endswith((".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif")):
+                continue
+            data = resp.read(2_500_000)
+        img_raw = Image.open(io.BytesIO(data))
+        alpha_coverage = 1.0
+        if "A" in img_raw.getbands():
+            alpha = img_raw.getchannel("A").resize((160, 160))
+            alpha_rows = list(alpha.getdata())
+            if alpha_rows:
+                alpha_coverage = sum(1 for px in alpha_rows if px >= 245) / len(alpha_rows)
+        img = img_raw.convert("RGB").resize((320, 320))
+        palette_img = img.convert("P", palette=Image.ADAPTIVE, colors=6).convert("RGB")
+        colors = palette_img.getcolors(320 * 320) or []
+        colors = sorted(colors, key=lambda x: x[0], reverse=True)[:6]
+        hexes = [("#%02x%02x%02x" % rgb) for _, rgb in colors]
+        stat = ImageStat.Stat(img)
+        mean = stat.mean if stat.mean else [0, 0, 0]
+        luminance = (0.2126 * mean[0] + 0.7152 * mean[1] + 0.0722 * mean[2]) / 255.0
+        rows.append({
+            "url": url,
+            "dhash": dhash_hex(img),
+            "luminance": round(float(luminance), 4),
+            "isDark": bool(luminance < 0.5),
+            "alphaCoverage": round(float(alpha_coverage), 4),
+            "dominantColors": hexes,
+        })
+    except Exception:
+        continue
+
+print(json.dumps(rows))
+PY`;
+      const { stdout } = await runShell(cmd, { cwd: ROOT, timeoutMs: Math.max(timeoutMs * 3, 12000) });
+      const parsed = JSON.parse(String(stdout || "[]").trim());
+      for (const row of Array.isArray(parsed) ? parsed : []) {
+        const key = String(row?.url || "").trim();
+        if (!key) continue;
+        REMOTE_IMAGE_SIGNATURE_CACHE.set(key, row);
+      }
+    } catch {}
+    for (const url of uncached) {
+      if (!REMOTE_IMAGE_SIGNATURE_CACHE.has(url)) {
+        REMOTE_IMAGE_SIGNATURE_CACHE.set(url, null);
+      }
+    }
+  }
+  return targets
+    .map((url) => ({ url, signature: REMOTE_IMAGE_SIGNATURE_CACHE.get(url) || null }))
+    .filter((row) => row.signature);
+};
+
+const selectBestSourceImageBySignature = async ({
+  candidates = [],
+  sectionSignature = null,
+  tokenSet = new Set(),
+  fallback = "",
+  timeoutMs = 7000,
+} = {}) => {
+  const urls = dedupeUrls(candidates, 16);
+  if (!urls.length) return fallback || "";
+  const targetDhash = String(sectionSignature?.dhash || "").trim().toLowerCase();
+  if (!targetDhash) return urls[0] || fallback || "";
+  const targetLuminance = Number(sectionSignature?.luminance);
+  const rankIndex = new Map(urls.map((url, index) => [url, index]));
+  const rows = await fetchRemoteImageSignatures({ urls, timeoutMs });
+  if (!rows.length) return urls[0] || fallback || "";
+  let best = null;
+  for (const row of rows) {
+    const currentDhash = String(row?.signature?.dhash || "").trim().toLowerCase();
+    const hamming = hammingHexDistance(targetDhash, currentDhash);
+    if (!Number.isFinite(hamming)) continue;
+    const currentLuminance = Number(row?.signature?.luminance);
+    const lumGap =
+      Number.isFinite(targetLuminance) && Number.isFinite(currentLuminance)
+        ? Math.abs(targetLuminance - currentLuminance)
+        : 0.5;
+    const urlTokenScore = tokenizeSimilarityText(row.url).reduce((acc, token) => acc + (tokenSet.has(token) ? 1 : 0), 0);
+    const urlLower = String(row.url || "").toLowerCase();
+    const indexPenalty = Number(rankIndex.get(row.url) || 0) * 0.25;
+    const foregroundPenalty = /(?:_|-)p\.(?:png|jpe?g|webp|gif|avif)(?:$|[?#])/.test(urlLower) ? 6 : 0;
+    const legacyPenalty = /legacy/.test(urlLower) ? 4 : 0;
+    const decorativePenalty = isLikelyDecorativeHeroImageUrl(urlLower) ? 12 : 0;
+    const alphaCoverage = Number(row?.signature?.alphaCoverage);
+    const transparencyPenalty =
+      Number.isFinite(alphaCoverage) && alphaCoverage < 0.92 ? (0.92 - alphaCoverage) * 40 : 0;
+    const backgroundBonus = /(?:_|-)bg\.(?:png|jpe?g|webp|gif|avif)(?:$|[?#])/.test(urlLower) ? 1.5 : 0;
+    const score =
+      hamming +
+      lumGap * 24 +
+      indexPenalty +
+      foregroundPenalty +
+      legacyPenalty +
+      decorativePenalty +
+      transparencyPenalty -
+      backgroundBonus -
+      urlTokenScore * 1.2;
+    if (!best || score < best.score) best = { url: row.url, score };
+  }
+  return best?.url || urls[0] || fallback || "";
+};
+
+const GLOBAL_FALLBACK_IMAGE_LIBRARY = Object.freeze({
+  corporate: {
+    hero: [
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2200&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2200&q=80",
+    ],
+    story: ["https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1800&q=80"],
+    approach: ["https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1800&q=80"],
+    products: ["https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1600&q=80"],
+    socialproof: ["https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80"],
+    cta: ["https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=80"],
+    footer: ["https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1800&q=80"],
+  },
+  audio: {
+    hero: [
+      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=2200&q=80",
+      "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=2200&q=80",
+    ],
+    story: ["https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=1800&q=80"],
+    approach: ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1800&q=80"],
+    products: ["https://images.unsplash.com/photo-1487215078519-e21cc028cb29?auto=format&fit=crop&w=1800&q=80"],
+    socialproof: ["https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1800&q=80"],
+    cta: ["https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?auto=format&fit=crop&w=1800&q=80"],
+    footer: ["https://images.unsplash.com/photo-1429514513361-8fa32282fd5f?auto=format&fit=crop&w=1800&q=80"],
+  },
+  automotive: {
+    hero: [
+      "https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=2200&q=80",
+      "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=2200&q=80",
+    ],
+    story: ["https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?auto=format&fit=crop&w=1800&q=80"],
+    approach: ["https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1800&q=80"],
+    products: ["https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1800&q=80"],
+    socialproof: ["https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1800&q=80"],
+    cta: ["https://images.unsplash.com/photo-1519583272095-6433daf26b6e?auto=format&fit=crop&w=1800&q=80"],
+    footer: ["https://images.unsplash.com/photo-1474511320723-9a56873867b5?auto=format&fit=crop&w=1800&q=80"],
+  },
+});
+
+const resolveSemanticImageCategory = ({ site = {}, summary = {} } = {}) => {
+  const signal = [
+    String(site?.prompt || ""),
+    String(site?.description || ""),
+    String(summary?.title || ""),
+    ...(Array.isArray(summary?.h1) ? summary.h1 : []),
+    ...(Array.isArray(summary?.h2) ? summary.h2 : []),
+  ]
+    .join(" ")
+    .toLowerCase();
+  if (/(audio|headphone|headphones|speaker|music|hifi|audiophile|planar|studio monitor)/i.test(signal)) return "audio";
+  if (/(motorcycle|bike|automotive|car|vehicle|racing|engine|helmet)/i.test(signal)) return "automotive";
+  return "corporate";
+};
+
+const mergeSectionImageLibraries = (...libraries) => {
+  const merged = {};
+  for (const library of libraries) {
+    if (!library || typeof library !== "object") continue;
+    for (const [sectionKey, urls] of Object.entries(library)) {
+      const section = String(sectionKey || "").trim();
+      if (!section) continue;
+      const rows = Array.isArray(urls) ? urls : [];
+      merged[section] = dedupeUrls([...(merged[section] || []), ...rows], 40);
+    }
+  }
+  return merged;
+};
+
+const resolveFallbackImageLibraryForSite = ({ site = {}, summary = {} } = {}) => {
+  const category = resolveSemanticImageCategory({ site, summary });
+  const fallback = GLOBAL_FALLBACK_IMAGE_LIBRARY[category] || GLOBAL_FALLBACK_IMAGE_LIBRARY.corporate;
+  return mergeSectionImageLibraries(GLOBAL_FALLBACK_IMAGE_LIBRARY.corporate, fallback);
+};
+
+const buildSectionImagePool = ({ summary = {}, sectionKey = "", tokenSet = new Set(), galleryBySection = {} } = {}) => {
+  const heroCarouselImages = dedupeUrls(
+    Array.isArray(summary?.heroCarousel?.images) ? summary.heroCarousel.images : [],
+    40
+  );
+  const sourceImagesRaw = dedupeUrls(
+    [
+      ...(Array.isArray(summary?.images)
+        ? summary.images.filter((item) => /^https?:\/\//i.test(String(item || "").trim()))
+        : []),
+      ...heroCarouselImages,
+    ],
+    120
+  );
+  const sourceImages = sourceImagesRaw.filter((item) => !isLikelyLowValueSourceImage(item));
+  const ranked = rankSourceImagesBySection({
+    images: sourceImages.length ? sourceImages : sourceImagesRaw,
+    tokenSet,
+    sectionKey,
+    isHomeContext: true,
+  });
+  const sourceOrdered = ranked.matched.length ? ranked.matched : ranked.all;
+  const gallery = Array.isArray(galleryBySection?.[sectionKey]) ? galleryBySection[sectionKey] : [];
+  const rankedGallery = rankGalleryBySimilarity(gallery, tokenSet);
+  const galleryOrdered = rankedGallery.matched.length ? rankedGallery.matched : rankedGallery.all;
+  if (sourceOrdered.length) return dedupeUrls([...sourceOrdered, ...galleryOrdered], 120);
+  return dedupeUrls([...galleryOrdered, ...sourceOrdered], 120);
+};
+
+const isTemplateFactoryReferenceAssetUrl = (value) =>
+  /^\/assets\/template-factory\//i.test(String(value || "").trim());
+
+const assignMediaBackfillForSection = ({
+  props = {},
+  kind = "",
+  blockType = "",
+  summary = {},
+  tokenSet = new Set(),
+  galleryBySection = {},
+  selectedImagesByKind = {},
+  backfillImages = true,
+  backfillMotion = true,
+  allowReferenceSlice = false,
+}) => {
+  const next = cloneJson(props || {});
+  let skipGenericMediaBackfill = false;
+  const pool = backfillImages ? buildSectionImagePool({ summary, sectionKey: kind, tokenSet, galleryBySection }) : [];
+  const shouldAcceptImageCandidate = (value) => {
+    const src = String(value || "").trim();
+    if (!src) return false;
+    if (!/^https?:\/\//i.test(src)) return false;
+    if (isLikelyLowValueSourceImage(src)) return false;
+    if (!allowReferenceSlice && isTemplateFactoryReferenceAssetUrl(src)) return false;
+    return true;
+  };
+  const selectedImage = shouldAcceptImageCandidate(selectedImagesByKind?.[kind])
+    ? String(selectedImagesByKind?.[kind]).trim()
+    : "";
+  const filteredPool = pool.filter((item) => shouldAcceptImageCandidate(item));
+  const existingBackgroundSrc = String(next?.backgroundMedia?.src || "").trim();
+  const existingMediaSrc = String(next?.media?.src || "").trim();
+  const existingPreferredImage =
+    (shouldAcceptImageCandidate(existingBackgroundSrc) ? existingBackgroundSrc : "") ||
+    (shouldAcceptImageCandidate(existingMediaSrc) ? existingMediaSrc : "");
+  const preferredReferenceImage =
+    allowReferenceSlice &&
+    (isTemplateFactoryReferenceAssetUrl(existingBackgroundSrc)
+      ? existingBackgroundSrc
+      : isTemplateFactoryReferenceAssetUrl(existingMediaSrc)
+        ? existingMediaSrc
+        : "");
+  const firstImage =
+    existingPreferredImage ||
+    (allowReferenceSlice && shouldAcceptImageCandidate(preferredReferenceImage) ? preferredReferenceImage : "") ||
+    selectedImage ||
+    filteredPool[0] ||
+    "";
+  const normalizedBlockType = String(blockType || "").trim();
+  const canonicalBlockType = resolveCanonicalBlockType(normalizedBlockType);
+  const mediaBackfillEligibleBlocks = new Set([
+    "HeroSplit",
+    "HeroCentered",
+    "NexusHeroDock",
+    "NeonHeroBeam",
+    "FeatureWithMedia",
+    "FeatureGrid",
+    "CardsGrid",
+    "TestimonialsGrid",
+    "ContentStory",
+    "DesignerHeroEditorial",
+    "DesignerProjectsSplit",
+    "CaseStudies",
+  ]);
+  const mediaEligible = new Set(["hero", "story", "contact"]);
+  if (backfillImages && firstImage) {
+    if (kind === "hero") {
+      const heroPresentation = normalizeHeroPresentation(summary?.heroPresentation);
+      const heroCarousel = normalizeHeroCarousel(summary?.heroCarousel);
+      const sourceSectionHints =
+        summary?.sourceSectionHints && typeof summary.sourceSectionHints === "object"
+          ? summary.sourceSectionHints
+          : {};
+      const hasShopifyOverlaySignals =
+        Number(sourceSectionHints?.shgSliderCount || 0) >= 2 &&
+        (Boolean(sourceSectionHints?.hasShgBox) || Boolean(sourceSectionHints?.hasShgVerticalAlignWrapper));
+      const heroCarouselSignalsStrong =
+        Boolean(heroCarousel?.enabled) ||
+        Number(heroCarousel?.signalCount || 0) >= 1 ||
+        (Array.isArray(heroCarousel?.slides) && heroCarousel.slides.length >= 2);
+      const allowHeroCarouselBackfill = isCarouselCapableBlockType(canonicalBlockType) && (
+        heroCarouselSignalsStrong || hasShopifyOverlaySignals
+      );
+      const preferOverlayHero =
+        heroPresentation?.mode === "background_text" ||
+        Boolean(sourceSectionHints?.hasShgBox) ||
+        Boolean(sourceSectionHints?.hasShgVerticalAlignWrapper) ||
+        hasShopifyOverlaySignals;
+      const heroCarouselImages = dedupeUrls(
+        Array.isArray(heroCarousel?.images)
+          ? heroCarousel.images.filter((item) => {
+              const src = String(item || "").trim();
+              return /^https?:\/\//i.test(src) && !isLikelyDecorativeHeroImageUrl(src);
+            })
+          : [],
+        8
+      );
+      const heroCarouselImagesHasNonStock = heroCarouselImages.some((item) => !isStockImageHost(hostFromUrl(item)));
+      const heroCarouselImagesFiltered = heroCarouselImagesHasNonStock
+        ? heroCarouselImages.filter((item) => !isStockImageHost(hostFromUrl(item)))
+        : heroCarouselImages;
+      const heroCarouselImagesPreferred =
+        heroCarouselImagesFiltered.length >= 2 ? heroCarouselImagesFiltered : heroCarouselImages;
+      const heroCarouselSlides = Array.isArray(heroCarousel?.slides)
+        ? heroCarousel.slides
+            .map((slide, index) => {
+              const src = String(slide?.src || "").trim();
+              if (!/^https?:\/\//i.test(src) || isLikelyDecorativeHeroImageUrl(src)) return null;
+              const imageDerivedTitle = inferHeroTitleFromImageUrl(src);
+              const title = normalizeTextLine(slide?.title || "");
+              const subtitle = normalizeTextLine(slide?.subtitle || "");
+              return {
+                src,
+                mobileSrc: String(slide?.mobileSrc || "").trim() || src,
+                alt: normalizeTextLine(slide?.alt || title || "Hero slide"),
+                label: normalizeTextLine(slide?.label || `Slide ${index + 1}`),
+                title:
+                  !isWeakSectionCopySeed(title)
+                    ? title
+                    : imageDerivedTitle || String(next?.title || "").slice(0, 96),
+                subtitle: !isWeakSectionCopySeed(subtitle) ? subtitle : String(next?.subtitle || "").slice(0, 180),
+                ctas: Array.isArray(slide?.ctas) ? slide.ctas : undefined,
+              };
+            })
+            .filter(Boolean)
+            .slice(0, 8)
+        : [];
+      const existingSlides = Array.isArray(next.heroSlides)
+        ? next.heroSlides.filter((slide) => typeof slide?.src === "string" && slide.src.trim())
+        : [];
+      const textOnlySlides = Array.isArray(next.heroSlides)
+        ? next.heroSlides
+            .map((slide) => (slide && typeof slide === "object" ? { ...slide } : null))
+            .filter((slide) => {
+              if (!slide) return false;
+              const hasText =
+                (typeof slide?.title === "string" && slide.title.trim()) ||
+                (typeof slide?.subtitle === "string" && slide.subtitle.trim()) ||
+                (typeof slide?.label === "string" && slide.label.trim()) ||
+                (Array.isArray(slide?.ctas) && slide.ctas.length > 0);
+              return Boolean(hasText);
+            })
+        : [];
+      if (existingSlides.length >= 2) {
+        next.heroSlides = existingSlides;
+      } else if (
+        allowHeroCarouselBackfill &&
+        textOnlySlides.length >= 2
+      ) {
+        const candidateSlides = rankHeroImageCandidates(
+          (() => {
+            const candidatePool = [...heroCarouselImagesPreferred, ...filteredPool, ...(Array.isArray(pool) ? pool : [])].filter((item) =>
+              shouldAcceptImageCandidate(item)
+            );
+            const hasNonStock = candidatePool.some((item) => !isStockImageHost(hostFromUrl(item)));
+            return hasNonStock ? candidatePool.filter((item) => !isStockImageHost(hostFromUrl(item))) : candidatePool;
+          })(),
+          Math.max(2, textOnlySlides.length)
+        );
+        if (candidateSlides.length >= 2) {
+          next.heroSlides = textOnlySlides.map((slide, index) => {
+            const src = candidateSlides[index % candidateSlides.length];
+            return {
+              ...slide,
+              src,
+              mobileSrc: String(slide?.mobileSrc || "").trim() || src,
+            };
+          });
+          next.heroCarouselAutoplayMs = Number(next.heroCarouselAutoplayMs || 4500);
+        }
+      } else if (allowHeroCarouselBackfill && heroCarouselSlides.length >= 2) {
+        next.heroSlides = heroCarouselSlides;
+        next.heroCarouselAutoplayMs = Number(next.heroCarouselAutoplayMs || 4500);
+      } else if (allowHeroCarouselBackfill && heroCarouselImages.length >= 2) {
+        next.heroSlides = heroCarouselImagesPreferred.map((src, index) => ({
+          src,
+          mobileSrc: src,
+          alt: String(next?.title || "Hero slide").slice(0, 96),
+          label: `Slide ${index + 1}`,
+          title: String(next?.title || "").slice(0, 96),
+          subtitle: String(next?.subtitle || "").slice(0, 180),
+        }));
+        next.heroCarouselAutoplayMs = Number(next.heroCarouselAutoplayMs || 4500);
+      }
+      if (allowHeroCarouselBackfill) {
+        const hydratedSlides = Array.isArray(next.heroSlides)
+          ? next.heroSlides.filter((slide) => typeof slide?.src === "string" && slide.src.trim().length > 0)
+          : [];
+        if (hydratedSlides.length < 2) {
+          const fallbackHeroCandidates = rankHeroImageCandidates(
+            [
+              ...heroCarouselImagesPreferred,
+              ...filteredPool,
+              ...(Array.isArray(pool) ? pool : []),
+            ].filter((item) => shouldAcceptImageCandidate(item) && !isLikelyDecorativeHeroImageUrl(item)),
+            Math.max(2, textOnlySlides.length || 6)
+          );
+          if (fallbackHeroCandidates.length >= 2) {
+            const seedSlides = textOnlySlides.length >= 2 ? textOnlySlides : [];
+            next.heroSlides = (seedSlides.length ? seedSlides : fallbackHeroCandidates.map((_, index) => ({
+              label: `Slide ${index + 1}`,
+              title: String(next?.title || "").slice(0, 96),
+              subtitle: String(next?.subtitle || "").slice(0, 180),
+            }))).slice(0, 8).map((slide, index) => {
+              const src = fallbackHeroCandidates[index % fallbackHeroCandidates.length];
+              return {
+                ...slide,
+                src,
+                mobileSrc: String(slide?.mobileSrc || "").trim() || src,
+              };
+            });
+            next.heroCarouselAutoplayMs = Number(next.heroCarouselAutoplayMs || 4500);
+          }
+        }
+      }
+      if (!allowHeroCarouselBackfill) {
+        delete next.heroSlides;
+        delete next.heroCarouselAutoplayMs;
+      }
+      const hasCarouselSlides = Array.isArray(next.heroSlides) && next.heroSlides.length >= 2;
+      const firstSlideSrc = Array.isArray(next.heroSlides)
+        ? next.heroSlides
+            .map((slide) => String(slide?.src || "").trim())
+            .find((src) => shouldAcceptImageCandidate(src) && !isLikelyDecorativeHeroImageUrl(src))
+        : "";
+      const heroBackgroundSrc =
+        firstSlideSrc ||
+        (shouldAcceptImageCandidate(firstImage) && !isLikelyDecorativeHeroImageUrl(firstImage)
+          ? firstImage
+          : filteredPool.find((item) => !isLikelyDecorativeHeroImageUrl(item)) || firstImage);
+      const shouldForceBackgroundHero =
+        preferOverlayHero ||
+        hasCarouselSlides ||
+        canonicalBlockType !== "HeroSplit";
+      if (shouldForceBackgroundHero) {
+        next.background = "image";
+        next.backgroundMedia = {
+          kind: "image",
+          src: heroBackgroundSrc,
+          alt: String(next?.title || "Hero background").slice(0, 96),
+        };
+        const heroTextPanelEnabled =
+          Boolean(next?.textPanel) || Boolean(String(next?.textPanelBackground || "").trim());
+        if (!String(next.backgroundOverlay || "").trim()) {
+          next.backgroundOverlay = heroTextPanelEnabled ? "rgba(2, 8, 18, 0.10)" : "rgba(2, 8, 18, 0.24)";
+        }
+        if (!(Number(next.backgroundOverlayOpacity || 0) > 0)) {
+          delete next.backgroundOverlayOpacity;
+        }
+        next.surfaceTone = String(next.surfaceTone || "").trim() || "dark";
+        next.contentTone = String(next.contentTone || "").trim() || "light";
+        if (heroTextPanelEnabled && !String(next.textPanelBackground || "").trim()) {
+          next.textPanelBackground = "rgba(8, 12, 20, 0.62)";
+        }
+        if (heroTextPanelEnabled && !String(next.textPanelBorderColor || "").trim()) {
+          next.textPanelBorderColor = "rgba(255,255,255,0.16)";
+        }
+        if (!preferOverlayHero && !hasCarouselSlides && heroPresentation?.hasForegroundImage) {
+          next.media = {
+            kind: "image",
+            src: heroBackgroundSrc,
+            alt: String(next?.title || "Hero visual").slice(0, 96),
+          };
+        } else {
+          delete next.media;
+          delete next.mediaPosition;
+          skipGenericMediaBackfill = true;
+        }
+      } else {
+        if (!next.media || isTemplateFactoryReferenceAssetUrl(next?.media?.src || "")) {
+          next.media = {
+            kind: "image",
+            src: heroBackgroundSrc,
+            alt: String(next?.title || "Hero visual").slice(0, 96),
+          };
+        }
+        if (!String(next.mediaPosition || "").trim()) {
+          next.mediaPosition = "right";
+        }
+        if (!next.background || String(next.background).trim().toLowerCase() === "image") {
+          next.background = "gradient";
+        }
+        if (!String(next.backgroundGradient || "").trim()) {
+          next.backgroundGradient = "linear-gradient(180deg,#050507 0%,#0a1020 100%)";
+        }
+        delete next.backgroundMedia;
+        next.backgroundOverlay = "";
+        delete next.backgroundOverlayOpacity;
+      }
+      if (String(next?.emphasis || "").trim().toLowerCase() === "high") {
+        next.emphasis = "normal";
+      }
+    }
+    if (
+      (kind === "story" || kind === "approach") &&
+      mediaBackfillEligibleBlocks.has(canonicalBlockType) &&
+      !Array.isArray(next.items)
+    ) {
+      const existingBgSrc = String(next?.backgroundMedia?.src || "").trim();
+      if (!existingBgSrc || isTemplateFactoryReferenceAssetUrl(existingBgSrc)) {
+        next.background = "image";
+        next.backgroundMedia = {
+          kind: "image",
+          src: firstImage,
+          alt: String(next?.title || `${kind} background`).slice(0, 96),
+        };
+      }
+      const sectionTextPanelEnabled =
+        Boolean(next?.textPanel) || Boolean(String(next?.textPanelBackground || "").trim());
+      if (!String(next.backgroundOverlay || "").trim()) {
+        next.backgroundOverlay = sectionTextPanelEnabled
+          ? "rgba(2, 8, 18, 0.08)"
+          : kind === "approach"
+            ? "rgba(2, 8, 18, 0.24)"
+            : "rgba(2, 8, 18, 0.18)";
+      }
+      if (!(Number(next.backgroundOverlayOpacity || 0) > 0)) {
+        delete next.backgroundOverlayOpacity;
+      }
+      next.surfaceTone = String(next.surfaceTone || "").trim() || "dark";
+      next.contentTone = String(next.contentTone || "").trim() || "light";
+      if (sectionTextPanelEnabled && !String(next.textPanelBackground || "").trim()) {
+        next.textPanelBackground = "rgba(8, 12, 20, 0.58)";
+      }
+      if (sectionTextPanelEnabled && !String(next.textPanelBorderColor || "").trim()) {
+        next.textPanelBorderColor = "rgba(255,255,255,0.14)";
+      }
+    }
+    if (
+      Array.isArray(next.items) &&
+      mediaBackfillEligibleBlocks.has(canonicalBlockType)
+    ) {
+      next.items = next.items.map((item, index) => {
+        const row = { ...(item || {}) };
+        const rowImage = pool[index % pool.length] || firstImage;
+        const hasImage =
+          Boolean(row.image?.src) ||
+          (typeof row.imageSrc === "string" && row.imageSrc.trim()) ||
+          Boolean(row.avatar?.src);
+        if (!hasImage) {
+          row.imageSrc = rowImage;
+          row.imageAlt = String(row.title || row.name || `${kind} visual`).slice(0, 80);
+          if (kind === "socialproof") {
+            row.avatar = { src: rowImage, alt: String(row.name || "Avatar").slice(0, 64) };
+          } else {
+            row.image = { src: rowImage, alt: row.imageAlt };
+          }
+        }
+        return row;
+      });
+    }
+    if (
+      mediaEligible.has(kind) &&
+      mediaBackfillEligibleBlocks.has(canonicalBlockType) &&
+      !next.media &&
+      !Array.isArray(next.items) &&
+      !(kind === "hero" && skipGenericMediaBackfill)
+    ) {
+      next.media = {
+        kind: "image",
+        src: firstImage,
+        alt: String(next?.title || `${kind} visual`).slice(0, 80),
+      };
+    }
+    if (
+      (kind === "story" || kind === "approach" || kind === "products" || kind === "socialproof" || kind === "contact" || kind === "cta") &&
+      String(next.background || "").trim().toLowerCase() === "image" &&
+      next?.backgroundMedia?.src
+    ) {
+      if (!String(next.backgroundOverlay || "").trim()) {
+        next.backgroundOverlay =
+          kind === "approach" || kind === "story"
+            ? "rgba(2, 8, 18, 0.42)"
+            : "rgba(8, 12, 22, 0.28)";
+      }
+      if (!(Number(next.backgroundOverlayOpacity || 0) > 0)) {
+        delete next.backgroundOverlayOpacity;
+      }
+      if (!next.surfaceTone) next.surfaceTone = "dark";
+      if ((kind === "approach" || kind === "story") && !next.contentTone) {
+        next.contentTone = "light";
+      }
+    }
+  }
+  if (backfillMotion) {
+    if (typeof next.motionMode === "string" && next.motionMode.trim().toLowerCase() === "off") {
+      delete next.motionMode;
+    }
+    if (typeof next.autoplay === "boolean" && next.autoplay === false && kind === "hero") {
+      next.autoplay = true;
+    }
+  }
+  return next;
+};
+
+const applyStructureFirstBackfillToStyleProfile = async ({
+  styleProfile = {},
+  site = {},
+  summary = {},
+  sectionVisualSignatures = null,
+  options = {},
+}) => {
+  const policy = resolveStructureFirstPolicy({ site, options });
+  if (!policy.structureFirstPipeline) return styleProfile;
+  const backfillImages = policy.structureFirstBackfillImages;
+  const strictLikeMode = String(options?.fidelityMode || "").trim().toLowerCase() === "strict";
+  const backfillMotion = policy.structureFirstBackfillMotion && !strictLikeMode && !Boolean(options?.homeOnlyEval);
+  if (!backfillImages && !backfillMotion) return styleProfile;
+
+  const tokenSet = buildSimilarityTokenSet({ site, summary, context: {} });
+  const fallbackGalleryBySection = resolveFallbackImageLibraryForSite({ site, summary });
+  const runtimeSectionComputedStyles = mergeRuntimeSectionComputedStyles([summary?.sectionComputedStyles]);
+  const runtimeBackgroundCandidatesByKind = (sectionKey = "") => {
+    const normalizedKind = normalizeSectionKind(sectionKey);
+    if (!normalizedKind) return [];
+    const runtimeStyle =
+      runtimeSectionComputedStyles?.[normalizedKind] && typeof runtimeSectionComputedStyles[normalizedKind] === "object"
+        ? runtimeSectionComputedStyles[normalizedKind]
+        : null;
+    const rootBgUrls = runtimeStyle?.root?.backgroundImage
+      ? extractBackgroundImageUrls(runtimeStyle.root.backgroundImage)
+      : [];
+    const ordered = dedupeUrls(rootBgUrls, 12).filter((url) => {
+      const src = String(url || "").trim();
+      if (!/^https?:\/\//i.test(src)) return false;
+      if (isLikelyLowValueSourceImage(src)) return false;
+      if ((normalizedKind === "hero" || normalizedKind === "story") && isLikelyDecorativeHeroImageUrl(src)) return false;
+      return true;
+    });
+    return ordered;
+  };
+  const selectedImagesByKind = {};
+  if (backfillImages) {
+    const templateKinds = new Set(["hero"]);
+    const collectKinds = (templates = {}) => {
+      for (const rawKind of Object.keys(templates || {})) {
+        const kind = normalizeSectionKind(rawKind);
+        if (kind) templateKinds.add(kind);
+      }
+    };
+    collectKinds(styleProfile?.templates || {});
+    if (Array.isArray(styleProfile?.pageSpecs)) {
+      for (const pageSpec of styleProfile.pageSpecs) {
+        collectKinds(pageSpec?.templates || {});
+      }
+    }
+    const imageBackfillKinds = Array.from(templateKinds).filter((kind) =>
+      ["hero", "story", "approach", "products", "socialproof", "contact", "cta"].includes(kind)
+    );
+    const selectionTasks = imageBackfillKinds.map(async (kind) => {
+      const runtimeCandidates = runtimeBackgroundCandidatesByKind(kind);
+      if (runtimeCandidates.length) {
+        selectedImagesByKind[kind] = runtimeCandidates[0];
+        return;
+      }
+      const pool = buildSectionImagePool({
+        summary,
+        sectionKey: kind,
+        tokenSet,
+        galleryBySection: fallbackGalleryBySection,
+      });
+      if (!pool.length) return;
+      const sectionSignature =
+        sectionVisualSignatures && typeof sectionVisualSignatures === "object" && sectionVisualSignatures[kind]
+          ? sectionVisualSignatures[kind]
+          : null;
+      selectedImagesByKind[kind] = await selectBestSourceImageBySignature({
+        candidates: pool,
+        sectionSignature,
+        tokenSet,
+        fallback: pool[0] || "",
+        timeoutMs: 7000,
+      });
+    });
+    await Promise.all(selectionTasks);
+  }
+  const allowReferenceSlice =
+    parseBool(
+      site?.allowSliceAsReference ??
+        (site?.specialRules && typeof site.specialRules === "object" ? site.specialRules.allowSliceAsReference : undefined) ??
+        false
+    ) && !parseBool(site?.disableSectionScreenshotFill ?? true);
+  const nextProfile = cloneJson(styleProfile || {});
+  const applyToTemplates = (templates = {}) => {
+    const out = {};
+    for (const [kind, entry] of Object.entries(templates || {})) {
+      const normalizedKind = normalizeSectionKind(kind) || kind;
+      out[kind] = {
+        ...(entry || {}),
+        props: assignMediaBackfillForSection({
+          props: entry?.props || {},
+          kind: normalizedKind,
+          blockType: entry?.type || "",
+          summary,
+          tokenSet,
+          galleryBySection: fallbackGalleryBySection,
+          selectedImagesByKind,
+          backfillImages,
+          backfillMotion,
+          allowReferenceSlice,
+        }),
+      };
+    }
+    return out;
+  };
+
+  nextProfile.templates = applyToTemplates(nextProfile.templates || {});
+  if (Array.isArray(nextProfile.pageSpecs)) {
+    nextProfile.pageSpecs = nextProfile.pageSpecs.map((page) => ({
+      ...(page || {}),
+      templates: applyToTemplates(page?.templates || {}),
+    }));
+  }
+  return nextProfile;
+};
+
 const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, recipe = null, context = {}) => {
   const pageTitle = summary.title || site.id || "Site";
   const promptLine = site.prompt || site.description || "";
   const defaults = { ...(spec.defaults || {}) };
   const blockType = String(spec?.blockType || "");
+  const canonicalBlockType = resolveCanonicalBlockType(blockType);
   const currentPath = normalizeTemplatePagePath(context?.currentPath || "/");
+  const currentPageType = classifyTemplatePageType(currentPath, String(summary?.title || ""));
+  const isHomeContext = currentPath === "/" || isLocaleRootPath(currentPath);
+  const isBlogContext = currentPageType === "blog" || isBlogLikePath(currentPath);
   const sitePages = Array.isArray(context?.sitePages) ? context.sitePages : [];
+  const homeOnlyMode = Boolean(context?.homeOnlyMode);
+  const homeOnlyEvalMode = Boolean(context?.homeOnlyEvalMode);
+  const strictFidelityMode = String(context?.fidelityMode || "").trim().toLowerCase() === "strict";
+  const pageRequiredCategoriesRaw = Array.isArray(context?.pageRequiredCategories)
+    ? context.pageRequiredCategories
+    : [];
+  const pageRequiredCategories = pageRequiredCategoriesRaw
+    .map((item) => String(item || "").trim().toLowerCase())
+    .filter(Boolean);
+  const activeSectionKindsRaw = Array.isArray(context?.activeSectionKinds) ? context.activeSectionKinds : [];
+  const activeSectionKinds = activeSectionKindsRaw
+    .map((item) => String(item || "").trim().toLowerCase())
+    .filter(Boolean);
+  const navSourcePages =
+    Array.isArray(context?.navSourcePages) && context.navSourcePages.length ? context.navSourcePages : sitePages;
   const discoveryPolicy = context?.discoveryPolicy && typeof context.discoveryPolicy === "object" ? context.discoveryPolicy : {};
+  const pageVisualSignature =
+    context?.pageVisualSignature && typeof context.pageVisualSignature === "object"
+      ? context.pageVisualSignature
+      : null;
+  const siteVisualSignature =
+    context?.siteVisualSignature && typeof context.siteVisualSignature === "object"
+      ? context.siteVisualSignature
+      : null;
+  const sectionVisualSignatures =
+    context?.sectionVisualSignatures && typeof context.sectionVisualSignatures === "object"
+      ? context.sectionVisualSignatures
+      : null;
+  const pageSpecialRules =
+    context?.pageSpecialRules && typeof context.pageSpecialRules === "object"
+      ? context.pageSpecialRules
+      : {};
+  const structureFirstPipeline = Boolean(context?.structureFirstPipeline);
+  const structureFirstDisableImages = Boolean(context?.structureFirstDisableImages);
+  const structureFirstDisableMotion = Boolean(context?.structureFirstDisableMotion);
+  const lockHeroMedia = parseBool(
+    pageSpecialRules.lockHeroMedia ??
+      pageSpecialRules.lock_hero_media ??
+      extractSpecialRuleValue(site, "lockHeroMedia") ??
+      false
+  );
+  const lockNavFooterStyle = parseBool(
+    pageSpecialRules.lockNavFooterStyle ??
+      pageSpecialRules.lock_nav_footer_style ??
+      extractSpecialRuleValue(site, "lockNavFooterStyle") ??
+      false
+  );
+  const rawSectionVisualSignature =
+    sectionVisualSignatures && typeof sectionVisualSignatures[kind] === "object"
+      ? sectionVisualSignatures[kind]
+      : kind === "navigation" && sectionVisualSignatures && typeof sectionVisualSignatures.hero === "object"
+        ? sectionVisualSignatures.hero
+      : null;
+  const adaptivePalette = resolveAdaptivePaletteForPage({
+    site,
+    summary,
+    pathValue: currentPath,
+    pageVisualSignature,
+    siteVisualSignature,
+  });
+  const useSectionVisualPalette = Boolean(rawSectionVisualSignature) && (isHomeContext || kind === "navigation" || kind === "footer");
+  const sectionPalette = useSectionVisualPalette
+    ? inferPaletteProfileFromVisualSignature(
+        {
+          ...rawSectionVisualSignature,
+          isDark: Boolean(rawSectionVisualSignature?.isDark),
+        },
+        Array.isArray(summary?.themeColors) ? summary.themeColors : []
+      )
+    : null;
+  const palette = sectionPalette
+    ? {
+        ...adaptivePalette,
+        ...sectionPalette,
+        tone: Boolean(rawSectionVisualSignature?.isDark) ? "dark" : "light",
+      }
+    : adaptivePalette;
+  const signatureColorFor = (sectionKey) =>
+    extractDominantColorFromSectionSignatures(sectionVisualSignatures, sectionKey);
+  const imageOverlayFallbackFor = (sectionKey, { hasTextPanel = false } = {}) => {
+    if (hasTextPanel) {
+      if (sectionKey === "hero") return "rgba(2, 8, 18, 0.10)";
+      if (sectionKey === "approach" || sectionKey === "story") return "rgba(2, 8, 18, 0.08)";
+      return "rgba(8, 12, 22, 0.08)";
+    }
+    if (sectionKey === "hero") return "rgba(2, 8, 18, 0.24)";
+    if (sectionKey === "approach") return "rgba(2, 8, 18, 0.24)";
+    if (sectionKey === "story") return "rgba(2, 8, 18, 0.18)";
+    return "rgba(8, 12, 22, 0.16)";
+  };
   const sectionIdx = SECTION_KIND_INDEX[kind] ?? 0;
   const pageHeadline = sectionSpecificHeadline(summary, sectionIdx, promptLine || `Welcome to ${pageTitle}`);
   const pageSubhead = sectionSpecificSubhead(
@@ -4442,23 +10321,111 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
     sectionIdx,
     site.description || `Designed for ${pageTitle} with a high-consistency block architecture.`
   );
+  const inferredHeadingFont =
+    normalizeToCommercialFreeFont(summary?.headingFontFamily || "", { role: "heading" }) ||
+    normalizeToCommercialFreeFont(Array.isArray(summary?.fontFamilies) ? summary.fontFamilies[0] : "", { role: "heading" }) ||
+    "Montserrat";
+  const inferredBodyFont =
+    normalizeToCommercialFreeFont(summary?.bodyFontFamily || "", { role: "body" }) ||
+    normalizeToCommercialFreeFont(Array.isArray(summary?.fontFamilies) ? summary.fontFamilies[1] : "", { role: "body" }) ||
+    inferredHeadingFont ||
+    "Manrope";
+  const inferredHeadingPx = Number(summary?.headingFontPx || 0);
+  const inferredBodyPx = Number(summary?.bodyFontPx || 0);
+  const inferredHeadingSize =
+    inferredHeadingPx >= 52 ? "lg" : inferredHeadingPx >= 38 ? "md" : inferredHeadingPx > 0 ? "sm" : "";
+  const inferredBodySize =
+    inferredBodyPx >= 19 ? "lg" : inferredBodyPx >= 15 ? "md" : inferredBodyPx > 0 ? "sm" : "";
+  const applyTypographyDefaults = () => {
+    if (defaults.headingFont) {
+      defaults.headingFont =
+        normalizeToCommercialFreeFont(defaults.headingFont, { role: "heading" }) || inferredHeadingFont || "Montserrat";
+    }
+    if (defaults.bodyFont) {
+      defaults.bodyFont =
+        normalizeToCommercialFreeFont(defaults.bodyFont, { role: "body" }) || inferredBodyFont || "Manrope";
+    }
+    if (inferredHeadingFont && !defaults.headingFont) defaults.headingFont = inferredHeadingFont;
+    if (inferredBodyFont && !defaults.bodyFont) defaults.bodyFont = inferredBodyFont;
+    if (inferredHeadingSize && typeof defaults.headingSize === "undefined") defaults.headingSize = inferredHeadingSize;
+    if (inferredBodySize && typeof defaults.bodySize === "undefined") defaults.bodySize = inferredBodySize;
+  };
+  const ensureReadableImageOverlay = (sectionKey = kind) => {
+    if (String(defaults?.background || "").trim().toLowerCase() !== "image") return;
+    if (!(defaults?.backgroundMedia && typeof defaults.backgroundMedia === "object" && defaults.backgroundMedia.src)) return;
+    const hasTextPanel = Boolean(defaults?.textPanel) || Boolean(String(defaults?.textPanelBackground || "").trim());
+    const overlay = String(defaults?.backgroundOverlay || "").trim();
+    if (!overlay) {
+      defaults.backgroundOverlay = imageOverlayFallbackFor(sectionKey, { hasTextPanel });
+    } else if (hasTextPanel) {
+      const compact = overlay.replace(/\s+/g, "").toLowerCase();
+      if (/rgba\(2,8,18,0\.(58|56|44|42)\)/.test(compact)) {
+        defaults.backgroundOverlay = imageOverlayFallbackFor(sectionKey, { hasTextPanel: true });
+      }
+    }
+    if (!(Number(defaults?.backgroundOverlayOpacity || 0) > 0)) {
+      delete defaults.backgroundOverlayOpacity;
+    }
+    if (typeof defaults.backgroundBlur === "undefined") defaults.backgroundBlur = 0;
+    if (!defaults.surfaceTone) defaults.surfaceTone = "dark";
+    if ((sectionKey === "approach" || sectionKey === "story" || sectionKey === "hero") && !defaults.contentTone) {
+      defaults.contentTone = "light";
+    }
+    if (hasTextPanel && !String(defaults?.textPanelBackground || "").trim()) {
+      defaults.textPanelBackground =
+        sectionKey === "hero" ? "rgba(8, 12, 20, 0.62)" : "rgba(8, 12, 20, 0.58)";
+    }
+    if (hasTextPanel && !String(defaults?.textPanelBorderColor || "").trim()) {
+      defaults.textPanelBorderColor = "rgba(255,255,255,0.16)";
+    }
+    if (String(defaults?.emphasis || "").trim().toLowerCase() === "high") {
+      defaults.emphasis = "normal";
+    }
+  };
   const imageSourcePolicy = String(site?.imageSourcePolicy || "").trim().toLowerCase();
+  const effectiveImageSourcePolicy = imageSourcePolicy || "source_or_gallery";
+  const avoidSectionScreenshotFill = parseBool(site?.disableSectionScreenshotFill ?? true);
+  const allowSliceAsReference = parseBool(
+    site?.allowSliceAsReference ??
+      (site?.specialRules && typeof site.specialRules === "object" ? site.specialRules.allowSliceAsReference : undefined) ??
+      false
+  );
   const disableScreenshotImages =
     Boolean(site?.disableScreenshotImages) ||
-    imageSourcePolicy === "gallery_or_source" ||
-    imageSourcePolicy === "source_or_gallery";
-  const sourceImages = Array.isArray(summary?.images)
-    ? summary.images.filter((item) => /^https?:\/\//i.test(String(item || "").trim()))
-    : [];
-  const galleryBySection = recipe && typeof recipe === "object" ? recipe.imageLibrary || {} : {};
+    avoidSectionScreenshotFill ||
+    effectiveImageSourcePolicy === "gallery_or_source" ||
+    effectiveImageSourcePolicy === "source_or_gallery" ||
+    effectiveImageSourcePolicy === "source_only" ||
+    effectiveImageSourcePolicy === "gallery_only";
+  const sourceImagesRaw = dedupeUrls(
+    Array.isArray(summary?.images) ? summary.images.filter((item) => /^https?:\/\//i.test(String(item || "").trim())) : [],
+    120
+  );
+  const sourceImagesFiltered = sourceImagesRaw.filter((item) => !isLikelyLowValueSourceImage(item));
+  const sourceImages = sourceImagesFiltered.length ? sourceImagesFiltered : sourceImagesRaw;
+  const recipeGalleryBySection = recipe && typeof recipe === "object" ? recipe.imageLibrary || {} : {};
+  const fallbackGalleryBySection = resolveFallbackImageLibraryForSite({ site, summary });
+  const galleryBySection = mergeSectionImageLibraries(recipeGalleryBySection, fallbackGalleryBySection);
   const similarityTokens = buildSimilarityTokenSet({ site, summary, context });
 
   const poolFor = (sectionKey) => {
     const gallery = Array.isArray(galleryBySection?.[sectionKey]) ? galleryBySection[sectionKey] : [];
     const rankedGallery = rankGalleryBySimilarity(gallery, similarityTokens);
     const galleryOrdered = rankedGallery.matched.length ? rankedGallery.matched : rankedGallery.all;
-    if (imageSourcePolicy === "source_or_gallery") return [...sourceImages, ...galleryOrdered];
-    return [...galleryOrdered, ...sourceImages];
+    const rankedSource = rankSourceImagesBySection({
+      images: sourceImages,
+      tokenSet: similarityTokens,
+      sectionKey,
+      isHomeContext,
+    });
+    const sourceOrdered = rankedSource.matched.length ? rankedSource.matched : rankedSource.all;
+    if (effectiveImageSourcePolicy === "source_or_gallery") return dedupeUrls([...sourceOrdered, ...galleryOrdered], 120);
+    if (effectiveImageSourcePolicy === "gallery_or_source") return dedupeUrls([...galleryOrdered, ...sourceOrdered], 120);
+    if (effectiveImageSourcePolicy === "source_only")
+      return dedupeUrls(sourceOrdered.length ? sourceOrdered : galleryOrdered, 120);
+    if (effectiveImageSourcePolicy === "gallery_only")
+      return dedupeUrls(galleryOrdered.length ? galleryOrdered : sourceOrdered, 120);
+    return dedupeUrls([...galleryOrdered, ...sourceOrdered], 120);
   };
   const imageFor = (sectionKey, index = 0) => {
     const pool = poolFor(sectionKey).filter((item) => /^https?:\/\//i.test(String(item || "").trim()));
@@ -4474,29 +10441,150 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
     imageFor("cta", 0) ||
     imageFor("footer", 0);
 
+  const referenceDesktopSlices =
+    assetContext?.slices?.desktop && typeof assetContext.slices.desktop === "object" ? assetContext.slices.desktop : {};
+  const referenceMobileSlices =
+    assetContext?.slices?.mobile && typeof assetContext.slices.mobile === "object" ? assetContext.slices.mobile : {};
+  const referenceDesktopSliceMeta =
+    assetContext?.slices?.desktopMeta && typeof assetContext.slices.desktopMeta === "object"
+      ? assetContext.slices.desktopMeta
+      : {};
+  const referenceMobileSliceMeta =
+    assetContext?.slices?.mobileMeta && typeof assetContext.slices.mobileMeta === "object"
+      ? assetContext.slices.mobileMeta
+      : {};
+  const referenceDesktopMiddleSlices =
+    assetContext?.slices?.desktopMiddle && typeof assetContext.slices.desktopMiddle === "object"
+      ? assetContext.slices.desktopMiddle
+      : {};
+  const referenceMobileMiddleSlices =
+    assetContext?.slices?.mobileMiddle && typeof assetContext.slices.mobileMiddle === "object"
+      ? assetContext.slices.mobileMiddle
+      : {};
+  const referenceDesktopMiddleMeta =
+    assetContext?.slices?.desktopMiddleMeta && typeof assetContext.slices.desktopMiddleMeta === "object"
+      ? assetContext.slices.desktopMiddleMeta
+      : {};
+  const referenceMobileMiddleMeta =
+    assetContext?.slices?.mobileMiddleMeta && typeof assetContext.slices.mobileMiddleMeta === "object"
+      ? assetContext.slices.mobileMiddleMeta
+      : {};
+  const allowReferenceSlices = allowSliceAsReference && !avoidSectionScreenshotFill;
+  const preferReferenceSlices = homeOnlyMode && isHomeContext && allowReferenceSlices;
+  const lockNavFooterReference = lockNavFooterStyle && allowReferenceSlices;
+  const lockHeroReference = lockHeroMedia && allowReferenceSlices;
+  const preferredDesktopSlice = (sectionKey, fallback = "") =>
+    (preferReferenceSlices ? referenceDesktopSlices?.[sectionKey] || "" : "") || fallback;
+  const preferredMobileSlice = (sectionKey, fallback = "") =>
+    (preferReferenceSlices ? referenceMobileSlices?.[sectionKey] || referenceDesktopSlices?.[sectionKey] || "" : "") || fallback;
   const resolvedAssets = disableScreenshotImages
     ? {
         ...assetContext,
-        desktopUrl: anyImage,
-        mobileUrl: imageFor("hero", 1) || anyImage,
+        desktopUrl: imageFor("hero", 0) || anyImage || preferredDesktopSlice("hero", ""),
+        mobileUrl: imageFor("hero", 1) || imageFor("hero", 0) || anyImage || preferredMobileSlice("hero", ""),
         slices: {
           desktop: {
-            hero: imageFor("hero", 0) || anyImage,
-            story: imageFor("story", 0) || imageFor("hero", 0) || anyImage,
-            approach: imageFor("approach", 0) || imageFor("story", 0) || anyImage,
-            products: imageFor("products", 0) || imageFor("story", 0) || anyImage,
-            socialproof: imageFor("socialproof", 0) || imageFor("products", 0) || anyImage,
-            cta: imageFor("cta", 0) || imageFor("socialproof", 0) || anyImage,
-            footer: imageFor("footer", 0) || imageFor("cta", 0) || anyImage,
+            navigation:
+              imageFor("hero", 0) ||
+              anyImage ||
+              preferredDesktopSlice(
+                "navigation",
+                (lockNavFooterReference ? referenceDesktopSlices.navigation || referenceDesktopSlices.hero : "") || ""
+              ),
+            hero:
+              imageFor("hero", 0) ||
+              anyImage ||
+              preferredDesktopSlice(
+                "hero",
+                (lockHeroReference ? referenceDesktopSlices.hero : "") || ""
+              ),
+            story: imageFor("story", 0) || imageFor("hero", 0) || anyImage || preferredDesktopSlice("story", ""),
+            approach:
+              imageFor("approach", 0) ||
+              imageFor("story", 0) ||
+              anyImage ||
+              preferredDesktopSlice("approach", ""),
+            products:
+              imageFor("products", 0) ||
+              imageFor("story", 0) ||
+              anyImage ||
+              preferredDesktopSlice("products", ""),
+            socialproof:
+              imageFor("socialproof", 0) ||
+              imageFor("products", 0) ||
+              anyImage ||
+              preferredDesktopSlice("socialproof", ""),
+            cta:
+              imageFor("cta", 0) ||
+              imageFor("socialproof", 0) ||
+              anyImage ||
+              preferredDesktopSlice("cta", ""),
+            footer:
+              imageFor("footer", 0) ||
+              imageFor("cta", 0) ||
+              anyImage ||
+              preferredDesktopSlice(
+                "footer",
+                (lockNavFooterReference ? referenceDesktopSlices.footer : "") || ""
+              ),
           },
+          desktopMeta: referenceDesktopSliceMeta,
+          mobileMeta: referenceMobileSliceMeta,
+          desktopMiddle: referenceDesktopMiddleSlices,
+          mobileMiddle: referenceMobileMiddleSlices,
+          desktopMiddleMeta: referenceDesktopMiddleMeta,
+          mobileMiddleMeta: referenceMobileMiddleMeta,
           mobile: {
-            hero: imageFor("hero", 1) || imageFor("hero", 0) || anyImage,
-            story: imageFor("story", 1) || imageFor("story", 0) || imageFor("hero", 0) || anyImage,
-            approach: imageFor("approach", 1) || imageFor("approach", 0) || anyImage,
-            products: imageFor("products", 1) || imageFor("products", 0) || anyImage,
-            socialproof: imageFor("socialproof", 1) || imageFor("socialproof", 0) || anyImage,
-            cta: imageFor("cta", 1) || imageFor("cta", 0) || anyImage,
-            footer: imageFor("footer", 1) || imageFor("footer", 0) || anyImage,
+            navigation:
+              imageFor("hero", 1) ||
+              imageFor("hero", 0) ||
+              anyImage ||
+              preferredMobileSlice(
+                "navigation",
+                (lockNavFooterReference ? referenceMobileSlices.navigation || referenceMobileSlices.hero : "") || ""
+              ),
+            hero:
+              imageFor("hero", 1) ||
+              imageFor("hero", 0) ||
+              anyImage ||
+              preferredMobileSlice(
+                "hero",
+                (lockHeroReference ? referenceMobileSlices.hero || referenceDesktopSlices.hero : "") || ""
+              ),
+            story:
+              imageFor("story", 1) ||
+              imageFor("story", 0) ||
+              imageFor("hero", 0) ||
+              anyImage ||
+              preferredMobileSlice("story", ""),
+            approach:
+              imageFor("approach", 1) ||
+              imageFor("approach", 0) ||
+              anyImage ||
+              preferredMobileSlice("approach", ""),
+            products:
+              imageFor("products", 1) ||
+              imageFor("products", 0) ||
+              anyImage ||
+              preferredMobileSlice("products", ""),
+            socialproof:
+              imageFor("socialproof", 1) ||
+              imageFor("socialproof", 0) ||
+              anyImage ||
+              preferredMobileSlice("socialproof", ""),
+            cta:
+              imageFor("cta", 1) ||
+              imageFor("cta", 0) ||
+              anyImage ||
+              preferredMobileSlice("cta", ""),
+            footer:
+              imageFor("footer", 1) ||
+              imageFor("footer", 0) ||
+              anyImage ||
+              preferredMobileSlice(
+                "footer",
+                (lockNavFooterReference ? referenceMobileSlices.footer || referenceDesktopSlices.footer : "") || ""
+              ),
           },
         },
       }
@@ -4504,46 +10592,582 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
 
   const desktopSlices = resolvedAssets?.slices?.desktop ?? {};
   const mobileSlices = resolvedAssets?.slices?.mobile ?? {};
+  const desktopSliceMeta =
+    resolvedAssets?.slices?.desktopMeta && typeof resolvedAssets.slices.desktopMeta === "object"
+      ? resolvedAssets.slices.desktopMeta
+      : {};
+  const desktopMiddleSlices =
+    resolvedAssets?.slices?.desktopMiddle && typeof resolvedAssets.slices.desktopMiddle === "object"
+      ? resolvedAssets.slices.desktopMiddle
+      : {};
+  const desktopMiddleMeta =
+    resolvedAssets?.slices?.desktopMiddleMeta && typeof resolvedAssets.slices.desktopMiddleMeta === "object"
+      ? resolvedAssets.slices.desktopMiddleMeta
+      : {};
+  const canonicalMiddleSliceOrder = ["hero", "story", "approach", "products", "socialproof", "cta"];
+  const canonicalMiddleKindOrder = ["hero", "story", "approach", "products", "socialproof", "contact", "cta"];
+  const hasHomeRequiredKinds = activeSectionKinds.length > 0 || pageRequiredCategories.length > 0;
+  const sourceKinds = activeSectionKinds.length ? activeSectionKinds : pageRequiredCategories;
+  const requiredMiddleKinds = canonicalMiddleKindOrder.filter(
+    (token) => token !== "contact" && sourceKinds.includes(token)
+  );
+  if (isHomeContext && !requiredMiddleKinds.includes("hero")) requiredMiddleKinds.unshift("hero");
+  const fallbackMiddleKinds = canonicalMiddleKindOrder.filter(
+    (token) => token !== "contact" && desktopSlices?.[token]
+  );
+  const activeMiddleKinds = hasHomeRequiredKinds ? requiredMiddleKinds : fallbackMiddleKinds;
+  const middleSliceMap = (() => {
+    const map = {};
+    let cursor = 0;
+    for (const middleKind of activeMiddleKinds) {
+      while (cursor < canonicalMiddleSliceOrder.length && !desktopSlices?.[canonicalMiddleSliceOrder[cursor]]) {
+        cursor += 1;
+      }
+      if (cursor >= canonicalMiddleSliceOrder.length) break;
+      map[middleKind] = canonicalMiddleSliceOrder[cursor];
+      cursor += 1;
+    }
+    return map;
+  })();
   const desktopAsset = resolvedAssets?.desktopUrl || "";
   const mobileAsset = resolvedAssets?.mobileUrl || "";
   const heroPresentation = normalizeHeroPresentation(summary?.heroPresentation);
   const heroCarousel = normalizeHeroCarousel(summary?.heroCarousel);
-  const carouselCapableHeroBlocks = new Set(["NexusHeroDock", "HeroSplit", "NeonHeroBeam"]);
-  const heroSlideCandidates = dedupeUrls(
+  const sourceSectionHints = mergeSourceSectionHints([summary?.sourceSectionHints]);
+  const runtimeSectionComputedStyles = mergeRuntimeSectionComputedStyles([
+    context?.sectionComputedStyles,
+    summary?.sectionComputedStyles,
+  ]);
+  const runtimeSectionStyleFor = (sectionKey = "") => {
+    const normalized = normalizeSectionKind(sectionKey);
+    if (!normalized) return null;
+    if (runtimeSectionComputedStyles?.[normalized] && typeof runtimeSectionComputedStyles[normalized] === "object") {
+      return runtimeSectionComputedStyles[normalized];
+    }
+    if (normalized === "navigation" && runtimeSectionComputedStyles?.hero) {
+      return runtimeSectionComputedStyles.hero;
+    }
+    return null;
+  };
+  const headingSizeFromPx = (pxValue) => {
+    const px = Number(pxValue || 0);
+    if (!(px > 0)) return "";
+    if (px >= 48) return "lg";
+    if (px >= 34) return "md";
+    return "sm";
+  };
+  const bodySizeFromPx = (pxValue) => {
+    const px = Number(pxValue || 0);
+    if (!(px > 0)) return "";
+    if (px >= 20) return "lg";
+    if (px >= 15) return "md";
+    return "sm";
+  };
+  const applyRuntimeTypography = (sectionKey = kind) => {
+    const runtimeStyle = runtimeSectionStyleFor(sectionKey);
+    if (!runtimeStyle || typeof runtimeStyle !== "object") return;
+    const titleStyle = runtimeStyle?.title && typeof runtimeStyle.title === "object" ? runtimeStyle.title : null;
+    const contentStyle = runtimeStyle?.content && typeof runtimeStyle.content === "object" ? runtimeStyle.content : null;
+    if (titleStyle?.fontFamily) defaults.headingFont = titleStyle.fontFamily;
+    if (contentStyle?.fontFamily) defaults.bodyFont = contentStyle.fontFamily;
+    const headingSize = headingSizeFromPx(titleStyle?.fontSizePx);
+    if (headingSize) defaults.headingSize = headingSize;
+    const bodySize = bodySizeFromPx(contentStyle?.fontSizePx);
+    if (bodySize) defaults.bodySize = bodySize;
+    const rootAlign = String(runtimeStyle?.root?.textAlign || "").trim().toLowerCase();
+    if (rootAlign === "center" && !String(defaults.align || "").trim()) {
+      defaults.align = "center";
+    }
+  };
+  const applyRuntimeTextPanel = (sectionKey = kind) => {
+    const runtimeStyle = runtimeSectionStyleFor(sectionKey);
+    if (!runtimeStyle || typeof runtimeStyle !== "object") return;
+    const panel = runtimeStyle?.textPanel && typeof runtimeStyle.textPanel === "object" ? runtimeStyle.textPanel : null;
+    if (!panel) return;
+    const panelBg = String(panel?.backgroundColorRaw || panel?.backgroundColor || "").trim();
+    const panelAlpha = Number(panel?.backgroundAlpha);
+    const hasPanelSurface =
+      Boolean(panelBg) &&
+      panelBg.toLowerCase() !== "transparent" &&
+      (!Number.isFinite(panelAlpha) || panelAlpha < 0.98);
+    const hasBackdrop = Boolean(String(panel?.backdropFilter || "").trim());
+    if (!hasPanelSurface && !hasBackdrop) return;
+    defaults.textPanel = true;
+    if (panelBg && panelBg.toLowerCase() !== "transparent") defaults.textPanelBackground = panelBg;
+    if (!String(defaults.textPanelBorderColor || "").trim()) {
+      defaults.textPanelBorderColor = "rgba(255,255,255,0.14)";
+    }
+  };
+  const applyRuntimeSurfaceTone = (sectionKey = kind) => {
+    const runtimeStyle = runtimeSectionStyleFor(sectionKey);
+    if (!runtimeStyle || typeof runtimeStyle !== "object") return;
+    const root = runtimeStyle?.root && typeof runtimeStyle.root === "object" ? runtimeStyle.root : null;
+    if (!root) return;
+    const rootBg = String(root?.backgroundColor || "").trim();
+    const parsedBg = parseHexRgb(rootBg);
+    if (parsedBg) {
+      const lum = colorLuminance(parsedBg);
+      if (lum <= 120) {
+        defaults.surfaceTone = "dark";
+        if (["hero", "story", "approach", "products", "cta", "contact"].includes(sectionKey) && !defaults.contentTone) {
+          defaults.contentTone = "light";
+        }
+      }
+    }
+    if (["navigation", "footer"].includes(sectionKey) && rootBg) {
+      defaults.background = "gradient";
+      defaults.backgroundGradient = `linear-gradient(180deg,${rootBg} 0%,${rootBg} 100%)`;
+      defaults.backgroundOverlay = "";
+      defaults.backgroundOverlayOpacity = 0;
+      defaults.backgroundBlur = 0;
+    }
+    const rootBgImage = Array.isArray(extractBackgroundImageUrls(root?.backgroundImage || ""))
+      ? extractBackgroundImageUrls(root?.backgroundImage || "")
+      : [];
+    if (
+      rootBgImage.length &&
+      ["hero", "story", "approach", "products", "socialproof", "cta", "contact"].includes(sectionKey) &&
+      !defaults.backgroundMedia?.src
+    ) {
+      defaults.background = "image";
+      defaults.backgroundMedia = {
+        kind: "image",
+        src: rootBgImage[0],
+        alt: `${pageTitle} ${sectionKey} background`,
+      };
+    }
+  };
+  const sitePrefersDarkSurface = (() => {
+    if (String(palette?.tone || "").trim().toLowerCase() === "dark") return true;
+    if (Boolean(siteVisualSignature?.isDark) || Boolean(pageVisualSignature?.isDark)) return true;
+    const navBg = normalizeColorToken(summary?.navBackgroundColor || "");
+    const footerBg = normalizeColorToken(summary?.footerBackgroundColor || "");
+    if (navBg && !isBrightColorToken(navBg, 170)) return true;
+    if (footerBg && !isBrightColorToken(footerBg, 170)) return true;
+    const colors = Array.isArray(summary?.themeColors) ? summary.themeColors.map((entry) => parseHexRgb(entry)).filter(Boolean) : [];
+    if (colors.length) {
+      const darkCount = colors.filter((entry) => colorLuminance(entry) <= 128).length;
+      if (darkCount / colors.length >= 0.5) return true;
+    }
+    return false;
+  })();
+  const enforceDarkSurfaceCoherence = (sectionKey = kind) => {
+    const targetKind = String(sectionKey || "").trim().toLowerCase();
+    if (!["hero", "story", "approach", "products", "socialproof", "cta", "contact"].includes(targetKind)) return;
+    if (!sitePrefersDarkSurface) return;
+    const runtimeStyle = runtimeSectionStyleFor(targetKind);
+    const runtimeRootBg = normalizeColorToken(runtimeStyle?.root?.backgroundColor || "");
+    const runtimeRootExplicitLight = Boolean(runtimeRootBg && isBrightColorToken(runtimeRootBg, 176));
+    if (runtimeRootExplicitLight) return;
+    const backgroundMode = String(defaults?.background || "").trim().toLowerCase();
+    const gradientToken = String(defaults?.backgroundGradient || "").trim();
+    const gradientTooBright = isBrightGradientToken(gradientToken, 170);
+    if (backgroundMode !== "image" && (!gradientToken || gradientTooBright)) {
+      const fallbackGradient =
+        targetKind === "hero"
+          ? String(palette?.heroGradient || palette?.bodyGradient || palette?.footerGradient || "").trim()
+          : String(palette?.bodyGradient || palette?.footerGradient || palette?.heroGradient || "").trim();
+      if (fallbackGradient) {
+        defaults.background = "gradient";
+        defaults.backgroundGradient = fallbackGradient;
+      }
+    }
+    defaults.surfaceTone = "dark";
+    if (!String(defaults?.contentTone || "").trim()) defaults.contentTone = "light";
+  };
+  const sourceHeroCandidatesRaw = rankHeroImageCandidates(
+    sourceImages.filter((item) => /^https?:\/\//i.test(String(item || "").trim())),
+    18
+  );
+  const sourceDominantHosts = dominantHostsFromUrls(sourceImages, { minCount: 2, maxHosts: 3 });
+  const hasNonStockSourceImages = sourceImages.some((item) => {
+    const host = hostFromUrl(item);
+    return Boolean(host) && !isStockImageHost(host);
+  });
+  const sourceHeroCandidatesFiltered =
+    sourceDominantHosts.length >= 1
+      ? sourceHeroCandidatesRaw.filter((item) => sourceDominantHosts.includes(hostFromUrl(item))).slice(0, 18)
+      : sourceHeroCandidatesRaw;
+  const sourceHeroCandidates = hasNonStockSourceImages
+    ? sourceHeroCandidatesFiltered.filter((item) => !isStockImageHost(hostFromUrl(item)))
+    : sourceHeroCandidatesFiltered;
+  const heroSlideCandidates = rankHeroImageCandidates(
     [
-      ...(Array.isArray(heroCarousel?.images) ? heroCarousel.images : []),
-      ...poolFor("hero").filter((item) => /^https?:\/\//i.test(String(item || "").trim())),
-      ...sourceImages,
+      ...(Array.isArray(heroCarousel?.images)
+        ? heroCarousel.images.filter((item) => !(hasNonStockSourceImages && isStockImageHost(hostFromUrl(item))))
+        : []),
+      ...(sourceHeroCandidates.length >= 2
+        ? sourceHeroCandidates
+        : poolFor("hero").filter((item) => /^https?:\/\//i.test(String(item || "").trim()))),
+      ...sourceHeroCandidates,
     ],
     12
   );
+  const heroSlideHeadlinePool = dedupeTextValues(
+    [
+      ...(Array.isArray(summary?.h1) ? summary.h1 : []),
+      ...(Array.isArray(summary?.h2) ? summary.h2 : []),
+    ]
+      .map((item) => String(item || "").replace(/\s+/g, " ").trim())
+      .filter(Boolean),
+    8
+  );
+  const heroSlideSubtitlePool = dedupeTextValues(
+    [
+      ...(Array.isArray(summary?.links) ? summary.links : []),
+      ...(Array.isArray(summary?.h2) ? summary.h2 : []),
+    ]
+      .map((item) => String(item || "").replace(/\s+/g, " ").trim())
+      .filter((item) => item.length >= 24 && !isWeakSectionCopySeed(item)),
+    8
+  );
+  const normalizedHeroSlidesRaw = (Array.isArray(heroCarousel?.slides) ? heroCarousel.slides : [])
+    .map((slide, index) => {
+      const src = String(slide?.src || "").trim();
+      if (!/^https?:\/\//i.test(src)) return null;
+      const imageDerivedTitle = inferHeroTitleFromImageUrl(src);
+      const titleSeed = normalizeTextLine(slide?.title || "");
+      const subtitleSeed = normalizeTextLine(slide?.subtitle || "");
+      const titleFallback =
+        imageDerivedTitle || heroSlideHeadlinePool[index % Math.max(1, heroSlideHeadlinePool.length)] || pageHeadline.slice(0, 96);
+      const subtitleFallback =
+        heroSlideSubtitlePool[index % Math.max(1, heroSlideSubtitlePool.length)] || pageSubhead.slice(0, 180);
+      const ctas = Array.isArray(slide?.ctas)
+        ? slide.ctas
+            .map((cta) => ({
+              label: normalizeTextLine(cta?.label || ""),
+              href: String(cta?.href || "").trim() || "#",
+              variant:
+                String(cta?.variant || "").trim().toLowerCase() === "secondary" ||
+                String(cta?.variant || "").trim().toLowerCase() === "link"
+                  ? String(cta?.variant || "").trim().toLowerCase()
+                  : "primary",
+            }))
+            .filter((cta) => cta.label && !isWeakSectionCopySeed(cta.label))
+        : [];
+      return {
+        src,
+        mobileSrc: String(slide?.mobileSrc || "").trim() || src,
+        alt: normalizeTextLine(slide?.alt || titleSeed || `Hero slide ${index + 1}`),
+        label: normalizeTextLine(slide?.label || `Slide ${index + 1}`),
+        eyebrow: normalizeTextLine(slide?.eyebrow || ""),
+        title: !isWeakSectionCopySeed(titleSeed) ? titleSeed : titleFallback,
+        subtitle: !isWeakSectionCopySeed(subtitleSeed) ? subtitleSeed : subtitleFallback,
+        ctas: ctas.length ? ctas : undefined,
+      };
+    })
+    .filter(Boolean)
+    .slice(0, 8);
+  let normalizedHeroSlides =
+    sourceDominantHosts.length >= 1
+      ? normalizedHeroSlidesRaw
+          .filter((slide) => sourceDominantHosts.includes(hostFromUrl(slide?.src || "")))
+          .slice(0, 8)
+      : normalizedHeroSlidesRaw;
+  if (hasNonStockSourceImages) {
+    normalizedHeroSlides = normalizedHeroSlides.filter((slide) => !isStockImageHost(hostFromUrl(slide?.src || "")));
+  }
+  if (normalizedHeroSlides.length < 2) {
+    normalizedHeroSlides = hasNonStockSourceImages
+      ? normalizedHeroSlidesRaw.filter((slide) => !isStockImageHost(hostFromUrl(slide?.src || "")))
+      : normalizedHeroSlidesRaw;
+  }
+  if (normalizedHeroSlides.length < 2) {
+    normalizedHeroSlides = normalizedHeroSlidesRaw;
+  }
+  const slideTitleKeys = dedupeTextValues(
+    normalizedHeroSlides.map((slide) => normalizeTextLine(slide?.title || "")),
+    16,
+    { allowSingleWord: true }
+  );
+  if (normalizedHeroSlides.length >= 2 && slideTitleKeys.length <= 1) {
+    normalizedHeroSlides = normalizedHeroSlides.map((slide, index) => {
+      const derivedTitle = inferHeroTitleFromImageUrl(slide?.src || "");
+      const fallbackTitle = heroSlideHeadlinePool[index % Math.max(1, heroSlideHeadlinePool.length)] || pageHeadline.slice(0, 96);
+      const nextTitle = derivedTitle || fallbackTitle;
+      return {
+        ...slide,
+        title: !isWeakSectionCopySeed(nextTitle) ? nextTitle : fallbackTitle,
+      };
+    });
+  }
   const generatedHeroSlides = heroSlideCandidates.slice(0, 6).map((src, index) => ({
     src,
     mobileSrc: src,
     alt: `${pageTitle} hero slide ${index + 1}`,
     label: `Slide ${index + 1}`,
+    title:
+      inferHeroTitleFromImageUrl(src) ||
+      heroSlideHeadlinePool[index % Math.max(1, heroSlideHeadlinePool.length)] ||
+      pageHeadline.slice(0, 96),
+    subtitle:
+      heroSlideSubtitlePool[index % Math.max(1, heroSlideSubtitlePool.length)] ||
+      pageSubhead.slice(0, 180),
   }));
+  const preferredHeroSlides = normalizedHeroSlides.length >= 2 ? normalizedHeroSlides : generatedHeroSlides;
+  const applyDarkContentSurfaceDefaults = () => {
+    if (!isBlogContext || palette.tone !== "dark") return;
+    defaults.background = defaults.background || "gradient";
+    defaults.backgroundGradient = defaults.backgroundGradient || palette.bodyGradient;
+    defaults.backgroundColor = defaults.backgroundColor || "#0f0f0f";
+    defaults.backgroundOverlay = defaults.backgroundOverlay || palette.overlaySoft || "rgba(0, 0, 0, 0.28)";
+    defaults.textColor = defaults.textColor || "#f5f5f5";
+    defaults.subtitleColor = defaults.subtitleColor || "#d4d4d8";
+    defaults.descriptionColor = defaults.descriptionColor || "#d4d4d8";
+    defaults.cardBackgroundColor = defaults.cardBackgroundColor || "#171717";
+    defaults.itemBackgroundColor = defaults.itemBackgroundColor || "#171717";
+  };
+  const resolveReferenceSliceCalibration = (sectionKey) => {
+    const middleCountKey = String(Math.max(1, activeMiddleKinds.length || 1));
+    const middleIndex = activeMiddleKinds.indexOf(sectionKey);
+    const middleIndexKey = middleIndex >= 0 ? String(middleIndex + 1) : "";
+    const middleSrc =
+      middleIndex >= 0
+        ? desktopMiddleSlices?.[middleCountKey]?.[middleIndexKey] || ""
+        : "";
+    const middleMetaEntry =
+      middleIndex >= 0 && desktopMiddleMeta?.[middleCountKey] && typeof desktopMiddleMeta[middleCountKey] === "object"
+        ? desktopMiddleMeta[middleCountKey]?.[middleIndexKey] || null
+        : null;
+    const mappedSectionKey = middleSliceMap?.[sectionKey] || sectionKey;
+    const src =
+      middleSrc ||
+      desktopSlices?.[mappedSectionKey] ||
+      (mappedSectionKey !== "hero" ? desktopSlices?.hero || desktopAsset : desktopAsset || desktopSlices?.hero) ||
+      "";
+    const meta =
+      middleMetaEntry ||
+      (desktopSliceMeta?.[mappedSectionKey] && typeof desktopSliceMeta?.[mappedSectionKey] === "object"
+        ? desktopSliceMeta[mappedSectionKey]
+        : null);
+    const minHeight = Number(meta?.heightPx || 0);
+    return { src, meta, minHeight, mappedSectionKey };
+  };
+  const applyReferenceSliceSizing = (sectionKey) => {
+    if (!(isHomeContext && (homeOnlyEvalMode || strictFidelityMode))) return;
+    const calibration = resolveReferenceSliceCalibration(sectionKey);
+    const minHeight = Number(calibration?.minHeight || 0);
+    if (minHeight > 0) {
+      const normalizedSection = normalizeSectionKind(sectionKey);
+      const sectionHeightCaps = {
+        navigation: 160,
+        hero: 1100,
+        story: 1400,
+        approach: 2200,
+        products: 2200,
+        socialproof: 1400,
+        contact: 1200,
+        cta: 1400,
+        footer: 700,
+      };
+      const sectionHeightFloors = {
+        navigation: 56,
+        hero: 420,
+        story: 260,
+        approach: 260,
+        products: 260,
+        socialproof: 220,
+        contact: 220,
+        cta: 220,
+        footer: 180,
+      };
+      const cap = Number(sectionHeightCaps[normalizedSection] || 960);
+      const floor = Number(sectionHeightFloors[normalizedSection] || 120);
+      defaults.referenceSliceMinHeight = Math.max(floor, Math.min(cap, Math.round(minHeight)));
+    }
+  };
+  const applyReferenceSliceBackground = (sectionKey, { force = false, overlay = "" } = {}) => {
+    if (avoidSectionScreenshotFill) return;
+    if (!(homeOnlyMode && isHomeContext && homeOnlyEvalMode)) return;
+    const calibration = resolveReferenceSliceCalibration(sectionKey);
+    const src = calibration.src;
+    if (!src) return;
+    const minHeight = Number(calibration.minHeight || 0);
+    if (force || !defaults.backgroundMedia?.src) {
+      defaults.background = "image";
+      defaults.backgroundMedia = {
+        kind: "image",
+        src,
+        alt: `${pageTitle} ${sectionKey} reference`,
+      };
+    }
+    defaults.referenceSliceMode = true;
+    if (minHeight > 0) {
+      defaults.referenceSliceMinHeight = Math.max(56, Math.round(minHeight));
+    }
+    defaults.backgroundOverlay = "";
+    defaults.backgroundOverlayOpacity = 0;
+    defaults.backgroundBlur = 0;
+  };
+
+  applyTypographyDefaults();
 
   if (kind === "navigation") {
-    defaults.logo = defaults.logo || pageTitle.split("|")[0].trim().slice(0, 48) || "Site";
-    const navFromSitePages = buildNavigationFromSitePages(sitePages, currentPath, {
-      maxNavLinks: discoveryPolicy.maxNavLinks,
+    const navBackgroundColorRaw = String(summary?.navBackgroundColorRaw || "").trim();
+    const footerBackgroundColorRaw = String(summary?.footerBackgroundColorRaw || "").trim();
+    const navBackgroundCss = normalizeCssColorToken(navBackgroundColorRaw);
+    const footerBackgroundCss = normalizeCssColorToken(footerBackgroundColorRaw);
+    const footerBackgroundColor =
+      footerBackgroundCss ||
+      normalizeCssColorToken(summary?.footerBackgroundColor || "") ||
+      normalizeColorToken(summary?.footerBackgroundColor || "") ||
+      signatureColorFor("footer");
+    const shouldLockNavFooterTone = lockNavFooterStyle && isHomeContext;
+    const preferFooterSurfaceForNav =
+      isHomeContext &&
+      Boolean(sourceSectionHints.hasShgBox || sourceSectionHints.hasShgVerticalAlignWrapper) &&
+      Boolean(sourceSectionHints.darkFooterSignals || footerBackgroundColor);
+    let navBackgroundColor =
+      (preferFooterSurfaceForNav ? footerBackgroundColor : "") ||
+      navBackgroundCss ||
+      normalizeCssColorToken(summary?.navBackgroundColor || "") ||
+      normalizeColorToken(summary?.navBackgroundColor || "") ||
+      signatureColorFor("navigation");
+    if (shouldLockNavFooterTone && (!navBackgroundColor || isBrightColorToken(navBackgroundColor, 170))) {
+      const forcedFooterColor =
+        normalizeColorToken(summary?.footerBackgroundColor || "") || signatureColorFor("footer");
+      navBackgroundColor =
+        forcedFooterColor && !isBrightColorToken(forcedFooterColor, 170)
+          ? forcedFooterColor
+          : "#1c1c1c";
+    }
+    const navBgParsed = parseHexRgb(navBackgroundColor);
+    const footerBgParsed = parseHexRgb(footerBackgroundColor || "");
+    const navLooksBright = Boolean(navBgParsed && colorLuminance(navBgParsed) >= 172);
+    const footerLooksDark = Boolean(footerBgParsed && colorLuminance(footerBgParsed) <= 128);
+    if (
+      isHomeContext &&
+      (sourceSectionHints.darkFooterSignals || Number(summary?.navMenuDepth || 1) >= 2) &&
+      footerLooksDark &&
+      navLooksBright
+    ) {
+      navBackgroundColor = footerBackgroundColor;
+    }
+    const brandLabel = deriveSiteBrandLabel({ site, summary, pageTitle });
+    if (!defaults.logo) {
+      defaults.logo = { alt: brandLabel };
+    } else if (typeof defaults.logo === "string") {
+      defaults.logo = { alt: String(defaults.logo || "").trim().slice(0, 32) || brandLabel };
+    } else if (typeof defaults.logo === "object") {
+      defaults.logo = {
+        ...defaults.logo,
+        alt: String(defaults.logo?.alt || "").trim().slice(0, 32) || brandLabel,
+      };
+    }
+    applyRuntimeTypography("navigation");
+    applyRuntimeTextPanel("navigation");
+    applyRuntimeSurfaceTone("navigation");
+    defaults.background = "gradient";
+    if (navBackgroundColor) {
+      defaults.backgroundGradient = `linear-gradient(180deg,${navBackgroundColor} 0%,${navBackgroundColor} 100%)`;
+      defaults.backgroundOverlay = "";
+      defaults.backgroundOverlayOpacity = 0;
+      defaults.backgroundBlur = 0;
+      defaults.surfaceTone =
+        navBgParsed && colorLuminance(navBgParsed) <= 120 ? "dark" : "default";
+    } else {
+      if (palette.tone === "dark" || !isHomeContext || !defaults.backgroundGradient) {
+        defaults.backgroundGradient = palette.navGradient || defaults.backgroundGradient;
+      }
+      if (!isHomeContext || !defaults.backgroundOverlay) {
+        defaults.backgroundOverlay = palette.overlaySoft || defaults.backgroundOverlay;
+      }
+      defaults.surfaceTone = palette.tone === "dark" ? "dark" : "default";
+    }
+    applyReferenceSliceBackground("navigation", {
+      force: true,
+      overlay: palette.tone === "dark" ? "rgba(0, 0, 0, 0.08)" : "rgba(12, 12, 12, 0.04)",
     });
-    if (navFromSitePages?.hasDropdown) {
+    applyReferenceSliceSizing("navigation");
+    const maxNavLinks = Math.max(4, Number(discoveryPolicy.maxNavLinks || 8));
+    const navFromSitePages = buildNavigationFromSitePages(navSourcePages, currentPath, {
+      maxNavLinks,
+      targetPages: sitePages,
+      preserveSourcePaths: homeOnlyMode,
+    });
+    const summaryNavLinks = normalizeNavLinksForSemanticCoverage({
+      existingLinks: Array.isArray(summary?.navLinks) ? summary.navLinks : [],
+      fallbackLinks: [],
+      maxLinks: maxNavLinks,
+    });
+    const footerSeedLinks = buildNavigationFallbackLinksFromFooter({
+      footerLinks: summary?.footerLinks,
+      maxLinks: maxNavLinks,
+    });
+    const navSeed = summaryNavLinks.length
+      ? summaryNavLinks
+      : Array.isArray(navFromSitePages?.links) && navFromSitePages.links.length
+        ? navFromSitePages.links
+      : footerSeedLinks;
+    const fallbackLinks =
+      navSeed.length
+        ? navSeed
+        :
+      ["Home", "Services", "About", "Contact"].map((label, index) => ({
+        label,
+        href: index === 0 ? "/" : `/${slug(label)}`,
+        variant: "link",
+      }));
+    const normalizedLinks = normalizeNavLinksForSemanticCoverage({
+      existingLinks: defaults.links,
+      fallbackLinks,
+      maxLinks: maxNavLinks,
+    });
+    const navFromSitePagesLinks = Array.isArray(navFromSitePages?.links) ? sanitizeNavLinks(navFromSitePages.links, maxNavLinks) : [];
+    const normalizedCoverage = navRootShare(normalizedLinks);
+    const shouldForceSitePageLinks =
+      navFromSitePagesLinks.length >= 3 &&
+      (normalizedCoverage.uniqueNonRoot < 2 || normalizedCoverage.share > 0.7);
+    defaults.links = shouldForceSitePageLinks ? navFromSitePagesLinks : normalizedLinks;
+    const hasDropdown =
+      Boolean(navFromSitePages?.hasDropdown) ||
+      normalizedLinks.some((entry) => Array.isArray(entry?.children) && entry.children.length > 0) ||
+      Number(summary?.navMenuDepth || 1) >= 2 ||
+      sourceSectionHints.megaMenuSignals;
+    const fallbackCta =
+      navFromSitePages?.ctas?.[0] ||
+      (normalizedLinks.find((entry) => /contact|support|help/i.test(`${entry?.label || ""} ${entry?.href || ""}`))
+        ? {
+            label: "Contact",
+            href: normalizedLinks.find((entry) => /contact|support|help/i.test(`${entry?.label || ""} ${entry?.href || ""}`))?.href || "/contact",
+            variant: "primary",
+          }
+        : null);
+    const shouldRenderCta =
+      (Array.isArray(defaults.ctas) && defaults.ctas.length > 0) ||
+      Boolean(fallbackCta);
+
+    if (hasDropdown) {
       defaults.variant = "withDropdown";
+    } else if (!shouldRenderCta || normalizedLinks.length >= 5) {
+      defaults.variant = "simple";
     } else if (!defaults.variant) {
       defaults.variant = "withCTA";
     }
-    defaults.links =
-      defaults.links ||
-      navFromSitePages?.links ||
-      ["Home", "Services", "About", "Contact"].map((label, index) => ({
-        label,
-        href: index === 0 ? "#top" : `#${slug(label)}`,
-        variant: "link",
-      }));
-    defaults.ctas = defaults.ctas || navFromSitePages?.ctas || [{ label: "Get Started", href: "#contact", variant: "primary" }];
-    if (navFromSitePages?.hasDropdown) {
+
+    if (shouldRenderCta) {
+      defaults.ctas = Array.isArray(defaults.ctas) && defaults.ctas.length ? defaults.ctas : [fallbackCta];
+      defaults.ctas = defaults.ctas.map((cta, index) => {
+        const label = String(cta?.label || fallbackCta?.label || "Get Started").trim() || "Get Started";
+        let href = normalizeTemplatePagePath(routePathFromUrl(cta?.href || ""));
+        if (!href || href === "/") href = normalizeTemplatePagePath(routePathFromUrl(fallbackCta?.href || ""));
+        if (!href) href = normalizedLinks[0]?.href || "/contact";
+        return {
+          ...(typeof cta === "object" && cta ? cta : {}),
+          label,
+          href,
+          variant: index === 0 ? "primary" : String(cta?.variant || "secondary"),
+        };
+      });
+      const primaryCtaHref = normalizeTemplatePagePath(routePathFromUrl(defaults.ctas?.[0]?.href || ""));
+      const fallbackCtaHref = normalizeTemplatePagePath(routePathFromUrl(fallbackCta?.href || ""));
+      if (primaryCtaHref === "/" && fallbackCtaHref && fallbackCtaHref !== "/") {
+        defaults.ctas[0].href = fallbackCtaHref;
+      }
+    } else {
+      defaults.ctas = [];
+    }
+    if (hasDropdown) {
       defaults.variant = "withDropdown";
       defaults.menuStyle = "image_text";
       defaults.multiLevel = true;
@@ -4553,32 +11177,163 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
   if (kind === "hero") {
     defaults.title = defaults.title || pageHeadline.slice(0, 96);
     defaults.subtitle = defaults.subtitle || pageSubhead.slice(0, 160);
-    const navFromSitePages = buildNavigationFromSitePages(sitePages, currentPath, {
+    const heroSignalHeadlines = dedupeTextValues(
+      [
+        ...(Array.isArray(summary?.h1) ? summary.h1 : []),
+        ...(Array.isArray(summary?.h2) ? summary.h2 : []),
+      ],
+      8,
+      { allowSingleWord: false }
+    );
+    if (heroSignalHeadlines.length) {
+      if (isWeakSectionCopySeed(defaults.title)) {
+        defaults.title = heroSignalHeadlines[0].slice(0, 96);
+      }
+      if (
+        isWeakSectionCopySeed(defaults.subtitle) ||
+        normalizeTextLine(defaults.subtitle) === normalizeTextLine(defaults.title)
+      ) {
+        const subtitleSeed = heroSignalHeadlines[1] || heroSignalHeadlines[0];
+        defaults.subtitle = subtitleSeed.slice(0, 180);
+      }
+    }
+    applyRuntimeTypography("hero");
+    applyRuntimeTextPanel("hero");
+    applyRuntimeSurfaceTone("hero");
+    const navFromSitePages = buildNavigationFromSitePages(navSourcePages, currentPath, {
       maxNavLinks: discoveryPolicy.maxNavLinks,
+      targetPages: sitePages,
+      preserveSourcePaths: homeOnlyMode,
     });
     defaults.ctas = defaults.ctas || navFromSitePages?.ctas || [{ label: "Get Started", href: "#contact", variant: "primary" }];
+    const heroLooksProductFocused = /(maxwell|lcd|mm-\\d+|crbn|wireless|headphones|speaker|studio|gaming)/i.test(
+      String(defaults.title || "")
+    );
+    if (heroLooksProductFocused && Array.isArray(defaults.ctas) && defaults.ctas.length) {
+      const firstCta = { ...(defaults.ctas[0] || {}) };
+      const ctaLabel = String(firstCta.label || "").trim().toLowerCase();
+      const normalizedCtaHref = normalizeTemplatePagePath(routePathFromUrl(firstCta.href || ""));
+      const fallbackHref =
+        (normalizedCtaHref && normalizedCtaHref !== "/" ? normalizedCtaHref : "") ||
+        navFromSitePages?.links?.find((item) => item.href && item.href !== "/")?.href ||
+        "/collections/accessories";
+      if (!ctaLabel || ctaLabel === "get started" || ctaLabel === "contact" || ctaLabel === "learn more") {
+        firstCta.label = "Shop Now";
+      }
+      firstCta.href = fallbackHref || "/";
+      firstCta.variant = String(firstCta.variant || "primary");
+      defaults.ctas[0] = firstCta;
+    }
+    defaults.surfaceTone = palette.tone === "dark" ? "dark" : "default";
+    if (!isHomeContext) {
+      if (palette.overlayStrong) {
+        defaults.backgroundOverlay = palette.overlayStrong;
+      }
+      if (palette.tone === "dark") {
+        defaults.backgroundColor = defaults.backgroundColor || "#0f0f0f";
+      }
+      if (palette.tone === "light" && !defaults.backgroundMedia?.src && !defaults.media?.src) {
+        defaults.backgroundColor = defaults.backgroundColor || "#ffffff";
+      }
+    }
     // Only apply carousel slides on the homepage or locale root, not on subpages
     const isHomePage = currentPath === "/" || isLocaleRootPath(currentPath);
+    const forceCarouselFromShgSignals =
+      isHomePage &&
+      Boolean(sourceSectionHints.hasShgBox || sourceSectionHints.hasShgVerticalAlignWrapper) &&
+      Number(sourceSectionHints?.shgSliderCount || 0) >= 3 &&
+      preferredHeroSlides.length >= 2;
+    const preferShopifyOverlayHero =
+      isHomePage &&
+      Boolean(sourceSectionHints.hasShgBox || sourceSectionHints.hasShgVerticalAlignWrapper) &&
+      (Boolean(heroCarousel.enabled) || Number(sourceSectionHints?.shgSliderCount || 0) >= 2) &&
+      preferredHeroSlides.length >= 2;
     const shouldUseCarousel =
       isHomePage &&
-      carouselCapableHeroBlocks.has(blockType) && Boolean(heroCarousel.enabled) && generatedHeroSlides.length >= 2;
+      isCarouselCapableBlockType(canonicalBlockType) &&
+      (Boolean(heroCarousel.enabled) || forceCarouselFromShgSignals || preferShopifyOverlayHero) &&
+      preferredHeroSlides.length >= 2;
     if (shouldUseCarousel) {
       const existingSlides = Array.isArray(defaults.heroSlides)
         ? defaults.heroSlides.filter((slide) => typeof slide?.src === "string" && slide.src.trim())
         : [];
-      defaults.heroSlides = existingSlides.length >= 2 ? existingSlides : generatedHeroSlides;
+      const existingSlideTitleKeys = dedupeTextValues(
+        existingSlides.map((slide) => normalizeTextLine(slide?.title || "")),
+        12,
+        { allowSingleWord: true }
+      );
+      const existingSlidesLikelyStale =
+        existingSlides.length >= 2 &&
+        (existingSlideTitleKeys.length <= 1 ||
+          existingSlides.every(
+            (slide) =>
+              isWeakSectionCopySeed(slide?.title || "") && isWeakSectionCopySeed(slide?.subtitle || "")
+          ));
+      defaults.heroSlides =
+        existingSlides.length >= 2 && !existingSlidesLikelyStale ? existingSlides : preferredHeroSlides;
       defaults.heroCarouselAutoplayMs = Number(defaults.heroCarouselAutoplayMs || 4500);
+    } else if (isHomePage) {
+      const shouldKeepSlides =
+        (Boolean(heroCarousel.enabled) && Array.isArray(heroCarousel.images) && heroCarousel.images.length >= 2) ||
+        forceCarouselFromShgSignals ||
+        preferShopifyOverlayHero;
+      if (!shouldKeepSlides) {
+        delete defaults.heroSlides;
+        delete defaults.heroCarouselAutoplayMs;
+      }
     } else if (!isHomePage) {
       // Subpages should not inherit homepage carousel slides
       delete defaults.heroSlides;
       delete defaults.heroCarouselAutoplayMs;
     }
-    if (desktopAsset) {
+    if (preferShopifyOverlayHero) {
+      const shgBoxTitle = Array.isArray(sourceSectionHints?.shgBoxTitles) ? sourceSectionHints.shgBoxTitles[0] || "" : "";
+      const shgBoxBody = Array.isArray(sourceSectionHints?.shgBoxBodies) ? sourceSectionHints.shgBoxBodies[0] || "" : "";
+      const overlayHeroSrc =
+        (Array.isArray(defaults.heroSlides) ? defaults.heroSlides[0]?.src : "") ||
+        heroSlideCandidates[0] ||
+        imageFor("hero", 0) ||
+        desktopSlices.hero ||
+        desktopAsset;
+      defaults.background = "image";
+      if (overlayHeroSrc) {
+        defaults.backgroundMedia = {
+          kind: "image",
+          src: overlayHeroSrc,
+          alt: `${pageTitle} hero background`,
+        };
+      }
+      defaults.backgroundGradient = "";
+      defaults.backgroundOverlay = defaults.backgroundOverlay || palette.overlayStrong || "rgba(4, 14, 36, 0.58)";
+      defaults.align = defaults.align || "left";
+      defaults.textPanel = true;
+      defaults.textPanelBackground = defaults.textPanelBackground || "rgba(10, 16, 30, 0.46)";
+      defaults.textPanelBorderColor = defaults.textPanelBorderColor || "rgba(255,255,255,0.2)";
+      defaults.textPanelPadding = defaults.textPanelPadding || "md";
+      defaults.textPanelRadius = defaults.textPanelRadius || "md";
+      defaults.textPanelMaxWidth = defaults.textPanelMaxWidth || "lg";
+      if (shgBoxTitle) defaults.title = shgBoxTitle.slice(0, 96);
+      if (shgBoxBody) defaults.subtitle = shgBoxBody.slice(0, 220);
+      defaults.media = undefined;
+      delete defaults.mediaSrc;
+      delete defaults.mediaAlt;
+      defaults.mediaPosition = undefined;
+    }
+    const hasHeroVisualAsset = Boolean(desktopAsset || desktopSlices.hero);
+    if (hasHeroVisualAsset) {
+      const preferBackgroundOnlyHero =
+        isHomePage &&
+        canonicalBlockType === "HeroSplit" &&
+        Boolean(heroPresentation?.hasBackgroundImage) &&
+        !Boolean(heroPresentation?.hasForegroundImage);
       const shouldBackgroundHero =
         heroPresentation.mode === "background_text" ||
-        (blockType === "HeroSplit" && Boolean(heroCarousel.enabled) && generatedHeroSlides.length >= 2);
+        preferShopifyOverlayHero ||
+        preferBackgroundOnlyHero ||
+        (canonicalBlockType === "HeroSplit" && shouldUseCarousel);
       if (shouldBackgroundHero) {
         defaults.background = "image";
+        defaults.align = defaults.align || "left";
         const firstSlideSrc =
           (Array.isArray(defaults.heroSlides) ? defaults.heroSlides[0]?.src : "") || desktopSlices.hero || desktopAsset;
         defaults.backgroundMedia = {
@@ -4586,12 +11341,21 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
           src: firstSlideSrc,
           alt: `${pageTitle} hero background`,
         };
-        defaults.backgroundOverlay = defaults.backgroundOverlay || "rgba(4, 14, 36, 0.58)";
-        if (blockType === "HeroSplit") {
+        defaults.backgroundOverlay = defaults.backgroundOverlay || palette.overlayStrong || "rgba(4, 14, 36, 0.58)";
+        if (sourceSectionHints.hasShgBox || shouldUseCarousel) {
+          defaults.textPanel = true;
+          defaults.textPanelBackground = defaults.textPanelBackground || "rgba(10, 16, 30, 0.46)";
+          defaults.textPanelBorderColor = defaults.textPanelBorderColor || "rgba(255,255,255,0.2)";
+          defaults.textPanelPadding = defaults.textPanelPadding || "md";
+          defaults.textPanelRadius = defaults.textPanelRadius || "md";
+          defaults.textPanelMaxWidth = defaults.textPanelMaxWidth || "lg";
+        }
+        if (canonicalBlockType === "HeroSplit") {
           defaults.media = undefined;
+          defaults.mediaPosition = undefined;
         }
       }
-      if (blockType === "NexusHeroDock") {
+      if (canonicalBlockType === "NexusHeroDock") {
         const firstSlide = Array.isArray(defaults.heroSlides) ? defaults.heroSlides[0] : null;
         defaults.heroImageSrc = defaults.heroImageSrc || firstSlide?.src || desktopSlices.hero || desktopAsset;
         defaults.mobileHeroImageSrc =
@@ -4609,12 +11373,14 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
           src: desktopSlices.hero || desktopAsset,
           alt: `${pageTitle} reference`,
         };
-        defaults.backgroundOverlay = defaults.backgroundOverlay || "rgba(5,8,18,0.55)";
+        defaults.backgroundOverlay = defaults.backgroundOverlay || palette.overlayStrong || "rgba(5,8,18,0.55)";
       }
       const shouldUseSplitMedia = !(
         (heroPresentation.mode === "background_text" ||
-          (blockType === "HeroSplit" && Boolean(heroCarousel.enabled) && generatedHeroSlides.length >= 2)) &&
-        blockType === "HeroSplit"
+          preferShopifyOverlayHero ||
+          preferBackgroundOnlyHero ||
+          (canonicalBlockType === "HeroSplit" && shouldUseCarousel)) &&
+        canonicalBlockType === "HeroSplit"
       );
       if (shouldUseSplitMedia) {
         defaults.media =
@@ -4627,46 +11393,128 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
               }
             : undefined);
       }
-      if (blockType === "DesignerHeroEditorial") {
+      if (canonicalBlockType === "DesignerHeroEditorial") {
         defaults.meshImageSrc = defaults.meshImageSrc || desktopSlices.hero || desktopAsset;
         defaults.previewImageSrc = defaults.previewImageSrc || desktopSlices.story || desktopAsset;
         defaults.mobilePreviewImageSrc =
           defaults.mobilePreviewImageSrc || mobileSlices.hero || mobileAsset || defaults.previewImageSrc;
       }
     }
+    if (!desktopAsset && palette.tone === "light") {
+      defaults.background = defaults.background || "solid";
+      defaults.backgroundColor = defaults.backgroundColor || "#ffffff";
+      defaults.backgroundOverlay = defaults.backgroundOverlay || "rgba(15, 15, 15, 0.08)";
+    }
+    if (!desktopAsset && palette.tone === "dark") {
+      defaults.background = defaults.background || "solid";
+      defaults.backgroundColor = defaults.backgroundColor || "#0d0d0d";
+      defaults.backgroundOverlay = defaults.backgroundOverlay || "rgba(0, 0, 0, 0.36)";
+    }
+    if (!preferShopifyOverlayHero) {
+      applyReferenceSliceBackground("hero", {
+        force: true,
+        overlay: palette.tone === "dark" ? "rgba(0, 0, 0, 0.18)" : "rgba(12, 12, 12, 0.06)",
+      });
+    }
+    applyReferenceSliceSizing("hero");
   }
 
   if (kind === "story") {
-    defaults.eyebrow = defaults.eyebrow || "Our Story";
-    defaults.title = defaults.title || sectionSpecificHeadline(summary, SECTION_KIND_INDEX.story, `Why ${pageTitle}`).slice(0, 92);
-    defaults.subtitle = defaults.subtitle || sectionSpecificSubhead(summary, SECTION_KIND_INDEX.story, "Crafted experiences, measured outcomes, and durable visual language.").slice(0, 180);
+    applyRuntimeTypography("story");
+    applyRuntimeTextPanel("story");
+    applyRuntimeSurfaceTone("story");
+    if (sourceSectionHints.hasShgBox) {
+      if (canonicalBlockType === "HeroCentered") {
+        defaults.variant = "textOnly";
+        defaults.align = "center";
+        defaults.headingSize = defaults.headingSize || "sm";
+        defaults.bodySize = defaults.bodySize || "sm";
+        defaults.media = undefined;
+        delete defaults.mediaSrc;
+        delete defaults.mediaAlt;
+        defaults.items = [];
+        defaults.ctas = [];
+      } else {
+        defaults.variant = "simple";
+        defaults.media = undefined;
+        delete defaults.mediaSrc;
+        delete defaults.mediaAlt;
+        defaults.items = [];
+        defaults.ctas = [];
+      }
+      if (!defaults.eyebrow) defaults.eyebrow = "";
+    }
+    defaults.eyebrow = sourceSectionHints.hasShgBox ? String(defaults.eyebrow || "") : defaults.eyebrow || "Our Story";
+    const shgBoxTitle = Array.isArray(sourceSectionHints?.shgBoxTitles) ? sourceSectionHints.shgBoxTitles[0] || "" : "";
+    const shgBoxBody = Array.isArray(sourceSectionHints?.shgBoxBodies) ? sourceSectionHints.shgBoxBodies[0] || "" : "";
+    if (sourceSectionHints.hasShgBox && shgBoxTitle && isWeakSectionCopySeed(defaults.title)) {
+      defaults.title = shgBoxTitle.slice(0, 92);
+    }
+    if (sourceSectionHints.hasShgBox && shgBoxBody && isWeakSectionCopySeed(defaults.subtitle)) {
+      defaults.subtitle = shgBoxBody.slice(0, 180);
+    }
+    if (sourceSectionHints.hasShgBox && shgBoxBody && isWeakSectionCopySeed(defaults.body)) {
+      defaults.body = shgBoxBody.slice(0, 220);
+    }
+    defaults.title =
+      defaults.title ||
+      (sourceSectionHints.hasShgBox && shgBoxTitle
+        ? shgBoxTitle.slice(0, 92)
+        : sectionSpecificHeadline(summary, SECTION_KIND_INDEX.story, `Why ${pageTitle}`).slice(0, 92));
+    defaults.subtitle =
+      defaults.subtitle ||
+      (sourceSectionHints.hasShgBox && shgBoxBody
+        ? shgBoxBody.slice(0, 180)
+        : sectionSpecificSubhead(summary, SECTION_KIND_INDEX.story, "Crafted experiences, measured outcomes, and durable visual language.").slice(0, 180));
     defaults.body =
       defaults.body ||
-      firstNonEmpty(
-        [
-          ...(Array.isArray(summary?.h2) ? summary.h2 : []),
-          ...(Array.isArray(summary?.links) ? summary.links : []),
-        ],
-        "This section is generated from source page signals."
-      ).slice(0, 220);
-    defaults.ctas = defaults.ctas || [{ label: "Explore", href: "#", variant: "link" }];
+      (sourceSectionHints.hasShgBox && shgBoxBody
+        ? shgBoxBody.slice(0, 220)
+        : firstNonEmpty(
+            [
+              ...(Array.isArray(summary?.h2) ? summary.h2 : []),
+              ...(Array.isArray(summary?.links) ? summary.links : []),
+            ],
+            "This section is generated from source page signals."
+          ).slice(0, 220));
+    if (!sourceSectionHints.hasShgBox) {
+      defaults.ctas = defaults.ctas || [{ label: "Explore", href: "#", variant: "link" }];
+    } else if (!Array.isArray(defaults.ctas)) {
+      defaults.ctas = [];
+    }
     if (isBlogLikePath(currentPath)) {
       defaults.contentFormat = "markdown";
       defaults.markdownEnabled = true;
       defaults.variant = defaults.variant || "editorial";
     }
-    if ((blockType === "ContentStory" || blockType === "NeonDashboardStrip" || blockType === "NexusControlPanel") && desktopAsset && !defaults.dashboardImageSrc) {
+    if (
+      (canonicalBlockType === "ContentStory" ||
+        canonicalBlockType === "NeonDashboardStrip" ||
+        canonicalBlockType === "NexusControlPanel") &&
+      desktopAsset &&
+      !defaults.dashboardImageSrc
+    ) {
       defaults.dashboardImageSrc = desktopSlices.story || desktopAsset;
       defaults.dashboardImageAlt = defaults.dashboardImageAlt || `${pageTitle} dashboard visual`;
     }
-    if ((blockType === "ContentStory" || blockType === "FeatureWithMedia") && !defaults.media?.src && desktopSlices.story) {
+    if (
+      !sourceSectionHints.hasShgBox &&
+      (canonicalBlockType === "ContentStory" || canonicalBlockType === "FeatureWithMedia") &&
+      !defaults.media?.src &&
+      desktopSlices.story
+    ) {
       defaults.media = { kind: "image", src: desktopSlices.story, alt: `${pageTitle} story visual` };
     }
-    if ((blockType === "ContentStory" || blockType === "FeatureWithMedia") && !defaults.mediaSrc && desktopSlices.story) {
+    if (
+      !sourceSectionHints.hasShgBox &&
+      (canonicalBlockType === "ContentStory" || canonicalBlockType === "FeatureWithMedia") &&
+      !defaults.mediaSrc &&
+      desktopSlices.story
+    ) {
       defaults.mediaSrc = desktopSlices.story;
       defaults.mediaAlt = defaults.mediaAlt || `${pageTitle} story visual`;
     }
-    if (blockType === "CardsGrid" && desktopAsset && Array.isArray(defaults.items)) {
+    if (canonicalBlockType === "CardsGrid" && desktopAsset && Array.isArray(defaults.items)) {
       defaults.items = defaults.items.map((item, index) => {
         const next = { ...(item || {}) };
         const hasImage =
@@ -4684,32 +11532,123 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
         return next;
       });
     }
+    applyDarkContentSurfaceDefaults();
+    applyReferenceSliceBackground("story");
+    applyReferenceSliceSizing("story");
   }
 
   if (kind === "approach") {
-    defaults.title = defaults.title || sectionSpecificHeadline(summary, SECTION_KIND_INDEX.approach, "Key Capabilities").slice(0, 88);
-    defaults.subtitle = defaults.subtitle || sectionSpecificSubhead(summary, SECTION_KIND_INDEX.approach, "Designed for scale, precision, and reliable execution.").slice(0, 160);
-    const seededItems = summaryItems(summary, 3);
-    defaults.items =
-      defaults.items ||
-      (seededItems.length
-        ? seededItems.map((item, index) => ({
-            title: item.title,
-            desc: item.desc,
-            description: item.description,
-            icon: ["layers", "shield", "chart"][index % 3],
-          }))
-        : [
-            { title: "Process", desc: "Structured delivery with measurable checkpoints.", icon: "layers" },
-            { title: "Quality", desc: "Design and implementation quality gates.", icon: "shield" },
-            { title: "Impact", desc: "Outcome-focused iteration loop.", icon: "chart" },
-          ]);
-    if (desktopSlices.approach && Array.isArray(defaults.items) && blockType !== "NexusOpsMatrix") {
+    applyRuntimeTypography("approach");
+    applyRuntimeTextPanel("approach");
+    applyRuntimeSurfaceTone("approach");
+    const shouldUseShgVerticalLayout = sourceSectionHints.hasShgVerticalAlignWrapper;
+    if (sourceSectionHints.hasShgVerticalAlignWrapper) {
+      defaults.variant = "simple";
+      defaults.mediaPosition = "left";
+      defaults.align = defaults.align || "left";
+      defaults.items = [];
+      defaults.media = undefined;
+      delete defaults.mediaSrc;
+      delete defaults.mediaAlt;
+    }
+    const shgVerticalTitles = Array.isArray(sourceSectionHints?.shgVerticalTitles)
+      ? sourceSectionHints.shgVerticalTitles
+      : [];
+    const shgVerticalBodies = Array.isArray(sourceSectionHints?.shgVerticalBodies)
+      ? sourceSectionHints.shgVerticalBodies
+      : [];
+    const storyPrimaryTitle = normalizeTextLine(
+      Array.isArray(sourceSectionHints?.shgBoxTitles) ? sourceSectionHints.shgBoxTitles[0] || "" : ""
+    );
+    const storyPrimaryBody = normalizeTextLine(
+      Array.isArray(sourceSectionHints?.shgBoxBodies) ? sourceSectionHints.shgBoxBodies[0] || "" : ""
+    );
+    const titleNoisePattern = /\b(shop now|view category|get started|contact|login|form builder)\b/i;
+    const bodyNoisePattern =
+      /\b(?:tel:|mail:|showroom|factory|copyright|cookie policy|privacy policy|terms of service|accessibility statement|formerly twitter)\b/i;
+    const cleanedVerticalTitles = shgVerticalTitles
+      .map((item) => normalizeTextLine(item))
+      .filter((item) => item.length >= 6 && item.length <= 96 && !titleNoisePattern.test(item))
+      .filter((item) => normalizeTextLine(item) !== storyPrimaryTitle);
+    const productTitlePool = cleanedVerticalTitles.filter((item) =>
+      /\b(headphone|headphones|headset|headsets|speaker|speakers|earbud|earbuds)\b/i.test(item)
+    );
+    const categoryLikeProductTitlePool = productTitlePool.filter((item) => {
+      if (/\b(best sound|most advanced|closed-back)\b/i.test(item)) return false;
+      const words = item.split(/\s+/).filter(Boolean);
+      return words.length <= 4;
+    });
+    const semanticTitlePool = cleanedVerticalTitles.filter((item) =>
+      /\b(audiophile|gaming|professional|studio|audio)\b/i.test(item)
+    );
+    const shgVerticalTitle =
+      categoryLikeProductTitlePool[0] ||
+      productTitlePool[0] ||
+      semanticTitlePool[0] ||
+      cleanedVerticalTitles[0] ||
+      "";
+    const cleanedVerticalBodies = shgVerticalBodies
+      .map((item) => normalizeTextLine(item))
+      .filter((item) => item.length >= 40 && item.length <= 420 && !bodyNoisePattern.test(item))
+      .filter((item) => normalizeTextLine(item) !== storyPrimaryBody);
+    const semanticBodyPool = cleanedVerticalBodies.filter((item) =>
+      /\b(headphone|headphones|audiophile|gaming|professional|engineer|technology|precision|accuracy|studio)\b/i.test(item)
+    );
+    const shgVerticalBody = semanticBodyPool[0] || cleanedVerticalBodies[0] || "";
+    if (shouldUseShgVerticalLayout && shgVerticalTitle && isWeakSectionCopySeed(defaults.title)) {
+      defaults.title = shgVerticalTitle.slice(0, 88);
+    }
+    if (shouldUseShgVerticalLayout && shgVerticalBody && isWeakSectionCopySeed(defaults.subtitle)) {
+      defaults.subtitle = shgVerticalBody.slice(0, 160);
+    }
+    if (shouldUseShgVerticalLayout && shgVerticalBody && isWeakSectionCopySeed(defaults.body)) {
+      defaults.body = shgVerticalBody.slice(0, 220);
+    }
+    defaults.title =
+      defaults.title ||
+      (shouldUseShgVerticalLayout && shgVerticalTitle
+        ? shgVerticalTitle.slice(0, 88)
+        : sectionSpecificHeadline(summary, SECTION_KIND_INDEX.approach, "Key Capabilities").slice(0, 88));
+    defaults.subtitle =
+      defaults.subtitle ||
+      (shouldUseShgVerticalLayout && shgVerticalBody
+        ? shgVerticalBody.slice(0, 160)
+        : sectionSpecificSubhead(summary, SECTION_KIND_INDEX.approach, "Designed for scale, precision, and reliable execution.").slice(0, 160));
+    if (!shouldUseShgVerticalLayout) {
+      const seededItems = summaryItems(summary, 3);
+      defaults.items =
+        defaults.items ||
+        (seededItems.length
+          ? seededItems.map((item, index) => ({
+              title: item.title,
+              desc: item.desc,
+              description: item.description,
+              icon: ["layers", "shield", "chart"][index % 3],
+            }))
+          : [
+              { title: "Process", desc: "Structured delivery with measurable checkpoints.", icon: "layers" },
+              { title: "Quality", desc: "Design and implementation quality gates.", icon: "shield" },
+              { title: "Impact", desc: "Outcome-focused iteration loop.", icon: "chart" },
+            ]);
+    } else {
+      defaults.body =
+        defaults.body ||
+        (shgVerticalBody
+          ? shgVerticalBody
+          : sectionSpecificSubhead(
+              summary,
+              SECTION_KIND_INDEX.approach,
+              "Engineered to translate technical precision into clear listening outcomes."
+            )
+        ).slice(0, 220);
+      defaults.items = [];
+    }
+    if (desktopSlices.approach && Array.isArray(defaults.items) && canonicalBlockType !== "NexusOpsMatrix") {
       defaults.items = defaults.items.map((item, index) => ({
         ...(item || {}),
         image:
           item?.image ||
-          (blockType === "DesignerCapabilitiesStrip"
+          (canonicalBlockType === "DesignerCapabilitiesStrip"
             ? undefined
             : {
                 src: index === 0 ? desktopSlices.approach : mobileSlices.approach || desktopSlices.approach,
@@ -4721,7 +11660,11 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
         imageAlt: item?.imageAlt || item?.title || `Capability ${index + 1}`,
       }));
     }
-    if ((blockType === "FeatureWithMedia" || blockType === "ContentStory") && !defaults.media?.src) {
+    if (
+      !shouldUseShgVerticalLayout &&
+      (canonicalBlockType === "FeatureWithMedia" || canonicalBlockType === "ContentStory") &&
+      !defaults.media?.src
+    ) {
       const src = desktopSlices.approach || desktopAsset;
       if (src) {
         defaults.media = { kind: "image", src, alt: `${pageTitle} approach visual` };
@@ -4729,16 +11672,59 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
         defaults.mediaAlt = defaults.mediaAlt || `${pageTitle} approach visual`;
       }
     }
-    if (blockType === "FeatureWithMedia" && defaults.background === "image" && desktopSlices.approach && !defaults.backgroundMedia) {
+    if (
+      canonicalBlockType === "FeatureWithMedia" &&
+      defaults.background === "image" &&
+      desktopSlices.approach &&
+      !defaults.backgroundMedia
+    ) {
       defaults.backgroundMedia = {
         kind: "image",
         src: desktopSlices.approach,
         alt: `${pageTitle} section background`,
       };
     }
+    if (shouldUseShgVerticalLayout && canonicalBlockType === "FeatureWithMedia") {
+      const runtimeHeroSlideSrc =
+        Array.isArray(heroCarousel?.slides) && heroCarousel.slides.length
+          ? String(heroCarousel.slides[0]?.src || "").trim()
+          : "";
+      const shgBgSrc =
+        runtimeHeroSlideSrc ||
+        imageFor("approach", 0) ||
+        imageFor("hero", 0) ||
+        desktopSlices.approach ||
+        desktopSlices.hero ||
+        desktopAsset;
+      if (shgBgSrc) {
+        defaults.background = "image";
+        defaults.backgroundMedia = {
+          kind: "image",
+          src: shgBgSrc,
+          alt: `${pageTitle} approach background`,
+        };
+        defaults.backgroundOverlay = defaults.backgroundOverlay || "rgba(2, 8, 18, 0.56)";
+        defaults.contentTone = "light";
+        defaults.textPanel = true;
+        defaults.textPanelBackground = defaults.textPanelBackground || "rgba(10, 16, 30, 0.44)";
+        defaults.textPanelBorderColor = defaults.textPanelBorderColor || "rgba(255,255,255,0.16)";
+        defaults.textPanelPadding = defaults.textPanelPadding || "md";
+        defaults.textPanelRadius = defaults.textPanelRadius || "md";
+        defaults.textPanelMaxWidth = defaults.textPanelMaxWidth || "lg";
+        if (!Array.isArray(defaults.ctas) || !defaults.ctas.length) {
+          defaults.ctas = [{ label: "Shop Category", href: "/collections/accessories", variant: "primary" }];
+        }
+      }
+    }
+    applyDarkContentSurfaceDefaults();
+    applyReferenceSliceBackground("approach");
+    applyReferenceSliceSizing("approach");
   }
 
   if (kind === "products") {
+    applyRuntimeTypography("products");
+    applyRuntimeTextPanel("products");
+    applyRuntimeSurfaceTone("products");
     defaults.title = defaults.title || sectionSpecificHeadline(summary, SECTION_KIND_INDEX.products, "Product Portfolio").slice(0, 92);
     defaults.subtitle = defaults.subtitle || sectionSpecificSubhead(summary, SECTION_KIND_INDEX.products, "Modular blocks tailored to your site objectives.").slice(0, 180);
     if (classifyTemplatePageType(currentPath, String(summary?.title || "")) === "products" || isProductLikePath(currentPath)) {
@@ -4747,7 +11733,7 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
       defaults.hideCheckout = true;
       defaults.hideBuyNow = true;
     }
-    if ((blockType === "NeonDashboardStrip" || blockType === "NexusControlPanel") && desktopAsset) {
+    if ((canonicalBlockType === "NeonDashboardStrip" || canonicalBlockType === "NexusControlPanel") && desktopAsset) {
       defaults.dashboardImageSrc = defaults.dashboardImageSrc || desktopSlices.products || desktopSlices.story || desktopAsset;
       defaults.mobileDashboardImageSrc =
         defaults.mobileDashboardImageSrc || mobileSlices.products || mobileAsset || defaults.dashboardImageSrc;
@@ -4768,7 +11754,13 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
             { title: "Growth Offer", description: "Expanded capabilities and integrations.", cta: { label: "Details", href: "#" } },
             { title: "Enterprise Offer", description: "Full-service delivery and support.", cta: { label: "Details", href: "#" } },
           ]);
-    if (desktopAsset && Array.isArray(defaults.items) && (blockType === "CardsGrid" || blockType === "CaseStudies" || blockType === "DesignerProjectsSplit")) {
+    if (
+      desktopAsset &&
+      Array.isArray(defaults.items) &&
+      (canonicalBlockType === "CardsGrid" ||
+        canonicalBlockType === "CaseStudies" ||
+        canonicalBlockType === "DesignerProjectsSplit")
+    ) {
       defaults.items = defaults.items.map((item, index) => {
         const next = { ...(item || {}) };
         const productImageForIndex =
@@ -4783,7 +11775,7 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
           Boolean(next.cover?.src);
         if (!hasImage && !next?.noImage) {
           const src = productImageForIndex;
-          if (blockType !== "DesignerProjectsSplit") {
+          if (canonicalBlockType !== "DesignerProjectsSplit") {
             next.image = { src, alt: next.title || `Visual ${index + 1}` };
             next.cover = { src, alt: next.title || `Visual ${index + 1}` };
           }
@@ -4793,10 +11785,13 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
         return next;
       });
     }
+    applyDarkContentSurfaceDefaults();
+    applyReferenceSliceBackground("products");
+    applyReferenceSliceSizing("products");
   }
 
   if (kind === "socialproof") {
-    if (blockType === "DesignerQuoteBand") {
+    if (canonicalBlockType === "DesignerQuoteBand") {
       defaults.quote =
         defaults.quote ||
         "\"Working with Jeremi was a game-changer. He translated our vision into a polished product and delivered beyond expectations.\"";
@@ -4810,11 +11805,17 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
           { quote: "They curated a lifestyle, not only a space.", name: "Alexander Vane", role: "CEO" },
           { quote: "A masterclass in restraint and elegance.", name: "Isabelle Dubois", role: "Founder" },
         ];
-      if ((blockType === "TestimonialsGrid" || blockType === "NeonResultsShowcase" || blockType === "NexusProofMosaic") && desktopAsset && !defaults.imageSrc) {
+      if (
+        (canonicalBlockType === "TestimonialsGrid" ||
+          canonicalBlockType === "NeonResultsShowcase" ||
+          canonicalBlockType === "NexusProofMosaic") &&
+        desktopAsset &&
+        !defaults.imageSrc
+      ) {
         defaults.imageSrc = desktopSlices.socialproof || desktopAsset;
         defaults.imageAlt = defaults.imageAlt || "Results visual";
       }
-      if (blockType === "TestimonialsGrid" && mobileAsset && Array.isArray(defaults.items)) {
+      if (canonicalBlockType === "TestimonialsGrid" && mobileAsset && Array.isArray(defaults.items)) {
         defaults.items = defaults.items.map((item, index) => ({
           ...(item || {}),
           avatar:
@@ -4826,7 +11827,7 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
                 },
         }));
       }
-      if ((blockType === "FeatureWithMedia" || blockType === "ContentStory") && !defaults.media?.src) {
+      if ((canonicalBlockType === "FeatureWithMedia" || canonicalBlockType === "ContentStory") && !defaults.media?.src) {
         const src = desktopSlices.socialproof || desktopAsset;
         if (src) {
           defaults.media = { kind: "image", src, alt: `${pageTitle} social proof visual` };
@@ -4835,10 +11836,13 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
         }
       }
     }
+    applyDarkContentSurfaceDefaults();
+    applyReferenceSliceBackground("socialproof");
+    applyReferenceSliceSizing("socialproof");
   }
 
   if (kind === "contact") {
-    if ((blockType === "FeatureWithMedia" || blockType === "ContentStory") && !defaults.media?.src) {
+    if ((canonicalBlockType === "FeatureWithMedia" || canonicalBlockType === "ContentStory") && !defaults.media?.src) {
       const src = desktopSlices.cta || desktopSlices.footer || desktopAsset;
       if (src) {
         defaults.media = { kind: "image", src, alt: `${pageTitle} contact visual` };
@@ -4846,7 +11850,7 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
         defaults.mediaAlt = defaults.mediaAlt || `${pageTitle} contact visual`;
       }
     }
-    if (blockType === "CardsGrid" && desktopAsset && Array.isArray(defaults.items)) {
+    if (canonicalBlockType === "CardsGrid" && desktopAsset && Array.isArray(defaults.items)) {
       defaults.items = defaults.items.map((item, index) => {
         const next = { ...(item || {}) };
         const hasImage =
@@ -4869,32 +11873,89 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
       defaults.excludeDownloads = true;
       defaults.excludeCommerce = true;
     }
+    applyDarkContentSurfaceDefaults();
+    applyReferenceSliceBackground("contact");
+    applyReferenceSliceSizing("contact");
   }
 
   if (kind === "cta") {
+    applyRuntimeTypography("cta");
+    applyRuntimeTextPanel("cta");
+    applyRuntimeSurfaceTone("cta");
     defaults.title = defaults.title || sectionSpecificHeadline(summary, SECTION_KIND_INDEX.cta, "Ready to define your space?").slice(0, 88);
     defaults.subtitle = defaults.subtitle || sectionSpecificSubhead(summary, SECTION_KIND_INDEX.cta, "Book a private consultation or browse the lookbook.").slice(0, 170);
-    const navFromSitePages = buildNavigationFromSitePages(sitePages, currentPath, {
+    const navFromSitePages = buildNavigationFromSitePages(navSourcePages, currentPath, {
       maxNavLinks: discoveryPolicy.maxNavLinks,
+      targetPages: sitePages,
+      preserveSourcePaths: homeOnlyMode,
     });
     defaults.cta = defaults.cta || navFromSitePages?.ctas?.[0] || { label: "Inquire Now", href: "#contact", variant: "primary" };
+    if (!isHomeContext || !defaults.ctaBackgroundColor) {
+      defaults.ctaBackgroundColor = defaults.ctaBackgroundColor || palette.accent;
+    }
+    if (!isHomeContext || !defaults.ctaTextColor) {
+      defaults.ctaTextColor = defaults.ctaTextColor || palette.accentText;
+    }
+    applyReferenceSliceBackground("cta");
+    applyReferenceSliceSizing("cta");
   }
 
   if (kind === "footer") {
+    applyRuntimeTypography("footer");
+    applyRuntimeTextPanel("footer");
+    applyRuntimeSurfaceTone("footer");
+    const footerBackgroundColorRaw = normalizeColorToken(summary?.footerBackgroundColor || "");
+    const footerBackgroundColor = footerBackgroundColorRaw || signatureColorFor("footer");
+    const footerBgParsed = parseHexRgb(footerBackgroundColor);
+    const footerBgLuminance =
+      footerBgParsed && Number.isFinite(colorLuminance(footerBgParsed)) ? colorLuminance(footerBgParsed) : null;
+    const shouldLockDarkFooter =
+      lockNavFooterStyle &&
+      isHomeContext &&
+      (!footerBackgroundColorRaw || footerBgLuminance === null || footerBgLuminance >= 165);
+    const shouldForceDarkFooterFromHints =
+      Boolean(sourceSectionHints.darkFooterSignals) &&
+      (!footerBackgroundColorRaw || footerBgLuminance === null || footerBgLuminance >= 165);
     defaults.logoText = defaults.logoText || pageTitle.split("|")[0].trim().slice(0, 24) || "Site";
-    defaults.columns =
-      defaults.columns ||
+    defaults.background = "gradient";
+    if (footerBackgroundColor && !shouldForceDarkFooterFromHints) {
+      defaults.backgroundGradient = `linear-gradient(180deg,${footerBackgroundColor} 0%,${footerBackgroundColor} 100%)`;
+      defaults.backgroundOverlay = "";
+      defaults.backgroundOverlayOpacity = 0;
+      defaults.backgroundBlur = 0;
+      defaults.surfaceTone =
+        footerBgParsed && colorLuminance(footerBgParsed) <= 120 ? "dark" : "default";
+    } else {
+      if (palette.tone === "dark" || !isHomeContext || !defaults.backgroundGradient) {
+        defaults.backgroundGradient = palette.footerGradient || defaults.backgroundGradient;
+      }
+      defaults.surfaceTone = palette.tone === "dark" ? "dark" : "default";
+    }
+    if (
+      shouldLockDarkFooter ||
+      shouldForceDarkFooterFromHints ||
+      (sourceSectionHints.darkFooterSignals && !footerBackgroundColorRaw)
+    ) {
+      defaults.backgroundGradient = "linear-gradient(180deg,#05070c 0%,#05070c 100%)";
+      defaults.surfaceTone = "dark";
+    }
+    const fallbackColumns =
       buildFooterColumnsFromSitePages(
         sitePages,
         Array.isArray(summary?.footerLinks) ? summary.footerLinks : [],
         { maxNavLinks: discoveryPolicy.maxNavLinks }
       ) || [
-      { title: "Company", links: [{ label: "About", href: "#" }, { label: "Contact", href: "#" }] },
-      { title: "Studio", links: [{ label: "Approach", href: "#" }, { label: "Projects", href: "#" }] },
-      { title: "Legal", links: [{ label: "Privacy", href: "#" }, { label: "Terms", href: "#" }] },
-    ];
+        { title: "Company", links: [{ label: "About", href: "/about" }, { label: "Contact", href: "/contact" }] },
+        { title: "Studio", links: [{ label: "Approach", href: "/services" }, { label: "Projects", href: "/projects" }] },
+        { title: "Legal", links: [{ label: "Privacy", href: "/privacy" }, { label: "Terms", href: "/terms" }] },
+      ];
+    defaults.columns = normalizeFooterColumnsForSemanticCoverage({
+      existingColumns: defaults.columns,
+      fallbackColumns,
+      maxLinksPerColumn: Math.max(4, Math.floor(Number(discoveryPolicy.maxNavLinks || 8) * 1.5)),
+    });
     defaults.legal = defaults.legal || "© 2026 All rights reserved.";
-    if (desktopSlices.footer && !defaults.backgroundMedia && blockType === "NeonFooterGlow") {
+    if (desktopSlices.footer && !defaults.backgroundMedia && canonicalBlockType === "NeonFooterGlow") {
       defaults.background = "image";
       defaults.backgroundMedia = {
         kind: "image",
@@ -4903,9 +11964,23 @@ const buildSectionDefaults = (kind, spec, site, summary, assetContext = {}, reci
       };
       defaults.backgroundOverlay = defaults.backgroundOverlay || "rgba(0,0,0,0.15)";
     }
+    applyReferenceSliceBackground("footer", {
+      force: true,
+      overlay: palette.tone === "dark" ? "rgba(0, 0, 0, 0.1)" : "rgba(10, 10, 10, 0.04)",
+    });
+    applyReferenceSliceSizing("footer");
   }
 
-  return defaults;
+  enforceDarkSurfaceCoherence(kind);
+  ensureReadableImageOverlay(kind);
+  return applyStructureFirstToSectionDefaults({
+    defaults,
+    kind,
+    palette,
+    structureFirstPipeline,
+    structureFirstDisableImages,
+    structureFirstDisableMotion,
+  });
 };
 
 const normalizeTemplatePagePath = (value) => {
@@ -4924,6 +11999,115 @@ const normalizeTemplatePagePath = (value) => {
   const withSlash = withoutQuery.startsWith("/") ? withoutQuery : `/${withoutQuery}`;
   const normalized = withSlash.replace(/\/{2,}/g, "/").replace(/\/+$/g, "") || "/";
   return normalized === "" ? "/" : normalized;
+};
+
+const SECTION_KIND_KEYWORD_MAP = {
+  navigation: ["nav", "navbar", "menu", "header", "masthead", "topbar", "menubar", "appbar"],
+  footer: ["footer", "foot", "bottom", "colophon", "sitemap", "legal"],
+  hero: ["hero", "banner", "showcase", "cover", "jumbotron", "splash", "landing"],
+  story: ["story", "about", "content", "article", "intro", "overview", "description", "text", "copy", "box"],
+  approach: ["feature", "approach", "capability", "service", "benefit", "solution", "vertical", "split", "align"],
+  products: ["product", "catalog", "collection", "shop", "store", "gallery", "portfolio", "grid", "card"],
+  socialproof: ["testimonial", "review", "proof", "social", "trust", "rating", "quote", "client", "partner", "logo"],
+  cta: ["cta", "calltoaction", "subscribe", "signup", "newsletter", "action", "promo", "offer"],
+  contact: ["contact", "support", "help", "form", "inquiry", "reach"],
+};
+
+const SECTION_INFERENCE_NOISE_TOKENS = new Set([
+  "section",
+  "block",
+  "widget",
+  "module",
+  "container",
+  "wrapper",
+  "inner",
+  "outer",
+  "row",
+  "col",
+  "main",
+  "page",
+  "site",
+  "custom",
+  "template",
+  "component",
+  "div",
+  "layout",
+  "content",
+  "element",
+  "builder",
+  "shg",
+  "wf",
+  "sqs",
+  "sq",
+  "wp",
+  "elementor",
+  "comp",
+]);
+
+const tokenizeSectionKind = (value) =>
+  String(value || "")
+    .replace(/([a-z])([A-Z])/g, "$1-$2")
+    .toLowerCase()
+    .split(/[\s._\-/:]+/)
+    .map((token) => token.trim())
+    .filter((token) => token.length >= 2 && !/^\d+$/.test(token));
+
+const inferSectionKindFromTokens = (value) => {
+  const tokens = tokenizeSectionKind(value);
+  if (!tokens.length) return null;
+  const meaningful = tokens.filter((token) => !SECTION_INFERENCE_NOISE_TOKENS.has(token));
+  if (!meaningful.length) return null;
+
+  let bestKind = null;
+  let bestScore = 0;
+  for (const [kind, keywords] of Object.entries(SECTION_KIND_KEYWORD_MAP)) {
+    let score = 0;
+    for (const token of meaningful) {
+      for (const keyword of keywords) {
+        if (token === keyword) score += 3;
+        else if (token.startsWith(keyword) || keyword.startsWith(token)) score += 2;
+        else if (token.includes(keyword) || keyword.includes(token)) score += 1;
+      }
+    }
+    if (score > bestScore) {
+      bestScore = score;
+      bestKind = kind;
+    }
+  }
+  return bestScore >= 2 ? bestKind : null;
+};
+
+const inferSectionKindByPosition = ({ index = -1, total = 0 } = {}) => {
+  const idx = Number(index);
+  const count = Math.max(0, Math.floor(Number(total) || 0));
+  if (!Number.isFinite(idx) || idx < 0 || count <= 0) return null;
+  if (idx === 0) return "navigation";
+  if (idx === 1) return "hero";
+  if (idx >= count - 1) return "footer";
+  if (idx >= count - 2) return "cta";
+  const middle = ["story", "approach", "products", "socialproof"];
+  const middleIndex = Math.max(0, idx - 2);
+  const middleTotal = Math.max(1, count - 4);
+  const slot = Math.min(middle.length - 1, Math.floor((middleIndex / middleTotal) * middle.length));
+  return middle[slot];
+};
+
+const isSuccessfulCrawlStatus = (value) => {
+  const status = Number(value || 0);
+  return Number.isFinite(status) && status >= 200 && status < 400;
+};
+
+const LOW_QUALITY_PAGE_TITLE_PATTERNS = [
+  /请稍候|稍候|just a moment|one more step|attention required/i,
+  /too many requests|rate limit|access denied|forbidden|unauthorized/i,
+  /cloudflare|captcha|verify you are human|checking your browser/i,
+  /^untitled\s*$/i,
+];
+
+const isLowQualityPageTitle = (value) => {
+  const token = String(value || "").trim();
+  if (!token) return true;
+  return LOW_QUALITY_PAGE_TITLE_PATTERNS.some((pattern) => pattern.test(token));
 };
 
 const formatTemplatePageName = (pathValue, fallback = "Page") => {
@@ -4979,6 +12163,13 @@ const buildTemplateExclusiveComponentName = ({ siteId, pagePath = "/", sectionKi
 
 const isValidIdentifier = (value) => /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(String(value || ""));
 
+const toSafeIdentifier = (value, fallback = "CustomBlock") => {
+  const normalized = String(value || "")
+    .replace(/[^A-Za-z0-9_$]+/g, "_")
+    .replace(/^[^A-Za-z_$]+/, "");
+  return isValidIdentifier(normalized) ? normalized : fallback;
+};
+
 const buildTemplateExclusiveFieldCode = (defaults = {}) => {
   const lines = [`        id: textField("Id"),`];
   for (const [key, value] of Object.entries(defaults || {})) {
@@ -4992,6 +12183,64 @@ const buildTemplateExclusiveFieldCode = (defaults = {}) => {
     }
   }
   return lines.join("\n");
+};
+
+const inferEditableFieldType = (key = "", value = "") => {
+  const normalized = String(key || "").toLowerCase();
+  if (/(image|img|media).*(src|url)$/.test(normalized) || /(src|url)$/.test(normalized)) return "image";
+  if (/(href|link|path)$/.test(normalized)) return "link";
+  if (/(color|background|gradient|overlay|shadow|stroke|fill)$/.test(normalized)) return "style";
+  if (typeof value === "boolean") return "boolean";
+  if (typeof value === "number") return "number";
+  return "text";
+};
+
+const shouldSkipEditableField = (key = "") => {
+  const normalized = String(key || "").toLowerCase();
+  return (
+    !normalized ||
+    normalized === "id" ||
+    normalized === "__v" ||
+    /(^|_)(id|anchor|variant|class(name)?|style|motionpreset|maxwidth|paddingy)$/.test(normalized)
+  );
+};
+
+const collectEditableFieldsFromDefaults = (value, prefix = []) => {
+  const fields = [];
+  if (!value || typeof value !== "object") return fields;
+  for (const [key, entry] of Object.entries(value)) {
+    if (shouldSkipEditableField(key)) continue;
+    const nextPrefix = [...prefix, key];
+    if (typeof entry === "string" || typeof entry === "number" || typeof entry === "boolean") {
+      fields.push({
+        path: nextPrefix.join("."),
+        type: inferEditableFieldType(key, entry),
+      });
+      continue;
+    }
+    if (Array.isArray(entry)) {
+      const sample = entry.find((item) => item && typeof item === "object");
+      if (sample && typeof sample === "object") {
+        const nested = collectEditableFieldsFromDefaults(sample, [...nextPrefix, "[]"]);
+        fields.push(...nested);
+      } else if (entry.length && (typeof entry[0] === "string" || typeof entry[0] === "number")) {
+        fields.push({
+          path: [...nextPrefix, "[]"].join("."),
+          type: inferEditableFieldType(key, entry[0]),
+        });
+      }
+      continue;
+    }
+    if (entry && typeof entry === "object") {
+      fields.push(...collectEditableFieldsFromDefaults(entry, nextPrefix));
+    }
+  }
+  const deduped = new Map();
+  for (const field of fields) {
+    const key = `${field.path}::${field.type}`;
+    if (!deduped.has(key)) deduped.set(key, field);
+  }
+  return Array.from(deduped.values());
 };
 
 const normalizeTemplateVariantCandidates = (entry) => {
@@ -5019,6 +12268,11 @@ const injectTemplateExclusiveComponents = ({ processed = [], availableBlockFolde
   const registerComponent = ({ siteId, pagePath, sectionKind, blockType, defaults, rank = 0, source = "" }) => {
     const kebabName = resolveTemplateExclusiveKebabName(blockType, availableBlockFolders);
     if (!kebabName) return null;
+    const sanitizedDefaults = sanitizeTemplateAssetTextDeep(defaults && typeof defaults === "object" ? defaults : {}, {
+      siteId,
+      pagePath,
+      sectionKind,
+    });
     const name = buildTemplateExclusiveComponentName({
       siteId,
       pagePath,
@@ -5029,8 +12283,9 @@ const injectTemplateExclusiveComponents = ({ processed = [], availableBlockFolde
     const component = {
       name,
       kebabName,
-      fieldCode: buildTemplateExclusiveFieldCode(defaults),
-      defaultProps: { id: `${name}-1`, ...(defaults || {}) },
+      fieldCode: buildTemplateExclusiveFieldCode(sanitizedDefaults),
+      defaultProps: { id: `${name}-1`, ...(sanitizedDefaults || {}) },
+      editableFields: collectEditableFieldsFromDefaults(sanitizedDefaults || {}),
       templateExclusive: {
         siteId,
         pagePath: normalizeTemplatePagePath(pagePath || "/"),
@@ -5045,10 +12300,19 @@ const injectTemplateExclusiveComponents = ({ processed = [], availableBlockFolde
     return name;
   };
 
-  const mutateSectionEntry = ({ siteId, pagePath, sectionKind, entry }) => {
+  const mutateSectionEntry = ({ siteId, pagePath, sectionKind, entry, resolveStyleTemplate = null }) => {
     if (!entry || typeof entry !== "object") return;
-    const baseType = String(entry.block_type || "").trim();
-    const defaults = entry.defaults && typeof entry.defaults === "object" ? cloneJson(entry.defaults) : {};
+    const styleTemplate =
+      typeof resolveStyleTemplate === "function"
+        ? resolveStyleTemplate({ pagePath, sectionKind })
+        : null;
+    const baseType = String(styleTemplate?.type || entry.block_type || "").trim();
+    const defaults =
+      styleTemplate?.props && typeof styleTemplate.props === "object"
+        ? cloneJson(styleTemplate.props)
+        : entry.defaults && typeof entry.defaults === "object"
+          ? cloneJson(entry.defaults)
+          : {};
     if (!baseType) return;
 
     const primaryName = registerComponent({
@@ -5104,16 +12368,41 @@ const injectTemplateExclusiveComponents = ({ processed = [], availableBlockFolde
     const siteId = String(item?.site?.id || "");
     const specPack = item?.specPack;
     if (!siteId || !specPack || typeof specPack !== "object") continue;
+    const styleProfileTemplates =
+      item?.styleProfile?.templates && typeof item.styleProfile.templates === "object"
+        ? item.styleProfile.templates
+        : {};
+    const styleProfilePageTemplates = new Map();
+    if (Array.isArray(item?.styleProfile?.pageSpecs)) {
+      for (const pageSpec of item.styleProfile.pageSpecs) {
+        const pagePath = normalizeTemplatePagePath(pageSpec?.path || "/");
+        const templates = pageSpec?.templates && typeof pageSpec.templates === "object" ? pageSpec.templates : {};
+        styleProfilePageTemplates.set(pagePath, templates);
+      }
+    }
+    const resolveStyleTemplate = ({ pagePath = "/", sectionKind = "" } = {}) => {
+      const normalizedPath = normalizeTemplatePagePath(pagePath);
+      const kindKey = normalizeSectionKind(sectionKind) || String(sectionKind || "").trim();
+      if (!kindKey) return null;
+      const pageTemplates = styleProfilePageTemplates.get(normalizedPath);
+      if (pageTemplates && pageTemplates[kindKey] && typeof pageTemplates[kindKey] === "object") {
+        return pageTemplates[kindKey];
+      }
+      if (styleProfileTemplates[kindKey] && typeof styleProfileTemplates[kindKey] === "object") {
+        return styleProfileTemplates[kindKey];
+      }
+      return null;
+    };
     const rootSpecs = specPack?.section_specs && typeof specPack.section_specs === "object" ? specPack.section_specs : {};
     for (const [sectionKind, entry] of Object.entries(rootSpecs)) {
-      mutateSectionEntry({ siteId, pagePath: "/", sectionKind, entry });
+      mutateSectionEntry({ siteId, pagePath: "/", sectionKind, entry, resolveStyleTemplate });
     }
     const pageSpecs = Array.isArray(specPack?.page_specs) ? specPack.page_specs : [];
     for (const page of pageSpecs) {
       const pagePath = normalizeTemplatePagePath(page?.path || "/");
       const sectionSpecs = page?.section_specs && typeof page.section_specs === "object" ? page.section_specs : {};
       for (const [sectionKind, entry] of Object.entries(sectionSpecs)) {
-        mutateSectionEntry({ siteId, pagePath, sectionKind, entry });
+        mutateSectionEntry({ siteId, pagePath, sectionKind, entry, resolveStyleTemplate });
       }
     }
   }
@@ -5129,14 +12418,1343 @@ const mergeTemplateExclusiveComponents = (existing = [], incoming = []) => {
   for (const row of Array.isArray(existing) ? existing : []) {
     const name = String(row?.name || "").trim();
     if (!name) continue;
-    merged.set(name, row);
+    merged.set(name, {
+      ...row,
+      defaultProps: sanitizeTemplateAssetTextDeep(row?.defaultProps || {}, {
+        siteId: String(row?.templateExclusive?.siteId || ""),
+        pagePath: String(row?.templateExclusive?.pagePath || "/"),
+        sectionKind: String(row?.templateExclusive?.sectionKind || ""),
+      }),
+    });
   }
   for (const row of Array.isArray(incoming) ? incoming : []) {
     const name = String(row?.name || "").trim();
     if (!name) continue;
-    merged.set(name, row);
+    merged.set(name, {
+      ...row,
+      defaultProps: sanitizeTemplateAssetTextDeep(row?.defaultProps || {}, {
+        siteId: String(row?.templateExclusive?.siteId || ""),
+        pagePath: String(row?.templateExclusive?.pagePath || "/"),
+        sectionKind: String(row?.templateExclusive?.sectionKind || ""),
+      }),
+    });
   }
   return Array.from(merged.values());
+};
+
+const DEFAULT_AUTO_PRIVATE_TARGET_KINDS = Object.freeze(["hero", "story", "approach", "navigation", "footer"]);
+
+const normalizeAutoPrivateTargetKinds = (value) => {
+  if (Array.isArray(value)) {
+    return Array.from(
+      new Set(
+        value
+          .map((entry) => normalizeSectionKind(entry))
+          .filter(Boolean)
+      )
+    );
+  }
+  if (typeof value === "string") {
+    return Array.from(
+      new Set(
+        value
+          .split(",")
+          .map((entry) => normalizeSectionKind(entry))
+          .filter(Boolean)
+      )
+    );
+  }
+  return [];
+};
+
+const resolveAutoPrivateBlockPolicy = ({ site = {}, options = {} } = {}) => {
+  const specialRules = site?.specialRules && typeof site.specialRules === "object" ? site.specialRules : {};
+  const enabled =
+    parseOptionalBool(
+      site?.autoPrivateBlocks ??
+        site?.auto_private_blocks ??
+        specialRules.autoPrivateBlocks ??
+        specialRules.auto_private_blocks ??
+        options?.autoPrivateBlocks
+    ) ?? true;
+  const thresholdRaw =
+    site?.autoPrivateSectionSimilarityThreshold ??
+    site?.auto_private_section_similarity_threshold ??
+    specialRules.autoPrivateSectionSimilarityThreshold ??
+    specialRules.auto_private_section_similarity_threshold ??
+    options?.autoPrivateSectionSimilarityThreshold;
+  const threshold = Math.max(0, Math.min(100, Math.floor(Number(thresholdRaw ?? 97) || 97)));
+  const configuredKinds =
+    normalizeAutoPrivateTargetKinds(
+      site?.autoPrivateTargetKinds ??
+        site?.auto_private_target_kinds ??
+        specialRules.autoPrivateTargetKinds ??
+        specialRules.auto_private_target_kinds ??
+        options?.autoPrivateTargetKinds
+    ) || [];
+  return {
+    enabled: Boolean(enabled),
+    sectionSimilarityThreshold: threshold,
+    targetKinds: configuredKinds.length ? configuredKinds : [...DEFAULT_AUTO_PRIVATE_TARGET_KINDS],
+  };
+};
+
+const buildSectionSimilarityByPathAndKind = (fidelityRow = null) => {
+  const byPage = new Map();
+  const pageDetails = Array.isArray(fidelityRow?.pageDetails) ? fidelityRow.pageDetails : [];
+  for (const pageRow of pageDetails) {
+    const pagePath = normalizeTemplatePagePath(pageRow?.pagePath || "/");
+    const sectionDetails = Array.isArray(pageRow?.sectionDetails) ? pageRow.sectionDetails : [];
+    for (const section of sectionDetails) {
+      const sectionKind =
+        normalizeSectionKind(section?.sectionKind) ||
+        normalizeSectionKind(inferSectionKindFromTokens(`${section?.sectionId || ""} ${section?.sectionType || ""}`));
+      const similarity = parseSimilarityNumber(section?.similarity);
+      if (!sectionKind || similarity === null) continue;
+      const key = `${pagePath}:${sectionKind}`;
+      const current = byPage.get(key);
+      if (!Number.isFinite(current) || similarity < current) {
+        byPage.set(key, similarity);
+      }
+    }
+  }
+  return byPage;
+};
+
+const buildAutoPrivateWrapperCode = ({ componentName = "", baseKebabName = "", defaults = {} }) => {
+  const safeName = toSafeIdentifier(componentName, "CustomBlock");
+  const importPath = `@/components/blocks/${baseKebabName}/block`;
+  const defaultPropsLiteral = JSON.stringify(defaults && typeof defaults === "object" ? defaults : {}, null, 2);
+  const propKeys = Object.keys(defaults || {}).filter((key) => isValidIdentifier(key)).slice(0, 60);
+  const signature = propKeys.length
+    ? `{\n  ${propKeys.join(",\n  ")},\n  ...rest\n}`
+    : "props";
+  const overridesLines = propKeys.length
+    ? propKeys.map((key) => `    ...(typeof ${key} === "undefined" ? {} : { ${key} }),`).join("\n")
+    : "";
+  const restLine = propKeys.length ? "" : "  const rest = props || {};";
+  return `"use client";
+
+import React from "react";
+import * as BaseBlockModule from "${importPath}";
+
+const DEFAULT_PROPS = ${defaultPropsLiteral};
+
+const resolveBlockComponent = (moduleExports) => {
+  if (typeof moduleExports?.default === "function") return moduleExports.default;
+  for (const candidate of Object.values(moduleExports || {})) {
+    if (typeof candidate === "function") return candidate;
+  }
+  return null;
+};
+
+const BaseBlock = resolveBlockComponent(BaseBlockModule);
+
+export default function ${safeName}(${signature}) {
+${restLine}
+  if (!BaseBlock) return null;
+  const mergedProps = {
+    ...DEFAULT_PROPS,
+${overridesLines}
+    ...rest,
+  };
+  return React.createElement(BaseBlock, mergedProps);
+}
+`;
+};
+
+const buildAutoPrivateHeroCode = ({ safeName = "CustomBlock", defaultPropsLiteral = "{}" }) => `"use client";
+
+import React from "react";
+import { cn } from "@/lib/cn";
+
+const DEFAULT_PROPS = ${defaultPropsLiteral};
+
+const assignDefined = (target, patch) => {
+  for (const [key, value] of Object.entries(patch || {})) {
+    if (typeof value !== "undefined") target[key] = value;
+  }
+  return target;
+};
+
+const clamp = (value, min, max) => {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return min;
+  return Math.max(min, Math.min(max, n));
+};
+
+const toHref = (value) => {
+  const raw = String(value || "").trim();
+  return raw || "#";
+};
+
+const maxWidthClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "max-w-screen-sm";
+  if (token === "md") return "max-w-screen-md";
+  if (token === "lg") return "max-w-screen-lg";
+  if (token === "2xl") return "max-w-screen-2xl";
+  if (token === "full") return "max-w-none";
+  return "max-w-screen-xl";
+};
+
+const paddingClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "py-12";
+  if (token === "lg") return "py-24";
+  return "py-16";
+};
+
+const headingClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "text-3xl sm:text-4xl";
+  if (token === "lg") return "text-5xl sm:text-6xl";
+  return "text-4xl sm:text-5xl";
+};
+
+const bodyClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "text-sm sm:text-base";
+  if (token === "lg") return "text-lg sm:text-xl";
+  return "text-base sm:text-lg";
+};
+
+const textPanelPaddingClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "p-4 sm:p-5";
+  if (token === "lg") return "p-7 sm:p-8";
+  return "p-5 sm:p-6";
+};
+
+const textPanelRadiusClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "rounded-lg";
+  if (token === "lg") return "rounded-2xl";
+  return "rounded-xl";
+};
+
+const textPanelMaxWidthClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "max-w-xl";
+  if (token === "md") return "max-w-2xl";
+  if (token === "lg") return "max-w-3xl";
+  return "max-w-4xl";
+};
+
+const resolveSlides = (heroSlides, backgroundMedia, title, subtitle, ctas) => {
+  const rows = Array.isArray(heroSlides)
+    ? heroSlides.filter((slide) => typeof slide?.src === "string" && slide.src.trim().length > 0)
+    : [];
+  if (rows.length) return rows;
+  const defaultRows = Array.isArray(DEFAULT_PROPS.heroSlides)
+    ? DEFAULT_PROPS.heroSlides.filter((slide) => typeof slide?.src === "string" && slide.src.trim().length > 0)
+    : [];
+  if (defaultRows.length >= 2) return defaultRows;
+  if (backgroundMedia && typeof backgroundMedia.src === "string" && backgroundMedia.src.trim()) {
+    return [
+      {
+        src: backgroundMedia.src,
+        alt: backgroundMedia.alt || String(title || ""),
+        title: title || "",
+        subtitle: subtitle || "",
+        ctas: Array.isArray(ctas) ? ctas : [],
+      },
+    ];
+  }
+  return defaultRows;
+};
+
+export default function ${safeName}({
+  id,
+  anchor,
+  variant,
+  title,
+  subtitle,
+  body,
+  eyebrow,
+  ctas,
+  links,
+  items,
+  heroSlides,
+  heroCarouselAutoplayMs,
+  backgroundMedia,
+  background,
+  backgroundGradient,
+  backgroundOverlay,
+  backgroundOverlayOpacity,
+  backgroundBlur,
+  paddingY,
+  headingFont,
+  bodyFont,
+  headingSize,
+  bodySize,
+  maxWidth,
+  align,
+  mediaPosition,
+  surfaceTone,
+  textPanel,
+  textPanelBackground,
+  textPanelBorderColor,
+  textPanelPadding,
+  textPanelRadius,
+  textPanelMaxWidth,
+  motionMode,
+  referenceSliceMode,
+  referenceSliceMinHeight,
+  ...rest
+}) {
+  const merged = assignDefined({ ...DEFAULT_PROPS }, {
+    id,
+    anchor,
+    title,
+    subtitle,
+    body,
+    eyebrow,
+    ctas,
+    links,
+    items,
+    heroSlides,
+    heroCarouselAutoplayMs,
+    backgroundMedia,
+    background,
+    backgroundGradient,
+    backgroundOverlay,
+    backgroundOverlayOpacity,
+    backgroundBlur,
+    paddingY,
+    headingFont,
+    bodyFont,
+    headingSize,
+    bodySize,
+    maxWidth,
+    align,
+    mediaPosition,
+    surfaceTone,
+    textPanel,
+    textPanelBackground,
+    textPanelBorderColor,
+    textPanelPadding,
+    textPanelRadius,
+    textPanelMaxWidth,
+    motionMode,
+    referenceSliceMode,
+    referenceSliceMinHeight,
+  });
+  assignDefined(merged, rest);
+
+  const slides = resolveSlides(
+    merged.heroSlides,
+    merged.backgroundMedia,
+    merged.title,
+    merged.subtitle,
+    merged.ctas
+  );
+  const [activeSlide, setActiveSlide] = React.useState(0);
+  React.useEffect(() => {
+    setActiveSlide(0);
+  }, [slides.length]);
+  React.useEffect(() => {
+    if (slides.length < 2) return;
+    const intervalMs = Number(merged.heroCarouselAutoplayMs) > 1200 ? Number(merged.heroCarouselAutoplayMs) : 4500;
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % slides.length);
+    }, intervalMs);
+    return () => window.clearInterval(timer);
+  }, [slides.length, merged.heroCarouselAutoplayMs]);
+
+  const active = slides[activeSlide] || {};
+  const heroTitle = active.title || merged.title || "";
+  const heroSubtitle = active.subtitle || merged.subtitle || merged.body || "";
+  const heroEyebrow = active.eyebrow || merged.eyebrow || "";
+  const heroCtas =
+    Array.isArray(active.ctas) && active.ctas.length
+      ? active.ctas
+      : Array.isArray(merged.ctas)
+      ? merged.ctas
+      : [];
+  const backgroundSrc = String(active.src || merged.backgroundMedia?.src || "").trim();
+  const backgroundStyle =
+    backgroundSrc
+      ? {
+          backgroundImage: "url(" + backgroundSrc + ")",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }
+      : {
+          background: String(merged.backgroundGradient || "linear-gradient(180deg,#0b1220 0%,#090d18 100%)"),
+        };
+
+  const textPanelEnabled = Boolean(merged.textPanel) || Boolean(merged.textPanelBackground);
+  const rawOverlayColor = String(merged.backgroundOverlay || "").trim();
+  const parsedOverlayOpacity = Number(merged.backgroundOverlayOpacity);
+  const hasExplicitOverlayOpacity = Number.isFinite(parsedOverlayOpacity);
+  const overlayColor = rawOverlayColor || (textPanelEnabled ? "" : "rgba(2,8,23,0.22)");
+  const overlayOpacity = hasExplicitOverlayOpacity ? clamp(parsedOverlayOpacity, 0, 100) / 100 : 1;
+  const overlayBlur = clamp(merged.backgroundBlur ?? 0, 0, 20);
+  const textLight = String(merged.surfaceTone || "").trim().toLowerCase() === "dark";
+  const sectionMinHeight = Math.max(
+    480,
+    Number(merged.referenceSliceMinHeight || 0) || (Boolean(merged.referenceSliceMode) ? 780 : 680)
+  );
+  const alignCenter = String(merged.align || "").trim().toLowerCase() === "center";
+  const headingStyle = merged.headingFont ? { fontFamily: String(merged.headingFont) } : undefined;
+  const bodyStyle = merged.bodyFont ? { fontFamily: String(merged.bodyFont) } : undefined;
+  const headingClass = headingClassFor(merged.headingSize);
+  const bodyClass = bodyClassFor(merged.bodySize);
+  const textPanelStyle = textPanelEnabled
+    ? {
+        background: String(
+          merged.textPanelBackground ||
+            (textLight ? "rgba(9,14,26,0.46)" : "rgba(255,255,255,0.62)")
+        ),
+        border: "1px solid " + String(merged.textPanelBorderColor || (textLight ? "rgba(255,255,255,0.2)" : "rgba(15,23,42,0.12)")),
+        backdropFilter: "blur(2px)",
+      }
+    : undefined;
+
+  return (
+    <section
+      id={merged.anchor || merged.id || undefined}
+      data-block="${safeName}"
+      className={cn("relative overflow-hidden", paddingClassFor(merged.paddingY))}
+      style={{ minHeight: sectionMinHeight + "px" }}
+    >
+      <div className="absolute inset-0" style={backgroundStyle} />
+      {overlayColor ? (
+        <div
+          className="absolute inset-0"
+          style={{
+            background: overlayColor,
+            opacity: overlayOpacity,
+            backdropFilter: overlayBlur > 0 ? "blur(" + overlayBlur + "px)" : "none",
+          }}
+        />
+      ) : null}
+      <div className={cn("relative z-10 mx-auto px-4 sm:px-6", maxWidthClassFor(merged.maxWidth))}>
+        <div
+          className={cn(
+            "flex min-h-[inherit] w-full flex-col justify-center gap-6",
+            alignCenter ? "items-center text-center" : "items-start text-left"
+          )}
+          style={{ minHeight: sectionMinHeight + "px" }}
+        >
+          <div
+            className={cn(
+              textPanelEnabled ? textPanelPaddingClassFor(merged.textPanelPadding) : "",
+              textPanelEnabled ? textPanelRadiusClassFor(merged.textPanelRadius) : "",
+              textPanelEnabled ? textPanelMaxWidthClassFor(merged.textPanelMaxWidth) : ""
+            )}
+            style={textPanelStyle}
+          >
+            {heroEyebrow ? (
+              <p className={cn("text-sm tracking-wide", textLight ? "text-zinc-200" : "text-zinc-700")} style={bodyStyle}>
+                {heroEyebrow}
+              </p>
+            ) : null}
+            <h1
+              className={cn("max-w-4xl font-semibold tracking-tight", headingClass, textLight ? "text-zinc-100" : "text-zinc-900")}
+              style={headingStyle}
+            >
+              {heroTitle}
+            </h1>
+            {heroSubtitle ? (
+              <p className={cn("max-w-3xl leading-relaxed", bodyClass, textLight ? "text-zinc-200" : "text-zinc-700")} style={bodyStyle}>
+                {heroSubtitle}
+              </p>
+            ) : null}
+            {heroCtas.length ? (
+              <div className={cn("mt-2 flex flex-wrap gap-3", alignCenter ? "justify-center" : "justify-start")}>
+                {heroCtas.slice(0, 2).map((cta, idx) => (
+                  <a
+                    key={String(cta?.label || idx)}
+                    href={toHref(cta?.href)}
+                    className={cn(
+                      "inline-flex items-center rounded-md px-6 py-3 text-sm font-semibold transition",
+                      idx === 0
+                        ? "bg-zinc-50 text-zinc-900 hover:bg-zinc-100"
+                        : textLight
+                        ? "border border-zinc-300/50 bg-transparent text-zinc-100 hover:bg-zinc-900/30"
+                        : "border border-zinc-400 bg-transparent text-zinc-900 hover:bg-zinc-100"
+                    )}
+                  >
+                    {String(cta?.label || "Learn more")}
+                  </a>
+                ))}
+              </div>
+            ) : null}
+            {slides.length > 1 ? (
+              <div className={cn("mt-4 flex items-center gap-2", alignCenter ? "justify-center" : "justify-start")}>
+                {slides.map((slide, index) => (
+                  <button
+                    key={String(slide?.src || index)}
+                    type="button"
+                    onClick={() => setActiveSlide(index)}
+                    aria-label={String(slide?.label || "Slide " + (index + 1))}
+                    className={cn(
+                      "h-2.5 w-2.5 rounded-full border",
+                      index === activeSlide
+                        ? "border-zinc-50 bg-zinc-50"
+                        : textLight
+                        ? "border-zinc-200/70 bg-transparent"
+                        : "border-zinc-600/50 bg-transparent"
+                    )}
+                  />
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+`;
+
+const buildAutoPrivateStoryCode = ({ safeName = "CustomBlock", defaultPropsLiteral = "{}" }) => `"use client";
+
+import React from "react";
+import { cn } from "@/lib/cn";
+
+const DEFAULT_PROPS = ${defaultPropsLiteral};
+
+const assignDefined = (target, patch) => {
+  for (const [key, value] of Object.entries(patch || {})) {
+    if (typeof value !== "undefined") target[key] = value;
+  }
+  return target;
+};
+
+const maxWidthClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "max-w-screen-sm";
+  if (token === "md") return "max-w-screen-md";
+  if (token === "lg") return "max-w-screen-lg";
+  if (token === "2xl") return "max-w-screen-2xl";
+  if (token === "full") return "max-w-none";
+  return "max-w-screen-xl";
+};
+
+const paddingClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "py-12";
+  if (token === "lg") return "py-20";
+  return "py-16";
+};
+
+const headingClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "text-3xl sm:text-4xl";
+  if (token === "lg") return "text-5xl sm:text-6xl";
+  return "text-4xl sm:text-5xl";
+};
+
+const bodyClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "text-sm sm:text-base";
+  if (token === "lg") return "text-lg sm:text-xl";
+  return "text-base sm:text-lg";
+};
+
+export default function ${safeName}({
+  id,
+  anchor,
+  variant,
+  title,
+  subtitle,
+  body,
+  eyebrow,
+  ctas,
+  links,
+  items,
+  backgroundMedia,
+  background,
+  backgroundGradient,
+  backgroundOverlay,
+  backgroundOverlayOpacity,
+  backgroundBlur,
+  paddingY,
+  headingFont,
+  bodyFont,
+  headingSize,
+  bodySize,
+  maxWidth,
+  align,
+  surfaceTone,
+  motionMode,
+  referenceSliceMode,
+  referenceSliceMinHeight,
+  ...rest
+}) {
+  const merged = assignDefined({ ...DEFAULT_PROPS }, {
+    id,
+    anchor,
+    variant,
+    title,
+    subtitle,
+    body,
+    eyebrow,
+    ctas,
+    links,
+    items,
+    backgroundMedia,
+    background,
+    backgroundGradient,
+    backgroundOverlay,
+    backgroundOverlayOpacity,
+    backgroundBlur,
+    paddingY,
+    headingFont,
+    bodyFont,
+    headingSize,
+    bodySize,
+    maxWidth,
+    align,
+    surfaceTone,
+    motionMode,
+    referenceSliceMode,
+    referenceSliceMinHeight,
+  });
+  assignDefined(merged, rest);
+
+  const hasImage = typeof merged.backgroundMedia?.src === "string" && merged.backgroundMedia.src.trim().length > 0;
+  const textLight = String(merged.surfaceTone || "").trim().toLowerCase() === "dark";
+  const rawOverlayColor = String(merged.backgroundOverlay || "").trim();
+  const overlayColor = rawOverlayColor || (textLight ? "rgba(2,8,18,0.18)" : "rgba(255,255,255,0.36)");
+  const parsedOverlayOpacity = Number(merged.backgroundOverlayOpacity);
+  const overlayOpacity = Number.isFinite(parsedOverlayOpacity)
+    ? Math.max(0, Math.min(100, parsedOverlayOpacity)) / 100
+    : 1;
+  const alignCenter = String(merged.align || "").trim().toLowerCase() === "center";
+  const minHeight = Math.max(260, Number(merged.referenceSliceMinHeight || 0) || 300);
+  const cards = Array.isArray(merged.items) ? merged.items : [];
+  const headingStyle = merged.headingFont ? { fontFamily: String(merged.headingFont) } : undefined;
+  const bodyStyle = merged.bodyFont ? { fontFamily: String(merged.bodyFont) } : undefined;
+  const headingClass = headingClassFor(merged.headingSize);
+  const bodyClass = bodyClassFor(merged.bodySize);
+
+  return (
+    <section
+      id={merged.anchor || merged.id || undefined}
+      data-block="${safeName}"
+      className={cn("relative overflow-hidden", paddingClassFor(merged.paddingY))}
+      style={{ minHeight: minHeight + "px" }}
+    >
+      {hasImage ? (
+        <>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url(" + merged.backgroundMedia.src + ")",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+          {overlayColor ? <div className="absolute inset-0" style={{ background: overlayColor, opacity: overlayOpacity }} /> : null}
+        </>
+      ) : (
+        <div
+          className="absolute inset-0"
+          style={{
+            background: String(merged.backgroundGradient || "linear-gradient(180deg,#ffffff 0%,#f5f5f5 100%)"),
+          }}
+        />
+      )}
+      <div className={cn("relative z-10 mx-auto px-4 sm:px-6", maxWidthClassFor(merged.maxWidth))}>
+        <div className={cn("flex flex-col gap-4", alignCenter ? "items-center text-center" : "items-start text-left")}>
+          {merged.eyebrow ? (
+            <p className={cn("text-sm tracking-wide", textLight ? "text-zinc-200" : "text-zinc-600")} style={bodyStyle}>
+              {String(merged.eyebrow)}
+            </p>
+          ) : null}
+          <h2
+            className={cn("max-w-4xl font-semibold tracking-tight", headingClass, textLight ? "text-zinc-100" : "text-zinc-900")}
+            style={headingStyle}
+          >
+            {String(merged.title || "")}
+          </h2>
+          {merged.subtitle ? (
+            <p className={cn("max-w-4xl leading-relaxed", bodyClass, textLight ? "text-zinc-200" : "text-zinc-700")} style={bodyStyle}>
+              {String(merged.subtitle)}
+            </p>
+          ) : null}
+          {merged.body && String(merged.body) !== String(merged.subtitle || "") ? (
+            <p className={cn("max-w-4xl leading-relaxed", bodyClass, textLight ? "text-zinc-300" : "text-zinc-700")} style={bodyStyle}>
+              {String(merged.body)}
+            </p>
+          ) : null}
+          {cards.length ? (
+            <div className="mt-4 grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {cards.slice(0, 6).map((item, index) => (
+                <article
+                  key={String(item?.title || index)}
+                  className={cn(
+                    "rounded-lg border px-4 py-4",
+                    textLight ? "border-zinc-300/25 bg-zinc-900/30 text-zinc-100" : "border-zinc-300 bg-white/90 text-zinc-900"
+                  )}
+                >
+                  <h3 className="text-base font-semibold" style={headingStyle}>{String(item?.title || "Item")}</h3>
+                  {item?.description ? <p className={cn("mt-2 text-sm", textLight ? "text-zinc-300" : "text-zinc-600")} style={bodyStyle}>{String(item.description)}</p> : null}
+                </article>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  );
+}
+`;
+
+const buildAutoPrivateApproachCode = ({ safeName = "CustomBlock", defaultPropsLiteral = "{}" }) => `"use client";
+
+import React from "react";
+import { cn } from "@/lib/cn";
+
+const DEFAULT_PROPS = ${defaultPropsLiteral};
+
+const assignDefined = (target, patch) => {
+  for (const [key, value] of Object.entries(patch || {})) {
+    if (typeof value !== "undefined") target[key] = value;
+  }
+  return target;
+};
+
+const toHref = (value) => {
+  const raw = String(value || "").trim();
+  return raw || "#";
+};
+
+const maxWidthClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "max-w-screen-sm";
+  if (token === "md") return "max-w-screen-md";
+  if (token === "lg") return "max-w-screen-lg";
+  if (token === "2xl") return "max-w-screen-2xl";
+  if (token === "full") return "max-w-none";
+  return "max-w-screen-xl";
+};
+
+const paddingClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "py-12";
+  if (token === "lg") return "py-24";
+  return "py-16";
+};
+
+const headingClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "text-3xl sm:text-4xl";
+  if (token === "lg") return "text-5xl sm:text-6xl";
+  return "text-4xl sm:text-5xl";
+};
+
+const bodyClassFor = (value) => {
+  const token = String(value || "").trim();
+  if (token === "sm") return "text-sm sm:text-base";
+  if (token === "lg") return "text-lg sm:text-xl";
+  return "text-base sm:text-lg";
+};
+
+export default function ${safeName}({
+  id,
+  anchor,
+  variant,
+  title,
+  subtitle,
+  body,
+  eyebrow,
+  ctas,
+  links,
+  items,
+  backgroundMedia,
+  background,
+  backgroundGradient,
+  backgroundOverlay,
+  backgroundOverlayOpacity,
+  backgroundBlur,
+  paddingY,
+  headingFont,
+  bodyFont,
+  headingSize,
+  bodySize,
+  maxWidth,
+  align,
+  surfaceTone,
+  contentTone,
+  mediaPosition,
+  motionMode,
+  referenceSliceMode,
+  referenceSliceMinHeight,
+  ...rest
+}) {
+  const merged = assignDefined({ ...DEFAULT_PROPS }, {
+    id,
+    anchor,
+    variant,
+    title,
+    subtitle,
+    body,
+    eyebrow,
+    ctas,
+    links,
+    items,
+    backgroundMedia,
+    background,
+    backgroundGradient,
+    backgroundOverlay,
+    backgroundOverlayOpacity,
+    backgroundBlur,
+    paddingY,
+    headingFont,
+    bodyFont,
+    headingSize,
+    bodySize,
+    maxWidth,
+    align,
+    surfaceTone,
+    contentTone,
+    mediaPosition,
+    motionMode,
+    referenceSliceMode,
+    referenceSliceMinHeight,
+  });
+  assignDefined(merged, rest);
+
+  const contentLight =
+    String(merged.contentTone || "").trim().toLowerCase() === "light" ||
+    String(merged.surfaceTone || "").trim().toLowerCase() === "dark";
+  const cards = Array.isArray(merged.items) ? merged.items : [];
+  const actions = Array.isArray(merged.ctas) ? merged.ctas : [];
+  const minHeight = Math.max(320, Number(merged.referenceSliceMinHeight || 0) || 520);
+  const imageSrc = String(merged.backgroundMedia?.src || "").trim();
+  const rawOverlayColor = String(merged.backgroundOverlay || "").trim();
+  const overlayColor = rawOverlayColor || "rgba(2,8,18,0.20)";
+  const parsedOverlayOpacity = Number(merged.backgroundOverlayOpacity);
+  const overlayOpacity = Number.isFinite(parsedOverlayOpacity)
+    ? Math.max(0, Math.min(100, parsedOverlayOpacity)) / 100
+    : 1;
+  const headingStyle = merged.headingFont ? { fontFamily: String(merged.headingFont) } : undefined;
+  const bodyStyle = merged.bodyFont ? { fontFamily: String(merged.bodyFont) } : undefined;
+  const headingClass = headingClassFor(merged.headingSize);
+  const bodyClass = bodyClassFor(merged.bodySize);
+  const simpleOverlayLayout = String(merged.variant || "").trim().toLowerCase() === "simple" || cards.length === 0;
+
+  return (
+    <section
+      id={merged.anchor || merged.id || undefined}
+      data-block="${safeName}"
+      className={cn("relative overflow-hidden", paddingClassFor(merged.paddingY))}
+      style={{ minHeight: minHeight + "px" }}
+    >
+      {imageSrc ? (
+        <>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url(" + imageSrc + ")",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+          {overlayColor ? <div className="absolute inset-0" style={{ background: overlayColor, opacity: overlayOpacity }} /> : null}
+        </>
+      ) : (
+        <div
+          className="absolute inset-0"
+          style={{ background: String(merged.backgroundGradient || "linear-gradient(180deg,#0b1220 0%,#111827 100%)") }}
+        />
+      )}
+      <div className={cn("relative z-10 mx-auto px-4 sm:px-6", maxWidthClassFor(merged.maxWidth))}>
+        {simpleOverlayLayout ? (
+          <div className="max-w-3xl">
+            {merged.eyebrow ? (
+              <p className={cn("text-sm tracking-wide", contentLight ? "text-zinc-200" : "text-zinc-600")} style={bodyStyle}>
+                {String(merged.eyebrow)}
+              </p>
+            ) : null}
+            <h2
+              className={cn("mt-1 font-semibold tracking-tight", headingClass, contentLight ? "text-zinc-100" : "text-zinc-900")}
+              style={headingStyle}
+            >
+              {String(merged.title || "")}
+            </h2>
+            {merged.subtitle ? (
+              <p className={cn("mt-3 max-w-3xl leading-relaxed", bodyClass, contentLight ? "text-zinc-200" : "text-zinc-700")} style={bodyStyle}>
+                {String(merged.subtitle)}
+              </p>
+            ) : null}
+            {merged.body && String(merged.body) !== String(merged.subtitle || "") ? (
+              <p className={cn("mt-3 max-w-3xl leading-relaxed", bodyClass, contentLight ? "text-zinc-300" : "text-zinc-700")} style={bodyStyle}>
+                {String(merged.body)}
+              </p>
+            ) : null}
+            {actions.length ? (
+              <div className="mt-5 flex flex-wrap gap-3">
+                {actions.slice(0, 2).map((cta, idx) => (
+                  <a
+                    key={String(cta?.label || idx)}
+                    href={toHref(cta?.href)}
+                    className={cn(
+                      "inline-flex items-center rounded-md px-5 py-3 text-sm font-semibold transition",
+                      idx === 0
+                        ? "bg-zinc-100 text-zinc-900 hover:bg-zinc-200"
+                        : contentLight
+                        ? "border border-zinc-300/60 text-zinc-100 hover:bg-zinc-900/35"
+                        : "border border-zinc-400 text-zinc-900 hover:bg-zinc-100"
+                    )}
+                  >
+                    {String(cta?.label || "Learn more")}
+                  </a>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        ) : (
+          <div className="grid gap-8 md:grid-cols-12 md:items-center">
+            <div className={cn("md:col-span-7", String(merged.mediaPosition || "left") === "left" ? "md:order-1" : "md:order-2")}>
+              {merged.eyebrow ? (
+                <p className={cn("text-sm tracking-wide", contentLight ? "text-zinc-200" : "text-zinc-600")} style={bodyStyle}>
+                  {String(merged.eyebrow)}
+                </p>
+              ) : null}
+              <h2
+                className={cn("mt-1 font-semibold tracking-tight", headingClass, contentLight ? "text-zinc-100" : "text-zinc-900")}
+                style={headingStyle}
+              >
+                {String(merged.title || "")}
+              </h2>
+              {merged.subtitle ? (
+                <p className={cn("mt-3 max-w-3xl leading-relaxed", bodyClass, contentLight ? "text-zinc-200" : "text-zinc-700")} style={bodyStyle}>
+                  {String(merged.subtitle)}
+                </p>
+              ) : null}
+              {merged.body && String(merged.body) !== String(merged.subtitle || "") ? (
+                <p className={cn("mt-3 max-w-3xl leading-relaxed", bodyClass, contentLight ? "text-zinc-300" : "text-zinc-700")} style={bodyStyle}>
+                  {String(merged.body)}
+                </p>
+              ) : null}
+              {actions.length ? (
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {actions.slice(0, 2).map((cta, idx) => (
+                    <a
+                      key={String(cta?.label || idx)}
+                      href={toHref(cta?.href)}
+                      className={cn(
+                        "inline-flex items-center rounded-md px-5 py-3 text-sm font-semibold transition",
+                        idx === 0
+                          ? "bg-zinc-100 text-zinc-900 hover:bg-zinc-200"
+                          : contentLight
+                          ? "border border-zinc-300/60 text-zinc-100 hover:bg-zinc-900/35"
+                          : "border border-zinc-400 text-zinc-900 hover:bg-zinc-100"
+                      )}
+                    >
+                      {String(cta?.label || "Learn more")}
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+            <div className={cn("md:col-span-5", String(merged.mediaPosition || "left") === "left" ? "md:order-2" : "md:order-1")}>
+              {cards.length ? (
+                <div className="grid gap-3">
+                  {cards.slice(0, 4).map((item, index) => (
+                    <article
+                      key={String(item?.title || index)}
+                      className={cn(
+                        "rounded-lg border px-4 py-3",
+                        contentLight ? "border-zinc-300/35 bg-zinc-950/35 text-zinc-100" : "border-zinc-300 bg-white/90 text-zinc-900"
+                      )}
+                    >
+                      <h3 className="text-sm font-semibold" style={headingStyle}>{String(item?.title || "Item")}</h3>
+                      {item?.description ? <p className={cn("mt-1 text-xs leading-relaxed", contentLight ? "text-zinc-300" : "text-zinc-600")} style={bodyStyle}>{String(item.description)}</p> : null}
+                    </article>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+`;
+
+const buildAutoPrivateNavigationCode = ({ safeName = "CustomBlock", defaultPropsLiteral = "{}" }) => `"use client";
+
+import React from "react";
+import { cn } from "@/lib/cn";
+
+const DEFAULT_PROPS = ${defaultPropsLiteral};
+
+const assignDefined = (target, patch) => {
+  for (const [key, value] of Object.entries(patch || {})) {
+    if (typeof value !== "undefined") target[key] = value;
+  }
+  return target;
+};
+
+const toHref = (value) => {
+  const raw = String(value || "").trim();
+  return raw || "#";
+};
+
+export default function ${safeName}({
+  id,
+  anchor,
+  logo,
+  logoText,
+  links,
+  ctas,
+  variant,
+  sticky,
+  paddingY,
+  maxWidth,
+  background,
+  backgroundGradient,
+  backgroundOverlay,
+  backgroundOverlayOpacity,
+  backgroundBlur,
+  surfaceTone,
+  headingFont,
+  bodyFont,
+  multiLevel,
+  menuStyle,
+  ...rest
+}) {
+  const merged = assignDefined({ ...DEFAULT_PROPS }, {
+    id,
+    anchor,
+    logo,
+    logoText,
+    links,
+    ctas,
+    variant,
+    sticky,
+    paddingY,
+    maxWidth,
+    background,
+    backgroundGradient,
+    backgroundOverlay,
+    backgroundOverlayOpacity,
+    backgroundBlur,
+    surfaceTone,
+    headingFont,
+    bodyFont,
+    multiLevel,
+    menuStyle,
+  });
+  assignDefined(merged, rest);
+  const items = Array.isArray(merged.links) ? merged.links : [];
+  const actions = Array.isArray(merged.ctas) ? merged.ctas : [];
+  const textLight = String(merged.surfaceTone || "").trim().toLowerCase() === "dark";
+  const headingStyle = merged.headingFont ? { fontFamily: String(merged.headingFont) } : undefined;
+  const bodyStyle = merged.bodyFont ? { fontFamily: String(merged.bodyFont) } : undefined;
+
+  return (
+    <header
+      id={merged.anchor || merged.id || undefined}
+      data-block="${safeName}"
+      className={cn("relative w-full border-b border-zinc-800/20", merged.sticky ? "sticky top-0 z-40" : "")}
+      style={{ background: String(merged.backgroundGradient || "linear-gradient(180deg,#1c1c1c 0%,#1c1c1c 100%)") }}
+    >
+      <div className="mx-auto flex max-w-screen-xl items-center justify-between gap-6 px-4 py-3 sm:px-6">
+        <a href="/" className={cn("text-sm font-semibold tracking-wide", textLight ? "text-zinc-100" : "text-zinc-900")} style={headingStyle}>
+          {String(merged.logo?.alt || merged.logoText || "Brand")}
+        </a>
+        <nav className="hidden items-center gap-5 md:flex">
+          {items.slice(0, 8).map((item, idx) => (
+            <div key={String(item?.label || idx)} className="relative">
+              <a href={toHref(item?.href)} className={cn("text-sm transition", textLight ? "text-zinc-200 hover:text-zinc-100" : "text-zinc-700 hover:text-zinc-900")} style={bodyStyle}>
+                {String(item?.label || "Link")}
+              </a>
+              {Array.isArray(item?.children) && item.children.length ? (
+                <div className={cn("absolute left-0 top-full mt-2 hidden min-w-48 rounded-md border px-3 py-2 shadow-lg group-hover:block", textLight ? "border-zinc-700 bg-zinc-900 text-zinc-100" : "border-zinc-300 bg-white text-zinc-900")}>
+                  {item.children.slice(0, 6).map((child, cIdx) => (
+                    <a key={String(child?.label || cIdx)} href={toHref(child?.href)} className="block py-1 text-xs" style={bodyStyle}>
+                      {String(child?.label || "Child")}
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          ))}
+        </nav>
+        {actions.length ? (
+          <div className="flex items-center gap-2">
+            {actions.slice(0, 1).map((cta, idx) => (
+              <a
+                key={String(cta?.label || idx)}
+                href={toHref(cta?.href)}
+                className={cn("inline-flex items-center rounded-md px-4 py-2 text-sm font-semibold", textLight ? "bg-zinc-100 text-zinc-900" : "bg-zinc-900 text-zinc-100")}
+                style={headingStyle}
+              >
+                {String(cta?.label || "Action")}
+              </a>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    </header>
+  );
+}
+`;
+
+const buildAutoPrivateFooterCode = ({ safeName = "CustomBlock", defaultPropsLiteral = "{}" }) => `"use client";
+
+import React from "react";
+import { cn } from "@/lib/cn";
+
+const DEFAULT_PROPS = ${defaultPropsLiteral};
+
+const assignDefined = (target, patch) => {
+  for (const [key, value] of Object.entries(patch || {})) {
+    if (typeof value !== "undefined") target[key] = value;
+  }
+  return target;
+};
+
+const toHref = (value) => {
+  const raw = String(value || "").trim();
+  return raw || "#";
+};
+
+export default function ${safeName}({
+  id,
+  anchor,
+  logoText,
+  columns,
+  legal,
+  links,
+  ctas,
+  variant,
+  paddingY,
+  maxWidth,
+  background,
+  backgroundGradient,
+  backgroundOverlay,
+  backgroundOverlayOpacity,
+  backgroundBlur,
+  surfaceTone,
+  headingFont,
+  bodyFont,
+  ...rest
+}) {
+  const merged = assignDefined({ ...DEFAULT_PROPS }, {
+    id,
+    anchor,
+    logoText,
+    columns,
+    legal,
+    links,
+    ctas,
+    variant,
+    paddingY,
+    maxWidth,
+    background,
+    backgroundGradient,
+    backgroundOverlay,
+    backgroundOverlayOpacity,
+    backgroundBlur,
+    surfaceTone,
+    headingFont,
+    bodyFont,
+  });
+  assignDefined(merged, rest);
+  const groups = Array.isArray(merged.columns) ? merged.columns : [];
+  const textLight = String(merged.surfaceTone || "").trim().toLowerCase() === "dark";
+  const headingStyle = merged.headingFont ? { fontFamily: String(merged.headingFont) } : undefined;
+  const bodyStyle = merged.bodyFont ? { fontFamily: String(merged.bodyFont) } : undefined;
+
+  return (
+    <footer
+      id={merged.anchor || merged.id || undefined}
+      data-block="${safeName}"
+      className={cn("relative border-t", textLight ? "border-zinc-700/40 text-zinc-100" : "border-zinc-300 text-zinc-900")}
+      style={{ background: String(merged.backgroundGradient || "linear-gradient(180deg,#1c1c1c 0%,#1c1c1c 100%)") }}
+    >
+      <div className="mx-auto max-w-screen-xl px-4 py-14 sm:px-6">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <p className="text-sm font-semibold tracking-wide" style={headingStyle}>{String(merged.logoText || "Brand")}</p>
+          </div>
+          {groups.slice(0, 4).map((column, index) => (
+            <div key={String(column?.title || index)}>
+              <h3 className="text-sm font-semibold" style={headingStyle}>{String(column?.title || "Column")}</h3>
+              <ul className="mt-3 space-y-2">
+                {(Array.isArray(column?.links) ? column.links : []).slice(0, 8).map((link, linkIndex) => (
+                  <li key={String(link?.label || linkIndex)}>
+                    <a href={toHref(link?.href)} className={cn("text-sm", textLight ? "text-zinc-300 hover:text-zinc-100" : "text-zinc-600 hover:text-zinc-900")} style={bodyStyle}>
+                      {String(link?.label || "Link")}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className={cn("mt-10 border-t pt-4 text-xs", textLight ? "border-zinc-700/40 text-zinc-300" : "border-zinc-300 text-zinc-600")} style={bodyStyle}>
+          {String(merged.legal || "All rights reserved.")}
+        </div>
+      </div>
+    </footer>
+  );
+}
+`;
+
+const buildAutoPrivateGeneratedCode = ({ componentName = "", sectionKind = "", defaults = {} }) => {
+  const safeName = toSafeIdentifier(componentName, "CustomBlock");
+  const defaultPropsLiteral = JSON.stringify(defaults && typeof defaults === "object" ? defaults : {}, null, 2);
+  const normalizedKind = normalizeSectionKind(sectionKind);
+  if (normalizedKind === "hero") return buildAutoPrivateHeroCode({ safeName, defaultPropsLiteral });
+  if (normalizedKind === "story") return buildAutoPrivateStoryCode({ safeName, defaultPropsLiteral });
+  if (normalizedKind === "approach") return buildAutoPrivateApproachCode({ safeName, defaultPropsLiteral });
+  if (normalizedKind === "navigation") return buildAutoPrivateNavigationCode({ safeName, defaultPropsLiteral });
+  if (normalizedKind === "footer") return buildAutoPrivateFooterCode({ safeName, defaultPropsLiteral });
+  return "";
+};
+
+const computeAutoPrivateFieldCoverage = ({ defaults = {}, fields = {} } = {}) => {
+  const editableKeys = Object.keys(defaults || {}).filter((key) => isValidIdentifier(key) && key !== "id");
+  const fieldKeys = Object.keys(fields || {}).filter((key) => isValidIdentifier(key));
+  if (!editableKeys.length) {
+    return { editableKeys: 0, fieldKeys: fieldKeys.length, coverage: 100 };
+  }
+  const fieldSet = new Set(fieldKeys);
+  const covered = editableKeys.filter((key) => fieldSet.has(key)).length;
+  return {
+    editableKeys: editableKeys.length,
+    fieldKeys: fieldKeys.length,
+    covered,
+    coverage: Number(((covered / editableKeys.length) * 100).toFixed(2)),
+  };
+};
+
+const applyAutoPrivateSelectionToArtifacts = ({ item = null, selections = [] } = {}) => {
+  if (!item || !Array.isArray(selections) || !selections.length) return;
+  const selectionMap = new Map();
+  for (const row of selections) {
+    const pagePath = normalizeTemplatePagePath(row?.pagePath || "/");
+    const sectionKind = normalizeSectionKind(row?.sectionKind || "");
+    const componentName = String(row?.customComponentName || "").trim();
+    if (!sectionKind || !componentName) continue;
+    selectionMap.set(`${pagePath}:${sectionKind}`, componentName);
+  }
+  if (!selectionMap.size) return;
+
+  const patchSectionSpecs = (sectionSpecs = {}, pagePath = "/") => {
+    if (!sectionSpecs || typeof sectionSpecs !== "object") return;
+    for (const [kind, spec] of Object.entries(sectionSpecs)) {
+      if (!spec || typeof spec !== "object") continue;
+      const sectionKind = normalizeSectionKind(kind);
+      if (!sectionKind) continue;
+      const key = `${normalizeTemplatePagePath(pagePath)}:${sectionKind}`;
+      const componentName = selectionMap.get(key);
+      if (!componentName) continue;
+      const previousBlockType = String(spec.block_type || "").trim();
+      spec.block_type = componentName;
+      spec.auto_private_selected = true;
+      spec.auto_private_original_block_type = previousBlockType;
+    }
+  };
+
+  patchSectionSpecs(item?.specPack?.section_specs, "/");
+  if (Array.isArray(item?.specPack?.page_specs)) {
+    for (const page of item.specPack.page_specs) {
+      patchSectionSpecs(page?.section_specs, page?.path || "/");
+    }
+  }
+
+  const patchTemplateSet = (templates = {}, pagePath = "/") => {
+    if (!templates || typeof templates !== "object") return;
+    for (const [kind, template] of Object.entries(templates)) {
+      if (!template || typeof template !== "object") continue;
+      const sectionKind = normalizeSectionKind(kind);
+      if (!sectionKind) continue;
+      const key = `${normalizeTemplatePagePath(pagePath)}:${sectionKind}`;
+      const componentName = selectionMap.get(key);
+      if (!componentName) continue;
+      template.type = componentName;
+    }
+  };
+
+  patchTemplateSet(item?.styleProfile?.templates, "/");
+  if (Array.isArray(item?.styleProfile?.pageSpecs)) {
+    for (const page of item.styleProfile.pageSpecs) {
+      patchTemplateSet(page?.templates, page?.path || "/");
+    }
+  }
+};
+
+const materializeAutoPrivateBlocksFromManifests = async ({
+  manifests = [],
+  availableBlockFolders = new Set(),
+  root = "",
+} = {}) => {
+  const materialized = [];
+  for (const manifest of Array.isArray(manifests) ? manifests : []) {
+    for (const section of Array.isArray(manifest?.sections) ? manifest.sections : []) {
+      if (!section?.autoPrivate) continue;
+      const componentName = String(section?.customComponentName || "").trim();
+      const baseBlockType = String(section?.baseBlockType || section?.blockType || "").trim();
+      const defaults = section?.defaults && typeof section.defaults === "object" ? section.defaults : {};
+      if (!componentName || !baseBlockType) continue;
+      const baseKebabName = resolveTemplateExclusiveKebabName(baseBlockType, availableBlockFolders);
+      if (!baseKebabName) continue;
+      const generatedCode = buildAutoPrivateGeneratedCode({
+        componentName,
+        sectionKind: String(section?.sectionKind || ""),
+        defaults,
+      });
+      const wrapperCode = buildAutoPrivateWrapperCode({
+        componentName,
+        baseKebabName,
+        defaults,
+      });
+      let code = generatedCode || wrapperCode;
+      let generationMode = generatedCode ? "real_generated" : "wrapper_fallback";
+      const pageData = {
+        content: [
+          {
+            type: componentName,
+            props: defaults,
+          },
+        ],
+      };
+      let result = await materializeComponent({
+        name: componentName,
+        sourceName: baseBlockType,
+        code,
+        pageData,
+        overwrite: true,
+        root,
+      });
+      let fieldCoverage = computeAutoPrivateFieldCoverage({ defaults, fields: result?.fields || {} });
+      if (generationMode === "real_generated" && Number(fieldCoverage.coverage) < 90) {
+        result = await materializeComponent({
+          name: componentName,
+          sourceName: baseBlockType,
+          code: wrapperCode,
+          pageData,
+          overwrite: true,
+          root,
+        });
+        generationMode = "wrapper_fallback_low_coverage";
+        fieldCoverage = computeAutoPrivateFieldCoverage({ defaults, fields: result?.fields || {} });
+      }
+      materialized.push({
+        ...result,
+        autoPrivate: true,
+        baseBlockType,
+        sectionKind: String(section?.sectionKind || ""),
+        pagePath: normalizeTemplatePagePath(section?.pagePath || "/"),
+        sectionSimilarity: parseSimilarityNumber(section?.sectionSimilarity),
+        generationMode,
+        fieldCoverage,
+      });
+    }
+  }
+  return materialized;
 };
 
 const classifyTemplatePageType = (pathValue, title = "") => {
@@ -5156,32 +13774,468 @@ const classifyTemplatePageType = (pathValue, title = "") => {
 const SITE_PAGE_KIND_PRESETS = {
   home: ["navigation", "hero", "story", "approach", "products", "socialproof", "cta", "footer"],
   about: ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
-  services: ["navigation", "hero", "story", "approach", "products", "cta", "footer"],
-  products: ["navigation", "hero", "products", "story", "cta", "footer"],
-  contact: ["navigation", "hero", "contact", "cta", "footer"],
-  blog: ["navigation", "hero", "story", "products", "footer"],
+  services: ["navigation", "hero", "story", "approach", "products", "socialproof", "cta", "footer"],
+  products: ["navigation", "hero", "products", "story", "approach", "socialproof", "cta", "footer"],
+  contact: ["navigation", "hero", "story", "contact", "cta", "footer"],
+  blog: ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
   careers: ["navigation", "hero", "story", "approach", "cta", "footer"],
   legal: ["navigation", "story", "footer"],
-  generic: ["navigation", "hero", "story", "approach", "cta", "footer"],
+  generic: ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
 };
 
-const resolveTemplatePageKinds = ({ pageType, recipe }) => {
+const inferHomeRequiredKindsFromSummary = ({ summary = null, fallbackKinds = [] } = {}) => {
+  const baseKinds = Array.isArray(fallbackKinds) && fallbackKinds.length
+    ? fallbackKinds.map((kind) => normalizeSectionKind(kind)).filter(Boolean)
+    : SITE_PAGE_KIND_PRESETS.home;
+  const uniqueKinds = unique(baseKinds);
+  const hints = mergeSourceSectionHints([summary?.sourceSectionHints]);
+  const heroCarousel = normalizeHeroCarousel(summary?.heroCarousel);
+  const headingSignalText = [
+    ...(Array.isArray(summary?.h1) ? summary.h1 : []),
+    ...(Array.isArray(summary?.h2) ? summary.h2 : []),
+    String(summary?.title || ""),
+  ]
+    .map((entry) => String(entry || "").trim())
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  const hasTrustSignals = /(testimonial|testimonials|review|reviews|trusted|awards?|certification|case stud|clients?|partners?)/i.test(
+    headingSignalText
+  );
+  const hasStandaloneCtaSignals = /(contact us|book now|request demo|get in touch|start now|join now|subscribe|newsletter|talk to us)/i.test(
+    headingSignalText
+  );
+  const navLinkSignalText = [
+    ...(Array.isArray(summary?.navLinks) ? summary.navLinks.map((row) => `${row?.label || ""} ${row?.href || ""}`) : []),
+    ...(Array.isArray(summary?.linkHrefs) ? summary.linkHrefs : []),
+  ]
+    .map((entry) => String(entry || "").trim())
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  const hasProductSignals =
+    /(product|products|shop|store|collection|collections|headphone|speaker|accessories|audiophile|gaming|professional)/i.test(
+      `${headingSignalText} ${navLinkSignalText}`
+    );
+  const shgLandingPattern =
+    Boolean(hints.hasShgBox) &&
+    Boolean(hints.hasShgVerticalAlignWrapper) &&
+    (Boolean(heroCarousel.enabled) || Number(hints.shgSliderCount || 0) >= 2);
+  const sectionSignalKinds = unique(
+    (Array.isArray(hints.sectionSignals) ? hints.sectionSignals : [])
+      .map((signal) => normalizeSectionKind(signal?.kind || signal?.className || signal?.id || ""))
+      .filter(Boolean)
+  );
+  const sectionSignalKindsSet = new Set(sectionSignalKinds);
+  const hasTrustSignalsFromSections = sectionSignalKindsSet.has("socialproof");
+  const hasStandaloneCtaSignalsFromSections = sectionSignalKindsSet.has("cta") || sectionSignalKindsSet.has("contact");
+  const hasProductSignalsFromSections = sectionSignalKindsSet.has("products");
+  const shgMiddleDensity = Number(hints.shgBoxCount || 0) + Number(hints.shgVerticalAlignWrapperCount || 0);
+  const hasRichShgMiddle =
+    shgMiddleDensity >= 3 ||
+    sectionSignalKinds.filter((kind) => !["navigation", "hero", "footer"].includes(kind)).length >= 4;
+  const strongSectionSignalLayout =
+    sectionSignalKinds.filter((kind) => !["navigation", "hero", "footer"].includes(kind)).length >= 3;
+
+  let nextKinds = [...uniqueKinds];
+  if (shgLandingPattern) {
+    // Keep section diversity for Shopify/SHG layouts with dense middle content,
+    // instead of hard-collapsing to 5 blocks.
+    nextKinds = hasRichShgMiddle
+      ? ["navigation", "hero", "story", "approach", "products", "socialproof", "cta", "footer"]
+      : ["navigation", "hero", "story", "approach", "footer"];
+  }
+  if (!hasTrustSignals && !hasTrustSignalsFromSections && !(shgLandingPattern && hasRichShgMiddle)) {
+    nextKinds = nextKinds.filter((kind) => kind !== "socialproof");
+  }
+  if (!hasStandaloneCtaSignals && !hasStandaloneCtaSignalsFromSections && !(shgLandingPattern && hasRichShgMiddle)) {
+    nextKinds = nextKinds.filter((kind) => kind !== "cta");
+  }
+  if (Boolean(hints.hasShgVerticalAlignWrapper) && !nextKinds.includes("approach")) {
+    nextKinds.splice(Math.max(2, nextKinds.length - 1), 0, "approach");
+  }
+  if ((hasProductSignals || hasProductSignalsFromSections) && !nextKinds.includes("products")) {
+    nextKinds.splice(Math.max(3, nextKinds.length - 1), 0, "products");
+  }
+  if (strongSectionSignalLayout) {
+    for (const sectionKind of sectionSignalKinds) {
+      if (["navigation", "hero", "footer"].includes(sectionKind)) continue;
+      if (!nextKinds.includes(sectionKind)) {
+        nextKinds.splice(Math.max(2, nextKinds.length - 1), 0, sectionKind);
+      }
+    }
+  }
+  if (!nextKinds.includes("story")) {
+    nextKinds.splice(Math.max(2, nextKinds.length - 1), 0, "story");
+  }
+  if (!nextKinds.includes("navigation")) nextKinds.unshift("navigation");
+  if (!nextKinds.includes("hero")) nextKinds.splice(Math.min(1, nextKinds.length), 0, "hero");
+  if (!nextKinds.includes("footer")) nextKinds.push("footer");
+  return unique(nextKinds.map((kind) => normalizeSectionKind(kind)).filter(Boolean));
+};
+
+const TAXONOMY_TYPE_SET = new Set(
+  (Array.isArray(PAGE_TAXONOMY?.categories) ? PAGE_TAXONOMY.categories : [])
+    .map((entry) => String(entry?.id || "").trim())
+    .filter(Boolean)
+);
+
+const SITE_STYLE_PROFILE_PRESETS = Object.freeze({
+  source_auto: {
+    id: "source_auto",
+    label: "Source Auto",
+    layout: {},
+    themeTokens: {},
+    blockVariantMapping: {},
+  },
+  corporate_minimal: {
+    id: "corporate_minimal",
+    label: "Corporate Minimal",
+    layout: { maxWidth: "xl", sectionPadding: "lg", density: "low" },
+    themeTokens: {
+      primary: "#0f172a",
+      secondary: "#334155",
+      background: "#f8fafc",
+      foreground: "#0f172a",
+      accent: "#2563eb",
+    },
+    blockVariantMapping: {
+      hero: "default",
+      approach: "default",
+      socialproof: "default",
+      cta: "default",
+      footer: "multiColumn",
+    },
+  },
+  corporate_trust_heavy: {
+    id: "corporate_trust_heavy",
+    label: "Corporate Trust Heavy",
+    layout: { maxWidth: "2xl", sectionPadding: "lg", density: "medium" },
+    themeTokens: {
+      primary: "#111827",
+      secondary: "#374151",
+      background: "#ffffff",
+      foreground: "#111827",
+      accent: "#0f766e",
+    },
+    blockVariantMapping: {
+      hero: "withCTA",
+      approach: "cards",
+      socialproof: "logos+quote",
+      cta: "default",
+      footer: "multiColumn",
+    },
+  },
+  corporate_modern: {
+    id: "corporate_modern",
+    label: "Corporate Modern",
+    layout: { maxWidth: "2xl", sectionPadding: "md", density: "high" },
+    themeTokens: {
+      primary: "#0b1220",
+      secondary: "#1f2937",
+      background: "#ffffff",
+      foreground: "#0b1220",
+      accent: "#2563eb",
+    },
+    blockVariantMapping: {
+      hero: "split",
+      approach: "grid",
+      socialproof: "cards",
+      cta: "default",
+      footer: "multiColumn",
+    },
+  },
+});
+
+const normalizeSiteStyleProfileToken = (value) => {
+  const token = String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_");
+  if (!token || token === "sourceauto") return "source_auto";
+  if (token === "corporate_minimal") return "corporate_minimal";
+  if (token === "corporate_trust_heavy" || token === "corporate_trust" || token === "trust_heavy") {
+    return "corporate_trust_heavy";
+  }
+  if (token === "corporate_modern") return "corporate_modern";
+  return "source_auto";
+};
+
+const resolveSiteStyleProfile = ({ site = {}, options = {} } = {}) => {
+  const specialRules = site?.specialRules && typeof site.specialRules === "object" ? site.specialRules : {};
+  const chosenRaw =
+    site?.siteStyleProfile ||
+    specialRules?.siteStyleProfile ||
+    specialRules?.site_style_profile ||
+    options?.siteStyleProfile ||
+    "source_auto";
+  const styleId = normalizeSiteStyleProfileToken(chosenRaw);
+  return SITE_STYLE_PROFILE_PRESETS[styleId] || SITE_STYLE_PROFILE_PRESETS.source_auto;
+};
+
+const applyDesignSystemPatchToDefaults = ({ kind = "", defaults = {}, profile = SITE_STYLE_PROFILE_PRESETS.source_auto }) => {
+  if (!defaults || typeof defaults !== "object") return defaults;
+  const layout = profile?.layout && typeof profile.layout === "object" ? profile.layout : {};
+  const themeTokens = profile?.themeTokens && typeof profile.themeTokens === "object" ? profile.themeTokens : {};
+  const blockVariantMapping =
+    profile?.blockVariantMapping && typeof profile.blockVariantMapping === "object" ? profile.blockVariantMapping : {};
+
+  const next = JSON.parse(JSON.stringify(defaults));
+  if (layout.maxWidth && typeof next.maxWidth === "string") next.maxWidth = layout.maxWidth;
+  if (layout.sectionPadding && typeof next.paddingY === "string") next.paddingY = layout.sectionPadding;
+  if (layout.sectionPadding && typeof next.paddingX === "string") next.paddingX = layout.sectionPadding;
+  if (layout.density && !next.layoutDensity) next.layoutDensity = layout.density;
+  if (!next.themeTokens) next.themeTokens = {};
+  next.themeTokens = { ...next.themeTokens, ...themeTokens };
+  const variant = String(blockVariantMapping[kind] || "").trim();
+  if (variant && (typeof next.variant !== "string" || !next.variant.trim())) {
+    next.variant = variant;
+  }
+  return next;
+};
+
+const applySiteDesignSystemToSpecPack = ({ specPack = {}, site = {}, options = {} } = {}) => {
+  const profile = resolveSiteStyleProfile({ site, options });
+  if (!profile || profile.id === "source_auto") {
+    return {
+      specPack,
+      siteDesignSystem: {
+        profileId: "source_auto",
+        profileLabel: "Source Auto",
+        applied: false,
+      },
+    };
+  }
+  const nextSpecPack = specPack && typeof specPack === "object" ? specPack : {};
+  const sectionSpecs = nextSpecPack.section_specs && typeof nextSpecPack.section_specs === "object" ? nextSpecPack.section_specs : {};
+  let patchedRootSections = 0;
+  for (const [kind, entry] of Object.entries(sectionSpecs)) {
+    if (!entry || typeof entry !== "object") continue;
+    if (!entry.defaults || typeof entry.defaults !== "object") continue;
+    entry.defaults = applyDesignSystemPatchToDefaults({ kind, defaults: entry.defaults, profile });
+    patchedRootSections += 1;
+  }
+  const pageSpecs = Array.isArray(nextSpecPack?.page_specs) ? nextSpecPack.page_specs : [];
+  let patchedPageSections = 0;
+  for (const page of pageSpecs) {
+    const pageSectionSpecs = page?.section_specs && typeof page.section_specs === "object" ? page.section_specs : {};
+    for (const [kind, entry] of Object.entries(pageSectionSpecs)) {
+      if (!entry || typeof entry !== "object") continue;
+      if (!entry.defaults || typeof entry.defaults !== "object") continue;
+      entry.defaults = applyDesignSystemPatchToDefaults({ kind, defaults: entry.defaults, profile });
+      patchedPageSections += 1;
+    }
+  }
+  const themeColors = dedupeUrls(
+    [
+      ...(Array.isArray(nextSpecPack?.site_theme_colors) ? nextSpecPack.site_theme_colors : []),
+      ...Object.values(profile?.themeTokens || {}),
+    ],
+    12
+  );
+  if (themeColors.length) nextSpecPack.site_theme_colors = themeColors;
+  const siteDesignSystem = {
+    profileId: profile.id,
+    profileLabel: profile.label,
+    applied: true,
+    layout: profile.layout || {},
+    themeTokens: profile.themeTokens || {},
+    blockVariantMapping: profile.blockVariantMapping || {},
+    patchedRootSections,
+    patchedPageSections,
+  };
+  nextSpecPack.site_design_system = siteDesignSystem;
+  return {
+    specPack: nextSpecPack,
+    siteDesignSystem,
+  };
+};
+
+const normalizeIntakeReview = (value = null) => {
+  if (!value || typeof value !== "object") return null;
+  const selectedPaths = Array.isArray(value?.selectedPaths)
+    ? value.selectedPaths
+    : Array.isArray(value?.selected_paths)
+      ? value.selected_paths
+      : [];
+  const excludedPaths = Array.isArray(value?.excludedPaths)
+    ? value.excludedPaths
+    : Array.isArray(value?.excluded_paths)
+      ? value.excluded_paths
+      : [];
+  const representativePaths = Array.isArray(value?.representativePaths)
+    ? value.representativePaths
+    : Array.isArray(value?.representative_paths)
+      ? value.representative_paths
+      : [];
+  const typeOverridesRaw =
+    (value?.pageTypeOverrides && typeof value.pageTypeOverrides === "object" ? value.pageTypeOverrides : null) ||
+    (value?.page_type_overrides && typeof value.page_type_overrides === "object" ? value.page_type_overrides : null) ||
+    {};
+
+  const normalizePathList = (rows) =>
+    Array.from(
+      new Set(
+        (Array.isArray(rows) ? rows : [])
+          .map((item) => normalizeTemplatePagePath(String(item || "")))
+          .filter(Boolean)
+      )
+    );
+  const pageTypeOverrides = {};
+  for (const [rawPath, rawType] of Object.entries(typeOverridesRaw)) {
+    const pathKey = normalizeTemplatePagePath(rawPath);
+    const typeToken = String(rawType || "").trim().toLowerCase();
+    if (!pathKey || !typeToken) continue;
+    pageTypeOverrides[pathKey] = typeToken;
+  }
+  return {
+    selectedPaths: normalizePathList(selectedPaths),
+    excludedPaths: normalizePathList(excludedPaths),
+    representativePaths: normalizePathList(representativePaths),
+    pageTypeOverrides,
+    reviewedBy: String(value?.reviewedBy || value?.reviewed_by || "").trim(),
+    notes: String(value?.notes || "").trim(),
+  };
+};
+
+const normalizeIntakeReviewType = (value) => {
+  const token = String(value || "").trim().toLowerCase();
+  if (!token) return "";
+  if (TAXONOMY_TYPE_SET.has(token)) return token;
+  if (token === "services_solutions" || token === "product_overview") return "product_service_list";
+  if (token === "product_detail" || token === "case_study") return "detail";
+  if (token === "news_blog") return "blog_list";
+  if (token === "generic" || token === "careers") return "detail";
+  return "";
+};
+
+const applyIntakeReviewToPages = ({ pages = [], review = null } = {}) => {
+  const normalizedReview = normalizeIntakeReview(review);
+  if (!normalizedReview) {
+    return {
+      pages: Array.isArray(pages) ? pages : [],
+      report: {
+        applied: false,
+        selectedCount: Array.isArray(pages) ? pages.length : 0,
+        droppedCount: 0,
+        overriddenTypes: 0,
+        representativeCount: 0,
+        reviewedBy: "",
+        notes: "",
+      },
+    };
+  }
+  const selectedSet = new Set(normalizedReview.selectedPaths || []);
+  const excludedSet = new Set(normalizedReview.excludedPaths || []);
+  const representativeSet = new Set(normalizedReview.representativePaths || []);
+  const explicitSelection = selectedSet.size > 0;
+  let overriddenTypes = 0;
+  let representativeCount = 0;
+  const selected = [];
+  const dropped = [];
+  for (const rawPage of Array.isArray(pages) ? pages : []) {
+    const page = rawPage && typeof rawPage === "object" ? { ...rawPage } : null;
+    if (!page) continue;
+    const pagePath = normalizeTemplatePagePath(page?.path || "/");
+    if (pagePath !== "/" && excludedSet.has(pagePath)) {
+      dropped.push({ path: pagePath, reason: "excluded_by_intake_review" });
+      continue;
+    }
+    if (pagePath !== "/" && explicitSelection && !selectedSet.has(pagePath)) {
+      dropped.push({ path: pagePath, reason: "not_selected_by_intake_review" });
+      continue;
+    }
+    const override = normalizeIntakeReviewType(normalizedReview?.pageTypeOverrides?.[pagePath] || "");
+    if (override && page.taxonomy_type !== override) {
+      page.taxonomy_type = override;
+      overriddenTypes += 1;
+    }
+    if (representativeSet.has(pagePath)) {
+      page.forceInclude = true;
+      page.taxonomy_representative_score = Math.max(999, Number(page?.taxonomy_representative_score || 0));
+      representativeCount += 1;
+    }
+    selected.push(page);
+  }
+  return {
+    pages: selected,
+    report: {
+      applied: true,
+      selectedCount: selected.length,
+      droppedCount: dropped.length,
+      overriddenTypes,
+      representativeCount,
+      reviewedBy: normalizedReview.reviewedBy,
+      notes: normalizedReview.notes,
+      dropped,
+    },
+  };
+};
+
+const clampUnitValue = (value, fallback = 0) => {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return fallback;
+  if (n <= 0) return 0;
+  if (n >= 1) return 1;
+  return n;
+};
+
+const buildDiscoveredPagesRows = ({ pages = [], selectedPages = [] } = {}) => {
+  const selectedPathSet = new Set(
+    (Array.isArray(selectedPages) ? selectedPages : []).map((page) => normalizeTemplatePagePath(page?.path || "/"))
+  );
+  const representScores = (Array.isArray(pages) ? pages : []).map((page) => Number(page?.taxonomy_representative_score || 0));
+  const maxRepresentativeScore = representScores.length ? Math.max(...representScores, 1) : 1;
+  return (Array.isArray(pages) ? pages : []).map((page) => {
+    const pathValue = normalizeTemplatePagePath(page?.path || "/");
+    const requiredCategoryCount = Array.isArray(page?.required_categories) ? page.required_categories.length : 0;
+    const confidence = clampUnitValue(Number(page?.taxonomy_confidence || 0), 0.5);
+    const representativeness = clampUnitValue(Number(page?.taxonomy_representative_score || 0) / maxRepresentativeScore, confidence);
+    const layoutStability = clampUnitValue((requiredCategoryCount + 2) / 10, 0.5);
+    const titleLowQuality = isLowQualityPageTitle(page?.name || "");
+    const contentNoise = clampUnitValue(titleLowQuality ? 0.8 : 0.1 + Math.max(0, 3 - requiredCategoryCount) * 0.1, 0.2);
+    return {
+      path: pathValue,
+      pageType: String(page?.taxonomy_type || classifyTemplatePageType(pathValue, String(page?.name || ""))).trim(),
+      confidence: Number(confidence.toFixed(2)),
+      representativeness: Number(representativeness.toFixed(2)),
+      layoutStability: Number(layoutStability.toFixed(2)),
+      contentNoise: Number(contentNoise.toFixed(2)),
+      selected: selectedPathSet.has(pathValue),
+      forceInclude: Boolean(page?.forceInclude),
+    };
+  });
+};
+
+const resolveTemplatePageKinds = ({ pageType, recipe, summary = null }) => {
   const availableKinds = new Set(Object.keys(recipe?.sectionSpecs || {}));
   const fallbackKinds = (Array.isArray(recipe?.requiredCategories) ? recipe.requiredCategories : []).filter((kind) =>
     availableKinds.has(kind)
   );
   const preset = Array.isArray(SITE_PAGE_KIND_PRESETS[pageType]) ? SITE_PAGE_KIND_PRESETS[pageType] : SITE_PAGE_KIND_PRESETS.generic;
-  const kinds = preset.filter((kind) => availableKinds.has(kind));
-  if (kinds.length) return unique(kinds);
-  if (fallbackKinds.length) return unique(fallbackKinds);
+  const presetKinds = preset.filter((kind) => availableKinds.has(kind));
+  let resolvedKinds = [];
+  if (presetKinds.length) {
+    resolvedKinds = unique(presetKinds);
+  } else if (fallbackKinds.length) {
+    resolvedKinds = unique(fallbackKinds);
+  } else {
+    const minimal = ["navigation", "hero", "footer"].filter((kind) => availableKinds.has(kind));
+    resolvedKinds = minimal.length ? minimal : Array.from(availableKinds).slice(0, 4);
+  }
+  if (pageType === "home") {
+    resolvedKinds = inferHomeRequiredKindsFromSummary({
+      summary,
+      fallbackKinds: resolvedKinds,
+    }).filter((kind) => availableKinds.has(kind));
+  }
+  if (resolvedKinds.length) return unique(resolvedKinds);
   const minimal = ["navigation", "hero", "footer"].filter((kind) => availableKinds.has(kind));
   if (minimal.length) return minimal;
   return Array.from(availableKinds).slice(0, 4);
 };
 
 const buildSitePagesFromCrawl = ({ recipe, summary, crawl, discoveryPolicy = null }) => {
-  if (!crawl?.enabled) return [];
-
   const policy =
     discoveryPolicy && typeof discoveryPolicy === "object"
       ? discoveryPolicy
@@ -5195,7 +14249,7 @@ const buildSitePagesFromCrawl = ({ recipe, summary, crawl, discoveryPolicy = nul
   const pageMap = new Map();
   const upsert = ({ pathValue, name, pageType, source, forceInclude = false, raw = "" }) => {
     const path = normalizeTemplatePagePath(pathValue);
-    const kinds = resolveTemplatePageKinds({ pageType, recipe });
+    const kinds = resolveTemplatePageKinds({ pageType, recipe, summary });
     if (!kinds.length) return;
     const forced = Boolean(forceInclude) || matchesMustIncludePolicy({ pathValue: path, name, raw, policy });
     const current = pageMap.get(path);
@@ -5224,8 +14278,7 @@ const buildSitePagesFromCrawl = ({ recipe, summary, crawl, discoveryPolicy = nul
   const homeTitleToken = slug(String(summary?.title || "").split(/[|•·]/)[0] || "");
   for (const page of crawledPages) {
     if (!page || page.error) continue;
-    const status = Number(page.status || 0);
-    if (status >= 500) continue;
+    if (!isSuccessfulCrawlStatus(page.status)) continue;
     let pagePath = "/";
     try {
       const parsed = new URL(String(page.url || "").trim());
@@ -5234,6 +14287,7 @@ const buildSitePagesFromCrawl = ({ recipe, summary, crawl, discoveryPolicy = nul
       continue;
     }
     const title = String(page.title || "").trim();
+    if (pagePath !== "/" && isLowQualityPageTitle(title)) continue;
     const titleParts = splitTitleCandidates(title);
     const titleSeed =
       titleParts.find((part) => {
@@ -5245,7 +14299,7 @@ const buildSitePagesFromCrawl = ({ recipe, summary, crawl, discoveryPolicy = nul
     const pageType = classifyTemplatePageType(pagePath, title);
     upsert({
       pathValue: pagePath,
-      name: titleSeed || formatTemplatePageName(pagePath),
+      name: !isLowQualityPageTitle(titleSeed) ? titleSeed : formatTemplatePageName(pagePath),
       pageType,
       source: "crawl",
       raw: page.url,
@@ -5273,7 +14327,7 @@ const buildSitePagesFromCrawl = ({ recipe, summary, crawl, discoveryPolicy = nul
     });
   }
 
-  const summaryLinks = Array.isArray(summary?.links) ? summary.links : [];
+  const summaryLinks = Array.isArray(summary?.linkHrefs) ? summary.linkHrefs : [];
   for (const rawLink of summaryLinks.slice(0, maxDiscoverySeedScan)) {
     const raw = String(rawLink || "").trim();
     if (!raw || raw.startsWith("#") || raw.startsWith("mailto:") || raw.startsWith("tel:")) continue;
@@ -5301,19 +14355,65 @@ const buildSitePagesFromCrawl = ({ recipe, summary, crawl, discoveryPolicy = nul
     });
   }
 
+  const summaryFooterLinks = Array.isArray(summary?.footerLinks) ? summary.footerLinks : [];
+  for (const footerLink of summaryFooterLinks.slice(0, maxDiscoverySeedScan)) {
+    const rawHref = String(footerLink?.href || "").trim();
+    if (!rawHref || rawHref.startsWith("#")) continue;
+    let pagePath = "";
+    if (rawHref.startsWith("/")) {
+      pagePath = normalizeTemplatePagePath(rawHref);
+    } else if (/^https?:\/\//i.test(rawHref)) {
+      try {
+        pagePath = normalizeTemplatePagePath(new URL(rawHref).pathname || "/");
+      } catch {
+        pagePath = "";
+      }
+    }
+    if (!pagePath) continue;
+    if (pageMap.has(pagePath)) continue;
+    upsert({
+      pathValue: pagePath,
+      name: String(footerLink?.label || "").trim() || formatTemplatePageName(pagePath),
+      pageType: classifyTemplatePageType(pagePath, ""),
+      source: "summary_footer_links",
+      forceInclude: true,
+      raw: rawHref,
+    });
+  }
+
   if (pageMap.size <= 1) {
     upsert({ pathValue: "/about", name: "About", pageType: "about", source: "default" });
     upsert({ pathValue: "/services", name: "Services", pageType: "services", source: "default" });
     upsert({ pathValue: "/contact", name: "Contact", pageType: "contact", source: "default" });
   }
+  const hasContactLikePage = Array.from(pageMap.values()).some((entry) => {
+    const pathValue = normalizeTemplatePagePath(entry?.path || "/");
+    return classifyTemplatePageType(pathValue, String(entry?.name || "")) === "contact";
+  });
+  if (!hasContactLikePage) {
+    upsert({ pathValue: "/contact", name: "Contact", pageType: "contact", source: "default_fallback" });
+  }
 
   const orderedPaths = ["/", "/about", "/services", "/products", "/contact", "/blog"];
+  const sourcePriority = (source) => {
+    const token = String(source || "").trim().toLowerCase();
+    if (token === "crawl") return 0;
+    if (token === "summary_footer_links") return 1;
+    if (token === "summary_links") return 2;
+    if (token === "crawl_discovered") return 3;
+    if (token === "default_fallback") return 4;
+    if (token === "default") return 5;
+    return 6;
+  };
   const pages = Array.from(pageMap.values()).sort((a, b) => {
     const ai = orderedPaths.indexOf(a.path);
     const bi = orderedPaths.indexOf(b.path);
     if (ai >= 0 && bi >= 0) return ai - bi;
     if (ai >= 0) return -1;
     if (bi >= 0) return 1;
+    const as = sourcePriority(a?.source);
+    const bs = sourcePriority(b?.source);
+    if (as !== bs) return as - bs;
     return a.path.localeCompare(b.path);
   });
 
@@ -5324,12 +14424,47 @@ const buildSitePagesFromCrawl = ({ recipe, summary, crawl, discoveryPolicy = nul
     selectedPaths.add(entry.path);
     selected.push(entry);
   };
+  const classifyCoverageRole = (entry) => {
+    const pathValue = normalizeTemplatePagePath(entry?.path || "/");
+    if (pathValue === "/") return "home";
+    const pageType = classifyTemplatePageType(pathValue, String(entry?.name || ""));
+    if (pageType === "contact") return "contact";
+    if (pageType === "products" || pageType === "services" || pageType === "blog") return "listing";
+    const depth = pathValue.split("/").filter(Boolean).length;
+    if (
+      /\/(products?|collections?|shop|store|blog|blogs|news|insights?|resources?|stories?|articles?|case[-_]studies?)\/[^/]+/.test(
+        pathValue
+      ) ||
+      depth >= 3
+    ) {
+      return "detail";
+    }
+    return "generic";
+  };
 
   for (const p of orderedPaths) {
     const found = pages.find((entry) => entry.path === p);
     if (found) pushPage(found);
   }
   for (const page of pages.filter((entry) => entry.forceInclude)) pushPage(page);
+  for (const role of ["home", "listing", "detail", "contact"]) {
+    const found = pages.find((entry) => classifyCoverageRole(entry) === role);
+    if (found) pushPage(found);
+  }
+  const productDetailCandidates = pages.filter((entry) =>
+    /^\/products?\/[^/]+(?:\/|$)/.test(normalizeTemplatePagePath(entry.path))
+  );
+  const priorityPages = [
+    ...productDetailCandidates.slice(0, 2),
+    pages.find((entry) => /^\/collections?\/[^/]+(?:\/|$)/.test(normalizeTemplatePagePath(entry.path))),
+    pages.find((entry) => {
+      const pathValue = normalizeTemplatePagePath(entry.path);
+      const token = `${pathValue} ${String(entry?.name || "")}`.toLowerCase();
+      return /(^\/pages\/support(?:\/|$))|contact|support|help/.test(token);
+    }),
+    pages.find((entry) => /^\/blogs?\/[^/]+\/[^/]+/.test(normalizeTemplatePagePath(entry.path))),
+  ].filter(Boolean);
+  for (const page of priorityPages) pushPage(page);
   for (const page of pages) {
     if (selected.length >= maxDiscoveredPages && !page.forceInclude) continue;
     pushPage(page);
@@ -5353,7 +14488,39 @@ const stripLocalePrefix = (pathValue) => {
   return stripped || "/";
 };
 
-const buildRouteAliasMap = (sitePages = []) => {
+const buildSourceToTargetPathMap = ({ sourcePages = [], targetPages = [] }) => {
+  const targetSet = new Set(
+    (Array.isArray(targetPages) ? targetPages : [])
+      .map((page) => normalizeTemplatePagePath(page?.path || "/"))
+      .filter(Boolean)
+  );
+  if (!targetSet.size) targetSet.add("/");
+  const targetByType = new Map();
+  for (const page of Array.isArray(targetPages) ? targetPages : []) {
+    const path = normalizeTemplatePagePath(page?.path || "/");
+    const pageType = classifyTemplatePageType(path, String(page?.name || ""));
+    if (!targetByType.has(pageType)) {
+      targetByType.set(pageType, path);
+    }
+  }
+  const fallbackPath =
+    Array.from(targetSet).find((path) => path !== "/") || "/";
+  const pathMap = new Map();
+  for (const page of Array.isArray(sourcePages) ? sourcePages : []) {
+    const sourcePath = normalizeTemplatePagePath(page?.path || "/");
+    if (targetSet.has(sourcePath)) {
+      pathMap.set(sourcePath, sourcePath);
+      continue;
+    }
+    const pageType = classifyTemplatePageType(sourcePath, String(page?.name || ""));
+    const targetPath = targetByType.get(pageType) || fallbackPath || "/";
+    pathMap.set(sourcePath, targetPath);
+  }
+  pathMap.set("/", targetSet.has("/") ? "/" : fallbackPath || "/");
+  return pathMap;
+};
+
+const buildRouteAliasMap = (sitePages = [], pathRedirectMap = null) => {
   const aliasMap = new Map();
   const setAlias = (token, routePath) => {
     const normalizedToken = slug(String(token || ""));
@@ -5367,7 +14534,10 @@ const buildRouteAliasMap = (sitePages = []) => {
   setAlias("top", "/");
 
   for (const page of Array.isArray(sitePages) ? sitePages : []) {
-    const routePath = normalizeTemplatePagePath(page?.path || "/");
+    const sourcePath = normalizeTemplatePagePath(page?.path || "/");
+    const routePath = pathRedirectMap instanceof Map
+      ? normalizeTemplatePagePath(pathRedirectMap.get(sourcePath) || sourcePath)
+      : sourcePath;
     const routePathLocaleLess = stripLocalePrefix(routePath);
     const name = String(page?.name || "").trim();
     const leaf = routePath.split("/").filter(Boolean).pop() || "";
@@ -5383,20 +14553,109 @@ const buildRouteAliasMap = (sitePages = []) => {
   return aliasMap;
 };
 
+const pickDefaultInternalPath = (sitePages = [], currentPath = "/") => {
+  const normalizedCurrent = normalizeTemplatePagePath(currentPath || "/");
+  const pages = (Array.isArray(sitePages) ? sitePages : [])
+    .map((page) => normalizeTemplatePagePath(page?.path || "/"))
+    .filter(Boolean);
+  const unique = Array.from(new Set(pages));
+  const contactLike = unique.find((pathValue) => classifyTemplatePageType(pathValue, "") === "contact");
+  if (contactLike) return contactLike;
+  const firstNonRoot = unique.find((pathValue) => pathValue !== "/" && pathValue !== normalizedCurrent);
+  if (firstNonRoot) return firstNonRoot;
+  return normalizedCurrent || "/";
+};
+
+const pickSemanticFallbackRoute = (pathValue, routeContext = {}) => {
+  const availableSet = routeContext?.availablePaths instanceof Set ? routeContext.availablePaths : new Set(["/"]);
+  const available = Array.from(availableSet)
+    .map((item) => normalizeTemplatePagePath(item))
+    .filter((item) => item && item !== "/");
+  if (!available.length) return "";
+  const normalizedPath = normalizeTemplatePagePath(pathValue || "/");
+  const pageType = classifyTemplatePageType(normalizedPath, "");
+  const depth = normalizedPath.split("/").filter(Boolean).length;
+  const pickBy = (predicate) => available.find((routePath) => predicate(normalizeTemplatePagePath(routePath)));
+
+  if (pageType === "legal") {
+    const legal = pickBy((routePath) => classifyTemplatePageType(routePath, "") === "legal");
+    if (legal) return legal;
+  }
+  if (pageType === "contact") {
+    const contact = pickBy((routePath) => classifyTemplatePageType(routePath, "") === "contact");
+    if (contact) return contact;
+  }
+  if (pageType === "products") {
+    if (depth >= 2) {
+      const detail =
+        pickBy((routePath) => /^\/products\/[^/]+(?:\/|$)/.test(routePath)) ||
+        pickBy((routePath) => /^\/collections\/[^/]+\/products\/[^/]+(?:\/|$)/.test(routePath));
+      if (detail) return detail;
+    }
+    const listing =
+      pickBy((routePath) => /^\/collections(?:\/|$)/.test(routePath)) ||
+      pickBy((routePath) => /^\/products(?:\/|$)/.test(routePath));
+    if (listing) return listing;
+  }
+  if (pageType === "blog") {
+    if (depth >= 3) {
+      const detail = pickBy((routePath) => /^\/blogs\/[^/]+\/[^/]+/.test(routePath));
+      if (detail) return detail;
+    }
+    const listing = pickBy((routePath) => /^\/blogs(?:\/|$)/.test(routePath));
+    if (listing) return listing;
+  }
+  if (pageType === "services" || pageType === "about" || pageType === "careers") {
+    const typed = pickBy((routePath) => classifyTemplatePageType(routePath, "") === pageType);
+    if (typed) return typed;
+  }
+  return normalizeTemplatePagePath(routeContext?.defaultInternalPath || "");
+};
+
+const findClosestKnownRoutePath = (pathValue, routeContext = {}) => {
+  const normalizedPath = normalizeTemplatePagePath(pathValue || "/");
+  const available = routeContext?.availablePaths instanceof Set ? routeContext.availablePaths : new Set(["/"]);
+  if (available.has(normalizedPath)) return normalizedPath;
+  const localeLess = stripLocalePrefix(normalizedPath);
+  if (available.has(localeLess)) return localeLess;
+  const segments = localeLess.split("/").filter(Boolean);
+  while (segments.length > 0) {
+    const candidate = `/${segments.join("/")}`;
+    if (available.has(candidate)) return candidate;
+    segments.pop();
+  }
+  const semanticFallback = pickSemanticFallbackRoute(normalizedPath, routeContext);
+  if (semanticFallback && available.has(semanticFallback)) return semanticFallback;
+  return available.has("/") ? "/" : "";
+};
+
+const resolveDefaultInternalRoute = (routeContext = {}) => {
+  const preferred = normalizeTemplatePagePath(routeContext?.defaultInternalPath || "");
+  if (preferred && preferred !== "/") return preferred;
+  const current = normalizeTemplatePagePath(routeContext?.currentPath || "");
+  if (current && current !== "/") return current;
+  return "/";
+};
+
 const rewriteAnchorHrefToRoute = (href, aliasMap, routeContext = {}) => {
   const raw = String(href || "").trim();
   if (!raw) return href;
   if (/^(javascript:|data:)/i.test(raw)) return href;
+  const fallbackRoute = resolveDefaultInternalRoute(routeContext);
   if (raw.startsWith("#")) {
     const token = raw.slice(1).trim();
-    if (!token) return "/";
+    if (!token) return fallbackRoute;
     const lookup = slug(token);
-    return aliasMap.get(lookup) || raw;
+    return aliasMap.get(lookup) || fallbackRoute;
   }
   if (raw.startsWith("/")) {
     const normalizedPath = normalizeTemplatePagePath(raw);
     const aliased = aliasMap.get(slug(normalizedPath)) || aliasMap.get(slug(stripLocalePrefix(normalizedPath)));
-    return aliased || normalizedPath;
+    if (aliased) return aliased;
+    if (routeContext?.preserveUnmappedInternalPaths && normalizedPath !== "/") return normalizedPath;
+    const closest = findClosestKnownRoutePath(normalizedPath, routeContext) || normalizedPath;
+    if (closest === "/" && normalizedPath !== "/" && fallbackRoute !== "/") return fallbackRoute;
+    return closest;
   }
   if (/^https?:\/\//i.test(raw)) {
     try {
@@ -5406,7 +14665,11 @@ const rewriteAnchorHrefToRoute = (href, aliasMap, routeContext = {}) => {
       if (targetHost && inputHost !== targetHost) return href;
       const normalizedPath = normalizeTemplatePagePath(parsed.pathname || "/");
       const aliased = aliasMap.get(slug(normalizedPath)) || aliasMap.get(slug(stripLocalePrefix(normalizedPath)));
-      return aliased || normalizedPath;
+      if (aliased) return aliased;
+      if (routeContext?.preserveUnmappedInternalPaths && normalizedPath !== "/") return normalizedPath;
+      const closest = findClosestKnownRoutePath(normalizedPath, routeContext) || normalizedPath;
+      if (closest === "/" && normalizedPath !== "/" && fallbackRoute !== "/") return fallbackRoute;
+      return closest;
     } catch {
       return href;
     }
@@ -5446,6 +14709,8 @@ const collectHrefRowsDeep = (value, scope = "$", rows = []) => {
   return rows;
 };
 
+const isNavFooterScope = (scope) => /(?:^|\.)(?:navigation|nav|header|footer)\b/i.test(String(scope || ""));
+
 const buildLinkReport = ({ site = {}, specPack = {}, sitePages = [] }) => {
   const siteHost = (() => {
     try {
@@ -5482,27 +14747,47 @@ const buildLinkReport = ({ site = {}, specPack = {}, sitePages = [] }) => {
   let internalValid = 0;
   let internalMissing = 0;
   let externalTotal = 0;
+  let navFooterTotal = 0;
+  let navFooterInternalTotal = 0;
+  let navFooterInternalValid = 0;
+  let navFooterInternalMissing = 0;
+  let navFooterEmpty = 0;
+  let navFooterInvalidScheme = 0;
+  const internalPathFrequency = new Map();
+  const navFooterPathFrequency = new Map();
 
   for (const row of rows) {
+    const navFooterScope = isNavFooterScope(row.scope);
+    if (navFooterScope) navFooterTotal += 1;
     const href = String(row.href || "").trim();
     if (!href) {
       empty += 1;
+      if (navFooterScope) navFooterEmpty += 1;
       problems.push({ type: "empty", scope: row.scope, href });
       continue;
     }
     if (/^(javascript:|data:)/i.test(href)) {
       invalidScheme += 1;
+      if (navFooterScope) navFooterInvalidScheme += 1;
       problems.push({ type: "invalid_scheme", scope: row.scope, href });
       continue;
     }
     if (href.startsWith("#")) continue;
     if (href.startsWith("/")) {
       internalTotal += 1;
+      if (navFooterScope) navFooterInternalTotal += 1;
       const normalized = normalizeTemplatePagePath(href);
       const valid = routePathSet.has(normalized) || routePathSet.has(stripLocalePrefix(normalized));
-      if (valid) internalValid += 1;
-      else {
+      if (valid) {
+        internalValid += 1;
+        if (navFooterScope) navFooterInternalValid += 1;
+        internalPathFrequency.set(normalized, Number(internalPathFrequency.get(normalized) || 0) + 1);
+        if (navFooterScope) {
+          navFooterPathFrequency.set(normalized, Number(navFooterPathFrequency.get(normalized) || 0) + 1);
+        }
+      } else {
         internalMissing += 1;
+        if (navFooterScope) navFooterInternalMissing += 1;
         problems.push({ type: "internal_missing", scope: row.scope, href: normalized });
       }
       continue;
@@ -5513,11 +14798,19 @@ const buildLinkReport = ({ site = {}, specPack = {}, sitePages = [] }) => {
         const host = parsed.host.toLowerCase();
         if (siteHost && host === siteHost) {
           internalTotal += 1;
+          if (navFooterScope) navFooterInternalTotal += 1;
           const normalized = normalizeTemplatePagePath(parsed.pathname || "/");
           const valid = routePathSet.has(normalized) || routePathSet.has(stripLocalePrefix(normalized));
-          if (valid) internalValid += 1;
-          else {
+          if (valid) {
+            internalValid += 1;
+            if (navFooterScope) navFooterInternalValid += 1;
+            internalPathFrequency.set(normalized, Number(internalPathFrequency.get(normalized) || 0) + 1);
+            if (navFooterScope) {
+              navFooterPathFrequency.set(normalized, Number(navFooterPathFrequency.get(normalized) || 0) + 1);
+            }
+          } else {
             internalMissing += 1;
+            if (navFooterScope) navFooterInternalMissing += 1;
             problems.push({ type: "internal_missing", scope: row.scope, href: normalized });
           }
         } else {
@@ -5531,6 +14824,26 @@ const buildLinkReport = ({ site = {}, specPack = {}, sitePages = [] }) => {
     externalTotal += 1;
   }
 
+  const uniqueInternalPaths = internalPathFrequency.size;
+  const uniqueNavFooterInternalPaths = navFooterPathFrequency.size;
+  const rootPathHits = Number(internalPathFrequency.get("/") || 0);
+  const rootPathShare = internalValid > 0 ? Number((rootPathHits / internalValid).toFixed(4)) : 0;
+  const semanticCoveragePassed =
+    (internalValid < 6 || uniqueInternalPaths >= 4) &&
+    (navFooterInternalValid < 6 || uniqueNavFooterInternalPaths >= 3) &&
+    (internalValid < 6 || rootPathShare <= 0.6);
+  if (!semanticCoveragePassed) {
+    problems.push({
+      type: "semantic_link_degradation",
+      detail: {
+        uniqueInternalPaths,
+        uniqueNavFooterInternalPaths,
+        rootPathHits,
+        rootPathShare,
+      },
+    });
+  }
+
   const stats = {
     totalLinks: rows.length,
     internalTotal,
@@ -5540,7 +14853,27 @@ const buildLinkReport = ({ site = {}, specPack = {}, sitePages = [] }) => {
     externalTotal,
     empty,
     invalidScheme,
-    passed: internalMissing === 0 && empty === 0 && invalidScheme === 0,
+    navFooterTotal,
+    navFooterInternalTotal,
+    navFooterInternalValid,
+    navFooterInternalMissing,
+    navFooterEmpty,
+    navFooterInvalidScheme,
+    uniqueInternalPaths,
+    uniqueNavFooterInternalPaths,
+    rootPathHits,
+    rootPathShare,
+    semanticCoveragePassed,
+    navFooterInternalSuccessRate:
+      navFooterInternalTotal + navFooterEmpty + navFooterInvalidScheme > 0
+        ? Number(
+            (
+              (navFooterInternalValid / (navFooterInternalTotal + navFooterEmpty + navFooterInvalidScheme)) *
+              100
+            ).toFixed(2)
+          )
+        : 100,
+    passed: internalMissing === 0 && empty === 0 && invalidScheme === 0 && semanticCoveragePassed,
   };
 
   return {
@@ -5556,7 +14889,26 @@ const normalizeSectionKind = (value) => {
   const token = String(value || "")
     .trim()
     .toLowerCase();
-  return SECTION_KINDS.includes(token) ? token : null;
+  if (SECTION_KINDS.includes(token)) return token;
+  const compact = token.replace(/[_\s]+/g, "-");
+  if (/^(nav|navbar|menu|header|top|top-nav|masthead)$/.test(compact)) return "navigation";
+  if (/^(footer|foot|bottom|site-footer)$/.test(compact)) return "footer";
+  if (/^(hero|banner|showcase|cover)$/.test(compact)) return "hero";
+  if (/^(approach|feature|features|capability|capabilities)$/.test(compact)) return "approach";
+  if (/^(story|about|content|article)$/.test(compact)) return "story";
+  if (/^(products|product|catalog|collection|collections)$/.test(compact)) return "products";
+  if (/^(socialproof|social-proof|testimonial|testimonials|proof)$/.test(compact)) return "socialproof";
+  if (/^(cta|call-to-action|calltoaction)$/.test(compact)) return "cta";
+  if (/^(contact|support|help)$/.test(compact)) return "contact";
+  if (compact.includes("footer")) return "footer";
+  if (compact.includes("nav")) return "navigation";
+  if (compact.includes("hero")) return "hero";
+  if (compact.includes("social")) return "socialproof";
+  if (compact.includes("product") || compact.includes("catalog")) return "products";
+  if (compact.includes("cta") || compact.includes("call-to-action") || compact.includes("calltoaction")) return "cta";
+  const inferred = inferSectionKindFromTokens(compact);
+  if (inferred) return inferred;
+  return null;
 };
 
 const normalizeRequiredCategories = (value) =>
@@ -5757,6 +15109,10 @@ const buildSyntheticPageSummary = (page, globalSummary) => {
   const pageName = String(page?.name || "").trim() || formatTemplatePageName(page?.path || "/");
   const globalTitle = String(globalSummary?.title || "").split(/[|•·]/)[0].trim();
   const brandName = globalTitle || "Site";
+  const inheritedThemeColors = dedupeUrls(
+    Array.isArray(globalSummary?.themeColors) ? globalSummary.themeColors.map((item) => normalizeColorToken(item)) : [],
+    12
+  ).filter(Boolean);
   return {
     ...globalSummary,
     title: `${pageName} | ${brandName}`,
@@ -5766,9 +15122,490 @@ const buildSyntheticPageSummary = (page, globalSummary) => {
       `Learn more about ${pageName}`,
       `${pageName} overview`,
     ],
+    themeColors: inheritedThemeColors,
     // Keep global images/footerLinks/navMenuDepth for layout consistency
     heroPresentation: normalizeHeroPresentation({ mode: "split", hasHeading: true, hasForegroundImage: false, hasBackgroundImage: false }),
     heroCarousel: normalizeHeroCarousel(null),
+  };
+};
+
+const mergePageSummarySignals = ({ globalSummary = {}, pageSummary = null, pagePath = "/", pageName = "" }) => {
+  const page = pageSummary && typeof pageSummary === "object" ? pageSummary : {};
+  const normalizedPath = normalizeTemplatePagePath(pagePath || "/");
+  const isHomePath = normalizedPath === "/";
+  const fallbackTitle = String(pageName || "").trim() || formatTemplatePageName(normalizedPath);
+  const orderedH1 = isHomePath
+    ? [
+        ...(Array.isArray(globalSummary?.h1) ? globalSummary.h1 : []),
+        ...(Array.isArray(page?.h1) ? page.h1 : []),
+      ]
+    : [
+        ...(Array.isArray(page?.h1) ? page.h1 : []),
+        ...(Array.isArray(globalSummary?.h1) ? globalSummary.h1 : []),
+      ];
+  const orderedH2 = isHomePath
+    ? [
+        ...(Array.isArray(globalSummary?.h2) ? globalSummary.h2 : []),
+        ...(Array.isArray(page?.h2) ? page.h2 : []),
+      ]
+    : [
+        ...(Array.isArray(page?.h2) ? page.h2 : []),
+        ...(Array.isArray(globalSummary?.h2) ? globalSummary.h2 : []),
+      ];
+  const orderedLinks = isHomePath
+    ? [
+        ...(Array.isArray(globalSummary?.links) ? globalSummary.links : []),
+        ...(Array.isArray(page?.links) ? page.links : []),
+      ]
+    : [
+        ...(Array.isArray(page?.links) ? page.links : []),
+        ...(Array.isArray(globalSummary?.links) ? globalSummary.links : []),
+      ];
+  const mergedH1 = dedupeTextValues(
+    orderedH1,
+    12
+  );
+  const mergedH2 = dedupeTextValues(
+    orderedH2,
+    16
+  );
+  const mergedLinks = dedupeTextValues(
+    orderedLinks,
+    40,
+    { allowSingleWord: true }
+  );
+  const mergedImages = dedupeUrls(
+    [
+      ...(Array.isArray(globalSummary?.images) ? globalSummary.images : []),
+      ...(Array.isArray(page?.images) ? page.images : []),
+    ],
+    80
+  );
+  const mergedFooterLinks = dedupeLinkItems(
+    [
+      ...(Array.isArray(globalSummary?.footerLinks) ? globalSummary.footerLinks : []),
+      ...(Array.isArray(page?.footerLinks) ? page.footerLinks : []),
+    ],
+    24
+  );
+  const pageHero = normalizeHeroPresentation(page?.heroPresentation);
+  const globalHero = normalizeHeroPresentation(globalSummary?.heroPresentation);
+  const heroPresentation = pageHero.mode !== "unknown" ? pageHero : globalHero;
+  const heroCarousel = mergeHeroCarouselSignals([globalSummary?.heroCarousel, page?.heroCarousel]);
+  const navMenuDepth = Math.max(Number(globalSummary?.navMenuDepth || 1), Number(page?.navMenuDepth || 1));
+  const themeColors = dedupeUrls(
+    [
+      ...(Array.isArray(page?.themeColors) ? page.themeColors : []),
+      ...(Array.isArray(globalSummary?.themeColors) ? globalSummary.themeColors : []),
+      ...(Array.isArray(page?.visualSignature?.dominantColors) ? page.visualSignature.dominantColors : []),
+    ]
+      .map((entry) => normalizeColorToken(entry))
+      .filter(Boolean),
+    20
+  );
+  const mergedTitle = isLowQualityTextSignal(page?.title || "", { allowSingleWord: true })
+    ? String(globalSummary?.title || "").trim()
+    : String(page?.title || "").trim();
+  return {
+    ...globalSummary,
+    ...page,
+    title: mergedTitle || String(globalSummary?.title || "").trim() || fallbackTitle,
+    h1: mergedH1.length ? mergedH1 : [fallbackTitle],
+    h2: mergedH2.length
+      ? mergedH2
+      : normalizedPath === "/"
+        ? []
+        : [`Explore ${fallbackTitle} solutions`, `Learn more about ${fallbackTitle}`],
+    links: mergedLinks,
+    images: mergedImages,
+    ...(themeColors.length ? { themeColors } : {}),
+    footerLinks: mergedFooterLinks,
+    navMenuDepth,
+    heroPresentation,
+    heroCarousel,
+  };
+};
+
+const PAGE_SPEC_SAMPLE_TYPE_ALIASES = Object.freeze({
+  product: "products",
+  products: "products",
+  shop: "products",
+  store: "products",
+  collection: "products",
+  collections: "products",
+  blog: "blog",
+  blogs: "blog",
+  article: "blog",
+  articles: "blog",
+  news: "blog",
+  insight: "blog",
+  insights: "blog",
+});
+
+const normalizePageSpecSampleType = (value) => {
+  const token = String(value || "")
+    .trim()
+    .toLowerCase();
+  if (!token) return "";
+  return PAGE_SPEC_SAMPLE_TYPE_ALIASES[token] || token;
+};
+
+const normalizePageSpecSampleLimits = ({ input = null, base = {} } = {}) => {
+  const out = {};
+  for (const [rawType, rawLimit] of Object.entries(base || {})) {
+    const type = normalizePageSpecSampleType(rawType);
+    const limit = parsePositiveInt(rawLimit, 0);
+    if (!type || limit <= 0) continue;
+    out[type] = limit;
+  }
+  if (!isObjectRecord(input)) return out;
+  for (const [rawType, rawLimit] of Object.entries(input)) {
+    const type = normalizePageSpecSampleType(rawType);
+    if (!type) continue;
+    const n = Math.floor(Number(rawLimit));
+    if (!Number.isFinite(n)) continue;
+    if (n <= 0) {
+      delete out[type];
+      continue;
+    }
+    out[type] = n;
+  }
+  return out;
+};
+
+const normalizeRepresentativePreference = (value, fallback = "preferDetail") => {
+  const token = String(value || "")
+    .trim()
+    .toLowerCase();
+  if (!token) return fallback;
+  if (token === "preferlisting" || token === "prefer_listing" || token === "listing" || token === "list") {
+    return "preferListing";
+  }
+  if (token === "preferdetail" || token === "prefer_detail" || token === "detail" || token === "item") {
+    return "preferDetail";
+  }
+  return fallback;
+};
+
+const normalizeRepresentativePreferences = ({ input = null, base = {} } = {}) => {
+  const out = {};
+  for (const [rawType, rawPreference] of Object.entries(base || {})) {
+    const type = normalizePageSpecSampleType(rawType);
+    if (!type) continue;
+    out[type] = normalizeRepresentativePreference(rawPreference, "preferDetail");
+  }
+  if (!input) return out;
+  if (typeof input === "string") {
+    const normalized = normalizeRepresentativePreference(input, "");
+    if (!normalized) return out;
+    for (const key of Object.keys(out)) {
+      out[key] = normalized;
+    }
+    return out;
+  }
+  if (!isObjectRecord(input)) return out;
+  for (const [rawType, rawPreference] of Object.entries(input)) {
+    const type = normalizePageSpecSampleType(rawType);
+    if (!type) continue;
+    out[type] = normalizeRepresentativePreference(rawPreference, out[type] || "preferDetail");
+  }
+  return out;
+};
+
+const resolvePageSpecSamplingPolicy = (site = {}) => {
+  const specialRules = site?.specialRules && typeof site.specialRules === "object" ? site.specialRules : {};
+  const keepAllPageSpecs = parseBool(
+    specialRules.keepAllPageSpecs ?? specialRules.keep_all_page_specs ?? false
+  );
+  const maxPageSpecs = parsePositiveInt(specialRules.maxPageSpecs ?? specialRules.max_page_specs, 0);
+  const customLimits =
+    (isObjectRecord(specialRules.pageSpecSampleLimits) && specialRules.pageSpecSampleLimits) ||
+    (isObjectRecord(specialRules.page_spec_sample_limits) && specialRules.page_spec_sample_limits) ||
+    (isObjectRecord(specialRules.pageSpecTypeSampleLimits) && specialRules.pageSpecTypeSampleLimits) ||
+    (isObjectRecord(specialRules.page_spec_type_sample_limits) && specialRules.page_spec_type_sample_limits) ||
+    null;
+  const perTypeLimits = normalizePageSpecSampleLimits({
+    input: customLimits,
+    base: keepAllPageSpecs ? {} : { products: 1, blog: 1 },
+  });
+  const preferenceInput =
+    specialRules.pageSpecRepresentativePreference ??
+    specialRules.page_spec_representative_preference ??
+    specialRules.pageSpecRepresentativePreferences ??
+    specialRules.page_spec_representative_preferences ??
+    null;
+  const representativePreferences = normalizeRepresentativePreferences({
+    input: preferenceInput,
+    base: {
+      products: "preferDetail",
+      blog: "preferListing",
+    },
+  });
+  return {
+    keepAllPageSpecs,
+    maxPageSpecs,
+    perTypeLimits,
+    representativePreferences,
+  };
+};
+
+const resolveCoverageRoleFromPageSpecEntry = (page = {}) => {
+  const pathValue = normalizeTemplatePagePath(page?.path || "/");
+  if (pathValue === "/") return "home";
+  const explicitType = String(page?.taxonomy_type || "").trim().toLowerCase();
+  if (explicitType === "product_service_list" || explicitType === "blog_list") return "listing";
+  if (explicitType === "detail" || explicitType === "blog_detail") return "detail";
+  if (explicitType === "contact" || explicitType === "help_faq") return "contact";
+  const pageType = classifyTemplatePageType(pathValue, String(page?.name || ""));
+  if (pageType === "contact") return "contact";
+  if (pageType === "products" || pageType === "services" || pageType === "blog") {
+    const depth = pathValue.split("/").filter(Boolean).length;
+    return depth >= 3 ? "detail" : "listing";
+  }
+  if (/^\/blogs?\/[^/]+\/[^/]+/.test(pathValue)) return "detail";
+  if (/^\/blogs?\/[^/]+(?:\/)?$/.test(pathValue)) return "listing";
+  return "generic";
+};
+
+const scoreRepresentativePageByType = ({ pageType, pathValue = "/", pageName = "", preference = "preferDetail" }) => {
+  const path = normalizeTemplatePagePath(pathValue || "/");
+  const depth = path.split("/").filter(Boolean).length;
+  if (path === "/") return -999;
+  let score = depth;
+  if (isLowQualityPageTitle(pageName)) score -= 220;
+  if (/[^\u0000-\u007f]/.test(String(pageName || ""))) score -= 18;
+  if (pageType === "products") {
+    const isListing =
+      /^\/(products?|collections?|shop|store)(?:\/)?$/.test(path) ||
+      /^\/collections?\/[^/]+\/?$/.test(path);
+    const isDetail =
+      /^\/products?\/[^/]+\/?$/.test(path) ||
+      /^\/collections?\/[^/]+\/products?\/[^/]+\/?$/.test(path);
+    if (/^\/(products?|collections?)(\/|$)/.test(path)) score += 120;
+    if (isDetail) score += 20;
+    if (/^\/(shop|store)(\/|$)/.test(path)) score += 80;
+    if (preference === "preferListing") {
+      if (isListing) score += 160;
+      if (isDetail) score += 25;
+    } else {
+      if (isDetail) score += 160;
+      if (isListing) score += 25;
+    }
+    if (/\/(apps?|account|customer_authentication)(\/|$)/.test(path)) score -= 220;
+    if (/register|login|auth|cart|checkout/.test(path)) score -= 120;
+    if (/filter|search/.test(path)) score -= 40;
+  } else if (pageType === "blog") {
+    const isListing =
+      /^\/blogs?(?:\/)?$/.test(path) ||
+      /^\/blogs?\/[^/]+(?:\/)?$/.test(path) ||
+      /^\/(news|insights?|resources?)(?:\/)?$/.test(path);
+    const isDetail = /^\/blogs?\/[^/]+\/[^/]+/.test(path) || /^\/(news|insights?|resources?)\/[^/]+/.test(path);
+    if (/^\/blogs?(\/|$)/.test(path)) score += 120;
+    if (/^\/(news|insights?|resources?)(\/|$)/.test(path)) score += 70;
+    if (depth >= 2) score += 15;
+    if (preference === "preferListing") {
+      if (isListing) score += 160;
+      if (isDetail) score += 25;
+    } else {
+      if (isDetail) score += 160;
+      if (isListing) score += 25;
+    }
+    if (/tag|category|author/.test(path)) score -= 25;
+  }
+  return score;
+};
+
+const pickRepresentativePathByType = ({ pages = [], perTypeLimits = {}, representativePreferences = {} }) => {
+  const result = new Map();
+  const sortedPages = [...(Array.isArray(pages) ? pages : [])].sort((a, b) => {
+    const pathA = normalizeTemplatePagePath(a?.path || "/");
+    const pathB = normalizeTemplatePagePath(b?.path || "/");
+    return pathA.localeCompare(pathB);
+  });
+  for (const [type, limit] of Object.entries(perTypeLimits || {})) {
+    if (Number(limit || 0) !== 1) continue;
+    let bestPath = "";
+    let bestScore = Number.NEGATIVE_INFINITY;
+    for (const page of sortedPages) {
+      const path = normalizeTemplatePagePath(page?.path || "/");
+      const pageType = classifyTemplatePageType(path, String(page?.name || ""));
+      if (pageType !== type) continue;
+      const score = scoreRepresentativePageByType({
+        pageType,
+        pathValue: path,
+        pageName: String(page?.name || ""),
+        preference: normalizeRepresentativePreference(representativePreferences?.[type], "preferDetail"),
+      });
+      if (score > bestScore) {
+        bestScore = score;
+        bestPath = path;
+      }
+    }
+    if (bestPath) result.set(type, bestPath);
+  }
+  return result;
+};
+
+const selectPageSpecSourcePages = ({ site, sitePages = [] }) => {
+  const pages = Array.isArray(sitePages) ? sitePages : [];
+  if (!pages.length) return { pages: [], notes: [] };
+  const policy = resolvePageSpecSamplingPolicy(site);
+  const hasPerTypeLimits = Object.keys(policy.perTypeLimits || {}).length > 0;
+  const hasTotalLimit = Number(policy.maxPageSpecs || 0) > 0;
+  if (policy.keepAllPageSpecs || (!hasPerTypeLimits && !hasTotalLimit)) {
+    return {
+      pages,
+      notes: ["Global rule: page_specs keep all discovered pages."],
+    };
+  }
+
+  const selected = [];
+  const selectedPaths = new Set();
+  const typeCounters = new Map();
+  const totalLimit = Number(policy.maxPageSpecs || 0);
+  const representativePathByType = pickRepresentativePathByType({
+    pages,
+    perTypeLimits: policy.perTypeLimits,
+    representativePreferences: policy.representativePreferences,
+  });
+  const push = (page, { allowTypeOverflow = false } = {}) => {
+    const path = normalizeTemplatePagePath(page?.path || "/");
+    if (!path || selectedPaths.has(path)) return;
+    if (totalLimit > 0 && selected.length >= totalLimit) return;
+    const pageType = classifyTemplatePageType(path, String(page?.name || ""));
+    const typeLimit = Number(policy.perTypeLimits?.[pageType] || 0);
+    if (!allowTypeOverflow && typeLimit === 1 && representativePathByType.has(pageType)) {
+      const representativePath = representativePathByType.get(pageType);
+      if (representativePath && representativePath !== path) return;
+    }
+    const used = Number(typeCounters.get(pageType) || 0);
+    if (!allowTypeOverflow && typeLimit > 0 && used >= typeLimit) return;
+    selectedPaths.add(path);
+    typeCounters.set(pageType, used + 1);
+    selected.push({ ...page, path });
+  };
+
+  for (const page of pages) push(page);
+
+  const selectedRoleSet = new Set(selected.map((page) => resolveCoverageRoleFromPageSpecEntry(page)));
+  let injectedProductListingCoverage = false;
+  const scoreRoleCandidate = (page, role) => {
+    const path = normalizeTemplatePagePath(page?.path || "/");
+    const name = String(page?.name || "");
+    const explicitType = String(page?.taxonomy_type || "").trim().toLowerCase();
+    const depth = path.split("/").filter(Boolean).length;
+    let score = depth;
+    if (!isLowQualityPageTitle(name)) score += 120;
+    if (role === "home" && path === "/") score += 500;
+    if (role === "contact") {
+      if (/contact|support|help|faq/i.test(`${path} ${name}`)) score += 200;
+    }
+    if (role === "listing") {
+      if (explicitType === "product_service_list") score += 260;
+      if (explicitType === "blog_list") score += 120;
+      if (/^\/blogs?(?:\/)?$|^\/blogs?\/[^/]+(?:\/)?$/.test(path)) score += 220;
+      if (/^\/(products?|collections?|shop|store)(?:\/)?$/.test(path) || /^\/collections?\/[^/]+(?:\/)?$/.test(path)) score += 210;
+    }
+    if (role === "detail") {
+      if (/^\/products?\/[^/]+(?:\/)?$/.test(path) || /^\/collections?\/[^/]+\/products?\/[^/]+(?:\/)?$/.test(path)) score += 220;
+      if (/^\/blogs?\/[^/]+\/[^/]+/.test(path)) score += 180;
+      if (depth >= 3) score += 80;
+    }
+    if (/\/(cart|checkout|account|login|register|customer_authentication)(\/|$)/.test(path)) score -= 320;
+    if (/\/(apps?)(\/|$)/.test(path)) score -= 120;
+    return score;
+  };
+  for (const role of ["home", "listing", "detail", "contact"]) {
+    if (selectedRoleSet.has(role)) continue;
+    const candidate = pages
+      .filter((page) => !selectedPaths.has(normalizeTemplatePagePath(page?.path || "/")))
+      .filter((page) => resolveCoverageRoleFromPageSpecEntry(page) === role)
+      .sort((a, b) => scoreRoleCandidate(b, role) - scoreRoleCandidate(a, role))[0];
+    if (!candidate) continue;
+    push(candidate, { allowTypeOverflow: true });
+    selectedRoleSet.add(role);
+  }
+  const hasSelectedProductListing = selected.some(
+    (page) =>
+      resolveCoverageRoleFromPageSpecEntry(page) === "listing" &&
+      String(page?.taxonomy_type || "").trim().toLowerCase() === "product_service_list"
+  );
+  const hasSelectedBlogListing = selected.some(
+    (page) =>
+      resolveCoverageRoleFromPageSpecEntry(page) === "listing" &&
+      String(page?.taxonomy_type || "").trim().toLowerCase() === "blog_list"
+  );
+  const hasCorpusProductListing = pages.some(
+    (page) => String(page?.taxonomy_type || "").trim().toLowerCase() === "product_service_list"
+  );
+  if (hasCorpusProductListing && hasSelectedBlogListing && !hasSelectedProductListing) {
+    const productListingCandidate = pages
+      .filter((page) => !selectedPaths.has(normalizeTemplatePagePath(page?.path || "/")))
+      .filter((page) => String(page?.taxonomy_type || "").trim().toLowerCase() === "product_service_list")
+      .sort((a, b) => scoreRoleCandidate(b, "listing") - scoreRoleCandidate(a, "listing"))[0];
+    if (productListingCandidate) {
+      push(productListingCandidate, { allowTypeOverflow: true });
+      injectedProductListingCoverage = true;
+    }
+  }
+
+  const limitsToken = Object.entries(policy.perTypeLimits || {})
+    .map(([type, limit]) => `${type}:${limit}`)
+    .join(", ");
+  const preferenceToken = Object.entries(policy.representativePreferences || {})
+    .filter(([type]) => Number(policy.perTypeLimits?.[type] || 0) > 0)
+    .map(([type, preference]) => `${type}:${preference}`)
+    .join(", ");
+  const notes = [];
+  if (limitsToken) {
+    notes.push(`Global rule: page_specs representative sampling enabled (${limitsToken}).`);
+  }
+  if (preferenceToken) {
+    notes.push(`Global rule: representative page preference (${preferenceToken}).`);
+  }
+  if (totalLimit > 0) {
+    notes.push(`Global rule: page_specs capped to maxPageSpecs=${totalLimit}.`);
+  }
+  if (injectedProductListingCoverage) {
+    notes.push("Coverage guard: added product_service_list listing to avoid blog-only listing bias.");
+  }
+  const selectedRoles = new Set(selected.map((page) => resolveCoverageRoleFromPageSpecEntry(page)));
+  const coveredRoles = ["home", "listing", "detail", "contact"].filter((role) => selectedRoles.has(role));
+  notes.push(`Coverage guard: selected roles=${coveredRoles.join("|") || "none"}.`);
+
+  return {
+    pages: selected,
+    notes,
+  };
+};
+
+const REQUIRED_SECTION_SPEC_FALLBACKS = {
+  story: ["approach", "products", "socialproof", "hero"],
+  approach: ["story", "products", "socialproof", "hero"],
+  products: ["story", "approach", "socialproof", "hero"],
+  socialproof: ["story", "approach", "products", "hero"],
+  contact: ["cta", "story", "approach", "hero"],
+  cta: ["contact", "story", "approach", "hero"],
+};
+
+const resolveSectionSpecByRequiredKind = (kind, sectionSpecs = {}) => {
+  if (sectionSpecs?.[kind]) {
+    return {
+      baseSpec: sectionSpecs[kind],
+      sourceKind: kind,
+    };
+  }
+  const fallbacks = Array.isArray(REQUIRED_SECTION_SPEC_FALLBACKS?.[kind]) ? REQUIRED_SECTION_SPEC_FALLBACKS[kind] : [];
+  for (const fallbackKind of fallbacks) {
+    if (!sectionSpecs?.[fallbackKind]) continue;
+    return {
+      baseSpec: sectionSpecs[fallbackKind],
+      sourceKind: fallbackKind,
+    };
+  }
+  return {
+    baseSpec: null,
+    sourceKind: "",
   };
 };
 
@@ -5778,10 +15615,23 @@ const buildPageSpecsFromSitePages = ({
   summary,
   assets = {},
   sitePages = [],
+  allSitePages = [],
   crawlAssetPack = null,
   discoveryPolicy = null,
+  siteVisualSignature = null,
+  sectionVisualSignatures = null,
+  options = {},
 }) => {
-  const routeAliasMap = buildRouteAliasMap(sitePages);
+  const structureFirstPolicy = resolveStructureFirstPolicy({ site, options });
+  const aliasSourcePages = Array.isArray(allSitePages) && allSitePages.length ? allSitePages : sitePages;
+  const pathRedirectMap = buildSourceToTargetPathMap({
+    sourcePages: aliasSourcePages,
+    targetPages: Boolean(options?.homeOnly) ? aliasSourcePages : sitePages,
+  });
+  const routeAliasMap = buildRouteAliasMap(aliasSourcePages, pathRedirectMap);
+  const availablePaths = new Set(
+    ["/", ...(Array.isArray(sitePages) ? sitePages.map((page) => normalizeTemplatePagePath(page?.path || "/")) : [])].filter(Boolean)
+  );
   const routeContext = {
     siteHost: (() => {
       try {
@@ -5790,6 +15640,9 @@ const buildPageSpecsFromSitePages = ({
         return "";
       }
     })(),
+    availablePaths,
+    defaultInternalPath: pickDefaultInternalPath(sitePages, "/"),
+    currentPath: "/",
   };
   const crawledPages = Array.isArray(crawlAssetPack?.pages) ? crawlAssetPack.pages : [];
   const pageAssetMap = new Map(
@@ -5804,6 +15657,7 @@ const buildPageSpecsFromSitePages = ({
   return sitePages
     .map((page) => {
       const path = normalizeTemplatePagePath(page?.path || "/");
+      const pageType = classifyTemplatePageType(path, String(page?.name || ""));
       const requiredCategories = normalizeRequiredCategories(page?.required_categories);
       if (!requiredCategories.length) return null;
       const pageAsset = pageAssetMap.get(path) || (path === "/" ? homeFallbackAsset : null);
@@ -5811,12 +15665,32 @@ const buildPageSpecsFromSitePages = ({
       // For uncrawled pages, build a synthetic summary from the page name
       // instead of falling back to the homepage content.
       const pageSummary = pageAsset?.summary
-        ? { ...summary, ...pageAsset.summary }
-        : (path === "/" ? summary : buildSyntheticPageSummary(page, summary));
-      const pageAssets = pageAsset?.assetContext || assets || {};
+        ? mergePageSummarySignals({
+            globalSummary: summary,
+            pageSummary: pageAsset.summary,
+            pagePath: path,
+            pageName: page?.name,
+          })
+        : path === "/"
+          ? mergePageSummarySignals({
+              globalSummary: summary,
+              pageSummary: null,
+              pagePath: path,
+              pageName: page?.name,
+            })
+          : buildSyntheticPageSummary(page, summary);
+      const allowSiteAssetFallback = path === "/" || pageType === "blog" || isBlogLikePath(path);
+      const pageAssets = pageAsset?.assetContext || (allowSiteAssetFallback ? assets || {} : {});
+      const pageVisualSignature =
+        (pageAsset?.visualSignature && typeof pageAsset.visualSignature === "object"
+          ? pageAsset.visualSignature
+          : pageSummary?.visualSignature && typeof pageSummary.visualSignature === "object"
+            ? pageSummary.visualSignature
+            : null) || null;
       const sectionSpecs = {};
       for (const kind of requiredCategories) {
-        const spec = recipe?.sectionSpecs?.[kind];
+        const resolvedBase = resolveSectionSpecByRequiredKind(kind, recipe?.sectionSpecs || {});
+        const spec = resolvedBase.baseSpec;
         if (!spec) continue;
         const resolvedSpec = resolveSectionSpecForSiteVariant({
           site,
@@ -5830,21 +15704,47 @@ const buildPageSpecsFromSitePages = ({
           defaults: buildSectionDefaults(kind, resolvedSpec, site, pageSummary, pageAssets, recipe, {
             currentPath: path,
             sitePages,
+            navSourcePages: aliasSourcePages,
             discoveryPolicy,
+            homeOnlyMode: Boolean(options?.homeOnly),
+            homeOnlyEvalMode: Boolean(options?.homeOnlyEval),
+            fidelityMode: options?.fidelityMode,
+            pageVisualSignature,
+            siteVisualSignature,
+            sectionVisualSignatures,
+            sectionComputedStyles:
+              pageSummary?.sectionComputedStyles && typeof pageSummary.sectionComputedStyles === "object"
+                ? pageSummary.sectionComputedStyles
+                : summary?.sectionComputedStyles && typeof summary.sectionComputedStyles === "object"
+                  ? summary.sectionComputedStyles
+                  : {},
+            structureFirstPipeline: structureFirstPolicy.structureFirstPipeline,
+            structureFirstDisableImages: structureFirstPolicy.structureFirstDisableImages,
+            structureFirstDisableMotion: structureFirstPolicy.structureFirstDisableMotion,
+            pageSpecialRules: page?.special_rules && typeof page.special_rules === "object" ? page.special_rules : {},
+            pageRequiredCategories: requiredCategories,
+            activeSectionKinds: requiredCategories,
           }),
+          ...(resolvedBase.sourceKind && resolvedBase.sourceKind !== kind ? { source_kind: resolvedBase.sourceKind } : {}),
           ...(variantMeta ? { template_variant: variantMeta } : {}),
         };
       }
       for (const kind of Object.keys(sectionSpecs)) {
         const entry = sectionSpecs[kind];
         if (!entry?.defaults || typeof entry.defaults !== "object") continue;
-        entry.defaults = rewriteAnchorLinksDeep(entry.defaults, routeAliasMap, routeContext);
+        entry.defaults = rewriteAnchorLinksDeep(entry.defaults, routeAliasMap, {
+          ...routeContext,
+          currentPath: path,
+          defaultInternalPath: pickDefaultInternalPath(sitePages, path),
+        });
       }
       if (!Object.keys(sectionSpecs).length) return null;
 
       return {
         path,
         name: String(page?.name || "").trim() || formatTemplatePageName(path),
+        taxonomy_type: String(page?.taxonomy_type || "").trim(),
+        taxonomy_representative_score: Number(page?.taxonomy_representative_score || 0),
         source_url: String(pageAsset?.url || "").trim(),
         required_categories: requiredCategories,
         summary: {
@@ -5852,6 +15752,16 @@ const buildPageSpecsFromSitePages = ({
           h1: Array.isArray(pageSummary?.h1) ? pageSummary.h1 : [],
           h2: Array.isArray(pageSummary?.h2) ? pageSummary.h2 : [],
           links: Array.isArray(pageSummary?.links) ? pageSummary.links : [],
+          themeColors: dedupeUrls(
+            [
+              ...(Array.isArray(pageSummary?.themeColors) ? pageSummary.themeColors : []),
+              ...(Array.isArray(pageVisualSignature?.dominantColors) ? pageVisualSignature.dominantColors : []),
+              ...(Array.isArray(siteVisualSignature?.dominantColors) ? siteVisualSignature.dominantColors : []),
+            ]
+              .map((entry) => normalizeColorToken(entry))
+              .filter(Boolean),
+            20
+          ),
           images: Array.isArray(pageSummary?.images) ? pageSummary.images : [],
           footerLinks: dedupeLinkItems(Array.isArray(pageSummary?.footerLinks) ? pageSummary.footerLinks : [], 24),
           navMenuDepth: Number(pageSummary?.navMenuDepth || 1),
@@ -5872,8 +15782,67 @@ const buildPageSpecsFromSitePages = ({
     .filter(Boolean);
 };
 
-const buildSpecPack = ({ site, recipe, summary, assets = {}, crawl = null, crawlAssetPack = null, options = {} }) => {
+const normalizeHexFingerprint = (value) => {
+  const token = String(value || "").trim().toLowerCase();
+  if (!token || !/^[0-9a-f]+$/.test(token)) return "";
+  if (token.length < 8 || token.length % 2 !== 0) return "";
+  return token;
+};
+
+const extractVisualHashFromPageRecord = (pageRecord) => {
+  const signature =
+    (pageRecord?.visualSignature && typeof pageRecord.visualSignature === "object"
+      ? pageRecord.visualSignature
+      : pageRecord?.summary?.visualSignature && typeof pageRecord.summary.visualSignature === "object"
+        ? pageRecord.summary.visualSignature
+        : null) || null;
+  if (!signature) return "";
+  const candidates = [
+    signature.dhash,
+    signature.dHash,
+    signature.visualDHash,
+    signature.visual_dhash,
+    signature.hash,
+  ];
+  for (const candidate of candidates) {
+    const normalized = normalizeHexFingerprint(candidate);
+    if (normalized) return normalized;
+  }
+  return "";
+};
+
+const buildVisualHashByPathFromCrawlAssetPack = (crawlAssetPack) => {
+  const map = {};
+  for (const page of Array.isArray(crawlAssetPack?.pages) ? crawlAssetPack.pages : []) {
+    const routePath = normalizeTemplatePagePath(page?.path || routePathFromUrl(page?.url || "") || "/");
+    const visualHash = extractVisualHashFromPageRecord(page);
+    if (!routePath || !visualHash) continue;
+    if (!map[routePath]) map[routePath] = visualHash;
+  }
+  return map;
+};
+
+const buildSpecPack = ({
+  site,
+  recipe,
+  summary,
+  assets = {},
+  crawl = null,
+  crawlAssetPack = null,
+  options = {},
+  siteVisualSignature = null,
+  sectionVisualSignatures = null,
+}) => {
   const discoveryPolicy = resolveDiscoveryPolicy({ site, options });
+  const structureFirstPolicy = resolveStructureFirstPolicy({ site, options });
+  const specialRules = site?.specialRules && typeof site.specialRules === "object" ? site.specialRules : {};
+  const includeUncrawledPages = parseBool(
+    specialRules.includeUncrawledPages ??
+      specialRules.include_uncrawled_pages ??
+      specialRules.allowSyntheticPageSpecs ??
+      specialRules.allow_synthetic_page_specs ??
+      true
+  );
   const generatedSitePages = buildSitePagesFromCrawl({ recipe, summary, crawl, discoveryPolicy });
   const specialRuleResult = applySiteSpecialRulesToPages({
     site,
@@ -5882,30 +15851,189 @@ const buildSpecPack = ({ site, recipe, summary, assets = {}, crawl = null, crawl
   });
   const successfulPathSet = new Set(
     (Array.isArray(crawl?.pages) ? crawl.pages : [])
-      .filter((page) => page && !page.error && Number(page.status || 0) < 500)
+      .filter((page) => page && !page.error && isSuccessfulCrawlStatus(page.status))
       .map((page) => routePathFromUrl(page.url))
+      .filter(Boolean)
   );
   const sitePages = Array.isArray(specialRuleResult?.pages) ? specialRuleResult.pages : generatedSitePages;
   const extractionFailures = [
     ...(Array.isArray(specialRuleResult?.failed) ? specialRuleResult.failed : []),
-    ...sitePages
-      .filter((page) => page?.path && page.path !== "/" && !successfulPathSet.has(normalizeTemplatePagePath(page.path)))
-      .map((page) => ({
-        path: normalizeTemplatePagePath(page.path),
-        reason: "excluded_not_extracted",
-        url: "",
-        source: "special_rule",
-      })),
+    ...(!includeUncrawledPages
+      ? sitePages
+          .filter((page) => page?.path && page.path !== "/" && !successfulPathSet.has(normalizeTemplatePagePath(page.path)))
+          .map((page) => ({
+            path: normalizeTemplatePagePath(page.path),
+            reason: "excluded_not_extracted",
+            url: "",
+            source: "special_rule",
+          }))
+      : []),
   ].filter((row, index, arr) => arr.findIndex((x) => `${x.path}:${x.reason}` === `${row.path}:${row.reason}`) === index);
 
   const filteredSitePages = sitePages.filter((page) => {
     if (!page?.path) return false;
     const normalizedPath = normalizeTemplatePagePath(page.path);
     if (normalizedPath === "/") return true;
-    return successfulPathSet.has(normalizedPath);
+    return includeUncrawledPages ? true : successfulPathSet.has(normalizedPath);
   });
+  const taxonomyEnabled = parseBool(
+    specialRules.pageTaxonomyEnabled ??
+      specialRules.page_taxonomy_enabled ??
+      specialRules.enablePageTaxonomy ??
+      specialRules.enable_page_taxonomy ??
+      true
+  );
+  const taxonomyVisualFingerprintEnabled = parseBool(
+    specialRules.pageTaxonomyVisualFingerprintEnabled ??
+      specialRules.page_taxonomy_visual_fingerprint_enabled ??
+      specialRules.taxonomyVisualFingerprintEnabled ??
+      specialRules.taxonomy_visual_fingerprint_enabled ??
+      DEDUPE_RULES?.visualFingerprint?.enabled ??
+      true
+  );
+  const taxonomyMaxPagesPerType = parsePositiveInt(
+    specialRules.pageTaxonomyMaxPagesPerType ??
+      specialRules.page_taxonomy_max_pages_per_type ??
+      specialRules.taxonomyMaxPagesPerType ??
+      specialRules.taxonomy_max_pages_per_type,
+    6
+  );
+  const taxonomyCandidatePoolTopK = parsePositiveInt(
+    specialRules.pageTaxonomyCandidatePoolTopK ??
+      specialRules.page_taxonomy_candidate_pool_top_k ??
+      specialRules.taxonomyCandidatePoolTopK ??
+      specialRules.taxonomy_candidate_pool_top_k,
+    parsePositiveInt(DEDUPE_RULES?.selection?.candidatePoolTopKDefault, 3)
+  );
+  const taxonomyVisualHashDistanceThreshold = parseNonNegativeInt(
+    specialRules.pageTaxonomyVisualHashDistanceThreshold ??
+      specialRules.page_taxonomy_visual_hash_distance_threshold ??
+      specialRules.taxonomyVisualHashDistanceThreshold ??
+      specialRules.taxonomy_visual_hash_distance_threshold,
+    parseNonNegativeInt(DEDUPE_RULES?.visualFingerprint?.hammingThreshold, 8)
+  );
+  const taxonomyIncludeTypesRaw =
+    specialRules.pageTaxonomyIncludeTypes ??
+    specialRules.page_taxonomy_include_types ??
+    specialRules.taxonomyIncludeTypes ??
+    specialRules.taxonomy_include_types ??
+    [];
+  const taxonomyIncludeTypes = Array.isArray(taxonomyIncludeTypesRaw)
+    ? taxonomyIncludeTypesRaw.map((item) => String(item || "").trim()).filter(Boolean)
+    : typeof taxonomyIncludeTypesRaw === "string"
+      ? taxonomyIncludeTypesRaw
+          .split(",")
+          .map((item) => item.trim())
+          .filter(Boolean)
+      : [];
+  let taxonomySitePages = filteredSitePages.map((page) => ({
+    ...page,
+    path: normalizeTemplatePagePath(page?.path || "/"),
+  }));
+  let discoveredPagesForReport = taxonomySitePages;
+  const taxonomyVisualHashByPath = taxonomyVisualFingerprintEnabled
+    ? buildVisualHashByPathFromCrawlAssetPack(crawlAssetPack)
+    : {};
+  let taxonomyReport = null;
+  if (taxonomyEnabled && taxonomySitePages.length) {
+    const classified = classifyPagesByTaxonomy({ pages: taxonomySitePages });
+    const deduped = dedupePagesByTaxonomy({
+      pages: classified.pages,
+      options: {
+        maxPagesPerType: taxonomyMaxPagesPerType,
+        candidatePoolTopK: taxonomyCandidatePoolTopK,
+        includeTypes: taxonomyIncludeTypes.length ? taxonomyIncludeTypes : null,
+        visualHashByPath: taxonomyVisualHashByPath,
+        visualHashDistanceThreshold: taxonomyVisualHashDistanceThreshold,
+      },
+    });
+    taxonomySitePages = Array.isArray(deduped?.pages) ? deduped.pages : classified.pages;
+    discoveredPagesForReport = Array.isArray(classified?.pages) ? classified.pages : taxonomySitePages;
+    const droppedRows = Array.isArray(deduped?.dropped) ? deduped.dropped : [];
+    const droppedReasonStats = droppedRows.reduce((acc, row) => {
+      const reason = String(row?.reason || "unknown");
+      acc[reason] = Number(acc[reason] || 0) + 1;
+      return acc;
+    }, {});
+    taxonomyReport = {
+      enabled: true,
+      taxonomyVersion: String(PAGE_TAXONOMY?.version || "1.0.0"),
+      sourcePages: filteredSitePages.length,
+      selectedPages: taxonomySitePages.length,
+      maxPagesPerType: taxonomyMaxPagesPerType,
+      candidatePoolTopK: taxonomyCandidatePoolTopK,
+      includeTypes: taxonomyIncludeTypes,
+      visualFingerprintEnabled: taxonomyVisualFingerprintEnabled,
+      visualHashPages: Object.keys(taxonomyVisualHashByPath).length,
+      visualHashDistanceThreshold: taxonomyVisualHashDistanceThreshold,
+      dropped: droppedRows.length,
+      droppedReasonStats,
+      droppedRows: droppedRows.slice(0, 120),
+      summary: deduped?.summary || null,
+      candidatePoolsByType: deduped?.candidatePoolsByType || {},
+    };
+  } else {
+    taxonomyReport = {
+      enabled: false,
+      reason: taxonomyEnabled ? "empty_pages" : "disabled_by_special_rule",
+      sourcePages: filteredSitePages.length,
+      selectedPages: taxonomySitePages.length,
+      candidatePoolTopK: taxonomyCandidatePoolTopK,
+      includeTypes: taxonomyIncludeTypes,
+      visualFingerprintEnabled: taxonomyVisualFingerprintEnabled,
+      visualHashPages: Object.keys(taxonomyVisualHashByPath).length,
+      visualHashDistanceThreshold: taxonomyVisualHashDistanceThreshold,
+    };
+  }
+  const intakeReviewSource =
+    (site?.intakeReview && typeof site.intakeReview === "object"
+      ? site.intakeReview
+      : specialRules?.intakeReview && typeof specialRules.intakeReview === "object"
+        ? specialRules.intakeReview
+        : specialRules?.intake_review && typeof specialRules.intake_review === "object"
+          ? specialRules.intake_review
+          : null) || null;
+  const intakeReviewResult = applyIntakeReviewToPages({
+    pages: taxonomySitePages,
+    review: intakeReviewSource,
+  });
+  taxonomySitePages = Array.isArray(intakeReviewResult?.pages) ? intakeReviewResult.pages : taxonomySitePages;
+  const homeOnlyMode = Boolean(options?.homeOnly || site?.homeOnly);
+  const pageSpecSelection = homeOnlyMode
+    ? {
+        pages: (() => {
+          const homePage =
+            taxonomySitePages.find((page) => normalizeTemplatePagePath(page?.path || "/") === "/") ||
+            taxonomySitePages[0] ||
+            null;
+          if (!homePage) return [];
+          return [
+            {
+              ...homePage,
+              path: normalizeTemplatePagePath(homePage?.path || "/"),
+              name: String(homePage?.name || "").trim() || "Home",
+            },
+          ];
+        })(),
+        notes: ["Global rule: home-only mode enabled (debug)."],
+      }
+    : selectPageSpecSourcePages({
+        site,
+        sitePages: taxonomySitePages,
+      });
   const sectionSpecs = {};
-  for (const kind of SECTION_KINDS) {
+  const homePageSpecialRules =
+    pageSpecSelection.pages.find((page) => normalizeTemplatePagePath(page?.path || "/") === "/")?.special_rules || {};
+  const homePageRequiredCategories = normalizeRequiredCategories(
+    pageSpecSelection.pages.find((page) => normalizeTemplatePagePath(page?.path || "/") === "/")?.required_categories
+  );
+  const rootSectionKinds = Object.keys(recipe?.sectionSpecs || {}).map((kind) => normalizeSectionKind(kind)).filter(Boolean);
+  const activeRootSectionKinds = unique(
+    (homePageRequiredCategories.length ? homePageRequiredCategories : rootSectionKinds)
+      .map((kind) => normalizeSectionKind(kind))
+      .filter(Boolean)
+  );
+  for (const kind of activeRootSectionKinds) {
     const spec = recipe.sectionSpecs[kind];
     if (!spec) continue;
     const resolvedSpec = resolveSectionSpecForSiteVariant({
@@ -5919,13 +16047,36 @@ const buildSpecPack = ({ site, recipe, summary, assets = {}, crawl = null, crawl
       block_type: resolvedSpec.blockType,
       defaults: buildSectionDefaults(kind, resolvedSpec, site, summary, assets, recipe, {
         currentPath: "/",
-        sitePages,
+        sitePages: pageSpecSelection.pages,
+        navSourcePages: filteredSitePages,
         discoveryPolicy,
+        homeOnlyMode: Boolean(options?.homeOnly),
+        homeOnlyEvalMode: Boolean(options?.homeOnlyEval),
+        fidelityMode: options?.fidelityMode,
+        siteVisualSignature,
+        sectionVisualSignatures,
+        sectionComputedStyles:
+          summary?.sectionComputedStyles && typeof summary.sectionComputedStyles === "object"
+            ? summary.sectionComputedStyles
+            : {},
+        structureFirstPipeline: structureFirstPolicy.structureFirstPipeline,
+        structureFirstDisableImages: structureFirstPolicy.structureFirstDisableImages,
+        structureFirstDisableMotion: structureFirstPolicy.structureFirstDisableMotion,
+        pageSpecialRules: homePageSpecialRules,
+        pageRequiredCategories: homePageRequiredCategories,
+        activeSectionKinds: activeRootSectionKinds,
       }),
       ...(variantMeta ? { template_variant: variantMeta } : {}),
     };
   }
-  const routeAliasMap = buildRouteAliasMap(filteredSitePages);
+  const rootRedirectMap = buildSourceToTargetPathMap({
+    sourcePages: filteredSitePages,
+    targetPages: Boolean(options?.homeOnly) ? filteredSitePages : pageSpecSelection.pages,
+  });
+  const routeAliasMap = buildRouteAliasMap(filteredSitePages, rootRedirectMap);
+  const availablePaths = new Set(
+    ["/", ...pageSpecSelection.pages.map((page) => normalizeTemplatePagePath(page?.path || "/"))].filter(Boolean)
+  );
   const routeContext = {
     siteHost: (() => {
       try {
@@ -5934,6 +16085,10 @@ const buildSpecPack = ({ site, recipe, summary, assets = {}, crawl = null, crawl
         return "";
       }
     })(),
+    availablePaths,
+    defaultInternalPath: pickDefaultInternalPath(pageSpecSelection.pages, "/"),
+    currentPath: "/",
+    preserveUnmappedInternalPaths: Boolean(options?.homeOnly),
   };
   for (const kind of Object.keys(sectionSpecs)) {
     const entry = sectionSpecs[kind];
@@ -5945,24 +16100,81 @@ const buildSpecPack = ({ site, recipe, summary, assets = {}, crawl = null, crawl
     recipe,
     summary,
     assets,
-    sitePages: filteredSitePages,
+    sitePages: pageSpecSelection.pages,
+    allSitePages: filteredSitePages,
     crawlAssetPack,
     discoveryPolicy,
+    siteVisualSignature,
+    sectionVisualSignatures,
+    options,
   });
   const normalizedPageSpecs = enforceDistinctHeroes(pageSpecs);
-  const linkReport = buildLinkReport({
-    site,
-    sitePages: filteredSitePages,
+  const siteDesignSystemResult = applySiteDesignSystemToSpecPack({
     specPack: {
       section_specs: sectionSpecs,
       page_specs: normalizedPageSpecs,
     },
+    site,
+    options,
   });
+  const patchedSectionSpecs =
+    siteDesignSystemResult?.specPack?.section_specs && typeof siteDesignSystemResult.specPack.section_specs === "object"
+      ? siteDesignSystemResult.specPack.section_specs
+      : sectionSpecs;
+  const patchedPageSpecs = Array.isArray(siteDesignSystemResult?.specPack?.page_specs)
+    ? siteDesignSystemResult.specPack.page_specs
+    : normalizedPageSpecs;
+  const homePageSpecFromPatched =
+    patchedPageSpecs.find((page) => normalizeTemplatePagePath(page?.path || "/") === "/") || null;
+  const homeRequiredFromPatched = normalizeRequiredCategories(homePageSpecFromPatched?.required_categories);
+  const finalRootRequiredCategories = unique(
+    (Boolean(homeOnlyMode) && homeRequiredFromPatched.length ? homeRequiredFromPatched : activeRootSectionKinds)
+      .map((kind) => normalizeSectionKind(kind))
+      .filter(Boolean)
+  );
+  const finalRootRequiredSet = new Set(finalRootRequiredCategories);
+  const finalSectionSpecs =
+    Boolean(homeOnlyMode) && finalRootRequiredSet.size
+      ? Object.fromEntries(
+          Object.entries(patchedSectionSpecs).filter(([kind]) => {
+            const normalizedKind = normalizeSectionKind(kind);
+            return Boolean(normalizedKind) && finalRootRequiredSet.has(normalizedKind);
+          })
+        )
+      : patchedSectionSpecs;
+  const discoveredPages = buildDiscoveredPagesRows({
+    pages: discoveredPagesForReport,
+    selectedPages: taxonomySitePages,
+  });
+  const discoveredPagesWithFallback = discoveredPages.length
+    ? discoveredPages
+    : [
+        {
+          path: "/",
+          pageType: "home",
+          confidence: 1,
+          representativeness: 1,
+          layoutStability: 1,
+          contentNoise: 0,
+          selected: true,
+          forceInclude: true,
+        },
+      ];
+  const linkReport = buildLinkReport({
+    site,
+    sitePages: pageSpecSelection.pages,
+    specPack: {
+      section_specs: finalSectionSpecs,
+      page_specs: patchedPageSpecs,
+    },
+  });
+  const outputSitePages = Boolean(homeOnlyMode) ? pageSpecSelection.pages : filteredSitePages;
+  const outputTaxonomyPages = Boolean(homeOnlyMode) ? pageSpecSelection.pages : taxonomySitePages;
 
   return {
     template_id: `auto_${site.id}`,
     recipe_id: recipe.id,
-    section_specs: sectionSpecs,
+    section_specs: finalSectionSpecs,
     fallback_rules: {
       missing_socialproof: "use_testimonials_grid_min_2",
       missing_cta_secondary: "hide_secondary_button",
@@ -5973,13 +16185,22 @@ const buildSpecPack = ({ site, recipe, summary, assets = {}, crawl = null, crawl
       testimonials_min: 2,
       cards_max: 8,
     },
-    required_categories: recipe.requiredCategories,
-    ...(filteredSitePages.length ? { site_pages: filteredSitePages } : {}),
-    ...(normalizedPageSpecs.length ? { page_specs: normalizedPageSpecs } : {}),
+    required_categories: finalRootRequiredCategories.length ? finalRootRequiredCategories : recipe.requiredCategories,
+    ...(outputSitePages.length ? { site_pages: outputSitePages } : {}),
+    ...(outputTaxonomyPages.length ? { taxonomy_selected_pages: outputTaxonomyPages } : {}),
+    ...(patchedPageSpecs.length ? { page_specs: patchedPageSpecs } : {}),
+    discovered_pages: discoveredPagesWithFallback,
+    intake_review: {
+      ...(intakeReviewResult?.report && typeof intakeReviewResult.report === "object" ? intakeReviewResult.report : {}),
+      source: intakeReviewSource ? "manual" : "none",
+    },
+    ...(siteDesignSystemResult?.siteDesignSystem ? { site_design_system: siteDesignSystemResult.siteDesignSystem } : {}),
     link_integrity: linkReport.stats,
+    ...(taxonomyReport ? { page_taxonomy: taxonomyReport } : {}),
     ...(extractionFailures.length ? { extraction_failures: extractionFailures } : {}),
-    ...(Array.isArray(specialRuleResult?.notes) && specialRuleResult.notes.length
-      ? { special_notes: specialRuleResult.notes }
+    ...((Array.isArray(specialRuleResult?.notes) && specialRuleResult.notes.length) ||
+    (Array.isArray(pageSpecSelection?.notes) && pageSpecSelection.notes.length)
+      ? { special_notes: unique([...(specialRuleResult?.notes || []), ...(pageSpecSelection?.notes || [])]) }
       : {}),
   };
 };
@@ -6062,20 +16283,255 @@ const profileNumericField = (value, fallback = 0) => {
   return Number.isFinite(n) ? n : fallback;
 };
 
-const computeCoverageScore = (specPack) => {
+const normalizeSimilarityMetric = (value) => {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return null;
+  return Number(Math.max(0, Math.min(100, n)).toFixed(2));
+};
+
+const averageSimilarityMetric = (values = []) => {
+  const numeric = (Array.isArray(values) ? values : []).map((value) => normalizeSimilarityMetric(value)).filter((value) => value !== null);
+  if (!numeric.length) return null;
+  return Number((numeric.reduce((sum, value) => sum + value, 0) / numeric.length).toFixed(2));
+};
+
+const summarizeSiteSimilarity = ({ item = {}, fidelityRow = null } = {}) => {
+  const pipelineRegression = item?.pipelineRegression && typeof item.pipelineRegression === "object" ? item.pipelineRegression : {};
+  const pageDetails = Array.isArray(fidelityRow?.pageDetails) ? fidelityRow.pageDetails : [];
+  const visualFromPages = averageSimilarityMetric(pageDetails.map((row) => row?.visualSimilarity));
+  const structureFromPages = averageSimilarityMetric(pageDetails.map((row) => row?.structureSimilarity));
+  const overallFromPages = averageSimilarityMetric(pageDetails.map((row) => row?.similarity));
+  const overall =
+    normalizeSimilarityMetric(fidelityRow?.similarity ?? fidelityRow?.overallSimilarity ?? pipelineRegression?.similarity) ??
+    overallFromPages ??
+    0;
+  const visual =
+    normalizeSimilarityMetric(fidelityRow?.visualSimilarity ?? pipelineRegression?.visualSimilarity) ??
+    visualFromPages ??
+    0;
+  const structure =
+    normalizeSimilarityMetric(fidelityRow?.structureSimilarity ?? pipelineRegression?.structureSimilarity) ??
+    structureFromPages ??
+    0;
+  const targetSections = {
+    overall: normalizeSimilarityMetric(
+      fidelityRow?.sectionSimilarity?.overall ?? pipelineRegression?.sectionSimilarity?.overall
+    ),
+    hero: normalizeSimilarityMetric(
+      fidelityRow?.sectionSimilarity?.hero ?? pipelineRegression?.sectionSimilarity?.hero
+    ),
+    navigation: normalizeSimilarityMetric(
+      fidelityRow?.sectionSimilarity?.navigation ?? pipelineRegression?.sectionSimilarity?.navigation
+    ),
+    footer: normalizeSimilarityMetric(
+      fidelityRow?.sectionSimilarity?.footer ?? pipelineRegression?.sectionSimilarity?.footer
+    ),
+  };
+  return { overall, visual, structure, targetSections };
+};
+
+const computeCoverageScore = (specPack, site = {}) => {
   const sitePages = Array.isArray(specPack?.site_pages) ? specPack.site_pages : [];
+  const taxonomySelectedPages = Array.isArray(specPack?.taxonomy_selected_pages) ? specPack.taxonomy_selected_pages : [];
   const pageSpecs = Array.isArray(specPack?.page_specs) ? specPack.page_specs : [];
-  const coverageRate = sitePages.length > 0 ? Math.min(100, (pageSpecs.length / sitePages.length) * 100) : pageSpecs.length > 0 ? 100 : 0;
+  const samplingSourcePages = taxonomySelectedPages.length ? taxonomySelectedPages : sitePages;
+  const expectedSelection = selectPageSpecSourcePages({ site, sitePages: samplingSourcePages });
+  const expectedPageSpecs = expectedSelection.pages.length;
+  const baselineCount = expectedPageSpecs > 0 ? expectedPageSpecs : sitePages.length > 0 ? sitePages.length : pageSpecs.length;
+  const coverageRate = baselineCount > 0 ? Math.min(100, (pageSpecs.length / baselineCount) * 100) : pageSpecs.length > 0 ? 100 : 0;
   const roleKinds = new Set();
   for (const page of sitePages) {
     const pagePath = normalizeTemplatePagePath(page?.path || "/");
+    const explicitType = String(page?.taxonomy_type || "").trim().toLowerCase();
     const role = classifyTemplatePageType(pagePath, String(page?.name || ""));
     if (role === "home" || role === "contact") roleKinds.add(role);
+    if (explicitType === "contact" || explicitType === "help_faq") roleKinds.add("contact");
     if (role === "products" || role === "services" || role === "blog") roleKinds.add("listing");
+    if (explicitType === "product_service_list" || explicitType === "blog_list") roleKinds.add("listing");
     if (pagePath !== "/" && pagePath.split("/").filter(Boolean).length >= 2) roleKinds.add("detail");
+    if (explicitType === "detail" || explicitType === "blog_detail") roleKinds.add("detail");
   }
   const roleScore = (roleKinds.size / 4) * 100;
   return Number((coverageRate * 0.7 + roleScore * 0.3).toFixed(2));
+};
+
+const computeSiteGateMetrics = (item = {}, context = {}) => {
+  const fidelityRowByCase = context?.fidelityRowByCase instanceof Map ? context.fidelityRowByCase : new Map();
+  const caseId = String(item?.site?.id || "").trim();
+  const fidelityRow = caseId ? fidelityRowByCase.get(caseId) || null : null;
+  const specPack = item?.specPack && typeof item.specPack === "object" ? item.specPack : {};
+  const linkStats = item?.linkReport?.stats && typeof item.linkReport.stats === "object" ? item.linkReport.stats : {};
+  const designContractCompliance =
+    (item?.designContractCompliance && typeof item.designContractCompliance === "object"
+      ? item.designContractCompliance
+      : specPack?.design_contract_compliance && typeof specPack.design_contract_compliance === "object"
+        ? specPack.design_contract_compliance
+        : {}) || {};
+  const keyFlowIntegrity =
+    (item?.keyFlowIntegrity && typeof item.keyFlowIntegrity === "object"
+      ? item.keyFlowIntegrity
+      : specPack?.key_flow_integrity && typeof specPack.key_flow_integrity === "object"
+        ? specPack.key_flow_integrity
+        : {}) || {};
+  const accessibilityReport =
+    (item?.accessibilityReport && typeof item.accessibilityReport === "object"
+      ? item.accessibilityReport
+      : specPack?.accessibility && typeof specPack.accessibility === "object"
+        ? specPack.accessibility
+        : {}) || {};
+  const assetContractReport =
+    (item?.assetContractReport && typeof item.assetContractReport === "object"
+      ? item.assetContractReport
+      : specPack?.asset_contract_report && typeof specPack.asset_contract_report === "object"
+        ? specPack.asset_contract_report
+        : {}) || {};
+  const sitePages = Array.isArray(specPack?.site_pages) ? specPack.site_pages : [];
+  const taxonomySelectedPages = Array.isArray(specPack?.taxonomy_selected_pages) ? specPack.taxonomy_selected_pages : [];
+  const pageSpecs = Array.isArray(specPack?.page_specs) ? specPack.page_specs : [];
+  const samplingSourcePages = taxonomySelectedPages.length ? taxonomySelectedPages : sitePages;
+  const expectedSelection = selectPageSpecSourcePages({ site: item?.site || {}, sitePages: samplingSourcePages });
+  const expectedPageSpecs = expectedSelection.pages.length;
+  const baselineCount = expectedPageSpecs > 0 ? expectedPageSpecs : sitePages.length > 0 ? sitePages.length : pageSpecs.length;
+  const pagesForRole = sitePages.length > 0 ? sitePages : pageSpecs;
+
+  const presentRoles = new Set();
+  for (const page of pagesForRole) {
+    const pagePath = normalizeTemplatePagePath(page?.path || "/");
+    const pageName = String(page?.name || "");
+    const explicitType = String(page?.taxonomy_type || "").trim().toLowerCase();
+    const pageType = classifyTemplatePageType(pagePath, pageName);
+    const depth = pagePath.split("/").filter(Boolean).length;
+    if (pagePath === "/") presentRoles.add("home");
+    if (pageType === "contact") presentRoles.add("contact");
+    if (explicitType === "contact" || explicitType === "help_faq") presentRoles.add("contact");
+    if (pageType === "products" || pageType === "services" || pageType === "blog") presentRoles.add("listing");
+    if (explicitType === "product_service_list" || explicitType === "blog_list") presentRoles.add("listing");
+    const token = `${pagePath} ${pageName}`.toLowerCase();
+    const likelyDetail =
+      /\/(products?|collections?|shop|store|blog|blogs|news|insights?|resources?|stories?|articles?|case[-_]studies?)\/[^/]+/.test(
+        pagePath
+      ) ||
+      (depth >= 3 && pagePath !== "/") ||
+      (/article|story|case[-\s]?study|review|guide/.test(token) && pagePath !== "/");
+    if (likelyDetail) presentRoles.add("detail");
+    if (explicitType === "detail" || explicitType === "blog_detail") presentRoles.add("detail");
+  }
+
+  const requiredRoles = ["home", "listing", "detail", "contact"];
+  const missingRequiredRoles = requiredRoles.filter((role) => !presentRoles.has(role));
+  const pageSpecCoverageRate =
+    baselineCount > 0 ? Number(Math.min(100, (pageSpecs.length / baselineCount) * 100).toFixed(2)) : pageSpecs.length > 0 ? 100 : 0;
+  const requiredRoleCoverageRate = Number((((requiredRoles.length - missingRequiredRoles.length) / requiredRoles.length) * 100).toFixed(2));
+
+  return {
+    caseId,
+    homeOnly: Boolean(item?.site?.homeOnly),
+    sitePages: sitePages.length,
+    pageSpecs: pageSpecs.length,
+    expectedPageSpecs: baselineCount,
+    pageSpecCoverageRate,
+    requiredRoleCoverageRate,
+    missingRequiredRoles,
+    linkStats: {
+      internalSuccessRate: Number(linkStats?.internalSuccessRate || 0),
+      internalTotal: Number(linkStats?.internalTotal || 0),
+      internalMissing: Number(linkStats?.internalMissing || 0),
+      empty: Number(linkStats?.empty || 0),
+      invalidScheme: Number(linkStats?.invalidScheme || 0),
+      navFooterInternalSuccessRate: Number(linkStats?.navFooterInternalSuccessRate || 0),
+      navFooterInternalTotal: Number(linkStats?.navFooterInternalTotal || 0),
+      navFooterInternalMissing: Number(linkStats?.navFooterInternalMissing || 0),
+      navFooterEmpty: Number(linkStats?.navFooterEmpty || 0),
+      navFooterInvalidScheme: Number(linkStats?.navFooterInvalidScheme || 0),
+    },
+    designContract: {
+      overallScore: Number(designContractCompliance?.overallScore || 0),
+      driftPassed: Boolean(designContractCompliance?.driftPassed),
+    },
+    keyFlow: {
+      coverageRate: Number(keyFlowIntegrity?.coverageRate || 0),
+      passed: Boolean(keyFlowIntegrity?.passed),
+      missing: Array.isArray(keyFlowIntegrity?.missing) ? keyFlowIntegrity.missing : [],
+    },
+    accessibility: {
+      score: Number(accessibilityReport?.score || 0),
+      passed: Boolean(accessibilityReport?.passed),
+      critical: Number(accessibilityReport?.counts?.critical || 0),
+      major: Number(accessibilityReport?.counts?.major || 0),
+      totalIssues: Number(accessibilityReport?.counts?.total || 0),
+    },
+    assetContract: {
+      score: Number(assetContractReport?.overallScore || 0),
+      passed: Boolean(assetContractReport?.passed),
+      issues: Array.isArray(assetContractReport?.issues) ? assetContractReport.issues.length : 0,
+    },
+    similarity: summarizeSiteSimilarity({
+      item,
+      fidelityRow,
+    }),
+  };
+};
+
+const refreshAssetContractReportsWithFidelity = async ({
+  processed = [],
+  fidelityRows = [],
+  fidelityByCase = new Map(),
+} = {}) => {
+  const fidelityRowByCase = new Map(
+    (Array.isArray(fidelityRows) ? fidelityRows : []).map((row) => [String(row?.caseId || "").trim(), row])
+  );
+  for (const item of Array.isArray(processed) ? processed : []) {
+    const caseId = String(item?.site?.id || "").trim();
+    if (!caseId) continue;
+    const manifest = item?.specPack?.template_asset_manifest || {};
+    const dedup = item?.specPack?.dedup_fingerprints || {};
+    const fidelityConfig =
+      fidelityByCase instanceof Map
+        ? fidelityByCase.get(caseId) || resolveFidelitySettings(item?.site || {}, {})
+        : resolveFidelitySettings(item?.site || {}, {});
+    const fidelityRow = fidelityRowByCase.get(caseId) || null;
+    const fidelitySimilarity = parseSimilarityNumber(
+      fidelityRow?.similarity ?? fidelityRow?.overallSimilarity ?? item?.pipelineRegression?.similarity
+    );
+    const pageDetailByPath = new Map();
+    const pageDetails = Array.isArray(fidelityRow?.pageDetails) ? fidelityRow.pageDetails : [];
+    for (const pageDetail of pageDetails) {
+      const pagePath = normalizeTemplatePagePath(pageDetail?.pagePath || "/");
+      const similarity = parseSimilarityNumber(pageDetail?.similarity);
+      if (!pagePath || similarity === null) continue;
+      pageDetailByPath.set(pagePath, similarity);
+    }
+    if (Array.isArray(manifest?.pages)) {
+      for (const page of manifest.pages) {
+        const pagePath = normalizeTemplatePagePath(page?.pagePath || "/");
+        const pageSimilarity = pageDetailByPath.get(pagePath);
+        if (!page?.qa || typeof page.qa !== "object") page.qa = {};
+        page.qa.fidelityScore = pageSimilarity ?? (pagePath === "/" ? fidelitySimilarity : page?.qa?.fidelityScore ?? null);
+      }
+    }
+    const report = evaluateTemplateAssetContracts({
+      manifest,
+      dedup,
+      runtime: {
+        fidelitySimilarity,
+        fidelityThreshold: Number(fidelityConfig?.threshold || 0),
+      },
+    });
+    if (item?.specPack && typeof item.specPack === "object") {
+      item.specPack.asset_contract_report = report;
+      item.specPack.template_asset_manifest = manifest;
+    }
+    item.assetContractReport = report;
+    if (item?.siteDir) {
+      const extractedDir = path.join(item.siteDir, "extracted");
+      await fs.writeFile(path.join(extractedDir, "asset-contract-report.json"), JSON.stringify(report, null, 2));
+      await fs.writeFile(
+        path.join(extractedDir, "template-asset-manifest.json"),
+        JSON.stringify(manifest, null, 2)
+      );
+      await fs.writeFile(path.join(extractedDir, "spec-pack.json"), JSON.stringify(item.specPack || {}, null, 2));
+    }
+  }
 };
 
 const computeLinkIntegrityScore = (linkReport = null, specPack = null) => {
@@ -6131,7 +16587,7 @@ const mergeProfiles = (existingProfiles, incomingProfiles) => {
   return Array.from(map.values());
 };
 
-const buildRunLibraryOutput = ({
+const buildRunLibraryOutput = async ({
   processed = [],
   runId = "",
   manifestPath = "",
@@ -6141,11 +16597,11 @@ const buildRunLibraryOutput = ({
   const fidelityByCase = new Map(
     (Array.isArray(fidelityRows) ? fidelityRows : []).map((row) => [String(row?.caseId || ""), row])
   );
-  const profiles = (Array.isArray(processed) ? processed : []).map((item) => {
+  const profiles = await Promise.all((Array.isArray(processed) ? processed : []).map(async (item) => {
     const caseId = String(item?.site?.id || "");
     const fidelityRow = fidelityByCase.get(caseId) || null;
     const fidelitySimilarity = parseSimilarityNumber(fidelityRow?.similarity);
-    const coverageScore = computeCoverageScore(item?.specPack);
+    const coverageScore = computeCoverageScore(item?.specPack, item?.site || {});
     const linkIntegrityScore = computeLinkIntegrityScore(item?.linkReport, item?.specPack);
     const qualityScore = computeQualityScore({
       coverageScore,
@@ -6162,13 +16618,22 @@ const buildRunLibraryOutput = ({
       createdAt: new Date().toISOString(),
     };
     const sanitizedSite = rewriteBrandTextDeep(item.site || {});
-    const profile = rewriteBrandTextDeep(
-      specPackToStyleProfile({
-        site: sanitizedSite,
-        indexCard: item.indexCard,
-        specPack: item.specPack,
-      })
-    );
+    const rawProfile = item?.styleProfile && typeof item.styleProfile === "object"
+      ? cloneJson(item.styleProfile)
+      : rewriteBrandTextDeep(await applyStructureFirstBackfillToStyleProfile({
+            styleProfile: specPackToStyleProfile({
+              site: sanitizedSite,
+              indexCard: item.indexCard,
+              specPack: item.specPack,
+            }),
+            site: item.site || {},
+            summary: item.summary || {},
+            sectionVisualSignatures: item.sectionVisualSignatures || null,
+            options: {},
+          }));
+    const profile = sanitizeTemplateAssetTextDeep(rawProfile, {
+      siteId: String(item?.site?.id || caseId || ""),
+    });
     const enriched = {
       ...profile,
       ...metadata,
@@ -6176,6 +16641,97 @@ const buildRunLibraryOutput = ({
     item.styleProfile = enriched;
     item.assetScores = metadata;
     return enriched;
+  }));
+  const normalizedTemplateExclusiveComponents = templateExclusiveComponents.map((component) => ({
+    name: component.name,
+    kebabName: component.kebabName,
+    defaultProps: sanitizeTemplateAssetTextDeep(component.defaultProps || {}, {
+      siteId: String(component?.templateExclusive?.siteId || ""),
+      pagePath: String(component?.templateExclusive?.pagePath || "/"),
+      sectionKind: String(component?.templateExclusive?.sectionKind || ""),
+    }),
+    editableFields: Array.isArray(component.editableFields) ? component.editableFields : [],
+    templateExclusive: component.templateExclusive,
+  }));
+  const templateExclusiveByName = new Map(
+    normalizedTemplateExclusiveComponents
+      .filter((component) => component?.name)
+      .map((component) => [String(component.name), component])
+  );
+  const mergeEditableFieldContracts = (...lists) => {
+    const merged = new Map();
+    for (const list of lists) {
+      for (const field of Array.isArray(list) ? list : []) {
+        const pathValue = String(field?.path || "").trim();
+        const typeValue = String(field?.type || "").trim();
+        if (!pathValue || !typeValue || merged.has(pathValue)) continue;
+        merged.set(pathValue, {
+          path: pathValue,
+          type: typeValue,
+        });
+      }
+    }
+    return Array.from(merged.values());
+  };
+  const buildTemplateBlockCatalog = ({ profiles = [], templateExclusiveByName = new Map() } = {}) => {
+    const entries = [];
+    const register = ({ profile, kind, block, source = "profile", pageSpec = null }) => {
+      if (!profile || !block || !block.type || !block.props || typeof block.props !== "object") return;
+      const componentMeta = templateExclusiveByName.get(String(block.type || "")) || null;
+      const normalizedPagePath = pageSpec ? normalizeTemplatePagePath(pageSpec.path || "/") : "";
+      const pageType =
+        pageSpec && String(pageSpec.pageType || "").trim()
+          ? String(pageSpec.pageType).trim()
+          : pageSpec
+            ? classifyTemplatePageType(normalizedPagePath, String(pageSpec.name || ""))
+            : "";
+      entries.push({
+        blockType: String(block.type || "").trim(),
+        kind: String(kind || "").trim(),
+        source,
+        profileId: String(profile.id || "").trim(),
+        styleFamily: String(profile?.siteStyleShell?.styleFamily || "").trim(),
+        pagePath: normalizedPagePath,
+        pageType,
+        props: cloneJson(block.props || {}),
+        editableFields: mergeEditableFieldContracts(
+          Array.isArray(componentMeta?.editableFields) ? componentMeta.editableFields : [],
+          collectEditableFieldsFromDefaults(block.props || {})
+        ),
+        baseBlockType: String(componentMeta?.templateExclusive?.baseBlockType || "").trim(),
+        sourceDomain: String(profile?.sourceDomain || "").trim(),
+        qualityScore: Number.isFinite(Number(profile?.qualityScore)) ? Number(profile.qualityScore) : null,
+      });
+    };
+
+    for (const profile of Array.isArray(profiles) ? profiles : []) {
+      for (const [kind, block] of Object.entries(profile?.templates || {})) {
+        register({ profile, kind, block, source: "profile" });
+      }
+      for (const pageSpec of Array.isArray(profile?.pageSpecs) ? profile.pageSpecs : []) {
+        for (const [kind, block] of Object.entries(pageSpec?.templates || {})) {
+          register({ profile, kind, block, source: "page", pageSpec });
+        }
+      }
+    }
+
+    const deduped = new Map();
+    for (const entry of entries) {
+      const key = [
+        entry.profileId,
+        entry.pagePath || "",
+        entry.pageType || "",
+        entry.kind,
+        entry.blockType,
+        entry.source,
+      ].join("::");
+      if (!deduped.has(key)) deduped.set(key, entry);
+    }
+    return Array.from(deduped.values());
+  };
+  const templateBlockCatalog = buildTemplateBlockCatalog({
+    profiles,
+    templateExclusiveByName,
   });
 
   return {
@@ -6184,12 +16740,79 @@ const buildRunLibraryOutput = ({
     manifestPath,
     profileCount: profiles.length,
     profiles,
-    templateExclusiveComponents: templateExclusiveComponents.map((component) => ({
-      name: component.name,
-      kebabName: component.kebabName,
-      defaultProps: component.defaultProps,
-      templateExclusive: component.templateExclusive,
-    })),
+    templateExclusiveComponentCount: normalizedTemplateExclusiveComponents.length,
+    templateExclusiveComponents: normalizedTemplateExclusiveComponents,
+    templateBlockCatalogCount: templateBlockCatalog.length,
+    templateBlockCatalog,
+  };
+};
+
+const writeRunLibrarySnapshot = async ({
+  filePath = "",
+  processed = [],
+  runId = "",
+  manifestPath = "",
+  fidelityRows = [],
+  templateExclusiveComponents = [],
+}) => {
+  if (!filePath) return null;
+  const runLibrary = await buildRunLibraryOutput({
+    processed,
+    runId,
+    manifestPath,
+    fidelityRows,
+    templateExclusiveComponents,
+  });
+  await ensureDir(path.dirname(filePath));
+  await fs.writeFile(filePath, JSON.stringify(runLibrary, null, 2));
+  if (Array.isArray(runLibrary?.templateExclusiveComponents) && runLibrary.templateExclusiveComponents.length) {
+    await fs.writeFile(
+      path.join(path.dirname(filePath), "template-exclusive-components.generated.json"),
+      JSON.stringify(
+        {
+          generatedAt: new Date().toISOString(),
+          sourceRunId: runId,
+          count: runLibrary.templateExclusiveComponents.length,
+          components: runLibrary.templateExclusiveComponents,
+        },
+        null,
+        2
+      )
+    );
+  }
+  if (Array.isArray(runLibrary?.templateBlockCatalog)) {
+    await fs.writeFile(
+      path.join(path.dirname(filePath), "template-block-catalog.generated.json"),
+      JSON.stringify(
+        {
+          generatedAt: new Date().toISOString(),
+          sourceRunId: runId,
+          count: runLibrary.templateBlockCatalog.length,
+          entries: runLibrary.templateBlockCatalog,
+        },
+        null,
+        2
+      )
+    );
+  }
+  return runLibrary;
+};
+
+const buildRegressionEnvOverrides = ({ runLibraryPath = "", runDir = "", options = {}, extra = {} } = {}) => {
+  const maxDiscovered = Math.max(4, Math.floor(Number(options?.maxDiscoveredPages || 0) || 12));
+  const pageCap = Math.max(8, Math.min(24, maxDiscovered));
+  const sectionsPerPageCap = Math.max(8, Math.floor(Number(process.env.CREATION_MAX_SECTIONS_PER_PAGE || 0) || 8));
+  const sectionsTotalCap = Math.max(pageCap * sectionsPerPageCap, 72);
+  const regressionReportDir = runDir ? path.join(runDir, "regression-reports") : "";
+  const regressionScreenshotDir = runDir ? path.join(runDir, "regression-screenshots") : "";
+  return {
+    ...(runLibraryPath ? { BUILDER_TEMPLATE_LIBRARY_PATH: runLibraryPath } : {}),
+    ...(regressionReportDir ? { STRATEGY_COMPARE_REPORT_DIR: regressionReportDir } : {}),
+    ...(regressionScreenshotDir ? { STRATEGY_COMPARE_SCREENSHOT_DIR: regressionScreenshotDir } : {}),
+    CREATION_MAX_PAGES: String(pageCap),
+    CREATION_MAX_SECTIONS_PER_PAGE: String(sectionsPerPageCap),
+    CREATION_MAX_SECTIONS_TOTAL: String(sectionsTotalCap),
+    ...(extra && typeof extra === "object" ? extra : {}),
   };
 };
 
@@ -6202,6 +16825,7 @@ const mergeAndPublishRunLibrary = async ({
     return {
       publishPath: "",
       publishTemplateExclusiveComponentsPath: "",
+      publishTemplateBlockCatalogPath: "",
       published: false,
       reason: "publish_disabled_or_blocked",
     };
@@ -6226,6 +16850,86 @@ const mergeAndPublishRunLibrary = async ({
     existingTemplateExclusiveComponents,
     runLibrary.templateExclusiveComponents
   );
+  const mergedTemplateExclusiveByName = new Map(
+    mergedTemplateExclusiveComponents
+      .filter((component) => component?.name)
+      .map((component) => [String(component.name), component])
+  );
+  const mergeEditableFieldContracts = (...lists) => {
+    const merged = new Map();
+    for (const list of lists) {
+      for (const field of Array.isArray(list) ? list : []) {
+        const pathValue = String(field?.path || "").trim();
+        const typeValue = String(field?.type || "").trim();
+        if (!pathValue || !typeValue || merged.has(pathValue)) continue;
+        merged.set(pathValue, {
+          path: pathValue,
+          type: typeValue,
+        });
+      }
+    }
+    return Array.from(merged.values());
+  };
+  const buildTemplateBlockCatalog = ({ profiles = [], templateExclusiveByName = new Map() } = {}) => {
+    const entries = [];
+    const register = ({ profile, kind, block, source = "profile", pageSpec = null }) => {
+      if (!profile || !block || !block.type || !block.props || typeof block.props !== "object") return;
+      const componentMeta = templateExclusiveByName.get(String(block.type || "")) || null;
+      const normalizedPagePath = pageSpec ? normalizeTemplatePagePath(pageSpec.path || "/") : "";
+      const pageType =
+        pageSpec && String(pageSpec.pageType || "").trim()
+          ? String(pageSpec.pageType).trim()
+          : pageSpec
+            ? classifyTemplatePageType(normalizedPagePath, String(pageSpec.name || ""))
+            : "";
+      entries.push({
+        blockType: String(block.type || "").trim(),
+        kind: String(kind || "").trim(),
+        source,
+        profileId: String(profile.id || "").trim(),
+        styleFamily: String(profile?.siteStyleShell?.styleFamily || "").trim(),
+        pagePath: normalizedPagePath,
+        pageType,
+        props: cloneJson(block.props || {}),
+        editableFields: mergeEditableFieldContracts(
+          Array.isArray(componentMeta?.editableFields) ? componentMeta.editableFields : [],
+          collectEditableFieldsFromDefaults(block.props || {})
+        ),
+        baseBlockType: String(componentMeta?.templateExclusive?.baseBlockType || "").trim(),
+        sourceDomain: String(profile?.sourceDomain || "").trim(),
+        qualityScore: Number.isFinite(Number(profile?.qualityScore)) ? Number(profile.qualityScore) : null,
+      });
+    };
+
+    for (const profile of Array.isArray(profiles) ? profiles : []) {
+      for (const [kind, block] of Object.entries(profile?.templates || {})) {
+        register({ profile, kind, block, source: "profile" });
+      }
+      for (const pageSpec of Array.isArray(profile?.pageSpecs) ? profile.pageSpecs : []) {
+        for (const [kind, block] of Object.entries(pageSpec?.templates || {})) {
+          register({ profile, kind, block, source: "page", pageSpec });
+        }
+      }
+    }
+
+    const deduped = new Map();
+    for (const entry of entries) {
+      const key = [
+        entry.profileId,
+        entry.pagePath || "",
+        entry.pageType || "",
+        entry.kind,
+        entry.blockType,
+        entry.source,
+      ].join("::");
+      if (!deduped.has(key)) deduped.set(key, entry);
+    }
+    return Array.from(deduped.values());
+  };
+  const mergedTemplateBlockCatalog = buildTemplateBlockCatalog({
+    profiles: mergedProfiles,
+    templateExclusiveByName: mergedTemplateExclusiveByName,
+  });
   const published = {
     generatedAt: new Date().toISOString(),
     sourceRunId: runId,
@@ -6233,9 +16937,12 @@ const mergeAndPublishRunLibrary = async ({
     profiles: mergedProfiles,
     templateExclusiveComponentCount: mergedTemplateExclusiveComponents.length,
     templateExclusiveComponents: mergedTemplateExclusiveComponents,
+    templateBlockCatalogCount: mergedTemplateBlockCatalog.length,
+    templateBlockCatalog: mergedTemplateBlockCatalog,
   };
   await fs.writeFile(DEFAULT_PUBLISH_PATH, JSON.stringify(published, null, 2));
   let publishTemplateExclusiveComponentsPath = "";
+  let publishTemplateBlockCatalogPath = "";
   if (mergedTemplateExclusiveComponents.length) {
     publishTemplateExclusiveComponentsPath = path.join(LIB_DIR, "template-exclusive-components.generated.json");
     await fs.writeFile(
@@ -6252,21 +16959,55 @@ const mergeAndPublishRunLibrary = async ({
       )
     );
   }
+  publishTemplateBlockCatalogPath = path.join(LIB_DIR, "template-block-catalog.generated.json");
+  await fs.writeFile(
+    publishTemplateBlockCatalogPath,
+    JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        sourceRunId: runId,
+        count: mergedTemplateBlockCatalog.length,
+        entries: mergedTemplateBlockCatalog,
+      },
+      null,
+      2
+    )
+  );
   return {
     publishPath: DEFAULT_PUBLISH_PATH,
     publishTemplateExclusiveComponentsPath,
+    publishTemplateBlockCatalogPath,
     published: true,
     reason: "ok",
   };
 };
 
-const toRequiredCategories = (specPack) =>
-  Array.isArray(specPack?.required_categories) ? specPack.required_categories.filter(Boolean) : [];
+const toRequiredCategories = (specPack, site = {}) => {
+  const pages = Array.isArray(specPack?.page_specs) ? specPack.page_specs : [];
+  const homePage = pages.find((page) => normalizeTemplatePagePath(page?.path || "/") === "/") || pages[0] || null;
+  const homeRequired = normalizeRequiredCategories(homePage?.required_categories);
+  const root = normalizeRequiredCategories(specPack?.required_categories);
+  const homeOnlyMode = Boolean(site?.homeOnly);
+  if (homeOnlyMode && homeRequired.length) return homeRequired;
+  if (pages.length === 1 && homeRequired.length) return homeRequired;
+  if (root.length) return root;
+  if (homeRequired.length) return homeRequired;
+  return normalizeRequiredCategories(
+    pages.flatMap((page) => normalizeRequiredCategories(page?.required_categories))
+  );
+};
 
-const toSiteRoutes = (specPack) => {
+const toSiteRoutes = (specPack, site = {}) => {
+  const homeOnlyMode = Boolean(site?.homeOnly);
   const fromPageSpecs = Array.isArray(specPack?.page_specs)
     ? specPack.page_specs.map((page) => normalizeTemplatePagePath(page?.path || "/"))
     : [];
+  if (homeOnlyMode) {
+    return unique(fromPageSpecs.length ? fromPageSpecs : ["/"]).slice(0, 1);
+  }
+  if (fromPageSpecs.length) {
+    return unique(fromPageSpecs).slice(0, 16);
+  }
   const fromSitePages = Array.isArray(specPack?.site_pages)
     ? specPack.site_pages.map((page) => normalizeTemplatePagePath(page?.path || "/"))
     : [];
@@ -6276,14 +17017,6 @@ const toSiteRoutes = (specPack) => {
 const buildProfileSelectorToken = (value) => {
   const token = slug(String(value || "").trim());
   return token ? `profile_selector_${token}` : "profile_selector_default";
-};
-
-const hostFromUrl = (value) => {
-  try {
-    return new URL(String(value || "").trim()).hostname.replace(/^www\./i, "");
-  } catch {
-    return "";
-  }
 };
 
 const buildRouteBlueprint = (specPack) => {
@@ -6316,6 +17049,190 @@ const buildPageContentBlueprint = (specPack) => {
     .join("; ");
 };
 
+const buildPerRouteSectionSpecHints = (specPack, { maxPages = 8 } = {}) => {
+  const pages = Array.isArray(specPack?.page_specs) ? specPack.page_specs : [];
+  if (!pages.length) return "";
+  const rolePriority = { home: 0, product_service_list: 1, detail: 2, blog_detail: 2, contact: 3, help_faq: 3, legal: 4 };
+  const scored = [...pages].sort((a, b) => {
+    const pathA = normalizeTemplatePagePath(a?.path || "/");
+    const pathB = normalizeTemplatePagePath(b?.path || "/");
+    const typeA = String(a?.taxonomy_type || "").trim().toLowerCase();
+    const typeB = String(b?.taxonomy_type || "").trim().toLowerCase();
+    const priA = Number(rolePriority[typeA] ?? 9);
+    const priB = Number(rolePriority[typeB] ?? 9);
+    if (priA !== priB) return priA - priB;
+    const depthA = pathA.split("/").filter(Boolean).length;
+    const depthB = pathB.split("/").filter(Boolean).length;
+    if (depthA !== depthB) return depthA - depthB;
+    return pathA.localeCompare(pathB);
+  });
+  const lines = scored.slice(0, Math.max(1, Math.floor(Number(maxPages) || 8))).map((page) => {
+    const pathValue = normalizeTemplatePagePath(page?.path || "/");
+    const role = String(page?.taxonomy_type || "").trim() || classifyTemplatePageType(pathValue, String(page?.name || ""));
+    const kinds = normalizeRequiredCategories(page?.required_categories).join(">");
+    const heroTitle = String(page?.section_specs?.hero?.defaults?.title || "").replace(/\s+/g, " ").trim();
+    const heroSubtitle = String(page?.section_specs?.hero?.defaults?.subtitle || "").replace(/\s+/g, " ").trim();
+    const footerBg = String(page?.section_specs?.footer?.defaults?.backgroundGradient || "").replace(/\s+/g, " ").trim();
+    const specialRules = page?.special_rules && typeof page.special_rules === "object" ? page.special_rules : {};
+    const lockFlags = [];
+    if (parseBool(specialRules.lockNavFooterStyle ?? specialRules.lock_nav_footer_style ?? false)) lockFlags.push("nav_footer");
+    if (parseBool(specialRules.lockHeroMedia ?? specialRules.lock_hero_media ?? false)) lockFlags.push("hero_media");
+    if (parseBool(specialRules.lockPaletteToSource ?? specialRules.lock_palette_to_source ?? false)) lockFlags.push("palette");
+    if (parseBool(specialRules.navMegaMenu ?? specialRules.nav_mega_menu ?? false)) lockFlags.push("mega_nav");
+    return `${pathValue} [${role}] sections=${kinds || "n/a"}${heroTitle ? `; hero.title="${heroTitle.slice(0, 60)}"` : ""}${
+      heroSubtitle ? `; hero.sub="${heroSubtitle.slice(0, 80)}"` : ""
+    }${footerBg ? `; footer.bg=${footerBg.slice(0, 56)}` : ""}${lockFlags.length ? `; locks=${lockFlags.join("+")}` : ""}`;
+  });
+  return lines.join("\n");
+};
+
+const countWords = (value) =>
+  String(value || "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length;
+
+const averageWordCountFromItems = (items = []) => {
+  const rows = (Array.isArray(items) ? items : [])
+    .map((item) => countWords(item?.description || item?.desc || item?.summary || ""))
+    .filter((value) => value > 0);
+  if (!rows.length) return 0;
+  return Math.round(rows.reduce((acc, value) => acc + value, 0) / rows.length);
+};
+
+const deriveWordRangeFromSource = (text, fallbackMin, fallbackMax) => {
+  const words = countWords(text);
+  if (words >= 2) {
+    const min = Math.max(fallbackMin, Math.floor(words * 0.7));
+    const max = Math.max(min + 3, Math.ceil(words * 1.35));
+    return { min, max };
+  }
+  return { min: fallbackMin, max: fallbackMax };
+};
+
+const deriveWordRangeFromWordCount = (wordCountValue, fallbackMin, fallbackMax) => {
+  const words = Math.max(0, Math.floor(Number(wordCountValue) || 0));
+  if (words >= 2) {
+    const min = Math.max(fallbackMin, Math.floor(words * 0.7));
+    const max = Math.max(min + 3, Math.ceil(words * 1.35));
+    return { min, max };
+  }
+  return { min: fallbackMin, max: fallbackMax };
+};
+
+const buildHomeCopyHardConstraints = (specPack) => {
+  const pageSpecs = Array.isArray(specPack?.page_specs) ? specPack.page_specs : [];
+  const homeSpec =
+    pageSpecs.find((page) => normalizeTemplatePagePath(page?.path || "/") === "/") ||
+    pageSpecs[0] ||
+    null;
+  const sectionSpecs =
+    (homeSpec?.section_specs && typeof homeSpec.section_specs === "object"
+      ? homeSpec.section_specs
+      : specPack?.section_specs && typeof specPack.section_specs === "object"
+        ? specPack.section_specs
+        : {}) || {};
+  const heroDefaults = sectionSpecs?.hero?.defaults || {};
+  const storyDefaults = sectionSpecs?.story?.defaults || {};
+  const approachDefaults = sectionSpecs?.approach?.defaults || {};
+  const ctaDefaults = sectionSpecs?.cta?.defaults || {};
+
+  const approachAvgWords = averageWordCountFromItems(approachDefaults.items);
+  return {
+    heroTitle: deriveWordRangeFromSource(heroDefaults.title, 4, 10),
+    heroSubtitle: deriveWordRangeFromSource(heroDefaults.subtitle, 14, 30),
+    storyBody: deriveWordRangeFromSource(storyDefaults.body || storyDefaults.subtitle, 18, 44),
+    approachItemDesc: deriveWordRangeFromWordCount(approachAvgWords, 10, 24),
+    ctaSubtitle: deriveWordRangeFromSource(ctaDefaults.subtitle, 12, 28),
+  };
+};
+
+const formatWordRange = (range) => `${Math.max(1, Number(range?.min || 1))}-${Math.max(1, Number(range?.max || 1))}`;
+
+const formatHomeCopyHardConstraintLine = (constraints) => {
+  if (!constraints || typeof constraints !== "object") return "";
+  return [
+    "Home copy hard constraints (must satisfy):",
+    `hero.title words=${formatWordRange(constraints.heroTitle)}`,
+    `hero.subtitle words=${formatWordRange(constraints.heroSubtitle)}`,
+    `story.body words=${formatWordRange(constraints.storyBody)}`,
+    `approach.item.description words=${formatWordRange(constraints.approachItemDesc)}`,
+    `cta.subtitle words=${formatWordRange(constraints.ctaSubtitle)}`,
+    "If a section violates any range, regenerate that section before final output.",
+  ].join("; ");
+};
+
+const REGRESSION_CANDIDATE_VARIANTS = [
+  {
+    name: "baseline",
+    instruction: "Use balanced fidelity: preserve structure, copy hierarchy, and source-like spacing.",
+  },
+  {
+    name: "copy_dense",
+    instruction: "Prioritize text-density matching on home hero/story/cta; avoid terse one-line replacements.",
+  },
+  {
+    name: "visual_tight",
+    instruction: "Prioritize exact section proportions, overlay treatment, and footer composition to source screenshot.",
+  },
+];
+
+const resolveRegressionCandidateContext = ({ candidateIndex = 0, candidateTotal = 1, attempt = 0 } = {}) => {
+  const safeIndex = Math.max(0, Math.floor(Number(candidateIndex) || 0));
+  const safeTotal = Math.max(1, Math.floor(Number(candidateTotal) || 1));
+  const variant = REGRESSION_CANDIDATE_VARIANTS[safeIndex % REGRESSION_CANDIDATE_VARIANTS.length];
+  return {
+    index: safeIndex,
+    total: safeTotal,
+    attempt: Math.max(0, Math.floor(Number(attempt) || 0)),
+    name: variant?.name || "baseline",
+    instruction: variant?.instruction || "",
+  };
+};
+
+const buildCandidateOutcomeScore = (entry) => {
+  const outcome = entry?.outcome || {};
+  const blockingCount =
+    Number(outcome?.blockingFidelityFailures?.length || 0) +
+    Number(outcome?.blockingMissing?.length || 0) +
+    Number(outcome?.blockingPageFidelityFailures?.length || 0) +
+    Number(outcome?.blockingPageMissing?.length || 0);
+  const strictCount =
+    Number(outcome?.strictFidelityFailures?.length || 0) +
+    Number(outcome?.strictFidelityMissing?.length || 0) +
+    Number(outcome?.strictPageFidelityFailures?.length || 0) +
+    Number(outcome?.strictPageFidelityMissing?.length || 0);
+  const overallSimilarity =
+    typeof outcome?.fidelity?.overallSimilarity === "number" && Number.isFinite(outcome.fidelity.overallSimilarity)
+      ? outcome.fidelity.overallSimilarity
+      : -1;
+  const qualityScore =
+    typeof outcome?.score?.overallScore === "number" && Number.isFinite(outcome.score.overallScore)
+      ? outcome.score.overallScore
+      : -1;
+  return {
+    blockingCount,
+    strictCount,
+    overallSimilarity,
+    qualityScore,
+  };
+};
+
+const selectBestRegressionCandidate = (candidates = []) => {
+  const rows = Array.isArray(candidates) ? candidates.filter(Boolean) : [];
+  if (!rows.length) return null;
+  const sorted = [...rows].sort((a, b) => {
+    const as = buildCandidateOutcomeScore(a);
+    const bs = buildCandidateOutcomeScore(b);
+    if (as.blockingCount !== bs.blockingCount) return as.blockingCount - bs.blockingCount;
+    if (as.strictCount !== bs.strictCount) return as.strictCount - bs.strictCount;
+    if (as.overallSimilarity !== bs.overallSimilarity) return bs.overallSimilarity - as.overallSimilarity;
+    if (as.qualityScore !== bs.qualityScore) return bs.qualityScore - as.qualityScore;
+    return Number(a?.candidateIndex || 0) - Number(b?.candidateIndex || 0);
+  });
+  return sorted[0] || null;
+};
+
 const extractImageVisualSignature = async (imagePath) => {
   if (!imagePath) return null;
   try {
@@ -6323,7 +17240,8 @@ const extractImageVisualSignature = async (imagePath) => {
 import json
 from PIL import Image, ImageStat
 path = ${JSON.stringify(imagePath)}
-img = Image.open(path).convert("RGB").resize((320, 320))
+orig = Image.open(path).convert("RGB")
+img = orig.resize((320, 320))
 palette_img = img.convert("P", palette=Image.ADAPTIVE, colors=6).convert("RGB")
 colors = palette_img.getcolors(320 * 320) or []
 colors = sorted(colors, key=lambda x: x[0], reverse=True)[:6]
@@ -6333,10 +17251,25 @@ for count, rgb in colors:
 stat = ImageStat.Stat(img)
 mean = stat.mean if stat.mean else [0,0,0]
 luminance = (0.2126 * mean[0] + 0.7152 * mean[1] + 0.0722 * mean[2]) / 255.0
+# 64-bit dHash (9x8 gradient)
+gray = img.convert("L").resize((9, 8))
+pixels = list(gray.getdata())
+bits = []
+for y in range(8):
+    row_offset = y * 9
+    for x in range(8):
+        left = pixels[row_offset + x]
+        right = pixels[row_offset + x + 1]
+        bits.append(1 if left > right else 0)
+dhash_value = 0
+for bit in bits:
+    dhash_value = (dhash_value << 1) | bit
+dhash = f"{dhash_value:016x}"
 print(json.dumps({
   "dominantColors": hexes,
   "luminance": round(float(luminance), 4),
-  "isDark": bool(luminance < 0.5)
+  "isDark": bool(luminance < 0.5),
+  "dhash": dhash
 }))
 PY`;
     const { stdout } = await runShell(cmd, { cwd: ROOT });
@@ -6346,6 +17279,59 @@ PY`;
   } catch {
     return null;
   }
+};
+
+const resolveImagePathFromAssetToken = (value) => {
+  const token = String(value || "").trim();
+  if (!token) return "";
+  if (token.startsWith("/assets/")) {
+    return path.join(ROOT, "public", token.replace(/^\//, ""));
+  }
+  if (path.isAbsolute(token)) return token;
+  return "";
+};
+
+const extractSectionVisualSignatures = async (referenceSlices = null) => {
+  const desktopSlices =
+    referenceSlices?.desktop && typeof referenceSlices.desktop === "object" ? referenceSlices.desktop : {};
+  const result = {};
+  for (const [kind, assetToken] of Object.entries(desktopSlices)) {
+    const imagePath = resolveImagePathFromAssetToken(assetToken);
+    if (!imagePath) continue;
+    const signature = await extractImageVisualSignature(imagePath);
+    if (!signature || typeof signature !== "object") continue;
+    result[normalizeSectionKind(kind) || kind] = signature;
+  }
+  return result;
+};
+
+const extractDominantColorFromSectionSignatures = (sectionVisualSignatures = null, sectionKey = "") => {
+  if (!sectionVisualSignatures || typeof sectionVisualSignatures !== "object") return "";
+  const signature =
+    sectionVisualSignatures?.[sectionKey] && typeof sectionVisualSignatures[sectionKey] === "object"
+      ? sectionVisualSignatures[sectionKey]
+      : null;
+  if (!signature) return "";
+  const colors = Array.isArray(signature?.dominantColors) ? signature.dominantColors : [];
+  for (const color of colors) {
+    const normalized = normalizeColorToken(color);
+    if (normalized) return normalized;
+  }
+  return "";
+};
+
+const enrichSummaryWithSectionBackgroundColors = (summary = {}, sectionVisualSignatures = null) => {
+  const navBackgroundColor =
+    normalizeColorToken(summary?.navBackgroundColor || "") ||
+    extractDominantColorFromSectionSignatures(sectionVisualSignatures, "navigation");
+  const footerBackgroundColor =
+    normalizeColorToken(summary?.footerBackgroundColor || "") ||
+    extractDominantColorFromSectionSignatures(sectionVisualSignatures, "footer");
+  return {
+    ...summary,
+    ...(navBackgroundColor ? { navBackgroundColor } : {}),
+    ...(footerBackgroundColor ? { footerBackgroundColor } : {}),
+  };
 };
 
 const buildRepairHint = (repairContext) => {
@@ -6362,12 +17348,41 @@ const buildRepairHint = (repairContext) => {
   if (Number.isFinite(gap) && gap > 0) parts.push(`Close at least ${gap.toFixed(2)} points.`);
 
   // Section-level repair hints
-  const sectionHints = Array.isArray(repairContext.sectionHints) ? repairContext.sectionHints : [];
+  const sectionHintsRaw = Array.isArray(repairContext.sectionHints) ? repairContext.sectionHints : [];
+  const sectionHints = [];
+  const seenSectionHints = new Set();
+  for (const hint of sectionHintsRaw) {
+    const sim = typeof hint?.similarity === "number" ? Number(hint.similarity).toFixed(1) : "na";
+    const key = `${String(hint?.sectionType || "").trim()}|${String(hint?.sectionKind || "").trim()}|${sim}`;
+    if (seenSectionHints.has(key)) continue;
+    seenSectionHints.add(key);
+    sectionHints.push(hint);
+  }
   if (sectionHints.length) {
     parts.push("Per-section issues:");
     for (const hint of sectionHints.slice(0, 6)) {
       const sim = typeof hint.similarity === "number" ? ` (similarity=${hint.similarity.toFixed(1)})` : "";
       parts.push(`  - ${hint.sectionType || hint.sectionKind}${sim}: ${hint.issue || "low fidelity, try alternative variant or custom component"}`);
+    }
+    const kinds = new Set(
+      sectionHints
+        .map((hint) => normalizeSectionKind(hint?.sectionKind || hint?.sectionType || ""))
+        .filter(Boolean)
+    );
+    if (kinds.has("navigation")) {
+      parts.push(
+        "Navigation patch priority: match menu depth, alignment, spacing, and internal link mapping to source nav semantics."
+      );
+    }
+    if (kinds.has("hero")) {
+      parts.push(
+        "Hero patch priority: match media composition/crop, heading hierarchy, CTA placement, and overlay contrast to source first screen."
+      );
+    }
+    if (kinds.has("footer")) {
+      parts.push(
+        "Footer patch priority: match column count, link grouping, background treatment, and legal row spacing to source."
+      );
     }
   }
   const issueSummary = repairContext?.issueSummary && typeof repairContext.issueSummary === "object" ? repairContext.issueSummary : {};
@@ -6386,7 +17401,9 @@ const buildRepairHint = (repairContext) => {
     parts.push("Color repair priority: align dominant palette, contrast, and surface accents to source screenshot mood.");
   }
   if (copyDensityCount > 0) {
-    parts.push("Copy-density repair priority: align heading length, paragraph density, and CTA count with source.");
+    parts.push(
+      "Copy-density repair priority: align heading length, paragraph density, CTA count, and above-the-fold text block count with source; avoid over-short generic copy."
+    );
   }
 
   parts.push(
@@ -6396,12 +17413,22 @@ const buildRepairHint = (repairContext) => {
   return parts.join(" ");
 };
 
-const buildRegressionPrompt = ({ site, indexCard, specPack, summary, visualSignature = null, repairContext = null }) => {
+const buildRegressionPrompt = ({
+  site,
+  indexCard,
+  specPack,
+  summary,
+  visualSignature = null,
+  repairContext = null,
+  candidateContext = null,
+  options = {},
+}) => {
   const basePrompt = site.prompt || site.description || `Generate homepage for ${site.id}`;
   const host = hostFromUrl(site.url);
   const routes = toSiteRoutes(specPack);
   const routeBlueprint = buildRouteBlueprint(specPack);
   const pageBlueprint = buildPageContentBlueprint(specPack);
+  const perRouteSectionHints = buildPerRouteSectionSpecHints(specPack, { maxPages: 8 });
   const selectorToken = buildProfileSelectorToken(indexCard?.template_id || site.id);
   const routeLine =
     routes.length > 1
@@ -6417,18 +17444,98 @@ const buildRegressionPrompt = ({ site, indexCard, specPack, summary, visualSigna
   const hintLine = identityHints.length
     ? `Template identity hints: ${identityHints.join(" | ")}.`
     : "";
-  const hostToken = hostFromUrl(site.url);
-  const isAudezeHost = /(^|\.)audeze\.com$/i.test(hostToken);
   const navDepth = Number(summary?.navMenuDepth || 1);
   const heroMode = normalizeHeroPresentation(summary?.heroPresentation)?.mode;
   const hasHeroCarousel =
     Boolean(summary?.heroCarousel?.enabled) &&
     Array.isArray(summary?.heroCarousel?.images) &&
     summary.heroCarousel.images.length >= 2;
+  const hasProductRoutes = routes.some((route) => /(products?|collections?|shop|store|services?)/i.test(String(route || "")));
+  const hasBlogRoutes = routes.some((route) => /(blog|blogs|news|insights?|articles?)/i.test(String(route || "")));
+  const hasSupportRoutes = routes.some((route) => /(support|help|faq|knowledge|docs?)/i.test(String(route || "")));
+  const themeColors = Array.isArray(summary?.themeColors) ? summary.themeColors : [];
+  const hasBlueCyanThemeColor = themeColors.some((color) => {
+    const match = String(color || "").trim().toLowerCase().match(/^#?([0-9a-f]{6})$/i);
+    if (!match) return false;
+    const hex = match[1];
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+    return b >= 96 && g >= 88 && r <= 96;
+  });
+  const homeCopyConstraints =
+    options?.homeCopyHardConstraints === false ? null : buildHomeCopyHardConstraints(specPack);
+  const homeCopyConstraintLine = formatHomeCopyHardConstraintLine(homeCopyConstraints);
+  const homePageSpec = Array.isArray(specPack?.page_specs)
+    ? specPack.page_specs.find((page) => normalizeTemplatePagePath(page?.path || "/") === "/") || null
+    : null;
+  const homeSpecialRules = homePageSpec?.special_rules && typeof homePageSpec.special_rules === "object" ? homePageSpec.special_rules : {};
+  const homeHeroTitleAnchor = String(homePageSpec?.section_specs?.hero?.defaults?.title || "")
+    .replace(/\s+/g, " ")
+    .trim();
+  const homeHeroSubtitleAnchor = String(homePageSpec?.section_specs?.hero?.defaults?.subtitle || "")
+    .replace(/\s+/g, " ")
+    .trim();
+  const homeCopyAnchorLine =
+    homeHeroTitleAnchor || homeHeroSubtitleAnchor
+      ? `Home copy anchors: hero.title≈"${homeHeroTitleAnchor.slice(0, 72)}"; hero.subtitle≈"${homeHeroSubtitleAnchor.slice(
+          0,
+          110
+        )}". Keep wording close; avoid generic replacements.`
+      : "";
+  const sourceTextSample = [
+    ...(Array.isArray(summary?.h1) ? summary.h1 : []),
+    ...(Array.isArray(summary?.h2) ? summary.h2 : []),
+    String(summary?.title || ""),
+  ]
+    .filter(Boolean)
+    .join(" ");
+  const sourceTextAscii = sourceTextSample.replace(/[^\x00-\x7F]/g, "");
+  const sourceEnglishLike =
+    sourceTextAscii.length > 20 &&
+    sourceTextSample.length > 0 &&
+    sourceTextAscii.length / Math.max(1, sourceTextSample.length) >= 0.8 &&
+    /[A-Za-z]/.test(sourceTextAscii);
+  const sourceLanguageLine = sourceEnglishLike
+    ? "Source copy language lock: keep output text primarily English and preserve source headline tone."
+    : "";
+  const homeVisualLocks = [];
+  if (parseBool(homeSpecialRules.lockNavFooterStyle ?? homeSpecialRules.lock_nav_footer_style ?? false)) {
+    homeVisualLocks.push("lock nav/footer composition and spacing");
+  }
+  if (parseBool(homeSpecialRules.lockHeroMedia ?? homeSpecialRules.lock_hero_media ?? false)) {
+    homeVisualLocks.push("lock hero media composition/crop");
+  }
+  if (parseBool(homeSpecialRules.lockPaletteToSource ?? homeSpecialRules.lock_palette_to_source ?? false)) {
+    homeVisualLocks.push("lock source palette/overlay");
+  }
+  const homeVisualLockLine = homeVisualLocks.length
+    ? `Home visual lock: ${homeVisualLocks.join("; ")}. Treat these as hard constraints.`
+    : "";
+  const candidateLine =
+    candidateContext && typeof candidateContext === "object"
+      ? `Candidate strategy ${Number(candidateContext.index || 0) + 1}/${Math.max(
+          1,
+          Number(candidateContext.total || 1)
+        )} (${String(candidateContext.name || "baseline")}): ${String(candidateContext.instruction || "").trim()}`
+      : "";
 
   // Build per-section spec hints for higher fidelity generation
   const sectionSpecs = specPack?.section_specs && typeof specPack.section_specs === "object" ? specPack.section_specs : {};
-  const sectionSpecLines = Object.entries(sectionSpecs)
+  const homeRequiredCategories = normalizeRequiredCategories(
+    homePageSpec?.required_categories || specPack?.required_categories || []
+  );
+  const requiredSectionKinds = new Set(homeRequiredCategories);
+  const scopedSectionSpecs =
+    homePageSpec?.section_specs && typeof homePageSpec.section_specs === "object"
+      ? homePageSpec.section_specs
+      : sectionSpecs;
+  const scopedSectionEntries = Object.entries(scopedSectionSpecs).filter(([kind]) => {
+    if (!requiredSectionKinds.size) return true;
+    const normalizedKind = normalizeSectionKind(kind);
+    return Boolean(normalizedKind) && requiredSectionKinds.has(normalizedKind);
+  });
+  const sectionSpecLines = scopedSectionEntries
     .slice(0, 10)
     .map(([kind, spec]) => {
       if (!spec?.block_type) return "";
@@ -6445,7 +17552,7 @@ const buildRegressionPrompt = ({ site, indexCard, specPack, summary, visualSigna
     : "";
 
   // Build alternative variant hints from registry
-  const alternativeHints = Object.entries(sectionSpecs)
+  const alternativeHints = scopedSectionEntries
     .slice(0, 8)
     .map(([kind, spec]) => {
       if (!spec?.block_type) return "";
@@ -6467,11 +17574,23 @@ const buildRegressionPrompt = ({ site, indexCard, specPack, summary, visualSigna
     Array.isArray(summary?.h1) && summary.h1.length ? `Primary copy cues (H1): ${summary.h1.slice(0, 4).join(" | ")}.` : "",
     Array.isArray(summary?.h2) && summary.h2.length ? `Secondary copy cues (H2): ${summary.h2.slice(0, 6).join(" | ")}.` : "",
     pageBlueprint ? `Per-page copy blueprint: ${pageBlueprint}` : "",
+    perRouteSectionHints
+      ? `Per-route section contract (apply route-by-route, do NOT clone home):\n${perRouteSectionHints}`
+      : "",
     visualSignature?.dominantColors?.length
       ? `Source visual fingerprint: dominant colors=${visualSignature.dominantColors.join(", ")}, luminance=${String(
           visualSignature.luminance
         )}, darkTheme=${String(Boolean(visualSignature.isDark))}.`
       : "",
+    visualSignature?.dominantColors?.length
+      ? `Palette lock: keep section surfaces/overlay/CTA close to source dominant colors (${visualSignature.dominantColors
+          .slice(0, 4)
+          .join(", ")}), avoid generic monochrome fallback.`
+      : "",
+    typeof visualSignature?.isDark === "boolean"
+      ? `Theme mode lock: source darkTheme=${String(Boolean(visualSignature.isDark))}. Do not invert to the opposite theme mode.`
+      : "",
+    "Link semantics requirement: avoid overusing '/' in navigation/footer; distribute links across required internal routes.",
     navDepth > 1
       ? "Navigation structure requirement: build multi-level menu (dropdown/mega-menu) with visible child links, not flat single-level nav."
       : "",
@@ -6481,20 +17600,25 @@ const buildRegressionPrompt = ({ site, indexCard, specPack, summary, visualSigna
     hasHeroCarousel
       ? "Hero interaction requirement: if source hero rotates, implement hero carousel/slide switching with source-like images."
       : "",
-    /(^|\.)siemens\.com$/i.test(hostToken)
+    sourceLanguageLine,
+    homeCopyConstraintLine,
+    homeCopyAnchorLine,
+    homeVisualLockLine,
+    /(source_or_gallery|source_only)/i.test(String(site?.imageSourcePolicy || ""))
+      ? "Image policy: prefer source site image URLs for hero/section backgrounds; fallback to gallery only when source image is missing."
+      : "",
+    "Copy fidelity requirement: keep home-page text density and paragraph rhythm close to source; do not compress multi-line supporting copy into one short sentence.",
+    hasBlueCyanThemeColor
       ? "Brand palette requirement: deep navy + cyan + white (avoid generic grayscale or random accent colors)."
       : "",
-    isAudezeHost
-      ? "Audeze extraction constraints: keep multi-level dropdown navigation and preserve menu children; support image+text style menu cues in nav content model."
+    hasProductRoutes
+      ? "Catalog constraint: keep one representative product/detail page for template fidelity; strip cart/checkout and transaction flows."
       : "",
-    isAudezeHost
-      ? "Audeze extraction constraints: include one representative product detail page for display only; do NOT include cart/checkout/e-commerce actions."
+    hasBlogRoutes
+      ? "Content constraint: blog/news/detail routes should use article-like long-form structure with readable hierarchy."
       : "",
-    isAudezeHost
-      ? "Audeze extraction constraints: technology/blog routes should use markdown-friendly content flow (article-like structure)."
-      : "",
-    isAudezeHost
-      ? "Audeze extraction constraints: support routes are content-only; remove download workflows and executable/file-download interactions."
+    hasSupportRoutes
+      ? "Support constraint: support/help routes are content-only; remove executable/file-download workflows from template interactions."
       : "",
     sectionSpecBlock,
     alternativeBlock,
@@ -6504,6 +17628,7 @@ const buildRegressionPrompt = ({ site, indexCard, specPack, summary, visualSigna
     .join("\n");
   return [
     `Template selector token: ${selectorToken}.`,
+    candidateLine,
     basePrompt,
     routeLine,
     pageCountLine,
@@ -6525,16 +17650,33 @@ const runRegression = async ({
   maxCases,
   regressionTimeoutMs,
   attempt = 0,
+  candidateIndex = 0,
+  candidateTotal = 1,
   repairContextByCase = new Map(),
+  envOverrides = {},
+  options = {},
 }) => {
-  const promptsPath = path.join(runDir, attempt > 0 ? `regression-prompts.attempt-${attempt}.json` : "regression-prompts.json");
+  const promptsFileName =
+    Number(candidateTotal || 1) > 1
+      ? attempt > 0
+        ? `regression-prompts.attempt-${attempt}.candidate-${Number(candidateIndex) + 1}.json`
+        : `regression-prompts.candidate-${Number(candidateIndex) + 1}.json`
+      : attempt > 0
+        ? `regression-prompts.attempt-${attempt}.json`
+        : "regression-prompts.json";
+  const promptsPath = path.join(runDir, promptsFileName);
+  const candidateContext = resolveRegressionCandidateContext({
+    candidateIndex,
+    candidateTotal,
+    attempt,
+  });
   const payload = {
     version: "1.0.0",
     cases: sites.map((item) => ({
       id: item.site.id,
       description: item.site.description || item.site.id,
-      requiredCategories: toRequiredCategories(item.specPack),
-      routes: toSiteRoutes(item.specPack),
+      requiredCategories: toRequiredCategories(item.specPack, item.site),
+      routes: toSiteRoutes(item.specPack, item.site),
       prompt: buildRegressionPrompt({
         site: item.site,
         indexCard: item.indexCard,
@@ -6542,22 +17684,25 @@ const runRegression = async ({
         summary: item.summary,
         visualSignature: item.visualSignature || null,
         repairContext: repairContextByCase.get(String(item.site?.id || "")) || null,
+        candidateContext,
+        options,
       }),
     })),
   };
   await fs.writeFile(promptsPath, JSON.stringify(payload, null, 2));
 
   const args = [
-    "node regression/run-strategy-comparison.mjs",
+    `node ${JSON.stringify(REGRESSION_RUNNER_SCRIPT)}`,
     `--prompts ${JSON.stringify(promptsPath)}`,
     `--renderer ${renderer}`,
   ];
   if (groups) args.push(`--groups ${JSON.stringify(groups)}`);
   if (maxCases > 0) args.push(`--max-cases ${Math.floor(maxCases)}`);
 
-  const cmd = `cd ${JSON.stringify(ROOT)} && ${args.join(" ")}`;
+  const cmd = `cd ${JSON.stringify(BUILDER_ROOT)} && ${args.join(" ")}`;
   const { stdout, stderr } = await runShell(cmd, {
-    cwd: ROOT,
+    cwd: BUILDER_ROOT,
+    env: envOverrides && typeof envOverrides === "object" ? envOverrides : {},
     timeoutMs: Number(regressionTimeoutMs) > 0 ? Math.floor(Number(regressionTimeoutMs)) : 0,
   });
   const out = `${stdout}\n${stderr}`;
@@ -6568,6 +17713,7 @@ const runRegression = async ({
     promptsPath,
     reportPath,
     rawOutput: out,
+    candidateContext,
   };
 };
 
@@ -6579,6 +17725,7 @@ const runSingleSiteRegression = async ({
   regressionTimeoutMs,
   attempt = 0,
   repairContext = null,
+  envOverrides = {},
 }) => {
   const caseId = String(siteItem?.site?.id || "");
   if (!caseId) {
@@ -6598,8 +17745,8 @@ const runSingleSiteRegression = async ({
       {
         id: caseId,
         description: siteItem.site.description || caseId,
-        requiredCategories: toRequiredCategories(siteItem.specPack),
-        routes: toSiteRoutes(siteItem.specPack),
+        requiredCategories: toRequiredCategories(siteItem.specPack, siteItem.site),
+        routes: toSiteRoutes(siteItem.specPack, siteItem.site),
         prompt: buildRegressionPrompt({
           site: siteItem.site,
           indexCard: siteItem.indexCard,
@@ -6614,21 +17761,23 @@ const runSingleSiteRegression = async ({
   await fs.writeFile(promptsPath, JSON.stringify(payload, null, 2));
 
   const args = [
-    "node regression/run-strategy-comparison.mjs",
+    `node ${JSON.stringify(REGRESSION_RUNNER_SCRIPT)}`,
     `--prompts ${JSON.stringify(promptsPath)}`,
     `--renderer ${renderer}`,
     `--groups ${JSON.stringify(DEFAULT_TEMPLATE_FIRST_GROUP)}`,
     "--max-cases 1",
   ];
 
-  const env = {};
+  const env = {
+    ...(envOverrides && typeof envOverrides === "object" ? envOverrides : {}),
+  };
   if (port && port !== 3110) {
     env.STRATEGY_COMPARE_PORT = String(port);
   }
 
-  const cmd = `cd ${JSON.stringify(ROOT)} && ${args.join(" ")}`;
+  const cmd = `cd ${JSON.stringify(BUILDER_ROOT)} && ${args.join(" ")}`;
   const { stdout, stderr } = await runShell(cmd, {
-    cwd: ROOT,
+    cwd: BUILDER_ROOT,
     env,
     timeoutMs: Number(regressionTimeoutMs) > 0 ? Math.floor(Number(regressionTimeoutMs)) : 0,
   });
@@ -6669,6 +17818,139 @@ const runSingleSiteRegression = async ({
   return result;
 };
 
+let renderableSiteKeyIndexCache = null;
+
+const hasSandboxPayloadForSiteKey = async (siteKey) => {
+  if (!siteKey) return false;
+  const payloadPath = path.join(ROOT, "..", "asset-factory", "out", siteKey, "sandbox", "payload.json");
+  try {
+    await fs.access(payloadPath);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const buildRenderableSiteKeyIndex = async () => {
+  if (renderableSiteKeyIndexCache) return renderableSiteKeyIndexCache;
+  const outDir = path.join(ROOT, "..", "asset-factory", "out");
+  const direct = new Set();
+  const benchByCaseSlug = new Map();
+  const entries = await fs.readdir(outDir, { withFileTypes: true }).catch(() => []);
+  for (const entry of entries) {
+    if (!entry?.isDirectory?.()) continue;
+    const siteKey = String(entry.name || "").trim();
+    if (!siteKey) continue;
+    const payloadPath = path.join(outDir, siteKey, "sandbox", "payload.json");
+    try {
+      await fs.access(payloadPath);
+    } catch {
+      continue;
+    }
+    direct.add(siteKey);
+    const benchMatch = siteKey.match(/^bench_[^_]+_[^_]+_(.+)$/);
+    if (!benchMatch?.[1]) continue;
+    const caseSlug = String(benchMatch[1] || "").trim();
+    if (!caseSlug) continue;
+    const rows = benchByCaseSlug.get(caseSlug) || [];
+    rows.push(siteKey);
+    benchByCaseSlug.set(caseSlug, rows);
+  }
+  for (const [caseSlug, rows] of benchByCaseSlug.entries()) {
+    rows.sort().reverse();
+    benchByCaseSlug.set(caseSlug, rows);
+  }
+  renderableSiteKeyIndexCache = { direct, benchByCaseSlug };
+  return renderableSiteKeyIndexCache;
+};
+
+const resolveRenderableSiteKeyForCase = async ({
+  caseId = "",
+  preferredSiteKey = "",
+  preferredRunSlug = "",
+  allowLatestBenchFallback = true,
+}) => {
+  const index = await buildRenderableSiteKeyIndex();
+  const preferred = String(preferredSiteKey || "").trim();
+  if (preferred && index.direct.has(preferred)) return preferred;
+  const caseToken = String(caseId || "").trim();
+  if (caseToken && index.direct.has(caseToken)) return caseToken;
+  const caseSlug = slug(caseToken);
+  if (!caseSlug) return "";
+  const candidates = index.benchByCaseSlug.get(caseSlug) || [];
+  if (!candidates.length) return "";
+  const runSlug = String(preferredRunSlug || "").trim();
+  if (runSlug) {
+    const scoped = candidates.find((key) => key.includes(`bench_${runSlug}_`));
+    if (scoped) return scoped;
+    if (!allowLatestBenchFallback) return "";
+  }
+  return candidates[0] || "";
+};
+
+const readPayloadPagesBySiteKey = async (siteKey) => {
+  if (!siteKey) return [];
+  const payloadPath = path.join(ROOT, "..", "asset-factory", "out", siteKey, "sandbox", "payload.json");
+  try {
+    const payloadRaw = await fs.readFile(payloadPath, "utf8");
+    const payload = JSON.parse(payloadRaw);
+    return Array.isArray(payload?.pages) ? payload.pages : [];
+  } catch {
+    return [];
+  }
+};
+
+const findLatestComparableRegressionReport = async ({
+  caseIds = [],
+  excludeReportPath = "",
+}) => {
+  const targetCaseIds = new Set((Array.isArray(caseIds) ? caseIds : []).map((id) => String(id || "").trim()).filter(Boolean));
+  if (!targetCaseIds.size) return null;
+  const reportsDir = path.join(BUILDER_ROOT, "regression", "strategy-comparison");
+  const entries = await fs.readdir(reportsDir, { withFileTypes: true }).catch(() => []);
+  const reportNames = entries
+    .filter((entry) => entry?.isFile?.() && /^compare-\d{8}-\d{6}\.json$/.test(String(entry.name || "")))
+    .map((entry) => String(entry.name || ""))
+    .sort()
+    .reverse();
+  const excludePath = String(excludeReportPath || "").trim();
+  for (const name of reportNames) {
+    const reportPath = path.join(reportsDir, name);
+    if (excludePath && path.resolve(reportPath) === path.resolve(excludePath)) continue;
+    try {
+      const raw = await fs.readFile(reportPath, "utf8");
+      const report = JSON.parse(raw);
+      const groups = Array.isArray(report?.groups) ? report.groups : [];
+      const targetGroup = groups.find((group) => String(group?.id || "") === DEFAULT_TEMPLATE_FIRST_GROUP);
+      const rows = Array.isArray(targetGroup?.results) ? targetGroup.results : [];
+      const byCase = new Map(rows.map((row) => [String(row?.caseId || ""), row]));
+      let allSatisfied = true;
+      for (const caseId of targetCaseIds) {
+        const row = byCase.get(caseId);
+        if (!row?.ok) {
+          allSatisfied = false;
+          break;
+        }
+        const screenshot = String(row?.screenshot || "").trim();
+        if (screenshot) {
+          try {
+            await fs.access(screenshot);
+          } catch {
+            allSatisfied = false;
+            break;
+          }
+        }
+      }
+      if (allSatisfied) {
+        return reportPath;
+      }
+    } catch {
+      // keep scanning older reports
+    }
+  }
+  return null;
+};
+
 const collectTemplateFirstPreviewLinks = async ({ reportPath, previewBaseUrl }) => {
   if (!reportPath) return [];
   const raw = await fs.readFile(reportPath, "utf8");
@@ -6677,10 +17959,11 @@ const collectTemplateFirstPreviewLinks = async ({ reportPath, previewBaseUrl }) 
   const targetGroup = groups.find((group) => String(group?.id || "") === DEFAULT_TEMPLATE_FIRST_GROUP);
   const rows = Array.isArray(targetGroup?.results) ? targetGroup.results : [];
   const previewOrigin = normalizePreviewBaseUrl(previewBaseUrl);
+  const preferredRunSlug = slug(path.basename(String(reportPath || ""), ".json"));
 
   const links = [];
   for (const row of rows) {
-    if (!row?.ok || typeof row?.url !== "string" || !row.url.trim()) continue;
+    if (typeof row?.url !== "string" || !row.url.trim()) continue;
     const baseUrl = rebaseToPreviewOrigin(String(row.url), previewOrigin);
     const caseId = String(row.caseId || "");
     if (!caseId || !baseUrl) continue;
@@ -6692,26 +17975,18 @@ const collectTemplateFirstPreviewLinks = async ({ reportPath, previewBaseUrl }) 
       parsedUrl = null;
     }
 
-    const siteKey = parsedUrl?.searchParams?.get("siteKey") || "";
-    let payloadPages = [];
-    if (siteKey) {
-      const sandboxPayloadPath = path.join(
-        ROOT,
-        "..",
-        "asset-factory",
-        "out",
-        siteKey,
-        "sandbox",
-        "payload.json"
-      );
-      try {
-        const payloadRaw = await fs.readFile(sandboxPayloadPath, "utf8");
-        const payload = JSON.parse(payloadRaw);
-        payloadPages = Array.isArray(payload?.pages) ? payload.pages : [];
-      } catch {
-        payloadPages = [];
-      }
+    const siteKeyFromUrl = parsedUrl?.searchParams?.get("siteKey") || "";
+    const resolvedSiteKey = await resolveRenderableSiteKeyForCase({
+      caseId,
+      preferredSiteKey: siteKeyFromUrl,
+      preferredRunSlug,
+      allowLatestBenchFallback: false,
+    });
+    if (!resolvedSiteKey) continue;
+    if (parsedUrl && parsedUrl.searchParams.get("siteKey") !== resolvedSiteKey) {
+      parsedUrl.searchParams.set("siteKey", resolvedSiteKey);
     }
+    const payloadPages = await readPayloadPagesBySiteKey(resolvedSiteKey);
 
     const pageEntries = payloadPages
       .map((page) => ({
@@ -6765,10 +18040,18 @@ const collectTemplateFirstPreviewLinks = async ({ reportPath, previewBaseUrl }) 
 
 const collectPreviewLinksFromRunArtifacts = async ({ runDir, processed, previewBaseUrl }) => {
   const previewOrigin = normalizePreviewBaseUrl(previewBaseUrl);
+  const preferredRunSlug = slug(path.basename(String(runDir || "").trim()));
   const links = [];
   for (const item of Array.isArray(processed) ? processed : []) {
     const siteId = String(item?.site?.id || "").trim();
     if (!siteId) continue;
+    const resolvedSiteKey = await resolveRenderableSiteKeyForCase({
+      caseId: siteId,
+      preferredSiteKey: siteId,
+      preferredRunSlug,
+      allowLatestBenchFallback: false,
+    });
+    if (!resolvedSiteKey) continue;
     const pages =
       (Array.isArray(item?.specPack?.page_specs) ? item.specPack.page_specs : [])
         .map((page) => ({
@@ -6788,7 +18071,7 @@ const collectPreviewLinksFromRunArtifacts = async ({ runDir, processed, previewB
         pageName: page.name,
         responseId: null,
         requestId: null,
-        url: `${previewOrigin}/creation/sandbox?mode=preview&siteKey=${encodeURIComponent(siteId)}&page=${encodeURIComponent(
+        url: `${previewOrigin}/creation/sandbox?mode=preview&siteKey=${encodeURIComponent(resolvedSiteKey)}&page=${encodeURIComponent(
           pageParam
         )}`,
         screenshot: "",
@@ -6802,21 +18085,3745 @@ const collectPreviewLinksFromRunArtifacts = async ({ runDir, processed, previewB
   return Array.from(dedup.values());
 };
 
+const extractSiteKeyFromPreviewUrl = (urlValue) => {
+  const raw = String(urlValue || "").trim();
+  if (!raw) return "";
+  try {
+    const parsed = new URL(raw);
+    return String(parsed.searchParams.get("siteKey") || "").trim();
+  } catch {
+    return "";
+  }
+};
+
+const resolveSandboxPayloadPathForSiteKey = (siteKey) =>
+  path.join(ROOT, "..", "asset-factory", "out", String(siteKey || "").trim(), "sandbox", "payload.json");
+
+const resolveDefaultPenReviewPath = (penFilePath) => {
+  const resolved = path.resolve(String(penFilePath || "").trim());
+  if (!resolved) return "";
+  if (resolved.endsWith(".json")) {
+    return resolved.replace(/\.json$/i, ".review.json");
+  }
+  return `${resolved}.review.json`;
+};
+
+const normalizePenReviewStatusValue = (value) => {
+  const token = String(value || "").trim().toLowerCase();
+  if (token === "approved" || token === "rejected" || token === "pending") return token;
+  return "pending";
+};
+
+const resolvePencilBridgeCommand = (options = {}) => {
+  const custom = String(options?.pencilCommand || "").trim();
+  if (custom) return custom;
+  return `node ${JSON.stringify(DEFAULT_PENCIL_BRIDGE_SCRIPT)} --mcp-required --mcp-app ${JSON.stringify(DEFAULT_PENCIL_APP)}`;
+};
+
+const runPencilBridgeForArtifact = async ({
+  artifact = {},
+  penSourceFile = "",
+  outputPenFile = "",
+  options = {},
+}) => {
+  if (!options?.pencilEnabled) {
+    return {
+      invoked: false,
+      status: "disabled",
+      outputPenFile: "",
+      error: "",
+      command: "",
+    };
+  }
+  const command = resolvePencilBridgeCommand(options);
+  const args = [
+    command,
+    `--source ${JSON.stringify(String(penSourceFile || "").trim())}`,
+    `--payload ${JSON.stringify(String(artifact?.payloadPath || "").trim())}`,
+    `--output ${JSON.stringify(String(outputPenFile || "").trim())}`,
+    `--case-id ${JSON.stringify(String(artifact?.caseId || "").trim())}`,
+    `--site-key ${JSON.stringify(String(artifact?.siteKey || "").trim())}`,
+    `--source-url ${JSON.stringify(String(artifact?.sourceUrl || "").trim())}`,
+    `--preview-url ${JSON.stringify(String(artifact?.previewUrl || "").trim())}`,
+  ];
+  const cmd = args.join(" ");
+  try {
+    await runShell(cmd, { cwd: ROOT });
+    return {
+      invoked: true,
+      status: "ok",
+      outputPenFile,
+      error: "",
+      command,
+    };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    if (options?.pencilStrict !== false) {
+      throw new Error(`[template-factory] pencil bridge failed for ${artifact?.caseId || "unknown"}: ${message}`);
+    }
+    return {
+      invoked: true,
+      status: "failed",
+      outputPenFile: "",
+      error: message,
+      command,
+    };
+  }
+};
+
+const readJsonFileOrNull = async (filePath) => {
+  try {
+    const raw = await fs.readFile(filePath, "utf8");
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+};
+
+const resolvePenSourceFileCandidates = (resolvedPenPath) => {
+  const candidates = new Set();
+  const normalized = String(resolvedPenPath || "").trim();
+  if (!normalized) return [];
+  candidates.add(`${normalized}.source.json`);
+  if (/\.pen$/i.test(normalized)) {
+    candidates.add(normalized.replace(/\.pen$/i, ".pen.source.json"));
+  }
+  return Array.from(candidates);
+};
+
+const loadSinglePenBundle = async (resolvedPenPath) => {
+  const inlineDoc = await readJsonFileOrNull(resolvedPenPath);
+  let sourceDoc = null;
+  let sourcePath = "";
+  for (const candidate of resolvePenSourceFileCandidates(resolvedPenPath)) {
+    const parsed = await readJsonFileOrNull(candidate);
+    if (parsed && typeof parsed === "object") {
+      sourceDoc = parsed;
+      sourcePath = candidate;
+      break;
+    }
+  }
+
+  const caseId =
+    String(sourceDoc?.caseId || "").trim() ||
+    String(inlineDoc?.caseId || "").trim() ||
+    slug(path.basename(resolvedPenPath, path.extname(resolvedPenPath))) ||
+    "site";
+  const siteKey = String(sourceDoc?.siteKey || "").trim() || String(inlineDoc?.siteKey || "").trim();
+  const payloadPath =
+    String(sourceDoc?.payloadPath || "").trim() ||
+    String(sourceDoc?.source?.payloadPath || "").trim() ||
+    String(inlineDoc?.payloadPath || "").trim() ||
+    String(inlineDoc?.source?.payloadPath || "").trim();
+  const runLibraryCandidates = [
+    String(sourceDoc?.runLibraryPath || "").trim(),
+    String(sourceDoc?.source?.runLibraryPath || "").trim(),
+    String(inlineDoc?.runLibraryPath || "").trim(),
+    String(inlineDoc?.source?.runLibraryPath || "").trim(),
+    path.join(path.resolve(path.dirname(resolvedPenPath), ".."), "style-profiles.generated.json"),
+  ].filter(Boolean);
+  let runLibraryPath = "";
+  for (const candidate of runLibraryCandidates) {
+    try {
+      await fs.access(candidate);
+      runLibraryPath = candidate;
+      break;
+    } catch {
+      continue;
+    }
+  }
+  const runId =
+    String(sourceDoc?.runId || "").trim() ||
+    String(inlineDoc?.runId || "").trim() ||
+    slug(path.basename(path.resolve(path.dirname(resolvedPenPath), "..")));
+  const runDirCandidate = path.resolve(path.dirname(resolvedPenPath), "..");
+  const data = {
+    schemaVersion: PEN_SCHEMA_VERSION,
+    mode: "single-pen-file",
+    generatedAt: new Date().toISOString(),
+    runId,
+    runDir: runDirCandidate,
+    runLibraryPath,
+    sourcePenFile: resolvedPenPath,
+    sourcePenSidecar: sourcePath || "",
+    artifacts: [
+      {
+        caseId,
+        siteKey,
+        payloadPath,
+        penFile: resolvedPenPath,
+        penSourceFile: sourcePath || "",
+        runLibraryPath,
+      },
+    ],
+  };
+  return {
+    path: resolvedPenPath,
+    data,
+    artifacts: data.artifacts,
+  };
+};
+
+const loadPenBundle = async (penFilePath) => {
+  const resolvedPath = path.resolve(String(penFilePath || "").trim());
+  if (!resolvedPath) {
+    throw new Error("[template-factory] --pen-file is required for pen workflow mode.");
+  }
+  let parsed = null;
+  try {
+    const raw = await fs.readFile(resolvedPath, "utf8");
+    parsed = JSON.parse(raw);
+  } catch (error) {
+    if (/\.pen$/i.test(resolvedPath)) {
+      return loadSinglePenBundle(resolvedPath);
+    }
+    throw error;
+  }
+  if (/\.pen$/i.test(resolvedPath) && !Array.isArray(parsed?.artifacts)) {
+    return loadSinglePenBundle(resolvedPath);
+  }
+  const artifacts = Array.isArray(parsed?.artifacts)
+    ? parsed.artifacts
+    : [
+        {
+          caseId: String(parsed?.caseId || "").trim(),
+          siteKey: String(parsed?.siteKey || "").trim(),
+          payloadPath: String(parsed?.payloadPath || "").trim(),
+          penFile: resolvedPath,
+        },
+      ];
+  return {
+    path: resolvedPath,
+    data: parsed,
+    artifacts: artifacts
+      .map((item) => ({
+        caseId: String(item?.caseId || "").trim(),
+        siteKey: String(item?.siteKey || "").trim(),
+        payloadPath: String(item?.payloadPath || "").trim(),
+        penFile: String(item?.penFile || "").trim(),
+        penSourceFile: String(item?.penSourceFile || "").trim(),
+        runLibraryPath: String(item?.runLibraryPath || "").trim(),
+      }))
+      .filter((item) => item.caseId || item.penFile || item.siteKey || item.payloadPath || item.penSourceFile),
+  };
+};
+
+const openPenArtifactsInDesktop = async ({ artifacts = [], options = {} } = {}) => {
+  if (options?.openPencilAfterPenBuild === false) {
+    return { attempted: false, opened: [], failed: [] };
+  }
+  const uniquePenFiles = Array.from(
+    new Set(
+      (Array.isArray(artifacts) ? artifacts : [])
+        .map((item) => String(item?.penFile || "").trim())
+        .filter(Boolean)
+    )
+  );
+  const opened = [];
+  const failed = [];
+  for (const penFile of uniquePenFiles) {
+    try {
+      await runShell(`open -a Pencil ${JSON.stringify(penFile)}`, { cwd: ROOT, timeoutMs: 15000 });
+      opened.push(penFile);
+    } catch (error) {
+      failed.push({
+        penFile,
+        error: error instanceof Error ? error.message : String(error),
+      });
+    }
+  }
+  return {
+    attempted: true,
+    opened,
+    failed,
+  };
+};
+
+const inferSectionKindFromPayloadSection = (section = {}) => {
+  const explicitKind = String(section?.kind || section?.meta?.penKind || "").trim();
+  if (explicitKind) {
+    const normalized = normalizeSectionKind(explicitKind) || inferSectionKindFromTokens(explicitKind);
+    if (normalized) return normalized;
+  }
+  const typeToken = String(section?.type || "").trim();
+  const keyToken = String(section?._key || section?.id || "").trim();
+  return normalizeSectionKind(keyToken) || normalizeSectionKind(typeToken) || inferSectionKindFromTokens(`${keyToken} ${typeToken}`);
+};
+
+const seedPuckArrayItemIds = (value, seed = "item") => {
+  if (value === undefined) return undefined;
+  if (value === null) return null;
+  if (Array.isArray(value)) {
+    return value.map((entry, index) => {
+      if (!entry || typeof entry !== "object" || Array.isArray(entry)) {
+        return cloneJson(entry);
+      }
+      const next = {};
+      Object.entries(entry).forEach(([key, childValue]) => {
+        next[key] = seedPuckArrayItemIds(childValue, `${seed}-${slug(key) || "field"}-${index + 1}`);
+      });
+      if (!String(next.id || "").trim()) {
+        next.id = `${seed}-${index + 1}`;
+      }
+      return next;
+    });
+  }
+  if (value && typeof value === "object") {
+    const next = {};
+    Object.entries(value).forEach(([key, childValue]) => {
+      next[key] = seedPuckArrayItemIds(childValue, `${seed}-${slug(key) || "field"}`);
+    });
+    return next;
+  }
+  return value;
+};
+
+const toTemplateBlockFromPayloadSection = (section = {}) => {
+  const type = String(section?.type || "").trim();
+  if (!type) return null;
+  const props =
+    section?.props && typeof section.props === "object"
+      ? seedPuckArrayItemIds(section.props, String(section?._key || section?.id || slug(type) || "block"))
+      : {};
+  if (!String(props.id || "").trim()) {
+    props.id = String(section?._key || section?.id || `${slug(type) || "block"}-1`);
+  }
+  return { type, props };
+};
+
+const buildPageSpecFromPayloadPage = (page = {}) => {
+  const pathValue = normalizeTemplatePagePath(page?.path || "/");
+  const name = String(page?.name || "").trim() || formatTemplatePageName(pathValue);
+  const content = Array.isArray(page?.data?.content) ? page.data.content : [];
+  const templates = {};
+  const requiredCategories = [];
+  const seenKinds = new Set();
+
+  for (const section of content) {
+    const kind = inferSectionKindFromPayloadSection(section);
+    const block = toTemplateBlockFromPayloadSection(section);
+    if (!kind || !block) continue;
+    if (!templates[kind]) {
+      templates[kind] = block;
+    }
+    if (!seenKinds.has(kind)) {
+      seenKinds.add(kind);
+      requiredCategories.push(kind);
+    }
+  }
+
+  if (!requiredCategories.length) return null;
+  const pageType = inferPenPageType(pathValue, name);
+  return {
+    path: pathValue,
+    name,
+    pageType,
+    requiredCategories,
+    templates,
+  };
+};
+
+const inferPenPageType = (pathValue = "/", nameValue = "") => {
+  const pathToken = String(pathValue || "").trim().toLowerCase();
+  const nameToken = String(nameValue || "").trim().toLowerCase();
+  const token = `${pathToken} ${nameToken}`;
+  if (!pathToken || pathToken === "/") return "home";
+  if (pathToken === "/" || /(^|[^a-z])home($|[^a-z])/.test(token)) return "home";
+  if (/(about|company|story|mission|vision|who|team)/.test(token)) return "about";
+  if (/(solution|service|capabilit|workflow|industry)/.test(token)) return "solutions";
+  if (/(product|catalog|collection|pricing|plan|store|shop)/.test(token)) return "products";
+  if (/(case|customer|testimonial|proof|review|success|portfolio)/.test(token)) return "cases";
+  if (/(contact|quote|inquir|demo|consult|book)/.test(token)) return "contact";
+  if (/(blog|news|journal|article|insight|press)/.test(token)) return "blog";
+  if (/(legal|privacy|term|policy|cookie|gdpr)/.test(token)) return "legal";
+  if (/(support|help|faq|docs|documentation)/.test(token)) return "support";
+  return "generic";
+};
+
+const PEN_PAGE_KIND_ORDER = ["navigation", "hero", "story", "approach", "products", "socialproof", "contact", "cta", "footer"];
+
+const orderSectionKinds = (kinds = []) => {
+  const seen = new Set();
+  const normalized = [];
+  for (const kind of Array.isArray(kinds) ? kinds : []) {
+    const token = normalizeSectionKind(kind);
+    if (!token || seen.has(token)) continue;
+    seen.add(token);
+    normalized.push(token);
+  }
+  normalized.sort((a, b) => {
+    const ai = PEN_PAGE_KIND_ORDER.indexOf(a);
+    const bi = PEN_PAGE_KIND_ORDER.indexOf(b);
+    const av = ai === -1 ? 999 : ai;
+    const bv = bi === -1 ? 999 : bi;
+    if (av !== bv) return av - bv;
+    return a.localeCompare(b);
+  });
+  return normalized;
+};
+
+const countHrefLikeValues = (value) => {
+  if (typeof value === "string") {
+    return value.trim() ? 1 : 0;
+  }
+  if (Array.isArray(value)) {
+    return value.reduce((sum, item) => sum + countHrefLikeValues(item), 0);
+  }
+  if (value && typeof value === "object") {
+    let sum = 0;
+    for (const [key, item] of Object.entries(value)) {
+      if (/href$/i.test(String(key || ""))) {
+        sum += countHrefLikeValues(item);
+      } else {
+        sum += countHrefLikeValues(item);
+      }
+    }
+    return sum;
+  }
+  return 0;
+};
+
+const selectCanonicalSharedTemplate = (pageSpecs = [], kind = "") => {
+  const targetKind = normalizeSectionKind(kind);
+  if (!targetKind) return null;
+  const ranked = [];
+  for (const spec of Array.isArray(pageSpecs) ? pageSpecs : []) {
+    const block = spec?.templates?.[targetKind];
+    if (!block) continue;
+    const score = countHrefLikeValues(block?.props || {});
+    const homeBoost = String(spec?.path || "/") === "/" ? 10000 : 0;
+    ranked.push({ block, score: homeBoost + score });
+  }
+  ranked.sort((a, b) => b.score - a.score);
+  return ranked[0]?.block ? cloneJson(ranked[0].block) : null;
+};
+
+const buildValidInternalPathSetFromPayload = (payload = {}) => {
+  const set = new Set(["/"]);
+  const pages = Array.isArray(payload?.pages) ? payload.pages : [];
+  for (const page of pages) {
+    const normalized = normalizeTemplatePagePath(page?.path || "/");
+    if (normalized) set.add(normalized);
+  }
+  return set;
+};
+
+const resolveSafeInternalHref = (rawValue = "", validInternalPaths = new Set(["/"])) => {
+  const raw = String(rawValue || "").trim();
+  if (!raw) return "/";
+  if (/^(?:mailto:|tel:)/i.test(raw)) return raw;
+  if (/^(?:javascript:|data:)/i.test(raw)) return "/";
+  if (raw.startsWith("#")) return "/";
+  try {
+    const parsed = new URL(raw, "https://template.local");
+    const pathname = normalizeTemplatePagePath(parsed.pathname || "/");
+    if (validInternalPaths.has(pathname)) {
+      return `${pathname}${parsed.search || ""}${parsed.hash || ""}`;
+    }
+    return "/";
+  } catch {
+    return "/";
+  }
+};
+
+const sanitizeHrefPropsRecursively = (value, keyHint = "", validInternalPaths = new Set(["/"])) => {
+  if (typeof value === "string") {
+    if (/href$/i.test(String(keyHint || ""))) {
+      return resolveSafeInternalHref(value, validInternalPaths);
+    }
+    return value;
+  }
+  if (Array.isArray(value)) {
+    return value.map((entry) => sanitizeHrefPropsRecursively(entry, keyHint, validInternalPaths));
+  }
+  if (value && typeof value === "object") {
+    const out = {};
+    for (const [key, child] of Object.entries(value)) {
+      out[key] = sanitizeHrefPropsRecursively(child, key, validInternalPaths);
+    }
+    return out;
+  }
+  return value;
+};
+
+const sanitizeSharedBlockLinks = (block, validInternalPaths = new Set(["/"])) => {
+  if (!block || typeof block !== "object") return block;
+  const props = block?.props && typeof block.props === "object" ? block.props : {};
+  return {
+    ...block,
+    props: sanitizeHrefPropsRecursively(props, "", validInternalPaths),
+  };
+};
+
+const collectHrefEntries = (value, keyPath = "", out = []) => {
+  if (typeof value === "string") {
+    if (/href$/i.test(String(keyPath || ""))) {
+      out.push({
+        keyPath: String(keyPath || ""),
+        value,
+      });
+    }
+    return out;
+  }
+  if (Array.isArray(value)) {
+    value.forEach((entry, index) => collectHrefEntries(entry, `${keyPath}[${index}]`, out));
+    return out;
+  }
+  if (value && typeof value === "object") {
+    Object.entries(value).forEach(([key, entry]) => {
+      const nextPath = keyPath ? `${keyPath}.${key}` : key;
+      collectHrefEntries(entry, nextPath, out);
+    });
+  }
+  return out;
+};
+
+const isSafeSanitizedHref = (hrefValue, validInternalPaths = new Set(["/"])) => {
+  const raw = String(hrefValue || "").trim();
+  if (!raw) return false;
+  if (/^(?:mailto:|tel:)/i.test(raw)) return true;
+  if (/^(?:javascript:|data:)/i.test(raw)) return false;
+  if (raw.startsWith("#")) return false;
+  try {
+    const parsed = new URL(raw, "https://template.local");
+    const pathname = normalizeTemplatePagePath(parsed.pathname || "/");
+    if (!validInternalPaths.has(pathname)) return false;
+    const canonical = `${pathname}${parsed.search || ""}${parsed.hash || ""}`;
+    return canonical === raw;
+  } catch {
+    return false;
+  }
+};
+
+const validatePenPayloadQualityGate = ({ payload = {}, caseId = "" } = {}) => {
+  const pages = Array.isArray(payload?.pages) ? payload.pages : [];
+  const validInternalPaths = buildValidInternalPathSetFromPayload(payload);
+  const violations = [];
+
+  for (const page of pages) {
+    const pagePath = normalizeTemplatePagePath(page?.path || "/");
+    const content = Array.isArray(page?.data?.content) ? page.data.content : [];
+    const sections = content.map((section, index) => ({
+      section,
+      index,
+      kind: inferSectionKindFromPayloadSection(section),
+      type: String(section?.type || "").trim(),
+    }));
+    const navIndex = sections.findIndex((entry) => entry.kind === "navigation");
+    const footerIndex = (() => {
+      let match = -1;
+      for (let i = sections.length - 1; i >= 0; i -= 1) {
+        if (sections[i]?.kind === "footer") {
+          match = i;
+          break;
+        }
+      }
+      return match;
+    })();
+    const navEntry = navIndex >= 0 ? sections[navIndex] : null;
+    const footerEntry = footerIndex >= 0 ? sections[footerIndex] : null;
+
+    if (navEntry) {
+      const hrefEntries = collectHrefEntries(navEntry.section?.props || {});
+      hrefEntries.forEach((hrefEntry) => {
+        if (!isSafeSanitizedHref(hrefEntry.value, validInternalPaths)) {
+          violations.push({
+            code: "invalid_navigation_href",
+            pagePath,
+            keyPath: hrefEntry.keyPath,
+            href: hrefEntry.value,
+          });
+        }
+      });
+    }
+
+    if (footerEntry) {
+      const hrefEntries = collectHrefEntries(footerEntry.section?.props || {});
+      hrefEntries.forEach((hrefEntry) => {
+        if (!isSafeSanitizedHref(hrefEntry.value, validInternalPaths)) {
+          violations.push({
+            code: "invalid_footer_href",
+            pagePath,
+            keyPath: hrefEntry.keyPath,
+            href: hrefEntry.value,
+          });
+        }
+      });
+    }
+  }
+
+  return {
+    caseId: String(caseId || "").trim(),
+    pageCount: pages.length,
+    passed: violations.length === 0,
+    violations,
+  };
+};
+
+const buildStyleProfileFromPenPayload = ({
+  payload = {},
+  artifact = {},
+  exportDoc = {},
+  runId = "",
+} = {}) => {
+  const pages = Array.isArray(payload?.pages) ? payload.pages : [];
+  const pageSpecs = pages.map((page) => buildPageSpecFromPayloadPage(page)).filter(Boolean);
+  if (!pageSpecs.length) {
+    throw new Error(`[template-factory] pen export did not produce any page specs for ${artifact?.penFile || "unknown pen file"}`);
+  }
+
+  const homePage = pageSpecs.find((page) => page.path === "/") || pageSpecs[0];
+  const validInternalPaths = buildValidInternalPathSetFromPayload(payload);
+  const templates = cloneJson(homePage?.templates || {});
+  const canonicalNavigation = sanitizeSharedBlockLinks(
+    selectCanonicalSharedTemplate(pageSpecs, "navigation"),
+    validInternalPaths
+  );
+  const canonicalFooter = sanitizeSharedBlockLinks(
+    selectCanonicalSharedTemplate(pageSpecs, "footer"),
+    validInternalPaths
+  );
+  if (canonicalNavigation) templates.navigation = canonicalNavigation;
+  if (canonicalFooter) templates.footer = canonicalFooter;
+  const normalizedPageSpecs = pageSpecs.map((page) => {
+    const nextKinds = orderSectionKinds(page?.requiredCategories || []);
+    if (canonicalNavigation && !nextKinds.includes("navigation")) nextKinds.unshift("navigation");
+    if (canonicalFooter && !nextKinds.includes("footer")) nextKinds.push("footer");
+    return {
+      ...page,
+      requiredCategories: orderSectionKinds(nextKinds),
+    };
+  });
+  const sourceUrl =
+    String(artifact?.sourceUrl || "").trim() ||
+    String(exportDoc?.sourceUrl || "").trim() ||
+    "";
+  const sourceDomain = hostFromUrl(sourceUrl);
+  const profileId =
+    slug(String(artifact?.caseId || "").trim()) ||
+    slug(path.basename(String(artifact?.penFile || ""), path.extname(String(artifact?.penFile || "")))) ||
+    `pen-${slug(runId) || "profile"}`;
+  const baseName =
+    String(exportDoc?.siteName || "").trim() ||
+    String(artifact?.caseId || "").trim() ||
+    sourceDomain ||
+    profileId;
+  const sanitizedTemplates = sanitizeTemplateAssetTextDeep(templates, {
+    siteId: profileId,
+  });
+  const sanitizedPageSpecs = sanitizeTemplateAssetTextDeep(normalizedPageSpecs, {
+    siteId: profileId,
+  });
+  const siteStyleShell = buildSiteStyleShellFromPenPayload({
+    payload,
+    templates: sanitizedTemplates,
+    homePage,
+    sourceDomain,
+  });
+
+  return {
+    id: profileId,
+    name: baseName,
+    keywords: unique([
+      profileId,
+      baseName,
+      sourceDomain,
+      buildProfileSelectorToken(profileId),
+      ...pageSpecs.map((page) => page.name),
+    ].map((item) => String(item || "").trim()).filter(Boolean)),
+    templates: sanitizedTemplates,
+    pageSpecs: sanitizedPageSpecs,
+    siteTemplates: sanitizedPageSpecs.map((page) => ({
+      path: page.path,
+      name: page.name,
+      ...(page.pageType ? { pageType: page.pageType } : {}),
+      requiredCategories: page.requiredCategories,
+    })),
+    qualityScore: 100,
+    coverageScore: 100,
+    linkIntegrityScore: 100,
+    ...(sourceDomain ? { sourceDomain } : {}),
+    ...(siteStyleShell ? { siteStyleShell } : {}),
+    version: `pen-${runId || "manual"}`,
+    createdAt: new Date().toISOString(),
+  };
+};
+
+const inferMotionProfileFromPayload = (payload = {}) => {
+  const pages = Array.isArray(payload?.pages) ? payload.pages : [];
+  const serialized = JSON.stringify(pages).toLowerCase();
+  if (!serialized) return "none";
+  if (/marquee|ticker|parallax|orbit|sparkle|beam|aurora/.test(serialized)) return "immersive";
+  if (/hover|stagger|reveal|fade|slide|scale/.test(serialized)) return "showcase";
+  if (/animate|motion|transition/.test(serialized)) return "subtle";
+  return "none";
+};
+
+const buildSiteStyleShellFromPenPayload = ({
+  payload = {},
+  templates = {},
+  homePage = null,
+  sourceDomain = "",
+} = {}) => {
+  const payloadPages = Array.isArray(payload?.pages) ? payload.pages : [];
+  const homePayloadPage =
+    payloadPages.find((page) => normalizeTemplatePagePath(page?.path || "/") === normalizeTemplatePagePath(homePage?.path || "/")) ||
+    payloadPages.find((page) => normalizeTemplatePagePath(page?.path || "/") === "/") ||
+    payloadPages[0] ||
+    null;
+  const homeRootTheme =
+    homePayloadPage?.data?.root?.props?.theme && typeof homePayloadPage.data.root.props.theme === "object"
+      ? cloneJson(homePayloadPage.data.root.props.theme)
+      : null;
+  const navigationBlockType = String(templates?.navigation?.type || "").trim();
+  const footerBlockType = String(templates?.footer?.type || "").trim();
+  const styleFamily =
+    slug(String(sourceDomain || "").trim()) ||
+    slug(String(homePage?.name || "").trim()) ||
+    "template-family";
+  const motionProfile = inferMotionProfileFromPayload(payload);
+  if (!homeRootTheme && !navigationBlockType && !footerBlockType && !styleFamily) return null;
+  return {
+    styleFamily,
+    ...(homeRootTheme ? { theme: homeRootTheme } : {}),
+    ...(navigationBlockType ? { navigationBlockType } : {}),
+    ...(footerBlockType ? { footerBlockType } : {}),
+    motionProfile,
+  };
+};
+
+const flattenPenNodeTree = (node = {}, out = []) => {
+  if (!node || typeof node !== "object") return out;
+  out.push(node);
+  for (const child of Array.isArray(node.children) ? node.children : []) {
+    flattenPenNodeTree(child, out);
+  }
+  return out;
+};
+
+const extractTextNodesFromPenNode = (node = {}) =>
+  flattenPenNodeTree(node, []).filter(
+    (entry) => String(entry?.type || "").trim().toLowerCase() === "text"
+  );
+
+const extractTextLinesFromPenNode = (node = {}) =>
+  extractTextNodesFromPenNode(node)
+    .flatMap((entry) =>
+      String(entry?.content || "")
+        .split(/\n+/)
+        .map((line) => line.replace(/\s+/g, " ").trim())
+        .filter(Boolean)
+    )
+    .filter(Boolean);
+
+const extractTextFromPenNode = (node = {}) => extractTextLinesFromPenNode(node);
+
+const extractImageFromPenNode = (node = {}) => {
+  const nodes = flattenPenNodeTree(node, []);
+  for (const entry of nodes) {
+    const fill = entry?.fill;
+    if (fill && typeof fill === "object" && String(fill?.type || "").trim().toLowerCase() === "image") {
+      const src = String(fill?.url || "").trim();
+      if (src) return src;
+    }
+  }
+  return "";
+};
+
+const extractPrimaryImageFillFromPenNode = (node = {}) => {
+  const directFill = node?.fill;
+  if (
+    directFill &&
+    typeof directFill === "object" &&
+    String(directFill?.type || "").trim().toLowerCase() === "image" &&
+    String(directFill?.url || "").trim()
+  ) {
+    return directFill;
+  }
+  const nodes = flattenPenNodeTree(node, []);
+  for (const entry of nodes) {
+    const fill = entry?.fill;
+    if (
+      fill &&
+      typeof fill === "object" &&
+      String(fill?.type || "").trim().toLowerCase() === "image" &&
+      String(fill?.url || "").trim()
+    ) {
+      return fill;
+    }
+  }
+  return null;
+};
+
+const parsePenHexColorWithAlpha = (value = "") => {
+  const raw = String(value || "").trim();
+  const short = raw.match(/^#([0-9a-f]{3,4})$/i);
+  if (short) {
+    const token = short[1];
+    const r = parseInt(token[0] + token[0], 16);
+    const g = parseInt(token[1] + token[1], 16);
+    const b = parseInt(token[2] + token[2], 16);
+    const a = token.length === 4 ? parseInt(token[3] + token[3], 16) / 255 : 1;
+    return { r, g, b, a };
+  }
+  const long = raw.match(/^#([0-9a-f]{6})([0-9a-f]{2})?$/i);
+  if (!long) return null;
+  const rgb = long[1];
+  const r = parseInt(rgb.slice(0, 2), 16);
+  const g = parseInt(rgb.slice(2, 4), 16);
+  const b = parseInt(rgb.slice(4, 6), 16);
+  const a = long[2] ? parseInt(long[2], 16) / 255 : 1;
+  return { r, g, b, a };
+};
+
+const parsePenRgbaColor = (value = "") => {
+  const raw = String(value || "").trim();
+  const rgba = raw.match(/^rgba?\(([^)]+)\)$/i);
+  if (!rgba) return null;
+  const parts = rgba[1]
+    .split(",")
+    .map((part) => part.trim())
+    .filter(Boolean);
+  if (parts.length < 3) return null;
+  const r = Number(parts[0]);
+  const g = Number(parts[1]);
+  const b = Number(parts[2]);
+  const a = parts.length >= 4 ? Number(parts[3]) : 1;
+  if (![r, g, b, a].every((num) => Number.isFinite(num))) return null;
+  return { r, g, b, a };
+};
+
+const penColorLuminance = (color = "") => {
+  const parsed = parsePenHexColorWithAlpha(color) || parsePenRgbaColor(color);
+  if (!parsed) return null;
+  const toLinear = (n) => {
+    const c = n / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  };
+  const lum = 0.2126 * toLinear(parsed.r) + 0.7152 * toLinear(parsed.g) + 0.0722 * toLinear(parsed.b);
+  return { ...parsed, lum };
+};
+
+const isPenDarkColorValue = (color = "") => {
+  const parsed = penColorLuminance(color);
+  if (!parsed) return false;
+  return parsed.lum < 0.42;
+};
+
+const isPenNeutralColorValue = (color = "") => {
+  const parsed = parsePenHexColorWithAlpha(color) || parsePenRgbaColor(color);
+  if (!parsed) return false;
+  const spread = Math.max(parsed.r, parsed.g, parsed.b) - Math.min(parsed.r, parsed.g, parsed.b);
+  return spread < 18;
+};
+
+const penGradientFillToCss = (fill = {}) => {
+  const colors = Array.isArray(fill?.colors) ? fill.colors : [];
+  const stops = colors
+    .map((entry) => {
+      const color = String(entry?.color || "").trim();
+      if (!color) return null;
+      const pct = Number(entry?.position);
+      if (Number.isFinite(pct)) return `${color} ${Math.round(pct * 100)}%`;
+      return color;
+    })
+    .filter(Boolean);
+  if (!stops.length) return "";
+  const rotation = Number(fill?.rotation);
+  const angle = Number.isFinite(rotation) ? `${rotation}deg` : "180deg";
+  return `linear-gradient(${angle}, ${stops.join(", ")})`;
+};
+
+const resolveSectionBackgroundPropsFromPenNode = (node = {}, fallbackAlt = "") => {
+  const fill = node?.fill;
+  if (fill && typeof fill === "object") {
+    const kind = String(fill?.type || "").trim().toLowerCase();
+    if (kind === "image" && String(fill?.url || "").trim()) {
+      return {
+        background: "image",
+        backgroundMedia: {
+          kind: "image",
+          src: String(fill.url).trim(),
+          alt: String(fallbackAlt || "").trim(),
+        },
+      };
+    }
+    if (kind === "gradient") {
+      const css = penGradientFillToCss(fill);
+      if (css) {
+        return {
+          background: "gradient",
+          backgroundGradient: css,
+        };
+      }
+    }
+  }
+  if (typeof fill === "string" && fill.trim()) {
+    const solid = fill.trim();
+    return {
+      background: "gradient",
+      backgroundGradient: `linear-gradient(180deg, ${solid} 0%, ${solid} 100%)`,
+    };
+  }
+  return {};
+};
+
+const detectSectionToneFromPenNode = (node = {}) => {
+  const fill = node?.fill;
+  if (typeof fill === "string" && fill.trim()) {
+    return isPenDarkColorValue(fill) ? "dark" : "default";
+  }
+  if (fill && typeof fill === "object" && String(fill?.type || "").trim().toLowerCase() === "gradient") {
+    const colors = Array.isArray(fill?.colors) ? fill.colors : [];
+    const parsed = colors
+      .map((entry) => penColorLuminance(String(entry?.color || "")))
+      .filter(Boolean);
+    if (parsed.length) {
+      const avg = parsed.reduce((sum, entry) => sum + entry.lum, 0) / parsed.length;
+      return avg < 0.42 ? "dark" : "default";
+    }
+  }
+  return "default";
+};
+
+const detectTextPanelFromPenNode = (node = {}) => {
+  const candidates = flattenPenNodeTree(node, []).filter(
+    (entry) =>
+      String(entry?.type || "").toLowerCase() === "frame" &&
+      typeof entry?.fill === "string" &&
+      String(entry.fill).trim().length > 0
+  );
+  const ranked = candidates
+    .map((child) => {
+      const parsed = parsePenHexColorWithAlpha(child.fill) || parsePenRgbaColor(child.fill);
+      if (!parsed) return null;
+      const textCount = extractTextNodesFromPenNode(child).length;
+      if (!textCount) return null;
+      if (parsed.a >= 0.98) return null;
+      return { child, textCount };
+    })
+    .filter(Boolean)
+    .sort((a, b) => b.textCount - a.textCount);
+  if (ranked.length) {
+    return {
+      textPanel: true,
+      textPanelBackground: ranked[0].child.fill,
+    };
+  }
+  return {};
+};
+
+const resolveSectionFontsFromPenNode = (node = {}) => {
+  const textNodes = extractTextNodesFromPenNode(node);
+  if (!textNodes.length) return {};
+  const ranked = textNodes
+    .map((entry) => ({
+      font: String(entry?.fontFamily || "").trim(),
+      size: Number(entry?.fontSize) || 0,
+    }))
+    .filter((entry) => entry.font);
+  if (!ranked.length) return {};
+  const heading = ranked.reduce((best, curr) => (curr.size > best.size ? curr : best), ranked[0]);
+  const bodyCount = new Map();
+  for (const row of ranked) {
+    bodyCount.set(row.font, (bodyCount.get(row.font) || 0) + 1);
+  }
+  const body = Array.from(bodyCount.entries()).sort((a, b) => b[1] - a[1])[0]?.[0] || heading.font;
+  return {
+    headingFont: heading.font,
+    bodyFont: body,
+  };
+};
+
+const toCamelCase = (value = "", fallback = "field") => {
+  const pascal = toPascal(String(value || "").trim());
+  if (!pascal) return fallback;
+  return `${pascal.charAt(0).toLowerCase()}${pascal.slice(1)}`;
+};
+
+const normalizePenBoxValue = (value) => {
+  if (Array.isArray(value)) {
+    if (value.length === 2) {
+      return `${Number(value[0] || 0)}px ${Number(value[1] || 0)}px`;
+    }
+    if (value.length === 4) {
+      return value.map((entry) => `${Number(entry || 0)}px`).join(" ");
+    }
+  }
+  const numeric = Number(value);
+  if (Number.isFinite(numeric)) return `${numeric}px`;
+  return "";
+};
+
+const normalizePenJustifyContent = (value = "") => {
+  const token = String(value || "").trim().toLowerCase();
+  if (!token) return "";
+  const map = {
+    start: "flex-start",
+    end: "flex-end",
+    center: "center",
+    space_between: "space-between",
+    space_around: "space-around",
+    space_evenly: "space-evenly",
+  };
+  return map[token] || token.replace(/_/g, "-");
+};
+
+const normalizePenAlignItems = (value = "") => {
+  const token = String(value || "").trim().toLowerCase();
+  if (!token) return "";
+  const map = {
+    start: "flex-start",
+    end: "flex-end",
+    center: "center",
+    stretch: "stretch",
+    baseline: "baseline",
+  };
+  return map[token] || token.replace(/_/g, "-");
+};
+
+const normalizePenDimensionValue = (value) => {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  const raw = String(value || "").trim();
+  if (!raw) return undefined;
+  if (raw === "fill_container") return "100%";
+  const numeric = Number(raw);
+  if (Number.isFinite(numeric)) return numeric;
+  return raw;
+};
+
+const normalizePenStrokeStyle = (stroke = {}) => {
+  if (!stroke || typeof stroke !== "object") return {};
+  const fill = String(stroke?.fill || "").trim();
+  if (!fill) return {};
+  const thickness = stroke?.thickness;
+  if (typeof thickness === "number" && Number.isFinite(thickness) && thickness > 0) {
+    return {
+      border: `${thickness}px solid ${fill}`,
+    };
+  }
+  if (thickness && typeof thickness === "object") {
+    const style = {};
+    const sides = {
+      top: "borderTop",
+      right: "borderRight",
+      bottom: "borderBottom",
+      left: "borderLeft",
+    };
+    for (const [side, cssProp] of Object.entries(sides)) {
+      const sideWidth = Number(thickness?.[side]);
+      if (Number.isFinite(sideWidth) && sideWidth > 0) {
+        style[cssProp] = `${sideWidth}px solid ${fill}`;
+      }
+    }
+    return style;
+  }
+  return {};
+};
+
+const normalizePenShadowEffect = (effect = {}) => {
+  if (!effect || typeof effect !== "object") return "";
+  if (String(effect?.type || "").trim().toLowerCase() !== "shadow") return "";
+  const color = String(effect?.color || "").trim();
+  if (!color) return "";
+  const offsetX = Number(effect?.offset?.x);
+  const offsetY = Number(effect?.offset?.y);
+  const blur = Number(effect?.blur);
+  const spread = Number(effect?.spread);
+  const values = [
+    Number.isFinite(offsetX) ? `${offsetX}px` : "0px",
+    Number.isFinite(offsetY) ? `${offsetY}px` : "0px",
+    Number.isFinite(blur) ? `${blur}px` : "0px",
+  ];
+  if (Number.isFinite(spread)) values.push(`${spread}px`);
+  values.push(color);
+  return values.join(" ");
+};
+
+const buildPenIconDescriptorName = (iconName = "") => {
+  const token = String(iconName || "").trim().toLowerCase();
+  const map = {
+    play: "Play",
+    wifi: "Wifi",
+    sparkles: "Sparkles",
+    search: "Search",
+    menu: "Menu",
+    close: "X",
+    x: "X",
+    arrowright: "ArrowRight",
+    arrowleft: "ArrowLeft",
+    chevronright: "ChevronRight",
+    chevronleft: "ChevronLeft",
+    plus: "Plus",
+    minus: "Minus",
+  };
+  const compact = token.replace(/[^a-z0-9]+/g, "");
+  return map[compact] || "";
+};
+
+const isRelativePenAssetUrl = (value = "") => {
+  const raw = String(value || "").trim();
+  if (!raw) return false;
+  if (raw.startsWith("data:")) return false;
+  if (/^[a-z][a-z0-9+.-]*:/i.test(raw)) return false;
+  if (raw.startsWith("/")) return false;
+  return true;
+};
+
+const normalizePenPublicAssetPath = (value = "") =>
+  String(value || "")
+    .trim()
+    .replace(/^[./\\]+/, "")
+    .replace(/\\/g, "/");
+
+const buildPenAssetPublicUrl = ({ caseId = "", assetPath = "" } = {}) => {
+  const relative = normalizePenPublicAssetPath(assetPath);
+  if (!relative) return "";
+  const safeCaseId = slug(String(caseId || "").trim()) || "pen-site";
+  return `/generated-pen-assets/${safeCaseId}/${relative}`;
+};
+
+const materializePenAssetMap = async ({ penDoc = null, penFile = "", caseId = "" } = {}) => {
+  const mappings = new Map();
+  const candidates = new Set();
+  for (const node of flattenPenNodeTree(penDoc, [])) {
+    const fill = node?.fill;
+    if (!fill || typeof fill !== "object") continue;
+    if (String(fill?.type || "").trim().toLowerCase() !== "image") continue;
+    const url = String(fill?.url || "").trim();
+    if (isRelativePenAssetUrl(url)) candidates.add(url);
+  }
+  if (!candidates.size) return mappings;
+
+  for (const assetPath of candidates) {
+    const sourcePath = path.resolve(path.dirname(penFile), assetPath);
+    try {
+      await fs.access(sourcePath);
+    } catch {
+      continue;
+    }
+    const publicUrl = buildPenAssetPublicUrl({ caseId, assetPath });
+    if (!publicUrl) continue;
+    const targetPath = path.join(PUBLIC_PEN_ASSETS_DIR, publicUrl.replace(/^\/generated-pen-assets\//, ""));
+    await ensureDir(path.dirname(targetPath));
+    await fs.copyFile(sourcePath, targetPath);
+    mappings.set(assetPath, publicUrl);
+  }
+  return mappings;
+};
+
+const looksLikePenButtonNode = (node = {}) => {
+  if (String(node?.type || "").trim().toLowerCase() !== "frame") return false;
+  const name = String(node?.name || "").trim().toLowerCase();
+  const texts = extractTextLinesFromPenNode(node);
+  const joined = texts.join(" ").toLowerCase();
+  const childFrames = (Array.isArray(node?.children) ? node.children : []).filter(
+    (child) => String(child?.type || "").trim().toLowerCase() === "frame"
+  );
+  const hasButtonToken =
+    /(btn|button|cta|action)/.test(name) ||
+    /(shop|buy|get|learn|contact|book|order|start|explore)/.test(joined);
+  if (!hasButtonToken) return false;
+  if (childFrames.length > 0) return false;
+  if (texts.length === 0 || texts.length > 2) return false;
+  if (typeof node?.fill === "string" && String(node.fill).trim().toLowerCase() === "transparent") return false;
+  return true;
+};
+
+const buildPenStaticStyle = (node = {}, options = {}) => {
+  const style = {
+    boxSizing: "border-box",
+  };
+  const nodeType = String(node?.type || "").trim().toLowerCase();
+  const parentLayout = String(options?.parentLayout || "").trim().toLowerCase();
+  const isAbsoluteChild =
+    Number.isFinite(Number(node?.x)) ||
+    Number.isFinite(Number(node?.y));
+  const opacity = Number(node?.opacity);
+  if (Number.isFinite(opacity) && opacity >= 0 && opacity < 1) {
+    style.opacity = opacity;
+  }
+  if (nodeType === "frame" || nodeType === "rectangle") {
+    const layout = String(node?.layout || "").trim().toLowerCase();
+    const gap = Number(node?.gap);
+    const justifyContent = normalizePenJustifyContent(node?.justifyContent);
+    const alignItems = normalizePenAlignItems(node?.alignItems);
+    const shouldUseFlex =
+      layout === "vertical" ||
+      layout === "horizontal" ||
+      ((Number.isFinite(gap) && gap > 0) || Boolean(justifyContent) || Boolean(alignItems));
+    if (shouldUseFlex) {
+      style.display = "flex";
+      style.flexDirection = layout === "vertical" ? "column" : "row";
+    }
+    if (Number.isFinite(gap) && gap > 0) style.gap = gap;
+    if (justifyContent) style.justifyContent = justifyContent;
+    if (alignItems) style.alignItems = alignItems;
+    const padding = normalizePenBoxValue(node?.padding);
+    if (padding) style.padding = padding;
+    const width = normalizePenDimensionValue(node?.width);
+    const height = normalizePenDimensionValue(node?.height);
+    if (typeof width !== "undefined") style.width = width;
+    if (typeof height !== "undefined") style.height = height;
+    const radius = Number(node?.cornerRadius);
+    if (Number.isFinite(radius) && radius > 0) style.borderRadius = radius;
+    if (typeof node?.fill === "string" && String(node.fill).trim() && String(node.fill).trim().toLowerCase() !== "transparent") {
+      style.background = String(node.fill).trim();
+    } else if (node?.fill && typeof node.fill === "object") {
+      const fillType = String(node.fill?.type || "").trim().toLowerCase();
+      if (fillType === "gradient") {
+        const gradient = penGradientFillToCss(node.fill);
+        if (gradient) style.background = gradient;
+      }
+    }
+    Object.assign(style, normalizePenStrokeStyle(node?.stroke));
+    if (node?.fill && typeof node.fill === "object" && String(node.fill?.type || "").trim().toLowerCase() === "image") {
+      style.backgroundRepeat = "no-repeat";
+      style.backgroundPosition = "center";
+      style.backgroundSize = String(node.fill?.mode || "").trim().toLowerCase() === "fit" ? "contain" : "cover";
+    }
+    if (node?.clip === true) {
+      style.overflow = "hidden";
+    }
+    if (layout === "none") {
+      style.position = "relative";
+      if (!style.overflow) {
+        const hasAbsoluteChildren = (Array.isArray(node?.children) ? node.children : []).some((child) => {
+          const x = Number(child?.x);
+          const y = Number(child?.y);
+          return Number.isFinite(x) || Number.isFinite(y);
+        });
+        if (hasAbsoluteChildren) {
+          style.overflow = "hidden";
+        }
+      }
+    }
+    if (parentLayout === "none" && isAbsoluteChild) {
+      style.position = "absolute";
+      const x = Number(node?.x);
+      const y = Number(node?.y);
+      if (Number.isFinite(x)) style.left = x;
+      if (Number.isFinite(y)) style.top = y;
+    }
+    const shadow = normalizePenShadowEffect(node?.effect);
+    if (shadow) {
+      style.boxShadow = shadow;
+    }
+    if (looksLikePenButtonNode(node) && typeof style.width === "undefined") {
+      style.display = "inline-flex";
+      style.alignItems = style.alignItems || "center";
+      style.justifyContent = style.justifyContent || "center";
+      style.width = "fit-content";
+    }
+  }
+  if (nodeType === "text") {
+    style.margin = 0;
+    style.whiteSpace = "pre-line";
+    const color = String(node?.fill || "").trim();
+    if (color) style.color = color;
+    const fontFamily = String(node?.fontFamily || "").trim();
+    if (fontFamily) style.fontFamily = fontFamily;
+    const fontSize = Number(node?.fontSize);
+    if (Number.isFinite(fontSize) && fontSize > 0) style.fontSize = fontSize;
+    const fontWeight = String(node?.fontWeight || "").trim();
+    if (fontWeight) style.fontWeight = fontWeight;
+    const fontStyle = String(node?.fontStyle || "").trim();
+    if (fontStyle) style.fontStyle = fontStyle;
+    const letterSpacing = Number(node?.letterSpacing);
+    if (Number.isFinite(letterSpacing)) style.letterSpacing = letterSpacing;
+    if (typeof node?.lineHeight !== "undefined") style.lineHeight = node.lineHeight;
+    const textAlign = String(node?.textAlign || "").trim();
+    if (textAlign) style.textAlign = textAlign;
+    const width = normalizePenDimensionValue(node?.width);
+    if (typeof width !== "undefined") style.width = width;
+    if (parentLayout === "none" && isAbsoluteChild) {
+      style.position = "absolute";
+      const x = Number(node?.x);
+      const y = Number(node?.y);
+      if (Number.isFinite(x)) style.left = x;
+      if (Number.isFinite(y)) style.top = y;
+    }
+  }
+  if (nodeType === "icon_font") {
+    const color = String(node?.fill || "").trim();
+    if (color) style.color = color;
+    const width = normalizePenDimensionValue(node?.width);
+    const height = normalizePenDimensionValue(node?.height);
+    if (typeof width !== "undefined") style.width = width;
+    if (typeof height !== "undefined") style.height = height;
+    style.display = "inline-flex";
+    style.alignItems = "center";
+    style.justifyContent = "center";
+    const iconSize =
+      (typeof width === "number" && width) ||
+      (typeof height === "number" && height) ||
+      Number(node?.fontSize) ||
+      20;
+    style.flexShrink = 0;
+    style.fontSize = iconSize;
+    if (parentLayout === "none" && isAbsoluteChild) {
+      style.position = "absolute";
+      const x = Number(node?.x);
+      const y = Number(node?.y);
+      if (Number.isFinite(x)) style.left = x;
+      if (Number.isFinite(y)) style.top = y;
+    }
+  }
+  return style;
+};
+
+const isPenNodePillButtonLike = (node = {}) => {
+  if (String(node?.type || "").trim().toLowerCase() !== "frame") return false;
+  const children = Array.isArray(node?.children) ? node.children : [];
+  const textChildren = children.filter(
+    (child) => String(child?.type || "").trim().toLowerCase() === "text"
+  );
+  if (!textChildren.length || textChildren.length > 2) return false;
+  const radiusValue = normalizePenDimensionValue(node?.borderRadius ?? node?.style?.borderRadius);
+  const hasPillRadius = Number.isFinite(radiusValue) && radiusValue >= 14;
+  const hasFitContent = /fit-content/i.test(String(node?.width ?? node?.style?.width ?? ""));
+  const hasPadding =
+    Number.isFinite(normalizePenDimensionValue(node?.paddingTop)) ||
+    Number.isFinite(normalizePenDimensionValue(node?.paddingLeft)) ||
+    String(node?.padding || node?.style?.padding || "").trim().length > 0;
+  const hasBackground = Boolean(
+    String(node?.fill || "").trim() || String(node?.style?.background || "").trim()
+  );
+  return Boolean((hasPillRadius || hasFitContent) && hasPadding && hasBackground);
+};
+
+const shouldTreatPenNodeAsButton = (node = {}, sectionKind = "") => {
+  const name = String(node?.name || "").trim().toLowerCase();
+  const labels = extractTextLinesFromPenNode(node).join(" ").toLowerCase();
+  const childCount = Array.isArray(node?.children) ? node.children.length : 0;
+  const directChildren = Array.isArray(node?.children) ? node.children : [];
+  const directTextChildCount = directChildren.filter(
+    (child) => String(child?.type || "").trim().toLowerCase() === "text"
+  ).length;
+  const directFrameChildCount = directChildren.filter(
+    (child) => String(child?.type || "").trim().toLowerCase() === "frame"
+  ).length;
+  const normalizedSectionKind = String(sectionKind || "").trim().toLowerCase();
+  if (/btn|button/.test(name)) return true;
+  if (/(^|[^a-z])cta([^a-z]|$)/.test(name)) return true;
+  if (
+    /(^|[^a-z])action([^a-z]|$)/.test(name) &&
+    childCount <= 1 &&
+    directTextChildCount > 0 &&
+    directFrameChildCount === 0
+  ) {
+    return true;
+  }
+  if (
+    normalizedSectionKind === "navigation" &&
+    /(cta|action)/.test(name) &&
+    /shop|order|contact|demo|learn|get/i.test(labels)
+  ) {
+    return true;
+  }
+  if (isPenNodePillButtonLike(node) && /hero|cta|products|story|navigation|footer/.test(normalizedSectionKind)) {
+    return true;
+  }
+  return false;
+};
+
+const registerPenEditableProp = (state, preferredKey, value, fallback = "field") => {
+  const used = state?.usedProps instanceof Set ? state.usedProps : new Set();
+  const defaults = state?.defaults && typeof state.defaults === "object" ? state.defaults : {};
+  let key = toSafeIdentifier(toCamelCase(preferredKey, fallback), fallback);
+  let nonce = 2;
+  while (used.has(key) && defaults[key] !== value) {
+    key = `${toSafeIdentifier(toCamelCase(preferredKey, fallback), fallback)}${nonce}`;
+    nonce += 1;
+  }
+  used.add(key);
+  if (!(key in defaults)) defaults[key] = value;
+  state.usedProps = used;
+  state.defaults = defaults;
+  return key;
+};
+
+const inferPenNodeHref = ({
+  node = {},
+  sectionKind = "",
+  sourcePayload = null,
+  pageCatalog = [],
+  childIndex = 0,
+  parentInteractive = false,
+} = {}) => {
+  if (parentInteractive) return "";
+  const labels = extractTextLinesFromPenNode(node);
+  const label = labels[0] || "";
+  if (!label) {
+    return shouldTreatPenNodeAsButton(node, sectionKind) ? "/" : "";
+  }
+  const name = String(node?.name || "").trim().toLowerCase();
+  if (sectionKind === "navigation") {
+    if (String(node?.type || "").trim().toLowerCase() === "text") {
+      return buildHrefForPenLabel({ label, sourcePayload, pageCatalog });
+    }
+    if (shouldTreatPenNodeAsButton(node, sectionKind)) {
+      return buildHrefForPenLabel({ label, sourcePayload, pageCatalog });
+    }
+    return "";
+  }
+  if (sectionKind === "footer") {
+    if (String(node?.type || "").trim().toLowerCase() === "text" && childIndex > 0) {
+      return buildHrefForPenLabel({ label, sourcePayload, pageCatalog });
+    }
+    if (shouldTreatPenNodeAsButton(node, sectionKind)) {
+      return buildHrefForPenLabel({ label, sourcePayload, pageCatalog });
+    }
+    return "";
+  }
+  if (shouldTreatPenNodeAsButton(node, sectionKind)) {
+    return buildHrefForPenLabel({ label, sourcePayload, pageCatalog });
+  }
+  return "";
+};
+
+const isDescriptorButtonLike = (descriptor = {}) => {
+  if (!descriptor || typeof descriptor !== "object") return false;
+  if (String(descriptor?.type || "").trim().toLowerCase() !== "frame") return false;
+  const children = Array.isArray(descriptor?.children) ? descriptor.children : [];
+  const textChildCount = children.filter(
+    (child) => String(child?.type || "").trim().toLowerCase() === "text"
+  ).length;
+  if (!textChildCount || children.length > 3) return false;
+  const style = descriptor?.style && typeof descriptor.style === "object" ? descriptor.style : {};
+  const displayToken = String(style?.display || "").trim().toLowerCase();
+  const widthToken = String(style?.width || "").trim().toLowerCase();
+  const hasInlineLayout = displayToken === "inline-flex" || displayToken === "inline-block" || widthToken === "fit-content";
+  const radiusValue = normalizePenDimensionValue(style?.borderRadius);
+  const hasRoundedShape = Number.isFinite(radiusValue) && radiusValue >= 10;
+  const hasPadding = String(style?.padding || "").trim().length > 0;
+  const hasSurface = Boolean(String(style?.background || "").trim() || String(style?.border || "").trim());
+  return Boolean((hasInlineLayout || hasRoundedShape) && hasPadding && hasSurface);
+};
+
+const pickDescriptorTextLabel = (descriptor = {}, defaults = {}) => {
+  for (const entry of flattenDescriptorNodes(descriptor, [])) {
+    const key = String(entry?.textProp || "").trim();
+    if (!key) continue;
+    const value = String(defaults?.[key] || "").trim();
+    if (value) return value;
+  }
+  return "";
+};
+
+const buildPenRenderDescriptor = (node = {}, state, options = {}) => {
+  const sectionKind = String(options?.sectionKind || "").trim();
+  const sourcePayload = options?.sourcePayload || null;
+  const pageCatalog = Array.isArray(options?.pageCatalog) ? options.pageCatalog : [];
+  const assetMap = options?.assetMap instanceof Map ? options.assetMap : new Map();
+  const childIndex = Number(options?.childIndex || 0);
+  const parentInteractive = Boolean(options?.parentInteractive);
+  const baseName = String(node?.name || node?.id || `${node?.type || "node"}`).trim();
+  const descriptor = {
+    type: String(node?.type || "frame").trim().toLowerCase(),
+    id: String(node?.id || "").trim(),
+    name: String(node?.name || "").trim(),
+    style: buildPenStaticStyle(node, {
+      parentLayout: String(options?.parentLayout || "").trim().toLowerCase(),
+    }),
+    children: [],
+  };
+
+  if (descriptor.type === "icon_font") {
+    const iconName = buildPenIconDescriptorName(node?.iconFontName);
+    if (iconName) {
+      descriptor.iconName = iconName;
+    } else {
+      descriptor.iconGlyph = String(node?.iconFontName || "").trim();
+    }
+    return descriptor;
+  }
+
+  if (descriptor.type === "text") {
+    const textValue = String(node?.content || "");
+    descriptor.textProp = registerPenEditableProp(state, `${baseName}Text`, textValue, "text");
+    const href = inferPenNodeHref({ node, sectionKind, sourcePayload, pageCatalog, childIndex, parentInteractive });
+    if (href) {
+      descriptor.hrefProp = registerPenEditableProp(state, `${baseName}Href`, href, "href");
+    }
+    return descriptor;
+  }
+
+  if (node?.fill && typeof node.fill === "object" && String(node.fill?.type || "").trim().toLowerCase() === "image") {
+    const rawImageSrc = String(node.fill?.url || "").trim();
+    const imageSrc = assetMap.get(rawImageSrc) || rawImageSrc;
+    descriptor.imageProp = registerPenEditableProp(
+      state,
+      `${baseName}ImageSrc`,
+      imageSrc,
+      "imageSrc"
+    );
+  }
+
+  const frameHref = inferPenNodeHref({ node, sectionKind, sourcePayload, pageCatalog, childIndex, parentInteractive });
+  if (frameHref) {
+    descriptor.hrefProp = registerPenEditableProp(state, `${baseName}Href`, frameHref, "href");
+  }
+
+  descriptor.children = (Array.isArray(node?.children) ? node.children : []).map((child, index) =>
+    buildPenRenderDescriptor(child, state, {
+      sectionKind,
+      sourcePayload,
+      pageCatalog,
+      assetMap,
+      childIndex: index,
+      parentInteractive: Boolean(frameHref),
+      parentLayout: String(node?.layout || "").trim().toLowerCase(),
+    })
+  );
+  if (!descriptor.hrefProp && isDescriptorButtonLike(descriptor)) {
+    const ctaLabel = pickDescriptorTextLabel(descriptor, state.defaults);
+    const fallbackHref = buildHrefForPenLabel({ label: ctaLabel || baseName || "home", sourcePayload, pageCatalog });
+    descriptor.hrefProp = registerPenEditableProp(state, `${baseName}Href`, fallbackHref || "/", "href");
+  }
+  return descriptor;
+};
+
+const flattenDescriptorNodes = (node = {}, out = []) => {
+  if (!node || typeof node !== "object") return out;
+  out.push(node);
+  for (const child of Array.isArray(node?.children) ? node.children : []) {
+    flattenDescriptorNodes(child, out);
+  }
+  return out;
+};
+
+const resolvePenNavigationPalette = (descriptor = null) => {
+  const linkTextNodes = flattenDescriptorNodes(descriptor, []).filter((entry) => {
+    if (!entry || typeof entry !== "object") return false;
+    if (String(entry?.type || "").trim().toLowerCase() !== "text") return false;
+    return String(entry?.hrefProp || "").trim().length > 0;
+  });
+  const colors = [];
+  const seen = new Set();
+  for (const node of linkTextNodes) {
+    const color = String(node?.style?.color || "").trim();
+    if (!color || seen.has(color)) continue;
+    seen.add(color);
+    colors.push(color);
+  }
+  if (!colors.length) {
+    return { activeColor: "#0D6E6E", inactiveColor: "#888888" };
+  }
+  const rank = colors
+    .map((color) => {
+      const parsed = parsePenHexColorWithAlpha(color) || parsePenRgbaColor(color);
+      const chroma = parsed ? Math.max(parsed.r, parsed.g, parsed.b) - Math.min(parsed.r, parsed.g, parsed.b) : 0;
+      return { color, chroma };
+    })
+    .sort((a, b) => b.chroma - a.chroma);
+  const activeColor = rank[0]?.color || colors[0];
+  const inactiveColor =
+    rank
+      .slice()
+      .sort((a, b) => a.chroma - b.chroma)
+      .find((entry) => entry.color !== activeColor)?.color ||
+    colors.find((color) => color !== activeColor) ||
+    "#888888";
+  return { activeColor, inactiveColor };
+};
+
+const buildPenComponentCode = ({
+  componentName = "CustomPenSection",
+  descriptor = null,
+  defaults = {},
+  sectionKind = "story",
+  layoutContext = {},
+} = {}) => {
+  const propKeys = Object.keys(defaults || {}).filter((key) => key !== "id" && isValidIdentifier(key));
+  const destructuredProps = ["id", ...propKeys].join(", ");
+  const navPalette = resolvePenNavigationPalette(descriptor);
+  return `"use client";
+
+import React from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { TextReveal } from "@/components/magic/text-reveal";
+import { useMotionMode } from "@/components/theme/motion";
+import { useInViewReveal } from "@/lib/motion";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Menu,
+  Minus,
+  Play,
+  Plus,
+  Search,
+  Sparkles,
+  Wifi,
+  X,
+} from "lucide-react";
+
+const SECTION_KIND = ${JSON.stringify(sectionKind)};
+const SECTION_TREE = ${JSON.stringify(descriptor, null, 2)};
+const DEFAULT_PROPS = ${JSON.stringify(defaults, null, 2)};
+const LAYOUT_CONTEXT = ${JSON.stringify(layoutContext, null, 2)};
+const NAV_ACTIVE_COLOR = ${JSON.stringify(navPalette.activeColor || "#0D6E6E")};
+const NAV_INACTIVE_COLOR = ${JSON.stringify(navPalette.inactiveColor || "#888888")};
+const ICONS = { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, Menu, Minus, Play, Plus, Search, Sparkles, Wifi, X };
+const PEN_RUNTIME_MOTION_STYLE = "@keyframes pen-media-breathe{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(0,-8px,0) scale(1.035)}}@keyframes pen-track-slide-x-subtle{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-32px,0,0)}}@keyframes pen-track-slide-x-showcase{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-52px,0,0)}}@keyframes pen-card-float{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-10px,0)}}.pen-product-card-hover{transform-origin:center center}.pen-product-card-hover:hover{transform:translate3d(0,-4px,0) scale(1.012);border-color:#FFFFFF!important;box-shadow:0 12px 30px rgba(0,0,0,.32)}";
+
+const assignDefined = (target, patch) => {
+  for (const [key, value] of Object.entries(patch || {})) {
+    if (typeof value !== "undefined") target[key] = value;
+  }
+  return target;
+};
+
+const resolveMotionMode = (providerMode, overrideMode) => {
+  const token = String(overrideMode || providerMode || "subtle").trim().toLowerCase();
+  if (token === "off" || token === "subtle" || token === "showcase") return token;
+  return "subtle";
+};
+
+const resolveSectionMotionProfile = (sectionKindToken = "", motionMode = "subtle") => {
+  if (motionMode === "off") {
+    return {
+      level: "off",
+      revealPreset: "fadeIn",
+      delayStep: 0,
+      textReveal: false,
+      mediaBreathe: false,
+      contentStagger: false,
+    };
+  }
+  if (sectionKindToken === "hero") {
+    return {
+      level: "showcase",
+      revealPreset: "fadeIn",
+      delayStep: motionMode === "showcase" ? 95 : 75,
+      textReveal: true,
+      mediaBreathe: false,
+      contentStagger: true,
+    };
+  }
+  if (sectionKindToken === "navigation" || sectionKindToken === "footer") {
+    return {
+      level: "off",
+      revealPreset: "fadeIn",
+      delayStep: 0,
+      textReveal: false,
+      mediaBreathe: false,
+      contentStagger: false,
+    };
+  }
+  return {
+    level: motionMode === "showcase" ? "showcase" : "stagger",
+    revealPreset: "stagger",
+    delayStep: motionMode === "showcase" ? 72 : 56,
+    textReveal: true,
+    mediaBreathe: false,
+    contentStagger: true,
+  };
+};
+
+const resolveDelayMs = (keyPath = "", sectionMotion) => {
+  const match = String(keyPath || "").match(/-(\\d+)$/);
+  const index = Number(match?.[1] || 0);
+  const step = Number(sectionMotion?.delayStep || 0);
+  if (!(step > 0)) return 0;
+  return Math.min(420, index * step);
+};
+
+const resolveFontSize = (value) => {
+  if (typeof value === "number") return value;
+  if (typeof value === "string") {
+    const parsed = Number.parseFloat(value);
+    if (Number.isFinite(parsed)) return parsed;
+  }
+  return 0;
+};
+
+const resolveNumericDimension = (value) => {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value === "string") {
+    const parsed = Number.parseFloat(value);
+    if (Number.isFinite(parsed)) return parsed;
+  }
+  return 0;
+};
+
+const normalizeNavPath = (value = "") => {
+  const raw = String(value || "").trim();
+  if (!raw) return "/";
+  if (/^(?:mailto:|tel:|javascript:|data:)/i.test(raw)) return "";
+  if (raw.startsWith("#")) return "/";
+  try {
+    const parsed = new URL(raw, "https://template.local");
+    let pathname = String(parsed.pathname || "/").replace(/\\/+/g, "/");
+    if (pathname !== "/") pathname = pathname.replace(/\\/+$/g, "");
+    return pathname || "/";
+  } catch {
+    return "/";
+  }
+};
+
+const normalizePreviewPagePath = (value = "") => {
+  const raw = String(value || "").trim();
+  if (!raw || raw === "home" || raw === "index") return "/";
+  return raw.startsWith("/") ? raw : \`/\${raw}\`;
+};
+
+const resolveRuntimeCurrentPath = (merged, pathname, searchParams) => {
+  const explicitPath = String(merged?.currentPath || "").trim();
+  if (explicitPath) return explicitPath;
+  const pageParamRaw = String(searchParams?.get?.("page") || "").trim();
+  if (pageParamRaw) return normalizePreviewPagePath(pageParamRaw);
+  return pathname || "/";
+};
+
+const isHeadingLikeTextNode = (node) => {
+  const lowerName = String(node?.name || "").trim().toLowerCase();
+  if (/(title|headline|hero|eyebrow|heading)/.test(lowerName)) return true;
+  return resolveFontSize(node?.style?.fontSize) >= 22;
+};
+
+const getNodeNameToken = (node) => String(node?.name || "").trim().toLowerCase();
+
+const shouldApplyStoryTrackMotion = (node, sectionKindToken = "") => {
+  if (sectionKindToken !== "story") return false;
+  if (String(node?.type || "").trim().toLowerCase() !== "frame") return false;
+  const name = getNodeNameToken(node);
+  const direction = String(node?.style?.flexDirection || "").trim().toLowerCase();
+  const childCount = Array.isArray(node?.children) ? node.children.length : 0;
+  const rowLike = /(?:row|track|carousel|strip|rail)/.test(name);
+  return direction === "row" && (rowLike || childCount >= 2);
+};
+
+const shouldApplyStoryCardHover = (node, sectionKindToken = "") => {
+  if (sectionKindToken !== "story") return false;
+  if (String(node?.type || "").trim().toLowerCase() !== "frame") return false;
+  const name = getNodeNameToken(node);
+  const childCount = Array.isArray(node?.children) ? node.children.length : 0;
+  return /(?:card|cards|grid|tile)/.test(name) && childCount > 0;
+};
+
+const shouldApplyStoryCardFloat = (node, sectionKindToken = "") => {
+  if (sectionKindToken !== "story") return false;
+  if (String(node?.type || "").trim().toLowerCase() !== "frame") return false;
+  if (!node?.imageProp) return false;
+  const childCount = Array.isArray(node?.children) ? node.children.length : 0;
+  if (childCount < 1) return false;
+  const width = resolveNumericDimension(node?.style?.width);
+  const height = resolveNumericDimension(node?.style?.height);
+  const cardLikeWidth = width > 0 ? width <= 460 : true;
+  const cardLikeHeight = height > 0 ? height >= 220 : true;
+  return cardLikeWidth && cardLikeHeight;
+};
+
+const shouldApplyProductsCardHover = (node, sectionKindToken = "") => {
+  if (sectionKindToken !== "products") return false;
+  if (String(node?.type || "").trim().toLowerCase() !== "frame") return false;
+  const name = getNodeNameToken(node);
+  const childCount = Array.isArray(node?.children) ? node.children.length : 0;
+  const borderToken = String(node?.style?.border || "").trim();
+  const borderLike = /(?:^|\\s)(?:\\d+(?:\\.\\d+)?)px\\s/.test(borderToken);
+  return /(?:productcard|product-card|card|tile|panel)/.test(name) && childCount > 0 && borderLike;
+};
+
+const buildNodeClassName = (node, sectionMotion, sectionKindToken) => {
+  if (!sectionMotion || sectionMotion.level === "off") return "";
+  const classes = [];
+  if (node?.hrefProp) classes.push("hover-lift");
+  if (node?.type === "frame" && node?.imageProp) classes.push("will-change-transform");
+  if (shouldApplyStoryCardHover(node, sectionKindToken)) classes.push("hover-lift");
+  if (shouldApplyProductsCardHover(node, sectionKindToken)) classes.push("pen-product-card-hover");
+  if (shouldApplyStoryTrackMotion(node, sectionKindToken)) classes.push("will-change-transform", "pen-track-slide");
+  return classes.join(" ");
+};
+
+const resolveResponsiveFixedWidth = (rawWidth) => {
+  const numericWidth = resolveNumericDimension(rawWidth);
+  if (!(Number.isFinite(numericWidth) && numericWidth > 0)) return null;
+  if (numericWidth < 360) return null;
+  return \`min(100%, \${Math.round(numericWidth)}px)\`;
+};
+
+const shouldConvertRowFillToFlex = (parentNode, childIndex, style) => {
+  const parentDirection = String(parentNode?.style?.flexDirection || "").trim().toLowerCase();
+  if (parentDirection !== "row") return false;
+  const currentWidth = String(style?.width || "").trim();
+  if (currentWidth !== "100%") return false;
+  if (style?.flex) return false;
+  const siblings = Array.isArray(parentNode?.children) ? parentNode.children : [];
+  return siblings.some((sibling, siblingIndex) => {
+    if (siblingIndex === childIndex) return false;
+    return resolveNumericDimension(sibling?.style?.width) > 0;
+  });
+};
+
+const buildNodeStyle = (
+  node,
+  merged,
+  sectionMotion,
+  sectionKindToken,
+  keyPath,
+  currentPathToken = "/",
+  parentNode = null,
+  childIndex = 0
+) => {
+  const style = { ...(node?.style || {}) };
+  const rawHref = node?.hrefProp ? String(merged?.[node.hrefProp] || "").trim() : "";
+  if (keyPath === "root") {
+    const rawRootWidth = style?.width;
+    const shouldNormalizeRootWidth =
+      (typeof rawRootWidth === "number" && Number.isFinite(rawRootWidth) && rawRootWidth > 0) ||
+      (typeof rawRootWidth === "string" && /^\\d+(?:\\.\\d+)?$/.test(rawRootWidth.trim()));
+    if (shouldNormalizeRootWidth) {
+      const numericRootWidth = Number(rawRootWidth);
+      style.maxWidth = style.maxWidth || numericRootWidth;
+      style.width = "100%";
+      style.marginLeft = style.marginLeft || "auto";
+      style.marginRight = style.marginRight || "auto";
+    }
+    const rootDirection = String(style?.flexDirection || "").trim().toLowerCase();
+    if (rootDirection === "row" && sectionKindToken !== "navigation" && sectionKindToken !== "footer") {
+      style.flexWrap = style.flexWrap || "wrap";
+    }
+  }
+  if (keyPath !== "root" && !style.maxWidth) {
+    const responsiveFixedWidth = resolveResponsiveFixedWidth(style?.width);
+    if (responsiveFixedWidth) {
+      style.width = responsiveFixedWidth;
+    }
+  }
+  if (shouldConvertRowFillToFlex(parentNode, childIndex, style)) {
+    style.width = "auto";
+    style.flex = style.flex || "1 1 0";
+    if (typeof style.minWidth === "undefined") style.minWidth = 0;
+  }
+  if (node?.imageProp) {
+    const src = String(merged?.[node.imageProp] || "").trim();
+    if (src) {
+      style.backgroundImage = \`url(\${src})\`;
+    }
+  }
+  if (rawHref) {
+    style.textDecoration = style.textDecoration || "none";
+    if (!style.color) style.color = "inherit";
+    if (node?.type === "frame" && !style.display) {
+      style.display = "inline-block";
+    }
+  }
+  if (sectionKindToken === "navigation" && node?.type === "text" && rawHref) {
+    const hrefPathToken = normalizeNavPath(rawHref);
+    const isActiveNavItem = Boolean(hrefPathToken) && hrefPathToken === currentPathToken;
+    style.color = isActiveNavItem ? NAV_ACTIVE_COLOR : NAV_INACTIVE_COLOR;
+    if (isActiveNavItem) {
+      style.fontWeight = style.fontWeight || "600";
+    } else if (typeof style.opacity === "undefined") {
+      style.opacity = 0.96;
+    }
+  }
+  const motionLevel = sectionMotion?.level || "off";
+  if (motionLevel !== "off") {
+    const delayMs = resolveDelayMs(keyPath, sectionMotion);
+    style.transition = style.transition || "opacity 560ms var(--ease-smooth), transform 560ms var(--ease-smooth), box-shadow 300ms var(--ease-smooth)";
+    if (delayMs > 0) style.transitionDelay = style.transitionDelay || \`\${delayMs}ms\`;
+    if (
+      Boolean(sectionMotion?.mediaBreathe) &&
+      node?.imageProp &&
+      !style.animation &&
+      (!style.transform || String(style.transform).trim() === "")
+    ) {
+      style.animation = "pen-media-breathe 8s var(--ease-smooth, ease) infinite";
+      style.transformOrigin = style.transformOrigin || "50% 50%";
+    }
+    if (shouldApplyStoryTrackMotion(node, sectionKindToken) && !style.animation) {
+      const animationName = motionLevel === "showcase" ? "pen-track-slide-x-showcase" : "pen-track-slide-x-subtle";
+      const duration = motionLevel === "showcase" ? "10s" : "14s";
+      style.animation = \`\${animationName} \${duration} var(--ease-smooth, ease-in-out) infinite\`;
+      style.willChange = style.willChange || "transform";
+      style.transformOrigin = style.transformOrigin || "center center";
+    }
+    if (shouldApplyStoryCardFloat(node, sectionKindToken) && !style.animation) {
+      const duration = motionLevel === "showcase" ? "4.2s" : "5.6s";
+      style.animation = \`pen-card-float \${duration} var(--ease-smooth, ease-in-out) infinite\`;
+      style.willChange = style.willChange || "transform";
+      style.transformOrigin = style.transformOrigin || "50% 55%";
+    }
+    if (Boolean(sectionMotion?.contentStagger)) {
+      // Keep static visual fidelity: stagger only via transition delay, not enter keyframes.
+      if (delayMs > 0) style.transitionDelay = style.transitionDelay || \`\${delayMs}ms\`;
+    }
+  }
+  return style;
+};
+
+const renderTextContent = (node, merged, keyPath, sectionMotion) => {
+  const textValue = String(merged?.[node?.textProp] ?? "");
+  if (!textValue || !sectionMotion || sectionMotion.level === "off") return textValue;
+  if (!sectionMotion.textReveal) return textValue;
+  if (!isHeadingLikeTextNode(node)) return textValue;
+  return React.createElement(
+    TextReveal,
+    {
+      as: "span",
+      className: "inline-block",
+      delayMs: resolveDelayMs(keyPath, sectionMotion),
+    },
+    textValue
+  );
+};
+
+const renderNode = (
+  node,
+  merged,
+  sectionMotion,
+  sectionKindToken,
+  key = "root",
+  ancestorHasLink = false,
+  currentPathToken = "/",
+  parentNode = null,
+  childIndex = 0
+) => {
+  if (!node || typeof node !== "object") return null;
+  const style = buildNodeStyle(
+    node,
+    merged,
+    sectionMotion,
+    sectionKindToken,
+    key,
+    currentPathToken,
+    parentNode,
+    childIndex
+  );
+  const className = buildNodeClassName(node, sectionMotion, sectionKindToken) || undefined;
+  const href = node?.hrefProp ? String(merged?.[node.hrefProp] || "").trim() : "";
+  const shouldRenderLink = Boolean(href) && !ancestorHasLink;
+  if (node.type === "icon_font") {
+    const Icon = node?.iconName ? ICONS[node.iconName] : null;
+    if (Icon) {
+      return React.createElement(Icon, {
+        key,
+        className,
+        style,
+        "data-pen-node": node.id || undefined,
+      });
+    }
+    return React.createElement(
+      "span",
+      {
+        key,
+        className,
+        style,
+        "data-pen-node": node.id || undefined,
+      },
+      String(node?.iconGlyph || "")
+    );
+  }
+  if (node.type === "text") {
+    const Tag = shouldRenderLink ? "a" : "div";
+    return React.createElement(
+      Tag,
+      {
+        key,
+        href: shouldRenderLink ? href : undefined,
+        className,
+        style,
+        "data-pen-node": node.id || undefined,
+      },
+      renderTextContent(node, merged, key, sectionMotion)
+    );
+  }
+  const Tag = shouldRenderLink ? "a" : "div";
+  return React.createElement(
+    Tag,
+    {
+      key,
+      href: shouldRenderLink ? href : undefined,
+      className,
+      style,
+      "data-pen-node": node.id || undefined,
+    },
+    ...(Array.isArray(node.children)
+      ? node.children.map((child, index) =>
+          renderNode(
+            child,
+            merged,
+            sectionMotion,
+            sectionKindToken,
+            \`\${key}-\${index}\`,
+            ancestorHasLink || shouldRenderLink,
+            currentPathToken,
+            node,
+            index
+          )
+        )
+      : [])
+  );
+};
+
+export default function ${componentName}({ ${destructuredProps}, ...rest }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const providerMotionMode = useMotionMode();
+  const merged = assignDefined({ ...DEFAULT_PROPS }, { id, ${propKeys.join(", ")} });
+  assignDefined(merged, rest);
+  const runtimeCurrentPath = resolveRuntimeCurrentPath(merged, pathname, searchParams);
+  const currentPathToken = normalizeNavPath(runtimeCurrentPath || "/");
+  const effectiveMotionMode = resolveMotionMode(providerMotionMode, merged?.motionMode);
+  const sectionKindToken = String(SECTION_KIND || "").trim().toLowerCase();
+  const sectionMotion = resolveSectionMotionProfile(sectionKindToken, effectiveMotionMode);
+  const reveal = useInViewReveal({
+    preset: sectionMotion?.revealPreset === "fadeIn" ? "fadeIn" : "stagger",
+    once: true,
+    enabled: sectionMotion?.level !== "off",
+  });
+  const sectionClassName = sectionMotion?.level === "off"
+    ? "w-full"
+    : ["w-full", reveal.className].filter(Boolean).join(" ");
+  const sectionStyle = sectionMotion?.level === "off" ? undefined : reveal.style;
+  const layoutStyle: React.CSSProperties = {
+    boxSizing: "border-box",
+  };
+  const pageWidth = Number(LAYOUT_CONTEXT?.pageWidth || 0);
+  const pagePaddingLeft = Number(LAYOUT_CONTEXT?.pagePaddingLeft || 0);
+  const pagePaddingRight = Number(LAYOUT_CONTEXT?.pagePaddingRight || 0);
+  const pagePaddingTop = Number(LAYOUT_CONTEXT?.pagePaddingTop || 0);
+  const pagePaddingBottom = Number(LAYOUT_CONTEXT?.pagePaddingBottom || 0);
+  const sectionGapAfter = Number(LAYOUT_CONTEXT?.sectionGapAfter || 0);
+  if (Number.isFinite(pageWidth) && pageWidth > 0) {
+    layoutStyle.width = "100%";
+    layoutStyle.maxWidth = pageWidth;
+    layoutStyle.marginLeft = "auto";
+    layoutStyle.marginRight = "auto";
+  }
+  const responsiveEdgePadding = (value) => {
+    if (!(Number.isFinite(value) && value > 0)) return 0;
+    const safeValue = Math.round(value);
+    const safeWidth = Number.isFinite(pageWidth) && pageWidth > 0 ? pageWidth : 0;
+    if (safeWidth > 0) {
+      const ratioVw = Math.max(1.4, Math.min(6.8, (safeValue / safeWidth) * 100));
+      const minPx = Math.max(12, Math.min(24, Math.round(safeValue * 0.35)));
+      return \`clamp(\${minPx}px, \${ratioVw.toFixed(3)}vw, \${safeValue}px)\`;
+    }
+    return safeValue;
+  };
+  if (Number.isFinite(pagePaddingLeft) && pagePaddingLeft > 0) layoutStyle.paddingLeft = responsiveEdgePadding(pagePaddingLeft);
+  if (Number.isFinite(pagePaddingRight) && pagePaddingRight > 0) layoutStyle.paddingRight = responsiveEdgePadding(pagePaddingRight);
+  if (Number.isFinite(pagePaddingTop) && pagePaddingTop > 0) layoutStyle.paddingTop = pagePaddingTop;
+  if (Number.isFinite(pagePaddingBottom) && pagePaddingBottom > 0) layoutStyle.paddingBottom = pagePaddingBottom;
+  if (Number.isFinite(sectionGapAfter) && sectionGapAfter > 0) layoutStyle.marginBottom = sectionGapAfter;
+  const mergedSectionStyle = sectionStyle ? { ...layoutStyle, ...sectionStyle } : layoutStyle;
+  return React.createElement(
+    "section",
+    {
+      id: merged.id || DEFAULT_PROPS.id,
+      "data-pen-section-kind": SECTION_KIND,
+      className: sectionClassName,
+      style: mergedSectionStyle,
+      ref: sectionMotion?.level === "off" ? undefined : reveal.ref,
+    },
+    ...(sectionMotion?.level !== "off"
+      ? [React.createElement("style", { key: "pen-motion-style" }, PEN_RUNTIME_MOTION_STYLE)]
+      : []),
+    renderNode(SECTION_TREE, merged, sectionMotion, sectionKindToken, "root", false, currentPathToken)
+  );
+}
+`;
+};
+
+const buildPenCompiledComponentForNode = ({
+  node = {},
+  pagePath = "/",
+  sectionKind = "story",
+  sectionIndex = 0,
+  sourcePayload = null,
+  pageCatalog = [],
+  caseId = "",
+  assetMap = null,
+  layoutContext = {},
+} = {}) => {
+  const componentName = buildTemplateExclusiveComponentName({
+    siteId: caseId || "pen",
+    pagePath,
+    sectionKind,
+    baseBlockType: `${toPascal(String(node?.name || sectionKind || "Section")) || "Section"}Pen`,
+    rank: sectionIndex,
+  });
+  const state = {
+    defaults: {
+      id: String(node?.id || `${sectionKind}-${sectionIndex + 1}`),
+    },
+    usedProps: new Set(["id"]),
+  };
+  const descriptor = buildPenRenderDescriptor(node, state, {
+    sectionKind,
+    sourcePayload,
+    pageCatalog,
+    assetMap,
+    childIndex: 0,
+  });
+  return {
+    name: componentName,
+    code: buildPenComponentCode({
+      componentName,
+      descriptor,
+      defaults: state.defaults,
+      sectionKind,
+      layoutContext,
+    }),
+    defaults: cloneJson(state.defaults),
+    descriptor,
+  };
+};
+
+const buildThemeFromPenPage = (pageFrame = {}) => {
+  const sectionFrames = (Array.isArray(pageFrame?.children) ? pageFrame.children : []).filter(
+    (child) => String(child?.type || "").toLowerCase() === "frame"
+  );
+  const allTextNodes = extractTextNodesFromPenNode(pageFrame);
+  const headingFonts = [];
+  const bodyFonts = [];
+  const allFonts = new Set();
+  const textColors = [];
+  for (const entry of allTextNodes) {
+    const font = String(entry?.fontFamily || "").trim();
+    if (font) {
+      allFonts.add(font);
+      if ((Number(entry?.fontSize) || 0) >= 28) headingFonts.push(font);
+      bodyFonts.push(font);
+    }
+    if (typeof entry?.fill === "string" && entry.fill.trim()) textColors.push(entry.fill.trim());
+  }
+  const bgColors = [pageFrame]
+    .concat(sectionFrames)
+    .map((entry) => (typeof entry?.fill === "string" ? entry.fill.trim() : ""))
+    .filter(Boolean);
+  const ctaColors = [];
+  for (const node of flattenPenNodeTree(pageFrame, [])) {
+    if (String(node?.type || "").toLowerCase() !== "frame") continue;
+    const name = String(node?.name || "").toLowerCase();
+    if (!/(cta|btn|button|shop|order|learn|contact)/.test(name)) continue;
+    if (typeof node?.fill === "string" && node.fill.trim()) {
+      ctaColors.push(node.fill.trim());
+    }
+  }
+  const dominantBodyFont =
+    Array.from(
+      bodyFonts.reduce((map, font) => map.set(font, (map.get(font) || 0) + 1), new Map()).entries()
+    ).sort((a, b) => b[1] - a[1])[0]?.[0] || "Inter";
+  const dominantHeadingFont =
+    Array.from(
+      headingFonts.reduce((map, font) => map.set(font, (map.get(font) || 0) + 1), new Map()).entries()
+    ).sort((a, b) => b[1] - a[1])[0]?.[0] || dominantBodyFont;
+  const background = bgColors[0] || "#0B0D12";
+  const foreground = textColors.find((color) => !isPenDarkColorValue(color)) || "#E5E7EB";
+  const accent =
+    ctaColors.find((color) => !isPenNeutralColorValue(color)) ||
+    ctaColors.find((color) => !isPenDarkColorValue(color)) ||
+    "#4F77FF";
+  const mode = isPenDarkColorValue(background) ? "dark" : "light";
+  return {
+    mode,
+    fontHeading: dominantHeadingFont,
+    fontBody: dominantBodyFont,
+    motion: "subtle",
+    fontFamilies: Array.from(allFonts),
+    palette: {
+      bg: background,
+      text: foreground,
+      primary: accent,
+      accent,
+      neutral: mode === "dark" ? "#1F2937" : "#E5E7EB",
+      textSecondary: mode === "dark" ? "#9CA3AF" : "#4B5563",
+    },
+    primaryColor: accent,
+    layoutRules: {
+      maxWidth: "1400px",
+      sectionPadding: "py-24",
+      grid: "12-col",
+    },
+    tokens: {
+      surface: mode === "dark" ? "glass" : "solid",
+      border: "soft",
+      shadow: "dramatic",
+      accent: "glow",
+    },
+  };
+};
+
+const normalizePenPageLabel = (value = "") =>
+  String(value || "")
+    .replace(/^subpage\s*-\s*/i, "")
+    .replace(/\s+replica$/i, "")
+    .trim();
+
+const tokenSetFromLabel = (value = "") =>
+  new Set(
+    String(value || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, " ")
+      .split(/\s+/)
+      .filter(Boolean)
+  );
+
+const resolvePenPagePath = ({ frame = {}, sourcePayload = null } = {}) => {
+  const rawName = String(frame?.name || "").trim();
+  const normalizedName = normalizePenPageLabel(rawName);
+  if (!normalizedName) return "/";
+  if (/home/i.test(rawName) || /replica/i.test(rawName)) return "/";
+
+  const pages = Array.isArray(sourcePayload?.pages) ? sourcePayload.pages : [];
+  const targetTokens = tokenSetFromLabel(normalizedName);
+  for (const page of pages) {
+    const pageName = String(page?.name || "").trim();
+    const pageTokens = tokenSetFromLabel(pageName);
+    if (!pageTokens.size) continue;
+    const overlap = Array.from(targetTokens).filter((token) => pageTokens.has(token));
+    if (overlap.length && overlap.length === Math.min(targetTokens.size, pageTokens.size)) {
+      return normalizeTemplatePagePath(page?.path || "/");
+    }
+  }
+  return normalizeTemplatePagePath(`/${slug(normalizedName)}`);
+};
+
+const dedupePenPageCatalog = (pages = []) => {
+  const seen = new Set();
+  const rows = [];
+  for (const page of Array.isArray(pages) ? pages : []) {
+    const pathValue = normalizeTemplatePagePath(page?.path || "/");
+    if (seen.has(pathValue)) continue;
+    seen.add(pathValue);
+    rows.push({
+      path: pathValue,
+      name: String(page?.name || "").trim(),
+    });
+  }
+  return rows;
+};
+
+const resolvePageCatalogForHref = ({ sourcePayload = null, pageCatalog = [] } = {}) => {
+  if (Array.isArray(pageCatalog) && pageCatalog.length) return dedupePenPageCatalog(pageCatalog);
+  const payloadPages = Array.isArray(sourcePayload?.pages) ? sourcePayload.pages : [];
+  return dedupePenPageCatalog(payloadPages);
+};
+
+const findPagePathByKeywords = (catalog = [], keywords = []) => {
+  const entries = Array.isArray(catalog) ? catalog : [];
+  for (const page of entries) {
+    const hay = `${String(page?.name || "")} ${String(page?.path || "")}`.toLowerCase();
+    if (!hay.trim()) continue;
+    if (keywords.some((keyword) => hay.includes(keyword))) {
+      return normalizeTemplatePagePath(page?.path || "/");
+    }
+  }
+  return "";
+};
+
+const resolveFallbackPagePathForLabel = ({ label = "", catalog = [] } = {}) => {
+  const clean = String(label || "").toLowerCase();
+  if (!clean.trim()) return "/";
+  if (/(home|index)/.test(clean)) return "/";
+  if (/(privacy|policy|terms|legal)/.test(clean)) {
+    return (
+      findPagePathByKeywords(catalog, ["privacy", "policy", "legal", "terms"]) ||
+      "/"
+    );
+  }
+  if (/(contact|press|customer|support@|info@|email)/.test(clean)) {
+    return (
+      findPagePathByKeywords(catalog, ["contact", "support"]) ||
+      "/"
+    );
+  }
+  if (/(support|warranty|return|faq|help)/.test(clean)) {
+    return (
+      findPagePathByKeywords(catalog, ["support", "help", "faq"]) ||
+      "/"
+    );
+  }
+  if (/(blog|journal|story|explore|news|article)/.test(clean)) {
+    return (
+      findPagePathByKeywords(catalog, ["blog", "journal", "explore", "story"]) ||
+      "/"
+    );
+  }
+  if (/(product|shop|buy|headphone|earphone|speaker|mw\d+)/.test(clean)) {
+    return (
+      findPagePathByKeywords(catalog, ["product", "products", "shop"]) ||
+      "/"
+    );
+  }
+  return "/";
+};
+
+const buildHrefForPenLabel = ({ label = "", sourcePayload = null, pageCatalog = [] } = {}) => {
+  const clean = String(label || "").replace(/\s+/g, " ").trim();
+  if (!clean) return "/";
+  const labelTokens = tokenSetFromLabel(clean);
+  const pages = resolvePageCatalogForHref({ sourcePayload, pageCatalog });
+  for (const page of pages) {
+    const pageName = String(page?.name || "").trim();
+    const pagePath = normalizeTemplatePagePath(page?.path || "/");
+    const pageTokens = tokenSetFromLabel(pageName);
+    const overlap = Array.from(labelTokens).filter((token) => pageTokens.has(token));
+    if (overlap.length && overlap.length >= Math.min(labelTokens.size, pageTokens.size)) {
+      return pagePath;
+    }
+  }
+  const slugPath = normalizeTemplatePagePath(`/${slug(clean)}`);
+  if (pages.some((page) => normalizeTemplatePagePath(page?.path || "/") === slugPath)) {
+    return slugPath;
+  }
+  return resolveFallbackPagePathForLabel({ label: clean, catalog: pages });
+};
+
+const buildCardsFromPenSection = (node = {}, { sourcePayload = null } = {}) => {
+  const directChildren = Array.isArray(node?.children) ? node.children : [];
+  const cardFrames = directChildren.filter((child) => {
+    const name = String(child?.name || "").toLowerCase();
+    return String(child?.type || "").toLowerCase() === "frame" && /(card|product|topic|segment|item|case)/.test(name);
+  });
+  const rows = (cardFrames.length ? cardFrames : directChildren)
+    .map((child) => {
+      const texts = extractTextFromPenNode(child);
+      if (!texts.length) return null;
+      const imageSrc = extractImageFromPenNode(child);
+      const ctaLabel = texts.find((text) => /learn|shop|discover|explore|contact|read/i.test(text)) || "";
+      return {
+        title: texts[0] || "Item",
+        description: texts.slice(1).filter((text) => text !== ctaLabel).join(" "),
+        ...(imageSrc ? { imageSrc, imageAlt: texts[0] || "Item" } : {}),
+        ...(ctaLabel ? { ctaLabel, href: buildHrefForPenLabel({ label: ctaLabel, sourcePayload }) } : {}),
+      };
+    })
+    .filter(Boolean);
+  return rows.slice(0, 12);
+};
+
+const splitPenTextTriplet = (lines = []) => {
+  const values = Array.isArray(lines) ? lines.map((line) => String(line || "").trim()).filter(Boolean) : [];
+  const title = values[0] || "";
+  const subtitle = values[1] || "";
+  const body = values.slice(2).join(" ");
+  return { title, subtitle, body };
+};
+
+const resolvePenSectionKind = (node = {}, fallback = "story") =>
+  normalizeSectionKind(String(node?.name || "")) ||
+  normalizeSectionKind(String(node?.id || "")) ||
+  inferSectionKindFromTokens(`${String(node?.name || "")} ${String(node?.id || "")}`) ||
+  fallback;
+
+const buildHeroSlideFromPenNode = (node = {}, { sourcePayload = null } = {}) => {
+  const lines = extractTextLinesFromPenNode(node);
+  const ctaLabel = lines.find((text) => /shop|contact|learn|discover|explore|order|get|buy/i.test(text)) || "";
+  const imageFill = extractPrimaryImageFillFromPenNode(node);
+  const imageSrc = String(imageFill?.url || "").trim() || extractImageFromPenNode(node);
+  const fonts = resolveSectionFontsFromPenNode(node);
+  const textPanel = detectTextPanelFromPenNode(node);
+  const triplet = splitPenTextTriplet(lines);
+  return {
+    src: imageSrc,
+    alt: triplet.title || "Hero",
+    eyebrow: triplet.title,
+    title: triplet.subtitle || triplet.title || "Hero",
+    subtitle: triplet.body.replace(new RegExp(`\\b${String(ctaLabel).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "g"), "").trim(),
+    ctas: ctaLabel
+      ? [{ label: ctaLabel, href: buildHrefForPenLabel({ label: ctaLabel, sourcePayload }), variant: "primary" }]
+      : [],
+    _meta: {
+      fonts,
+      textPanel,
+      background: resolveSectionBackgroundPropsFromPenNode(node, triplet.subtitle || triplet.title || "Hero"),
+      tone: detectSectionToneFromPenNode(node),
+    },
+  };
+};
+
+const buildHeroCarouselSectionFromPenNodes = (nodes = [], index = 0, { sourcePayload = null } = {}) => {
+  const validNodes = Array.isArray(nodes) ? nodes.filter(Boolean) : [];
+  const firstNode = validNodes[0] || {};
+  const baseKey = String(firstNode?.id || `hero-${index + 1}`);
+  const slides = validNodes
+    .map((node) => buildHeroSlideFromPenNode(node, { sourcePayload }))
+    .filter((slide) => String(slide?.src || "").trim());
+  const firstSlide = slides[0] || {};
+  const baseFonts = firstSlide?._meta?.fonts || resolveSectionFontsFromPenNode(firstNode);
+  const baseTone = firstSlide?._meta?.tone || detectSectionToneFromPenNode(firstNode);
+  const background = firstSlide?._meta?.background || resolveSectionBackgroundPropsFromPenNode(firstNode, firstSlide.title || "Hero");
+  const textPanel =
+    firstSlide?._meta?.textPanel ||
+    detectTextPanelFromPenNode(firstNode) || {
+      textPanel: true,
+      textPanelBackground: baseTone === "dark" ? "rgba(9,14,26,0.48)" : "rgba(255,255,255,0.56)",
+    };
+
+  const props = seedPuckArrayItemIds(
+    {
+      ...background,
+      ...baseFonts,
+      ...textPanel,
+      id: baseKey,
+      variant: "image",
+      surfaceTone: baseTone === "dark" ? "dark" : "default",
+      align: "left",
+      mediaPosition: "right",
+      eyebrow: firstSlide.eyebrow || "",
+      title: firstSlide.title || "Hero",
+      subtitle: firstSlide.subtitle || "",
+      ctas: Array.isArray(firstSlide.ctas) ? firstSlide.ctas : [],
+      heroSlides: slides.map((slide) => ({
+        src: slide.src,
+        alt: slide.alt || "",
+        eyebrow: slide.eyebrow || "",
+        title: slide.title || "",
+        subtitle: slide.subtitle || "",
+        ctas: Array.isArray(slide.ctas) ? slide.ctas : [],
+      })),
+      heroCarouselAutoplayMs: 4800,
+      referenceSliceMode: true,
+      referenceSliceMinHeight: 560,
+    },
+    baseKey
+  );
+  return {
+    type: "HeroSplit",
+    _key: baseKey,
+    kind: "hero",
+    meta: {
+      penKind: "hero",
+      penSectionName: String(firstNode?.name || "").trim(),
+    },
+    props,
+  };
+};
+
+const buildColumnsFromFooterPenSection = (node = {}, { sourcePayload = null } = {}) => {
+  const directChildren = Array.isArray(node?.children) ? node.children : [];
+  const groups = directChildren.filter((child) => String(child?.type || "").toLowerCase() === "frame");
+  const columns = groups
+    .map((group, index) => {
+      const texts = extractTextFromPenNode(group);
+      if (!texts.length) return null;
+      const [title, ...links] = texts;
+      return {
+        title: title || `Column ${index + 1}`,
+        links: links.slice(0, 8).map((label) => ({
+          label,
+          href: buildHrefForPenLabel({ label, sourcePayload }),
+        })),
+      };
+    })
+    .filter((entry) => entry && entry.links.length);
+  return columns.slice(0, 6);
+};
+
+const payloadBackgroundSummary = (section = {}) => {
+  const props = section?.props && typeof section.props === "object" ? section.props : {};
+  const background = String(props?.background || "").trim().toLowerCase();
+  if (background === "image") return `image:${String(props?.backgroundMedia?.src || props?.media?.src || "").trim()}`;
+  if (background === "gradient") return `gradient:${String(props?.backgroundGradient || "").trim()}`;
+  if (background) return background;
+  if (props?.media?.kind === "image" && String(props?.media?.src || "").trim()) {
+    return `image:${String(props.media.src).trim()}`;
+  }
+  return "none";
+};
+
+const penBackgroundSummary = (node = {}) => {
+  const fill = node?.fill;
+  if (fill && typeof fill === "object") {
+    const kind = String(fill?.type || "").trim().toLowerCase();
+    if (kind === "image") return `image:${String(fill?.url || "").trim()}`;
+    if (kind === "gradient") return `gradient:${penGradientFillToCss(fill)}`;
+  }
+  if (typeof fill === "string" && fill.trim()) return `solid:${fill.trim()}`;
+  return "none";
+};
+
+const summarizePenSectionForDiff = (node = {}) => {
+  const fonts = resolveSectionFontsFromPenNode(node);
+  const texts = extractTextLinesFromPenNode(node);
+  return {
+    id: String(node?.id || ""),
+    name: String(node?.name || ""),
+    kind: resolvePenSectionKind(node, "story"),
+    background: penBackgroundSummary(node),
+    headingFont: String(fonts?.headingFont || ""),
+    bodyFont: String(fonts?.bodyFont || ""),
+    textPanel: Boolean(detectTextPanelFromPenNode(node)?.textPanel),
+    textPreview: texts.slice(0, 3),
+  };
+};
+
+const summarizePayloadSectionForDiff = (section = {}) => {
+  const props = section?.props && typeof section.props === "object" ? section.props : {};
+  const type = String(section?.type || "");
+  const supportsTextPanel = !/^TemplateExclusive/i.test(type);
+  return {
+    key: String(section?._key || ""),
+    type,
+    kind: inferSectionKindFromPayloadSection(section) || "",
+    background: payloadBackgroundSummary(section),
+    headingFont: String(props?.headingFont || ""),
+    bodyFont: String(props?.bodyFont || ""),
+    textPanel: Boolean(props?.textPanel),
+    textPanelComparable: supportsTextPanel,
+    textPreview: [
+      String(props?.eyebrow || "").trim(),
+      String(props?.title || "").trim(),
+      String(props?.subtitle || "").trim(),
+    ].filter(Boolean),
+  };
+};
+
+const buildPenPayloadSectionDiffRows = (penSections = [], payloadSections = []) => {
+  const max = Math.max(penSections.length, payloadSections.length);
+  const rows = [];
+  for (let i = 0; i < max; i += 1) {
+    const pen = penSections[i] || null;
+    const payload = payloadSections[i] || null;
+    const mismatches = [];
+    if (!pen || !payload) {
+      mismatches.push("missing_section");
+    } else {
+      if (pen.kind && payload.kind && pen.kind !== payload.kind) mismatches.push("kind");
+      if (pen.background !== "none" && payload.background !== "none" && pen.background !== payload.background) {
+        mismatches.push("background");
+      }
+      if (pen.headingFont && payload.headingFont && pen.headingFont !== payload.headingFont) mismatches.push("headingFont");
+      if (pen.bodyFont && payload.bodyFont && pen.bodyFont !== payload.bodyFont) mismatches.push("bodyFont");
+      if (payload.textPanelComparable !== false && Boolean(pen.textPanel) !== Boolean(payload.textPanel)) {
+        mismatches.push("textPanel");
+      }
+    }
+    rows.push({
+      index: i,
+      status: mismatches.length ? "mismatch" : "match",
+      mismatches,
+      pen,
+      payload,
+    });
+  }
+  return rows;
+};
+
+const applyPenSectionPatchRules = ({ section = {}, node = {} } = {}) => {
+  const next = section && typeof section === "object" ? cloneJson(section) : {};
+  const props = next?.props && typeof next.props === "object" ? cloneJson(next.props) : {};
+  const type = String(next?.type || "").trim();
+  const bg = resolveSectionBackgroundPropsFromPenNode(node, String(props?.title || type || ""));
+  const fonts = resolveSectionFontsFromPenNode(node);
+  const tone = detectSectionToneFromPenNode(node);
+  const panel = detectTextPanelFromPenNode(node);
+  const merged = {
+    ...props,
+    ...bg,
+    ...fonts,
+  };
+  if ((type === "HeroSplit" || type === "FeatureWithMedia") && panel?.textPanel) {
+    merged.textPanel = true;
+    if (!String(merged.textPanelBackground || "").trim()) {
+      merged.textPanelBackground = panel.textPanelBackground;
+    }
+  }
+  if (type === "HeroSplit" || type === "Navbar") {
+    merged.surfaceTone = tone === "dark" ? "dark" : "default";
+  }
+  if (type === "FeatureWithMedia") {
+    merged.contentTone = tone === "dark" ? "light" : "default";
+  }
+  if (type === "CardsGrid" && !String(merged.cardStyle || "").trim()) {
+    merged.cardStyle = tone === "dark" ? "glass" : "outline";
+  }
+  next.props = merged;
+  return next;
+};
+
+const buildPayloadSectionFromPenNode = (node = {}, index = 0, { sourcePayload = null } = {}) => {
+  const sectionKind = resolvePenSectionKind(node, "story");
+  const texts = extractTextLinesFromPenNode(node);
+  const imageSrc = extractImageFromPenNode(node);
+  const triplet = splitPenTextTriplet(texts);
+  const styleBackground = resolveSectionBackgroundPropsFromPenNode(node, triplet.title || "Section");
+  const styleFonts = resolveSectionFontsFromPenNode(node);
+  const tone = detectSectionToneFromPenNode(node);
+  const textPanel = detectTextPanelFromPenNode(node);
+  const baseKey = String(node?.id || `${sectionKind}-${index + 1}`);
+  const finalizePayloadSection = (section = {}) => {
+    const patched = applyPenSectionPatchRules({ section, node });
+    const next = patched && typeof patched === "object" ? cloneJson(patched) : {};
+    const props = seedPuckArrayItemIds(next?.props && typeof next.props === "object" ? next.props : {}, baseKey);
+    if (!String(props.id || "").trim()) {
+      props.id = baseKey;
+    }
+    return {
+      ...next,
+      _key: String(next?._key || baseKey),
+      kind: sectionKind,
+      meta: {
+        ...(next?.meta && typeof next.meta === "object" ? next.meta : {}),
+        penKind: sectionKind,
+        penSectionName: String(node?.name || "").trim(),
+      },
+      props,
+    };
+  };
+
+  if (sectionKind === "navigation") {
+    const logo = texts[0] || "Site";
+    const navLabels = texts.slice(1, 11);
+    const ctaLabel = texts.find((text) => /shop|contact|learn|discover|buy|get/i.test(text)) || "";
+    return finalizePayloadSection({
+      type: "Navbar",
+      _key: baseKey,
+      props: {
+        ...styleBackground,
+        ...styleFonts,
+        logo: logo ? { alt: logo } : undefined,
+        links: navLabels.map((label) => ({
+          label,
+          href: buildHrefForPenLabel({ label, sourcePayload }),
+          variant: "link",
+        })),
+        ctas: ctaLabel
+          ? [
+              {
+                label: ctaLabel,
+                href: buildHrefForPenLabel({ label: ctaLabel, sourcePayload }),
+                variant: "primary",
+              },
+            ]
+          : [],
+        sticky: true,
+        surfaceTone: tone === "dark" ? "dark" : "default",
+        variant: ctaLabel ? "withCTA" : "simple",
+      },
+    });
+  }
+
+  if (sectionKind === "hero") {
+    const ctaLabel = texts.find((text) => /shop|contact|learn|discover|explore|order/i.test(text)) || "";
+    return finalizePayloadSection({
+      type: "HeroSplit",
+      _key: baseKey,
+      props: {
+        ...styleBackground,
+        ...styleFonts,
+        ...textPanel,
+        eyebrow: triplet.title || "",
+        title: triplet.subtitle || triplet.title || "Hero",
+        subtitle: triplet.body.replace(new RegExp(`\\b${String(ctaLabel).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "g"), "").trim(),
+        media: imageSrc ? { kind: "image", src: imageSrc, alt: triplet.subtitle || triplet.title || "Hero image" } : undefined,
+        ctas: ctaLabel
+          ? [{ label: ctaLabel, href: buildHrefForPenLabel({ label: ctaLabel, sourcePayload }), variant: "primary" }]
+          : [],
+        surfaceTone: tone === "dark" ? "dark" : "default",
+        align: "left",
+        mediaPosition: "right",
+        variant: "image",
+        referenceSliceMode: true,
+        referenceSliceMinHeight: 560,
+      },
+    });
+  }
+
+  if (sectionKind === "products") {
+    return finalizePayloadSection({
+      type: "CardsGrid",
+      _key: baseKey,
+      props: {
+        ...styleBackground,
+        ...styleFonts,
+        title: triplet.title || "Products",
+        subtitle: triplet.subtitle || "",
+        items: buildCardsFromPenSection(node, { sourcePayload }),
+        variant: imageSrc ? "imageText" : "product",
+        cardStyle: tone === "dark" ? "glass" : "outline",
+      },
+    });
+  }
+
+  if (sectionKind === "socialproof") {
+    return finalizePayloadSection({
+      type: "TestimonialsGrid",
+      _key: baseKey,
+      props: {
+        ...styleBackground,
+        ...styleFonts,
+        title: triplet.title || "Trusted by teams",
+        subtitle: triplet.subtitle || "",
+        items: buildCardsFromPenSection(node, { sourcePayload }).map((item) => ({
+          name: item.title,
+          role: "",
+          quote: item.description || item.title,
+        })),
+        variant: "2col",
+      },
+    });
+  }
+
+  if (sectionKind === "cta") {
+    const ctaLabel = texts.find((text) => /shop|contact|learn|discover|explore|order|get/i.test(text)) || "";
+    return finalizePayloadSection({
+      type: "LeadCaptureCTA",
+      _key: baseKey,
+      props: {
+        ...styleBackground,
+        ...styleFonts,
+        title: triplet.title || "Get started",
+        subtitle: `${triplet.subtitle} ${triplet.body}`
+          .replace(new RegExp(`\\b${String(ctaLabel).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "g"), "")
+          .trim(),
+        cta: {
+          label: ctaLabel || "Contact",
+          href: buildHrefForPenLabel({ label: ctaLabel || "Contact", sourcePayload }),
+          variant: "primary",
+        },
+        emphasis: tone === "dark" ? "high" : "normal",
+        variant: "card",
+      },
+    });
+  }
+
+  if (sectionKind === "footer") {
+    return finalizePayloadSection({
+      type: "Footer",
+      _key: baseKey,
+      props: {
+        ...styleBackground,
+        ...styleFonts,
+        logoText: triplet.title || "",
+        columns: buildColumnsFromFooterPenSection(node, { sourcePayload }),
+        legal: texts[texts.length - 1] || "",
+        variant: "multiColumn",
+      },
+    });
+  }
+
+  if (imageSrc) {
+    const ctaLabel = texts.find((text) => /shop|contact|learn|discover|explore|read|get/i.test(text)) || "";
+    return finalizePayloadSection({
+      type: "FeatureWithMedia",
+      _key: baseKey,
+      props: {
+        ...styleBackground,
+        ...styleFonts,
+        ...textPanel,
+        title: triplet.title || "Section",
+        subtitle: triplet.subtitle || "",
+        body: triplet.body.replace(new RegExp(`\\b${String(ctaLabel).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "g"), "").trim(),
+        media: { kind: "image", src: imageSrc, alt: texts[0] || "Section image" },
+        ctas: ctaLabel
+          ? [{ label: ctaLabel, href: buildHrefForPenLabel({ label: ctaLabel, sourcePayload }), variant: "primary" }]
+          : [],
+        contentTone: tone === "dark" ? "light" : "default",
+        variant: "split",
+        referenceSliceMode: true,
+        referenceSliceMinHeight: 420,
+      },
+    });
+  }
+
+  return finalizePayloadSection({
+    type: "FeatureGrid",
+    _key: baseKey,
+    props: {
+      ...styleBackground,
+      ...styleFonts,
+      title: triplet.title || "Section",
+      subtitle: triplet.subtitle || "",
+      items: buildCardsFromPenSection(node, { sourcePayload }),
+      variant: "3col",
+    },
+  });
+};
+
+const parsePenPaddingBox = (value) => {
+  if (!Array.isArray(value)) return { top: 0, right: 0, bottom: 0, left: 0 };
+  const nums = value.map((entry) => Number(entry || 0));
+  if (nums.length === 2) {
+    return {
+      top: nums[0] || 0,
+      right: nums[1] || 0,
+      bottom: nums[0] || 0,
+      left: nums[1] || 0,
+    };
+  }
+  if (nums.length === 4) {
+    return {
+      top: nums[0] || 0,
+      right: nums[1] || 0,
+      bottom: nums[2] || 0,
+      left: nums[3] || 0,
+    };
+  }
+  if (nums.length === 1) {
+    const val = nums[0] || 0;
+    return { top: val, right: val, bottom: val, left: val };
+  }
+  return { top: 0, right: 0, bottom: 0, left: 0 };
+};
+
+const buildPayloadFromPenDocument = async ({ penDoc = null, sourceDoc = null, penFile = "" } = {}) => {
+  const pages = Array.isArray(penDoc?.document?.pages) ? penDoc.document.pages : [];
+  if (pages.length) {
+    return {
+      components: Array.isArray(sourceDoc?.payload?.components) ? cloneJson(sourceDoc.payload.components) : [],
+      pages: pages.map((page) => ({
+        path: normalizeTemplatePagePath(page?.path || "/"),
+        name: String(page?.name || "").trim() || formatTemplatePageName(page?.path || "/"),
+        data: {
+          root: { props: { theme: page?.theme && typeof page.theme === "object" ? cloneJson(page.theme) : {} } },
+          content: (Array.isArray(page?.children) ? page.children : []).map((child, index) => ({
+            type: String(child?.type || "CreationFallbackSection").trim() || "CreationFallbackSection",
+            props: (() => {
+              const key = String(child?.id || `${String(child?.type || "section").toLowerCase()}-${index + 1}`);
+              const seeded = seedPuckArrayItemIds(
+                child?.props && typeof child.props === "object" ? child.props : {},
+                key
+              );
+              if (!String(seeded.id || "").trim()) {
+                seeded.id = key;
+              }
+              return seeded;
+            })(),
+            _key: String(child?.id || `${String(child?.type || "section").toLowerCase()}-${index + 1}`),
+          })),
+        },
+      })),
+    };
+  }
+
+  const rootFrames = Array.isArray(penDoc?.children)
+    ? penDoc.children.filter((child) => String(child?.type || "").toLowerCase() === "frame")
+    : [];
+  if (!rootFrames.length) return null;
+  const sourcePayload = sourceDoc?.payload && typeof sourceDoc.payload === "object" ? sourceDoc.payload : null;
+  const pageCatalog = dedupePenPageCatalog(
+    rootFrames.map((frame) => ({
+      path: resolvePenPagePath({ frame, sourcePayload }),
+      name: normalizePenPageLabel(String(frame?.name || "")),
+    }))
+  );
+  const caseId =
+    String(sourceDoc?.caseId || "").trim() ||
+    String(penDoc?.source?.caseId || "").trim() ||
+    slug(String(sourceDoc?.sourceUrl || penDoc?.source?.sourceUrl || "pen-site")) ||
+    "pen-site";
+  const assetMap = await materializePenAssetMap({ penDoc, penFile, caseId });
+  const compiledComponents = [];
+  const pagesFromFrames = rootFrames.map((frame, pageIndex) => {
+    const pagePath = resolvePenPagePath({ frame, sourcePayload });
+    const sectionFrames = (Array.isArray(frame?.children) ? frame.children : []).filter(
+      (child) => String(child?.type || "").toLowerCase() === "frame"
+    );
+    const frameWidth = Number(frame?.width);
+    const resolvedPageWidth = Number.isFinite(frameWidth) && frameWidth > 0 ? frameWidth : 0;
+    const pageGap = Number(frame?.gap);
+    const resolvedPageGap = Number.isFinite(pageGap) && pageGap > 0 ? pageGap : 0;
+    const pagePadding = parsePenPaddingBox(frame?.padding);
+    const content = sectionFrames.map((node, i) => {
+      const sectionKind = resolvePenSectionKind(node, "story");
+      const isFirstSection = i === 0;
+      const isLastSection = i === sectionFrames.length - 1;
+      const compiled = buildPenCompiledComponentForNode({
+        node,
+        pagePath,
+        sectionKind,
+        sectionIndex: i,
+        sourcePayload,
+        pageCatalog,
+        caseId,
+        assetMap,
+        layoutContext: {
+          pageWidth: resolvedPageWidth,
+          pagePaddingLeft: pagePadding.left,
+          pagePaddingRight: pagePadding.right,
+          pagePaddingTop: isFirstSection ? pagePadding.top : 0,
+          pagePaddingBottom: isLastSection ? pagePadding.bottom : 0,
+          sectionGapAfter: isLastSection ? 0 : resolvedPageGap,
+        },
+      });
+      compiledComponents.push({
+        name: compiled.name,
+        code: compiled.code,
+        pagePath,
+      });
+      return {
+        type: compiled.name,
+        _key: String(node?.id || `${sectionKind}-${i + 1}`),
+        kind: sectionKind,
+        meta: {
+          penKind: sectionKind,
+          penSectionName: String(node?.name || "").trim(),
+          source: "pen_ast_compiled",
+        },
+        props: seedPuckArrayItemIds(compiled.defaults, String(node?.id || `${sectionKind}-${i + 1}`)),
+      };
+    });
+    const sectionOrder = content.map((section) => inferSectionKindFromPayloadSection(section) || "story");
+    return {
+      path: pagePath,
+      name: normalizePenPageLabel(String(frame?.name || "")) || (pageIndex === 0 ? "Home" : `Page ${pageIndex + 1}`),
+      data: {
+        root: {
+          props: {
+            theme: {
+              ...buildThemeFromPenPage(frame),
+              templateMeta: {
+                source: "pen_document",
+                sectionOrder,
+                skeleton: sectionOrder.join("->"),
+              },
+            },
+          },
+        },
+        content,
+      },
+    };
+  });
+  return {
+    components: compiledComponents,
+    pages: pagesFromFrames,
+    theme: pagesFromFrames?.[0]?.data?.root?.props?.theme || {},
+  };
+};
+
+const sanitizePayloadForPuck = (payload = {}, fallbackSeed = "site") => {
+  const base = cloneJson(payload || {});
+  const pages = Array.isArray(base?.pages) ? base.pages : [];
+  base.pages = pages.map((page, pageIndex) => {
+    const pathValue = normalizeTemplatePagePath(page?.path || "/");
+    const pageSeed = `${slug(pathValue) || slug(String(page?.name || "")) || fallbackSeed || "page"}-${pageIndex + 1}`;
+    const content = Array.isArray(page?.data?.content) ? page.data.content : [];
+    const nextContent = content.map((item, itemIndex) => {
+      const type = String(item?.type || "CreationFallbackSection").trim() || "CreationFallbackSection";
+      const key = String(item?._key || item?.id || `${slug(type) || "section"}-${itemIndex + 1}`);
+      const seededProps = seedPuckArrayItemIds(item?.props && typeof item.props === "object" ? item.props : {}, key);
+      if (!String(seededProps.id || "").trim()) seededProps.id = key;
+      return {
+        ...cloneJson(item || {}),
+        type,
+        _key: key,
+        props: seededProps,
+      };
+    });
+    const nextPage = cloneJson(page || {});
+    const nextRootProps = nextPage?.data?.root?.props && typeof nextPage.data.root.props === "object"
+      ? nextPage.data.root.props
+      : {};
+    nextPage.path = pathValue;
+    nextPage.name = String(nextPage?.name || "").trim() || formatTemplatePageName(pathValue);
+    nextPage.data = {
+      ...(nextPage?.data && typeof nextPage.data === "object" ? nextPage.data : {}),
+      root: {
+        ...(nextPage?.data?.root && typeof nextPage.data.root === "object" ? nextPage.data.root : {}),
+        props: nextRootProps,
+      },
+      content: nextContent,
+    };
+    return nextPage;
+  });
+  const validInternalPaths = buildValidInternalPathSetFromPayload(base);
+  const sanitizeSectionLinks = (section) => {
+    if (!section || typeof section !== "object") return section;
+    return {
+      ...section,
+      props: sanitizeHrefPropsRecursively(
+        section?.props && typeof section.props === "object" ? section.props : {},
+        "",
+        validInternalPaths
+      ),
+    };
+  };
+  base.pages = (Array.isArray(base.pages) ? base.pages : []).map((page) => {
+    const content = Array.isArray(page?.data?.content) ? page.data.content : [];
+    const sanitizedContent = content
+      .map((section) => sanitizeSectionLinks(section))
+      .filter((section) => section && typeof section === "object");
+    return {
+      ...page,
+      data: {
+        ...(page?.data && typeof page.data === "object" ? page.data : {}),
+        content: sanitizedContent,
+      },
+    };
+  });
+  if (!base.theme && pages.length) {
+    const firstTheme = base.pages?.[0]?.data?.root?.props?.theme;
+    if (firstTheme && typeof firstTheme === "object") {
+      base.theme = cloneJson(firstTheme);
+    }
+  }
+  return base;
+};
+
+const buildPenSectionDiffReport = ({ penDoc = null, payload = null, sourceDoc = null } = {}) => {
+  const rootFrames = Array.isArray(penDoc?.children)
+    ? penDoc.children.filter((child) => String(child?.type || "").toLowerCase() === "frame")
+    : [];
+  const payloadPages = Array.isArray(payload?.pages) ? payload.pages : [];
+  const sourcePayload = sourceDoc?.payload && typeof sourceDoc.payload === "object" ? sourceDoc.payload : null;
+  const groupedFrames = new Map();
+  for (let i = 0; i < rootFrames.length; i += 1) {
+    const frame = rootFrames[i];
+    const pathValue = resolvePenPagePath({ frame, sourcePayload });
+    const entry = {
+      frame,
+      index: i,
+      frameName: String(frame?.name || "").trim(),
+      penSections: (Array.isArray(frame?.children) ? frame.children : [])
+        .filter((child) => String(child?.type || "").toLowerCase() === "frame")
+        .map((child) => summarizePenSectionForDiff(child)),
+    };
+    const rows = groupedFrames.get(pathValue) || [];
+    rows.push(entry);
+    groupedFrames.set(pathValue, rows);
+  }
+  const pages = Array.from(groupedFrames.entries()).map(([pathValue, frameEntries], pageIndex) => {
+    const payloadPage =
+      payloadPages.find((entry) => normalizeTemplatePagePath(entry?.path || "/") === pathValue) ||
+      payloadPages[pageIndex] ||
+      null;
+    const sortedEntries = [...frameEntries].sort((a, b) => {
+      const aSlidePenalty = /(slide|alt|variant)/i.test(a.frameName) ? 1 : 0;
+      const bSlidePenalty = /(slide|alt|variant)/i.test(b.frameName) ? 1 : 0;
+      if (aSlidePenalty !== bSlidePenalty) return aSlidePenalty - bSlidePenalty;
+      if (a.penSections.length !== b.penSections.length) return b.penSections.length - a.penSections.length;
+      return a.index - b.index;
+    });
+    const selected = sortedEntries[0];
+    const payloadSections = Array.isArray(payloadPage?.data?.content)
+      ? payloadPage.data.content.map((section) => summarizePayloadSectionForDiff(section))
+      : [];
+    const rows = buildPenPayloadSectionDiffRows(selected?.penSections || [], payloadSections);
+    return {
+      path: pathValue,
+      frameName: selected?.frameName || "",
+      penSectionCount: (selected?.penSections || []).length,
+      payloadSectionCount: payloadSections.length,
+      mismatchCount: rows.filter((row) => row.status === "mismatch").length,
+      ignoredFrameNames: sortedEntries.slice(1).map((entry) => entry.frameName).filter(Boolean),
+      rows,
+    };
+  });
+  return {
+    generatedAt: new Date().toISOString(),
+    pageCount: pages.length,
+    totalMismatchCount: pages.reduce((sum, page) => sum + (Number(page?.mismatchCount) || 0), 0),
+    pages,
+  };
+};
+
+const exportPayloadFromPenArtifact = async ({ artifact = {}, runDir = "", options = {} } = {}) => {
+  const penFile = path.resolve(String(artifact?.penFile || "").trim());
+  if (!penFile) {
+    throw new Error("[template-factory] missing pen file in pen artifact.");
+  }
+  const caseSlug = slug(String(artifact?.caseId || "").trim()) || slug(path.basename(penFile, path.extname(penFile))) || "site";
+  const exportDir = path.join(runDir, "pen-export", caseSlug);
+  const exportWrapperPath = path.join(exportDir, "payload.export.json");
+  const payloadPath = path.join(exportDir, "payload.json");
+  await ensureDir(exportDir);
+
+  const penDoc = await readJsonIfExists(penFile);
+  let sourceDoc = null;
+  const sourceCandidates = [
+    String(artifact?.penSourceFile || "").trim(),
+    ...resolvePenSourceFileCandidates(penFile),
+  ].filter(Boolean);
+  for (const candidate of sourceCandidates) {
+    sourceDoc = await readJsonIfExists(candidate);
+    if (sourceDoc && typeof sourceDoc === "object") break;
+  }
+  const sourcePayloadCandidate =
+    sourceDoc?.payload && typeof sourceDoc.payload === "object" ? sourceDoc.payload : null;
+  let payloadFromSidecarPath = null;
+  const sourcePayloadPath = String(sourceDoc?.payloadPath || "").trim();
+  if (!sourcePayloadCandidate && sourcePayloadPath) {
+    const parsedPayloadPathDoc = await readJsonIfExists(sourcePayloadPath);
+    if (parsedPayloadPathDoc && typeof parsedPayloadPathDoc === "object") {
+      payloadFromSidecarPath = parsedPayloadPathDoc;
+    }
+  }
+  const inlinePayload = await buildPayloadFromPenDocument({ penDoc, sourceDoc, penFile });
+  if (inlinePayload) {
+    const payload = sanitizePayloadForPuck(inlinePayload, caseSlug);
+    const sectionDiffReport = buildPenSectionDiffReport({ penDoc, payload, sourceDoc });
+    const sectionDiffReportPath = path.join(exportDir, "section-diff-report.json");
+    await fs.writeFile(sectionDiffReportPath, JSON.stringify(sectionDiffReport, null, 2));
+    const exportDoc = {
+      generatedAt: new Date().toISOString(),
+      penFile,
+      source: "pen_document",
+      sourceUrl:
+        String(sourceDoc?.sourceUrl || "").trim() ||
+        String(penDoc?.source?.sourceUrl || "").trim() ||
+        "",
+      siteName:
+        String(sourceDoc?.caseId || "").trim() ||
+        String(penDoc?.source?.caseId || "").trim() ||
+        caseSlug,
+      payload,
+    };
+    await fs.writeFile(exportWrapperPath, JSON.stringify(exportDoc, null, 2));
+    await fs.writeFile(payloadPath, JSON.stringify(payload, null, 2));
+    return {
+      exportWrapperPath,
+      payloadPath,
+      sectionDiffReportPath,
+      exportDoc,
+      payload,
+    };
+  }
+
+  const sidecarPayload = sourcePayloadCandidate || payloadFromSidecarPath;
+  if (sidecarPayload) {
+    const payload = sanitizePayloadForPuck(sidecarPayload, caseSlug);
+    const sectionDiffReport = buildPenSectionDiffReport({ penDoc, payload, sourceDoc });
+    const sectionDiffReportPath = path.join(exportDir, "section-diff-report.json");
+    await fs.writeFile(sectionDiffReportPath, JSON.stringify(sectionDiffReport, null, 2));
+    const exportDoc = {
+      generatedAt: new Date().toISOString(),
+      penFile,
+      source: "pen_sidecar_payload_fallback",
+      sourceUrl:
+        String(sourceDoc?.sourceUrl || "").trim() ||
+        String(penDoc?.source?.sourceUrl || "").trim() ||
+        "",
+      siteName:
+        String(sourceDoc?.caseId || "").trim() ||
+        String(penDoc?.source?.caseId || "").trim() ||
+        caseSlug,
+      payload,
+    };
+    await fs.writeFile(exportWrapperPath, JSON.stringify(exportDoc, null, 2));
+    await fs.writeFile(payloadPath, JSON.stringify(payload, null, 2));
+    return {
+      exportWrapperPath,
+      payloadPath,
+      sectionDiffReportPath,
+      exportDoc,
+      payload,
+    };
+  }
+
+  const command =
+    `node ${JSON.stringify(DEFAULT_PENCIL_EXPORT_SCRIPT)}` +
+    ` --pen-file ${JSON.stringify(penFile)}` +
+    ` --out ${JSON.stringify(exportWrapperPath)}` +
+    ` --mcp-app ${JSON.stringify(DEFAULT_PENCIL_APP)}`;
+  await runShell(command, {
+    cwd: ROOT,
+    timeoutMs: Math.max(25000, Number(options?.screenshotTimeoutMs || 0) || 30000),
+  });
+
+  const exportDoc = await readJsonIfExists(exportWrapperPath);
+  if (!exportDoc?.payload || typeof exportDoc.payload !== "object") {
+    throw new Error(`[template-factory] invalid exported payload wrapper: ${exportWrapperPath}`);
+  }
+  const payload = sanitizePayloadForPuck(exportDoc.payload, caseSlug);
+  const sectionDiffReport = buildPenSectionDiffReport({ penDoc, payload, sourceDoc });
+  const sectionDiffReportPath = path.join(exportDir, "section-diff-report.json");
+  await fs.writeFile(sectionDiffReportPath, JSON.stringify(sectionDiffReport, null, 2));
+  await fs.writeFile(payloadPath, JSON.stringify(payload, null, 2));
+  return {
+    exportWrapperPath,
+    payloadPath,
+    sectionDiffReportPath,
+    exportDoc,
+    payload,
+  };
+};
+
+const syncPenPayloadToSandboxPaths = async ({ payloadPath = "", siteKey = "" } = {}) => {
+  const resolvedPayloadPath = path.resolve(String(payloadPath || "").trim());
+  const normalizedSiteKey = slug(String(siteKey || "").trim()) || "";
+  if (!resolvedPayloadPath || !normalizedSiteKey) return [];
+  const payloadDoc = await readJsonIfExists(resolvedPayloadPath);
+  if (!payloadDoc || typeof payloadDoc !== "object") return [];
+  const targets = [
+    path.resolve(ROOT, "..", "asset-factory", "out", normalizedSiteKey, "sandbox", "payload.json"),
+    path.join(ROOT, "public", "generated-sites", normalizedSiteKey, "sandbox", "payload.json"),
+  ];
+  const written = [];
+  for (const target of targets) {
+    await ensureDir(path.dirname(target));
+    await fs.writeFile(target, JSON.stringify(payloadDoc, null, 2));
+    written.push(target);
+  }
+  return written;
+};
+
+const buildRunLibraryFromPenBundle = async ({ penBundle, runId = "", runDir = "" } = {}) => {
+  const artifacts = Array.isArray(penBundle?.artifacts) ? penBundle.artifacts : [];
+  if (!artifacts.length) {
+    throw new Error("[template-factory] no pen artifacts found.");
+  }
+
+  const namingRegistry = new Map();
+  const materializedComponents = [];
+  const profiles = [];
+  const exportRows = [];
+  const qualityGateReports = [];
+  const qualityGateFailures = [];
+
+  for (const artifact of artifacts) {
+    const exported = await exportPayloadFromPenArtifact({ artifact, runDir });
+    const gateReport = validatePenPayloadQualityGate({
+      payload: exported.payload,
+      caseId: String(artifact?.caseId || ""),
+    });
+    qualityGateReports.push(gateReport);
+    if (!gateReport.passed) {
+      qualityGateFailures.push(gateReport);
+    }
+    const materialized = await materializeFromPayload(exported.payloadPath, String(artifact?.caseId || ""), {
+      root: ROOT,
+      namingRegistry,
+      overwrite: true,
+    });
+    if (Array.isArray(materialized?.components) && materialized.components.length) {
+      materializedComponents.push(...materialized.components);
+    }
+    profiles.push(
+      buildStyleProfileFromPenPayload({
+        payload: exported.payload,
+        artifact,
+        exportDoc: exported.exportDoc,
+        runId,
+      })
+    );
+    exportRows.push({
+      caseId: String(artifact?.caseId || ""),
+      penFile: String(artifact?.penFile || ""),
+      exportWrapperPath: exported.exportWrapperPath,
+      payloadPath: exported.payloadPath,
+      sectionDiffReportPath: String(exported?.sectionDiffReportPath || ""),
+      sandboxPayloadPaths: await syncPenPayloadToSandboxPaths({
+        payloadPath: exported.payloadPath,
+        siteKey: String(artifact?.caseId || ""),
+      }),
+    });
+  }
+
+  const qualityGateReportPath = path.join(runDir, "pen-quality-gate-report.json");
+  await fs.writeFile(
+    qualityGateReportPath,
+    JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        runId,
+        passed: qualityGateFailures.length === 0,
+        totalCases: qualityGateReports.length,
+        failedCases: qualityGateFailures.length,
+        reports: qualityGateReports,
+      },
+      null,
+      2
+    )
+  );
+  if (qualityGateFailures.length) {
+    throw new Error(
+      `[template-factory] pen quality gate failed (${qualityGateFailures.length}/${qualityGateReports.length} cases). See ${qualityGateReportPath}`
+    );
+  }
+
+  const generatedComponents = mergeTemplateExclusiveComponents(materializedComponents, []);
+  if (generatedComponents.length) {
+    await writeGeneratedConfig(generatedComponents);
+  }
+
+  const normalizedTemplateExclusiveComponents = generatedComponents.map((component) => ({
+    name: component.name,
+    kebabName: component.kebabName,
+    defaultProps: sanitizeTemplateAssetTextDeep(component.defaultProps || {}, {
+      siteId: String(component?.templateExclusive?.siteId || ""),
+      pagePath: String(component?.templateExclusive?.pagePath || "/"),
+      sectionKind: String(component?.templateExclusive?.sectionKind || ""),
+    }),
+    editableFields: Array.isArray(component.editableFields) ? component.editableFields : [],
+    templateExclusive: component.templateExclusive,
+  }));
+  const templateExclusiveByName = new Map(
+    normalizedTemplateExclusiveComponents
+      .filter((component) => component?.name)
+      .map((component) => [String(component.name), component])
+  );
+  const mergeEditableFieldContracts = (...lists) => {
+    const merged = new Map();
+    for (const list of lists) {
+      for (const field of Array.isArray(list) ? list : []) {
+        const pathValue = String(field?.path || "").trim();
+        const typeValue = String(field?.type || "").trim();
+        if (!pathValue || !typeValue || merged.has(pathValue)) continue;
+        merged.set(pathValue, {
+          path: pathValue,
+          type: typeValue,
+        });
+      }
+    }
+    return Array.from(merged.values());
+  };
+  const buildTemplateBlockCatalog = ({ profiles = [], templateExclusiveByName = new Map() } = {}) => {
+    const entries = [];
+    const register = ({ profile, kind, block, source = "profile", pageSpec = null }) => {
+      if (!profile || !block || !block.type || !block.props || typeof block.props !== "object") return;
+      const componentMeta = templateExclusiveByName.get(String(block.type || "")) || null;
+      const normalizedPagePath = pageSpec ? normalizeTemplatePagePath(pageSpec.path || "/") : "";
+      const pageType =
+        pageSpec && String(pageSpec.pageType || "").trim()
+          ? String(pageSpec.pageType).trim()
+          : pageSpec
+            ? classifyTemplatePageType(normalizedPagePath, String(pageSpec.name || ""))
+            : "";
+      entries.push({
+        blockType: String(block.type || "").trim(),
+        kind: String(kind || "").trim(),
+        source,
+        profileId: String(profile.id || "").trim(),
+        styleFamily: String(profile?.siteStyleShell?.styleFamily || "").trim(),
+        pagePath: normalizedPagePath,
+        pageType,
+        props: cloneJson(block.props || {}),
+        editableFields: mergeEditableFieldContracts(
+          Array.isArray(componentMeta?.editableFields) ? componentMeta.editableFields : [],
+          collectEditableFieldsFromDefaults(block.props || {})
+        ),
+        baseBlockType: String(componentMeta?.templateExclusive?.baseBlockType || "").trim(),
+        sourceDomain: String(profile?.sourceDomain || "").trim(),
+        qualityScore: Number.isFinite(Number(profile?.qualityScore)) ? Number(profile.qualityScore) : null,
+      });
+    };
+
+    for (const profile of Array.isArray(profiles) ? profiles : []) {
+      for (const [kind, block] of Object.entries(profile?.templates || {})) {
+        register({ profile, kind, block, source: "profile" });
+      }
+      for (const pageSpec of Array.isArray(profile?.pageSpecs) ? profile.pageSpecs : []) {
+        for (const [kind, block] of Object.entries(pageSpec?.templates || {})) {
+          register({ profile, kind, block, source: "page", pageSpec });
+        }
+      }
+    }
+
+    const deduped = new Map();
+    for (const entry of entries) {
+      const key = [
+        entry.profileId,
+        entry.pagePath || "",
+        entry.pageType || "",
+        entry.kind,
+        entry.blockType,
+        entry.source,
+      ].join("::");
+      if (!deduped.has(key)) deduped.set(key, entry);
+    }
+    return Array.from(deduped.values());
+  };
+  const templateBlockCatalog = buildTemplateBlockCatalog({
+    profiles,
+    templateExclusiveByName,
+  });
+
+  const runLibrary = {
+    generatedAt: new Date().toISOString(),
+    runId,
+    manifestPath: "",
+    profileCount: profiles.length,
+    profiles,
+    templateExclusiveComponentCount: normalizedTemplateExclusiveComponents.length,
+    templateExclusiveComponents: normalizedTemplateExclusiveComponents,
+    templateBlockCatalogCount: templateBlockCatalog.length,
+    templateBlockCatalog,
+  };
+  const runLibraryPath = path.join(runDir, "style-profiles.generated.json");
+  await fs.writeFile(runLibraryPath, JSON.stringify(runLibrary, null, 2));
+  await fs.writeFile(
+    path.join(runDir, "template-exclusive-components.generated.json"),
+    JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        sourceRunId: runId,
+        count: normalizedTemplateExclusiveComponents.length,
+        components: normalizedTemplateExclusiveComponents,
+      },
+      null,
+      2
+    )
+  );
+  await fs.writeFile(
+    path.join(runDir, "template-block-catalog.generated.json"),
+    JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        sourceRunId: runId,
+        count: templateBlockCatalog.length,
+        entries: templateBlockCatalog,
+      },
+      null,
+      2
+    )
+  );
+
+  if (generatedComponents.length) {
+    await fs.writeFile(
+      path.join(runDir, "materialized-components.json"),
+      JSON.stringify(
+        {
+          generatedAt: new Date().toISOString(),
+          runId,
+          count: generatedComponents.length,
+          components: generatedComponents.map((component) => ({
+            name: component.name,
+            blockDir: component.blockDir,
+            collisionFrom: component.collisionFrom || null,
+            signature: component.signature || null,
+          })),
+        },
+        null,
+        2
+      )
+    );
+  }
+
+  await fs.writeFile(
+    path.join(runDir, "pen-export-summary.json"),
+    JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        runId,
+        exports: exportRows,
+      },
+      null,
+      2
+    )
+  );
+
+  return {
+    runLibrary,
+    runLibraryPath,
+    generatedComponents,
+    exportRows,
+    qualityGateReportPath,
+  };
+};
+
+const exportPenArtifactsFromRun = async ({
+  processed = [],
+  previewLinks = [],
+  runDir = "",
+  runId = "",
+  runLibraryPath = "",
+  options = {},
+}) => {
+  const penDir = path.join(runDir, "pen");
+  await ensureDir(penDir);
+  const linksByCase = new Map();
+  for (const row of Array.isArray(previewLinks) ? previewLinks : []) {
+    const caseId = String(row?.caseId || "").trim();
+    if (!caseId || linksByCase.has(caseId)) continue;
+    linksByCase.set(caseId, row);
+  }
+  const preferredRunSlug = slug(runId);
+  const artifacts = [];
+  for (const item of Array.isArray(processed) ? processed : []) {
+    const caseId = String(item?.site?.id || "").trim();
+    if (!caseId) continue;
+    const preferredPreview = linksByCase.get(caseId);
+    const preferredSiteKey = extractSiteKeyFromPreviewUrl(preferredPreview?.url || "");
+    const resolvedSiteKey = await resolveRenderableSiteKeyForCase({
+      caseId,
+      preferredSiteKey,
+      preferredRunSlug,
+      allowLatestBenchFallback: true,
+    });
+    if (!resolvedSiteKey) continue;
+    const payloadPath = resolveSandboxPayloadPathForSiteKey(resolvedSiteKey);
+    const payload = await readJsonIfExists(payloadPath);
+    if (!payload || typeof payload !== "object") continue;
+    const penSourceFile = path.join(penDir, `${slug(caseId) || "site"}.pen.source.json`);
+    const penFile = path.join(penDir, `${slug(caseId) || "site"}.pen`);
+    const styleProfilePath = path.join(item?.siteDir || "", "extracted", "style-profile.json");
+    const penDoc = {
+      schemaVersion: PEN_SCHEMA_VERSION,
+      kind: "site-pen",
+      generatedAt: new Date().toISOString(),
+      runId,
+      caseId,
+      sourceUrl: String(item?.site?.url || ""),
+      siteKey: resolvedSiteKey,
+      payloadPath,
+      previewUrl: String(preferredPreview?.url || ""),
+      runLibraryPath,
+      styleProfilePath,
+      payload,
+    };
+    await fs.writeFile(penSourceFile, JSON.stringify(penDoc, null, 2));
+    const pencilResult = await runPencilBridgeForArtifact({
+      artifact: {
+        caseId,
+        siteKey: resolvedSiteKey,
+        sourceUrl: String(item?.site?.url || ""),
+        payloadPath,
+        previewUrl: String(preferredPreview?.url || ""),
+      },
+      penSourceFile,
+      outputPenFile: penFile,
+      options,
+    });
+    artifacts.push({
+      caseId,
+      sourceUrl: String(item?.site?.url || ""),
+      siteKey: resolvedSiteKey,
+      payloadPath,
+      penFile,
+      penSourceFile,
+      previewUrl: String(preferredPreview?.url || ""),
+      runLibraryPath,
+      styleProfilePath,
+      pencilInvoked: pencilResult.invoked,
+      pencilStatus: pencilResult.status,
+      pencilError: pencilResult.error || "",
+      pencilCommand: pencilResult.command || "",
+    });
+  }
+  const penArtifactsPath = path.join(runDir, "pen-artifacts.json");
+  await fs.writeFile(
+    penArtifactsPath,
+    JSON.stringify(
+      {
+        schemaVersion: PEN_SCHEMA_VERSION,
+        kind: "run-pen-bundle",
+        generatedAt: new Date().toISOString(),
+        runId,
+        runDir,
+        runLibraryPath,
+        artifactCount: artifacts.length,
+        artifacts,
+      },
+      null,
+      2
+    )
+  );
+  return {
+    penArtifactsPath,
+    artifacts,
+  };
+};
+
+const writePenReviewFile = async ({
+  penBundle,
+  reviewFilePath = "",
+  status = "pending",
+  reviewer = "",
+  notes = "",
+}) => {
+  const normalizedStatus = normalizePenReviewStatusValue(status);
+  const existing = await readJsonIfExists(reviewFilePath);
+  const existingItemsByCase = new Map(
+    (Array.isArray(existing?.items) ? existing.items : []).map((item) => [String(item?.caseId || ""), item])
+  );
+  const items = (Array.isArray(penBundle?.artifacts) ? penBundle.artifacts : []).map((item) => {
+    const caseId = String(item?.caseId || "").trim();
+    const existingItem = existingItemsByCase.get(caseId);
+    return {
+      caseId,
+      penFile: String(item?.penFile || ""),
+      status:
+        normalizedStatus === "pending" && existingItem?.status
+          ? normalizePenReviewStatusValue(existingItem.status)
+          : normalizedStatus,
+      notes: normalizedStatus === "pending" && existingItem?.notes ? String(existingItem.notes) : "",
+    };
+  });
+  const reviewDoc = {
+    schemaVersion: PEN_REVIEW_SCHEMA_VERSION,
+    generatedAt: existing?.generatedAt || new Date().toISOString(),
+    reviewedAt: new Date().toISOString(),
+    sourcePenFile: String(penBundle?.path || ""),
+    runId: String(penBundle?.data?.runId || ""),
+    reviewer: String(reviewer || "").trim() || String(existing?.reviewer || ""),
+    notes: String(notes || "").trim() || String(existing?.notes || ""),
+    items,
+  };
+  await ensureDir(path.dirname(reviewFilePath));
+  await fs.writeFile(reviewFilePath, JSON.stringify(reviewDoc, null, 2));
+  return reviewDoc;
+};
+
+const isPenReviewApproved = ({ review = null, caseIds = [] } = {}) => {
+  if (!review || typeof review !== "object") {
+    return {
+      approved: false,
+      pending: caseIds,
+      rejected: [],
+    };
+  }
+  const reviewByCase = new Map(
+    (Array.isArray(review?.items) ? review.items : []).map((item) => [
+      String(item?.caseId || "").trim(),
+      normalizePenReviewStatusValue(item?.status),
+    ])
+  );
+  const pending = [];
+  const rejected = [];
+  for (const caseId of caseIds) {
+    const status = reviewByCase.get(caseId);
+    if (status === "approved") continue;
+    if (status === "rejected") {
+      rejected.push(caseId);
+      continue;
+    }
+    pending.push(caseId);
+  }
+  return {
+    approved: pending.length === 0 && rejected.length === 0 && caseIds.length > 0,
+    pending,
+    rejected,
+  };
+};
+
+const runPenReviewMode = async ({ options }) => {
+  const penBundle = await loadPenBundle(options.penFile);
+  const reviewFilePath = options.penReviewFile || resolveDefaultPenReviewPath(penBundle.path);
+  const review = await writePenReviewFile({
+    penBundle,
+    reviewFilePath,
+    status: options.penReviewStatus,
+    reviewer: options.penReviewer,
+    notes: options.penReviewNotes,
+  });
+  console.log(
+    `[template-factory] pen review file updated: ${reviewFilePath} (items=${Array.isArray(review?.items) ? review.items.length : 0})`
+  );
+  console.log("[template-factory] done");
+};
+
+const runTemplatePublishFromPenMode = async ({ options }) => {
+  const penBundle = await loadPenBundle(options.penFile);
+  if (String(penBundle?.data?.mode || "") === "single-pen-file") {
+    console.log(
+      `[template-factory] template-from-pen input resolved from single pen file: ${penBundle.path}`
+    );
+    if (penBundle?.data?.sourcePenSidecar) {
+      console.log(`[template-factory] using pen sidecar metadata: ${penBundle.data.sourcePenSidecar}`);
+    }
+  }
+  const caseIds = penBundle.artifacts
+    .map((item) => String(item?.caseId || "").trim())
+    .filter(Boolean);
+  const reviewPath = options.penReviewFile || resolveDefaultPenReviewPath(penBundle.path);
+  const review = await readJsonIfExists(reviewPath);
+  const approval = isPenReviewApproved({ review, caseIds });
+  if (!approval.approved) {
+    const rejected = approval.rejected.length ? `rejected=${approval.rejected.join(",")}` : "";
+    const pending = approval.pending.length ? `pending=${approval.pending.join(",")}` : "";
+    const detail = [rejected, pending].filter(Boolean).join(" ");
+    throw new Error(
+      `[template-factory] pen review not approved (${reviewPath || "missing review file"}). ${detail || "No approved cases."}`
+    );
+  }
+  const outRunDir = path.join(RUNS_DIR, options.runId);
+  await ensureDir(outRunDir);
+  const { runLibrary, runLibraryPath: resolvedRunLibraryPath, generatedComponents, exportRows } =
+    await buildRunLibraryFromPenBundle({
+      penBundle,
+      runId: options.runId,
+      runDir: outRunDir,
+    });
+  const publishResult = await mergeAndPublishRunLibrary({
+    runLibrary,
+    allowPublish: options.publish !== false,
+    runId: String(runLibrary?.runId || options.runId || ""),
+  });
+  const publishSummary = {
+    schemaVersion: PEN_SCHEMA_VERSION,
+    generatedAt: new Date().toISOString(),
+    mode: "template-publish",
+    sourcePenFile: penBundle.path,
+    reviewFile: reviewPath,
+    runLibraryPath: resolvedRunLibraryPath,
+    publishPath: publishResult.publishPath,
+    publishTemplateExclusiveComponentsPath: publishResult.publishTemplateExclusiveComponentsPath,
+    publishTemplateBlockCatalogPath: publishResult.publishTemplateBlockCatalogPath,
+    published: publishResult.published,
+    reason: publishResult.reason,
+    exportedPenPayloads: exportRows,
+    generatedConfigComponentCount: Array.isArray(generatedComponents) ? generatedComponents.length : 0,
+  };
+  const publishSummaryPath = path.join(outRunDir, "pen-publish-summary.json");
+  await fs.writeFile(publishSummaryPath, JSON.stringify(publishSummary, null, 2));
+  console.log(`[template-factory] pen publish summary: ${publishSummaryPath}`);
+  console.log(`[template-factory] generated run library from pen: ${resolvedRunLibraryPath}`);
+  if (publishResult.publishPath) {
+    console.log(`[template-factory] published library: ${publishResult.publishPath}`);
+  }
+  if (publishResult.publishTemplateExclusiveComponentsPath) {
+    console.log(
+      `[template-factory] published template-exclusive components: ${publishResult.publishTemplateExclusiveComponentsPath}`
+    );
+  }
+  if (publishResult.publishTemplateBlockCatalogPath) {
+    console.log(
+      `[template-factory] published template-block catalog: ${publishResult.publishTemplateBlockCatalogPath}`
+    );
+  }
+  console.log("[template-factory] done");
+};
+
 const computeImageSimilarity = async (referencePath, candidatePath) => {
   if (!referencePath || !candidatePath) return null;
   try {
     const cmd = `python3 - <<'PY'
-from PIL import Image, ImageChops, ImageStat
+from PIL import Image, ImageChops, ImageStat, ImageFilter
+import math
 ref = ${JSON.stringify(referencePath)}
 cand = ${JSON.stringify(candidatePath)}
-size = (360, 360)
-img_ref = Image.open(ref).convert("RGB").resize(size)
-img_cand = Image.open(cand).convert("RGB").resize(size)
-diff = ImageChops.difference(img_ref, img_cand)
-stat = ImageStat.Stat(diff)
-mad = sum(stat.mean) / len(stat.mean) if stat.mean else 255.0
-sim = max(0.0, 100.0 * (1.0 - (mad / 255.0)))
-print(f"{sim:.2f}")
+target_w = 1024
+resample = Image.Resampling.LANCZOS if hasattr(Image, "Resampling") else Image.LANCZOS
+
+def normalize_by_width(path):
+    src = Image.open(path).convert("RGB")
+    w, h = src.size
+    if w <= 0 or h <= 0:
+        return None
+    target_h = max(1, round(h * target_w / w))
+    return src.resize((target_w, target_h), resample)
+
+ref_img = normalize_by_width(ref)
+cand_img = normalize_by_width(cand)
+if ref_img is None or cand_img is None:
+    print("0.00")
+    raise SystemExit(0)
+
+common_h = min(ref_img.size[1], cand_img.size[1])
+if common_h <= 32:
+    print("0.00")
+    raise SystemExit(0)
+ref_cmp = ref_img.crop((0, 0, target_w, common_h))
+cand_cmp = cand_img.crop((0, 0, target_w, common_h))
+
+diff_rgb = ImageChops.difference(ref_cmp, cand_cmp)
+stat_rgb = ImageStat.Stat(diff_rgb)
+mae_rgb = (sum(stat_rgb.mean) / len(stat_rgb.mean) / 255.0) if stat_rgb.mean else 1.0
+
+edge_ref = ref_cmp.convert("L").filter(ImageFilter.FIND_EDGES)
+edge_cand = cand_cmp.convert("L").filter(ImageFilter.FIND_EDGES)
+diff_edge = ImageChops.difference(edge_ref, edge_cand)
+stat_edge = ImageStat.Stat(diff_edge)
+mae_edge = (stat_edge.mean[0] / 255.0) if stat_edge.mean else 1.0
+
+small_ref = ref_cmp.convert("L").resize((48, 48), resample)
+small_cand = cand_cmp.convert("L").resize((48, 48), resample)
+diff_small = ImageChops.difference(small_ref, small_cand)
+stat_small = ImageStat.Stat(diff_small)
+mae_layout = (stat_small.mean[0] / 255.0) if stat_small.mean else 1.0
+
+height_penalty = min(18.0, abs(math.log((ref_img.size[1] + 1.0) / (cand_img.size[1] + 1.0))) * 28.0)
+score = ((1.0 - mae_rgb) * 55.0) + ((1.0 - mae_edge) * 20.0) + ((1.0 - mae_layout) * 25.0) - height_penalty
+score = max(0.0, min(100.0, score))
+print(f"{score:.2f}")
 PY`;
     const { stdout } = await runShell(cmd, { cwd: ROOT });
     const score = Number(String(stdout || "").trim());
@@ -6833,12 +21840,402 @@ const parseSimilarityNumber = (value) =>
       ? Number(value)
       : null;
 
+const clampSimilarityScore = (value) => {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return null;
+  return Math.max(0, Math.min(100, Number(n.toFixed(2))));
+};
+
+const computeSimilarityGeometryPenalty = ({
+  referenceDims = null,
+  candidateDims = null,
+  maxPenalty = 22,
+  tolerance = 0.12,
+} = {}) => {
+  const refW = Number(referenceDims?.width || 0);
+  const refH = Number(referenceDims?.height || 0);
+  const candW = Number(candidateDims?.width || 0);
+  const candH = Number(candidateDims?.height || 0);
+  if (!(refW > 0 && refH > 0 && candW > 0 && candH > 0)) return 0;
+
+  const refAspect = refW / refH;
+  const candAspect = candW / candH;
+  const widthDelta = Math.abs(Math.log(candW / refW));
+  const heightDelta = Math.abs(Math.log(candH / refH));
+  const aspectDelta = Math.abs(Math.log(candAspect / refAspect));
+  const soft = Math.max(0, Number(tolerance) || 0);
+
+  const rawPenalty =
+    Math.max(0, widthDelta - soft) * 4 +
+    Math.max(0, heightDelta - soft) * 8 +
+    Math.max(0, aspectDelta - soft) * 10;
+  const capped = Math.max(0, Math.min(Number(maxPenalty || 22), rawPenalty));
+  return Number(capped.toFixed(2));
+};
+
+const SECTION_PATCH_TARGET_KINDS = new Set(SECTION_KINDS);
+const SECTION_PATCH_MIN_SIMILARITY = Math.max(
+  70,
+  Math.min(100, Number(process.env.TEMPLATE_FACTORY_SECTION_PATCH_MIN_SIMILARITY || 90))
+);
+const parseBooleanFlag = (value, fallback = false) => {
+  if (typeof value === "boolean") return value;
+  const token = String(value ?? "").trim().toLowerCase();
+  if (!token) return fallback;
+  if (["1", "true", "yes", "y", "on"].includes(token)) return true;
+  if (["0", "false", "no", "n", "off"].includes(token)) return false;
+  return fallback;
+};
+const SECTION_REFERENCE_ALLOW_SLICE_FALLBACK = parseBooleanFlag(
+  process.env.TEMPLATE_FACTORY_SECTION_REFERENCE_ALLOW_SLICE_FALLBACK,
+  false
+);
+const SECTION_REFERENCE_PREFER_SLICE = parseBooleanFlag(
+  process.env.TEMPLATE_FACTORY_SECTION_REFERENCE_PREFER_SLICE,
+  true
+);
+const SECTION_REFERENCE_ALLOW_RATIO_FALLBACK = parseBooleanFlag(
+  process.env.TEMPLATE_FACTORY_SECTION_REFERENCE_ALLOW_RATIO_FALLBACK,
+  false
+);
+const SECTION_VISUAL_FULLPAGE_GAP_CAP = Math.max(
+  0,
+  Math.min(12, Number(process.env.TEMPLATE_FACTORY_SECTION_VISUAL_FULLPAGE_GAP_CAP || 4))
+);
+const SECTION_VISUAL_COVERAGE_WEIGHT = Math.max(
+  0,
+  Math.min(0.65, Number(process.env.TEMPLATE_FACTORY_SECTION_VISUAL_COVERAGE_WEIGHT || 0.5))
+);
+const SECTION_VISUAL_MIN_SECTION_CAP_OFFSET = Math.max(
+  0,
+  Math.min(20, Number(process.env.TEMPLATE_FACTORY_SECTION_VISUAL_MIN_SECTION_CAP_OFFSET || 8))
+);
+const SECTION_VISUAL_KIND_WEIGHT_OVERRIDES = {
+  hero: Math.max(1, Math.min(4, Number(process.env.TEMPLATE_FACTORY_SECTION_VISUAL_HERO_WEIGHT || 2.4))),
+  navigation: Math.max(1, Math.min(4, Number(process.env.TEMPLATE_FACTORY_SECTION_VISUAL_NAV_WEIGHT || 1.8))),
+  footer: Math.max(1, Math.min(4, Number(process.env.TEMPLATE_FACTORY_SECTION_VISUAL_FOOTER_WEIGHT || 1.8))),
+};
+const SECTION_VISUAL_CRITICAL_THRESHOLD = Math.max(
+  70,
+  Math.min(100, Number(process.env.TEMPLATE_FACTORY_SECTION_VISUAL_CRITICAL_THRESHOLD || SECTION_PATCH_MIN_SIMILARITY))
+);
+const SECTION_VISUAL_CRITICAL_PENALTY_FACTOR = Math.max(
+  0,
+  Math.min(1, Number(process.env.TEMPLATE_FACTORY_SECTION_VISUAL_CRITICAL_PENALTY_FACTOR || 0.45))
+);
+const SECTION_VISUAL_CRITICAL_PENALTY_MAX = Math.max(
+  0,
+  Math.min(25, Number(process.env.TEMPLATE_FACTORY_SECTION_VISUAL_CRITICAL_PENALTY_MAX || 12))
+);
+const SECTION_VISUAL_CRITICAL_KINDS = new Set(["hero", "navigation", "story", "approach", "products", "footer"]);
+const ALLOW_FIDELITY_REPORT_FALLBACK = parseBooleanFlag(
+  process.env.TEMPLATE_FACTORY_ALLOW_FIDELITY_REPORT_FALLBACK,
+  false
+);
+
+const fileExists = async (filePath) => {
+  if (!filePath) return false;
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const toPublicAssetFilePath = (assetUrl) => {
+  const token = String(assetUrl || "").trim();
+  if (!token.startsWith("/assets/")) return "";
+  return path.join(ROOT, "public", token.replace(/^\//, ""));
+};
+
+const resolveSectionSliceReferencePath = async ({ item, pagePath = "/", sectionKind = "" } = {}) => {
+  const normalizedKind = normalizeSectionKind(sectionKind);
+  if (!normalizedKind) return "";
+  const slices = item?.referenceSlices?.desktop && typeof item.referenceSlices.desktop === "object" ? item.referenceSlices.desktop : {};
+  const sliceUrl = String(slices?.[normalizedKind] || "").trim();
+  const filePath = toPublicAssetFilePath(sliceUrl);
+  if (!filePath) return "";
+  return (await fileExists(filePath)) ? filePath : "";
+};
+
+const resolveSectionReferenceCropRatios = ({
+  sectionKind = "",
+  bounds = null,
+  candidateDims = null,
+  allowFallback = true,
+} = {}) => {
+  const normalizedKind = normalizeSectionKind(sectionKind);
+  const fallbackRatios = {
+    navigation: { topRatio: 0, heightRatio: 0.12, leftRatio: 0, widthRatio: 1 },
+    hero: { topRatio: 0.08, heightRatio: 0.34, leftRatio: 0, widthRatio: 1 },
+    story: { topRatio: 0.24, heightRatio: 0.2, leftRatio: 0, widthRatio: 1 },
+    approach: { topRatio: 0.42, heightRatio: 0.18, leftRatio: 0, widthRatio: 1 },
+    products: { topRatio: 0.58, heightRatio: 0.18, leftRatio: 0, widthRatio: 1 },
+    socialproof: { topRatio: 0.76, heightRatio: 0.12, leftRatio: 0, widthRatio: 1 },
+    contact: { topRatio: 0.82, heightRatio: 0.1, leftRatio: 0, widthRatio: 1 },
+    cta: { topRatio: 0.84, heightRatio: 0.1, leftRatio: 0, widthRatio: 1 },
+    footer: { topRatio: 0.88, heightRatio: 0.12, leftRatio: 0, widthRatio: 1 },
+  };
+  const fallback = fallbackRatios[normalizedKind] || null;
+  const width = Number(candidateDims?.width || 0);
+  const height = Number(candidateDims?.height || 0);
+  const top = Number(bounds?.top ?? Number.NaN);
+  const left = Number(bounds?.left ?? Number.NaN);
+  const boundWidth = Number(bounds?.width ?? Number.NaN);
+  const boundHeight = Number(bounds?.height ?? Number.NaN);
+  if (!width || !height || !Number.isFinite(top) || !Number.isFinite(left) || !Number.isFinite(boundWidth) || !Number.isFinite(boundHeight)) {
+    return allowFallback ? fallback : null;
+  }
+
+  const topRatio = Math.max(0, Math.min(0.98, top / height));
+  const leftRatio = Math.max(0, Math.min(0.98, left / width));
+  const widthRatio = Math.max(0.08, Math.min(1, boundWidth / width));
+  const heightRatio = Math.max(0.06, Math.min(1, boundHeight / height));
+
+  return {
+    topRatio,
+    leftRatio,
+    widthRatio,
+    heightRatio,
+  };
+};
+
+const resolveSectionReferencePath = async ({
+  item,
+  pagePath = "/",
+  sectionKind = "",
+  sectionIndex = -1,
+  sectionBounds = null,
+  candidateDims = null,
+  referencePath = "",
+}) => {
+  const normalizedKind = normalizeSectionKind(sectionKind);
+  if (!SECTION_PATCH_TARGET_KINDS.has(normalizedKind)) return "";
+  const normalizedPagePath = normalizePagePathForFidelity(pagePath);
+  if (SECTION_REFERENCE_PREFER_SLICE && normalizedPagePath === "/") {
+    const semanticSliceReference = await resolveSectionSliceReferencePath({
+      item,
+      pagePath: normalizedPagePath,
+      sectionKind: normalizedKind,
+    });
+    if (semanticSliceReference) return semanticSliceReference;
+  }
+  const siteDir = String(item?.siteDir || "").trim();
+  if (!siteDir) return "";
+  const hasReferenceSource = referencePath && (await fileExists(referencePath));
+  if (hasReferenceSource) {
+    const ratios = resolveSectionReferenceCropRatios({
+      sectionKind: normalizedKind,
+      bounds: sectionBounds,
+      candidateDims,
+      allowFallback: SECTION_REFERENCE_ALLOW_RATIO_FALLBACK,
+    });
+    if (ratios) {
+      const pageSlug = routeSlugFromPath(pagePath) || "home";
+      const sectionSlug = slug(`${normalizedKind}-${sectionIndex >= 0 ? sectionIndex : "section"}`) || normalizedKind;
+      const targetPath = path.join(siteDir, "ingest", "section-reference-crops", `${pageSlug}.${sectionSlug}.desktop.png`);
+      if (await fileExists(targetPath)) return targetPath;
+      const created = await createImageSlice({
+        sourcePath: referencePath,
+        targetPath,
+        topRatio: ratios.topRatio,
+        heightRatio: ratios.heightRatio,
+        leftRatio: ratios.leftRatio,
+        widthRatio: ratios.widthRatio,
+      });
+      if (created?.path) return created.path;
+    }
+  }
+  if (!SECTION_REFERENCE_ALLOW_SLICE_FALLBACK) return "";
+  const sliceReference = await resolveSectionSliceReferencePath({
+    item,
+    pagePath,
+    sectionKind: normalizedKind,
+  });
+  if (sliceReference) return sliceReference;
+  if (!hasReferenceSource) return "";
+  const pageSlug = routeSlugFromPath(pagePath) || "home";
+  const sectionSlug = slug(`${normalizedKind}-${sectionIndex >= 0 ? sectionIndex : "section"}`) || normalizedKind;
+  const targetPath = path.join(siteDir, "ingest", "section-reference-crops", `${pageSlug}.${sectionSlug}.desktop.fallback.png`);
+  const fallbackRatios = resolveSectionReferenceCropRatios({
+    sectionKind: normalizedKind,
+    bounds: null,
+    candidateDims: null,
+    allowFallback: true,
+  });
+  if (!fallbackRatios) return "";
+  if (await fileExists(targetPath)) return targetPath;
+  const created = await createImageSlice({
+    sourcePath: referencePath,
+    targetPath,
+    topRatio: fallbackRatios.topRatio,
+    heightRatio: fallbackRatios.heightRatio,
+    leftRatio: fallbackRatios.leftRatio,
+    widthRatio: fallbackRatios.widthRatio,
+  });
+  return created?.path || "";
+};
+
+const classifySectionFidelityIssue = ({ sectionKind = "", similarity = null } = {}) => {
+  const normalizedKind = normalizeSectionKind(sectionKind) || sectionKind || "section";
+  const score = parseSimilarityNumber(similarity);
+  if (score === null) return `${normalizedKind}: missing comparable reference`;
+  if (score < 70) return `${normalizedKind}: severe visual/layout drift`;
+  if (score < 82) return `${normalizedKind}: style drift (structure/color/spacing)`;
+  if (score < SECTION_PATCH_MIN_SIMILARITY) return `${normalizedKind}: moderate mismatch`;
+  return `${normalizedKind}: minor mismatch`;
+};
+
+const summarizeTargetSectionSimilarity = ({ sectionDetails = [], expectedKinds = [] } = {}) => {
+  const rows = (Array.isArray(sectionDetails) ? sectionDetails : []).filter(
+    (section) =>
+      SECTION_PATCH_TARGET_KINDS.has(normalizeSectionKind(section?.sectionKind || section?.sectionType || "")) &&
+      parseSimilarityNumber(section?.similarity) !== null
+  );
+  const byKind = {};
+  for (const row of rows) {
+    const sectionKind = normalizeSectionKind(row?.sectionKind || row?.sectionType || "");
+    if (!sectionKind) continue;
+    if (!Array.isArray(byKind[sectionKind])) byKind[sectionKind] = [];
+    byKind[sectionKind].push(Number(row.similarity));
+  }
+  const average = (items) =>
+    Array.isArray(items) && items.length
+      ? Number((items.reduce((sum, value) => sum + Number(value || 0), 0) / items.length).toFixed(2))
+      : null;
+  const weightedAverage = (items = []) => {
+    const valid = (Array.isArray(items) ? items : []).filter((row) => parseSimilarityNumber(row?.similarity) !== null);
+    if (!valid.length) return null;
+    const rowsWithWeights = valid.map((row) => {
+      const width = Number(row?.bounds?.width || 0);
+      const height = Number(row?.bounds?.height || 0);
+      const area = width > 0 && height > 0 ? width * height : 0;
+      const kind = normalizeSectionKind(row?.sectionKind || row?.sectionType || "");
+      const semanticWeight = Number(SECTION_VISUAL_KIND_WEIGHT_OVERRIDES[kind] || 1);
+      return { score: Number(row.similarity), weight: (area > 0 ? area : 1) * semanticWeight };
+    });
+    const weightedSum = rowsWithWeights.reduce((sum, row) => sum + row.score * row.weight, 0);
+    const totalWeight = rowsWithWeights.reduce((sum, row) => sum + row.weight, 0);
+    return totalWeight > 0 ? Number((weightedSum / totalWeight).toFixed(2)) : null;
+  };
+  const expected = normalizeRequiredCategories(expectedKinds).filter((kind) => SECTION_PATCH_TARGET_KINDS.has(kind));
+  const expectedSet = new Set(expected);
+  const matchedKinds = Object.keys(byKind).filter((kind) => Array.isArray(byKind[kind]) && byKind[kind].length > 0);
+  const matchedExpectedKinds = matchedKinds.filter((kind) => expectedSet.has(kind));
+  const coverage =
+    expectedSet.size > 0
+      ? Number(((matchedExpectedKinds.length / expectedSet.size) * 100).toFixed(2))
+      : rows.length
+        ? 100
+        : 0;
+  const overall = weightedAverage(rows);
+  const inferredFromCoverageOnly = overall === null && expectedSet.size > 0 ? Number((coverage * 0.7).toFixed(2)) : null;
+  const minSectionSimilarity = rows.length
+    ? Number(
+        Math.min(
+          ...rows
+            .map((row) => parseSimilarityNumber(row?.similarity))
+            .filter((score) => score !== null)
+        ).toFixed(2)
+      )
+    : null;
+  const cappedOverall =
+    (overall === null && inferredFromCoverageOnly === null) || minSectionSimilarity === null
+      ? overall ?? inferredFromCoverageOnly
+      : Math.min(overall ?? inferredFromCoverageOnly, minSectionSimilarity + SECTION_VISUAL_MIN_SECTION_CAP_OFFSET);
+  const coverageFactor = 1 - SECTION_VISUAL_COVERAGE_WEIGHT * (1 - coverage / 100);
+  const criticalKinds =
+    expected.length > 0
+      ? expected.filter((kind) => SECTION_VISUAL_CRITICAL_KINDS.has(kind))
+      : Array.from(SECTION_VISUAL_CRITICAL_KINDS);
+  const criticalKindScores = criticalKinds
+    .map((kind) => ({ kind, score: average(byKind[kind]) }))
+    .filter((entry) => parseSimilarityNumber(entry.score) !== null);
+  const criticalPenaltyRaw = criticalKindScores.reduce((sum, entry) => {
+    const score = Number(entry.score);
+    if (score >= SECTION_VISUAL_CRITICAL_THRESHOLD) return sum;
+    return sum + (SECTION_VISUAL_CRITICAL_THRESHOLD - score) * SECTION_VISUAL_CRITICAL_PENALTY_FACTOR;
+  }, 0);
+  const criticalPenalty = Number(Math.min(SECTION_VISUAL_CRITICAL_PENALTY_MAX, criticalPenaltyRaw).toFixed(2));
+  const weighted =
+    cappedOverall === null
+      ? null
+      : Number(Math.max(0, cappedOverall * coverageFactor - criticalPenalty).toFixed(2));
+  return {
+    overall,
+    weighted,
+    coverage,
+    coverageFactor: Number(coverageFactor.toFixed(4)),
+    minSectionSimilarity,
+    criticalPenalty,
+    criticalKindScores,
+    expectedKinds: expected,
+    matchedKinds,
+    matchedExpectedKinds,
+    hero: average(byKind.hero),
+    navigation: average(byKind.navigation),
+    footer: average(byKind.footer),
+    count: rows.length,
+  };
+};
+
+const collectSectionFailuresFromPageDetails = ({ pageDetails = [], threshold = SECTION_PATCH_MIN_SIMILARITY, max = 8 } = {}) => {
+  const normalizedThreshold = Math.max(60, Math.min(100, Number(threshold || SECTION_PATCH_MIN_SIMILARITY)));
+  const failures = [];
+  for (const page of Array.isArray(pageDetails) ? pageDetails : []) {
+    const pagePath = normalizePagePathForFidelity(page?.pagePath || "/");
+    const sections = Array.isArray(page?.sectionDetails) ? page.sectionDetails : [];
+    for (const section of sections) {
+      const sectionKind = normalizeSectionKind(section?.sectionKind || section?.sectionType || section?.sectionId || "");
+      if (!sectionKind || !SECTION_PATCH_TARGET_KINDS.has(sectionKind)) continue;
+      const similarity = parseSimilarityNumber(section?.similarity);
+      if (similarity === null || similarity >= normalizedThreshold) continue;
+      failures.push({
+        pagePath,
+        sectionKind,
+        sectionType: String(section?.sectionType || "").trim(),
+        sectionId: String(section?.sectionId || "").trim(),
+        similarity,
+        issue: String(section?.issue || "").trim() || classifySectionFidelityIssue({ sectionKind, similarity }),
+      });
+    }
+  }
+  failures.sort((a, b) => Number(a.similarity) - Number(b.similarity));
+  return failures.slice(0, Math.max(1, Math.floor(Number(max || 8))));
+};
+
 const clamp01 = (value, fallback = 0) => {
   const n = Number(value);
   if (!Number.isFinite(n)) return fallback;
   if (n < 0) return 0;
   if (n > 1) return 1;
   return n;
+};
+
+const resolveFidelityStructureWeight = ({ options = {}, item = null, fallback = 0.2 } = {}) => {
+  const defaultWeight = clamp01(options?.fidelityStructureWeight, fallback);
+  const homeOnly = Boolean(options?.homeOnly || options?.homeOnlyEval || item?.site?.homeOnly);
+  const strictMode = String(options?.fidelityMode || "").trim().toLowerCase() === "strict";
+  const scoringPhase = String(options?.fidelityScoringPhase || "")
+    .trim()
+    .toLowerCase();
+  if (scoringPhase === "structure" || scoringPhase === "structure_first") return Math.max(defaultWeight, 0.65);
+  if (scoringPhase === "balanced") return Math.max(defaultWeight, 0.4);
+  if (scoringPhase === "visual" || scoringPhase === "visual_first") return Math.min(defaultWeight, 0.2);
+  if (homeOnly) return Math.max(defaultWeight, 0.28);
+  if (strictMode) return Math.max(defaultWeight, 0.3);
+
+  const site = item?.site && typeof item.site === "object" ? item.site : {};
+  const policy = resolveStructureFirstPolicy({ site, options });
+  if (!policy.structureFirstPipeline) return defaultWeight;
+  if (policy.structureFirstDisableImages && !policy.structureFirstBackfillImages) {
+    return Math.max(defaultWeight, 0.65);
+  }
+  if (policy.structureFirstDisableImages && policy.structureFirstBackfillImages) {
+    return Math.max(defaultWeight, 0.3);
+  }
+  return defaultWeight;
 };
 
 const combineSimilarityScores = ({ visualSimilarity = null, structureSimilarity = null, structureWeight = 0.2 }) => {
@@ -6848,7 +22245,28 @@ const combineSimilarityScores = ({ visualSimilarity = null, structureSimilarity 
   if (visual !== null && structure === null) return Number(visual.toFixed(2));
   if (visual === null && structure !== null) return Number(structure.toFixed(2));
   const weight = clamp01(structureWeight, 0.2);
-  return Number((visual * (1 - weight) + structure * weight).toFixed(2));
+  const blended = Number((visual * (1 - weight) + structure * weight).toFixed(2));
+  if (structure > visual && visual < 95) {
+    const maxBoost = Math.min(2.5, (structure - visual) * 0.15);
+    return Number(Math.min(blended, visual + maxBoost).toFixed(2));
+  }
+  if (structure <= 40) return Number(Math.min(blended, structure + 4).toFixed(2));
+  if (structure <= 55) return Number(Math.min(blended, structure + 6).toFixed(2));
+  if (structure <= 68) return Number(Math.min(blended, structure + 8).toFixed(2));
+  return blended;
+};
+
+const harmonizeVisualSimilarityScores = ({
+  fullPageVisualSimilarity = null,
+  sectionVisualSimilarity = null,
+} = {}) => {
+  const full = parseSimilarityNumber(fullPageVisualSimilarity);
+  const section = parseSimilarityNumber(sectionVisualSimilarity);
+  if (full === null && section === null) return null;
+  if (full !== null && section === null) return full;
+  if (full === null && section !== null) return section;
+  const adjustedSection = Math.min(section, full + SECTION_VISUAL_FULLPAGE_GAP_CAP);
+  return Number((adjustedSection * 0.7 + full * 0.3).toFixed(2));
 };
 
 const resolveExpectedSectionsForPath = (item, pagePath) => {
@@ -6859,11 +22277,26 @@ const resolveExpectedSectionsForPath = (item, pagePath) => {
   const pageSpec = pageSpecs.find((entry) => normalizePagePathForFidelity(entry?.path || "/") === normalizedPath) || null;
   const expectedCategories = normalizeRequiredCategories(pageSpec?.required_categories);
   const expectedFromRoot = normalizeRequiredCategories(specPack?.required_categories);
-  const expectedKinds = expectedCategories.length
+  const expectedKindsBase = expectedCategories.length
     ? expectedCategories
     : normalizedPath === "/"
       ? expectedFromRoot
       : [];
+  const sourceSummary = item?.summary && typeof item.summary === "object" ? item.summary : {};
+  const sourceSectionSignals = mergeSourceSectionHints([sourceSummary?.sourceSectionHints]);
+  const sourceExpectedKinds =
+    normalizedPath === "/"
+      ? unique(
+          (Array.isArray(sourceSectionSignals?.sectionSignals) ? sourceSectionSignals.sectionSignals : [])
+            .map((signal) => normalizeSectionKind(signal?.kind || signal?.className || signal?.id || ""))
+            .filter((kind) => SECTION_PATCH_TARGET_KINDS.has(kind))
+        )
+      : [];
+  const expectedKinds = unique(
+    [...expectedKindsBase, ...sourceExpectedKinds]
+      .map((kind) => normalizeSectionKind(kind))
+      .filter((kind) => SECTION_PATCH_TARGET_KINDS.has(kind))
+  );
   const pageSectionSpecs =
     pageSpec?.section_specs && typeof pageSpec.section_specs === "object"
       ? pageSpec.section_specs
@@ -6876,27 +22309,93 @@ const resolveExpectedSectionsForPath = (item, pagePath) => {
   };
 };
 
-const inferSectionKindFromScreenshot = (section) => {
+const inferSectionKindFromScreenshot = (section, { index = -1, total = 0, usePositionalFallback = false } = {}) => {
   const idToken = String(section?.id || "").trim();
   const idKind = normalizeSectionKind(idToken);
   if (idKind) return idKind;
   const typeToken = String(section?.type || "").trim();
   const typeKind = normalizeSectionKind(typeToken);
   if (typeKind) return typeKind;
-  const guessSource = slug(`${idToken} ${typeToken}`);
+  const classNameToken = String(section?.className || section?.class || "").trim();
+  const dataSectionTypeToken = String(section?.dataSectionType || section?.dataSection || "").trim();
+  const roleToken = String(section?.role || "").trim();
+  const ariaLabelToken = String(section?.ariaLabel || section?.aria || "").trim();
+  const textSampleToken = String(section?.textSample || "").trim();
+  const guessSource = slug(
+    `${idToken} ${typeToken} ${classNameToken} ${dataSectionTypeToken} ${roleToken} ${ariaLabelToken} ${textSampleToken}`
+  );
   for (const kind of SECTION_KINDS) {
     if (guessSource.includes(kind)) return kind;
   }
+  const tokenKind = inferSectionKindFromTokens(
+    `${idToken} ${typeToken} ${classNameToken} ${dataSectionTypeToken} ${roleToken} ${ariaLabelToken} ${textSampleToken}`
+  );
+  if (tokenKind) return tokenKind;
+  if (usePositionalFallback) {
+    const positionalKind = inferSectionKindByPosition({ index, total });
+    if (positionalKind) return positionalKind;
+  }
   return null;
+};
+
+const toSortableSectionBound = (section, key, fallback = 0) => {
+  const value = Number(section?.bounds?.[key]);
+  return Number.isFinite(value) ? value : fallback;
+};
+
+const sortSectionScreenshotsByVisualFlow = (sections = []) =>
+  (Array.isArray(sections) ? [...sections] : []).sort((a, b) => {
+    const topDiff = toSortableSectionBound(a, "top", 0) - toSortableSectionBound(b, "top", 0);
+    if (Math.abs(topDiff) > 2) return topDiff;
+    const leftDiff = toSortableSectionBound(a, "left", 0) - toSortableSectionBound(b, "left", 0);
+    if (Math.abs(leftDiff) > 2) return leftDiff;
+    const heightDiff = toSortableSectionBound(b, "height", 0) - toSortableSectionBound(a, "height", 0);
+    if (Math.abs(heightDiff) > 2) return heightDiff;
+    return Number(a?.index ?? 0) - Number(b?.index ?? 0);
+  });
+
+const isLikelyWrapperSectionScreenshot = (section, { pageHeightHint = 0, pageWidthHint = 0 } = {}) => {
+  const id = String(section?.id || "").trim().toLowerCase();
+  const type = String(section?.type || "").trim().toLowerCase();
+  const top = Number(section?.bounds?.top ?? Number.NaN);
+  const left = Number(section?.bounds?.left ?? Number.NaN);
+  const width = Number(section?.bounds?.width ?? Number.NaN);
+  const height = Number(section?.bounds?.height ?? Number.NaN);
+  const genericId = /^section-\d+$/i.test(id);
+  const genericType = !type || type === "div" || type === "section";
+  if (!genericId || !genericType) return false;
+  if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) return false;
+  const pageHeight = Number.isFinite(pageHeightHint) && pageHeightHint > 0 ? pageHeightHint : 0;
+  const pageWidth = Number.isFinite(pageWidthHint) && pageWidthHint > 0 ? pageWidthHint : 0;
+  const coversAlmostFullHeight = pageHeight > 0 && height / pageHeight >= 0.82;
+  const coversAlmostFullWidth = pageWidth > 0 ? width / pageWidth >= 0.92 : width >= 1200;
+  const anchoredToTop = Number.isFinite(top) ? top <= 24 : true;
+  const alignedLeft = Number.isFinite(left) ? left <= 24 : true;
+  return coversAlmostFullHeight && coversAlmostFullWidth && anchoredToTop && alignedLeft;
 };
 
 const computePageStructureSimilarity = ({ expectedKinds = [], expectedSectionSpecs = {}, sectionScreenshots = [] }) => {
   const expected = normalizeRequiredCategories(expectedKinds);
   const expectedSet = new Set(expected);
   const expectedCount = expected.length;
-  const actualKinds = (Array.isArray(sectionScreenshots) ? sectionScreenshots : [])
-    .map((section) => inferSectionKindFromScreenshot(section))
+  const rows = sortSectionScreenshotsByVisualFlow(sectionScreenshots);
+  const pageHeightHint = rows.reduce((max, section) => {
+    const top = Number(section?.bounds?.top ?? 0);
+    const height = Number(section?.bounds?.height ?? 0);
+    return Math.max(max, top + height);
+  }, 0);
+  const pageWidthHint = rows.reduce((max, section) => {
+    const left = Number(section?.bounds?.left ?? 0);
+    const width = Number(section?.bounds?.width ?? 0);
+    return Math.max(max, left + width);
+  }, 0);
+  const actualKindsRaw = rows
+    .filter((section) => !isLikelyWrapperSectionScreenshot(section, { pageHeightHint, pageWidthHint }))
+    .map((section, idx, arr) =>
+      inferSectionKindFromScreenshot(section, { index: idx, total: arr.length, usePositionalFallback: false })
+    )
     .filter(Boolean);
+  const actualKinds = unique(actualKindsRaw);
   const actualCount = actualKinds.length;
   if (!expectedCount && !actualCount) {
     return {
@@ -6912,13 +22411,13 @@ const computePageStructureSimilarity = ({ expectedKinds = [], expectedSectionSpe
 
   if (!expectedCount && actualCount) {
     return {
-      similarity: 82,
-      comparable: true,
+      similarity: null,
+      comparable: false,
       expectedCount: 0,
       actualCount,
       missingKinds: [],
       matchedKinds: Array.from(new Set(actualKinds)),
-      reason: "no_expected_sections_fallback",
+      reason: "no_expected_sections_non_comparable",
     };
   }
 
@@ -6962,6 +22461,7 @@ const computePageStructureSimilarity = ({ expectedKinds = [], expectedSectionSpe
     comparable: true,
     expectedCount,
     actualCount,
+    actualRawCount: actualKindsRaw.length,
     missingKinds,
     matchedKinds,
     expectedBlockTypes,
@@ -6983,10 +22483,79 @@ const evaluateCaseFidelityFromPageScreenshots = async ({
   pageScreenshots = [],
   crawlPagesByPath = new Map(),
   structureWeight = 0.2,
+  targetPagePaths = null,
 }) => {
   const pageRows = [];
+  const expectedKindsObserved = new Set();
+  const targetPathSet =
+    targetPagePaths instanceof Set
+      ? new Set(Array.from(targetPagePaths).map((entry) => normalizePagePathForFidelity(entry)))
+      : new Set(
+          (Array.isArray(targetPagePaths) ? targetPagePaths : [])
+            .map((entry) => normalizePagePathForFidelity(entry))
+            .filter(Boolean)
+        );
+  const enforceTargetPages = targetPathSet.size > 0;
+  const backfilledReferenceByPath = new Map();
+  const sectionReferenceDimsCache = new Map();
+  const getBackfilledReferencePath = async (pagePath, crawlPage) => {
+    const normalizedPath = normalizePagePathForFidelity(pagePath);
+    if (backfilledReferenceByPath.has(normalizedPath)) {
+      return String(backfilledReferenceByPath.get(normalizedPath) || "");
+    }
+    const baseUrl = String(item?.site?.url || "").trim();
+    const crawlUrl = String(crawlPage?.url || "").trim();
+    let candidateUrl = "";
+    if (crawlUrl) {
+      candidateUrl = crawlUrl;
+    } else if (baseUrl) {
+      try {
+        candidateUrl = new URL(normalizedPath, baseUrl).toString();
+      } catch {
+        candidateUrl = "";
+      }
+    }
+    if (!candidateUrl) {
+      backfilledReferenceByPath.set(normalizedPath, "");
+      return "";
+    }
+
+    const siteDir = String(item?.siteDir || "").trim();
+    if (!siteDir) {
+      backfilledReferenceByPath.set(normalizedPath, "");
+      return "";
+    }
+    const fallbackDir = path.join(siteDir, "ingest", "required-references");
+    await ensureDir(fallbackDir);
+    const fallbackPath = path.join(
+      fallbackDir,
+      `${routeSlugFromPath(normalizedPath) || "home"}.desktop.auto.png`
+    );
+    const capturedPath = await captureScreenshotSafe({
+      url: candidateUrl,
+      outPath: fallbackPath,
+      mobile: false,
+      timeoutMs: 90000,
+    });
+    const resolved = String(capturedPath || "").trim();
+    backfilledReferenceByPath.set(normalizedPath, resolved);
+    return resolved;
+  };
+
+  const shouldBackfillReferenceForPath = (pagePath) =>
+    /^\/contact(?:\/|$)/i.test(pagePath) ||
+    /\/(?:support|help|faq)(?:\/|$)/i.test(pagePath) ||
+    /^\/products?(?:\/|$)/i.test(pagePath) ||
+    /^\/blogs(?:\/[^/]+)?(?:\/|$)/i.test(pagePath) ||
+    /^\/collections(?:\/|$)/i.test(pagePath) ||
+    /^\/collections\/[^/]+(?:\/|$)/i.test(pagePath) ||
+    /^\/blogs\/[^/]+\/[^/]+/i.test(pagePath) ||
+    /^\/products\/[^/]+/i.test(pagePath) ||
+    /^\/collections\/[^/]+\/products\/[^/]+/i.test(pagePath);
+
   for (const pageShot of Array.isArray(pageScreenshots) ? pageScreenshots : []) {
     const pagePath = normalizePagePathForFidelity(pageShot?.pagePath || "/");
+    if (enforceTargetPages && !targetPathSet.has(pagePath)) continue;
     const candidatePath = typeof pageShot?.screenshot === "string" ? pageShot.screenshot.trim() : "";
     if (!candidatePath) continue;
 
@@ -6997,19 +22566,125 @@ const evaluateCaseFidelityFromPageScreenshots = async ({
     if (!referencePath) {
       const crawlPage = crawlPagesByPath.get(pagePath);
       referencePath = String(crawlPage?.screenshots?.desktopPath || crawlPage?.publishedAssets?.desktopPath || "").trim();
+      if (!referencePath && shouldBackfillReferenceForPath(pagePath)) {
+        referencePath = await getBackfilledReferencePath(pagePath, crawlPage);
+      }
     }
     if (!referencePath) continue;
+    if (await isLowInformationScreenshot(referencePath)) {
+      continue;
+    }
 
-    const visualSimilarity = await computeImageSimilarity(referencePath, candidatePath);
+    const candidateDims = await getImageDimensions(candidatePath);
+    const referenceDims = await getImageDimensions(referencePath);
+    const fullPageVisualSimilarityRaw = await computeImageSimilarity(referencePath, candidatePath);
+    const fullPageGeometryPenalty = computeSimilarityGeometryPenalty({
+      referenceDims,
+      candidateDims,
+      maxPenalty: 22,
+      tolerance: 0.12,
+    });
+    const fullPageVisualSimilarity =
+      fullPageVisualSimilarityRaw === null
+        ? null
+        : clampSimilarityScore(Number(fullPageVisualSimilarityRaw) - Number(fullPageGeometryPenalty));
     const weight = PAGE_FIDELITY_WEIGHTS[pagePath] ?? DEFAULT_PAGE_FIDELITY_WEIGHT;
-    const sectionScreenshots = Array.isArray(pageShot?.sectionScreenshots) ? pageShot.sectionScreenshots : [];
+    const sectionScreenshots = sortSectionScreenshotsByVisualFlow(
+      Array.isArray(pageShot?.sectionScreenshots) ? pageShot.sectionScreenshots : []
+    );
     const expected = resolveExpectedSectionsForPath(item, pagePath);
+    for (const kind of Array.isArray(expected?.expectedKinds) ? expected.expectedKinds : []) {
+      const normalizedKind = normalizeSectionKind(kind);
+      if (normalizedKind) expectedKindsObserved.add(normalizedKind);
+    }
     const structureMeta = computePageStructureSimilarity({
       expectedKinds: expected.expectedKinds,
       expectedSectionSpecs: expected.expectedSectionSpecs,
       sectionScreenshots,
     });
     const structureSimilarity = parseSimilarityNumber(structureMeta?.similarity);
+    const sectionDetails = [];
+    const pageHeightHint = sectionScreenshots.reduce((max, section) => {
+      const top = Number(section?.bounds?.top ?? 0);
+      const height = Number(section?.bounds?.height ?? 0);
+      return Math.max(max, top + height);
+    }, 0);
+    const pageWidthHint = sectionScreenshots.reduce((max, section) => {
+      const left = Number(section?.bounds?.left ?? 0);
+      const width = Number(section?.bounds?.width ?? 0);
+      return Math.max(max, left + width);
+    }, 0);
+    for (const [sectionIdx, section] of sectionScreenshots.entries()) {
+      if (isLikelyWrapperSectionScreenshot(section, { pageHeightHint, pageWidthHint })) continue;
+      const sectionKind = inferSectionKindFromScreenshot(section, {
+        index: Number(section?.index ?? sectionIdx),
+        total: sectionScreenshots.length,
+      });
+      const sectionScreenshotPath = String(section?.screenshotPath || "").trim();
+      if (!sectionScreenshotPath) continue;
+      const sectionReferencePath = await resolveSectionReferencePath({
+        item,
+        pagePath,
+        sectionKind,
+        sectionIndex: Number(section?.index ?? -1),
+        sectionBounds: section?.bounds || null,
+        candidateDims,
+        referencePath,
+      });
+      const sectionSimilarity =
+        sectionReferencePath && (await fileExists(sectionReferencePath))
+          ? await computeImageSimilarity(sectionReferencePath, sectionScreenshotPath)
+          : null;
+      let sectionReferenceDims = null;
+      if (sectionReferencePath && await fileExists(sectionReferencePath)) {
+        const cachedDims = sectionReferenceDimsCache.get(sectionReferencePath);
+        if (cachedDims) {
+          sectionReferenceDims = cachedDims;
+        } else {
+          sectionReferenceDims = await getImageDimensions(sectionReferencePath);
+          if (sectionReferenceDims) sectionReferenceDimsCache.set(sectionReferencePath, sectionReferenceDims);
+        }
+      }
+      const sectionCandidateDims = {
+        width: Number(section?.bounds?.width || 0),
+        height: Number(section?.bounds?.height || 0),
+      };
+      const sectionGeometryPenalty = computeSimilarityGeometryPenalty({
+        referenceDims: sectionReferenceDims,
+        candidateDims: sectionCandidateDims,
+        maxPenalty: 24,
+        tolerance: 0.08,
+      });
+      const adjustedSectionSimilarity =
+        sectionSimilarity === null
+          ? null
+          : clampSimilarityScore(Number(sectionSimilarity) - Number(sectionGeometryPenalty));
+      sectionDetails.push({
+        sectionId: section?.id || "",
+        sectionType: section?.type || "",
+        sectionKind: sectionKind || "",
+        sectionIndex: section?.index ?? -1,
+        screenshotPath: sectionScreenshotPath,
+        bounds: section?.bounds || null,
+        similarity: adjustedSectionSimilarity,
+        geometryPenalty: sectionGeometryPenalty,
+        referencePath: sectionReferencePath || "",
+        issue: classifySectionFidelityIssue({
+          sectionKind: sectionKind || section?.type || "",
+          similarity: adjustedSectionSimilarity,
+        }),
+      });
+    }
+    const sectionSimilarity = summarizeTargetSectionSimilarity({
+      sectionDetails,
+      expectedKinds: expected.expectedKinds,
+    });
+    const sectionVisualSimilarity =
+      parseSimilarityNumber(sectionSimilarity?.weighted) ?? parseSimilarityNumber(sectionSimilarity?.overall);
+    const visualSimilarity = harmonizeVisualSimilarityScores({
+      fullPageVisualSimilarity,
+      sectionVisualSimilarity,
+    });
     const similarity = combineSimilarityScores({
       visualSimilarity,
       structureSimilarity,
@@ -7020,34 +22695,28 @@ const evaluateCaseFidelityFromPageScreenshots = async ({
       structureSimilarity,
       structureMeta,
     });
-
     pageRows.push({
       caseId: String(item?.site?.id || ""),
       pagePath,
       referencePath,
       screenshotPath: candidatePath,
       visualSimilarity,
+      fullPageVisualSimilarity,
+      sectionVisualSimilarity,
       structureSimilarity,
       similarity,
       weight,
       issueType,
-      sectionDetails: sectionScreenshots
-        .map((section) => ({
-          sectionId: section?.id || "",
-          sectionType: section?.type || "",
-          sectionIndex: section?.index ?? -1,
-          screenshotPath: section?.screenshotPath || "",
-          bounds: section?.bounds || null,
-          similarity: null,
-          referencePath: "",
-        }))
-        .filter((section) => section.screenshotPath),
+      sectionDetails,
+      sectionSimilarity,
       structure: structureMeta,
     });
   }
 
   const numericCombined = pageRows.filter((row) => parseSimilarityNumber(row.similarity) !== null);
   const numericVisual = pageRows.filter((row) => parseSimilarityNumber(row.visualSimilarity) !== null);
+  const numericFullPageVisual = pageRows.filter((row) => parseSimilarityNumber(row.fullPageVisualSimilarity) !== null);
+  const numericSectionVisual = pageRows.filter((row) => parseSimilarityNumber(row.sectionVisualSimilarity) !== null);
   const numericStructure = pageRows.filter((row) => parseSimilarityNumber(row.structureSimilarity) !== null);
   const weighted = (rows, key) => {
     const valid = rows.filter((row) => parseSimilarityNumber(row?.[key]) !== null);
@@ -7062,7 +22731,13 @@ const evaluateCaseFidelityFromPageScreenshots = async ({
     pageCount: pageRows.length,
     similarity: weighted(numericCombined, "similarity"),
     visualSimilarity: weighted(numericVisual, "visualSimilarity"),
+    fullPageVisualSimilarity: weighted(numericFullPageVisual, "fullPageVisualSimilarity"),
+    sectionVisualSimilarity: weighted(numericSectionVisual, "sectionVisualSimilarity"),
     structureSimilarity: weighted(numericStructure, "structureSimilarity"),
+    sectionSimilarity: summarizeTargetSectionSimilarity({
+      sectionDetails: pageRows.flatMap((row) => (Array.isArray(row?.sectionDetails) ? row.sectionDetails : [])),
+      expectedKinds: Array.from(expectedKindsObserved),
+    }),
   };
 };
 
@@ -7071,10 +22746,12 @@ const DEFAULT_PAGE_FIDELITY_WEIGHT = 1.0;
 
 const normalizePagePathForFidelity = (raw) => {
   const trimmed = String(raw || "").trim().replace(/\/+$/, "") || "/";
-  return trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  const normalized = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  if (/^\/(?:home|index)$/i.test(normalized)) return "/";
+  return normalized;
 };
 
-const evaluateVisualFidelity = async ({ reportPath, processed, options = {} }) => {
+const evaluateVisualFidelity = async ({ reportPath, processed, options = {}, requiredPagePathsByCase = new Map() }) => {
   if (!reportPath) {
     return {
       available: false,
@@ -7095,7 +22772,6 @@ const evaluateVisualFidelity = async ({ reportPath, processed, options = {} }) =
 
   const scoredRows = [];
   const allPageRows = [];
-  const structureWeight = clamp01(options?.fidelityStructureWeight, 0.2);
 
   for (const row of rows) {
     const caseId = String(row?.caseId || "");
@@ -7113,12 +22789,16 @@ const evaluateVisualFidelity = async ({ reportPath, processed, options = {} }) =
         : new Map()
     );
 
-    if (pageScreenshots.length > 0 && crawlPagesByPath.size > 0) {
+    const structureWeight = resolveFidelityStructureWeight({ options, item, fallback: 0.2 });
+
+    if (pageScreenshots.length > 0) {
+      const targetPagePaths = requiredPagePathsByCase instanceof Map ? requiredPagePathsByCase.get(caseId) || null : null;
       const evaluated = await evaluateCaseFidelityFromPageScreenshots({
         item,
         pageScreenshots,
         crawlPagesByPath,
         structureWeight,
+        targetPagePaths,
       });
 
       allPageRows.push(...evaluated.pageRows);
@@ -7128,7 +22808,10 @@ const evaluateVisualFidelity = async ({ reportPath, processed, options = {} }) =
         screenshotPath: pageScreenshots[0]?.screenshot || "",
         similarity: evaluated.similarity,
         visualSimilarity: evaluated.visualSimilarity,
+        sectionVisualSimilarity: evaluated.sectionVisualSimilarity ?? null,
+        fullPageVisualSimilarity: evaluated.fullPageVisualSimilarity ?? null,
         structureSimilarity: evaluated.structureSimilarity,
+        sectionSimilarity: evaluated.sectionSimilarity || null,
         pageCount: evaluated.pageCount,
         pageDetails: evaluated.pageRows,
       });
@@ -7147,7 +22830,10 @@ const evaluateVisualFidelity = async ({ reportPath, processed, options = {} }) =
         screenshotPath,
         similarity,
         visualSimilarity,
+        sectionVisualSimilarity: null,
+        fullPageVisualSimilarity: visualSimilarity,
         structureSimilarity: null,
+        sectionSimilarity: null,
         pageCount: 0,
         pageDetails: [],
       });
@@ -7173,8 +22859,8 @@ const resolveFidelitySettings = (site, options) => {
   const globalMode = String(options?.fidelityMode || "").trim().toLowerCase() === "strict" ? "strict" : "standard";
   const siteMode = String(site?.fidelityMode || "").trim().toLowerCase() === "strict" ? "strict" : "standard";
   const mode = globalMode === "strict" || siteMode === "strict" ? "strict" : "standard";
-  const strictAvgMin = Math.max(0, Math.min(100, Math.floor(Number(options?.strictAvgSimilarityMin) || 85)));
-  const strictPageMin = Math.max(0, Math.min(100, Math.floor(Number(options?.strictPageSimilarityMin) || 78)));
+  const strictAvgMin = Math.max(0, Math.min(100, Math.floor(Number(options?.strictAvgSimilarityMin) || 95)));
+  const strictPageMin = Math.max(0, Math.min(100, Math.floor(Number(options?.strictPageSimilarityMin) || 90)));
   const siteThresholdRaw = Number(site?.fidelityThreshold);
   const globalThresholdRaw = Number(options?.fidelityThreshold);
   const thresholdBase = Number.isFinite(siteThresholdRaw) && siteThresholdRaw >= 0 ? siteThresholdRaw : globalThresholdRaw;
@@ -7196,6 +22882,14 @@ const resolveFidelitySettings = (site, options) => {
   return { mode, threshold, pageThreshold, enforcement, requiredPagesPerSite };
 };
 
+const resolveHomeStretchSimilarityTarget = ({ fidelityConfig = {}, options = {} } = {}) => {
+  const homeOnlyMode = Boolean(options?.homeOnly || options?.homeOnlyEval);
+  if (!homeOnlyMode) return null;
+  if (String(fidelityConfig?.mode || "").toLowerCase() !== "strict") return null;
+  const baseThreshold = Number(fidelityConfig?.threshold || options?.strictAvgSimilarityMin || 95);
+  return Math.max(Math.floor(baseThreshold), 95);
+};
+
 const evaluateFidelityRowsAgainstPolicies = ({
   fidelityRows = [],
   fidelityByCase,
@@ -7203,16 +22897,21 @@ const evaluateFidelityRowsAgainstPolicies = ({
   strictFailCaseIds = [],
   strictRequiredPageCases = [],
   options = {},
+  processedByCase = new Map(),
 }) => {
-  const structureWeight = clamp01(options?.fidelityStructureWeight, 0.2);
   const normalizedRows = (Array.isArray(fidelityRows) ? fidelityRows : []).map((row) => {
     const caseId = String(row?.caseId || "");
     const config = fidelityByCase.get(caseId) || {
       mode: "standard",
       threshold: Number(options?.fidelityThreshold || 72),
-      pageThreshold: Number(options?.strictPageSimilarityMin || 78),
+      pageThreshold: Number(options?.strictPageSimilarityMin || 90),
       enforcement: options?.fidelityEnforcement || "warn",
     };
+    const structureWeight = resolveFidelityStructureWeight({
+      options,
+      item: processedByCase instanceof Map ? processedByCase.get(caseId) || null : null,
+      fallback: 0.2,
+    });
     const similarityRaw =
       parseSimilarityNumber(row?.similarity) ??
       combineSimilarityScores({
@@ -7355,14 +23054,41 @@ const evaluateRegressionOutcome = async ({
   strictCaseIds,
   strictFailCaseIds,
   strictRequiredPageCases,
+  requiredPagePathsByCase = new Map(),
   options,
 }) => {
-  const score = await scoreRegressionReport(reportPath);
-  const fidelity = await evaluateVisualFidelity({
-    reportPath,
+  const sourceReportPath = String(reportPath || "").trim();
+  let effectiveReportPath = sourceReportPath;
+  let score = await scoreRegressionReport(sourceReportPath);
+  let fidelity = await evaluateVisualFidelity({
+    reportPath: sourceReportPath,
     processed,
     options,
+    requiredPagePathsByCase,
   });
+  if (!fidelity?.available && ALLOW_FIDELITY_REPORT_FALLBACK) {
+    const fallbackReportPath = await findLatestComparableRegressionReport({
+      caseIds: processed.map((item) => String(item?.site?.id || "")).filter(Boolean),
+      excludeReportPath: sourceReportPath,
+    });
+    if (fallbackReportPath) {
+      const fallbackFidelity = await evaluateVisualFidelity({
+        reportPath: fallbackReportPath,
+        processed,
+        options,
+        requiredPagePathsByCase,
+      });
+      if (fallbackFidelity?.available) {
+        effectiveReportPath = fallbackReportPath;
+        fidelity = {
+          ...fallbackFidelity,
+          fallbackOf: sourceReportPath,
+          fallbackReason: "latest_comparable_regression_report",
+        };
+        score = await scoreRegressionReport(fallbackReportPath);
+      }
+    }
+  }
   const policyEval = evaluateFidelityRowsAgainstPolicies({
     fidelityRows: Array.isArray(fidelity?.rows) ? fidelity.rows : [],
     fidelityByCase,
@@ -7370,9 +23096,14 @@ const evaluateRegressionOutcome = async ({
     strictFailCaseIds,
     strictRequiredPageCases,
     options,
+    processedByCase: new Map(
+      (Array.isArray(processed) ? processed : []).map((item) => [String(item?.site?.id || ""), item])
+    ),
   });
 
   return {
+    sourceReportPath,
+    reportPath: effectiveReportPath,
     score,
     fidelity,
     ...policyEval,
@@ -7564,7 +23295,29 @@ const processSiteWithPipelineRegression = async ({
   const sitePrefix = `[template-factory][${siteIndex + 1}/${sites.length}][${site.id}]`;
   const siteStartedAt = Date.now();
   const siteForRun = { ...site };
+  const structureFirstPolicy = resolveStructureFirstPolicy({ site: siteForRun, options });
+  siteForRun.specialRules = {
+    ...(siteForRun?.specialRules && typeof siteForRun.specialRules === "object" ? siteForRun.specialRules : {}),
+    structureFirstPipeline: structureFirstPolicy.structureFirstPipeline,
+    structureFirstDisableImages: structureFirstPolicy.structureFirstDisableImages,
+    structureFirstDisableMotion: structureFirstPolicy.structureFirstDisableMotion,
+    structureFirstBackfillImages: structureFirstPolicy.structureFirstBackfillImages,
+    structureFirstBackfillMotion: structureFirstPolicy.structureFirstBackfillMotion,
+  };
+  const homeOnlyMode = Boolean(options?.homeOnly || siteForRun?.homeOnly);
+  const siteFidelityConfig =
+    fidelityByCase instanceof Map
+      ? fidelityByCase.get(String(site?.id || "")) || resolveFidelitySettings(siteForRun, options)
+      : resolveFidelitySettings(siteForRun, options);
   console.log(`${sitePrefix} start url=${siteForRun.url || "(no-url)"}`);
+  if (homeOnlyMode) {
+    console.log(`${sitePrefix} home-only mode enabled (debug-iteration fast path).`);
+  }
+  if (structureFirstPolicy.structureFirstPipeline) {
+    console.log(
+      `${sitePrefix} structure-first pipeline: disableImages=${structureFirstPolicy.structureFirstDisableImages}, disableMotion=${structureFirstPolicy.structureFirstDisableMotion}, backfillImages=${structureFirstPolicy.structureFirstBackfillImages}, backfillMotion=${structureFirstPolicy.structureFirstBackfillMotion}`
+    );
+  }
   const siteDir = path.join(siteRoot, site.id);
   const ingestDir = path.join(siteDir, "ingest");
   const extractedDir = path.join(siteDir, "extracted");
@@ -7647,8 +23400,79 @@ const processSiteWithPipelineRegression = async ({
 
   const copiedDesktop = await safeCopy(site.desktopScreenshot, path.join(ingestDir, "desktop.reference.png"));
   const copiedMobile = await safeCopy(site.mobileScreenshot, path.join(ingestDir, "mobile.reference.png"));
-  const preferredDesktop = await choosePreferredScreenshot([copiedDesktop, desktopShot]);
-  const preferredMobile = await choosePreferredScreenshot([copiedMobile, mobileShot]);
+  const persistedDesktop = copiedDesktop
+    ? null
+    : await resolvePersistedReferenceScreenshot({ siteId: site.id, stem: "desktop-reference" });
+  const persistedMobile = copiedMobile
+    ? null
+    : await resolvePersistedReferenceScreenshot({ siteId: site.id, stem: "mobile-reference" });
+  const persistedDesktopUsable =
+    persistedDesktop && !(await isLowInformationScreenshot(persistedDesktop)) ? persistedDesktop : null;
+  const persistedMobileUsable =
+    persistedMobile && !(await isLowInformationScreenshot(persistedMobile)) ? persistedMobile : null;
+  if (persistedDesktop && !persistedDesktopUsable) {
+    console.warn(`${sitePrefix} persisted desktop reference ignored as low-information: ${persistedDesktop}`);
+  }
+  if (persistedMobile && !persistedMobileUsable) {
+    console.warn(`${sitePrefix} persisted mobile reference ignored as low-information: ${persistedMobile}`);
+  }
+  const historicalDesktop =
+    copiedDesktop || persistedDesktopUsable
+      ? null
+      : await resolveHistoricalReferenceScreenshot({
+          siteId: site.id,
+          mobile: false,
+          currentRunId: options?.runId,
+        });
+  const historicalMobile =
+    copiedMobile || persistedMobileUsable
+      ? null
+      : await resolveHistoricalReferenceScreenshot({
+          siteId: site.id,
+          mobile: true,
+          currentRunId: options?.runId,
+        });
+  const desktopCandidates = copiedDesktop
+    ? [copiedDesktop, desktopShot, persistedDesktopUsable, historicalDesktop]
+    : [desktopShot, persistedDesktopUsable, historicalDesktop];
+  const mobileCandidates = copiedMobile
+    ? [copiedMobile, mobileShot, persistedMobileUsable, historicalMobile]
+    : [mobileShot, persistedMobileUsable, historicalMobile];
+  let preferredDesktop =
+    (await chooseReferenceScreenshotByPriority(desktopCandidates)) || (await choosePreferredScreenshot(desktopCandidates));
+  let preferredMobile =
+    (await chooseReferenceScreenshotByPriority(mobileCandidates)) || (await choosePreferredScreenshot(mobileCandidates));
+  if (preferredDesktop && (await isLowInformationScreenshot(preferredDesktop))) {
+    console.warn(`${sitePrefix} low-information desktop reference detected, clearing preferredDesktop: ${preferredDesktop}`);
+    preferredDesktop = null;
+  }
+  if (preferredMobile && (await isLowInformationScreenshot(preferredMobile))) {
+    console.warn(`${sitePrefix} low-information mobile reference detected, clearing preferredMobile: ${preferredMobile}`);
+    preferredMobile = null;
+  }
+  if (historicalDesktop && preferredDesktop === historicalDesktop) {
+    console.log(`${sitePrefix} using historical desktop reference: ${historicalDesktop}`);
+  }
+  if (historicalMobile && preferredMobile === historicalMobile) {
+    console.log(`${sitePrefix} using historical mobile reference: ${historicalMobile}`);
+  }
+  const desktopReferenceSource = resolveReferenceSource({
+    selected: preferredDesktop,
+    provided: copiedDesktop,
+    captured: desktopShot,
+    persisted: persistedDesktopUsable,
+    historical: historicalDesktop,
+  });
+  const mobileReferenceSource = resolveReferenceSource({
+    selected: preferredMobile,
+    provided: copiedMobile,
+    captured: mobileShot,
+    persisted: persistedMobileUsable,
+    historical: historicalMobile,
+  });
+  console.log(
+    `${sitePrefix} selected references desktop=${desktopReferenceSource} mobile=${mobileReferenceSource}`
+  );
   const publishedAssets = await publishReferenceAssets({
     siteId: site.id,
     desktopSource: preferredDesktop,
@@ -7656,18 +23480,34 @@ const processSiteWithPipelineRegression = async ({
   });
   const visualSignature = await extractImageVisualSignature(preferredDesktop || copiedDesktop || desktopShot || "");
   const crawlEnabled = Boolean(siteForRun.url) && !options.skipIngest && (options.crawlSite || siteForRun.crawlSite || site.crawlSite);
-  const crawlMaxPages =
+  const requestedCrawlMaxPages =
     Number(site.crawlMaxPages || 0) > 0
       ? Math.floor(Number(site.crawlMaxPages))
       : Math.max(1, Math.floor(Number(options.crawlMaxPages || 0) || 0));
-  const crawlMaxDepth =
+  const requestedCrawlMaxDepth =
     Number(site.crawlMaxDepth) >= 0
       ? Math.floor(Number(site.crawlMaxDepth))
       : Math.max(0, Math.floor(Number(options.crawlMaxDepth || 0) || 0));
+  const crawlMaxPages = homeOnlyMode ? Math.max(1, Math.min(8, requestedCrawlMaxPages || 8)) : requestedCrawlMaxPages;
+  const crawlMaxDepth = homeOnlyMode ? Math.min(1, requestedCrawlMaxDepth) : requestedCrawlMaxDepth;
   const crawlCapturePages =
     Number(site.crawlCapturePages) >= 0
       ? Math.floor(Number(site.crawlCapturePages))
       : Math.max(0, Math.floor(Number(options.crawlCapturePages || 0) || 0));
+  const strictCaptureFloor =
+    !homeOnlyMode && String(options?.fidelityMode || "").toLowerCase() === "strict"
+      ? Math.max(4, Math.floor(Number(options?.requiredPagesPerSite || 4) || 4))
+      : 0;
+  const effectiveCrawlCapturePages = homeOnlyMode
+    ? 1
+    : crawlCapturePages > 0
+      ? crawlCapturePages
+      : strictCaptureFloor;
+  if (effectiveCrawlCapturePages !== crawlCapturePages) {
+    console.log(
+      `${sitePrefix} crawl capture pages adjusted for fidelity comparability: requested=${crawlCapturePages}, effective=${effectiveCrawlCapturePages}`
+    );
+  }
   let crawlReport = null;
   let crawlAssetPack = null;
   let crawlPipeline = null;
@@ -7686,7 +23526,10 @@ const processSiteWithPipelineRegression = async ({
         { prefix: sitePrefix, heartbeatMs: 25000 }
       );
       if (crawlPipeline?.ok && crawlPipeline.crawlReport) {
-        crawlReport = crawlPipeline.crawlReport;
+        crawlReport = mergeCrawlReportWithHybridResult({
+          crawlReport: crawlPipeline.crawlReport,
+          crawlResult: crawlPipeline.crawlResult,
+        });
       } else {
         if (crawlPipeline && !crawlPipeline.ok) {
           const reason = crawlPipeline.reason || "hybrid_pipeline_failed";
@@ -7706,6 +23549,30 @@ const processSiteWithPipelineRegression = async ({
       }
     });
   }
+  if (crawlReport && !crawlReport.blocked && !homeOnlyMode) {
+    const crawlDiscoveryPolicy = resolveDiscoveryPolicy({ site: siteForRun, options });
+    const crawledCount = Number(crawlReport?.stats?.crawled || 0);
+    const discoveredCount = Number(crawlReport?.stats?.discovered || 0);
+    const underCoverage =
+      crawledCount < Math.max(3, Math.min(Math.max(1, crawlMaxPages), 8)) ||
+      discoveredCount < Math.max(8, Math.min(Math.max(1, crawlMaxPages) * 2, 48));
+    if (underCoverage || (Array.isArray(crawlDiscoveryPolicy.mustIncludePatterns) && crawlDiscoveryPolicy.mustIncludePatterns.length > 0)) {
+      crawlReport = await runWithProgress(
+        "enrich crawl coverage",
+        () =>
+          enrichCrawlReportCoverage({
+            crawlReport,
+            entryUrl: siteForRun.url,
+            maxPages: crawlMaxPages,
+            maxDepth: crawlMaxDepth,
+            timeoutMs: options.crawlTimeoutMs,
+            mustIncludePatterns: crawlDiscoveryPolicy.mustIncludePatterns,
+            logPrefix: sitePrefix,
+          }),
+        { prefix: sitePrefix, heartbeatMs: 12000 }
+      );
+    }
+  }
   if (crawlReport?.blocked) {
     await fs.writeFile(path.join(ingestDir, "crawl.json"), JSON.stringify(crawlReport, null, 2));
     const reason = crawlReport?.antiCrawl?.reason || "anti_crawl_detected";
@@ -7721,7 +23588,7 @@ const processSiteWithPipelineRegression = async ({
             siteId: site.id,
             crawl: crawlReport,
             ingestDir,
-            captureLimit: crawlCapturePages,
+            captureLimit: effectiveCrawlCapturePages,
             screenshotTimeoutMs: options.screenshotTimeoutMs,
             screenshotSemaphore,
             logPrefix: sitePrefix,
@@ -7735,19 +23602,253 @@ const processSiteWithPipelineRegression = async ({
       `[template-factory] crawl ${site.id}: pages=${crawlReport?.stats?.crawled || 0}, discovered=${crawlReport?.stats?.discovered || 0}, failed=${crawlReport?.stats?.failed || 0}`
     );
   }
+  if (
+    crawlAssetPack &&
+    !homeOnlyMode &&
+    String(siteFidelityConfig?.mode || "").toLowerCase() === "strict"
+  ) {
+    const strictPremergeEnabled = parseBool(
+      extractSpecialRuleValue(siteForRun, "strictPremergeCrawlAssets") ??
+        extractSpecialRuleValue(siteForRun, "strict_premerge_crawl_assets") ??
+        true
+    );
+    if (!strictPremergeEnabled) {
+      console.log(`${sitePrefix} strict pre-merge crawl assets: disabled (opt-in via specialRules.strictPremergeCrawlAssets=true)`);
+    }
+    if (strictPremergeEnabled) {
+    const strictMinPages = Math.max(
+      1,
+      Math.floor(Number(siteFidelityConfig?.requiredPagesPerSite || options?.requiredPagesPerSite || 4) || 4)
+    );
+    const fallbackPack = await loadFallbackCrawlAssetPack({
+      siteId: String(site?.id || ""),
+      siteUrl: siteForRun?.url || "",
+      currentRunId: options.runId,
+      minPages: strictMinPages,
+    });
+    if (fallbackPack) {
+      const primaryCount = Array.isArray(crawlAssetPack?.pages) ? crawlAssetPack.pages.length : 0;
+      const mergedPack = mergeCrawlAssetPacks({
+        primary: crawlAssetPack,
+        fallback: fallbackPack,
+      });
+      const mergedCount = Array.isArray(mergedPack?.pages) ? mergedPack.pages.length : 0;
+      if (mergedCount > primaryCount) {
+        crawlAssetPack = {
+          ...mergedPack,
+          reusedFromRunId: String(fallbackPack?.reusedFromRunId || ""),
+        };
+        console.log(
+          `${sitePrefix} strict pre-merge crawl assets: primary=${primaryCount}, merged=${mergedCount}, fallbackRun=${fallbackPack.reusedFromRunId}`
+        );
+      }
+    }
+    }
+  }
   const summary = await runWithProgress("fetch html summary", () => fetchHtmlSummary(siteForRun.url), {
     prefix: sitePrefix,
     heartbeatMs: 12000,
   });
-  const mergedSummary = crawlReport ? mergeSummaryWithCrawl(summary, crawlReport) : summary;
+  const runtimeHeroMedia = await runWithProgress(
+    "collect runtime hero media",
+    () => fetchRuntimeHeroMediaUrls(siteForRun.url, { timeoutMs: Math.max(12000, Math.floor(options.screenshotTimeoutMs || 90000)) }),
+    { prefix: sitePrefix, heartbeatMs: 12000 }
+  );
+  const runtimeSectionSignals = await runWithProgress(
+    "collect runtime section signals",
+    () => fetchRuntimeSectionSignals(siteForRun.url, { timeoutMs: Math.max(12000, Math.floor(options.screenshotTimeoutMs || 90000)) }),
+    { prefix: sitePrefix, heartbeatMs: 12000 }
+  );
+  const screenshotSurfaceSignals = await runWithProgress(
+    "infer nav/footer surface colors",
+    () => inferSurfaceSignalsFromScreenshot(preferredDesktop || copiedDesktop || desktopShot || ""),
+    { prefix: sitePrefix, heartbeatMs: 12000 }
+  );
+  let mergedSummary = crawlReport ? mergeSummaryWithCrawl(summary, crawlReport) : summary;
+  if (runtimeHeroMedia.length) {
+    mergedSummary.images = dedupeUrls([...(runtimeHeroMedia || []), ...(Array.isArray(mergedSummary?.images) ? mergedSummary.images : [])], 80);
+    const runtimeHeroCarouselCandidates = rankHeroImageCandidates(
+      runtimeHeroMedia.filter((urlValue) =>
+        /(?:hero|banner|slider|carousel|masthead|showcase|maxwell|lcd|crbn|headphone|audeze|_bg|\/files\/)/i.test(
+          String(urlValue || "")
+        )
+      ),
+      16
+    );
+    const mergedHeroBefore = normalizeHeroCarousel(mergedSummary?.heroCarousel);
+    const shouldUseRuntimeMediaAsCarouselFallback =
+      mergedHeroBefore.slides.length < 2 && mergedHeroBefore.images.length < 2;
+    if (shouldUseRuntimeMediaAsCarouselFallback && runtimeHeroCarouselCandidates.length) {
+      mergedSummary.heroCarousel = mergeHeroCarouselSignals([
+        mergedSummary.heroCarousel,
+        {
+          enabled: runtimeHeroCarouselCandidates.length >= 2,
+          signalCount: runtimeHeroCarouselCandidates.length ? 1 : 0,
+          signals: ["runtime-media"],
+          images: runtimeHeroCarouselCandidates,
+        },
+      ]);
+    }
+    console.log(
+      `${sitePrefix} runtime hero media captured: total=${runtimeHeroMedia.length}, carouselCandidates=${runtimeHeroCarouselCandidates.length}, usedAsCarouselFallback=${shouldUseRuntimeMediaAsCarouselFallback ? "yes" : "no"}`
+    );
+  }
+  if (runtimeSectionSignals && typeof runtimeSectionSignals === "object") {
+    if (runtimeSectionSignals.heroCarousel) {
+      mergedSummary.heroCarousel = mergeHeroCarouselSignals([
+        mergedSummary?.heroCarousel,
+        runtimeSectionSignals.heroCarousel,
+      ]);
+    }
+    if (runtimeSectionSignals.navBackgroundColorRaw) {
+      mergedSummary.navBackgroundColorRaw = String(runtimeSectionSignals.navBackgroundColorRaw || "").trim();
+    }
+    if (runtimeSectionSignals.footerBackgroundColorRaw) {
+      mergedSummary.footerBackgroundColorRaw = String(runtimeSectionSignals.footerBackgroundColorRaw || "").trim();
+    }
+    if (runtimeSectionSignals.navBackgroundColor) {
+      mergedSummary.navBackgroundColor = runtimeSectionSignals.navBackgroundColor;
+    }
+    if (runtimeSectionSignals.footerBackgroundColor) {
+      mergedSummary.footerBackgroundColor = runtimeSectionSignals.footerBackgroundColor;
+    }
+    if (Number(runtimeSectionSignals.navMenuDepth || 0) > 0) {
+      mergedSummary.navMenuDepth = Math.max(
+        Number(mergedSummary?.navMenuDepth || 1),
+        Number(runtimeSectionSignals.navMenuDepth || 1)
+      );
+    }
+    mergedSummary.sourceSectionHints = mergeSourceSectionHints([
+      mergedSummary?.sourceSectionHints,
+      runtimeSectionSignals.sourceSectionHints,
+    ]);
+    mergedSummary.sectionComputedStyles = mergeRuntimeSectionComputedStyles([
+      runtimeSectionSignals.sectionComputedStyles,
+      mergedSummary?.sectionComputedStyles,
+    ]);
+    mergedSummary.sectionLayout = mergeRuntimeSectionLayout([
+      runtimeSectionSignals.sectionLayout,
+      mergedSummary?.sectionLayout,
+    ]);
+    const sectionComputedStyleKinds = Object.keys(
+      mergedSummary?.sectionComputedStyles && typeof mergedSummary.sectionComputedStyles === "object"
+        ? mergedSummary.sectionComputedStyles
+        : {}
+    ).length;
+    const sectionLayoutKinds = Object.keys(
+      mergedSummary?.sectionLayout && typeof mergedSummary.sectionLayout === "object"
+        ? mergedSummary.sectionLayout
+        : {}
+    ).filter((kind) => RUNTIME_SECTION_LAYOUT_KINDS.includes(kind)).length;
+    console.log(
+      `${sitePrefix} runtime section signals: navDepth=${mergedSummary.navMenuDepth || 1}, navBg=${mergedSummary.navBackgroundColor || "n/a"}, footerBg=${mergedSummary.footerBackgroundColor || "n/a"}, computedStyleKinds=${sectionComputedStyleKinds}, layoutKinds=${sectionLayoutKinds}`
+    );
+  }
+  if (screenshotSurfaceSignals && typeof screenshotSurfaceSignals === "object") {
+    const screenshotNavColor = normalizeColorToken(screenshotSurfaceSignals.navBackgroundColor || "");
+    const screenshotFooterColor = normalizeColorToken(screenshotSurfaceSignals.footerBackgroundColor || "");
+    if (screenshotNavColor && !String(mergedSummary?.navBackgroundColor || "").trim()) {
+      mergedSummary.navBackgroundColor = screenshotNavColor;
+    }
+    if (screenshotFooterColor && !String(mergedSummary?.footerBackgroundColor || "").trim()) {
+      mergedSummary.footerBackgroundColor = screenshotFooterColor;
+    }
+    mergedSummary.sourceSectionHints = mergeSourceSectionHints([
+      mergedSummary?.sourceSectionHints,
+      {
+        darkFooterSignals: Boolean(screenshotSurfaceSignals.darkFooterSignals),
+      },
+    ]);
+    console.log(
+      `${sitePrefix} screenshot surface signals: navBg=${screenshotNavColor || "n/a"}, footerBg=${screenshotFooterColor || "n/a"}, darkFooter=${screenshotSurfaceSignals.darkFooterSignals ? "yes" : "no"}`
+    );
+  }
+  const historicalSummaryFallback = await loadHistoricalHtmlSummaryFallback({
+    siteId: site.id,
+    siteUrl: siteForRun.url || "",
+    currentRunId: options?.runId || "",
+  });
+  const summaryLooksBlocked = isLikelyBlockedHtmlSummary(mergedSummary);
+  if (historicalSummaryFallback?.summary && summaryLooksBlocked) {
+    mergedSummary = mergeSummaryWithHistoricalFallback({
+      current: mergedSummary,
+      historical: historicalSummaryFallback.summary,
+    });
+    console.log(
+      `${sitePrefix} html summary fallback applied from run=${historicalSummaryFallback.runId} (${path.relative(
+        ROOT,
+        historicalSummaryFallback.filePath
+      )})`
+    );
+  }
   if (crawlPipeline?.ok) {
     const mergedThemeColors = mergeThemeColors(mergedSummary, crawlPipeline.styleFused);
     if (mergedThemeColors.length) mergedSummary.themeColors = mergedThemeColors;
+    const typographySignals = mergeTypographySignals(mergedSummary, crawlPipeline.styleFused);
+    if (typographySignals.fontFamilies.length) mergedSummary.fontFamilies = typographySignals.fontFamilies;
+    if (typographySignals.headingFontFamily) mergedSummary.headingFontFamily = typographySignals.headingFontFamily;
+    if (typographySignals.bodyFontFamily) mergedSummary.bodyFontFamily = typographySignals.bodyFontFamily;
   }
+  const strictVisualParityMode =
+    !homeOnlyMode &&
+    String(siteFidelityConfig?.mode || resolveFidelitySettings(siteForRun, options).mode || "").toLowerCase() === "strict";
+  const strictFidelityMode =
+    String(siteFidelityConfig?.mode || resolveFidelitySettings(siteForRun, options).mode || "").toLowerCase() === "strict";
+  const imageHeavySignals = detectImageHeavySignals({ summary: mergedSummary, crawl: crawlReport });
+  const imageIndependentTemplateRule = extractSpecialRuleValue(siteForRun, "imageIndependentTemplate");
+  const imageIndependentAutoDefault = strictFidelityMode ? false : imageHeavySignals.isImageHeavy;
+  const imageIndependentTemplate =
+    imageIndependentTemplateRule === undefined
+      ? imageIndependentAutoDefault
+      : String(imageIndependentTemplateRule).trim().toLowerCase() === "auto"
+        ? imageIndependentAutoDefault
+        : parseBool(imageIndependentTemplateRule);
+  const imageIndependentTheme = parseBool(
+    extractSpecialRuleValue(siteForRun, "imageIndependentTheme") ?? false
+  );
+  const imageFillPolicyRaw = String(extractSpecialRuleValue(siteForRun, "imageFillPolicy") || "")
+    .trim()
+    .toLowerCase();
+  const imageFillPolicy =
+    imageFillPolicyRaw === "source_or_gallery" ||
+    imageFillPolicyRaw === "gallery_or_source" ||
+    imageFillPolicyRaw === "source_only" ||
+    imageFillPolicyRaw === "gallery_only"
+      ? imageFillPolicyRaw
+      : "source_or_gallery";
+  if (imageIndependentTemplate) {
+    const currentPolicy = String(siteForRun.imageSourcePolicy || "").trim().toLowerCase();
+    if (
+      currentPolicy !== "source_or_gallery" &&
+      currentPolicy !== "gallery_or_source" &&
+      currentPolicy !== "source_only" &&
+      currentPolicy !== "gallery_only"
+    ) {
+      siteForRun.imageSourcePolicy = imageFillPolicy;
+    }
+    siteForRun.disableScreenshotImages = true;
+    siteForRun.specialRules = {
+      ...(siteForRun.specialRules && typeof siteForRun.specialRules === "object" ? siteForRun.specialRules : {}),
+      imageIndependentTemplate: true,
+      imageIndependentTheme,
+      imageIndependentLayout: true,
+      imageIndependentSections: true,
+      imageIndependentConstraints: true,
+      imageFillPolicy,
+    };
+    console.log(
+      `${sitePrefix} image-independent mode enabled: summaryImages=${imageHeavySignals.summaryImageCount}, crawlAvgImages=${imageHeavySignals.crawlImageAvg}, richPageRatio=${imageHeavySignals.richPageRatio}, fill=${String(siteForRun.imageSourcePolicy || imageFillPolicy)}`
+    );
+  } else if (strictVisualParityMode && imageHeavySignals.isImageHeavy) {
+    console.log(
+      `${sitePrefix} strict mode keeps source-image fidelity (skip image-independent auto mode)`
+    );
+  }
+  const effectiveVisualSignature = imageIndependentTheme ? null : visualSignature;
   const resolvedRecipe = resolveRecipeForSite({
     site: siteForRun,
     summary: mergedSummary,
-    visualSignature,
+    visualSignature: effectiveVisualSignature,
   });
   const recipe = resolvedRecipe.recipe;
   const referenceSlices = await runWithProgress(
@@ -7758,9 +23859,14 @@ const processSiteWithPipelineRegression = async ({
         desktopSource: preferredDesktop,
         mobileSource: preferredMobile,
         preset: recipe?.id,
-      }),
+        sectionLayout: mergedSummary?.sectionLayout,
+    }),
     { prefix: sitePrefix, heartbeatMs: 15000 }
   );
+  const sectionVisualSignatures = imageIndependentTheme
+    ? {}
+    : await extractSectionVisualSignatures(referenceSlices);
+  mergedSummary = enrichSummaryWithSectionBackgroundColors(mergedSummary, sectionVisualSignatures);
   if (resolvedRecipe.synthesized) {
     console.log(
       `[template-factory] dynamic recipe synthesized for ${site.id}: base=${resolvedRecipe.baseRecipeId}, score=${resolvedRecipe.fit.score}, mismatches=${resolvedRecipe.fit.mismatches.join(
@@ -7777,13 +23883,16 @@ const processSiteWithPipelineRegression = async ({
         screenshots: {
           desktopAuto: desktopShot,
           mobileAuto: mobileShot,
-          desktopReference: copiedDesktop,
-          mobileReference: copiedMobile,
+          desktopReference: copiedDesktop || persistedDesktop || null,
+          mobileReference: copiedMobile || persistedMobile || null,
           desktopPreferred: preferredDesktop,
           mobilePreferred: preferredMobile,
+          desktopReferenceSource,
+          mobileReferenceSource,
         },
         publishedAssets,
         referenceSlices,
+        sectionVisualSignatures,
         antiCrawlPrecheck: {
           enabled: antiCrawlPrecheckEnabled,
           path: path.join(ingestDir, "anti-crawl-precheck.json"),
@@ -7795,6 +23904,14 @@ const processSiteWithPipelineRegression = async ({
           baseRecipeId: resolvedRecipe.baseRecipeId,
           fitScore: resolvedRecipe.fit?.score ?? null,
           fitMismatches: Array.isArray(resolvedRecipe.fit?.mismatches) ? resolvedRecipe.fit.mismatches : [],
+        },
+        imagePolicy: {
+          imageIndependentTemplate,
+          imageIndependentTheme,
+          imageSourcePolicy: String(siteForRun.imageSourcePolicy || ""),
+          disableScreenshotImages: Boolean(siteForRun.disableScreenshotImages),
+          structureFirstPipeline: structureFirstPolicy,
+          signals: imageHeavySignals,
         },
         htmlSummary: mergedSummary,
         crawl: crawlReport
@@ -7843,21 +23960,120 @@ const processSiteWithPipelineRegression = async ({
     crawl: crawlReport,
     crawlAssetPack,
     options,
+    siteVisualSignature: effectiveVisualSignature,
+    sectionVisualSignatures,
   });
+  const designContractRaw = buildDesignContract({
+    site: siteForRun,
+    indexCard: indexCardRaw,
+    summary: mergedSummary,
+    visualSignature: effectiveVisualSignature || visualSignature,
+    specPack: specPackRaw,
+  });
+  const designContractComplianceRaw = evaluateDesignContractCompliance({
+    designContract: designContractRaw,
+    specPack: specPackRaw,
+    driftThreshold: 90,
+  });
+  const assemblyManifestRaw = buildAssemblyManifest({
+    site: siteForRun,
+    specPack: specPackRaw,
+  });
+  const keyFlowIntegrityRaw = evaluateKeyFlowIntegrity({
+    specPack: specPackRaw,
+    assemblyManifest: assemblyManifestRaw,
+  });
+  const accessibilityRaw = evaluateAccessibilityFromSpecPack({
+    specPack: specPackRaw,
+  });
+  const templateAssetManifestRaw = buildTemplateAssetManifest({
+    site: siteForRun,
+    indexCard: indexCardRaw,
+    specPack: specPackRaw,
+  });
+  const dedupFingerprintsRaw = buildTemplateDedupFingerprints({
+    manifest: templateAssetManifestRaw,
+    specPack: specPackRaw,
+  });
+  const assetContractReportRaw = evaluateTemplateAssetContracts({
+    manifest: templateAssetManifestRaw,
+    dedup: dedupFingerprintsRaw,
+    runtime: {
+      fidelitySimilarity: null,
+      fidelityThreshold: resolveFidelitySettings(siteForRun, options).threshold,
+    },
+  });
+  const specPackWithQualityRaw = {
+    ...specPackRaw,
+    design_contract: designContractRaw,
+    design_contract_compliance: designContractComplianceRaw,
+    assembly_manifest: assemblyManifestRaw,
+    key_flow_integrity: keyFlowIntegrityRaw,
+    accessibility: accessibilityRaw,
+    template_asset_manifest: templateAssetManifestRaw,
+    dedup_fingerprints: dedupFingerprintsRaw,
+    asset_contract_report: assetContractReportRaw,
+  };
   const indexCard = rewriteBrandTextDeep(indexCardRaw);
-  const specPack = rewriteBrandTextDeep(specPackRaw);
+  const specPack = rewriteBrandTextDeep(specPackWithQualityRaw);
   const linkReport = buildLinkReport({
     site: siteForRun,
     specPack,
-    sitePages: Array.isArray(specPack?.site_pages) ? specPack.site_pages : [],
+    sitePages: Array.isArray(specPack?.page_specs)
+      ? specPack.page_specs.map((page) => ({
+          path: normalizeTemplatePagePath(page?.path || "/"),
+          name: String(page?.name || "").trim() || formatTemplatePageName(page?.path || "/"),
+        }))
+      : [],
   });
   const sanitizedSite = rewriteBrandTextDeep(siteForRun);
-  const styleProfile = rewriteBrandTextDeep(specPackToStyleProfile({ site: sanitizedSite, indexCard, specPack }));
+  const styleProfile = rewriteBrandTextDeep(
+    await applyStructureFirstBackfillToStyleProfile({
+      styleProfile: specPackToStyleProfile({ site: sanitizedSite, indexCard, specPack }),
+      site: siteForRun,
+      summary: mergedSummary,
+      sectionVisualSignatures,
+      options,
+    })
+  );
 
   await fs.writeFile(path.join(extractedDir, "index-card.json"), JSON.stringify(indexCard, null, 2));
   await fs.writeFile(path.join(extractedDir, "spec-pack.json"), JSON.stringify(specPack, null, 2));
   await fs.writeFile(path.join(extractedDir, "style-profile.json"), JSON.stringify(styleProfile, null, 2));
   await fs.writeFile(path.join(extractedDir, "link-report.json"), JSON.stringify(linkReport, null, 2));
+  await fs.writeFile(path.join(extractedDir, "design-contract.json"), JSON.stringify(specPack?.design_contract || {}, null, 2));
+  await fs.writeFile(
+    path.join(extractedDir, "discovered-pages.json"),
+    JSON.stringify(specPack?.discovered_pages || [], null, 2)
+  );
+  await fs.writeFile(
+    path.join(extractedDir, "intake-review.json"),
+    JSON.stringify(specPack?.intake_review || {}, null, 2)
+  );
+  await fs.writeFile(
+    path.join(extractedDir, "assembly-manifest.json"),
+    JSON.stringify(specPack?.assembly_manifest || {}, null, 2)
+  );
+  await fs.writeFile(
+    path.join(extractedDir, "accessibility-report.json"),
+    JSON.stringify(specPack?.accessibility || {}, null, 2)
+  );
+  await fs.writeFile(
+    path.join(extractedDir, "template-asset-manifest.json"),
+    JSON.stringify(specPack?.template_asset_manifest || {}, null, 2)
+  );
+  await fs.writeFile(
+    path.join(extractedDir, "dedup-fingerprints.json"),
+    JSON.stringify(specPack?.dedup_fingerprints || {}, null, 2)
+  );
+  await fs.writeFile(
+    path.join(extractedDir, "asset-contract-report.json"),
+    JSON.stringify(specPack?.asset_contract_report || {}, null, 2)
+  );
+  await fs.writeFile(
+    path.join(extractedDir, "asset-approval.json"),
+    JSON.stringify(specPack?.template_asset_manifest?.review || {}, null, 2)
+  );
 
   const processedItem = {
     site: siteForRun,
@@ -7874,11 +24090,43 @@ const processSiteWithPipelineRegression = async ({
       fitMismatches: Array.isArray(resolvedRecipe.fit?.mismatches) ? resolvedRecipe.fit.mismatches : [],
     },
     visualSignature,
-    referenceDesktopPath: preferredDesktop || copiedDesktop || desktopShot || "",
-    referenceMobilePath: preferredMobile || copiedMobile || mobileShot || "",
+    referenceDesktopPath: preferredDesktop || "",
+    referenceMobilePath: preferredMobile || "",
+    referenceDesktopSource: desktopReferenceSource,
+    referenceMobileSource: mobileReferenceSource,
+    referenceDesktopCapturePath: preferredDesktop || copiedDesktop || desktopShot || "",
+    referenceMobileCapturePath: preferredMobile || copiedMobile || mobileShot || "",
+    referenceSlices: referenceSlices || null,
+    sectionVisualSignatures,
     crawlAssetPack: crawlAssetPack || null,
     linkReport,
+    designContract: specPack?.design_contract || null,
+    designContractCompliance: specPack?.design_contract_compliance || null,
+    assemblyManifest: specPack?.assembly_manifest || null,
+    keyFlowIntegrity: specPack?.key_flow_integrity || null,
+    accessibilityReport: specPack?.accessibility || null,
+    assetContractReport: specPack?.asset_contract_report || null,
   };
+
+  const pipelineRegressionLibraryPath = path.join(
+    runDir,
+    "pipeline-regression",
+    `${slug(String(site?.id || "")) || "site"}.style-profiles.generated.json`
+  );
+  await writeRunLibrarySnapshot({
+    filePath: pipelineRegressionLibraryPath,
+    processed: [processedItem],
+    runId: `${options.runId}-pipeline-${site.id}`,
+    manifestPath: options.manifest,
+    fidelityRows: [],
+    templateExclusiveComponents: [],
+  });
+  const pipelineRegressionEnvOverrides = buildRegressionEnvOverrides({
+    runLibraryPath: pipelineRegressionLibraryPath,
+    runDir,
+    options,
+  });
+  console.log(`${sitePrefix} prepared pipeline regression library: ${pipelineRegressionLibraryPath}`);
 
   console.log(
     `${sitePrefix} processed recipe=${recipe.id} elapsed=${formatElapsed(Date.now() - siteStartedAt)}`
@@ -7897,6 +24145,7 @@ const processSiteWithPipelineRegression = async ({
         enforcement: options.fidelityEnforcement,
         requiredPagesPerSite: options.requiredPagesPerSite,
       };
+      const stretchTarget = resolveHomeStretchSimilarityTarget({ fidelityConfig, options });
       const strictRequiredPagesForCase =
         String(fidelityConfig.mode || "").toLowerCase() === "strict"
           ? selectRequiredPagesForSite({
@@ -7912,6 +24161,7 @@ const processSiteWithPipelineRegression = async ({
       let fidelityPass = false;
       let visualSimilarity = null;
       let structureSimilarity = null;
+      let sectionSimilarity = null;
       let pageDetails = [];
       let failedRequiredPages = [];
       let missingRequiredPages = [];
@@ -7930,6 +24180,7 @@ const processSiteWithPipelineRegression = async ({
               regressionTimeoutMs: options.regressionTimeoutMs,
               attempt,
               repairContext,
+              envOverrides: pipelineRegressionEnvOverrides,
             }),
           { prefix: sitePrefix, heartbeatMs: 30000 }
         );
@@ -7951,20 +24202,29 @@ const processSiteWithPipelineRegression = async ({
         let fidelityResult = null;
         let fidelityVisual = null;
         let fidelityStructure = null;
+        let fidelitySection = null;
         let fidelityPageDetails = [];
-        if (pageScreenshots.length > 0 && crawlPagesByPath.size > 0) {
+        if (pageScreenshots.length > 0) {
+          const targetPagePaths =
+            String(fidelityConfig.mode || "").toLowerCase() === "strict" && strictRequiredPagesForCase.length
+              ? new Set(strictRequiredPagesForCase.map((row) => normalizePagePathForFidelity(row?.path || "/")))
+              : null;
           const evaluated = await evaluateCaseFidelityFromPageScreenshots({
             item: processedItem,
             pageScreenshots,
             crawlPagesByPath,
             structureWeight: options.fidelityStructureWeight,
+            targetPagePaths,
           });
           fidelityResult = evaluated.similarity;
           fidelityVisual = evaluated.visualSimilarity;
           fidelityStructure = evaluated.structureSimilarity;
+          fidelitySection = evaluated.sectionSimilarity || null;
           fidelityPageDetails = evaluated.pageRows;
           console.log(
-            `${sitePrefix} per-page fidelity combined=${fidelityResult ?? "n/a"} visual=${fidelityVisual ?? "n/a"} structure=${fidelityStructure ?? "n/a"}`
+            `${sitePrefix} per-page fidelity combined=${fidelityResult ?? "n/a"} visual=${fidelityVisual ?? "n/a"} structure=${
+              fidelityStructure ?? "n/a"
+            } section(target)=${fidelitySection?.overall ?? "n/a"}`
           );
         } else {
           fidelityVisual = await computeImageSimilarity(
@@ -7981,8 +24241,11 @@ const processSiteWithPipelineRegression = async ({
         similarity = fidelityResult;
         visualSimilarity = fidelityVisual;
         structureSimilarity = fidelityStructure;
+        sectionSimilarity = fidelitySection;
         pageDetails = fidelityPageDetails;
         const avgPass = typeof similarity === "number" && similarity >= Number(fidelityConfig.threshold || 0);
+        const stretchPass =
+          stretchTarget === null ? true : typeof similarity === "number" && similarity >= Number(stretchTarget);
         failedRequiredPages = [];
         missingRequiredPages = [];
         if (String(fidelityConfig.mode || "").toLowerCase() === "strict" && strictRequiredPagesForCase.length) {
@@ -8020,31 +24283,49 @@ const processSiteWithPipelineRegression = async ({
             }
           }
         }
-        fidelityPass = avgPass && failedRequiredPages.length === 0 && missingRequiredPages.length === 0;
+        fidelityPass = avgPass && stretchPass && failedRequiredPages.length === 0 && missingRequiredPages.length === 0;
 
         console.log(
-          `${sitePrefix} regression attempt ${attempt + 1} similarity=${similarity ?? "n/a"} threshold=${fidelityConfig.threshold} pageThreshold=${fidelityConfig.pageThreshold} pageFailures=${failedRequiredPages.length} pageMissing=${missingRequiredPages.length} pass=${fidelityPass}`
+          `${sitePrefix} regression attempt ${attempt + 1} similarity=${similarity ?? "n/a"} threshold=${fidelityConfig.threshold} stretchTarget=${
+            stretchTarget ?? "n/a"
+          } pageThreshold=${fidelityConfig.pageThreshold} pageFailures=${failedRequiredPages.length} pageMissing=${missingRequiredPages.length} pass=${fidelityPass}`
         );
 
         if (fidelityPass || attempt >= maxRepairIterations) {
           break;
         }
 
+        const sectionFailures = collectSectionFailuresFromPageDetails({
+          pageDetails,
+          threshold: Math.min(SECTION_PATCH_MIN_SIMILARITY, Number(fidelityConfig.pageThreshold || SECTION_PATCH_MIN_SIMILARITY)),
+          max: 8,
+        });
         repairContext = {
           attempt: attempt + 1,
-          threshold: Number(fidelityConfig.threshold || 0),
+          threshold: Number(stretchTarget || fidelityConfig.threshold || 0),
           similarity,
-          gap: Number((Number(fidelityConfig.threshold || 0) - (similarity || 0)).toFixed(2)),
+          gap: Number((Number(stretchTarget || fidelityConfig.threshold || 0) - (similarity || 0)).toFixed(2)),
           issueSummary: failedRequiredPages.reduce(
             (acc, row) => ({ ...acc, [row.issueType || "copy_density"]: Number(acc[row.issueType || "copy_density"] || 0) + 1 }),
-            {}
+            {
+              ...(stretchTarget !== null && !stretchPass ? { copy_density: 1 } : {}),
+              ...(sectionFailures.length ? { layout: sectionFailures.length } : {}),
+            }
           ),
-          sectionHints: failedRequiredPages.slice(0, 6).map((row) => ({
-            sectionType: row.pagePath,
-            sectionKind: row.pageName,
-            similarity: row.similarity,
-            issue: row.issueType || "low fidelity",
-          })),
+          sectionHints: [
+            ...sectionFailures.map((row) => ({
+              sectionType: `${row.pagePath}:${row.sectionKind}`,
+              sectionKind: row.sectionType || row.sectionKind,
+              similarity: row.similarity,
+              issue: row.issue,
+            })),
+            ...failedRequiredPages.slice(0, 4).map((row) => ({
+              sectionType: row.pagePath,
+              sectionKind: row.pageName,
+              similarity: row.similarity,
+              issue: row.issueType || "low fidelity",
+            })),
+          ].slice(0, 8),
         };
       }
 
@@ -8056,8 +24337,10 @@ const processSiteWithPipelineRegression = async ({
         similarity,
         visualSimilarity,
         structureSimilarity,
+        sectionSimilarity,
         pageDetails,
         threshold: fidelityConfig.threshold,
+        stretchTarget,
         pageThreshold: fidelityConfig.pageThreshold,
         pass: fidelityPass,
         requiredPages: strictRequiredPagesForCase.map((row) => ({
@@ -8111,12 +24394,39 @@ class Semaphore {
 const main = async () => {
   const runStartedAt = Date.now();
   const options = parseArgs(process.argv);
+  if (options.mode === "pen-review") {
+    await runPenReviewMode({ options });
+    return;
+  }
+  if (options.mode === "template-publish" && options.penFile) {
+    await runTemplatePublishFromPenMode({ options });
+    return;
+  }
+  throw new Error(
+    "[template-factory] simplified pen-first workflow: only `--mode pen-review` and `--mode template-from-pen|template-publish --pen-file <file.pen>` are supported."
+  );
 
   const runMain = async () => {
     const manifestPath = options.manifest;
     const sites = await loadManifest(manifestPath);
     if (!sites.length) {
       throw new Error(`No valid sites in manifest: ${manifestPath}`);
+    }
+    const intakeReviewMap = await loadSiteScopedWorkflowFile(options.intakeReviewFile);
+    const assetApprovalMap = await loadSiteScopedWorkflowFile(options.assetApprovalFile);
+    if (intakeReviewMap.size || assetApprovalMap.size) {
+      for (const site of sites) {
+        const siteId = slug(String(site?.id || ""));
+        if (siteId && intakeReviewMap.has(siteId)) {
+          site.intakeReview = intakeReviewMap.get(siteId);
+        }
+        if (siteId && assetApprovalMap.has(siteId)) {
+          site.assetApproval = assetApprovalMap.get(siteId);
+        }
+      }
+      console.log(
+        `[template-factory] workflow inputs loaded: intake=${intakeReviewMap.size} approval=${assetApprovalMap.size}`
+      );
     }
 
     const runDir = path.join(RUNS_DIR, options.runId);
@@ -8125,7 +24435,7 @@ const main = async () => {
     await ensureDir(LIB_DIR);
 
     console.log(
-      `[template-factory] run start id=${options.runId} sites=${sites.length} crawlSite=${options.crawlSite} fastMode=${options.fastMode} pipelineParallel=${options.pipelineParallel} maxDiscoveredPages=${options.maxDiscoveredPages} maxNavLinks=${options.maxNavLinks} strictAvgMin=${options.strictAvgSimilarityMin} strictPageMin=${options.strictPageSimilarityMin}`
+      `[template-factory] run start id=${options.runId} mode=${options.mode} sites=${sites.length} crawlSite=${options.crawlSite} fastMode=${options.fastMode} pipelineParallel=${options.pipelineParallel} maxDiscoveredPages=${options.maxDiscoveredPages} maxNavLinks=${options.maxNavLinks} strictAvgMin=${options.strictAvgSimilarityMin} strictPageMin=${options.strictPageSimilarityMin} siteStyleProfile=${options.siteStyleProfile} autoPrivateBlocks=${options.autoPrivateBlocks} autoPrivateThreshold=${options.autoPrivateSectionSimilarityThreshold} pencilEnabled=${options.pencilEnabled} pencilStrict=${options.pencilStrict}`
     );
 
     const processed = [];
@@ -8216,31 +24526,45 @@ const main = async () => {
   let templateExclusiveComponents = [];
   let templateExclusiveUsage = [];
   let templateExclusiveComponentsPath = null;
+  let autoPrivateMaterializedComponents = [];
+  let autoPrivateMaterializedCount = 0;
+  let availableBlockFolders = [];
+  let availableBlockFolderSet = new Set();
   if (options.templateExclusiveBlocks !== false && processed.length) {
     const blocksDir = path.join(ROOT, "src", "components", "blocks");
-    let availableFolders = [];
     try {
       const entries = await fs.readdir(blocksDir, { withFileTypes: true });
-      availableFolders = entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
+      availableBlockFolders = entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
+      availableBlockFolderSet = new Set(availableBlockFolders);
     } catch {
-      availableFolders = [];
+      availableBlockFolders = [];
+      availableBlockFolderSet = new Set();
     }
+    for (const item of processed) {
+      const sanitizedSite = rewriteBrandTextDeep(item.site || {});
+      item.styleProfile = rewriteBrandTextDeep(
+        await applyStructureFirstBackfillToStyleProfile({
+          styleProfile: specPackToStyleProfile({
+            site: sanitizedSite,
+            indexCard: item.indexCard,
+            specPack: item.specPack,
+          }),
+          site: item.site || {},
+          summary: item.summary || {},
+          sectionVisualSignatures: item.sectionVisualSignatures || null,
+          options,
+        })
+      );
+    }
+
     const injected = injectTemplateExclusiveComponents({
       processed,
-      availableBlockFolders: new Set(availableFolders),
+      availableBlockFolders: availableBlockFolderSet,
     });
     templateExclusiveComponents = injected.components;
     templateExclusiveUsage = injected.usage;
 
     for (const item of processed) {
-      const sanitizedSite = rewriteBrandTextDeep(item.site || {});
-      item.styleProfile = rewriteBrandTextDeep(
-        specPackToStyleProfile({
-          site: sanitizedSite,
-          indexCard: item.indexCard,
-          specPack: item.specPack,
-        })
-      );
       const siteId = String(item?.site?.id || "");
       item.templateExclusiveComponents = templateExclusiveComponents.filter(
         (component) => String(component?.templateExclusive?.siteId || "") === siteId
@@ -8263,6 +24587,7 @@ const main = async () => {
               name: component.name,
               kebabName: component.kebabName,
               defaultProps: component.defaultProps,
+              editableFields: Array.isArray(component.editableFields) ? component.editableFields : [],
               templateExclusive: component.templateExclusive,
             })),
             usage: templateExclusiveUsage,
@@ -8291,7 +24616,23 @@ const main = async () => {
     );
   }
 
+  runLibrary = await writeRunLibrarySnapshot({
+    filePath: runLibraryPath,
+    processed,
+    runId: options.runId,
+    manifestPath,
+    fidelityRows: [],
+    templateExclusiveComponents,
+  });
+  console.log(`[template-factory] prepared run-scoped regression library: ${runLibraryPath}`);
+  const regressionEnvOverrides = buildRegressionEnvOverrides({
+    runLibraryPath,
+    runDir,
+    options,
+  });
+
   let regression = null;
+  let effectiveRegressionReportPath = "";
   let regressionElapsedMs = 0;
   let score = null;
   let fidelity = null;
@@ -8311,15 +24652,148 @@ const main = async () => {
   let previewLinks = [];
   let previewServer = null;
   const fidelityByCase = new Map(processed.map((item) => [String(item.site?.id || ""), resolveFidelitySettings(item.site, options)]));
+  const requiredPageSelectionLimit = Math.max(1, Math.floor(Number(options.requiredPagesPerSite || 4) || 4));
+  if (!options.homeOnly && processed.length) {
+    for (const item of processed) {
+      const caseId = String(item?.site?.id || "").trim();
+      if (!caseId) continue;
+      const fidelityConfig = fidelityByCase.get(caseId);
+      if (String(fidelityConfig?.mode || "").toLowerCase() !== "strict") continue;
+
+      const perSiteLimit = Math.max(
+        1,
+        Math.floor(Number(fidelityConfig?.requiredPagesPerSite || requiredPageSelectionLimit) || requiredPageSelectionLimit)
+      );
+      const beforeSelection = selectRequiredPagesForSite({
+        siteItem: item,
+        maxPagesPerSite: perSiteLimit,
+      });
+      const beforeSummary = summarizeRequiredSelection(beforeSelection);
+      if (beforeSummary.count >= perSiteLimit) continue;
+
+      let fallbackPack = null;
+      let candidatePack = item?.crawlAssetPack || null;
+      fallbackPack = await loadFallbackCrawlAssetPack({
+        siteId: caseId,
+        siteUrl: item?.site?.url || "",
+        currentRunId: options.runId,
+        minPages: perSiteLimit,
+      });
+      if (fallbackPack) {
+        candidatePack = mergeCrawlAssetPacks({
+          primary: item?.crawlAssetPack || null,
+          fallback: fallbackPack,
+        });
+      }
+      candidatePack = injectSyntheticPageSpecRows({
+        siteItem: item,
+        crawlAssetPack: candidatePack,
+      });
+      const afterSelection = selectRequiredPagesForSite({
+        siteItem: { ...item, crawlAssetPack: candidatePack },
+        maxPagesPerSite: perSiteLimit,
+      });
+      const afterSummary = summarizeRequiredSelection(afterSelection);
+      if (afterSummary.score <= beforeSummary.score) {
+        if (!fallbackPack) {
+          console.warn(
+            `[template-factory] strict coverage fallback unavailable for ${caseId}: required=${perSiteLimit}, selected=${beforeSummary.count}`
+          );
+        }
+        console.warn(
+          `[template-factory] strict coverage fallback no gain for ${caseId}: before=${beforeSummary.count}/${beforeSummary.roleCount}, after=${afterSummary.count}/${afterSummary.roleCount}`
+        );
+        continue;
+      }
+
+      const mergedManifestPath = path.join(item.siteDir, "ingest", "pages", "pages.merged.json");
+      await ensureDir(path.dirname(mergedManifestPath));
+      await fs.writeFile(
+        mergedManifestPath,
+        JSON.stringify(
+          {
+            generatedAt: new Date().toISOString(),
+            reusedFromRunId: String(fallbackPack?.reusedFromRunId || ""),
+            entryUrl: String(item?.site?.url || ""),
+            homePath: String(candidatePack?.homePath || "/"),
+            pageCount: Array.isArray(candidatePack?.pages) ? candidatePack.pages.length : 0,
+            pages: Array.isArray(candidatePack?.pages) ? candidatePack.pages : [],
+          },
+          null,
+          2
+        )
+      );
+      item.crawlAssetPack = {
+        ...candidatePack,
+        manifestPath: mergedManifestPath,
+        reusedFromRunId: String(fallbackPack?.reusedFromRunId || ""),
+      };
+      console.log(
+        `[template-factory] strict coverage fallback merged for ${caseId}: before=${beforeSummary.count}/${beforeSummary.roleCount}, after=${afterSummary.count}/${afterSummary.roleCount}, fallbackRun=${fallbackPack?.reusedFromRunId || "none"}, syntheticRows=${Number(candidatePack?.syntheticPageSpecRows || 0)}`
+      );
+    }
+  }
   const requiredCasesSelection = selectRequiredCases({
     processed,
     fidelityByCase,
-    maxPagesPerSite: Number(options.requiredPagesPerSite || 4),
+    maxPagesPerSite: requiredPageSelectionLimit,
   });
   const strictCaseIds = Array.isArray(requiredCasesSelection.strictCaseIds) ? requiredCasesSelection.strictCaseIds : [];
   const strictRequiredPageCases = Array.isArray(requiredCasesSelection.requiredPageCases)
     ? requiredCasesSelection.requiredPageCases
     : [];
+
+  // Keep fidelity scoring comparable across runs by always constraining evaluated pages
+  // to a stable required-page subset (home + key roles), even when strict mode is off.
+  const seenEvaluationRequiredCases = new Set();
+  const requiredPagePathsByCase = new Map();
+  const pushEvaluationRequiredPageCase = ({
+    caseId = "",
+    pagePath = "/",
+  } = {}) => {
+    const normalizedCaseId = String(caseId || "").trim();
+    const normalizedPath = normalizePagePathForFidelity(pagePath || "/");
+    if (!normalizedCaseId || !normalizedPath) return;
+    if (!requiredPagePathsByCase.has(normalizedCaseId)) {
+      requiredPagePathsByCase.set(normalizedCaseId, new Set());
+    }
+    requiredPagePathsByCase.get(normalizedCaseId).add(normalizedPath);
+    const id = `${normalizedCaseId}:${normalizedPath}`;
+    if (seenEvaluationRequiredCases.has(id)) return;
+    seenEvaluationRequiredCases.add(id);
+  };
+
+  for (const item of processed) {
+    const caseId = String(item?.site?.id || "").trim();
+    if (!caseId) continue;
+    const selectedPages = selectRequiredPagesForSite({
+      siteItem: item,
+      maxPagesPerSite: requiredPageSelectionLimit,
+    });
+    if (!selectedPages.length) {
+      pushEvaluationRequiredPageCase({
+        caseId,
+        pagePath: "/",
+      });
+      continue;
+    }
+    for (const page of selectedPages) {
+      pushEvaluationRequiredPageCase({
+        caseId,
+        pagePath: page?.path || "/",
+      });
+    }
+  }
+
+  for (const entry of strictRequiredPageCases) {
+    const caseId = String(entry?.caseId || "").trim();
+    const pagePath = normalizePagePathForFidelity(entry?.pagePath || "/");
+    if (!caseId || !pagePath) continue;
+    pushEvaluationRequiredPageCase({
+      caseId,
+      pagePath,
+    });
+  }
   const strictFailCaseIds = strictCaseIds.filter((id) => (fidelityByCase.get(id)?.enforcement || "warn") === "fail");
   if (options.fastMode && strictCaseIds.length) {
     console.log(
@@ -8348,6 +24822,7 @@ const main = async () => {
         similarity: item.pipelineRegression.similarity,
         visualSimilarity: item.pipelineRegression.visualSimilarity,
         structureSimilarity: item.pipelineRegression.structureSimilarity,
+        sectionSimilarity: item.pipelineRegression.sectionSimilarity || null,
         pageDetails: Array.isArray(item.pipelineRegression.pageDetails) ? item.pipelineRegression.pageDetails : [],
         mode: item.pipelineRegression.mode,
         threshold: item.pipelineRegression.threshold,
@@ -8377,6 +24852,7 @@ const main = async () => {
       strictFailCaseIds,
       strictRequiredPageCases,
       options,
+      processedByCase: new Map(processed.map((item) => [String(item?.site?.id || ""), item])),
     });
     fidelityRowsEvaluated = policyEval.fidelityRowsEvaluated;
     strictFidelityFailures = policyEval.strictFidelityFailures;
@@ -8453,42 +24929,78 @@ const main = async () => {
     const regressionStartedAt = Date.now();
     const maxRepairIterations = Math.max(0, Math.min(5, Number(options.autoRepairIterations || 0)));
     let repairContextByCase = new Map();
+    let bestAttemptResult = null;
 
     for (let attempt = 0; attempt <= maxRepairIterations; attempt += 1) {
       console.log(`[template-factory] regression attempt ${attempt + 1}/${maxRepairIterations + 1} start`);
-      regression = await runWithProgress(
-        `run regression attempt ${attempt + 1}/${maxRepairIterations + 1}`,
-        () =>
-          runRegression({
-            runDir,
-            sites: processed,
-            renderer: options.renderer,
-            groups: DEFAULT_TEMPLATE_FIRST_GROUP,
-            maxCases: options.maxCases,
-            regressionTimeoutMs: options.regressionTimeoutMs,
-            attempt,
-            repairContextByCase,
-          }),
-        { prefix: "[template-factory]", heartbeatMs: 30000 }
-      );
-      if (!regression.reportPath) break;
+      const candidateCount = Math.max(1, Math.floor(Number(options.regressionCandidatesPerAttempt || 1) || 1));
+      const candidateRows = [];
+      for (let candidateIndex = 0; candidateIndex < candidateCount; candidateIndex += 1) {
+        const candidateRegression = await runWithProgress(
+          `run regression attempt ${attempt + 1}/${maxRepairIterations + 1} candidate ${candidateIndex + 1}/${candidateCount}`,
+          () =>
+            runRegression({
+              runDir,
+              sites: processed,
+              renderer: options.renderer,
+              groups: DEFAULT_TEMPLATE_FIRST_GROUP,
+              maxCases: options.maxCases,
+              regressionTimeoutMs: options.regressionTimeoutMs,
+              attempt,
+              candidateIndex,
+              candidateTotal: candidateCount,
+              repairContextByCase,
+              envOverrides: regressionEnvOverrides,
+              options,
+            }),
+          { prefix: "[template-factory]", heartbeatMs: 30000 }
+        );
+        if (!candidateRegression?.reportPath) continue;
 
-      const outcome = await runWithProgress(
-        `evaluate regression attempt ${attempt + 1}/${maxRepairIterations + 1}`,
-        () =>
-          evaluateRegressionOutcome({
-            reportPath: regression.reportPath,
-            processed,
-            fidelityByCase,
-            strictCaseIds,
-            strictFailCaseIds,
-            strictRequiredPageCases,
-            options,
-          }),
-        { prefix: "[template-factory]", heartbeatMs: 20000 }
+        const candidateOutcome = await runWithProgress(
+          `evaluate regression attempt ${attempt + 1}/${maxRepairIterations + 1} candidate ${candidateIndex + 1}/${candidateCount}`,
+          () =>
+            evaluateRegressionOutcome({
+              reportPath: candidateRegression.reportPath,
+              processed,
+              fidelityByCase,
+              strictCaseIds,
+              strictFailCaseIds,
+              strictRequiredPageCases,
+              requiredPagePathsByCase,
+              options,
+            }),
+          { prefix: "[template-factory]", heartbeatMs: 20000 }
+        );
+        candidateRows.push({
+          candidateIndex,
+          regression: candidateRegression,
+          outcome: candidateOutcome,
+        });
+        console.log(
+          `[template-factory] regression candidate ${candidateIndex + 1}/${candidateCount} similarity=${
+            candidateOutcome?.fidelity?.overallSimilarity ?? "n/a"
+          } strictFailures=${candidateOutcome?.strictFidelityFailures?.length || 0} strictMissing=${
+            candidateOutcome?.strictFidelityMissing?.length || 0
+          } strictPageFailures=${candidateOutcome?.strictPageFidelityFailures?.length || 0} strictPageMissing=${
+            candidateOutcome?.strictPageFidelityMissing?.length || 0
+          }`
+        );
+      }
+
+      const selectedCandidate = selectBestRegressionCandidate(candidateRows);
+      if (!selectedCandidate) break;
+      regression = selectedCandidate.regression;
+      const outcome = selectedCandidate.outcome;
+      console.log(
+        `[template-factory] selected regression candidate ${
+          Number(selectedCandidate.candidateIndex || 0) + 1
+        }/${candidateCount} for attempt ${attempt + 1}`
       );
+
       score = outcome.score;
       fidelity = outcome.fidelity;
+      effectiveRegressionReportPath = String(outcome?.reportPath || regression?.reportPath || "");
       fidelityRowsEvaluated = outcome.fidelityRowsEvaluated;
       strictFidelityFailures = outcome.strictFidelityFailures;
       blockingFidelityFailures = outcome.blockingFidelityFailures;
@@ -8498,20 +25010,58 @@ const main = async () => {
       blockingPageFidelityFailures = outcome.blockingPageFidelityFailures;
       fidelityGateWouldFail = outcome.fidelityGateWouldFail;
       fidelityGatePassed = outcome.fidelityGatePassed;
+      const stretchShortfalls = fidelityRowsEvaluated.filter((row) => {
+        const caseId = String(row?.caseId || "");
+        if (!caseId || !strictCaseIds.includes(caseId)) return false;
+        if (!row?.comparable) return false;
+        const cfg = fidelityByCase.get(caseId) || {};
+        const target = resolveHomeStretchSimilarityTarget({ fidelityConfig: cfg, options });
+        if (target === null) return false;
+        return Number(row?.similarity || 0) < Number(target);
+      });
+      const currentSimilarity = Number(outcome?.fidelity?.overallSimilarity);
+      const bestSimilarity =
+        bestAttemptResult && Number.isFinite(Number(bestAttemptResult?.fidelity?.overallSimilarity))
+          ? Number(bestAttemptResult.fidelity.overallSimilarity)
+          : null;
+      if (
+        !bestAttemptResult ||
+        (Number.isFinite(currentSimilarity) && (bestSimilarity === null || currentSimilarity > bestSimilarity))
+      ) {
+        bestAttemptResult = {
+          regression,
+          score,
+          fidelity,
+          effectiveRegressionReportPath,
+          fidelityRowsEvaluated,
+          strictFidelityFailures,
+          blockingFidelityFailures,
+          strictFidelityMissing,
+          strictPageFidelityFailures,
+          strictPageFidelityMissing,
+          blockingPageFidelityFailures,
+          fidelityGateWouldFail,
+          fidelityGatePassed,
+        };
+      }
 
       regressionAttempts.push({
         attempt,
-        reportPath: regression.reportPath,
+        candidateCount,
+        selectedCandidate: Number(selectedCandidate.candidateIndex || 0) + 1,
+        reportPath: effectiveRegressionReportPath || regression.reportPath,
+        sourceReportPath: String(outcome?.sourceReportPath || regression.reportPath || ""),
         overallSimilarity: outcome.fidelity?.overallSimilarity ?? null,
         strictFailures: strictFidelityFailures.length,
         strictMissing: strictFidelityMissing.length,
         strictPageFailures: strictPageFidelityFailures.length,
         strictPageMissing: strictPageFidelityMissing.length,
+        stretchShortfalls: stretchShortfalls.length,
       });
       console.log(
         `[template-factory] regression attempt ${attempt + 1} summary similarity=${
           outcome.fidelity?.overallSimilarity ?? "n/a"
-        } strictFailures=${strictFidelityFailures.length} strictMissing=${strictFidelityMissing.length} strictPageFailures=${strictPageFidelityFailures.length} strictPageMissing=${strictPageFidelityMissing.length}`
+        } strictFailures=${strictFidelityFailures.length} strictMissing=${strictFidelityMissing.length} strictPageFailures=${strictPageFidelityFailures.length} strictPageMissing=${strictPageFidelityMissing.length} stretchShortfalls=${stretchShortfalls.length}`
       );
 
       const shouldRepair =
@@ -8521,7 +25071,8 @@ const main = async () => {
           strictFidelityFailures.length > 0 ||
           strictFidelityMissing.length > 0 ||
           strictPageFidelityFailures.length > 0 ||
-          strictPageFidelityMissing.length > 0
+          strictPageFidelityMissing.length > 0 ||
+          stretchShortfalls.length > 0
         );
       if (!shouldRepair) break;
 
@@ -8531,26 +25082,23 @@ const main = async () => {
         const similarity = Number(row?.similarity || 0);
         // Collect section-level hints for repair
         const pageDetails = Array.isArray(row?.pageDetails) ? row.pageDetails : [];
-        const sectionHints = [];
-        for (const pageRow of pageDetails) {
-          const sections = Array.isArray(pageRow?.sectionDetails) ? pageRow.sectionDetails : [];
-          for (const section of sections) {
-            if (typeof section.similarity === "number" && section.similarity < threshold) {
-              sectionHints.push({
-                sectionType: section.sectionType || "",
-                sectionKind: section.sectionId || "",
-                similarity: section.similarity,
-                issue: "low fidelity",
-              });
-            }
-          }
-        }
+        const sectionHints = collectSectionFailuresFromPageDetails({
+          pageDetails,
+          threshold: Math.min(threshold || SECTION_PATCH_MIN_SIMILARITY, SECTION_PATCH_MIN_SIMILARITY),
+          max: 8,
+        }).map((rowItem) => ({
+          sectionType: `${rowItem.pagePath}:${rowItem.sectionKind}`,
+          sectionKind: rowItem.sectionType || rowItem.sectionKind,
+          similarity: rowItem.similarity,
+          issue: rowItem.issue,
+        }));
         nextRepair.set(String(row.caseId || ""), {
           attempt: attempt + 1,
           threshold,
           similarity,
           gap: Number((threshold - similarity).toFixed(2)),
           sectionHints,
+          issueSummary: sectionHints.length ? { layout: sectionHints.length } : {},
         });
       }
       for (const pageFailure of strictPageFidelityFailures) {
@@ -8558,7 +25106,7 @@ const main = async () => {
         if (!caseId) continue;
         const existing = nextRepair.get(caseId) || {
           attempt: attempt + 1,
-          threshold: Number(pageFailure?.threshold || options?.strictPageSimilarityMin || 78),
+          threshold: Number(pageFailure?.threshold || options?.strictPageSimilarityMin || 90),
           similarity: null,
           gap: null,
           sectionHints: [],
@@ -8589,6 +25137,43 @@ const main = async () => {
         }
         nextRepair.set(caseId, existing);
       }
+      for (const row of stretchShortfalls) {
+        const caseId = String(row?.caseId || "");
+        if (!caseId) continue;
+        const cfg = fidelityByCase.get(caseId) || {};
+        const target = resolveHomeStretchSimilarityTarget({ fidelityConfig: cfg, options });
+        const similarity = Number(row?.similarity || 0);
+        const sectionFailures = collectSectionFailuresFromPageDetails({
+          pageDetails: Array.isArray(row?.pageDetails) ? row.pageDetails : [],
+          threshold: SECTION_PATCH_MIN_SIMILARITY,
+          max: 8,
+        });
+        const existing = nextRepair.get(caseId) || {
+          attempt: attempt + 1,
+          threshold: Number(target || cfg.threshold || options?.strictAvgSimilarityMin || 95),
+          similarity,
+          gap: null,
+          sectionHints: [],
+          issueSummary: {},
+        };
+        existing.threshold = Number(target || existing.threshold || cfg.threshold || options?.strictAvgSimilarityMin || 95);
+        existing.similarity = similarity;
+        existing.gap = Number((Number(existing.threshold || 0) - similarity).toFixed(2));
+        existing.issueSummary = {
+          ...(existing.issueSummary || {}),
+          copy_density: Number(existing.issueSummary?.copy_density || 0) + 1,
+        };
+        existing.sectionHints = [
+          ...(Array.isArray(existing.sectionHints) ? existing.sectionHints : []),
+          ...sectionFailures.map((section) => ({
+            sectionType: `${section.pagePath}:${section.sectionKind}`,
+            sectionKind: section.sectionType || section.sectionKind,
+            similarity: section.similarity,
+            issue: section.issue,
+          })),
+        ].slice(0, 10);
+        nextRepair.set(caseId, existing);
+      }
       for (const caseId of strictFidelityMissing) {
         if (!nextRepair.has(String(caseId || ""))) {
           nextRepair.set(String(caseId || ""), {
@@ -8607,7 +25192,7 @@ const main = async () => {
         if (!nextRepair.has(caseId)) {
           nextRepair.set(caseId, {
             attempt: attempt + 1,
-            threshold: Number(options.strictPageSimilarityMin || 78),
+            threshold: Number(options.strictPageSimilarityMin || 90),
             similarity: null,
             gap: null,
             issueSummary: { layout: 1 },
@@ -8628,13 +25213,29 @@ const main = async () => {
       );
     }
 
+    if (bestAttemptResult) {
+      regression = bestAttemptResult.regression;
+      score = bestAttemptResult.score;
+      fidelity = bestAttemptResult.fidelity;
+      effectiveRegressionReportPath = bestAttemptResult.effectiveRegressionReportPath;
+      fidelityRowsEvaluated = bestAttemptResult.fidelityRowsEvaluated;
+      strictFidelityFailures = bestAttemptResult.strictFidelityFailures;
+      blockingFidelityFailures = bestAttemptResult.blockingFidelityFailures;
+      strictFidelityMissing = bestAttemptResult.strictFidelityMissing;
+      strictPageFidelityFailures = bestAttemptResult.strictPageFidelityFailures;
+      strictPageFidelityMissing = bestAttemptResult.strictPageFidelityMissing;
+      blockingPageFidelityFailures = bestAttemptResult.blockingPageFidelityFailures;
+      fidelityGateWouldFail = bestAttemptResult.fidelityGateWouldFail;
+      fidelityGatePassed = bestAttemptResult.fidelityGatePassed;
+    }
+
     if (score) {
       await fs.writeFile(path.join(runDir, "scorecard.json"), JSON.stringify(score, null, 2));
     }
     if (regressionAttempts.length) {
       await fs.writeFile(path.join(runDir, "regression-attempts.json"), JSON.stringify(regressionAttempts, null, 2));
     }
-    if (regression?.reportPath && fidelity) {
+    if ((effectiveRegressionReportPath || regression?.reportPath) && fidelity) {
       const blockingMissing = strictFidelityMissing.filter((caseId) => strictFailCaseIds.includes(caseId));
       const blockingPageMissing = strictPageFidelityMissing.filter((row) => row.enforcement === "fail");
       const fidelityReport = {
@@ -8663,86 +25264,143 @@ const main = async () => {
       fidelityReportPath = path.join(runDir, "fidelity-report.json");
       await fs.writeFile(fidelityReportPath, JSON.stringify(fidelityReport, null, 2));
 
-      // Generate custom component manifests for each processed site
-      // (Aggressive strategy: generate for every section to maximize fidelity)
+      // Build custom component manifests and auto-private block candidates
       const customComponentManifests = [];
+      const autoPrivateSelectionsBySite = new Map();
+      let autoPrivateCandidates = 0;
       for (const item of processed) {
         const siteId = String(item?.site?.id || "");
         if (!siteId) continue;
         const specPack = item?.specPack;
         const sectionSpecs = specPack?.section_specs && typeof specPack.section_specs === "object" ? specPack.section_specs : {};
         const pageSpecs = Array.isArray(specPack?.page_specs) ? specPack.page_specs : [];
-
-        // Collect section-level fidelity data from the report
-        const fidelityRow = fidelityRowsEvaluated.find((r) => String(r?.caseId || "") === siteId);
-        const pageDetails = Array.isArray(fidelityRow?.pageDetails) ? fidelityRow.pageDetails : [];
-        const sectionFidelityMap = new Map();
-        for (const pageRow of pageDetails) {
-          const sections = Array.isArray(pageRow?.sectionDetails) ? pageRow.sectionDetails : [];
-          for (const section of sections) {
-            const key = `${pageRow.pagePath || "/"}:${section.sectionType || section.sectionId || ""}`;
-            sectionFidelityMap.set(key, section);
+        const styleProfileTemplates =
+          item?.styleProfile?.templates && typeof item.styleProfile.templates === "object"
+            ? item.styleProfile.templates
+            : {};
+        const styleProfilePageTemplates = new Map();
+        if (Array.isArray(item?.styleProfile?.pageSpecs)) {
+          for (const pageSpec of item.styleProfile.pageSpecs) {
+            const pagePath = normalizeTemplatePagePath(pageSpec?.path || "/");
+            const templates = pageSpec?.templates && typeof pageSpec.templates === "object" ? pageSpec.templates : {};
+            styleProfilePageTemplates.set(pagePath, templates);
           }
         }
+        const resolveStyleTemplateForManifest = ({ pagePath = "/", sectionKind = "" } = {}) => {
+          const normalizedPath = normalizeTemplatePagePath(pagePath);
+          const key = String(sectionKind || "").trim();
+          if (!key) return null;
+          const pageTemplates = styleProfilePageTemplates.get(normalizedPath);
+          if (pageTemplates && pageTemplates[key] && typeof pageTemplates[key] === "object") return pageTemplates[key];
+          if (styleProfileTemplates[key] && typeof styleProfileTemplates[key] === "object") return styleProfileTemplates[key];
+          return null;
+        };
+        const fidelityRow = fidelityRowsEvaluated.find((r) => String(r?.caseId || "") === siteId);
+        const sectionSimilarityByPathKind = buildSectionSimilarityByPathAndKind(fidelityRow);
+        const autoPrivatePolicy = resolveAutoPrivateBlockPolicy({ site: item?.site || {}, options });
+        const autoPrivateTargetSet = new Set(autoPrivatePolicy.targetKinds || []);
+        const siteSelections = [];
 
-        // Build custom component prompts for homepage sections
         const siteManifest = {
           siteId,
+          autoPrivatePolicy,
           sections: [],
         };
-        for (const [kind, spec] of Object.entries(sectionSpecs)) {
-          if (!spec?.block_type || !spec?.defaults) continue;
+
+        const appendSectionManifest = ({
+          pagePath = "/",
+          kind = "",
+          spec = {},
+          summary = {},
+          sourceScreenshotUrl = "",
+        } = {}) => {
+          if (!spec?.block_type || !spec?.defaults) return;
+          const sectionKind = normalizeSectionKind(kind);
+          if (!sectionKind) return;
+          const normalizedPagePath = normalizeTemplatePagePath(pagePath || "/");
+          const sectionSimilarity = sectionSimilarityByPathKind.get(`${normalizedPagePath}:${sectionKind}`);
+          const styleTemplate = resolveStyleTemplateForManifest({ pagePath: normalizedPagePath, sectionKind });
+          const resolvedDefaults =
+            styleTemplate?.props && typeof styleTemplate.props === "object"
+              ? cloneJson(styleTemplate.props)
+              : cloneJson(spec.defaults);
+          const resolvedBlockType = String(styleTemplate?.type || spec.block_type || "").trim();
+          const baseBlockType =
+            String(spec?.template_exclusive?.base_block_type || "").trim() || String(spec?.block_type || "").trim();
+          const rawCustomComponentName = `Custom${spec.block_type}_${slug(siteId)}_${
+            normalizedPagePath === "/" ? "" : `${slug(normalizedPagePath)}_`
+          }${sectionKind}`;
+          const customComponentName = toSafeIdentifier(rawCustomComponentName, `Custom${toPascal(sectionKind)}Block`);
+          const autoPrivate =
+            autoPrivatePolicy.enabled &&
+            autoPrivateTargetSet.has(sectionKind) &&
+            Number.isFinite(sectionSimilarity) &&
+            Number(sectionSimilarity) < Number(autoPrivatePolicy.sectionSimilarityThreshold || 97);
           const prompt = buildCustomSectionPrompt({
-            sectionKind: kind,
-            sectionType: spec.block_type,
-            defaults: spec.defaults,
-            summary: item.summary || {},
-            sourceScreenshotUrl: item.referenceDesktopPath || "",
+            sectionKind,
+            sectionType: resolvedBlockType || spec.block_type,
+            defaults: resolvedDefaults,
+            summary: summary || {},
+            sourceScreenshotUrl,
             visualSignature: item.visualSignature || null,
           });
-          const puckFields = buildPuckFieldsForCustomComponent(spec.defaults);
-          siteManifest.sections.push({
-            sectionKind: kind,
-            blockType: spec.block_type,
-            customComponentName: `Custom${spec.block_type}_${slug(siteId)}_${kind}`,
+          const puckFields = buildPuckFieldsForCustomComponent(resolvedDefaults);
+          const row = {
+            pagePath: normalizedPagePath,
+            sectionKind,
+            blockType: resolvedBlockType || spec.block_type,
+            baseBlockType,
+            customComponentName,
             prompt,
             puckFields,
-            defaults: spec.defaults,
-            alternatives: getAlternativeVariants(kind, spec.block_type),
+            defaults: resolvedDefaults,
+            alternatives: getAlternativeVariants(sectionKind, resolvedBlockType || baseBlockType),
+            sectionSimilarity: Number.isFinite(sectionSimilarity) ? Number(sectionSimilarity) : null,
+            autoPrivate,
+          };
+          siteManifest.sections.push(row);
+          if (autoPrivate) {
+            siteSelections.push({
+              pagePath: normalizedPagePath,
+              sectionKind,
+              customComponentName,
+              baseBlockType,
+              sectionSimilarity: Number(sectionSimilarity),
+            });
+          }
+        };
+
+        for (const [kind, spec] of Object.entries(sectionSpecs)) {
+          appendSectionManifest({
+            pagePath: "/",
+            kind,
+            spec,
+            summary: item.summary || {},
+            sourceScreenshotUrl: item.referenceDesktopPath || "",
           });
         }
 
-        // Also build for page-specific sections
         for (const page of pageSpecs) {
           const pagePath = normalizeTemplatePagePath(page?.path || "/");
-          if (pagePath === "/") continue; // Already handled above
+          if (pagePath === "/") continue;
           const pageSectionSpecs = page?.section_specs && typeof page.section_specs === "object" ? page.section_specs : {};
           for (const [kind, spec] of Object.entries(pageSectionSpecs)) {
-            if (!spec?.block_type || !spec?.defaults) continue;
-            const prompt = buildCustomSectionPrompt({
-              sectionKind: kind,
-              sectionType: spec.block_type,
-              defaults: spec.defaults,
+            appendSectionManifest({
+              pagePath,
+              kind,
+              spec,
               summary: page.summary || item.summary || {},
               sourceScreenshotUrl: "",
-              visualSignature: item.visualSignature || null,
-            });
-            const puckFields = buildPuckFieldsForCustomComponent(spec.defaults);
-            siteManifest.sections.push({
-              pagePath,
-              sectionKind: kind,
-              blockType: spec.block_type,
-              customComponentName: `Custom${spec.block_type}_${slug(siteId)}_${slug(pagePath)}_${kind}`,
-              prompt,
-              puckFields,
-              defaults: spec.defaults,
-              alternatives: getAlternativeVariants(kind, spec.block_type),
             });
           }
         }
 
         if (siteManifest.sections.length) {
           customComponentManifests.push(siteManifest);
+        }
+        if (siteSelections.length) {
+          autoPrivateSelectionsBySite.set(siteId, siteSelections);
+          autoPrivateCandidates += siteSelections.length;
         }
       }
 
@@ -8754,8 +25412,61 @@ const main = async () => {
         );
       }
 
+      if (autoPrivateCandidates > 0) {
+        autoPrivateMaterializedComponents = await materializeAutoPrivateBlocksFromManifests({
+          manifests: customComponentManifests,
+          availableBlockFolders: availableBlockFolderSet,
+          root: ROOT,
+        });
+        autoPrivateMaterializedCount = autoPrivateMaterializedComponents.length;
+        if (autoPrivateMaterializedCount > 0) {
+          for (const item of processed) {
+            const siteId = String(item?.site?.id || "");
+            const selections = autoPrivateSelectionsBySite.get(siteId) || [];
+            if (!selections.length) continue;
+            applyAutoPrivateSelectionToArtifacts({
+              item,
+              selections,
+            });
+            const fidelityRow = fidelityRowsEvaluated.find((row) => String(row?.caseId || "") === siteId);
+            const fidelitySimilarity = parseSimilarityNumber(fidelityRow?.similarity);
+            const manifest = buildTemplateAssetManifest({
+              site: item?.site || {},
+              indexCard: item?.indexCard || {},
+              specPack: item?.specPack || {},
+            });
+            const dedup = buildTemplateDedupFingerprints({
+              manifest,
+              specPack: item?.specPack || {},
+            });
+            const fidelityConfig = fidelityByCase.get(siteId) || resolveFidelitySettings(item?.site || {}, options);
+            const report = evaluateTemplateAssetContracts({
+              manifest,
+              dedup,
+              runtime: {
+                fidelitySimilarity,
+                fidelityThreshold: Number(fidelityConfig?.threshold || options?.fidelityThreshold || 0),
+              },
+            });
+            item.specPack.template_asset_manifest = manifest;
+            item.specPack.dedup_fingerprints = dedup;
+            item.specPack.asset_contract_report = report;
+            item.assetContractReport = report;
+            const extractedDir = path.join(item.siteDir, "extracted");
+            await fs.writeFile(path.join(extractedDir, "spec-pack.json"), JSON.stringify(item.specPack, null, 2));
+            await fs.writeFile(path.join(extractedDir, "style-profile.json"), JSON.stringify(item.styleProfile, null, 2));
+            await fs.writeFile(path.join(extractedDir, "template-asset-manifest.json"), JSON.stringify(manifest, null, 2));
+            await fs.writeFile(path.join(extractedDir, "dedup-fingerprints.json"), JSON.stringify(dedup, null, 2));
+            await fs.writeFile(path.join(extractedDir, "asset-contract-report.json"), JSON.stringify(report, null, 2));
+          }
+          console.log(
+            `[template-factory] auto-private block materialization: candidates=${autoPrivateCandidates}, materialized=${autoPrivateMaterializedCount}`
+          );
+        }
+      }
+
       previewLinks = await collectTemplateFirstPreviewLinks({
-        reportPath: regression.reportPath,
+        reportPath: effectiveRegressionReportPath || regression.reportPath,
         previewBaseUrl: options.previewBaseUrl,
       });
       if (!previewLinks.length) {
@@ -8838,7 +25549,11 @@ const main = async () => {
         );
       }
     }
-    generatedConfigComponents = mergeTemplateExclusiveComponents(materializedComponents, templateExclusiveComponents);
+    const materializedAndAutoPrivate = mergeTemplateExclusiveComponents(
+      materializedComponents,
+      autoPrivateMaterializedComponents
+    );
+    generatedConfigComponents = mergeTemplateExclusiveComponents(materializedAndAutoPrivate, templateExclusiveComponents);
     if (generatedConfigComponents.length) {
       await writeGeneratedConfig(generatedConfigComponents);
       const materializeReport = {
@@ -8862,7 +25577,11 @@ const main = async () => {
             collisionFrom: c.collisionFrom || null,
             signature: c.signature || null,
             configEntry: c.configEntry ? true : false,
-            source: "payload_materialized",
+            source: c.autoPrivate ? "auto_private_materialized" : "payload_materialized",
+            generationMode: c.autoPrivate ? c.generationMode || null : null,
+            fieldCoverage: c.autoPrivate ? c.fieldCoverage || null : null,
+            sectionKind: c.autoPrivate ? c.sectionKind || null : null,
+            pagePath: c.autoPrivate ? c.pagePath || null : null,
           };
         }),
       };
@@ -8871,7 +25590,7 @@ const main = async () => {
         JSON.stringify(materializeReport, null, 2)
       );
       console.log(
-        `[template-factory] generated config components=${generatedConfigComponents.length} (materialized=${materializedComponents.length}, template-exclusive=${templateExclusiveComponents.length}) → src/puck/config.generated.ts`
+        `[template-factory] generated config components=${generatedConfigComponents.length} (materialized=${materializedComponents.length}, autoPrivate=${autoPrivateMaterializedComponents.length}, template-exclusive=${templateExclusiveComponents.length}) → src/puck/config.generated.ts`
       );
     }
   } catch (materializeErr) {
@@ -8880,20 +25599,46 @@ const main = async () => {
     );
   }
 
+  await refreshAssetContractReportsWithFidelity({
+    processed,
+    fidelityRows: fidelityRowsEvaluated,
+    fidelityByCase,
+  });
+
   const blockingMissingCases = strictFidelityMissing.filter((caseId) => strictFailCaseIds.includes(caseId));
   const blockingMissingPages = strictPageFidelityMissing.filter((row) => row.enforcement === "fail");
+  const fidelityRowByCase = new Map(
+    (Array.isArray(fidelityRowsEvaluated) ? fidelityRowsEvaluated : []).map((row) => [String(row?.caseId || "").trim(), row])
+  );
+  const gateSiteMetrics = processed.map((item) => computeSiteGateMetrics(item, { fidelityRowByCase }));
   const gateReport = evaluateRunGates({
     runId: options.runId,
     options: {
+      homeOnly: options.homeOnly,
       fidelityMode: options.fidelityMode,
       strictRequiredCasesPolicy: options.strictRequiredCasesPolicy,
+      gateMinSitePages: options.gateMinSitePages,
+      gateMinPageSpecCoverage: options.gateMinPageSpecCoverage,
+      gateMinLinkSuccessRate: options.gateMinLinkSuccessRate,
+      gateMinNavFooterLinkSuccessRate: options.gateMinNavFooterLinkSuccessRate,
+      gateMinRequiredRoleCoverage: options.gateMinRequiredRoleCoverage,
+      gateMinDesignContractScore: options.gateMinDesignContractScore,
+      gateMinAccessibilityScore: options.gateMinAccessibilityScore,
+      gateMinAssetContractScore: options.gateMinAssetContractScore,
+      gateMinOverallSimilarity: options.gateMinOverallSimilarity,
+      gateMinSiteSimilarity: options.gateMinSiteSimilarity,
+      gateMinSiteVisualSimilarity: options.gateMinSiteVisualSimilarity,
+      gateRequireKeyFlowIntegrity: options.gateRequireKeyFlowIntegrity,
+      requiredPagesPerSite: options.requiredPagesPerSite,
     },
+    sites: gateSiteMetrics,
     fidelity: {
       overallSimilarity: fidelity?.overallSimilarity ?? null,
     },
     strict: {
       requiredCases: strictRequiredPageCases.map((entry) => entry.id),
       requiredCaseSites: strictCaseIds,
+      requiredCaseDetails: strictRequiredPageCases,
       missingComparableCases: strictFidelityMissing,
       failedCases: strictFidelityFailures,
       missingComparablePages: strictPageFidelityMissing,
@@ -8908,7 +25653,7 @@ const main = async () => {
   const gateReportPath = path.join(runDir, "gate-report.json");
   await fs.writeFile(gateReportPath, JSON.stringify(gateReport, null, 2));
 
-  runLibrary = buildRunLibraryOutput({
+  runLibrary = await buildRunLibraryOutput({
     processed,
     runId: options.runId,
     manifestPath,
@@ -8917,20 +25662,75 @@ const main = async () => {
   });
   await fs.writeFile(runLibraryPath, JSON.stringify(runLibrary, null, 2));
 
+  let penArtifactsPath = "";
+  let penArtifactCount = 0;
+  let penReviewPath = "";
+  let penPencilSuccessCount = 0;
+  let penPencilFailureCount = 0;
+  let penDesktopOpenAttempted = false;
+  let penDesktopOpenCount = 0;
+  let penDesktopOpenFailed = [];
+  if (options.mode === "pen-build") {
+    const penArtifacts = await exportPenArtifactsFromRun({
+      processed,
+      previewLinks,
+      runDir,
+      runId: options.runId,
+      runLibraryPath,
+      options,
+    });
+    penArtifactsPath = penArtifacts.penArtifactsPath;
+    penArtifactCount = penArtifacts.artifacts.length;
+    penPencilSuccessCount = penArtifacts.artifacts.filter((item) => String(item?.pencilStatus || "") === "ok").length;
+    penPencilFailureCount = penArtifacts.artifacts.filter((item) => String(item?.pencilStatus || "") === "failed").length;
+    const openSummary = await openPenArtifactsInDesktop({
+      artifacts: penArtifacts.artifacts,
+      options,
+    });
+    penDesktopOpenAttempted = openSummary.attempted;
+    penDesktopOpenCount = Array.isArray(openSummary.opened) ? openSummary.opened.length : 0;
+    penDesktopOpenFailed = Array.isArray(openSummary.failed) ? openSummary.failed : [];
+    if (penDesktopOpenAttempted) {
+      console.log(
+        `[template-factory] pencil desktop open: opened=${penDesktopOpenCount}, failed=${penDesktopOpenFailed.length}`
+      );
+    }
+    const reviewFilePath = options.penReviewFile || path.join(runDir, "pen-review.json");
+    const penBundle = await loadPenBundle(penArtifactsPath);
+    await writePenReviewFile({
+      penBundle,
+      reviewFilePath,
+      status: options.penReviewStatus,
+      reviewer: options.penReviewer,
+      notes: options.penReviewNotes,
+    });
+    penReviewPath = reviewFilePath;
+    console.log(
+      `[template-factory] pen-build artifacts exported: count=${penArtifactCount} bundle=${penArtifactsPath} review=${penReviewPath}`
+    );
+  }
+
+  const allowPublishToLibrary =
+    options.mode !== "pen-build" && Boolean(options.publish) && Boolean(gateReport.gatePassed);
   const publishResult = await mergeAndPublishRunLibrary({
     runLibrary,
-    allowPublish: Boolean(options.publish) && Boolean(gateReport.gatePassed),
+    allowPublish: allowPublishToLibrary,
     runId: options.runId,
   });
   publishPath = publishResult.publishPath;
   publishTemplateExclusiveComponentsPath = publishResult.publishTemplateExclusiveComponentsPath;
-  if (options.publish && !gateReport.gatePassed) {
+  if (options.mode === "pen-build") {
+    console.log("[template-factory] pen-build mode: publish skipped; run `--mode template-publish --pen-file ...` after review.");
+  } else if (options.publish && !gateReport.gatePassed) {
     console.warn("[template-factory] publish skipped: run gate not passed.");
   }
 
   const summary = {
     runId: options.runId,
+    mode: options.mode,
     manifestPath,
+    homeOnly: options.homeOnly,
+    homeOnlyEval: options.homeOnlyEval,
     sites: processed.length,
     crawlSite: options.crawlSite,
     crawlMaxPages: options.crawlMaxPages,
@@ -8939,6 +25739,9 @@ const main = async () => {
     maxDiscoveredPages: options.maxDiscoveredPages,
     maxNavLinks: options.maxNavLinks,
     mustIncludePatterns: options.mustIncludePatterns,
+    intakeReviewFile: options.intakeReviewFile || "",
+    assetApprovalFile: options.assetApprovalFile || "",
+    siteStyleProfile: options.siteStyleProfile,
     antiCrawlPrecheck: options.antiCrawlPrecheck,
     antiCrawlTimeoutMs: options.antiCrawlTimeoutMs,
     fastMode: options.fastMode,
@@ -8950,7 +25753,22 @@ const main = async () => {
     requiredPagesPerSite: options.requiredPagesPerSite,
     fidelityEnforcement: options.fidelityEnforcement,
     strictRequiredCasesPolicy: options.strictRequiredCasesPolicy,
+    gateMinSitePages: options.gateMinSitePages,
+    gateMinPageSpecCoverage: options.gateMinPageSpecCoverage,
+    gateMinLinkSuccessRate: options.gateMinLinkSuccessRate,
+    gateMinNavFooterLinkSuccessRate: options.gateMinNavFooterLinkSuccessRate,
+    gateMinRequiredRoleCoverage: options.gateMinRequiredRoleCoverage,
+    gateMinDesignContractScore: options.gateMinDesignContractScore,
+    gateMinAccessibilityScore: options.gateMinAccessibilityScore,
+    gateMinAssetContractScore: options.gateMinAssetContractScore,
+    gateMinOverallSimilarity: options.gateMinOverallSimilarity,
+    gateMinSiteSimilarity: options.gateMinSiteSimilarity,
+    gateMinSiteVisualSimilarity: options.gateMinSiteVisualSimilarity,
+    gateRequireKeyFlowIntegrity: options.gateRequireKeyFlowIntegrity,
     templateExclusiveBlocks: options.templateExclusiveBlocks,
+    autoPrivateBlocks: options.autoPrivateBlocks,
+    autoPrivateSectionSimilarityThreshold: options.autoPrivateSectionSimilarityThreshold,
+    autoPrivateTargetKinds: options.autoPrivateTargetKinds,
     autoRepairIterations: options.autoRepairIterations,
     pixelMode: options.pixelMode,
     pipelineParallelConcurrency: options.pipelineParallelConcurrency,
@@ -8970,8 +25788,24 @@ const main = async () => {
     publishPath,
     publishTemplateExclusiveComponentsPath,
     publishReason: publishResult.reason,
+    penArtifactsPath,
+    penArtifactCount,
+    penReviewPath,
+    openPencilAfterPenBuild: options.openPencilAfterPenBuild,
+    pencilEnabled: options.pencilEnabled,
+    pencilStrict: options.pencilStrict,
+    pencilCommand: options.pencilCommand || resolvePencilBridgeCommand(options),
+    penPencilSuccessCount,
+    penPencilFailureCount,
+    penDesktopOpenAttempted,
+    penDesktopOpenCount,
+    penDesktopOpenFailed,
     regressionPromptsPath: regression?.promptsPath || null,
-    regressionReportPath: regression?.reportPath || null,
+    regressionReportPath: effectiveRegressionReportPath || regression?.reportPath || null,
+    regressionSourceReportPath:
+      effectiveRegressionReportPath && regression?.reportPath && effectiveRegressionReportPath !== regression.reportPath
+        ? regression.reportPath
+        : null,
     regressionAttemptsPath: regressionAttempts.length ? path.join(runDir, "regression-attempts.json") : null,
     scorecardPath: score ? path.join(runDir, "scorecard.json") : null,
     overallScore: score?.overallScore ?? null,
@@ -8983,6 +25817,7 @@ const main = async () => {
     gateReportPath,
     templateExclusiveComponentsPath,
     templateExclusiveComponentCount: templateExclusiveComponents.length,
+    autoPrivateMaterializedComponentCount: autoPrivateMaterializedCount,
     templateExclusiveConfigSeeded,
     generatedConfigComponentCount: generatedConfigComponents.length,
     strictFidelityFailures,
@@ -9013,6 +25848,7 @@ const main = async () => {
       caseId: String(item?.site?.id || ""),
       stats: item?.linkReport?.stats || null,
     })),
+    gateSiteMetrics,
   };
 
   await fs.writeFile(path.join(runDir, "summary.json"), JSON.stringify(summary, null, 2));
@@ -9045,7 +25881,14 @@ const main = async () => {
   if (publishTemplateExclusiveComponentsPath) {
     console.log(`[template-factory] published template-exclusive components: ${publishTemplateExclusiveComponentsPath}`);
   }
-  if (regression?.reportPath) console.log(`[template-factory] regression report: ${regression.reportPath}`);
+  if (effectiveRegressionReportPath || regression?.reportPath) {
+    console.log(
+      `[template-factory] regression report: ${effectiveRegressionReportPath || regression?.reportPath}`
+    );
+    if (effectiveRegressionReportPath && regression?.reportPath && effectiveRegressionReportPath !== regression.reportPath) {
+      console.log(`[template-factory] regression source report (fallbacked): ${regression.reportPath}`);
+    }
+  }
   if (score?.overallScore !== undefined && score?.overallScore !== null) {
     console.log(`[template-factory] overall score: ${score.overallScore}`);
   }
@@ -9064,10 +25907,16 @@ const main = async () => {
     }
     console.log(`[template-factory] if links are not reachable, run: ${DEFAULT_PREVIEW_START_COMMAND}`);
   }
-  if (!gateReport.gatePassed) {
+  if (!gateReport.gatePassed && options.mode !== "pen-build") {
     const issues = Array.isArray(gateReport.issues) ? gateReport.issues : [];
     const detail = issues.map((issue) => `${issue.code}:${issue.message}`).join("; ");
     throw new Error(`[template-factory] run gate failed (${gateReportPath}) ${detail}`);
+  }
+  if (!gateReport.gatePassed && options.mode === "pen-build") {
+    const issues = Array.isArray(gateReport.issues) ? gateReport.issues : [];
+    console.warn(
+      `[template-factory] pen-build gate not passed (non-blocking): ${issues.map((issue) => `${issue.code}:${issue.message}`).join("; ")}`
+    );
   }
   };
 

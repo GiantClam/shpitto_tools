@@ -6,6 +6,7 @@
       "url": "https://www.aura.build/templates/digital-design-13",
       "description": "Luxury editorial interior design homepage",
       "prompt": "Generate a premium editorial luxury interior-design homepage with navigation, hero, studio story, approach metrics, social proof, CTA, and footer.",
+      "homeOnly": true,
       "desktopScreenshot": "",
       "mobileScreenshot": ""
     },
@@ -18,6 +19,14 @@
       "crawlMaxPages": 40,
       "crawlMaxDepth": 2,
       "specialRules": {
+        "pageSpecSampleLimits": {
+          "products": 1,
+          "blog": 1
+        },
+        "pageSpecRepresentativePreference": {
+          "products": "preferDetail",
+          "blog": "preferDetail"
+        },
         "templateBlockVariants": {
           "hero": {
             "blockType": "NexusHeroDock",

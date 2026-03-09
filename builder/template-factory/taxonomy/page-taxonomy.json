@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "categories": [
+    {
+      "id": "home",
+      "name": "Home",
+      "description": "Brand narrative and route distribution hub",
+      "typicalBlocks": ["hero", "features", "socialproof", "cta", "footer"]
+    },
+    {
+      "id": "product_service_list",
+      "name": "Product/Service List",
+      "description": "Listing page for products/services/solutions",
+      "typicalBlocks": ["filter", "grid", "cards", "pagination"]
+    },
+    {
+      "id": "detail",
+      "name": "Detail",
+      "description": "Detail page for product/case/solution/content",
+      "typicalBlocks": ["gallery", "specs", "description", "related"]
+    },
+    {
+      "id": "pricing",
+      "name": "Pricing",
+      "description": "Pricing and plan comparison",
+      "typicalBlocks": ["pricing_table", "comparison", "faq", "cta"]
+    },
+    {
+      "id": "blog_list",
+      "name": "Blog List",
+      "description": "Blog/article listing page",
+      "typicalBlocks": ["categories", "article_grid", "pagination"]
+    },
+    {
+      "id": "blog_detail",
+      "name": "Blog Detail",
+      "description": "Blog/article detail page",
+      "typicalBlocks": ["article_body", "toc", "author", "related_posts"]
+    },
+    {
+      "id": "about",
+      "name": "About",
+      "description": "Brand/company/about page",
+      "typicalBlocks": ["story", "team", "timeline", "partners"]
+    },
+    {
+      "id": "contact",
+      "name": "Contact",
+      "description": "Contact and lead collection page",
+      "typicalBlocks": ["contact_form", "info_cards", "map"]
+    },
+    {
+      "id": "help_faq",
+      "name": "Help/FAQ",
+      "description": "Help center and faq pages",
+      "typicalBlocks": ["search", "help_categories", "faq_accordion"]
+    },
+    {
+      "id": "legal",
+      "name": "Legal",
+      "description": "Legal pages such as privacy/terms",
+      "typicalBlocks": ["long_text", "toc", "updated_at"]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "sites": {
+    "audeze-home": {
+      "selectedPaths": [
+        "/",
+        "/collections/headphones",
+        "/products/lcd-5s",
+        "/about",
+        "/support"
+      ],
+      "excludedPaths": [
+        "/policies/privacy-policy"
+      ],
+      "pageTypeOverrides": {
+        "/support": "help_faq",
+        "/collections/headphones": "product_service_list"
+      },
+      "representativePaths": [
+        "/products/lcd-5s"
+      ],
+      "reviewedBy": "template-ops",
+      "notes": "MVP intake review: keep one representative product detail page."
+    }
+  }
+}

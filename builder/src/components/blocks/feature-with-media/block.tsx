@@ -32,12 +32,20 @@ export type FeatureWithMediaProps = BaseBlockProps & {
   subtitle?: string;
   body?: string;
   contentTone?: "default" | "light";
+  textPanel?: boolean;
+  textPanelBackground?: string;
+  textPanelBorderColor?: string;
+  textPanelPadding?: "sm" | "md" | "lg";
+  textPanelRadius?: "sm" | "md" | "lg";
+  textPanelMaxWidth?: "sm" | "md" | "lg" | "xl";
   ctas?: LinkProps[];
   items?: FeatureWithMediaItem[];
   media?: FeatureWithMediaMedia;
   mediaSrc?: string;
   mediaAlt?: string;
   mediaKind?: "image" | "video";
+  referenceSliceMode?: boolean;
+  referenceSliceMinHeight?: number;
 };
 
 export type FeatureWithMediaVariant = "simple" | "split" | "reverse";
@@ -59,12 +67,20 @@ export function FeatureWithMediaBlock({
   subtitle,
   body,
   contentTone = "default",
+  textPanel = false,
+  textPanelBackground = "",
+  textPanelBorderColor = "",
+  textPanelPadding = "md",
+  textPanelRadius = "md",
+  textPanelMaxWidth = "lg",
   ctas,
   items,
   media,
   mediaSrc,
   mediaAlt,
   mediaKind = "image",
+  referenceSliceMode = false,
+  referenceSliceMinHeight,
   headingFont,
   bodyFont,
   emphasis = "normal",
@@ -105,6 +121,38 @@ export function FeatureWithMediaBlock({
   const isLightTone = contentTone === "light";
   const headingStyle = headingFont ? { fontFamily: headingFont } : undefined;
   const bodyStyle = bodyFont ? { fontFamily: bodyFont } : undefined;
+  const textPanelPaddingClass =
+    textPanelPadding === "sm" ? "p-4 sm:p-5" : textPanelPadding === "lg" ? "p-7 sm:p-8" : "p-5 sm:p-6";
+  const textPanelRadiusClass =
+    textPanelRadius === "sm" ? "rounded-lg" : textPanelRadius === "lg" ? "rounded-2xl" : "rounded-xl";
+  const textPanelMaxWidthClass =
+    textPanelMaxWidth === "sm"
+      ? "max-w-xl"
+      : textPanelMaxWidth === "md"
+      ? "max-w-2xl"
+      : textPanelMaxWidth === "lg"
+      ? "max-w-3xl"
+      : "max-w-4xl";
+  const textPanelStyle =
+    textPanel || textPanelBackground
+      ? {
+          background: textPanelBackground || (isLightTone ? "rgba(9, 14, 26, 0.46)" : "rgba(255, 255, 255, 0.62)"),
+          border: `1px solid ${textPanelBorderColor || (isLightTone ? "rgba(255,255,255,0.18)" : "rgba(15,23,42,0.12)")}`,
+          backdropFilter: "blur(2px)",
+        }
+      : undefined;
+  const explicitReferenceSliceMinHeight = Math.round(Number(referenceSliceMinHeight) || 0);
+  const fallbackReferenceSliceHeight = referenceSliceMode &&
+    background === "image" &&
+    backgroundMedia?.kind === "image" &&
+    backgroundMedia?.src
+      ? 420
+      : 0;
+  const referenceSliceHeight = Math.max(explicitReferenceSliceMinHeight, fallbackReferenceSliceHeight);
+  const referenceSliceStyle =
+    referenceSliceHeight > 0
+      ? { minHeight: `${Math.max(120, referenceSliceHeight)}px` }
+      : undefined;
 
   return (
     <section
@@ -116,7 +164,7 @@ export function FeatureWithMediaBlock({
         featureWithMediaSectionClass({ paddingY, background }),
         hasBackgroundVideo ? "relative overflow-hidden" : ""
       )}
-      style={backgroundStyle}
+      style={{ ...backgroundStyle, ...(referenceSliceStyle || {}) }}
     >
       {hasBackgroundVideo ? (
         <video
@@ -144,72 +192,83 @@ export function FeatureWithMediaBlock({
             className={cn(
               textOrderClass,
               align === "center" ? "text-center" : "text-left",
-              isLightTone ? "text-white" : ""
+              isLightTone ? "text-white" : "",
+              textPanel ? textPanelMaxWidthClass : ""
             )}
           >
-            {eyebrow ? (
-              <p className={cn("text-sm", isLightTone ? "text-white/70" : "text-muted-foreground")} style={bodyStyle}>
-                {eyebrow}
-              </p>
-            ) : null}
-            {derivedTitle ? (
-              <h2
-                className={cn(
-                  "mt-3 text-2xl font-semibold tracking-tight sm:text-3xl",
-                  emphasis === "high" && !isLightTone ? "text-gradient" : "",
-                  isLightTone ? "text-white" : ""
-                )}
-                style={headingStyle}
-              >
-                {derivedTitle}
-              </h2>
-            ) : null}
-            {subtitle ? (
-              <p className={cn("mt-3 text-base sm:text-lg", isLightTone ? "text-white/75" : "text-muted-foreground")} style={bodyStyle}>
-                {subtitle}
-              </p>
-            ) : null}
-            {body ? (
-              <p className={cn("mt-4 text-base", isLightTone ? "text-white/75" : "text-muted-foreground")} style={bodyStyle}>
-                {body}
-              </p>
-            ) : null}
-            {items?.length ? (
-              <div className="mt-6 space-y-4">
-                {items.slice(0, 6).map((item, idx) => (
-                  <div key={idx}>
-                    <div className={cn("text-sm font-medium", isLightTone ? "text-white" : "")} style={headingStyle}>
-                      {item.title}
+            <div
+              className={cn(textPanel ? `${textPanelPaddingClass} ${textPanelRadiusClass}` : "")}
+              style={textPanelStyle}
+            >
+              {eyebrow ? (
+                <p className={cn("text-sm", isLightTone ? "text-white/70" : "text-muted-foreground")} style={bodyStyle}>
+                  {eyebrow}
+                </p>
+              ) : null}
+              {derivedTitle ? (
+                <h2
+                  className={cn(
+                    "mt-3 text-2xl font-semibold tracking-tight sm:text-3xl",
+                    emphasis === "high" &&
+                      !textPanel &&
+                      !isLightTone &&
+                      String(background || "").trim().toLowerCase() !== "image"
+                      ? "text-gradient"
+                      : "",
+                    isLightTone ? "text-white" : ""
+                  )}
+                  style={headingStyle}
+                >
+                  {derivedTitle}
+                </h2>
+              ) : null}
+              {subtitle ? (
+                <p className={cn("mt-3 text-base sm:text-lg", isLightTone ? "text-white/90" : "text-muted-foreground")} style={bodyStyle}>
+                  {subtitle}
+                </p>
+              ) : null}
+              {body ? (
+                <p className={cn("mt-4 text-base", isLightTone ? "text-white/90" : "text-muted-foreground")} style={bodyStyle}>
+                  {body}
+                </p>
+              ) : null}
+              {items?.length ? (
+                <div className="mt-6 space-y-4">
+                  {items.slice(0, 6).map((item, idx) => (
+                    <div key={idx}>
+                      <div className={cn("text-sm font-medium", isLightTone ? "text-white" : "")} style={headingStyle}>
+                        {item.title}
+                      </div>
+                      {item.desc ? (
+                        <p className={cn("mt-1 text-sm", isLightTone ? "text-white/85" : "text-muted-foreground")} style={bodyStyle}>
+                          {item.desc}
+                        </p>
+                      ) : null}
                     </div>
-                    {item.desc ? (
-                      <p className={cn("mt-1 text-sm", isLightTone ? "text-white/75" : "text-muted-foreground")} style={bodyStyle}>
-                        {item.desc}
-                      </p>
-                    ) : null}
-                  </div>
-                ))}
-              </div>
-            ) : null}
-            {ctas?.length ? (
-              <div
-                className={cn(
-                  "mt-6 flex flex-wrap gap-4",
-                  align === "center" ? "justify-center" : "justify-start"
-                )}
-              >
-                {ctas.slice(0, 2).map((cta, idx) => (
-                  <Button
-                    key={idx}
-                    asChild
-                    variant={cta.variant === "secondary" ? "secondary" : "default"}
-                    className={cn(emphasis === "high" && idx === 0 ? "btn-glow" : "")}
-                    size="lg"
-                  >
-                    <a href={cta.href}>{cta.label}</a>
-                  </Button>
-                ))}
-              </div>
-            ) : null}
+                  ))}
+                </div>
+              ) : null}
+              {ctas?.length ? (
+                <div
+                  className={cn(
+                    "mt-6 flex flex-wrap gap-4",
+                    align === "center" ? "justify-center" : "justify-start"
+                  )}
+                >
+                  {ctas.slice(0, 2).map((cta, idx) => (
+                    <Button
+                      key={idx}
+                      asChild
+                      variant={cta.variant === "secondary" ? "secondary" : "default"}
+                      className={cn(emphasis === "high" && idx === 0 ? "btn-glow" : "")}
+                      size="lg"
+                    >
+                      <a href={cta.href}>{cta.label}</a>
+                    </Button>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </div>
           {hasMedia ? (
             <div

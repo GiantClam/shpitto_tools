@@ -9,6 +9,13 @@ type PuckData = {
   [key: string]: unknown;
 };
 
+const slugToken = (value: unknown) =>
+  String(value ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "item";
+
 const SPACING_SCALE = [4, 8, 12, 16, 24, 32, 48, 64, 80, 96, 128];
 const BACKGROUND_VALUES = new Set(["none", "muted", "gradient", "image"]);
 const PADDING_VALUES = new Set(["sm", "md", "lg"]);
@@ -63,16 +70,34 @@ const isColorValue = (value: unknown) =>
   typeof value === "string" &&
   (/^#([0-9a-f]{3,8})$/i.test(value) || /^rgb/.test(value) || /^hsl/.test(value));
 
+const parseEnvBoolean = (value: string | undefined, fallback: boolean) => {
+  const normalized = String(value ?? "").trim().toLowerCase();
+  if (!normalized) return fallback;
+  if (["1", "true", "yes", "on"].includes(normalized)) return true;
+  if (["0", "false", "no", "off"].includes(normalized)) return false;
+  return fallback;
+};
+
+const preserveExplicitColors = parseEnvBoolean(process.env.BUILDER_PRESERVE_EXPLICIT_COLORS, true);
+
 const isMediaUrlKey = (key: string) => {
-  if (key.includes("alt")) return false;
+  const normalized = String(key || "").toLowerCase();
+  if (normalized.includes("alt")) return false;
+  // Text-like keys (including logo_text/logoText) must never be treated as media URLs.
+  if (/(^|_)(text|label|title|copy|caption|description|headline|subtitle|name)(_|$)/.test(normalized)) {
+    return false;
+  }
+  if (normalized.includes("logotext") || normalized.includes("brandtext") || normalized.includes("copytext")) {
+    return false;
+  }
   return (
-    key === "src" ||
-    key.endsWith("src") ||
-    key.endsWith("url") ||
-    key.includes("image") ||
-    key.includes("avatar") ||
-    key.includes("logo") ||
-    key.includes("poster")
+    normalized === "src" ||
+    normalized.endsWith("src") ||
+    normalized.endsWith("url") ||
+    normalized.includes("image") ||
+    normalized.includes("avatar") ||
+    /(^|_)(logo|logoimg|logoimage|brandlogo)(_|$)/.test(normalized) ||
+    normalized.includes("poster")
   );
 };
 
@@ -99,6 +124,24 @@ const normalizeColor = (key: string) => {
   if (key.includes("background") || key.includes("bg")) return "hsl(var(--background))";
   if (key.includes("text")) return "hsl(var(--foreground))";
   return "hsl(var(--foreground))";
+};
+
+const shouldPreserveExplicitColor = (key: string) => {
+  if (!preserveExplicitColors) return false;
+  const token = String(key || "").toLowerCase();
+  return (
+    token.includes("overlay") ||
+    token.includes("textpanelbackground") ||
+    token.includes("textpanelbordercolor") ||
+    token.includes("panelbackground") ||
+    token.includes("panelbordercolor") ||
+    token.includes("ctabackground") ||
+    token.includes("ctatext") ||
+    token.includes("backgroundcolor") ||
+    token.includes("surfacecolor") ||
+    token.includes("accentcolor") ||
+    token.includes("primarycolor")
+  );
 };
 
 const normalizeFontSize = (value: number) => {
@@ -131,6 +174,9 @@ const normalizeValueByKey = (key: string, value: unknown): unknown => {
     return isValidMediaUrl(value) ? value.trim() : undefined;
   }
   if (isColorKey(key) && isColorValue(value)) {
+    if (shouldPreserveExplicitColor(key)) {
+      return String(value).trim();
+    }
     return normalizeColor(key);
   }
   const num = parseNumber(value);
@@ -512,10 +558,44 @@ export const normalizePuckData = <T extends PuckData | null | undefined>(
   if (!data || typeof data !== "object") return data;
   const { logChanges = false } = options;
   const summary: Record<string, number> = {};
+  const seedArrayObjectIds = (value: unknown, seed: string): unknown => {
+    if (Array.isArray(value)) {
+      return value.map((entry, index) => {
+        const itemSeed = `${seed}-${index + 1}`;
+        if (entry && typeof entry === "object" && !Array.isArray(entry)) {
+          const normalizedEntry = seedArrayObjectIds(entry, itemSeed);
+          const record = (normalizedEntry ?? {}) as Record<string, unknown>;
+          if (!String(record.id ?? "").trim()) {
+            record.id = itemSeed;
+          }
+          return record;
+        }
+        return seedArrayObjectIds(entry, itemSeed);
+      });
+    }
+    if (value && typeof value === "object") {
+      const next: Record<string, unknown> = {};
+      Object.entries(value as Record<string, unknown>).forEach(([key, child]) => {
+        next[key] = seedArrayObjectIds(child, `${seed}-${slugToken(key)}`);
+      });
+      return next;
+    }
+    return value;
+  };
+
+  const seedBlockIds = (props: BlockProps, type: string, seed: string): BlockProps => {
+    const next = (seedArrayObjectIds(props, `${seed}-props`) ?? {}) as BlockProps;
+    if (!String(next.id ?? "").trim()) {
+      next.id = `${slugToken(type || "block")}-${seed}`;
+    }
+    return next;
+  };
+
   const content = Array.isArray(data.content) ? data.content : [];
-  const nextContent = content.map((item) => {
+  const nextContent = content.map((item, index) => {
     const type = typeof item.type === "string" ? item.type : "";
-    const props = normalizeBlockProps(type, item.props, { logChanges, summary });
+    const normalizedProps = normalizeBlockProps(type, item.props, { logChanges, summary });
+    const props = seedBlockIds(normalizedProps, type, `content-${index + 1}`);
     return { ...item, props };
   });
 
@@ -523,9 +603,10 @@ export const normalizePuckData = <T extends PuckData | null | undefined>(
   const nextZones: Record<string, PuckContentItem[]> = {};
   Object.entries(zones).forEach(([zoneKey, items]) => {
     if (!Array.isArray(items)) return;
-    nextZones[zoneKey] = items.map((item) => {
+    nextZones[zoneKey] = items.map((item, index) => {
       const type = typeof item.type === "string" ? item.type : "";
-      const props = normalizeBlockProps(type, item.props, { logChanges, summary });
+      const normalizedProps = normalizeBlockProps(type, item.props, { logChanges, summary });
+      const props = seedBlockIds(normalizedProps, type, `${slugToken(zoneKey)}-${index + 1}`);
       return { ...item, props };
     });
   });

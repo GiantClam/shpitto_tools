@@ -23,6 +23,8 @@ export type Testimonial = {
 export type TestimonialsGridProps = BaseBlockProps & {
   title?: string;
   items: Testimonial[];
+  referenceSliceMode?: boolean;
+  referenceSliceMinHeight?: number;
 };
 
 export type TestimonialsVariant = "2col" | "3col";
@@ -44,6 +46,8 @@ export function TestimonialsGridBlock({
   items,
   headingFont,
   bodyFont,
+  referenceSliceMode = false,
+  referenceSliceMinHeight,
   variant = "2col",
 }: TestimonialsGridProps & { variant?: TestimonialsVariant }) {
   const backgroundStyle = {
@@ -59,6 +63,18 @@ export function TestimonialsGridBlock({
   const hasBackgroundVideo = Boolean(backgroundVideo?.src);
   const headingStyle = headingFont ? { fontFamily: headingFont } : undefined;
   const bodyStyle = bodyFont ? { fontFamily: bodyFont } : undefined;
+  const explicitReferenceSliceMinHeight = Math.round(Number(referenceSliceMinHeight) || 0);
+  const fallbackReferenceSliceHeight = referenceSliceMode &&
+    background === "image" &&
+    backgroundMedia?.kind === "image" &&
+    backgroundMedia?.src
+      ? 320
+      : 0;
+  const referenceSliceHeight = Math.max(explicitReferenceSliceMinHeight, fallbackReferenceSliceHeight);
+  const referenceSliceStyle =
+    referenceSliceHeight > 0
+      ? { minHeight: `${Math.max(120, referenceSliceHeight)}px` }
+      : undefined;
   return (
     <section
       id={anchor}
@@ -69,7 +85,7 @@ export function TestimonialsGridBlock({
         testimonialsSectionClass({ paddingY, background }),
         hasBackgroundVideo ? "relative overflow-hidden" : ""
       )}
-      style={backgroundStyle}
+      style={{ ...backgroundStyle, ...(referenceSliceStyle || {}) }}
     >
       {hasBackgroundVideo ? (
         <video

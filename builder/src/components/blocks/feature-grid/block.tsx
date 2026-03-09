@@ -27,6 +27,8 @@ export type FeatureGridProps = BaseBlockProps & {
   title?: string;
   subtitle?: string;
   items: FeatureGridItem[];
+  referenceSliceMode?: boolean;
+  referenceSliceMinHeight?: number;
 };
 
 export type FeatureGridVariant = "2col" | "3col" | "4col";
@@ -49,6 +51,8 @@ export function FeatureGridBlock({
   items = [],
   headingFont,
   bodyFont,
+  referenceSliceMode = false,
+  referenceSliceMinHeight,
   variant = "3col",
 }: FeatureGridProps & { variant?: FeatureGridVariant }) {
   const motionMode = useMotionMode();
@@ -75,6 +79,18 @@ export function FeatureGridBlock({
   const headingStyle = headingFont ? { fontFamily: headingFont } : undefined;
   const bodyStyle = bodyFont ? { fontFamily: bodyFont } : undefined;
   const safeItems = Array.isArray(items) ? items : [];
+  const explicitReferenceSliceMinHeight = Math.round(Number(referenceSliceMinHeight) || 0);
+  const fallbackReferenceSliceHeight = referenceSliceMode &&
+    background === "image" &&
+    backgroundMedia?.kind === "image" &&
+    backgroundMedia?.src
+      ? 420
+      : 0;
+  const referenceSliceHeight = Math.max(explicitReferenceSliceMinHeight, fallbackReferenceSliceHeight);
+  const referenceSliceStyle =
+    referenceSliceHeight > 0
+      ? { minHeight: `${Math.max(120, referenceSliceHeight)}px` }
+      : undefined;
   return (
     <section
       id={anchor}
@@ -85,7 +101,7 @@ export function FeatureGridBlock({
         featureGridSectionClass({ paddingY, background }),
         hasBackgroundVideo ? "relative overflow-hidden" : ""
       )}
-      style={backgroundStyle}
+      style={{ ...backgroundStyle, ...(referenceSliceStyle || {}) }}
     >
       {hasBackgroundVideo ? (
         <video

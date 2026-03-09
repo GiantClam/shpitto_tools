@@ -29,10 +29,78 @@ export const resolveCliOptions = (argv, context = {}) => {
   };
 
   const raw = { ...defaults };
+  let autoRepairIterationsExplicit = false;
 
   for (let i = 2; i < argv.length; i += 1) {
     const arg = argv[i];
     const next = argv[i + 1];
+    if (arg === "--mode" && next) {
+      raw.mode = String(next).trim();
+      i += 1;
+      continue;
+    }
+    if (arg === "--pen-file" && next) {
+      raw.penFile = String(next).trim();
+      i += 1;
+      continue;
+    }
+    if (arg === "--pen-review-file" && next) {
+      raw.penReviewFile = String(next).trim();
+      i += 1;
+      continue;
+    }
+    if (arg === "--pen-review-status" && next) {
+      raw.penReviewStatus = String(next).trim();
+      i += 1;
+      continue;
+    }
+    if (arg === "--pen-reviewer" && next) {
+      raw.penReviewer = String(next).trim();
+      i += 1;
+      continue;
+    }
+    if (arg === "--pen-review-notes" && next) {
+      raw.penReviewNotes = String(next).trim();
+      i += 1;
+      continue;
+    }
+    if (arg === "--open-pencil-after-pen-build") {
+      raw.openPencilAfterPenBuild = true;
+      continue;
+    }
+    if (arg === "--no-open-pencil-after-pen-build") {
+      raw.openPencilAfterPenBuild = false;
+      continue;
+    }
+    if (arg === "--pen-preview-compare") {
+      raw.penPreviewCompare = true;
+      continue;
+    }
+    if (arg === "--no-pen-preview-compare") {
+      raw.penPreviewCompare = false;
+      continue;
+    }
+    if (arg === "--pencil-command" && next) {
+      raw.pencilCommand = String(next).trim();
+      i += 1;
+      continue;
+    }
+    if (arg === "--pencil-enabled") {
+      raw.pencilEnabled = true;
+      continue;
+    }
+    if (arg === "--no-pencil-enabled") {
+      raw.pencilEnabled = false;
+      continue;
+    }
+    if (arg === "--pencil-strict") {
+      raw.pencilStrict = true;
+      continue;
+    }
+    if (arg === "--no-pencil-strict") {
+      raw.pencilStrict = false;
+      continue;
+    }
     if (arg === "--manifest" && next) {
       raw.manifest = path.resolve(root, String(next));
       i += 1;
@@ -65,6 +133,22 @@ export const resolveCliOptions = (argv, context = {}) => {
     }
     if (arg === "--skip-ingest") {
       raw.skipIngest = true;
+      continue;
+    }
+    if (arg === "--home-only") {
+      raw.homeOnly = true;
+      continue;
+    }
+    if (arg === "--home-only-eval") {
+      raw.homeOnlyEval = true;
+      continue;
+    }
+    if (arg === "--no-home-only-eval") {
+      raw.homeOnlyEval = false;
+      continue;
+    }
+    if (arg === "--no-home-only") {
+      raw.homeOnly = false;
       continue;
     }
     if (arg === "--skip-regression") {
@@ -105,6 +189,21 @@ export const resolveCliOptions = (argv, context = {}) => {
       i += 1;
       continue;
     }
+    if (arg === "--intake-review-file" && next) {
+      raw.intakeReviewFile = String(next).trim();
+      i += 1;
+      continue;
+    }
+    if (arg === "--asset-approval-file" && next) {
+      raw.assetApprovalFile = String(next).trim();
+      i += 1;
+      continue;
+    }
+    if (arg === "--site-style-profile" && next) {
+      raw.siteStyleProfile = String(next).trim();
+      i += 1;
+      continue;
+    }
     if (arg === "--required-pages-per-site" && next) {
       raw.requiredPagesPerSite = Number(next);
       i += 1;
@@ -125,6 +224,11 @@ export const resolveCliOptions = (argv, context = {}) => {
       i += 1;
       continue;
     }
+    if (arg === "--fidelity-scoring-phase" && next) {
+      raw.fidelityScoringPhase = String(next).trim();
+      i += 1;
+      continue;
+    }
     if (arg === "--anti-crawl-precheck") {
       raw.antiCrawlPrecheck = true;
       continue;
@@ -140,6 +244,64 @@ export const resolveCliOptions = (argv, context = {}) => {
     }
     if (arg === "--fast") {
       raw.fastMode = true;
+      continue;
+    }
+    if (arg === "--structure-first-pipeline") {
+      raw.structureFirstPipeline = true;
+      continue;
+    }
+    if (arg === "--no-structure-first-pipeline") {
+      raw.structureFirstPipeline = false;
+      continue;
+    }
+    if (arg === "--structure-first-disable-images") {
+      raw.structureFirstDisableImages = true;
+      continue;
+    }
+    if (arg === "--no-structure-first-disable-images") {
+      raw.structureFirstDisableImages = false;
+      continue;
+    }
+    if (arg === "--structure-first-disable-motion") {
+      raw.structureFirstDisableMotion = true;
+      continue;
+    }
+    if (arg === "--no-structure-first-disable-motion") {
+      raw.structureFirstDisableMotion = false;
+      continue;
+    }
+    if (arg === "--structure-first-backfill-images") {
+      raw.structureFirstBackfillImages = true;
+      continue;
+    }
+    if (arg === "--no-structure-first-backfill-images") {
+      raw.structureFirstBackfillImages = false;
+      continue;
+    }
+    if (arg === "--structure-first-backfill-motion") {
+      raw.structureFirstBackfillMotion = true;
+      continue;
+    }
+    if (arg === "--no-structure-first-backfill-motion") {
+      raw.structureFirstBackfillMotion = false;
+      continue;
+    }
+    if (arg === "--auto-private-blocks") {
+      raw.autoPrivateBlocks = true;
+      continue;
+    }
+    if (arg === "--no-auto-private-blocks") {
+      raw.autoPrivateBlocks = false;
+      continue;
+    }
+    if (arg === "--auto-private-section-similarity-threshold" && next) {
+      raw.autoPrivateSectionSimilarityThreshold = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--auto-private-target-kinds" && next) {
+      raw.autoPrivateTargetKinds = String(next);
+      i += 1;
       continue;
     }
     if (arg === "--fidelity-mode" && next) {
@@ -162,6 +324,69 @@ export const resolveCliOptions = (argv, context = {}) => {
       i += 1;
       continue;
     }
+    if (arg === "--gate-min-site-pages" && next) {
+      raw.gateMinSitePages = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--gate-min-page-spec-coverage" && next) {
+      raw.gateMinPageSpecCoverage = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--gate-min-link-success-rate" && next) {
+      raw.gateMinLinkSuccessRate = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--gate-min-nav-footer-link-success-rate" && next) {
+      raw.gateMinNavFooterLinkSuccessRate = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--gate-min-required-role-coverage" && next) {
+      raw.gateMinRequiredRoleCoverage = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--gate-min-design-contract-score" && next) {
+      raw.gateMinDesignContractScore = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--gate-min-accessibility-score" && next) {
+      raw.gateMinAccessibilityScore = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--gate-min-asset-contract-score" && next) {
+      raw.gateMinAssetContractScore = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--gate-min-overall-similarity" && next) {
+      raw.gateMinOverallSimilarity = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--gate-min-site-similarity" && next) {
+      raw.gateMinSiteSimilarity = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--gate-min-site-visual-similarity" && next) {
+      raw.gateMinSiteVisualSimilarity = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--no-gate-require-key-flow-integrity") {
+      raw.gateRequireKeyFlowIntegrity = false;
+      continue;
+    }
+    if (arg === "--gate-require-key-flow-integrity") {
+      raw.gateRequireKeyFlowIntegrity = true;
+      continue;
+    }
     if (arg === "--template-exclusive-blocks") {
       raw.templateExclusiveBlocks = true;
       continue;
@@ -172,7 +397,21 @@ export const resolveCliOptions = (argv, context = {}) => {
     }
     if (arg === "--auto-repair-iterations" && next) {
       raw.autoRepairIterations = Number(next);
+      autoRepairIterationsExplicit = true;
       i += 1;
+      continue;
+    }
+    if (arg === "--regression-candidates-per-attempt" && next) {
+      raw.regressionCandidatesPerAttempt = Number(next);
+      i += 1;
+      continue;
+    }
+    if (arg === "--home-copy-hard-constraints") {
+      raw.homeCopyHardConstraints = true;
+      continue;
+    }
+    if (arg === "--no-home-copy-hard-constraints") {
+      raw.homeCopyHardConstraints = false;
       continue;
     }
     if (arg === "--pixel-mode") {
@@ -248,5 +487,5 @@ export const resolveCliOptions = (argv, context = {}) => {
     }
   }
 
-  return normalizeTemplateFactoryOptions(raw, { root });
+  return normalizeTemplateFactoryOptions(raw, { root, autoRepairIterationsExplicit });
 };

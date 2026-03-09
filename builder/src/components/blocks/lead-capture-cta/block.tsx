@@ -18,13 +18,15 @@ import { leadCaptureSectionClass } from "./variants";
 export type LeadCaptureCTAProps = BaseBlockProps & {
   title: string;
   subtitle?: string;
-  cta: LinkProps;
+  cta?: LinkProps | null;
   note?: string;
   titleColor?: string;
   titleClassName?: string;
   ctaBackgroundColor?: string;
   ctaTextColor?: string;
   ctaClassName?: string;
+  referenceSliceMode?: boolean;
+  referenceSliceMinHeight?: number;
 };
 
 export type LeadCaptureVariant = "banner" | "card";
@@ -49,9 +51,17 @@ export function LeadCaptureCTABlock({
   ctaBackgroundColor,
   ctaTextColor,
   ctaClassName,
+  referenceSliceMode = false,
+  referenceSliceMinHeight,
   emphasis = "normal",
   variant = "banner",
 }: LeadCaptureCTAProps & { variant?: LeadCaptureVariant }) {
+  const resolvedCta: LinkProps = {
+    label: String(cta?.label || "").trim() || "Contact",
+    href: String(cta?.href || "").trim() || "#contact",
+    variant: cta?.variant === "secondary" ? "secondary" : cta?.variant === "link" ? "link" : "primary",
+  };
+
   const shouldUseGradientTitle = emphasis === "high" && !titleColor && !titleClassName;
   const content = (
     <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -73,7 +83,7 @@ export function LeadCaptureCTABlock({
       </div>
       <Button
         asChild
-        variant={cta.variant === "secondary" ? "secondary" : "default"}
+        variant={resolvedCta.variant === "secondary" ? "secondary" : "default"}
         className={cn(emphasis === "high" ? "btn-glow" : "", ctaClassName)}
         style={
           ctaBackgroundColor || ctaTextColor
@@ -85,7 +95,7 @@ export function LeadCaptureCTABlock({
         }
         size="lg"
       >
-        <a href={cta.href}>{cta.label}</a>
+        <a href={resolvedCta.href}>{resolvedCta.label}</a>
       </Button>
     </div>
   );
@@ -101,6 +111,18 @@ export function LeadCaptureCTABlock({
   );
   const backgroundVideo = backgroundVideoSource(background, backgroundMedia);
   const hasBackgroundVideo = Boolean(backgroundVideo?.src);
+  const explicitReferenceSliceMinHeight = Math.round(Number(referenceSliceMinHeight) || 0);
+  const fallbackReferenceSliceHeight = referenceSliceMode &&
+    background === "image" &&
+    backgroundMedia?.kind === "image" &&
+    backgroundMedia?.src
+      ? 260
+      : 0;
+  const referenceSliceHeight = Math.max(explicitReferenceSliceMinHeight, fallbackReferenceSliceHeight);
+  const referenceSliceStyle =
+    referenceSliceHeight > 0
+      ? { minHeight: `${Math.max(96, referenceSliceHeight)}px` }
+      : undefined;
 
   return (
     <section
@@ -112,7 +134,7 @@ export function LeadCaptureCTABlock({
         leadCaptureSectionClass({ paddingY, background }),
         hasBackgroundVideo ? "relative overflow-hidden" : ""
       )}
-      style={backgroundStyle}
+      style={{ ...backgroundStyle, ...(referenceSliceStyle || {}) }}
     >
       {hasBackgroundVideo ? (
         <video

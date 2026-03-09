@@ -21,8 +21,14 @@ const pageDepth = (pathValue) =>
     .split("/")
     .filter(Boolean).length;
 
+const isSuccessfulCrawlStatus = (value) => {
+  const status = Number(value || 0);
+  return Number.isFinite(status) && status >= 200 && status < 400;
+};
+
 const classifyPageRole = (page) => {
   const pathValue = normalizeTemplatePagePath(page?.path || "/");
+  const explicitType = String(page?.taxonomy_type || "").trim().toLowerCase();
   const name = String(page?.name || "").toLowerCase();
   const required = Array.isArray(page?.required_categories)
     ? page.required_categories.map((entry) => String(entry || "").toLowerCase())
@@ -30,11 +36,14 @@ const classifyPageRole = (page) => {
   const token = `${pathValue} ${name}`;
 
   if (pathValue === "/") return "home";
+  if (explicitType === "product_service_list" || explicitType === "blog_list") return "listing";
+  if (explicitType === "detail" || explicitType === "blog_detail") return "detail";
+  if (explicitType === "contact" || explicitType === "help_faq") return "contact";
   if (/contact|quote|book|demo|get[-\s]?in[-\s]?touch|support|help/.test(token) || required.includes("contact")) {
     return "contact";
   }
   if (
-    /\/products?\/?$|\/services?\/?$|\/solutions?\/?$|\/blog\/?$|\/blogs\/?$|\/news\/?$|\/insights?\/?$|\/resources?\/?$|\/collections?\/?$/.test(
+    /\/products?\/?$|\/services?\/?$|\/solutions?\/?$|\/blog\/?$|\/blogs\/?$|\/news\/?$|\/insights?\/?$|\/resources?\/?$|\/collections?\/?$|\/collections\/[^/]+\/?$/.test(
       pathValue
     ) ||
     required.includes("products")
@@ -42,10 +51,10 @@ const classifyPageRole = (page) => {
     return "listing";
   }
   if (
-    /\/products?\/.+|\/blog\/.+|\/blogs\/.+|\/article\/.+|\/news\/.+|\/insights?\/.+|\/stories\/.+|\/case[-_]studies?\/.+/.test(
+    /\/products?\/.+|\/blog\/.+|\/blogs\/[^/]+\/[^/]+|\/article\/.+|\/news\/.+|\/insights?\/.+|\/stories\/.+|\/case[-_]studies?\/.+/.test(
       pathValue
     ) ||
-    pageDepth(pathValue) >= 2
+    pageDepth(pathValue) >= 3
   ) {
     return "detail";
   }
@@ -54,19 +63,47 @@ const classifyPageRole = (page) => {
 
 const toPageRows = (siteItem) => {
   const pageSpecs = Array.isArray(siteItem?.specPack?.page_specs) ? siteItem.specPack.page_specs : [];
-  if (pageSpecs.length) {
-    return pageSpecs.map((page) => ({
-      path: normalizeTemplatePagePath(page?.path || "/"),
+  const sitePages = Array.isArray(siteItem?.specPack?.site_pages) ? siteItem.specPack.site_pages : [];
+  const renderablePathSet = new Set([
+    "/",
+    ...pageSpecs.map((page) => normalizeTemplatePagePath(page?.path || "/")),
+  ]);
+  const crawlByPath =
+    siteItem?.crawlAssetPack?.byPath instanceof Map
+      ? siteItem.crawlAssetPack.byPath
+      : new Map(
+          (Array.isArray(siteItem?.crawlAssetPack?.pages) ? siteItem.crawlAssetPack.pages : [])
+            .map((page) => {
+              const path = normalizeTemplatePagePath(page?.path || "/");
+              return [path, page];
+            })
+            .filter(([path]) => Boolean(path))
+        );
+  const rows = [];
+  const seen = new Set();
+  const push = (page, source) => {
+    const path = normalizeTemplatePagePath(page?.path || "/");
+    if (!path || seen.has(path)) return;
+    seen.add(path);
+    rows.push({
+      path,
       name: String(page?.name || "").trim() || "Page",
       required_categories: Array.isArray(page?.required_categories) ? page.required_categories : [],
-    }));
-  }
-  const sitePages = Array.isArray(siteItem?.specPack?.site_pages) ? siteItem.specPack.site_pages : [];
-  return sitePages.map((page) => ({
-    path: normalizeTemplatePagePath(page?.path || "/"),
-    name: String(page?.name || "").trim() || "Page",
-    required_categories: Array.isArray(page?.required_categories) ? page.required_categories : [],
-  }));
+      taxonomy_type: String(page?.taxonomy_type || "").trim(),
+      source,
+      comparable: crawlByPath.size
+        ? (() => {
+            const crawlRow = crawlByPath.get(path);
+            if (!crawlRow) return false;
+            return isSuccessfulCrawlStatus(crawlRow?.status);
+          })()
+        : true,
+      renderable: renderablePathSet.has(path),
+    });
+  };
+  for (const page of pageSpecs) push(page, "page_spec");
+  for (const page of sitePages) push(page, "site_page");
+  return rows;
 };
 
 export const selectRequiredPagesForSite = ({ siteItem, maxPagesPerSite = 4 }) => {
@@ -81,6 +118,15 @@ export const selectRequiredPagesForSite = ({ siteItem, maxPagesPerSite = 4 }) =>
   if (!unique.length) {
     return [{ path: "/", name: "Home", required_categories: [], role: "home", reason: "fallback_home" }];
   }
+  const fromPageSpecs = unique.filter((page) => page.source === "page_spec");
+  const candidateBase = fromPageSpecs.length ? fromPageSpecs : unique;
+  const candidateComparableRenderable = candidateBase.filter((page) => page.comparable && page.renderable);
+  const candidateComparable = candidateBase.filter((page) => page.comparable);
+  const pool = candidateComparableRenderable.length
+    ? candidateComparableRenderable
+    : candidateComparable.length
+      ? candidateComparable
+      : candidateBase;
 
   const selected = [];
   const selectedPaths = new Set();
@@ -90,19 +136,32 @@ export const selectRequiredPagesForSite = ({ siteItem, maxPagesPerSite = 4 }) =>
     selected.push({ ...entry, reason });
   };
 
-  const pickByRole = (role) => unique.find((page) => page.role === role);
+  const scoreRolePreference = (page, role) => {
+    if (!page || role !== "listing") return 0;
+    const explicitType = String(page?.taxonomy_type || "").trim().toLowerCase();
+    const pathValue = normalizeTemplatePagePath(page?.path || "/");
+    if (explicitType === "product_service_list") return 300;
+    if (explicitType === "blog_list") return 120;
+    if (/^\/(products?|collections?|shop|store)(\/|$)/i.test(pathValue)) return 260;
+    if (/^\/blogs?(\/|$)/i.test(pathValue)) return 100;
+    return 0;
+  };
+  const pickByRole = (role) =>
+    pool
+      .filter((page) => page.role === role)
+      .sort((a, b) => scoreRolePreference(b, role) - scoreRolePreference(a, role))[0];
   pushIf(pickByRole("home"), "home");
   pushIf(pickByRole("listing"), "listing");
   pushIf(pickByRole("detail"), "detail");
   pushIf(pickByRole("contact"), "contact");
 
-  for (const page of unique) {
+  for (const page of pool) {
     if (selected.length >= Math.max(1, Math.floor(Number(maxPagesPerSite) || 4))) break;
     pushIf(page, "top_reachable");
   }
 
   if (!selected.length) {
-    pushIf(unique[0], "fallback_first");
+    pushIf(pool[0] || unique[0], "fallback_first");
   }
 
   return selected.slice(0, Math.max(1, Math.floor(Number(maxPagesPerSite) || 4)));

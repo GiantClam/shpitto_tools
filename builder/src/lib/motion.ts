@@ -24,7 +24,7 @@ const prefersReducedMotion = () =>
   window.matchMedia &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-export function useInViewReveal<T extends HTMLElement>(options: RevealOptions = {}) {
+export function useInViewReveal<T extends HTMLElement = HTMLDivElement>(options: RevealOptions = {}) {
   const { preset = "fadeUp", once = true, rootMargin = "-10% 0px", enabled = true } = options;
   const ref = useRef<T | null>(null);
   const [visible, setVisible] = useState(false);
@@ -62,10 +62,14 @@ export function useInViewReveal<T extends HTMLElement>(options: RevealOptions = 
 
   const className = useMemo(() => {
     if (!enabled || prefersReducedMotion()) return "";
-    // Keep content visible before intersection to avoid blank sections in long screenshots.
-    if (!visible) return "opacity-100 translate-y-0";
+    // Keep sections readable before intersection while still enabling perceptible reveal.
+    if (!visible) {
+      if (preset === "fadeIn") return "opacity-95";
+      if (preset === "stagger") return "opacity-95 translate-y-1";
+      return "opacity-95 translate-y-2";
+    }
     if (preset === "fadeIn") return "opacity-100";
-    if (preset === "stagger") return "opacity-100";
+    if (preset === "stagger") return "opacity-100 translate-y-0";
     return "opacity-100 translate-y-0";
   }, [enabled, preset, visible]);
 
@@ -88,10 +92,10 @@ export function useInViewReveal<T extends HTMLElement>(options: RevealOptions = 
   return result;
 }
 
-export function useParallaxY(options: ParallaxOptions = {}) {
+export function useParallaxY<T extends HTMLElement = HTMLDivElement>(options: ParallaxOptions = {}) {
   const { intensity = 0.15, clamp = 80, distance, enabled = true } = options;
   const effectiveClamp = typeof distance === "number" ? distance : clamp;
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<T | null>(null);
   const frame = useRef<number | null>(null);
   const [offset, setOffset] = useState(0);
 

@@ -1,0 +1,95 @@
+{
+  "version": "1.0.0",
+  "sites": [
+    {
+      "id": "devialet-home",
+      "url": "https://www.devialet.com/",
+      "description": "Devialet home-only benchmark",
+      "prompt": "Generate a high-fidelity home page template for Devialet.",
+      "crawlSite": false,
+      "crawlMaxPages": 1,
+      "crawlMaxDepth": 0,
+      "imageSourcePolicy": "source_or_gallery",
+      "disableScreenshotImages": true,
+      "specialRules": {
+        "imageIndependentTemplate": true,
+        "imageFillPolicy": "source_or_gallery"
+      }
+    },
+    {
+      "id": "unistellar-home",
+      "url": "https://www.unistellar.com/",
+      "description": "Unistellar home-only benchmark",
+      "prompt": "Generate a high-fidelity home page template for Unistellar.",
+      "crawlSite": false,
+      "crawlMaxPages": 1,
+      "crawlMaxDepth": 0,
+      "imageSourcePolicy": "source_or_gallery",
+      "disableScreenshotImages": true,
+      "specialRules": {
+        "imageIndependentTemplate": true,
+        "imageFillPolicy": "source_or_gallery"
+      }
+    },
+    {
+      "id": "archmotorcycle-home",
+      "url": "https://archmotorcycle.com/",
+      "description": "ARCH Motorcycle home-only benchmark",
+      "prompt": "Generate a high-fidelity home page template for ARCH Motorcycle.",
+      "crawlSite": false,
+      "crawlMaxPages": 1,
+      "crawlMaxDepth": 0,
+      "imageSourcePolicy": "source_or_gallery",
+      "disableScreenshotImages": true,
+      "specialRules": {
+        "imageIndependentTemplate": true,
+        "imageFillPolicy": "source_or_gallery"
+      }
+    },
+    {
+      "id": "masterdynamic-home",
+      "url": "https://www.masterdynamic.com/",
+      "description": "Master & Dynamic home-only benchmark",
+      "prompt": "Generate a high-fidelity home page template for Master & Dynamic.",
+      "crawlSite": false,
+      "crawlMaxPages": 1,
+      "crawlMaxDepth": 0,
+      "imageSourcePolicy": "source_or_gallery",
+      "disableScreenshotImages": true,
+      "specialRules": {
+        "imageIndependentTemplate": true,
+        "imageFillPolicy": "source_or_gallery"
+      }
+    },
+    {
+      "id": "ucimu-home",
+      "url": "https://www.ucimu.it/",
+      "description": "UCIMU home-only benchmark",
+      "prompt": "Generate a high-fidelity home page template for UCIMU.",
+      "crawlSite": false,
+      "crawlMaxPages": 1,
+      "crawlMaxDepth": 0,
+      "imageSourcePolicy": "source_or_gallery",
+      "disableScreenshotImages": true,
+      "specialRules": {
+        "imageIndependentTemplate": true,
+        "imageFillPolicy": "source_or_gallery"
+      }
+    },
+    {
+      "id": "kef-jp-home",
+      "url": "https://jp.kef.com/",
+      "description": "KEF Japan home-only benchmark",
+      "prompt": "Generate a high-fidelity home page template for KEF Japan.",
+      "crawlSite": false,
+      "crawlMaxPages": 1,
+      "crawlMaxDepth": 0,
+      "imageSourcePolicy": "source_or_gallery",
+      "disableScreenshotImages": true,
+      "specialRules": {
+        "imageIndependentTemplate": true,
+        "imageFillPolicy": "source_or_gallery"
+      }
+    }
+  ]
+}

@@ -65,7 +65,7 @@ const runNodeEval = (script, options = {}) =>
 
 /**
  * Use Playwright to visit a URL and extract section bounding boxes.
- * Returns array of { id, type, top, left, width, height } for each section.
+ * Returns array of { id, type, className, role, dataSectionType, ariaLabel, textSample, top, left, width, height } for each section.
  */
 const detectSectionBounds = async ({ url, timeout = 30000, waitForTimeout = 2000 }) => {
   // We use a small inline Playwright script to avoid importing playwright directly
@@ -74,26 +74,56 @@ const detectSectionBounds = async ({ url, timeout = 30000, waitForTimeout = 2000
 const { chromium } = require('playwright');
 (async () => {
   const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  const context = await browser.newContext({
+    viewport: { width: 1440, height: 900 },
+    colorScheme: 'light',
+    reducedMotion: 'reduce',
+  });
+  const page = await context.newPage();
   await page.goto(${JSON.stringify(url)}, { waitUntil: 'networkidle', timeout: ${timeout} });
+  await page.addStyleTag({ content: \`
+*, *::before, *::after { animation: none !important; transition: none !important; caret-color: transparent !important; }
+video, canvas, iframe[src*="youtube"], iframe[src*="vimeo"] { visibility: hidden !important; }
+[aria-live], [class*="ticker"], [class*="marquee"] { visibility: hidden !important; }
+\`});
+  await page.evaluate(() => {
+    for (const media of Array.from(document.querySelectorAll('video, audio'))) {
+      try {
+        media.pause();
+        media.currentTime = 0;
+      } catch {}
+    }
+  });
   await page.waitForTimeout(${waitForTimeout});
 
   const sections = await page.evaluate(() => {
     // Strategy 1: Puck component markers
     let elements = Array.from(document.querySelectorAll('[data-puck-component]'));
     if (!elements.length) {
-      // Strategy 2: <section> elements with id or data-section
-      elements = Array.from(document.querySelectorAll('section[id], section[data-section], [data-section]'));
+      // Strategy 2: include global nav/footer shells first, then structural sections
+      const globalShell = [
+        ...Array.from(document.querySelectorAll('header, nav, footer')),
+      ];
+      const semanticSections = Array.from(
+        document.querySelectorAll('section[id], section[data-section], [data-section], main > section, main > div')
+      );
+      const merged = [...globalShell, ...semanticSections];
+      const seen = new Set();
+      elements = merged.filter((el) => {
+        if (!el || seen.has(el)) return false;
+        seen.add(el);
+        return true;
+      });
     }
     if (!elements.length) {
-      // Strategy 3: direct children of main or #puck-root
+      // Strategy 3: direct children of main/#puck-root/document body
       const root = document.querySelector('main') || document.querySelector('#puck-root') || document.body;
       elements = Array.from(root.children).filter(el => {
         const tag = el.tagName.toLowerCase();
         return tag !== 'script' && tag !== 'style' && tag !== 'link';
       });
     }
-    return elements.map((el, index) => {
+    const rows = elements.map((el, index) => {
       const rect = el.getBoundingClientRect();
       const scrollY = window.scrollY || window.pageYOffset;
       const scrollX = window.scrollX || window.pageXOffset;
@@ -101,15 +131,33 @@ const { chromium } = require('playwright');
         index,
         id: el.id || el.getAttribute('data-section') || el.getAttribute('data-puck-component') || ('section-' + index),
         type: el.getAttribute('data-puck-component') || el.tagName.toLowerCase(),
+        className: String(el.className || '').slice(0, 240),
+        role: String(el.getAttribute('role') || '').slice(0, 60),
+        dataSectionType: String(el.getAttribute('data-section-type') || el.getAttribute('data-section') || '').slice(0, 80),
+        ariaLabel: String(el.getAttribute('aria-label') || '').slice(0, 160),
+        textSample: String((el.textContent || '').replace(/\\s+/g, ' ').trim()).slice(0, 220),
         top: Math.round(rect.top + scrollY),
         left: Math.round(rect.left + scrollX),
         width: Math.round(rect.width),
         height: Math.round(rect.height),
       };
     }).filter(s => s.height > 20 && s.width > 100);
+
+    rows.sort((a, b) => {
+      const topDiff = Number(a.top || 0) - Number(b.top || 0);
+      if (Math.abs(topDiff) > 2) return topDiff;
+      const leftDiff = Number(a.left || 0) - Number(b.left || 0);
+      if (Math.abs(leftDiff) > 2) return leftDiff;
+      const heightDiff = Number(b.height || 0) - Number(a.height || 0);
+      if (Math.abs(heightDiff) > 2) return heightDiff;
+      return Number(a.index || 0) - Number(b.index || 0);
+    });
+
+    return rows.map((row, idx) => ({ ...row, index: idx }));
   });
 
   console.log(JSON.stringify(sections));
+  await context.close();
   await browser.close();
 })();
 `;
@@ -174,14 +222,33 @@ export const captureSectionScreenshots = async ({
   let fullPagePath = fullPageScreenshot;
   if (!fullPagePath) {
     fullPagePath = path.join(outDir, "_full-page.png");
-    const captureScript = `
+const captureScript = `
 const { chromium } = require('playwright');
 (async () => {
   const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  const context = await browser.newContext({
+    viewport: { width: 1440, height: 900 },
+    colorScheme: 'light',
+    reducedMotion: 'reduce',
+  });
+  const page = await context.newPage();
   await page.goto(${JSON.stringify(url)}, { waitUntil: 'networkidle', timeout: ${timeout} });
+  await page.addStyleTag({ content: \`
+*, *::before, *::after { animation: none !important; transition: none !important; caret-color: transparent !important; }
+video, canvas, iframe[src*="youtube"], iframe[src*="vimeo"] { visibility: hidden !important; }
+[aria-live], [class*="ticker"], [class*="marquee"] { visibility: hidden !important; }
+\`});
+  await page.evaluate(() => {
+    for (const media of Array.from(document.querySelectorAll('video, audio'))) {
+      try {
+        media.pause();
+        media.currentTime = 0;
+      } catch {}
+    }
+  });
   await page.waitForTimeout(${waitForTimeout});
-  await page.screenshot({ path: ${JSON.stringify(fullPagePath)}, fullPage: true });
+  await page.screenshot({ path: ${JSON.stringify(fullPagePath)}, fullPage: true, animations: 'disabled' });
+  await context.close();
   await browser.close();
 })();
 `;
@@ -195,7 +262,8 @@ const { chromium } = require('playwright');
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-+|-+$/g, "");
-    const screenshotPath = path.join(outDir, `${slug}.png`);
+    const uniqueName = `${String(bound.index ?? 0).padStart(2, "0")}-${slug || "section"}`;
+    const screenshotPath = path.join(outDir, `${uniqueName}.png`);
     const ok = await cropImage({
       sourcePath: fullPagePath,
       targetPath: screenshotPath,
@@ -207,6 +275,11 @@ const { chromium } = require('playwright');
     sections.push({
       id: bound.id,
       type: bound.type,
+      className: String(bound.className || ""),
+      role: String(bound.role || ""),
+      dataSectionType: String(bound.dataSectionType || ""),
+      ariaLabel: String(bound.ariaLabel || ""),
+      textSample: String(bound.textSample || ""),
       index: bound.index,
       screenshotPath: ok ? screenshotPath : "",
       bounds: {

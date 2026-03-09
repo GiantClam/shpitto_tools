@@ -68,6 +68,7 @@ const getLocalPayloadPathCandidates = async (siteKey: string): Promise<string[]>
     const pathMod = await import("path");
     return [
       pathMod.join(process.cwd(), "..", "asset-factory", "out", siteKey, "sandbox", "payload.json"),
+      pathMod.join(process.cwd(), "..", "asset-factory", "out", "p2w", siteKey, "sandbox", "payload.json"),
       pathMod.join(process.cwd(), "public", "generated-sites", siteKey, "sandbox", "payload.json"),
     ];
   } catch {
@@ -128,12 +129,42 @@ export const buildSandboxInitialPayload = (
 
   const requestedPageIndex = pages.findIndex((page) => normalizePagePath(page.path) === requestedPage);
   const pageIndex = requestedPageIndex >= 0 ? requestedPageIndex : 0;
+  const selectedPage = pages[pageIndex];
+  const resolvedCurrentPath = normalizePagePath(selectedPage.path);
+  const pageContent = Array.isArray(selectedPage?.data?.content) ? selectedPage.data.content : [];
+  const pageWithCurrentPath = {
+    ...selectedPage,
+    data: {
+      ...(selectedPage?.data && typeof selectedPage.data === "object" ? selectedPage.data : {}),
+      content: pageContent.map((item: any) => {
+        const props = item?.props && typeof item.props === "object" ? item.props : {};
+        const currentPath =
+          typeof props.currentPath === "string" && props.currentPath.trim().length > 0
+            ? props.currentPath
+            : resolvedCurrentPath;
+        return {
+          ...(item && typeof item === "object" ? item : {}),
+          props: {
+            ...props,
+            currentPath,
+          },
+        };
+      }),
+    },
+  };
+  const requiredTypes = new Set(
+    (Array.isArray(pageWithCurrentPath?.data?.content) ? pageWithCurrentPath.data.content : [])
+      .map((item: any) => (typeof item?.type === "string" ? item.type.trim() : ""))
+      .filter(Boolean)
+  );
+  const pageScopedComponents = components.filter((component) => requiredTypes.has(component.name));
+  const resolvedComponents = pageScopedComponents.length ? pageScopedComponents : components;
   const theme = payload?.theme && typeof payload.theme === "object" ? { ...payload.theme } : undefined;
   if (theme && requestedMotion) theme.motion = requestedMotion;
 
   return {
-    components,
-    page: pages[pageIndex],
+    components: resolvedComponents,
+    page: pageWithCurrentPath,
     availablePagePaths,
     theme,
     pageIndex,

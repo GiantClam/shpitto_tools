@@ -1,0 +1,621 @@
+"use client";
+
+import React from "react";
+import { TextReveal } from "@/components/magic/text-reveal";
+import { useMotionMode } from "@/components/theme/motion";
+import { useInViewReveal } from "@/lib/motion";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Menu,
+  Minus,
+  Play,
+  Plus,
+  Search,
+  Sparkles,
+  Wifi,
+  X,
+} from "lucide-react";
+
+const SECTION_KIND = "story";
+const SECTION_TREE = {
+  "type": "frame",
+  "id": "EDr1s",
+  "name": "aboutCta",
+  "style": {
+    "boxSizing": "border-box",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": 16,
+    "alignItems": "center",
+    "padding": "48px 56px 52px 56px",
+    "width": "100%",
+    "background": "#0A1224",
+    "border": "1px solid #23324F"
+  },
+  "children": [
+    {
+      "type": "text",
+      "id": "iJvzy",
+      "name": "ctaEyebrow",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#9EB4DB",
+        "fontFamily": "Manrope",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "letterSpacing": 1.6,
+        "textAlign": "center",
+        "width": 720
+      },
+      "children": [],
+      "textProp": "ctaeyebrowtext"
+    },
+    {
+      "type": "text",
+      "id": "LtRnx",
+      "name": "ctaHead",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#FFFFFF",
+        "fontFamily": "Space Grotesk",
+        "fontSize": 50,
+        "fontWeight": "600",
+        "letterSpacing": -1,
+        "lineHeight": 1.03,
+        "textAlign": "center",
+        "width": 920
+      },
+      "children": [],
+      "textProp": "ctaheadtext"
+    },
+    {
+      "type": "text",
+      "id": "ETK5u",
+      "name": "ctaBody",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#AEB8CE",
+        "fontFamily": "Manrope",
+        "fontSize": 14,
+        "fontWeight": "normal",
+        "lineHeight": 1.5,
+        "textAlign": "center",
+        "width": 760
+      },
+      "children": [],
+      "textProp": "ctabodytext"
+    },
+    {
+      "type": "frame",
+      "id": "8zhGH",
+      "name": "ctaButtons",
+      "style": {
+        "boxSizing": "border-box",
+        "display": "flex",
+        "flexDirection": "row",
+        "gap": 12
+      },
+      "children": [
+        {
+          "type": "frame",
+          "id": "ot9vQ",
+          "name": "ctaBtnPrimary",
+          "style": {
+            "boxSizing": "border-box",
+            "display": "inline-flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "padding": "0px 28px",
+            "height": 54,
+            "background": "#2B67F6",
+            "border": "1px solid #4F84FF",
+            "width": "fit-content"
+          },
+          "children": [
+            {
+              "type": "text",
+              "id": "oz5iq",
+              "name": "ctaTxtPrimary",
+              "style": {
+                "boxSizing": "border-box",
+                "margin": 0,
+                "whiteSpace": "pre-line",
+                "color": "#FFFFFF",
+                "fontFamily": "Manrope",
+                "fontSize": 13,
+                "fontWeight": "600",
+                "letterSpacing": 1.1,
+                "textAlign": "center",
+                "width": 240
+              },
+              "children": [],
+              "textProp": "ctatxtprimarytext"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "HW9Mj",
+          "name": "ctaBtnSecondary",
+          "style": {
+            "boxSizing": "border-box",
+            "display": "inline-flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "padding": "0px 28px",
+            "height": 54,
+            "background": "#FFFFFF",
+            "border": "1px solid #000000ff",
+            "width": "fit-content"
+          },
+          "children": [
+            {
+              "type": "text",
+              "id": "YfAna",
+              "name": "ctaTxtSecondary",
+              "style": {
+                "boxSizing": "border-box",
+                "margin": 0,
+                "whiteSpace": "pre-line",
+                "color": "#000000ff",
+                "fontFamily": "Manrope",
+                "fontSize": 13,
+                "fontWeight": "600",
+                "letterSpacing": 1.1,
+                "textAlign": "center",
+                "width": 220
+              },
+              "children": [],
+              "textProp": "ctatxtsecondarytext"
+            }
+          ]
+        }
+      ],
+      "hrefProp": "ctabuttonshref"
+    },
+    {
+      "type": "frame",
+      "id": "ovI0f",
+      "name": "subCtas",
+      "style": {
+        "boxSizing": "border-box",
+        "display": "flex",
+        "flexDirection": "row",
+        "gap": 8
+      },
+      "children": [
+        {
+          "type": "frame",
+          "id": "JIDOf",
+          "name": "sub1",
+          "style": {
+            "boxSizing": "border-box",
+            "padding": "10px 14px",
+            "background": "#0F1520",
+            "border": "1px solid #31435F"
+          },
+          "children": [
+            {
+              "type": "text",
+              "id": "kG51h",
+              "name": "sub1t",
+              "style": {
+                "boxSizing": "border-box",
+                "margin": 0,
+                "whiteSpace": "pre-line",
+                "color": "#E5ECFB",
+                "fontFamily": "Manrope",
+                "fontSize": 13,
+                "fontWeight": "600",
+                "textAlign": "center",
+                "width": 150
+              },
+              "children": [],
+              "textProp": "sub1ttext"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "nPel8",
+          "name": "sub2",
+          "style": {
+            "boxSizing": "border-box",
+            "padding": "10px 14px",
+            "background": "#2B67F6",
+            "border": "1px solid #4F84FF"
+          },
+          "children": [
+            {
+              "type": "text",
+              "id": "sbPgW",
+              "name": "sub2t",
+              "style": {
+                "boxSizing": "border-box",
+                "margin": 0,
+                "whiteSpace": "pre-line",
+                "color": "#DDE7FF",
+                "fontFamily": "Manrope",
+                "fontSize": 13,
+                "fontWeight": "600",
+                "textAlign": "center",
+                "width": 170
+              },
+              "children": [],
+              "textProp": "sub2ttext"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "yMD0g",
+          "name": "sub3",
+          "style": {
+            "boxSizing": "border-box",
+            "padding": "10px 14px",
+            "background": "#1B2742",
+            "border": "1px solid #344866"
+          },
+          "children": [
+            {
+              "type": "text",
+              "id": "USopW",
+              "name": "sub3t",
+              "style": {
+                "boxSizing": "border-box",
+                "margin": 0,
+                "whiteSpace": "pre-line",
+                "color": "#9FB5E7",
+                "fontFamily": "Manrope",
+                "fontSize": 13,
+                "fontWeight": "600",
+                "textAlign": "center",
+                "width": 160
+              },
+              "children": [],
+              "textProp": "sub3ttext"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+const DEFAULT_PROPS = {
+  "id": "EDr1s",
+  "ctaeyebrowtext": "NEXT STEP / 04",
+  "ctaheadtext": "Join the next generation of observers and contribute to a more connected night sky.",
+  "ctabodytext": "Whether you are buying your first smart telescope or comparing models for a serious upgrade, Unistellar gives you a path from first light to meaningful discovery.",
+  "ctabuttonshref": "/blog",
+  "ctatxtprimarytext": "EXPLORE PRODUCTS",
+  "ctatxtsecondarytext": "TALK TO AN EXPERT",
+  "sub1ttext": "Compare models",
+  "sub2ttext": "Find an observing event",
+  "sub3ttext": "Read customer stories"
+};
+const LAYOUT_CONTEXT = {
+  "pagePaddingLeft": 0,
+  "pagePaddingRight": 0,
+  "pagePaddingTop": 0,
+  "pagePaddingBottom": 0,
+  "sectionGapAfter": 0
+};
+const ICONS = { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, Menu, Minus, Play, Plus, Search, Sparkles, Wifi, X };
+const PEN_RUNTIME_MOTION_STYLE = "@keyframes pen-media-breathe{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(0,-8px,0) scale(1.035)}}@keyframes pen-track-slide-x-subtle{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-32px,0,0)}}@keyframes pen-track-slide-x-showcase{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-52px,0,0)}}@keyframes pen-card-float{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-10px,0)}}";
+
+const assignDefined = (target, patch) => {
+  for (const [key, value] of Object.entries(patch || {})) {
+    if (typeof value !== "undefined") target[key] = value;
+  }
+  return target;
+};
+
+const resolveMotionMode = (providerMode, overrideMode) => {
+  const token = String(overrideMode || providerMode || "subtle").trim().toLowerCase();
+  if (token === "off" || token === "subtle" || token === "showcase") return token;
+  return "subtle";
+};
+
+const resolveSectionMotionProfile = (sectionKindToken = "", motionMode = "subtle") => {
+  if (motionMode === "off") {
+    return {
+      level: "off",
+      revealPreset: "fadeIn",
+      delayStep: 0,
+      textReveal: false,
+      mediaBreathe: false,
+      contentStagger: false,
+    };
+  }
+  if (sectionKindToken === "hero") {
+    return {
+      level: "showcase",
+      revealPreset: "fadeIn",
+      delayStep: motionMode === "showcase" ? 95 : 75,
+      textReveal: true,
+      mediaBreathe: false,
+      contentStagger: true,
+    };
+  }
+  if (sectionKindToken === "navigation" || sectionKindToken === "footer") {
+    return {
+      level: "off",
+      revealPreset: "fadeIn",
+      delayStep: 0,
+      textReveal: false,
+      mediaBreathe: false,
+      contentStagger: false,
+    };
+  }
+  return {
+    level: motionMode === "showcase" ? "showcase" : "stagger",
+    revealPreset: "stagger",
+    delayStep: motionMode === "showcase" ? 72 : 56,
+    textReveal: true,
+    mediaBreathe: false,
+    contentStagger: true,
+  };
+};
+
+const resolveDelayMs = (keyPath = "", sectionMotion) => {
+  const match = String(keyPath || "").match(/-(\d+)$/);
+  const index = Number(match?.[1] || 0);
+  const step = Number(sectionMotion?.delayStep || 0);
+  if (!(step > 0)) return 0;
+  return Math.min(420, index * step);
+};
+
+const resolveFontSize = (value) => {
+  if (typeof value === "number") return value;
+  if (typeof value === "string") {
+    const parsed = Number.parseFloat(value);
+    if (Number.isFinite(parsed)) return parsed;
+  }
+  return 0;
+};
+
+const resolveNumericDimension = (value) => {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value === "string") {
+    const parsed = Number.parseFloat(value);
+    if (Number.isFinite(parsed)) return parsed;
+  }
+  return 0;
+};
+
+const isHeadingLikeTextNode = (node) => {
+  const lowerName = String(node?.name || "").trim().toLowerCase();
+  if (/(title|headline|hero|eyebrow|heading)/.test(lowerName)) return true;
+  return resolveFontSize(node?.style?.fontSize) >= 22;
+};
+
+const getNodeNameToken = (node) => String(node?.name || "").trim().toLowerCase();
+
+const shouldApplyStoryTrackMotion = (node, sectionKindToken = "") => {
+  if (sectionKindToken !== "story") return false;
+  if (String(node?.type || "").trim().toLowerCase() !== "frame") return false;
+  const name = getNodeNameToken(node);
+  const direction = String(node?.style?.flexDirection || "").trim().toLowerCase();
+  const childCount = Array.isArray(node?.children) ? node.children.length : 0;
+  const rowLike = /(?:row|track|carousel|strip|rail)/.test(name);
+  return direction === "row" && (rowLike || childCount >= 2);
+};
+
+const shouldApplyStoryCardHover = (node, sectionKindToken = "") => {
+  if (sectionKindToken !== "story") return false;
+  if (String(node?.type || "").trim().toLowerCase() !== "frame") return false;
+  const name = getNodeNameToken(node);
+  const childCount = Array.isArray(node?.children) ? node.children.length : 0;
+  return /(?:card|cards|grid|tile)/.test(name) && childCount > 0;
+};
+
+const shouldApplyStoryCardFloat = (node, sectionKindToken = "") => {
+  if (sectionKindToken !== "story") return false;
+  if (String(node?.type || "").trim().toLowerCase() !== "frame") return false;
+  if (!node?.imageProp) return false;
+  const childCount = Array.isArray(node?.children) ? node.children.length : 0;
+  if (childCount < 1) return false;
+  const width = resolveNumericDimension(node?.style?.width);
+  const height = resolveNumericDimension(node?.style?.height);
+  const cardLikeWidth = width > 0 ? width <= 460 : true;
+  const cardLikeHeight = height > 0 ? height >= 220 : true;
+  return cardLikeWidth && cardLikeHeight;
+};
+
+const buildNodeClassName = (node, sectionMotion, sectionKindToken) => {
+  if (!sectionMotion || sectionMotion.level === "off") return "";
+  const classes = [];
+  if (node?.hrefProp) classes.push("hover-lift");
+  if (node?.type === "frame" && node?.imageProp) classes.push("will-change-transform");
+  if (shouldApplyStoryCardHover(node, sectionKindToken)) classes.push("hover-lift");
+  if (shouldApplyStoryTrackMotion(node, sectionKindToken)) classes.push("will-change-transform", "pen-track-slide");
+  return classes.join(" ");
+};
+
+const buildNodeStyle = (node, merged, sectionMotion, sectionKindToken, keyPath) => {
+  const style = { ...(node?.style || {}) };
+  if (node?.imageProp) {
+    const src = String(merged?.[node.imageProp] || "").trim();
+    if (src) {
+      style.backgroundImage = `url(${src})`;
+    }
+  }
+  if (node?.hrefProp) {
+    style.textDecoration = style.textDecoration || "none";
+    if (!style.color) style.color = "inherit";
+    if (node?.type === "frame" && !style.display) {
+      style.display = "inline-block";
+    }
+  }
+  const motionLevel = sectionMotion?.level || "off";
+  if (motionLevel !== "off") {
+    const delayMs = resolveDelayMs(keyPath, sectionMotion);
+    style.transition = style.transition || "opacity 560ms var(--ease-smooth), transform 560ms var(--ease-smooth), box-shadow 300ms var(--ease-smooth)";
+    if (delayMs > 0) style.transitionDelay = style.transitionDelay || `${delayMs}ms`;
+    if (
+      Boolean(sectionMotion?.mediaBreathe) &&
+      node?.imageProp &&
+      !style.animation &&
+      (!style.transform || String(style.transform).trim() === "")
+    ) {
+      style.animation = "pen-media-breathe 8s var(--ease-smooth, ease) infinite";
+      style.transformOrigin = style.transformOrigin || "50% 50%";
+    }
+    if (shouldApplyStoryTrackMotion(node, sectionKindToken) && !style.animation) {
+      const animationName = motionLevel === "showcase" ? "pen-track-slide-x-showcase" : "pen-track-slide-x-subtle";
+      const duration = motionLevel === "showcase" ? "10s" : "14s";
+      style.animation = `${animationName} ${duration} var(--ease-smooth, ease-in-out) infinite`;
+      style.willChange = style.willChange || "transform";
+      style.transformOrigin = style.transformOrigin || "center center";
+    }
+    if (shouldApplyStoryCardFloat(node, sectionKindToken) && !style.animation) {
+      const duration = motionLevel === "showcase" ? "4.2s" : "5.6s";
+      style.animation = `pen-card-float ${duration} var(--ease-smooth, ease-in-out) infinite`;
+      style.willChange = style.willChange || "transform";
+      style.transformOrigin = style.transformOrigin || "50% 55%";
+    }
+    if (Boolean(sectionMotion?.contentStagger)) {
+      // Keep static visual fidelity: stagger only via transition delay, not enter keyframes.
+      if (delayMs > 0) style.transitionDelay = style.transitionDelay || `${delayMs}ms`;
+    }
+  }
+  return style;
+};
+
+const renderTextContent = (node, merged, keyPath, sectionMotion) => {
+  const textValue = String(merged?.[node?.textProp] ?? "");
+  if (!textValue || !sectionMotion || sectionMotion.level === "off") return textValue;
+  if (!sectionMotion.textReveal) return textValue;
+  if (!isHeadingLikeTextNode(node)) return textValue;
+  return React.createElement(
+    TextReveal,
+    {
+      as: "span",
+      className: "inline-block",
+      delayMs: resolveDelayMs(keyPath, sectionMotion),
+    },
+    textValue
+  );
+};
+
+const renderNode = (node, merged, sectionMotion, sectionKindToken, key = "root", ancestorHasLink = false) => {
+  if (!node || typeof node !== "object") return null;
+  const style = buildNodeStyle(node, merged, sectionMotion, sectionKindToken, key);
+  const className = buildNodeClassName(node, sectionMotion, sectionKindToken) || undefined;
+  const href = node?.hrefProp ? String(merged?.[node.hrefProp] || "").trim() : "";
+  const shouldRenderLink = Boolean(href) && !ancestorHasLink;
+  if (node.type === "icon_font") {
+    const Icon = node?.iconName ? ICONS[node.iconName] : null;
+    if (Icon) {
+      return React.createElement(Icon, {
+        key,
+        className,
+        style,
+        "data-pen-node": node.id || undefined,
+      });
+    }
+    return React.createElement(
+      "span",
+      {
+        key,
+        className,
+        style,
+        "data-pen-node": node.id || undefined,
+      },
+      String(node?.iconGlyph || "")
+    );
+  }
+  if (node.type === "text") {
+    const Tag = shouldRenderLink ? "a" : "div";
+    return React.createElement(
+      Tag,
+      {
+        key,
+        href: shouldRenderLink ? href : undefined,
+        className,
+        style,
+        "data-pen-node": node.id || undefined,
+      },
+      renderTextContent(node, merged, key, sectionMotion)
+    );
+  }
+  const Tag = shouldRenderLink ? "a" : "div";
+  return React.createElement(
+    Tag,
+    {
+      key,
+      href: shouldRenderLink ? href : undefined,
+      className,
+      style,
+      "data-pen-node": node.id || undefined,
+    },
+    ...(Array.isArray(node.children)
+      ? node.children.map((child, index) =>
+          renderNode(
+            child,
+            merged,
+            sectionMotion,
+            sectionKindToken,
+            `${key}-${index}`,
+            ancestorHasLink || shouldRenderLink
+          )
+        )
+      : [])
+  );
+};
+
+export default function TemplateExclusiveUnistellarHomeAboutStoryAboutctapenAlt5({ id, ctaeyebrowtext, ctaheadtext, ctabodytext, ctabuttonshref, ctatxtprimarytext, ctatxtsecondarytext, sub1ttext, sub2ttext, sub3ttext, ...rest }) {
+  const providerMotionMode = useMotionMode();
+  const merged = assignDefined({ ...DEFAULT_PROPS }, { id, ctaeyebrowtext, ctaheadtext, ctabodytext, ctabuttonshref, ctatxtprimarytext, ctatxtsecondarytext, sub1ttext, sub2ttext, sub3ttext });
+  assignDefined(merged, rest);
+  const effectiveMotionMode = resolveMotionMode(providerMotionMode, merged?.motionMode);
+  const sectionKindToken = String(SECTION_KIND || "").trim().toLowerCase();
+  const sectionMotion = resolveSectionMotionProfile(sectionKindToken, effectiveMotionMode);
+  const reveal = useInViewReveal({
+    preset: sectionMotion?.revealPreset === "fadeIn" ? "fadeIn" : "stagger",
+    once: true,
+    enabled: sectionMotion?.level !== "off",
+  });
+  const sectionClassName = sectionMotion?.level === "off"
+    ? "w-full"
+    : ["w-full", reveal.className].filter(Boolean).join(" ");
+  const sectionStyle = sectionMotion?.level === "off" ? undefined : reveal.style;
+  const layoutStyle: React.CSSProperties = {
+    boxSizing: "border-box",
+  };
+  const pagePaddingLeft = Number(LAYOUT_CONTEXT?.pagePaddingLeft || 0);
+  const pagePaddingRight = Number(LAYOUT_CONTEXT?.pagePaddingRight || 0);
+  const pagePaddingTop = Number(LAYOUT_CONTEXT?.pagePaddingTop || 0);
+  const pagePaddingBottom = Number(LAYOUT_CONTEXT?.pagePaddingBottom || 0);
+  const sectionGapAfter = Number(LAYOUT_CONTEXT?.sectionGapAfter || 0);
+  if (Number.isFinite(pagePaddingLeft) && pagePaddingLeft > 0) layoutStyle.paddingLeft = pagePaddingLeft;
+  if (Number.isFinite(pagePaddingRight) && pagePaddingRight > 0) layoutStyle.paddingRight = pagePaddingRight;
+  if (Number.isFinite(pagePaddingTop) && pagePaddingTop > 0) layoutStyle.paddingTop = pagePaddingTop;
+  if (Number.isFinite(pagePaddingBottom) && pagePaddingBottom > 0) layoutStyle.paddingBottom = pagePaddingBottom;
+  if (Number.isFinite(sectionGapAfter) && sectionGapAfter > 0) layoutStyle.marginBottom = sectionGapAfter;
+  const mergedSectionStyle = sectionStyle ? { ...layoutStyle, ...sectionStyle } : layoutStyle;
+  return React.createElement(
+    "section",
+    {
+      id: merged.id || DEFAULT_PROPS.id,
+      "data-pen-section-kind": SECTION_KIND,
+      className: sectionClassName,
+      style: mergedSectionStyle,
+    },
+    ...(sectionMotion?.level !== "off"
+      ? [React.createElement("style", { key: "pen-motion-style" }, PEN_RUNTIME_MOTION_STYLE)]
+      : []),
+    renderNode(SECTION_TREE, merged, sectionMotion, sectionKindToken, "root", false)
+  );
+}

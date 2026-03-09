@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "urlNormalization": {
+    "removeTrackingParams": ["utm_*", "fbclid", "gclid", "ref", "source", "campaign"],
+    "stripHash": true,
+    "lowercasePath": true,
+    "trimTrailingSlash": true
+  },
+  "structureFingerprint": {
+    "enabled": true,
+    "similarityAlgorithm": "jaccard",
+    "similarityThreshold": 0.9
+  },
+  "visualFingerprint": {
+    "enabled": true,
+    "algorithm": "dhash",
+    "hammingThreshold": 8
+  },
+  "selection": {
+    "maxPagesPerTypeDefault": 6,
+    "candidatePoolTopKDefault": 3,
+    "keepHomeAlways": true,
+    "representativeScoreWeights": {
+      "requiredCategories": 8,
+      "taxonomyConfidence": 20,
+      "depth": 1.5,
+      "forceInclude": 50,
+      "homeBonus": 100,
+      "lowQualityTitlePenalty": 45,
+      "nonAsciiTitlePenalty": 12
+    }
+  }
+}

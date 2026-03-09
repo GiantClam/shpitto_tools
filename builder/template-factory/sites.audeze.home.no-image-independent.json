@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "sites": [
+    {
+      "id": "audeze-home",
+      "url": "https://www.audeze.com/",
+      "description": "Audeze home-only baseline without image-independent mode",
+      "prompt": "Generate a high-fidelity home page template for Audeze.",
+      "crawlSite": true,
+      "crawlMaxPages": 24,
+      "crawlMaxDepth": 2,
+      "specialRules": {
+        "imageIndependentTemplate": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Corporate Template Meta v1",
+  "type": "object",
+  "required": [
+    "protocolVersion",
+    "domain",
+    "source",
+    "pages",
+    "review"
+  ],
+  "properties": {
+    "protocolVersion": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string",
+      "const": "corporate"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "siteId",
+        "siteUrl",
+        "capturedAt"
+      ],
+      "properties": {
+        "siteId": { "type": "string" },
+        "siteUrl": { "type": "string" },
+        "capturedAt": { "type": "string" }
+      }
+    },
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "templateId",
+          "pagePath",
+          "pageType",
+          "skeleton",
+          "sections",
+          "visualProfile",
+          "styleLock"
+        ],
+        "properties": {
+          "templateId": { "type": "string" },
+          "pagePath": { "type": "string" },
+          "pageType": { "type": "string" },
+          "skeleton": { "type": "string" },
+          "sections": { "type": "array" },
+          "visualProfile": { "type": "object" },
+          "styleLock": { "type": "object" },
+          "qa": { "type": "object" },
+          "blockDecisions": { "type": "object" }
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": { "type": "string" },
+        "fromStatus": { "type": "string" },
+        "reviewedBy": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

@@ -49,6 +49,8 @@ export type CardsGridProps = BaseBlockProps & {
   bodyFont?: string;
   textAlign?: "left" | "center";
   featureFirst?: boolean;
+  referenceSliceMode?: boolean;
+  referenceSliceMinHeight?: number;
 };
 
 const sizeClass = (value?: "sm" | "md" | "lg") => {
@@ -116,6 +118,8 @@ export function CardsGridBlock({
   bodyFont,
   textAlign,
   featureFirst = false,
+  referenceSliceMode = false,
+  referenceSliceMinHeight,
 }: CardsGridProps) {
   const motionMode = useMotionMode();
   const reveal = useInViewReveal<HTMLDivElement>({
@@ -141,6 +145,18 @@ export function CardsGridBlock({
   const visibleItems = items.slice(0, 12);
   const useFeatureRailLayout =
     variant === "imageText" && featureFirst && columns === "3col" && visibleItems.length === 3;
+  const explicitReferenceSliceMinHeight = Math.round(Number(referenceSliceMinHeight) || 0);
+  const fallbackReferenceSliceHeight = referenceSliceMode &&
+    background === "image" &&
+    backgroundMedia?.kind === "image" &&
+    backgroundMedia?.src
+      ? 420
+      : 0;
+  const referenceSliceHeight = Math.max(explicitReferenceSliceMinHeight, fallbackReferenceSliceHeight);
+  const referenceSliceStyle =
+    referenceSliceHeight > 0
+      ? { minHeight: `${Math.max(120, referenceSliceHeight)}px` }
+      : undefined;
 
   return (
     <section
@@ -154,7 +170,7 @@ export function CardsGridBlock({
         background === "muted" ? "bg-muted" : background === "gradient" ? "bg-gradient-to-b from-background to-muted" : "bg-background",
         hasBackgroundVideo ? "relative overflow-hidden" : ""
       )}
-      style={backgroundStyle}
+      style={{ ...backgroundStyle, ...(referenceSliceStyle || {}) }}
     >
       {hasBackgroundVideo ? (
         <video

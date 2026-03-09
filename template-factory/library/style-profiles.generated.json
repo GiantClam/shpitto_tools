@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-02-14T13:06:23.625Z",
-  "sourceRunId": "tf-siemens-fullsite-rerun-20260214",
-  "profileCount": 1,
+  "generatedAt": "2026-02-25T18:17:50.150Z",
+  "sourceRunId": "tf-audeze-home-fix-20260225-v24c-shopify-hero-overlay",
+  "profileCount": 2,
   "profiles": [
     {
       "id": "auto_siemens-home",
@@ -5027,6 +5027,3291 @@
           ]
         }
       ]
+    },
+    {
+      "id": "auto_audeze-home",
+      "name": "Audeze full website template with mega navigation and product showcase",
+      "keywords": [
+        "audezehome",
+        "audeze",
+        "home",
+        "audezecom",
+        "com",
+        "high-fidelity",
+        "full-site",
+        "template",
+        "preserve",
+        "multi-level",
+        "dropdown",
+        "navigation",
+        "image",
+        "text",
+        "style",
+        "content",
+        "cues",
+        "include",
+        "one",
+        "representative",
+        "product",
+        "detail",
+        "page",
+        "display",
+        "profile_selector_auto-audeze-home",
+        "auto_audeze-home",
+        "audeze-home"
+      ],
+      "templates": {
+        "navigation": {
+          "type": "TemplateExclusiveAudezeHomeHomeNavigationNavbarPrimary",
+          "props": {
+            "variant": "withDropdown",
+            "sticky": true,
+            "paddingY": "sm",
+            "maxWidth": "xl",
+            "background": "gradient",
+            "backgroundGradient": "linear-gradient(180deg,#000000 0%,#100a06 100%)",
+            "backgroundOverlay": "rgba(16, 10, 6, 0.34)",
+            "logo": "Audeze Headphones",
+            "links": [
+              {
+                "label": "小计",
+                "href": "/",
+                "variant": "link"
+              }
+            ],
+            "ctas": [
+              {
+                "label": "Contact",
+                "href": "/pages/support",
+                "variant": "primary"
+              }
+            ],
+            "menuStyle": "image_text",
+            "multiLevel": true
+          }
+        },
+        "hero": {
+          "type": "TemplateExclusiveAudezeHomeHomeHeroHerosplitPrimary",
+          "props": {
+            "mediaPosition": "right",
+            "paddingY": "lg",
+            "headingSize": "md",
+            "maxWidth": "xl",
+            "background": "image",
+            "backgroundOverlay": "rgba(0, 0, 0, 0.62)",
+            "title": "Welcome to Uncompromised Audio",
+            "subtitle": "PRODUCTS",
+            "ctas": [
+              {
+                "label": "Contact",
+                "href": "/pages/support",
+                "variant": "primary"
+              }
+            ],
+            "heroSlides": [
+              {
+                "src": "https://www.audeze.com/cdn/shop/files/Audeze_A_410x.svg?v=1726000216",
+                "mobileSrc": "https://www.audeze.com/cdn/shop/files/Audeze_A_410x.svg?v=1726000216",
+                "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero slide 1",
+                "label": "Slide 1"
+              },
+              {
+                "src": "https://www.audeze.com/cdn/shop/files/SLAM2_2000x.jpg?v=1744253058",
+                "mobileSrc": "https://www.audeze.com/cdn/shop/files/SLAM2_2000x.jpg?v=1744253058",
+                "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero slide 2",
+                "label": "Slide 2"
+              },
+              {
+                "src": "https://www.audeze.com/cdn/shop/files/Audeze_Explosion_5_2000x_megamenu_2000x.png?v=1648507119",
+                "mobileSrc": "https://www.audeze.com/cdn/shop/files/Audeze_Explosion_5_2000x_megamenu_2000x.png?v=1648507119",
+                "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero slide 3",
+                "label": "Slide 3"
+              },
+              {
+                "src": "https://www.audeze.com/cdn/shop/files/LCD-4z___Joe_L_2000x_megamenu_2000x.png?v=1648507119",
+                "mobileSrc": "https://www.audeze.com/cdn/shop/files/LCD-4z___Joe_L_2000x_megamenu_2000x.png?v=1648507119",
+                "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero slide 4",
+                "label": "Slide 4"
+              },
+              {
+                "src": "https://www.audeze.com/cdn/shop/files/Driver-Explosion-Image_2000x_megamenu_2000x.png?v=1648507119",
+                "mobileSrc": "https://www.audeze.com/cdn/shop/files/Driver-Explosion-Image_2000x_megamenu_2000x.png?v=1648507119",
+                "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero slide 5",
+                "label": "Slide 5"
+              },
+              {
+                "src": "https://www.audeze.com/cdn/shop/files/Angie_2000x.jpg?v=1764708774",
+                "mobileSrc": "https://www.audeze.com/cdn/shop/files/Angie_2000x.jpg?v=1764708774",
+                "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero slide 6",
+                "label": "Slide 6"
+              }
+            ],
+            "heroCarouselAutoplayMs": 4500,
+            "backgroundMedia": {
+              "kind": "image",
+              "src": "https://www.audeze.com/cdn/shop/files/Audeze_A_410x.svg?v=1726000216",
+              "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero background"
+            }
+          }
+        },
+        "approach": {
+          "type": "TemplateExclusiveAudezeHomeHomeApproachFeaturegridPrimary",
+          "props": {
+            "variant": "3col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Gaming",
+            "subtitle": "Professional Audio",
+            "items": [
+              {
+                "title": "PRODUCTS",
+                "desc": "PRODUCTS",
+                "description": "PRODUCTS",
+                "icon": "layers",
+                "image": {
+                  "src": "/assets/template-factory/audeze-home/slices/desktop-approach.png",
+                  "alt": "PRODUCTS"
+                },
+                "imageSrc": "/assets/template-factory/audeze-home/slices/desktop-approach.png",
+                "imageAlt": "PRODUCTS"
+              },
+              {
+                "title": "Professional Audio",
+                "desc": "Professional Audio",
+                "description": "Professional Audio",
+                "icon": "shield",
+                "image": {
+                  "src": "/assets/template-factory/audeze-home/slices/mobile-approach.png",
+                  "alt": "Professional Audio"
+                },
+                "imageSrc": "/assets/template-factory/audeze-home/slices/mobile-approach.png",
+                "imageAlt": "Professional Audio"
+              },
+              {
+                "title": "Audiophile",
+                "desc": "Audiophile",
+                "description": "Audiophile",
+                "icon": "chart",
+                "image": {
+                  "src": "/assets/template-factory/audeze-home/slices/mobile-approach.png",
+                  "alt": "Audiophile"
+                },
+                "imageSrc": "/assets/template-factory/audeze-home/slices/mobile-approach.png",
+                "imageAlt": "Audiophile"
+              }
+            ]
+          }
+        },
+        "socialproof": {
+          "type": "TemplateExclusiveAudezeHomeHomeSocialproofTestimonialsgridPrimary",
+          "props": {
+            "variant": "2col",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "title": "Building for world-class innovators",
+            "items": [
+              {
+                "quote": "They curated a lifestyle, not only a space.",
+                "name": "Alexander Vane",
+                "role": "CEO",
+                "avatar": {
+                  "src": "/assets/template-factory/audeze-home/slices/mobile-socialproof.png",
+                  "alt": "Alexander Vane"
+                }
+              },
+              {
+                "quote": "A masterclass in restraint and elegance.",
+                "name": "Isabelle Dubois",
+                "role": "Founder",
+                "avatar": {
+                  "src": "/assets/template-factory/audeze-home/slices/mobile-socialproof.png",
+                  "alt": "Isabelle Dubois"
+                }
+              }
+            ],
+            "imageSrc": "/assets/template-factory/audeze-home/slices/desktop-socialproof.png",
+            "imageAlt": "Results visual"
+          }
+        },
+        "cta": {
+          "type": "TemplateExclusiveAudezeHomeHomeCtaLeadcapturectaPrimary",
+          "props": {
+            "variant": "banner",
+            "paddingY": "lg",
+            "maxWidth": "xl",
+            "ctaBackgroundColor": "#8b6227",
+            "ctaTextColor": "#f5f5f5",
+            "ctaClassName": "!bg-[#8b6227] !text-[#f5f5f5]",
+            "title": "订单处理时间和订单跟踪：",
+            "subtitle": "可用性：",
+            "cta": {
+              "label": "Contact",
+              "href": "/pages/support",
+              "variant": "primary"
+            }
+          }
+        },
+        "footer": {
+          "type": "TemplateExclusiveAudezeHomeHomeFooterFooterPrimary",
+          "props": {
+            "variant": "multiColumn",
+            "paddingY": "md",
+            "maxWidth": "xl",
+            "background": "gradient",
+            "backgroundGradient": "linear-gradient(180deg,#100a06 0%,#131314 100%)",
+            "columns": [
+              {
+                "title": "Company",
+                "links": [
+                  {
+                    "label": "Audiophile",
+                    "href": "/pages/support"
+                  },
+                  {
+                    "label": "Professional",
+                    "href": "/pages/support"
+                  },
+                  {
+                    "label": "Accessories",
+                    "href": "/pages/support"
+                  },
+                  {
+                    "label": "Apparel",
+                    "href": "/pages/support"
+                  },
+                  {
+                    "label": "Audeze",
+                    "href": "/"
+                  }
+                ]
+              },
+              {
+                "title": "Resources",
+                "links": [
+                  {
+                    "label": "Gaming",
+                    "href": "/pages/support"
+                  },
+                  {
+                    "label": "Software",
+                    "href": "/pages/support"
+                  },
+                  {
+                    "label": "Accessibility Statement",
+                    "href": "/pages/support"
+                  },
+                  {
+                    "label": "About Audeze",
+                    "href": "/pages/support"
+                  }
+                ]
+              },
+              {
+                "title": "Legal",
+                "links": [
+                  {
+                    "label": "Terms of Service",
+                    "href": "/pages/support"
+                  },
+                  {
+                    "label": "Refund Policy",
+                    "href": "/pages/support"
+                  },
+                  {
+                    "label": "Shipping Policy",
+                    "href": "/policies/shipping-policy"
+                  },
+                  {
+                    "label": "Privacy Policy",
+                    "href": "/pages/support"
+                  },
+                  {
+                    "label": "Cookie Policy",
+                    "href": "/pages/support"
+                  }
+                ]
+              }
+            ],
+            "logoText": "Audeze Headphones",
+            "legal": "© 2026 All rights reserved."
+          }
+        }
+      },
+      "pageSpecs": [
+        {
+          "path": "/",
+          "name": "Audeze 耳机",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "TemplateExclusiveAudezeHomeHomeNavigationNavbarPrimary",
+              "props": {
+                "variant": "withDropdown",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "background": "gradient",
+                "backgroundGradient": "linear-gradient(180deg,#000000 0%,#100a06 100%)",
+                "backgroundOverlay": "rgba(16, 10, 6, 0.34)",
+                "logo": "Audeze 耳机",
+                "links": [
+                  {
+                    "label": "小计",
+                    "href": "/",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Contact",
+                    "href": "/pages/support",
+                    "variant": "primary"
+                  }
+                ],
+                "menuStyle": "image_text",
+                "multiLevel": true
+              }
+            },
+            "hero": {
+              "type": "TemplateExclusiveAudezeHomeHomeHeroHerosplitPrimary",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "background": "image",
+                "backgroundOverlay": "rgba(0, 0, 0, 0.62)",
+                "title": "Welcome to Uncompromised Audio",
+                "subtitle": "PRODUCTS",
+                "ctas": [
+                  {
+                    "label": "Contact",
+                    "href": "/pages/support",
+                    "variant": "primary"
+                  }
+                ],
+                "heroSlides": [
+                  {
+                    "src": "https://www.audeze.com/cdn/shop/files/Audeze_A_410x.svg?v=1726000216",
+                    "mobileSrc": "https://www.audeze.com/cdn/shop/files/Audeze_A_410x.svg?v=1726000216",
+                    "alt": "Audeze 耳机 | 无损音频 | 平面磁性技术 hero slide 1",
+                    "label": "Slide 1"
+                  },
+                  {
+                    "src": "https://www.audeze.com/cdn/shop/files/SLAM2_2000x.jpg?v=1744253058",
+                    "mobileSrc": "https://www.audeze.com/cdn/shop/files/SLAM2_2000x.jpg?v=1744253058",
+                    "alt": "Audeze 耳机 | 无损音频 | 平面磁性技术 hero slide 2",
+                    "label": "Slide 2"
+                  },
+                  {
+                    "src": "https://www.audeze.com/cdn/shop/files/Audeze_Explosion_5_2000x_megamenu_2000x.png?v=1648507119",
+                    "mobileSrc": "https://www.audeze.com/cdn/shop/files/Audeze_Explosion_5_2000x_megamenu_2000x.png?v=1648507119",
+                    "alt": "Audeze 耳机 | 无损音频 | 平面磁性技术 hero slide 3",
+                    "label": "Slide 3"
+                  },
+                  {
+                    "src": "https://www.audeze.com/cdn/shop/files/LCD-4z___Joe_L_2000x_megamenu_2000x.png?v=1648507119",
+                    "mobileSrc": "https://www.audeze.com/cdn/shop/files/LCD-4z___Joe_L_2000x_megamenu_2000x.png?v=1648507119",
+                    "alt": "Audeze 耳机 | 无损音频 | 平面磁性技术 hero slide 4",
+                    "label": "Slide 4"
+                  },
+                  {
+                    "src": "https://www.audeze.com/cdn/shop/files/Driver-Explosion-Image_2000x_megamenu_2000x.png?v=1648507119",
+                    "mobileSrc": "https://www.audeze.com/cdn/shop/files/Driver-Explosion-Image_2000x_megamenu_2000x.png?v=1648507119",
+                    "alt": "Audeze 耳机 | 无损音频 | 平面磁性技术 hero slide 5",
+                    "label": "Slide 5"
+                  },
+                  {
+                    "src": "https://www.audeze.com/cdn/shop/files/Angie_2000x.jpg?v=1764708774",
+                    "mobileSrc": "https://www.audeze.com/cdn/shop/files/Angie_2000x.jpg?v=1764708774",
+                    "alt": "Audeze 耳机 | 无损音频 | 平面磁性技术 hero slide 6",
+                    "label": "Slide 6"
+                  }
+                ],
+                "heroCarouselAutoplayMs": 4500,
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "https://www.audeze.com/cdn/shop/files/Audeze_A_410x.svg?v=1726000216",
+                  "alt": "Audeze 耳机 | 无损音频 | 平面磁性技术 hero background"
+                }
+              }
+            },
+            "approach": {
+              "type": "TemplateExclusiveAudezeHomeHomeApproachFeaturegridPrimary",
+              "props": {
+                "variant": "3col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Gaming",
+                "subtitle": "Professional Audio",
+                "items": [
+                  {
+                    "title": "PRODUCTS",
+                    "desc": "PRODUCTS",
+                    "description": "PRODUCTS",
+                    "icon": "layers",
+                    "image": {
+                      "src": "https://www.audeze.com/cdn/shop/files/Audeze_Explosion_5_2000x_megamenu_2000x.png?v=1648507119",
+                      "alt": "PRODUCTS"
+                    },
+                    "imageSrc": "https://www.audeze.com/cdn/shop/files/Audeze_Explosion_5_2000x_megamenu_2000x.png?v=1648507119",
+                    "imageAlt": "PRODUCTS"
+                  },
+                  {
+                    "title": "Professional Audio",
+                    "desc": "Professional Audio",
+                    "description": "Professional Audio",
+                    "icon": "shield",
+                    "image": {
+                      "src": "https://www.audeze.com/cdn/shop/files/LCD-4z___Joe_L_2000x_megamenu_2000x.png?v=1648507119",
+                      "alt": "Professional Audio"
+                    },
+                    "imageSrc": "https://www.audeze.com/cdn/shop/files/LCD-4z___Joe_L_2000x_megamenu_2000x.png?v=1648507119",
+                    "imageAlt": "Professional Audio"
+                  },
+                  {
+                    "title": "Audiophile",
+                    "desc": "Audiophile",
+                    "description": "Audiophile",
+                    "icon": "chart",
+                    "image": {
+                      "src": "https://www.audeze.com/cdn/shop/files/LCD-4z___Joe_L_2000x_megamenu_2000x.png?v=1648507119",
+                      "alt": "Audiophile"
+                    },
+                    "imageSrc": "https://www.audeze.com/cdn/shop/files/LCD-4z___Joe_L_2000x_megamenu_2000x.png?v=1648507119",
+                    "imageAlt": "Audiophile"
+                  }
+                ]
+              }
+            },
+            "socialproof": {
+              "type": "TemplateExclusiveAudezeHomeHomeSocialproofTestimonialsgridPrimary",
+              "props": {
+                "variant": "2col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Building for world-class innovators",
+                "items": [
+                  {
+                    "quote": "They curated a lifestyle, not only a space.",
+                    "name": "Alexander Vane",
+                    "role": "CEO",
+                    "avatar": {
+                      "src": "https://www.audeze.com/cdn/shop/files/Angie_2000x.jpg?v=1764708774",
+                      "alt": "Alexander Vane"
+                    }
+                  },
+                  {
+                    "quote": "A masterclass in restraint and elegance.",
+                    "name": "Isabelle Dubois",
+                    "role": "Founder",
+                    "avatar": {
+                      "src": "https://www.audeze.com/cdn/shop/files/Angie_2000x.jpg?v=1764708774",
+                      "alt": "Isabelle Dubois"
+                    }
+                  }
+                ],
+                "imageSrc": "https://www.audeze.com/cdn/shop/files/Driver-Explosion-Image_2000x_megamenu_2000x.png?v=1648507119",
+                "imageAlt": "Results visual"
+              }
+            },
+            "cta": {
+              "type": "TemplateExclusiveAudezeHomeHomeCtaLeadcapturectaPrimary",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "ctaBackgroundColor": "#8b6227",
+                "ctaTextColor": "#f5f5f5",
+                "ctaClassName": "!bg-[#8b6227] !text-[#f5f5f5]",
+                "title": "订单处理时间和订单跟踪：",
+                "subtitle": "可用性：",
+                "cta": {
+                  "label": "Contact",
+                  "href": "/pages/support",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "TemplateExclusiveAudezeHomeHomeFooterFooterPrimary",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "background": "gradient",
+                "backgroundGradient": "linear-gradient(180deg,#100a06 0%,#131314 100%)",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "Audiophile",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Professional",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Accessories",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Apparel",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Audeze",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Resources",
+                    "links": [
+                      {
+                        "label": "Gaming",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Software",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Accessibility Statement",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "About Audeze",
+                        "href": "/pages/support"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Terms of Service",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Refund Policy",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Shipping Policy",
+                        "href": "/policies/shipping-policy"
+                      },
+                      {
+                        "label": "Privacy Policy",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Cookie Policy",
+                        "href": "/pages/support"
+                      }
+                    ]
+                  }
+                ],
+                "logoText": "Audeze 耳机",
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/blogs/audeze-artists",
+          "name": "Audeze Artists",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsNavigationNavbarPrimary",
+              "props": {
+                "variant": "withDropdown",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "background": "gradient",
+                "backgroundGradient": "linear-gradient(180deg,#000000 0%,#100a06 100%)",
+                "backgroundOverlay": "rgba(16, 10, 6, 0.34)",
+                "logo": "Audeze Artists",
+                "links": [
+                  {
+                    "label": "小计",
+                    "href": "/",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Contact",
+                    "href": "/pages/support",
+                    "variant": "primary"
+                  }
+                ],
+                "menuStyle": "image_text",
+                "multiLevel": true
+              }
+            },
+            "hero": {
+              "type": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsHeroHerosplitPrimary",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "background": "image",
+                "backgroundOverlay": "rgba(0, 0, 0, 0.62)",
+                "title": "Audeze Artists",
+                "subtitle": "Explore Audeze Artists solutions",
+                "ctas": [
+                  {
+                    "label": "Contact",
+                    "href": "/pages/support",
+                    "variant": "primary"
+                  }
+                ],
+                "backgroundColor": "#0f0f0f",
+                "backgroundMedia": {
+                  "kind": "image",
+                  "src": "/assets/template-factory/audeze-home/slices/desktop-hero.png",
+                  "alt": "Audeze Artists | Audeze Headphones reference"
+                },
+                "media": {
+                  "kind": "image",
+                  "src": "/assets/template-factory/audeze-home/slices/desktop-hero.png",
+                  "alt": "Audeze Artists | Audeze Headphones hero visual"
+                }
+              }
+            },
+            "story": {
+              "type": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsStoryFeaturegridPrimary",
+              "props": {
+                "variant": "3col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "eyebrow": "Our Story",
+                "title": "Explore Audeze Artists solutions",
+                "subtitle": "Learn more about Audeze Artists",
+                "body": "Explore Audeze Artists solutions",
+                "ctas": [
+                  {
+                    "label": "Explore",
+                    "href": "/pages/support",
+                    "variant": "link"
+                  }
+                ],
+                "contentFormat": "markdown",
+                "markdownEnabled": true,
+                "background": "gradient",
+                "backgroundGradient": "linear-gradient(180deg,#100a06 0%,#131314 100%)",
+                "backgroundColor": "#0f0f0f",
+                "backgroundOverlay": "rgba(16, 10, 6, 0.34)",
+                "textColor": "#f5f5f5",
+                "subtitleColor": "#d4d4d8",
+                "descriptionColor": "#d4d4d8",
+                "cardBackgroundColor": "#171717",
+                "itemBackgroundColor": "#171717"
+              }
+            },
+            "footer": {
+              "type": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsFooterFooterPrimary",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "background": "gradient",
+                "backgroundGradient": "linear-gradient(180deg,#100a06 0%,#131314 100%)",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "Audiophile",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Professional",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Accessories",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Apparel",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Audeze",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Resources",
+                    "links": [
+                      {
+                        "label": "Gaming",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Software",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Accessibility Statement",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "About Audeze",
+                        "href": "/pages/support"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Terms of Service",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Refund Policy",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Shipping Policy",
+                        "href": "/policies/shipping-policy"
+                      },
+                      {
+                        "label": "Privacy Policy",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Cookie Policy",
+                        "href": "/pages/support"
+                      }
+                    ]
+                  }
+                ],
+                "logoText": "Audeze Artists",
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/pages/support",
+          "name": "Support",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "contact",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "TemplateExclusiveAudezeHomePagesSupportNavigationNavbarPrimary",
+              "props": {
+                "variant": "withDropdown",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "background": "gradient",
+                "backgroundGradient": "linear-gradient(180deg,#ffffff 0%,#f3f4f6 100%)",
+                "backgroundOverlay": "rgba(10, 10, 10, 0.08)",
+                "logo": "Support",
+                "links": [
+                  {
+                    "label": "小计",
+                    "href": "/",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Contact",
+                    "href": "/pages/support",
+                    "variant": "primary"
+                  }
+                ],
+                "menuStyle": "image_text",
+                "multiLevel": true
+              }
+            },
+            "hero": {
+              "type": "TemplateExclusiveAudezeHomePagesSupportHeroHerosplitPrimary",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "background": "image",
+                "backgroundOverlay": "rgba(15, 15, 15, 0.12)",
+                "title": "Support",
+                "subtitle": "Explore Support solutions",
+                "ctas": [
+                  {
+                    "label": "Contact",
+                    "href": "/pages/support",
+                    "variant": "primary"
+                  }
+                ],
+                "backgroundColor": "#ffffff"
+              }
+            },
+            "story": {
+              "type": "TemplateExclusiveAudezeHomePagesSupportStoryFeaturegridPrimary",
+              "props": {
+                "variant": "3col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "eyebrow": "Our Story",
+                "title": "Explore Support solutions",
+                "subtitle": "Learn more about Support",
+                "body": "Explore Support solutions",
+                "ctas": [
+                  {
+                    "label": "Explore",
+                    "href": "/pages/support",
+                    "variant": "link"
+                  }
+                ]
+              }
+            },
+            "contact": {
+              "type": "TemplateExclusiveAudezeHomePagesSupportContactLeadcapturectaPrimary",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "ctaBackgroundColor": "#8b6227",
+                "ctaTextColor": "#f5f5f5",
+                "ctaClassName": "!bg-[#8b6227] !text-[#f5f5f5]",
+                "supportContentOnly": true,
+                "excludeDownloads": true,
+                "excludeCommerce": true
+              }
+            },
+            "footer": {
+              "type": "TemplateExclusiveAudezeHomePagesSupportFooterFooterPrimary",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "background": "gradient",
+                "backgroundGradient": "linear-gradient(180deg,#f7f7f7 0%,#eeeeee 100%)",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "Audiophile",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Professional",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Accessories",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Apparel",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Audeze",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Resources",
+                    "links": [
+                      {
+                        "label": "Gaming",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Software",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Accessibility Statement",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "About Audeze",
+                        "href": "/pages/support"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Terms of Service",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Refund Policy",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Shipping Policy",
+                        "href": "/policies/shipping-policy"
+                      },
+                      {
+                        "label": "Privacy Policy",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Cookie Policy",
+                        "href": "/pages/support"
+                      }
+                    ]
+                  }
+                ],
+                "logoText": "Support",
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/products/crbn2",
+          "name": "Crbn2",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "TemplateExclusiveAudezeHomeProductsCrbn2NavigationNavbarPrimary",
+              "props": {
+                "variant": "withDropdown",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "background": "gradient",
+                "backgroundGradient": "linear-gradient(180deg,#ffffff 0%,#f3f4f6 100%)",
+                "backgroundOverlay": "rgba(10, 10, 10, 0.08)",
+                "logo": "Crbn2",
+                "links": [
+                  {
+                    "label": "小计",
+                    "href": "/",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Contact",
+                    "href": "/pages/support",
+                    "variant": "primary"
+                  }
+                ],
+                "menuStyle": "image_text",
+                "multiLevel": true
+              }
+            },
+            "hero": {
+              "type": "TemplateExclusiveAudezeHomeProductsCrbn2HeroHerosplitPrimary",
+              "props": {
+                "mediaPosition": "right",
+                "paddingY": "lg",
+                "headingSize": "md",
+                "maxWidth": "xl",
+                "background": "image",
+                "backgroundOverlay": "rgba(15, 15, 15, 0.12)",
+                "title": "Crbn2",
+                "subtitle": "Explore Crbn2 solutions",
+                "ctas": [
+                  {
+                    "label": "Contact",
+                    "href": "/pages/support",
+                    "variant": "primary"
+                  }
+                ],
+                "backgroundColor": "#ffffff"
+              }
+            },
+            "approach": {
+              "type": "TemplateExclusiveAudezeHomeProductsCrbn2ApproachFeaturegridPrimary",
+              "props": {
+                "variant": "3col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Learn more about Crbn2",
+                "subtitle": "Crbn2 overview",
+                "items": [
+                  {
+                    "title": "Explore Crbn2 solutions",
+                    "desc": "Explore Crbn2 solutions",
+                    "description": "Explore Crbn2 solutions",
+                    "icon": "layers"
+                  },
+                  {
+                    "title": "Learn more about Crbn2",
+                    "desc": "Learn more about Crbn2",
+                    "description": "Learn more about Crbn2",
+                    "icon": "shield"
+                  },
+                  {
+                    "title": "Crbn2 overview",
+                    "desc": "Crbn2 overview",
+                    "description": "Crbn2 overview",
+                    "icon": "chart"
+                  }
+                ]
+              }
+            },
+            "socialproof": {
+              "type": "TemplateExclusiveAudezeHomeProductsCrbn2SocialproofTestimonialsgridPrimary",
+              "props": {
+                "variant": "2col",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "title": "Building for world-class innovators",
+                "items": [
+                  {
+                    "quote": "They curated a lifestyle, not only a space.",
+                    "name": "Alexander Vane",
+                    "role": "CEO"
+                  },
+                  {
+                    "quote": "A masterclass in restraint and elegance.",
+                    "name": "Isabelle Dubois",
+                    "role": "Founder"
+                  }
+                ]
+              }
+            },
+            "cta": {
+              "type": "TemplateExclusiveAudezeHomeProductsCrbn2CtaLeadcapturectaPrimary",
+              "props": {
+                "variant": "banner",
+                "paddingY": "lg",
+                "maxWidth": "xl",
+                "ctaBackgroundColor": "#8b6227",
+                "ctaTextColor": "#f5f5f5",
+                "ctaClassName": "!bg-[#8b6227] !text-[#f5f5f5]",
+                "title": "Crbn2",
+                "subtitle": "Login",
+                "cta": {
+                  "label": "Contact",
+                  "href": "/pages/support",
+                  "variant": "primary"
+                }
+              }
+            },
+            "footer": {
+              "type": "TemplateExclusiveAudezeHomeProductsCrbn2FooterFooterPrimary",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "background": "gradient",
+                "backgroundGradient": "linear-gradient(180deg,#f7f7f7 0%,#eeeeee 100%)",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "Audiophile",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Professional",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Accessories",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Apparel",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Audeze",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Resources",
+                    "links": [
+                      {
+                        "label": "Gaming",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Software",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Accessibility Statement",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "About Audeze",
+                        "href": "/pages/support"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Terms of Service",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Refund Policy",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Shipping Policy",
+                        "href": "/policies/shipping-policy"
+                      },
+                      {
+                        "label": "Privacy Policy",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Cookie Policy",
+                        "href": "/pages/support"
+                      }
+                    ]
+                  }
+                ],
+                "logoText": "Crbn2",
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        },
+        {
+          "path": "/policies/shipping-policy",
+          "name": "Audeze",
+          "requiredCategories": [
+            "navigation",
+            "footer"
+          ],
+          "templates": {
+            "navigation": {
+              "type": "TemplateExclusiveAudezeHomePoliciesShippingPolicyNavigationNavbarPrimary",
+              "props": {
+                "variant": "withDropdown",
+                "sticky": true,
+                "paddingY": "sm",
+                "maxWidth": "xl",
+                "background": "gradient",
+                "backgroundGradient": "linear-gradient(180deg,#ffffff 0%,#f3f4f6 100%)",
+                "backgroundOverlay": "rgba(10, 10, 10, 0.08)",
+                "logo": "Audeze",
+                "links": [
+                  {
+                    "label": "小计",
+                    "href": "/",
+                    "variant": "link"
+                  }
+                ],
+                "ctas": [
+                  {
+                    "label": "Contact",
+                    "href": "/pages/support",
+                    "variant": "primary"
+                  }
+                ],
+                "menuStyle": "image_text",
+                "multiLevel": true
+              }
+            },
+            "footer": {
+              "type": "TemplateExclusiveAudezeHomePoliciesShippingPolicyFooterFooterPrimary",
+              "props": {
+                "variant": "multiColumn",
+                "paddingY": "md",
+                "maxWidth": "xl",
+                "background": "gradient",
+                "backgroundGradient": "linear-gradient(180deg,#f7f7f7 0%,#eeeeee 100%)",
+                "columns": [
+                  {
+                    "title": "Company",
+                    "links": [
+                      {
+                        "label": "Audiophile",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Professional",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Accessories",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Apparel",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Audeze",
+                        "href": "/"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Resources",
+                    "links": [
+                      {
+                        "label": "Gaming",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Software",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Accessibility Statement",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "About Audeze",
+                        "href": "/pages/support"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Legal",
+                    "links": [
+                      {
+                        "label": "Terms of Service",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Refund Policy",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Shipping Policy",
+                        "href": "/policies/shipping-policy"
+                      },
+                      {
+                        "label": "Privacy Policy",
+                        "href": "/pages/support"
+                      },
+                      {
+                        "label": "Cookie Policy",
+                        "href": "/pages/support"
+                      }
+                    ]
+                  }
+                ],
+                "logoText": "Audeze",
+                "legal": "© 2026 All rights reserved."
+              }
+            }
+          }
+        }
+      ],
+      "siteTemplates": [
+        {
+          "path": "/",
+          "name": "Audeze 耳机",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/blogs/audeze-artists",
+          "name": "Audeze Artists",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ]
+        },
+        {
+          "path": "/pages/support",
+          "name": "Support",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "contact",
+            "footer"
+          ]
+        },
+        {
+          "path": "/products/crbn2",
+          "name": "Crbn2",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/products/filter",
+          "name": "Filter",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/collections/accessories",
+          "name": "Accessories",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/blogs/audeze-artists/angie-randisi",
+          "name": "Angie Randisi",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ]
+        },
+        {
+          "path": "/policies/shipping-policy",
+          "name": "Audeze",
+          "requiredCategories": [
+            "navigation",
+            "footer"
+          ]
+        },
+        {
+          "path": "/blogs/publication-reviews",
+          "name": "Publication Reviews",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ]
+        },
+        {
+          "path": "/blogs/technology-and-innovation",
+          "name": "Technology And Innovation",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ]
+        },
+        {
+          "path": "/pages/audeze-products",
+          "name": "Audeze Products",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/blogs/audeze-artists/josh-rogosin",
+          "name": "Josh Rogosin",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ]
+        },
+        {
+          "path": "/blogs/audeze-artists/li-sa-x",
+          "name": "Li Sa X",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ]
+        },
+        {
+          "path": "/blogs/audeze-artists/santaflow",
+          "name": "Santaflow",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ]
+        },
+        {
+          "path": "/blogs/technology-and-innovation/introducing-slam-breakthrough-technology-for-more-lifelike-bass-and-detail",
+          "name": "Introducing Slam Breakthrough Technology For More Lifelike Bass And Detail",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ]
+        },
+        {
+          "path": "/blogs/technology-and-innovation/planar-magnetic-technology",
+          "name": "Planar Magnetic Technology",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ]
+        },
+        {
+          "path": "/blogs/technology-and-innovation/sensitivity-impedance-and-amplifier-power",
+          "name": "Sensitivity Impedance And Amplifier Power",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ]
+        },
+        {
+          "path": "/blogs/technology-and-innovation/the-problem-with-frequency-graphs-and-eq-compensation",
+          "name": "The Problem With Frequency Graphs And Eq Compensation",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ]
+        },
+        {
+          "path": "/blogs/technology-and-innovation/what-s-the-deal-with-electrostatic-headphones",
+          "name": "What S The Deal With Electrostatic Headphones",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ]
+        },
+        {
+          "path": "/collections/apparel",
+          "name": "Apparel",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        },
+        {
+          "path": "/collections/legacy-products",
+          "name": "Legacy Products",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "socialproof",
+            "cta",
+            "footer"
+          ]
+        }
+      ],
+      "qualityScore": 92.36,
+      "coverageScore": 100,
+      "linkIntegrityScore": 100,
+      "sourceDomain": "audeze.com",
+      "version": "run-tf-audeze-fullsite-eval-20260221-p5-fix2",
+      "createdAt": "2026-02-20T19:36:34.597Z"
+    }
+  ],
+  "templateExclusiveComponentCount": 33,
+  "templateExclusiveComponents": [
+    {
+      "name": "TemplateExclusiveAudezeHomeHomeNavigationNavbarPrimary",
+      "kebabName": "navbar",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeHomeNavigationNavbarPrimary-1",
+        "variant": "withDropdown",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#000000 0%,#100a06 100%)",
+        "backgroundOverlay": "rgba(16, 10, 6, 0.34)",
+        "logo": "Audeze Headphones",
+        "links": [
+          {
+            "label": "小计",
+            "href": "/",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/pages/support",
+            "variant": "primary"
+          }
+        ],
+        "menuStyle": "image_text",
+        "multiLevel": true
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/",
+        "sectionKind": "navigation",
+        "baseBlockType": "Navbar",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeHomeHeroHerosplitPrimary",
+      "kebabName": "hero-split",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeHomeHeroHerosplitPrimary-1",
+        "mediaPosition": "right",
+        "paddingY": "lg",
+        "headingSize": "md",
+        "maxWidth": "xl",
+        "background": "image",
+        "backgroundOverlay": "rgba(0, 0, 0, 0.62)",
+        "title": "Welcome to Uncompromised Audio",
+        "subtitle": "PRODUCTS",
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/pages/support",
+            "variant": "primary"
+          }
+        ],
+        "heroSlides": [
+          {
+            "src": "https://www.audeze.com/cdn/shop/files/Audeze_A_410x.svg?v=1726000216",
+            "mobileSrc": "https://www.audeze.com/cdn/shop/files/Audeze_A_410x.svg?v=1726000216",
+            "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero slide 1",
+            "label": "Slide 1"
+          },
+          {
+            "src": "https://www.audeze.com/cdn/shop/files/SLAM2_2000x.jpg?v=1744253058",
+            "mobileSrc": "https://www.audeze.com/cdn/shop/files/SLAM2_2000x.jpg?v=1744253058",
+            "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero slide 2",
+            "label": "Slide 2"
+          },
+          {
+            "src": "https://www.audeze.com/cdn/shop/files/Audeze_Explosion_5_2000x_megamenu_2000x.png?v=1648507119",
+            "mobileSrc": "https://www.audeze.com/cdn/shop/files/Audeze_Explosion_5_2000x_megamenu_2000x.png?v=1648507119",
+            "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero slide 3",
+            "label": "Slide 3"
+          },
+          {
+            "src": "https://www.audeze.com/cdn/shop/files/LCD-4z___Joe_L_2000x_megamenu_2000x.png?v=1648507119",
+            "mobileSrc": "https://www.audeze.com/cdn/shop/files/LCD-4z___Joe_L_2000x_megamenu_2000x.png?v=1648507119",
+            "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero slide 4",
+            "label": "Slide 4"
+          },
+          {
+            "src": "https://www.audeze.com/cdn/shop/files/Driver-Explosion-Image_2000x_megamenu_2000x.png?v=1648507119",
+            "mobileSrc": "https://www.audeze.com/cdn/shop/files/Driver-Explosion-Image_2000x_megamenu_2000x.png?v=1648507119",
+            "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero slide 5",
+            "label": "Slide 5"
+          },
+          {
+            "src": "https://www.audeze.com/cdn/shop/files/Angie_2000x.jpg?v=1764708774",
+            "mobileSrc": "https://www.audeze.com/cdn/shop/files/Angie_2000x.jpg?v=1764708774",
+            "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero slide 6",
+            "label": "Slide 6"
+          }
+        ],
+        "heroCarouselAutoplayMs": 4500,
+        "backgroundMedia": {
+          "kind": "image",
+          "src": "https://www.audeze.com/cdn/shop/files/Audeze_A_410x.svg?v=1726000216",
+          "alt": "Audeze Headphones | Uncompromised Audio | Planar Magnetic Technology hero background"
+        }
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/",
+        "sectionKind": "hero",
+        "baseBlockType": "HeroSplit",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeHomeApproachFeaturegridPrimary",
+      "kebabName": "feature-grid",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeHomeApproachFeaturegridPrimary-1",
+        "variant": "3col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Gaming",
+        "subtitle": "Professional Audio",
+        "items": [
+          {
+            "title": "PRODUCTS",
+            "desc": "PRODUCTS",
+            "description": "PRODUCTS",
+            "icon": "layers",
+            "image": {
+              "src": "/assets/template-factory/audeze-home/slices/desktop-approach.png",
+              "alt": "PRODUCTS"
+            },
+            "imageSrc": "/assets/template-factory/audeze-home/slices/desktop-approach.png",
+            "imageAlt": "PRODUCTS"
+          },
+          {
+            "title": "Professional Audio",
+            "desc": "Professional Audio",
+            "description": "Professional Audio",
+            "icon": "shield",
+            "image": {
+              "src": "/assets/template-factory/audeze-home/slices/mobile-approach.png",
+              "alt": "Professional Audio"
+            },
+            "imageSrc": "/assets/template-factory/audeze-home/slices/mobile-approach.png",
+            "imageAlt": "Professional Audio"
+          },
+          {
+            "title": "Audiophile",
+            "desc": "Audiophile",
+            "description": "Audiophile",
+            "icon": "chart",
+            "image": {
+              "src": "/assets/template-factory/audeze-home/slices/mobile-approach.png",
+              "alt": "Audiophile"
+            },
+            "imageSrc": "/assets/template-factory/audeze-home/slices/mobile-approach.png",
+            "imageAlt": "Audiophile"
+          }
+        ]
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/",
+        "sectionKind": "approach",
+        "baseBlockType": "FeatureGrid",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeHomeSocialproofTestimonialsgridPrimary",
+      "kebabName": "testimonials-grid",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeHomeSocialproofTestimonialsgridPrimary-1",
+        "variant": "2col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Building for world-class innovators",
+        "items": [
+          {
+            "quote": "They curated a lifestyle, not only a space.",
+            "name": "Alexander Vane",
+            "role": "CEO",
+            "avatar": {
+              "src": "/assets/template-factory/audeze-home/slices/mobile-socialproof.png",
+              "alt": "Alexander Vane"
+            }
+          },
+          {
+            "quote": "A masterclass in restraint and elegance.",
+            "name": "Isabelle Dubois",
+            "role": "Founder",
+            "avatar": {
+              "src": "/assets/template-factory/audeze-home/slices/mobile-socialproof.png",
+              "alt": "Isabelle Dubois"
+            }
+          }
+        ],
+        "imageSrc": "/assets/template-factory/audeze-home/slices/desktop-socialproof.png",
+        "imageAlt": "Results visual"
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/",
+        "sectionKind": "socialproof",
+        "baseBlockType": "TestimonialsGrid",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeHomeCtaLeadcapturectaPrimary",
+      "kebabName": "lead-capture-cta",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeHomeCtaLeadcapturectaPrimary-1",
+        "variant": "banner",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "ctaBackgroundColor": "#8b6227",
+        "ctaTextColor": "#f5f5f5",
+        "ctaClassName": "!bg-[#8b6227] !text-[#f5f5f5]",
+        "title": "订单处理时间和订单跟踪：",
+        "subtitle": "可用性：",
+        "cta": {
+          "label": "Contact",
+          "href": "/pages/support",
+          "variant": "primary"
+        }
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/",
+        "sectionKind": "cta",
+        "baseBlockType": "LeadCaptureCTA",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeHomeFooterFooterPrimary",
+      "kebabName": "footer",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeHomeFooterFooterPrimary-1",
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#100a06 0%,#131314 100%)",
+        "columns": [
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "Audiophile",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Professional",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Accessories",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Apparel",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Audeze",
+                "href": "/"
+              }
+            ]
+          },
+          {
+            "title": "Resources",
+            "links": [
+              {
+                "label": "Gaming",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Software",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Accessibility Statement",
+                "href": "/pages/support"
+              },
+              {
+                "label": "About Audeze",
+                "href": "/pages/support"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Refund Policy",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Shipping Policy",
+                "href": "/policies/shipping-policy"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Cookie Policy",
+                "href": "/pages/support"
+              }
+            ]
+          }
+        ],
+        "logoText": "Audeze Headphones",
+        "legal": "© 2026 All rights reserved."
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/",
+        "sectionKind": "footer",
+        "baseBlockType": "Footer",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeContactNavigationNavbarPrimary",
+      "kebabName": "navbar",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeContactNavigationNavbarPrimary-1",
+        "variant": "withDropdown",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#0d0d0d 0%,#1b1b1b 100%)",
+        "backgroundOverlay": "rgba(8, 8, 8, 0.34)",
+        "logo": "Contact",
+        "links": [
+          {
+            "label": "Home",
+            "href": "/",
+            "variant": "link"
+          },
+          {
+            "label": "Products",
+            "href": "/collections/accessories/products/1-4-to-1-8-stereo-adapter",
+            "variant": "link"
+          },
+          {
+            "label": "Resources",
+            "href": "/blogs/audeze-artists/angie-randisi",
+            "variant": "link"
+          },
+          {
+            "label": "Contact",
+            "href": "/contact",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ]
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/contact",
+        "sectionKind": "navigation",
+        "baseBlockType": "Navbar",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeContactHeroHerosplitPrimary",
+      "kebabName": "hero-split",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeContactHeroHerosplitPrimary-1",
+        "mediaPosition": "right",
+        "paddingY": "lg",
+        "headingSize": "md",
+        "maxWidth": "xl",
+        "background": "image",
+        "backgroundOverlay": "rgba(6, 6, 6, 0.62)",
+        "title": "Contact",
+        "subtitle": "Explore Contact solutions",
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "backgroundMedia": {
+          "kind": "image",
+          "src": "/assets/template-factory/audeze-home/slices/desktop-hero.png",
+          "alt": "Contact | Audeze Headphones reference"
+        },
+        "media": {
+          "kind": "image",
+          "src": "/assets/template-factory/audeze-home/slices/desktop-hero.png",
+          "alt": "Contact | Audeze Headphones hero visual"
+        }
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/contact",
+        "sectionKind": "hero",
+        "baseBlockType": "HeroSplit",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeContactFooterFooterPrimary",
+      "kebabName": "footer",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeContactFooterFooterPrimary-1",
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#0f0f0f 0%,#050505 100%)",
+        "columns": [
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "Audiophile",
+                "href": "/"
+              },
+              {
+                "label": "Professional",
+                "href": "/"
+              },
+              {
+                "label": "Gaming",
+                "href": "/"
+              },
+              {
+                "label": "Software",
+                "href": "/"
+              },
+              {
+                "label": "Accessories",
+                "href": "/"
+              },
+              {
+                "label": "Apparel",
+                "href": "/"
+              },
+              {
+                "label": "Accessibility Statement",
+                "href": "/"
+              },
+              {
+                "label": "About Audeze",
+                "href": "/"
+              },
+              {
+                "label": "Audeze",
+                "href": "/"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "href": "/"
+              },
+              {
+                "label": "Refund Policy",
+                "href": "/"
+              },
+              {
+                "label": "Shipping Policy",
+                "href": "/"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/"
+              },
+              {
+                "label": "Cookie Policy",
+                "href": "/"
+              }
+            ]
+          }
+        ],
+        "logoText": "Contact",
+        "legal": "© 2026 All rights reserved."
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/contact",
+        "sectionKind": "footer",
+        "baseBlockType": "Footer",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsAngieRandisiNavigationNavbarPrimary",
+      "kebabName": "navbar",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsAngieRandisiNavigationNavbarPrimary-1",
+        "variant": "withDropdown",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#0d0d0d 0%,#1b1b1b 100%)",
+        "backgroundOverlay": "rgba(8, 8, 8, 0.34)",
+        "logo": "Angie Randisi",
+        "links": [
+          {
+            "label": "Home",
+            "href": "/",
+            "variant": "link"
+          },
+          {
+            "label": "Products",
+            "href": "/collections/accessories/products/1-4-to-1-8-stereo-adapter",
+            "variant": "link"
+          },
+          {
+            "label": "Resources",
+            "href": "/blogs/audeze-artists/angie-randisi",
+            "variant": "link"
+          },
+          {
+            "label": "Contact",
+            "href": "/contact",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ]
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/blogs/audeze-artists/angie-randisi",
+        "sectionKind": "navigation",
+        "baseBlockType": "Navbar",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsAngieRandisiHeroHerosplitPrimary",
+      "kebabName": "hero-split",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsAngieRandisiHeroHerosplitPrimary-1",
+        "mediaPosition": "right",
+        "paddingY": "lg",
+        "headingSize": "md",
+        "maxWidth": "xl",
+        "background": "image",
+        "backgroundOverlay": "rgba(6, 6, 6, 0.62)",
+        "title": "Angie Randisi",
+        "subtitle": "Explore Angie Randisi solutions",
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "backgroundMedia": {
+          "kind": "image",
+          "src": "/assets/template-factory/audeze-home/slices/desktop-hero.png",
+          "alt": "Angie Randisi | Audeze Headphones reference"
+        },
+        "media": {
+          "kind": "image",
+          "src": "/assets/template-factory/audeze-home/slices/desktop-hero.png",
+          "alt": "Angie Randisi | Audeze Headphones hero visual"
+        }
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/blogs/audeze-artists/angie-randisi",
+        "sectionKind": "hero",
+        "baseBlockType": "HeroSplit",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsAngieRandisiFooterFooterPrimary",
+      "kebabName": "footer",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsAngieRandisiFooterFooterPrimary-1",
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#0f0f0f 0%,#050505 100%)",
+        "columns": [
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "Audiophile",
+                "href": "/"
+              },
+              {
+                "label": "Professional",
+                "href": "/"
+              },
+              {
+                "label": "Gaming",
+                "href": "/"
+              },
+              {
+                "label": "Software",
+                "href": "/"
+              },
+              {
+                "label": "Accessories",
+                "href": "/"
+              },
+              {
+                "label": "Apparel",
+                "href": "/"
+              },
+              {
+                "label": "Accessibility Statement",
+                "href": "/"
+              },
+              {
+                "label": "About Audeze",
+                "href": "/"
+              },
+              {
+                "label": "Audeze",
+                "href": "/"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "href": "/"
+              },
+              {
+                "label": "Refund Policy",
+                "href": "/"
+              },
+              {
+                "label": "Shipping Policy",
+                "href": "/"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/"
+              },
+              {
+                "label": "Cookie Policy",
+                "href": "/"
+              }
+            ]
+          }
+        ],
+        "logoText": "Angie Randisi",
+        "legal": "© 2026 All rights reserved."
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/blogs/audeze-artists/angie-randisi",
+        "sectionKind": "footer",
+        "baseBlockType": "Footer",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeCollectionsAccessoriesProducts14To18StereoAdapterNavigationNavbarPrimary",
+      "kebabName": "navbar",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeCollectionsAccessoriesProducts14To18StereoAdapterNavigationNavbarPrimary-1",
+        "variant": "withDropdown",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#0d0d0d 0%,#1b1b1b 100%)",
+        "backgroundOverlay": "rgba(8, 8, 8, 0.34)",
+        "logo": "1 4 To 1 8 Stereo Adapter",
+        "links": [
+          {
+            "label": "Home",
+            "href": "/",
+            "variant": "link"
+          },
+          {
+            "label": "Products",
+            "href": "/collections/accessories/products/1-4-to-1-8-stereo-adapter",
+            "variant": "link"
+          },
+          {
+            "label": "Resources",
+            "href": "/blogs/audeze-artists/angie-randisi",
+            "variant": "link"
+          },
+          {
+            "label": "Contact",
+            "href": "/contact",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ]
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/collections/accessories/products/1-4-to-1-8-stereo-adapter",
+        "sectionKind": "navigation",
+        "baseBlockType": "Navbar",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeCollectionsAccessoriesProducts14To18StereoAdapterHeroHerosplitPrimary",
+      "kebabName": "hero-split",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeCollectionsAccessoriesProducts14To18StereoAdapterHeroHerosplitPrimary-1",
+        "mediaPosition": "right",
+        "paddingY": "lg",
+        "headingSize": "md",
+        "maxWidth": "xl",
+        "background": "image",
+        "backgroundOverlay": "rgba(6, 6, 6, 0.62)",
+        "title": "1 4 To 1 8 Stereo Adapter",
+        "subtitle": "Explore 1 4 To 1 8 Stereo Adapter solutions",
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/contact",
+            "variant": "primary"
+          }
+        ],
+        "backgroundMedia": {
+          "kind": "image",
+          "src": "/assets/template-factory/audeze-home/slices/desktop-hero.png",
+          "alt": "1 4 To 1 8 Stereo Adapter | Audeze Headphones reference"
+        },
+        "media": {
+          "kind": "image",
+          "src": "/assets/template-factory/audeze-home/slices/desktop-hero.png",
+          "alt": "1 4 To 1 8 Stereo Adapter | Audeze Headphones hero visual"
+        }
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/collections/accessories/products/1-4-to-1-8-stereo-adapter",
+        "sectionKind": "hero",
+        "baseBlockType": "HeroSplit",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeCollectionsAccessoriesProducts14To18StereoAdapterCtaLeadcapturectaPrimary",
+      "kebabName": "lead-capture-cta",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeCollectionsAccessoriesProducts14To18StereoAdapterCtaLeadcapturectaPrimary-1",
+        "variant": "banner",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "ctaBackgroundColor": "#8b6227",
+        "ctaTextColor": "#f5f5f5",
+        "ctaClassName": "!bg-[#8b6227] !text-[#f5f5f5]",
+        "title": "1 4 To 1 8 Stereo Adapter",
+        "subtitle": "Login",
+        "cta": {
+          "label": "Contact",
+          "href": "/contact",
+          "variant": "primary"
+        }
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/collections/accessories/products/1-4-to-1-8-stereo-adapter",
+        "sectionKind": "cta",
+        "baseBlockType": "LeadCaptureCTA",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeCollectionsAccessoriesProducts14To18StereoAdapterFooterFooterPrimary",
+      "kebabName": "footer",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeCollectionsAccessoriesProducts14To18StereoAdapterFooterFooterPrimary-1",
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#0f0f0f 0%,#050505 100%)",
+        "columns": [
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "Audiophile",
+                "href": "/"
+              },
+              {
+                "label": "Professional",
+                "href": "/"
+              },
+              {
+                "label": "Gaming",
+                "href": "/"
+              },
+              {
+                "label": "Software",
+                "href": "/"
+              },
+              {
+                "label": "Accessories",
+                "href": "/"
+              },
+              {
+                "label": "Apparel",
+                "href": "/"
+              },
+              {
+                "label": "Accessibility Statement",
+                "href": "/"
+              },
+              {
+                "label": "About Audeze",
+                "href": "/"
+              },
+              {
+                "label": "Audeze",
+                "href": "/"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "href": "/"
+              },
+              {
+                "label": "Refund Policy",
+                "href": "/"
+              },
+              {
+                "label": "Shipping Policy",
+                "href": "/"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/"
+              },
+              {
+                "label": "Cookie Policy",
+                "href": "/"
+              }
+            ]
+          }
+        ],
+        "logoText": "1 4 To 1 8 Stereo Adapte",
+        "legal": "© 2026 All rights reserved."
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/collections/accessories/products/1-4-to-1-8-stereo-adapter",
+        "sectionKind": "footer",
+        "baseBlockType": "Footer",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsNavigationNavbarPrimary",
+      "kebabName": "navbar",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsNavigationNavbarPrimary-1",
+        "variant": "withDropdown",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#000000 0%,#100a06 100%)",
+        "backgroundOverlay": "rgba(16, 10, 6, 0.34)",
+        "logo": "Audeze Artists",
+        "links": [
+          {
+            "label": "小计",
+            "href": "/",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/pages/support",
+            "variant": "primary"
+          }
+        ],
+        "menuStyle": "image_text",
+        "multiLevel": true
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/blogs/audeze-artists",
+        "sectionKind": "navigation",
+        "baseBlockType": "Navbar",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsHeroHerosplitPrimary",
+      "kebabName": "hero-split",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsHeroHerosplitPrimary-1",
+        "mediaPosition": "right",
+        "paddingY": "lg",
+        "headingSize": "md",
+        "maxWidth": "xl",
+        "background": "image",
+        "backgroundOverlay": "rgba(0, 0, 0, 0.62)",
+        "title": "Audeze Artists",
+        "subtitle": "Explore Audeze Artists solutions",
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/pages/support",
+            "variant": "primary"
+          }
+        ],
+        "backgroundColor": "#0f0f0f",
+        "backgroundMedia": {
+          "kind": "image",
+          "src": "/assets/template-factory/audeze-home/slices/desktop-hero.png",
+          "alt": "Audeze Artists | Audeze Headphones reference"
+        },
+        "media": {
+          "kind": "image",
+          "src": "/assets/template-factory/audeze-home/slices/desktop-hero.png",
+          "alt": "Audeze Artists | Audeze Headphones hero visual"
+        }
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/blogs/audeze-artists",
+        "sectionKind": "hero",
+        "baseBlockType": "HeroSplit",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsStoryFeaturegridPrimary",
+      "kebabName": "feature-grid",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsStoryFeaturegridPrimary-1",
+        "variant": "3col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "eyebrow": "Our Story",
+        "title": "Explore Audeze Artists solutions",
+        "subtitle": "Learn more about Audeze Artists",
+        "body": "Explore Audeze Artists solutions",
+        "ctas": [
+          {
+            "label": "Explore",
+            "href": "/pages/support",
+            "variant": "link"
+          }
+        ],
+        "contentFormat": "markdown",
+        "markdownEnabled": true,
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#100a06 0%,#131314 100%)",
+        "backgroundColor": "#0f0f0f",
+        "backgroundOverlay": "rgba(16, 10, 6, 0.34)",
+        "textColor": "#f5f5f5",
+        "subtitleColor": "#d4d4d8",
+        "descriptionColor": "#d4d4d8",
+        "cardBackgroundColor": "#171717",
+        "itemBackgroundColor": "#171717"
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/blogs/audeze-artists",
+        "sectionKind": "story",
+        "baseBlockType": "FeatureGrid",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsFooterFooterPrimary",
+      "kebabName": "footer",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeBlogsAudezeArtistsFooterFooterPrimary-1",
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#100a06 0%,#131314 100%)",
+        "columns": [
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "Audiophile",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Professional",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Accessories",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Apparel",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Audeze",
+                "href": "/"
+              }
+            ]
+          },
+          {
+            "title": "Resources",
+            "links": [
+              {
+                "label": "Gaming",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Software",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Accessibility Statement",
+                "href": "/pages/support"
+              },
+              {
+                "label": "About Audeze",
+                "href": "/pages/support"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Refund Policy",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Shipping Policy",
+                "href": "/policies/shipping-policy"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Cookie Policy",
+                "href": "/pages/support"
+              }
+            ]
+          }
+        ],
+        "logoText": "Audeze Artists",
+        "legal": "© 2026 All rights reserved."
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/blogs/audeze-artists",
+        "sectionKind": "footer",
+        "baseBlockType": "Footer",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomePagesSupportNavigationNavbarPrimary",
+      "kebabName": "navbar",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomePagesSupportNavigationNavbarPrimary-1",
+        "variant": "withDropdown",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#ffffff 0%,#f3f4f6 100%)",
+        "backgroundOverlay": "rgba(10, 10, 10, 0.08)",
+        "logo": "Support",
+        "links": [
+          {
+            "label": "小计",
+            "href": "/",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/pages/support",
+            "variant": "primary"
+          }
+        ],
+        "menuStyle": "image_text",
+        "multiLevel": true
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/pages/support",
+        "sectionKind": "navigation",
+        "baseBlockType": "Navbar",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomePagesSupportHeroHerosplitPrimary",
+      "kebabName": "hero-split",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomePagesSupportHeroHerosplitPrimary-1",
+        "mediaPosition": "right",
+        "paddingY": "lg",
+        "headingSize": "md",
+        "maxWidth": "xl",
+        "background": "image",
+        "backgroundOverlay": "rgba(15, 15, 15, 0.12)",
+        "title": "Support",
+        "subtitle": "Explore Support solutions",
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/pages/support",
+            "variant": "primary"
+          }
+        ],
+        "backgroundColor": "#ffffff"
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/pages/support",
+        "sectionKind": "hero",
+        "baseBlockType": "HeroSplit",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomePagesSupportStoryFeaturegridPrimary",
+      "kebabName": "feature-grid",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomePagesSupportStoryFeaturegridPrimary-1",
+        "variant": "3col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "eyebrow": "Our Story",
+        "title": "Explore Support solutions",
+        "subtitle": "Learn more about Support",
+        "body": "Explore Support solutions",
+        "ctas": [
+          {
+            "label": "Explore",
+            "href": "/pages/support",
+            "variant": "link"
+          }
+        ]
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/pages/support",
+        "sectionKind": "story",
+        "baseBlockType": "FeatureGrid",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomePagesSupportContactLeadcapturectaPrimary",
+      "kebabName": "lead-capture-cta",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomePagesSupportContactLeadcapturectaPrimary-1",
+        "variant": "banner",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "ctaBackgroundColor": "#8b6227",
+        "ctaTextColor": "#f5f5f5",
+        "ctaClassName": "!bg-[#8b6227] !text-[#f5f5f5]",
+        "supportContentOnly": true,
+        "excludeDownloads": true,
+        "excludeCommerce": true
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/pages/support",
+        "sectionKind": "contact",
+        "baseBlockType": "LeadCaptureCTA",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomePagesSupportFooterFooterPrimary",
+      "kebabName": "footer",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomePagesSupportFooterFooterPrimary-1",
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#f7f7f7 0%,#eeeeee 100%)",
+        "columns": [
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "Audiophile",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Professional",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Accessories",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Apparel",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Audeze",
+                "href": "/"
+              }
+            ]
+          },
+          {
+            "title": "Resources",
+            "links": [
+              {
+                "label": "Gaming",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Software",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Accessibility Statement",
+                "href": "/pages/support"
+              },
+              {
+                "label": "About Audeze",
+                "href": "/pages/support"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Refund Policy",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Shipping Policy",
+                "href": "/policies/shipping-policy"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Cookie Policy",
+                "href": "/pages/support"
+              }
+            ]
+          }
+        ],
+        "logoText": "Support",
+        "legal": "© 2026 All rights reserved."
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/pages/support",
+        "sectionKind": "footer",
+        "baseBlockType": "Footer",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeProductsCrbn2NavigationNavbarPrimary",
+      "kebabName": "navbar",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeProductsCrbn2NavigationNavbarPrimary-1",
+        "variant": "withDropdown",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#ffffff 0%,#f3f4f6 100%)",
+        "backgroundOverlay": "rgba(10, 10, 10, 0.08)",
+        "logo": "Crbn2",
+        "links": [
+          {
+            "label": "小计",
+            "href": "/",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/pages/support",
+            "variant": "primary"
+          }
+        ],
+        "menuStyle": "image_text",
+        "multiLevel": true
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/products/crbn2",
+        "sectionKind": "navigation",
+        "baseBlockType": "Navbar",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeProductsCrbn2HeroHerosplitPrimary",
+      "kebabName": "hero-split",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeProductsCrbn2HeroHerosplitPrimary-1",
+        "mediaPosition": "right",
+        "paddingY": "lg",
+        "headingSize": "md",
+        "maxWidth": "xl",
+        "background": "image",
+        "backgroundOverlay": "rgba(15, 15, 15, 0.12)",
+        "title": "Crbn2",
+        "subtitle": "Explore Crbn2 solutions",
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/pages/support",
+            "variant": "primary"
+          }
+        ],
+        "backgroundColor": "#ffffff"
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/products/crbn2",
+        "sectionKind": "hero",
+        "baseBlockType": "HeroSplit",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeProductsCrbn2ApproachFeaturegridPrimary",
+      "kebabName": "feature-grid",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeProductsCrbn2ApproachFeaturegridPrimary-1",
+        "variant": "3col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Learn more about Crbn2",
+        "subtitle": "Crbn2 overview",
+        "items": [
+          {
+            "title": "Explore Crbn2 solutions",
+            "desc": "Explore Crbn2 solutions",
+            "description": "Explore Crbn2 solutions",
+            "icon": "layers"
+          },
+          {
+            "title": "Learn more about Crbn2",
+            "desc": "Learn more about Crbn2",
+            "description": "Learn more about Crbn2",
+            "icon": "shield"
+          },
+          {
+            "title": "Crbn2 overview",
+            "desc": "Crbn2 overview",
+            "description": "Crbn2 overview",
+            "icon": "chart"
+          }
+        ]
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/products/crbn2",
+        "sectionKind": "approach",
+        "baseBlockType": "FeatureGrid",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeProductsCrbn2SocialproofTestimonialsgridPrimary",
+      "kebabName": "testimonials-grid",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeProductsCrbn2SocialproofTestimonialsgridPrimary-1",
+        "variant": "2col",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "title": "Building for world-class innovators",
+        "items": [
+          {
+            "quote": "They curated a lifestyle, not only a space.",
+            "name": "Alexander Vane",
+            "role": "CEO"
+          },
+          {
+            "quote": "A masterclass in restraint and elegance.",
+            "name": "Isabelle Dubois",
+            "role": "Founder"
+          }
+        ]
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/products/crbn2",
+        "sectionKind": "socialproof",
+        "baseBlockType": "TestimonialsGrid",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeProductsCrbn2CtaLeadcapturectaPrimary",
+      "kebabName": "lead-capture-cta",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeProductsCrbn2CtaLeadcapturectaPrimary-1",
+        "variant": "banner",
+        "paddingY": "lg",
+        "maxWidth": "xl",
+        "ctaBackgroundColor": "#8b6227",
+        "ctaTextColor": "#f5f5f5",
+        "ctaClassName": "!bg-[#8b6227] !text-[#f5f5f5]",
+        "title": "Crbn2",
+        "subtitle": "Login",
+        "cta": {
+          "label": "Contact",
+          "href": "/pages/support",
+          "variant": "primary"
+        }
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/products/crbn2",
+        "sectionKind": "cta",
+        "baseBlockType": "LeadCaptureCTA",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomeProductsCrbn2FooterFooterPrimary",
+      "kebabName": "footer",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomeProductsCrbn2FooterFooterPrimary-1",
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#f7f7f7 0%,#eeeeee 100%)",
+        "columns": [
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "Audiophile",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Professional",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Accessories",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Apparel",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Audeze",
+                "href": "/"
+              }
+            ]
+          },
+          {
+            "title": "Resources",
+            "links": [
+              {
+                "label": "Gaming",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Software",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Accessibility Statement",
+                "href": "/pages/support"
+              },
+              {
+                "label": "About Audeze",
+                "href": "/pages/support"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Refund Policy",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Shipping Policy",
+                "href": "/policies/shipping-policy"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Cookie Policy",
+                "href": "/pages/support"
+              }
+            ]
+          }
+        ],
+        "logoText": "Crbn2",
+        "legal": "© 2026 All rights reserved."
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/products/crbn2",
+        "sectionKind": "footer",
+        "baseBlockType": "Footer",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomePoliciesShippingPolicyNavigationNavbarPrimary",
+      "kebabName": "navbar",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomePoliciesShippingPolicyNavigationNavbarPrimary-1",
+        "variant": "withDropdown",
+        "sticky": true,
+        "paddingY": "sm",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#ffffff 0%,#f3f4f6 100%)",
+        "backgroundOverlay": "rgba(10, 10, 10, 0.08)",
+        "logo": "Audeze",
+        "links": [
+          {
+            "label": "小计",
+            "href": "/",
+            "variant": "link"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "Contact",
+            "href": "/pages/support",
+            "variant": "primary"
+          }
+        ],
+        "menuStyle": "image_text",
+        "multiLevel": true
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/policies/shipping-policy",
+        "sectionKind": "navigation",
+        "baseBlockType": "Navbar",
+        "source": "primary",
+        "rank": 0
+      }
+    },
+    {
+      "name": "TemplateExclusiveAudezeHomePoliciesShippingPolicyFooterFooterPrimary",
+      "kebabName": "footer",
+      "defaultProps": {
+        "id": "TemplateExclusiveAudezeHomePoliciesShippingPolicyFooterFooterPrimary-1",
+        "variant": "multiColumn",
+        "paddingY": "md",
+        "maxWidth": "xl",
+        "background": "gradient",
+        "backgroundGradient": "linear-gradient(180deg,#f7f7f7 0%,#eeeeee 100%)",
+        "columns": [
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "Audiophile",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Professional",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Accessories",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Apparel",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Audeze",
+                "href": "/"
+              }
+            ]
+          },
+          {
+            "title": "Resources",
+            "links": [
+              {
+                "label": "Gaming",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Software",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Accessibility Statement",
+                "href": "/pages/support"
+              },
+              {
+                "label": "About Audeze",
+                "href": "/pages/support"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Terms of Service",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Refund Policy",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Shipping Policy",
+                "href": "/policies/shipping-policy"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/pages/support"
+              },
+              {
+                "label": "Cookie Policy",
+                "href": "/pages/support"
+              }
+            ]
+          }
+        ],
+        "logoText": "Audeze",
+        "legal": "© 2026 All rights reserved."
+      },
+      "templateExclusive": {
+        "siteId": "audeze-home",
+        "pagePath": "/policies/shipping-policy",
+        "sectionKind": "footer",
+        "baseBlockType": "Footer",
+        "source": "primary",
+        "rank": 0
+      }
     }
   ]
 }

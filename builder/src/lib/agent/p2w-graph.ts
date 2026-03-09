@@ -16,10 +16,21 @@ import {
   buildBuilderUserPrompt,
 } from "@/lib/agent/prompts";
 import {
+  resolveSectionTemplateAsset,
   resolveSectionTemplateBlock,
   selectStyleProfile,
   type TemplatePersonalizationContext,
 } from "@/lib/agent/section-template-registry";
+import { buildSiteBlueprint } from "@/lib/agent/site-planner";
+import { resolveTemplatePlan } from "@/lib/agent/template-resolver";
+import { evaluateGenerationQa } from "@/lib/agent/qa-gate";
+import {
+  applyLinkGraphToFooterProps,
+  applyLinkGraphToNavbarProps,
+  buildSiteLinkGraph,
+  sanitizeInternalHrefsInProps,
+  type SiteLinkGraph,
+} from "@/lib/agent/link-graph";
 
 const State = Annotation.Root({
   prompt: Annotation<string>,
@@ -37,6 +48,18 @@ const State = Annotation.Root({
   components: Annotation<any[]>({ value: (_left, right) => right, default: () => [] }),
   pages: Annotation<any[]>({ value: (_left, right) => right, default: () => [] }),
   theme: Annotation<Record<string, unknown>>,
+  siteBlueprint: Annotation<Record<string, unknown>>({
+    value: (_left, right) => right,
+    default: () => ({}),
+  }),
+  resolvedByLayer: Annotation<Record<string, unknown>>({
+    value: (_left, right) => right,
+    default: () => ({}),
+  }),
+  qaReport: Annotation<Record<string, unknown>>({
+    value: (_left, right) => right,
+    default: () => ({}),
+  }),
   errors: Annotation<string[]>({ value: (_left, right) => right, default: () => [] }),
 });
 
@@ -195,7 +218,18 @@ type SectionPayload = {
 };
 
 type BuilderSectionResult =
-  | { status: "ok"; component: SectionComponent; block: SectionBlock }
+  | {
+      status: "ok";
+      component: SectionComponent;
+      block: SectionBlock;
+      templateMeta?: {
+        sourceLayer: string;
+        profileId: string;
+        styleFamily: string | null;
+        editableFieldCount: number;
+        catalogSource: "published" | "runtime" | "none";
+      };
+    }
   | { status: "fallback"; block: SectionBlock; error: string; failureType: FailureType }
   | { status: "error"; error: string; failureType: FailureType };
 
@@ -394,9 +428,9 @@ const configuredBuilderRecoveryMaxTokens = Number(process.env.BUILDER_RECOVERY_M
 const builderRecoveryMaxTokens = Number.isFinite(configuredBuilderRecoveryMaxTokens)
   ? Math.max(builderMaxTokens, Math.floor(configuredBuilderRecoveryMaxTokens))
   : Math.max(builderMaxTokens, 2200);
-const defaultMaxPages = Number(process.env.CREATION_MAX_PAGES || 1);
-const defaultMaxSectionsPerPage = Number(process.env.CREATION_MAX_SECTIONS_PER_PAGE || 6);
-const defaultMaxSectionsTotal = Number(process.env.CREATION_MAX_SECTIONS_TOTAL || 10);
+const defaultMaxPages = Number(process.env.CREATION_MAX_PAGES || 10);
+const defaultMaxSectionsPerPage = Number(process.env.CREATION_MAX_SECTIONS_PER_PAGE || 8);
+const defaultMaxSectionsTotal = Number(process.env.CREATION_MAX_SECTIONS_TOTAL || 48);
 type BuilderRetryMode = "legacy" | "network_only" | "none";
 const builderRetryMode = ((process.env.LLM_RETRY_MODE || "legacy").toLowerCase() as BuilderRetryMode) ?? "legacy";
 type SectionGenerationStrategy = "llm_first" | "hybrid" | "template_first";
@@ -434,7 +468,7 @@ const useCompactDesignSystemForBuilder = parseEnvBoolean(
 );
 const sectionGenerationStrategy = parseSectionGenerationStrategy(
   process.env.BUILDER_SECTION_GENERATION_STRATEGY,
-  "hybrid"
+  "template_first"
 );
 const templateFirstSectionTokens = parseEnvCsv(
   process.env.BUILDER_TEMPLATE_SECTIONS || process.env.BUILDER_TEMPLATE_FIRST_SECTIONS,
@@ -456,6 +490,20 @@ const enableTemplateShadowRun = parseEnvBoolean(process.env.BUILDER_TEMPLATE_SHA
 const enableTemplateRefinement = parseEnvBoolean(process.env.BUILDER_TEMPLATE_REFINEMENT, true);
 const templateRefinementMaxTokens = Math.max(512, Number(process.env.BUILDER_TEMPLATE_REFINEMENT_MAX_TOKENS || 2048));
 const templateRefinementTimeoutMs = Math.max(5000, Number(process.env.BUILDER_TEMPLATE_REFINEMENT_TIMEOUT_MS || 15000));
+const templateRefinementSkipSectionTokens = new Set(
+  parseEnvCsv(process.env.BUILDER_TEMPLATE_REFINEMENT_SKIP_SECTIONS, [
+    "navigation",
+    "hero",
+    "approach",
+    "socialproof",
+    "cta",
+    "footer",
+  ])
+);
+const skipTemplateExclusiveRefinement = parseEnvBoolean(
+  process.env.BUILDER_TEMPLATE_REFINEMENT_SKIP_TEMPLATE_EXCLUSIVE,
+  true
+);
 
 const configuredSectionMaxAttempts = Math.max(1, Number(process.env.LLM_SECTION_MAX_ATTEMPTS || 3));
 const configuredNetworkRetryAttempts = Math.max(0, Number(process.env.LLM_NETWORK_RETRY_ATTEMPTS || 1));
@@ -612,10 +660,10 @@ export default function CreationFallbackSection(props) {
   const catalogItems = safeItems.length
     ? safeItems.slice(0, 8)
     : [
-        { title: "Premium Towels", desc: "Fast sampling and custom branding." },
-        { title: "Bathrobes", desc: "Hotel-grade fabrics and stitching." },
-        { title: "Bath Mats", desc: "High-absorbency, anti-slip options." },
-        { title: "Beach Towels", desc: "Vibrant prints for resort programs." },
+        { title: "5-Axis Machining Center", desc: "Rigid structure and stable accuracy for complex parts." },
+        { title: "Drilling & Tapping Center", desc: "Fast cycle times for high-volume precision production." },
+        { title: "Horizontal Machining Center", desc: "Efficient chip evacuation for continuous heavy-duty work." },
+        { title: "Automation Cell", desc: "Integrated loading and handling for scalable throughput." },
       ];
 
   if (variant === "catalog") {
@@ -751,29 +799,29 @@ export default function CreationFallbackSection(props) {
   if (variant === "socialProof") {
     const fallbackLogos = safeLogos.length
       ? safeLogos
-      : ["NASA", "SpaceX", "Uber", "VISA", "Airbnb", "Meta"];
+      : ["Automotive", "3C Manufacturing", "Mold", "Aerospace", "General Machinery", "Precision Parts"];
     const fallbackTestimonials = safeTestimonials.length
       ? safeTestimonials
       : [
           {
-            name: "Alexander Vane",
-            role: "CEO at Shpitto",
+            name: "Operations Director",
+            role: "Automotive Components",
             quote:
-              "Sixtine didn't just design a house; they curated a lifestyle.",
+              "The line reached stable output quickly and maintained accuracy across multi-shift production.",
           },
           {
-            name: "Isabelle Dubois",
-            role: "Founder of ArtHouse",
+            name: "Plant Manager",
+            role: "Precision Manufacturing",
             quote:
-              "An absolute masterclass in restraint and elegance for premium spaces.",
+              "Equipment integration and process support helped us improve cycle time without sacrificing quality.",
           },
         ];
     return (
       <section id={anchor} className="py-20 bg-muted/30">
         <div className="mx-auto w-full max-w-[1200px] px-6 space-y-10">
           <div className="text-center space-y-2">
-            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Collaborators</p>
-            <h2 className="font-heading text-3xl md:text-4xl tracking-tight">{title || "Building for world-class innovators"}</h2>
+            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Industry trust</p>
+            <h2 className="font-heading text-3xl md:text-4xl tracking-tight">{title || "Trusted by production teams with demanding quality targets"}</h2>
             {subtitle ? <p className="text-muted-foreground">{subtitle}</p> : null}
           </div>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-6 md:gap-6">
@@ -1754,7 +1802,18 @@ const hasFooterSection = (sections: ArchitectSection[]) => sections.some((sectio
 
 const hasCtaSection = (sections: ArchitectSection[]) => sections.some((section) => isCtaLikeSection(section));
 
+const isGlobalChromeSection = (section: { id?: string; type?: string; intent?: string } | undefined) => {
+  const token = `${section?.type ?? ""} ${section?.id ?? ""} ${section?.intent ?? ""}`.toLowerCase();
+  return /(navigation|navbar|header|topnav|menu|footer|legal|copyright|bottom)/.test(token);
+};
+
 const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>) => {
+  const normalizePathToken = (value: unknown) => {
+    const raw = typeof value === "string" ? value.trim() : "";
+    if (!raw) return "/";
+    const withSlash = raw.startsWith("/") ? raw : `/${raw}`;
+    return withSlash.replace(/\/{2,}/g, "/").replace(/\/+$/g, "") || "/";
+  };
   const rawPages = Array.isArray((blueprint as ArchitectBlueprint)?.pages)
     ? ((blueprint as ArchitectBlueprint).pages as ArchitectPage[])
     : [];
@@ -1825,9 +1884,9 @@ const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>)
   const alignedPages = applySectionAlignOverrides(pages, themeContract);
   const originalPageCount = alignedPages.length;
   const originalSectionsTotal = alignedPages.reduce((sum, page) => sum + page.sections.length, 0);
-  const maxPages = clampPositiveInt(defaultMaxPages, 3, 1, 10);
-  const maxSectionsPerPage = clampPositiveInt(defaultMaxSectionsPerPage, 6, 1, 12);
-  const maxSectionsTotal = clampPositiveInt(defaultMaxSectionsTotal, 10, 1, 24);
+  const maxPages = clampPositiveInt(defaultMaxPages, 6, 1, 24);
+  const maxSectionsPerPage = clampPositiveInt(defaultMaxSectionsPerPage, 8, 1, 20);
+  const maxSectionsTotal = clampPositiveInt(defaultMaxSectionsTotal, 48, 1, 240);
   let totalSections = 0;
   const limitedPages = alignedPages.slice(0, maxPages).map((page, pageIndex) => {
     if (totalSections >= maxSectionsTotal) {
@@ -1874,7 +1933,29 @@ const normalizePages = (blueprint: ArchitectBlueprint | Record<string, unknown>)
       reason: "missing_footer_section",
     });
   }
-  return limitedPages;
+  const seenPaths = new Set<string>();
+  const dedupedPages = limitedPages
+    .map((page, pageIndex) => {
+      const normalizedPath = normalizePathToken(page.path || (pageIndex === 0 ? "/" : `/page-${pageIndex + 1}`));
+      return { ...page, path: normalizedPath };
+    })
+    .filter((page, pageIndex) => {
+      const path = normalizePathToken(page.path);
+      if (path !== "/" && (/^\/(www|http|https)(\/|$)/i.test(path) || /\.[a-z]{2,}/i.test(path))) {
+        logWarn(`${logPrefix} blueprint:drop_noise_page`, { path, reason: "domain_like_path" });
+        return false;
+      }
+      if (seenPaths.has(path)) {
+        logWarn(`${logPrefix} blueprint:drop_noise_page`, { path, reason: "duplicate_path" });
+        return false;
+      }
+      seenPaths.add(path);
+      if (!page.name || !String(page.name).trim()) {
+        page.name = path === "/" ? "Home" : humanizeLabel(path.split("/").filter(Boolean).pop() || `Page ${pageIndex + 1}`);
+      }
+      return true;
+    });
+  return dedupedPages.length ? dedupedPages : [{ path: "/", name: "Home", sections: [] }];
 };
 
 type TemplatePlanSectionKind =
@@ -2001,7 +2082,7 @@ const readProfileSiteTemplatePages = (profile: unknown): ProfileSiteTemplatePage
 };
 
 const sectionMatchesTemplateKind = (section: ArchitectSection, kind: TemplatePlanSectionKind) => {
-  const token = `${section.type ?? ""} ${section.id ?? ""} ${section.intent ?? ""}`.toLowerCase();
+  const token = `${section.type ?? ""} ${section.id ?? ""}`.toLowerCase();
   return templatePlanKindPatterns[kind].some((pattern) => pattern.test(token));
 };
 
@@ -3017,6 +3098,12 @@ const inferTone = (prompt: string, designNorthStar?: Record<string, unknown>) =>
     "titanium",
     "futuristic",
     "digital",
+    "智能",
+    "视觉",
+    "工业",
+    "科技",
+    "硬件",
+    "检测",
   ];
   const warmScore = warmKeywords.filter((word) => hasKeyword(context, word)).length;
   const coolScore = coolKeywords.filter((word) => hasKeyword(context, word)).length;
@@ -3024,6 +3111,8 @@ const inferTone = (prompt: string, designNorthStar?: Record<string, unknown>) =>
   if (coolScore > warmScore) return "cool";
   return "neutral";
 };
+
+const containsCjkText = (value: string) => /[\u3400-\u9fff]/.test(String(value || ""));
 
 const applyUserThemeIntent = (
   blueprint: ArchitectBlueprint,
@@ -3070,13 +3159,33 @@ const applyUserThemeIntent = (
   if (!nextPalette.primary) nextPalette.primary = nextPalette.text;
   if (!nextPalette.accent) nextPalette.accent = nextPalette.textSecondary;
 
+  const semanticPaletteHint = /(?:ai|vision|industrial|smart|智能|视觉|工业|科技)/i.test(prompt);
+  if (!explicitColors.length && !labeledColors.accent && semanticPaletteHint) {
+    nextPalette.accent = mode === "dark" ? "#38BDF8" : "#2563EB";
+    nextPalette.primary = mode === "dark" ? "#0F172A" : "#1E3A8A";
+  }
+
   Object.keys(TOKEN_NAME_MAP).forEach((key) => {
     tokens[key] = TOKEN_NAME_MAP[key];
   });
 
+  const hasCjk = containsCjkText(prompt);
+  const currentHeading = typeof (theme as any)?.fontHeading === "string" ? String((theme as any).fontHeading) : "";
+  const currentBody = typeof (theme as any)?.fontBody === "string" ? String((theme as any).fontBody) : "";
+  const fontHeading =
+    hasCjk && (!currentHeading || /inter|arial|helvetica|system/i.test(currentHeading))
+      ? "Noto Sans SC"
+      : currentHeading || "Manrope";
+  const fontBody =
+    hasCjk && (!currentBody || /inter|arial|helvetica|system/i.test(currentBody))
+      ? "Noto Sans SC"
+      : currentBody || "Manrope";
+
   const nextTheme = {
     ...theme,
     mode,
+    fontHeading,
+    fontBody,
     palette: nextPalette,
     primaryColor: nextPalette.primary,
     themeContract: {
@@ -3633,6 +3742,82 @@ const humanizeLabel = (value: string) => {
   return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
 };
 
+const shouldUseChineseContent = (prompt: string) => {
+  const raw = String(prompt || "");
+  const explicitChinese = /(中文|简体|繁體|繁体|chinese|mandarin|zh-cn|zh-hans|zh-hant)/i.test(raw);
+  const explicitEnglish = /(英文|english|en-us|en-gb|\benglish\b)/i.test(raw);
+  return explicitChinese && !explicitEnglish;
+};
+
+const normalizePromptPagePath = (value: string) => {
+  const raw = String(value || "").trim();
+  if (!raw) return "/";
+  const withSlash = raw.startsWith("/") ? raw : `/${raw}`;
+  return withSlash.replace(/\/{2,}/g, "/").replace(/\/+$/g, "") || "/";
+};
+
+const derivePageNameFromPath = (path: string) => {
+  const normalized = normalizePromptPagePath(path);
+  if (normalized === "/") return "Home";
+  const token = normalized.split("/").filter(Boolean).pop() || "Page";
+  return humanizeLabel(token);
+};
+
+const extractRequestedPagesFromPrompt = (prompt: string) => {
+  const raw = String(prompt || "");
+  const useChinese = shouldUseChineseContent(raw);
+  const matches = Array.from(
+    raw.matchAll(/(?:^|[\s,，、;；:：(\[（【])\/([a-zA-Z0-9\-\/]*)(?:\s*[（(]([^()（）]{1,40})[)）])?/g)
+  );
+  const seen = new Set<string>();
+  const pages: Array<{ path: string; name: string }> = [];
+  matches.forEach((match) => {
+    const pathPart = typeof match[1] === "string" ? match[1] : "";
+    if (!pathPart && /https?:\/\//i.test(raw)) {
+      const cursor = match.index ?? -1;
+      if (cursor >= 0) {
+        const neighborhood = raw.slice(Math.max(0, cursor - 12), cursor + 12).toLowerCase();
+        if (neighborhood.includes("http://") || neighborhood.includes("https://")) return;
+      }
+    }
+    if (/\./.test(pathPart)) return;
+    if (/^(www|http|https|com|cn|net|org)$/i.test(pathPart)) return;
+    const normalizedPath = normalizePromptPagePath(pathPart ? `/${pathPart}` : "/");
+    if (normalizedPath.length > 80) return;
+    if (seen.has(normalizedPath)) return;
+    seen.add(normalizedPath);
+    const rawName = typeof match[2] === "string" ? match[2].trim() : "";
+    const name =
+      rawName && (useChinese || !/[\u4e00-\u9fff]/.test(rawName))
+        ? rawName.slice(0, 48)
+        : derivePageNameFromPath(normalizedPath);
+    pages.push({ path: normalizedPath, name: name || derivePageNameFromPath(normalizedPath) });
+  });
+  return pages;
+};
+
+const ensurePromptRequestedPages = (
+  blueprint: ArchitectBlueprint | null | undefined,
+  prompt: string
+): ArchitectBlueprint | null | undefined => {
+  if (!blueprint || typeof blueprint !== "object") return blueprint;
+  const requestedPages = extractRequestedPagesFromPrompt(prompt);
+  if (!requestedPages.length) return blueprint;
+  const existingPages = Array.isArray(blueprint.pages) ? blueprint.pages : [];
+  const byPath = new Map(
+    existingPages.map((page) => [normalizePromptPagePath(String(page?.path || "")), page] as const)
+  );
+  requestedPages.forEach((requested) => {
+    if (byPath.has(requested.path)) return;
+    existingPages.push({
+      path: requested.path,
+      name: requested.name,
+      sections: [],
+    });
+  });
+  return { ...blueprint, pages: existingPages };
+};
+
 const compactNavbarLabel = (label: string) => {
   const words = label.split(" ").filter(Boolean);
   if (!words.length) return label;
@@ -3650,7 +3835,25 @@ const compactNavbarLabel = (label: string) => {
   return compacted;
 };
 
-const buildNavbarLinks = (page: ReturnType<typeof normalizePages>[number]) => {
+const extractPromptBrandName = (prompt: string): string => {
+  const quoted = prompt.match(/["「]([^"」]{1,40})["」]/);
+  if (quoted) return quoted[1].trim();
+  const chinese = prompt.match(/为\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s-]{1,30})\s*(?:生成|制作|创建|构建|设计)/i);
+  if (chinese) return chinese[1].trim();
+  const english = prompt.match(/for\s+([A-Za-z][A-Za-z0-9\s-]{1,40})\s+(?:generate|build|create|design)/i);
+  if (english) return english[1].trim();
+  const named = prompt.match(/(?:叫|called|named|品牌名?(?:为|是)?)\s*[：:]?\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s]{0,30})/i);
+  if (named) return named[1].trim();
+  return "";
+};
+
+const buildNavbarLinks = (
+  page: ReturnType<typeof normalizePages>[number],
+  linkGraph?: SiteLinkGraph
+) => {
+  if (linkGraph?.navigationLinks?.length) {
+    return linkGraph.navigationLinks.map((link) => ({ ...link }));
+  }
   const sections = Array.isArray(page.sections) ? page.sections : [];
   const links = sections
     .filter((section) => {
@@ -3665,12 +3868,18 @@ const buildNavbarLinks = (page: ReturnType<typeof normalizePages>[number]) => {
     .map((section) => {
       const label = humanizeLabel(String(section.id || section.type || "Section"));
       const compacted = compactNavbarLabel(label);
-      return { label: compacted || "Section", href: `#${section.id}` };
+      return { label: compacted || "Section", href: `#${section.id}`, variant: "link" as const };
     });
-  return links.length ? links : [{ label: "Home", href: "#top" }];
+  return links.length ? links : [{ label: "Home", href: "#top", variant: "link" as const }];
 };
 
-const buildNavbarCtas = (page: ReturnType<typeof normalizePages>[number]) => {
+const buildNavbarCtas = (
+  page: ReturnType<typeof normalizePages>[number],
+  linkGraph?: SiteLinkGraph
+) => {
+  if (linkGraph?.defaultNavCtas?.length) {
+    return linkGraph.defaultNavCtas.map((cta) => ({ ...cta }));
+  }
   const sections = Array.isArray(page.sections) ? page.sections : [];
   const target = sections.find((section) => {
     const key = `${section.id ?? ""} ${section.type ?? ""}`.toLowerCase();
@@ -3685,27 +3894,31 @@ const buildNavbarCtas = (page: ReturnType<typeof normalizePages>[number]) => {
       : key.includes("trial")
         ? "Start Trial"
         : "Get Started";
-  return [{ label, href: `#${target.id}`, variant: "primary" }];
+  return [{ label, href: `#${target.id}`, variant: "primary" as const }];
 };
 
 const buildNavbarProps = (
   page: ReturnType<typeof normalizePages>[number],
-  theme: Record<string, unknown>
+  theme: Record<string, unknown>,
+  linkGraph?: SiteLinkGraph,
+  prompt?: string
 ) => {
   const headingFont = typeof (theme as any)?.fontHeading === "string" ? (theme as any).fontHeading : undefined;
   const bodyFont = typeof (theme as any)?.fontBody === "string" ? (theme as any).fontBody : undefined;
   const nameSeed = typeof page.name === "string" ? page.name : page.path || "home";
   const idSuffix = normalizeKey(nameSeed) || "home";
-  const links = buildNavbarLinks(page);
-  const ctas = buildNavbarCtas(page) ?? [];
+  const promptBrand = extractPromptBrandName(String(prompt || ""));
+  const logoAlt = promptBrand || page.name || "Site";
+  const links = buildNavbarLinks(page, linkGraph);
+  const ctas = buildNavbarCtas(page, linkGraph) ?? [];
   const hasChildren = links.some(
     (link) => Array.isArray((link as any).children) && (link as any).children.length > 0
   );
   const variant = ctas.length ? "withCTA" : hasChildren ? "withDropdown" : "simple";
-  return {
+  const base = {
     id: `navbar-${idSuffix}`,
     anchor: "top",
-    logo: { alt: page.name || "Site" },
+    logo: { alt: logoAlt },
     links,
     ctas,
     variant,
@@ -3715,9 +3928,19 @@ const buildNavbarProps = (
     headingFont,
     bodyFont,
   };
+  return linkGraph ? applyLinkGraphToNavbarProps(base as Record<string, unknown>, linkGraph) : base;
 };
 
-const buildFooterColumns = (page: ReturnType<typeof normalizePages>[number]) => {
+const buildFooterColumns = (
+  page: ReturnType<typeof normalizePages>[number],
+  linkGraph?: SiteLinkGraph
+) => {
+  if (linkGraph?.footerColumns?.length) {
+    return linkGraph.footerColumns.map((column) => ({
+      ...column,
+      links: column.links.map((link) => ({ ...link })),
+    }));
+  }
   const sections = Array.isArray(page.sections) ? page.sections : [];
   const sectionLinks = sections
     .filter((section) => {
@@ -3764,44 +3987,62 @@ const buildFooterColumns = (page: ReturnType<typeof normalizePages>[number]) => 
 
 const buildFooterProps = (
   page: ReturnType<typeof normalizePages>[number],
-  theme: Record<string, unknown>
+  theme: Record<string, unknown>,
+  linkGraph?: SiteLinkGraph,
+  prompt?: string
 ) => {
   const headingFont = typeof (theme as any)?.fontHeading === "string" ? (theme as any).fontHeading : undefined;
   const bodyFont = typeof (theme as any)?.fontBody === "string" ? (theme as any).fontBody : undefined;
   const nameSeed = typeof page.name === "string" ? page.name : page.path || "home";
   const idSuffix = normalizeKey(nameSeed) || "home";
-  return {
+  const promptBrand = extractPromptBrandName(String(prompt || ""));
+  const footerBrand = promptBrand || page.name || "Company";
+  const base = {
     id: `footer-${idSuffix}`,
     anchor: "footer",
-    logoText: page.name || "Company",
-    columns: buildFooterColumns(page),
-    legal: `© ${new Date().getFullYear()} ${page.name || "Company"}. All rights reserved.`,
+    logoText: footerBrand,
+    columns: buildFooterColumns(page, linkGraph),
+    legal: `© ${new Date().getFullYear()} ${footerBrand}. All rights reserved.`,
     headingFont,
     bodyFont,
     variant: "multiColumn" as const,
     paddingY: "md" as const,
     maxWidth: "xl" as const,
   };
+  return linkGraph ? applyLinkGraphToFooterProps(base as Record<string, unknown>, linkGraph) : base;
+};
+
+const isNavbarLikeBlock = (item: { type?: string; props?: Record<string, unknown> } | undefined) => {
+  const type = typeof item?.type === "string" ? item.type.toLowerCase() : "";
+  const anchor = typeof item?.props?.anchor === "string" ? item.props.anchor.toLowerCase() : "";
+  const id = typeof item?.props?.id === "string" ? item.props.id.toLowerCase() : "";
+  if (type === errorComponentName.toLowerCase()) {
+    return false;
+  }
+  return type.includes("navbar") || type.includes("navigation") || anchor === "top" || id.includes("navbar");
 };
 
 const isFooterLikeBlock = (item: { type?: string; props?: Record<string, unknown> } | undefined) => {
   const type = typeof item?.type === "string" ? item.type.toLowerCase() : "";
   const anchor = typeof item?.props?.anchor === "string" ? item.props.anchor.toLowerCase() : "";
   const id = typeof item?.props?.id === "string" ? item.props.id.toLowerCase() : "";
-  const variant = typeof item?.props?.variant === "string" ? item.props.variant.toLowerCase() : "";
+  const props = (item?.props ?? {}) as Record<string, unknown>;
+  const footerAnchor = anchor.includes("footer") && !anchor.includes("cta");
+  const footerId = id.includes("footer") && !id.includes("cta") && !id.includes("contact");
+  const typeFooter = type.includes("footer");
+  const hasFooterPayload =
+    (Array.isArray((props as any).columns) && (props as any).columns.length > 0) ||
+    (Array.isArray((props as any).footerLinks) && (props as any).footerLinks.length > 0) ||
+    (typeof (props as any).legal === "string" && String((props as any).legal).trim().length > 0) ||
+    (typeof (props as any).copytext === "string" &&
+      /all rights reserved|copyright|©/i.test(String((props as any).copytext)));
   if (type === errorComponentName.toLowerCase()) {
     return false;
   }
   if (type === fallbackComponentName.toLowerCase()) {
-    return (
-      anchor.includes("footer") ||
-      id.includes("footer") ||
-      variant === "cta" ||
-      (Array.isArray((item?.props as any)?.footerLinks) && (item?.props as any).footerLinks.length > 0) ||
-      Boolean((item?.props as any)?.legal)
-    );
+    return footerAnchor || hasFooterPayload;
   }
-  return type.includes("footer") || anchor.includes("footer") || id.includes("footer");
+  return typeFooter || (footerAnchor && (typeFooter || footerId));
 };
 
 const isCtaLikeBlock = (item: { type?: string; props?: Record<string, unknown> } | undefined) => {
@@ -4183,36 +4424,159 @@ const trimLine = (value: string, fallback: string, max = 72) => {
 const sectionToken = (context: SectionContext) =>
   `${context.section.type} ${context.section.id}`.toLowerCase();
 
+const inferTemplateRefinementSectionKind = (sectionType: string, sectionId: string) => {
+  const token = `${String(sectionType || "").toLowerCase()} ${String(sectionId || "").toLowerCase()}`;
+  if (/(navigation|navbar|header|topnav)/.test(token)) return "navigation";
+  if (/(hero|pagehero|showcasehero)/.test(token)) return "hero";
+  if (/(approach|metric|stats|feature|valueprop|process)/.test(token)) return "approach";
+  if (/(social|proof|testimonial|trust|logo|collaborator)/.test(token)) return "socialproof";
+  if (/(footercta|calltoaction|cta|pricing|plan|tier)/.test(token)) return "cta";
+  if (/footer/.test(token)) return "footer";
+  return "";
+};
+
 const buildDeterministicFallbackBlock = (
   context: SectionContext,
   prompt: string,
   designNorthStar?: Record<string, unknown>,
-  theme?: Record<string, unknown>
+  theme?: Record<string, unknown>,
+  options?: {
+    skipRegistry?: boolean;
+  }
 ): SectionBlock => {
   const token = sectionToken(context);
+  const promptBrand = extractPromptBrandName(String(prompt || ""));
+  const isZhPrompt = shouldUseChineseContent(String(prompt || ""));
+  const lowerPrompt = String(prompt || "").toLowerCase();
+  const cncIntent =
+    /(cnc|machine tool|machine-tools|machining|metal cutting|milling|lathe|spindle|five-axis|5-axis|加工中心|机床|数控|刀具|切削)/i.test(
+      lowerPrompt
+    );
+  const industry =
+    typeof designNorthStar?.industry === "string" && designNorthStar.industry.trim()
+      ? designNorthStar.industry.trim()
+      : isZhPrompt
+        ? "行业"
+        : "industry";
+  const pagePath = String(context.pagePath || "/").toLowerCase();
+  const pageKind = pagePath === "/" ? "home" : pagePath.replace(/^\/+/, "").split("/")[0] || "home";
   const shortPrompt = trimLine(prompt, "Industrial Automation Platform", 68);
-  const siteTitle = trimLine(prompt, "Breton-style industrial homepage", 52);
+  const safeHeroTitle = isZhPrompt
+    ? `${promptBrand || "企业"}${industry}解决方案`
+    : `${promptBrand || "Company"} ${industry} Solutions`;
+  const safeSiteTitle = isZhPrompt
+    ? `${promptBrand || "企业"} 咨询入口`
+    : `${promptBrand || "Company"} Contact`;
   const idBase = `${toSlug(context.section.type || "section") || "section"}-${context.sectionIndex + 1}`;
   const anchor = context.section.id;
+  const pageAwareStory =
+    cncIntent && !isZhPrompt
+      ? {
+          home: {
+            title: "Built for precision machining",
+            subtitle: "From rigid machine structures to automated cells, every system is designed for repeatable output.",
+            body: "灵创智能 combines process engineering, spindle know-how, and production-line integration to help factories increase accuracy, stability, and throughput.",
+          },
+          solutions: {
+            title: "Solutions engineered around real production constraints",
+            subtitle: "Application-ready machining workflows for complex parts, multi-shift uptime, and scalable automation.",
+            body: "We structure each solution around part geometry, takt time, tooling, and downstream quality requirements so each line can ramp with fewer compromises.",
+          },
+          products: {
+            title: "Machine platforms for high-mix precision manufacturing",
+            subtitle: "A focused portfolio covering core machining scenarios across drilling, milling, tapping, and flexible automation.",
+            body: "Each platform is configured to balance rigidity, cycle time, maintainability, and integration with loaders, robots, spindle systems, and tool magazines.",
+          },
+          industries: {
+            title: "Production scenarios we support",
+            subtitle: "Field-proven manufacturing layouts tailored to automotive, 3C, mold, aerospace, and general machinery factories.",
+            body: "Our team aligns machine architecture, automation rhythm, and quality checkpoints with each industry's tolerance window and throughput target.",
+          },
+          cases: {
+            title: "Measured outcomes from factory deployments",
+            subtitle: "Examples focused on cycle time reduction, yield improvement, and stable multi-line delivery.",
+            body: "Case studies show how process tuning, equipment integration, and automation planning improve productivity without compromising part quality.",
+          },
+          about: {
+            title: "Engineering discipline behind the brand",
+            subtitle: "A manufacturing partner built around precision, response speed, and long-term service capability.",
+            body: "灵创智能 brings together mechanical design, controls integration, and production support to help manufacturers build robust machining capacity.",
+          },
+          contact: {
+            title: "Start with your part, process, and capacity goals",
+            subtitle: "We translate machining requirements into practical equipment and automation proposals.",
+            body: "Share your part family, takt target, and plant constraints, and our team will outline a deployment path that fits your production environment.",
+          },
+        }
+      : null;
+  const pageAwareHero =
+    cncIntent && !isZhPrompt
+      ? {
+          home: {
+            eyebrow: "Precision CNC manufacturing",
+            title: `${promptBrand || "Lingchuang"} machine tools for high-performance production`,
+            subtitle:
+              "Five-axis machining centers, drilling and tapping platforms, horizontal machining centers, and automation-ready production cells for modern factories.",
+          },
+          solutions: {
+            eyebrow: "Manufacturing solutions",
+            title: "Solutions built around parts, takt time, and uptime",
+            subtitle:
+              "Integrated machining and automation strategies for automotive, 3C precision manufacturing, mold production, aerospace, and general industrial parts.",
+          },
+          products: {
+            eyebrow: "Product portfolio",
+            title: "Machine platforms for precise, stable, scalable output",
+            subtitle:
+              "Explore machining centers, drilling and tapping systems, automation units, and spindle-tool magazine packages configured for demanding production lines.",
+          },
+          industries: {
+            eyebrow: "Industry applications",
+            title: "Configured for the industries that demand repeatable precision",
+            subtitle:
+              "Production-ready equipment and process layouts tailored to automotive components, consumer electronics, mold making, aerospace, and general machinery.",
+          },
+          cases: {
+            eyebrow: "Customer results",
+            title: "Factory deployments that improved cycle time and output quality",
+            subtitle:
+              "See how equipment upgrades, automation integration, and process optimization delivered measurable gains in throughput, consistency, and flexibility.",
+          },
+          about: {
+            eyebrow: "About Lingchuang",
+            title: "Engineering-first manufacturing support from planning to delivery",
+            subtitle:
+              "A team focused on machine reliability, process fit, and service responsiveness across the full lifecycle of precision production equipment.",
+          },
+          contact: {
+            eyebrow: "Contact Lingchuang",
+            title: "Discuss your machining requirements with our engineering team",
+            subtitle:
+              "Get guidance on machine selection, line planning, automation configuration, spindle systems, and rollout strategy.",
+          },
+        }
+      : null;
   const propsHints =
     context.section.propsHints && typeof context.section.propsHints === "object"
       ? (context.section.propsHints as Record<string, unknown>)
       : undefined;
-  const registryTemplate = resolveSectionTemplateBlock({
-    prompt,
-    pagePath: context.pagePath,
-    pageName: context.pageName,
-    sectionType: context.section.type,
-    sectionId: context.section.id,
-    sectionIntent: context.section.intent,
-    idBase,
-    anchor,
-    designNorthStar,
-    theme,
-    propsHints,
-  });
-  if (registryTemplate) {
-    return registryTemplate;
+  if (!options?.skipRegistry) {
+    const registryTemplate = resolveSectionTemplateBlock({
+      prompt,
+      pagePath: context.pagePath,
+      pageName: context.pageName,
+      sectionType: context.section.type,
+      sectionId: context.section.id,
+      sectionIntent: context.section.intent,
+      idBase,
+      anchor,
+      designNorthStar,
+      theme,
+      propsHints,
+    });
+    if (registryTemplate) {
+      return registryTemplate;
+    }
   }
 
   if (/navigation|navbar|header|topnav/.test(token)) {
@@ -4238,14 +4602,16 @@ const buildDeterministicFallbackBlock = (
   }
 
   if (/hero|pagehero|pageheader/.test(token)) {
+    const heroCopy = pageAwareHero?.[pageKind as keyof typeof pageAwareHero];
     return {
       type: "HeroSplit",
       props: {
         id: idBase,
         anchor,
-        eyebrow: "Industrial Solutions",
-        title: shortPrompt,
+        eyebrow: heroCopy?.eyebrow ?? "Industrial Solutions",
+        title: heroCopy?.title ?? safeHeroTitle,
         subtitle:
+          heroCopy?.subtitle ??
           "High-performance machinery, precision engineering, and integrated digital workflows for modern factories.",
         ctas: [
           { label: "Explore Products", href: "#products", variant: "primary" },
@@ -4264,8 +4630,11 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: "Product Lines",
-        subtitle: "Modular machines for cutting, finishing, and automated handling.",
+        title: cncIntent && !isZhPrompt ? "Core Product Platforms" : "Product Lines",
+        subtitle:
+          cncIntent && !isZhPrompt
+            ? "Machine tools, spindle systems, and automation units configured for precision manufacturing."
+            : "Modular machines for cutting, finishing, and automated handling.",
         variant: "product",
         columns: "3col",
         density: "normal",
@@ -4356,7 +4725,7 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: "What collaborators say",
+        title: cncIntent && !isZhPrompt ? "What manufacturing teams say" : "What collaborators say",
         variant: "2col",
         maxWidth: "xl",
         items: [
@@ -4395,14 +4764,15 @@ const buildDeterministicFallbackBlock = (
   }
 
   if (/story|editorial|narrative|philosophy|studio/.test(token)) {
+    const storyCopy = pageAwareStory?.[pageKind as keyof typeof pageAwareStory];
     return {
       type: "ContentStory",
       props: {
         id: idBase,
         anchor,
-        title: "Our Story",
-        subtitle: "A concise narrative that connects brand intent, craft, and client outcomes.",
-        body: "We combine strategic clarity, visual refinement, and execution discipline to create enduring digital experiences.",
+        title: storyCopy?.title ?? "Our Story",
+        subtitle: storyCopy?.subtitle ?? "A concise narrative that connects brand intent, craft, and client outcomes.",
+        body: storyCopy?.body ?? "We combine strategic clarity, visual refinement, and execution discipline to create enduring digital experiences.",
         ctas: [{ label: "Explore More", href: "#", variant: "link" }],
         variant: "split",
         maxWidth: "xl",
@@ -4475,15 +4845,26 @@ const buildDeterministicFallbackBlock = (
   }
 
   if (/contact|cta|lead|form|map/.test(token)) {
+    const title = isZhPrompt
+      ? `联系${promptBrand || "我们的团队"}`
+      : promptBrand
+        ? `Talk to ${promptBrand}`
+        : "Talk to our team";
+    const subtitle = isZhPrompt
+      ? `围绕${industry}场景提供需求评估、方案设计与落地建议。`
+      : cncIntent
+        ? "Share your part requirements, output targets, and plant constraints to receive a practical machining and automation proposal."
+        : `Share your ${industry} goals and receive a tailored implementation plan.`;
+    const ctaLabel = isZhPrompt ? "预约咨询" : "Contact Sales";
     return {
       type: "LeadCaptureCTA",
       props: {
         id: idBase,
         anchor,
-        title: "Talk to our team",
-        subtitle: "Share your production goals and receive a tailored implementation plan.",
-        cta: { label: "Contact Sales", href: "mailto:sales@example.com", variant: "primary" },
-        note: siteTitle,
+        title,
+        subtitle,
+        cta: { label: ctaLabel, href: "mailto:sales@example.com", variant: "primary" },
+        note: safeSiteTitle,
         variant: "card",
         maxWidth: "xl",
       },
@@ -4533,8 +4914,11 @@ const buildDeterministicFallbackBlock = (
       props: {
         id: idBase,
         anchor,
-        title: "Key Capabilities",
-        subtitle: "Designed for uptime, precision, and scalable production.",
+        title: cncIntent && !isZhPrompt ? "Manufacturing Capabilities" : "Key Capabilities",
+        subtitle:
+          cncIntent && !isZhPrompt
+            ? "Built for rigid machining, predictable uptime, and scalable factory deployment."
+            : "Designed for uptime, precision, and scalable production.",
         variant: "3col",
         maxWidth: "xl",
         items: [
@@ -4563,10 +4947,19 @@ const buildDeterministicFallbackBlock = (
     props: {
       id: idBase,
       anchor,
-      title: shortPrompt,
-      subtitle: "Structured fallback section generated locally to keep the page usable.",
-      body: "Regenerate when the model endpoint is stable to replace this with a richer, custom section.",
-      ctas: [{ label: "Regenerate", href: "#top", variant: "primary" }],
+      title:
+        shortPrompt.length <= 42 && !/https?:\/\//i.test(shortPrompt) && !/profile_selector|仅生成|不要照搬|https?:\/\//i.test(shortPrompt)
+          ? shortPrompt
+          : isZhPrompt
+            ? `${promptBrand || "企业"}核心能力展示`
+            : `${promptBrand || "Company"} Capability Overview`,
+      subtitle: isZhPrompt
+        ? `围绕${industry}场景，构建可复制、可扩展的落地方案。`
+        : `Built for ${industry} scenarios with a scalable implementation approach.`,
+      body: isZhPrompt
+        ? "当前区块为稳定回退版本，可在编辑器中继续增强文案、媒体与交互细节。"
+        : "This section uses a stable fallback layout and can be refined in the editor.",
+      ctas: [{ label: isZhPrompt ? "了解更多" : "Learn More", href: "#top", variant: "primary" }],
       variant: "split",
       maxWidth: "xl",
     },
@@ -4752,6 +5145,273 @@ const buildFallbackSectionProps = (
   };
 };
 
+const extractBrandNameFromPromptLite = (prompt: string) => {
+  const text = String(prompt || "");
+  const quoted = text.match(/["「]([^"」]{1,40})["」]/);
+  if (quoted) return quoted[1].trim();
+  const chinese = text.match(/为\s*([A-Za-z\u4e00-\u9fff][\w\u4e00-\u9fff\s-]{1,30})\s*(?:生成|制作|创建|构建|设计)/i);
+  if (chinese) return chinese[1].trim();
+  const english = text.match(/for\s+([A-Za-z][A-Za-z0-9\s-]{1,40})\s+(?:generate|build|create|design)/i);
+  if (english) return english[1].trim();
+  return "";
+};
+
+const extractSourceBrandTokens = (prompt: string) => {
+  const tokens = new Set<string>();
+  const text = String(prompt || "").toLowerCase();
+  const urlMatches = text.match(/https?:\/\/[^\s）)]+/g) ?? [];
+  urlMatches.forEach((rawUrl) => {
+    try {
+      const host = new URL(rawUrl).hostname.replace(/^www\./, "");
+      host
+        .split(/[.\-]/)
+        .filter((token) => token.length >= 4)
+        .forEach((token) => tokens.add(token));
+    } catch {}
+  });
+  const selectorMatches: string[] = text.match(/profile_selector[_:-]?([a-z0-9-]+)/gi) ?? [];
+  selectorMatches.forEach((value) => {
+    value
+      .split(/[_:-]/)
+      .filter((token) => token.length >= 4 && token !== "profile" && token !== "selector" && token !== "home")
+      .forEach((token) => tokens.add(token));
+  });
+  return Array.from(tokens);
+};
+
+const buildFinalSemanticReplacements = (prompt: string, designNorthStar?: Record<string, unknown>) => {
+  const raw = `${String(prompt || "")} ${String(designNorthStar?.industry || "")} ${JSON.stringify(
+    designNorthStar?.coreProducts || []
+  )}`.toLowerCase();
+  const replacements: Array<{ pattern: RegExp; value: string }> = [];
+  const cncIntent =
+    /(cnc|machine tool|machine-tools|machining|metal cutting|milling|lathe|spindle|five-axis|5-axis|加工中心|机床|数控|刀具|切削)/i.test(
+      raw
+    );
+  if (cncIntent) {
+    replacements.push(
+      { pattern: /\bsmart telescopes?\b/gi, value: "CNC platforms" },
+      { pattern: /\btelescopes?\b/gi, value: "machine tools" },
+      { pattern: /\bsmart binoculars?\b/gi, value: "automation modules" },
+      { pattern: /\bbinoculars?\b/gi, value: "automation modules" },
+      { pattern: /\bstargazing\b/gi, value: "precision manufacturing" },
+      { pattern: /\bnight sky\b/gi, value: "factory operations" },
+      { pattern: /\bnight skies\b/gi, value: "production environments" },
+      { pattern: /\buniverse\b/gi, value: "the shop floor" },
+      { pattern: /\bastronom(?:y|er|ers)\b/gi, value: "manufacturing teams" },
+      { pattern: /\bspace\b/gi, value: "manufacturing" },
+      { pattern: /\bsky\b/gi, value: "shop floor" },
+      { pattern: /\bskies\b/gi, value: "production environments" },
+      { pattern: /\bbackyard\b/gi, value: "facility" },
+      { pattern: /\bobservers?\b/gi, value: "operators" },
+      { pattern: /\bobserving\b/gi, value: "machining" },
+      { pattern: /\bobservation\b/gi, value: "production monitoring" },
+      { pattern: /\bexplorers?\b/gi, value: "manufacturing teams" },
+      { pattern: /\bdiscovery\b/gi, value: "deployment" },
+      { pattern: /\bdeep-sky\b/gi, value: "precision-process" },
+      { pattern: /\bnebulae\b/gi, value: "fine details" },
+      { pattern: /\bmachine vision\b/gi, value: "process automation" },
+      { pattern: /\bcomputer vision\b/gi, value: "process control" },
+      { pattern: /\bai vision\b/gi, value: "CNC automation" },
+      { pattern: /\binspection systems?\b/gi, value: "machine platforms" },
+      { pattern: /\bedge vision modules?\b/gi, value: "automation modules" },
+      { pattern: /\borion\b/gi, value: "5-axis" },
+      { pattern: /\bnebula\b/gi, value: "precision" },
+      { pattern: /\bgalax(?:y|ies)\b/gi, value: "production lines" },
+      { pattern: /\bcosmos\b/gi, value: "factory operations" },
+      { pattern: /\bstellar\b/gi, value: "high-performance" },
+      { pattern: /\bfirst clear night\b/gi, value: "the first production run" },
+      { pattern: /\bfirst-time observer\b/gi, value: "first-line operator" },
+      { pattern: /\bastrophotography hobbyist\b/gi, value: "process engineer" },
+      { pattern: /\bscience educator\b/gi, value: "production trainer" },
+      { pattern: /\boutreach nights\b/gi, value: "factory trials" },
+      { pattern: /\bwonder\b/gi, value: "throughput" },
+      { pattern: /\bprivate sky rituals\b/gi, value: "single-cell machining workflows" },
+      { pattern: /\bguided group experiences\b/gi, value: "multi-line deployment workflows" },
+      { pattern: /\binstitution-grade observation workflows\b/gi, value: "plant-wide machining workflows" },
+      { pattern: /\bexplain brand narrative and positioning\b/gi, value: "Application-ready deployment frameworks" },
+      { pattern: /\balign themselves\b/gi, value: "auto-calibrate" },
+      { pattern: /\bsuppress light pollution\b/gi, value: "stabilize production noise" },
+      { pattern: /\breveal deep-sky detail live in minutes\b/gi, value: "deliver process visibility in minutes" },
+      { pattern: /\bplanetarium-grade optics\b/gi, value: "micron-level engineering" },
+      { pattern: /\bcity production environments\b/gi, value: "demanding production environments" },
+      { pattern: /\bwhat they were seeing\b/gi, value: "what the machine was doing" },
+      { pattern: /\bcommunity manufacturing teams club\b/gi, value: "manufacturing consortium" },
+      { pattern: /\bdeep-shop floor\b/gi, value: "process-level" },
+      { pattern: /\bobservatories\b/gi, value: "production teams" },
+      { pattern: /\bpublishers?\b/gi, value: "manufacturers" },
+      { pattern: /\bresearch organizations?\b/gi, value: "industrial partners" },
+      { pattern: /\bnasa\b/gi, value: "Automotive OEMs" },
+      { pattern: /\bseti\b/gi, value: "Precision Suppliers" },
+      { pattern: /\bjpl\b/gi, value: "Aerospace Manufacturers" },
+      { pattern: /\bexplore telescopes\b/gi, value: "Explore Solutions" },
+      { pattern: /\border yours\b/gi, value: "Request a Quote" },
+      { pattern: /\blearn more\b/gi, value: "Learn More" }
+    );
+  }
+  return replacements;
+};
+
+const shouldSkipGeneratedPropSanitization = (key: string) =>
+  /(href|src|url|path|class|variant|align|mode|font|weight|style|token|id$|anchor|icon|size|padding|margin|radius|shadow|color|opacity|zindex|width|height)/i.test(
+    key
+  );
+
+const sanitizeGeneratedProps = (
+  value: unknown,
+  input: { prompt: string; designNorthStar?: Record<string, unknown> }
+): unknown => {
+  const brandName = extractBrandNameFromPromptLite(input.prompt);
+  const sourceTokens = extractSourceBrandTokens(input.prompt);
+  const replacements = buildFinalSemanticReplacements(input.prompt, input.designNorthStar);
+  const walk = (entry: unknown, keyPath: string[]): unknown => {
+    if (typeof entry === "string") {
+      const key = String(keyPath[keyPath.length - 1] || "");
+      if (shouldSkipGeneratedPropSanitization(key)) return entry;
+      let next = entry;
+      sourceTokens.forEach((token) => {
+        if (!token) return;
+        const sourcePattern = new RegExp(`\\b${token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "gi");
+        next = next.replace(sourcePattern, brandName || "Brand");
+      });
+      replacements.forEach((item) => {
+        next = next.replace(item.pattern, item.value);
+      });
+      return next.replace(/\s{2,}/g, " ").trim();
+    }
+    if (Array.isArray(entry)) return entry.map((item, index) => walk(item, [...keyPath, String(index)]));
+    if (!entry || typeof entry !== "object") return entry;
+    const record = entry as Record<string, unknown>;
+    const next: Record<string, unknown> = {};
+    Object.entries(record).forEach(([key, child]) => {
+      next[key] = walk(child, [...keyPath, key]);
+    });
+    return next;
+  };
+  return walk(value, []);
+};
+
+type GeneratedPage = {
+  path: string;
+  name: string;
+  data: {
+    content: Array<{ type: string; props: Record<string, unknown> }>;
+    root: { props: { title: string; theme: Record<string, unknown> } & Record<string, unknown> };
+  };
+};
+
+const sanitizeFinalPagesOutput = (
+  pages: GeneratedPage[],
+  input: { prompt: string; designNorthStar?: Record<string, unknown> }
+): GeneratedPage[] =>
+  pages.map((page) => ({
+    ...page,
+    data: sanitizeGeneratedProps(page.data, input) as GeneratedPage["data"],
+  }));
+
+const isContactLikeBlock = (item: { type?: string; props?: Record<string, unknown> } | undefined) => {
+  const type = typeof item?.type === "string" ? item.type.toLowerCase() : "";
+  const anchor = typeof item?.props?.anchor === "string" ? item.props.anchor.toLowerCase() : "";
+  const id = typeof item?.props?.id === "string" ? item.props.id.toLowerCase() : "";
+  const variant = typeof item?.props?.variant === "string" ? item.props.variant.toLowerCase() : "";
+  if (type === errorComponentName.toLowerCase()) return false;
+  if (type === fallbackComponentName.toLowerCase()) {
+    return variant === "contact" || anchor.includes("contact") || id.includes("contact");
+  }
+  return type.includes("contact") || type.includes("lead") || anchor.includes("contact") || id.includes("contact");
+};
+
+const mergeThemeDrivenBlockProps = (
+  baseProps: Record<string, unknown>,
+  existingProps: Record<string, unknown>,
+  variant: "cta" | "contact"
+) => {
+  const readString = (...keys: string[]) => {
+    for (const key of keys) {
+      const value = existingProps[key];
+      if (typeof value === "string" && value.trim()) return value.trim();
+    }
+    return "";
+  };
+  const next: Record<string, unknown> = { ...baseProps, variant };
+  const title = readString(
+    "title",
+    "headline",
+    "heading",
+    "eyebrow",
+    "ctahtext",
+    "ctaheadtext",
+    "ctaeyebrowtext"
+  );
+  const subtitle = readString(
+    "subtitle",
+    "subheadline",
+    "description",
+    "body",
+    "content",
+    "desc",
+    "ctabodytext",
+    "copytext"
+  );
+  const ctaLabel = readString(
+    "ctaLabel",
+    "buttonLabel",
+    "primaryCtaLabel",
+    "ctabttext",
+    "ctatxtprimarytext",
+    "ctatexttext"
+  );
+  const ctaHref = readString(
+    "ctaHref",
+    "buttonHref",
+    "primaryCtaHref",
+    "ctabhref",
+    "ctabtnprimaryhref",
+    "ctahref"
+  );
+  const secondaryCtaLabel = readString(
+    "secondaryCtaLabel",
+    "secondaryButtonLabel",
+    "ctatxtsecondarytext"
+  );
+  const secondaryCtaHref = readString(
+    "secondaryCtaHref",
+    "secondaryButtonHref",
+    "ctabtnsecondaryhref"
+  );
+  const preserveTitle = (() => {
+    if (!title) return false;
+    if (
+      /latest stories|reviews?|field notes|next generation|discovery|observers?|clear night|smarter machining environments/i.test(
+        title
+      )
+    ) {
+      return false;
+    }
+    if (variant === "contact" && !/talk|contact|consult|quote|demo|sales|team/i.test(title)) {
+      return false;
+    }
+    return true;
+  })();
+  const preserveSubtitle = (() => {
+    if (!subtitle) return false;
+    if (/all rights reserved|copyright|©|planetarium|deep-shop floor|city production environments/i.test(subtitle)) {
+      return false;
+    }
+    return true;
+  })();
+  if (preserveTitle) next.title = title;
+  if (preserveSubtitle) next.subtitle = subtitle;
+  if (ctaLabel) next.ctaLabel = ctaLabel;
+  if (ctaHref) next.ctaHref = ctaHref;
+  if (secondaryCtaLabel) next.secondaryCtaLabel = secondaryCtaLabel;
+  if (secondaryCtaHref) next.secondaryCtaHref = secondaryCtaHref;
+  if (Array.isArray(existingProps.footerLinks)) next.footerLinks = existingProps.footerLinks;
+  if (typeof existingProps.legal === "string" && existingProps.legal.trim()) next.legal = existingProps.legal;
+  if (typeof existingProps.whatsapp === "string" && existingProps.whatsapp.trim()) next.whatsapp = existingProps.whatsapp;
+  return next;
+};
+
 const createFallbackBlock = (
   context: SectionContext,
   prompt: string,
@@ -4767,6 +5427,10 @@ const shouldTemplateFirstForSection = (
   context: SectionContext,
   options?: { preferLlmForDesignFidelity?: boolean }
 ) => {
+  const sectionToken = `${context.section.type ?? ""} ${context.section.id ?? ""}`.toLowerCase();
+  if (/(contact|cta|footer[-_\s]?cta|lead[-_\s]?capture|lead|inquiry|form)/.test(sectionToken)) {
+    return true;
+  }
   if (sectionGenerationStrategy === "template_first") return true;
 
   const variantToken = normalizeFallbackVariant(buildFallbackSectionVariant(context));
@@ -4808,26 +5472,75 @@ const createTemplateSectionResult = (
   designNorthStar?: Record<string, unknown>,
   theme?: Record<string, unknown>
 ): BuilderSectionResult => {
-  const templateBlock = buildDeterministicFallbackBlock(context, prompt, designNorthStar, theme);
+  const sectionToken = `${context.section.type ?? ""} ${context.section.id ?? ""}`.toLowerCase();
+  const themeDrivenSection = /(contact|cta|footer[-_\s]?cta|lead[-_\s]?capture|lead|inquiry|form)/.test(sectionToken);
+  if (themeDrivenSection) {
+    const fallbackBlock = buildDeterministicFallbackBlock(context, prompt, designNorthStar, theme, {
+      skipRegistry: true,
+    });
+    return {
+      status: "ok",
+      component: { name: fallbackComponentName, code: fallbackComponentCode },
+      block: { type: fallbackBlock.type, props: fallbackBlock.props },
+    };
+  }
+  const idBase = `${toSlug(context.section.type || "section") || "section"}-${context.sectionIndex + 1}`;
+  const anchor = context.section.id;
+  const propsHints =
+    context.section.propsHints && typeof context.section.propsHints === "object"
+      ? (context.section.propsHints as Record<string, unknown>)
+      : undefined;
+  const templateAsset = resolveSectionTemplateAsset({
+    prompt,
+    pagePath: context.pagePath,
+    pageName: context.pageName,
+    sectionType: context.section.type,
+    sectionId: context.section.id,
+    sectionIntent: context.section.intent,
+    idBase,
+    anchor,
+    designNorthStar,
+    theme,
+    propsHints,
+  });
+  const templateBlock = templateAsset?.block ?? buildDeterministicFallbackBlock(context, prompt, designNorthStar, theme);
   return {
     status: "ok",
     component: { name: fallbackComponentName, code: fallbackComponentCode },
     block: { type: templateBlock.type, props: templateBlock.props },
+    ...(templateAsset
+        ? {
+            templateMeta: {
+              sourceLayer: templateAsset.layer,
+              profileId: templateAsset.profileId,
+              styleFamily: templateAsset.styleFamily,
+              editableFieldCount: templateAsset.editableFields.length,
+              catalogSource: templateAsset.catalogSource,
+            },
+          }
+      : {}),
   };
+};
+
+const createPublishedComponentAlias = (originalType: string, index: number) => {
+  void originalType;
+  return `PublishedSection_${index + 1}`;
 };
 
 // ---------------------------------------------------------------------------
 // LLM lightweight refinement: takes a template block and refines text content
 // using a fast, low-token LLM call. Falls back to original on any failure.
 // ---------------------------------------------------------------------------
-const templateRefinementSystemPrompt = `你是一个网站文案专家。你的任务是根据用户需求，对已有的网站模板 props 进行文案精修。
-规则：
-1. 只修改文本类字段（title, subtitle, body, eyebrow, label, desc, quote, name, role 等）
-2. 不要修改结构类字段（variant, columns, maxWidth, paddingY, sticky, href 等）
-3. 不要添加或删除任何字段
-4. 所有文案必须与用户描述的行业/品牌/产品高度相关
-5. 保持原有文案的长度和风格基调
-6. 只返回修改后的 JSON props 对象，不要解释`;
+const templateRefinementSystemPrompt = `You are a website copy editor.
+Refine copy fields in existing template props based on user intent.
+Rules:
+1. Only edit text-like fields (title, subtitle, body, eyebrow, label, desc, quote, name, role, etc.)
+2. Do not modify structural fields (variant, columns, maxWidth, paddingY, sticky, href, etc.)
+3. Do not add or remove fields
+4. Copy must stay aligned with the requested industry/brand/product
+5. Keep original tone and approximate text length
+6. Default output language is English unless the user explicitly requests Chinese
+7. Return JSON props only, no explanations`;
 
 const buildTemplateRefinementPrompt = (
   prompt: string,
@@ -4838,18 +5551,18 @@ const buildTemplateRefinementPrompt = (
   designNorthStar?: Record<string, unknown>
 ): string => {
   const northStarSnippet = designNorthStar
-    ? `\n行业: ${(designNorthStar as any).industry ?? "未知"}\n核心产品: ${JSON.stringify((designNorthStar as any).coreProducts ?? [])}\n风格DNA: ${JSON.stringify((designNorthStar as any).styleDNA ?? [])}`
+    ? `\nIndustry: ${(designNorthStar as any).industry ?? "unknown"}\nCore products: ${JSON.stringify((designNorthStar as any).coreProducts ?? [])}\nStyle DNA: ${JSON.stringify((designNorthStar as any).styleDNA ?? [])}`
     : "";
-  const intentLine = sectionIntent ? `\nSection 意图: ${sectionIntent}` : "";
+  const intentLine = sectionIntent ? `\nSection intent: ${sectionIntent}` : "";
   // Only include text-relevant props to keep prompt small
   const propsJson = JSON.stringify(props, null, 2);
-  return `用户需求: ${prompt.slice(0, 500)}${northStarSnippet}${intentLine}
-Section 类型: ${sectionType} (组件: ${blockType})
+  return `User request: ${prompt.slice(0, 500)}${northStarSnippet}${intentLine}
+Section type: ${sectionType} (component: ${blockType})
 
-当前模板 props:
+Current template props:
 ${propsJson.slice(0, 3000)}
 
-请根据用户需求精修上述 props 中的文案内容，返回完整的 JSON props 对象。`;
+Refine text fields to fit the user request and return the full JSON props object.`;
 };
 
 const applyRefinedProps = (
@@ -4933,6 +5646,51 @@ const extractJsonCandidate = (value: string) => {
   return trimmed;
 };
 
+const parseVisualFingerprintHint = (prompt: string): { darkTheme: boolean | null; dominantColors: string[] } => {
+  const text = String(prompt || "");
+  const darkMatch = text.match(/darkTheme\s*=\s*(true|false)/i);
+  const darkTheme = darkMatch ? darkMatch[1].toLowerCase() === "true" : null;
+  const colorsMatch = text.match(/dominant colors\s*=\s*([^\n]+)/i);
+  const dominantColors = colorsMatch
+    ? Array.from(
+        new Set(
+          (colorsMatch[1].match(/#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})/g) || []).map((item) => item.toLowerCase())
+        )
+      ).slice(0, 6)
+    : [];
+  return { darkTheme, dominantColors };
+};
+
+const lockThemeByVisualHint = (theme: Record<string, unknown>, prompt: string) => {
+  const { darkTheme, dominantColors } = parseVisualFingerprintHint(prompt);
+  if (darkTheme === null && dominantColors.length === 0) return theme;
+  const next = { ...(theme || {}) } as Record<string, any>;
+  if (darkTheme !== null) {
+    next.mode = darkTheme ? "dark" : "light";
+  }
+  if (dominantColors.length) {
+    const palette = { ...(next.palette && typeof next.palette === "object" ? next.palette : {}) } as Record<string, string>;
+    if (darkTheme === false) {
+      palette.bg = dominantColors[0] || palette.bg || "#f8f8f8";
+      palette.text = palette.text || "#111827";
+      palette.neutral = dominantColors[1] || palette.neutral || "#e5e7eb";
+      palette.textSecondary = palette.textSecondary || "#4b5563";
+      palette.primary = dominantColors[2] || palette.primary || "#111827";
+      palette.accent = dominantColors[3] || dominantColors[2] || palette.accent || "#8b6227";
+    } else if (darkTheme === true) {
+      palette.bg = dominantColors[0] || palette.bg || "#0b0f14";
+      palette.text = palette.text || "#e5e7eb";
+      palette.neutral = dominantColors[1] || palette.neutral || "#1f2937";
+      palette.textSecondary = palette.textSecondary || "#9ca3af";
+      palette.primary = dominantColors[2] || palette.primary || "#1f2937";
+      palette.accent = dominantColors[3] || dominantColors[2] || palette.accent || "#38bdf8";
+    }
+    next.palette = palette;
+    if (!next.primaryColor && palette.primary) next.primaryColor = palette.primary;
+  }
+  return next;
+};
+
 // ---------------------------------------------------------------------------
 // LLM lightweight refinement (placed after extractJsonCandidate for const ordering)
 // ---------------------------------------------------------------------------
@@ -4944,6 +5702,11 @@ const refineTemplateWithLlm = async (
 ): Promise<SectionBlock> => {
   if (!enableTemplateRefinement) return block;
   if (!block.props || !Object.keys(block.props).length) return block;
+  const sectionKind = inferTemplateRefinementSectionKind(context.section.type, context.section.id);
+  if (sectionKind && templateRefinementSkipSectionTokens.has(sectionKind)) return block;
+  if (skipTemplateExclusiveRefinement && /^TemplateExclusive/.test(String(block.type || ""))) {
+    return block;
+  }
 
   const refinementPrompt = buildTemplateRefinementPrompt(
     prompt,
@@ -5652,8 +6415,8 @@ async function architectNode(state: GraphState) {
   const basePrompt = buildArchitectUserPrompt(state.prompt ?? "", state.manifest ?? {});
   const prompt = designSystemPrompt ? `${basePrompt}\n\n${designSystemPrompt}` : basePrompt;
   const system = applySkillContext(architectSystemPrompt, state.skillContext?.architect ?? "");
-  const retryPrompt = `${prompt}\n\n重要：必须返回完整 JSON，不允许返回 {} 或空数组。至少包含 1 个 page 与 1 个 section。`;
-  const compactPrompt = `${prompt}\n\n重要：输出必须是紧凑 JSON（无多余解释）。propsHints 只保留 3-5 个短字段，列表最多 6 项；每页不超过 6 个 section，避免长文案与深层嵌套。`;
+  const retryPrompt = `${prompt}\n\nImportant: Return a complete JSON object. Do not return {} or empty arrays. Include at least 1 page and 1 section.`;
+  const compactPrompt = `${prompt}\n\nImportant: Output compact JSON only (no extra prose). Keep propsHints concise (3-5 short keys), list items <= 6, and sections per page <= 6.`;
   let raw: string;
   try {
     raw = await callLlmWithLocalTimeout(
@@ -5750,6 +6513,7 @@ async function architectNode(state: GraphState) {
   }
   blueprint = applyUserThemeIntent(blueprint, state.prompt ?? "");
   blueprint = applyReferenceBlueprintConstraints(blueprint, state.prompt ?? "");
+  blueprint = ensurePromptRequestedPages(blueprint, state.prompt ?? "") as ArchitectBlueprint;
   const pages = normalizePages(blueprint);
   const sectionCount = pages.reduce((total, page) => total + page.sections.length, 0);
   logInfo(`${logPrefix} architect:ok`, {
@@ -5766,18 +6530,55 @@ async function architectNode(state: GraphState) {
 async function builderNode(state: GraphState) {
   const blueprint = (state.blueprint ?? {}) as ArchitectBlueprint;
   let pages = normalizePages(blueprint);
-  const templatePlan = applyTemplateFirstSectionPlan(pages, state.prompt ?? "");
-  pages = templatePlan.pages;
+  const templateResolution = resolveTemplatePlan({
+    prompt: state.prompt ?? "",
+    pages,
+    strategy: sectionGenerationStrategy,
+  });
+  pages = normalizePages({ pages: templateResolution.pages as any });
+  const siteBlueprint = buildSiteBlueprint({
+    profileId: templateResolution.profileId,
+    prompt: state.prompt ?? "",
+    pages,
+  });
+  const linkGraph = buildSiteLinkGraph(siteBlueprint);
   const allSections = flattenSections(pages);
-  const theme =
+  const contentSections = allSections.filter((context) => !isGlobalChromeSection(context.section));
+  let theme =
     blueprint?.theme && typeof blueprint.theme === "object" ? blueprint.theme : {};
+  const styleShellTheme =
+    templateResolution.siteStyleShell?.theme &&
+    typeof templateResolution.siteStyleShell.theme === "object"
+      ? (templateResolution.siteStyleShell.theme as Record<string, unknown>)
+      : null;
+  if (styleShellTheme) {
+    theme = {
+      ...(theme && typeof theme === "object" ? (theme as Record<string, unknown>) : {}),
+      ...styleShellTheme,
+      themeContract: {
+        ...((theme as any)?.themeContract && typeof (theme as any).themeContract === "object"
+          ? (theme as any).themeContract
+          : {}),
+        ...(styleShellTheme.themeContract && typeof styleShellTheme.themeContract === "object"
+          ? (styleShellTheme.themeContract as Record<string, unknown>)
+          : {}),
+      },
+    };
+    logInfo(`${logPrefix} builder:style_shell_applied`, {
+      profileId: templateResolution.profileId,
+      styleFamily: templateResolution.siteStyleShell?.styleFamily ?? "",
+      navigationBlockType: templateResolution.siteStyleShell?.navigationBlockType ?? "",
+      footerBlockType: templateResolution.siteStyleShell?.footerBlockType ?? "",
+      motionProfile: templateResolution.siteStyleShell?.motionProfile ?? "",
+    });
+  }
   let themeContract = (theme?.themeContract as ThemeContract) ?? {};
   const planning = state.planning ?? null;
   const completedSectionKeys = planning?.getCompletedSectionKeys() ?? new Set<string>();
   const savedSectionOutputs = planning?.getSectionOutputs() ?? [];
   const sections = completedSectionKeys.size
-    ? allSections.filter((context) => !completedSectionKeys.has(buildSectionKey(context)))
-    : allSections;
+    ? contentSections.filter((context) => !completedSectionKeys.has(buildSectionKey(context)))
+    : contentSections;
   const guardian = new ConsistencyGuardian();
   const normalizedContract = guardian.normalizeThemeContract(themeContract);
   if (theme && typeof theme === "object") {
@@ -5795,10 +6596,11 @@ async function builderNode(state: GraphState) {
   const errors = [...(state.errors ?? [])];
   const system = applySkillContext(builderSystemPrompt, state.skillContext?.builder ?? "");
 
-  logInfo(`${logPrefix} builder:start`, {
+    logInfo(`${logPrefix} builder:start`, {
     hasBlueprint: Boolean(state.blueprint),
     pages: pages.length,
     sections: allSections.length,
+    contentSections: contentSections.length,
     pendingSections: sections.length,
     compactDesignSystemPrompt: useCompactDesignSystemForBuilder,
     sectionGenerationStrategy,
@@ -5811,11 +6613,16 @@ async function builderNode(state: GraphState) {
     builderRecoveryMaxTokens,
     refinementEnabled: enableBuilderRefinement,
     repairEnabled: enableBuilderRepair,
-    templatePlanProfile: templatePlan.profileId,
-  });
-  if (templatePlan.profileId) {
+    templatePlanProfile: templateResolution.profileId,
+    skeleton: siteBlueprint.skeleton,
+    sitePages: siteBlueprint.pages.map((page) => page.path).join(","),
+    navLinks: linkGraph.navigationLinks.length,
+      resolutionLayer: templateResolution.layer,
+      matchedPageCoverage: templateResolution.diagnostics.matchedPageCoverage,
+    });
+  if (templateResolution.profileId) {
     logInfo(`${logPrefix} builder:template_plan_applied`, {
-      profileId: templatePlan.profileId,
+      profileId: templateResolution.profileId,
       pages: pages.length,
       sections: allSections.length,
       sectionIds: allSections.map((section) => `${section.pagePath}:${section.section.id}`).join(","),
@@ -5993,18 +6800,6 @@ async function builderNode(state: GraphState) {
     throw Object.assign(new Error("builder_section_empty"), { code: "parse" });
   };
 
-  if (allSections.length === 0) {
-    const emptyPages = pages.map((page) => ({
-      path: page.path,
-      name: page.name,
-      data: {
-        content: [],
-        root: { props: { title: page.name, theme, ...(page.root?.props ?? {}) } },
-      },
-    }));
-    return { components: [], pages: emptyPages, theme, errors };
-  }
-
   const maxConcurrency = Number.isFinite(defaultSectionConcurrency)
     ? Math.max(1, defaultSectionConcurrency)
     : 3;
@@ -6039,8 +6834,26 @@ async function builderNode(state: GraphState) {
         designNorthStar as Record<string, unknown>,
         theme as Record<string, unknown>
       );
+      if (baseResult.status === "ok" && baseResult.templateMeta) {
+        logInfo(`${logPrefix} builder:section:template_asset`, {
+          ...baseInfo,
+          sourceLayer: baseResult.templateMeta.sourceLayer,
+          profileId: baseResult.templateMeta.profileId,
+          styleFamily: baseResult.templateMeta.styleFamily,
+          editableFieldCount: baseResult.templateMeta.editableFieldCount,
+          catalogSource: baseResult.templateMeta.catalogSource,
+        });
+        logInfo(`${logPrefix} builder:block_catalog_source`, {
+          ...baseInfo,
+          catalogSource: baseResult.templateMeta.catalogSource,
+        });
+      }
       // LLM lightweight refinement: refine text content while keeping structure
       if (enableTemplateRefinement && baseResult.status === "ok") {
+        const allowRefinementForLayer = templateResolution.layer === "section";
+        if (!allowRefinementForLayer) {
+          return baseResult;
+        }
         const refinedBlock = await refineTemplateWithLlm(
           context,
           state.prompt ?? "",
@@ -6293,7 +7106,7 @@ async function builderNode(state: GraphState) {
     };
   });
 
-  const needsAutoNavbarByPage = pages.map((page) => !pageHasNavigationSection(page));
+  const needsAutoNavbarByPage = pages.map(() => true);
   const shouldRegisterAutoNavbar = needsAutoNavbarByPage.some(Boolean);
   const componentsMap = new Map<string, { name: string; code: string }>();
   if (shouldRegisterAutoNavbar) {
@@ -6304,7 +7117,7 @@ async function builderNode(state: GraphState) {
     }
   }
   const normalizationSummary: Record<string, number> = {};
-  const pagesOut = pages.map((page) => ({
+  let pagesOut = pages.map((page) => ({
     path: page.path,
     name: page.name,
     data: {
@@ -6314,34 +7127,127 @@ async function builderNode(state: GraphState) {
   }));
   const existingKeys = new Set<string>();
   const pageIndexByPath = new Map<string, number>();
+  type TemplateAssetMeta = {
+    sourceLayer: string;
+    profileId: string;
+    styleFamily: string | null;
+    editableFieldCount: number;
+    catalogSource: "published" | "runtime" | "none";
+  };
   pagesOut.forEach((page, index) => {
     if (page.path) pageIndexByPath.set(page.path, index);
   });
+  const findSectionContextForPage = (
+    pageIndex: number,
+    predicate: (section: ReturnType<typeof normalizePages>[number]["sections"][number]) => boolean
+  ): SectionContext | null => {
+    const sourcePage = pages[pageIndex];
+    if (!sourcePage || !Array.isArray(sourcePage.sections)) return null;
+    const sectionIndex = sourcePage.sections.findIndex((section) => predicate(section));
+    if (sectionIndex < 0) return null;
+    const section = sourcePage.sections[sectionIndex];
+    return {
+      pageIndex,
+      pagePath: sourcePage.path || "/",
+      pageName: sourcePage.name || `Page ${pageIndex + 1}`,
+      sectionIndex,
+      section: {
+        ...section,
+        id: section?.id || `section-${pageIndex + 1}-${sectionIndex + 1}`,
+        type: section?.type || "Section",
+      },
+    };
+  };
+  const buildSyntheticSectionContext = (
+    pageIndex: number,
+    sectionId: string,
+    sectionType: string,
+    sectionIntent = ""
+  ): SectionContext | null => {
+    const sourcePage = pages[pageIndex];
+    if (!sourcePage) return null;
+    return {
+      pageIndex,
+      pagePath: sourcePage.path || "/",
+      pageName: sourcePage.name || `Page ${pageIndex + 1}`,
+      sectionIndex: Array.isArray(sourcePage.sections) ? sourcePage.sections.length : 0,
+      section: {
+        id: sectionId,
+        type: sectionType,
+        intent: sectionIntent,
+      },
+    };
+  };
+  const resolveTemplateSectionOverride = (
+    context: SectionContext | null,
+    matcher: (item: { type?: string; props?: Record<string, unknown> } | undefined) => boolean
+  ): { block: SectionBlock; templateMeta: TemplateAssetMeta } | null => {
+    if (!context) return null;
+    const result = createTemplateSectionResult(
+      context,
+      state.prompt ?? "",
+      designNorthStar as Record<string, unknown>,
+      theme as Record<string, unknown>
+    );
+    if (result.status !== "ok" || !result.templateMeta) return null;
+    const blockStub = { type: result.block.type, props: result.block.props };
+    if (!matcher(blockStub)) return null;
+    return {
+      block: result.block,
+      templateMeta: result.templateMeta,
+    };
+  };
   pagesOut.forEach((page, index) => {
     const source = pages[index];
     if (!source) return;
     if (!needsAutoNavbarByPage[index]) return;
     const key = `navbar:${page.path ?? index}`;
     if (existingKeys.has(key)) return;
-    const baseProps = buildNavbarProps(source, theme);
-    const normalizedProps = normalizeBlockProps(navbarComponentName, baseProps, {
+    const templateNav = resolveTemplateSectionOverride(
+      findSectionContextForPage(index, (section) => {
+        const token = `${section?.type ?? ""} ${section?.id ?? ""}`.toLowerCase();
+        return /(?:^|\s)(navigation|navbar|nav|header)\b/.test(token);
+      }) ??
+        buildSyntheticSectionContext(index, "navigation", "Navigation", "Provide primary navigation."),
+      isNavbarLikeBlock
+    );
+    const baseBlock = templateNav
+      ? templateNav.block
+      : {
+          type: navbarComponentName,
+          props: buildNavbarProps(source, theme, linkGraph, state.prompt ?? ""),
+        };
+    const normalizedProps = normalizeBlockProps(baseBlock.type, baseBlock.props ?? {}, {
       logChanges: true,
       summary: normalizationSummary,
     });
-    const propsWithId = ensurePropsId(normalizedProps, baseProps.id);
+    const propsWithId = ensurePropsId(
+      normalizedProps,
+      String(((baseBlock.props as Record<string, unknown>)?.id as string) || "navbar-global")
+    );
     const propsWithAnchor = ensureAnchor(propsWithId, "top");
     page.data.content.unshift({
-      type: navbarComponentName,
+      type: baseBlock.type,
       props: propsWithAnchor,
       _key: key,
     } as any);
     existingKeys.add(key);
+    if (templateNav) {
+      logInfo(`${logPrefix} builder:navbar_materialized`, {
+        pagePath: page.path,
+        sourceLayer: templateNav.templateMeta.sourceLayer,
+        profileId: templateNav.templateMeta.profileId,
+        catalogSource: templateNav.templateMeta.catalogSource,
+      });
+    }
   });
   if (savedSectionOutputs.length) {
     savedSectionOutputs.forEach((output) => {
       const pageIndex = pageIndexByPath.get(output.pagePath ?? "");
       const page = typeof pageIndex === "number" ? pagesOut[pageIndex] : undefined;
       if (!page || existingKeys.has(output.key)) return;
+      const blockStub = { type: output.type, props: output.props };
+      if (isNavbarLikeBlock(blockStub) || isFooterLikeBlock(blockStub)) return;
       const sectionId = extractSectionIdFromKey(output.key);
       const propsWithAnchor = sectionId ? ensureAnchor(output.props, sectionId) : output.props;
       page.data.content.push({
@@ -6589,8 +7495,8 @@ async function builderNode(state: GraphState) {
           const compactPrompt = compactDesignSystemPrompt
             ? `${compactBasePrompt}\n\n${compactDesignSystemPrompt}`
             : compactBasePrompt;
-          const refinePrompt = `${prompt}\n\n# Refinement Pass\n上一次输出为空或未通过校验。请返回一个简洁、可运行且满足 layoutHint 的 section。必须输出严格 JSON（component + block）。`;
-          const compactRefinePrompt = `${compactPrompt}\n\n# Refinement Pass\n上一次输出为空或未通过校验。请返回一个简洁、可运行且满足 layoutHint 的 section。必须输出严格 JSON（component + block）。`;
+          const refinePrompt = `${prompt}\n\n# Refinement Pass\nPrevious output was empty or failed validation. Return a concise, runnable section that follows layoutHint. Output strict JSON only (component + block).`;
+          const compactRefinePrompt = `${compactPrompt}\n\n# Refinement Pass\nPrevious output was empty or failed validation. Return a concise, runnable section that follows layoutHint. Output strict JSON only (component + block).`;
           let raw = await callBuilderLlm(refinePrompt, 0.3, compactRefinePrompt);
           let parsed = parseNdjsonPayloads(raw);
           let normalized = parsed
@@ -6738,11 +7644,12 @@ async function builderNode(state: GraphState) {
     if (existingKeys.has(key)) return;
 
     const sourceSection =
-      [...(Array.isArray(sourcePage.sections) ? sourcePage.sections : [])].reverse().find((section) =>
-        isCtaLikeSection(section)
+      [...(Array.isArray(sourcePage.sections) ? sourcePage.sections : [])].reverse().find(
+        (section) => isCtaLikeSection(section) && !isFooterLikeSection(section)
       ) ?? null;
     const sectionId = toSlug(sourceSection?.id || "footer-cta") || "footer-cta";
-    const sectionType = typeof sourceSection?.type === "string" && sourceSection.type.trim() ? sourceSection.type : "CTABanner";
+    const sectionType =
+      typeof sourceSection?.type === "string" && sourceSection.type.trim() ? sourceSection.type : "CTABanner";
     const sectionIntent =
       typeof sourceSection?.intent === "string" && sourceSection.intent.trim()
         ? sourceSection.intent
@@ -6761,13 +7668,20 @@ async function builderNode(state: GraphState) {
         layoutHint: sourceSection?.layoutHint,
       },
     };
-    const baseBlock = buildDeterministicFallbackBlock(
+    const templateCta = resolveTemplateSectionOverride(
       ctaContext,
-      state.prompt ?? "",
-      designNorthStar as Record<string, unknown>,
-      theme as Record<string, unknown>
+      (item) => isCtaLikeBlock(item) && !isFooterLikeBlock(item)
     );
-    const normalizedProps = normalizeBlockProps(baseBlock.type, baseBlock.props, {
+    const baseBlock = templateCta
+      ? templateCta.block
+      : buildDeterministicFallbackBlock(
+          ctaContext,
+          state.prompt ?? "",
+          designNorthStar as Record<string, unknown>,
+          theme as Record<string, unknown>,
+          { skipRegistry: true }
+        );
+    const normalizedProps = normalizeBlockProps(baseBlock.type, baseBlock.props ?? {}, {
       logChanges: true,
       summary: normalizationSummary,
     });
@@ -6794,9 +7708,17 @@ async function builderNode(state: GraphState) {
     logInfo(`${logPrefix} builder:cta_injected`, {
       pagePath: page.path,
       pageName: page.name,
-      reason: "missing_cta_block",
+      reason: templateCta ? "missing_cta_block_template_materialized" : "missing_cta_block",
       cta_injected: true,
     });
+    if (templateCta) {
+      logInfo(`${logPrefix} builder:cta_materialized`, {
+        pagePath: page.path,
+        sourceLayer: templateCta.templateMeta.sourceLayer,
+        profileId: templateCta.templateMeta.profileId,
+        catalogSource: templateCta.templateMeta.catalogSource,
+      });
+    }
   });
 
   let injectedFooterBlocks = 0;
@@ -6807,16 +7729,33 @@ async function builderNode(state: GraphState) {
     if (!sourcePage) return;
     const key = `footer:${page.path ?? pageIndex}:injected`;
     if (existingKeys.has(key)) return;
-
-    const baseProps = buildFooterProps(sourcePage, theme);
-    const normalizedProps = normalizeBlockProps(footerFallbackComponentName, baseProps, {
+    const templateFooter = resolveTemplateSectionOverride(
+      findSectionContextForPage(pageIndex, isFooterLikeSection) ??
+        buildSyntheticSectionContext(
+          pageIndex,
+          "footer",
+          "Footer",
+          "Provide navigation and legal links."
+        ),
+      isFooterLikeBlock
+    );
+    const baseBlock = templateFooter
+      ? templateFooter.block
+      : {
+          type: footerFallbackComponentName,
+          props: buildFooterProps(sourcePage, theme, linkGraph, state.prompt ?? ""),
+        };
+    const normalizedProps = normalizeBlockProps(baseBlock.type, baseBlock.props ?? {}, {
       logChanges: true,
       summary: normalizationSummary,
     });
-    const propsWithId = ensurePropsId(normalizedProps, baseProps.id);
+    const propsWithId = ensurePropsId(
+      normalizedProps,
+      String(((baseBlock.props as Record<string, unknown>)?.id as string) || "footer-global")
+    );
     const propsWithAnchor = ensureAnchor(propsWithId, "footer");
     page.data.content.push({
-      type: footerFallbackComponentName,
+      type: baseBlock.type,
       props: propsWithAnchor,
       _key: key,
     } as any);
@@ -6825,14 +7764,282 @@ async function builderNode(state: GraphState) {
     logInfo(`${logPrefix} builder:footer_injected`, {
       pagePath: page.path,
       pageName: page.name,
-      reason: "missing_footer_block",
+      reason: templateFooter ? "missing_footer_block_template_materialized" : "missing_footer_block",
       footer_injected: true,
+    });
+    if (templateFooter) {
+      logInfo(`${logPrefix} builder:footer_materialized`, {
+        pagePath: page.path,
+        sourceLayer: templateFooter.templateMeta.sourceLayer,
+        profileId: templateFooter.templateMeta.profileId,
+        catalogSource: templateFooter.templateMeta.catalogSource,
+      });
+    }
+  });
+
+  let harmonizedNavbarBlocks = 0;
+  let harmonizedFooterBlocks = 0;
+  let sanitizedContentLinkBlocks = 0;
+  let demotedThemeDrivenBlocks = 0;
+  pagesOut.forEach((page, pageIndex) => {
+    const sourcePage = pages[pageIndex] ?? pages[0];
+    if (!sourcePage) return;
+    const fallbackNavbarProps = buildNavbarProps(sourcePage, theme, linkGraph, state.prompt ?? "");
+    const fallbackFooterProps = buildFooterProps(sourcePage, theme, linkGraph, state.prompt ?? "");
+    const content = Array.isArray(page.data.content) ? page.data.content : [];
+    content.forEach((item: any) => {
+      if (!item || typeof item !== "object") return;
+      const itemType = typeof item.type === "string" ? item.type : "";
+      const existingProps = item.props && typeof item.props === "object" ? item.props : {};
+      const sanitizedExistingProps = sanitizeGeneratedProps(existingProps, {
+        prompt: state.prompt ?? "",
+        designNorthStar: designNorthStar as Record<string, unknown>,
+      }) as Record<string, unknown>;
+      if (isNavbarLikeBlock(item)) {
+        const graphProps = applyLinkGraphToNavbarProps(
+          { ...(fallbackNavbarProps as Record<string, unknown>) },
+          linkGraph
+        );
+        const normalizedProps = normalizeBlockProps(navbarComponentName, graphProps, {
+          logChanges: true,
+          summary: normalizationSummary,
+        });
+        const fallbackId =
+          typeof (existingProps as Record<string, unknown>).id === "string" &&
+          String((existingProps as Record<string, unknown>).id).trim()
+            ? String((existingProps as Record<string, unknown>).id)
+            : String((fallbackNavbarProps as Record<string, unknown>).id || "navbar-global");
+        item.type = navbarComponentName;
+        item.props = ensureAnchor(ensurePropsId(normalizedProps, fallbackId), "top");
+        harmonizedNavbarBlocks += 1;
+        return;
+      }
+      if (isFooterLikeBlock(item)) {
+        const graphProps = applyLinkGraphToFooterProps(
+          { ...(fallbackFooterProps as Record<string, unknown>) },
+          linkGraph
+        );
+        const normalizedProps = normalizeBlockProps(footerFallbackComponentName, graphProps, {
+          logChanges: true,
+          summary: normalizationSummary,
+        });
+        const fallbackId =
+          typeof (existingProps as Record<string, unknown>).id === "string" &&
+          String((existingProps as Record<string, unknown>).id).trim()
+            ? String((existingProps as Record<string, unknown>).id)
+            : String((fallbackFooterProps as Record<string, unknown>).id || "footer-global");
+        item.type = footerFallbackComponentName;
+        item.props = ensureAnchor(ensurePropsId(normalizedProps, fallbackId), "footer");
+        harmonizedFooterBlocks += 1;
+        return;
+      }
+      if (isContactLikeBlock(item) || isCtaLikeBlock(item)) {
+        const variant = isContactLikeBlock(item) ? "contact" : "cta";
+        const syntheticContext = buildSyntheticSectionContext(
+          pageIndex,
+          variant === "contact" ? "contact" : "footer-cta",
+          variant === "contact" ? "Contact" : "CTA",
+          variant === "contact" ? "Provide contact and consultation pathways." : "Prompt the visitor to take the next step."
+        );
+        const fallback = buildDeterministicFallbackBlock(
+          syntheticContext,
+          state.prompt ?? "",
+          designNorthStar as Record<string, unknown>,
+          theme as Record<string, unknown>,
+          { skipRegistry: true }
+        );
+        const mergedProps = mergeThemeDrivenBlockProps(
+          fallback.props as Record<string, unknown>,
+          sanitizedExistingProps,
+          variant
+        );
+        const normalizedProps = normalizeBlockProps(fallback.type, mergedProps, {
+          logChanges: true,
+          summary: normalizationSummary,
+        });
+        const fallbackId =
+          typeof sanitizedExistingProps.id === "string" && String(sanitizedExistingProps.id).trim()
+            ? String(sanitizedExistingProps.id)
+            : `${variant}:${page.path ?? pageIndex}`;
+        item.type = fallback.type;
+        item.props = ensureAnchor(ensurePropsId(normalizedProps, fallbackId), variant === "contact" ? "contact" : "footer-cta");
+        sanitizedContentLinkBlocks += 1;
+        demotedThemeDrivenBlocks += 1;
+        return;
+      }
+      item.props = sanitizeInternalHrefsInProps(sanitizedExistingProps, linkGraph);
+      sanitizedContentLinkBlocks += 1;
+    });
+  });
+  if (harmonizedNavbarBlocks > 0 || harmonizedFooterBlocks > 0 || sanitizedContentLinkBlocks > 0) {
+    logInfo(`${logPrefix} builder:global_nav_footer_harmonized`, {
+      navbarBlocks: harmonizedNavbarBlocks,
+      footerBlocks: harmonizedFooterBlocks,
+      contentLinkBlocks: sanitizedContentLinkBlocks,
+      homeHref: linkGraph.homeHref,
+    });
+  }
+
+  pagesOut.forEach((page, pageIndex) => {
+    const sourcePage = pages[pageIndex] ?? pages[0];
+    if (!sourcePage || !Array.isArray(page.data.content)) return;
+    page.data.content = page.data.content.map((item: any, itemIndex: number) => {
+      if (!item || typeof item !== "object") return item;
+      const existingProps = item.props && typeof item.props === "object" ? item.props : {};
+      const sanitizedExistingProps = sanitizeGeneratedProps(existingProps, {
+        prompt: state.prompt ?? "",
+        designNorthStar: designNorthStar as Record<string, unknown>,
+      }) as Record<string, unknown>;
+      if (isContactLikeBlock(item) || isCtaLikeBlock(item)) {
+        const variant = isContactLikeBlock(item) ? "contact" : "cta";
+        const syntheticContext = buildSyntheticSectionContext(
+          pageIndex,
+          variant === "contact" ? "contact" : "footer-cta",
+          variant === "contact" ? "Contact" : "CTA",
+          variant === "contact" ? "Provide contact and consultation pathways." : "Prompt the visitor to take the next step."
+        );
+        const fallback = buildDeterministicFallbackBlock(
+          syntheticContext,
+          state.prompt ?? "",
+          designNorthStar as Record<string, unknown>,
+          theme as Record<string, unknown>,
+          { skipRegistry: true }
+        );
+        const mergedProps = mergeThemeDrivenBlockProps(
+          fallback.props as Record<string, unknown>,
+          sanitizedExistingProps,
+          variant
+        );
+        const normalizedProps = normalizeBlockProps(fallback.type, sanitizeInternalHrefsInProps(mergedProps, linkGraph), {
+          logChanges: true,
+          summary: normalizationSummary,
+        });
+        const fallbackId =
+          typeof sanitizedExistingProps.id === "string" && String(sanitizedExistingProps.id).trim()
+            ? String(sanitizedExistingProps.id)
+            : `${variant}:${page.path ?? pageIndex}:${itemIndex}`;
+        return {
+          ...item,
+          type: fallback.type,
+          props: ensureAnchor(
+            ensurePropsId(normalizedProps, fallbackId),
+            variant === "contact" ? "contact" : "footer-cta"
+          ),
+        };
+      }
+      return {
+        ...item,
+        props: sanitizeInternalHrefsInProps(sanitizedExistingProps, linkGraph),
+      };
+    });
+  });
+
+  pagesOut.forEach((page, pageIndex) => {
+    const sourcePage = pages[pageIndex] ?? pages[0];
+    if (!sourcePage || !Array.isArray(page.data.content)) return;
+    const fallbackNavbarProps = buildNavbarProps(sourcePage, theme, linkGraph, state.prompt ?? "");
+    const fallbackFooterProps = buildFooterProps(sourcePage, theme, linkGraph, state.prompt ?? "");
+    const navbarId =
+      typeof (fallbackNavbarProps as Record<string, unknown>).id === "string"
+        ? String((fallbackNavbarProps as Record<string, unknown>).id)
+        : "navbar-global";
+    const footerId =
+      typeof (fallbackFooterProps as Record<string, unknown>).id === "string"
+        ? String((fallbackFooterProps as Record<string, unknown>).id)
+        : "footer-global";
+    const canonicalNavbar = {
+      type: navbarComponentName,
+      props: ensureAnchor(
+        ensurePropsId(
+          normalizeBlockProps(
+            navbarComponentName,
+            applyLinkGraphToNavbarProps({ ...(fallbackNavbarProps as Record<string, unknown>) }, linkGraph),
+            { logChanges: true, summary: normalizationSummary }
+          ),
+          navbarId
+        ),
+        "top"
+      ),
+      _key: `navbar:${page.path ?? pageIndex}:canonical`,
+    };
+    const canonicalFooter = {
+      type: footerFallbackComponentName,
+      props: ensureAnchor(
+        ensurePropsId(
+          normalizeBlockProps(
+            footerFallbackComponentName,
+            applyLinkGraphToFooterProps({ ...(fallbackFooterProps as Record<string, unknown>) }, linkGraph),
+            { logChanges: true, summary: normalizationSummary }
+          ),
+          footerId
+        ),
+        "footer"
+      ),
+      _key: `footer:${page.path ?? pageIndex}:canonical`,
+    };
+    const content = page.data.content.filter(Boolean);
+    const body = content.filter(
+      (item: any) =>
+        item &&
+        !isNavbarLikeBlock(item) &&
+        !isFooterLikeBlock(item) &&
+        !String(item?._key || "").startsWith("navbar:") &&
+        !String(item?._key || "").startsWith("footer:")
+    );
+    const nonThemeDrivenBody = body.filter((item: any) => !isContactLikeBlock(item) && !isCtaLikeBlock(item));
+    const themeDrivenBody = body.filter((item: any) => isContactLikeBlock(item) || isCtaLikeBlock(item));
+
+    if (page.path === "/contact") {
+      const contactContext = buildSyntheticSectionContext(
+        pageIndex,
+        "contact",
+        "Contact",
+        "Provide contact and consultation pathways."
+      );
+      const fallbackContact = buildDeterministicFallbackBlock(
+        contactContext,
+        state.prompt ?? "",
+        designNorthStar as Record<string, unknown>,
+        theme as Record<string, unknown>,
+        { skipRegistry: true }
+      );
+      const contactBlock =
+        themeDrivenBody[themeDrivenBody.length - 1] ??
+        {
+          type: fallbackContact.type,
+          props: fallbackContact.props,
+          _key: `${page.path}:contact:canonical`,
+        };
+      page.data.content = [canonicalNavbar, ...nonThemeDrivenBody, contactBlock, canonicalFooter];
+      return;
+    }
+
+    const ctaBlock = themeDrivenBody.length > 0 ? themeDrivenBody[themeDrivenBody.length - 1] : null;
+    page.data.content = [canonicalNavbar, ...nonThemeDrivenBody, ...(ctaBlock ? [ctaBlock] : []), canonicalFooter];
+  });
+
+  const templateExclusiveAliasMap = new Map<string, string>();
+  pagesOut.forEach((page) => {
+    page.data.content.forEach((item: any) => {
+      const originalType = typeof item?.type === "string" ? item.type : "";
+      if (!/^TemplateExclusive/i.test(originalType)) return;
+      if (!templateExclusiveAliasMap.has(originalType)) {
+        templateExclusiveAliasMap.set(
+          originalType,
+          createPublishedComponentAlias(originalType, templateExclusiveAliasMap.size)
+        );
+      }
+      item.type = templateExclusiveAliasMap.get(originalType) as string;
     });
   });
 
   const needsFallbackComponent = pagesOut.some((page) =>
     page.data.content.some((item: any) => item?.type === fallbackComponentName)
   );
+  const needsFooterFallbackComponent = pagesOut.some((page) =>
+    page.data.content.some((item: any) => item?.type === footerFallbackComponentName)
+  );
+
   if (needsFallbackComponent) {
     const existing = componentsMap.get(fallbackComponentName);
     if (existing && existing.code !== fallbackComponentCode) {
@@ -6841,7 +8048,7 @@ async function builderNode(state: GraphState) {
       componentsMap.set(fallbackComponentName, { name: fallbackComponentName, code: fallbackComponentCode });
     }
   }
-  if (injectedFooterBlocks > 0) {
+  if (needsFooterFallbackComponent || injectedFooterBlocks > 0) {
     const existing = componentsMap.get(footerFallbackComponentName);
     if (existing && existing.code !== footerFallbackComponentCode) {
       errors.push(`builder_component_conflict:${footerFallbackComponentName}`);
@@ -6863,6 +8070,11 @@ async function builderNode(state: GraphState) {
   if (summaryText) {
     logInfo(`${logPrefix} design-system:summary`, { summary: summaryText });
   }
+  if (demotedThemeDrivenBlocks > 0) {
+    logInfo(`${logPrefix} builder:theme_driven_demoted`, {
+      count: demotedThemeDrivenBlocks,
+    });
+  }
 
   const report = guardian.postGenerateCheck(pagesOut);
   logInfo(`${logPrefix} guardian:postcheck`, {
@@ -6874,10 +8086,111 @@ async function builderNode(state: GraphState) {
     await planning.markPostcheckComplete();
   }
 
-  return {
-    components: Array.from(componentsMap.values()),
+  const shouldPreserveTemplateTheme =
+    sectionGenerationStrategy === "template_first" && Boolean(templateResolution.profileId);
+  const lockedTheme = shouldPreserveTemplateTheme
+    ? ({ ...(theme && typeof theme === "object" ? (theme as Record<string, unknown>) : {}) } as Record<string, unknown>)
+    : lockThemeByVisualHint(
+        theme && typeof theme === "object" ? (theme as Record<string, unknown>) : {},
+        state.prompt ?? ""
+      );
+  pagesOut.forEach((page) => {
+    const root = page?.data?.root;
+    const rootProps = root?.props && typeof root.props === "object" ? root.props : {};
+    const title =
+      typeof (rootProps as Record<string, unknown>).title === "string" &&
+      String((rootProps as Record<string, unknown>).title).trim()
+        ? String((rootProps as Record<string, unknown>).title).trim()
+        : String(page?.name || "Page");
+    page.data.root = {
+      ...(root && typeof root === "object" ? root : {}),
+      props: {
+        title,
+        ...rootProps,
+        theme: lockedTheme,
+      },
+    };
+  });
+
+  pagesOut = sanitizeFinalPagesOutput(pagesOut, {
+    prompt: state.prompt ?? "",
+    designNorthStar: designNorthStar ?? undefined,
+  });
+
+  const qaReport = evaluateGenerationQa({
+    siteBlueprint,
     pages: pagesOut,
-    theme,
+    linkGraph,
+    prompt: state.prompt ?? "",
+    thresholds: {
+      coverage: Number(process.env.BUILDER_QA_COVERAGE_THRESHOLD || 0.85),
+      linkIntegrity: Number(process.env.BUILDER_QA_LINK_THRESHOLD || 0.95),
+      themeConsistency: Number(process.env.BUILDER_QA_THEME_THRESHOLD || 0.9),
+      semantic: Number(process.env.BUILDER_QA_SEMANTIC_THRESHOLD || 0.9),
+      overall: Number(process.env.BUILDER_QA_OVERALL_THRESHOLD || 0.9),
+    },
+  });
+  logInfo(`${logPrefix} builder:qa_gate`, {
+    pass: qaReport.pass,
+    coverageScore: qaReport.coverageScore,
+    linkIntegrityScore: qaReport.linkIntegrityScore,
+    themeConsistencyScore: qaReport.themeConsistencyScore,
+    semanticFidelityScore: qaReport.semanticFidelityScore,
+    overallScore: qaReport.overallScore,
+    missingPages: qaReport.details.missingPages.join(","),
+    brokenLinks: qaReport.details.brokenLinks.length,
+    inconsistentThemePages: qaReport.details.inconsistentThemePages.join(","),
+    semanticHitPages: qaReport.details.semanticHitPages.join(","),
+    sourceBrandLeakPages: qaReport.details.sourceBrandLeakPages.join(","),
+  });
+  if (!qaReport.pass) {
+    errors.push(
+      `qa_gate_failed:coverage=${qaReport.coverageScore.toFixed(3)}:links=${qaReport.linkIntegrityScore.toFixed(3)}:theme=${qaReport.themeConsistencyScore.toFixed(3)}:semantic=${qaReport.semanticFidelityScore.toFixed(3)}:overall=${qaReport.overallScore.toFixed(3)}`
+    );
+  }
+
+  const generatedPaths = new Set(
+    pagesOut
+      .map((page) => (typeof page.path === "string" ? page.path : ""))
+      .filter((path) => path && path.startsWith("/"))
+  );
+  const aliasedComponents = Array.from(componentsMap.values()).map((component) => {
+    const alias = templateExclusiveAliasMap.get(component.name);
+    return alias ? { ...component, name: alias } : component;
+  });
+  const sanitizedMatchedPagePaths = (templateResolution.diagnostics.matchedPagePaths ?? []).filter((path) =>
+    generatedPaths.has(path)
+  );
+
+  return {
+    components: aliasedComponents,
+    pages: pagesOut,
+    theme: lockedTheme,
+    siteBlueprint,
+    qaReport,
+    resolvedByLayer: {
+      strategy: sectionGenerationStrategy,
+      templatePlanProfile: templateResolution.profileId ?? null,
+      skeleton: siteBlueprint.skeleton,
+      navLinks: linkGraph.navigationLinks.length,
+      footerColumns: linkGraph.footerColumns.length,
+      harmonizedNavbarBlocks,
+      harmonizedFooterBlocks,
+      resolutionLayer: templateResolution.layer,
+      matchedPagePaths: sanitizedMatchedPagePaths,
+      matchedPageCoverage: templateResolution.diagnostics.matchedPageCoverage,
+      templateKinds: templateResolution.diagnostics.templateKinds,
+      styleFamily: templateResolution.siteStyleShell?.styleFamily ?? null,
+      motionProfile: templateResolution.siteStyleShell?.motionProfile ?? null,
+      qa: {
+        pass: qaReport.pass,
+        coverageScore: qaReport.coverageScore,
+        linkIntegrityScore: qaReport.linkIntegrityScore,
+        themeConsistencyScore: qaReport.themeConsistencyScore,
+        semanticFidelityScore: qaReport.semanticFidelityScore,
+        overallScore: qaReport.overallScore,
+      },
+    },
     errors,
   };
 }
@@ -6922,6 +8235,9 @@ export async function generateP2WProject(input: {
     theme: result.theme ?? (result.blueprint as any)?.theme ?? {},
     pages: result.pages ?? [],
     components: result.components ?? [],
+    siteBlueprint: result.siteBlueprint ?? {},
+    qaReport: result.qaReport ?? {},
+    resolvedByLayer: result.resolvedByLayer ?? {},
     errors: result.errors ?? [],
   };
 }

@@ -10,8 +10,14 @@ import { captureSectionScreenshots } from "./capture-section-screenshots.mjs";
 const ROOT = process.cwd();
 const REPO_ROOT = path.resolve(ROOT, "..");
 const PROMPTS_FILE = path.join(ROOT, "regression", "prompts.baseline.json");
-const REPORT_DIR = path.join(ROOT, "regression", "strategy-comparison");
-const SCREENSHOT_DIR = path.join(REPORT_DIR, "screenshots");
+const REPORT_DIR = path.resolve(
+  ROOT,
+  String(process.env.STRATEGY_COMPARE_REPORT_DIR || path.join(ROOT, "regression", "strategy-comparison"))
+);
+const SCREENSHOT_DIR = path.resolve(
+  ROOT,
+  String(process.env.STRATEGY_COMPARE_SCREENSHOT_DIR || path.join(REPORT_DIR, "screenshots"))
+);
 const PORT = Number(process.env.STRATEGY_COMPARE_PORT || 3110);
 const BASE_URL = `http://localhost:${PORT}`;
 const CREATION_TIMEOUT_MS = Math.max(60000, Number(process.env.STRATEGY_COMPARE_CREATION_TIMEOUT_MS || 420000));
@@ -101,6 +107,9 @@ const getRenderablePages = (payload) => {
 const getPersistedPayloadPath = (id) =>
   path.join(REPO_ROOT, "asset-factory", "out", "p2w", String(id || ""), "sandbox", "payload.json");
 
+const getPersistedResultPath = (id) =>
+  path.join(REPO_ROOT, "asset-factory", "out", "p2w", String(id || ""), "result.json");
+
 const waitForPersistedPayload = async (id, timeoutMs = 120000) => {
   const payloadPath = getPersistedPayloadPath(id);
   const startedAt = Date.now();
@@ -152,6 +161,31 @@ const runShell = (cmd, options = {}) =>
     child.on("close", (code) => {
       if (code !== 0 && !options.allowFailure) {
         reject(new Error(`Command failed (${code}): ${cmd}\n${stderr || stdout}`));
+        return;
+      }
+      resolve({ code: code ?? 0, stdout, stderr });
+    });
+  });
+
+const runNodeEval = (script, options = {}) =>
+  new Promise((resolve, reject) => {
+    const child = spawn("node", ["-e", script], {
+      cwd: options.cwd || ROOT,
+      env: { ...process.env, ...(options.env || {}) },
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+    let stdout = "";
+    let stderr = "";
+    child.stdout.on("data", (chunk) => {
+      stdout += String(chunk);
+    });
+    child.stderr.on("data", (chunk) => {
+      stderr += String(chunk);
+    });
+    child.on("error", reject);
+    child.on("close", (code) => {
+      if (code !== 0 && !options.allowFailure) {
+        reject(new Error(`Command failed (${code}): node -e <script>\n${stderr || stdout}`));
         return;
       }
       resolve({ code: code ?? 0, stdout, stderr });
@@ -278,21 +312,65 @@ const writeSandboxPayload = async (siteKey, payload) => {
 const captureScreenshot = async (url, outPath, options = {}) => {
   await fs.mkdir(path.dirname(outPath), { recursive: true });
   const waitForSelector =
-    typeof options.waitForSelector === "string" && options.waitForSelector.trim()
-      ? ` --wait-for-selector ${JSON.stringify(options.waitForSelector)}`
-      : "";
+    typeof options.waitForSelector === "string" && options.waitForSelector.trim() ? options.waitForSelector.trim() : "";
   const waitForTimeout =
     Number.isFinite(Number(options.waitForTimeout)) && Number(options.waitForTimeout) > 0
-      ? ` --wait-for-timeout ${Math.floor(Number(options.waitForTimeout))}`
-      : "";
-  const timeoutArg =
-    Number.isFinite(Number(options.timeout)) && Number(options.timeout) > 0
-      ? ` --timeout ${Math.floor(Number(options.timeout))}`
-      : "";
-  const cmd = `cd ${JSON.stringify(ROOT)} && npx playwright screenshot --full-page${waitForSelector}${waitForTimeout}${timeoutArg} ${JSON.stringify(
-    url
-  )} ${JSON.stringify(outPath)}`;
-  await runShell(cmd, { cwd: ROOT });
+      ? Math.floor(Number(options.waitForTimeout))
+      : 0;
+  const timeout =
+    Number.isFinite(Number(options.timeout)) && Number(options.timeout) > 0 ? Math.floor(Number(options.timeout)) : 90000;
+  const stylePatch = `
+*, *::before, *::after { animation: none !important; transition: none !important; caret-color: transparent !important; }
+video, canvas, iframe[src*="youtube"], iframe[src*="vimeo"] { visibility: hidden !important; }
+[aria-live], [class*="ticker"], [class*="marquee"] { visibility: hidden !important; }
+`;
+  const script = `
+const { chromium } = require("playwright");
+(async () => {
+  const browser = await chromium.launch({ headless: true });
+  const context = await browser.newContext({
+    viewport: { width: 1440, height: 900 },
+    colorScheme: "light",
+    reducedMotion: "reduce",
+  });
+  const page = await context.newPage();
+  await page.goto(${JSON.stringify(url)}, { waitUntil: "domcontentloaded", timeout: ${timeout} });
+  await page.addStyleTag({ content: ${JSON.stringify(stylePatch)} });
+  await page.evaluate(() => {
+    for (const media of Array.from(document.querySelectorAll("video, audio"))) {
+      try {
+        media.pause();
+        media.currentTime = 0;
+      } catch {}
+    }
+  });
+  const selector = ${JSON.stringify(waitForSelector)};
+  if (selector) {
+    await page.locator(selector).first().waitFor({ state: "visible", timeout: ${timeout} });
+  }
+  if (${waitForTimeout} > 0) {
+    await page.waitForTimeout(${waitForTimeout});
+  }
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: ${JSON.stringify(outPath)}, fullPage: true, animations: "disabled" });
+  await context.close();
+  await browser.close();
+})().catch((error) => {
+  console.error(error?.stack || String(error));
+  process.exit(1);
+});
+`;
+  try {
+    await runNodeEval(script, { cwd: ROOT });
+  } catch {
+    const waitForSelectorArg = waitForSelector ? ` --wait-for-selector ${JSON.stringify(waitForSelector)}` : "";
+    const waitForTimeoutArg = waitForTimeout > 0 ? ` --wait-for-timeout ${waitForTimeout}` : "";
+    const timeoutArg = timeout > 0 ? ` --timeout ${timeout}` : "";
+    const cmd = `cd ${JSON.stringify(ROOT)} && npx playwright screenshot --full-page${waitForSelectorArg}${waitForTimeoutArg}${timeoutArg} ${JSON.stringify(
+      url
+    )} ${JSON.stringify(outPath)}`;
+    await runShell(cmd, { cwd: ROOT });
+  }
 };
 
 const groups = [
@@ -327,9 +405,9 @@ const groups = [
     env: {
       BUILDER_SECTION_GENERATION_STRATEGY: "template_first",
       BUILDER_TEMPLATE_SECTIONS:
-        "navigation,footer,footercta,footer-cta,cta,socialproof,social-proof,testimonial,trustlogo,products,catalog,metrics,stats,contact",
+        "navigation,hero,studiostory,story,showcase,approach,footer,footercta,footer-cta,cta,socialproof,social-proof,testimonial,trustlogo,products,catalog,metrics,stats,contact",
       BUILDER_LLM_SECTIONS: "",
-      BUILDER_TEMPLATE_FIRST_VARIANTS: "cta,socialproof,contact,catalog",
+      BUILDER_TEMPLATE_FIRST_VARIANTS: "hero,story,approach,cta,socialproof,contact,catalog",
       CREATION_REQUEST_TIMEOUT_MS: String(CREATION_TIMEOUT_MS),
       CREATION_PERSIST_REQUEST_TIMEOUT_MS: String(CREATION_TIMEOUT_MS),
     },
@@ -349,11 +427,11 @@ const buildMarkdownReport = (summary) => {
     lines.push(`- Pass: ${group.passed}/${group.total}`);
     lines.push(`- Avg duration: ${Math.round(group.avgDurationMs)} ms`);
     lines.push("");
-    lines.push("| Case | Status | Duration(ms) | URL | Screenshot |");
-    lines.push("|---|---:|---:|---|---|");
+    lines.push("| Case | Status | Duration(ms) | QA | Layer | URL | Screenshot |");
+    lines.push("|---|---:|---:|---:|---|---|---|");
     for (const row of group.results) {
       lines.push(
-        `| ${row.caseId} | ${row.ok ? "PASS" : "FAIL"} | ${row.durationMs} | [open](${row.url || ""}) | [image](${row.screenshot || ""}) |`
+        `| ${row.caseId} | ${row.ok ? "PASS" : "FAIL"} | ${row.durationMs} | ${row.qaOverallScore != null ? row.qaOverallScore.toFixed(3) : "-"} | ${row.resolutionLayer || "-"} | [open](${row.url || ""}) | [image](${row.screenshot || ""}) |`
       );
     }
     lines.push("");
@@ -430,6 +508,18 @@ const run = async () => {
           }
         }
         const durationMs = Date.now() - startedAt;
+        const persistedResult =
+          res.ok && typeof payload?.id === "string" && payload.id.trim()
+            ? await readJsonFile(getPersistedResultPath(payload.id))
+            : null;
+        const qaReport =
+          (persistedResult?.qaReport && typeof persistedResult.qaReport === "object" ? persistedResult.qaReport : null) ||
+          (payload?.qaReport && typeof payload.qaReport === "object" ? payload.qaReport : null);
+        const resolvedByLayer =
+          (persistedResult?.resolvedByLayer && typeof persistedResult.resolvedByLayer === "object"
+            ? persistedResult.resolvedByLayer
+            : null) ||
+          (payload?.resolvedByLayer && typeof payload.resolvedByLayer === "object" ? payload.resolvedByLayer : null);
         const renderablePages = getRenderablePages(finalPayload);
         const primaryPage = renderablePages.find((page) => normalizePagePath(page?.path || "/") === "/") || renderablePages[0] || null;
         const ok = Boolean(
@@ -468,14 +558,14 @@ const run = async () => {
               options.renderer === "render"
                 ? `${BASE_URL}/render?siteKey=${encodeURIComponent(siteKey)}&page=${encodeURIComponent(pageParam)}&motion=off`
                 : `${BASE_URL}/creation/sandbox?mode=preview&siteKey=${encodeURIComponent(siteKey)}&page=${encodeURIComponent(pageParam)}`;
-            const pageScreenshotPath = path.join(SCREENSHOT_DIR, group.id, c.id, `${pageSlug}.png`);
+            const pageScreenshotPath = path.join(SCREENSHOT_DIR, runId, group.id, c.id, `${pageSlug}.png`);
 
             try {
               await captureScreenshot(pageRenderUrl, pageScreenshotPath, screenshotOptions);
               // Capture per-section screenshots from the rendered page
               let sectionScreenshots = [];
               try {
-                const sectionOutDir = path.join(SCREENSHOT_DIR, group.id, c.id, `${pageSlug}-sections`);
+                const sectionOutDir = path.join(SCREENSHOT_DIR, runId, group.id, c.id, `${pageSlug}-sections`);
                 const sectionResult = await captureSectionScreenshots({
                   url: pageRenderUrl,
                   outDir: sectionOutDir,
@@ -524,6 +614,13 @@ const run = async () => {
           persistWaitTimedOut,
           requestId: payload?.requestId ?? null,
           responseId: payload?.id ?? null,
+          qaPass: qaReport?.pass ?? null,
+          qaOverallScore: Number.isFinite(Number(qaReport?.overallScore)) ? Number(qaReport.overallScore) : null,
+          qaCoverageScore: Number.isFinite(Number(qaReport?.coverageScore)) ? Number(qaReport.coverageScore) : null,
+          qaLinkIntegrityScore: Number.isFinite(Number(qaReport?.linkIntegrityScore)) ? Number(qaReport.linkIntegrityScore) : null,
+          qaThemeConsistencyScore: Number.isFinite(Number(qaReport?.themeConsistencyScore)) ? Number(qaReport.themeConsistencyScore) : null,
+          resolutionLayer: resolvedByLayer?.resolutionLayer ?? null,
+          templatePlanProfile: resolvedByLayer?.templatePlanProfile ?? null,
           url: renderUrl,
           screenshot: screenshotPath,
           pageScreenshots,

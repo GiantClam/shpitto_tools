@@ -1,0 +1,691 @@
+"use client";
+
+import React from "react";
+import { TextReveal } from "@/components/magic/text-reveal";
+import { useMotionMode } from "@/components/theme/motion";
+import { useInViewReveal } from "@/lib/motion";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Menu,
+  Minus,
+  Play,
+  Plus,
+  Search,
+  Sparkles,
+  Wifi,
+  X,
+} from "lucide-react";
+
+const SECTION_KIND = "story";
+const SECTION_TREE = {
+  "type": "frame",
+  "id": "W9UOe",
+  "name": "Team and Values",
+  "style": {
+    "boxSizing": "border-box",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": 20,
+    "padding": "48px 56px 56px 56px",
+    "width": "100%",
+    "background": "#090F19"
+  },
+  "children": [
+    {
+      "type": "text",
+      "id": "WqZa7",
+      "name": "teamEyebrow",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#9DB0D4",
+        "fontFamily": "Manrope",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "letterSpacing": 1.6,
+        "width": "100%"
+      },
+      "children": [],
+      "textProp": "teameyebrowtext"
+    },
+    {
+      "type": "text",
+      "id": "uZU0w",
+      "name": "teamHead",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#FFFFFF",
+        "fontFamily": "Space Grotesk",
+        "fontSize": 46,
+        "fontWeight": "600",
+        "letterSpacing": -1,
+        "lineHeight": 1.03,
+        "width": 920
+      },
+      "children": [],
+      "textProp": "teamheadtext"
+    },
+    {
+      "type": "text",
+      "id": "Frq8U",
+      "name": "teamIntro",
+      "style": {
+        "boxSizing": "border-box",
+        "margin": 0,
+        "whiteSpace": "pre-line",
+        "color": "#93A1BD",
+        "fontFamily": "Manrope",
+        "fontSize": 14,
+        "fontWeight": "normal",
+        "lineHeight": 1.5,
+        "width": 760
+      },
+      "children": [],
+      "textProp": "teamintrotext"
+    },
+    {
+      "type": "frame",
+      "id": "kUheq",
+      "name": "Team Values Row",
+      "style": {
+        "boxSizing": "border-box",
+        "display": "flex",
+        "flexDirection": "row",
+        "gap": 16,
+        "width": "100%"
+      },
+      "children": [
+        {
+          "type": "frame",
+          "id": "Bn3ce",
+          "name": "teamCard",
+          "style": {
+            "boxSizing": "border-box",
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 16,
+            "padding": "24px",
+            "width": "100%",
+            "height": 432,
+            "background": "#0F1520",
+            "border": "1px solid #22314A"
+          },
+          "children": [
+            {
+              "type": "text",
+              "id": "YaiLr",
+              "name": "teamCardLabel",
+              "style": {
+                "boxSizing": "border-box",
+                "margin": 0,
+                "whiteSpace": "pre-line",
+                "color": "#9DB0D4",
+                "fontFamily": "Manrope",
+                "fontSize": 11,
+                "fontWeight": "500",
+                "letterSpacing": 1.4,
+                "width": "100%"
+              },
+              "children": [],
+              "textProp": "teamcardlabeltext"
+            },
+            {
+              "type": "text",
+              "id": "zHU0Y",
+              "name": "teamCardTitle",
+              "style": {
+                "boxSizing": "border-box",
+                "margin": 0,
+                "whiteSpace": "pre-line",
+                "color": "#FFFFFF",
+                "fontFamily": "Manrope",
+                "fontSize": 24,
+                "fontWeight": "600",
+                "lineHeight": 1.18,
+                "width": "100%"
+              },
+              "children": [],
+              "textProp": "teamcardtitletext"
+            },
+            {
+              "type": "text",
+              "id": "ZyhBe",
+              "name": "teamCardBody",
+              "style": {
+                "boxSizing": "border-box",
+                "margin": 0,
+                "whiteSpace": "pre-line",
+                "color": "#AEB8CE",
+                "fontFamily": "Manrope",
+                "fontSize": 14,
+                "fontWeight": "normal",
+                "lineHeight": 1.5,
+                "width": "100%"
+              },
+              "children": [],
+              "textProp": "teamcardbodytext"
+            },
+            {
+              "type": "frame",
+              "id": "vEBwM",
+              "name": "teamImage",
+              "style": {
+                "boxSizing": "border-box",
+                "width": "100%",
+                "height": 200,
+                "border": "1px solid #1F1F23",
+                "backgroundRepeat": "no-repeat",
+                "backgroundPosition": "center",
+                "backgroundSize": "cover"
+              },
+              "children": [],
+              "imageProp": "teamimageimagesrc"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "OzHyz",
+          "name": "valuesCol",
+          "style": {
+            "boxSizing": "border-box",
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 12,
+            "width": "100%"
+          },
+          "children": [
+            {
+              "type": "text",
+              "id": "3xskY",
+              "name": "valuesTitle",
+              "style": {
+                "boxSizing": "border-box",
+                "margin": 0,
+                "whiteSpace": "pre-line",
+                "color": "#9EB4DB",
+                "fontFamily": "Manrope",
+                "fontSize": 11,
+                "fontWeight": "500",
+                "letterSpacing": 1.4,
+                "width": "100%"
+              },
+              "children": [],
+              "textProp": "valuestitletext"
+            },
+            {
+              "type": "frame",
+              "id": "O2hah",
+              "name": "val1",
+              "style": {
+                "boxSizing": "border-box",
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": 8,
+                "padding": "18px 20px",
+                "width": "100%",
+                "height": 128,
+                "background": "#0F1520",
+                "border": "1px solid #22314A"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "id": "neaJK",
+                  "name": "val1T",
+                  "style": {
+                    "boxSizing": "border-box",
+                    "margin": 0,
+                    "whiteSpace": "pre-line",
+                    "color": "#FFFFFF",
+                    "fontFamily": "Manrope",
+                    "fontSize": 14,
+                    "fontWeight": "600",
+                    "width": "100%"
+                  },
+                  "children": [],
+                  "textProp": "val1ttext"
+                },
+                {
+                  "type": "text",
+                  "id": "t20iG",
+                  "name": "val1D",
+                  "style": {
+                    "boxSizing": "border-box",
+                    "margin": 0,
+                    "whiteSpace": "pre-line",
+                    "color": "#AEB8CE",
+                    "fontFamily": "Manrope",
+                    "fontSize": 13,
+                    "fontWeight": "normal",
+                    "lineHeight": 1.45,
+                    "width": "100%"
+                  },
+                  "children": [],
+                  "textProp": "val1dtext"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jLAYd",
+              "name": "val2",
+              "style": {
+                "boxSizing": "border-box",
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": 8,
+                "padding": "18px 20px",
+                "width": "100%",
+                "height": 128,
+                "background": "#0F1520",
+                "border": "1px solid #22314A"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GILw6",
+                  "name": "val2T",
+                  "style": {
+                    "boxSizing": "border-box",
+                    "margin": 0,
+                    "whiteSpace": "pre-line",
+                    "color": "#FFFFFF",
+                    "fontFamily": "Manrope",
+                    "fontSize": 14,
+                    "fontWeight": "600",
+                    "width": "100%"
+                  },
+                  "children": [],
+                  "textProp": "val2ttext"
+                },
+                {
+                  "type": "text",
+                  "id": "bnNpa",
+                  "name": "val2D",
+                  "style": {
+                    "boxSizing": "border-box",
+                    "margin": 0,
+                    "whiteSpace": "pre-line",
+                    "color": "#AEB8CE",
+                    "fontFamily": "Manrope",
+                    "fontSize": 13,
+                    "fontWeight": "normal",
+                    "lineHeight": 1.45,
+                    "width": "100%"
+                  },
+                  "children": [],
+                  "textProp": "val2dtext"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ylEFg",
+              "name": "val3",
+              "style": {
+                "boxSizing": "border-box",
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": 8,
+                "padding": "18px 20px",
+                "width": "100%",
+                "height": 128,
+                "background": "#0F1520",
+                "border": "1px solid #22314A"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "id": "q6mX7",
+                  "name": "val3T",
+                  "style": {
+                    "boxSizing": "border-box",
+                    "margin": 0,
+                    "whiteSpace": "pre-line",
+                    "color": "#FFFFFF",
+                    "fontFamily": "Manrope",
+                    "fontSize": 14,
+                    "fontWeight": "600",
+                    "width": "100%"
+                  },
+                  "children": [],
+                  "textProp": "val3ttext"
+                },
+                {
+                  "type": "text",
+                  "id": "m2pTX",
+                  "name": "val3D",
+                  "style": {
+                    "boxSizing": "border-box",
+                    "margin": 0,
+                    "whiteSpace": "pre-line",
+                    "color": "#AEB8CE",
+                    "fontFamily": "Manrope",
+                    "fontSize": 13,
+                    "fontWeight": "normal",
+                    "lineHeight": 1.45,
+                    "width": "100%"
+                  },
+                  "children": [],
+                  "textProp": "val3dtext"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "XdrQZ",
+              "name": "valuesQuote",
+              "style": {
+                "boxSizing": "border-box",
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": 8,
+                "padding": "18px 20px",
+                "width": "100%",
+                "height": 92,
+                "background": "#10192B",
+                "border": "1px solid #23324F"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "id": "g2nn1",
+                  "name": "quoteLabel",
+                  "style": {
+                    "boxSizing": "border-box",
+                    "margin": 0,
+                    "whiteSpace": "pre-line",
+                    "color": "#6E768A",
+                    "fontFamily": "Manrope",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": 1.2,
+                    "width": "100%"
+                  },
+                  "children": [],
+                  "textProp": "quotelabeltext"
+                },
+                {
+                  "type": "text",
+                  "id": "6nGM3",
+                  "name": "quoteText",
+                  "style": {
+                    "boxSizing": "border-box",
+                    "margin": 0,
+                    "whiteSpace": "pre-line",
+                    "color": "#FFFFFF",
+                    "fontFamily": "Manrope",
+                    "fontSize": 16,
+                    "fontWeight": "600",
+                    "lineHeight": 1.3,
+                    "width": "100%"
+                  },
+                  "children": [],
+                  "textProp": "quotetexttext"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+const DEFAULT_PROPS = {
+  "id": "W9UOe",
+  "teameyebrowtext": "PEOPLE & VALUES / 03",
+  "teamheadtext": "A multidisciplinary team translating complex astronomy into confident first experiences and long-term scientific participation.",
+  "teamintrotext": "Our culture sits between field testing and wonder. The hardware team obsesses over optical precision; the software team reduces cognitive load; the community team keeps discovery social, generous, and rigorous.",
+  "teamcardlabeltext": "HOW WE BUILD",
+  "teamcardtitletext": "Designed from the field backward, tested under real skies, and refined by the people who use it most.",
+  "teamcardbodytext": "That loop keeps our instruments intuitive without making them simplistic. We protect the wonder of first discovery while still respecting the standards required for meaningful data and repeatable results.",
+  "teamimageimagesrc": "https://images.unsplash.com/photo-1755053757921-510df1dba49c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxOTA5MDB8&ixlib=rb-4.1.0&q=80&w=1080",
+  "valuestitletext": "OUR VALUES",
+  "val1ttext": "01  SCIENTIFIC INTEGRITY",
+  "val1dtext": "Citizen observations should feel magical without becoming vague. We build for trust, repeatability, and meaningful contribution.",
+  "val2ttext": "02  RADICAL ACCESSIBILITY",
+  "val2dtext": "Autonomous setup, guided experiences, and clear software reduce intimidation so more people can stay in the experience longer.",
+  "val3ttext": "03  GLOBAL COMMUNITY",
+  "val3dtext": "The night sky is shared territory. We design the network, education, and support systems so discovery becomes collaborative by default.",
+  "quotelabeltext": "CULTURE NOTE",
+  "quotetexttext": "We treat every first observation as the start of a relationship, not a one-time wow moment."
+};
+const ICONS = { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, Menu, Minus, Play, Plus, Search, Sparkles, Wifi, X };
+const PEN_RUNTIME_MOTION_STYLE = "@keyframes pen-media-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.015)}}@keyframes pen-node-rise{0%{opacity:0;transform:translate3d(0,10px,0)}100%{opacity:1;transform:translate3d(0,0,0)}}";
+
+const assignDefined = (target, patch) => {
+  for (const [key, value] of Object.entries(patch || {})) {
+    if (typeof value !== "undefined") target[key] = value;
+  }
+  return target;
+};
+
+const resolveMotionMode = (providerMode, overrideMode) => {
+  const token = String(overrideMode || providerMode || "subtle").trim().toLowerCase();
+  if (token === "off" || token === "subtle" || token === "showcase") return token;
+  return "subtle";
+};
+
+const resolveSectionMotionProfile = (sectionKindToken = "", motionMode = "subtle") => {
+  if (motionMode === "off") {
+    return {
+      level: "off",
+      revealPreset: "fadeIn",
+      delayStep: 0,
+      textReveal: false,
+      mediaBreathe: false,
+      contentStagger: false,
+    };
+  }
+  if (sectionKindToken === "hero") {
+    return {
+      level: "showcase",
+      revealPreset: "fadeIn",
+      delayStep: motionMode === "showcase" ? 95 : 75,
+      textReveal: true,
+      mediaBreathe: true,
+      contentStagger: true,
+    };
+  }
+  if (sectionKindToken === "navigation" || sectionKindToken === "footer") {
+    return {
+      level: "subtle",
+      revealPreset: "fadeIn",
+      delayStep: 20,
+      textReveal: false,
+      mediaBreathe: false,
+      contentStagger: false,
+    };
+  }
+  return {
+    level: motionMode === "showcase" ? "showcase" : "stagger",
+    revealPreset: "stagger",
+    delayStep: motionMode === "showcase" ? 72 : 56,
+    textReveal: true,
+    mediaBreathe: false,
+    contentStagger: true,
+  };
+};
+
+const resolveDelayMs = (keyPath = "", sectionMotion) => {
+  const match = String(keyPath || "").match(/-(\d+)$/);
+  const index = Number(match?.[1] || 0);
+  const step = Number(sectionMotion?.delayStep || 0);
+  if (!(step > 0)) return 0;
+  return Math.min(420, index * step);
+};
+
+const resolveFontSize = (value) => {
+  if (typeof value === "number") return value;
+  if (typeof value === "string") {
+    const parsed = Number.parseFloat(value);
+    if (Number.isFinite(parsed)) return parsed;
+  }
+  return 0;
+};
+
+const isHeadingLikeTextNode = (node) => {
+  const lowerName = String(node?.name || "").trim().toLowerCase();
+  if (/(title|headline|hero|eyebrow|heading)/.test(lowerName)) return true;
+  return resolveFontSize(node?.style?.fontSize) >= 22;
+};
+
+const buildNodeClassName = (node, sectionMotion) => {
+  if (!sectionMotion || sectionMotion.level === "off") return "";
+  const classes = [];
+  if (node?.hrefProp) classes.push("hover-lift");
+  if (node?.type === "frame" && node?.imageProp) classes.push("will-change-transform");
+  return classes.join(" ");
+};
+
+const buildNodeStyle = (node, merged, sectionMotion, keyPath) => {
+  const style = { ...(node?.style || {}) };
+  if (node?.imageProp) {
+    const src = String(merged?.[node.imageProp] || "").trim();
+    if (src) {
+      style.backgroundImage = `url(${src})`;
+    }
+  }
+  if (node?.hrefProp) {
+    style.textDecoration = style.textDecoration || "none";
+    if (!style.color) style.color = "inherit";
+    if (node?.type === "frame" && !style.display) {
+      style.display = "inline-block";
+    }
+  }
+  const motionLevel = sectionMotion?.level || "off";
+  if (motionLevel !== "off") {
+    const delayMs = resolveDelayMs(keyPath, sectionMotion);
+    style.transition = style.transition || "opacity 560ms var(--ease-smooth), transform 560ms var(--ease-smooth), box-shadow 300ms var(--ease-smooth)";
+    if (delayMs > 0) style.transitionDelay = style.transitionDelay || `${delayMs}ms`;
+    if (
+      Boolean(sectionMotion?.mediaBreathe) &&
+      node?.imageProp &&
+      !style.animation &&
+      (!style.transform || String(style.transform).trim() === "")
+    ) {
+      style.animation = "pen-media-breathe 8s var(--ease-smooth, ease) infinite";
+      style.transformOrigin = style.transformOrigin || "50% 50%";
+    }
+    if (
+      Boolean(sectionMotion?.contentStagger) &&
+      !style.animation &&
+      String(keyPath || "") !== "root" &&
+      (node?.type === "frame" || node?.type === "text")
+    ) {
+      style.animation = "pen-node-rise 620ms var(--ease-smooth, ease) both";
+      if (delayMs > 0) style.animationDelay = style.animationDelay || `${delayMs}ms`;
+    }
+  }
+  return style;
+};
+
+const renderTextContent = (node, merged, keyPath, sectionMotion) => {
+  const textValue = String(merged?.[node?.textProp] ?? "");
+  if (!textValue || !sectionMotion || sectionMotion.level === "off") return textValue;
+  if (!sectionMotion.textReveal) return textValue;
+  if (!isHeadingLikeTextNode(node)) return textValue;
+  return React.createElement(
+    TextReveal,
+    {
+      as: "span",
+      className: "inline-block",
+      delayMs: resolveDelayMs(keyPath, sectionMotion),
+    },
+    textValue
+  );
+};
+
+const renderNode = (node, merged, sectionMotion, key = "root") => {
+  if (!node || typeof node !== "object") return null;
+  const style = buildNodeStyle(node, merged, sectionMotion, key);
+  const className = buildNodeClassName(node, sectionMotion) || undefined;
+  const href = node?.hrefProp ? String(merged?.[node.hrefProp] || "").trim() : "";
+  if (node.type === "icon_font") {
+    const Icon = node?.iconName ? ICONS[node.iconName] : null;
+    if (Icon) {
+      return React.createElement(Icon, {
+        key,
+        className,
+        style,
+        "data-pen-node": node.id || undefined,
+      });
+    }
+    return React.createElement(
+      "span",
+      {
+        key,
+        className,
+        style,
+        "data-pen-node": node.id || undefined,
+      },
+      String(node?.iconGlyph || "")
+    );
+  }
+  if (node.type === "text") {
+    const Tag = href ? "a" : "div";
+    return React.createElement(
+      Tag,
+      {
+        key,
+        href: href || undefined,
+        className,
+        style,
+        "data-pen-node": node.id || undefined,
+      },
+      renderTextContent(node, merged, key, sectionMotion)
+    );
+  }
+  const Tag = href ? "a" : "div";
+  return React.createElement(
+    Tag,
+    {
+      key,
+      href: href || undefined,
+      className,
+      style,
+      "data-pen-node": node.id || undefined,
+    },
+    ...(Array.isArray(node.children)
+      ? node.children.map((child, index) => renderNode(child, merged, sectionMotion, `${key}-${index}`))
+      : [])
+  );
+};
+
+export default function TemplateExclusiveUnistellarHomeAboutStoryTeamandvaluespenAlt4({ id, teameyebrowtext, teamheadtext, teamintrotext, teamcardlabeltext, teamcardtitletext, teamcardbodytext, teamimageimagesrc, valuestitletext, val1ttext, val1dtext, val2ttext, val2dtext, val3ttext, val3dtext, quotelabeltext, quotetexttext, ...rest }) {
+  const providerMotionMode = useMotionMode();
+  const merged = assignDefined({ ...DEFAULT_PROPS }, { id, teameyebrowtext, teamheadtext, teamintrotext, teamcardlabeltext, teamcardtitletext, teamcardbodytext, teamimageimagesrc, valuestitletext, val1ttext, val1dtext, val2ttext, val2dtext, val3ttext, val3dtext, quotelabeltext, quotetexttext });
+  assignDefined(merged, rest);
+  const effectiveMotionMode = resolveMotionMode(providerMotionMode, merged?.motionMode);
+  const sectionKindToken = String(SECTION_KIND || "").trim().toLowerCase();
+  const sectionMotion = resolveSectionMotionProfile(sectionKindToken, effectiveMotionMode);
+  const reveal = useInViewReveal({
+    preset: sectionMotion?.revealPreset === "fadeIn" ? "fadeIn" : "stagger",
+    once: true,
+    enabled: sectionMotion?.level !== "off",
+  });
+  const sectionClassName = sectionMotion?.level === "off"
+    ? "w-full"
+    : ["w-full", reveal.className].filter(Boolean).join(" ");
+  const sectionStyle = sectionMotion?.level === "off" ? undefined : reveal.style;
+  return React.createElement(
+    "section",
+    {
+      id: merged.id || DEFAULT_PROPS.id,
+      "data-pen-section-kind": SECTION_KIND,
+      className: sectionClassName,
+      style: sectionStyle,
+    },
+    ...(sectionMotion?.level !== "off"
+      ? [React.createElement("style", { key: "pen-motion-style" }, PEN_RUNTIME_MOTION_STYLE)]
+      : []),
+    renderNode(SECTION_TREE, merged, sectionMotion, "root")
+  );
+}

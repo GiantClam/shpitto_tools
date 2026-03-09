@@ -10,6 +10,8 @@ import { compileJIT } from "@/lib/runtime";
 import { MotionProvider } from "@/components/theme/motion";
 import { normalizePuckData } from "@/lib/design-system-enforcer";
 import { puckConfig } from "@/puck/config";
+import templateExclusiveCatalog from "../../../template-factory/library/template-exclusive-components.generated.json";
+import templateBlockCatalog from "../../../template-factory/library/template-block-catalog.generated.json";
 
 const DEFAULT_THEME_LIGHT = {
   background: "0 0% 100%",
@@ -47,6 +49,204 @@ const extractFontFamily = (value?: string) => {
   if (!first) return "";
   if (GENERIC_FONT_FAMILIES.has(first.toLowerCase())) return "";
   return first;
+};
+
+type TemplateExclusiveCatalogEntry = {
+  name?: string;
+  baseBlockType?: string;
+  blockType?: string;
+  baseType?: string;
+  defaultProps?: Record<string, unknown>;
+  templateExclusive?: {
+    baseBlockType?: string;
+  };
+};
+
+type TemplateBlockCatalogEntry = {
+  blockType?: string;
+  kind?: string;
+  props?: Record<string, unknown>;
+};
+
+const templateExclusiveComponents: TemplateExclusiveCatalogEntry[] = Array.isArray(templateExclusiveCatalog)
+  ? (templateExclusiveCatalog as TemplateExclusiveCatalogEntry[])
+  : Array.isArray((templateExclusiveCatalog as any)?.components)
+    ? ((templateExclusiveCatalog as any).components as TemplateExclusiveCatalogEntry[])
+    : [];
+
+const templateExclusiveByName = new Map(
+  templateExclusiveComponents
+    .filter((entry) => typeof entry?.name === "string" && entry.name.trim())
+    .map((entry) => [String(entry.name).trim(), entry] as const)
+);
+
+const templateBlockCatalogEntries: TemplateBlockCatalogEntry[] = Array.isArray(templateBlockCatalog)
+  ? (templateBlockCatalog as TemplateBlockCatalogEntry[])
+  : Array.isArray((templateBlockCatalog as any)?.entries)
+    ? ((templateBlockCatalog as any).entries as TemplateBlockCatalogEntry[])
+    : [];
+
+const templateBlockKindByType = new Map(
+  templateBlockCatalogEntries
+    .filter((entry) => typeof entry?.blockType === "string" && entry.blockType.trim())
+    .map((entry) => [String(entry.blockType).trim(), String(entry.kind || "").trim().toLowerCase()] as const)
+);
+
+const templateBlockPropsByType = new Map(
+  templateBlockCatalogEntries
+    .filter((entry) => typeof entry?.blockType === "string" && entry.blockType.trim())
+    .map((entry) => [String(entry.blockType).trim(), entry.props && typeof entry.props === "object" ? entry.props : {}] as const)
+);
+
+const kindToBaseBlockType = (kind: string) => {
+  switch (kind) {
+    case "navigation":
+    case "navbar":
+    case "header":
+      return "Navbar";
+    case "footer":
+      return "Footer";
+    case "cta":
+    case "lead":
+      return "LeadCaptureCTA";
+    case "socialproof":
+    case "social-proof":
+    case "testimonial":
+    case "testimonials":
+    case "review":
+    case "trust":
+      return "FeatureGrid";
+    case "hero":
+      return "HeroSplit";
+    case "faq":
+      return "FAQAccordion";
+    case "case":
+    case "casestudy":
+    case "case-study":
+      return "CaseStudies";
+    case "feature":
+    case "features":
+    case "story":
+    case "approach":
+    case "products":
+    case "showcase":
+      return "FeatureGrid";
+    default:
+      return "";
+  }
+};
+
+const inferBaseBlockTypeFromName = (type: string) => {
+  const token = String(type || "").toLowerCase();
+  if (/(navigation|navbar|header|navpen)/.test(token)) return "Navbar";
+  if (/(footer|copyright|legal)/.test(token)) return "Footer";
+  if (/(hero|banner|masthead)/.test(token)) return "HeroSplit";
+  if (/(cta|leadcapture|lead|contact)/.test(token)) return "LeadCaptureCTA";
+  if (/(socialproof|testimonial|review|trust)/.test(token)) return "TestimonialsGrid";
+  if (/(case|study)/.test(token)) return "CaseStudies";
+  if (/(faq|accordion)/.test(token)) return "FAQAccordion";
+  if (/(products|product|feature|features|story|approach|showcase)/.test(token)) return "FeatureGrid";
+  return "";
+};
+
+const synthesizeTemplateExclusiveRenderer = (
+  type: string,
+  components: Record<string, any>
+) => {
+  const entry = templateExclusiveByName.get(type);
+  const directBaseBlockType = String(
+    entry?.templateExclusive?.baseBlockType ||
+      entry?.baseBlockType ||
+      entry?.baseType ||
+      entry?.blockType ||
+      ""
+  ).trim();
+  const kindBaseBlockType = kindToBaseBlockType(templateBlockKindByType.get(type) || "");
+  const inferredBaseBlockType = inferBaseBlockTypeFromName(type);
+  const baseBlockType = [directBaseBlockType, kindBaseBlockType, inferredBaseBlockType].find((candidate) => {
+    const key = String(candidate || "").trim();
+    return key && components[key]?.render;
+  }) || "";
+  if (!baseBlockType) return null;
+  const base = components[baseBlockType];
+  if (!base?.render) return null;
+  return {
+    ...base,
+    __synthesizedBaseBlockType: baseBlockType,
+    defaultProps: {
+      ...(base?.defaultProps && typeof base.defaultProps === "object" ? base.defaultProps : {}),
+      ...(templateBlockPropsByType.get(type) ?? {}),
+      ...(entry?.defaultProps && typeof entry.defaultProps === "object" ? entry.defaultProps : {}),
+    },
+  };
+};
+
+const asRecord = (value: unknown): Record<string, any> =>
+  value && typeof value === "object" ? ({ ...(value as Record<string, any>) } as Record<string, any>) : {};
+
+const synthesizeNavLinks = (props: Record<string, any>) => {
+  const links = [];
+  for (let i = 1; i <= 8; i += 1) {
+    const label = String(props[`navl${i}text`] || "").trim();
+    const href = String(props[`navl${i}href`] || "").trim();
+    if (!label) continue;
+    links.push({ label, href: href || "/", variant: "link" });
+  }
+  return links;
+};
+
+const synthesizeFooterColumns = (props: Record<string, any>) => {
+  const toColumn = (text: string, href?: string) => {
+    const lines = String(text || "")
+      .split(/\n+/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+    if (!lines.length) return null;
+    const [title, ...labels] = lines;
+    const links = labels.length
+      ? labels.map((label) => ({ label, href: href || "/" }))
+      : [{ label: title, href: href || "/" }];
+    return { title, links };
+  };
+  const cols = [
+    toColumn(String(props.col1text || "")),
+    toColumn(String(props.col2text || ""), String(props.col2href || "/")),
+    toColumn(String(props.col3text || ""), String(props.col3href || "/")),
+    toColumn(String(props.col4text || ""), String(props.col4href || "/")),
+  ].filter(Boolean);
+  return cols.length ? cols : [{ title: "Pages", links: [{ label: "Home", href: "/" }] }];
+};
+
+const adaptSynthesizedProps = (baseBlockType: string, rawProps: unknown) => {
+  const props = asRecord(rawProps);
+  if (baseBlockType === "Navbar") {
+    if (!Array.isArray(props.links)) props.links = synthesizeNavLinks(props);
+    if (!Array.isArray(props.ctas)) {
+      const label = String(props.ctatexttext || props.ctalabel || "Contact").trim() || "Contact";
+      const href = String(props.ctahref || "/").trim() || "/";
+      props.ctas = [{ label, href, variant: "primary" }];
+    }
+  } else if (baseBlockType === "Footer") {
+    if (!Array.isArray(props.columns)) props.columns = synthesizeFooterColumns(props);
+    if (!Array.isArray(props.socials)) props.socials = [];
+  } else if (baseBlockType === "FeatureGrid") {
+    if (!Array.isArray(props.items)) props.items = [];
+  } else if (baseBlockType === "TestimonialsGrid") {
+    if (!Array.isArray(props.items)) props.items = [];
+  } else if (baseBlockType === "LeadCaptureCTA") {
+    if (!props.cta || typeof props.cta !== "object") {
+      const label = String(props.ctatexttext || props.ctabtnprimarytext || "Contact").trim() || "Contact";
+      const href = String(props.ctahref || props.ctabtnprimaryhref || "/").trim() || "/";
+      props.cta = { label, href, variant: "primary" };
+    }
+  } else if (baseBlockType === "HeroSplit") {
+    if (!Array.isArray(props.ctas)) {
+      const label = String(props.ordertxttext || props.ctatexttext || "Learn More").trim() || "Learn More";
+      const href = String(props.orderbtnhref || props.ctahref || "/").trim() || "/";
+      props.ctas = [{ label, href, variant: "primary" }];
+    }
+  }
+  return props;
 };
 
 const hexToHsl = (hex?: string) => {
@@ -103,8 +303,15 @@ const lightnessFromHslTriplet = (triplet: string) => {
   return Number.isFinite(lightness) ? lightness : 50;
 };
 
-const buildGoogleFontsImport = (fontHeading: string, fontBody: string) => {
-  const families = Array.from(new Set([extractFontFamily(fontHeading), extractFontFamily(fontBody)].filter(Boolean)));
+const buildGoogleFontsImport = (fontHeading: string, fontBody: string, fontFamilies?: unknown) => {
+  const extraFamilies = Array.isArray(fontFamilies)
+    ? fontFamilies
+        .map((value) => (typeof value === "string" ? extractFontFamily(value) : ""))
+        .filter(Boolean)
+    : [];
+  const families = Array.from(
+    new Set([extractFontFamily(fontHeading), extractFontFamily(fontBody), ...extraFamilies].filter(Boolean))
+  );
   if (!families.length) return "";
   const query = families
     .map((family) => `family=${encodeURIComponent(family).replace(/%20/g, "+")}:wght@300;400;500;600;700;800`)
@@ -132,7 +339,7 @@ const buildThemeCss = (theme?: Record<string, any>) => {
   const radius = theme?.radius || "14px";
   const fontHeading = theme?.fontHeading || "Inter";
   const fontBody = theme?.fontBody || "Inter";
-  const fontImport = buildGoogleFontsImport(fontHeading, fontBody);
+  const fontImport = buildGoogleFontsImport(fontHeading, fontBody, theme?.fontFamilies);
   return `${fontImport}:root{--background:${background};--foreground:${foreground};--muted:${muted};--muted-foreground:${mutedForeground};--border:${border};--primary:${primary};--primary-foreground:${primaryForeground};--accent:${accent};--accent-foreground:${accentForeground};--card:${card};--radius:${radius};--font-heading:${fontHeading};--font-body:${fontBody};--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;}body{background:hsl(var(--background));color:hsl(var(--foreground));font-family:var(--font-body),ui-sans-serif,system-ui;} .font-heading{font-family:var(--font-heading),var(--font-body),ui-serif,serif;} .font-body{font-family:var(--font-body),ui-sans-serif,system-ui;}`;
 };
 
@@ -468,15 +675,40 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
         )
       );
       const missingTypes = requiredTypes.filter((type) => !(nextConfig.components as Record<string, unknown>)[type]);
+      const synthesizedTypes: string[] = [];
       missingTypes.forEach((type) => {
+        const synthesized = synthesizeTemplateExclusiveRenderer(
+          type,
+          nextConfig.components as Record<string, any>
+        );
+        if (!synthesized) return;
+        const sourceRender = synthesized.render as React.ComponentType<any> | undefined;
+        if (!sourceRender) return;
+        const synthesizedBaseBlockType = String(
+          (synthesized as Record<string, unknown>).__synthesizedBaseBlockType || ""
+        ).trim();
+        const WrappedSynthesized: React.FC<any> = (props) => (
+          <BlockErrorBoundary blockName={type}>
+            {React.createElement(sourceRender, adaptSynthesizedProps(synthesizedBaseBlockType, props))}
+          </BlockErrorBoundary>
+        );
+        WrappedSynthesized.displayName = `WrappedSynth_${type}`;
+        (nextConfig.components as Record<string, any>)[type] = {
+          ...synthesized,
+          render: WrappedSynthesized,
+        };
+        synthesizedTypes.push(type);
+      });
+      const unresolvedMissingTypes = missingTypes.filter((type) => !synthesizedTypes.includes(type));
+      unresolvedMissingTypes.forEach((type) => {
         (nextConfig.components as Record<string, any>)[type] = {
           render: createMissingBlockComponent(type),
           fields: {},
           defaultProps: { id: `${type}-missing`, anchor: `${type}-missing` },
         };
       });
-      if (missingTypes.length) {
-        failures.push(...missingTypes.map((type) => `${type}:missing_renderer`));
+      if (unresolvedMissingTypes.length) {
+        failures.push(...unresolvedMissingTypes.map((type) => `${type}:missing_renderer`));
       }
 
       if (failures.length) {

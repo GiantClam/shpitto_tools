@@ -1,13 +1,16 @@
-export const architectSystemPrompt = `你是一个拥有 10 年经验的 UI/UX 架构师，擅长从模糊需求中规划网站结构与视觉策略。
-基于用户需求产出结构化网站蓝图（多页面），不要输出解释文本，只返回 JSON（不要使用 Markdown 或代码块）。
-注意：只输出 theme + pages + sections，不输出任何代码。并提供 themeContract 约束主题一致性与可控突破。
-优先包含产品类强表现力模块（例如 ProductCatalog / ProductComparison / SpecsTable / BundleGrid / Filters），并给出 layoutHint。
-必须输出 designNorthStar（结构化设计北极星），并确保行业与产品与用户需求一致，禁止跨行业内容。
-designNorthStar 的所有内容必须根据用户输入动态推断与生成，禁止照搬示例或硬编码特定行业/品类。
-全局基调色必须从用户提供的信息中提取或推断（行业/风格/品牌描述），不允许套用预置默认调色板；若用户未明确颜色，基于行业与 styleDNA 推断，避免默认黑底。
-主题色禁止输出具体 RGB/hex，必须通过 paletteRef 的数字索引表达。
-themeContract.tokens 只能使用语义 token（如 primary/accent/background/foreground），禁止输出具体 RGB/hex。
-若需要统一对齐，请在 themeContract.layoutRules.sectionAlignOverrides 中声明（按 Section 类型或 id）。`;
+export const architectSystemPrompt = `You are a senior UI/UX information architect.
+Generate a structured multi-page website blueprint from the user request.
+Output JSON only (no markdown, no explanation text, no code blocks).
+Only output: designNorthStar + theme + pages + sections. Do not output code.
+You must also output themeContract to enforce site-wide consistency with controlled variation.
+Prefer high-value product storytelling modules (ProductCatalog / ProductComparison / SpecsTable / BundleGrid / Filters) and include layoutHint where relevant.
+designNorthStar must be fully inferred from the user input and must stay in-domain with the requested industry/product.
+Never hardcode unrelated industries or copy static examples.
+If the user references a template or source site, treat it only as layout and style inspiration; never inherit source-domain nouns, product categories, or brand semantics when they conflict with the requested business.
+Theme colors must be inferred from user intent (industry/style/brand clues). Avoid default palettes and avoid default black backgrounds unless justified.
+Do not output literal RGB/HEX in theme decisions. Use paletteRef indexes and semantic tokens.
+themeContract.tokens must stay semantic (primary/accent/background/foreground etc.).
+If alignment overrides are needed, declare them in themeContract.layoutRules.sectionAlignOverrides (by section type or id).`;
 
 const compositionPresetCatalog = `# Composition Preset IDs (pick ONE per section)
 Hero: H01 (split showcase), H02 (image-led), H03 (centered)
@@ -30,7 +33,7 @@ Case Study: CS01 (story split)
 Contact: CT01 (form + info), MP01 (map + details), FRM01 (detailed form)
 Footer: FT01 (footer columns)`;
 
-const magicComponentApiGuide = `# Magic UI Component APIs (必须遵守)
+const magicComponentApiGuide = `# Magic UI Component APIs (must follow)
 - SceneSwitcher: <SceneSwitcher items={[{ id?: string, title: string, description?: string, image?: string, eyebrow?: string }]} variant="auto|tabs|carousel" />
   - items 必须使用 title/description/image 字段，禁止 label/content 作为主字段。
 - ComparisonSlider: <ComparisonSlider beforeSrc="..." afterSrc="..." beforeAlt="..." afterAlt="..." className="..." />
@@ -126,8 +129,8 @@ export const architectOutputSchema = `{
         {
           "id": "hero",
           "type": "Hero",
-          "intent": "展示核心价值，必须震撼",
-          "propsHints": { "ctaLabel": "立即开始", "imageStyle": "产品截图" },
+          "intent": "Show core value proposition with high impact",
+          "propsHints": { "ctaLabel": "Get Started", "imageStyle": "product photography" },
           "layoutHint": {
             "structure": "dual",
             "density": "spacious",
@@ -242,9 +245,15 @@ const buildBrandConsistencyBrief = (prompt: string, designNorthStar: unknown, th
 };
 
 export function buildArchitectUserPrompt(prompt: string, manifest: unknown) {
+  const normalizedPrompt = String(prompt || "");
+  const explicitChinese = /(中文|简体|繁體|繁体|chinese|mandarin)/i.test(normalizedPrompt);
+  const explicitEnglish = /(英文|english|en-us|en\b)/i.test(normalizedPrompt);
+  const outputLanguage = explicitChinese && !explicitEnglish ? "zh-CN" : "en-US";
   return `用户需求：${prompt}
 
 可用组件清单（精简，仅名称/导入路径）：\n${JSON.stringify(buildCompactManifest(manifest), null, 2)}\n\n${compositionPresetCatalog}\n
+输出语言要求：${outputLanguage}。除非用户明确要求中文，否则所有页面名称、标题、正文、按钮文案必须使用英文。
+
 输出必须是以下 JSON 结构：\n${architectOutputSchema}`;
 }
 
@@ -412,6 +421,10 @@ export function buildBuilderUserPrompt(options: BuilderPromptOptions) {
   const brandBrief = buildBrandConsistencyBrief(prompt, designNorthStar, theme);
   const includeAssetPromptPack = shouldIncludeAssetPromptPack(section);
   const magicImportHints = buildMagicImportHints(manifest);
+  const normalizedPrompt = String(prompt || "");
+  const explicitChinese = /(中文|简体|繁體|繁体|chinese|mandarin)/i.test(normalizedPrompt);
+  const explicitEnglish = /(英文|english|en-us|en\b)/i.test(normalizedPrompt);
+  const outputLanguage = explicitChinese && !explicitEnglish ? "zh-CN" : "en-US";
   return `# Context\n品牌与一致性简报：\n${JSON.stringify(brandBrief, null, 2)}\n\n可用组件（名称）：\n${JSON.stringify(
     buildNameOnlyManifest(manifest),
     null,
@@ -456,7 +469,7 @@ export function buildBuilderUserPrompt(options: BuilderPromptOptions) {
     section,
     null,
     2
-  )}\n\n${sectionRules}# Task\n只生成这个 section 的一个独立组件和对应 Puck block。\n\n# Layout Hint Mapping (必须使用)\n- structure: single | dual | triple | split\n  - single => \"grid grid-cols-1\"\n  - dual => \"grid grid-cols-1 xl:grid-cols-12\"\n  - triple => \"grid grid-cols-1 xl:grid-cols-12\"\n  - split => \"grid grid-cols-1 xl:grid-cols-12\"\n- density: compact | normal | spacious\n  - compact => \"gap-4\"\n  - normal => \"gap-6\"\n  - spacious => \"gap-8\"\n- align: start | center\n  - start => \"items-start\"\n  - center => \"items-center\"\n- list: cards | tiles | rows\n  - cards/tiles => \"grid\" + \"gap-6\" and responsive columns\n  - rows => \"space-y-4\"\n\n# Strict Constraints\n1. 必须使用 shadcn/ui 与 Magic UI 组件，不要使用原生 HTML 标签作为布局组件（允许最外层 Fragment）。\n2. 组件导出 default React 组件，并 export const config = { fields, defaultProps }。\n3. 文案、图片 URL、列表数据必须提升为 props。\n4. Hero/主标题必须使用 <TextReveal>，深色 hero 必须包含 <Particles>。\n5. Tailwind 负责布局与视觉，避免内联样式。\n6. 组件命名唯一、语义化，确保 block.type === component.name。\n7. 所有 list render（map）必须显式添加唯一 key。
+  )}\n\n输出语言要求：${outputLanguage}。除非用户明确要求中文，否则标题、正文、按钮、标签必须为英文。\n\n${sectionRules}# Task\n只生成这个 section 的一个独立组件和对应 Puck block。\n\n# Layout Hint Mapping (必须使用)\n- structure: single | dual | triple | split\n  - single => \"grid grid-cols-1\"\n  - dual => \"grid grid-cols-1 xl:grid-cols-12\"\n  - triple => \"grid grid-cols-1 xl:grid-cols-12\"\n  - split => \"grid grid-cols-1 xl:grid-cols-12\"\n- density: compact | normal | spacious\n  - compact => \"gap-4\"\n  - normal => \"gap-6\"\n  - spacious => \"gap-8\"\n- align: start | center\n  - start => \"items-start\"\n  - center => \"items-center\"\n- list: cards | tiles | rows\n  - cards/tiles => \"grid\" + \"gap-6\" and responsive columns\n  - rows => \"space-y-4\"\n\n# Strict Constraints\n1. 必须使用 shadcn/ui 与 Magic UI 组件，不要使用原生 HTML 标签作为布局组件（允许最外层 Fragment）。\n2. 组件导出 default React 组件，并 export const config = { fields, defaultProps }。\n3. 文案、图片 URL、列表数据必须提升为 props。\n4. Hero/主标题必须使用 <TextReveal>，深色 hero 必须包含 <Particles>。\n5. Tailwind 负责布局与视觉，避免内联样式。\n6. 组件命名唯一、语义化，确保 block.type === component.name。\n7. 所有 list render（map）必须显式添加唯一 key。
 8. 默认严格遵守 themeContract（字体/颜色/布局/动效），只有在 breakoutBudget 允许的 section 才能突破。
 9. 文案风格必须匹配 themeContract.voice。
 10. 必须优先使用 Theme Class Map 与 Motion Presets；className 与动效参数来自映射，不要自创风格。
@@ -493,6 +506,10 @@ export function buildBuilderCompactUserPrompt(options: BuilderPromptOptions) {
   const sectionRules = buildSectionQualityRules(section);
   const brandBrief = buildBrandConsistencyBrief(prompt, designNorthStar, theme);
   const magicImportHints = buildMagicImportHints(manifest);
+  const normalizedPrompt = String(prompt || "");
+  const explicitChinese = /(中文|简体|繁體|繁体|chinese|mandarin)/i.test(normalizedPrompt);
+  const explicitEnglish = /(英文|english|en-us|en\b)/i.test(normalizedPrompt);
+  const outputLanguage = explicitChinese && !explicitEnglish ? "zh-CN" : "en-US";
   return `# Compact Tool Context
 你必须调用工具 builder_section，并返回严格 JSON（component + block）。
 
@@ -511,6 +528,8 @@ ${magicComponentApiGuide}
 页面：${JSON.stringify(page, null, 2)}
 
 Section（序号 ${sectionIndex + 1}）：${JSON.stringify(section, null, 2)}
+
+输出语言要求：${outputLanguage}。除非用户明确要求中文，否则标题、正文、按钮、标签必须为英文。
 
 Theme Shell（必须使用）：
 - sectionPadding: ${String((themeClassMap as any)?.sectionPadding ?? "")}

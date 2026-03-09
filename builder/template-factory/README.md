@@ -1,81 +1,61 @@
-# Template Factory (MVP)
+# Template Factory (Pen First)
 
-Automated pipeline for producing reusable style templates from batch site inputs.
+Pen-first pipeline for producing reusable style templates from reviewed `.pen` files.
 
 ## What it does
 
-1. Ingests batch `URL + optional screenshots` from a manifest (`.json` or `.csv`).
-2. Captures desktop/mobile full-page screenshots (`npx playwright screenshot`).
-3. Extracts `index-card` and `spec-pack` per site.
-4. Compiles templates into `StyleProfile` JSON.
+1. Reads a reviewed `.pen` file.
+2. Uses Pencil desktop MCP to export structured payload from the `.pen`.
+3. Converts exported pages/sections into `StyleProfile` JSON.
+4. Materializes any payload custom components into `src/components/blocks/*`.
 5. Publishes merged library to `template-factory/library/style-profiles.generated.json`.
-6. Automatically runs `C_template_first` regression (`sandbox`) after publish, writes a scorecard, and emits preview links.
 
-## Manifest formats
+## Supported modes
 
-### JSON
+- `pen-review`: write or update review state for a `.pen`
+- `template-from-pen` / `template-publish --pen-file ...`: generate template library from an approved `.pen`
 
-`template-factory/sites.example.json`
-
-Optional per-site template override rules:
-
-- `specialRules.templateBlockVariants`: section-level block override for all pages.
-- `specialRules.pageTemplateBlockVariants`: page-path level block override.
-
-Rule shape supports:
-
-- `"<sectionKind>": "BlockType"` (block-only)
-- `"<sectionKind>": { "blockType": "BlockType", ...defaultsPatch }`
-- `"<sectionKind>": { "defaults": { ...defaultsPatch } }`
-- `"<sectionKind>": [ ...variantCandidates ]` (first candidate applied, others exported as template-exclusive candidates)
-
-### CSV
-
-Required headers:
-
-`id,url,description,prompt,desktop_screenshot,mobile_screenshot`
-
-`desktop_screenshot` and `mobile_screenshot` are optional.
+Older URL/crawl/pen-build modes are no longer part of the active workflow.
 
 ## Run
 
-```bash
-cd builder
-npm run template:factory -- --manifest template-factory/sites.example.json --groups C_template_first --renderer sandbox
-```
-
 Useful flags:
 
-- `--skip-ingest`: skip auto screenshot stage
-- `--no-publish`: write run artifacts only, do not merge into shared library
-- `--max-cases 5`: limit regression cases
-- `--preview-base-url http://127.0.0.1:3110`: rebase generated preview links to this origin
-- `--no-preview-server`: do not auto-start preview server for generated links
-- `--strict-required-cases-policy warn|fail|ignore`: strict 模式下 requiredCases 为空时的门禁策略
-- `--no-template-exclusive-blocks`: disable generation of template-exclusive block variants/components
-- `--max-discovered-pages 24`: site page discovery upper bound
-- `--max-nav-links 8`: max links generated for navigation block defaults
-- `--must-include-patterns \"products,blog,/zh-cn\\/.*\"`: force include pages matching pattern(s)
-- `--required-pages-per-site 4`: strict mode required key pages selected per site
-- `--strict-avg-similarity-min 85`: strict mode minimum site-level average similarity
-- `--strict-page-similarity-min 78`: strict mode minimum required-page similarity
-- `--fidelity-structure-weight 0.2`: weight of structure similarity in combined score
-- `--pipeline-parallel --pipeline-parallel-concurrency 3`: full-flow site worker pool concurrency
-- `--screenshot-concurrency 2 --screenshot-timeout-ms 90000`: screenshot stage concurrency and timeout
-- `--crawl-concurrency 2 --crawl-timeout-ms 20000`: crawl stage concurrency and request timeout
-- `--regression-concurrency 3`: regression stage concurrency (also controls preview port pool)
-- `--site-retry-count 1 --site-retry-delay-ms 1500 --site-circuit-breaker-threshold 2`: per-site retry/backoff/circuit-breaker controls
+- `--mode pen-review|template-publish|template-from-pen`
+- `--pen-file <path>`: reviewed `.pen` file, pen bundle, or single-site `*.pen.source.json`
+- `--pen-review-file <path>`: 审核文件路径（默认与 pen 文件同目录自动推断）
+- `--pen-review-status pending|approved|rejected`: 写审核状态
+- `--no-publish`: only write run-scoped artifacts, do not merge into shared library
+- Pencil desktop MCP is read from `~/.claude.json` via `template-factory/pencil-export-payload.mjs`
+
+推荐两阶段流程（PEN -> 模板）:
+
+```bash
+# 1) 标记人工审核结果
+cd builder
+npm run template:factory -- \
+  --mode pen-review \
+  --pen-file template-factory/runs/manual/pen/unistellar-home.pen \
+  --pen-review-file template-factory/runs/manual/pen-review.manual.json \
+  --pen-review-status approved
+
+# 2) 基于已审核 PEN 发布模板资产
+npm run template:factory -- \
+  --mode template-from-pen \
+  --run-id tf-unistellar-template-from-pen \
+  --pen-file template-factory/runs/manual/pen/unistellar-home.pen \
+  --pen-review-file template-factory/runs/manual/pen-review.manual.json
+```
 
 ## Outputs
 
 - Run artifacts: `template-factory/runs/<run-id>/`
+- Exported pen payloads: `template-factory/runs/<run-id>/pen-export/<site-id>/`
+- Run-scoped style library: `template-factory/runs/<run-id>/style-profiles.generated.json`
+- Pen review file: custom `--pen-review-file`
 - Published library: `template-factory/library/style-profiles.generated.json`
-- Preview links: `template-factory/runs/<run-id>/preview-links.json`
-- Gate report: `template-factory/runs/<run-id>/gate-report.json`
-- Template-exclusive components: `template-factory/runs/<run-id>/template-exclusive-components.json`
-- Per-site link report: `template-factory/runs/<run-id>/sites/<site-id>/extracted/link-report.json`
-- Regression report: `builder/regression/strategy-comparison/compare-*.json`
-- Regression screenshots: `builder/regression/strategy-comparison/screenshots/<group>/`
+- Publish summary: `template-factory/runs/<run-id>/pen-publish-summary.json`
+- Materialized component manifest: `template-factory/runs/<run-id>/materialized-components.json`
 
 ## Integration
 

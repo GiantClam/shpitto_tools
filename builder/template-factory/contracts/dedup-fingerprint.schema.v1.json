@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Corporate Template Dedup Fingerprint v1",
+  "type": "object",
+  "required": [
+    "protocolVersion",
+    "domain",
+    "fingerprints"
+  ],
+  "properties": {
+    "protocolVersion": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string",
+      "const": "corporate"
+    },
+    "fingerprints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "templateId",
+          "pageType",
+          "skeleton",
+          "structureFingerprint",
+          "layoutFingerprint"
+        ],
+        "properties": {
+          "templateId": { "type": "string" },
+          "pagePath": { "type": "string" },
+          "pageType": { "type": "string" },
+          "skeleton": { "type": "string" },
+          "structureFingerprint": { "type": "string" },
+          "layoutFingerprint": { "type": "string" },
+          "visualFingerprint": { "type": "string" }
+        }
+      }
+    }
+  }
+}

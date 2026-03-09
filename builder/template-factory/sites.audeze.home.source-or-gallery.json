@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "sites": [
+    {
+      "id": "audeze-home",
+      "url": "https://www.audeze.com/",
+      "description": "Audeze home-only with source-or-gallery fill",
+      "prompt": "Generate a high-fidelity home page template for Audeze.",
+      "crawlSite": true,
+      "crawlMaxPages": 24,
+      "crawlMaxDepth": 2,
+      "imageSourcePolicy": "source_or_gallery",
+      "disableScreenshotImages": true,
+      "specialRules": {
+        "imageIndependentTemplate": true,
+        "imageFillPolicy": "source_or_gallery"
+      }
+    }
+  ]
+}

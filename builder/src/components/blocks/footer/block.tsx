@@ -22,6 +22,9 @@ export type FooterProps = BaseBlockProps & {
   columns: FooterColumn[];
   socials?: { type: "x" | "github" | "linkedin" | "youtube" | "facebook" | "instagram"; href: string }[];
   legal?: string;
+  surfaceTone?: "default" | "dark";
+  referenceSliceMode?: boolean;
+  referenceSliceMinHeight?: number;
 };
 
 export type FooterVariant = "simple" | "multiColumn";
@@ -43,6 +46,9 @@ export function FooterBlock({
   columns,
   socials,
   legal,
+  surfaceTone = "default",
+  referenceSliceMode = false,
+  referenceSliceMinHeight,
   headingFont,
   bodyFont,
   variant = "multiColumn",
@@ -66,6 +72,21 @@ export function FooterBlock({
   const hasBackgroundVideo = Boolean(backgroundVideo?.src);
   const headingStyle = headingFont ? { fontFamily: headingFont } : undefined;
   const bodyStyle = bodyFont ? { fontFamily: bodyFont } : undefined;
+  const isDarkSurface = surfaceTone === "dark";
+  const headingTextClass = isDarkSurface ? "text-zinc-100" : "text-foreground";
+  const mutedTextClass = isDarkSurface ? "text-zinc-300" : "text-muted-foreground";
+  const explicitReferenceSliceMinHeight = Math.round(Number(referenceSliceMinHeight) || 0);
+  const fallbackReferenceSliceHeight = referenceSliceMode &&
+    background === "image" &&
+    backgroundMedia?.kind === "image" &&
+    backgroundMedia?.src
+      ? 300
+      : 0;
+  const referenceSliceHeight = Math.max(explicitReferenceSliceMinHeight, fallbackReferenceSliceHeight);
+  const referenceSliceStyle =
+    referenceSliceHeight > 0
+      ? { minHeight: `${Math.max(120, referenceSliceHeight)}px` }
+      : undefined;
   return (
     <footer
       id={anchor}
@@ -74,9 +95,10 @@ export function FooterBlock({
       data-block-variant={variant}
       className={cn(
         footerClass({ paddingY, background }),
+        isDarkSurface ? "border-zinc-700/70 text-zinc-100" : "",
         hasBackgroundVideo ? "relative overflow-hidden" : ""
       )}
-      style={backgroundStyle}
+      style={{ ...backgroundStyle, ...(referenceSliceStyle || {}) }}
     >
       {hasBackgroundVideo ? (
         <video
@@ -107,20 +129,20 @@ export function FooterBlock({
             {logo ? (
               <img src={logo.src} alt={logo.alt} className="h-8 w-auto" />
             ) : (
-              <div className="text-base font-semibold" style={headingStyle}>
+              <div className={cn("text-base font-semibold", headingTextClass)} style={headingStyle}>
                 {logoText?.trim() || "Company"}
               </div>
             )}
             {socials?.length ? (
               <div
-                className="mt-4 flex flex-wrap text-sm text-muted-foreground"
+                className={cn("mt-4 flex flex-wrap text-sm", mutedTextClass)}
                 style={{ gap: "var(--space-2)", ...bodyStyle }}
               >
                 {socials.slice(0, 6).map((s, i) => (
                   <a
                     key={i}
                     href={s.href}
-                    className={cn("text-sm text-muted-foreground", linkClass, emphasisClass)}
+                    className={cn("text-sm", mutedTextClass, linkClass, emphasisClass)}
                     style={bodyStyle}
                   >
                     {labelForSocial(s.type)}
@@ -139,15 +161,15 @@ export function FooterBlock({
           >
             {columns.slice(0, 5).map((col, idx) => (
               <div key={idx}>
-                <div className="text-sm font-medium" style={headingStyle}>
+                <div className={cn("text-sm font-medium", headingTextClass)} style={headingStyle}>
                   {col.title}
                 </div>
-                <ul className="mt-4 text-sm text-muted-foreground space-y-2" style={bodyStyle}>
+                <ul className={cn("mt-4 space-y-2 text-sm", mutedTextClass)} style={bodyStyle}>
                   {col.links.slice(0, 10).map((l, j) => (
                     <li key={j}>
                       <a
                         href={l.href}
-                        className={cn("text-sm text-muted-foreground", linkClass, emphasisClass)}
+                        className={cn("text-sm", mutedTextClass, linkClass, emphasisClass)}
                         style={bodyStyle}
                       >
                         {l.label}
@@ -160,7 +182,13 @@ export function FooterBlock({
           </div>
         </div>
 
-        <div className="mt-10 border-t border-border pt-6 text-xs text-muted-foreground" style={bodyStyle}>
+        <div
+          className={cn(
+            "mt-10 border-t pt-6 text-xs",
+            isDarkSurface ? "border-zinc-700 text-zinc-400" : "border-border text-muted-foreground"
+          )}
+          style={bodyStyle}
+        >
           {legal ?? `© ${new Date().getFullYear()} All rights reserved.`}
         </div>
       </div>

@@ -20,6 +20,7 @@ export type HeroCenteredProps = BaseBlockProps & {
   eyebrow?: string;
   title: string;
   subtitle?: string;
+  body?: string;
   ctas: LinkProps[];
   media?: { kind: "image" | "video"; src: string; alt?: string };
   badges?: { text: string }[];
@@ -34,6 +35,7 @@ export function HeroCenteredBlock({
   ctas,
   title,
   subtitle,
+  body,
   eyebrow,
   media,
   badges,
@@ -74,7 +76,8 @@ export function HeroCenteredBlock({
       : headingSize === "lg"
       ? "text-5xl sm:text-6xl"
       : "text-4xl sm:text-5xl";
-  const headingEffect = emphasis === "high" ? "text-gradient" : "";
+  const headingEffect =
+    emphasis === "high" && String(background || "").trim().toLowerCase() !== "image" ? "text-gradient" : "";
   const bodyClass =
     bodySize === "sm" ? "text-sm sm:text-base" : bodySize === "lg" ? "text-lg sm:text-xl" : "text-base sm:text-lg";
 
@@ -128,6 +131,11 @@ export function HeroCenteredBlock({
           {subtitle ? (
             <p className={cn("mt-4 text-muted-foreground", bodyClass)} style={bodyStyle}>
               {subtitle}
+            </p>
+          ) : null}
+          {body ? (
+            <p className={cn("mt-4 text-muted-foreground", bodyClass)} style={bodyStyle}>
+              {body}
             </p>
           ) : null}
 

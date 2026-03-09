@@ -363,10 +363,27 @@ const generateConfigFile = async (components, root = "") => {
     return;
   }
 
-  const imports = active
+  const usedAliases = new Set();
+  const withAliases = active.map((component, index) => {
+    const baseAlias = toIdentifier(`${component.name}BlockModule`, `GeneratedBlockModule${index + 1}`);
+    let alias = baseAlias;
+    let nonce = 2;
+    while (usedAliases.has(alias)) {
+      alias = `${baseAlias}_${nonce}`;
+      nonce += 1;
+    }
+    usedAliases.add(alias);
+    return {
+      ...component,
+      moduleAlias: alias,
+      componentKeyLiteral: JSON.stringify(component.name),
+    };
+  });
+
+  const imports = withAliases
     .map(
       (c) =>
-        `import * as ${c.name}BlockModule from "@/components/blocks/${c.kebabName}/block";`
+        `import * as ${c.moduleAlias} from "@/components/blocks/${c.kebabName}/block";`
     )
     .join("\n");
 
@@ -394,16 +411,16 @@ const generateConfigFile = async (components, root = "") => {
 const renderBlock = (Block: React.ComponentType<any>) => (props: any) =>
   React.createElement(Block, props);`;
 
-  const registrations = active
+  const registrations = withAliases
     .map((c) => {
       const propsStr = JSON.stringify(c.defaultProps, null, 6)
         .split("\n")
         .map((line, i) => (i === 0 ? line : `      ${line}`))
         .join("\n");
-      return `    ${c.name}: {
+      return `    ${c.componentKeyLiteral}: {
       render: renderBlock(
         resolveBlockComponent(
-          ${c.name}BlockModule,
+          ${c.moduleAlias},
           "@/components/blocks/${c.kebabName}/block"
         )
       ),

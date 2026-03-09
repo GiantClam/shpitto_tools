@@ -30,7 +30,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node --max-old-space-size=8192 ./node_modules/next/dist/bin/next build",
     "start": "next start",
     "regression:creation": "node regression/run-creation-baseline.mjs",
     "regression:strategy": "node regression/run-strategy-comparison.mjs",
