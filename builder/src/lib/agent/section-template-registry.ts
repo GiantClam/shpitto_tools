@@ -516,6 +516,7 @@ type ExternalLibraryPayload = {
   profiles?: unknown[];
   templateExclusiveComponents?: unknown[];
   templateBlockCatalog?: unknown[];
+  templateGenerationContracts?: unknown[];
 };
 
 type EditableFieldType = "text" | "image" | "link" | "style" | "number" | "boolean";
@@ -543,6 +544,36 @@ type PublishedBlockCatalogEntry = {
   baseBlockType?: string;
   sourceDomain?: string;
   qualityScore?: number;
+};
+
+export type PublishedSectionGenerationContract = {
+  kind: SectionKind;
+  blockType: string;
+  source: "profile" | "page";
+  editableFields: EditableFieldContract[];
+  baseBlockType?: string;
+  slotId?: string;
+  role?: string;
+  imageIntent?: string;
+};
+
+export type PublishedPageGenerationContract = {
+  path: string;
+  name: string;
+  pageType?: TemplatePageType;
+  requiredCategories: SectionKind[];
+  sections: PublishedSectionGenerationContract[];
+};
+
+type PublishedProfileGenerationContract = {
+  profileId: string;
+  name: string;
+  sourceDomain?: string;
+  styleFamily?: string;
+  keywords?: string[];
+  qualityScore?: number;
+  shared?: Partial<Record<"navigation" | "footer", PublishedSectionGenerationContract>>;
+  pages: PublishedPageGenerationContract[];
 };
 
 const defaultExternalLibraryPath = path.join(
@@ -586,6 +617,22 @@ const resolveTemplateBlockCatalogPath = () => {
   if (!configured) {
     const sibling = path.join(path.dirname(resolveExternalLibraryPath()), "template-block-catalog.generated.json");
     return fs.existsSync(sibling) ? sibling : defaultTemplateBlockCatalogPath;
+  }
+  return path.isAbsolute(configured) ? configured : path.join(process.cwd(), configured);
+};
+
+const defaultTemplateGenerationContractsPath = path.join(
+  process.cwd(),
+  "template-factory",
+  "library",
+  "template-generation-contracts.generated.json"
+);
+
+const resolveTemplateGenerationContractsPath = () => {
+  const configured = process.env.BUILDER_TEMPLATE_GENERATION_CONTRACTS_PATH?.trim();
+  if (!configured) {
+    const sibling = path.join(path.dirname(resolveExternalLibraryPath()), "template-generation-contracts.generated.json");
+    return fs.existsSync(sibling) ? sibling : defaultTemplateGenerationContractsPath;
   }
   return path.isAbsolute(configured) ? configured : path.join(process.cwd(), configured);
 };
@@ -713,6 +760,107 @@ const validatePublishedBlockCatalogEntry = (value: unknown): PublishedBlockCatal
   };
 };
 
+const validatePublishedSectionGenerationContract = (value: unknown): PublishedSectionGenerationContract | null => {
+  if (!isRecord(value)) return null;
+  const kind = normalizeSectionKindToken(value.kind);
+  const blockType = typeof value.blockType === "string" ? value.blockType.trim() : "";
+  const sourceToken = String(value.source || "").trim().toLowerCase();
+  const source = sourceToken === "page" || sourceToken === "profile" ? sourceToken : "";
+  if (!kind || !blockType || !source) return null;
+  const editableFields = Array.isArray(value.editableFields)
+    ? value.editableFields.map((entry) => validateEditableField(entry)).filter((entry): entry is EditableFieldContract => Boolean(entry))
+    : [];
+  const baseBlockType = typeof value.baseBlockType === "string" && value.baseBlockType.trim() ? value.baseBlockType.trim() : "";
+  const slotId = typeof value.slotId === "string" && value.slotId.trim() ? value.slotId.trim() : "";
+  const role = typeof value.role === "string" && value.role.trim() ? value.role.trim() : "";
+  const imageIntent = typeof value.imageIntent === "string" && value.imageIntent.trim() ? value.imageIntent.trim() : "";
+  return {
+    kind,
+    blockType,
+    source: source as "profile" | "page",
+    editableFields,
+    ...(baseBlockType ? { baseBlockType } : {}),
+    ...(slotId ? { slotId } : {}),
+    ...(role ? { role } : {}),
+    ...(imageIntent ? { imageIntent } : {}),
+  };
+};
+
+const validatePublishedPageGenerationContract = (value: unknown): PublishedPageGenerationContract | null => {
+  if (!isRecord(value)) return null;
+  const path = normalizeTemplatePagePath(value.path);
+  const name =
+    typeof value.name === "string" && value.name.trim()
+      ? value.name.trim()
+      : path === "/"
+        ? "Home"
+        : path
+            .split("/")
+            .filter(Boolean)
+            .pop()
+            ?.replace(/[-_]+/g, " ")
+            .replace(/\b\w/g, (ch) => ch.toUpperCase()) || "Page";
+  const sections = Array.isArray(value.sections)
+    ? value.sections
+        .map((entry) => validatePublishedSectionGenerationContract(entry))
+        .filter((entry): entry is PublishedSectionGenerationContract => Boolean(entry))
+    : [];
+  const requiredCategories = toRequiredCategories(value);
+  if (!requiredCategories.length && !sections.length) return null;
+  const pageType = normalizePageTypeToken(value.pageType ?? value.page_type) ?? inferTemplatePageType(path, name);
+  return {
+    path,
+    name,
+    ...(pageType ? { pageType } : {}),
+    requiredCategories: requiredCategories.length ? requiredCategories : sections.map((entry) => entry.kind),
+    sections,
+  };
+};
+
+const validatePublishedProfileGenerationContract = (value: unknown): PublishedProfileGenerationContract | null => {
+  if (!isRecord(value)) return null;
+  const profileId = typeof value.profileId === "string" ? value.profileId.trim() : "";
+  const name = typeof value.name === "string" ? value.name.trim() : "";
+  if (!profileId || !name) return null;
+  const pages = Array.isArray(value.pages)
+    ? value.pages
+        .map((entry) => validatePublishedPageGenerationContract(entry))
+        .filter((entry): entry is PublishedPageGenerationContract => Boolean(entry))
+    : [];
+  if (!pages.length) return null;
+  const sharedValue = isRecord(value.shared) ? value.shared : {};
+  const navigation = validatePublishedSectionGenerationContract(sharedValue.navigation);
+  const footer = validatePublishedSectionGenerationContract(sharedValue.footer);
+  const keywords = Array.isArray(value.keywords)
+    ? value.keywords.map((entry) => (typeof entry === "string" ? entry.trim() : "")).filter(Boolean)
+    : [];
+  const sourceDomain = normalizeDomain(value.sourceDomain ?? value.source_domain);
+  const styleFamily =
+    typeof value.styleFamily === "string" && value.styleFamily.trim()
+      ? value.styleFamily.trim()
+      : typeof value.style_family === "string" && value.style_family.trim()
+        ? value.style_family.trim()
+        : "";
+  const qualityScore = clampScore(value.qualityScore ?? value.quality_score);
+  return {
+    profileId,
+    name,
+    ...(sourceDomain ? { sourceDomain } : {}),
+    ...(styleFamily ? { styleFamily } : {}),
+    ...(keywords.length ? { keywords } : {}),
+    ...(qualityScore !== undefined ? { qualityScore } : {}),
+    ...((navigation || footer)
+      ? {
+          shared: {
+            ...(navigation ? { navigation } : {}),
+            ...(footer ? { footer } : {}),
+          },
+        }
+      : {}),
+    pages,
+  };
+};
+
 const loadExternalStyleProfiles = (): StyleProfile[] => {
   const filePath = resolveExternalLibraryPath();
   if (!fs.existsSync(filePath)) return [];
@@ -822,6 +970,44 @@ const loadPublishedBlockCatalogFromSidecar = (): PublishedBlockCatalogEntry[] =>
   }
 };
 
+const loadPublishedGenerationContractsFromLibrary = (): PublishedProfileGenerationContract[] => {
+  const filePath = resolveExternalLibraryPath();
+  if (!fs.existsSync(filePath)) return [];
+  try {
+    const raw = fs.readFileSync(filePath, "utf-8");
+    const parsed = JSON.parse(raw) as ExternalLibraryPayload | unknown[];
+    const candidates = Array.isArray(parsed)
+      ? []
+      : Array.isArray((parsed as ExternalLibraryPayload)?.templateGenerationContracts)
+        ? (parsed as ExternalLibraryPayload).templateGenerationContracts ?? []
+        : [];
+    return candidates
+      .map((entry) => validatePublishedProfileGenerationContract(entry))
+      .filter((entry): entry is PublishedProfileGenerationContract => Boolean(entry));
+  } catch {
+    return [];
+  }
+};
+
+const loadPublishedGenerationContractsFromSidecar = (): PublishedProfileGenerationContract[] => {
+  const filePath = resolveTemplateGenerationContractsPath();
+  if (!fs.existsSync(filePath)) return [];
+  try {
+    const raw = fs.readFileSync(filePath, "utf-8");
+    const parsed = JSON.parse(raw) as { contracts?: unknown[] } | unknown[];
+    const candidates = Array.isArray(parsed)
+      ? parsed
+      : Array.isArray((parsed as { contracts?: unknown[] })?.contracts)
+        ? (parsed as { contracts?: unknown[] }).contracts ?? []
+        : [];
+    return candidates
+      .map((entry) => validatePublishedProfileGenerationContract(entry))
+      .filter((entry): entry is PublishedProfileGenerationContract => Boolean(entry));
+  } catch {
+    return [];
+  }
+};
+
 const dedupeTemplateExclusiveContracts = (items: TemplateExclusiveComponentContract[]) => {
   const map = new Map<string, TemplateExclusiveComponentContract>();
   items.forEach((item) => {
@@ -845,6 +1031,16 @@ const dedupePublishedBlockCatalog = (items: PublishedBlockCatalogEntry[]) => {
     ].join("::");
     if (!map.has(key)) map.set(key, item);
   });
+  return Array.from(map.values());
+};
+
+const dedupePublishedGenerationContracts = (items: PublishedProfileGenerationContract[]) => {
+  const map = new Map<string, PublishedProfileGenerationContract>();
+  for (const item of items) {
+    const key = String(item.profileId || "").trim().toLowerCase();
+    if (!key) continue;
+    map.set(key, item);
+  }
   return Array.from(map.values());
 };
 
@@ -874,6 +1070,59 @@ const publishedBlockCatalogEntries = dedupePublishedBlockCatalog([
   ...loadPublishedBlockCatalogFromSidecar(),
   ...loadPublishedBlockCatalogFromLibrary(),
 ]);
+const fallbackPublishedGenerationContracts = styleProfiles.map((profile) => {
+  const toSectionContract = (
+    block: SectionTemplateBlock | undefined,
+    kind: SectionKind,
+    source: "profile" | "page"
+  ): PublishedSectionGenerationContract | null => {
+    if (!block?.type) return null;
+    return {
+      kind,
+      blockType: String(block.type).trim(),
+      source,
+      editableFields: collectEditableFieldsFromDefaults(block.props ?? {}),
+    };
+  };
+  const shared = {
+    ...(toSectionContract(profile.templates?.navigation, "navigation", "profile")
+      ? { navigation: toSectionContract(profile.templates?.navigation, "navigation", "profile")! }
+      : {}),
+    ...(toSectionContract(profile.templates?.footer, "footer", "profile")
+      ? { footer: toSectionContract(profile.templates?.footer, "footer", "profile")! }
+      : {}),
+  };
+  return {
+    profileId: profile.id,
+    name: profile.name,
+    ...(profile.sourceDomain ? { sourceDomain: profile.sourceDomain } : {}),
+    ...(profile.siteStyleShell?.styleFamily ? { styleFamily: profile.siteStyleShell.styleFamily } : {}),
+    ...(Array.isArray(profile.keywords) ? { keywords: profile.keywords } : {}),
+    ...(profile.qualityScore !== undefined ? { qualityScore: profile.qualityScore } : {}),
+    ...(Object.keys(shared).length ? { shared } : {}),
+    pages: (Array.isArray(profile.pageSpecs) ? profile.pageSpecs : []).map((page) => ({
+      path: normalizeTemplatePagePath(page.path),
+      name: page.name,
+      ...(page.pageType ? { pageType: page.pageType } : {}),
+      requiredCategories: Array.from(new Set(page.requiredCategories || [])),
+      sections: (page.requiredCategories || [])
+        .map((kind) => {
+          const pageBlock = page.templates?.[kind];
+          const profileBlock = profile.templates?.[kind];
+          return toSectionContract(pageBlock ?? profileBlock, kind, pageBlock ? "page" : "profile");
+        })
+        .filter((entry): entry is PublishedSectionGenerationContract => Boolean(entry)),
+    })),
+  };
+});
+const publishedGenerationContracts = dedupePublishedGenerationContracts([
+  ...loadPublishedGenerationContractsFromSidecar(),
+  ...loadPublishedGenerationContractsFromLibrary(),
+  ...fallbackPublishedGenerationContracts,
+]);
+const publishedGenerationContractByProfileId = new Map(
+  publishedGenerationContracts.map((contract) => [contract.profileId, contract])
+);
 
 const mergeEditableFieldContracts = (...lists: EditableFieldContract[][]): EditableFieldContract[] => {
   const map = new Map<string, EditableFieldContract>();
@@ -1162,6 +1411,34 @@ export const selectStyleProfile = (prompt: string): StyleProfile | null => {
   }
 
   return bestScore > 0 ? best : null;
+};
+
+export const resolvePublishedPageGenerationContract = (input: {
+  prompt: string;
+  pagePath?: string;
+  pageName?: string;
+}): {
+  profileId: string;
+  page: PublishedPageGenerationContract;
+  shared: Partial<Record<"navigation" | "footer", PublishedSectionGenerationContract>>;
+} | null => {
+  const profile = selectStyleProfile(input.prompt);
+  if (!profile) return null;
+  const contract = publishedGenerationContractByProfileId.get(profile.id);
+  if (!contract) return null;
+  const normalizedPagePath = normalizeTemplatePagePath(input.pagePath);
+  const targetPageType = inferTemplatePageType(normalizedPagePath, input.pageName ?? "");
+  const page =
+    contract.pages.find((entry) => normalizeTemplatePagePath(entry.path) === normalizedPagePath) ??
+    contract.pages.find((entry) => (entry.pageType ?? inferTemplatePageType(entry.path, entry.name)) === targetPageType) ??
+    contract.pages[0] ??
+    null;
+  if (!page) return null;
+  return {
+    profileId: profile.id,
+    page,
+    shared: contract.shared ?? {},
+  };
 };
 
 const getProfileStyleFamily = (profile: StyleProfile | null | undefined): string => {

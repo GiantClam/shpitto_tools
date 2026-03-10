@@ -16,6 +16,7 @@ import {
   buildBuilderUserPrompt,
 } from "@/lib/agent/prompts";
 import {
+  resolvePublishedPageGenerationContract,
   resolveSectionTemplateAsset,
   resolveSectionTemplateBlock,
   selectStyleProfile,
@@ -4556,6 +4557,83 @@ const buildDeterministicFallbackBlock = (
           },
         }
       : null;
+  const pageAwareCatalog =
+    cncIntent && !isZhPrompt
+      ? {
+          products: {
+            title: "Core Product Platforms",
+            subtitle: "Production-ready CNC platforms tuned for 3C machining, precision enclosures, and repeatable factory output.",
+            items: [
+              {
+                title: "5-Axis Machining Center",
+                description: "Rigid multi-axis machining for complex aluminum and magnesium parts with stable precision.",
+              },
+              {
+                title: "High-Speed Drilling & Tapping Center",
+                description: "Short-cycle drilling, tapping, and finishing for high-volume 3C components and shells.",
+              },
+              {
+                title: "Horizontal Machining Center",
+                description: "Reliable chip evacuation and spindle stability for continuous production workloads.",
+              },
+            ],
+          },
+          solutions: {
+            title: "Custom Solution Packages",
+            subtitle: "Integrated machine + tooling + automation packages built around takt time, fixture strategy, and downstream quality.",
+            items: [
+              {
+                title: "Phone Frame Machining Cell",
+                description: "Fixtures, spindle tuning, and loader integration configured for thin-wall aluminum frames.",
+              },
+              {
+                title: "Laptop Shell Production Line",
+                description: "High-speed drilling, tapping, deburring, and transfer automation for multi-process shell manufacturing.",
+              },
+              {
+                title: "Camera Bezel Finishing Package",
+                description: "Precision cutting and polishing-ready workflows for tight-tolerance cosmetic components.",
+              },
+            ],
+          },
+          industries: {
+            title: "Industries We Serve",
+            subtitle: "Factory-ready machine platforms tailored to the tolerance windows, materials, and throughput needs of each segment.",
+            items: [
+              {
+                title: "3C Electronics",
+                description: "High-speed machining for phone frames, laptop shells, camera bezels, and keypad components.",
+              },
+              {
+                title: "Automotive Components",
+                description: "Stable machining for housings, brackets, and precision structural parts under demanding cycle-time targets.",
+              },
+              {
+                title: "Aerospace & Precision Parts",
+                description: "Repeatable machining strategies for complex parts requiring high rigidity and process control.",
+              },
+            ],
+          },
+          cases: {
+            title: "Deployment Highlights",
+            subtitle: "Representative programs showing cycle-time gains, faster ramp-up, and consistent output quality.",
+            items: [
+              {
+                title: "Phone Display Frame Program",
+                description: "Reduced changeover friction while maintaining stable precision across high-mix frame variants.",
+              },
+              {
+                title: "Laptop Shell Production Upgrade",
+                description: "Improved takt-time consistency with integrated loading and optimized drilling/tapping sequences.",
+              },
+              {
+                title: "Camera Bezel Cell Retrofit",
+                description: "Lifted finish quality and throughput through spindle, fixture, and process refinements.",
+              },
+            ],
+          },
+        }
+      : null;
   const propsHints =
     context.section.propsHints && typeof context.section.propsHints === "object"
       ? (context.section.propsHints as Record<string, unknown>)
@@ -4625,22 +4703,24 @@ const buildDeterministicFallbackBlock = (
   }
 
   if (/product|catalog|bundle|comparison/.test(token)) {
+    const catalogCopy = pageAwareCatalog?.[pageKind as keyof typeof pageAwareCatalog];
     return {
       type: "CardsGrid",
       props: {
         id: idBase,
         anchor,
-        title: cncIntent && !isZhPrompt ? "Core Product Platforms" : "Product Lines",
+        title: catalogCopy?.title ?? (cncIntent && !isZhPrompt ? "Core Product Platforms" : "Product Lines"),
         subtitle:
-          cncIntent && !isZhPrompt
+          catalogCopy?.subtitle ??
+          (cncIntent && !isZhPrompt
             ? "Machine tools, spindle systems, and automation units configured for precision manufacturing."
-            : "Modular machines for cutting, finishing, and automated handling.",
+            : "Modular machines for cutting, finishing, and automated handling."),
         variant: "product",
         columns: "3col",
         density: "normal",
         cardStyle: "solid",
         maxWidth: "xl",
-        items: [
+        items: (catalogCopy?.items ?? [
           {
             title: "CNC Router Series",
             description: "High-speed milling with repeatable accuracy for industrial workloads.",
@@ -4656,7 +4736,10 @@ const buildDeterministicFallbackBlock = (
             description: "Integrated robotics and software control for end-to-end throughput.",
             cta: { label: "Details", href: "#", variant: "link" },
           },
-        ],
+        ]).map((item) => ({
+          ...item,
+          cta: { label: "Learn More", href: "#", variant: "link" as const },
+        })),
       },
     };
   }
@@ -5209,6 +5292,7 @@ const buildFinalSemanticReplacements = (prompt: string, designNorthStar?: Record
       { pattern: /\bexplorers?\b/gi, value: "manufacturing teams" },
       { pattern: /\bdiscovery\b/gi, value: "deployment" },
       { pattern: /\bdeep-sky\b/gi, value: "precision-process" },
+      { pattern: /\bmoon craters?\b/gi, value: "micron tolerances" },
       { pattern: /\bnebulae\b/gi, value: "fine details" },
       { pattern: /\bmachine vision\b/gi, value: "process automation" },
       { pattern: /\bcomputer vision\b/gi, value: "process control" },
@@ -5216,6 +5300,7 @@ const buildFinalSemanticReplacements = (prompt: string, designNorthStar?: Record
       { pattern: /\binspection systems?\b/gi, value: "machine platforms" },
       { pattern: /\bedge vision modules?\b/gi, value: "automation modules" },
       { pattern: /\borion\b/gi, value: "5-axis" },
+      { pattern: /\bandromeda\b/gi, value: "adaptive control" },
       { pattern: /\bnebula\b/gi, value: "precision" },
       { pattern: /\bgalax(?:y|ies)\b/gi, value: "production lines" },
       { pattern: /\bcosmos\b/gi, value: "factory operations" },
@@ -5246,6 +5331,7 @@ const buildFinalSemanticReplacements = (prompt: string, designNorthStar?: Record
       { pattern: /\bjpl\b/gi, value: "Aerospace Manufacturers" },
       { pattern: /\bexplore telescopes\b/gi, value: "Explore Solutions" },
       { pattern: /\border yours\b/gi, value: "Request a Quote" },
+      { pattern: /\blive enhanced\b/gi, value: "real-time stabilized" },
       { pattern: /\blearn more\b/gi, value: "Learn More" }
     );
   }
@@ -5265,9 +5351,572 @@ const normalizeSanitizedText = (value: string) =>
     .replace(/\s{2,}/g, " ")
     .trim();
 
+type StructuredBrief = {
+  brand?: string;
+  nav?: string[];
+  heroTitle?: string;
+  heroSubtitle?: string;
+  heroCtas?: string[];
+  productItems?: string[];
+  featureItems?: string[];
+  caseItems?: string[];
+  aboutText?: string;
+  certifications?: string[];
+  footerLinks?: string[];
+  whatsapp?: string;
+  email?: string;
+  address?: string;
+  copyright?: string;
+  palette?: { primary: string; accent: string; bg: string; neutral: string; text: string; textSecondary: string };
+};
+
+const extractPromptBriefSection = (prompt: string, label: string) => {
+  const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const matched = String(prompt || "").match(new RegExp(`【${escaped}】([\\s\\S]*?)(?=\\n【|$)`, "i"));
+  return matched?.[1]?.trim() || "";
+};
+
+const parsePipeList = (value: string) =>
+  String(value || "")
+    .split("|")
+    .map((item) => item.replace(/^[\s-]+|[\s-]+$/g, "").trim())
+    .filter(Boolean);
+
+const parseBulletList = (value: string) =>
+  String(value || "")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => /^-\s+/.test(line))
+    .map((line) => line.replace(/^-\s+/, "").trim())
+    .filter(Boolean);
+
+const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
+  const header = extractPromptBriefSection(prompt, "Header");
+  const hero = extractPromptBriefSection(prompt, "Hero Section");
+  const productGrid = extractPromptBriefSection(prompt, "Product Grid");
+  const featureStrip = extractPromptBriefSection(prompt, "Features Strip");
+  const caseSlider = extractPromptBriefSection(prompt, "Case Slider");
+  const about = extractPromptBriefSection(prompt, "About");
+  const certification = extractPromptBriefSection(prompt, "Certification");
+  const footer = extractPromptBriefSection(prompt, "Footer");
+  if (!header && !hero && !productGrid && !featureStrip && !caseSlider && !about && !footer) return null;
+  const logo = header.match(/Logo\s*[:：]\s*(.+)/i)?.[1]?.trim() || "";
+  const nav = parsePipeList(header.match(/Nav\s*[:：]\s*(.+)/i)?.[1] || "");
+  const heroTitle = hero.match(/Title\s*[:：]\s*(.+)/i)?.[1]?.trim() || "";
+  const heroSubtitle = hero.match(/Sub\s*[:：]\s*(.+)/i)?.[1]?.trim() || "";
+  const heroCtas = parsePipeList(hero.match(/CTA\s*[:：]\s*(.+)/i)?.[1] || "");
+  const footerLinks = parsePipeList(footer.match(/Products\s*\|\s*Support\s*\|\s*Privacy\s*\|\s*Sitemap/i)?.[0] || "");
+  const whatsapp = footer.match(/WhatsApp\s*[:：]\s*([+0-9-]+)/i)?.[1]?.trim() || "";
+  const email = footer.match(/Email\s*[:：]\s*([^\s]+@[^\s]+)/i)?.[1]?.trim() || "";
+  const address = footer.match(/Address\s*[:：]\s*(.+)/i)?.[1]?.trim() || "";
+  const copyright = footer.match(/Copyright\s*©?\s*\d{4}.*$/im)?.[0]?.trim() || "";
+  return {
+    brand: logo || extractBrandNameFromPromptLite(prompt) || "Brand",
+    nav,
+    heroTitle,
+    heroSubtitle,
+    heroCtas,
+    productItems: parseBulletList(productGrid),
+    featureItems: parseBulletList(featureStrip),
+    caseItems: parsePipeList(caseSlider.match(/([A-Za-z0-9 -]+(?:\s*\|\s*[A-Za-z0-9 -]+)+)/)?.[1] || "") || parseBulletList(caseSlider),
+    aboutText: about.replace(/\s+/g, " ").trim(),
+    certifications: parsePipeList(certification.replace(/\n/g, " | ")),
+    footerLinks,
+    whatsapp,
+    email,
+    address,
+    copyright,
+    palette: /red\s*\+\s*beige|红色.*米黄|米黄.*红色/i.test(prompt)
+      ? {
+          primary: "#9F1F24",
+          accent: "#D9C3A5",
+          bg: "#0C0D10",
+          neutral: "#2A2D31",
+          text: "#F7F2EA",
+          textSecondary: "#D7CCBE",
+        }
+      : undefined,
+  };
+};
+
+const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): GeneratedPage[] => {
+  const brief = parseStructuredBrief(prompt);
+  if (!brief) return pages;
+  const inferDisplaySectionKind = (type: string) => {
+    const token = String(type || "").trim();
+    if (!token) return "";
+    if (token === "Navbar") return "navigation";
+    if (token === "CreationFooterFallback" || token === "Footer") return "footer";
+    if (/Hero/i.test(token)) return "hero";
+    if (token === "ContentStory") return "story";
+    if (token === "FeatureGrid") return "approach";
+    if (token === "CardsGrid" || token === "ProductShowcase") return "products";
+    if (token === "TestimonialsGrid" || token === "LogoCloud") return "socialproof";
+    if (token === "LeadCaptureCTA") return "cta";
+    return "";
+  };
+  const inferPageTypeFromPath = (pagePath: string) => {
+    const normalized = String(pagePath || "/").trim() || "/";
+    if (normalized === "/") return "home";
+    if (normalized.startsWith("/products")) return "products";
+    if (normalized.startsWith("/solutions") || normalized.startsWith("/industries")) return "solutions";
+    if (normalized.startsWith("/cases")) return "cases";
+    if (normalized.startsWith("/about")) return "about";
+    if (normalized.startsWith("/contact")) return "contact";
+    return "generic";
+  };
+  const navHrefForLabel = (label: string) => {
+    const normalized = String(label || "").trim().toLowerCase();
+    if (normalized === "home") return "/";
+    if (/3c|machine/.test(normalized)) return "/products";
+    if (/solution/.test(normalized)) return "/solutions";
+    if (/case/.test(normalized)) return "/cases";
+    if (/industr/.test(normalized)) return "/industries";
+    if (/about/.test(normalized)) return "/about";
+    if (/contact/.test(normalized)) return "/contact";
+    return "/";
+  };
+  const navLinks =
+    brief.nav?.length
+      ? brief.nav.map((label) => ({ label, href: navHrefForLabel(label), variant: "link" }))
+      : [
+          { label: "Home", href: "/", variant: "link" },
+          { label: "3C Machines", href: "/products", variant: "link" },
+          { label: "Custom Solutions", href: "/solutions", variant: "link" },
+          { label: "Cases", href: "/cases", variant: "link" },
+          { label: "About", href: "/about", variant: "link" },
+          { label: "Contact", href: "/contact", variant: "link" },
+        ];
+  const footerCols =
+    brief.footerLinks?.length === 4
+      ? [
+          { title: brief.footerLinks[0], links: [{ label: "3C Machines", href: "/products" }] },
+          { title: brief.footerLinks[1], links: [{ label: "Contact", href: "/contact" }] },
+          { title: brief.footerLinks[2], links: [{ label: "Privacy", href: "/" }] },
+          { title: brief.footerLinks[3], links: [{ label: "Home", href: "/" }] },
+        ]
+      : [
+          {
+            title: "Products",
+            links: [{ label: "3C Machines", href: "/products" }],
+          },
+          {
+            title: "Support",
+            links: [{ label: "Contact", href: "/contact" }],
+          },
+          {
+            title: "Privacy",
+            links: [{ label: "Privacy", href: "/" }],
+          },
+          {
+            title: "Sitemap",
+            links: [{ label: "Home", href: "/" }],
+          },
+        ];
+  return pages.map((page) => {
+    const pageContract = resolvePublishedPageGenerationContract({
+      prompt,
+      pagePath: page.path,
+      pageName: page.name,
+    });
+    const pageType = pageContract?.page?.pageType || inferPageTypeFromPath(page.path);
+    const kindCounters = new Map<string, number>();
+    const contractQueues = new Map<string, Array<{ slotId?: string; role?: string; imageIntent?: string }>>();
+    for (const section of Array.isArray(pageContract?.page?.sections) ? pageContract.page.sections : []) {
+      const key = String(section?.kind || "").trim();
+      if (!key) continue;
+      const queue = contractQueues.get(key) || [];
+      queue.push({ slotId: section.slotId, role: section.role, imageIntent: section.imageIntent });
+      contractQueues.set(key, queue);
+    }
+    const rootTheme =
+      page?.data?.root?.props?.theme && typeof page.data.root.props.theme === "object"
+        ? (page.data.root.props.theme as Record<string, unknown>)
+        : {};
+    const rootPalette =
+      rootTheme.palette && typeof rootTheme.palette === "object"
+        ? (rootTheme.palette as Record<string, unknown>)
+        : {};
+    const next = {
+      ...page,
+      data: {
+        ...page.data,
+        root: {
+          ...page.data.root,
+          props: {
+            ...page.data.root.props,
+            theme: {
+              ...rootTheme,
+              palette: brief.palette ? { ...rootPalette, ...brief.palette } : rootTheme.palette,
+              primaryColor: brief.palette?.primary || rootTheme.primaryColor,
+            },
+          },
+        },
+        content: page.data.content.map((item) => ({ ...item, props: { ...(item.props || {}) } })),
+      },
+    };
+    next.data.content.forEach((item, index) => {
+      const inferredKind = inferDisplaySectionKind(item.type);
+      const kindOrdinal = inferredKind ? Number(kindCounters.get(inferredKind) || 0) + 1 : 0;
+      if (inferredKind) kindCounters.set(inferredKind, kindOrdinal);
+      const contractMatch = inferredKind ? (contractQueues.get(inferredKind) || [])[kindOrdinal - 1] || null : null;
+      const sectionSlotId =
+        contractMatch?.slotId ||
+        (inferredKind ? `${String(pageType || "generic")}.${inferredKind}.${kindOrdinal}` : "");
+      const sectionRole = contractMatch?.role || "";
+      const sectionImageIntent = String(contractMatch?.imageIntent || "").trim();
+      const matchesSectionSlot = (...candidates: string[]) =>
+        candidates.filter(Boolean).includes(sectionRole) || candidates.filter(Boolean).includes(sectionSlotId);
+      const matchesSectionRole = (...roles: string[]) => roles.filter(Boolean).includes(sectionRole);
+      if (item.type === "Navbar") {
+        item.props.logo = { alt: brief.brand || "Brand" };
+        item.props.logoText = brief.brand || "Brand";
+        item.props.links = navLinks;
+        item.props.ctas = [];
+      }
+      if (item.type === "CreationFooterFallback") {
+        item.props.logoText = brief.brand || "Brand";
+        item.props.ftlogotext = brief.brand || "Brand";
+        item.props.columns = footerCols;
+        item.props.legal = brief.copyright || `© 2024 ${brief.brand || "Brand"}. All rights reserved.`;
+        item.props.copytext = brief.copyright || `© 2024 ${brief.brand || "Brand"}. All rights reserved.`;
+      }
+      if (item.type === "HeroSplit" && matchesSectionSlot("primary-hero", "page-hero", "home.hero.1")) {
+        item.props.title = brief.heroTitle || item.props.title;
+        item.props.subtitle = brief.heroSubtitle || item.props.subtitle;
+        item.props.ctas = [
+          { label: brief.heroCtas?.[0] || "Get Quote", href: "/contact", variant: "primary" },
+          { label: brief.heroCtas?.[1] || "Request Catalog", href: "/products", variant: "secondary" },
+        ];
+      }
+      if (item.type === "FeatureGrid" && matchesSectionSlot("capability-strip", "home.approach.1")) {
+        item.props.variant = "4col";
+        item.props.title = "LC-CNC, Shenzhen since 2013";
+        item.props.subtitle = brief.aboutText || "ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.";
+        item.props.items = [
+          { title: "ISO-Certified Plant", desc: "Documented quality control and repeatable factory execution." },
+          { title: "30+ R&D Engineers", desc: "Mechanical, tooling, controls, and automation line expertise." },
+          { title: "200+ Installed Across SEA", desc: "Regional machine delivery, service, and process support." },
+          { title: "Certifications", desc: (brief.certifications || ["ISO 9001", "CE", "SGS"]).join(" • ") },
+        ];
+      }
+      if (item.type === "FeatureGrid" && matchesSectionSlot("process-proof", "home.approach.2")) {
+        const features = brief.featureItems?.length
+          ? brief.featureItems
+          : ["Fast Customization → 10-Day Sample", "Short Lead-Time → 15-Day Shipment", "Local Support → WhatsApp + Regional Agent"];
+        item.props.title = "Fast Customization, Lead Time, and Local Support";
+        item.props.subtitle = "Execution signals that matter to regional buyers.";
+        item.props.items = features.slice(0, 3).map((entry) => {
+          const [title, desc] = entry.split("→").map((part) => part.trim());
+          return { title: title || entry, desc: desc || "" };
+        });
+      }
+      if (item.type === "CardsGrid" && matchesSectionSlot("featured-products", "home.products.1")) {
+        const products = brief.productItems?.length
+          ? brief.productItems
+          : ["3C Phone-Frame Center", "3C Laptop-Shell Center", "3C Camera-Bezel Center", "3C Keypad Center"];
+        item.props.title = "3C CNC Machine Portfolio";
+        item.props.subtitle = "Industrial-grade machine platforms optimized for Southeast Asia 3C manufacturing.";
+        item.props.items = products.slice(0, 4).map((name) => ({
+          title: name,
+          tag: brief.brand || "LC-CNC",
+          description: "Core specs, stable output, and one-click quotation via WhatsApp.",
+          cta: { label: "WhatsApp Quote", href: "/contact", variant: "primary" },
+        }));
+      }
+      if (item.type === "TestimonialsGrid" && matchesSectionSlot("customer-proof", "home.socialproof.1")) {
+        const cases = brief.caseItems?.length
+          ? brief.caseItems
+          : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining", "Phone Keypad Machining"];
+        item.props.title = "Application Cases";
+        item.props.subtitle = "Representative 3C machining applications with stable throughput and finish quality.";
+        item.props.items = cases.slice(0, 4).map((name) => ({
+          name,
+          role: "Application Case",
+          quote: "Stable process design, repeatable output, and delivery discipline adapted to the part family.",
+        }));
+      }
+      if (item.type === "LeadCaptureCTA" && matchesSectionRole("primary-cta")) {
+        item.props.title = "Quick Quote & WhatsApp Contact";
+        item.props.subtitle = `WhatsApp ${brief.whatsapp || ""} • ${brief.email || ""} • ${brief.address || ""}`.replace(/\s•\s$/, "");
+        item.props.note = "I agree to receive follow-up via WhatsApp.";
+        item.props.cta = { label: "Get Quote on WhatsApp", href: "/contact", variant: "primary" };
+      }
+      if (item.type === "CardsGrid" && matchesSectionSlot("product-catalog", "products.products.1")) {
+        item.props.title = "3C Machine Catalog";
+        item.props.subtitle = "Machine families for phone frames, laptop shells, camera bezels, and keypad components.";
+        item.props.items = (brief.productItems?.length ? brief.productItems : ["3C Phone-Frame Center", "3C Laptop-Shell Center", "3C Camera-Bezel Center", "3C Keypad Center"]).map((name) => ({
+          title: name,
+          description: "Core spindle, stroke, and throughput parameters for 3C machining lines.",
+          cta: { label: "Request Catalog", href: "/contact", variant: "primary" },
+        }));
+      }
+      if (item.type === "FeatureGrid" && matchesSectionSlot("specification-summary", "products.approach.1")) {
+        item.props.title = "Core Machine Specifications";
+        item.props.subtitle = "Rigid structure, repeatable accuracy, and deployment-ready configuration options.";
+        item.props.items = [
+          { title: "High-Rigidity Frame", desc: "Stable machining performance for aluminum and magnesium 3C parts." },
+          { title: "Flexible Spindle Packages", desc: "Configured for roughing, finishing, and compact-feature processing." },
+          { title: "Automation Ready", desc: "Supports loaders, conveyors, and inline inspection expansion." },
+        ];
+      }
+      if (item.type === "TestimonialsGrid" && matchesSectionSlot("buyer-proof", "products.socialproof.1")) {
+        item.props.title = "Why Buyers Choose LC-CNC";
+        item.props.subtitle = "Catalog decisions driven by throughput, uptime, and support responsiveness.";
+        item.props.items = [
+          { name: "Procurement Team", role: "Vietnam", quote: "Machine selection was tied to real part geometry and lead-time targets, not generic specs." },
+          { name: "Production Manager", role: "Thailand", quote: "The catalog clearly mapped each platform to cycle time, fixture strategy, and line scalability." },
+        ];
+      }
+      if (item.type === "CardsGrid" && matchesSectionSlot("solution-offers", "solutions.products.1")) {
+        item.props.title = "Custom Solutions";
+        item.props.subtitle = "Turnkey OEM/ODM lines, custom fixtures, spindle packages, and automation integration.";
+        item.props.items = [
+          "Turnkey 3C production line",
+          "Custom fixture engineering",
+          "OEM/ODM machine adaptation",
+          "Automation integration cell",
+        ].map((name) => ({
+          title: name,
+          description: "Configured around takt time, part geometry, and local commissioning needs.",
+          cta: { label: "Discuss Solution", href: "/contact", variant: "primary" },
+        }));
+      }
+      if (item.type === "FeatureGrid" && matchesSectionSlot("solution-categories", "solutions.approach.1")) {
+        item.props.title = "Solution Categories";
+        item.props.subtitle = "Structured offers for OEM/ODM production planning and line adaptation.";
+        item.props.items = [
+          { title: "Turnkey Line Design", desc: "Machine layout, process logic, and ramp-up support for new 3C programs." },
+          { title: "Fixture & Tooling Packages", desc: "Custom workholding and cutting strategy matched to the part family." },
+          { title: "Automation Integration", desc: "Loading, unloading, transfer, and inspection interfaces for scale." },
+        ];
+      }
+      if (item.type === "FeatureGrid" && matchesSectionSlot("delivery-workflow", "solutions.approach.2")) {
+        item.props.title = "Delivery Workflow";
+        item.props.subtitle = "From inquiry to commissioning with clear checkpoints.";
+        item.props.items = [
+          { title: "Requirement Review", desc: "Part drawing, takt time, and finish constraints are translated into an equipment concept." },
+          { title: "Sample & Validation", desc: "Pilot setup and sample verification de-risk the handoff before shipment." },
+          { title: "Shipment & Start-up", desc: "Regional delivery coordination, installation, and production launch support." },
+        ];
+      }
+      if (item.type === "TestimonialsGrid" && matchesSectionSlot("implementation-proof", "solutions.socialproof.1")) {
+        item.props.title = "Implementation Confidence";
+        item.props.subtitle = "Programs that need adaptation, not off-the-shelf machine selection.";
+        item.props.items = [
+          { name: "Operations Lead", role: "OEM Program", quote: "The proposed line matched both the part flow and the regional staffing reality." },
+          { name: "Engineering Manager", role: "ODM Factory", quote: "Fixture, spindle, and automation decisions were resolved as one system instead of separate vendors." },
+        ];
+      }
+      if (item.type === "CardsGrid" && matchesSectionSlot("case-gallery", "cases.products.1")) {
+        item.props.title = "Manufacturing Outcomes";
+        item.props.subtitle = "Programs focused on cycle-time reduction, stable delivery, and finish consistency.";
+        item.props.items = (brief.caseItems?.length ? brief.caseItems : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining", "Phone Keypad Machining"]).map((name) => ({
+          title: name,
+          description: "Application-focused production outcome with controlled tolerance and repeatable output.",
+          cta: { label: "View Case", href: "/cases", variant: "primary" },
+        }));
+      }
+      if (item.type === "FeatureGrid" && matchesSectionSlot("case-metrics", "cases.approach.1")) {
+        item.props.title = "Case Performance Signals";
+        item.props.subtitle = "How factory programs are evaluated after deployment.";
+        item.props.items = [
+          { title: "Cycle Time Reduction", desc: "Measured against the original process baseline and takt target." },
+          { title: "Yield Stability", desc: "Tracked across production shifts, changeovers, and operator variation." },
+          { title: "Ramp-up Speed", desc: "Focused on time-to-output after installation and process verification." },
+        ];
+      }
+      if (item.type === "TestimonialsGrid" && matchesSectionSlot("customer-feedback", "cases.socialproof.1")) {
+        item.props.title = "Customer Feedback";
+        item.props.subtitle = "Application-specific outcomes from Southeast Asia programs.";
+        item.props.items = [
+          { name: "Phone Display Frame Machining", role: "Vietnam", quote: "The line stabilized output quickly while maintaining the cosmetic finish required for premium devices." },
+          { name: "Laptop Shell Machining", role: "Malaysia", quote: "Fixture and process tuning reduced rework and improved delivery confidence across multiple batches." },
+        ];
+      }
+      if (item.type === "ContentStory" && matchesSectionSlot("company-story", "about.story.1")) {
+        item.props.title = "LC-CNC, Shenzhen since 2013";
+        item.props.subtitle = brief.aboutText || item.props.subtitle;
+      }
+      if (item.type === "ContentStory" && matchesSectionRole("product-context")) {
+        item.props.title = "Machine platforms for precise, scalable 3C production";
+        item.props.subtitle =
+          "Configured around part geometry, fixture strategy, spindle selection, and line-side automation requirements.";
+      }
+      if (item.type === "ContentStory" && matchesSectionRole("solution-context")) {
+        item.props.title = "Solutions engineered around process, takt time, and deployment constraints";
+        item.props.subtitle =
+          "From requirement review to validation and ramp-up, each solution package is planned around production outcomes.";
+      }
+      if (item.type === "ContentStory" && matchesSectionRole("case-narrative")) {
+        item.props.title = "Representative machining programs across Southeast Asia";
+        item.props.subtitle =
+          "Programs are evaluated by cycle time, yield stability, commissioning speed, and long-run delivery confidence.";
+      }
+      if (item.type === "CardsGrid" && matchesSectionSlot("capability-cards", "about.products.1")) {
+        item.props.title = "Factory Capability Highlights";
+        item.props.subtitle = "Engineering depth, factory discipline, and regional support for Southeast Asia.";
+        item.props.items = [
+          "Process engineering and tooling support",
+          "Factory commissioning and training",
+          "Quality documentation and inspection flow",
+          "Regional after-sales response",
+        ].map((name) => ({
+          title: name,
+          description: "Operational capability aligned to multi-site 3C production programs.",
+          cta: { label: "Talk to LC-CNC", href: "/contact", variant: "primary" },
+        }));
+      }
+      if (item.type === "TestimonialsGrid" && matchesSectionSlot("certification-proof", "about.socialproof.1")) {
+        item.props.title = "Certifications";
+        item.props.subtitle = (brief.certifications || ["ISO 9001", "CE", "SGS"]).join(" • ");
+        item.props.items = (brief.certifications || ["ISO 9001", "CE", "SGS"]).map((name) => ({
+          name,
+          role: "Certification",
+          quote: "Verified manufacturing and quality management standard.",
+        }));
+      }
+      if (item.type === "FeatureGrid" && matchesSectionSlot("contact-channels", "contact.approach.1")) {
+        item.props.title = "Contact Channels";
+        item.props.subtitle = "Commercial response routed for Southeast Asia machine procurement.";
+        item.props.items = [
+          { title: "WhatsApp", desc: brief.whatsapp || "+86-158-1370-3777" },
+          { title: "Email", desc: brief.email || "sales@lc-cnc.com" },
+          { title: "Factory Base", desc: brief.address || "Bao’an, Shenzhen, China" },
+        ];
+      }
+      if (item.type === "TestimonialsGrid" && matchesSectionSlot("quote-requirements", "contact.socialproof.1")) {
+        item.props.title = "Quote Requirements";
+        item.props.subtitle = "Prepare these details for a faster response.";
+        item.props.items = [
+          { name: "Required Fields", role: "Form", quote: "Name, Company, Email, WhatsApp, Machine Model, Quantity, Deadline." },
+          { name: "Consent", role: "Follow-up", quote: "I agree to receive follow-up via WhatsApp." },
+        ];
+      }
+      if (item.type === "LeadCaptureCTA" && matchesSectionSlot("quote-cta", "contact.cta.1", "catalog-cta", "consultation-cta", "case-cta", "about-cta", "support-cta")) {
+        item.props.title = "Quick Quote Form";
+        item.props.subtitle = `WhatsApp ${brief.whatsapp || "+86-158-1370-3777"} • ${brief.email || "sales@lc-cnc.com"} • ${brief.address || "Bao’an, Shenzhen, China"}`;
+        item.props.note = "I agree to receive follow-up via WhatsApp.";
+        item.props.cta = { label: "Get Quote on WhatsApp", href: "/contact", variant: "primary" };
+      }
+      item.props = sanitizeGeneratedProps(item.props, {
+        prompt,
+        pagePath: page.path,
+        imageIntent: sectionImageIntent,
+      }) as Record<string, unknown>;
+    });
+    return next;
+  });
+};
+
+const hashSemanticImageSeed = (value: string) => {
+  let hash = 0;
+  for (let index = 0; index < value.length; index += 1) {
+    hash = (hash * 33 + value.charCodeAt(index)) >>> 0;
+  }
+  return hash % 997;
+};
+
+const finalSemanticImageGallery: Record<string, string[]> = {
+  cncHero: [
+    "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
+  ],
+  cncProduct: [
+    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
+  ],
+  cncCase: [
+    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1600&q=80",
+  ],
+  cncIndustry: [
+    "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80",
+  ],
+  industrial: [
+    "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80",
+  ],
+  neutral: [
+    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1600&q=80",
+  ],
+};
+
+const looksLikeFinalImageField = (keyPath: string[]) => {
+  const key = String(keyPath[keyPath.length - 1] || "").toLowerCase();
+  const full = keyPath.join(".").toLowerCase();
+  if (/(logo|avatar|icon)/.test(full)) return false;
+  const parent = String(keyPath[keyPath.length - 2] || "").toLowerCase();
+  if (
+    (key === "src" || key === "url" || key === "mobilesrc") &&
+    (/(image|img|cover|media|backgroundimage|backgroundmedia|photo|picture)/.test(parent) ||
+      /(heroslides|slides|gallery|carousel)/.test(full))
+  ) {
+    return true;
+  }
+  return (
+    /(image|img|media).*(src|url)$/.test(key) ||
+    /(hero.*image|productimage|capture\d+image|backgroundmedia|\.image\.src$|\.cover\.src$|\.media\.src$|\.backgroundimage\.src$|\.backgroundmedia\.src$|heroslides\.\d+\.(src|mobilesrc)$)/.test(full)
+  );
+};
+
+const buildFinalSemanticImageUrl = (
+  currentValue: string,
+  keyPath: string[],
+  pagePath: string,
+  input: { prompt: string; designNorthStar?: Record<string, unknown>; imageIntent?: string }
+) => {
+  const current = String(currentValue || "").trim();
+  if (!/^https?:\/\//i.test(current)) return "";
+  if (/^data:image\//i.test(current) || /\/generated-pen-assets\//i.test(current)) return "";
+  const raw = `${String(input.prompt || "")} ${String(input.designNorthStar?.industry || "")} ${JSON.stringify(
+    input.designNorthStar?.coreProducts || []
+  )}`.toLowerCase();
+  const cncIntent =
+    /(cnc|machine tool|machine-tools|machining|metal cutting|milling|lathe|spindle|five-axis|5-axis|加工中心|机床|数控|刀具|切削|3c)/i.test(
+      raw
+    );
+  const token = `${pagePath} ${keyPath.join(".")}`.toLowerCase();
+  const normalizedIntent = String(input.imageIntent || "").trim().toLowerCase();
+  const forcedBucket =
+    normalizedIntent === "cnc-hero"
+      ? "cncHero"
+      : normalizedIntent === "cnc-product"
+        ? "cncProduct"
+        : normalizedIntent === "cnc-case"
+          ? "cncCase"
+          : normalizedIntent === "cnc-industry"
+            ? "cncIndustry"
+            : normalizedIntent === "industrial"
+              ? "industrial"
+              : normalizedIntent === "neutral"
+                ? "neutral"
+                : normalizedIntent === "none"
+                  ? "none"
+                  : "";
+  if (forcedBucket === "none") return "";
+  let bucket = forcedBucket || (cncIntent ? "cncProduct" : "industrial");
+  if (!forcedBucket && cncIntent && (pagePath === "/" || /hero|masthead|banner/.test(token))) bucket = "cncHero";
+  else if (!forcedBucket && cncIntent && (/\/cases\b/.test(pagePath) || /case|study|capture/.test(token))) bucket = "cncCase";
+  else if (!forcedBucket && cncIntent && (/\/industries\b/.test(pagePath) || /industry|segment|application/.test(token))) bucket = "cncIndustry";
+  else if (!forcedBucket && cncIntent && (/\/products\b/.test(pagePath) || /product|catalog|showcase/.test(token))) bucket = "cncProduct";
+  const choices = finalSemanticImageGallery[bucket] ?? finalSemanticImageGallery.industrial;
+  if (!choices.length) return "";
+  const seed = hashSemanticImageSeed(`${pagePath}:${keyPath.join(".")}:${current}`);
+  return choices[seed % choices.length];
+};
+
 const sanitizeGeneratedProps = (
   value: unknown,
-  input: { prompt: string; designNorthStar?: Record<string, unknown> }
+  input: { prompt: string; designNorthStar?: Record<string, unknown>; pagePath?: string; imageIntent?: string }
 ): unknown => {
   const brandName = extractBrandNameFromPromptLite(input.prompt);
   const sourceTokens = extractSourceBrandTokens(input.prompt);
@@ -5275,6 +5924,10 @@ const sanitizeGeneratedProps = (
   const walk = (entry: unknown, keyPath: string[]): unknown => {
     if (typeof entry === "string") {
       const key = String(keyPath[keyPath.length - 1] || "");
+      if (looksLikeFinalImageField(keyPath)) {
+        const rewrittenImage = buildFinalSemanticImageUrl(entry, keyPath, String(input.pagePath || "/"), input);
+        if (rewrittenImage) return rewrittenImage;
+      }
       if (shouldSkipGeneratedPropSanitization(key)) {
         if (/href|url|path/i.test(key)) {
           if (/^mailto:(sales|info|contact)@example\.com$/i.test(entry.trim())) return "/contact";
@@ -5319,7 +5972,7 @@ const sanitizeFinalPagesOutput = (
 ): GeneratedPage[] =>
   pages.map((page) => ({
     ...page,
-      data: sanitizeGeneratedProps(page.data, input) as GeneratedPage["data"],
+    data: sanitizeGeneratedProps(page.data, { ...input, pagePath: page.path }) as GeneratedPage["data"],
   }));
 
 const contextualFallbackHref = (
@@ -8143,6 +8796,9 @@ async function builderNode(state: GraphState) {
           createPublishedComponentAlias(originalType, templateExclusiveAliasMap.size)
         );
       }
+      const nextProps = item?.props && typeof item.props === "object" ? { ...item.props } : {};
+      nextProps.__publishedOriginalType = originalType;
+      item.props = nextProps;
       item.type = templateExclusiveAliasMap.get(originalType) as string;
     });
   });
@@ -8226,6 +8882,7 @@ async function builderNode(state: GraphState) {
     };
   });
 
+  pagesOut = applyStructuredBriefOverrides(pagesOut, state.prompt ?? "");
   pagesOut = sanitizeFinalPagesOutput(pagesOut, {
     prompt: state.prompt ?? "",
     designNorthStar: designNorthStar ?? undefined,

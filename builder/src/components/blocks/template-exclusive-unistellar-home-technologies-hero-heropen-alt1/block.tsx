@@ -219,7 +219,7 @@ const DEFAULT_PROPS = {
   "cta1ttext": "Explore the stack",
   "cta2href": "/",
   "cta2ttext": "Compare outcomes",
-  "visualimagesrc": "/generated-pen-assets/unistellar-home/images/generated-1772189083782.png"
+  "visualimagesrc": "./images/generated-1772189083782.png"
 };
 const LAYOUT_CONTEXT = {
   "pageWidth": 1440,

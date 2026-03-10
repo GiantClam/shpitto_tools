@@ -13762,13 +13762,20 @@ const classifyTemplatePageType = (pathValue, title = "") => {
   const token = `${path} ${title}`.toLowerCase();
   if (path === "/") return "home";
   if (/privacy|terms|policy|legal|cookies?/.test(token)) return "legal";
-  if (/blog|journal|news|insight|article|resource|press|media|technology/.test(token)) return "blog";
-  if (/career|careers|job|jobs|vacanc|hiring|talent/.test(token)) return "careers";
-  if (/product|products|shop|store|catalog|collection|pricing|plans?|portfolio/.test(token)) return "products";
-  if (/service|services|solution|capabilit|offer|program|work/.test(token)) return "services";
-  if (/contact|book|booking|appointment|get[-\s]?in[-\s]?touch|inquiry|quote|support|help/.test(token)) return "contact";
+  if (/blog|journal|news|insight|article|resource|press|media/.test(token)) return "blog";
+  if (/support|help|faq|docs|documentation/.test(token)) return "support";
+  if (/contact|book|booking|appointment|get[-\s]?in[-\s]?touch|inquiry|quote/.test(token)) return "contact";
+  if (/case|use[-\s]?cases?|customer|review|proof|success/.test(token)) return "cases";
+  if (/product|products|shop|store|catalog|collection|pricing|plans?|portfolio|telescope|binocular|hardware|machine/.test(token)) return "products";
+  if (/service|services|solution|capabilit|offer|program|work|technolog|industry/.test(token)) return "solutions";
   if (/about|company|team|mission|vision|story|studio|who[-\s]?we[-\s]?are/.test(token)) return "about";
   return "generic";
+};
+
+const resolvePublishedContractPageType = (pageSpec = null) => {
+  const raw = String(pageSpec?.pageType || "").trim().toLowerCase();
+  if (raw && raw !== "generic") return raw;
+  return classifyTemplatePageType(normalizeTemplatePagePath(pageSpec?.path || "/"), String(pageSpec?.name || ""));
 };
 
 const SITE_PAGE_KIND_PRESETS = {
@@ -16733,6 +16740,199 @@ const buildRunLibraryOutput = async ({
     profiles,
     templateExclusiveByName,
   });
+  const templateBlockCatalogByKey = new Map(
+    templateBlockCatalog.map((entry) => {
+      const key = [
+        String(entry.profileId || "").trim(),
+        String(entry.pagePath || "").trim(),
+        String(entry.kind || "").trim(),
+        String(entry.source || "").trim(),
+      ].join("::");
+      return [key, entry];
+    })
+  );
+  const buildTemplateGenerationContracts = ({ profiles = [], templateExclusiveByName = new Map() } = {}) => {
+    const inferSectionRole = ({ pageType = "", kind = "", ordinal = 1 }) => {
+      const normalizedPageType = String(pageType || "").trim().toLowerCase() || "generic";
+      const normalizedKind = String(kind || "").trim().toLowerCase();
+      if (!normalizedKind) return "";
+      const baseRoleMap = {
+        home: {
+          navigation: "site-navigation",
+          hero: "primary-hero",
+          story: "brand-story",
+          approach: ordinal === 1 ? "capability-strip" : "process-proof",
+          products: "featured-products",
+          socialproof: "customer-proof",
+          cta: "primary-cta",
+          contact: "contact-capture",
+          footer: "site-footer",
+        },
+        products: {
+          navigation: "site-navigation",
+          hero: "page-hero",
+          story: "product-context",
+          approach: "specification-summary",
+          products: "product-catalog",
+          socialproof: "buyer-proof",
+          cta: "catalog-cta",
+          footer: "site-footer",
+        },
+        solutions: {
+          navigation: "site-navigation",
+          hero: "page-hero",
+          story: "solution-context",
+          approach: ordinal === 1 ? "solution-categories" : "delivery-workflow",
+          products: "solution-offers",
+          socialproof: "implementation-proof",
+          cta: "consultation-cta",
+          footer: "site-footer",
+        },
+        cases: {
+          navigation: "site-navigation",
+          hero: "page-hero",
+          story: "case-narrative",
+          approach: "case-metrics",
+          products: "case-gallery",
+          socialproof: "customer-feedback",
+          cta: "case-cta",
+          footer: "site-footer",
+        },
+        about: {
+          navigation: "site-navigation",
+          hero: "page-hero",
+          story: "company-story",
+          products: "capability-cards",
+          socialproof: "certification-proof",
+          cta: "about-cta",
+          footer: "site-footer",
+        },
+        contact: {
+          navigation: "site-navigation",
+          hero: "page-hero",
+          approach: "contact-channels",
+          contact: "contact-form",
+          socialproof: "quote-requirements",
+          cta: "quote-cta",
+          footer: "site-footer",
+        },
+        support: {
+          navigation: "site-navigation",
+          hero: "page-hero",
+          story: "resource-links",
+          contact: "support-topics",
+          cta: "support-cta",
+          footer: "site-footer",
+        },
+      };
+      const role = baseRoleMap[normalizedPageType]?.[normalizedKind];
+      return role || `${normalizedPageType}-${normalizedKind}-${ordinal}`;
+    };
+    const inferSectionImageIntent = ({ pageType = "", kind = "", role = "" }) => {
+      const normalizedPageType = String(pageType || "").trim().toLowerCase() || "generic";
+      const normalizedKind = String(kind || "").trim().toLowerCase();
+      const normalizedRole = String(role || "").trim().toLowerCase();
+      if (normalizedKind === "navigation" || normalizedKind === "footer") return "none";
+      if (/hero/.test(normalizedRole) || normalizedKind === "hero") return "cnc-hero";
+      if (/case|capture|customer-feedback/.test(normalizedRole)) return "cnc-case";
+      if (/product|catalog|capability|story/.test(normalizedRole) || normalizedKind === "products" || normalizedKind === "story") {
+        return normalizedPageType === "cases" ? "cnc-case" : "cnc-product";
+      }
+      if (/solution|workflow|implementation/.test(normalizedRole)) return "industrial";
+      if (/contact|quote/.test(normalizedRole)) return "industrial";
+      return normalizedPageType === "cases" ? "cnc-case" : "industrial";
+    };
+    return (Array.isArray(profiles) ? profiles : []).map((profile) => {
+      const resolveSectionContract = ({ kind, block, source = "profile", pageSpec = null, pageType = "", ordinal = 1 }) => {
+        if (!block || !block.type || !block.props || typeof block.props !== "object") return null;
+        const normalizedPagePath = pageSpec ? normalizeTemplatePagePath(pageSpec.path || "/") : "";
+        const catalogKey = [
+          String(profile?.id || "").trim(),
+          normalizedPagePath,
+          String(kind || "").trim(),
+          source,
+        ].join("::");
+        const catalogEntry = templateBlockCatalogByKey.get(catalogKey) || null;
+        const componentMeta = templateExclusiveByName.get(String(block.type || "").trim()) || null;
+        const role = inferSectionRole({ pageType, kind, ordinal });
+        return {
+          kind: String(kind || "").trim(),
+          blockType: String(block.type || "").trim(),
+          source,
+          slotId: `${String(pageType || "generic").trim().toLowerCase() || "generic"}.${String(kind || "").trim().toLowerCase()}.${Number(ordinal) || 1}`,
+          role,
+          imageIntent: inferSectionImageIntent({ pageType, kind, role }),
+          editableFields: mergeEditableFieldContracts(
+            Array.isArray(catalogEntry?.editableFields) ? catalogEntry.editableFields : [],
+            Array.isArray(componentMeta?.editableFields) ? componentMeta.editableFields : [],
+            collectEditableFieldsFromDefaults(block.props || {})
+          ),
+          baseBlockType:
+            String(catalogEntry?.baseBlockType || componentMeta?.templateExclusive?.baseBlockType || "").trim() || undefined,
+        };
+      };
+
+      const shared = {};
+      const navigationContract = resolveSectionContract({
+        kind: "navigation",
+        block: profile?.templates?.navigation,
+        source: "profile",
+        pageType: "shared",
+      });
+      const footerContract = resolveSectionContract({
+        kind: "footer",
+        block: profile?.templates?.footer,
+        source: "profile",
+        pageType: "shared",
+      });
+      if (navigationContract) shared.navigation = navigationContract;
+      if (footerContract) shared.footer = footerContract;
+
+      const pages = (Array.isArray(profile?.pageSpecs) ? profile.pageSpecs : []).map((pageSpec) => {
+        const pageType = resolvePublishedContractPageType(pageSpec);
+        const requiredCategories = Array.isArray(pageSpec?.requiredCategories)
+          ? unique(pageSpec.requiredCategories.map((entry) => String(entry || "").trim()).filter(Boolean))
+          : [];
+        const kindOrdinalMap = new Map();
+        const sections = requiredCategories
+          .map((kind) => {
+            const ordinal = Number(kindOrdinalMap.get(kind) || 0) + 1;
+            kindOrdinalMap.set(kind, ordinal);
+            return resolveSectionContract({
+              kind,
+              block: pageSpec?.templates?.[kind] || profile?.templates?.[kind],
+              source: pageSpec?.templates?.[kind] ? "page" : "profile",
+              pageSpec: pageSpec?.templates?.[kind] ? pageSpec : null,
+              pageType,
+              ordinal,
+            });
+          })
+          .filter(Boolean);
+        return {
+          path: normalizeTemplatePagePath(pageSpec?.path || "/"),
+          name: String(pageSpec?.name || "Page").trim() || "Page",
+          pageType,
+          requiredCategories,
+          sections,
+        };
+      });
+
+      return {
+        profileId: String(profile?.id || "").trim(),
+        name: String(profile?.name || "").trim() || String(profile?.id || "").trim(),
+        sourceDomain: String(profile?.sourceDomain || "").trim() || undefined,
+        styleFamily: String(profile?.siteStyleShell?.styleFamily || "").trim() || undefined,
+        keywords: Array.isArray(profile?.keywords) ? profile.keywords.map((entry) => String(entry || "").trim()).filter(Boolean) : [],
+        qualityScore: Number.isFinite(Number(profile?.qualityScore)) ? Number(profile.qualityScore) : undefined,
+        ...(Object.keys(shared).length ? { shared } : {}),
+        pages,
+      };
+    });
+  };
+  const templateGenerationContracts = buildTemplateGenerationContracts({
+    profiles,
+    templateExclusiveByName,
+  });
 
   return {
     generatedAt: new Date().toISOString(),
@@ -16744,6 +16944,8 @@ const buildRunLibraryOutput = async ({
     templateExclusiveComponents: normalizedTemplateExclusiveComponents,
     templateBlockCatalogCount: templateBlockCatalog.length,
     templateBlockCatalog,
+    templateGenerationContractsCount: templateGenerationContracts.length,
+    templateGenerationContracts,
   };
 };
 
@@ -16795,6 +16997,21 @@ const writeRunLibrarySnapshot = async ({
       )
     );
   }
+  if (Array.isArray(runLibrary?.templateGenerationContracts)) {
+    await fs.writeFile(
+      path.join(path.dirname(filePath), "template-generation-contracts.generated.json"),
+      JSON.stringify(
+        {
+          generatedAt: new Date().toISOString(),
+          sourceRunId: runId,
+          count: runLibrary.templateGenerationContracts.length,
+          contracts: runLibrary.templateGenerationContracts,
+        },
+        null,
+        2
+      )
+    );
+  }
   return runLibrary;
 };
 
@@ -16833,6 +17050,7 @@ const mergeAndPublishRunLibrary = async ({
 
   let existingProfiles = [];
   let existingTemplateExclusiveComponents = [];
+  let existingTemplateGenerationContracts = [];
   try {
     const raw = await fs.readFile(DEFAULT_PUBLISH_PATH, "utf8");
     const parsed = JSON.parse(raw);
@@ -16840,9 +17058,13 @@ const mergeAndPublishRunLibrary = async ({
     existingTemplateExclusiveComponents = Array.isArray(parsed?.templateExclusiveComponents)
       ? parsed.templateExclusiveComponents
       : [];
+    existingTemplateGenerationContracts = Array.isArray(parsed?.templateGenerationContracts)
+      ? parsed.templateGenerationContracts
+      : [];
   } catch {
     existingProfiles = [];
     existingTemplateExclusiveComponents = [];
+    existingTemplateGenerationContracts = [];
   }
 
   const mergedProfiles = mergeProfiles(existingProfiles, runLibrary.profiles);
@@ -16930,6 +17152,16 @@ const mergeAndPublishRunLibrary = async ({
     profiles: mergedProfiles,
     templateExclusiveByName: mergedTemplateExclusiveByName,
   });
+  const mergedTemplateGenerationContractMap = new Map();
+  for (const contract of [
+    ...(Array.isArray(existingTemplateGenerationContracts) ? existingTemplateGenerationContracts : []),
+    ...(Array.isArray(runLibrary?.templateGenerationContracts) ? runLibrary.templateGenerationContracts : []),
+  ]) {
+    const key = String(contract?.profileId || "").trim().toLowerCase();
+    if (!key) continue;
+    mergedTemplateGenerationContractMap.set(key, contract);
+  }
+  const mergedTemplateGenerationContracts = Array.from(mergedTemplateGenerationContractMap.values());
   const published = {
     generatedAt: new Date().toISOString(),
     sourceRunId: runId,
@@ -16939,10 +17171,13 @@ const mergeAndPublishRunLibrary = async ({
     templateExclusiveComponents: mergedTemplateExclusiveComponents,
     templateBlockCatalogCount: mergedTemplateBlockCatalog.length,
     templateBlockCatalog: mergedTemplateBlockCatalog,
+    templateGenerationContractsCount: mergedTemplateGenerationContracts.length,
+    templateGenerationContracts: mergedTemplateGenerationContracts,
   };
   await fs.writeFile(DEFAULT_PUBLISH_PATH, JSON.stringify(published, null, 2));
   let publishTemplateExclusiveComponentsPath = "";
   let publishTemplateBlockCatalogPath = "";
+  let publishTemplateGenerationContractsPath = "";
   if (mergedTemplateExclusiveComponents.length) {
     publishTemplateExclusiveComponentsPath = path.join(LIB_DIR, "template-exclusive-components.generated.json");
     await fs.writeFile(
@@ -16973,10 +17208,25 @@ const mergeAndPublishRunLibrary = async ({
       2
     )
   );
+  publishTemplateGenerationContractsPath = path.join(LIB_DIR, "template-generation-contracts.generated.json");
+  await fs.writeFile(
+    publishTemplateGenerationContractsPath,
+    JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        sourceRunId: runId,
+        count: mergedTemplateGenerationContracts.length,
+        contracts: mergedTemplateGenerationContracts,
+      },
+      null,
+      2
+    )
+  );
   return {
     publishPath: DEFAULT_PUBLISH_PATH,
     publishTemplateExclusiveComponentsPath,
     publishTemplateBlockCatalogPath,
+    publishTemplateGenerationContractsPath,
     published: true,
     reason: "ok",
   };
@@ -21425,6 +21675,199 @@ const buildRunLibraryFromPenBundle = async ({ penBundle, runId = "", runDir = ""
     profiles,
     templateExclusiveByName,
   });
+  const templateBlockCatalogByKey = new Map(
+    templateBlockCatalog.map((entry) => {
+      const key = [
+        String(entry.profileId || "").trim(),
+        String(entry.pagePath || "").trim(),
+        String(entry.kind || "").trim(),
+        String(entry.source || "").trim(),
+      ].join("::");
+      return [key, entry];
+    })
+  );
+  const buildTemplateGenerationContracts = ({ profiles = [], templateExclusiveByName = new Map() } = {}) => {
+    const inferSectionRole = ({ pageType = "", kind = "", ordinal = 1 }) => {
+      const normalizedPageType = String(pageType || "").trim().toLowerCase() || "generic";
+      const normalizedKind = String(kind || "").trim().toLowerCase();
+      if (!normalizedKind) return "";
+      const baseRoleMap = {
+        home: {
+          navigation: "site-navigation",
+          hero: "primary-hero",
+          story: "brand-story",
+          approach: ordinal === 1 ? "capability-strip" : "process-proof",
+          products: "featured-products",
+          socialproof: "customer-proof",
+          cta: "primary-cta",
+          contact: "contact-capture",
+          footer: "site-footer",
+        },
+        products: {
+          navigation: "site-navigation",
+          hero: "page-hero",
+          story: "product-context",
+          approach: "specification-summary",
+          products: "product-catalog",
+          socialproof: "buyer-proof",
+          cta: "catalog-cta",
+          footer: "site-footer",
+        },
+        solutions: {
+          navigation: "site-navigation",
+          hero: "page-hero",
+          story: "solution-context",
+          approach: ordinal === 1 ? "solution-categories" : "delivery-workflow",
+          products: "solution-offers",
+          socialproof: "implementation-proof",
+          cta: "consultation-cta",
+          footer: "site-footer",
+        },
+        cases: {
+          navigation: "site-navigation",
+          hero: "page-hero",
+          story: "case-narrative",
+          approach: "case-metrics",
+          products: "case-gallery",
+          socialproof: "customer-feedback",
+          cta: "case-cta",
+          footer: "site-footer",
+        },
+        about: {
+          navigation: "site-navigation",
+          hero: "page-hero",
+          story: "company-story",
+          products: "capability-cards",
+          socialproof: "certification-proof",
+          cta: "about-cta",
+          footer: "site-footer",
+        },
+        contact: {
+          navigation: "site-navigation",
+          hero: "page-hero",
+          approach: "contact-channels",
+          contact: "contact-form",
+          socialproof: "quote-requirements",
+          cta: "quote-cta",
+          footer: "site-footer",
+        },
+        support: {
+          navigation: "site-navigation",
+          hero: "page-hero",
+          story: "resource-links",
+          contact: "support-topics",
+          cta: "support-cta",
+          footer: "site-footer",
+        },
+      };
+      const role = baseRoleMap[normalizedPageType]?.[normalizedKind];
+      return role || `${normalizedPageType}-${normalizedKind}-${ordinal}`;
+    };
+    const inferSectionImageIntent = ({ pageType = "", kind = "", role = "" }) => {
+      const normalizedPageType = String(pageType || "").trim().toLowerCase() || "generic";
+      const normalizedKind = String(kind || "").trim().toLowerCase();
+      const normalizedRole = String(role || "").trim().toLowerCase();
+      if (normalizedKind === "navigation" || normalizedKind === "footer") return "none";
+      if (/hero/.test(normalizedRole) || normalizedKind === "hero") return "cnc-hero";
+      if (/case|capture|customer-feedback/.test(normalizedRole)) return "cnc-case";
+      if (/product|catalog|capability|story/.test(normalizedRole) || normalizedKind === "products" || normalizedKind === "story") {
+        return normalizedPageType === "cases" ? "cnc-case" : "cnc-product";
+      }
+      if (/solution|workflow|implementation/.test(normalizedRole)) return "industrial";
+      if (/contact|quote/.test(normalizedRole)) return "industrial";
+      return normalizedPageType === "cases" ? "cnc-case" : "industrial";
+    };
+    return (Array.isArray(profiles) ? profiles : []).map((profile) => {
+      const resolveSectionContract = ({ kind, block, source = "profile", pageSpec = null, pageType = "", ordinal = 1 }) => {
+        if (!block || !block.type || !block.props || typeof block.props !== "object") return null;
+        const normalizedPagePath = pageSpec ? normalizeTemplatePagePath(pageSpec.path || "/") : "";
+        const catalogKey = [
+          String(profile?.id || "").trim(),
+          normalizedPagePath,
+          String(kind || "").trim(),
+          source,
+        ].join("::");
+        const catalogEntry = templateBlockCatalogByKey.get(catalogKey) || null;
+        const componentMeta = templateExclusiveByName.get(String(block.type || "").trim()) || null;
+        const role = inferSectionRole({ pageType, kind, ordinal });
+        return {
+          kind: String(kind || "").trim(),
+          blockType: String(block.type || "").trim(),
+          source,
+          slotId: `${String(pageType || "generic").trim().toLowerCase() || "generic"}.${String(kind || "").trim().toLowerCase()}.${Number(ordinal) || 1}`,
+          role,
+          imageIntent: inferSectionImageIntent({ pageType, kind, role }),
+          editableFields: mergeEditableFieldContracts(
+            Array.isArray(catalogEntry?.editableFields) ? catalogEntry.editableFields : [],
+            Array.isArray(componentMeta?.editableFields) ? componentMeta.editableFields : [],
+            collectEditableFieldsFromDefaults(block.props || {})
+          ),
+          baseBlockType:
+            String(catalogEntry?.baseBlockType || componentMeta?.templateExclusive?.baseBlockType || "").trim() || undefined,
+        };
+      };
+
+      const shared = {};
+      const navigationContract = resolveSectionContract({
+        kind: "navigation",
+        block: profile?.templates?.navigation,
+        source: "profile",
+        pageType: "shared",
+      });
+      const footerContract = resolveSectionContract({
+        kind: "footer",
+        block: profile?.templates?.footer,
+        source: "profile",
+        pageType: "shared",
+      });
+      if (navigationContract) shared.navigation = navigationContract;
+      if (footerContract) shared.footer = footerContract;
+
+      const pages = (Array.isArray(profile?.pageSpecs) ? profile.pageSpecs : []).map((pageSpec) => {
+        const pageType = resolvePublishedContractPageType(pageSpec);
+        const requiredCategories = Array.isArray(pageSpec?.requiredCategories)
+          ? unique(pageSpec.requiredCategories.map((entry) => String(entry || "").trim()).filter(Boolean))
+          : [];
+        const kindOrdinalMap = new Map();
+        const sections = requiredCategories
+          .map((kind) => {
+            const ordinal = Number(kindOrdinalMap.get(kind) || 0) + 1;
+            kindOrdinalMap.set(kind, ordinal);
+            return resolveSectionContract({
+              kind,
+              block: pageSpec?.templates?.[kind] || profile?.templates?.[kind],
+              source: pageSpec?.templates?.[kind] ? "page" : "profile",
+              pageSpec: pageSpec?.templates?.[kind] ? pageSpec : null,
+              pageType,
+              ordinal,
+            });
+          })
+          .filter(Boolean);
+        return {
+          path: normalizeTemplatePagePath(pageSpec?.path || "/"),
+          name: String(pageSpec?.name || "Page").trim() || "Page",
+          pageType,
+          requiredCategories,
+          sections,
+        };
+      });
+
+      return {
+        profileId: String(profile?.id || "").trim(),
+        name: String(profile?.name || "").trim() || String(profile?.id || "").trim(),
+        sourceDomain: String(profile?.sourceDomain || "").trim() || undefined,
+        styleFamily: String(profile?.siteStyleShell?.styleFamily || "").trim() || undefined,
+        keywords: Array.isArray(profile?.keywords) ? profile.keywords.map((entry) => String(entry || "").trim()).filter(Boolean) : [],
+        qualityScore: Number.isFinite(Number(profile?.qualityScore)) ? Number(profile.qualityScore) : undefined,
+        ...(Object.keys(shared).length ? { shared } : {}),
+        pages,
+      };
+    });
+  };
+  const templateGenerationContracts = buildTemplateGenerationContracts({
+    profiles,
+    templateExclusiveByName,
+  });
 
   const runLibrary = {
     generatedAt: new Date().toISOString(),
@@ -21436,6 +21879,8 @@ const buildRunLibraryFromPenBundle = async ({ penBundle, runId = "", runDir = ""
     templateExclusiveComponents: normalizedTemplateExclusiveComponents,
     templateBlockCatalogCount: templateBlockCatalog.length,
     templateBlockCatalog,
+    templateGenerationContractsCount: templateGenerationContracts.length,
+    templateGenerationContracts,
   };
   const runLibraryPath = path.join(runDir, "style-profiles.generated.json");
   await fs.writeFile(runLibraryPath, JSON.stringify(runLibrary, null, 2));
@@ -21460,6 +21905,19 @@ const buildRunLibraryFromPenBundle = async ({ penBundle, runId = "", runDir = ""
         sourceRunId: runId,
         count: templateBlockCatalog.length,
         entries: templateBlockCatalog,
+      },
+      null,
+      2
+    )
+  );
+  await fs.writeFile(
+    path.join(runDir, "template-generation-contracts.generated.json"),
+    JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        sourceRunId: runId,
+        count: templateGenerationContracts.length,
+        contracts: templateGenerationContracts,
       },
       null,
       2
