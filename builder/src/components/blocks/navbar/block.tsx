@@ -149,7 +149,13 @@ export function NavbarBlock({
             </span>
           )}
         </div>
-        <nav className={cn("hidden md:flex items-center", showCtas ? "gap-6" : "ml-10 gap-7")} style={bodyStyle}>
+        <nav
+          className={cn(
+            "hidden md:flex items-center",
+            showCtas ? "ml-12 flex-1 justify-center gap-6" : "ml-12 gap-7"
+          )}
+          style={bodyStyle}
+        >
           {links.slice(0, 8).map((link, index) => {
             const children = Array.isArray(link.children) ? link.children.slice(0, 8) : [];
             const hasDropdown = showDropdowns && children.length > 0;

@@ -3153,8 +3153,8 @@ const applyUserThemeIntent = (
   if (labeledColors.textSecondary) nextPalette.textSecondary = labeledColors.textSecondary;
 
   const accent =
-    labeledColors.accent || explicitColors[1] || explicitColors[0] || existingPalette.accent || fallbackPrimary;
-  const primary = labeledColors.accent || fallbackPrimary || accent;
+    labeledColors.accent || explicitColors[1] || existingPalette.accent || explicitColors[0] || fallbackPrimary;
+  const primary = explicitColors[0] || labeledColors.accent || fallbackPrimary || accent;
   if (primary) nextPalette.primary = primary;
   if (accent) nextPalette.accent = accent;
   if (!nextPalette.primary) nextPalette.primary = nextPalette.text;
@@ -3908,8 +3908,9 @@ const buildNavbarProps = (
   const bodyFont = typeof (theme as any)?.fontBody === "string" ? (theme as any).fontBody : undefined;
   const nameSeed = typeof page.name === "string" ? page.name : page.path || "home";
   const idSuffix = normalizeKey(nameSeed) || "home";
-  const promptBrand = extractPromptBrandName(String(prompt || ""));
-  const logoAlt = promptBrand || page.name || "Site";
+  const promptBrand =
+    extractPromptBrandName(String(prompt || "")) || extractBrandNameFromPromptLite(String(prompt || ""));
+  const logoAlt = promptBrand || "Company";
   const links = buildNavbarLinks(page, linkGraph);
   const ctas = buildNavbarCtas(page, linkGraph) ?? [];
   const hasChildren = links.some(
@@ -5546,6 +5547,10 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
       props.heroeyebrowtext = fields.eyebrow;
       props.missioneyebrowtext = fields.eyebrow;
       props.ctaeyebrowtext = fields.eyebrow;
+      props.tagtext = fields.eyebrow;
+      props.h1tagtext = fields.eyebrow;
+      props.exptagtext = fields.eyebrow;
+      props.audlabeltext = fields.eyebrow;
     }
     if (fields.title) {
       props.title = fields.title;
@@ -5556,6 +5561,9 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
       props.usetitletext = fields.title;
       props.missionheadlinetext = fields.title;
       props.ctaheadtext = fields.title;
+      props.httext = fields.title;
+      props.exptitletext = fields.title;
+      props.audtitletext = fields.title;
     }
     if (fields.subtitle) {
       props.subtitle = fields.subtitle;
@@ -5566,6 +5574,8 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
       props.usesubtext = fields.subtitle;
       props.missionsupporttext = fields.subtitle;
       props.ctabodytext = fields.subtitle;
+      props.hstext = fields.subtitle;
+      props.expbodytext = fields.subtitle;
     }
   };
   const pagesToProcess = requestedPaths ? pages.filter((page) => requestedPaths.has(String(page.path || "/"))) : pages;
@@ -5575,7 +5585,8 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
       pagePath: page.path,
       pageName: page.name,
     });
-    const pageType = pageContract?.page?.pageType || inferPageTypeFromPath(page.path);
+    const inferredPageType = inferPageTypeFromPath(page.path);
+    const pageType = inferredPageType !== "generic" ? inferredPageType : pageContract?.page?.pageType || inferredPageType;
     const kindCounters = new Map<string, number>();
     const contractQueues = new Map<string, Array<{ slotId?: string; role?: string; imageIntent?: string }>>();
     for (const section of Array.isArray(pageContract?.page?.sections) ? pageContract.page.sections : []) {
@@ -5658,6 +5669,30 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           subtitle: brief.aboutText || "ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.",
         });
       }
+      if (pageType === "products" && effectiveType === "HeroSplit" && inferredKind === "hero") {
+        writeTextPair(item.props, {
+          eyebrow: "3C machine portfolio",
+          title: "3C CNC Machine Platforms",
+          subtitle:
+            "Phone-frame, laptop-shell, camera-bezel, and keypad centers configured for stable output and short delivery windows.",
+        });
+      }
+      if (pageType === "solutions" && effectiveType === "HeroSplit" && inferredKind === "hero") {
+        writeTextPair(item.props, {
+          eyebrow: "Custom solutions",
+          title: "Custom CNC Solutions for Southeast Asia",
+          subtitle:
+            "Fixture, spindle, automation, and line-integration packages built around takt time, finish quality, and deployment speed.",
+        });
+      }
+      if (pageType === "cases" && effectiveType === "HeroSplit" && inferredKind === "hero") {
+        writeTextPair(item.props, {
+          eyebrow: "Production case studies",
+          title: "Representative 3C machining programs",
+          subtitle:
+            "Phone frames, laptop shells, camera bezels, and keypad components delivered with repeatable cycle time and cosmetic-finish control.",
+        });
+      }
       if (effectiveType === "FeatureGrid" && matchesSectionSlot("capability-strip", "home.approach.1")) {
         item.props.variant = "4col";
         item.props.title = "LC-CNC, Shenzhen since 2013";
@@ -5720,6 +5755,13 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           cta: { label: "Request Catalog", href: "/contact", variant: "primary" },
         }));
       }
+      if (pageType === "products" && effectiveType === "ContentStory") {
+        writeTextPair(item.props, {
+          title: "Configured for high-mix 3C machining lines",
+          subtitle:
+            "Each machine family is matched to part geometry, spindle demand, fixture strategy, and output rhythm instead of generic spec-sheet positioning.",
+        });
+      }
       if (effectiveType === "FeatureGrid" && matchesSectionSlot("specification-summary", "products.approach.1")) {
         item.props.title = "Core Machine Specifications";
         item.props.subtitle = "Rigid structure, repeatable accuracy, and deployment-ready configuration options.";
@@ -5728,6 +5770,10 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { title: "Flexible Spindle Packages", desc: "Configured for roughing, finishing, and compact-feature processing." },
           { title: "Automation Ready", desc: "Supports loaders, conveyors, and inline inspection expansion." },
         ];
+      }
+      if (pageType === "products" && effectiveType === "FeatureGrid") {
+        item.props.title = "Core Machine Specifications";
+        item.props.subtitle = "Rigidity, spindle flexibility, and automation readiness for Southeast Asia 3C production.";
       }
       if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("buyer-proof", "products.socialproof.1")) {
         item.props.title = "Why Buyers Choose LC-CNC";
@@ -5777,6 +5823,13 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { name: "Engineering Manager", role: "ODM Factory", quote: "Fixture, spindle, and automation decisions were resolved as one system instead of separate vendors." },
         ];
       }
+      if (pageType === "solutions" && effectiveType === "ContentStory") {
+        writeTextPair(item.props, {
+          title: "Solutions engineered around output constraints",
+          subtitle:
+            "We translate part drawings, takt targets, and staffing reality into machine, tooling, and automation decisions that can be commissioned quickly.",
+        });
+      }
       if (effectiveType === "CardsGrid" && matchesSectionSlot("case-gallery", "cases.products.1")) {
         item.props.title = "Manufacturing Outcomes";
         item.props.subtitle = "Programs focused on cycle-time reduction, stable delivery, and finish consistency.";
@@ -5795,6 +5848,32 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { title: "Ramp-up Speed", desc: "Focused on time-to-output after installation and process verification." },
         ];
       }
+      if (pageType === "cases" && /UseCasesStoryAudienceSegments/i.test(publishedOriginalType)) {
+        item.props.audlabeltext = "Case portfolio";
+        item.props.audtitletext = "Machining programs delivered across Southeast Asia";
+        const caseItems = (brief.caseItems?.length
+          ? brief.caseItems
+          : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining"]) as string[];
+        caseItems.slice(0, 3).forEach((name, idx) => {
+          const slot = idx + 1;
+          item.props[`audcard${slot}tagtext`] = "Case study";
+          item.props[`audcard${slot}titletext`] = name;
+          item.props[`audcard${slot}bodytext`] =
+            "Validated around cycle time, finish quality, and delivery stability after ramp-up.";
+          item.props[`audcard${slot}metatext`] = "SEA deployment";
+        });
+      }
+      if (pageType === "cases" && /ReviewsProductsGrid/i.test(publishedOriginalType)) {
+        const caseItems = (brief.caseItems?.length
+          ? brief.caseItems
+          : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining", "Phone Keypad Machining"]) as string[];
+        caseItems.slice(0, 4).forEach((name, idx) => {
+          const slot = idx + 1;
+          item.props[`q${slot}text`] = name;
+          item.props[`a${slot}text`] = "Cycle time, yield, and finish consistency improved after deployment.";
+          item.props[`card${slot}href`] = "/cases";
+        });
+      }
       if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("customer-feedback", "cases.socialproof.1")) {
         item.props.title = "Customer Feedback";
         item.props.subtitle = "Application-specific outcomes from Southeast Asia programs.";
@@ -5802,6 +5881,19 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { name: "Phone Display Frame Machining", role: "Vietnam", quote: "The line stabilized output quickly while maintaining the cosmetic finish required for premium devices." },
           { name: "Laptop Shell Machining", role: "Malaysia", quote: "Fixture and process tuning reduced rework and improved delivery confidence across multiple batches." },
         ];
+      }
+      if (pageType === "about" && /AboutHero/i.test(publishedOriginalType)) {
+        item.props.heroeyebrowtext = brief.brand || "About LC-CNC";
+        item.props.herotitletext = "LC-CNC, Shenzhen since 2013";
+        item.props.herobodytext =
+          brief.aboutText || "ISO-certified plant, 30+ R&D engineers, and 200+ installed systems across Southeast Asia.";
+      }
+      if (pageType === "about" && /Missionband/i.test(publishedOriginalType)) {
+        item.props.missioneyebrowtext = "Factory capability";
+        item.props.missiontagtext = "Factory capability";
+        item.props.missionheadlinetext = "Quality discipline, process engineering, and regional support";
+        item.props.missionsupporttext =
+          "LC-CNC combines plant execution, tooling know-how, and field response to support 3C manufacturing programs across Southeast Asia.";
       }
       if (effectiveType === "ContentStory" && matchesSectionSlot("company-story", "about.story.1")) {
         writeTextPair(item.props, {
@@ -5854,6 +5946,15 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           quote: "Verified manufacturing and quality management standard.",
         }));
       }
+      if (pageType === "about" && effectiveType === "TestimonialsGrid") {
+        item.props.title = "Certifications";
+        item.props.subtitle = (brief.certifications || ["ISO 9001", "CE", "SGS"]).join(" • ");
+        item.props.items = (brief.certifications || ["ISO 9001", "CE", "SGS"]).map((name) => ({
+          name,
+          role: "Certification",
+          quote: "Verified manufacturing and quality management standard.",
+        }));
+      }
       if (effectiveType === "FeatureGrid" && matchesSectionSlot("contact-channels", "contact.approach.1")) {
         item.props.title = "Contact Channels";
         item.props.subtitle = "Commercial response routed for Southeast Asia machine procurement.";
@@ -5884,6 +5985,64 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
         pagePath: page.path,
         imageIntent: sectionImageIntent,
       }) as Record<string, unknown>;
+      if (effectiveType === "Navbar") {
+        item.props.logo = { alt: brief.brand || "Brand" };
+        item.props.logoText = brief.brand || "Brand";
+        item.props.links = navLinks;
+        item.props.ctas = [];
+      }
+      if (effectiveType === "CreationFooterFallback") {
+        item.props.logoText = brief.brand || "Brand";
+        item.props.ftlogotext = brief.brand || "Brand";
+        item.props.columns = footerCols;
+        item.props.legal = brief.copyright || `© 2024 ${brief.brand || "Brand"}. All rights reserved.`;
+        item.props.copytext = brief.copyright || `© 2024 ${brief.brand || "Brand"}. All rights reserved.`;
+      }
+      if (pageType === "cases" && /ReviewsHero/i.test(publishedOriginalType)) {
+        item.props.tagtext = "Production case studies";
+        item.props.httext = "Representative 3C machining programs";
+        item.props.hstext =
+          "Phone frames, laptop shells, camera bezels, and keypad components delivered with stable cycle time and cosmetic-finish control.";
+      }
+      if (pageType === "cases" && /UseCasesStoryAudienceSegments/i.test(publishedOriginalType)) {
+        const caseItems = (brief.caseItems?.length
+          ? brief.caseItems
+          : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining"]) as string[];
+        item.props.audlabeltext = "Case portfolio";
+        item.props.audtitletext = "Machining programs delivered across Southeast Asia";
+        caseItems.slice(0, 3).forEach((name, idx) => {
+          const slot = idx + 1;
+          item.props[`audcard${slot}tagtext`] = "Case study";
+          item.props[`audcard${slot}titletext`] = name;
+          item.props[`audcard${slot}bodytext`] =
+            "Validated around cycle time, finish quality, and delivery stability after ramp-up.";
+          item.props[`audcard${slot}metatext`] = "SEA deployment";
+        });
+      }
+      if (pageType === "cases" && /ReviewsProductsGrid/i.test(publishedOriginalType)) {
+        const caseItems = (brief.caseItems?.length
+          ? brief.caseItems
+          : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining", "Phone Keypad Machining"]) as string[];
+        caseItems.slice(0, 4).forEach((name, idx) => {
+          const slot = idx + 1;
+          item.props[`q${slot}text`] = name;
+          item.props[`a${slot}text`] = "Cycle time, yield, and finish consistency improved after deployment.";
+          item.props[`card${slot}href`] = "/cases";
+        });
+      }
+      if (pageType === "about" && /AboutHero/i.test(publishedOriginalType)) {
+        item.props.heroeyebrowtext = brief.brand || "About LC-CNC";
+        item.props.herotitletext = "LC-CNC, Shenzhen since 2013";
+        item.props.herobodytext =
+          brief.aboutText || "ISO-certified plant, 30+ R&D engineers, and 200+ installed systems across Southeast Asia.";
+      }
+      if (pageType === "about" && /Missionband/i.test(publishedOriginalType)) {
+        item.props.missioneyebrowtext = "Factory capability";
+        item.props.missiontagtext = "Factory capability";
+        item.props.missionheadlinetext = "Quality discipline, process engineering, and regional support";
+        item.props.missionsupporttext =
+          "LC-CNC combines plant execution, tooling know-how, and field response to support 3C manufacturing programs across Southeast Asia.";
+      }
     });
     return next;
   });
@@ -8951,12 +9110,27 @@ async function builderNode(state: GraphState) {
 
   const shouldPreserveTemplateTheme =
     sectionGenerationStrategy === "template_first" && Boolean(templateResolution.profileId);
-  const lockedTheme = shouldPreserveTemplateTheme
+  let lockedTheme = shouldPreserveTemplateTheme
     ? ({ ...(theme && typeof theme === "object" ? (theme as Record<string, unknown>) : {}) } as Record<string, unknown>)
     : lockThemeByVisualHint(
         theme && typeof theme === "object" ? (theme as Record<string, unknown>) : {},
         state.prompt ?? ""
       );
+  const structuredBrief = parseStructuredBrief(state.prompt ?? "");
+  if (structuredBrief?.palette) {
+    const currentPalette =
+      lockedTheme?.palette && typeof lockedTheme.palette === "object"
+        ? (lockedTheme.palette as Record<string, unknown>)
+        : {};
+    lockedTheme = {
+      ...lockedTheme,
+      palette: {
+        ...currentPalette,
+        ...structuredBrief.palette,
+      },
+      primaryColor: structuredBrief.palette.primary,
+    };
+  }
   pagesOut.forEach((page) => {
     const root = page?.data?.root;
     const rootProps = root?.props && typeof root.props === "object" ? root.props : {};

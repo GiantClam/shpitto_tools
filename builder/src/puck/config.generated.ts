@@ -11,70 +11,34 @@ import {
   textField,
   textareaField,
 } from "@/puck/field-adapters";
-import * as TemplateExclusiveUnistellarHomeHomeNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-unistellar-home-home-navigation-navpen-primary/block";
-import * as TemplateExclusiveUnistellarHomeHomeHeroHero1penAlt1BlockModule from "@/components/blocks/template-exclusive-unistellar-home-home-hero-hero1pen-alt1/block";
-import * as TemplateExclusiveUnistellarHomeHomeHeroHero2penAlt2BlockModule from "@/components/blocks/template-exclusive-unistellar-home-home-hero-hero2pen-alt2/block";
-import * as TemplateExclusiveUnistellarHomeHomeProductsProductpenAlt3BlockModule from "@/components/blocks/template-exclusive-unistellar-home-home-products-productpen-alt3/block";
-import * as TemplateExclusiveUnistellarHomeHomeStoryExppenAlt4BlockModule from "@/components/blocks/template-exclusive-unistellar-home-home-story-exppen-alt4/block";
-import * as TemplateExclusiveUnistellarHomeHomeStorySwitchsecpenAlt5BlockModule from "@/components/blocks/template-exclusive-unistellar-home-home-story-switchsecpen-alt5/block";
-import * as TemplateExclusiveUnistellarHomeHomeSocialproofTrustpenAlt6BlockModule from "@/components/blocks/template-exclusive-unistellar-home-home-socialproof-trustpen-alt6/block";
-import * as TemplateExclusiveUnistellarHomeHomeStoryStorycardspenAlt7BlockModule from "@/components/blocks/template-exclusive-unistellar-home-home-story-storycardspen-alt7/block";
-import * as TemplateExclusiveUnistellarHomeHomeFooterFooterpenAlt8BlockModule from "@/components/blocks/template-exclusive-unistellar-home-home-footer-footerpen-alt8/block";
-import * as TemplateExclusiveUnistellarHomeHomeStorySubpagelinkspenAlt9BlockModule from "@/components/blocks/template-exclusive-unistellar-home-home-story-subpagelinkspen-alt9/block";
-import * as TemplateExclusiveUnistellarHomeSmartTelescopesNavigationHeaderpenPrimaryBlockModule from "@/components/blocks/template-exclusive-unistellar-home-smart-telescopes-navigation-headerpen-primary/block";
-import * as TemplateExclusiveUnistellarHomeSmartTelescopesHeroHeropenAlt1BlockModule from "@/components/blocks/template-exclusive-unistellar-home-smart-telescopes-hero-heropen-alt1/block";
-import * as TemplateExclusiveUnistellarHomeSmartTelescopesProductsProducthighlightspenAlt2BlockModule from "@/components/blocks/template-exclusive-unistellar-home-smart-telescopes-products-producthighlightspen-alt2/block";
-import * as TemplateExclusiveUnistellarHomeSmartTelescopesApproachFeatureblockspenAlt3BlockModule from "@/components/blocks/template-exclusive-unistellar-home-smart-telescopes-approach-featureblockspen-alt3/block";
-import * as TemplateExclusiveUnistellarHomeSmartTelescopesCtaCtapenAlt4BlockModule from "@/components/blocks/template-exclusive-unistellar-home-smart-telescopes-cta-ctapen-alt4/block";
-import * as TemplateExclusiveUnistellarHomeSmartTelescopesFooterFooterpenAlt5BlockModule from "@/components/blocks/template-exclusive-unistellar-home-smart-telescopes-footer-footerpen-alt5/block";
-import * as TemplateExclusiveUnistellarHomeSmartBinocularsNavigationHeaderpenPrimaryBlockModule from "@/components/blocks/template-exclusive-unistellar-home-smart-binoculars-navigation-headerpen-primary/block";
-import * as TemplateExclusiveUnistellarHomeSmartBinocularsHeroHeropenAlt1BlockModule from "@/components/blocks/template-exclusive-unistellar-home-smart-binoculars-hero-heropen-alt1/block";
-import * as TemplateExclusiveUnistellarHomeSmartBinocularsApproachFeaturecardspenAlt2BlockModule from "@/components/blocks/template-exclusive-unistellar-home-smart-binoculars-approach-featurecardspen-alt2/block";
-import * as TemplateExclusiveUnistellarHomeSmartBinocularsStoryUsecasespenAlt3BlockModule from "@/components/blocks/template-exclusive-unistellar-home-smart-binoculars-story-usecasespen-alt3/block";
-import * as TemplateExclusiveUnistellarHomeSmartBinocularsCtaCtapenAlt4BlockModule from "@/components/blocks/template-exclusive-unistellar-home-smart-binoculars-cta-ctapen-alt4/block";
-import * as TemplateExclusiveUnistellarHomeSmartBinocularsFooterFootercompatiblepenAlt5BlockModule from "@/components/blocks/template-exclusive-unistellar-home-smart-binoculars-footer-footercompatiblepen-alt5/block";
-import * as TemplateExclusiveUnistellarHomeTechnologiesNavigationHeadpenPrimaryBlockModule from "@/components/blocks/template-exclusive-unistellar-home-technologies-navigation-headpen-primary/block";
-import * as TemplateExclusiveUnistellarHomeTechnologiesHeroHeropenAlt1BlockModule from "@/components/blocks/template-exclusive-unistellar-home-technologies-hero-heropen-alt1/block";
-import * as TemplateExclusiveUnistellarHomeTechnologiesStoryPillarspenAlt2BlockModule from "@/components/blocks/template-exclusive-unistellar-home-technologies-story-pillarspen-alt2/block";
-import * as TemplateExclusiveUnistellarHomeTechnologiesApproachBenefitspenAlt3BlockModule from "@/components/blocks/template-exclusive-unistellar-home-technologies-approach-benefitspen-alt3/block";
-import * as TemplateExclusiveUnistellarHomeTechnologiesCtaCtapenAlt4BlockModule from "@/components/blocks/template-exclusive-unistellar-home-technologies-cta-ctapen-alt4/block";
-import * as TemplateExclusiveUnistellarHomeTechnologiesFooterFootpenAlt5BlockModule from "@/components/blocks/template-exclusive-unistellar-home-technologies-footer-footpen-alt5/block";
-import * as TemplateExclusiveUnistellarHomeReviewsNavigationHeadpenPrimaryBlockModule from "@/components/blocks/template-exclusive-unistellar-home-reviews-navigation-headpen-primary/block";
-import * as TemplateExclusiveUnistellarHomeReviewsHeroHeropenAlt1BlockModule from "@/components/blocks/template-exclusive-unistellar-home-reviews-hero-heropen-alt1/block";
-import * as TemplateExclusiveUnistellarHomeReviewsProductsGridpenAlt2BlockModule from "@/components/blocks/template-exclusive-unistellar-home-reviews-products-gridpen-alt2/block";
-import * as TemplateExclusiveUnistellarHomeReviewsCtaCtapenAlt3BlockModule from "@/components/blocks/template-exclusive-unistellar-home-reviews-cta-ctapen-alt3/block";
-import * as TemplateExclusiveUnistellarHomeReviewsFooterFootpenAlt4BlockModule from "@/components/blocks/template-exclusive-unistellar-home-reviews-footer-footpen-alt4/block";
-import * as TemplateExclusiveUnistellarHomeContactContactContactheaderpenPrimaryBlockModule from "@/components/blocks/template-exclusive-unistellar-home-contact-contact-contactheaderpen-primary/block";
-import * as TemplateExclusiveUnistellarHomeContactHeroHeropenAlt1BlockModule from "@/components/blocks/template-exclusive-unistellar-home-contact-hero-heropen-alt1/block";
-import * as TemplateExclusiveUnistellarHomeContactContactContactbodypenAlt2BlockModule from "@/components/blocks/template-exclusive-unistellar-home-contact-contact-contactbodypen-alt2/block";
-import * as TemplateExclusiveUnistellarHomeContactFooterContactfooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-unistellar-home-contact-footer-contactfooterpen-alt3/block";
-import * as TemplateExclusiveUnistellarHomeSupportContactSupportheaderpenPrimaryBlockModule from "@/components/blocks/template-exclusive-unistellar-home-support-contact-supportheaderpen-primary/block";
-import * as TemplateExclusiveUnistellarHomeSupportHeroSupportheropenAlt1BlockModule from "@/components/blocks/template-exclusive-unistellar-home-support-hero-supportheropen-alt1/block";
-import * as TemplateExclusiveUnistellarHomeSupportContactHelptopicspenAlt2BlockModule from "@/components/blocks/template-exclusive-unistellar-home-support-contact-helptopicspen-alt2/block";
-import * as TemplateExclusiveUnistellarHomeSupportStoryResourcespenAlt3BlockModule from "@/components/blocks/template-exclusive-unistellar-home-support-story-resourcespen-alt3/block";
-import * as TemplateExclusiveUnistellarHomeSupportCtaContactctapenAlt4BlockModule from "@/components/blocks/template-exclusive-unistellar-home-support-cta-contactctapen-alt4/block";
-import * as TemplateExclusiveUnistellarHomeSupportFooterSupportfooterpenAlt5BlockModule from "@/components/blocks/template-exclusive-unistellar-home-support-footer-supportfooterpen-alt5/block";
-import * as TemplateExclusiveUnistellarHomePolicyNavigationNavpolicypenPrimaryBlockModule from "@/components/blocks/template-exclusive-unistellar-home-policy-navigation-navpolicypen-primary/block";
-import * as TemplateExclusiveUnistellarHomePolicyStoryPolicywrappenAlt1BlockModule from "@/components/blocks/template-exclusive-unistellar-home-policy-story-policywrappen-alt1/block";
-import * as TemplateExclusiveUnistellarHomePolicyFooterFootpolicypenAlt2BlockModule from "@/components/blocks/template-exclusive-unistellar-home-policy-footer-footpolicypen-alt2/block";
-import * as TemplateExclusiveUnistellarHomeAboutNavigationNavaboutpenPrimaryBlockModule from "@/components/blocks/template-exclusive-unistellar-home-about-navigation-navaboutpen-primary/block";
-import * as TemplateExclusiveUnistellarHomeAboutHeroAboutheropenAlt1BlockModule from "@/components/blocks/template-exclusive-unistellar-home-about-hero-aboutheropen-alt1/block";
-import * as TemplateExclusiveUnistellarHomeAboutStoryMissionbandpenAlt2BlockModule from "@/components/blocks/template-exclusive-unistellar-home-about-story-missionbandpen-alt2/block";
-import * as TemplateExclusiveUnistellarHomeAboutStoryTimelinepenAlt3BlockModule from "@/components/blocks/template-exclusive-unistellar-home-about-story-timelinepen-alt3/block";
-import * as TemplateExclusiveUnistellarHomeAboutStoryTeamandvaluespenAlt4BlockModule from "@/components/blocks/template-exclusive-unistellar-home-about-story-teamandvaluespen-alt4/block";
-import * as TemplateExclusiveUnistellarHomeAboutCtaAboutctapenAlt5BlockModule from "@/components/blocks/template-exclusive-unistellar-home-about-cta-aboutctapen-alt5/block";
-import * as TemplateExclusiveUnistellarHomeAboutFooterFootaboutpenAlt6BlockModule from "@/components/blocks/template-exclusive-unistellar-home-about-footer-footaboutpen-alt6/block";
-import * as TemplateExclusiveUnistellarHomeUseCasesNavigationNavcasepenPrimaryBlockModule from "@/components/blocks/template-exclusive-unistellar-home-use-cases-navigation-navcasepen-primary/block";
-import * as TemplateExclusiveUnistellarHomeUseCasesHeroUsecaseheropenAlt1BlockModule from "@/components/blocks/template-exclusive-unistellar-home-use-cases-hero-usecaseheropen-alt1/block";
-import * as TemplateExclusiveUnistellarHomeUseCasesStoryAudiencesegmentspenAlt2BlockModule from "@/components/blocks/template-exclusive-unistellar-home-use-cases-story-audiencesegmentspen-alt2/block";
-import * as TemplateExclusiveUnistellarHomeUseCasesStoryStorycardspenAlt3BlockModule from "@/components/blocks/template-exclusive-unistellar-home-use-cases-story-storycardspen-alt3/block";
-import * as TemplateExclusiveUnistellarHomeUseCasesCtaBottomctapenAlt4BlockModule from "@/components/blocks/template-exclusive-unistellar-home-use-cases-cta-bottomctapen-alt4/block";
-import * as TemplateExclusiveUnistellarHomeUseCasesFooterFootcasepenAlt5BlockModule from "@/components/blocks/template-exclusive-unistellar-home-use-cases-footer-footcasepen-alt5/block";
-import * as TemplateExclusiveUnistellarHomeBlogNavigationNavblogpenPrimaryBlockModule from "@/components/blocks/template-exclusive-unistellar-home-blog-navigation-navblogpen-primary/block";
-import * as TemplateExclusiveUnistellarHomeBlogHeroHeropenAlt1BlockModule from "@/components/blocks/template-exclusive-unistellar-home-blog-hero-heropen-alt1/block";
-import * as TemplateExclusiveUnistellarHomeBlogApproachFeatpenAlt2BlockModule from "@/components/blocks/template-exclusive-unistellar-home-blog-approach-featpen-alt2/block";
-import * as TemplateExclusiveUnistellarHomeBlogProductsCardspenAlt3BlockModule from "@/components/blocks/template-exclusive-unistellar-home-blog-products-cardspen-alt3/block";
-import * as TemplateExclusiveUnistellarHomeBlogFooterFootblogpenAlt4BlockModule from "@/components/blocks/template-exclusive-unistellar-home-blog-footer-footblogpen-alt4/block";
+import * as TemplateExclusivePenSiteHomeNavigationTopnavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-home-navigation-topnavpen-primary/block";
+import * as TemplateExclusivePenSiteHomeHeroHero1penAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-home-hero-hero1pen-alt1/block";
+import * as TemplateExclusivePenSiteHomeHeroHero2penAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-home-hero-hero2pen-alt2/block";
+import * as TemplateExclusivePenSiteHomeHeroHero3penAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-home-hero-hero3pen-alt3/block";
+import * as TemplateExclusivePenSiteHomeHeroHero4penAlt4BlockModule from "@/components/blocks/template-exclusive-pen-site-home-hero-hero4pen-alt4/block";
+import * as TemplateExclusivePenSiteHomeStoryMidtitlepenAlt6BlockModule from "@/components/blocks/template-exclusive-pen-site-home-story-midtitlepen-alt6/block";
+import * as TemplateExclusivePenSiteHomeStoryFixheadingpenAlt7BlockModule from "@/components/blocks/template-exclusive-pen-site-home-story-fixheadingpen-alt7/block";
+import * as TemplateExclusivePenSiteHomeStoryMosaicpenAlt8BlockModule from "@/components/blocks/template-exclusive-pen-site-home-story-mosaicpen-alt8/block";
+import * as TemplateExclusivePenSiteHomeStoryHfpenAlt9BlockModule from "@/components/blocks/template-exclusive-pen-site-home-story-hfpen-alt9/block";
+import * as TemplateExclusivePenSiteAboutNavigationTopnavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-about-navigation-topnavpen-primary/block";
+import * as TemplateExclusivePenSiteAboutStoryAboutmainpenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-about-story-aboutmainpen-alt1/block";
+import * as TemplateExclusivePenSiteAboutFooterFooterpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-about-footer-footerpen-alt2/block";
+import * as TemplateExclusivePenSiteSupportNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-support-navigation-navpen-primary/block";
+import * as TemplateExclusivePenSiteSupportHeroSupportheropenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-support-hero-supportheropen-alt1/block";
+import * as TemplateExclusivePenSiteSupportContactSupportmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-support-contact-supportmainpen-alt2/block";
+import * as TemplateExclusivePenSiteSupportFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-support-footer-footerpen-alt3/block";
+import * as TemplateExclusivePenSiteProductsNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-products-navigation-navpen-primary/block";
+import * as TemplateExclusivePenSiteProductsHeroBizheropenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-products-hero-bizheropen-alt1/block";
+import * as TemplateExclusivePenSiteProductsStoryBizmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-products-story-bizmainpen-alt2/block";
+import * as TemplateExclusivePenSiteProductsFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-products-footer-footerpen-alt3/block";
+import * as TemplateExclusivePenSiteContactNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-contact-navigation-navpen-primary/block";
+import * as TemplateExclusivePenSiteContactHeroContactheropenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-contact-hero-contactheropen-alt1/block";
+import * as TemplateExclusivePenSiteContactContactContactmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-contact-contact-contactmainpen-alt2/block";
+import * as TemplateExclusivePenSiteContactFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-contact-footer-footerpen-alt3/block";
+import * as TemplateExclusivePenSiteBlogNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-blog-navigation-navpen-primary/block";
+import * as TemplateExclusivePenSiteBlogNavigationCategorybarpenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-blog-navigation-categorybarpen-alt1/block";
+import * as TemplateExclusivePenSiteBlogStoryBlogmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-blog-story-blogmainpen-alt2/block";
+import * as TemplateExclusivePenSiteBlogFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-blog-footer-footerpen-alt3/block";
 
 const resolveBlockComponent = (
   moduleExports: Record<string, unknown>,
@@ -99,2624 +63,1134 @@ const renderBlock = (Block: React.ComponentType<any>) => (props: any) =>
   React.createElement(Block, props);
 
 export const generatedComponents: Record<string, any> = {
-    "TemplateExclusiveUnistellarHomeHomeNavigationNavpenPrimary": {
+    "TemplateExclusivePenSiteHomeNavigationTopnavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeHomeNavigationNavpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-home-navigation-navpen-primary/block"
+          TemplateExclusivePenSiteHomeNavigationTopnavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-navigation-topnavpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeHomeNavigationNavpenPrimary-1",
-            "logotext": "UNISTELLAR",
+            "id": "TemplateExclusivePenSiteHomeNavigationTopnavpenPrimary-1",
+            "logotext": "Framework",
             "logohref": "/",
-            "navl1text": "Smart Telescopes",
-            "navl1href": "/smart-telescopes",
-            "navl2text": "Smart Binoculars",
-            "navl2href": "/smart-binoculars",
-            "navl3text": "Reviews",
-            "navl3href": "/reviews",
-            "navl4text": "Technologies",
-            "navl4href": "/technologies",
-            "navl5text": "Use Cases",
-            "navl5href": "/use-cases",
-            "ctahref": "/",
-            "ctatexttext": "Shop"
+            "centernavtext": "Products   Laptops   Desktops   Marketplace",
+            "centernavhref": "/products",
+            "rightnavtext": "Support   Sign In   Cart",
+            "rightnavhref": "/support"
       },
       fields: {
         logotext: textField("Logotext"),
         logohref: textField("Logohref"),
-        navl1text: textField("Navl1text"),
-        navl1href: textField("Navl1href"),
-        navl2text: textField("Navl2text"),
-        navl2href: textField("Navl2href"),
-        navl3text: textField("Navl3text"),
-        navl3href: textField("Navl3href"),
-        navl4text: textField("Navl4text"),
-        navl4href: textField("Navl4href"),
-        navl5text: textField("Navl5text"),
-        navl5href: textField("Navl5href"),
-        ctahref: textField("Ctahref"),
-        ctatexttext: textField("Ctatexttext"),
+        centernavtext: textField("Centernavtext"),
+        centernavhref: textField("Centernavhref"),
+        rightnavtext: textField("Rightnavtext"),
+        rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusiveUnistellarHomeHomeHeroHero1penAlt1": {
+    "TemplateExclusivePenSiteHomeHeroHero1penAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeHomeHeroHero1penAlt1BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-home-hero-hero1pen-alt1/block"
+          TemplateExclusivePenSiteHomeHeroHero1penAlt1BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-hero-hero1pen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeHomeHeroHero1penAlt1-1",
-            "hero1imagesrc": "https://images.unsplash.com/photo-1501523321-8ecb927b4be6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxODczNDh8&ixlib=rb-4.1.0&q=80&w=1080",
-            "h1tagtext": "Unistellar Smart Telescopes",
-            "h1text": "The Ultimate Stargazing Experience",
-            "h1desctext": "From distant galaxies, nebulae and clusters to nearby solar system planets, experience the universe in extraordinary clarity.",
-            "learnbtnhref": "/",
-            "learntxttext": "Learn More",
-            "orderbtnhref": "/",
-            "ordertxttext": "Order Yours"
+            "id": "TemplateExclusivePenSiteHomeHeroHero1penAlt1-1",
+            "h1t1text": "Framework Laptop 13\nisn't our computer. It's\nyours.",
+            "h1t2text": "Start computing from $899.00",
+            "h1bttext": "Configure now",
+            "akwvvtext": "Learn more",
+            "hero1rimagesrc": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080"
       },
       fields: {
-        hero1imagesrc: textField("Hero1imagesrc"),
-        h1tagtext: textField("H1tagtext"),
+        h1t1text: textField("H1t1text"),
+        h1t2text: textField("H1t2text"),
+        h1bttext: textField("H1bttext"),
+        akwvvtext: textField("Akwvvtext"),
+        hero1rimagesrc: textField("Hero1rimagesrc"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeHeroHero2penAlt2": {
+      render: renderBlock(
+        resolveBlockComponent(
+          TemplateExclusivePenSiteHomeHeroHero2penAlt2BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-hero-hero2pen-alt2/block"
+        )
+      ),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeHeroHero2penAlt2-1",
+            "hero2limagesrc": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "h2t1text": "Configure once. Upgrade\nwhere you need.",
+            "h2t2text": "Starting at $399",
+            "h2bttext": "Configure now",
+            "dxtv6text": "Learn more"
+      },
+      fields: {
+        hero2limagesrc: textField("Hero2limagesrc"),
+        h2t1text: textField("H2t1text"),
+        h2t2text: textField("H2t2text"),
+        h2bttext: textField("H2bttext"),
+        dxtv6text: textField("Dxtv6text"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeHeroHero3penAlt3": {
+      render: renderBlock(
+        resolveBlockComponent(
+          TemplateExclusivePenSiteHomeHeroHero3penAlt3BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-hero-hero3pen-alt3/block"
+        )
+      ),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeHeroHero3penAlt3-1",
+            "hero3limagesrc": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "h3t1text": "Framework Desktop is a big\ncomputer made mini.",
+            "h3bttext": "Configure now",
+            "cn9citext": "Learn more"
+      },
+      fields: {
+        hero3limagesrc: textField("Hero3limagesrc"),
+        h3t1text: textField("H3t1text"),
+        h3bttext: textField("H3bttext"),
+        cn9citext: textField("Cn9citext"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeHeroHero4penAlt4": {
+      render: renderBlock(
+        resolveBlockComponent(
+          TemplateExclusivePenSiteHomeHeroHero4penAlt4BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-hero-hero4pen-alt4/block"
+        )
+      ),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeHeroHero4penAlt4-1",
+            "h4t1text": "Computers shouldn't be boring.",
+            "h4t2text": "Starting at $799",
+            "h4bttext": "Configure now",
+            "dsvsntext": "Learn more",
+            "hero4rimagesrc": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080"
+      },
+      fields: {
+        h4t1text: textField("H4t1text"),
+        h4t2text: textField("H4t2text"),
+        h4bttext: textField("H4bttext"),
+        dsvsntext: textField("Dsvsntext"),
+        hero4rimagesrc: textField("Hero4rimagesrc"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryMidtitlepenAlt6": {
+      render: renderBlock(
+        resolveBlockComponent(
+          TemplateExclusivePenSiteHomeStoryMidtitlepenAlt6BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-story-midtitlepen-alt6/block"
+        )
+      ),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryMidtitlepenAlt6-1",
+            "mid1text": "Upgrade, customize, and repair.",
+            "fixlinetext": "Keep track of what we're\nworking on with the Framework\nNewsletter."
+      },
+      fields: {
+        mid1text: textField("Mid1text"),
+        fixlinetext: textField("Fixlinetext"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryFixheadingpenAlt7": {
+      render: renderBlock(
+        resolveBlockComponent(
+          TemplateExclusivePenSiteHomeStoryFixheadingpenAlt7BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-story-fixheadingpen-alt7/block"
+        )
+      ),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryFixheadingpenAlt7-1",
+            "jac8ltext": "Let's fix Consumer Electronics."
+      },
+      fields: {
+        jac8ltext: textField("Jac8ltext"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryMosaicpenAlt8": {
+      render: renderBlock(
+        resolveBlockComponent(
+          TemplateExclusivePenSiteHomeStoryMosaicpenAlt8BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-story-mosaicpen-alt8/block"
+        )
+      ),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryMosaicpenAlt8-1",
+            "mosaicimagesrc": "https://images.unsplash.com/4/madebyvadim.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080"
+      },
+      fields: {
+        mosaicimagesrc: textField("Mosaicimagesrc"),
+      },
+    },
+    "TemplateExclusivePenSiteHomeStoryHfpenAlt9": {
+      render: renderBlock(
+        resolveBlockComponent(
+          TemplateExclusivePenSiteHomeStoryHfpenAlt9BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-story-hfpen-alt9/block"
+        )
+      ),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteHomeStoryHfpenAlt9-1",
+            "k1dhitext": "Company",
+            "ovze9text": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+            "rwrx5text": "Social",
+            "xgczptext": "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+            "hi5gtext": "Community",
+            "ggtmktext": "Community Forum\nSupport\nRepair Guides",
+            "sxn6ltext": "Shop all",
+            "gcbuvtext": "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+            "xjrrqtext": "Subscribe",
+            "c47vstext": "Stay up to date with the Framework Newsletter (a few times a month)",
+            "fugfktext": "Your email",
+            "kqqdxhref": "/support",
+            "ln0k2text": "Sign up",
+            "ks1jbtext": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
+            "meabitext": "USD"
+      },
+      fields: {
+        k1dhitext: textField("K1dhitext"),
+        ovze9text: textField("Ovze9text"),
+        rwrx5text: textField("Rwrx5text"),
+        xgczptext: textField("Xgczptext"),
+        hi5gtext: textField("Hi5gtext"),
+        ggtmktext: textField("Ggtmktext"),
+        sxn6ltext: textField("Sxn6ltext"),
+        gcbuvtext: textField("Gcbuvtext"),
+        xjrrqtext: textField("Xjrrqtext"),
+        c47vstext: textField("C47vstext"),
+        fugfktext: textField("Fugfktext"),
+        kqqdxhref: textField("Kqqdxhref"),
+        ln0k2text: textField("Ln0k2text"),
+        ks1jbtext: textField("Ks1jbtext"),
+        meabitext: textField("Meabitext"),
+      },
+    },
+    "TemplateExclusivePenSiteAboutNavigationTopnavpenPrimary": {
+      render: renderBlock(
+        resolveBlockComponent(
+          TemplateExclusivePenSiteAboutNavigationTopnavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-pen-site-about-navigation-topnavpen-primary/block"
+        )
+      ),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteAboutNavigationTopnavpenPrimary-1",
+            "logotext": "Framework",
+            "logohref": "/",
+            "centernavtext": "Products   Laptops   Desktops   Marketplace",
+            "centernavhref": "/products",
+            "rightnavtext": "Support   Sign In   Cart",
+            "rightnavhref": "/support"
+      },
+      fields: {
+        logotext: textField("Logotext"),
+        logohref: textField("Logohref"),
+        centernavtext: textField("Centernavtext"),
+        centernavhref: textField("Centernavhref"),
+        rightnavtext: textField("Rightnavtext"),
+        rightnavhref: textField("Rightnavhref"),
+      },
+    },
+    "TemplateExclusivePenSiteAboutStoryAboutmainpenAlt1": {
+      render: renderBlock(
+        resolveBlockComponent(
+          TemplateExclusivePenSiteAboutStoryAboutmainpenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-about-story-aboutmainpen-alt1/block"
+        )
+      ),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteAboutStoryAboutmainpenAlt1-1",
+            "h1text": "Fix Consumer\nElectronics",
+            "p1text": "We're here to remake consumer electronics to respect people and the planet. Unlike most products, ours are open for you to repair, customize, upgrade, and own at the deepest level.",
+            "p2text": "Consumer electronics follows a few of the opposite principles of what makes consumer products useful, reliable, and durable over time. We’ve optimized every experience of use and service over product lifecycle and have done this through decisions that increase short-term business metrics while reducing long-term value.",
+            "p3text": "It doesn’t have to be this way. There are sensible patterns where products are designed from the start to be repaired and upgraded over years. The constraints in materials, supply chains, and energy use are real, but this is exactly where better design and open standards can create long-term value.",
+            "p4text": "Every company can align with this but not every model supports any part of it. We believe that when products are durable, modular, and maintained transparently, customers get better experiences and less waste over time.",
+            "nz0y9text": "2020",
+            "rejuxtext": "Framework was founded in San Francisco in 2020, with a mission to remake consumer electronics to respect people and the planet.",
+            "zlzbctext": "2021",
+            "hquk0text": "Framework Laptop shipped with full repairability and expansion support. We launched parts, guides, and upgrades together with the product.",
+            "pfcsatext": "2022",
+            "xehzztext": "We announced and delivered major upgrades while maintaining compatibility. Core modules and accessories continued to expand.",
+            "gxwgytext": "→",
+            "bcvntext": "2023",
+            "wvphotext": "Introduced more product variants and opened new manufacturing and logistics paths while keeping repair-first principles.",
+            "g7ozhtext": "2024",
+            "l7kp3text": "Framework Desktop entered development and new ecosystem parts shipped. Community contributions accelerated across regions.",
+            "jiee6text": "2025",
+            "vtejrtext": "Expanded platform support and scale while preserving the promise of longevity, upgradeability, and transparent documentation.",
+            "w1text": "Where we are and where we\nmanufacture",
+            "w2text": "We're headquartered in San Francisco, with several offices in Taipei. Most of our manufacturing is in Taiwan, and we have team members in Seattle, EU, and all over the world.",
+            "w3imagesrc": "./images/generated-1773114739067.png",
+            "aawkatext": "Who",
+            "mq7tmtext": "we are",
+            "gfkkitext": "Nirav Patel\nFounder\n🌐  in  𝕏",
+            "c7mvmtext": "Kieran L\nDirector, Device Software\n🌐  in  𝕏  ◎",
+            "z6bfhtext": "Po Yu C\nHead of Industrial Design\nin  𝕏",
+            "udgjetext": "Kate C\nTechnical Program Manager\nin",
+            "gtwntext": "Mendy N\nChief Operating Officer\nin",
+            "uzsgvtext": "Adila L\nSenior Global Supply Manager\nin",
+            "u0zlstext": "Latest Updates",
+            "rca6ctext": "View More Posts",
+            "yf7koimagesrc": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1200&q=80",
+            "xbbo6text": "Updates and livestream\nNews | Feb 26 2026",
+            "nt4buimagesrc": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1200&q=80",
+            "bnlh2text": "Linux Gaming with Framework\nNews | Feb 26 2026",
+            "coacntext": "In stock on Framework Desktop and updates on the industry-wide silicon crunch\nNews | Dec 22 2025"
+      },
+      fields: {
         h1text: textField("H1text"),
-        h1desctext: textField("H1desctext"),
-        learnbtnhref: textField("Learnbtnhref"),
-        learntxttext: textField("Learntxttext"),
-        orderbtnhref: textField("Orderbtnhref"),
-        ordertxttext: textField("Ordertxttext"),
+        p1text: textField("P1text"),
+        p2text: textField("P2text"),
+        p3text: textField("P3text"),
+        p4text: textField("P4text"),
+        nz0y9text: textField("Nz0y9text"),
+        rejuxtext: textField("Rejuxtext"),
+        zlzbctext: textField("Zlzbctext"),
+        hquk0text: textField("Hquk0text"),
+        pfcsatext: textField("Pfcsatext"),
+        xehzztext: textField("Xehzztext"),
+        gxwgytext: textField("Gxwgytext"),
+        bcvntext: textField("Bcvntext"),
+        wvphotext: textField("Wvphotext"),
+        g7ozhtext: textField("G7ozhtext"),
+        l7kp3text: textField("L7kp3text"),
+        jiee6text: textField("Jiee6text"),
+        vtejrtext: textField("Vtejrtext"),
+        w1text: textField("W1text"),
+        w2text: textField("W2text"),
+        w3imagesrc: textField("W3imagesrc"),
+        aawkatext: textField("Aawkatext"),
+        mq7tmtext: textField("Mq7tmtext"),
+        gfkkitext: textField("Gfkkitext"),
+        c7mvmtext: textField("C7mvmtext"),
+        z6bfhtext: textField("Z6bfhtext"),
+        udgjetext: textField("Udgjetext"),
+        gtwntext: textField("Gtwntext"),
+        uzsgvtext: textField("Uzsgvtext"),
+        u0zlstext: textField("U0zlstext"),
+        rca6ctext: textField("Rca6ctext"),
+        yf7koimagesrc: textField("Yf7koimagesrc"),
+        xbbo6text: textField("Xbbo6text"),
+        nt4buimagesrc: textField("Nt4buimagesrc"),
+        bnlh2text: textField("Bnlh2text"),
+        coacntext: textField("Coacntext"),
       },
     },
-    "TemplateExclusiveUnistellarHomeHomeHeroHero2penAlt2": {
+    "TemplateExclusivePenSiteAboutFooterFooterpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeHomeHeroHero2penAlt2BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-home-hero-hero2pen-alt2/block"
+          TemplateExclusivePenSiteAboutFooterFooterpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-about-footer-footerpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeHomeHeroHero2penAlt2-1",
-            "hero2imagesrc": "https://images.unsplash.com/photo-1625492600712-84d1b02dc263?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxODczNTJ8&ixlib=rb-4.1.0&q=80&w=1080",
-            "h2tagtext": "ENVISION Smart Binoculars",
-            "h2text": "Augmented Reality Powered Binoculars",
-            "h2desctext": "Overlaying contextual information directly into your natural field of view, ENVISION enhances day and night exploration.",
-            "hero2attext": "Learn More",
-            "hero2ahref": "/"
+            "id": "TemplateExclusivePenSiteAboutFooterFooterpenAlt2-1",
+            "vlbrhtext": "Company",
+            "imz8dtext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+            "imz8dhref": "/about",
+            "zr0text": "Social",
+            "mbhbtext": "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+            "mbhbhref": "/",
+            "wer5jtext": "Community",
+            "hy3sbtext": "Community Forum\nSupport\nRepair Guides",
+            "hy3sbhref": "/",
+            "iuru3text": "Shop all",
+            "g0outext": "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+            "g0ouhref": "/",
+            "nzlvptext": "Subscribe",
+            "qjmimtext": "Stay up to date with the Framework Newsletter (a few times a month)",
+            "qjmimhref": "/blog",
+            "lsxlstext": "Your email",
+            "xz2obhref": "/support",
+            "zelqitext": "Sign up",
+            "vb8xtext": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
+            "lwirdtext": "USD"
       },
       fields: {
-        hero2imagesrc: textField("Hero2imagesrc"),
-        h2tagtext: textField("H2tagtext"),
-        h2text: textField("H2text"),
-        h2desctext: textField("H2desctext"),
-        hero2attext: textField("Hero2attext"),
-        hero2ahref: textField("Hero2ahref"),
+        vlbrhtext: textField("Vlbrhtext"),
+        imz8dtext: textField("Imz8dtext"),
+        imz8dhref: textField("Imz8dhref"),
+        zr0text: textField("Zr0text"),
+        mbhbtext: textField("Mbhbtext"),
+        mbhbhref: textField("Mbhbhref"),
+        wer5jtext: textField("Wer5jtext"),
+        hy3sbtext: textField("Hy3sbtext"),
+        hy3sbhref: textField("Hy3sbhref"),
+        iuru3text: textField("Iuru3text"),
+        g0outext: textField("G0outext"),
+        g0ouhref: textField("G0ouhref"),
+        nzlvptext: textField("Nzlvptext"),
+        qjmimtext: textField("Qjmimtext"),
+        qjmimhref: textField("Qjmimhref"),
+        lsxlstext: textField("Lsxlstext"),
+        xz2obhref: textField("Xz2obhref"),
+        zelqitext: textField("Zelqitext"),
+        vb8xtext: textField("Vb8xtext"),
+        lwirdtext: textField("Lwirdtext"),
       },
     },
-    "TemplateExclusiveUnistellarHomeHomeProductsProductpenAlt3": {
+    "TemplateExclusivePenSiteSupportNavigationNavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeHomeProductsProductpenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-home-products-productpen-alt3/block"
+          TemplateExclusivePenSiteSupportNavigationNavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-pen-site-support-navigation-navpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeHomeProductsProductpenAlt3-1",
-            "productimage01imagesrc": "https://images.unsplash.com/photo-1739450543338-663204eb8888?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxODg0Njl8&ixlib=rb-4.1.0&q=80&w=1080",
-            "prodtag01text": "01  ODYSSEY PRO",
-            "prodtitle01text": "Deep-space clarity\nin one tap",
-            "proddesc01text": "Ultra-low-light optics and AI noise suppression for sharp celestial detail.",
-            "prodbtn01href": "/",
-            "prodbtnlabel01text": "VIEW SPECS",
-            "productimage02imagesrc": "https://images.unsplash.com/photo-1760551601203-12eddfb62216?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxODg0NzB8&ixlib=rb-4.1.0&q=80&w=1080",
-            "prodtag02text": "02  ENVISION",
-            "prodtitle02text": "AR overlays for\ninstant target lock",
-            "proddesc02text": "Contextual overlays track motion vectors and highlight mission-critical zones.",
-            "prodbtn02href": "/",
-            "prodbtnlabel02text": "SEE DEMO",
-            "productimage03imagesrc": "https://images.unsplash.com/photo-1694627110385-d0e3dfb258f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxODg0OTN8&ixlib=rb-4.1.0&q=80&w=1080",
-            "prodtag03text": "03  EQUINOX",
-            "prodtitle03text": "Cinema-grade\nnight capture",
-            "proddesc03text": "HDR stacking and thermal stabilization for crisp footage after sunset.",
-            "prodbtn03href": "/blog",
-            "prodbtnlabel03text": "EXPLORE",
-            "productimage04imagesrc": "https://images.unsplash.com/photo-1730292422953-8b20263e406f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxODg0OTR8&ixlib=rb-4.1.0&q=80&w=1080",
-            "prodtag04text": "04  AURORA",
-            "prodtitle04text": "Portable precision\nfor every trail",
-            "proddesc04text": "Rugged body, long-range sensor fusion, and one-hand operation in motion.",
-            "prodbtn04href": "/",
-            "prodbtnlabel04text": "BUY NOW"
+            "id": "TemplateExclusivePenSiteSupportNavigationNavpenPrimary-1",
+            "logotext": "Framework",
+            "logohref": "/",
+            "centernavtext": "Products   Laptops   Desktops   Marketplace",
+            "centernavhref": "/products",
+            "rightnavtext": "Support   Sign In   Cart",
+            "rightnavhref": "/support"
       },
       fields: {
-        productimage01imagesrc: textField("Productimage01imagesrc"),
-        prodtag01text: textField("Prodtag01text"),
-        prodtitle01text: textField("Prodtitle01text"),
-        proddesc01text: textField("Proddesc01text"),
-        prodbtn01href: textField("Prodbtn01href"),
-        prodbtnlabel01text: textField("Prodbtnlabel01text"),
-        productimage02imagesrc: textField("Productimage02imagesrc"),
-        prodtag02text: textField("Prodtag02text"),
-        prodtitle02text: textField("Prodtitle02text"),
-        proddesc02text: textField("Proddesc02text"),
-        prodbtn02href: textField("Prodbtn02href"),
-        prodbtnlabel02text: textField("Prodbtnlabel02text"),
-        productimage03imagesrc: textField("Productimage03imagesrc"),
-        prodtag03text: textField("Prodtag03text"),
-        prodtitle03text: textField("Prodtitle03text"),
-        proddesc03text: textField("Proddesc03text"),
-        prodbtn03href: textField("Prodbtn03href"),
-        prodbtnlabel03text: textField("Prodbtnlabel03text"),
-        productimage04imagesrc: textField("Productimage04imagesrc"),
-        prodtag04text: textField("Prodtag04text"),
-        prodtitle04text: textField("Prodtitle04text"),
-        proddesc04text: textField("Proddesc04text"),
-        prodbtn04href: textField("Prodbtn04href"),
-        prodbtnlabel04text: textField("Prodbtnlabel04text"),
+        logotext: textField("Logotext"),
+        logohref: textField("Logohref"),
+        centernavtext: textField("Centernavtext"),
+        centernavhref: textField("Centernavhref"),
+        rightnavtext: textField("Rightnavtext"),
+        rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusiveUnistellarHomeHomeStoryExppenAlt4": {
+    "TemplateExclusivePenSiteSupportHeroSupportheropenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeHomeStoryExppenAlt4BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-home-story-exppen-alt4/block"
+          TemplateExclusivePenSiteSupportHeroSupportheropenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-support-hero-supportheropen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeHomeStoryExppenAlt4-1",
-            "exptagtext": "THE EXPERIENCE",
-            "exptitletext": "ASTROPHOTOGRAPHY\nCAPTURE RESULTS",
-            "expbodytext": "Swipe through real captures made with Unistellar smart telescopes. From lunar textures to deep-sky nebulae, every frame reveals detail your eyes cannot see alone.",
-            "capture01imagesrc": "https://images.unsplash.com/photo-1741016825495-1faf2afc19d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxODgwNTF8&ixlib=rb-4.1.0&q=80&w=1080",
-            "cap1text": "ORION NEBULA / 10M STACK",
-            "capturemeta01text": "EQUINOX 2 / 96 FRAMES",
-            "capture02imagesrc": "https://images.unsplash.com/photo-1713327656692-2db767c3b8de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxODgwNTJ8&ixlib=rb-4.1.0&q=80&w=1080",
-            "cap2text": "MOON CRATERS / HIGH RES",
-            "capturemeta02text": "DARK SKY / 2.8 SEC EXP",
-            "capture03imagesrc": "https://images.unsplash.com/photo-1662328766056-7a61a2017fd0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxODgwNTJ8&ixlib=rb-4.1.0&q=80&w=1080",
-            "cap3text": "ANDROMEDA / LIVE ENHANCED",
-            "capturemeta03text": "AUTONOMOUS STACK / LIVE",
-            "expmetacopytext": "Horizontally compare adjacent captures to spot contrast, detail, and processing differences.",
-            "expcountertext": "03 / 03",
-            "expnavhinttext": "DRAG HORIZONTALLY"
+            "id": "TemplateExclusivePenSiteSupportHeroSupportheropenAlt1-1",
+            "herotitletext": "Hi, how can we help?"
       },
       fields: {
-        exptagtext: textField("Exptagtext"),
-        exptitletext: textField("Exptitletext"),
-        expbodytext: textField("Expbodytext"),
-        capture01imagesrc: textField("Capture01imagesrc"),
+        herotitletext: textField("Herotitletext"),
+      },
+    },
+    "TemplateExclusivePenSiteSupportContactSupportmainpenAlt2": {
+      render: renderBlock(
+        resolveBlockComponent(
+          TemplateExclusivePenSiteSupportContactSupportmainpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-support-contact-supportmainpen-alt2/block"
+        )
+      ),
+      defaultProps: {
+            "id": "TemplateExclusivePenSiteSupportContactSupportmainpenAlt2-1",
+            "kbtitletext": "Knowledge Base",
+            "kbdesctext": "A collection of frequently asked questions around ordering, product specs, software debugging, and troubleshooting.",
+            "kbl1text": "Orders & Shipping",
+            "kbl2text": "Account & Profile",
+            "kbl3text": "Products",
+            "communityimageimagesrc": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "commtitletext": "Community",
+            "commdesctext": "A community forum where users can ask questions, get advice, and brainstorm projects, and participate in discussions topics around Framework products.",
+            "askbtnhref": "/",
+            "asktxttext": "Ask the Community",
+            "guidestitletext": "Setup, Upgrade, and Repair Guides",
+            "viewbtnhref": "/",
+            "viewtxttext": "View All Guides",
+            "img1imagesrc": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "cap1text": "Framework Laptop 13 DIY (Intel Core Ultra Series 1) Quick Start / Editor's Guide, Black Edition",
+            "img2imagesrc": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "cap2text": "Mainboard Replacements Guide",
+            "img3imagesrc": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "cap3text": "Framework Laptop 13 Fully DIY Quick Start Guide",
+            "ctatitletext": "Still have questions?\nWe are here to help!",
+            "submitbtnhref": "/support",
+            "submittxttext": "Submit support request",
+            "connectbtnhref": "/",
+            "connecttxttext": "Connect with the Business team"
+      },
+      fields: {
+        kbtitletext: textField("Kbtitletext"),
+        kbdesctext: textField("Kbdesctext"),
+        kbl1text: textField("Kbl1text"),
+        kbl2text: textField("Kbl2text"),
+        kbl3text: textField("Kbl3text"),
+        communityimageimagesrc: textField("Communityimageimagesrc"),
+        commtitletext: textField("Commtitletext"),
+        commdesctext: textField("Commdesctext"),
+        askbtnhref: textField("Askbtnhref"),
+        asktxttext: textField("Asktxttext"),
+        guidestitletext: textField("Guidestitletext"),
+        viewbtnhref: textField("Viewbtnhref"),
+        viewtxttext: textField("Viewtxttext"),
+        img1imagesrc: textField("Img1imagesrc"),
         cap1text: textField("Cap1text"),
-        capturemeta01text: textField("Capturemeta01text"),
-        capture02imagesrc: textField("Capture02imagesrc"),
+        img2imagesrc: textField("Img2imagesrc"),
         cap2text: textField("Cap2text"),
-        capturemeta02text: textField("Capturemeta02text"),
-        capture03imagesrc: textField("Capture03imagesrc"),
+        img3imagesrc: textField("Img3imagesrc"),
         cap3text: textField("Cap3text"),
-        capturemeta03text: textField("Capturemeta03text"),
-        expmetacopytext: textField("Expmetacopytext"),
-        expcountertext: textField("Expcountertext"),
-        expnavhinttext: textField("Expnavhinttext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeHomeStorySwitchsecpenAlt5": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeHomeStorySwitchsecpenAlt5BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-home-story-switchsecpen-alt5/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeHomeStorySwitchsecpenAlt5-1",
-            "switchtagtext": "SWITCH ON • CONNECT • ENJOY",
-            "switchtitletext": "See the sky in three simple moves.",
-            "switchsupporttext": "Mount your EVSCOPE, pair it instantly, and start guided viewing with cinematic clarity in under a minute.",
-            "steptitle1text": "1. Switch on your scope",
-            "stepdesc1text": "Power up and lock onto your target in seconds with guided startup prompts.",
-            "stepcard1href": "/",
-            "steptitle2text": "2. Connect in the app",
-            "stepdesc2text": "Pair over Wi-Fi and let smart alignment calibrate your viewing session.",
-            "stepcard2href": "/",
-            "steptitle3text": "3. Enjoy guided discovery",
-            "stepdesc3text": "Follow overlays and live labels that make every object easy to understand.",
-            "stepcard3href": "/"
-      },
-      fields: {
-        switchtagtext: textField("Switchtagtext"),
-        switchtitletext: textField("Switchtitletext"),
-        switchsupporttext: textField("Switchsupporttext"),
-        steptitle1text: textField("Steptitle1text"),
-        stepdesc1text: textField("Stepdesc1text"),
-        stepcard1href: textField("Stepcard1href"),
-        steptitle2text: textField("Steptitle2text"),
-        stepdesc2text: textField("Stepdesc2text"),
-        stepcard2href: textField("Stepcard2href"),
-        steptitle3text: textField("Steptitle3text"),
-        stepdesc3text: textField("Stepdesc3text"),
-        stepcard3href: textField("Stepcard3href"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeHomeSocialproofTrustpenAlt6": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeHomeSocialproofTrustpenAlt6BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-home-socialproof-trustpen-alt6/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeHomeSocialproofTrustpenAlt6-1",
-            "trustttext": "Trusted by Leading Partners",
-            "trustdtext": "A trusted ecosystem of observatories, publishers, and research organizations building with Unistellar.",
-            "labela1text": "◼ NASA",
-            "labela2text": "◼ SETI",
-            "labela3text": "◼ SPACE.COM",
-            "labelb1text": "◻ ASTRONOMY",
-            "labelb2text": "◻ JPL",
-            "labelb3text": "◻ SKY & TELESCOPE"
-      },
-      fields: {
-        trustttext: textField("Trustttext"),
-        trustdtext: textField("Trustdtext"),
-        labela1text: textField("Labela1text"),
-        labela2text: textField("Labela2text"),
-        labela3text: textField("Labela3text"),
-        labelb1text: textField("Labelb1text"),
-        labelb2text: textField("Labelb2text"),
-        labelb3text: textField("Labelb3text"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeHomeStoryStorycardspenAlt7": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeHomeStoryStorycardspenAlt7BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-home-story-storycardspen-alt7/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeHomeStoryStorycardspenAlt7-1",
-            "storytagtext": "Explore More",
-            "storytitletext": "Science, Stories, Technology and Gallery",
-            "scienceimagesrc": "https://images.unsplash.com/photo-1709141428202-e21518e6481f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxODgwNjZ8&ixlib=rb-4.1.0&q=80&w=1080",
-            "sciencettext": "Science",
-            "sciencedtext": "Citizen science missions and discoveries powered by Unistellar observers.",
-            "blogimagesrc": "https://images.unsplash.com/photo-1743662431955-93dc29e1bf17?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxODgwNjd8&ixlib=rb-4.1.0&q=80&w=1080",
-            "blogttext": "Blog",
-            "blogdtext": "Updates, tutorials, and stories from explorers around the world.",
-            "techimagesrc": "https://images.unsplash.com/photo-1693168390145-269901213505?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxODgwODZ8&ixlib=rb-4.1.0&q=80&w=1080",
-            "techttext": "Technology",
-            "techdtext": "Enhanced vision, autonomous tracking, and immersive augmented overlays.",
-            "galleryimagesrc": "https://images.unsplash.com/photo-1596272862901-92e415f2da84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxODgwNjh8&ixlib=rb-4.1.0&q=80&w=1080",
-            "galleryttext": "Gallery",
-            "gallerydtext": "A curated collection of astrophotography and observation highlights."
-      },
-      fields: {
-        storytagtext: textField("Storytagtext"),
-        storytitletext: textField("Storytitletext"),
-        scienceimagesrc: textField("Scienceimagesrc"),
-        sciencettext: textField("Sciencettext"),
-        sciencedtext: textField("Sciencedtext"),
-        blogimagesrc: textField("Blogimagesrc"),
-        blogttext: textField("Blogttext"),
-        blogdtext: textField("Blogdtext"),
-        techimagesrc: textField("Techimagesrc"),
-        techttext: textField("Techttext"),
-        techdtext: textField("Techdtext"),
-        galleryimagesrc: textField("Galleryimagesrc"),
-        galleryttext: textField("Galleryttext"),
-        gallerydtext: textField("Gallerydtext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeHomeFooterFooterpenAlt8": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeHomeFooterFooterpenAlt8BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-home-footer-footerpen-alt8/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeHomeFooterFooterpenAlt8-1",
-            "ftlogotext": "UNISTELLAR",
-            "ftdesctext": "The future of day and night exploration.",
-            "ftdeschref": "/",
-            "col1text": "Products\nSmart Telescopes\nSmart Binoculars\nAccessories",
-            "col2text": "Support\nHelp Center\nManuals\nContact",
-            "col2href": "/support",
-            "col3text": "Company\nAbout\nPress\nCareers",
-            "col3href": "/",
-            "col4text": "Community\nEvents\nBlog\nPartners",
-            "col4href": "/",
-            "copytext": "© 2026 Unistellar. All rights reserved.",
-            "policyhome1text": "Privacy Policy",
-            "policyhome2text": "Terms",
-            "policyhome2href": "/policy"
-      },
-      fields: {
-        ftlogotext: textField("Ftlogotext"),
-        ftdesctext: textField("Ftdesctext"),
-        ftdeschref: textField("Ftdeschref"),
-        col1text: textField("Col1text"),
-        col2text: textField("Col2text"),
-        col2href: textField("Col2href"),
-        col3text: textField("Col3text"),
-        col3href: textField("Col3href"),
-        col4text: textField("Col4text"),
-        col4href: textField("Col4href"),
-        copytext: textField("Copytext"),
-        policyhome1text: textField("Policyhome1text"),
-        policyhome2text: textField("Policyhome2text"),
-        policyhome2href: textField("Policyhome2href"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeHomeStorySubpagelinkspenAlt9": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeHomeStorySubpagelinkspenAlt9BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-home-story-subpagelinkspen-alt9/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeHomeStorySubpagelinkspenAlt9-1",
-            "chip1text": "Smart Telescopes Page",
-            "lk1href": "/smart-telescopes",
-            "chip2text": "Smart Binoculars Page",
-            "lk2href": "/smart-binoculars",
-            "chip3text": "Technologies Page",
-            "lk3href": "/technologies",
-            "chip4text": "Reviews Page",
-            "lk4href": "/reviews"
-      },
-      fields: {
-        chip1text: textField("Chip1text"),
-        lk1href: textField("Lk1href"),
-        chip2text: textField("Chip2text"),
-        lk2href: textField("Lk2href"),
-        chip3text: textField("Chip3text"),
-        lk3href: textField("Lk3href"),
-        chip4text: textField("Chip4text"),
-        lk4href: textField("Lk4href"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSmartTelescopesNavigationHeaderpenPrimary": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSmartTelescopesNavigationHeaderpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-smart-telescopes-navigation-headerpen-primary/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSmartTelescopesNavigationHeaderpenPrimary-1",
-            "logotext": "UNISTELLAR",
-            "logohref": "/",
-            "nhtext": "Home",
-            "nhhref": "/",
-            "nstext": "Smart Telescopes",
-            "nshref": "/smart-telescopes",
-            "nbtext": "Smart Binoculars",
-            "nbhref": "/smart-binoculars",
-            "nttext": "Technologies",
-            "nthref": "/technologies",
-            "nrtext": "Reviews",
-            "nrhref": "/reviews",
-            "headerbtnhref": "/support",
-            "btnttext": "Support Portal"
-      },
-      fields: {
-        logotext: textField("Logotext"),
-        logohref: textField("Logohref"),
-        nhtext: textField("Nhtext"),
-        nhhref: textField("Nhhref"),
-        nstext: textField("Nstext"),
-        nshref: textField("Nshref"),
-        nbtext: textField("Nbtext"),
-        nbhref: textField("Nbhref"),
-        nttext: textField("Nttext"),
-        nthref: textField("Nthref"),
-        nrtext: textField("Nrtext"),
-        nrhref: textField("Nrhref"),
-        headerbtnhref: textField("Headerbtnhref"),
-        btnttext: textField("Btnttext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSmartTelescopesHeroHeropenAlt1": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSmartTelescopesHeroHeropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-smart-telescopes-hero-heropen-alt1/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSmartTelescopesHeroHeropenAlt1-1",
-            "eyetext": "SMART TELESCOPES / AUTONOMOUS STARGAZING",
-            "hedtext": "See galaxies and nebulae from your backyard.",
-            "subtext": "Unistellar smart telescopes align themselves, suppress light pollution, and reveal deep-sky detail live in minutes, even under city skies.",
-            "cta1href": "/smart-telescopes",
-            "cta1ttext": "View All Smart Telescopes",
-            "cta2href": "/",
-            "cta2ttext": "Compare Models",
-            "credtext": "4.7★ average rating • App-guided setup • Planetarium-grade optics",
-            "visualimagesrc": "https://images.unsplash.com/photo-1554212114-d6dad12fbc02?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-      },
-      fields: {
-        eyetext: textField("Eyetext"),
-        hedtext: textField("Hedtext"),
-        subtext: textField("Subtext"),
-        cta1href: textField("Cta1href"),
-        cta1ttext: textField("Cta1ttext"),
-        cta2href: textField("Cta2href"),
-        cta2ttext: textField("Cta2ttext"),
-        credtext: textField("Credtext"),
-        visualimagesrc: textField("Visualimagesrc"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSmartTelescopesProductsProducthighlightspenAlt2": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSmartTelescopesProductsProducthighlightspenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-smart-telescopes-products-producthighlightspen-alt2/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSmartTelescopesProductsProducthighlightspenAlt2-1",
-            "httext": "PRODUCT HIGHLIGHTS",
-            "c1ntext": "Autonomous alignment",
-            "c1dtext": "Set the telescope down, launch the app, and start observing without manual star-hopping.",
-            "c1href": "/",
-            "c2ntext": "Deep-sky enhancement",
-            "c2dtext": "Real-time image stacking pulls nebulae and galaxies through light pollution and uneven seeing.",
-            "c2href": "/",
-            "c3ntext": "Shared sky intelligence",
-            "c3dtext": "Observation data connects with a wider community, helping users validate targets and discover more nights worth keeping.",
-            "c3href": "/"
-      },
-      fields: {
-        httext: textField("Httext"),
-        c1ntext: textField("C1ntext"),
-        c1dtext: textField("C1dtext"),
-        c1href: textField("C1href"),
-        c2ntext: textField("C2ntext"),
-        c2dtext: textField("C2dtext"),
-        c2href: textField("C2href"),
-        c3ntext: textField("C3ntext"),
-        c3dtext: textField("C3dtext"),
-        c3href: textField("C3href"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSmartTelescopesApproachFeatureblockspenAlt3": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSmartTelescopesApproachFeatureblockspenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-smart-telescopes-approach-featureblockspen-alt3/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSmartTelescopesApproachFeatureblockspenAlt3-1",
-            "fttext": "WHY UNISTELLAR FEELS LIKE A SMARTER NIGHT SKY",
-            "fb1htext": "Fast setup, no mechanical friction",
-            "fb1dtext": "The experience removes the ceremony that usually blocks new observers: alignment, tracking, and image capture all happen in a guided flow.",
-            "fb1mimagesrc": "https://images.unsplash.com/photo-1531870095880-cac1a675e830?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-      },
-      fields: {
-        fttext: textField("Fttext"),
-        fb1htext: textField("Fb1htext"),
-        fb1dtext: textField("Fb1dtext"),
-        fb1mimagesrc: textField("Fb1mimagesrc"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSmartTelescopesCtaCtapenAlt4": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSmartTelescopesCtaCtapenAlt4BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-smart-telescopes-cta-ctapen-alt4/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSmartTelescopesCtaCtapenAlt4-1",
-            "ctahref": "/",
-            "ctahtext": "Your next discovery is tonight",
-            "ctabttext": "Book a guided demo",
-            "ctabhref": "/"
-      },
-      fields: {
-        ctahref: textField("Ctahref"),
-        ctahtext: textField("Ctahtext"),
-        ctabttext: textField("Ctabttext"),
-        ctabhref: textField("Ctabhref"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSmartTelescopesFooterFooterpenAlt5": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSmartTelescopesFooterFooterpenAlt5BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-smart-telescopes-footer-footerpen-alt5/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSmartTelescopesFooterFooterpenAlt5-1",
-            "brandtext": "UNISTELLAR",
-            "contactbtnhref": "/",
-            "contacttxttext": "Talk to an expert",
-            "col1htext": "Products",
-            "col1atext": "Smart Telescopes",
-            "col1ahref": "/smart-telescopes",
-            "col1btext": "Smart Binoculars",
-            "col1bhref": "/smart-binoculars",
-            "col2htext": "Explore",
-            "col2atext": "Technologies",
-            "col2ahref": "/technologies",
-            "col2btext": "Reviews",
-            "col2bhref": "/reviews",
-            "copytext": "© 2026 Unistellar. Built for curious minds under dark skies.",
-            "privacytext": "Privacy",
-            "legaltext": "Legal Notice",
-            "legalhref": "/policy"
-      },
-      fields: {
-        brandtext: textField("Brandtext"),
-        contactbtnhref: textField("Contactbtnhref"),
-        contacttxttext: textField("Contacttxttext"),
-        col1htext: textField("Col1htext"),
-        col1atext: textField("Col1atext"),
-        col1ahref: textField("Col1ahref"),
-        col1btext: textField("Col1btext"),
-        col1bhref: textField("Col1bhref"),
-        col2htext: textField("Col2htext"),
-        col2atext: textField("Col2atext"),
-        col2ahref: textField("Col2ahref"),
-        col2btext: textField("Col2btext"),
-        col2bhref: textField("Col2bhref"),
-        copytext: textField("Copytext"),
-        privacytext: textField("Privacytext"),
-        legaltext: textField("Legaltext"),
-        legalhref: textField("Legalhref"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSmartBinocularsNavigationHeaderpenPrimary": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSmartBinocularsNavigationHeaderpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-smart-binoculars-navigation-headerpen-primary/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSmartBinocularsNavigationHeaderpenPrimary-1",
-            "logotext": "UNISTELLAR",
-            "logohref": "/",
-            "navhometext": "Home",
-            "navhomehref": "/",
-            "navscopestext": "Smart Telescopes",
-            "navscopeshref": "/smart-telescopes",
-            "navbinocstext": "Smart Binoculars",
-            "navbinocshref": "/smart-binoculars",
-            "navtechtext": "Technologies",
-            "navtechhref": "/technologies",
-            "navcontacttext": "Contact",
-            "navcontacthref": "/contact",
-            "headerbtnhref": "/support",
-            "headerbtntexttext": "Support Portal"
-      },
-      fields: {
-        logotext: textField("Logotext"),
-        logohref: textField("Logohref"),
-        navhometext: textField("Navhometext"),
-        navhomehref: textField("Navhomehref"),
-        navscopestext: textField("Navscopestext"),
-        navscopeshref: textField("Navscopeshref"),
-        navbinocstext: textField("Navbinocstext"),
-        navbinocshref: textField("Navbinocshref"),
-        navtechtext: textField("Navtechtext"),
-        navtechhref: textField("Navtechhref"),
-        navcontacttext: textField("Navcontacttext"),
-        navcontacthref: textField("Navcontacthref"),
-        headerbtnhref: textField("Headerbtnhref"),
-        headerbtntexttext: textField("Headerbtntexttext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSmartBinocularsHeroHeropenAlt1": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSmartBinocularsHeroHeropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-smart-binoculars-hero-heropen-alt1/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSmartBinocularsHeroHeropenAlt1-1",
-            "herokickertext": "SMART BINOCULARS / ENVISION",
-            "herotitletext": "See the night with observatory intelligence in your hands.",
-            "herobodytext": "Find galaxies, nebulae, and hidden sky detail in seconds through adaptive optics and guided live targeting built for serious exploration.",
-            "btnprimaryhref": "/",
-            "btnprimarytexttext": "RESERVE NOW",
-            "btnghosthref": "/",
-            "btnghosttexttext": "WATCH FILM",
-            "herotrusttext": "Trusted by 10,000+ observers across 60 countries",
-            "heroimageimagesrc": "https://images.unsplash.com/photo-1612153085153-b409481892e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxOTA3MDR8&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      fields: {
-        herokickertext: textField("Herokickertext"),
-        herotitletext: textField("Herotitletext"),
-        herobodytext: textField("Herobodytext"),
-        btnprimaryhref: textField("Btnprimaryhref"),
-        btnprimarytexttext: textField("Btnprimarytexttext"),
-        btnghosthref: textField("Btnghosthref"),
-        btnghosttexttext: textField("Btnghosttexttext"),
-        herotrusttext: textField("Herotrusttext"),
-        heroimageimagesrc: textField("Heroimageimagesrc"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSmartBinocularsApproachFeaturecardspenAlt2": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSmartBinocularsApproachFeaturecardspenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-smart-binoculars-approach-featurecardspen-alt2/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSmartBinocularsApproachFeaturecardspenAlt2-1",
-            "featureseyebrowtext": "ENViSION PLATFORM",
-            "featurestitletext": "Three Layers of Envisioned Discovery",
-            "featuressubtext": "Envision combines adaptive optics, live recognition, and guided storytelling so every session flows from first target to cinematic reveal.",
-            "card1tagtext": "SEE",
-            "card1titletext": "Adaptive Vision Core",
-            "card1bodytext": "Auto-calibrated optics continuously rebalance contrast and glare, keeping faint structure visible as sky conditions shift.",
-            "card2tagtext": "KNOW",
-            "card2titletext": "Sky Intelligence Engine",
-            "card2bodytext": "Real-time recognition identifies objects, events, and context overlays so you understand what you are seeing in the moment.",
-            "card3tagtext": "EXPLORE",
-            "card3titletext": "Cinematic Guidance Layer",
-            "card3bodytext": "A refined guidance flow recommends next-best targets and framing cues, turning each observation into a directed journey."
-      },
-      fields: {
-        featureseyebrowtext: textField("Featureseyebrowtext"),
-        featurestitletext: textField("Featurestitletext"),
-        featuressubtext: textField("Featuressubtext"),
-        card1tagtext: textField("Card1tagtext"),
-        card1titletext: textField("Card1titletext"),
-        card1bodytext: textField("Card1bodytext"),
-        card2tagtext: textField("Card2tagtext"),
-        card2titletext: textField("Card2titletext"),
-        card2bodytext: textField("Card2bodytext"),
-        card3tagtext: textField("Card3tagtext"),
-        card3titletext: textField("Card3titletext"),
-        card3bodytext: textField("Card3bodytext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSmartBinocularsStoryUsecasespenAlt3": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSmartBinocularsStoryUsecasespenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-smart-binoculars-story-usecasespen-alt3/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSmartBinocularsStoryUsecasespenAlt3-1",
-            "usetitletext": "One Platform, Every Stage of Night Exploration",
-            "usesubtext": "Begin with private sky rituals, scale into guided group experiences, and graduate to institution-grade observation workflows.",
-            "usecard1tagtext": "SIGNATURE JOURNEY",
-            "usecard1titletext": "Private Sky Rituals",
-            "usecard1bodytext": "Transform rooftops and terraces into cinematic observatories with curated object highlights, gentle guidance, and premium optics tuned for calm nightly practice.",
-            "usecard1href": "/",
-            "usecard2titletext": "Guided Group Nights",
-            "usecard2bodytext": "Coordinate clubs, retreats, and hosted events with synchronized targets, shared wayfinding, and effortless facilitation across every participant.",
-            "usecard2href": "/",
-            "usecard3titletext": "Institutional Research Programs",
-            "usecard3bodytext": "Support academic labs and advanced initiatives with cleaner visual output, contextual object intelligence, and repeatable observation standards.",
-            "usecard3href": "/"
-      },
-      fields: {
-        usetitletext: textField("Usetitletext"),
-        usesubtext: textField("Usesubtext"),
-        usecard1tagtext: textField("Usecard1tagtext"),
-        usecard1titletext: textField("Usecard1titletext"),
-        usecard1bodytext: textField("Usecard1bodytext"),
-        usecard1href: textField("Usecard1href"),
-        usecard2titletext: textField("Usecard2titletext"),
-        usecard2bodytext: textField("Usecard2bodytext"),
-        usecard2href: textField("Usecard2href"),
-        usecard3titletext: textField("Usecard3titletext"),
-        usecard3bodytext: textField("Usecard3bodytext"),
-        usecard3href: textField("Usecard3href"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSmartBinocularsCtaCtapenAlt4": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSmartBinocularsCtaCtapenAlt4BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-smart-binoculars-cta-ctapen-alt4/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSmartBinocularsCtaCtapenAlt4-1",
-            "ctahref": "/smart-binoculars",
-            "ctakickertext": "ENVISION Smart Binoculars",
-            "ctatitletext": "Own the Next Generation of Celestial Observation",
-            "ctabodytext": "Reserve Smart Binoculars now and receive concierge onboarding, priority firmware access, and launch pricing.",
-            "ctabuttontexttext": "Reserve Envision",
-            "ctabuttontexthref": "/",
-            "ctabuttonhref": "/",
-            "ctas1ttext": "See Specs",
-            "ctas1href": "/",
-            "ctas2ttext": "Talk to Sales",
-            "ctas2href": "/"
-      },
-      fields: {
-        ctahref: textField("Ctahref"),
-        ctakickertext: textField("Ctakickertext"),
         ctatitletext: textField("Ctatitletext"),
-        ctabodytext: textField("Ctabodytext"),
-        ctabuttontexttext: textField("Ctabuttontexttext"),
-        ctabuttontexthref: textField("Ctabuttontexthref"),
-        ctabuttonhref: textField("Ctabuttonhref"),
-        ctas1ttext: textField("Ctas1ttext"),
-        ctas1href: textField("Ctas1href"),
-        ctas2ttext: textField("Ctas2ttext"),
-        ctas2href: textField("Ctas2href"),
+        submitbtnhref: textField("Submitbtnhref"),
+        submittxttext: textField("Submittxttext"),
+        connectbtnhref: textField("Connectbtnhref"),
+        connecttxttext: textField("Connecttxttext"),
       },
     },
-    "TemplateExclusiveUnistellarHomeSmartBinocularsFooterFootercompatiblepenAlt5": {
+    "TemplateExclusivePenSiteSupportFooterFooterpenAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSmartBinocularsFooterFootercompatiblepenAlt5BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-smart-binoculars-footer-footercompatiblepen-alt5/block"
+          TemplateExclusivePenSiteSupportFooterFooterpenAlt3BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-support-footer-footerpen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSmartBinocularsFooterFootercompatiblepenAlt5-1",
-            "footerBrandtext": "UNISTELLAR",
-            "footerDescriptiontext": "Precision instruments, guided support, and a global team helping curious observers get more from every clear night.",
-            "footerDescriptionhref": "/support",
-            "footerCtahref": "/support",
-            "footerCtaTexttext": "Open Support Portal",
-            "productHeadingtext": "PRODUCT",
-            "productSmartTelescopestext": "Smart Telescopes",
-            "productSmartTelescopeshref": "/smart-telescopes",
-            "productSmartBinocularstext": "Smart Binoculars",
-            "productSmartBinocularshref": "/smart-binoculars",
-            "productAppSoftwaretext": "App & Software",
-            "productAppSoftwarehref": "/",
-            "companyHeadingtext": "COMPANY",
-            "companyAbouttext": "About Unistellar",
-            "companyAbouthref": "/about",
-            "companyTechnologiestext": "Technologies",
-            "companyTechnologieshref": "/technologies",
-            "companyContacttext": "Contact",
-            "companyContacthref": "/contact",
-            "resourceHeadingtext": "RESOURCES",
-            "resourceKnowledgeBasetext": "Knowledge Base",
-            "resourceKnowledgeBasehref": "/",
-            "resourceWarrantytext": "Warranty",
-            "resourceWarrantyhref": "/support",
-            "resourcePrivacytext": "Privacy Policy",
-            "resourcePrivacyhref": "/policy",
-            "resourceProductUpdatestext": "Product Updates",
-            "resourceProductUpdateshref": "/",
-            "footerCopyrighttext": "© 2026 Unistellar. Built for curious minds under dark skies.",
-            "regionalSupporttext": "Regional Support",
-            "demoAppointmentstext": "Demo Appointments",
-            "demoAppointmentshref": "/",
-            "pressPartnershipstext": "Press & Partnerships",
-            "pressPartnershipshref": "/contact"
+            "id": "TemplateExclusivePenSiteSupportFooterFooterpenAlt3-1",
+            "clzbctext": "Company",
+            "pcfsktext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+            "pcfskhref": "/about",
+            "g6yuftext": "Social",
+            "rdotctext": "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+            "rdotchref": "/",
+            "hu3uvtext": "Community",
+            "nqugstext": "Community Forum\nSupport\nRepair Guides",
+            "nqugshref": "/",
+            "om4ndtext": "Shop all",
+            "tn1zntext": "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+            "tn1znhref": "/",
+            "d8wcftext": "Subscribe",
+            "wwiyjtext": "Stay up to date with the Framework Newsletter (a few times a month)",
+            "wwiyjhref": "/blog",
+            "zao7qtext": "Your email",
+            "j01f7href": "/support",
+            "fonnptext": "Sign up",
+            "irp3atext": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
+            "quashtext": "USD"
       },
       fields: {
-        footerBrandtext: textField("FooterBrandtext"),
-        footerDescriptiontext: textField("FooterDescriptiontext"),
-        footerDescriptionhref: textField("FooterDescriptionhref"),
-        footerCtahref: textField("FooterCtahref"),
-        footerCtaTexttext: textField("FooterCtaTexttext"),
-        productHeadingtext: textField("ProductHeadingtext"),
-        productSmartTelescopestext: textField("ProductSmartTelescopestext"),
-        productSmartTelescopeshref: textField("ProductSmartTelescopeshref"),
-        productSmartBinocularstext: textField("ProductSmartBinocularstext"),
-        productSmartBinocularshref: textField("ProductSmartBinocularshref"),
-        productAppSoftwaretext: textField("ProductAppSoftwaretext"),
-        productAppSoftwarehref: textField("ProductAppSoftwarehref"),
-        companyHeadingtext: textField("CompanyHeadingtext"),
-        companyAbouttext: textField("CompanyAbouttext"),
-        companyAbouthref: textField("CompanyAbouthref"),
-        companyTechnologiestext: textField("CompanyTechnologiestext"),
-        companyTechnologieshref: textField("CompanyTechnologieshref"),
-        companyContacttext: textField("CompanyContacttext"),
-        companyContacthref: textField("CompanyContacthref"),
-        resourceHeadingtext: textField("ResourceHeadingtext"),
-        resourceKnowledgeBasetext: textField("ResourceKnowledgeBasetext"),
-        resourceKnowledgeBasehref: textField("ResourceKnowledgeBasehref"),
-        resourceWarrantytext: textField("ResourceWarrantytext"),
-        resourceWarrantyhref: textField("ResourceWarrantyhref"),
-        resourcePrivacytext: textField("ResourcePrivacytext"),
-        resourcePrivacyhref: textField("ResourcePrivacyhref"),
-        resourceProductUpdatestext: textField("ResourceProductUpdatestext"),
-        resourceProductUpdateshref: textField("ResourceProductUpdateshref"),
-        footerCopyrighttext: textField("FooterCopyrighttext"),
-        regionalSupporttext: textField("RegionalSupporttext"),
-        demoAppointmentstext: textField("DemoAppointmentstext"),
-        demoAppointmentshref: textField("DemoAppointmentshref"),
-        pressPartnershipstext: textField("PressPartnershipstext"),
-        pressPartnershipshref: textField("PressPartnershipshref"),
+        clzbctext: textField("Clzbctext"),
+        pcfsktext: textField("Pcfsktext"),
+        pcfskhref: textField("Pcfskhref"),
+        g6yuftext: textField("G6yuftext"),
+        rdotctext: textField("Rdotctext"),
+        rdotchref: textField("Rdotchref"),
+        hu3uvtext: textField("Hu3uvtext"),
+        nqugstext: textField("Nqugstext"),
+        nqugshref: textField("Nqugshref"),
+        om4ndtext: textField("Om4ndtext"),
+        tn1zntext: textField("Tn1zntext"),
+        tn1znhref: textField("Tn1znhref"),
+        d8wcftext: textField("D8wcftext"),
+        wwiyjtext: textField("Wwiyjtext"),
+        wwiyjhref: textField("Wwiyjhref"),
+        zao7qtext: textField("Zao7qtext"),
+        j01f7href: textField("J01f7href"),
+        fonnptext: textField("Fonnptext"),
+        irp3atext: textField("Irp3atext"),
+        quashtext: textField("Quashtext"),
       },
     },
-    "TemplateExclusiveUnistellarHomeTechnologiesNavigationHeadpenPrimary": {
+    "TemplateExclusivePenSiteProductsNavigationNavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeTechnologiesNavigationHeadpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-technologies-navigation-headpen-primary/block"
+          TemplateExclusivePenSiteProductsNavigationNavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-pen-site-products-navigation-navpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeTechnologiesNavigationHeadpenPrimary-1",
-            "logotext": "UNISTELLAR",
+            "id": "TemplateExclusivePenSiteProductsNavigationNavpenPrimary-1",
+            "logotext": "Framework",
             "logohref": "/",
-            "nhtext": "Home",
-            "nhhref": "/",
-            "nstext": "Smart Telescopes",
-            "nshref": "/smart-telescopes",
-            "nbtext": "Smart Binoculars",
-            "nbhref": "/smart-binoculars",
-            "nttext": "Technologies",
-            "nthref": "/technologies",
-            "nrtext": "Reviews",
-            "nrhref": "/reviews",
-            "btnhref": "/support",
-            "btnttext": "Support Portal"
+            "centernavtext": "Products   Laptops   Desktops   Marketplace",
+            "centernavhref": "/products",
+            "rightnavtext": "Support   Sign In   Cart",
+            "rightnavhref": "/support"
       },
       fields: {
         logotext: textField("Logotext"),
         logohref: textField("Logohref"),
-        nhtext: textField("Nhtext"),
-        nhhref: textField("Nhhref"),
-        nstext: textField("Nstext"),
-        nshref: textField("Nshref"),
-        nbtext: textField("Nbtext"),
-        nbhref: textField("Nbhref"),
-        nttext: textField("Nttext"),
-        nthref: textField("Nthref"),
-        nrtext: textField("Nrtext"),
-        nrhref: textField("Nrhref"),
-        btnhref: textField("Btnhref"),
-        btnttext: textField("Btnttext"),
+        centernavtext: textField("Centernavtext"),
+        centernavhref: textField("Centernavhref"),
+        rightnavtext: textField("Rightnavtext"),
+        rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusiveUnistellarHomeTechnologiesHeroHeropenAlt1": {
+    "TemplateExclusivePenSiteProductsHeroBizheropenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeTechnologiesHeroHeropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-technologies-hero-heropen-alt1/block"
+          TemplateExclusivePenSiteProductsHeroBizheropenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-products-hero-bizheropen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeTechnologiesHeroHeropenAlt1-1",
-            "badgetext": "TECHNOLOGY / REAL-TIME IMAGE SCIENCE",
-            "httext": "Technology that reveals the universe in real time.",
-            "hstext": "Unistellar combines autonomous optics, intelligent signal processing, and collaborative sky data to make deep-sky exploration immediate and breathtaking.",
-            "cta1href": "/blog",
-            "cta1ttext": "Explore the stack",
-            "cta2href": "/",
-            "cta2ttext": "Compare outcomes",
-            "visualimagesrc": "./images/generated-1772189083782.png"
+            "id": "TemplateExclusivePenSiteProductsHeroBizheropenAlt1-1",
+            "herot1text": "Framework for\nBusiness",
+            "herosubtext": "Deploy modular laptops across your organization.",
+            "herorimagesrc": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080"
       },
       fields: {
-        badgetext: textField("Badgetext"),
-        httext: textField("Httext"),
-        hstext: textField("Hstext"),
-        cta1href: textField("Cta1href"),
-        cta1ttext: textField("Cta1ttext"),
-        cta2href: textField("Cta2href"),
-        cta2ttext: textField("Cta2ttext"),
-        visualimagesrc: textField("Visualimagesrc"),
+        herot1text: textField("Herot1text"),
+        herosubtext: textField("Herosubtext"),
+        herorimagesrc: textField("Herorimagesrc"),
       },
     },
-    "TemplateExclusiveUnistellarHomeTechnologiesStoryPillarspenAlt2": {
+    "TemplateExclusivePenSiteProductsStoryBizmainpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeTechnologiesStoryPillarspenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-technologies-story-pillarspen-alt2/block"
+          TemplateExclusivePenSiteProductsStoryBizmainpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-products-story-bizmainpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeTechnologiesStoryPillarspenAlt2-1",
-            "pltext": "TECHNOLOGY PILLARS",
-            "pttext": "Three integrated systems. One seamless cosmic experience.",
-            "p1ttext": "Autonomous tracking",
-            "p1dtext": "Mount, align, and stay locked on target without manual correction.",
-            "p1href": "/",
-            "p2ttext": "Signal enhancement",
-            "p2dtext": "Software-driven stacking restores detail from noisy urban skies in real time.",
-            "p2href": "/",
-            "p3ttext": "Shared observation data",
-            "p3dtext": "Networked observations create richer context and better validation for every session.",
-            "p3href": "/"
+            "id": "TemplateExclusivePenSiteProductsStoryBizmainpenAlt2-1",
+            "ctitletext": "Customize, upgrade,\nrepair: The choice is yours",
+            "csubtext": "Standardize devices that can be upgraded and repaired in-house. Reduce e-waste and total cost of ownership.",
+            "c1imgimagesrc": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "c1txttext": "Framework Laptop 13",
+            "acjqhtext": "Configure your laptop the way you work. Upgrade and repair when your needs evolve over time.",
+            "c2imgimagesrc": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "c2txttext": "Framework Laptop 16",
+            "ng7y8text": "Scale up performance with modular options. Keep devices in service with easy parts replacement.",
+            "c3imgimagesrc": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "c3txttext": "Framework Desktop",
+            "myvvrtext": "Compact desktop power with maintainable internals. Built for long-term fleet reliability.",
+            "c4imgimagesrc": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "c4txttext": "Expansion modules",
+            "mct7jtext": "Choose ports and modules for each role. Swap and customize without replacing the whole device.",
+            "ttitletext": "Testimonials",
+            "t1qtext": "\"The laptops were exactly what we needed for developers and design teams.\"",
+            "whtytext": "Arielle M.\nData Platform Lead",
+            "t2qtext": "\"Framework systems simplified IT support and helped reduce e-waste over time.\"",
+            "b0iketext": "Marco S.\nDirector, IT Operations",
+            "t3qtext": "\"The modular approach gives us confidence that these systems can adapt with our teams.\"",
+            "dovaxtext": "Nina C.\nSystems Engineer",
+            "ptitletext": "Press reviews",
+            "wt1iutext": "IFIXIT",
+            "snz8jtext": "\"Outstanding repairability score\"",
+            "de4zxtext": "9/10",
+            "iyptltext": "The environmental benefits shine",
+            "vssixtext": "WSJ",
+            "pfa7htext": "Modularity could reshape enterprise devices",
+            "vptitletext": "Value propositions",
+            "vp1ttext": "Maximize budget, minimize waste",
+            "y1etext": "Framework offers a unique approach to supporting IT budgets by keeping devices in service longer through modular upgrades and repairability.",
+            "btn1href": "/",
+            "kbw1vtext": "Choose Framework",
+            "vp2ttext": "Enabling OS choice",
+            "wvjtvtext": "Framework supports multiple operating systems with enterprise-ready flexibility for Windows and Linux deployments.",
+            "btn2href": "/",
+            "fzhcatext": "Choose your OS",
+            "story1imgimagesrc": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+            "story1ttext": "How a distributed team standardized Framework devices",
+            "story2imgimagesrc": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "story2ttext": "Rolling out upgrade-ready laptops to business users",
+            "contitletext": "Connect with our business team",
+            "introtext": "We are excited to hear from businesses and answer all your hardware needs and questions. Please complete this form and our team will get in touch shortly.",
+            "fylwytext": "First Name",
+            "vazprtext": "Last Name",
+            "zbknttext": "Company",
+            "w2r4vtext": "Work email",
+            "hsfwotext": "Country",
+            "dimyjtext": "Program type?",
+            "check1text": "How many laptops are you interested in?",
+            "checkstext": "• 1-20\n• 21-50\n• 51-100\n• 100+",
+            "industrytext": "Industry",
+            "notestext": "Notes",
+            "policytext": "Framework respects your data and only uses it to provide requested information.",
+            "c7r9text": "Submit",
+            "contacttitletext": "Contact support",
+            "contactsubtext": "Got support questions for your existing fleet?\nOur support team can help.",
+            "contactbtnhref": "/support",
+            "nthrutext": "Contact support",
+            "contactimgimagesrc": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+            "faqtitletext": "Frequently asked\nquestions",
+            "sec1text": "Ordering & shipping",
+            "q1text": "Can your company sell in all countries?",
+            "p1text": "+",
+            "q2text": "Can I purchase with a PO?",
+            "p2text": "+",
+            "sec2text": "Program & services",
+            "q3text": "Does Framework support MDM workflows?",
+            "p3text": "+",
+            "q4text": "How do I contact enterprise support?",
+            "p4text": "+",
+            "sec3text": "Product",
+            "q5text": "What options are available for pre-deployment setup?",
+            "p5text": "+",
+            "q6text": "Can device lifecycle services include monthly fleet refreshes?",
+            "p6text": "+",
+            "legaltitletext": "Legal",
+            "legalbodytext": "Availability and lead times vary by region and configuration. Terms and warranty coverage may differ by country.\nPlease contact our team for enterprise deployment details and procurement support."
       },
       fields: {
-        pltext: textField("Pltext"),
-        pttext: textField("Pttext"),
-        p1ttext: textField("P1ttext"),
-        p1dtext: textField("P1dtext"),
-        p1href: textField("P1href"),
-        p2ttext: textField("P2ttext"),
-        p2dtext: textField("P2dtext"),
-        p2href: textField("P2href"),
-        p3ttext: textField("P3ttext"),
-        p3dtext: textField("P3dtext"),
-        p3href: textField("P3href"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeTechnologiesApproachBenefitspenAlt3": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeTechnologiesApproachBenefitspenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-technologies-approach-benefitspen-alt3/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeTechnologiesApproachBenefitspenAlt3-1",
-            "bhtext": "Why observers switch to the Unistellar stack",
-            "m1ntext": "Faster first light",
-            "m1dtext": "Users spend less time calibrating and more time observing.",
-            "m1href": "/",
-            "m2ntext": "Sharper detail",
-            "m2dtext": "Enhanced imaging recovers structure that conventional setups miss in bright conditions.",
-            "m2href": "/"
-      },
-      fields: {
-        bhtext: textField("Bhtext"),
-        m1ntext: textField("M1ntext"),
-        m1dtext: textField("M1dtext"),
-        m1href: textField("M1href"),
-        m2ntext: textField("M2ntext"),
-        m2dtext: textField("M2dtext"),
-        m2href: textField("M2href"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeTechnologiesCtaCtapenAlt4": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeTechnologiesCtaCtapenAlt4BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-technologies-cta-ctapen-alt4/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeTechnologiesCtaCtapenAlt4-1",
-            "ctahref": "/",
-            "ctahtext": "See what makes the stack work together",
-            "ctadtext": "Review the product line and choose the hardware that matches your observing style.",
-            "ctabttext": "View smart telescopes",
-            "ctabhref": "/smart-telescopes"
-      },
-      fields: {
-        ctahref: textField("Ctahref"),
-        ctahtext: textField("Ctahtext"),
-        ctadtext: textField("Ctadtext"),
-        ctabttext: textField("Ctabttext"),
-        ctabhref: textField("Ctabhref"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeTechnologiesFooterFootpenAlt5": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeTechnologiesFooterFootpenAlt5BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-technologies-footer-footpen-alt5/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeTechnologiesFooterFootpenAlt5-1",
-            "brandtext": "UNISTELLAR",
-            "contactbtnhref": "/",
-            "contacttxttext": "Talk to an expert",
-            "col1htext": "Products",
-            "col1atext": "Smart Telescopes",
-            "col1ahref": "/smart-telescopes",
-            "col1btext": "Smart Binoculars",
-            "col1bhref": "/smart-binoculars",
-            "col2htext": "Explore",
-            "col2atext": "Technologies",
-            "col2ahref": "/technologies",
-            "col2btext": "Reviews",
-            "col2bhref": "/reviews",
-            "copytext": "© 2026 Unistellar. Built for curious minds under dark skies.",
-            "privacytext": "Privacy",
-            "legaltext": "Legal Notice",
-            "legalhref": "/policy"
-      },
-      fields: {
-        brandtext: textField("Brandtext"),
+        ctitletext: textField("Ctitletext"),
+        csubtext: textField("Csubtext"),
+        c1imgimagesrc: textField("C1imgimagesrc"),
+        c1txttext: textField("C1txttext"),
+        acjqhtext: textField("Acjqhtext"),
+        c2imgimagesrc: textField("C2imgimagesrc"),
+        c2txttext: textField("C2txttext"),
+        ng7y8text: textField("Ng7y8text"),
+        c3imgimagesrc: textField("C3imgimagesrc"),
+        c3txttext: textField("C3txttext"),
+        myvvrtext: textField("Myvvrtext"),
+        c4imgimagesrc: textField("C4imgimagesrc"),
+        c4txttext: textField("C4txttext"),
+        mct7jtext: textField("Mct7jtext"),
+        ttitletext: textField("Ttitletext"),
+        t1qtext: textField("T1qtext"),
+        whtytext: textField("Whtytext"),
+        t2qtext: textField("T2qtext"),
+        b0iketext: textField("B0iketext"),
+        t3qtext: textField("T3qtext"),
+        dovaxtext: textField("Dovaxtext"),
+        ptitletext: textField("Ptitletext"),
+        wt1iutext: textField("Wt1iutext"),
+        snz8jtext: textField("Snz8jtext"),
+        de4zxtext: textField("De4zxtext"),
+        iyptltext: textField("Iyptltext"),
+        vssixtext: textField("Vssixtext"),
+        pfa7htext: textField("Pfa7htext"),
+        vptitletext: textField("Vptitletext"),
+        vp1ttext: textField("Vp1ttext"),
+        y1etext: textField("Y1etext"),
+        btn1href: textField("Btn1href"),
+        kbw1vtext: textField("Kbw1vtext"),
+        vp2ttext: textField("Vp2ttext"),
+        wvjtvtext: textField("Wvjtvtext"),
+        btn2href: textField("Btn2href"),
+        fzhcatext: textField("Fzhcatext"),
+        story1imgimagesrc: textField("Story1imgimagesrc"),
+        story1ttext: textField("Story1ttext"),
+        story2imgimagesrc: textField("Story2imgimagesrc"),
+        story2ttext: textField("Story2ttext"),
+        contitletext: textField("Contitletext"),
+        introtext: textField("Introtext"),
+        fylwytext: textField("Fylwytext"),
+        vazprtext: textField("Vazprtext"),
+        zbknttext: textField("Zbknttext"),
+        w2r4vtext: textField("W2r4vtext"),
+        hsfwotext: textField("Hsfwotext"),
+        dimyjtext: textField("Dimyjtext"),
+        check1text: textField("Check1text"),
+        checkstext: textField("Checkstext"),
+        industrytext: textField("Industrytext"),
+        notestext: textField("Notestext"),
+        policytext: textField("Policytext"),
+        c7r9text: textField("C7r9text"),
+        contacttitletext: textField("Contacttitletext"),
+        contactsubtext: textField("Contactsubtext"),
         contactbtnhref: textField("Contactbtnhref"),
-        contacttxttext: textField("Contacttxttext"),
-        col1htext: textField("Col1htext"),
-        col1atext: textField("Col1atext"),
-        col1ahref: textField("Col1ahref"),
-        col1btext: textField("Col1btext"),
-        col1bhref: textField("Col1bhref"),
-        col2htext: textField("Col2htext"),
-        col2atext: textField("Col2atext"),
-        col2ahref: textField("Col2ahref"),
-        col2btext: textField("Col2btext"),
-        col2bhref: textField("Col2bhref"),
-        copytext: textField("Copytext"),
-        privacytext: textField("Privacytext"),
-        legaltext: textField("Legaltext"),
-        legalhref: textField("Legalhref"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeReviewsNavigationHeadpenPrimary": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeReviewsNavigationHeadpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-reviews-navigation-headpen-primary/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeReviewsNavigationHeadpenPrimary-1",
-            "logotext": "UNISTELLAR",
-            "logohref": "/",
-            "nhtext": "Home",
-            "nhhref": "/",
-            "nstext": "Smart Telescopes",
-            "nshref": "/smart-telescopes",
-            "nbtext": "Smart Binoculars",
-            "nbhref": "/smart-binoculars",
-            "nttext": "Technologies",
-            "nthref": "/technologies",
-            "nrtext": "Reviews",
-            "nrhref": "/reviews",
-            "btnhref": "/support",
-            "btnttext": "Support Portal"
-      },
-      fields: {
-        logotext: textField("Logotext"),
-        logohref: textField("Logohref"),
-        nhtext: textField("Nhtext"),
-        nhhref: textField("Nhhref"),
-        nstext: textField("Nstext"),
-        nshref: textField("Nshref"),
-        nbtext: textField("Nbtext"),
-        nbhref: textField("Nbhref"),
-        nttext: textField("Nttext"),
-        nthref: textField("Nthref"),
-        nrtext: textField("Nrtext"),
-        nrhref: textField("Nrhref"),
-        btnhref: textField("Btnhref"),
-        btnttext: textField("Btnttext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeReviewsHeroHeropenAlt1": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeReviewsHeroHeropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-reviews-hero-heropen-alt1/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeReviewsHeroHeropenAlt1-1",
-            "tagtext": "COMMUNITY REVIEWS",
-            "httext": "What explorers say after their first clear night",
-            "hstext": "Field notes from astronomers, educators, and first-time observers using Unistellar devices under real sky conditions."
-      },
-      fields: {
-        tagtext: textField("Tagtext"),
-        httext: textField("Httext"),
-        hstext: textField("Hstext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeReviewsProductsGridpenAlt2": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeReviewsProductsGridpenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-reviews-products-gridpen-alt2/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeReviewsProductsGridpenAlt2-1",
-            "q1text": "“Setup felt less like assembling equipment and more like opening a map of the sky.”",
-            "a1text": "Maya R. • First-time observer",
-            "card1href": "/",
-            "q2text": "“In city skies I was finally seeing structure in nebulae instead of just hunting for faint patches.”",
-            "a2text": "Leo T. • Urban astrophotography hobbyist",
-            "card2href": "/",
-            "q3text": "“Students stayed engaged because the telescope responded quickly and the app explained what they were seeing.”",
-            "a3text": "Tara K. • Science educator",
-            "card3href": "/",
-            "q4text": "“It gave our outreach nights a reliable rhythm: less troubleshooting, more wonder.”",
-            "a4text": "Daniel P. • Community astronomy club",
-            "card4href": "/"
-      },
-      fields: {
+        nthrutext: textField("Nthrutext"),
+        contactimgimagesrc: textField("Contactimgimagesrc"),
+        faqtitletext: textField("Faqtitletext"),
+        sec1text: textField("Sec1text"),
         q1text: textField("Q1text"),
-        a1text: textField("A1text"),
-        card1href: textField("Card1href"),
+        p1text: textField("P1text"),
         q2text: textField("Q2text"),
-        a2text: textField("A2text"),
-        card2href: textField("Card2href"),
+        p2text: textField("P2text"),
+        sec2text: textField("Sec2text"),
         q3text: textField("Q3text"),
-        a3text: textField("A3text"),
-        card3href: textField("Card3href"),
+        p3text: textField("P3text"),
         q4text: textField("Q4text"),
-        a4text: textField("A4text"),
-        card4href: textField("Card4href"),
+        p4text: textField("P4text"),
+        sec3text: textField("Sec3text"),
+        q5text: textField("Q5text"),
+        p5text: textField("P5text"),
+        q6text: textField("Q6text"),
+        p6text: textField("P6text"),
+        legaltitletext: textField("Legaltitletext"),
+        legalbodytext: textField("Legalbodytext"),
       },
     },
-    "TemplateExclusiveUnistellarHomeReviewsCtaCtapenAlt3": {
+    "TemplateExclusivePenSiteProductsFooterFooterpenAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeReviewsCtaCtapenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-reviews-cta-ctapen-alt3/block"
+          TemplateExclusivePenSiteProductsFooterFooterpenAlt3BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-products-footer-footerpen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeReviewsCtaCtapenAlt3-1",
-            "ctahref": "/",
-            "ctahtext": "Ready for your own first-night review?",
-            "ctabttext": "Browse smart telescopes",
-            "ctabhref": "/smart-telescopes"
+            "id": "TemplateExclusivePenSiteProductsFooterFooterpenAlt3-1",
+            "i4katext": "Company",
+            "dyodktext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+            "dyodkhref": "/about",
+            "xfwttext": "Social",
+            "dew7otext": "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+            "dew7ohref": "/",
+            "icru3text": "Community",
+            "httzhtext": "Community Forum\nSupport\nRepair Guides",
+            "httzhhref": "/",
+            "fplrvtext": "Shop all",
+            "yrfltext": "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+            "yrflhref": "/",
+            "emze2text": "Subscribe",
+            "uqretext": "Stay up to date with the Framework Newsletter (a few times a month)",
+            "uqrehref": "/blog",
+            "juramtext": "Your email",
+            "zvlavhref": "/support",
+            "vux1ztext": "Sign up",
+            "n5q0utext": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
+            "hl1oztext": "USD"
       },
       fields: {
-        ctahref: textField("Ctahref"),
-        ctahtext: textField("Ctahtext"),
-        ctabttext: textField("Ctabttext"),
-        ctabhref: textField("Ctabhref"),
+        i4katext: textField("I4katext"),
+        dyodktext: textField("Dyodktext"),
+        dyodkhref: textField("Dyodkhref"),
+        xfwttext: textField("Xfwttext"),
+        dew7otext: textField("Dew7otext"),
+        dew7ohref: textField("Dew7ohref"),
+        icru3text: textField("Icru3text"),
+        httzhtext: textField("Httzhtext"),
+        httzhhref: textField("Httzhhref"),
+        fplrvtext: textField("Fplrvtext"),
+        yrfltext: textField("Yrfltext"),
+        yrflhref: textField("Yrflhref"),
+        emze2text: textField("Emze2text"),
+        uqretext: textField("Uqretext"),
+        uqrehref: textField("Uqrehref"),
+        juramtext: textField("Juramtext"),
+        zvlavhref: textField("Zvlavhref"),
+        vux1ztext: textField("Vux1ztext"),
+        n5q0utext: textField("N5q0utext"),
+        hl1oztext: textField("Hl1oztext"),
       },
     },
-    "TemplateExclusiveUnistellarHomeReviewsFooterFootpenAlt4": {
+    "TemplateExclusivePenSiteContactNavigationNavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeReviewsFooterFootpenAlt4BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-reviews-footer-footpen-alt4/block"
+          TemplateExclusivePenSiteContactNavigationNavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-pen-site-contact-navigation-navpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeReviewsFooterFootpenAlt4-1",
-            "brandtext": "UNISTELLAR",
-            "contactbtnhref": "/",
-            "contacttxttext": "Talk to an expert",
-            "col1htext": "Products",
-            "col1atext": "Smart Telescopes",
-            "col1ahref": "/smart-telescopes",
-            "col1btext": "Smart Binoculars",
-            "col1bhref": "/smart-binoculars",
-            "col2htext": "Explore",
-            "col2atext": "Technologies",
-            "col2ahref": "/technologies",
-            "col2btext": "Reviews",
-            "col2bhref": "/reviews",
-            "copytext": "© 2026 Unistellar. All rights reserved.",
-            "privacytext": "Privacy",
-            "legaltext": "Legal Notice",
-            "legalhref": "/policy"
-      },
-      fields: {
-        brandtext: textField("Brandtext"),
-        contactbtnhref: textField("Contactbtnhref"),
-        contacttxttext: textField("Contacttxttext"),
-        col1htext: textField("Col1htext"),
-        col1atext: textField("Col1atext"),
-        col1ahref: textField("Col1ahref"),
-        col1btext: textField("Col1btext"),
-        col1bhref: textField("Col1bhref"),
-        col2htext: textField("Col2htext"),
-        col2atext: textField("Col2atext"),
-        col2ahref: textField("Col2ahref"),
-        col2btext: textField("Col2btext"),
-        col2bhref: textField("Col2bhref"),
-        copytext: textField("Copytext"),
-        privacytext: textField("Privacytext"),
-        legaltext: textField("Legaltext"),
-        legalhref: textField("Legalhref"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeContactContactContactheaderpenPrimary": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeContactContactContactheaderpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-contact-contact-contactheaderpen-primary/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeContactContactContactheaderpenPrimary-1",
-            "logotext": "UNISTELLAR",
-            "navtelescopestext": "Smart Telescopes",
-            "navbinocularstext": "Smart Binoculars",
-            "navreviewstext": "Reviews",
-            "navtechnologiestext": "Technologies",
-            "navusecasestext": "Use Cases",
-            "ctahref": "/",
-            "ctatexttext": "Shop"
+            "id": "TemplateExclusivePenSiteContactNavigationNavpenPrimary-1",
+            "logotext": "Framework",
+            "logohref": "/",
+            "centernavtext": "Products   Laptops   Desktops   Marketplace",
+            "centernavhref": "/products",
+            "rightnavtext": "Support   Sign In   Cart",
+            "rightnavhref": "/support"
       },
       fields: {
         logotext: textField("Logotext"),
-        navtelescopestext: textField("Navtelescopestext"),
-        navbinocularstext: textField("Navbinocularstext"),
-        navreviewstext: textField("Navreviewstext"),
-        navtechnologiestext: textField("Navtechnologiestext"),
-        navusecasestext: textField("Navusecasestext"),
-        ctahref: textField("Ctahref"),
-        ctatexttext: textField("Ctatexttext"),
+        logohref: textField("Logohref"),
+        centernavtext: textField("Centernavtext"),
+        centernavhref: textField("Centernavhref"),
+        rightnavtext: textField("Rightnavtext"),
+        rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusiveUnistellarHomeContactHeroHeropenAlt1": {
+    "TemplateExclusivePenSiteContactHeroContactheropenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeContactHeroHeropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-contact-hero-heropen-alt1/block"
+          TemplateExclusivePenSiteContactHeroContactheropenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-contact-hero-contactheropen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeContactHeroHeropenAlt1-1",
-            "herotagtext": "CONTACT UNISTELLAR",
-            "herotitletext": "Reach the right Unistellar team before your next night under the stars.",
-            "herosubtext": "Get product guidance, plan a concierge onboarding call, or coordinate demos and institutional support without bouncing between inboxes.",
-            "primaryCtahref": "/",
-            "primaryCtaTexttext": "Book a Concierge Call",
-            "secondaryCtahref": "/support",
-            "secondaryCtaTexttext": "Find Regional Support",
-            "promiseTexttext": "Replies within one business day",
-            "promisePillhref": "/",
-            "coverageTexttext": "Sales, setup, institutions, and press",
-            "coveragePillhref": "/contact"
+            "id": "TemplateExclusivePenSiteContactHeroContactheropenAlt1-1",
+            "herotitletext": "Contact Framework"
       },
       fields: {
-        herotagtext: textField("Herotagtext"),
         herotitletext: textField("Herotitletext"),
-        herosubtext: textField("Herosubtext"),
-        primaryCtahref: textField("PrimaryCtahref"),
-        primaryCtaTexttext: textField("PrimaryCtaTexttext"),
-        secondaryCtahref: textField("SecondaryCtahref"),
-        secondaryCtaTexttext: textField("SecondaryCtaTexttext"),
-        promiseTexttext: textField("PromiseTexttext"),
-        promisePillhref: textField("PromisePillhref"),
-        coverageTexttext: textField("CoverageTexttext"),
-        coveragePillhref: textField("CoveragePillhref"),
       },
     },
-    "TemplateExclusiveUnistellarHomeContactContactContactbodypenAlt2": {
+    "TemplateExclusivePenSiteContactContactContactmainpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeContactContactContactbodypenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-contact-contact-contactbodypen-alt2/block"
+          TemplateExclusivePenSiteContactContactContactmainpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-contact-contact-contactmainpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeContactContactContactbodypenAlt2-1",
-            "methodstitletext": "Choose your fastest route",
-            "methodsdesctext": "Start with the channel that matches your goal, and we will route you to the right observer, specialist, or support lead.",
-            "emailtitletext": "General Inquiries",
-            "emailvaluetext": "contact@unistellar.com  ·  Typical reply under 24h",
-            "emailrowhref": "/",
-            "phonetitletext": "Sales & Product Guidance",
-            "phonevaluetext": "+1 (415) 555-0196  ·  Mon–Fri, 9am–6pm PST",
-            "phonerowhref": "/",
-            "presstitletext": "Press & Partnerships",
-            "pressvaluetext": "press@unistellar.com  ·  partner@unistellar.com",
-            "pressrowhref": "/contact",
-            "officetitletext": "Visit or book a specialist",
-            "officedesctext": "Use our San Francisco office for guided demos, service drop-off, and deeper one-to-one product conversations.",
-            "addresslabeltext": "Headquarters",
-            "addresstexttext": "Unistellar North America\n548 Market Street, Suite 41012\nSan Francisco, CA 94104",
-            "hourslabeltext": "Hours",
-            "hourstexttext": "Mon–Fri: 9:00–18:00 PST\nSat: 10:00–14:00 PST (Demo Appointments)",
-            "visitbtnhref": "/",
-            "visitbtntexttext": "Book In-Person Demo",
-            "formCtahref": "/",
-            "formtitletext": "Talk to a setup specialist",
-            "formdesctext": "Share your observing goals and current gear. We will prepare a tailored recommendation before the call.",
-            "nametexttext": "Full name",
-            "namefieldhref": "/",
-            "emailtexttext": "Work email",
-            "emailfieldhref": "/contact",
-            "messagetexttext": "Tell us what you want to observe, your current setup, and your timeline.",
-            "messagefieldhref": "/",
-            "submittexttext": "Schedule My Consultation",
-            "formhelptext": "You will receive setup guidance, recommended next steps, and optional product updates. No spam, no generic routing.",
-            "quicktitletext": "Regional Support",
-            "quickdesctext": "For local events, institutional programs, and observatory collaborations.",
-            "region1text": "Americas  ·  americas@unistellar.com",
-            "region2text": "Europe  ·  europe@unistellar.com",
-            "region3text": "Asia Pacific  ·  apac@unistellar.com"
+            "id": "TemplateExclusivePenSiteContactContactContactmainpenAlt2-1",
+            "t1text": "Contact Support",
+            "l1text": "Submit a support request",
+            "t2text": "Business Ordering",
+            "l2text": "framework.for.business",
+            "t3text": "Press Inquiries",
+            "l3text": "media@frame.work",
+            "t4text": "Ask the Community",
+            "l4text": "community.frame.work",
+            "t5text": "Sponsorships Inquiries",
+            "l5text": "Fill out the sponsorship form",
+            "imptitletext": "Impressum",
+            "i11text": "Company Name",
+            "i12text": "Framework* Computer Inc",
+            "i21text": "Headquarters Address",
+            "i22text": "447 Sutter St, PMB 135, San Francisco, CA 94108-4928, United States",
+            "i31text": "Managing Director",
+            "i32text": "Nirav Patel",
+            "i41text": "Contact",
+            "i42text": "media@frame.work, +1 (415) 475-1196",
+            "i51text": "VAT number",
+            "i52text": "NL864036020B01",
+            "i61text": "Trademark",
+            "i62text": "Framework® is Registered in U.S. Patent and Trademark Office",
+            "worktitletext": "Work with us",
+            "worksubtext": "Come join us to remake Consumer Electronics!",
+            "worklinktext": "View open jobs",
+            "workillustrationimagesrc": "./images/generated-1773120346359.png"
       },
       fields: {
-        methodstitletext: textField("Methodstitletext"),
-        methodsdesctext: textField("Methodsdesctext"),
-        emailtitletext: textField("Emailtitletext"),
-        emailvaluetext: textField("Emailvaluetext"),
-        emailrowhref: textField("Emailrowhref"),
-        phonetitletext: textField("Phonetitletext"),
-        phonevaluetext: textField("Phonevaluetext"),
-        phonerowhref: textField("Phonerowhref"),
-        presstitletext: textField("Presstitletext"),
-        pressvaluetext: textField("Pressvaluetext"),
-        pressrowhref: textField("Pressrowhref"),
-        officetitletext: textField("Officetitletext"),
-        officedesctext: textField("Officedesctext"),
-        addresslabeltext: textField("Addresslabeltext"),
-        addresstexttext: textField("Addresstexttext"),
-        hourslabeltext: textField("Hourslabeltext"),
-        hourstexttext: textField("Hourstexttext"),
-        visitbtnhref: textField("Visitbtnhref"),
-        visitbtntexttext: textField("Visitbtntexttext"),
-        formCtahref: textField("FormCtahref"),
-        formtitletext: textField("Formtitletext"),
-        formdesctext: textField("Formdesctext"),
-        nametexttext: textField("Nametexttext"),
-        namefieldhref: textField("Namefieldhref"),
-        emailtexttext: textField("Emailtexttext"),
-        emailfieldhref: textField("Emailfieldhref"),
-        messagetexttext: textField("Messagetexttext"),
-        messagefieldhref: textField("Messagefieldhref"),
-        submittexttext: textField("Submittexttext"),
-        formhelptext: textField("Formhelptext"),
-        quicktitletext: textField("Quicktitletext"),
-        quickdesctext: textField("Quickdesctext"),
-        region1text: textField("Region1text"),
-        region2text: textField("Region2text"),
-        region3text: textField("Region3text"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeContactFooterContactfooterpenAlt3": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeContactFooterContactfooterpenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-contact-footer-contactfooterpen-alt3/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeContactFooterContactfooterpenAlt3-1",
-            "ftlogotext": "UNISTELLAR",
-            "ftdesctext": "The future of day and night exploration.",
-            "ftdeschref": "/",
-            "titletext": "Products",
-            "smarttelescopestext": "Smart Telescopes",
-            "smarttelescopeshref": "/smart-telescopes",
-            "smartbinocularstext": "Smart Binoculars",
-            "smartbinocularshref": "/smart-binoculars",
-            "accessoriestext": "Accessories",
-            "accessorieshref": "/",
-            "titletext2": "Support",
-            "helpcentertext": "Help Center",
-            "helpcenterhref": "/support",
-            "manualstext": "Manuals",
-            "manualshref": "/",
-            "contacttext": "Contact",
-            "contacthref": "/contact",
-            "titletext3": "Company",
-            "abouttext": "About",
-            "abouthref": "/about",
-            "presstext": "Press",
-            "presshref": "/contact",
-            "careerstext": "Careers",
-            "careershref": "/",
-            "titletext4": "Community",
-            "eventstext": "Events",
-            "eventshref": "/",
-            "blogtext": "Blog",
-            "bloghref": "/blog",
-            "partnerstext": "Partners",
-            "partnershref": "/",
-            "copytext": "© 2026 Unistellar. All rights reserved.",
-            "privacypolicytext": "Privacy Policy",
-            "termstext": "Terms",
-            "termshref": "/policy"
-      },
-      fields: {
-        ftlogotext: textField("Ftlogotext"),
-        ftdesctext: textField("Ftdesctext"),
-        ftdeschref: textField("Ftdeschref"),
-        titletext: textField("Titletext"),
-        smarttelescopestext: textField("Smarttelescopestext"),
-        smarttelescopeshref: textField("Smarttelescopeshref"),
-        smartbinocularstext: textField("Smartbinocularstext"),
-        smartbinocularshref: textField("Smartbinocularshref"),
-        accessoriestext: textField("Accessoriestext"),
-        accessorieshref: textField("Accessorieshref"),
-        titletext2: textField("Titletext2"),
-        helpcentertext: textField("Helpcentertext"),
-        helpcenterhref: textField("Helpcenterhref"),
-        manualstext: textField("Manualstext"),
-        manualshref: textField("Manualshref"),
-        contacttext: textField("Contacttext"),
-        contacthref: textField("Contacthref"),
-        titletext3: textField("Titletext3"),
-        abouttext: textField("Abouttext"),
-        abouthref: textField("Abouthref"),
-        presstext: textField("Presstext"),
-        presshref: textField("Presshref"),
-        careerstext: textField("Careerstext"),
-        careershref: textField("Careershref"),
-        titletext4: textField("Titletext4"),
-        eventstext: textField("Eventstext"),
-        eventshref: textField("Eventshref"),
-        blogtext: textField("Blogtext"),
-        bloghref: textField("Bloghref"),
-        partnerstext: textField("Partnerstext"),
-        partnershref: textField("Partnershref"),
-        copytext: textField("Copytext"),
-        privacypolicytext: textField("Privacypolicytext"),
-        termstext: textField("Termstext"),
-        termshref: textField("Termshref"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSupportContactSupportheaderpenPrimary": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSupportContactSupportheaderpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-support-contact-supportheaderpen-primary/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSupportContactSupportheaderpenPrimary-1",
-            "logotext": "UNISTELLAR",
-            "navtelescopestext": "Smart Telescopes",
-            "navbinocularstext": "Smart Binoculars",
-            "navreviewstext": "Reviews",
-            "navtechnologiestext": "Technologies",
-            "navusecasestext": "Use Cases",
-            "ctahref": "/",
-            "ctatexttext": "Shop"
-      },
-      fields: {
-        logotext: textField("Logotext"),
-        navtelescopestext: textField("Navtelescopestext"),
-        navbinocularstext: textField("Navbinocularstext"),
-        navreviewstext: textField("Navreviewstext"),
-        navtechnologiestext: textField("Navtechnologiestext"),
-        navusecasestext: textField("Navusecasestext"),
-        ctahref: textField("Ctahref"),
-        ctatexttext: textField("Ctatexttext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSupportHeroSupportheropenAlt1": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSupportHeroSupportheropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-support-hero-supportheropen-alt1/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSupportHeroSupportheropenAlt1-1",
-            "eyebrowlabeltext": "SUPPORT MISSION CONTROL",
-            "herotitletext": "Get back under the stars faster.",
-            "herosubtext": "From first-night setup to transfer diagnostics, every support path is organized to get your telescope running with confidence.",
-            "searchprompttext": "Search setup, connectivity, imaging, ownership and account help",
-            "searchbadgetexttext": "SEARCH",
-            "metaatext": "24h first-response target",
-            "metabtext": "Weekly live onboarding",
-            "metactext": "Step-by-step field guides",
-            "rightlabeltext": "FASTEST PATHS",
-            "righttitletext": "Choose the support lane that matches your moment.",
-            "t1text": "First-light setup",
-            "d1text": "Unboxing, alignment, firmware checks, and app pairing before your first session.",
-            "foot1text": "Start with checklist",
-            "lane1href": "/",
-            "t2text": "Image and tracking quality",
-            "d2text": "Fix focus drift, field rotation, dew interruptions, and capture consistency in the field.",
-            "foot2text": "Open imaging guides",
-            "lane2href": "/",
-            "t3text": "Ownership and transfer",
-            "d3text": "Coverage questions, account changes, and telescope transfer support for new owners.",
-            "foot3text": "Review policy steps",
-            "lane3href": "/",
-            "herobottomtexttext": "Support is structured around the three moments that matter most: launch, observe, and keep ownership seamless.",
-            "herobottomtagtext": "Field-ready guidance",
-            "herobottomhref": "/support"
-      },
-      fields: {
-        eyebrowlabeltext: textField("Eyebrowlabeltext"),
-        herotitletext: textField("Herotitletext"),
-        herosubtext: textField("Herosubtext"),
-        searchprompttext: textField("Searchprompttext"),
-        searchbadgetexttext: textField("Searchbadgetexttext"),
-        metaatext: textField("Metaatext"),
-        metabtext: textField("Metabtext"),
-        metactext: textField("Metactext"),
-        rightlabeltext: textField("Rightlabeltext"),
-        righttitletext: textField("Righttitletext"),
         t1text: textField("T1text"),
-        d1text: textField("D1text"),
-        foot1text: textField("Foot1text"),
-        lane1href: textField("Lane1href"),
+        l1text: textField("L1text"),
         t2text: textField("T2text"),
-        d2text: textField("D2text"),
-        foot2text: textField("Foot2text"),
-        lane2href: textField("Lane2href"),
+        l2text: textField("L2text"),
         t3text: textField("T3text"),
-        d3text: textField("D3text"),
-        foot3text: textField("Foot3text"),
-        lane3href: textField("Lane3href"),
-        herobottomtexttext: textField("Herobottomtexttext"),
-        herobottomtagtext: textField("Herobottomtagtext"),
-        herobottomhref: textField("Herobottomhref"),
+        l3text: textField("L3text"),
+        t4text: textField("T4text"),
+        l4text: textField("L4text"),
+        t5text: textField("T5text"),
+        l5text: textField("L5text"),
+        imptitletext: textField("Imptitletext"),
+        i11text: textField("I11text"),
+        i12text: textField("I12text"),
+        i21text: textField("I21text"),
+        i22text: textField("I22text"),
+        i31text: textField("I31text"),
+        i32text: textField("I32text"),
+        i41text: textField("I41text"),
+        i42text: textField("I42text"),
+        i51text: textField("I51text"),
+        i52text: textField("I52text"),
+        i61text: textField("I61text"),
+        i62text: textField("I62text"),
+        worktitletext: textField("Worktitletext"),
+        worksubtext: textField("Worksubtext"),
+        worklinktext: textField("Worklinktext"),
+        workillustrationimagesrc: textField("Workillustrationimagesrc"),
       },
     },
-    "TemplateExclusiveUnistellarHomeSupportContactHelptopicspenAlt2": {
+    "TemplateExclusivePenSiteContactFooterFooterpenAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSupportContactHelptopicspenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-support-contact-helptopicspen-alt2/block"
+          TemplateExclusivePenSiteContactFooterFooterpenAlt3BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-contact-footer-footerpen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSupportContactHelptopicspenAlt2-1",
-            "topicslabeltext": "HELP TOPICS",
-            "topicstitletext": "Support organized by what is blocking the next observation.",
-            "topicsintrotext": "Move from immediate setup issues to image refinement and long-term ownership questions without losing context or momentum.",
-            "card1ktext": "01 / GET STARTED",
-            "card1ttext": "First-light setup checklist",
-            "card1dtext": "Use this path for unboxing, balancing, firmware status, Wi-Fi pairing, and verifying your first target alignment.",
-            "card1ftext": "Includes app pairing and session prep",
-            "card2ktext": "02 / FIELD TROUBLESHOOTING",
-            "card2ttext": "Wi-Fi, power, and live-session recovery",
-            "card2dtext": "Reconnect during an active night, stabilize battery behavior, and get observing resumed before conditions change.",
-            "card2ftext": "Fast steps for in-field fixes",
-            "card3ktext": "03 / IMAGE QUALITY",
-            "card3ttext": "Focus, tracking, and image optimization",
-            "card3dtext": "Improve stars, framing, and consistency with practical fixes for focus drift, dew, motion, and target visibility.",
-            "card3ftext": "Best for advanced observing sessions",
-            "card4ktext": "04 / ACCOUNT & ACCESS",
-            "card4ttext": "Transfers, ownership, and coverage",
-            "card4dtext": "Manage account changes, understand support eligibility, and complete telescope transfers without losing setup history.",
-            "card4ftext": "Policy guidance with next actions",
-            "col3ktext": "SUPPORT FLOW",
-            "step1text": "1. Start with the checklist that matches your issue.",
-            "step2text": "2. Follow the resources in order so setup, diagnostics, and app changes stay synchronized.",
-            "step3text": "3. Escalate to the support team when your session still cannot continue or ownership needs manual review.",
-            "step4atext": "Escalation window",
-            "step4btext": "Send session logs and issue details when you need a human review.",
-            "step4href": "/"
+            "id": "TemplateExclusivePenSiteContactFooterFooterpenAlt3-1",
+            "a8p3ftext": "Company",
+            "mqbmrtext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+            "mqbmrhref": "/about",
+            "dthwxtext": "Social",
+            "howybtext": "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+            "howybhref": "/",
+            "npx2text": "Community",
+            "t3cx4text": "Community Forum\nSupport\nRepair Guides",
+            "t3cx4href": "/",
+            "fhzltext": "Shop all",
+            "puz92text": "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+            "puz92href": "/",
+            "xfcygtext": "Subscribe",
+            "fnrsltext": "Stay up to date with the Framework Newsletter (a few times a month)",
+            "fnrslhref": "/blog",
+            "wpl5ptext": "Your email",
+            "uwcuhref": "/support",
+            "uoytatext": "Sign up",
+            "dmqitext": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
+            "thaqitext": "USD"
       },
       fields: {
-        topicslabeltext: textField("Topicslabeltext"),
-        topicstitletext: textField("Topicstitletext"),
-        topicsintrotext: textField("Topicsintrotext"),
-        card1ktext: textField("Card1ktext"),
-        card1ttext: textField("Card1ttext"),
-        card1dtext: textField("Card1dtext"),
-        card1ftext: textField("Card1ftext"),
-        card2ktext: textField("Card2ktext"),
-        card2ttext: textField("Card2ttext"),
-        card2dtext: textField("Card2dtext"),
-        card2ftext: textField("Card2ftext"),
-        card3ktext: textField("Card3ktext"),
-        card3ttext: textField("Card3ttext"),
-        card3dtext: textField("Card3dtext"),
-        card3ftext: textField("Card3ftext"),
-        card4ktext: textField("Card4ktext"),
-        card4ttext: textField("Card4ttext"),
-        card4dtext: textField("Card4dtext"),
-        card4ftext: textField("Card4ftext"),
-        col3ktext: textField("Col3ktext"),
-        step1text: textField("Step1text"),
-        step2text: textField("Step2text"),
-        step3text: textField("Step3text"),
-        step4atext: textField("Step4atext"),
-        step4btext: textField("Step4btext"),
-        step4href: textField("Step4href"),
+        a8p3ftext: textField("A8p3ftext"),
+        mqbmrtext: textField("Mqbmrtext"),
+        mqbmrhref: textField("Mqbmrhref"),
+        dthwxtext: textField("Dthwxtext"),
+        howybtext: textField("Howybtext"),
+        howybhref: textField("Howybhref"),
+        npx2text: textField("Npx2text"),
+        t3cx4text: textField("T3cx4text"),
+        t3cx4href: textField("T3cx4href"),
+        fhzltext: textField("Fhzltext"),
+        puz92text: textField("Puz92text"),
+        puz92href: textField("Puz92href"),
+        xfcygtext: textField("Xfcygtext"),
+        fnrsltext: textField("Fnrsltext"),
+        fnrslhref: textField("Fnrslhref"),
+        wpl5ptext: textField("Wpl5ptext"),
+        uwcuhref: textField("Uwcuhref"),
+        uoytatext: textField("Uoytatext"),
+        dmqitext: textField("Dmqitext"),
+        thaqitext: textField("Thaqitext"),
       },
     },
-    "TemplateExclusiveUnistellarHomeSupportStoryResourcespenAlt3": {
+    "TemplateExclusivePenSiteBlogNavigationNavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSupportStoryResourcespenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-support-story-resourcespen-alt3/block"
+          TemplateExclusivePenSiteBlogNavigationNavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-pen-site-blog-navigation-navpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSupportStoryResourcespenAlt3-1",
-            "reslabeltext": "RESOURCES & LEARNING",
-            "restitletext": "A clearer ladder from quick fix to expert guidance.",
-            "resmetatext": "Use the left-to-right order when you need speed, depth, then personal help.",
-            "res1ktext": "QUICK START",
-            "res1ttext": "Field manuals and issue checklists",
-            "res1dtext": "Start here when you want the fastest answer during setup or a live observing session.",
-            "res1ftext": "Open quick-reference docs",
-            "res2ktext": "DEEPER LEARNING",
-            "res2ttext": "Tutorials, webinars, and workflow best practices",
-            "res2dtext": "Build confidence beyond the fix with guided learning on capture quality, target planning, and session habits.",
-            "res2ftext": "Browse guided sessions",
-            "res3ktext": "HUMAN SUPPORT",
-            "res3ttext": "Need a specialist to review your case?",
-            "res3dtext": "Escalate with context when self-service is not enough and you need guided diagnostics or ownership review.",
-            "res3ftext": "Prepare request details"
-      },
-      fields: {
-        reslabeltext: textField("Reslabeltext"),
-        restitletext: textField("Restitletext"),
-        resmetatext: textField("Resmetatext"),
-        res1ktext: textField("Res1ktext"),
-        res1ttext: textField("Res1ttext"),
-        res1dtext: textField("Res1dtext"),
-        res1ftext: textField("Res1ftext"),
-        res2ktext: textField("Res2ktext"),
-        res2ttext: textField("Res2ttext"),
-        res2dtext: textField("Res2dtext"),
-        res2ftext: textField("Res2ftext"),
-        res3ktext: textField("Res3ktext"),
-        res3ttext: textField("Res3ttext"),
-        res3dtext: textField("Res3dtext"),
-        res3ftext: textField("Res3ftext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSupportCtaContactctapenAlt4": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSupportCtaContactctapenAlt4BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-support-cta-contactctapen-alt4/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSupportCtaContactctapenAlt4-1",
-            "contactCtahref": "/contact",
-            "ctalabeltext": "CONTACT SUPPORT",
-            "ctatitletext": "Bring a human into the loop when the night cannot wait.",
-            "ctasubtext": "Share your telescope model, app version, session conditions, and symptoms so our specialists can route you faster.",
-            "ctabtnhref": "/contact",
-            "ctabtntexttext": "Contact support",
-            "ctametatext": "Best results come with logs, screenshots, and the last successful session time."
-      },
-      fields: {
-        contactCtahref: textField("ContactCtahref"),
-        ctalabeltext: textField("Ctalabeltext"),
-        ctatitletext: textField("Ctatitletext"),
-        ctasubtext: textField("Ctasubtext"),
-        ctabtnhref: textField("Ctabtnhref"),
-        ctabtntexttext: textField("Ctabtntexttext"),
-        ctametatext: textField("Ctametatext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeSupportFooterSupportfooterpenAlt5": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeSupportFooterSupportfooterpenAlt5BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-support-footer-supportfooterpen-alt5/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeSupportFooterSupportfooterpenAlt5-1",
-            "ftlogotext": "UNISTELLAR",
-            "ftdesctext": "The future of day and night exploration.",
-            "ftdeschref": "/",
-            "titletext": "Products",
-            "smarttelescopestext": "Smart Telescopes",
-            "smarttelescopeshref": "/smart-telescopes",
-            "smartbinocularstext": "Smart Binoculars",
-            "smartbinocularshref": "/smart-binoculars",
-            "accessoriestext": "Accessories",
-            "accessorieshref": "/",
-            "titletext2": "Support",
-            "helpcentertext": "Help Center",
-            "helpcenterhref": "/support",
-            "manualstext": "Manuals",
-            "manualshref": "/",
-            "contacttext": "Contact",
-            "contacthref": "/contact",
-            "titletext3": "Company",
-            "abouttext": "About",
-            "abouthref": "/about",
-            "presstext": "Press",
-            "presshref": "/contact",
-            "careerstext": "Careers",
-            "careershref": "/",
-            "titletext4": "Community",
-            "eventstext": "Events",
-            "eventshref": "/",
-            "blogtext": "Blog",
-            "bloghref": "/blog",
-            "partnerstext": "Partners",
-            "partnershref": "/",
-            "copytext": "© 2026 Unistellar. All rights reserved.",
-            "privacypolicytext": "Privacy Policy",
-            "termstext": "Terms",
-            "termshref": "/policy"
-      },
-      fields: {
-        ftlogotext: textField("Ftlogotext"),
-        ftdesctext: textField("Ftdesctext"),
-        ftdeschref: textField("Ftdeschref"),
-        titletext: textField("Titletext"),
-        smarttelescopestext: textField("Smarttelescopestext"),
-        smarttelescopeshref: textField("Smarttelescopeshref"),
-        smartbinocularstext: textField("Smartbinocularstext"),
-        smartbinocularshref: textField("Smartbinocularshref"),
-        accessoriestext: textField("Accessoriestext"),
-        accessorieshref: textField("Accessorieshref"),
-        titletext2: textField("Titletext2"),
-        helpcentertext: textField("Helpcentertext"),
-        helpcenterhref: textField("Helpcenterhref"),
-        manualstext: textField("Manualstext"),
-        manualshref: textField("Manualshref"),
-        contacttext: textField("Contacttext"),
-        contacthref: textField("Contacthref"),
-        titletext3: textField("Titletext3"),
-        abouttext: textField("Abouttext"),
-        abouthref: textField("Abouthref"),
-        presstext: textField("Presstext"),
-        presshref: textField("Presshref"),
-        careerstext: textField("Careerstext"),
-        careershref: textField("Careershref"),
-        titletext4: textField("Titletext4"),
-        eventstext: textField("Eventstext"),
-        eventshref: textField("Eventshref"),
-        blogtext: textField("Blogtext"),
-        bloghref: textField("Bloghref"),
-        partnerstext: textField("Partnerstext"),
-        partnershref: textField("Partnershref"),
-        copytext: textField("Copytext"),
-        privacypolicytext: textField("Privacypolicytext"),
-        termstext: textField("Termstext"),
-        termshref: textField("Termshref"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomePolicyNavigationNavpolicypenPrimary": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomePolicyNavigationNavpolicypenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-policy-navigation-navpolicypen-primary/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomePolicyNavigationNavpolicypenPrimary-1",
-            "logotext": "UNISTELLAR",
+            "id": "TemplateExclusivePenSiteBlogNavigationNavpenPrimary-1",
+            "logotext": "Framework",
             "logohref": "/",
-            "g7iitext": "Smart Telescopes",
-            "g7iihref": "/smart-telescopes",
-            "ahwkftext": "Smart Binoculars",
-            "ahwkfhref": "/smart-binoculars",
-            "seg1mtext": "Reviews",
-            "seg1mhref": "/reviews",
-            "zoypptext": "Technologies",
-            "zoypphref": "/technologies",
-            "hatqitext": "Use Cases",
-            "hatqihref": "/use-cases",
-            "ctahref": "/",
-            "ctatexttext": "Shop"
+            "centernavtext": "Products   Laptops   Desktops   Marketplace",
+            "centernavhref": "/products",
+            "rightnavtext": "Support   Sign In   Cart",
+            "rightnavhref": "/support"
       },
       fields: {
         logotext: textField("Logotext"),
         logohref: textField("Logohref"),
-        g7iitext: textField("G7iitext"),
-        g7iihref: textField("G7iihref"),
-        ahwkftext: textField("Ahwkftext"),
-        ahwkfhref: textField("Ahwkfhref"),
-        seg1mtext: textField("Seg1mtext"),
-        seg1mhref: textField("Seg1mhref"),
-        zoypptext: textField("Zoypptext"),
-        zoypphref: textField("Zoypphref"),
-        hatqitext: textField("Hatqitext"),
-        hatqihref: textField("Hatqihref"),
-        ctahref: textField("Ctahref"),
-        ctatexttext: textField("Ctatexttext"),
+        centernavtext: textField("Centernavtext"),
+        centernavhref: textField("Centernavhref"),
+        rightnavtext: textField("Rightnavtext"),
+        rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusiveUnistellarHomePolicyStoryPolicywrappenAlt1": {
+    "TemplateExclusivePenSiteBlogNavigationCategorybarpenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomePolicyStoryPolicywrappenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-policy-story-policywrappen-alt1/block"
+          TemplateExclusivePenSiteBlogNavigationCategorybarpenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-blog-navigation-categorybarpen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomePolicyStoryPolicywrappenAlt1-1",
-            "herokickertext": "POLICY CENTER",
-            "herotitletext": "Policies, terms, and data stewardship",
-            "herocopytext": "This page explains how Unistellar handles personal information, governs purchases and platform use, and updates customers when legal or operational terms change across hardware, apps, and connected services.",
-            "effectivelabeltext": "EFFECTIVE",
-            "effectivebodytext": "February 27, 2026",
-            "effectivecardhref": "/",
-            "scopelabeltext": "COVERAGE",
-            "scopebodytext": "Web, app, commerce, and telescope services",
-            "scopecardhref": "/",
-            "responselabeltext": "REQUESTS",
-            "responsebodytext": "Legal and privacy inquiries reviewed within 30 days",
-            "responsecardhref": "/",
-            "indextitletext": "ON THIS PAGE",
-            "indexlisttext": "01  Overview & Scope\n02  Privacy Commitments\n03  Data We Collect\n04  How We Use Data\n05  Sharing & Processors\n06  Retention, Security & Transfers\n07  Your Rights & Choices\n08  Terms, Notices & Updates",
-            "applieslabeltext": "APPLIES TO",
-            "appliesbodytext": "Customers, community users, prospects, and visitors interacting with Unistellar websites, applications, support channels, and device-connected experiences.",
-            "appliescardhref": "/",
-            "contactlabeltext": "NEED HELP?",
-            "contactbodytext": "Email legal@unistellar.com for formal notices, privacy requests, or accessibility concerns related to this policy center.",
-            "contactcardhref": "/support",
-            "privacylabeltext": "PRIVACY STANDARD",
-            "privacybodytext": "We collect only the information required to support accounts, commerce, connected devices, and service reliability, and we do not sell personal information.",
-            "privacycardhref": "/policy",
-            "termslabeltext": "TERMS STANDARD",
-            "termsbodytext": "Use of Unistellar products and services is governed by clear rules for acceptable use, billing, fulfillment, warranty limits, and dispute handling.",
-            "termscardhref": "/policy",
-            "rightslabeltext": "USER RIGHTS",
-            "rightsbodytext": "Qualified users can request access, correction, deletion, portability, or processing restrictions in line with applicable law.",
-            "rightscardhref": "/",
-            "sectiontitletext": "03. Data We Collect",
-            "sectionbodytext": "We collect the information needed to create accounts, process telescope orders, deliver software updates, and support observational sessions. This can include identifiers such as name and email address, payment and shipping details, device identifiers, diagnostic logs, telescope telemetry, support correspondence, and engagement history across web and mobile experiences.\n\nWe intentionally limit collection to information that helps us operate the service, meet legal obligations, investigate misuse, and improve reliability for connected hardware and companion applications.",
-            "sectionDataCollecthref": "/",
-            "sectiontitletext2": "04. How We Use Data",
-            "sectionbodytext2": "Collected information is used to authenticate users, fulfill purchases, ship hardware, activate warranties, provide customer support, maintain service performance, and send operational messages tied to an account or transaction. Usage data also helps us understand reliability trends, improve firmware quality, and refine scientific discovery features.\n\nWhere consent is required for optional marketing, analytics, or personalized experiences, we rely on that consent and provide controls for withdrawal or preference changes.",
-            "sectionDataUsehref": "/",
-            "sectiontitletext3": "05. Sharing and Processors",
-            "sectionbodytext3": "We share data with carefully selected service providers that help us run payments, cloud hosting, logistics, customer support, diagnostics, and communications. These providers are contractually restricted to using information only for the services they perform on our behalf and must apply appropriate confidentiality and security measures.\n\nWe may also disclose information when required by law, to respond to valid legal requests, to enforce our agreements, or to protect the rights, safety, and integrity of our customers, employees, and platform.",
-            "sectionSharinghref": "/",
-            "sectiontitletext4": "06. Retention, Security, and Transfers",
-            "sectionbodytext4": "Personal information is retained only for as long as needed to provide services, support purchases, maintain records, resolve disputes, satisfy legal obligations, and defend claims. We apply administrative, technical, and organizational safeguards designed to protect account data, transactional records, and connected-device information from unauthorized access, loss, misuse, or disclosure.\n\nWhen information moves across borders, we use recognized transfer mechanisms such as standard contractual clauses or equivalent safeguards to preserve privacy rights and enforceable protections.",
-            "sectionSecurityhref": "/",
-            "sectiontitletext5": "07. Your Rights and Choices",
-            "sectionbodytext5": "Depending on your jurisdiction, you may have the right to request access to personal data, correct inaccurate information, delete eligible records, object to certain processing, request portability, or limit how your information is used. Account owners can also manage some preferences directly through product settings, browser controls, and unsubscribe links where available.\n\nWe review verified requests in line with applicable law and may ask for additional information when necessary to protect account security or clarify the scope of a request.",
-            "sectionRightshref": "/",
-            "sectiontitletext6": "08. Terms, Notices, and Policy Updates",
-            "sectionbodytext6": "Your use of Unistellar websites, software, connected services, and hardware purchases is also governed by the commercial and contractual terms that apply at checkout, during account creation, and within product experiences. Those terms cover account responsibilities, acceptable use, billing, fulfillment, warranty limitations, dispute procedures, and service availability.\n\nWe may revise this policy center from time to time to reflect legal, operational, or product changes. Material updates are posted here with a new effective date, and continued use after an update may constitute acceptance where permitted by law.",
-            "sectionTermsNoticeshref": "/policy",
-            "legalnoticetitletext": "CONTACT, NOTICE, AND VERSIONING",
-            "legalnoticebodytext": "Privacy requests, legal notices, and accessibility-related inquiries can be sent to legal@unistellar.com. We retain prior versions of this policy center for transparency, auditability, and reference when material updates are issued.",
-            "noticemetatext": "Archived versions are maintained when required for compliance, customer communication, or dispute resolution.",
-            "legalnoticehref": "/contact"
+            "id": "TemplateExclusivePenSiteBlogNavigationCategorybarpenAlt1-1",
+            "fmwkqtext": "All",
+            "fmwkqhref": "/",
+            "shvcttext": "News",
+            "shvcthref": "/blog",
+            "fmg0utext": "Releases",
+            "fmg0uhref": "/",
+            "usnltext": "Reviews",
+            "usnlhref": "/",
+            "krcrjtext": "Environment",
+            "krcrjhref": "/"
       },
       fields: {
-        herokickertext: textField("Herokickertext"),
-        herotitletext: textField("Herotitletext"),
-        herocopytext: textField("Herocopytext"),
-        effectivelabeltext: textField("Effectivelabeltext"),
-        effectivebodytext: textField("Effectivebodytext"),
-        effectivecardhref: textField("Effectivecardhref"),
-        scopelabeltext: textField("Scopelabeltext"),
-        scopebodytext: textField("Scopebodytext"),
-        scopecardhref: textField("Scopecardhref"),
-        responselabeltext: textField("Responselabeltext"),
-        responsebodytext: textField("Responsebodytext"),
-        responsecardhref: textField("Responsecardhref"),
-        indextitletext: textField("Indextitletext"),
-        indexlisttext: textField("Indexlisttext"),
-        applieslabeltext: textField("Applieslabeltext"),
-        appliesbodytext: textField("Appliesbodytext"),
-        appliescardhref: textField("Appliescardhref"),
-        contactlabeltext: textField("Contactlabeltext"),
-        contactbodytext: textField("Contactbodytext"),
-        contactcardhref: textField("Contactcardhref"),
-        privacylabeltext: textField("Privacylabeltext"),
-        privacybodytext: textField("Privacybodytext"),
-        privacycardhref: textField("Privacycardhref"),
-        termslabeltext: textField("Termslabeltext"),
-        termsbodytext: textField("Termsbodytext"),
-        termscardhref: textField("Termscardhref"),
-        rightslabeltext: textField("Rightslabeltext"),
-        rightsbodytext: textField("Rightsbodytext"),
-        rightscardhref: textField("Rightscardhref"),
-        sectiontitletext: textField("Sectiontitletext"),
-        sectionbodytext: textField("Sectionbodytext"),
-        sectionDataCollecthref: textField("SectionDataCollecthref"),
-        sectiontitletext2: textField("Sectiontitletext2"),
-        sectionbodytext2: textField("Sectionbodytext2"),
-        sectionDataUsehref: textField("SectionDataUsehref"),
-        sectiontitletext3: textField("Sectiontitletext3"),
-        sectionbodytext3: textField("Sectionbodytext3"),
-        sectionSharinghref: textField("SectionSharinghref"),
-        sectiontitletext4: textField("Sectiontitletext4"),
-        sectionbodytext4: textField("Sectionbodytext4"),
-        sectionSecurityhref: textField("SectionSecurityhref"),
-        sectiontitletext5: textField("Sectiontitletext5"),
-        sectionbodytext5: textField("Sectionbodytext5"),
-        sectionRightshref: textField("SectionRightshref"),
-        sectiontitletext6: textField("Sectiontitletext6"),
-        sectionbodytext6: textField("Sectionbodytext6"),
-        sectionTermsNoticeshref: textField("SectionTermsNoticeshref"),
-        legalnoticetitletext: textField("Legalnoticetitletext"),
-        legalnoticebodytext: textField("Legalnoticebodytext"),
-        noticemetatext: textField("Noticemetatext"),
-        legalnoticehref: textField("Legalnoticehref"),
+        fmwkqtext: textField("Fmwkqtext"),
+        fmwkqhref: textField("Fmwkqhref"),
+        shvcttext: textField("Shvcttext"),
+        shvcthref: textField("Shvcthref"),
+        fmg0utext: textField("Fmg0utext"),
+        fmg0uhref: textField("Fmg0uhref"),
+        usnltext: textField("Usnltext"),
+        usnlhref: textField("Usnlhref"),
+        krcrjtext: textField("Krcrjtext"),
+        krcrjhref: textField("Krcrjhref"),
       },
     },
-    "TemplateExclusiveUnistellarHomePolicyFooterFootpolicypenAlt2": {
+    "TemplateExclusivePenSiteBlogStoryBlogmainpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomePolicyFooterFootpolicypenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-policy-footer-footpolicypen-alt2/block"
+          TemplateExclusivePenSiteBlogStoryBlogmainpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-blog-story-blogmainpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomePolicyFooterFootpolicypenAlt2-1",
-            "ftlogotext": "UNISTELLAR",
-            "ftdesctext": "The future of day and night exploration.",
-            "ftdeschref": "/",
-            "col1text": "Products\nSmart Telescopes\nSmart Binoculars\nAccessories",
-            "col2text": "Support\nHelp Center\nManuals\nContact",
-            "col2href": "/support",
-            "col3text": "Company\nAbout\nPress\nCareers",
-            "col3href": "/",
-            "col4text": "Community\nEvents\nBlog\nPartners",
-            "col4href": "/",
-            "copytext": "© 2026 Unistellar. All rights reserved.",
-            "zsugstext": "Privacy Policy",
-            "yv7iztext": "Terms",
-            "yv7izhref": "/policy"
+            "id": "TemplateExclusivePenSiteBlogStoryBlogmainpenAlt2-1",
+            "feat1imgimagesrc": "https://images.unsplash.com/photo-1594047686814-9f74e5c56ccd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjA1NTh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "rghsptext": "Updates and\nlivestream",
+            "fxt71text": "News | Feb 26 2026",
+            "brptext": "We have a roundup of announcements and updates from this week.",
+            "g8ks2text": "Read More",
+            "r6kwtext": "Linux Gaming\nwith Framework",
+            "e7ntutext": "News | Feb 26 2026",
+            "b6akctext": "One of the most common questions we see is Linux support. Today we share progress and setup tips.",
+            "ntqg2text": "Read More",
+            "feat2imgimagesrc": "https://images.unsplash.com/photo-1673552408313-6ebe5a43ccd4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjA1NTl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "img1imagesrc": "https://images.unsplash.com/photo-1633078951287-d23cbd2c3b54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjA1ODZ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "lsaeetext": "In stock on Framework Desktop and updates on the industry-wide silicon crunch",
+            "imrb8text": "News | Dec 22 2025",
+            "img2imagesrc": "https://images.unsplash.com/photo-1649190754785-ddb26686610f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjA1ODd8&ixlib=rb-4.1.0&q=80&w=1080",
+            "swimttext": "Memory and storage aftermarket stocks and options",
+            "crfqetext": "News | Nov 12 2025",
+            "img3imagesrc": "https://images.unsplash.com/photo-1611353286721-0a3d076f9efa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjA1ODh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "zw96ntext": "More updates from Framework Laptop 16 in stock",
+            "m28xttext": "News | Nov 10 2025",
+            "img4imagesrc": "https://images.unsplash.com/photo-1770319810923-2944895fb5cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjA2NDB8&ixlib=rb-4.1.0&q=80&w=1080",
+            "ct8ldtext": "Framework sponsorships update",
+            "o9jvftext": "News | Oct 14 2025",
+            "img5imagesrc": "https://images.unsplash.com/photo-1746005718013-b24074afb701?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjA2NDF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "cjpxtext": "Enabling a sustainable repair ecosystem",
+            "was8atext": "Release | Sep 26 2025",
+            "img6imagesrc": "https://images.unsplash.com/photo-1769085795297-b45cc8c92f5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjA2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "vuynwtext": "Introducing new Framework Laptop 16 with Ryzen 9",
+            "wmziitext": "News | Aug 16 2025",
+            "l3hujtext": "1 2 3 4 5 6 7 8 9 10 11"
       },
       fields: {
-        ftlogotext: textField("Ftlogotext"),
-        ftdesctext: textField("Ftdesctext"),
-        ftdeschref: textField("Ftdeschref"),
-        col1text: textField("Col1text"),
-        col2text: textField("Col2text"),
-        col2href: textField("Col2href"),
-        col3text: textField("Col3text"),
-        col3href: textField("Col3href"),
-        col4text: textField("Col4text"),
-        col4href: textField("Col4href"),
-        copytext: textField("Copytext"),
-        zsugstext: textField("Zsugstext"),
-        yv7iztext: textField("Yv7iztext"),
-        yv7izhref: textField("Yv7izhref"),
+        feat1imgimagesrc: textField("Feat1imgimagesrc"),
+        rghsptext: textField("Rghsptext"),
+        fxt71text: textField("Fxt71text"),
+        brptext: textField("Brptext"),
+        g8ks2text: textField("G8ks2text"),
+        r6kwtext: textField("R6kwtext"),
+        e7ntutext: textField("E7ntutext"),
+        b6akctext: textField("B6akctext"),
+        ntqg2text: textField("Ntqg2text"),
+        feat2imgimagesrc: textField("Feat2imgimagesrc"),
+        img1imagesrc: textField("Img1imagesrc"),
+        lsaeetext: textField("Lsaeetext"),
+        imrb8text: textField("Imrb8text"),
+        img2imagesrc: textField("Img2imagesrc"),
+        swimttext: textField("Swimttext"),
+        crfqetext: textField("Crfqetext"),
+        img3imagesrc: textField("Img3imagesrc"),
+        zw96ntext: textField("Zw96ntext"),
+        m28xttext: textField("M28xttext"),
+        img4imagesrc: textField("Img4imagesrc"),
+        ct8ldtext: textField("Ct8ldtext"),
+        o9jvftext: textField("O9jvftext"),
+        img5imagesrc: textField("Img5imagesrc"),
+        cjpxtext: textField("Cjpxtext"),
+        was8atext: textField("Was8atext"),
+        img6imagesrc: textField("Img6imagesrc"),
+        vuynwtext: textField("Vuynwtext"),
+        wmziitext: textField("Wmziitext"),
+        l3hujtext: textField("L3hujtext"),
       },
     },
-    "TemplateExclusiveUnistellarHomeAboutNavigationNavaboutpenPrimary": {
+    "TemplateExclusivePenSiteBlogFooterFooterpenAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeAboutNavigationNavaboutpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-about-navigation-navaboutpen-primary/block"
+          TemplateExclusivePenSiteBlogFooterFooterpenAlt3BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-blog-footer-footerpen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeAboutNavigationNavaboutpenPrimary-1",
-            "logotext": "UNISTELLAR",
-            "logohref": "/",
-            "oc9eltext": "Smart Telescopes",
-            "oc9elhref": "/smart-telescopes",
-            "euio2text": "Smart Binoculars",
-            "euio2href": "/smart-binoculars",
-            "lm0tptext": "Reviews",
-            "lm0tphref": "/reviews",
-            "zyby0text": "Technologies",
-            "zyby0href": "/technologies",
-            "jhibgtext": "Use Cases",
-            "jhibghref": "/use-cases",
-            "ctahref": "/",
-            "ctatexttext": "Shop"
+            "id": "TemplateExclusivePenSiteBlogFooterFooterpenAlt3-1",
+            "y1pjgtext": "Company",
+            "boahrtext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+            "boahrhref": "/about",
+            "hqbpktext": "Social",
+            "uj2cktext": "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+            "uj2ckhref": "/",
+            "iiv5dtext": "Community",
+            "tfjhstext": "Community Forum\nSupport\nRepair Guides",
+            "tfjhshref": "/",
+            "iaikqtext": "Shop all",
+            "gzytext": "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+            "gzyhref": "/",
+            "hftivtext": "Subscribe",
+            "brd7etext": "Stay up to date with the Framework Newsletter (a few times a month)",
+            "brd7ehref": "/blog",
+            "dmhketext": "Your email",
+            "xjtjihref": "/support",
+            "vt300text": "Sign up",
+            "xsatptext": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
+            "b7gutext": "USD"
       },
       fields: {
-        logotext: textField("Logotext"),
-        logohref: textField("Logohref"),
-        oc9eltext: textField("Oc9eltext"),
-        oc9elhref: textField("Oc9elhref"),
-        euio2text: textField("Euio2text"),
-        euio2href: textField("Euio2href"),
-        lm0tptext: textField("Lm0tptext"),
-        lm0tphref: textField("Lm0tphref"),
-        zyby0text: textField("Zyby0text"),
-        zyby0href: textField("Zyby0href"),
-        jhibgtext: textField("Jhibgtext"),
-        jhibghref: textField("Jhibghref"),
-        ctahref: textField("Ctahref"),
-        ctatexttext: textField("Ctatexttext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeAboutHeroAboutheropenAlt1": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeAboutHeroAboutheropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-about-hero-aboutheropen-alt1/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeAboutHeroAboutheropenAlt1-1",
-            "heroeyebrowtext": "OUR STORY",
-            "herotitletext": "We build telescopes that make the universe feel personal.",
-            "herobodytext": "Unistellar started with one belief: space should not belong only to observatories. We design autonomous instruments and a global citizen-science network so anyone can discover, capture, and contribute from their own backyard.",
-            "heroStoryImageimagesrc": "https://images.unsplash.com/photo-1697451735065-f23cbfc6b218?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxOTA4NjZ8&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      fields: {
-        heroeyebrowtext: textField("Heroeyebrowtext"),
-        herotitletext: textField("Herotitletext"),
-        herobodytext: textField("Herobodytext"),
-        heroStoryImageimagesrc: textField("HeroStoryImageimagesrc"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeAboutStoryMissionbandpenAlt2": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeAboutStoryMissionbandpenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-about-story-missionbandpen-alt2/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeAboutStoryMissionbandpenAlt2-1",
-            "missioneyebrowtext": "MISSION / 01",
-            "missiontagtext": "OBSERVE MORE. UNDERSTAND MORE. SHARE MORE.",
-            "missionheadlinetext": "Reveal the hidden sky for everyone, then turn each observation into shared scientific progress.",
-            "missionsupporttext": "We are building a more human relationship with astronomy: autonomous hardware that removes friction, software that guides discovery, and a network where backyard observers can participate in real research."
-      },
-      fields: {
-        missioneyebrowtext: textField("Missioneyebrowtext"),
-        missiontagtext: textField("Missiontagtext"),
-        missionheadlinetext: textField("Missionheadlinetext"),
-        missionsupporttext: textField("Missionsupporttext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeAboutStoryTimelinepenAlt3": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeAboutStoryTimelinepenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-about-story-timelinepen-alt3/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeAboutStoryTimelinepenAlt3-1",
-            "timelineeyebrowtext": "TIMELINE / 02",
-            "timelinetitletext": "A company shaped by access, engineering discipline, and a community that keeps expanding what citizen astronomy can do.",
-            "timelineintrotext": "Each milestone marks a shift from specialist hardware to a more participatory model of discovery, where the telescope becomes both an instrument and a bridge into the night sky.",
-            "step1numtext": "01",
-            "step1yeartext": "2015",
-            "step1titletext": "Unistellar is founded to remove friction from deep-sky exploration.",
-            "step1texttext": "The ambition was clear from the start: make professional-grade observing feel intuitive enough for first light in a backyard, not only inside an observatory.",
-            "step1metatext": "FOUNDATION / ACCESS",
-            "step2numtext": "02",
-            "step2yeartext": "2018",
-            "step2titletext": "eVscope brings autonomous pointing and enhanced vision into the mainstream.",
-            "step2texttext": "Setup becomes faster, guidance becomes smarter, and the gap between curiosity and meaningful observation gets dramatically smaller for new astronomers.",
-            "step2metatext": "PRODUCT / ADOPTION",
-            "step3numtext": "03",
-            "step3yeartext": "TODAY",
-            "step3titletext": "A global network of observers contributes to real science from home.",
-            "step3texttext": "Thousands of users now capture, learn, and collaborate through Unistellar, proving that access and scientific rigor can reinforce one another instead of competing.",
-            "step3metatext": "NETWORK / IMPACT"
-      },
-      fields: {
-        timelineeyebrowtext: textField("Timelineeyebrowtext"),
-        timelinetitletext: textField("Timelinetitletext"),
-        timelineintrotext: textField("Timelineintrotext"),
-        step1numtext: textField("Step1numtext"),
-        step1yeartext: textField("Step1yeartext"),
-        step1titletext: textField("Step1titletext"),
-        step1texttext: textField("Step1texttext"),
-        step1metatext: textField("Step1metatext"),
-        step2numtext: textField("Step2numtext"),
-        step2yeartext: textField("Step2yeartext"),
-        step2titletext: textField("Step2titletext"),
-        step2texttext: textField("Step2texttext"),
-        step2metatext: textField("Step2metatext"),
-        step3numtext: textField("Step3numtext"),
-        step3yeartext: textField("Step3yeartext"),
-        step3titletext: textField("Step3titletext"),
-        step3texttext: textField("Step3texttext"),
-        step3metatext: textField("Step3metatext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeAboutStoryTeamandvaluespenAlt4": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeAboutStoryTeamandvaluespenAlt4BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-about-story-teamandvaluespen-alt4/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeAboutStoryTeamandvaluespenAlt4-1",
-            "teameyebrowtext": "PEOPLE & VALUES / 03",
-            "teamheadtext": "A multidisciplinary team translating complex astronomy into confident first experiences and long-term scientific participation.",
-            "teamintrotext": "Our culture sits between field testing and wonder. The hardware team obsesses over optical precision; the software team reduces cognitive load; the community team keeps discovery social, generous, and rigorous.",
-            "teamcardlabeltext": "HOW WE BUILD",
-            "teamcardtitletext": "Designed from the field backward, tested under real skies, and refined by the people who use it most.",
-            "teamcardbodytext": "That loop keeps our instruments intuitive without making them simplistic. We protect the wonder of first discovery while still respecting the standards required for meaningful data and repeatable results.",
-            "teamimageimagesrc": "https://images.unsplash.com/photo-1755053757921-510df1dba49c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxOTA5MDB8&ixlib=rb-4.1.0&q=80&w=1080",
-            "valuestitletext": "OUR VALUES",
-            "val1ttext": "01  SCIENTIFIC INTEGRITY",
-            "val1dtext": "Citizen observations should feel magical without becoming vague. We build for trust, repeatability, and meaningful contribution.",
-            "val2ttext": "02  RADICAL ACCESSIBILITY",
-            "val2dtext": "Autonomous setup, guided experiences, and clear software reduce intimidation so more people can stay in the experience longer.",
-            "val3ttext": "03  GLOBAL COMMUNITY",
-            "val3dtext": "The night sky is shared territory. We design the network, education, and support systems so discovery becomes collaborative by default.",
-            "quotelabeltext": "CULTURE NOTE",
-            "quotetexttext": "We treat every first observation as the start of a relationship, not a one-time wow moment."
-      },
-      fields: {
-        teameyebrowtext: textField("Teameyebrowtext"),
-        teamheadtext: textField("Teamheadtext"),
-        teamintrotext: textField("Teamintrotext"),
-        teamcardlabeltext: textField("Teamcardlabeltext"),
-        teamcardtitletext: textField("Teamcardtitletext"),
-        teamcardbodytext: textField("Teamcardbodytext"),
-        teamimageimagesrc: textField("Teamimageimagesrc"),
-        valuestitletext: textField("Valuestitletext"),
-        val1ttext: textField("Val1ttext"),
-        val1dtext: textField("Val1dtext"),
-        val2ttext: textField("Val2ttext"),
-        val2dtext: textField("Val2dtext"),
-        val3ttext: textField("Val3ttext"),
-        val3dtext: textField("Val3dtext"),
-        quotelabeltext: textField("Quotelabeltext"),
-        quotetexttext: textField("Quotetexttext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeAboutCtaAboutctapenAlt5": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeAboutCtaAboutctapenAlt5BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-about-cta-aboutctapen-alt5/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeAboutCtaAboutctapenAlt5-1",
-            "ctaeyebrowtext": "NEXT STEP / 04",
-            "ctaheadtext": "Join the next generation of observers and contribute to a more connected night sky.",
-            "ctabodytext": "Whether you are buying your first smart telescope or comparing models for a serious upgrade, Unistellar gives you a path from first light to meaningful discovery.",
-            "ctabuttonshref": "/blog",
-            "ctatxtprimarytext": "EXPLORE PRODUCTS",
-            "ctabtnprimaryhref": "/blog",
-            "ctatxtsecondarytext": "TALK TO AN EXPERT",
-            "ctabtnsecondaryhref": "/",
-            "sub1ttext": "Compare models",
-            "sub2ttext": "Find an observing event",
-            "sub3ttext": "Read customer stories"
-      },
-      fields: {
-        ctaeyebrowtext: textField("Ctaeyebrowtext"),
-        ctaheadtext: textField("Ctaheadtext"),
-        ctabodytext: textField("Ctabodytext"),
-        ctabuttonshref: textField("Ctabuttonshref"),
-        ctatxtprimarytext: textField("Ctatxtprimarytext"),
-        ctabtnprimaryhref: textField("Ctabtnprimaryhref"),
-        ctatxtsecondarytext: textField("Ctatxtsecondarytext"),
-        ctabtnsecondaryhref: textField("Ctabtnsecondaryhref"),
-        sub1ttext: textField("Sub1ttext"),
-        sub2ttext: textField("Sub2ttext"),
-        sub3ttext: textField("Sub3ttext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeAboutFooterFootaboutpenAlt6": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeAboutFooterFootaboutpenAlt6BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-about-footer-footaboutpen-alt6/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeAboutFooterFootaboutpenAlt6-1",
-            "ftlogotext": "UNISTELLAR",
-            "ftdesctext": "The future of day and night exploration.",
-            "ftdeschref": "/",
-            "col1text": "Products\nSmart Telescopes\nSmart Binoculars\nAccessories",
-            "col2text": "Support\nHelp Center\nManuals\nContact",
-            "col2href": "/support",
-            "col3text": "Company\nAbout\nPress\nCareers",
-            "col3href": "/",
-            "col4text": "Community\nEvents\nBlog\nPartners",
-            "col4href": "/",
-            "copytext": "© 2026 Unistellar. All rights reserved.",
-            "jxbxptext": "Privacy Policy",
-            "aay6otext": "Terms",
-            "aay6ohref": "/policy"
-      },
-      fields: {
-        ftlogotext: textField("Ftlogotext"),
-        ftdesctext: textField("Ftdesctext"),
-        ftdeschref: textField("Ftdeschref"),
-        col1text: textField("Col1text"),
-        col2text: textField("Col2text"),
-        col2href: textField("Col2href"),
-        col3text: textField("Col3text"),
-        col3href: textField("Col3href"),
-        col4text: textField("Col4text"),
-        col4href: textField("Col4href"),
-        copytext: textField("Copytext"),
-        jxbxptext: textField("Jxbxptext"),
-        aay6otext: textField("Aay6otext"),
-        aay6ohref: textField("Aay6ohref"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeUseCasesNavigationNavcasepenPrimary": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeUseCasesNavigationNavcasepenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-use-cases-navigation-navcasepen-primary/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeUseCasesNavigationNavcasepenPrimary-1",
-            "logotext": "UNISTELLAR",
-            "logohref": "/",
-            "wsq4ktext": "Smart Telescopes",
-            "wsq4khref": "/smart-telescopes",
-            "n5edjtext": "Smart Binoculars",
-            "n5edjhref": "/smart-binoculars",
-            "ogvgetext": "Reviews",
-            "ogvgehref": "/reviews",
-            "jr51atext": "Technologies",
-            "jr51ahref": "/technologies",
-            "it5gftext": "Use Cases",
-            "it5gfhref": "/use-cases",
-            "ctahref": "/",
-            "ctatexttext": "Shop"
-      },
-      fields: {
-        logotext: textField("Logotext"),
-        logohref: textField("Logohref"),
-        wsq4ktext: textField("Wsq4ktext"),
-        wsq4khref: textField("Wsq4khref"),
-        n5edjtext: textField("N5edjtext"),
-        n5edjhref: textField("N5edjhref"),
-        ogvgetext: textField("Ogvgetext"),
-        ogvgehref: textField("Ogvgehref"),
-        jr51atext: textField("Jr51atext"),
-        jr51ahref: textField("Jr51ahref"),
-        it5gftext: textField("It5gftext"),
-        it5gfhref: textField("It5gfhref"),
-        ctahref: textField("Ctahref"),
-        ctatexttext: textField("Ctatexttext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeUseCasesHeroUsecaseheropenAlt1": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeUseCasesHeroUsecaseheropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-use-cases-hero-usecaseheropen-alt1/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeUseCasesHeroUsecaseheropenAlt1-1",
-            "herotagtxttext": "REAL WORLD OUTCOMES",
-            "herotitletext": "CHOOSE THE OBSERVING STORY THAT FITS THE WAY YOU EXPLORE",
-            "herosubtext": "See how beginners, club hosts, and advanced astrophotographers use Unistellar to move from setup uncertainty to memorable nights under the stars.",
-            "ctaprimarytxttext": "EXPLORE STORIES",
-            "ctaprimaryhref": "/blog",
-            "ctasecondarytxttext": "COMPARE USE CASES",
-            "ctasecondaryhref": "/use-cases",
-            "trustchip1txttext": "FAST FIRST-SESSION GUIDANCE",
-            "trustchip1href": "/",
-            "trustchip2txttext": "SHARED LIVE VIEWS",
-            "trustchip2href": "/",
-            "trustchip3txttext": "DEEPER TARGET RECOVERY",
-            "trustchip3href": "/",
-            "heromediaimagesrc": "https://images.unsplash.com/photo-1719820390502-e0823fcc739d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxOTA5NzJ8&ixlib=rb-4.1.0&q=80&w=1080"
-      },
-      fields: {
-        herotagtxttext: textField("Herotagtxttext"),
-        herotitletext: textField("Herotitletext"),
-        herosubtext: textField("Herosubtext"),
-        ctaprimarytxttext: textField("Ctaprimarytxttext"),
-        ctaprimaryhref: textField("Ctaprimaryhref"),
-        ctasecondarytxttext: textField("Ctasecondarytxttext"),
-        ctasecondaryhref: textField("Ctasecondaryhref"),
-        trustchip1txttext: textField("Trustchip1txttext"),
-        trustchip1href: textField("Trustchip1href"),
-        trustchip2txttext: textField("Trustchip2txttext"),
-        trustchip2href: textField("Trustchip2href"),
-        trustchip3txttext: textField("Trustchip3txttext"),
-        trustchip3href: textField("Trustchip3href"),
-        heromediaimagesrc: textField("Heromediaimagesrc"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeUseCasesStoryAudiencesegmentspenAlt2": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeUseCasesStoryAudiencesegmentspenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-use-cases-story-audiencesegmentspen-alt2/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeUseCasesStoryAudiencesegmentspenAlt2-1",
-            "audlabeltext": "AUDIENCE SEGMENTS",
-            "audtitletext": "START WITH THE EXPERIENCE THAT MATCHES YOUR AMBITION",
-            "audcard1tagtext": "BEGINNERS",
-            "audcard1titletext": "START YOUR FIRST DEEP-SKY SESSION WITH CONFIDENCE",
-            "audcard1bodytext": "Guided setup, object suggestions, and instant enhancement make your first nights productive and exciting.",
-            "audcard1metatext": "Best for: solo buyers, first setup nights, quick confidence.",
-            "audcard2tagtext": "COMMUNITIES",
-            "audcard2titletext": "LEAD CLUB NIGHTS WITH SHAREABLE MOMENTS",
-            "audcard2bodytext": "Coordinate sessions, showcase real-time views, and keep everyone engaged even under imperfect skies.",
-            "audcard2metatext": "Best for: public demos, astronomy clubs, family observing sessions.",
-            "audcard3tagtext": "EXPERTS",
-            "audcard3titletext": "GO DEEPER ON FAINT TARGETS WITH CONSISTENT QUALITY",
-            "audcard3bodytext": "Fine-grained control and smart amplification let you capture elusive structures night after night.",
-            "audcard3metatext": "Best for: repeat capture nights, portable rigs, dark-sky trips."
-      },
-      fields: {
-        audlabeltext: textField("Audlabeltext"),
-        audtitletext: textField("Audtitletext"),
-        audcard1tagtext: textField("Audcard1tagtext"),
-        audcard1titletext: textField("Audcard1titletext"),
-        audcard1bodytext: textField("Audcard1bodytext"),
-        audcard1metatext: textField("Audcard1metatext"),
-        audcard2tagtext: textField("Audcard2tagtext"),
-        audcard2titletext: textField("Audcard2titletext"),
-        audcard2bodytext: textField("Audcard2bodytext"),
-        audcard2metatext: textField("Audcard2metatext"),
-        audcard3tagtext: textField("Audcard3tagtext"),
-        audcard3titletext: textField("Audcard3titletext"),
-        audcard3bodytext: textField("Audcard3bodytext"),
-        audcard3metatext: textField("Audcard3metatext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeUseCasesStoryStorycardspenAlt3": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeUseCasesStoryStorycardspenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-use-cases-story-storycardspen-alt3/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeUseCasesStoryStorycardspenAlt3-1",
-            "storylabeltext": "FIELD STORIES",
-            "storytitletext": "REAL OBSERVERS. CLEAR NIGHTS. STRONGER REASONS TO STEP OUTSIDE.",
-            "storysubtext": "Each field story shows a different path into the sky, with practical wins, emotional payoff, and a reason to come back tomorrow night.",
-            "storyimg1imagesrc": "https://images.unsplash.com/photo-1712959112486-bb6db674578f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxOTA5NzN8&ixlib=rb-4.1.0&q=80&w=1080",
-            "storytag1text": "REMOTE DESERT SESSION",
-            "storytitle1text": "MAYA CAPTURED THE VEIL NEBULA IN HER FIRST MONTH",
-            "storybody1text": "With guided alignment and auto-enhancement, she moved from phone photos to crisp deep-sky detail in three nights.",
-            "storyquote1text": "\"I stopped worrying about setup and finally spent my time discovering.\"",
-            "storylink1text": "READ STORY 01",
-            "storymetric1text": "FIRST MONTH WIN",
-            "storyimg2imagesrc": "https://images.unsplash.com/photo-1537151179283-9b6aeb737922?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxOTA5NzR8&ixlib=rb-4.1.0&q=80&w=1080",
-            "storytag2text": "CITY BALCONY",
-            "storytitle2text": "JON TURNED HEAVY LIGHT POLLUTION INTO LIVE PLANETARY SHOWS",
-            "storybody2text": "He hosts weekly rooftop sessions where friends track Jupiter bands and lunar shadows through a single smart setup.",
-            "storyquote2text": "\"Now every rooftop gathering ends with someone asking when we can do it again.\"",
-            "storylink2text": "READ STORY 02",
-            "storymetric2text": "WEEKLY COMMUNITY RITUAL",
-            "storyimg3imagesrc": "https://images.unsplash.com/photo-1594755048873-640521e9db74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxOTA5NzR8&ixlib=rb-4.1.0&q=80&w=1080",
-            "storytag3text": "ASTROPHOTOGRAPHY CREW",
-            "storytitle3text": "ELENA'S TEAM BUILT A PORTABLE WORKFLOW FOR DARK-SKY WEEKENDS",
-            "storybody3text": "They now document targets faster, compare capture quality onsite, and spend more time observing than troubleshooting.",
-            "storyquote3text": "\"We spend less time calibrating gear and more time comparing what we found.\"",
-            "storylink3text": "READ STORY 03",
-            "storymetric3text": "FASTER CAPTURE WORKFLOW"
-      },
-      fields: {
-        storylabeltext: textField("Storylabeltext"),
-        storytitletext: textField("Storytitletext"),
-        storysubtext: textField("Storysubtext"),
-        storyimg1imagesrc: textField("Storyimg1imagesrc"),
-        storytag1text: textField("Storytag1text"),
-        storytitle1text: textField("Storytitle1text"),
-        storybody1text: textField("Storybody1text"),
-        storyquote1text: textField("Storyquote1text"),
-        storylink1text: textField("Storylink1text"),
-        storymetric1text: textField("Storymetric1text"),
-        storyimg2imagesrc: textField("Storyimg2imagesrc"),
-        storytag2text: textField("Storytag2text"),
-        storytitle2text: textField("Storytitle2text"),
-        storybody2text: textField("Storybody2text"),
-        storyquote2text: textField("Storyquote2text"),
-        storylink2text: textField("Storylink2text"),
-        storymetric2text: textField("Storymetric2text"),
-        storyimg3imagesrc: textField("Storyimg3imagesrc"),
-        storytag3text: textField("Storytag3text"),
-        storytitle3text: textField("Storytitle3text"),
-        storybody3text: textField("Storybody3text"),
-        storyquote3text: textField("Storyquote3text"),
-        storylink3text: textField("Storylink3text"),
-        storymetric3text: textField("Storymetric3text"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeUseCasesCtaBottomctapenAlt4": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeUseCasesCtaBottomctapenAlt4BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-use-cases-cta-bottomctapen-alt4/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeUseCasesCtaBottomctapenAlt4-1",
-            "bottomCtahref": "/blog",
-            "ctatitletext": "READY TO TURN TONIGHT INTO YOUR FIRST GREAT OBSERVING STORY?",
-            "ctasubtext": "Choose the setup that matches your skill level, get guided quickly, and build momentum with every clear sky window.",
-            "ctabtntxttext": "BOOK A PERSONAL DEMO",
-            "ctabtntxthref": "/",
-            "ctabtnhref": "/",
-            "ctachip1txttext": "MATCHED TO YOUR EXPERIENCE LEVEL",
-            "ctachip1href": "/",
-            "ctachip2txttext": "PERSONALIZED PRODUCT WALKTHROUGH",
-            "ctachip2href": "/",
-            "ctachip3txttext": "QUICK START RECOMMENDATIONS",
-            "ctachip3href": "/"
-      },
-      fields: {
-        bottomCtahref: textField("BottomCtahref"),
-        ctatitletext: textField("Ctatitletext"),
-        ctasubtext: textField("Ctasubtext"),
-        ctabtntxttext: textField("Ctabtntxttext"),
-        ctabtntxthref: textField("Ctabtntxthref"),
-        ctabtnhref: textField("Ctabtnhref"),
-        ctachip1txttext: textField("Ctachip1txttext"),
-        ctachip1href: textField("Ctachip1href"),
-        ctachip2txttext: textField("Ctachip2txttext"),
-        ctachip2href: textField("Ctachip2href"),
-        ctachip3txttext: textField("Ctachip3txttext"),
-        ctachip3href: textField("Ctachip3href"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeUseCasesFooterFootcasepenAlt5": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeUseCasesFooterFootcasepenAlt5BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-use-cases-footer-footcasepen-alt5/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeUseCasesFooterFootcasepenAlt5-1",
-            "ftlogotext": "UNISTELLAR",
-            "ftdesctext": "The future of day and night exploration.",
-            "ftdeschref": "/",
-            "col1text": "Products\nSmart Telescopes\nSmart Binoculars\nAccessories",
-            "col2text": "Support\nHelp Center\nManuals\nContact",
-            "col2href": "/support",
-            "col3text": "Company\nAbout\nPress\nCareers",
-            "col3href": "/",
-            "col4text": "Community\nEvents\nBlog\nPartners",
-            "col4href": "/",
-            "copytext": "© 2026 Unistellar. All rights reserved.",
-            "jrk5text": "Privacy Policy",
-            "cjahntext": "Terms",
-            "cjahnhref": "/policy"
-      },
-      fields: {
-        ftlogotext: textField("Ftlogotext"),
-        ftdesctext: textField("Ftdesctext"),
-        ftdeschref: textField("Ftdeschref"),
-        col1text: textField("Col1text"),
-        col2text: textField("Col2text"),
-        col2href: textField("Col2href"),
-        col3text: textField("Col3text"),
-        col3href: textField("Col3href"),
-        col4text: textField("Col4text"),
-        col4href: textField("Col4href"),
-        copytext: textField("Copytext"),
-        jrk5text: textField("Jrk5text"),
-        cjahntext: textField("Cjahntext"),
-        cjahnhref: textField("Cjahnhref"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeBlogNavigationNavblogpenPrimary": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeBlogNavigationNavblogpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-blog-navigation-navblogpen-primary/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeBlogNavigationNavblogpenPrimary-1",
-            "logotext": "UNISTELLAR",
-            "logohref": "/",
-            "fhzntext": "Smart Telescopes",
-            "fhznhref": "/smart-telescopes",
-            "epqxytext": "Smart Binoculars",
-            "epqxyhref": "/smart-binoculars",
-            "cqffstext": "Reviews",
-            "cqffshref": "/reviews",
-            "xxcbtext": "Technologies",
-            "xxcbhref": "/technologies",
-            "jgphtext": "Use Cases",
-            "jgphhref": "/use-cases",
-            "ctahref": "/",
-            "ctatexttext": "Shop"
-      },
-      fields: {
-        logotext: textField("Logotext"),
-        logohref: textField("Logohref"),
-        fhzntext: textField("Fhzntext"),
-        fhznhref: textField("Fhznhref"),
-        epqxytext: textField("Epqxytext"),
-        epqxyhref: textField("Epqxyhref"),
-        cqffstext: textField("Cqffstext"),
-        cqffshref: textField("Cqffshref"),
-        xxcbtext: textField("Xxcbtext"),
-        xxcbhref: textField("Xxcbhref"),
-        jgphtext: textField("Jgphtext"),
-        jgphhref: textField("Jgphhref"),
-        ctahref: textField("Ctahref"),
-        ctatexttext: textField("Ctatexttext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeBlogHeroHeropenAlt1": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeBlogHeroHeropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-blog-hero-heropen-alt1/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeBlogHeroHeropenAlt1-1",
-            "herotagtext": "Unistellar Blog",
-            "herotitletext": "Stories, Discoveries, and Deep-Sky Insights",
-            "herodesctext": "Read product updates, observation guides, and field stories from the Unistellar community.",
-            "cat1ttext": "Guides",
-            "cat1href": "/",
-            "cat2ttext": "Science",
-            "cat2href": "/",
-            "cat3ttext": "Community",
-            "cat3href": "/"
-      },
-      fields: {
-        herotagtext: textField("Herotagtext"),
-        herotitletext: textField("Herotitletext"),
-        herodesctext: textField("Herodesctext"),
-        cat1ttext: textField("Cat1ttext"),
-        cat1href: textField("Cat1href"),
-        cat2ttext: textField("Cat2ttext"),
-        cat2href: textField("Cat2href"),
-        cat3ttext: textField("Cat3ttext"),
-        cat3href: textField("Cat3href"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeBlogApproachFeatpenAlt2": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeBlogApproachFeatpenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-blog-approach-featpen-alt2/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeBlogApproachFeatpenAlt2-1",
-            "featimgimagesrc": "https://images.unsplash.com/photo-1598630342142-09dd46a89395?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxOTA5MzB8&ixlib=rb-4.1.0&q=80&w=1080",
-            "featktext": "Featured",
-            "featttext": "How Smart Binoculars Are Changing Night Exploration",
-            "featdtext": "A closer look at AR overlays, intuitive guidance, and what they unlock for first-time skywatchers.",
-            "featbtnhref": "/blog",
-            "featbtnttext": "Read Featured Story"
-      },
-      fields: {
-        featimgimagesrc: textField("Featimgimagesrc"),
-        featktext: textField("Featktext"),
-        featttext: textField("Featttext"),
-        featdtext: textField("Featdtext"),
-        featbtnhref: textField("Featbtnhref"),
-        featbtnttext: textField("Featbtnttext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeBlogProductsCardspenAlt3": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeBlogProductsCardspenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-blog-products-cardspen-alt3/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeBlogProductsCardspenAlt3-1",
-            "c1imagesrc": "https://images.unsplash.com/photo-1667415382888-0f16395c5b63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxOTA5MzF8&ixlib=rb-4.1.0&q=80&w=1080",
-            "c1ttext": "Beginner’s Guide to Deep-Sky Objects",
-            "c1ktext": "Guide",
-            "c2imagesrc": "https://images.unsplash.com/photo-1698677364351-944694896038?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxOTA5MzJ8&ixlib=rb-4.1.0&q=80&w=1080",
-            "c2ttext": "Citizen Science Missions You Can Join",
-            "c2ktext": "Science",
-            "c3imagesrc": "https://images.unsplash.com/photo-1606141174452-2c575f4a326d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzIxOTA5MzJ8&ixlib=rb-4.1.0&q=80&w=1080",
-            "c3ttext": "Astrophotography Tips from the Community",
-            "c3ktext": "Community"
-      },
-      fields: {
-        c1imagesrc: textField("C1imagesrc"),
-        c1ttext: textField("C1ttext"),
-        c1ktext: textField("C1ktext"),
-        c2imagesrc: textField("C2imagesrc"),
-        c2ttext: textField("C2ttext"),
-        c2ktext: textField("C2ktext"),
-        c3imagesrc: textField("C3imagesrc"),
-        c3ttext: textField("C3ttext"),
-        c3ktext: textField("C3ktext"),
-      },
-    },
-    "TemplateExclusiveUnistellarHomeBlogFooterFootblogpenAlt4": {
-      render: renderBlock(
-        resolveBlockComponent(
-          TemplateExclusiveUnistellarHomeBlogFooterFootblogpenAlt4BlockModule,
-          "@/components/blocks/template-exclusive-unistellar-home-blog-footer-footblogpen-alt4/block"
-        )
-      ),
-      defaultProps: {
-            "id": "TemplateExclusiveUnistellarHomeBlogFooterFootblogpenAlt4-1",
-            "ftlogotext": "UNISTELLAR",
-            "ftdesctext": "The future of day and night exploration.",
-            "ftdeschref": "/",
-            "col1text": "Products\nSmart Telescopes\nSmart Binoculars\nAccessories",
-            "col2text": "Support\nHelp Center\nManuals\nContact",
-            "col2href": "/support",
-            "col3text": "Company\nAbout\nPress\nCareers",
-            "col3href": "/",
-            "col4text": "Community\nEvents\nBlog\nPartners",
-            "col4href": "/",
-            "copytext": "© 2026 Unistellar. All rights reserved.",
-            "qgl8gtext": "Privacy Policy",
-            "vqwutext": "Terms",
-            "vqwuhref": "/policy"
-      },
-      fields: {
-        ftlogotext: textField("Ftlogotext"),
-        ftdesctext: textField("Ftdesctext"),
-        ftdeschref: textField("Ftdeschref"),
-        col1text: textField("Col1text"),
-        col2text: textField("Col2text"),
-        col2href: textField("Col2href"),
-        col3text: textField("Col3text"),
-        col3href: textField("Col3href"),
-        col4text: textField("Col4text"),
-        col4href: textField("Col4href"),
-        copytext: textField("Copytext"),
-        qgl8gtext: textField("Qgl8gtext"),
-        vqwutext: textField("Vqwutext"),
-        vqwuhref: textField("Vqwuhref"),
+        y1pjgtext: textField("Y1pjgtext"),
+        boahrtext: textField("Boahrtext"),
+        boahrhref: textField("Boahrhref"),
+        hqbpktext: textField("Hqbpktext"),
+        uj2cktext: textField("Uj2cktext"),
+        uj2ckhref: textField("Uj2ckhref"),
+        iiv5dtext: textField("Iiv5dtext"),
+        tfjhstext: textField("Tfjhstext"),
+        tfjhshref: textField("Tfjhshref"),
+        iaikqtext: textField("Iaikqtext"),
+        gzytext: textField("Gzytext"),
+        gzyhref: textField("Gzyhref"),
+        hftivtext: textField("Hftivtext"),
+        brd7etext: textField("Brd7etext"),
+        brd7ehref: textField("Brd7ehref"),
+        dmhketext: textField("Dmhketext"),
+        xjtjihref: textField("Xjtjihref"),
+        vt300text: textField("Vt300text"),
+        xsatptext: textField("Xsatptext"),
+        b7gutext: textField("B7gutext"),
       },
     },
 };

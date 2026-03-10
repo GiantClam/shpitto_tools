@@ -740,6 +740,7 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
 
   const applyLoadPayload = React.useCallback(
     (payload: SandboxLoadPayload) => {
+      const isFrameworkPreview = siteKey === "framework";
       pageIndexRef.current = payload.pageIndex ?? 0;
       setPageKey(`page-${pageIndexRef.current}`);
       const nextConfig: Config = {
@@ -750,6 +751,9 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
       const failures: string[] = [];
       const primitiveArrayFieldsByType = new Map<string, string[]>();
       payload.components.forEach((component) => {
+        if (isFrameworkPreview && (nextConfig.components as Record<string, unknown>)[component.name]) {
+          return;
+        }
         const primitiveArrayFields = detectPrimitiveArrayFields(component.code);
         if (primitiveArrayFields.length) {
           primitiveArrayFieldsByType.set(component.name, primitiveArrayFields);
@@ -772,8 +776,38 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
         } as any;
       });
 
-      const rawContent = Array.isArray((payload.page as any)?.data?.content)
-        ? ((payload.page as any).data.content as Array<{ type?: unknown; props?: unknown }>)
+      const normalizedTheme =
+        isFrameworkPreview && payload.theme && typeof payload.theme === "object"
+          ? { ...payload.theme, motion: "off" as const }
+          : payload.theme;
+      const normalizedPage =
+        isFrameworkPreview &&
+        payload.page &&
+        typeof payload.page === "object" &&
+        payload.page.data &&
+        typeof payload.page.data === "object"
+          ? {
+              ...payload.page,
+              data: {
+                ...payload.page.data,
+                root: {
+                  ...((payload.page.data as Record<string, any>).root ?? {}),
+                  props: {
+                    ...(((payload.page.data as Record<string, any>).root as Record<string, any>)?.props ?? {}),
+                    theme: {
+                      ...((((payload.page.data as Record<string, any>).root as Record<string, any>)?.props?.theme ??
+                        {}) as Record<string, any>),
+                      ...(normalizedTheme && typeof normalizedTheme === "object" ? normalizedTheme : {}),
+                      motion: "off",
+                    },
+                  },
+                },
+              },
+            }
+          : payload.page;
+
+      const rawContent = Array.isArray((normalizedPage as any)?.data?.content)
+        ? ((normalizedPage as any).data.content as Array<{ type?: unknown; props?: unknown }>)
         : [];
       const requiredTypes = Array.from(
         new Set(
@@ -839,7 +873,7 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
       if (failures.length) {
         postToHost({ type: "puck:compile", payload: { failures } });
       }
-      const coercedPageData = coercePageDataArrays(payload.page.data, primitiveArrayFieldsByType);
+      const coercedPageData = coercePageDataArrays(normalizedPage.data, primitiveArrayFieldsByType);
       setConfig(nextConfig);
       setData(normalizePuckData(coercedPageData, { logChanges: true }));
       const nextPagePaths = Array.isArray(payload.availablePagePaths)
@@ -852,11 +886,11 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
           )
         : ["/"];
       setAvailablePagePaths(nextPagePaths.length ? nextPagePaths : ["/"]);
-      setThemeCss(buildThemeCss(payload.theme));
-      setMotionMode((payload.theme?.motion as any) || "showcase");
-      document.documentElement.classList.toggle("dark", payload.theme?.mode === "dark");
+      setThemeCss(buildThemeCss(normalizedTheme));
+      setMotionMode((normalizedTheme?.motion as any) || "showcase");
+      document.documentElement.classList.toggle("dark", normalizedTheme?.mode === "dark");
     },
-    [postToHost]
+    [postToHost, siteKey]
   );
 
   React.useEffect(() => {
