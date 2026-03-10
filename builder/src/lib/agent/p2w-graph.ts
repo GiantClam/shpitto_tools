@@ -5442,8 +5442,21 @@ const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
 const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): GeneratedPage[] => {
   const brief = parseStructuredBrief(prompt);
   if (!brief) return pages;
-  const inferDisplaySectionKind = (type: string) => {
-    const token = String(type || "").trim();
+  const inferEffectiveBlockType = (type: string, originalType = "") => {
+    const token = `${String(type || "").trim()} ${String(originalType || "").trim()}`.trim();
+    if (!token) return "";
+    if (token === "Navbar") return "Navbar";
+    if (token === "CreationFooterFallback" || token === "Footer") return "CreationFooterFallback";
+    if (/Hero/i.test(token)) return "HeroSplit";
+    if (/Story|Mission|Narrative|About/i.test(token)) return "ContentStory";
+    if (/Feature|Approach|Capability|Metric/i.test(token)) return "FeatureGrid";
+    if (/Product|Catalog|Collection|Gallery|Showcase/i.test(token)) return "CardsGrid";
+    if (/Testimonial|Review|Trust|Logo|Partner|Proof/i.test(token)) return "TestimonialsGrid";
+    if (/Contact|Quote|Lead|Cta|CTA/i.test(token)) return "LeadCaptureCTA";
+    return String(type || "").trim();
+  };
+  const inferDisplaySectionKind = (type: string, originalType = "") => {
+    const token = inferEffectiveBlockType(type, originalType);
     if (!token) return "";
     if (token === "Navbar") return "navigation";
     if (token === "CreationFooterFallback" || token === "Footer") return "footer";
@@ -5513,7 +5526,50 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
             links: [{ label: "Home", href: "/" }],
           },
         ];
-  return pages.map((page) => {
+  const requestedPaths: Set<string> | null =
+    brief.nav?.length
+      ? new Set(
+          brief.nav
+            .map((label) => navHrefForLabel(label))
+            .filter(Boolean)
+            .concat(["/"])
+        )
+      : null;
+  const writeTextPair = (
+    props: Record<string, unknown>,
+    fields: { title?: string; subtitle?: string; eyebrow?: string }
+  ) => {
+    if (fields.eyebrow) {
+      props.eyebrow = fields.eyebrow;
+      props.eyetext = fields.eyebrow;
+      props.eyebrowtext = fields.eyebrow;
+      props.heroeyebrowtext = fields.eyebrow;
+      props.missioneyebrowtext = fields.eyebrow;
+      props.ctaeyebrowtext = fields.eyebrow;
+    }
+    if (fields.title) {
+      props.title = fields.title;
+      props.hedtext = fields.title;
+      props.h1text = fields.title;
+      props.herotitletext = fields.title;
+      props.maintitletext = fields.title;
+      props.usetitletext = fields.title;
+      props.missionheadlinetext = fields.title;
+      props.ctaheadtext = fields.title;
+    }
+    if (fields.subtitle) {
+      props.subtitle = fields.subtitle;
+      props.subtext = fields.subtitle;
+      props.h1desctext = fields.subtitle;
+      props.herobodytext = fields.subtitle;
+      props.usecard1bodytext = fields.subtitle;
+      props.usesubtext = fields.subtitle;
+      props.missionsupporttext = fields.subtitle;
+      props.ctabodytext = fields.subtitle;
+    }
+  };
+  const pagesToProcess = requestedPaths ? pages.filter((page) => requestedPaths.has(String(page.path || "/"))) : pages;
+  return pagesToProcess.map((page) => {
     const pageContract = resolvePublishedPageGenerationContract({
       prompt,
       pagePath: page.path,
@@ -5556,7 +5612,10 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
       },
     };
     next.data.content.forEach((item, index) => {
-      const inferredKind = inferDisplaySectionKind(item.type);
+      const publishedOriginalType =
+        typeof item?.props?.__publishedOriginalType === "string" ? String(item.props.__publishedOriginalType) : "";
+      const effectiveType = inferEffectiveBlockType(item.type, publishedOriginalType);
+      const inferredKind = inferDisplaySectionKind(item.type, publishedOriginalType);
       const kindOrdinal = inferredKind ? Number(kindCounters.get(inferredKind) || 0) + 1 : 0;
       if (inferredKind) kindCounters.set(inferredKind, kindOrdinal);
       const contractMatch = inferredKind ? (contractQueues.get(inferredKind) || [])[kindOrdinal - 1] || null : null;
@@ -5568,28 +5627,38 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
       const matchesSectionSlot = (...candidates: string[]) =>
         candidates.filter(Boolean).includes(sectionRole) || candidates.filter(Boolean).includes(sectionSlotId);
       const matchesSectionRole = (...roles: string[]) => roles.filter(Boolean).includes(sectionRole);
-      if (item.type === "Navbar") {
+      if (effectiveType === "Navbar") {
         item.props.logo = { alt: brief.brand || "Brand" };
         item.props.logoText = brief.brand || "Brand";
         item.props.links = navLinks;
         item.props.ctas = [];
       }
-      if (item.type === "CreationFooterFallback") {
+      if (effectiveType === "CreationFooterFallback") {
         item.props.logoText = brief.brand || "Brand";
         item.props.ftlogotext = brief.brand || "Brand";
         item.props.columns = footerCols;
         item.props.legal = brief.copyright || `© 2024 ${brief.brand || "Brand"}. All rights reserved.`;
         item.props.copytext = brief.copyright || `© 2024 ${brief.brand || "Brand"}. All rights reserved.`;
       }
-      if (item.type === "HeroSplit" && matchesSectionSlot("primary-hero", "page-hero", "home.hero.1")) {
-        item.props.title = brief.heroTitle || item.props.title;
-        item.props.subtitle = brief.heroSubtitle || item.props.subtitle;
+      if (effectiveType === "HeroSplit" && matchesSectionSlot("primary-hero", "page-hero", "home.hero.1")) {
+        writeTextPair(item.props, {
+          eyebrow: brief.brand ? `${brief.brand} 3C CNC` : undefined,
+          title: brief.heroTitle || String(item.props.title || ""),
+          subtitle: brief.heroSubtitle || String(item.props.subtitle || ""),
+        });
         item.props.ctas = [
           { label: brief.heroCtas?.[0] || "Get Quote", href: "/contact", variant: "primary" },
           { label: brief.heroCtas?.[1] || "Request Catalog", href: "/products", variant: "secondary" },
         ];
       }
-      if (item.type === "FeatureGrid" && matchesSectionSlot("capability-strip", "home.approach.1")) {
+      if (effectiveType === "HeroSplit" && matchesSectionSlot("about.hero.1", "page-hero") && pageType === "about") {
+        writeTextPair(item.props, {
+          eyebrow: brief.brand || "About LC-CNC",
+          title: "LC-CNC, Shenzhen since 2013",
+          subtitle: brief.aboutText || "ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.",
+        });
+      }
+      if (effectiveType === "FeatureGrid" && matchesSectionSlot("capability-strip", "home.approach.1")) {
         item.props.variant = "4col";
         item.props.title = "LC-CNC, Shenzhen since 2013";
         item.props.subtitle = brief.aboutText || "ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.";
@@ -5600,7 +5669,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { title: "Certifications", desc: (brief.certifications || ["ISO 9001", "CE", "SGS"]).join(" • ") },
         ];
       }
-      if (item.type === "FeatureGrid" && matchesSectionSlot("process-proof", "home.approach.2")) {
+      if (effectiveType === "FeatureGrid" && matchesSectionSlot("process-proof", "home.approach.2")) {
         const features = brief.featureItems?.length
           ? brief.featureItems
           : ["Fast Customization → 10-Day Sample", "Short Lead-Time → 15-Day Shipment", "Local Support → WhatsApp + Regional Agent"];
@@ -5611,7 +5680,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           return { title: title || entry, desc: desc || "" };
         });
       }
-      if (item.type === "CardsGrid" && matchesSectionSlot("featured-products", "home.products.1")) {
+      if (effectiveType === "CardsGrid" && matchesSectionSlot("featured-products", "home.products.1")) {
         const products = brief.productItems?.length
           ? brief.productItems
           : ["3C Phone-Frame Center", "3C Laptop-Shell Center", "3C Camera-Bezel Center", "3C Keypad Center"];
@@ -5624,7 +5693,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           cta: { label: "WhatsApp Quote", href: "/contact", variant: "primary" },
         }));
       }
-      if (item.type === "TestimonialsGrid" && matchesSectionSlot("customer-proof", "home.socialproof.1")) {
+      if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("customer-proof", "home.socialproof.1")) {
         const cases = brief.caseItems?.length
           ? brief.caseItems
           : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining", "Phone Keypad Machining"];
@@ -5636,13 +5705,13 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           quote: "Stable process design, repeatable output, and delivery discipline adapted to the part family.",
         }));
       }
-      if (item.type === "LeadCaptureCTA" && matchesSectionRole("primary-cta")) {
+      if (effectiveType === "LeadCaptureCTA" && matchesSectionRole("primary-cta")) {
         item.props.title = "Quick Quote & WhatsApp Contact";
         item.props.subtitle = `WhatsApp ${brief.whatsapp || ""} • ${brief.email || ""} • ${brief.address || ""}`.replace(/\s•\s$/, "");
         item.props.note = "I agree to receive follow-up via WhatsApp.";
         item.props.cta = { label: "Get Quote on WhatsApp", href: "/contact", variant: "primary" };
       }
-      if (item.type === "CardsGrid" && matchesSectionSlot("product-catalog", "products.products.1")) {
+      if (effectiveType === "CardsGrid" && matchesSectionSlot("product-catalog", "products.products.1")) {
         item.props.title = "3C Machine Catalog";
         item.props.subtitle = "Machine families for phone frames, laptop shells, camera bezels, and keypad components.";
         item.props.items = (brief.productItems?.length ? brief.productItems : ["3C Phone-Frame Center", "3C Laptop-Shell Center", "3C Camera-Bezel Center", "3C Keypad Center"]).map((name) => ({
@@ -5651,7 +5720,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           cta: { label: "Request Catalog", href: "/contact", variant: "primary" },
         }));
       }
-      if (item.type === "FeatureGrid" && matchesSectionSlot("specification-summary", "products.approach.1")) {
+      if (effectiveType === "FeatureGrid" && matchesSectionSlot("specification-summary", "products.approach.1")) {
         item.props.title = "Core Machine Specifications";
         item.props.subtitle = "Rigid structure, repeatable accuracy, and deployment-ready configuration options.";
         item.props.items = [
@@ -5660,7 +5729,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { title: "Automation Ready", desc: "Supports loaders, conveyors, and inline inspection expansion." },
         ];
       }
-      if (item.type === "TestimonialsGrid" && matchesSectionSlot("buyer-proof", "products.socialproof.1")) {
+      if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("buyer-proof", "products.socialproof.1")) {
         item.props.title = "Why Buyers Choose LC-CNC";
         item.props.subtitle = "Catalog decisions driven by throughput, uptime, and support responsiveness.";
         item.props.items = [
@@ -5668,7 +5737,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { name: "Production Manager", role: "Thailand", quote: "The catalog clearly mapped each platform to cycle time, fixture strategy, and line scalability." },
         ];
       }
-      if (item.type === "CardsGrid" && matchesSectionSlot("solution-offers", "solutions.products.1")) {
+      if (effectiveType === "CardsGrid" && matchesSectionSlot("solution-offers", "solutions.products.1")) {
         item.props.title = "Custom Solutions";
         item.props.subtitle = "Turnkey OEM/ODM lines, custom fixtures, spindle packages, and automation integration.";
         item.props.items = [
@@ -5682,7 +5751,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           cta: { label: "Discuss Solution", href: "/contact", variant: "primary" },
         }));
       }
-      if (item.type === "FeatureGrid" && matchesSectionSlot("solution-categories", "solutions.approach.1")) {
+      if (effectiveType === "FeatureGrid" && matchesSectionSlot("solution-categories", "solutions.approach.1")) {
         item.props.title = "Solution Categories";
         item.props.subtitle = "Structured offers for OEM/ODM production planning and line adaptation.";
         item.props.items = [
@@ -5691,7 +5760,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { title: "Automation Integration", desc: "Loading, unloading, transfer, and inspection interfaces for scale." },
         ];
       }
-      if (item.type === "FeatureGrid" && matchesSectionSlot("delivery-workflow", "solutions.approach.2")) {
+      if (effectiveType === "FeatureGrid" && matchesSectionSlot("delivery-workflow", "solutions.approach.2")) {
         item.props.title = "Delivery Workflow";
         item.props.subtitle = "From inquiry to commissioning with clear checkpoints.";
         item.props.items = [
@@ -5700,7 +5769,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { title: "Shipment & Start-up", desc: "Regional delivery coordination, installation, and production launch support." },
         ];
       }
-      if (item.type === "TestimonialsGrid" && matchesSectionSlot("implementation-proof", "solutions.socialproof.1")) {
+      if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("implementation-proof", "solutions.socialproof.1")) {
         item.props.title = "Implementation Confidence";
         item.props.subtitle = "Programs that need adaptation, not off-the-shelf machine selection.";
         item.props.items = [
@@ -5708,7 +5777,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { name: "Engineering Manager", role: "ODM Factory", quote: "Fixture, spindle, and automation decisions were resolved as one system instead of separate vendors." },
         ];
       }
-      if (item.type === "CardsGrid" && matchesSectionSlot("case-gallery", "cases.products.1")) {
+      if (effectiveType === "CardsGrid" && matchesSectionSlot("case-gallery", "cases.products.1")) {
         item.props.title = "Manufacturing Outcomes";
         item.props.subtitle = "Programs focused on cycle-time reduction, stable delivery, and finish consistency.";
         item.props.items = (brief.caseItems?.length ? brief.caseItems : ["Phone Display Frame Machining", "Laptop Shell Machining", "Camera Bezel Machining", "Phone Keypad Machining"]).map((name) => ({
@@ -5717,7 +5786,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           cta: { label: "View Case", href: "/cases", variant: "primary" },
         }));
       }
-      if (item.type === "FeatureGrid" && matchesSectionSlot("case-metrics", "cases.approach.1")) {
+      if (effectiveType === "FeatureGrid" && matchesSectionSlot("case-metrics", "cases.approach.1")) {
         item.props.title = "Case Performance Signals";
         item.props.subtitle = "How factory programs are evaluated after deployment.";
         item.props.items = [
@@ -5726,7 +5795,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { title: "Ramp-up Speed", desc: "Focused on time-to-output after installation and process verification." },
         ];
       }
-      if (item.type === "TestimonialsGrid" && matchesSectionSlot("customer-feedback", "cases.socialproof.1")) {
+      if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("customer-feedback", "cases.socialproof.1")) {
         item.props.title = "Customer Feedback";
         item.props.subtitle = "Application-specific outcomes from Southeast Asia programs.";
         item.props.items = [
@@ -5734,26 +5803,35 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { name: "Laptop Shell Machining", role: "Malaysia", quote: "Fixture and process tuning reduced rework and improved delivery confidence across multiple batches." },
         ];
       }
-      if (item.type === "ContentStory" && matchesSectionSlot("company-story", "about.story.1")) {
-        item.props.title = "LC-CNC, Shenzhen since 2013";
-        item.props.subtitle = brief.aboutText || item.props.subtitle;
+      if (effectiveType === "ContentStory" && matchesSectionSlot("company-story", "about.story.1")) {
+        writeTextPair(item.props, {
+          eyebrow: brief.brand || "About LC-CNC",
+          title: "LC-CNC, Shenzhen since 2013",
+          subtitle: brief.aboutText || String(item.props.subtitle || ""),
+        });
       }
-      if (item.type === "ContentStory" && matchesSectionRole("product-context")) {
-        item.props.title = "Machine platforms for precise, scalable 3C production";
-        item.props.subtitle =
-          "Configured around part geometry, fixture strategy, spindle selection, and line-side automation requirements.";
+      if (effectiveType === "ContentStory" && matchesSectionRole("product-context")) {
+        writeTextPair(item.props, {
+          title: "Machine platforms for precise, scalable 3C production",
+          subtitle:
+            "Configured around part geometry, fixture strategy, spindle selection, and line-side automation requirements.",
+        });
       }
-      if (item.type === "ContentStory" && matchesSectionRole("solution-context")) {
-        item.props.title = "Solutions engineered around process, takt time, and deployment constraints";
-        item.props.subtitle =
-          "From requirement review to validation and ramp-up, each solution package is planned around production outcomes.";
+      if (effectiveType === "ContentStory" && matchesSectionRole("solution-context")) {
+        writeTextPair(item.props, {
+          title: "Solutions engineered around process, takt time, and deployment constraints",
+          subtitle:
+            "From requirement review to validation and ramp-up, each solution package is planned around production outcomes.",
+        });
       }
-      if (item.type === "ContentStory" && matchesSectionRole("case-narrative")) {
-        item.props.title = "Representative machining programs across Southeast Asia";
-        item.props.subtitle =
-          "Programs are evaluated by cycle time, yield stability, commissioning speed, and long-run delivery confidence.";
+      if (effectiveType === "ContentStory" && matchesSectionRole("case-narrative")) {
+        writeTextPair(item.props, {
+          title: "Representative machining programs across Southeast Asia",
+          subtitle:
+            "Programs are evaluated by cycle time, yield stability, commissioning speed, and long-run delivery confidence.",
+        });
       }
-      if (item.type === "CardsGrid" && matchesSectionSlot("capability-cards", "about.products.1")) {
+      if (effectiveType === "CardsGrid" && matchesSectionSlot("capability-cards", "about.products.1")) {
         item.props.title = "Factory Capability Highlights";
         item.props.subtitle = "Engineering depth, factory discipline, and regional support for Southeast Asia.";
         item.props.items = [
@@ -5767,7 +5845,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           cta: { label: "Talk to LC-CNC", href: "/contact", variant: "primary" },
         }));
       }
-      if (item.type === "TestimonialsGrid" && matchesSectionSlot("certification-proof", "about.socialproof.1")) {
+      if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("certification-proof", "about.socialproof.1")) {
         item.props.title = "Certifications";
         item.props.subtitle = (brief.certifications || ["ISO 9001", "CE", "SGS"]).join(" • ");
         item.props.items = (brief.certifications || ["ISO 9001", "CE", "SGS"]).map((name) => ({
@@ -5776,7 +5854,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           quote: "Verified manufacturing and quality management standard.",
         }));
       }
-      if (item.type === "FeatureGrid" && matchesSectionSlot("contact-channels", "contact.approach.1")) {
+      if (effectiveType === "FeatureGrid" && matchesSectionSlot("contact-channels", "contact.approach.1")) {
         item.props.title = "Contact Channels";
         item.props.subtitle = "Commercial response routed for Southeast Asia machine procurement.";
         item.props.items = [
@@ -5785,7 +5863,7 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { title: "Factory Base", desc: brief.address || "Bao’an, Shenzhen, China" },
         ];
       }
-      if (item.type === "TestimonialsGrid" && matchesSectionSlot("quote-requirements", "contact.socialproof.1")) {
+      if (effectiveType === "TestimonialsGrid" && matchesSectionSlot("quote-requirements", "contact.socialproof.1")) {
         item.props.title = "Quote Requirements";
         item.props.subtitle = "Prepare these details for a faster response.";
         item.props.items = [
@@ -5793,9 +5871,11 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { name: "Consent", role: "Follow-up", quote: "I agree to receive follow-up via WhatsApp." },
         ];
       }
-      if (item.type === "LeadCaptureCTA" && matchesSectionSlot("quote-cta", "contact.cta.1", "catalog-cta", "consultation-cta", "case-cta", "about-cta", "support-cta")) {
-        item.props.title = "Quick Quote Form";
-        item.props.subtitle = `WhatsApp ${brief.whatsapp || "+86-158-1370-3777"} • ${brief.email || "sales@lc-cnc.com"} • ${brief.address || "Bao’an, Shenzhen, China"}`;
+      if (effectiveType === "LeadCaptureCTA" && matchesSectionSlot("quote-cta", "contact.cta.1", "catalog-cta", "consultation-cta", "case-cta", "about-cta", "support-cta")) {
+        writeTextPair(item.props, {
+          title: "Quick Quote Form",
+          subtitle: `WhatsApp ${brief.whatsapp || "+86-158-1370-3777"} • ${brief.email || "sales@lc-cnc.com"} • ${brief.address || "Bao’an, Shenzhen, China"}`,
+        });
         item.props.note = "I agree to receive follow-up via WhatsApp.";
         item.props.cta = { label: "Get Quote on WhatsApp", href: "/contact", variant: "primary" };
       }
@@ -7282,6 +7362,19 @@ async function architectNode(state: GraphState) {
 async function builderNode(state: GraphState) {
   const blueprint = (state.blueprint ?? {}) as ArchitectBlueprint;
   let pages = normalizePages(blueprint);
+  const requestedPages = extractRequestedPagesFromPrompt(state.prompt ?? "");
+  if (requestedPages.length) {
+    const byPath = new Map(pages.map((page) => [normalizePromptPagePath(String(page.path || "/")), page] as const));
+    requestedPages.forEach((requested) => {
+      if (byPath.has(requested.path)) return;
+      byPath.set(requested.path, {
+        path: requested.path,
+        name: requested.name,
+        sections: [],
+      } as any);
+    });
+    pages = normalizePages({ pages: Array.from(byPath.values()) });
+  }
   const templateResolution = resolveTemplatePlan({
     prompt: state.prompt ?? "",
     pages,
