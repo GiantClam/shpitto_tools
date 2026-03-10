@@ -111,11 +111,14 @@ const kindToBaseBlockType = (kind: string) => {
       return "LeadCaptureCTA";
     case "socialproof":
     case "social-proof":
+    case "trust":
+    case "logo":
+    case "partner":
+      return "LogoCloud";
     case "testimonial":
     case "testimonials":
     case "review":
-    case "trust":
-      return "FeatureGrid";
+      return "TestimonialsGrid";
     case "hero":
       return "HeroSplit";
     case "faq":
@@ -124,12 +127,13 @@ const kindToBaseBlockType = (kind: string) => {
     case "casestudy":
     case "case-study":
       return "CaseStudies";
-    case "feature":
-    case "features":
     case "story":
-    case "approach":
     case "products":
     case "showcase":
+      return "CardsGrid";
+    case "feature":
+    case "features":
+    case "approach":
       return "FeatureGrid";
     default:
       return "";
@@ -142,18 +146,31 @@ const inferBaseBlockTypeFromName = (type: string) => {
   if (/(footer|copyright|legal)/.test(token)) return "Footer";
   if (/(hero|banner|masthead)/.test(token)) return "HeroSplit";
   if (/(cta|leadcapture|lead|contact)/.test(token)) return "LeadCaptureCTA";
-  if (/(socialproof|testimonial|review|trust)/.test(token)) return "TestimonialsGrid";
+  if (/(socialproof|trust|logo|partner)/.test(token)) return "LogoCloud";
+  if (/(testimonial|review)/.test(token)) return "TestimonialsGrid";
   if (/(case|study)/.test(token)) return "CaseStudies";
   if (/(faq|accordion)/.test(token)) return "FAQAccordion";
-  if (/(products|product|feature|features|story|approach|showcase)/.test(token)) return "FeatureGrid";
+  if (/(products|product|catalog|gallery|showcase|exp|story)/.test(token)) return "CardsGrid";
+  if (/(feature|features|approach)/.test(token)) return "FeatureGrid";
   return "";
+};
+
+const createTextLogoDataUri = (label: string) => {
+  const safe = String(label || "").trim() || "Logo";
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="320" height="96" viewBox="0 0 320 96"><rect width="320" height="96" rx="14" fill="#0B1020"/><text x="160" y="56" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#F5F7FB" letter-spacing="1.2">${safe.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</text></svg>`;
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 };
 
 const synthesizeTemplateExclusiveRenderer = (
   type: string,
-  components: Record<string, any>
+  components: Record<string, any>,
+  sourceProps?: Record<string, any>
 ) => {
-  const entry = templateExclusiveByName.get(type);
+  const originalType =
+    typeof sourceProps?.__publishedOriginalType === "string" && sourceProps.__publishedOriginalType.trim()
+      ? sourceProps.__publishedOriginalType.trim()
+      : type;
+  const entry = templateExclusiveByName.get(type) || templateExclusiveByName.get(originalType);
   const directBaseBlockType = String(
     entry?.templateExclusive?.baseBlockType ||
       entry?.baseBlockType ||
@@ -161,8 +178,10 @@ const synthesizeTemplateExclusiveRenderer = (
       entry?.blockType ||
       ""
   ).trim();
-  const kindBaseBlockType = kindToBaseBlockType(templateBlockKindByType.get(type) || "");
-  const inferredBaseBlockType = inferBaseBlockTypeFromName(type);
+  const kindBaseBlockType =
+    kindToBaseBlockType(templateBlockKindByType.get(type) || "") ||
+    kindToBaseBlockType(templateBlockKindByType.get(originalType) || "");
+  const inferredBaseBlockType = inferBaseBlockTypeFromName(originalType || type);
   const baseBlockType = [directBaseBlockType, kindBaseBlockType, inferredBaseBlockType].find((candidate) => {
     const key = String(candidate || "").trim();
     return key && components[key]?.render;
@@ -176,7 +195,9 @@ const synthesizeTemplateExclusiveRenderer = (
     defaultProps: {
       ...(base?.defaultProps && typeof base.defaultProps === "object" ? base.defaultProps : {}),
       ...(templateBlockPropsByType.get(type) ?? {}),
+      ...(templateBlockPropsByType.get(originalType) ?? {}),
       ...(entry?.defaultProps && typeof entry.defaultProps === "object" ? entry.defaultProps : {}),
+      ...(sourceProps && typeof sourceProps === "object" ? sourceProps : {}),
     },
   };
 };
@@ -219,6 +240,7 @@ const synthesizeFooterColumns = (props: Record<string, any>) => {
 
 const adaptSynthesizedProps = (baseBlockType: string, rawProps: unknown) => {
   const props = asRecord(rawProps);
+  const originalType = String(props.__publishedOriginalType || "").toLowerCase();
   if (baseBlockType === "Navbar") {
     if (!Array.isArray(props.links)) props.links = synthesizeNavLinks(props);
     if (!Array.isArray(props.ctas)) {
@@ -240,11 +262,97 @@ const adaptSynthesizedProps = (baseBlockType: string, rawProps: unknown) => {
       props.cta = { label, href, variant: "primary" };
     }
   } else if (baseBlockType === "HeroSplit") {
-    if (!Array.isArray(props.ctas)) {
+    if (props.h1text || props.h1desctext || props.hero1imagesrc) {
+      props.eyebrow = String(props.h1tagtext || props.eyebrow || "").trim();
+      props.title = String(props.h1text || props.title || "").trim() || "Industrial precision";
+      props.subtitle = String(props.h1desctext || props.subtitle || "").trim();
+      props.background = "image";
+      props.backgroundMedia = {
+        kind: "image",
+        src: String(props.hero1imagesrc || "").trim(),
+      };
+      props.textPanel = true;
+      props.textPanelBackground = "rgba(8, 12, 24, 0.42)";
+      props.textPanelBorderColor = "rgba(255,255,255,0.14)";
+      props.surfaceTone = "dark";
+      props.headingSize = "lg";
+      props.bodySize = "md";
+    }
+    if (props.ordertxttext || props.orderbtnhref || props.learntxttext || props.learnbtnhref || !Array.isArray(props.ctas)) {
       const label = String(props.ordertxttext || props.ctatexttext || "Learn More").trim() || "Learn More";
       const href = String(props.orderbtnhref || props.ctahref || "/").trim() || "/";
-      props.ctas = [{ label, href, variant: "primary" }];
+      const secondaryLabel = String(props.learntxttext || "").trim();
+      const secondaryHref = String(props.learnbtnhref || "").trim();
+      props.ctas = [
+        secondaryLabel ? { label: secondaryLabel, href: secondaryHref || "/", variant: "secondary" } : null,
+        { label, href, variant: "primary" },
+      ].filter(Boolean);
     }
+  } else if (baseBlockType === "CardsGrid") {
+    if (/product/.test(originalType)) {
+      const items = [1, 2, 3, 4]
+        .map((index) => {
+          const title = String(props[`prodtitle0${index}text`] || "").trim();
+          if (!title) return null;
+          return {
+            tag: String(props[`prodtag0${index}text`] || "").trim(),
+            title,
+            description: String(props[`proddesc0${index}text`] || "").trim(),
+            imageSrc: String(props[`productimage0${index}imagesrc`] || "").trim(),
+            cta: {
+              label: String(props[`prodbtnlabel0${index}text`] || "Learn More").trim(),
+              href: String(props[`prodbtn0${index}href`] || "/products").trim() || "/products",
+              variant: "primary",
+            },
+          };
+        })
+        .filter(Boolean);
+      props.title = "Core Product Platforms";
+      props.subtitle = "Machine platforms designed for stable accuracy, throughput, and scalable deployment.";
+      props.items = items;
+      props.variant = "imageText";
+      props.columns = "2col";
+      props.cardStyle = "glass";
+      props.imagePosition = "top";
+      props.imageSize = "lg";
+      props.textAlign = "left";
+    } else if (/story|exp/.test(originalType)) {
+      const items = [1, 2, 3]
+        .map((index) => {
+          const imageSrc = String(props[`capture0${index}imagesrc`] || "").trim();
+          if (!imageSrc) return null;
+          return {
+            title: String(props[`cap${index}text`] || "").trim() || `Capture ${index}`,
+            meta: String(props[`capturemeta0${index}text`] || "").trim(),
+            imageSrc,
+          };
+        })
+        .filter(Boolean);
+      props.title = String(props.exptitletext || props.title || "").trim() || "Capability Highlights";
+      props.subtitle = String(props.expbodytext || props.subtitle || "").trim();
+      props.items = items;
+      props.variant = "media";
+      props.columns = "3col";
+      props.cardStyle = "glass";
+      props.imagePosition = "top";
+      props.textAlign = "left";
+    }
+  }
+  else if (baseBlockType === "LogoCloud") {
+    const labels = [
+      props.labela1text,
+      props.labela2text,
+      props.labela3text,
+      props.labelb1text,
+      props.labelb2text,
+      props.labelb3text,
+    ]
+      .map((value) => String(value || "").replace(/^[◼◻]\s*/, "").trim())
+      .filter(Boolean);
+    props.title = String(props.trustttext || props.title || "").trim();
+    props.emphasis = "high";
+    props.logos = labels.map((label) => ({ src: createTextLogoDataUri(label), alt: label }));
+    props.variant = "grid";
   }
   return props;
 };
@@ -665,7 +773,7 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
       });
 
       const rawContent = Array.isArray((payload.page as any)?.data?.content)
-        ? ((payload.page as any).data.content as Array<{ type?: unknown }>)
+        ? ((payload.page as any).data.content as Array<{ type?: unknown; props?: unknown }>)
         : [];
       const requiredTypes = Array.from(
         new Set(
@@ -674,12 +782,21 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
             .filter(Boolean)
         )
       );
+      const sourcePropsByType = new Map<string, Record<string, any>>();
+      rawContent.forEach((item) => {
+        const type = typeof item?.type === "string" ? item.type.trim() : "";
+        const props = item?.props;
+        if (!type || sourcePropsByType.has(type) || !props || typeof props !== "object") return;
+        sourcePropsByType.set(type, props as Record<string, any>);
+      });
       const missingTypes = requiredTypes.filter((type) => !(nextConfig.components as Record<string, unknown>)[type]);
       const synthesizedTypes: string[] = [];
       missingTypes.forEach((type) => {
+        const sourceProps = sourcePropsByType.get(type);
         const synthesized = synthesizeTemplateExclusiveRenderer(
           type,
-          nextConfig.components as Record<string, any>
+          nextConfig.components as Record<string, any>,
+          sourceProps
         );
         if (!synthesized) return;
         const sourceRender = synthesized.render as React.ComponentType<any> | undefined;
@@ -689,7 +806,15 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
         ).trim();
         const WrappedSynthesized: React.FC<any> = (props) => (
           <BlockErrorBoundary blockName={type}>
-            {React.createElement(sourceRender, adaptSynthesizedProps(synthesizedBaseBlockType, props))}
+            {React.createElement(
+              sourceRender,
+              adaptSynthesizedProps(synthesizedBaseBlockType, {
+                ...(synthesized.defaultProps && typeof synthesized.defaultProps === "object"
+                  ? synthesized.defaultProps
+                  : {}),
+                ...(props && typeof props === "object" ? props : {}),
+              })
+            )}
           </BlockErrorBoundary>
         );
         WrappedSynthesized.displayName = `WrappedSynth_${type}`;
