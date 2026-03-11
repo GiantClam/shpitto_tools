@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "pages": [
+    {
+      "key": "home",
+      "path": "/",
+      "name": "Home",
+      "pageType": "home",
+      "taxonomyType": "home",
+      "requiredCategories": ["navigation", "hero", "story", "approach", "products", "socialproof", "cta", "footer"],
+      "description": "Brand overview, core value proposition, key trust signals, and route distribution hub."
+    },
+    {
+      "key": "core_product",
+      "path": "/core-product",
+      "name": "Core Product",
+      "pageType": "products",
+      "taxonomyType": "detail",
+      "requiredCategories": ["navigation", "hero", "products", "story", "approach", "socialproof", "cta", "footer"],
+      "description": "Single flagship product page with product story, specs, proof, and conversion CTA."
+    },
+    {
+      "key": "products",
+      "path": "/products",
+      "name": "Products",
+      "pageType": "products",
+      "taxonomyType": "product_service_list",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "socialproof", "cta", "footer"],
+      "description": "All-products listing page covering the full product lineup."
+    },
+    {
+      "key": "solutions",
+      "path": "/solutions",
+      "name": "Solutions",
+      "pageType": "solutions",
+      "taxonomyType": "product_service_list",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "story", "socialproof", "cta", "footer"],
+      "description": "Solutions and implementation approaches, including industry workflows and offer bundles."
+    },
+    {
+      "key": "cases",
+      "path": "/cases",
+      "name": "Cases",
+      "pageType": "cases",
+      "taxonomyType": "detail",
+      "requiredCategories": ["navigation", "hero", "products", "socialproof", "story", "cta", "footer"],
+      "description": "Customer or scenario case studies with outcomes, proof, and supporting narrative."
+    },
+    {
+      "key": "about",
+      "path": "/about",
+      "name": "About",
+      "pageType": "about",
+      "taxonomyType": "about",
+      "requiredCategories": ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
+      "description": "Company profile, history, values, founder/team details, and core contact context."
+    },
+    {
+      "key": "contact",
+      "path": "/contact",
+      "name": "Contact",
+      "pageType": "contact",
+      "taxonomyType": "contact",
+      "requiredCategories": ["navigation", "hero", "story", "contact", "cta", "footer"],
+      "description": "Lead capture, sales inquiry, and direct contact pathways."
+    },
+    {
+      "key": "privacy",
+      "path": "/privacy",
+      "name": "Privacy",
+      "pageType": "legal",
+      "taxonomyType": "legal",
+      "requiredCategories": ["navigation", "story", "footer"],
+      "description": "Privacy policy and related legal/policy content."
+    }
+  ]
+}

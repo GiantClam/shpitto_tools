@@ -22,6 +22,11 @@ import {
   selectStyleProfile,
   type TemplatePersonalizationContext,
 } from "@/lib/agent/section-template-registry";
+import {
+  ENTERPRISE_SITE_PAGES,
+  ensureEnterpriseSitePages,
+  looksLikeEnterpriseWebsite,
+} from "@/lib/agent/enterprise-site-structure";
 import { buildSiteBlueprint } from "@/lib/agent/site-planner";
 import { resolveTemplatePlan } from "@/lib/agent/template-resolver";
 import { evaluateGenerationQa } from "@/lib/agent/qa-gate";
@@ -2122,7 +2127,9 @@ const applyTemplateFirstSectionPlan = (
   prompt: string
 ) => {
   if (sectionGenerationStrategy !== "template_first") return { pages, profileId: null as string | null };
-  const profile = selectStyleProfile(prompt);
+  const profile = selectStyleProfile(prompt, {
+    pagePaths: pages.map((page) => normalizeTemplatePagePath(page.path)),
+  });
   if (!profile?.templates) return { pages, profileId: null as string | null };
   const templateKinds = Object.keys(profile.templates)
     .map((key) => normalizeTemplatePlanKind(key))
@@ -2717,6 +2724,7 @@ const filterManifestWhitelist = (manifest: Record<string, unknown>) => {
     "Skeleton",
     "DropdownMenu",
     "Sheet",
+    "GradientText",
   ]);
 
   const filterList = (value: unknown) => {
@@ -2944,16 +2952,16 @@ const MODE_KEYWORDS = {
 };
 
 const COLOR_KEYWORDS: Array<{ words: string[]; hex: string }> = [
-  { words: ["gold", "golden", "brass", "bronze", "champagne"], hex: "#D4AF37" },
-  { words: ["silver", "chrome", "platinum", "steel"], hex: "#C0C0C0" },
-  { words: ["blue", "navy", "indigo", "azure", "cobalt"], hex: "#2563EB" },
-  { words: ["green", "emerald", "olive", "mint"], hex: "#10B981" },
-  { words: ["red", "crimson", "scarlet", "ruby"], hex: "#EF4444" },
-  { words: ["orange", "amber", "tangerine", "coral"], hex: "#F97316" },
-  { words: ["purple", "violet", "lavender", "plum"], hex: "#8B5CF6" },
-  { words: ["pink", "rose", "magenta"], hex: "#EC4899" },
-  { words: ["brown", "tan", "beige", "sand", "taupe"], hex: "#C2A37A" },
-  { words: ["gray", "grey", "slate", "graphite", "charcoal"], hex: "#6B7280" },
+  { words: ["gold", "golden", "brass", "bronze", "champagne", "金色"], hex: "#D4AF37" },
+  { words: ["silver", "chrome", "platinum", "steel", "银色"], hex: "#C0C0C0" },
+  { words: ["blue", "navy", "indigo", "azure", "cobalt", "蓝色"], hex: "#2563EB" },
+  { words: ["green", "emerald", "olive", "mint", "绿色"], hex: "#10B981" },
+  { words: ["red", "crimson", "scarlet", "ruby", "红色", "红"], hex: "#EF4444" },
+  { words: ["orange", "amber", "tangerine", "coral", "橙色"], hex: "#F97316" },
+  { words: ["purple", "violet", "lavender", "plum", "紫色"], hex: "#8B5CF6" },
+  { words: ["pink", "rose", "magenta", "粉色"], hex: "#EC4899" },
+  { words: ["brown", "tan", "beige", "sand", "taupe", "米黄", "米黄色", "米白", "米白色", "卡其"], hex: "#C2A37A" },
+  { words: ["gray", "grey", "slate", "graphite", "charcoal", "灰色", "灰白"], hex: "#6B7280" },
 ];
 
 const BASE_PALETTES = {
@@ -2985,6 +2993,9 @@ const isColorValue = (value: string) =>
 const escapeRegex = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 const hasKeyword = (text: string, word: string) => {
+  if (/[\u3400-\u9fff]/.test(word)) {
+    return text.includes(word.toLowerCase());
+  }
   const pattern = new RegExp(`\\b${escapeRegex(word)}\\b`, "i");
   return pattern.test(text);
 };
@@ -3817,6 +3828,21 @@ const ensurePromptRequestedPages = (
     });
   });
   return { ...blueprint, pages: existingPages };
+};
+
+const ensureEnterpriseBlueprintPages = (
+  blueprint: ArchitectBlueprint | null | undefined,
+  prompt: string
+): ArchitectBlueprint | null | undefined => {
+  if (!blueprint || typeof blueprint !== "object") return blueprint;
+  const existingPages = Array.isArray(blueprint.pages) ? blueprint.pages : [];
+  if (!looksLikeEnterpriseWebsite({ prompt, pages: existingPages })) return blueprint;
+  const pages = ensureEnterpriseSitePages(existingPages, (definition) => ({
+    path: definition.path,
+    name: definition.name,
+    sections: [],
+  }));
+  return { ...blueprint, pages };
 };
 
 const compactNavbarLabel = (label: string) => {
@@ -5368,6 +5394,7 @@ type StructuredBrief = {
   email?: string;
   address?: string;
   copyright?: string;
+  mode?: "light" | "dark";
   palette?: { primary: string; accent: string; bg: string; neutral: string; text: string; textSecondary: string };
 };
 
@@ -5427,14 +5454,15 @@ const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
     email,
     address,
     copyright,
-    palette: /red\s*\+\s*beige|红色.*米黄|米黄.*红色/i.test(prompt)
+    mode: /red\s*\+\s*beige|red and beige|红色.*米黄|米黄.*红色/i.test(prompt) ? "light" : undefined,
+    palette: /red\s*\+\s*beige|red and beige|红色.*米黄|米黄.*红色/i.test(prompt)
       ? {
-          primary: "#9F1F24",
-          accent: "#D9C3A5",
-          bg: "#0C0D10",
-          neutral: "#2A2D31",
-          text: "#F7F2EA",
-          textSecondary: "#D7CCBE",
+          primary: "#A32024",
+          accent: "#D8C1A0",
+          bg: "#F4EEE4",
+          neutral: "#DDD4C8",
+          text: "#1E1815",
+          textSecondary: "#6C6157",
         }
       : undefined,
   };
@@ -5443,6 +5471,64 @@ const parseStructuredBrief = (prompt: string): StructuredBrief | null => {
 const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): GeneratedPage[] => {
   const brief = parseStructuredBrief(prompt);
   if (!brief) return pages;
+  const preserveEnterpriseCoverage = looksLikeEnterpriseWebsite({
+    prompt,
+    pages: pages.map((page) => ({ path: page.path, name: page.name })),
+  });
+  const enterprisePagesByPath = new Map(
+    pages.map((page) => [String(page.path || "/").trim() || "/", { path: String(page.path || "/").trim() || "/", name: String(page.name || "").trim() }] as const)
+  );
+  const enterpriseNavLinks = preserveEnterpriseCoverage
+    ? ENTERPRISE_SITE_PAGES.map((definition) => {
+        const page = enterprisePagesByPath.get(definition.path);
+        return {
+          label: page?.name || definition.name,
+          href: definition.path,
+          variant: "link" as const,
+        };
+      })
+    : [];
+  const enterpriseFooterCols = preserveEnterpriseCoverage
+    ? (() => {
+        const pick = (key: string, fallbackLabel: string, fallbackHref = "/") => {
+          const definition = ENTERPRISE_SITE_PAGES.find((page) => page.key === key);
+          const href = definition?.path || fallbackHref;
+          const page = enterprisePagesByPath.get(href);
+          return {
+            label: page?.name || fallbackLabel,
+            href,
+          };
+        };
+        return [
+          {
+            title: "Overview",
+            links: [
+              pick("home", "Home"),
+              pick("core_product", "Core Product"),
+              pick("products", "Products"),
+            ],
+          },
+          {
+            title: "Solutions",
+            links: [
+              pick("solutions", "Solutions"),
+              pick("cases", "Cases"),
+            ],
+          },
+          {
+            title: "Company",
+            links: [
+              pick("about", "About"),
+              pick("contact", "Contact"),
+            ],
+          },
+          {
+            title: "Legal",
+            links: [pick("privacy", "Privacy")],
+          },
+        ];
+      })()
+    : [];
   const inferEffectiveBlockType = (type: string, originalType = "") => {
     const token = `${String(type || "").trim()} ${String(originalType || "").trim()}`.trim();
     if (!token) return "";
@@ -5491,7 +5577,9 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
     return "/";
   };
   const navLinks =
-    brief.nav?.length
+    enterpriseNavLinks.length
+      ? enterpriseNavLinks
+      : brief.nav?.length
       ? brief.nav.map((label) => ({ label, href: navHrefForLabel(label), variant: "link" }))
       : [
           { label: "Home", href: "/", variant: "link" },
@@ -5502,7 +5590,9 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
           { label: "Contact", href: "/contact", variant: "link" },
         ];
   const footerCols =
-    brief.footerLinks?.length === 4
+    enterpriseFooterCols.length
+      ? enterpriseFooterCols
+      : brief.footerLinks?.length === 4
       ? [
           { title: brief.footerLinks[0], links: [{ label: "3C Machines", href: "/products" }] },
           { title: brief.footerLinks[1], links: [{ label: "Contact", href: "/contact" }] },
@@ -5578,7 +5668,15 @@ const applyStructuredBriefOverrides = (pages: GeneratedPage[], prompt: string): 
       props.expbodytext = fields.subtitle;
     }
   };
-  const pagesToProcess = requestedPaths ? pages.filter((page) => requestedPaths.has(String(page.path || "/"))) : pages;
+  const enterprisePaths = preserveEnterpriseCoverage
+    ? new Set(ENTERPRISE_SITE_PAGES.map((page) => page.path))
+    : null;
+  const pagesToProcess = requestedPaths
+    ? pages.filter((page) => {
+        const pagePath = String(page.path || "/");
+        return requestedPaths.has(pagePath) || Boolean(enterprisePaths?.has(pagePath));
+      })
+    : pages;
   return pagesToProcess.map((page) => {
     const pageContract = resolvePublishedPageGenerationContract({
       prompt,
@@ -6400,6 +6498,153 @@ const mergeThemeDrivenBlockProps = (
   if (Array.isArray(existingProps.footerLinks)) next.footerLinks = existingProps.footerLinks;
   if (typeof existingProps.legal === "string" && existingProps.legal.trim()) next.legal = existingProps.legal;
   if (typeof existingProps.whatsapp === "string" && existingProps.whatsapp.trim()) next.whatsapp = existingProps.whatsapp;
+  return next;
+};
+
+const normalizeHexColor = (value: unknown): string | null => {
+  if (typeof value !== "string") return null;
+  const raw = value.trim();
+  if (!/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(raw)) return null;
+  if (raw.length === 4) {
+    return `#${raw
+      .slice(1)
+      .split("")
+      .map((char) => `${char}${char}`)
+      .join("")
+      .toUpperCase()}`;
+  }
+  return raw.toUpperCase();
+};
+
+const hexToRgb = (value: string): [number, number, number] | null => {
+  const normalized = normalizeHexColor(value);
+  if (!normalized) return null;
+  const hex = normalized.slice(1);
+  const parsed = Number.parseInt(hex, 16);
+  if (!Number.isFinite(parsed)) return null;
+  return [(parsed >> 16) & 255, (parsed >> 8) & 255, parsed & 255];
+};
+
+const mixHexColors = (base: string, target: string, weight = 0.5): string => {
+  const baseRgb = hexToRgb(base);
+  const targetRgb = hexToRgb(target);
+  if (!baseRgb || !targetRgb) return normalizeHexColor(base) || normalizeHexColor(target) || "#F4EEE4";
+  const clamped = Math.max(0, Math.min(1, Number.isFinite(weight) ? weight : 0.5));
+  const mixed = baseRgb.map((channel, index) =>
+    Math.round(channel + (targetRgb[index] - channel) * clamped)
+  ) as [number, number, number];
+  return `#${mixed.map((channel) => channel.toString(16).padStart(2, "0")).join("").toUpperCase()}`;
+};
+
+const rgbaFromHex = (value: string, alpha: number): string => {
+  const rgb = hexToRgb(value) || [0, 0, 0];
+  const clamped = Math.max(0, Math.min(1, Number.isFinite(alpha) ? alpha : 1));
+  return `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${clamped})`;
+};
+
+const readThemePaletteColors = (theme: Record<string, unknown>, prompt = "") => {
+  if (/red\s*\+\s*beige|red and beige|红色.*米黄|米黄.*红色/i.test(prompt)) {
+    return {
+      bg: "#F4EEE4",
+      neutral: "#DDD4C8",
+      accent: "#D8C1A0",
+      primary: "#A32024",
+      text: "#1E1815",
+      textSecondary: "#6C6157",
+    };
+  }
+  const palette =
+    theme?.palette && typeof theme.palette === "object"
+      ? (theme.palette as Record<string, unknown>)
+      : {};
+  return {
+    bg: normalizeHexColor(palette.bg) || "#F7F1E8",
+    neutral: normalizeHexColor(palette.neutral) || "#E5DDD0",
+    accent: normalizeHexColor(palette.accent) || "#D8C1A0",
+    primary: normalizeHexColor(palette.primary) || normalizeHexColor(theme.primaryColor) || "#A32024",
+    text: normalizeHexColor(palette.text) || "#1E1815",
+    textSecondary: normalizeHexColor(palette.textSecondary) || "#6C6157",
+  };
+};
+
+const buildBrandSectionGradient = (
+  blockType: string,
+  itemIndex: number,
+  palette: ReturnType<typeof readThemePaletteColors>
+): string => {
+  const normalizedType = String(blockType || "").toLowerCase();
+  if (/testimonials|socialproof/.test(normalizedType)) {
+    return `linear-gradient(180deg, ${mixHexColors(palette.bg, palette.accent, 0.16)} 0%, ${mixHexColors(
+      palette.accent,
+      palette.neutral,
+      0.5
+    )} 100%)`;
+  }
+  if (/cards|catalog|product/.test(normalizedType)) {
+    return `linear-gradient(180deg, ${mixHexColors(palette.bg, palette.neutral, 0.2)} 0%, ${mixHexColors(
+      palette.neutral,
+      palette.accent,
+      0.42
+    )} 100%)`;
+  }
+  if (/cta|contact|leadcapture/.test(normalizedType)) {
+    return `linear-gradient(180deg, ${mixHexColors(palette.primary, palette.text, 0.18)} 0%, ${mixHexColors(
+      palette.primary,
+      palette.accent,
+      0.22
+    )} 100%)`;
+  }
+  const cycle = itemIndex % 3;
+  if (cycle === 1) {
+    return `linear-gradient(180deg, ${mixHexColors(palette.bg, palette.accent, 0.18)} 0%, ${mixHexColors(
+      palette.accent,
+      palette.neutral,
+      0.4
+    )} 100%)`;
+  }
+  if (cycle === 2) {
+    return `linear-gradient(180deg, ${mixHexColors(palette.bg, palette.neutral, 0.24)} 0%, ${mixHexColors(
+      palette.neutral,
+      palette.accent,
+      0.36
+    )} 100%)`;
+  }
+  return `linear-gradient(180deg, ${mixHexColors(palette.bg, palette.neutral, 0.12)} 0%, ${mixHexColors(
+    palette.bg,
+    palette.accent,
+    0.32
+  )} 100%)`;
+};
+
+const harmonizeBlockThemeProps = (
+  blockType: string,
+  existingProps: Record<string, unknown>,
+  theme: Record<string, unknown>,
+  itemIndex: number,
+  prompt = ""
+): Record<string, unknown> => {
+  const next = { ...existingProps };
+  const palette = readThemePaletteColors(theme, prompt);
+  const normalizedType = String(blockType || "").toLowerCase();
+  const background = String(next.background || "").trim().toLowerCase();
+
+  if (background === "gradient") {
+    next.backgroundGradient = buildBrandSectionGradient(blockType, itemIndex, palette);
+    if (!/cta|contact|leadcapture/.test(normalizedType) && typeof next.backgroundOverlay === "string") {
+      next.backgroundOverlay = "";
+    }
+  }
+
+  if (/herosplit/.test(normalizedType) && background === "image") {
+    next.surfaceTone = "dark";
+    next.backgroundOverlay = rgbaFromHex(mixHexColors(palette.text, palette.primary, 0.28), 0.72);
+    next.backgroundOverlayOpacity = 0.72;
+    if (typeof next.textPanel === "boolean" && next.textPanel) {
+      next.textPanelBackground = rgbaFromHex(palette.text, 0.34);
+      next.textPanelBorderColor = rgbaFromHex(palette.accent, 0.24);
+    }
+  }
+
   return next;
 };
 
@@ -7505,6 +7750,7 @@ async function architectNode(state: GraphState) {
   blueprint = applyUserThemeIntent(blueprint, state.prompt ?? "");
   blueprint = applyReferenceBlueprintConstraints(blueprint, state.prompt ?? "");
   blueprint = ensurePromptRequestedPages(blueprint, state.prompt ?? "") as ArchitectBlueprint;
+  blueprint = ensureEnterpriseBlueprintPages(blueprint, state.prompt ?? "") as ArchitectBlueprint;
   const pages = normalizePages(blueprint);
   const sectionCount = pages.reduce((total, page) => total + page.sections.length, 0);
   logInfo(`${logPrefix} architect:ok`, {
@@ -7533,6 +7779,15 @@ async function builderNode(state: GraphState) {
       } as any);
     });
     pages = normalizePages({ pages: Array.from(byPath.values()) });
+  }
+  if (looksLikeEnterpriseWebsite({ prompt: state.prompt ?? "", pages })) {
+    pages = normalizePages({
+      pages: ensureEnterpriseSitePages(pages, (definition) => ({
+        path: definition.path,
+        name: definition.name,
+        sections: [],
+      })),
+    });
   }
   const templateResolution = resolveTemplatePlan({
     prompt: state.prompt ?? "",
@@ -8918,9 +9173,16 @@ async function builderNode(state: GraphState) {
           sanitizedExistingProps,
           variant
         );
+        const themedProps = harmonizeBlockThemeProps(
+          fallback.type,
+          mergedProps,
+          theme as Record<string, unknown>,
+          itemIndex,
+          state.prompt ?? ""
+        );
         const normalizedProps = normalizeBlockProps(
           fallback.type,
-          sanitizeSemanticProps(sanitizeInternalHrefsInProps(mergedProps, linkGraph), linkGraph, page.path || "/") as Record<
+          sanitizeSemanticProps(sanitizeInternalHrefsInProps(themedProps, linkGraph), linkGraph, page.path || "/") as Record<
             string,
             unknown
           >,
@@ -8942,10 +9204,17 @@ async function builderNode(state: GraphState) {
           ),
         };
       }
+      const themedProps = harmonizeBlockThemeProps(
+        String(item.type || ""),
+        sanitizedExistingProps,
+        theme as Record<string, unknown>,
+        itemIndex,
+        state.prompt ?? ""
+      );
       return {
         ...item,
         props: sanitizeSemanticProps(
-          sanitizeInternalHrefsInProps(sanitizedExistingProps, linkGraph),
+          sanitizeInternalHrefsInProps(themedProps, linkGraph),
           linkGraph,
           page.path || "/"
         ) as Record<string, unknown>,
@@ -9124,6 +9393,7 @@ async function builderNode(state: GraphState) {
         : {};
     lockedTheme = {
       ...lockedTheme,
+      mode: structuredBrief.mode || lockedTheme?.mode,
       palette: {
         ...currentPalette,
         ...structuredBrief.palette,

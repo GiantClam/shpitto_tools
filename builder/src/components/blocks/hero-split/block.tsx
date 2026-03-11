@@ -43,6 +43,7 @@ export type HeroSplitProps = BaseBlockProps & {
   textPanelPadding?: "sm" | "md" | "lg";
   textPanelRadius?: "sm" | "md" | "lg";
   textPanelMaxWidth?: "sm" | "md" | "lg" | "xl";
+  titleTreatment?: "default" | "gradient";
   referenceSliceMode?: boolean;
   referenceSliceMinHeight?: number;
 };
@@ -79,6 +80,7 @@ export function HeroSplitBlock({
   textPanelPadding = "md",
   textPanelRadius = "md",
   textPanelMaxWidth = "lg",
+  titleTreatment = "default",
   referenceSliceMode = false,
   referenceSliceMinHeight,
   variant,
@@ -116,6 +118,7 @@ export function HeroSplitBlock({
   const headingToneClass = isDarkSurface ? "text-zinc-100" : "";
   const mutedToneClass = isDarkSurface ? "text-zinc-200" : "text-muted-foreground";
   const allowGradientHeading =
+    titleTreatment === "gradient" &&
     emphasis === "high" &&
     String(background || "").trim().toLowerCase() !== "image" &&
     !textPanel &&

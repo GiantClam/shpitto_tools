@@ -1,3 +1,9 @@
+import {
+  ensureEnterpriseSitePages,
+  looksLikeEnterpriseWebsiteSite,
+  selectEnterpriseRequiredPages,
+} from "../enterprise-site-structure.mjs";
+
 const normalizeTemplatePagePath = (value) => {
   const rawInput = String(value || "").trim();
   if (!rawInput) return "/";
@@ -107,7 +113,11 @@ const toPageRows = (siteItem) => {
 };
 
 export const selectRequiredPagesForSite = ({ siteItem, maxPagesPerSite = 4 }) => {
-  const pages = toPageRows(siteItem);
+  const enterprisePages = ensureEnterpriseSitePages({
+    site: siteItem?.site || {},
+    pages: toPageRows(siteItem),
+  });
+  const pages = enterprisePages;
   const unique = [];
   const seen = new Set();
   for (const page of pages) {
@@ -117,6 +127,13 @@ export const selectRequiredPagesForSite = ({ siteItem, maxPagesPerSite = 4 }) =>
   }
   if (!unique.length) {
     return [{ path: "/", name: "Home", required_categories: [], role: "home", reason: "fallback_home" }];
+  }
+  if (looksLikeEnterpriseWebsiteSite({ site: siteItem?.site || {}, pages: unique })) {
+    return selectEnterpriseRequiredPages({ site: siteItem?.site || {}, pages: unique }).map((page) => ({
+      ...page,
+      role: classifyPageRole(page),
+      reason: "enterprise_mapped",
+    }));
   }
   const fromPageSpecs = unique.filter((page) => page.source === "page_spec");
   const candidateBase = fromPageSpecs.length ? fromPageSpecs : unique;

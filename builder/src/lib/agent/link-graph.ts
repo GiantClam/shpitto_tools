@@ -1,4 +1,5 @@
 import type { SiteBlueprint } from "@/lib/agent/site-planner";
+import { ENTERPRISE_SITE_PAGES } from "@/lib/agent/enterprise-site-structure";
 
 type NavVariant = "primary" | "secondary" | "link";
 
@@ -139,6 +140,33 @@ const getContentPages = (blueprint: SiteBlueprint) =>
     return Array.isArray(page.sectionTokens) && page.sectionTokens.some((token) => !isGlobalChromeToken(token));
   });
 
+const matchEnterprisePages = (blueprint: SiteBlueprint) => {
+  const pagesByPath = new Map(blueprint.pages.map((page) => [normalizePath(page.path), page] as const));
+  return ENTERPRISE_SITE_PAGES.map((definition) => {
+    const page = pagesByPath.get(normalizePath(definition.path));
+    if (!page) return null;
+    return {
+      key: definition.key,
+      label: sanitizeLabel(page.name, definition.name),
+      href: normalizePath(page.path),
+    };
+  }).filter((item): item is { key: string; label: string; href: string } => Boolean(item));
+};
+
+const isEnterpriseBlueprint = (blueprint: SiteBlueprint) => {
+  const matched = matchEnterprisePages(blueprint);
+  const matchedKeys = new Set(matched.map((item) => item.key));
+  return (
+    matchedKeys.has("home") &&
+    matchedKeys.has("products") &&
+    matchedKeys.has("solutions") &&
+    matchedKeys.has("cases") &&
+    matchedKeys.has("about") &&
+    matchedKeys.has("contact") &&
+    matchedKeys.has("privacy")
+  );
+};
+
 const navPriority = (page: SiteBlueprint["pages"][number]) => {
   const path = normalizePath(page.path);
   const token = `${path} ${sanitizeLabel(page.name, "Page")}`.toLowerCase();
@@ -160,6 +188,16 @@ const sortPagesForNavigation = (pages: SiteBlueprint["pages"]) =>
   });
 
 const buildNavigationLinks = (blueprint: SiteBlueprint): SiteNavLink[] => {
+  if (isEnterpriseBlueprint(blueprint)) {
+    const links = dedupeLinks(
+      matchEnterprisePages(blueprint).map((item) => ({
+        label: item.label,
+        href: item.href,
+        variant: "link" as const,
+      }))
+    );
+    if (links.length) return links;
+  }
   const contentPages = sortPagesForNavigation(getContentPages(blueprint));
   const links = dedupeLinks(
     contentPages.slice(0, 8).map((page, index) => ({
@@ -187,6 +225,43 @@ const buildDefaultNavCtas = (blueprint: SiteBlueprint): SiteLinkGraph["defaultNa
 };
 
 const buildFooterColumns = (blueprint: SiteBlueprint): SiteFooterColumn[] => {
+  if (isEnterpriseBlueprint(blueprint)) {
+    const enterpriseLinks = matchEnterprisePages(blueprint);
+    const byKey = new Map(enterpriseLinks.map((item) => [item.key, item] as const));
+    const pick = (key: string, fallbackLabel: string, fallbackHref = "/") => ({
+      label: byKey.get(key)?.label ?? fallbackLabel,
+      href: byKey.get(key)?.href ?? fallbackHref,
+      variant: "link" as const,
+    });
+    return [
+      {
+        title: "Overview",
+        links: [
+          pick("home", "Home"),
+          pick("core_product", "Core Product"),
+          pick("products", "Products"),
+        ],
+      },
+      {
+        title: "Solutions",
+        links: [
+          pick("solutions", "Solutions"),
+          pick("cases", "Cases"),
+        ],
+      },
+      {
+        title: "Company",
+        links: [
+          pick("about", "About"),
+          pick("contact", "Contact"),
+        ],
+      },
+      {
+        title: "Legal",
+        links: [pick("privacy", "Privacy")],
+      },
+    ];
+  }
   const contentPages = sortPagesForNavigation(getContentPages(blueprint));
   const allPages = blueprint.pages;
   const aboutHref =
@@ -293,7 +368,7 @@ export const buildSiteLinkGraph = (blueprint: SiteBlueprint): SiteLinkGraph => {
 
 export const applyLinkGraphToNavbarProps = (props: Record<string, unknown>, graph: SiteLinkGraph) => {
   const next: Record<string, unknown> = { ...props };
-  const navLinks = graph.navigationLinks.map((link) => ({ ...link })).slice(0, 5);
+  const navLinks = graph.navigationLinks.map((link) => ({ ...link })).slice(0, 8);
   next.links = navLinks;
   const ctas = Array.isArray(next.ctas) ? next.ctas : [];
   const sanitizedCtas = ctas
@@ -315,7 +390,7 @@ export const applyLinkGraphToNavbarProps = (props: Record<string, unknown>, grap
     next[`navl${slot}text`] = link.label;
     next[`navl${slot}href`] = link.href;
   });
-  for (let index = navLinks.length; index < 5; index += 1) {
+  for (let index = navLinks.length; index < 8; index += 1) {
     const slot = index + 1;
     next[`navl${slot}text`] = "";
     next[`navl${slot}href`] = graph.homeHref;

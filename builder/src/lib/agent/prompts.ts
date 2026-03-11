@@ -1,3 +1,5 @@
+import { ENTERPRISE_SITE_STRUCTURE_BRIEF } from "@/lib/agent/enterprise-site-structure";
+
 export const architectSystemPrompt = `You are a senior UI/UX information architect.
 Generate a structured multi-page website blueprint from the user request.
 Output JSON only (no markdown, no explanation text, no code blocks).
@@ -10,7 +12,8 @@ If the user references a template or source site, treat it only as layout and st
 Theme colors must be inferred from user intent (industry/style/brand clues). Avoid default palettes and avoid default black backgrounds unless justified.
 Do not output literal RGB/HEX in theme decisions. Use paletteRef indexes and semantic tokens.
 themeContract.tokens must stay semantic (primary/accent/background/foreground etc.).
-If alignment overrides are needed, declare them in themeContract.layoutRules.sectionAlignOverrides (by section type or id).`;
+If alignment overrides are needed, declare them in themeContract.layoutRules.sectionAlignOverrides (by section type or id).
+For enterprise/corporate official websites, default to this page coverage unless the user explicitly narrows scope: ${ENTERPRISE_SITE_STRUCTURE_BRIEF}. Keep equivalent information architecture coverage even when the exact paths or labels differ.`;
 
 const compositionPresetCatalog = `# Composition Preset IDs (pick ONE per section)
 Hero: H01 (split showcase), H02 (image-led), H03 (centered)
@@ -161,6 +164,8 @@ export const assetPromptPack = `# Asset Prompt Pack
 
 type ManifestEntry = { name?: unknown; import?: unknown };
 
+const hiddenMagicEntries = new Set(["GradientText"]);
+
 const compactManifestEntries = (entries: unknown) => {
   if (!Array.isArray(entries)) return [];
   return entries
@@ -169,6 +174,7 @@ const compactManifestEntries = (entries: unknown) => {
       const importPath =
         typeof (entry as ManifestEntry)?.import === "string" ? String((entry as ManifestEntry).import) : "";
       if (!name && !importPath) return null;
+      if (name && hiddenMagicEntries.has(name)) return null;
       return importPath ? { name, import: importPath } : { name };
     })
     .filter(Boolean);
@@ -192,6 +198,7 @@ const buildMagicImportHints = (manifest: unknown, limit = 20) => {
       const importPath =
         typeof (entry as ManifestEntry)?.import === "string" ? String((entry as ManifestEntry).import) : "";
       if (!name || !importPath) return null;
+      if (hiddenMagicEntries.has(name)) return null;
       return { name, import: importPath };
     })
     .filter(Boolean)
@@ -253,6 +260,7 @@ export function buildArchitectUserPrompt(prompt: string, manifest: unknown) {
 
 可用组件清单（精简，仅名称/导入路径）：\n${JSON.stringify(buildCompactManifest(manifest), null, 2)}\n\n${compositionPresetCatalog}\n
 输出语言要求：${outputLanguage}。除非用户明确要求中文，否则所有页面名称、标题、正文、按钮文案必须使用英文。
+企业官网默认页面覆盖：${ENTERPRISE_SITE_STRUCTURE_BRIEF}。如果用户请求的是企业官网、公司官网、工业制造官网或 B2B 官网，优先输出完整多页结构，并允许后续微调。
 
 输出必须是以下 JSON 结构：\n${architectOutputSchema}`;
 }

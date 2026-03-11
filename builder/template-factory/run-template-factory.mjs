@@ -10,6 +10,13 @@ import { buildCustomSectionPrompt, buildPuckFieldsForCustomComponent } from "./g
 import { materializeComponent, materializeFromPayload, writeGeneratedConfig } from "./materialize-custom-components.mjs";
 import { resolveCliOptions } from "./config/resolve-options.mjs";
 import { evaluateRunGates } from "./gates/evaluate-run-gates.mjs";
+import {
+  buildEnterpriseCanonicalFooterColumns,
+  buildEnterpriseCanonicalLinks,
+  ensureEnterpriseSitePages,
+  looksLikeEnterpriseWebsiteSite,
+  selectEnterpriseRequiredPages,
+} from "./enterprise-site-structure.mjs";
 import { selectRequiredCases, selectRequiredPagesForSite } from "./regression/select-required-cases.mjs";
 import { buildDesignContract, evaluateDesignContractCompliance } from "./quality/design-contract.mjs";
 import { buildAssemblyManifest, evaluateKeyFlowIntegrity } from "./quality/assembly.mjs";
@@ -7731,9 +7738,9 @@ const inferPaletteProfileFromVisualSignature = (visualSignature, htmlColors = []
   if (isDark && (blueCyan || hasTeal)) {
     return {
       paletteProfile: "deep-blue-cyan",
-      navGradient: "linear-gradient(180deg,#03122e 0%,#071b45 100%)",
-      bodyGradient: "linear-gradient(180deg,#04152f 0%,#08234c 100%)",
-      footerGradient: "linear-gradient(180deg,#03122e 0%,#020a1d 100%)",
+      navGradient: "linear-gradient(180deg,#03122e 0%,#03122e 100%)",
+      bodyGradient: "linear-gradient(180deg,#04152f 0%,#04152f 100%)",
+      footerGradient: "linear-gradient(180deg,#03122e 0%,#03122e 100%)",
       overlayStrong: "rgba(3, 16, 40, 0.58)",
       overlaySoft: "rgba(2,10,24,0.24)",
       accent: extractedAccent || (hasTeal ? "#009999" : "#00c6d8"),
@@ -7743,9 +7750,9 @@ const inferPaletteProfileFromVisualSignature = (visualSignature, htmlColors = []
   if (isDark) {
     return {
       paletteProfile: "dark-neutral",
-      navGradient: "linear-gradient(180deg,#0b1220 0%,#111827 100%)",
-      bodyGradient: "linear-gradient(180deg,#0f172a 0%,#111827 100%)",
-      footerGradient: "linear-gradient(180deg,#0a1020 0%,#060a16 100%)",
+      navGradient: "linear-gradient(180deg,#0b1220 0%,#0b1220 100%)",
+      bodyGradient: "linear-gradient(180deg,#0f172a 0%,#0f172a 100%)",
+      footerGradient: "linear-gradient(180deg,#0a1020 0%,#0a1020 100%)",
       overlayStrong: "rgba(9, 16, 30, 0.56)",
       overlaySoft: "rgba(8,10,16,0.2)",
       accent: extractedAccent || "#38bdf8",
@@ -7754,9 +7761,9 @@ const inferPaletteProfileFromVisualSignature = (visualSignature, htmlColors = []
   }
   return {
     paletteProfile: "light-neutral",
-    navGradient: "linear-gradient(180deg,#f8f8f8 0%,#efefef 100%)",
-    bodyGradient: "linear-gradient(180deg,#ffffff 0%,#f4f4f4 100%)",
-    footerGradient: "linear-gradient(180deg,#f3f3f3 0%,#e8e8e8 100%)",
+    navGradient: "linear-gradient(180deg,#f8f8f8 0%,#f8f8f8 100%)",
+    bodyGradient: "linear-gradient(180deg,#ffffff 0%,#ffffff 100%)",
+    footerGradient: "linear-gradient(180deg,#f3f3f3 0%,#f3f3f3 100%)",
     overlayStrong: "rgba(20, 20, 20, 0.22)",
     overlaySoft: "rgba(18,18,18,0.12)",
     accent: extractedAccent || "#111827",
@@ -9353,9 +9360,8 @@ const applyStructureFirstToSectionDefaults = ({
       // keep nav/footer color lock when available
     } else if (!next.backgroundGradient) {
       const primary = normalizeColorToken(palette?.surface || "") || "#f3f4f6";
-      const secondary = normalizeColorToken(palette?.surfaceMuted || "") || "#e5e7eb";
       next.background = "gradient";
-      next.backgroundGradient = `linear-gradient(180deg,${primary} 0%,${secondary} 100%)`;
+      next.backgroundGradient = `linear-gradient(180deg,${primary} 0%,${primary} 100%)`;
       next.backgroundOverlay = "";
       next.backgroundOverlayOpacity = 0;
       next.backgroundBlur = 0;
@@ -15454,8 +15460,14 @@ const pickRepresentativePathByType = ({ pages = [], perTypeLimits = {}, represen
 };
 
 const selectPageSpecSourcePages = ({ site, sitePages = [] }) => {
-  const pages = Array.isArray(sitePages) ? sitePages : [];
+  const pages = ensureEnterpriseSitePages({ site, pages: Array.isArray(sitePages) ? sitePages : [] });
   if (!pages.length) return { pages: [], notes: [] };
+  if (looksLikeEnterpriseWebsiteSite({ site, pages })) {
+    return {
+      pages: selectEnterpriseRequiredPages({ site, pages }),
+      notes: ["Enterprise site structure: canonical page coverage enforced."],
+    };
+  }
   const policy = resolvePageSpecSamplingPolicy(site);
   const hasPerTypeLimits = Object.keys(policy.perTypeLimits || {}).length > 0;
   const hasTotalLimit = Number(policy.maxPageSpecs || 0) > 0;
@@ -15877,11 +15889,14 @@ const buildSpecPack = ({
       : []),
   ].filter((row, index, arr) => arr.findIndex((x) => `${x.path}:${x.reason}` === `${row.path}:${row.reason}`) === index);
 
-  const filteredSitePages = sitePages.filter((page) => {
-    if (!page?.path) return false;
-    const normalizedPath = normalizeTemplatePagePath(page.path);
-    if (normalizedPath === "/") return true;
-    return includeUncrawledPages ? true : successfulPathSet.has(normalizedPath);
+  const filteredSitePages = ensureEnterpriseSitePages({
+    site,
+    pages: sitePages.filter((page) => {
+      if (!page?.path) return false;
+      const normalizedPath = normalizeTemplatePagePath(page.path);
+      if (normalizedPath === "/") return true;
+      return includeUncrawledPages ? true : successfulPathSet.has(normalizedPath);
+    }),
   });
   const taxonomyEnabled = parseBool(
     specialRules.pageTaxonomyEnabled ??
@@ -15992,6 +16007,7 @@ const buildSpecPack = ({
       visualHashDistanceThreshold: taxonomyVisualHashDistanceThreshold,
     };
   }
+  taxonomySitePages = ensureEnterpriseSitePages({ site, pages: taxonomySitePages });
   const intakeReviewSource =
     (site?.intakeReview && typeof site.intakeReview === "object"
       ? site.intakeReview
@@ -20556,6 +20572,12 @@ const resolvePageCatalogForHref = ({ sourcePayload = null, pageCatalog = [] } = 
   return dedupePenPageCatalog(payloadPages);
 };
 
+const isEnterprisePenPayload = ({ sourcePayload = null, pageCatalog = [] } = {}) => {
+  const site = sourcePayload?.site && typeof sourcePayload.site === "object" ? sourcePayload.site : sourcePayload || {};
+  const pages = resolvePageCatalogForHref({ sourcePayload, pageCatalog });
+  return looksLikeEnterpriseWebsiteSite({ site, pages });
+};
+
 const findPagePathByKeywords = (catalog = [], keywords = []) => {
   const entries = Array.isArray(catalog) ? catalog : [];
   for (const page of entries) {
@@ -20748,6 +20770,13 @@ const buildHeroCarouselSectionFromPenNodes = (nodes = [], index = 0, { sourcePay
 };
 
 const buildColumnsFromFooterPenSection = (node = {}, { sourcePayload = null } = {}) => {
+  if (isEnterprisePenPayload({ sourcePayload })) {
+    return buildEnterpriseCanonicalFooterColumns({
+      pages: resolvePageCatalogForHref({ sourcePayload }),
+      site: sourcePayload?.site && typeof sourcePayload.site === "object" ? sourcePayload.site : sourcePayload || {},
+      requireExisting: false,
+    });
+  }
   const directChildren = Array.isArray(node?.children) ? node.children : [];
   const groups = directChildren.filter((child) => String(child?.type || "").toLowerCase() === "frame");
   const columns = groups
@@ -20923,6 +20952,17 @@ const buildPayloadSectionFromPenNode = (node = {}, index = 0, { sourcePayload = 
     const logo = texts[0] || "Site";
     const navLabels = texts.slice(1, 11);
     const ctaLabel = texts.find((text) => /shop|contact|learn|discover|buy|get/i.test(text)) || "";
+    const enterpriseLinks = isEnterprisePenPayload({ sourcePayload })
+      ? buildEnterpriseCanonicalLinks({
+          pages: resolvePageCatalogForHref({ sourcePayload }),
+          site: sourcePayload?.site && typeof sourcePayload.site === "object" ? sourcePayload.site : sourcePayload || {},
+          requireExisting: false,
+        }).map((link) => ({
+          label: link.label,
+          href: link.href,
+          variant: "link",
+        }))
+      : [];
     return finalizePayloadSection({
       type: "Navbar",
       _key: baseKey,
@@ -20930,11 +20970,13 @@ const buildPayloadSectionFromPenNode = (node = {}, index = 0, { sourcePayload = 
         ...styleBackground,
         ...styleFonts,
         logo: logo ? { alt: logo } : undefined,
-        links: navLabels.map((label) => ({
-          label,
-          href: buildHrefForPenLabel({ label, sourcePayload }),
-          variant: "link",
-        })),
+        links: enterpriseLinks.length
+          ? enterpriseLinks
+          : navLabels.map((label) => ({
+              label,
+              href: buildHrefForPenLabel({ label, sourcePayload }),
+              variant: "link",
+            })),
         ctas: ctaLabel
           ? [
               {

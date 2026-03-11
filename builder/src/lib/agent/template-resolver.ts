@@ -106,16 +106,16 @@ const inferPageType = (pathValue: unknown, nameValue: unknown): TemplatePageType
   if (!pathToken || pathToken === "/") return "home";
   if (pathToken === "/" || /(^|[^a-z])home($|[^a-z])/.test(token)) return "home";
   if (/(about|company|story|mission|vision|who|team)/.test(token)) return "about";
+  if (/(legal|privacy|term|policy|cookie|gdpr)/.test(token)) return "legal";
+  if (/(support|help|faq|docs|documentation)/.test(token)) return "support";
+  if (/(blog|news|journal|article|insight|press)/.test(token)) return "blog";
+  if (/(contact|quote|inquir|demo|consult|book)/.test(token)) return "contact";
+  if (/(case|customer|testimonial|proof|review|success|portfolio|use-case|usecase|results?)/.test(token))
+    return "cases";
   if (/(solution|service|capabilit|workflow|industry|technology|technologies|integration)/.test(token))
     return "solutions";
   if (/(product|catalog|collection|pricing|plan|store|shop|telescope|binocular|device|hardware)/.test(token))
     return "products";
-  if (/(case|customer|testimonial|proof|review|success|portfolio|use-case|usecase|results?)/.test(token))
-    return "cases";
-  if (/(contact|quote|inquir|demo|consult|book)/.test(token)) return "contact";
-  if (/(blog|news|journal|article|insight|press)/.test(token)) return "blog";
-  if (/(legal|privacy|term|policy|cookie|gdpr)/.test(token)) return "legal";
-  if (/(support|help|faq|docs|documentation)/.test(token)) return "support";
   return "generic";
 };
 
@@ -214,10 +214,10 @@ const parseProfilePages = (profile: StyleProfile) => {
 
 const defaultKindsByPageType: Record<TemplatePageType, TemplatePlanSectionKind[]> = {
   home: ["navigation", "hero", "story", "products", "socialproof", "cta", "footer"],
-  about: ["navigation", "hero", "story", "approach", "products", "socialproof", "cta", "footer"],
-  solutions: ["navigation", "hero", "story", "approach", "products", "socialproof", "contact", "cta", "footer"],
+  about: ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
+  solutions: ["navigation", "hero", "approach", "products", "story", "socialproof", "contact", "cta", "footer"],
   products: ["navigation", "hero", "story", "products", "approach", "socialproof", "contact", "cta", "footer"],
-  cases: ["navigation", "hero", "story", "products", "socialproof", "contact", "cta", "footer"],
+  cases: ["navigation", "hero", "products", "socialproof", "story", "contact", "cta", "footer"],
   contact: ["navigation", "hero", "story", "socialproof", "contact", "cta", "footer"],
   blog: ["navigation", "hero", "story", "products", "socialproof", "cta", "footer"],
   legal: ["navigation", "story", "footer"],
@@ -227,9 +227,16 @@ const defaultKindsByPageType: Record<TemplatePageType, TemplatePlanSectionKind[]
 
 const dedupeKinds = (kinds: TemplatePlanSectionKind[]) => {
   const set = new Set<TemplatePlanSectionKind>();
-  kinds.forEach((kind) => set.add(kind));
-  return sectionOrder.filter((kind) => set.has(kind));
+  const deduped: TemplatePlanSectionKind[] = [];
+  kinds.forEach((kind) => {
+    if (set.has(kind)) return;
+    set.add(kind);
+    deduped.push(kind);
+  });
+  return deduped;
 };
+
+const strictProfilePageTypes = new Set<TemplatePageType>(["about", "solutions", "cases"]);
 
 const filterTemplateFirstFallbackKinds = (
   pageType: TemplatePageType,
@@ -250,10 +257,17 @@ const chooseProfilePageForInput = (input: {
   const path = normalizePagePath(input.pagePath);
   const pathToken = path.toLowerCase();
   const nameToken = String(input.pageName || "").toLowerCase();
-  const scored = input.profilePages
+  const exactPathMatch = input.profilePages.find((candidate) => normalizePagePath(candidate.path) === path);
+  if (exactPathMatch) {
+    input.usedProfilePaths.add(normalizePagePath(exactPathMatch.path));
+    return exactPathMatch;
+  }
+  const candidatePool = strictProfilePageTypes.has(input.pageType)
+    ? input.profilePages.filter((candidate) => candidate.pageType === input.pageType)
+    : input.profilePages;
+  const scored = candidatePool
     .map((candidate) => {
       let score = 0;
-      if (normalizePagePath(candidate.path) === path) score += 1000;
       if (candidate.pageType === input.pageType) score += 200;
       if (input.pageType !== "home" && candidate.pageType === "home") score -= 80;
       const candidateToken = `${candidate.path} ${candidate.name}`.toLowerCase();
@@ -267,6 +281,17 @@ const chooseProfilePageForInput = (input: {
   const picked = scored[0]?.candidate;
   if (picked) input.usedProfilePaths.add(normalizePagePath(picked.path));
   return picked;
+};
+
+const isCompatibleProfilePage = (
+  pageType: TemplatePageType,
+  candidate: ProfilePageLike | undefined
+) => {
+  if (!candidate) return false;
+  if (candidate.pageType === pageType) return true;
+  if (pageType !== "home" && candidate.pageType === "home") return false;
+  if (strictProfilePageTypes.has(pageType)) return false;
+  return true;
 };
 
 const profileTemplateKinds = (profile: StyleProfile): TemplatePlanSectionKind[] =>
@@ -294,11 +319,19 @@ const planPageSections = (input: {
   pageType: TemplatePageType;
 }) => {
   const defaultKinds = defaultKindsByPageType[input.pageType] || defaultKindsByPageType.generic;
-  const pageKinds = dedupeKinds([
-    ...(input.profilePage?.kinds?.length ? input.profilePage.kinds : []),
-    ...(input.fallbackKinds || []),
-    ...defaultKinds,
-  ]);
+  const profileKinds = input.profilePage?.kinds?.length ? input.profilePage.kinds : [];
+  const shouldPreferDefaultKinds =
+    input.pageType === "solutions" ||
+    input.pageType === "cases" ||
+    (input.pageType === "about" && !input.profilePage);
+  const orderedDefaults =
+    shouldPreferDefaultKinds
+      ? defaultKinds
+      : dedupeKinds([...profileKinds, ...(input.fallbackKinds || []), ...defaultKinds]);
+  const pageKinds =
+    shouldPreferDefaultKinds
+      ? dedupeKinds([...orderedDefaults, ...profileKinds])
+      : orderedDefaults;
   if (!pageKinds.length) return input.page;
 
   const sourceSections = Array.isArray(input.page.sections)
@@ -323,8 +356,10 @@ const planPageSections = (input: {
   };
 };
 
-const chooseProfile = (prompt: string): StyleProfile | null => {
-  const direct = selectStyleProfile(prompt);
+const chooseProfile = (prompt: string, pages: PageLike[] = []): StyleProfile | null => {
+  const direct = selectStyleProfile(prompt, {
+    pagePaths: pages.map((page) => normalizePagePath(page.path)),
+  });
   if (direct) return direct;
   const profiles = getStyleProfiles();
   const normalizedPrompt = String(prompt || "").toLowerCase();
@@ -340,7 +375,7 @@ export const resolveTemplatePlan = (input: {
   pages: PageLike[];
   strategy: "llm_first" | "hybrid" | "template_first";
 }): LayeredTemplateResolution => {
-  const profile = chooseProfile(input.prompt);
+  const profile = chooseProfile(input.prompt, input.pages);
   if (!profile || input.strategy === "llm_first") {
     return {
       profileId: profile?.id ?? null,
@@ -397,11 +432,14 @@ export const resolveTemplatePlan = (input: {
               profilePages,
               usedProfilePaths,
             });
-          if (matched) {
-            matchedPagePaths.push(normalizePagePath(matched.path));
+          const compatibleMatch = isCompatibleProfilePage(pageType, matched) ? matched : undefined;
+          if (compatibleMatch) {
+            matchedPagePaths.push(key);
             matchedTemplatePageCount += 1;
           }
-          return matched ? { ...page, path: key, name: page.name || matched.name } : { ...page, path: key };
+          return compatibleMatch
+            ? { ...page, path: key, name: page.name || compatibleMatch.name }
+            : { ...page, path: key };
         });
       } else {
         mergedPages = profilePages.map((tpl) => {
@@ -425,8 +463,9 @@ export const resolveTemplatePlan = (input: {
             profilePages,
             usedProfilePaths,
           });
-        if (matched) {
-          matchedPagePaths.push(normalizePagePath(matched.path));
+        const compatibleMatch = isCompatibleProfilePage(pageType, matched) ? matched : undefined;
+        if (compatibleMatch) {
+          matchedPagePaths.push(key);
           matchedTemplatePageCount += 1;
         }
       });
@@ -461,10 +500,7 @@ export const resolveTemplatePlan = (input: {
         profilePages,
         usedProfilePaths,
       });
-    const profilePage =
-      matchedProfilePage && matchedProfilePage.pageType === "home" && pageType !== "home"
-        ? undefined
-        : matchedProfilePage;
+    const profilePage = isCompatibleProfilePage(pageType, matchedProfilePage) ? matchedProfilePage : undefined;
     const fallbackKinds =
       input.strategy === "template_first"
         ? filterTemplateFirstFallbackKinds(
