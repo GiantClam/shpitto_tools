@@ -180,7 +180,7 @@ export const selectEnterpriseRequiredPages = ({ pages = [], site = {} } = {}) =>
 export const buildEnterpriseCanonicalLinks = ({ pages = [], site = {}, requireExisting = false } = {}) => {
   const normalizedPages = ensureEnterpriseSitePages({ pages, site });
   const byPath = new Map(
-    normalizedPages.map((page) => [normalizeEnterprisePagePath(page?.path || "/"), page] as const)
+    normalizedPages.map((page) => [normalizeEnterprisePagePath(page?.path || "/"), page])
   );
   return ENTERPRISE_SITE_PAGES.map((definition) => {
     const existing = byPath.get(definition.path);
@@ -195,7 +195,7 @@ export const buildEnterpriseCanonicalLinks = ({ pages = [], site = {}, requireEx
 
 export const buildEnterpriseCanonicalFooterColumns = ({ pages = [], site = {}, requireExisting = false } = {}) => {
   const links = buildEnterpriseCanonicalLinks({ pages, site, requireExisting });
-  const byKey = new Map(links.map((item) => [item.key, item] as const));
+  const byKey = new Map(links.map((item) => [item.key, item]));
   const pick = (key, fallbackLabel, fallbackHref = "/") => ({
     label: byKey.get(key)?.label || fallbackLabel,
     href: byKey.get(key)?.href || fallbackHref,
