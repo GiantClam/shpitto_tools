@@ -12,6 +12,30 @@ export type SandboxInitialPayload = {
   pageIndex: number;
 };
 
+const injectThemeIntoPageContent = (
+  page: { path: string; name: string; data: any },
+  theme?: Record<string, unknown>
+) => {
+  if (!theme || typeof theme !== "object") return page;
+  const rawContent = Array.isArray(page?.data?.content) ? page.data.content : [];
+  const nextContent = rawContent.map((item: any) => {
+    if (!item || typeof item !== "object") return item;
+    const props = item.props && typeof item.props === "object" ? { ...item.props } : {};
+    if (!props.theme) props.theme = theme;
+    return {
+      ...item,
+      props,
+    };
+  });
+  return {
+    ...page,
+    data: {
+      ...(page?.data || {}),
+      content: nextContent,
+    },
+  };
+};
+
 export type MotionMode = "off" | "subtle" | "showcase";
 
 export const normalizePagePath = (value: string) => {
@@ -164,7 +188,7 @@ export const buildSandboxInitialPayload = (
 
   return {
     components: resolvedComponents,
-    page: pageWithCurrentPath,
+    page: injectThemeIntoPageContent(pageWithCurrentPath, theme),
     availablePagePaths,
     theme,
     pageIndex,
