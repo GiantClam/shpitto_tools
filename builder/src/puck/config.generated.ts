@@ -11,34 +11,34 @@ import {
   textField,
   textareaField,
 } from "@/puck/field-adapters";
-import * as TemplateExclusiveFrameworkHomeNavigationTopnavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-framework-home-navigation-topnavpen-primary/block";
-import * as TemplateExclusiveFrameworkHomeHeroHero1penAlt1BlockModule from "@/components/blocks/template-exclusive-framework-home-hero-hero1pen-alt1/block";
-import * as TemplateExclusiveFrameworkHomeHeroHero2penAlt2BlockModule from "@/components/blocks/template-exclusive-framework-home-hero-hero2pen-alt2/block";
-import * as TemplateExclusiveFrameworkHomeHeroHero3penAlt3BlockModule from "@/components/blocks/template-exclusive-framework-home-hero-hero3pen-alt3/block";
-import * as TemplateExclusiveFrameworkHomeHeroHero4penAlt4BlockModule from "@/components/blocks/template-exclusive-framework-home-hero-hero4pen-alt4/block";
-import * as TemplateExclusiveFrameworkHomeStoryMidtitlepenAlt6BlockModule from "@/components/blocks/template-exclusive-framework-home-story-midtitlepen-alt6/block";
-import * as TemplateExclusiveFrameworkHomeStoryFixheadingpenAlt7BlockModule from "@/components/blocks/template-exclusive-framework-home-story-fixheadingpen-alt7/block";
-import * as TemplateExclusiveFrameworkHomeStoryMosaicpenAlt8BlockModule from "@/components/blocks/template-exclusive-framework-home-story-mosaicpen-alt8/block";
-import * as TemplateExclusiveFrameworkHomeStoryHfpenAlt9BlockModule from "@/components/blocks/template-exclusive-framework-home-story-hfpen-alt9/block";
-import * as TemplateExclusiveFrameworkAboutNavigationTopnavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-framework-about-navigation-topnavpen-primary/block";
-import * as TemplateExclusiveFrameworkAboutStoryAboutmainpenAlt1BlockModule from "@/components/blocks/template-exclusive-framework-about-story-aboutmainpen-alt1/block";
-import * as TemplateExclusiveFrameworkAboutFooterFooterpenAlt2BlockModule from "@/components/blocks/template-exclusive-framework-about-footer-footerpen-alt2/block";
-import * as TemplateExclusiveFrameworkSupportNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-framework-support-navigation-navpen-primary/block";
-import * as TemplateExclusiveFrameworkSupportHeroSupportheropenAlt1BlockModule from "@/components/blocks/template-exclusive-framework-support-hero-supportheropen-alt1/block";
-import * as TemplateExclusiveFrameworkSupportContactSupportmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-framework-support-contact-supportmainpen-alt2/block";
-import * as TemplateExclusiveFrameworkSupportFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-framework-support-footer-footerpen-alt3/block";
-import * as TemplateExclusiveFrameworkProductsNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-framework-products-navigation-navpen-primary/block";
-import * as TemplateExclusiveFrameworkProductsHeroBizheropenAlt1BlockModule from "@/components/blocks/template-exclusive-framework-products-hero-bizheropen-alt1/block";
-import * as TemplateExclusiveFrameworkProductsStoryBizmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-framework-products-story-bizmainpen-alt2/block";
-import * as TemplateExclusiveFrameworkProductsFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-framework-products-footer-footerpen-alt3/block";
-import * as TemplateExclusiveFrameworkContactNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-framework-contact-navigation-navpen-primary/block";
-import * as TemplateExclusiveFrameworkContactHeroContactheropenAlt1BlockModule from "@/components/blocks/template-exclusive-framework-contact-hero-contactheropen-alt1/block";
-import * as TemplateExclusiveFrameworkContactContactContactmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-framework-contact-contact-contactmainpen-alt2/block";
-import * as TemplateExclusiveFrameworkContactFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-framework-contact-footer-footerpen-alt3/block";
-import * as TemplateExclusiveFrameworkBlogNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-framework-blog-navigation-navpen-primary/block";
-import * as TemplateExclusiveFrameworkBlogNavigationCategorybarpenAlt1BlockModule from "@/components/blocks/template-exclusive-framework-blog-navigation-categorybarpen-alt1/block";
-import * as TemplateExclusiveFrameworkBlogStoryBlogmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-framework-blog-story-blogmainpen-alt2/block";
-import * as TemplateExclusiveFrameworkBlogFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-framework-blog-footer-footerpen-alt3/block";
+import * as TemplateExclusivePenSiteHomeNavigationTopnavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-home-navigation-topnavpen-primary/block";
+import * as TemplateExclusivePenSiteHomeHeroHero1penAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-home-hero-hero1pen-alt1/block";
+import * as TemplateExclusivePenSiteHomeHeroHero2penAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-home-hero-hero2pen-alt2/block";
+import * as TemplateExclusivePenSiteHomeHeroHero3penAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-home-hero-hero3pen-alt3/block";
+import * as TemplateExclusivePenSiteHomeHeroHero4penAlt4BlockModule from "@/components/blocks/template-exclusive-pen-site-home-hero-hero4pen-alt4/block";
+import * as TemplateExclusivePenSiteHomeStoryMidtitlepenAlt6BlockModule from "@/components/blocks/template-exclusive-pen-site-home-story-midtitlepen-alt6/block";
+import * as TemplateExclusivePenSiteHomeStoryFixheadingpenAlt7BlockModule from "@/components/blocks/template-exclusive-pen-site-home-story-fixheadingpen-alt7/block";
+import * as TemplateExclusivePenSiteHomeStoryMosaicpenAlt8BlockModule from "@/components/blocks/template-exclusive-pen-site-home-story-mosaicpen-alt8/block";
+import * as TemplateExclusivePenSiteHomeStoryHfpenAlt9BlockModule from "@/components/blocks/template-exclusive-pen-site-home-story-hfpen-alt9/block";
+import * as TemplateExclusivePenSiteAboutNavigationTopnavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-about-navigation-topnavpen-primary/block";
+import * as TemplateExclusivePenSiteAboutStoryAboutmainpenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-about-story-aboutmainpen-alt1/block";
+import * as TemplateExclusivePenSiteAboutFooterFooterpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-about-footer-footerpen-alt2/block";
+import * as TemplateExclusivePenSiteSupportNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-support-navigation-navpen-primary/block";
+import * as TemplateExclusivePenSiteSupportHeroSupportheropenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-support-hero-supportheropen-alt1/block";
+import * as TemplateExclusivePenSiteSupportContactSupportmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-support-contact-supportmainpen-alt2/block";
+import * as TemplateExclusivePenSiteSupportFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-support-footer-footerpen-alt3/block";
+import * as TemplateExclusivePenSiteProductsNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-products-navigation-navpen-primary/block";
+import * as TemplateExclusivePenSiteProductsHeroBizheropenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-products-hero-bizheropen-alt1/block";
+import * as TemplateExclusivePenSiteProductsStoryBizmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-products-story-bizmainpen-alt2/block";
+import * as TemplateExclusivePenSiteProductsFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-products-footer-footerpen-alt3/block";
+import * as TemplateExclusivePenSiteContactNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-contact-navigation-navpen-primary/block";
+import * as TemplateExclusivePenSiteContactHeroContactheropenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-contact-hero-contactheropen-alt1/block";
+import * as TemplateExclusivePenSiteContactContactContactmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-contact-contact-contactmainpen-alt2/block";
+import * as TemplateExclusivePenSiteContactFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-contact-footer-footerpen-alt3/block";
+import * as TemplateExclusivePenSiteBlogNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-blog-navigation-navpen-primary/block";
+import * as TemplateExclusivePenSiteBlogNavigationCategorybarpenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-blog-navigation-categorybarpen-alt1/block";
+import * as TemplateExclusivePenSiteBlogStoryBlogmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-blog-story-blogmainpen-alt2/block";
+import * as TemplateExclusivePenSiteBlogFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-blog-footer-footerpen-alt3/block";
 
 const resolveBlockComponent = (
   moduleExports: Record<string, unknown>,
@@ -63,15 +63,15 @@ const renderBlock = (Block: React.ComponentType<any>) => (props: any) =>
   React.createElement(Block, props);
 
 export const generatedComponents: Record<string, any> = {
-    "TemplateExclusiveFrameworkHomeNavigationTopnavpenPrimary": {
+    "TemplateExclusivePenSiteHomeNavigationTopnavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkHomeNavigationTopnavpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-framework-home-navigation-topnavpen-primary/block"
+          TemplateExclusivePenSiteHomeNavigationTopnavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-navigation-topnavpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkHomeNavigationTopnavpenPrimary-1",
+            "id": "TemplateExclusivePenSiteHomeNavigationTopnavpenPrimary-1",
             "logotext": "Framework",
             "logohref": "/",
             "centernavtext": "Products   Laptops   Desktops   Marketplace",
@@ -149,15 +149,15 @@ export const generatedComponents: Record<string, any> = {
         rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusiveFrameworkHomeHeroHero1penAlt1": {
+    "TemplateExclusivePenSiteHomeHeroHero1penAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkHomeHeroHero1penAlt1BlockModule,
-          "@/components/blocks/template-exclusive-framework-home-hero-hero1pen-alt1/block"
+          TemplateExclusivePenSiteHomeHeroHero1penAlt1BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-hero-hero1pen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkHomeHeroHero1penAlt1-1",
+            "id": "TemplateExclusivePenSiteHomeHeroHero1penAlt1-1",
             "h1t1text": "Framework Laptop 13\nisn't our computer. It's\nyours.",
             "h1t2text": "Start computing from $899.00",
             "h1bttext": "Configure now",
@@ -201,15 +201,15 @@ export const generatedComponents: Record<string, any> = {
         hero1rimagesrc: textField("Hero1rimagesrc"),
       },
     },
-    "TemplateExclusiveFrameworkHomeHeroHero2penAlt2": {
+    "TemplateExclusivePenSiteHomeHeroHero2penAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkHomeHeroHero2penAlt2BlockModule,
-          "@/components/blocks/template-exclusive-framework-home-hero-hero2pen-alt2/block"
+          TemplateExclusivePenSiteHomeHeroHero2penAlt2BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-hero-hero2pen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkHomeHeroHero2penAlt2-1",
+            "id": "TemplateExclusivePenSiteHomeHeroHero2penAlt2-1",
             "hero2limagesrc": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
             "h2t1text": "Configure once. Upgrade\nwhere you need.",
             "h2t2text": "Starting at $399",
@@ -253,15 +253,15 @@ export const generatedComponents: Record<string, any> = {
         dxtv6text: textField("Dxtv6text"),
       },
     },
-    "TemplateExclusiveFrameworkHomeHeroHero3penAlt3": {
+    "TemplateExclusivePenSiteHomeHeroHero3penAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkHomeHeroHero3penAlt3BlockModule,
-          "@/components/blocks/template-exclusive-framework-home-hero-hero3pen-alt3/block"
+          TemplateExclusivePenSiteHomeHeroHero3penAlt3BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-hero-hero3pen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkHomeHeroHero3penAlt3-1",
+            "id": "TemplateExclusivePenSiteHomeHeroHero3penAlt3-1",
             "hero3limagesrc": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
             "h3t1text": "Framework Desktop is a big\ncomputer made mini.",
             "h3bttext": "Configure now",
@@ -303,15 +303,15 @@ export const generatedComponents: Record<string, any> = {
         cn9citext: textField("Cn9citext"),
       },
     },
-    "TemplateExclusiveFrameworkHomeHeroHero4penAlt4": {
+    "TemplateExclusivePenSiteHomeHeroHero4penAlt4": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkHomeHeroHero4penAlt4BlockModule,
-          "@/components/blocks/template-exclusive-framework-home-hero-hero4pen-alt4/block"
+          TemplateExclusivePenSiteHomeHeroHero4penAlt4BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-hero-hero4pen-alt4/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkHomeHeroHero4penAlt4-1",
+            "id": "TemplateExclusivePenSiteHomeHeroHero4penAlt4-1",
             "h4t1text": "Computers shouldn't be boring.",
             "h4t2text": "Starting at $799",
             "h4bttext": "Configure now",
@@ -355,15 +355,15 @@ export const generatedComponents: Record<string, any> = {
         hero4rimagesrc: textField("Hero4rimagesrc"),
       },
     },
-    "TemplateExclusiveFrameworkHomeStoryMidtitlepenAlt6": {
+    "TemplateExclusivePenSiteHomeStoryMidtitlepenAlt6": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkHomeStoryMidtitlepenAlt6BlockModule,
-          "@/components/blocks/template-exclusive-framework-home-story-midtitlepen-alt6/block"
+          TemplateExclusivePenSiteHomeStoryMidtitlepenAlt6BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-story-midtitlepen-alt6/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkHomeStoryMidtitlepenAlt6-1",
+            "id": "TemplateExclusivePenSiteHomeStoryMidtitlepenAlt6-1",
             "mid1text": "Upgrade, customize, and repair.",
             "fixlinetext": "Keep track of what we're\nworking on with the Framework\nNewsletter.",
             "theme": {
@@ -401,15 +401,15 @@ export const generatedComponents: Record<string, any> = {
         fixlinetext: textField("Fixlinetext"),
       },
     },
-    "TemplateExclusiveFrameworkHomeStoryFixheadingpenAlt7": {
+    "TemplateExclusivePenSiteHomeStoryFixheadingpenAlt7": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkHomeStoryFixheadingpenAlt7BlockModule,
-          "@/components/blocks/template-exclusive-framework-home-story-fixheadingpen-alt7/block"
+          TemplateExclusivePenSiteHomeStoryFixheadingpenAlt7BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-story-fixheadingpen-alt7/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkHomeStoryFixheadingpenAlt7-1",
+            "id": "TemplateExclusivePenSiteHomeStoryFixheadingpenAlt7-1",
             "jac8ltext": "Let's fix Consumer Electronics.",
             "theme": {
                   "mode": "light",
@@ -445,15 +445,15 @@ export const generatedComponents: Record<string, any> = {
         jac8ltext: textField("Jac8ltext"),
       },
     },
-    "TemplateExclusiveFrameworkHomeStoryMosaicpenAlt8": {
+    "TemplateExclusivePenSiteHomeStoryMosaicpenAlt8": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkHomeStoryMosaicpenAlt8BlockModule,
-          "@/components/blocks/template-exclusive-framework-home-story-mosaicpen-alt8/block"
+          TemplateExclusivePenSiteHomeStoryMosaicpenAlt8BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-story-mosaicpen-alt8/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkHomeStoryMosaicpenAlt8-1",
+            "id": "TemplateExclusivePenSiteHomeStoryMosaicpenAlt8-1",
             "mosaicimagesrc": "https://images.unsplash.com/4/madebyvadim.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
             "theme": {
                   "mode": "light",
@@ -489,15 +489,15 @@ export const generatedComponents: Record<string, any> = {
         mosaicimagesrc: textField("Mosaicimagesrc"),
       },
     },
-    "TemplateExclusiveFrameworkHomeStoryHfpenAlt9": {
+    "TemplateExclusivePenSiteHomeStoryHfpenAlt9": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkHomeStoryHfpenAlt9BlockModule,
-          "@/components/blocks/template-exclusive-framework-home-story-hfpen-alt9/block"
+          TemplateExclusivePenSiteHomeStoryHfpenAlt9BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-home-story-hfpen-alt9/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkHomeStoryHfpenAlt9-1",
+            "id": "TemplateExclusivePenSiteHomeStoryHfpenAlt9-1",
             "k1dhitext": "Company",
             "ovze9text": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
             "rwrx5text": "Social",
@@ -561,15 +561,15 @@ export const generatedComponents: Record<string, any> = {
         meabitext: textField("Meabitext"),
       },
     },
-    "TemplateExclusiveFrameworkAboutNavigationTopnavpenPrimary": {
+    "TemplateExclusivePenSiteAboutNavigationTopnavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkAboutNavigationTopnavpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-framework-about-navigation-topnavpen-primary/block"
+          TemplateExclusivePenSiteAboutNavigationTopnavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-pen-site-about-navigation-topnavpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkAboutNavigationTopnavpenPrimary-1",
+            "id": "TemplateExclusivePenSiteAboutNavigationTopnavpenPrimary-1",
             "logotext": "Framework",
             "logohref": "/",
             "centernavtext": "Products   Laptops   Desktops   Marketplace",
@@ -647,15 +647,15 @@ export const generatedComponents: Record<string, any> = {
         rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusiveFrameworkAboutStoryAboutmainpenAlt1": {
+    "TemplateExclusivePenSiteAboutStoryAboutmainpenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkAboutStoryAboutmainpenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-framework-about-story-aboutmainpen-alt1/block"
+          TemplateExclusivePenSiteAboutStoryAboutmainpenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-about-story-aboutmainpen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkAboutStoryAboutmainpenAlt1-1",
+            "id": "TemplateExclusivePenSiteAboutStoryAboutmainpenAlt1-1",
             "h1text": "Fix Consumer\nElectronics",
             "p1text": "We're here to remake consumer electronics to respect people and the planet. Unlike most products, ours are open for you to repair, customize, upgrade, and own at the deepest level.",
             "p2text": "Consumer electronics follows a few of the opposite principles of what makes consumer products useful, reliable, and durable over time. We’ve optimized every experience of use and service over product lifecycle and have done this through decisions that increase short-term business metrics while reducing long-term value.",
@@ -761,15 +761,15 @@ export const generatedComponents: Record<string, any> = {
         coacntext: textField("Coacntext"),
       },
     },
-    "TemplateExclusiveFrameworkAboutFooterFooterpenAlt2": {
+    "TemplateExclusivePenSiteAboutFooterFooterpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkAboutFooterFooterpenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-framework-about-footer-footerpen-alt2/block"
+          TemplateExclusivePenSiteAboutFooterFooterpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-about-footer-footerpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkAboutFooterFooterpenAlt2-1",
+            "id": "TemplateExclusivePenSiteAboutFooterFooterpenAlt2-1",
             "vlbrhtext": "Company",
             "imz8dtext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
             "imz8dhref": "/about",
@@ -985,15 +985,15 @@ export const generatedComponents: Record<string, any> = {
         lwirdtext: textField("Lwirdtext"),
       },
     },
-    "TemplateExclusiveFrameworkSupportNavigationNavpenPrimary": {
+    "TemplateExclusivePenSiteSupportNavigationNavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkSupportNavigationNavpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-framework-support-navigation-navpen-primary/block"
+          TemplateExclusivePenSiteSupportNavigationNavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-pen-site-support-navigation-navpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkSupportNavigationNavpenPrimary-1",
+            "id": "TemplateExclusivePenSiteSupportNavigationNavpenPrimary-1",
             "logotext": "Framework",
             "logohref": "/",
             "centernavtext": "Products   Laptops   Desktops   Marketplace",
@@ -1071,15 +1071,15 @@ export const generatedComponents: Record<string, any> = {
         rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusiveFrameworkSupportHeroSupportheropenAlt1": {
+    "TemplateExclusivePenSiteSupportHeroSupportheropenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkSupportHeroSupportheropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-framework-support-hero-supportheropen-alt1/block"
+          TemplateExclusivePenSiteSupportHeroSupportheropenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-support-hero-supportheropen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkSupportHeroSupportheropenAlt1-1",
+            "id": "TemplateExclusivePenSiteSupportHeroSupportheropenAlt1-1",
             "herotitletext": "Hi, how can we help?",
             "theme": {
                   "mode": "light",
@@ -1115,15 +1115,15 @@ export const generatedComponents: Record<string, any> = {
         herotitletext: textField("Herotitletext"),
       },
     },
-    "TemplateExclusiveFrameworkSupportContactSupportmainpenAlt2": {
+    "TemplateExclusivePenSiteSupportContactSupportmainpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkSupportContactSupportmainpenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-framework-support-contact-supportmainpen-alt2/block"
+          TemplateExclusivePenSiteSupportContactSupportmainpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-support-contact-supportmainpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkSupportContactSupportmainpenAlt2-1",
+            "id": "TemplateExclusivePenSiteSupportContactSupportmainpenAlt2-1",
             "kbtitletext": "Knowledge Base",
             "kbdesctext": "A collection of frequently asked questions around ordering, product specs, software debugging, and troubleshooting.",
             "kbl1text": "Orders & Shipping",
@@ -1205,15 +1205,15 @@ export const generatedComponents: Record<string, any> = {
         connecttxttext: textField("Connecttxttext"),
       },
     },
-    "TemplateExclusiveFrameworkSupportFooterFooterpenAlt3": {
+    "TemplateExclusivePenSiteSupportFooterFooterpenAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkSupportFooterFooterpenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-framework-support-footer-footerpen-alt3/block"
+          TemplateExclusivePenSiteSupportFooterFooterpenAlt3BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-support-footer-footerpen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkSupportFooterFooterpenAlt3-1",
+            "id": "TemplateExclusivePenSiteSupportFooterFooterpenAlt3-1",
             "clzbctext": "Company",
             "pcfsktext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
             "pcfskhref": "/about",
@@ -1429,15 +1429,15 @@ export const generatedComponents: Record<string, any> = {
         quashtext: textField("Quashtext"),
       },
     },
-    "TemplateExclusiveFrameworkProductsNavigationNavpenPrimary": {
+    "TemplateExclusivePenSiteProductsNavigationNavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkProductsNavigationNavpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-framework-products-navigation-navpen-primary/block"
+          TemplateExclusivePenSiteProductsNavigationNavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-pen-site-products-navigation-navpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkProductsNavigationNavpenPrimary-1",
+            "id": "TemplateExclusivePenSiteProductsNavigationNavpenPrimary-1",
             "logotext": "Framework",
             "logohref": "/",
             "centernavtext": "Products   Laptops   Desktops   Marketplace",
@@ -1515,15 +1515,15 @@ export const generatedComponents: Record<string, any> = {
         rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusiveFrameworkProductsHeroBizheropenAlt1": {
+    "TemplateExclusivePenSiteProductsHeroBizheropenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkProductsHeroBizheropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-framework-products-hero-bizheropen-alt1/block"
+          TemplateExclusivePenSiteProductsHeroBizheropenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-products-hero-bizheropen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkProductsHeroBizheropenAlt1-1",
+            "id": "TemplateExclusivePenSiteProductsHeroBizheropenAlt1-1",
             "herot1text": "Framework for\nBusiness",
             "herosubtext": "Deploy modular laptops across your organization.",
             "herorimagesrc": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
@@ -1563,15 +1563,15 @@ export const generatedComponents: Record<string, any> = {
         herorimagesrc: textField("Herorimagesrc"),
       },
     },
-    "TemplateExclusiveFrameworkProductsStoryBizmainpenAlt2": {
+    "TemplateExclusivePenSiteProductsStoryBizmainpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkProductsStoryBizmainpenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-framework-products-story-bizmainpen-alt2/block"
+          TemplateExclusivePenSiteProductsStoryBizmainpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-products-story-bizmainpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkProductsStoryBizmainpenAlt2-1",
+            "id": "TemplateExclusivePenSiteProductsStoryBizmainpenAlt2-1",
             "ctitletext": "Customize, upgrade,\nrepair: The choice is yours",
             "csubtext": "Standardize devices that can be upgraded and repaired in-house. Reduce e-waste and total cost of ownership.",
             "c1imgimagesrc": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
@@ -1761,15 +1761,15 @@ export const generatedComponents: Record<string, any> = {
         legalbodytext: textField("Legalbodytext"),
       },
     },
-    "TemplateExclusiveFrameworkProductsFooterFooterpenAlt3": {
+    "TemplateExclusivePenSiteProductsFooterFooterpenAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkProductsFooterFooterpenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-framework-products-footer-footerpen-alt3/block"
+          TemplateExclusivePenSiteProductsFooterFooterpenAlt3BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-products-footer-footerpen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkProductsFooterFooterpenAlt3-1",
+            "id": "TemplateExclusivePenSiteProductsFooterFooterpenAlt3-1",
             "i4katext": "Company",
             "dyodktext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
             "dyodkhref": "/about",
@@ -1985,15 +1985,15 @@ export const generatedComponents: Record<string, any> = {
         hl1oztext: textField("Hl1oztext"),
       },
     },
-    "TemplateExclusiveFrameworkContactNavigationNavpenPrimary": {
+    "TemplateExclusivePenSiteContactNavigationNavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkContactNavigationNavpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-framework-contact-navigation-navpen-primary/block"
+          TemplateExclusivePenSiteContactNavigationNavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-pen-site-contact-navigation-navpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkContactNavigationNavpenPrimary-1",
+            "id": "TemplateExclusivePenSiteContactNavigationNavpenPrimary-1",
             "logotext": "Framework",
             "logohref": "/",
             "centernavtext": "Products   Laptops   Desktops   Marketplace",
@@ -2071,15 +2071,15 @@ export const generatedComponents: Record<string, any> = {
         rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusiveFrameworkContactHeroContactheropenAlt1": {
+    "TemplateExclusivePenSiteContactHeroContactheropenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkContactHeroContactheropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-framework-contact-hero-contactheropen-alt1/block"
+          TemplateExclusivePenSiteContactHeroContactheropenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-contact-hero-contactheropen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkContactHeroContactheropenAlt1-1",
+            "id": "TemplateExclusivePenSiteContactHeroContactheropenAlt1-1",
             "herotitletext": "Contact Framework",
             "theme": {
                   "mode": "light",
@@ -2115,15 +2115,15 @@ export const generatedComponents: Record<string, any> = {
         herotitletext: textField("Herotitletext"),
       },
     },
-    "TemplateExclusiveFrameworkContactContactContactmainpenAlt2": {
+    "TemplateExclusivePenSiteContactContactContactmainpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkContactContactContactmainpenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-framework-contact-contact-contactmainpen-alt2/block"
+          TemplateExclusivePenSiteContactContactContactmainpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-contact-contact-contactmainpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkContactContactContactmainpenAlt2-1",
+            "id": "TemplateExclusivePenSiteContactContactContactmainpenAlt2-1",
             "t1text": "Contact Support",
             "l1text": "Submit a support request",
             "t2text": "Business Ordering",
@@ -2211,15 +2211,15 @@ export const generatedComponents: Record<string, any> = {
         workillustrationimagesrc: textField("Workillustrationimagesrc"),
       },
     },
-    "TemplateExclusiveFrameworkContactFooterFooterpenAlt3": {
+    "TemplateExclusivePenSiteContactFooterFooterpenAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkContactFooterFooterpenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-framework-contact-footer-footerpen-alt3/block"
+          TemplateExclusivePenSiteContactFooterFooterpenAlt3BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-contact-footer-footerpen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkContactFooterFooterpenAlt3-1",
+            "id": "TemplateExclusivePenSiteContactFooterFooterpenAlt3-1",
             "a8p3ftext": "Company",
             "mqbmrtext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
             "mqbmrhref": "/about",
@@ -2435,15 +2435,15 @@ export const generatedComponents: Record<string, any> = {
         thaqitext: textField("Thaqitext"),
       },
     },
-    "TemplateExclusiveFrameworkBlogNavigationNavpenPrimary": {
+    "TemplateExclusivePenSiteBlogNavigationNavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkBlogNavigationNavpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-framework-blog-navigation-navpen-primary/block"
+          TemplateExclusivePenSiteBlogNavigationNavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-pen-site-blog-navigation-navpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkBlogNavigationNavpenPrimary-1",
+            "id": "TemplateExclusivePenSiteBlogNavigationNavpenPrimary-1",
             "logotext": "Framework",
             "logohref": "/",
             "centernavtext": "Products   Laptops   Desktops   Marketplace",
@@ -2521,15 +2521,15 @@ export const generatedComponents: Record<string, any> = {
         rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusiveFrameworkBlogNavigationCategorybarpenAlt1": {
+    "TemplateExclusivePenSiteBlogNavigationCategorybarpenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkBlogNavigationCategorybarpenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-framework-blog-navigation-categorybarpen-alt1/block"
+          TemplateExclusivePenSiteBlogNavigationCategorybarpenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-blog-navigation-categorybarpen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkBlogNavigationCategorybarpenAlt1-1",
+            "id": "TemplateExclusivePenSiteBlogNavigationCategorybarpenAlt1-1",
             "fmwkqtext": "All",
             "fmwkqhref": "/",
             "shvcttext": "News",
@@ -2605,15 +2605,15 @@ export const generatedComponents: Record<string, any> = {
         krcrjhref: textField("Krcrjhref"),
       },
     },
-    "TemplateExclusiveFrameworkBlogStoryBlogmainpenAlt2": {
+    "TemplateExclusivePenSiteBlogStoryBlogmainpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkBlogStoryBlogmainpenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-framework-blog-story-blogmainpen-alt2/block"
+          TemplateExclusivePenSiteBlogStoryBlogmainpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-blog-story-blogmainpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkBlogStoryBlogmainpenAlt2-1",
+            "id": "TemplateExclusivePenSiteBlogStoryBlogmainpenAlt2-1",
             "feat1imgimagesrc": "https://images.unsplash.com/photo-1594047686814-9f74e5c56ccd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjA1NTh8&ixlib=rb-4.1.0&q=80&w=1080",
             "rghsptext": "Updates and\nlivestream",
             "fxt71text": "News | Feb 26 2026",
@@ -2705,15 +2705,15 @@ export const generatedComponents: Record<string, any> = {
         l3hujtext: textField("L3hujtext"),
       },
     },
-    "TemplateExclusiveFrameworkBlogFooterFooterpenAlt3": {
+    "TemplateExclusivePenSiteBlogFooterFooterpenAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusiveFrameworkBlogFooterFooterpenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-framework-blog-footer-footerpen-alt3/block"
+          TemplateExclusivePenSiteBlogFooterFooterpenAlt3BlockModule,
+          "@/components/blocks/template-exclusive-pen-site-blog-footer-footerpen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusiveFrameworkBlogFooterFooterpenAlt3-1",
+            "id": "TemplateExclusivePenSiteBlogFooterFooterpenAlt3-1",
             "y1pjgtext": "Company",
             "boahrtext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
             "boahrhref": "/about",
