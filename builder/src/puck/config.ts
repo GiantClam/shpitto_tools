@@ -41,7 +41,7 @@ import {
   textField,
   textareaField,
 } from "@/puck/field-adapters";
-import { generatedComponents } from "./config.generated";
+import { generatedComponents } from "@/puck/config.generated";
 
 const renderBlock = (Block: React.ComponentType<any>) => (props: any) =>
   React.createElement(Block, props);
@@ -358,7 +358,6 @@ export const puckConfig: Config = {
         id: "hero-01",
         title: "Build faster with reusable blocks",
         subtitle: "shadcn/ui + Magic UI + Puck, fully owned components.",
-        body: "Ship high-fidelity sections with editable content and robust design controls.",
         ctas: [{ label: "Get started", href: "#pricing", variant: "primary" }],
         align: "center",
         paddingY: "lg",
@@ -367,7 +366,6 @@ export const puckConfig: Config = {
       fields: {
         title: textField("Title"),
         subtitle: textareaField("Subtitle"),
-        body: textareaField("Body"),
         eyebrow: textField("Eyebrow"),
         align: selectField("Align", ["left", "center"]),
         paddingY: selectField("Padding", ["sm", "md", "lg"]),
@@ -375,8 +373,6 @@ export const puckConfig: Config = {
         maxWidth: selectField("Max Width", ["lg", "xl", "2xl"]),
         headingSize: selectField("Heading Size", ["sm", "md", "lg"]),
         bodySize: selectField("Body Size", ["sm", "md", "lg"]),
-        headingFont: textField("Heading Font"),
-        bodyFont: textField("Body Font"),
         heroCarouselAutoplayMs: textField("Hero Carousel Autoplay Ms"),
         heroSlides: listField("Hero Slides", {
           src: textField("Src"),
@@ -412,24 +408,6 @@ export const puckConfig: Config = {
         maxWidth: selectField("Max Width", ["lg", "xl", "2xl"]),
         headingSize: selectField("Heading Size", ["sm", "md", "lg"]),
         bodySize: selectField("Body Size", ["sm", "md", "lg"]),
-        headingFont: textField("Heading Font"),
-        bodyFont: textField("Body Font"),
-        textPanel: booleanField("Text Panel"),
-        textPanelBackground: textField("Text Panel Background"),
-        textPanelBorderColor: textField("Text Panel Border"),
-        textPanelPadding: selectField("Text Panel Padding", ["sm", "md", "lg"]),
-        textPanelRadius: selectField("Text Panel Radius", ["sm", "md", "lg"]),
-        textPanelMaxWidth: selectField("Text Panel Max Width", ["sm", "md", "lg", "xl"]),
-        heroCarouselAutoplayMs: textField("Hero Carousel Autoplay Ms"),
-        heroSlides: listField("Hero Slides", {
-          src: textField("Src"),
-          mobileSrc: textField("Mobile Src"),
-          alt: textField("Alt"),
-          label: textField("Label"),
-          eyebrow: textField("Eyebrow"),
-          title: textField("Slide Title"),
-          subtitle: textareaField("Slide Subtitle"),
-        }),
         ctas: listField("CTAs", {
           label: textField("Label"),
           href: textField("Href"),
@@ -793,14 +771,6 @@ export const puckConfig: Config = {
         paddingY: selectField("Padding", ["sm", "md", "lg"]),
         background: selectField("Background", ["none", "muted", "gradient", "image"]),
         maxWidth: selectField("Max Width", ["lg", "xl", "2xl"]),
-        headingFont: textField("Heading Font"),
-        bodyFont: textField("Body Font"),
-        textPanel: booleanField("Text Panel"),
-        textPanelBackground: textField("Text Panel Background"),
-        textPanelBorderColor: textField("Text Panel Border"),
-        textPanelPadding: selectField("Text Panel Padding", ["sm", "md", "lg"]),
-        textPanelRadius: selectField("Text Panel Radius", ["sm", "md", "lg"]),
-        textPanelMaxWidth: selectField("Text Panel Max Width", ["sm", "md", "lg", "xl"]),
         ctas: listField("CTAs", {
           label: textField("Label"),
           href: textField("Href"),
@@ -1092,7 +1062,6 @@ export const puckConfig: Config = {
         }),
       },
     },
+    ...generatedComponents,
   },
 };
-
-Object.assign(puckConfig.components, generatedComponents);

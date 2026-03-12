@@ -11,34 +11,34 @@ import {
   textField,
   textareaField,
 } from "@/puck/field-adapters";
-import * as TemplateExclusivePenSiteHomeNavigationTopnavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-home-navigation-topnavpen-primary/block";
-import * as TemplateExclusivePenSiteHomeHeroHero1penAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-home-hero-hero1pen-alt1/block";
-import * as TemplateExclusivePenSiteHomeHeroHero2penAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-home-hero-hero2pen-alt2/block";
-import * as TemplateExclusivePenSiteHomeHeroHero3penAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-home-hero-hero3pen-alt3/block";
-import * as TemplateExclusivePenSiteHomeHeroHero4penAlt4BlockModule from "@/components/blocks/template-exclusive-pen-site-home-hero-hero4pen-alt4/block";
-import * as TemplateExclusivePenSiteHomeStoryMidtitlepenAlt6BlockModule from "@/components/blocks/template-exclusive-pen-site-home-story-midtitlepen-alt6/block";
-import * as TemplateExclusivePenSiteHomeStoryFixheadingpenAlt7BlockModule from "@/components/blocks/template-exclusive-pen-site-home-story-fixheadingpen-alt7/block";
-import * as TemplateExclusivePenSiteHomeStoryMosaicpenAlt8BlockModule from "@/components/blocks/template-exclusive-pen-site-home-story-mosaicpen-alt8/block";
-import * as TemplateExclusivePenSiteHomeStoryHfpenAlt9BlockModule from "@/components/blocks/template-exclusive-pen-site-home-story-hfpen-alt9/block";
-import * as TemplateExclusivePenSiteAboutNavigationTopnavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-about-navigation-topnavpen-primary/block";
-import * as TemplateExclusivePenSiteAboutStoryAboutmainpenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-about-story-aboutmainpen-alt1/block";
-import * as TemplateExclusivePenSiteAboutFooterFooterpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-about-footer-footerpen-alt2/block";
-import * as TemplateExclusivePenSiteSupportNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-support-navigation-navpen-primary/block";
-import * as TemplateExclusivePenSiteSupportHeroSupportheropenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-support-hero-supportheropen-alt1/block";
-import * as TemplateExclusivePenSiteSupportContactSupportmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-support-contact-supportmainpen-alt2/block";
-import * as TemplateExclusivePenSiteSupportFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-support-footer-footerpen-alt3/block";
-import * as TemplateExclusivePenSiteProductsNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-products-navigation-navpen-primary/block";
-import * as TemplateExclusivePenSiteProductsHeroBizheropenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-products-hero-bizheropen-alt1/block";
-import * as TemplateExclusivePenSiteProductsStoryBizmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-products-story-bizmainpen-alt2/block";
-import * as TemplateExclusivePenSiteProductsFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-products-footer-footerpen-alt3/block";
-import * as TemplateExclusivePenSiteContactNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-contact-navigation-navpen-primary/block";
-import * as TemplateExclusivePenSiteContactHeroContactheropenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-contact-hero-contactheropen-alt1/block";
-import * as TemplateExclusivePenSiteContactContactContactmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-contact-contact-contactmainpen-alt2/block";
-import * as TemplateExclusivePenSiteContactFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-contact-footer-footerpen-alt3/block";
-import * as TemplateExclusivePenSiteBlogNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-pen-site-blog-navigation-navpen-primary/block";
-import * as TemplateExclusivePenSiteBlogNavigationCategorybarpenAlt1BlockModule from "@/components/blocks/template-exclusive-pen-site-blog-navigation-categorybarpen-alt1/block";
-import * as TemplateExclusivePenSiteBlogStoryBlogmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-pen-site-blog-story-blogmainpen-alt2/block";
-import * as TemplateExclusivePenSiteBlogFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-pen-site-blog-footer-footerpen-alt3/block";
+import * as TemplateExclusiveFrameworkHomeNavigationTopnavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-framework-home-navigation-topnavpen-primary/block";
+import * as TemplateExclusiveFrameworkHomeHeroHero1penAlt1BlockModule from "@/components/blocks/template-exclusive-framework-home-hero-hero1pen-alt1/block";
+import * as TemplateExclusiveFrameworkHomeHeroHero2penAlt2BlockModule from "@/components/blocks/template-exclusive-framework-home-hero-hero2pen-alt2/block";
+import * as TemplateExclusiveFrameworkHomeHeroHero3penAlt3BlockModule from "@/components/blocks/template-exclusive-framework-home-hero-hero3pen-alt3/block";
+import * as TemplateExclusiveFrameworkHomeHeroHero4penAlt4BlockModule from "@/components/blocks/template-exclusive-framework-home-hero-hero4pen-alt4/block";
+import * as TemplateExclusiveFrameworkHomeStoryMidtitlepenAlt6BlockModule from "@/components/blocks/template-exclusive-framework-home-story-midtitlepen-alt6/block";
+import * as TemplateExclusiveFrameworkHomeStoryFixheadingpenAlt7BlockModule from "@/components/blocks/template-exclusive-framework-home-story-fixheadingpen-alt7/block";
+import * as TemplateExclusiveFrameworkHomeStoryMosaicpenAlt8BlockModule from "@/components/blocks/template-exclusive-framework-home-story-mosaicpen-alt8/block";
+import * as TemplateExclusiveFrameworkHomeStoryHfpenAlt9BlockModule from "@/components/blocks/template-exclusive-framework-home-story-hfpen-alt9/block";
+import * as TemplateExclusiveFrameworkAboutNavigationTopnavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-framework-about-navigation-topnavpen-primary/block";
+import * as TemplateExclusiveFrameworkAboutStoryAboutmainpenAlt1BlockModule from "@/components/blocks/template-exclusive-framework-about-story-aboutmainpen-alt1/block";
+import * as TemplateExclusiveFrameworkAboutFooterFooterpenAlt2BlockModule from "@/components/blocks/template-exclusive-framework-about-footer-footerpen-alt2/block";
+import * as TemplateExclusiveFrameworkSupportNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-framework-support-navigation-navpen-primary/block";
+import * as TemplateExclusiveFrameworkSupportHeroSupportheropenAlt1BlockModule from "@/components/blocks/template-exclusive-framework-support-hero-supportheropen-alt1/block";
+import * as TemplateExclusiveFrameworkSupportContactSupportmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-framework-support-contact-supportmainpen-alt2/block";
+import * as TemplateExclusiveFrameworkSupportFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-framework-support-footer-footerpen-alt3/block";
+import * as TemplateExclusiveFrameworkProductsNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-framework-products-navigation-navpen-primary/block";
+import * as TemplateExclusiveFrameworkProductsHeroBizheropenAlt1BlockModule from "@/components/blocks/template-exclusive-framework-products-hero-bizheropen-alt1/block";
+import * as TemplateExclusiveFrameworkProductsStoryBizmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-framework-products-story-bizmainpen-alt2/block";
+import * as TemplateExclusiveFrameworkProductsFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-framework-products-footer-footerpen-alt3/block";
+import * as TemplateExclusiveFrameworkContactNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-framework-contact-navigation-navpen-primary/block";
+import * as TemplateExclusiveFrameworkContactHeroContactheropenAlt1BlockModule from "@/components/blocks/template-exclusive-framework-contact-hero-contactheropen-alt1/block";
+import * as TemplateExclusiveFrameworkContactContactContactmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-framework-contact-contact-contactmainpen-alt2/block";
+import * as TemplateExclusiveFrameworkContactFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-framework-contact-footer-footerpen-alt3/block";
+import * as TemplateExclusiveFrameworkBlogNavigationNavpenPrimaryBlockModule from "@/components/blocks/template-exclusive-framework-blog-navigation-navpen-primary/block";
+import * as TemplateExclusiveFrameworkBlogNavigationCategorybarpenAlt1BlockModule from "@/components/blocks/template-exclusive-framework-blog-navigation-categorybarpen-alt1/block";
+import * as TemplateExclusiveFrameworkBlogStoryBlogmainpenAlt2BlockModule from "@/components/blocks/template-exclusive-framework-blog-story-blogmainpen-alt2/block";
+import * as TemplateExclusiveFrameworkBlogFooterFooterpenAlt3BlockModule from "@/components/blocks/template-exclusive-framework-blog-footer-footerpen-alt3/block";
 
 const resolveBlockComponent = (
   moduleExports: Record<string, unknown>,
@@ -63,21 +63,82 @@ const renderBlock = (Block: React.ComponentType<any>) => (props: any) =>
   React.createElement(Block, props);
 
 export const generatedComponents: Record<string, any> = {
-    "TemplateExclusivePenSiteHomeNavigationTopnavpenPrimary": {
+    "TemplateExclusiveFrameworkHomeNavigationTopnavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteHomeNavigationTopnavpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-pen-site-home-navigation-topnavpen-primary/block"
+          TemplateExclusiveFrameworkHomeNavigationTopnavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-framework-home-navigation-topnavpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeNavigationTopnavpenPrimary-1",
+            "id": "TemplateExclusiveFrameworkHomeNavigationTopnavpenPrimary-1",
             "logotext": "Framework",
             "logohref": "/",
             "centernavtext": "Products   Laptops   Desktops   Marketplace",
             "centernavhref": "/products",
             "rightnavtext": "Support   Sign In   Cart",
-            "rightnavhref": "/support"
+            "rightnavhref": "/support",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#F3F6F0",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "navItems": [
+                  {
+                        "label": "Products",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Laptops",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Desktops",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Marketplace",
+                        "href": "/products"
+                  }
+            ],
+            "utilityItems": [
+                  {
+                        "label": "Support",
+                        "href": "/support"
+                  },
+                  {
+                        "label": "Sign In",
+                        "href": "/support"
+                  },
+                  {
+                        "label": "Cart",
+                        "href": "/support"
+                  }
+            ]
       },
       fields: {
         logotext: textField("Logotext"),
@@ -88,20 +149,49 @@ export const generatedComponents: Record<string, any> = {
         rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusivePenSiteHomeHeroHero1penAlt1": {
+    "TemplateExclusiveFrameworkHomeHeroHero1penAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteHomeHeroHero1penAlt1BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-home-hero-hero1pen-alt1/block"
+          TemplateExclusiveFrameworkHomeHeroHero1penAlt1BlockModule,
+          "@/components/blocks/template-exclusive-framework-home-hero-hero1pen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeHeroHero1penAlt1-1",
+            "id": "TemplateExclusiveFrameworkHomeHeroHero1penAlt1-1",
             "h1t1text": "Framework Laptop 13\nisn't our computer. It's\nyours.",
             "h1t2text": "Start computing from $899.00",
             "h1bttext": "Configure now",
             "akwvvtext": "Learn more",
-            "hero1rimagesrc": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080"
+            "hero1rimagesrc": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#F3F6F0",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         h1t1text: textField("H1t1text"),
@@ -111,20 +201,49 @@ export const generatedComponents: Record<string, any> = {
         hero1rimagesrc: textField("Hero1rimagesrc"),
       },
     },
-    "TemplateExclusivePenSiteHomeHeroHero2penAlt2": {
+    "TemplateExclusiveFrameworkHomeHeroHero2penAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteHomeHeroHero2penAlt2BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-home-hero-hero2pen-alt2/block"
+          TemplateExclusiveFrameworkHomeHeroHero2penAlt2BlockModule,
+          "@/components/blocks/template-exclusive-framework-home-hero-hero2pen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeHeroHero2penAlt2-1",
+            "id": "TemplateExclusiveFrameworkHomeHeroHero2penAlt2-1",
             "hero2limagesrc": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
             "h2t1text": "Configure once. Upgrade\nwhere you need.",
             "h2t2text": "Starting at $399",
             "h2bttext": "Configure now",
-            "dxtv6text": "Learn more"
+            "dxtv6text": "Learn more",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#F3F6F0",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         hero2limagesrc: textField("Hero2limagesrc"),
@@ -134,19 +253,48 @@ export const generatedComponents: Record<string, any> = {
         dxtv6text: textField("Dxtv6text"),
       },
     },
-    "TemplateExclusivePenSiteHomeHeroHero3penAlt3": {
+    "TemplateExclusiveFrameworkHomeHeroHero3penAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteHomeHeroHero3penAlt3BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-home-hero-hero3pen-alt3/block"
+          TemplateExclusiveFrameworkHomeHeroHero3penAlt3BlockModule,
+          "@/components/blocks/template-exclusive-framework-home-hero-hero3pen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeHeroHero3penAlt3-1",
+            "id": "TemplateExclusiveFrameworkHomeHeroHero3penAlt3-1",
             "hero3limagesrc": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
             "h3t1text": "Framework Desktop is a big\ncomputer made mini.",
             "h3bttext": "Configure now",
-            "cn9citext": "Learn more"
+            "cn9citext": "Learn more",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#F3F6F0",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         hero3limagesrc: textField("Hero3limagesrc"),
@@ -155,20 +303,49 @@ export const generatedComponents: Record<string, any> = {
         cn9citext: textField("Cn9citext"),
       },
     },
-    "TemplateExclusivePenSiteHomeHeroHero4penAlt4": {
+    "TemplateExclusiveFrameworkHomeHeroHero4penAlt4": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteHomeHeroHero4penAlt4BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-home-hero-hero4pen-alt4/block"
+          TemplateExclusiveFrameworkHomeHeroHero4penAlt4BlockModule,
+          "@/components/blocks/template-exclusive-framework-home-hero-hero4pen-alt4/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeHeroHero4penAlt4-1",
+            "id": "TemplateExclusiveFrameworkHomeHeroHero4penAlt4-1",
             "h4t1text": "Computers shouldn't be boring.",
             "h4t2text": "Starting at $799",
             "h4bttext": "Configure now",
             "dsvsntext": "Learn more",
-            "hero4rimagesrc": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080"
+            "hero4rimagesrc": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#F3F6F0",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         h4t1text: textField("H4t1text"),
@@ -178,62 +355,149 @@ export const generatedComponents: Record<string, any> = {
         hero4rimagesrc: textField("Hero4rimagesrc"),
       },
     },
-    "TemplateExclusivePenSiteHomeStoryMidtitlepenAlt6": {
+    "TemplateExclusiveFrameworkHomeStoryMidtitlepenAlt6": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteHomeStoryMidtitlepenAlt6BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-home-story-midtitlepen-alt6/block"
+          TemplateExclusiveFrameworkHomeStoryMidtitlepenAlt6BlockModule,
+          "@/components/blocks/template-exclusive-framework-home-story-midtitlepen-alt6/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeStoryMidtitlepenAlt6-1",
+            "id": "TemplateExclusiveFrameworkHomeStoryMidtitlepenAlt6-1",
             "mid1text": "Upgrade, customize, and repair.",
-            "fixlinetext": "Keep track of what we're\nworking on with the Framework\nNewsletter."
+            "fixlinetext": "Keep track of what we're\nworking on with the Framework\nNewsletter.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#F3F6F0",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         mid1text: textField("Mid1text"),
         fixlinetext: textField("Fixlinetext"),
       },
     },
-    "TemplateExclusivePenSiteHomeStoryFixheadingpenAlt7": {
+    "TemplateExclusiveFrameworkHomeStoryFixheadingpenAlt7": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteHomeStoryFixheadingpenAlt7BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-home-story-fixheadingpen-alt7/block"
+          TemplateExclusiveFrameworkHomeStoryFixheadingpenAlt7BlockModule,
+          "@/components/blocks/template-exclusive-framework-home-story-fixheadingpen-alt7/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeStoryFixheadingpenAlt7-1",
-            "jac8ltext": "Let's fix Consumer Electronics."
+            "id": "TemplateExclusiveFrameworkHomeStoryFixheadingpenAlt7-1",
+            "jac8ltext": "Let's fix Consumer Electronics.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#F3F6F0",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         jac8ltext: textField("Jac8ltext"),
       },
     },
-    "TemplateExclusivePenSiteHomeStoryMosaicpenAlt8": {
+    "TemplateExclusiveFrameworkHomeStoryMosaicpenAlt8": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteHomeStoryMosaicpenAlt8BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-home-story-mosaicpen-alt8/block"
+          TemplateExclusiveFrameworkHomeStoryMosaicpenAlt8BlockModule,
+          "@/components/blocks/template-exclusive-framework-home-story-mosaicpen-alt8/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeStoryMosaicpenAlt8-1",
-            "mosaicimagesrc": "https://images.unsplash.com/4/madebyvadim.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080"
+            "id": "TemplateExclusiveFrameworkHomeStoryMosaicpenAlt8-1",
+            "mosaicimagesrc": "https://images.unsplash.com/4/madebyvadim.jpg?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#F3F6F0",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         mosaicimagesrc: textField("Mosaicimagesrc"),
       },
     },
-    "TemplateExclusivePenSiteHomeStoryHfpenAlt9": {
+    "TemplateExclusiveFrameworkHomeStoryHfpenAlt9": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteHomeStoryHfpenAlt9BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-home-story-hfpen-alt9/block"
+          TemplateExclusiveFrameworkHomeStoryHfpenAlt9BlockModule,
+          "@/components/blocks/template-exclusive-framework-home-story-hfpen-alt9/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteHomeStoryHfpenAlt9-1",
+            "id": "TemplateExclusiveFrameworkHomeStoryHfpenAlt9-1",
             "k1dhitext": "Company",
             "ovze9text": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
             "rwrx5text": "Social",
@@ -248,7 +512,36 @@ export const generatedComponents: Record<string, any> = {
             "kqqdxhref": "/support",
             "ln0k2text": "Sign up",
             "ks1jbtext": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
-            "meabitext": "USD"
+            "meabitext": "USD",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#F3F6F0",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         k1dhitext: textField("K1dhitext"),
@@ -268,21 +561,82 @@ export const generatedComponents: Record<string, any> = {
         meabitext: textField("Meabitext"),
       },
     },
-    "TemplateExclusivePenSiteAboutNavigationTopnavpenPrimary": {
+    "TemplateExclusiveFrameworkAboutNavigationTopnavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteAboutNavigationTopnavpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-pen-site-about-navigation-topnavpen-primary/block"
+          TemplateExclusiveFrameworkAboutNavigationTopnavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-framework-about-navigation-topnavpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteAboutNavigationTopnavpenPrimary-1",
+            "id": "TemplateExclusiveFrameworkAboutNavigationTopnavpenPrimary-1",
             "logotext": "Framework",
             "logohref": "/",
             "centernavtext": "Products   Laptops   Desktops   Marketplace",
             "centernavhref": "/products",
             "rightnavtext": "Support   Sign In   Cart",
-            "rightnavhref": "/support"
+            "rightnavhref": "/support",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "navItems": [
+                  {
+                        "label": "Products",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Laptops",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Desktops",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Marketplace",
+                        "href": "/products"
+                  }
+            ],
+            "utilityItems": [
+                  {
+                        "label": "Support",
+                        "href": "/support"
+                  },
+                  {
+                        "label": "Sign In",
+                        "href": "/support"
+                  },
+                  {
+                        "label": "Cart",
+                        "href": "/support"
+                  }
+            ]
       },
       fields: {
         logotext: textField("Logotext"),
@@ -293,15 +647,15 @@ export const generatedComponents: Record<string, any> = {
         rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusivePenSiteAboutStoryAboutmainpenAlt1": {
+    "TemplateExclusiveFrameworkAboutStoryAboutmainpenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteAboutStoryAboutmainpenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-about-story-aboutmainpen-alt1/block"
+          TemplateExclusiveFrameworkAboutStoryAboutmainpenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-framework-about-story-aboutmainpen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteAboutStoryAboutmainpenAlt1-1",
+            "id": "TemplateExclusiveFrameworkAboutStoryAboutmainpenAlt1-1",
             "h1text": "Fix Consumer\nElectronics",
             "p1text": "We're here to remake consumer electronics to respect people and the planet. Unlike most products, ours are open for you to repair, customize, upgrade, and own at the deepest level.",
             "p2text": "Consumer electronics follows a few of the opposite principles of what makes consumer products useful, reliable, and durable over time. We’ve optimized every experience of use and service over product lifecycle and have done this through decisions that increase short-term business metrics while reducing long-term value.",
@@ -337,7 +691,36 @@ export const generatedComponents: Record<string, any> = {
             "xbbo6text": "Updates and livestream\nNews | Feb 26 2026",
             "nt4buimagesrc": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1200&q=80",
             "bnlh2text": "Linux Gaming with Framework\nNews | Feb 26 2026",
-            "coacntext": "In stock on Framework Desktop and updates on the industry-wide silicon crunch\nNews | Dec 22 2025"
+            "coacntext": "In stock on Framework Desktop and updates on the industry-wide silicon crunch\nNews | Dec 22 2025",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         h1text: textField("H1text"),
@@ -378,15 +761,15 @@ export const generatedComponents: Record<string, any> = {
         coacntext: textField("Coacntext"),
       },
     },
-    "TemplateExclusivePenSiteAboutFooterFooterpenAlt2": {
+    "TemplateExclusiveFrameworkAboutFooterFooterpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteAboutFooterFooterpenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-about-footer-footerpen-alt2/block"
+          TemplateExclusiveFrameworkAboutFooterFooterpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-framework-about-footer-footerpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteAboutFooterFooterpenAlt2-1",
+            "id": "TemplateExclusiveFrameworkAboutFooterFooterpenAlt2-1",
             "vlbrhtext": "Company",
             "imz8dtext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
             "imz8dhref": "/about",
@@ -406,7 +789,178 @@ export const generatedComponents: Record<string, any> = {
             "xz2obhref": "/support",
             "zelqitext": "Sign up",
             "vb8xtext": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
-            "lwirdtext": "USD"
+            "lwirdtext": "USD",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "columns": [
+                  {
+                        "title": "Company",
+                        "links": [
+                              {
+                                    "label": "About Us",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Sustainability",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Our Blog",
+                                    "href": "/blog"
+                              },
+                              {
+                                    "label": "Contact Us",
+                                    "href": "/contact"
+                              },
+                              {
+                                    "label": "For Business",
+                                    "href": "/products"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Social",
+                        "links": [
+                              {
+                                    "label": "Twitter",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "YouTube",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Instagram",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Facebook",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "LinkedIn",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Bluesky",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Mastodon",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "GitHub",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "RSS",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Community",
+                        "links": [
+                              {
+                                    "label": "Community Forum",
+                                    "href": "/support"
+                              },
+                              {
+                                    "label": "Support",
+                                    "href": "/support"
+                              },
+                              {
+                                    "label": "Repair Guides",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Shop all",
+                        "links": [
+                              {
+                                    "label": "View All",
+                                    "href": "/products"
+                              },
+                              {
+                                    "label": "Outlet",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Framework Laptop",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Framework Desktop",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Mainboards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Expansion Cards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Memory & Storage",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Keyboards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Parts",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Customization",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Tools",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Software",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Merch",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
       },
       fields: {
         vlbrhtext: textField("Vlbrhtext"),
@@ -431,21 +985,82 @@ export const generatedComponents: Record<string, any> = {
         lwirdtext: textField("Lwirdtext"),
       },
     },
-    "TemplateExclusivePenSiteSupportNavigationNavpenPrimary": {
+    "TemplateExclusiveFrameworkSupportNavigationNavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteSupportNavigationNavpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-pen-site-support-navigation-navpen-primary/block"
+          TemplateExclusiveFrameworkSupportNavigationNavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-framework-support-navigation-navpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteSupportNavigationNavpenPrimary-1",
+            "id": "TemplateExclusiveFrameworkSupportNavigationNavpenPrimary-1",
             "logotext": "Framework",
             "logohref": "/",
             "centernavtext": "Products   Laptops   Desktops   Marketplace",
             "centernavhref": "/products",
             "rightnavtext": "Support   Sign In   Cart",
-            "rightnavhref": "/support"
+            "rightnavhref": "/support",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#F26B2D",
+                        "accent": "#F26B2D",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#F26B2D",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "navItems": [
+                  {
+                        "label": "Products",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Laptops",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Desktops",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Marketplace",
+                        "href": "/products"
+                  }
+            ],
+            "utilityItems": [
+                  {
+                        "label": "Support",
+                        "href": "/support"
+                  },
+                  {
+                        "label": "Sign In",
+                        "href": "/support"
+                  },
+                  {
+                        "label": "Cart",
+                        "href": "/support"
+                  }
+            ]
       },
       fields: {
         logotext: textField("Logotext"),
@@ -456,30 +1071,59 @@ export const generatedComponents: Record<string, any> = {
         rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusivePenSiteSupportHeroSupportheropenAlt1": {
+    "TemplateExclusiveFrameworkSupportHeroSupportheropenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteSupportHeroSupportheropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-support-hero-supportheropen-alt1/block"
+          TemplateExclusiveFrameworkSupportHeroSupportheropenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-framework-support-hero-supportheropen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteSupportHeroSupportheropenAlt1-1",
-            "herotitletext": "Hi, how can we help?"
+            "id": "TemplateExclusiveFrameworkSupportHeroSupportheropenAlt1-1",
+            "herotitletext": "Hi, how can we help?",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#F26B2D",
+                        "accent": "#F26B2D",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#F26B2D",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         herotitletext: textField("Herotitletext"),
       },
     },
-    "TemplateExclusivePenSiteSupportContactSupportmainpenAlt2": {
+    "TemplateExclusiveFrameworkSupportContactSupportmainpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteSupportContactSupportmainpenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-support-contact-supportmainpen-alt2/block"
+          TemplateExclusiveFrameworkSupportContactSupportmainpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-framework-support-contact-supportmainpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteSupportContactSupportmainpenAlt2-1",
+            "id": "TemplateExclusiveFrameworkSupportContactSupportmainpenAlt2-1",
             "kbtitletext": "Knowledge Base",
             "kbdesctext": "A collection of frequently asked questions around ordering, product specs, software debugging, and troubleshooting.",
             "kbl1text": "Orders & Shipping",
@@ -503,7 +1147,36 @@ export const generatedComponents: Record<string, any> = {
             "submitbtnhref": "/support",
             "submittxttext": "Submit support request",
             "connectbtnhref": "/",
-            "connecttxttext": "Connect with the Business team"
+            "connecttxttext": "Connect with the Business team",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#F26B2D",
+                        "accent": "#F26B2D",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#F26B2D",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         kbtitletext: textField("Kbtitletext"),
@@ -532,15 +1205,15 @@ export const generatedComponents: Record<string, any> = {
         connecttxttext: textField("Connecttxttext"),
       },
     },
-    "TemplateExclusivePenSiteSupportFooterFooterpenAlt3": {
+    "TemplateExclusiveFrameworkSupportFooterFooterpenAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteSupportFooterFooterpenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-support-footer-footerpen-alt3/block"
+          TemplateExclusiveFrameworkSupportFooterFooterpenAlt3BlockModule,
+          "@/components/blocks/template-exclusive-framework-support-footer-footerpen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteSupportFooterFooterpenAlt3-1",
+            "id": "TemplateExclusiveFrameworkSupportFooterFooterpenAlt3-1",
             "clzbctext": "Company",
             "pcfsktext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
             "pcfskhref": "/about",
@@ -560,7 +1233,178 @@ export const generatedComponents: Record<string, any> = {
             "j01f7href": "/support",
             "fonnptext": "Sign up",
             "irp3atext": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
-            "quashtext": "USD"
+            "quashtext": "USD",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#F26B2D",
+                        "accent": "#F26B2D",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#F26B2D",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "columns": [
+                  {
+                        "title": "Company",
+                        "links": [
+                              {
+                                    "label": "About Us",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Sustainability",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Our Blog",
+                                    "href": "/blog"
+                              },
+                              {
+                                    "label": "Contact Us",
+                                    "href": "/contact"
+                              },
+                              {
+                                    "label": "For Business",
+                                    "href": "/products"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Social",
+                        "links": [
+                              {
+                                    "label": "Twitter",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "YouTube",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Instagram",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Facebook",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "LinkedIn",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Bluesky",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Mastodon",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "GitHub",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "RSS",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Community",
+                        "links": [
+                              {
+                                    "label": "Community Forum",
+                                    "href": "/support"
+                              },
+                              {
+                                    "label": "Support",
+                                    "href": "/support"
+                              },
+                              {
+                                    "label": "Repair Guides",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Shop all",
+                        "links": [
+                              {
+                                    "label": "View All",
+                                    "href": "/products"
+                              },
+                              {
+                                    "label": "Outlet",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Framework Laptop",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Framework Desktop",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Mainboards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Expansion Cards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Memory & Storage",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Keyboards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Parts",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Customization",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Tools",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Software",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Merch",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
       },
       fields: {
         clzbctext: textField("Clzbctext"),
@@ -585,21 +1429,82 @@ export const generatedComponents: Record<string, any> = {
         quashtext: textField("Quashtext"),
       },
     },
-    "TemplateExclusivePenSiteProductsNavigationNavpenPrimary": {
+    "TemplateExclusiveFrameworkProductsNavigationNavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteProductsNavigationNavpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-pen-site-products-navigation-navpen-primary/block"
+          TemplateExclusiveFrameworkProductsNavigationNavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-framework-products-navigation-navpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteProductsNavigationNavpenPrimary-1",
+            "id": "TemplateExclusiveFrameworkProductsNavigationNavpenPrimary-1",
             "logotext": "Framework",
             "logohref": "/",
             "centernavtext": "Products   Laptops   Desktops   Marketplace",
             "centernavhref": "/products",
             "rightnavtext": "Support   Sign In   Cart",
-            "rightnavhref": "/support"
+            "rightnavhref": "/support",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#F6F6F3",
+                        "accent": "#F6F6F3",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#F6F6F3",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "navItems": [
+                  {
+                        "label": "Products",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Laptops",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Desktops",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Marketplace",
+                        "href": "/products"
+                  }
+            ],
+            "utilityItems": [
+                  {
+                        "label": "Support",
+                        "href": "/support"
+                  },
+                  {
+                        "label": "Sign In",
+                        "href": "/support"
+                  },
+                  {
+                        "label": "Cart",
+                        "href": "/support"
+                  }
+            ]
       },
       fields: {
         logotext: textField("Logotext"),
@@ -610,18 +1515,47 @@ export const generatedComponents: Record<string, any> = {
         rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusivePenSiteProductsHeroBizheropenAlt1": {
+    "TemplateExclusiveFrameworkProductsHeroBizheropenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteProductsHeroBizheropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-products-hero-bizheropen-alt1/block"
+          TemplateExclusiveFrameworkProductsHeroBizheropenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-framework-products-hero-bizheropen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteProductsHeroBizheropenAlt1-1",
+            "id": "TemplateExclusiveFrameworkProductsHeroBizheropenAlt1-1",
             "herot1text": "Framework for\nBusiness",
             "herosubtext": "Deploy modular laptops across your organization.",
-            "herorimagesrc": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080"
+            "herorimagesrc": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#F6F6F3",
+                        "accent": "#F6F6F3",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#F6F6F3",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         herot1text: textField("Herot1text"),
@@ -629,15 +1563,15 @@ export const generatedComponents: Record<string, any> = {
         herorimagesrc: textField("Herorimagesrc"),
       },
     },
-    "TemplateExclusivePenSiteProductsStoryBizmainpenAlt2": {
+    "TemplateExclusiveFrameworkProductsStoryBizmainpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteProductsStoryBizmainpenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-products-story-bizmainpen-alt2/block"
+          TemplateExclusiveFrameworkProductsStoryBizmainpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-framework-products-story-bizmainpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteProductsStoryBizmainpenAlt2-1",
+            "id": "TemplateExclusiveFrameworkProductsStoryBizmainpenAlt2-1",
             "ctitletext": "Customize, upgrade,\nrepair: The choice is yours",
             "csubtext": "Standardize devices that can be upgraded and repaired in-house. Reduce e-waste and total cost of ownership.",
             "c1imgimagesrc": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
@@ -715,7 +1649,36 @@ export const generatedComponents: Record<string, any> = {
             "q6text": "Can device lifecycle services include monthly fleet refreshes?",
             "p6text": "+",
             "legaltitletext": "Legal",
-            "legalbodytext": "Availability and lead times vary by region and configuration. Terms and warranty coverage may differ by country.\nPlease contact our team for enterprise deployment details and procurement support."
+            "legalbodytext": "Availability and lead times vary by region and configuration. Terms and warranty coverage may differ by country.\nPlease contact our team for enterprise deployment details and procurement support.",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#F6F6F3",
+                        "accent": "#F6F6F3",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#F6F6F3",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         ctitletext: textField("Ctitletext"),
@@ -798,15 +1761,15 @@ export const generatedComponents: Record<string, any> = {
         legalbodytext: textField("Legalbodytext"),
       },
     },
-    "TemplateExclusivePenSiteProductsFooterFooterpenAlt3": {
+    "TemplateExclusiveFrameworkProductsFooterFooterpenAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteProductsFooterFooterpenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-products-footer-footerpen-alt3/block"
+          TemplateExclusiveFrameworkProductsFooterFooterpenAlt3BlockModule,
+          "@/components/blocks/template-exclusive-framework-products-footer-footerpen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteProductsFooterFooterpenAlt3-1",
+            "id": "TemplateExclusiveFrameworkProductsFooterFooterpenAlt3-1",
             "i4katext": "Company",
             "dyodktext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
             "dyodkhref": "/about",
@@ -826,7 +1789,178 @@ export const generatedComponents: Record<string, any> = {
             "zvlavhref": "/support",
             "vux1ztext": "Sign up",
             "n5q0utext": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
-            "hl1oztext": "USD"
+            "hl1oztext": "USD",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#F6F6F3",
+                        "accent": "#F6F6F3",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#F6F6F3",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "columns": [
+                  {
+                        "title": "Company",
+                        "links": [
+                              {
+                                    "label": "About Us",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Sustainability",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Our Blog",
+                                    "href": "/blog"
+                              },
+                              {
+                                    "label": "Contact Us",
+                                    "href": "/contact"
+                              },
+                              {
+                                    "label": "For Business",
+                                    "href": "/products"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Social",
+                        "links": [
+                              {
+                                    "label": "Twitter",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "YouTube",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Instagram",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Facebook",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "LinkedIn",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Bluesky",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Mastodon",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "GitHub",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "RSS",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Community",
+                        "links": [
+                              {
+                                    "label": "Community Forum",
+                                    "href": "/support"
+                              },
+                              {
+                                    "label": "Support",
+                                    "href": "/support"
+                              },
+                              {
+                                    "label": "Repair Guides",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Shop all",
+                        "links": [
+                              {
+                                    "label": "View All",
+                                    "href": "/products"
+                              },
+                              {
+                                    "label": "Outlet",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Framework Laptop",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Framework Desktop",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Mainboards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Expansion Cards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Memory & Storage",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Keyboards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Parts",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Customization",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Tools",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Software",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Merch",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
       },
       fields: {
         i4katext: textField("I4katext"),
@@ -851,21 +1985,82 @@ export const generatedComponents: Record<string, any> = {
         hl1oztext: textField("Hl1oztext"),
       },
     },
-    "TemplateExclusivePenSiteContactNavigationNavpenPrimary": {
+    "TemplateExclusiveFrameworkContactNavigationNavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteContactNavigationNavpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-pen-site-contact-navigation-navpen-primary/block"
+          TemplateExclusiveFrameworkContactNavigationNavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-framework-contact-navigation-navpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteContactNavigationNavpenPrimary-1",
+            "id": "TemplateExclusiveFrameworkContactNavigationNavpenPrimary-1",
             "logotext": "Framework",
             "logohref": "/",
             "centernavtext": "Products   Laptops   Desktops   Marketplace",
             "centernavhref": "/products",
             "rightnavtext": "Support   Sign In   Cart",
-            "rightnavhref": "/support"
+            "rightnavhref": "/support",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#F3F3EF",
+                        "accent": "#F3F3EF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#F3F3EF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "navItems": [
+                  {
+                        "label": "Products",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Laptops",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Desktops",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Marketplace",
+                        "href": "/products"
+                  }
+            ],
+            "utilityItems": [
+                  {
+                        "label": "Support",
+                        "href": "/support"
+                  },
+                  {
+                        "label": "Sign In",
+                        "href": "/support"
+                  },
+                  {
+                        "label": "Cart",
+                        "href": "/support"
+                  }
+            ]
       },
       fields: {
         logotext: textField("Logotext"),
@@ -876,30 +2071,59 @@ export const generatedComponents: Record<string, any> = {
         rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusivePenSiteContactHeroContactheropenAlt1": {
+    "TemplateExclusiveFrameworkContactHeroContactheropenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteContactHeroContactheropenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-contact-hero-contactheropen-alt1/block"
+          TemplateExclusiveFrameworkContactHeroContactheropenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-framework-contact-hero-contactheropen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteContactHeroContactheropenAlt1-1",
-            "herotitletext": "Contact Framework"
+            "id": "TemplateExclusiveFrameworkContactHeroContactheropenAlt1-1",
+            "herotitletext": "Contact Framework",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#F3F3EF",
+                        "accent": "#F3F3EF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#F3F3EF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         herotitletext: textField("Herotitletext"),
       },
     },
-    "TemplateExclusivePenSiteContactContactContactmainpenAlt2": {
+    "TemplateExclusiveFrameworkContactContactContactmainpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteContactContactContactmainpenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-contact-contact-contactmainpen-alt2/block"
+          TemplateExclusiveFrameworkContactContactContactmainpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-framework-contact-contact-contactmainpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteContactContactContactmainpenAlt2-1",
+            "id": "TemplateExclusiveFrameworkContactContactContactmainpenAlt2-1",
             "t1text": "Contact Support",
             "l1text": "Submit a support request",
             "t2text": "Business Ordering",
@@ -926,7 +2150,36 @@ export const generatedComponents: Record<string, any> = {
             "worktitletext": "Work with us",
             "worksubtext": "Come join us to remake Consumer Electronics!",
             "worklinktext": "View open jobs",
-            "workillustrationimagesrc": "./images/generated-1773120346359.png"
+            "workillustrationimagesrc": "./images/generated-1773120346359.png",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#F3F3EF",
+                        "accent": "#F3F3EF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#F3F3EF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         t1text: textField("T1text"),
@@ -958,15 +2211,15 @@ export const generatedComponents: Record<string, any> = {
         workillustrationimagesrc: textField("Workillustrationimagesrc"),
       },
     },
-    "TemplateExclusivePenSiteContactFooterFooterpenAlt3": {
+    "TemplateExclusiveFrameworkContactFooterFooterpenAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteContactFooterFooterpenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-contact-footer-footerpen-alt3/block"
+          TemplateExclusiveFrameworkContactFooterFooterpenAlt3BlockModule,
+          "@/components/blocks/template-exclusive-framework-contact-footer-footerpen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteContactFooterFooterpenAlt3-1",
+            "id": "TemplateExclusiveFrameworkContactFooterFooterpenAlt3-1",
             "a8p3ftext": "Company",
             "mqbmrtext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
             "mqbmrhref": "/about",
@@ -986,7 +2239,178 @@ export const generatedComponents: Record<string, any> = {
             "uwcuhref": "/support",
             "uoytatext": "Sign up",
             "dmqitext": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
-            "thaqitext": "USD"
+            "thaqitext": "USD",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#F3F3EF",
+                        "accent": "#F3F3EF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#F3F3EF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "columns": [
+                  {
+                        "title": "Company",
+                        "links": [
+                              {
+                                    "label": "About Us",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Sustainability",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Our Blog",
+                                    "href": "/blog"
+                              },
+                              {
+                                    "label": "Contact Us",
+                                    "href": "/contact"
+                              },
+                              {
+                                    "label": "For Business",
+                                    "href": "/products"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Social",
+                        "links": [
+                              {
+                                    "label": "Twitter",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "YouTube",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Instagram",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Facebook",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "LinkedIn",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Bluesky",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Mastodon",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "GitHub",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "RSS",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Community",
+                        "links": [
+                              {
+                                    "label": "Community Forum",
+                                    "href": "/support"
+                              },
+                              {
+                                    "label": "Support",
+                                    "href": "/support"
+                              },
+                              {
+                                    "label": "Repair Guides",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Shop all",
+                        "links": [
+                              {
+                                    "label": "View All",
+                                    "href": "/products"
+                              },
+                              {
+                                    "label": "Outlet",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Framework Laptop",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Framework Desktop",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Mainboards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Expansion Cards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Memory & Storage",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Keyboards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Parts",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Customization",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Tools",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Software",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Merch",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
       },
       fields: {
         a8p3ftext: textField("A8p3ftext"),
@@ -1011,21 +2435,82 @@ export const generatedComponents: Record<string, any> = {
         thaqitext: textField("Thaqitext"),
       },
     },
-    "TemplateExclusivePenSiteBlogNavigationNavpenPrimary": {
+    "TemplateExclusiveFrameworkBlogNavigationNavpenPrimary": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteBlogNavigationNavpenPrimaryBlockModule,
-          "@/components/blocks/template-exclusive-pen-site-blog-navigation-navpen-primary/block"
+          TemplateExclusiveFrameworkBlogNavigationNavpenPrimaryBlockModule,
+          "@/components/blocks/template-exclusive-framework-blog-navigation-navpen-primary/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteBlogNavigationNavpenPrimary-1",
+            "id": "TemplateExclusiveFrameworkBlogNavigationNavpenPrimary-1",
             "logotext": "Framework",
             "logohref": "/",
             "centernavtext": "Products   Laptops   Desktops   Marketplace",
             "centernavhref": "/products",
             "rightnavtext": "Support   Sign In   Cart",
-            "rightnavhref": "/support"
+            "rightnavhref": "/support",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "navItems": [
+                  {
+                        "label": "Products",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Laptops",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Desktops",
+                        "href": "/products"
+                  },
+                  {
+                        "label": "Marketplace",
+                        "href": "/products"
+                  }
+            ],
+            "utilityItems": [
+                  {
+                        "label": "Support",
+                        "href": "/support"
+                  },
+                  {
+                        "label": "Sign In",
+                        "href": "/support"
+                  },
+                  {
+                        "label": "Cart",
+                        "href": "/support"
+                  }
+            ]
       },
       fields: {
         logotext: textField("Logotext"),
@@ -1036,15 +2521,15 @@ export const generatedComponents: Record<string, any> = {
         rightnavhref: textField("Rightnavhref"),
       },
     },
-    "TemplateExclusivePenSiteBlogNavigationCategorybarpenAlt1": {
+    "TemplateExclusiveFrameworkBlogNavigationCategorybarpenAlt1": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteBlogNavigationCategorybarpenAlt1BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-blog-navigation-categorybarpen-alt1/block"
+          TemplateExclusiveFrameworkBlogNavigationCategorybarpenAlt1BlockModule,
+          "@/components/blocks/template-exclusive-framework-blog-navigation-categorybarpen-alt1/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteBlogNavigationCategorybarpenAlt1-1",
+            "id": "TemplateExclusiveFrameworkBlogNavigationCategorybarpenAlt1-1",
             "fmwkqtext": "All",
             "fmwkqhref": "/",
             "shvcttext": "News",
@@ -1054,7 +2539,58 @@ export const generatedComponents: Record<string, any> = {
             "usnltext": "Reviews",
             "usnlhref": "/",
             "krcrjtext": "Environment",
-            "krcrjhref": "/"
+            "krcrjhref": "/",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "categories": [
+                  {
+                        "label": "All",
+                        "href": "/blog?category=all"
+                  },
+                  {
+                        "label": "News",
+                        "href": "/blog?category=news"
+                  },
+                  {
+                        "label": "Releases",
+                        "href": "/blog?category=release"
+                  },
+                  {
+                        "label": "Reviews",
+                        "href": "/blog?category=reviews"
+                  },
+                  {
+                        "label": "Environment",
+                        "href": "/blog?category=environment"
+                  }
+            ]
       },
       fields: {
         fmwkqtext: textField("Fmwkqtext"),
@@ -1069,15 +2605,15 @@ export const generatedComponents: Record<string, any> = {
         krcrjhref: textField("Krcrjhref"),
       },
     },
-    "TemplateExclusivePenSiteBlogStoryBlogmainpenAlt2": {
+    "TemplateExclusiveFrameworkBlogStoryBlogmainpenAlt2": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteBlogStoryBlogmainpenAlt2BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-blog-story-blogmainpen-alt2/block"
+          TemplateExclusiveFrameworkBlogStoryBlogmainpenAlt2BlockModule,
+          "@/components/blocks/template-exclusive-framework-blog-story-blogmainpen-alt2/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteBlogStoryBlogmainpenAlt2-1",
+            "id": "TemplateExclusiveFrameworkBlogStoryBlogmainpenAlt2-1",
             "feat1imgimagesrc": "https://images.unsplash.com/photo-1594047686814-9f74e5c56ccd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjA1NTh8&ixlib=rb-4.1.0&q=80&w=1080",
             "rghsptext": "Updates and\nlivestream",
             "fxt71text": "News | Feb 26 2026",
@@ -1106,7 +2642,36 @@ export const generatedComponents: Record<string, any> = {
             "img6imagesrc": "https://images.unsplash.com/photo-1769085795297-b45cc8c92f5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjA2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
             "vuynwtext": "Introducing new Framework Laptop 16 with Ryzen 9",
             "wmziitext": "News | Aug 16 2025",
-            "l3hujtext": "1 2 3 4 5 6 7 8 9 10 11"
+            "l3hujtext": "1 2 3 4 5 6 7 8 9 10 11",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            }
       },
       fields: {
         feat1imgimagesrc: textField("Feat1imgimagesrc"),
@@ -1140,15 +2705,15 @@ export const generatedComponents: Record<string, any> = {
         l3hujtext: textField("L3hujtext"),
       },
     },
-    "TemplateExclusivePenSiteBlogFooterFooterpenAlt3": {
+    "TemplateExclusiveFrameworkBlogFooterFooterpenAlt3": {
       render: renderBlock(
         resolveBlockComponent(
-          TemplateExclusivePenSiteBlogFooterFooterpenAlt3BlockModule,
-          "@/components/blocks/template-exclusive-pen-site-blog-footer-footerpen-alt3/block"
+          TemplateExclusiveFrameworkBlogFooterFooterpenAlt3BlockModule,
+          "@/components/blocks/template-exclusive-framework-blog-footer-footerpen-alt3/block"
         )
       ),
       defaultProps: {
-            "id": "TemplateExclusivePenSiteBlogFooterFooterpenAlt3-1",
+            "id": "TemplateExclusiveFrameworkBlogFooterFooterpenAlt3-1",
             "y1pjgtext": "Company",
             "boahrtext": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
             "boahrhref": "/about",
@@ -1168,7 +2733,178 @@ export const generatedComponents: Record<string, any> = {
             "xjtjihref": "/support",
             "vt300text": "Sign up",
             "xsatptext": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
-            "b7gutext": "USD"
+            "b7gutext": "USD",
+            "theme": {
+                  "mode": "light",
+                  "fontHeading": "Inter",
+                  "fontBody": "Inter",
+                  "motion": "subtle",
+                  "fontFamilies": [
+                        "Inter"
+                  ],
+                  "palette": {
+                        "bg": "#F3F3EF",
+                        "text": "#FFFFFF",
+                        "primary": "#4F77FF",
+                        "accent": "#4F77FF",
+                        "neutral": "#E5E7EB",
+                        "textSecondary": "#4B5563"
+                  },
+                  "primaryColor": "#4F77FF",
+                  "layoutRules": {
+                        "maxWidth": "1400px",
+                        "sectionPadding": "py-24",
+                        "grid": "12-col"
+                  },
+                  "tokens": {
+                        "surface": "solid",
+                        "border": "soft",
+                        "shadow": "dramatic",
+                        "accent": "glow"
+                  }
+            },
+            "columns": [
+                  {
+                        "title": "Company",
+                        "links": [
+                              {
+                                    "label": "About Us",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Sustainability",
+                                    "href": "/about"
+                              },
+                              {
+                                    "label": "Our Blog",
+                                    "href": "/blog"
+                              },
+                              {
+                                    "label": "Contact Us",
+                                    "href": "/contact"
+                              },
+                              {
+                                    "label": "For Business",
+                                    "href": "/products"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Social",
+                        "links": [
+                              {
+                                    "label": "Twitter",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "YouTube",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Instagram",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Facebook",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "LinkedIn",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Bluesky",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Mastodon",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "GitHub",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "RSS",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Community",
+                        "links": [
+                              {
+                                    "label": "Community Forum",
+                                    "href": "/support"
+                              },
+                              {
+                                    "label": "Support",
+                                    "href": "/support"
+                              },
+                              {
+                                    "label": "Repair Guides",
+                                    "href": "/"
+                              }
+                        ]
+                  },
+                  {
+                        "title": "Shop all",
+                        "links": [
+                              {
+                                    "label": "View All",
+                                    "href": "/products"
+                              },
+                              {
+                                    "label": "Outlet",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Framework Laptop",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Framework Desktop",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Mainboards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Expansion Cards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Memory & Storage",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Keyboards",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Parts",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Customization",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Tools",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Software",
+                                    "href": "/"
+                              },
+                              {
+                                    "label": "Merch",
+                                    "href": "/"
+                              }
+                        ]
+                  }
+            ]
       },
       fields: {
         y1pjgtext: textField("Y1pjgtext"),

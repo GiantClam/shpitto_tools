@@ -52,6 +52,12 @@ export type PageTemplateSpec = {
   pageType?: TemplatePageType;
   requiredCategories: SectionKind[];
   templates: Partial<Record<SectionKind, SectionTemplateBlock>>;
+  sections?: Array<{
+    kind: SectionKind;
+    block: SectionTemplateBlock;
+    source?: "profile" | "page";
+    ordinal?: number;
+  }>;
 };
 
 export type StyleProfile = {
@@ -68,12 +74,6 @@ export type StyleProfile = {
   siteStyleShell?: SiteStyleShell;
   version?: string;
   createdAt?: string;
-};
-
-type StyleProfileSelectionOptions = {
-  pagePath?: string;
-  pageName?: string;
-  pagePaths?: string[];
 };
 
 const normalizeToken = (value: string) => value.trim().toLowerCase().replace(/[^a-z0-9]+/g, "");
@@ -343,13 +343,13 @@ const inferTemplatePageType = (pathValue: unknown, nameValue: unknown): Template
   if (!token || token === "/") return "home";
   if (pathToken === "/" || /(^|[^a-z])home($|[^a-z])/.test(token)) return "home";
   if (/(about|company|story|mission|vision|who|team)/.test(token)) return "about";
-  if (/(legal|privacy|term|policy|cookie|gdpr)/.test(token)) return "legal";
-  if (/(support|help|faq|docs|documentation)/.test(token)) return "support";
-  if (/(blog|news|journal|article|insight|press)/.test(token)) return "blog";
-  if (/(contact|quote|inquir|demo|consult|book)/.test(token)) return "contact";
-  if (/(case|customer|testimonial|proof|review|success|portfolio)/.test(token)) return "cases";
   if (/(solution|service|capabilit|workflow|industry)/.test(token)) return "solutions";
   if (/(product|catalog|collection|pricing|plan|store|shop)/.test(token)) return "products";
+  if (/(case|customer|testimonial|proof|review|success|portfolio)/.test(token)) return "cases";
+  if (/(contact|quote|inquir|demo|consult|book)/.test(token)) return "contact";
+  if (/(blog|news|journal|article|insight|press)/.test(token)) return "blog";
+  if (/(legal|privacy|term|policy|cookie|gdpr)/.test(token)) return "legal";
+  if (/(support|help|faq|docs|documentation)/.test(token)) return "support";
   return "generic";
 };
 
@@ -410,8 +410,42 @@ const validatePageTemplateSpec = (value: unknown): PageTemplateSpec | null => {
   const templatesFromTemplates = validateTemplateMap(value.templates);
   const templatesFromSectionSpecs = validateSectionSpecsMap(value.section_specs ?? value.sectionSpecs);
   const templates = Object.keys(templatesFromTemplates).length ? templatesFromTemplates : templatesFromSectionSpecs;
+  const sections = Array.isArray(value.sections)
+    ? value.sections
+        .map((entry) => {
+          if (!isRecord(entry)) return null;
+          const kind = normalizeSectionKindToken(entry.kind);
+          if (!kind) return null;
+          const block = validateTemplateBlock(entry.block);
+          if (!block) return null;
+          const source =
+            entry.source === "profile" || entry.source === "page"
+              ? entry.source
+              : undefined;
+          const ordinal = Number.isFinite(Number(entry.ordinal)) ? Number(entry.ordinal) : undefined;
+          return {
+            kind,
+            block,
+            ...(source ? { source } : {}),
+            ...(ordinal ? { ordinal } : {}),
+          };
+        })
+        .filter(
+          (
+            entry
+          ): entry is {
+            kind: SectionKind;
+            block: SectionTemplateBlock;
+            source?: "profile" | "page";
+            ordinal?: number;
+          } => Boolean(entry)
+        )
+    : [];
   if (!requiredCategories.length && Object.keys(templates).length) {
     requiredCategories = sectionKinds.filter((kind) => Boolean(templates[kind]));
+  }
+  if (!requiredCategories.length && sections.length) {
+    requiredCategories = Array.from(new Set(sections.map((entry) => entry.kind)));
   }
   if (!requiredCategories.length) return null;
   const pageType =
@@ -422,6 +456,7 @@ const validatePageTemplateSpec = (value: unknown): PageTemplateSpec | null => {
     pageType,
     requiredCategories,
     templates,
+    ...(sections.length ? { sections } : {}),
   };
 };
 
@@ -1111,12 +1146,16 @@ const fallbackPublishedGenerationContracts = styleProfiles.map((profile) => {
       name: page.name,
       ...(page.pageType ? { pageType: page.pageType } : {}),
       requiredCategories: Array.from(new Set(page.requiredCategories || [])),
-      sections: (page.requiredCategories || [])
-        .map((kind) => {
-          const pageBlock = page.templates?.[kind];
-          const profileBlock = profile.templates?.[kind];
-          return toSectionContract(pageBlock ?? profileBlock, kind, pageBlock ? "page" : "profile");
-        })
+      sections: (Array.isArray(page.sections) && page.sections.length
+        ? page.sections
+            .map((section) =>
+              toSectionContract(section.block, section.kind, section.source === "profile" ? "profile" : "page")
+            )
+        : (page.requiredCategories || []).map((kind) => {
+            const pageBlock = page.templates?.[kind];
+            const profileBlock = profile.templates?.[kind];
+            return toSectionContract(pageBlock ?? profileBlock, kind, pageBlock ? "page" : "profile");
+          }))
         .filter((entry): entry is PublishedSectionGenerationContract => Boolean(entry)),
     })),
   };
@@ -1252,7 +1291,7 @@ export const getStyleProfiles = () => styleProfiles;
 const industryTaxonomy: Record<string, string[]> = {
   technology: ["tech", "saas", "software", "app", "platform", "ai", "cloud", "startup", "digital", "api", "devtool", "iot", "automation"],
   ecommerce: ["shop", "store", "ecommerce", "commerce", "retail", "product", "marketplace", "brand", "fashion", "apparel", "clothing", "sneaker", "shoe"],
-  industrial: ["industrial", "manufacturing", "factory", "machinery", "automation", "cnc", "steel", "metal", "heavy", "equipment"],
+  industrial: ["industrial", "manufacturing", "factory", "machinery", "engineering", "automation", "cnc", "steel", "metal", "heavy", "equipment"],
   luxury: ["luxury", "premium", "highend", "bespoke", "exclusive", "couture", "artisan", "craftsmanship", "heritage"],
   creative: ["design", "studio", "agency", "creative", "portfolio", "photography", "art", "gallery", "architect", "interior"],
   food: ["restaurant", "cafe", "food", "dining", "bakery", "coffee", "tea", "culinary", "chef", "catering", "bar"],
@@ -1343,113 +1382,12 @@ const computeQualityBonus = (profile: StyleProfile): number => {
   return Number((quality / 25).toFixed(2));
 };
 
-const readProfilePageCoverage = (
-  profile: StyleProfile
-): Array<{ path: string; pageType: TemplatePageType }> => {
-  const rawPages = Array.isArray(profile.siteTemplates)
-    ? profile.siteTemplates
-    : Array.isArray(profile.pageSpecs)
-      ? profile.pageSpecs
-      : [];
-  return rawPages
-    .map((page) => {
-      const path = normalizeTemplatePagePath(page?.path);
-      const name = typeof page?.name === "string" ? page.name : "";
-      const pageType =
-        normalizePageTypeToken(page?.pageType) ??
-        inferTemplatePageType(path, name);
-      return { path, pageType };
-    })
-    .filter((page) => Boolean(page.path));
-};
-
-const buildRequestedPageSignals = (
-  options: StyleProfileSelectionOptions
-): { pagePaths: string[]; pageTypes: TemplatePageType[] } => {
-  const requestedPaths = [
-    ...(typeof options.pagePath === "string" && options.pagePath.trim() ? [options.pagePath] : []),
-    ...(Array.isArray(options.pagePaths) ? options.pagePaths : []),
-  ]
-    .map((value) => normalizeTemplatePagePath(value))
-    .filter(Boolean);
-  const dedupedPaths = Array.from(new Set(requestedPaths));
-  const typeSet = new Set<TemplatePageType>();
-  dedupedPaths.forEach((path) => {
-    typeSet.add(inferTemplatePageType(path, ""));
-  });
-  if (typeof options.pagePath === "string" && options.pagePath.trim()) {
-    typeSet.add(inferTemplatePageType(options.pagePath, options.pageName ?? ""));
-  }
-  return {
-    pagePaths: dedupedPaths,
-    pageTypes: Array.from(typeSet).filter((pageType) => pageType !== "generic"),
-  };
-};
-
-const computePageCoverageScore = (
-  profile: StyleProfile,
-  requested: { pagePaths: string[]; pageTypes: TemplatePageType[] }
-): number => {
-  if (!requested.pagePaths.length && !requested.pageTypes.length) return 0;
-  const coverage = readProfilePageCoverage(profile);
-  if (!coverage.length) return 0;
-
-  const profilePathSet = new Set(coverage.map((page) => page.path));
-  const profileTypeSet = new Set(coverage.map((page) => page.pageType));
-  const exactPathMatches = requested.pagePaths.filter((path) => profilePathSet.has(path)).length;
-  const requestedTypes = requested.pageTypes.filter((pageType) => pageType !== "home" && pageType !== "generic");
-  const matchedTypes = requestedTypes.filter((pageType) => profileTypeSet.has(pageType)).length;
-  const missingStrictTypes = requestedTypes.filter((pageType) => !profileTypeSet.has(pageType)).length;
-  const criticalTypes = requestedTypes.filter((pageType) =>
-    ["solutions", "cases", "products", "about", "contact"].includes(pageType)
-  );
-  const matchedCriticalTypes = criticalTypes.filter((pageType) => profileTypeSet.has(pageType)).length;
-  const missingCriticalTypes = criticalTypes.length - matchedCriticalTypes;
-  const exactMatchScore = exactPathMatches;
-  const typeMatchScore = matchedTypes * 3;
-  const missingPenalty = missingStrictTypes * 3;
-  const criticalPenalty =
-    criticalTypes.length >= 3
-      ? missingCriticalTypes * 4 + (matchedCriticalTypes < Math.ceil(criticalTypes.length * 0.6) ? 6 : 0)
-      : 0;
-
-  return exactMatchScore + typeMatchScore - missingPenalty - criticalPenalty;
-};
-
-const computeIndustryAlignmentScore = (
-  profile: StyleProfile,
-  promptSignals: { industries: string[]; styles: string[] },
-  requested: { pagePaths: string[]; pageTypes: TemplatePageType[] }
-): number => {
-  if (!promptSignals.industries.includes("industrial")) return 0;
-  const profileSignals = extractTaxonomySignals(`${profile.name} ${profile.keywords.join(" ")}`);
-  const needsIndustrialCoverage = requested.pageTypes.some((pageType) =>
-    ["products", "solutions", "cases"].includes(pageType)
-  );
-  if (/\b(audeze|devialet|masterdynamic)\b/i.test(`${profile.id} ${profile.name}`)) {
-    return needsIndustrialCoverage ? -50 : -12;
-  }
-  if (profileSignals.industries.includes("industrial")) {
-    return needsIndustrialCoverage ? 14 : 6;
-  }
-  if (
-    profileSignals.industries.some((industry) => ["ecommerce", "creative", "luxury"].includes(industry))
-  ) {
-    return needsIndustrialCoverage ? -18 : -8;
-  }
-  return needsIndustrialCoverage ? -12 : -3;
-};
-
-export const selectStyleProfile = (
-  prompt: string,
-  options: StyleProfileSelectionOptions = {}
-): StyleProfile | null => {
+export const selectStyleProfile = (prompt: string): StyleProfile | null => {
   const normalizedPrompt = normalizeToken(prompt);
   if (!normalizedPrompt) return null;
 
   const promptSignals = extractTaxonomySignals(prompt);
   const promptDomain = extractPromptDomain(prompt);
-  const requestedPages = buildRequestedPageSignals(options);
 
   let best: StyleProfile | null = null;
   let bestScore = 0;
@@ -1472,13 +1410,11 @@ export const selectStyleProfile = (
     const semanticScore = computeProfileSemanticScore(profile, promptSignals);
     const domainScore = computeDomainMatchScore(profile, promptDomain);
     const qualityBonus = computeQualityBonus(profile);
-    const pageCoverageScore = computePageCoverageScore(profile, requestedPages);
-    const industryAlignmentScore = computeIndustryAlignmentScore(profile, promptSignals, requestedPages);
 
     // Require at least one intent signal, avoid selecting only by quality.
-    if (keywordScore <= 0 && semanticScore <= 0 && domainScore <= 0 && pageCoverageScore <= 0) continue;
+    if (keywordScore <= 0 && semanticScore <= 0 && domainScore <= 0) continue;
 
-    const score = keywordScore + semanticScore + domainScore + qualityBonus + pageCoverageScore + industryAlignmentScore;
+    const score = keywordScore + semanticScore + domainScore + qualityBonus;
     if (score <= 0) continue;
 
     const templateCount = Object.keys(profile.templates ?? {}).length;
@@ -1516,8 +1452,6 @@ export const selectStyleProfile = (
       promptDomain,
       promptIndustries: promptSignals.industries.join(","),
       promptStyles: promptSignals.styles.join(","),
-      requestedPageTypes: requestedPages.pageTypes.join(","),
-      requestedPagePaths: requestedPages.pagePaths.join(","),
     });
   }
 
@@ -1533,10 +1467,7 @@ export const resolvePublishedPageGenerationContract = (input: {
   page: PublishedPageGenerationContract;
   shared: Partial<Record<"navigation" | "footer", PublishedSectionGenerationContract>>;
 } | null => {
-  const profile = selectStyleProfile(input.prompt, {
-    pagePath: input.pagePath,
-    pageName: input.pageName,
-  });
+  const profile = selectStyleProfile(input.prompt);
   if (!profile) return null;
   const contract = publishedGenerationContractByProfileId.get(profile.id);
   if (!contract) return null;
@@ -2893,10 +2824,7 @@ const personalizeTemplateProps = (
 };
 
 export const resolveSectionTemplateAsset = (input: TemplatePersonalizationContext): ResolvedSectionTemplateAsset | null => {
-  const profile = selectStyleProfile(input.prompt, {
-    pagePath: input.pagePath,
-    pageName: input.pageName,
-  });
+  const profile = selectStyleProfile(input.prompt);
   if (!profile) return null;
 
   const kind = inferSectionKind(input.sectionType, input.sectionId);
@@ -2904,10 +2832,6 @@ export const resolveSectionTemplateAsset = (input: TemplatePersonalizationContex
 
   const normalizedPagePath = normalizeTemplatePagePath(input.pagePath);
   const targetPageType = inferTemplatePageType(normalizedPagePath, input.pageName);
-  const isShellKind = kind === "navigation" || kind === "footer" || kind === "cta" || kind === "contact";
-  if (targetPageType === "about" && !isShellKind) {
-    return null;
-  }
   const candidate = resolveTemplateCandidate({
     profile,
     kind,

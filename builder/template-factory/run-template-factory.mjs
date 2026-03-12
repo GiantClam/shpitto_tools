@@ -10,13 +10,6 @@ import { buildCustomSectionPrompt, buildPuckFieldsForCustomComponent } from "./g
 import { materializeComponent, materializeFromPayload, writeGeneratedConfig } from "./materialize-custom-components.mjs";
 import { resolveCliOptions } from "./config/resolve-options.mjs";
 import { evaluateRunGates } from "./gates/evaluate-run-gates.mjs";
-import {
-  buildEnterpriseCanonicalFooterColumns,
-  buildEnterpriseCanonicalLinks,
-  ensureEnterpriseSitePages,
-  looksLikeEnterpriseWebsiteSite,
-  selectEnterpriseRequiredPages,
-} from "./enterprise-site-structure.mjs";
 import { selectRequiredCases, selectRequiredPagesForSite } from "./regression/select-required-cases.mjs";
 import { buildDesignContract, evaluateDesignContractCompliance } from "./quality/design-contract.mjs";
 import { buildAssemblyManifest, evaluateKeyFlowIntegrity } from "./quality/assembly.mjs";
@@ -7738,9 +7731,9 @@ const inferPaletteProfileFromVisualSignature = (visualSignature, htmlColors = []
   if (isDark && (blueCyan || hasTeal)) {
     return {
       paletteProfile: "deep-blue-cyan",
-      navGradient: "linear-gradient(180deg,#03122e 0%,#03122e 100%)",
-      bodyGradient: "linear-gradient(180deg,#04152f 0%,#04152f 100%)",
-      footerGradient: "linear-gradient(180deg,#03122e 0%,#03122e 100%)",
+      navGradient: "linear-gradient(180deg,#03122e 0%,#071b45 100%)",
+      bodyGradient: "linear-gradient(180deg,#04152f 0%,#08234c 100%)",
+      footerGradient: "linear-gradient(180deg,#03122e 0%,#020a1d 100%)",
       overlayStrong: "rgba(3, 16, 40, 0.58)",
       overlaySoft: "rgba(2,10,24,0.24)",
       accent: extractedAccent || (hasTeal ? "#009999" : "#00c6d8"),
@@ -7750,9 +7743,9 @@ const inferPaletteProfileFromVisualSignature = (visualSignature, htmlColors = []
   if (isDark) {
     return {
       paletteProfile: "dark-neutral",
-      navGradient: "linear-gradient(180deg,#0b1220 0%,#0b1220 100%)",
-      bodyGradient: "linear-gradient(180deg,#0f172a 0%,#0f172a 100%)",
-      footerGradient: "linear-gradient(180deg,#0a1020 0%,#0a1020 100%)",
+      navGradient: "linear-gradient(180deg,#0b1220 0%,#111827 100%)",
+      bodyGradient: "linear-gradient(180deg,#0f172a 0%,#111827 100%)",
+      footerGradient: "linear-gradient(180deg,#0a1020 0%,#060a16 100%)",
       overlayStrong: "rgba(9, 16, 30, 0.56)",
       overlaySoft: "rgba(8,10,16,0.2)",
       accent: extractedAccent || "#38bdf8",
@@ -7761,9 +7754,9 @@ const inferPaletteProfileFromVisualSignature = (visualSignature, htmlColors = []
   }
   return {
     paletteProfile: "light-neutral",
-    navGradient: "linear-gradient(180deg,#f8f8f8 0%,#f8f8f8 100%)",
-    bodyGradient: "linear-gradient(180deg,#ffffff 0%,#ffffff 100%)",
-    footerGradient: "linear-gradient(180deg,#f3f3f3 0%,#f3f3f3 100%)",
+    navGradient: "linear-gradient(180deg,#f8f8f8 0%,#efefef 100%)",
+    bodyGradient: "linear-gradient(180deg,#ffffff 0%,#f4f4f4 100%)",
+    footerGradient: "linear-gradient(180deg,#f3f3f3 0%,#e8e8e8 100%)",
     overlayStrong: "rgba(20, 20, 20, 0.22)",
     overlaySoft: "rgba(18,18,18,0.12)",
     accent: extractedAccent || "#111827",
@@ -9360,8 +9353,9 @@ const applyStructureFirstToSectionDefaults = ({
       // keep nav/footer color lock when available
     } else if (!next.backgroundGradient) {
       const primary = normalizeColorToken(palette?.surface || "") || "#f3f4f6";
+      const secondary = normalizeColorToken(palette?.surfaceMuted || "") || "#e5e7eb";
       next.background = "gradient";
-      next.backgroundGradient = `linear-gradient(180deg,${primary} 0%,${primary} 100%)`;
+      next.backgroundGradient = `linear-gradient(180deg,${primary} 0%,${secondary} 100%)`;
       next.backgroundOverlay = "";
       next.backgroundOverlayOpacity = 0;
       next.backgroundBlur = 0;
@@ -12249,6 +12243,148 @@ const collectEditableFieldsFromDefaults = (value, prefix = []) => {
   return Array.from(deduped.values());
 };
 
+const splitStructuredTextItems = (value = "") =>
+  String(value || "")
+    .split(/\n+|\s{2,}/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+const buildFallbackHrefFromLabel = (label = "", fallbackHref = "") => {
+  const token = String(label || "").trim().toLowerCase();
+  if (!token) return String(fallbackHref || "").trim();
+  if (token === "home" || token === "framework" || token === "all") return "/";
+  if (token === "about" || token === "about us") return "/about";
+  if (token === "support" || token === "help" || token === "community forum") return "/support";
+  if (token === "contact" || token === "contact us") return "/contact";
+  if (
+    token === "products" ||
+    token === "for business" ||
+    token === "view all" ||
+    token === "shop all" ||
+    token === "shop"
+  ) {
+    return "/products";
+  }
+  if (
+    token === "blog" ||
+    token === "our blog" ||
+    token === "news" ||
+    token === "press" ||
+    token === "journal"
+  ) {
+    return "/blog";
+  }
+  return String(fallbackHref || "").trim();
+};
+
+const buildStructuredLinkItems = (labels = [], fallbackHref = "") =>
+  labels.map((label) => ({
+    label,
+    href: buildFallbackHrefFromLabel(label, fallbackHref),
+  }));
+
+const groupTextHrefPairs = (defaults = {}) => {
+  const pairs = [];
+  const orderedEntries = Object.entries(defaults || {});
+  for (const [key, value] of orderedEntries) {
+    if (!/text$/i.test(key) || typeof value !== "string") continue;
+    const hrefKey = key.replace(/text$/i, "href");
+    pairs.push({
+      textKey: key,
+      textValue: value,
+      hrefKey,
+      hrefValue: typeof defaults?.[hrefKey] === "string" ? defaults[hrefKey] : "",
+    });
+  }
+  return pairs;
+};
+
+const buildStructuredCategoryItems = (defaults = {}) =>
+  groupTextHrefPairs(defaults)
+    .filter((entry) => entry.textKey !== "id")
+    .map((entry) => {
+      const label = String(entry.textValue || "").trim();
+      const hrefToken = String(entry.hrefValue || "").trim();
+      let href = hrefToken;
+      if (!href || href === "/" || href === "/blog") {
+        const categoryToken = label.toLowerCase();
+        if (categoryToken === "all") href = "/blog?category=all";
+        else if (categoryToken === "news") href = "/blog?category=news";
+        else if (categoryToken === "releases") href = "/blog?category=release";
+        else if (categoryToken === "reviews") href = "/blog?category=reviews";
+        else if (categoryToken === "environment") href = "/blog?category=environment";
+      }
+      return {
+        label,
+        href: String(href || "/blog").trim(),
+      };
+    })
+    .filter((entry) => entry.label);
+
+const buildStructuredFooterColumns = (defaults = {}) => {
+  const textEntries = Object.entries(defaults || {}).filter(
+    ([key, value]) => /text$/i.test(key) && key !== "id" && typeof value === "string" && String(value || "").trim()
+  );
+  const columns = [];
+  let index = 0;
+  while (index < textEntries.length - 1) {
+    const [titleKey, titleValue] = textEntries[index];
+    const [listKey, listValue] = textEntries[index + 1];
+    if (/\n/.test(String(listValue || "")) && !/\n/.test(String(titleValue || ""))) {
+      const listHrefKey = listKey.replace(/text$/i, "href");
+      columns.push({
+        title: String(titleValue || "").trim(),
+        links: buildStructuredLinkItems(
+          splitStructuredTextItems(listValue),
+          typeof defaults?.[listHrefKey] === "string" ? defaults[listHrefKey] : ""
+        ),
+      });
+      index += 2;
+      continue;
+    }
+    index += 1;
+  }
+  return columns.filter((entry) => entry.title && Array.isArray(entry.links) && entry.links.length);
+};
+
+const augmentPublishReadyDefaults = ({ defaults = {}, sectionKind = "", blockType = "" } = {}) => {
+  const normalizedKind = String(sectionKind || "").trim().toLowerCase();
+  const normalizedBlockType = String(blockType || "").trim().toLowerCase();
+  const next = cloneJson(defaults && typeof defaults === "object" ? defaults : {});
+
+  if ((normalizedKind === "navigation" || /navigation/.test(normalizedBlockType)) && !Array.isArray(next.navItems)) {
+    const navItems = buildStructuredLinkItems(splitStructuredTextItems(next.centernavtext), next.centernavhref);
+    const utilityItems = buildStructuredLinkItems(splitStructuredTextItems(next.rightnavtext), next.rightnavhref);
+    if (navItems.length) next.navItems = navItems;
+    if (utilityItems.length) next.utilityItems = utilityItems;
+  }
+
+  if (/categorybar/.test(normalizedBlockType) && !Array.isArray(next.categories) && groupTextHrefPairs(next).length >= 3) {
+    const categories = buildStructuredCategoryItems(next);
+    if (categories.length) next.categories = categories;
+  }
+
+  if ((normalizedKind === "footer" || /footer/.test(normalizedBlockType)) && !Array.isArray(next.columns)) {
+    const columns = buildStructuredFooterColumns(next);
+    if (columns.length) next.columns = columns;
+  }
+
+  if (
+    (normalizedKind === "socialproof" || /socialproof|logorow/.test(normalizedBlockType)) &&
+    !Array.isArray(next.logos) &&
+    Object.keys(next).filter((key) => key !== "id").length === 0
+  ) {
+    next.logos = [
+      { label: "Partner 1" },
+      { label: "Partner 2" },
+      { label: "Partner 3" },
+      { label: "Partner 4" },
+    ];
+  }
+
+  return next;
+};
+
 const normalizeTemplateVariantCandidates = (entry) => {
   const candidates = Array.isArray(entry?.template_variant?.candidates) ? entry.template_variant.candidates : [];
   return candidates
@@ -12279,6 +12415,11 @@ const injectTemplateExclusiveComponents = ({ processed = [], availableBlockFolde
       pagePath,
       sectionKind,
     });
+    const publishReadyDefaults = augmentPublishReadyDefaults({
+      defaults: sanitizedDefaults,
+      sectionKind,
+      blockType,
+    });
     const name = buildTemplateExclusiveComponentName({
       siteId,
       pagePath,
@@ -12289,9 +12430,9 @@ const injectTemplateExclusiveComponents = ({ processed = [], availableBlockFolde
     const component = {
       name,
       kebabName,
-      fieldCode: buildTemplateExclusiveFieldCode(sanitizedDefaults),
-      defaultProps: { id: `${name}-1`, ...(sanitizedDefaults || {}) },
-      editableFields: collectEditableFieldsFromDefaults(sanitizedDefaults || {}),
+      fieldCode: buildTemplateExclusiveFieldCode(publishReadyDefaults),
+      defaultProps: { id: `${name}-1`, ...(publishReadyDefaults || {}) },
+      editableFields: collectEditableFieldsFromDefaults(publishReadyDefaults || {}),
       templateExclusive: {
         siteId,
         pagePath: normalizeTemplatePagePath(pagePath || "/"),
@@ -13451,8 +13592,18 @@ export default function ${safeName}({
     menuStyle,
   });
   assignDefined(merged, rest);
-  const items = Array.isArray(merged.links) ? merged.links : [];
-  const actions = Array.isArray(merged.ctas) ? merged.ctas : [];
+  const items =
+    Array.isArray(merged.links) && merged.links.length
+      ? merged.links
+      : Array.isArray(merged.navItems)
+        ? merged.navItems
+        : [];
+  const actions =
+    Array.isArray(merged.ctas) && merged.ctas.length
+      ? merged.ctas
+      : Array.isArray(merged.utilityItems)
+        ? merged.utilityItems
+        : [];
   const textLight = String(merged.surfaceTone || "").trim().toLowerCase() === "dark";
   const headingStyle = merged.headingFont ? { fontFamily: String(merged.headingFont) } : undefined;
   const bodyStyle = merged.bodyFont ? { fontFamily: String(merged.bodyFont) } : undefined;
@@ -15460,14 +15611,8 @@ const pickRepresentativePathByType = ({ pages = [], perTypeLimits = {}, represen
 };
 
 const selectPageSpecSourcePages = ({ site, sitePages = [] }) => {
-  const pages = ensureEnterpriseSitePages({ site, pages: Array.isArray(sitePages) ? sitePages : [] });
+  const pages = Array.isArray(sitePages) ? sitePages : [];
   if (!pages.length) return { pages: [], notes: [] };
-  if (looksLikeEnterpriseWebsiteSite({ site, pages })) {
-    return {
-      pages: selectEnterpriseRequiredPages({ site, pages }),
-      notes: ["Enterprise site structure: canonical page coverage enforced."],
-    };
-  }
   const policy = resolvePageSpecSamplingPolicy(site);
   const hasPerTypeLimits = Object.keys(policy.perTypeLimits || {}).length > 0;
   const hasTotalLimit = Number(policy.maxPageSpecs || 0) > 0;
@@ -15889,14 +16034,11 @@ const buildSpecPack = ({
       : []),
   ].filter((row, index, arr) => arr.findIndex((x) => `${x.path}:${x.reason}` === `${row.path}:${row.reason}`) === index);
 
-  const filteredSitePages = ensureEnterpriseSitePages({
-    site,
-    pages: sitePages.filter((page) => {
-      if (!page?.path) return false;
-      const normalizedPath = normalizeTemplatePagePath(page.path);
-      if (normalizedPath === "/") return true;
-      return includeUncrawledPages ? true : successfulPathSet.has(normalizedPath);
-    }),
+  const filteredSitePages = sitePages.filter((page) => {
+    if (!page?.path) return false;
+    const normalizedPath = normalizeTemplatePagePath(page.path);
+    if (normalizedPath === "/") return true;
+    return includeUncrawledPages ? true : successfulPathSet.has(normalizedPath);
   });
   const taxonomyEnabled = parseBool(
     specialRules.pageTaxonomyEnabled ??
@@ -16007,7 +16149,6 @@ const buildSpecPack = ({
       visualHashDistanceThreshold: taxonomyVisualHashDistanceThreshold,
     };
   }
-  taxonomySitePages = ensureEnterpriseSitePages({ site, pages: taxonomySitePages });
   const intakeReviewSource =
     (site?.intakeReview && typeof site.intakeReview === "object"
       ? site.intakeReview
@@ -16698,7 +16839,7 @@ const buildRunLibraryOutput = async ({
   };
   const buildTemplateBlockCatalog = ({ profiles = [], templateExclusiveByName = new Map() } = {}) => {
     const entries = [];
-    const register = ({ profile, kind, block, source = "profile", pageSpec = null }) => {
+    const register = ({ profile, kind, block, source = "profile", pageSpec = null, sectionOrdinal = 1 }) => {
       if (!profile || !block || !block.type || !block.props || typeof block.props !== "object") return;
       const componentMeta = templateExclusiveByName.get(String(block.type || "")) || null;
       const normalizedPagePath = pageSpec ? normalizeTemplatePagePath(pageSpec.path || "/") : "";
@@ -16716,6 +16857,7 @@ const buildRunLibraryOutput = async ({
         styleFamily: String(profile?.siteStyleShell?.styleFamily || "").trim(),
         pagePath: normalizedPagePath,
         pageType,
+        sectionOrdinal: Number(sectionOrdinal) || 1,
         props: cloneJson(block.props || {}),
         editableFields: mergeEditableFieldContracts(
           Array.isArray(componentMeta?.editableFields) ? componentMeta.editableFields : [],
@@ -16732,8 +16874,18 @@ const buildRunLibraryOutput = async ({
         register({ profile, kind, block, source: "profile" });
       }
       for (const pageSpec of Array.isArray(profile?.pageSpecs) ? profile.pageSpecs : []) {
-        for (const [kind, block] of Object.entries(pageSpec?.templates || {})) {
-          register({ profile, kind, block, source: "page", pageSpec });
+        const pageSections = Array.isArray(pageSpec?.sections) && pageSpec.sections.length
+          ? pageSpec.sections
+          : Object.entries(pageSpec?.templates || {}).map(([kind, block]) => ({ kind, block, source: "page" }));
+        for (const [index, section] of pageSections.entries()) {
+          register({
+            profile,
+            kind: section?.kind,
+            block: section?.block,
+            source: section?.source || "page",
+            pageSpec,
+            sectionOrdinal: Number(section?.ordinal) || index + 1,
+          });
         }
       }
     }
@@ -16747,6 +16899,7 @@ const buildRunLibraryOutput = async ({
         entry.kind,
         entry.blockType,
         entry.source,
+        entry.sectionOrdinal || 1,
       ].join("::");
       if (!deduped.has(key)) deduped.set(key, entry);
     }
@@ -16763,6 +16916,7 @@ const buildRunLibraryOutput = async ({
         String(entry.pagePath || "").trim(),
         String(entry.kind || "").trim(),
         String(entry.source || "").trim(),
+        String(entry.sectionOrdinal || 1).trim(),
       ].join("::");
       return [key, entry];
     })
@@ -16867,6 +17021,7 @@ const buildRunLibraryOutput = async ({
           normalizedPagePath,
           String(kind || "").trim(),
           source,
+          String(Number(ordinal) || 1).trim(),
         ].join("::");
         const catalogEntry = templateBlockCatalogByKey.get(catalogKey) || null;
         const componentMeta = templateExclusiveByName.get(String(block.type || "").trim()) || null;
@@ -16906,23 +17061,30 @@ const buildRunLibraryOutput = async ({
 
       const pages = (Array.isArray(profile?.pageSpecs) ? profile.pageSpecs : []).map((pageSpec) => {
         const pageType = resolvePublishedContractPageType(pageSpec);
+        const sectionEntries = Array.isArray(pageSpec?.sections) && pageSpec.sections.length
+          ? pageSpec.sections
+          : (Array.isArray(pageSpec?.requiredCategories)
+              ? unique(pageSpec.requiredCategories.map((entry) => String(entry || "").trim()).filter(Boolean)).map((kind) => ({
+                  kind,
+                  block: pageSpec?.templates?.[kind] || profile?.templates?.[kind],
+                  source: pageSpec?.templates?.[kind] ? "page" : "profile",
+                  ordinal: 1,
+                }))
+              : []);
         const requiredCategories = Array.isArray(pageSpec?.requiredCategories)
           ? unique(pageSpec.requiredCategories.map((entry) => String(entry || "").trim()).filter(Boolean))
-          : [];
-        const kindOrdinalMap = new Map();
-        const sections = requiredCategories
-          .map((kind) => {
-            const ordinal = Number(kindOrdinalMap.get(kind) || 0) + 1;
-            kindOrdinalMap.set(kind, ordinal);
-            return resolveSectionContract({
-              kind,
-              block: pageSpec?.templates?.[kind] || profile?.templates?.[kind],
-              source: pageSpec?.templates?.[kind] ? "page" : "profile",
-              pageSpec: pageSpec?.templates?.[kind] ? pageSpec : null,
+          : unique(sectionEntries.map((entry) => String(entry?.kind || "").trim()).filter(Boolean));
+        const sections = sectionEntries
+          .map((section, index) =>
+            resolveSectionContract({
+              kind: section?.kind,
+              block: section?.block,
+              source: section?.source || "page",
+              pageSpec,
               pageType,
-              ordinal,
-            });
-          })
+              ordinal: Number(section?.ordinal) || index + 1,
+            })
+          )
           .filter(Boolean);
         return {
           path: normalizeTemplatePagePath(pageSpec?.path || "/"),
@@ -17110,7 +17272,7 @@ const mergeAndPublishRunLibrary = async ({
   };
   const buildTemplateBlockCatalog = ({ profiles = [], templateExclusiveByName = new Map() } = {}) => {
     const entries = [];
-    const register = ({ profile, kind, block, source = "profile", pageSpec = null }) => {
+    const register = ({ profile, kind, block, source = "profile", pageSpec = null, sectionOrdinal = 1 }) => {
       if (!profile || !block || !block.type || !block.props || typeof block.props !== "object") return;
       const componentMeta = templateExclusiveByName.get(String(block.type || "")) || null;
       const normalizedPagePath = pageSpec ? normalizeTemplatePagePath(pageSpec.path || "/") : "";
@@ -17128,6 +17290,7 @@ const mergeAndPublishRunLibrary = async ({
         styleFamily: String(profile?.siteStyleShell?.styleFamily || "").trim(),
         pagePath: normalizedPagePath,
         pageType,
+        sectionOrdinal: Number(sectionOrdinal) || 1,
         props: cloneJson(block.props || {}),
         editableFields: mergeEditableFieldContracts(
           Array.isArray(componentMeta?.editableFields) ? componentMeta.editableFields : [],
@@ -17144,8 +17307,18 @@ const mergeAndPublishRunLibrary = async ({
         register({ profile, kind, block, source: "profile" });
       }
       for (const pageSpec of Array.isArray(profile?.pageSpecs) ? profile.pageSpecs : []) {
-        for (const [kind, block] of Object.entries(pageSpec?.templates || {})) {
-          register({ profile, kind, block, source: "page", pageSpec });
+        const pageSections = Array.isArray(pageSpec?.sections) && pageSpec.sections.length
+          ? pageSpec.sections
+          : Object.entries(pageSpec?.templates || {}).map(([kind, block]) => ({ kind, block, source: "page" }));
+        for (const [index, section] of pageSections.entries()) {
+          register({
+            profile,
+            kind: section?.kind,
+            block: section?.block,
+            source: section?.source || "page",
+            pageSpec,
+            sectionOrdinal: Number(section?.ordinal) || index + 1,
+          });
         }
       }
     }
@@ -17159,6 +17332,7 @@ const mergeAndPublishRunLibrary = async ({
         entry.kind,
         entry.blockType,
         entry.source,
+        entry.sectionOrdinal || 1,
       ].join("::");
       if (!deduped.has(key)) deduped.set(key, entry);
     }
@@ -18664,11 +18838,21 @@ const buildPageSpecFromPayloadPage = (page = {}) => {
   const templates = {};
   const requiredCategories = [];
   const seenKinds = new Set();
+  const sections = [];
+  const kindOrdinalMap = new Map();
 
   for (const section of content) {
     const kind = inferSectionKindFromPayloadSection(section);
     const block = toTemplateBlockFromPayloadSection(section);
     if (!kind || !block) continue;
+    const ordinal = Number(kindOrdinalMap.get(kind) || 0) + 1;
+    kindOrdinalMap.set(kind, ordinal);
+    sections.push({
+      kind,
+      block,
+      source: "page",
+      ordinal,
+    });
     if (!templates[kind]) {
       templates[kind] = block;
     }
@@ -18686,6 +18870,7 @@ const buildPageSpecFromPayloadPage = (page = {}) => {
     pageType,
     requiredCategories,
     templates,
+    sections,
   };
 };
 
@@ -18953,11 +19138,11 @@ const buildStyleProfileFromPenPayload = ({
   if (canonicalFooter) templates.footer = canonicalFooter;
   const normalizedPageSpecs = pageSpecs.map((page) => {
     const nextKinds = orderSectionKinds(page?.requiredCategories || []);
-    if (canonicalNavigation && !nextKinds.includes("navigation")) nextKinds.unshift("navigation");
-    if (canonicalFooter && !nextKinds.includes("footer")) nextKinds.push("footer");
+    const nextSections = Array.isArray(page?.sections) ? cloneJson(page.sections) : [];
     return {
       ...page,
       requiredCategories: orderSectionKinds(nextKinds),
+      ...(nextSections.length ? { sections: nextSections } : {}),
     };
   });
   const sourceUrl =
@@ -19900,6 +20085,7 @@ const buildPenComponentCode = ({
   defaults = {},
   sectionKind = "story",
   layoutContext = {},
+  pageTheme = {},
 } = {}) => {
   const propKeys = Object.keys(defaults || {}).filter((key) => key !== "id" && isValidIdentifier(key));
   const destructuredProps = ["id", ...propKeys].join(", ");
@@ -19929,11 +20115,14 @@ import {
 const SECTION_KIND = ${JSON.stringify(sectionKind)};
 const SECTION_TREE = ${JSON.stringify(descriptor, null, 2)};
 const DEFAULT_PROPS = ${JSON.stringify(defaults, null, 2)};
+const DEFAULT_THEME = ${JSON.stringify(pageTheme, null, 2)};
 const LAYOUT_CONTEXT = ${JSON.stringify(layoutContext, null, 2)};
-const NAV_ACTIVE_COLOR = ${JSON.stringify(navPalette.activeColor || "#0D6E6E")};
-const NAV_INACTIVE_COLOR = ${JSON.stringify(navPalette.inactiveColor || "#888888")};
+const NAV_ACTIVE_COLOR = ${JSON.stringify(`var(--pen-theme-text, ${navPalette.activeColor || "#0D6E6E"})`)};
+const NAV_INACTIVE_COLOR = ${JSON.stringify(
+    `var(--pen-theme-text-secondary, ${navPalette.inactiveColor || "#888888"})`
+  )};
 const ICONS = { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, Menu, Minus, Play, Plus, Search, Sparkles, Wifi, X };
-const PEN_RUNTIME_MOTION_STYLE = "@keyframes pen-media-breathe{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(0,-8px,0) scale(1.035)}}@keyframes pen-track-slide-x-subtle{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-32px,0,0)}}@keyframes pen-track-slide-x-showcase{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-52px,0,0)}}@keyframes pen-card-float{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-10px,0)}}.pen-product-card-hover{transform-origin:center center}.pen-product-card-hover:hover{transform:translate3d(0,-4px,0) scale(1.012);border-color:#FFFFFF!important;box-shadow:0 12px 30px rgba(0,0,0,.32)}";
+const PEN_RUNTIME_MOTION_STYLE = "@keyframes pen-media-breathe{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(0,-8px,0) scale(1.035)}}.pen-product-card-hover{transform-origin:center center}.pen-product-card-hover:hover{transform:translate3d(0,-4px,0) scale(1.012);border-color:#FFFFFF!important;box-shadow:0 12px 30px rgba(0,0,0,.32)}";
 
 const assignDefined = (target, patch) => {
   for (const [key, value] of Object.entries(patch || {})) {
@@ -20015,6 +20204,89 @@ const resolveNumericDimension = (value) => {
   return 0;
 };
 
+const parseThemeHexColor = (value = "") => {
+  const raw = String(value || "").trim();
+  if (!raw) return null;
+  const match = raw.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+  if (!match) return null;
+  const hex =
+    match[1].length === 3
+      ? match[1]
+          .split("")
+          .map((entry) => entry + entry)
+          .join("")
+      : match[1];
+  return {
+    r: parseInt(hex.slice(0, 2), 16),
+    g: parseInt(hex.slice(2, 4), 16),
+    b: parseInt(hex.slice(4, 6), 16),
+  };
+};
+
+const isThemeDarkColor = (value = "") => {
+  const parsed = parseThemeHexColor(value);
+  if (!parsed) return false;
+  const toLinear = (n) => {
+    const c = n / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  };
+  const lum = 0.2126 * toLinear(parsed.r) + 0.7152 * toLinear(parsed.g) + 0.0722 * toLinear(parsed.b);
+  return lum < 0.42;
+};
+
+const isThemeNeutralColor = (value = "") => {
+  const parsed = parseThemeHexColor(value);
+  if (!parsed) return false;
+  const spread = Math.max(parsed.r, parsed.g, parsed.b) - Math.min(parsed.r, parsed.g, parsed.b);
+  return spread < 18;
+};
+
+const pickThemeContrastColor = (value = "", light = "#F9F6EE", dark = "#111111") =>
+  isThemeDarkColor(value) ? light : dark;
+
+const resolveThemePalette = (themeInput = null) => {
+  const baseTheme = DEFAULT_THEME && typeof DEFAULT_THEME === "object" ? DEFAULT_THEME : {};
+  const inputTheme = themeInput && typeof themeInput === "object" ? themeInput : {};
+  const basePalette = baseTheme.palette && typeof baseTheme.palette === "object" ? baseTheme.palette : {};
+  const inputPalette = inputTheme.palette && typeof inputTheme.palette === "object" ? inputTheme.palette : {};
+  const primary = String(inputPalette.primary || inputTheme.primaryColor || basePalette.primary || "#4F77FF");
+  const accent = String(inputPalette.accent || primary || basePalette.accent || "#F46E35");
+  return {
+    ...baseTheme,
+    ...inputTheme,
+    palette: {
+      bg: String(inputPalette.bg || basePalette.bg || "#F3F3EF"),
+      text: String(inputPalette.text || basePalette.text || "#111111"),
+      primary,
+      accent,
+      neutral: String(inputPalette.neutral || basePalette.neutral || "#E5E7EB"),
+      textSecondary: String(inputPalette.textSecondary || basePalette.textSecondary || "#4B5563"),
+    },
+    fontHeading: String(inputTheme.fontHeading || baseTheme.fontHeading || "Inter"),
+    fontBody: String(inputTheme.fontBody || baseTheme.fontBody || inputTheme.fontHeading || baseTheme.fontHeading || "Inter"),
+  };
+};
+
+const buildThemeCssVars = (themeInput = null) => {
+  const resolvedTheme = resolveThemePalette(themeInput);
+  const palette = resolvedTheme.palette || {};
+  const inverseSurface = isThemeDarkColor(palette.text) ? palette.text : palette.primary;
+  return {
+    "--pen-theme-bg": palette.bg,
+    "--pen-theme-text": palette.text,
+    "--pen-theme-primary": palette.primary,
+    "--pen-theme-accent": palette.accent,
+    "--pen-theme-neutral": palette.neutral,
+    "--pen-theme-text-secondary": palette.textSecondary,
+    "--pen-theme-on-primary": pickThemeContrastColor(palette.primary),
+    "--pen-theme-on-accent": pickThemeContrastColor(palette.accent),
+    "--pen-theme-inverse-surface": inverseSurface,
+    "--pen-theme-on-inverse": pickThemeContrastColor(inverseSurface),
+    "--pen-font-heading": resolvedTheme.fontHeading,
+    "--pen-font-body": resolvedTheme.fontBody,
+  };
+};
+
 const normalizeNavPath = (value = "") => {
   const raw = String(value || "").trim();
   if (!raw) return "/";
@@ -20052,15 +20324,7 @@ const isHeadingLikeTextNode = (node) => {
 
 const getNodeNameToken = (node) => String(node?.name || "").trim().toLowerCase();
 
-const shouldApplyStoryTrackMotion = (node, sectionKindToken = "") => {
-  if (sectionKindToken !== "story") return false;
-  if (String(node?.type || "").trim().toLowerCase() !== "frame") return false;
-  const name = getNodeNameToken(node);
-  const direction = String(node?.style?.flexDirection || "").trim().toLowerCase();
-  const childCount = Array.isArray(node?.children) ? node.children.length : 0;
-  const rowLike = /(?:row|track|carousel|strip|rail)/.test(name);
-  return direction === "row" && (rowLike || childCount >= 2);
-};
+const shouldApplyStoryTrackMotion = () => false;
 
 const shouldApplyStoryCardHover = (node, sectionKindToken = "") => {
   if (sectionKindToken !== "story") return false;
@@ -20070,18 +20334,7 @@ const shouldApplyStoryCardHover = (node, sectionKindToken = "") => {
   return /(?:card|cards|grid|tile)/.test(name) && childCount > 0;
 };
 
-const shouldApplyStoryCardFloat = (node, sectionKindToken = "") => {
-  if (sectionKindToken !== "story") return false;
-  if (String(node?.type || "").trim().toLowerCase() !== "frame") return false;
-  if (!node?.imageProp) return false;
-  const childCount = Array.isArray(node?.children) ? node.children.length : 0;
-  if (childCount < 1) return false;
-  const width = resolveNumericDimension(node?.style?.width);
-  const height = resolveNumericDimension(node?.style?.height);
-  const cardLikeWidth = width > 0 ? width <= 460 : true;
-  const cardLikeHeight = height > 0 ? height >= 220 : true;
-  return cardLikeWidth && cardLikeHeight;
-};
+const shouldApplyStoryCardFloat = () => false;
 
 const shouldApplyProductsCardHover = (node, sectionKindToken = "") => {
   if (sectionKindToken !== "products") return false;
@@ -20091,6 +20344,65 @@ const shouldApplyProductsCardHover = (node, sectionKindToken = "") => {
   const borderToken = String(node?.style?.border || "").trim();
   const borderLike = /(?:^|\\s)(?:\\d+(?:\\.\\d+)?)px\\s/.test(borderToken);
   return /(?:productcard|product-card|card|tile|panel)/.test(name) && childCount > 0 && borderLike;
+};
+
+const resolveThemeColorSlot = (rawColor, propName, node, parentNode, keyPath, sectionKindToken) => {
+  const propToken = String(propName || "").trim().toLowerCase();
+  const nodeName = getNodeNameToken(node);
+  const parentName = getNodeNameToken(parentNode);
+  const isRoot = keyPath === "root";
+  const isTextProp = propToken === "color";
+  const isBackgroundProp = propToken.includes("background");
+  const isBorderProp = propToken.includes("border");
+  const buttonLike =
+    /(?:btn|button|cta|chip|pill|tag|badge)/.test(nodeName) ||
+    /(?:btn|button|cta|chip|pill|tag|badge)/.test(parentName) ||
+    /(?:quote|catalog|whatsapp|submit|send|buy|shop)/.test(nodeName);
+
+  if (isRoot && isBackgroundProp) {
+    if (sectionKindToken === "navigation" || sectionKindToken === "socialproof") return "bg";
+    if (sectionKindToken === "footer") return "inverse-surface";
+    if (sectionKindToken === "hero") return "primary";
+    if (isThemeNeutralColor(rawColor)) return "bg";
+    return isThemeDarkColor(rawColor) ? "primary" : "neutral";
+  }
+
+  if (isBackgroundProp) {
+    if (buttonLike) return "accent";
+    if (sectionKindToken === "footer") return "inverse-surface";
+    if (sectionKindToken === "navigation") return "bg";
+    if (isThemeNeutralColor(rawColor)) return "neutral";
+    return isThemeDarkColor(rawColor) ? "primary" : "accent";
+  }
+
+  if (isTextProp) {
+    if (buttonLike) return "on-accent";
+    if (sectionKindToken === "footer") return "on-inverse";
+    if (sectionKindToken === "hero" && !/label|caption|meta|legal/.test(nodeName)) return "on-primary";
+    if (sectionKindToken === "navigation") {
+      if (/logo/.test(nodeName)) return "text";
+      return "text-secondary";
+    }
+    if (isThemeDarkColor(rawColor)) return "text";
+    if (isThemeNeutralColor(rawColor)) return "text-secondary";
+    return "on-primary";
+  }
+
+  if (isBorderProp) {
+    if (buttonLike) return "accent";
+    return "neutral";
+  }
+
+  return null;
+};
+
+const applyThemeToStyleValue = (rawValue, propName, node, parentNode, keyPath, sectionKindToken) => {
+  if (typeof rawValue !== "string" || !/#(?:[0-9a-f]{3}|[0-9a-f]{6})\b/i.test(rawValue)) return rawValue;
+  return rawValue.replace(/#(?:[0-9a-f]{3}|[0-9a-f]{6})\b/gi, (match) => {
+    const slot = resolveThemeColorSlot(match, propName, node, parentNode, keyPath, sectionKindToken);
+    if (!slot) return match;
+    return \`var(--pen-theme-\${slot}, \${match})\`;
+  });
 };
 
 const buildNodeClassName = (node, sectionMotion, sectionKindToken) => {
@@ -20135,6 +20447,15 @@ const buildNodeStyle = (
   childIndex = 0
 ) => {
   const style = { ...(node?.style || {}) };
+  for (const [styleKey, styleValue] of Object.entries(style)) {
+    if (styleKey === "fontFamily" && typeof styleValue === "string" && styleValue.trim()) {
+      style[styleKey] = isHeadingLikeTextNode(node)
+        ? "var(--pen-font-heading, " + styleValue + ")"
+        : "var(--pen-font-body, " + styleValue + ")";
+      continue;
+    }
+    style[styleKey] = applyThemeToStyleValue(styleValue, styleKey, node, parentNode, keyPath, sectionKindToken);
+  }
   const rawHref = node?.hrefProp ? String(merged?.[node.hrefProp] || "").trim() : "";
   if (keyPath === "root") {
     const rawRootWidth = style?.width;
@@ -20377,7 +20698,8 @@ export default function ${componentName}({ ${destructuredProps}, ...rest }) {
   if (Number.isFinite(pagePaddingTop) && pagePaddingTop > 0) layoutStyle.paddingTop = pagePaddingTop;
   if (Number.isFinite(pagePaddingBottom) && pagePaddingBottom > 0) layoutStyle.paddingBottom = pagePaddingBottom;
   if (Number.isFinite(sectionGapAfter) && sectionGapAfter > 0) layoutStyle.marginBottom = sectionGapAfter;
-  const mergedSectionStyle = sectionStyle ? { ...layoutStyle, ...sectionStyle } : layoutStyle;
+  const themeVars = buildThemeCssVars(merged?.theme);
+  const mergedSectionStyle = sectionStyle ? { ...layoutStyle, ...themeVars, ...sectionStyle } : { ...layoutStyle, ...themeVars };
   return React.createElement(
     "section",
     {
@@ -20406,6 +20728,7 @@ const buildPenCompiledComponentForNode = ({
   caseId = "",
   assetMap = null,
   layoutContext = {},
+  pageTheme = {},
 } = {}) => {
   const componentName = buildTemplateExclusiveComponentName({
     siteId: caseId || "pen",
@@ -20435,6 +20758,7 @@ const buildPenCompiledComponentForNode = ({
       defaults: state.defaults,
       sectionKind,
       layoutContext,
+      pageTheme,
     }),
     defaults: cloneJson(state.defaults),
     descriptor,
@@ -20570,12 +20894,6 @@ const resolvePageCatalogForHref = ({ sourcePayload = null, pageCatalog = [] } = 
   if (Array.isArray(pageCatalog) && pageCatalog.length) return dedupePenPageCatalog(pageCatalog);
   const payloadPages = Array.isArray(sourcePayload?.pages) ? sourcePayload.pages : [];
   return dedupePenPageCatalog(payloadPages);
-};
-
-const isEnterprisePenPayload = ({ sourcePayload = null, pageCatalog = [] } = {}) => {
-  const site = sourcePayload?.site && typeof sourcePayload.site === "object" ? sourcePayload.site : sourcePayload || {};
-  const pages = resolvePageCatalogForHref({ sourcePayload, pageCatalog });
-  return looksLikeEnterpriseWebsiteSite({ site, pages });
 };
 
 const findPagePathByKeywords = (catalog = [], keywords = []) => {
@@ -20770,13 +21088,6 @@ const buildHeroCarouselSectionFromPenNodes = (nodes = [], index = 0, { sourcePay
 };
 
 const buildColumnsFromFooterPenSection = (node = {}, { sourcePayload = null } = {}) => {
-  if (isEnterprisePenPayload({ sourcePayload })) {
-    return buildEnterpriseCanonicalFooterColumns({
-      pages: resolvePageCatalogForHref({ sourcePayload }),
-      site: sourcePayload?.site && typeof sourcePayload.site === "object" ? sourcePayload.site : sourcePayload || {},
-      requireExisting: false,
-    });
-  }
   const directChildren = Array.isArray(node?.children) ? node.children : [];
   const groups = directChildren.filter((child) => String(child?.type || "").toLowerCase() === "frame");
   const columns = groups
@@ -20952,17 +21263,6 @@ const buildPayloadSectionFromPenNode = (node = {}, index = 0, { sourcePayload = 
     const logo = texts[0] || "Site";
     const navLabels = texts.slice(1, 11);
     const ctaLabel = texts.find((text) => /shop|contact|learn|discover|buy|get/i.test(text)) || "";
-    const enterpriseLinks = isEnterprisePenPayload({ sourcePayload })
-      ? buildEnterpriseCanonicalLinks({
-          pages: resolvePageCatalogForHref({ sourcePayload }),
-          site: sourcePayload?.site && typeof sourcePayload.site === "object" ? sourcePayload.site : sourcePayload || {},
-          requireExisting: false,
-        }).map((link) => ({
-          label: link.label,
-          href: link.href,
-          variant: "link",
-        }))
-      : [];
     return finalizePayloadSection({
       type: "Navbar",
       _key: baseKey,
@@ -20970,13 +21270,11 @@ const buildPayloadSectionFromPenNode = (node = {}, index = 0, { sourcePayload = 
         ...styleBackground,
         ...styleFonts,
         logo: logo ? { alt: logo } : undefined,
-        links: enterpriseLinks.length
-          ? enterpriseLinks
-          : navLabels.map((label) => ({
-              label,
-              href: buildHrefForPenLabel({ label, sourcePayload }),
-              variant: "link",
-            })),
+        links: navLabels.map((label) => ({
+          label,
+          href: buildHrefForPenLabel({ label, sourcePayload }),
+          variant: "link",
+        })),
         ctas: ctaLabel
           ? [
               {
@@ -21161,17 +21459,22 @@ const buildPayloadFromPenDocument = async ({ penDoc = null, sourceDoc = null, pe
   if (pages.length) {
     return {
       components: Array.isArray(sourceDoc?.payload?.components) ? cloneJson(sourceDoc.payload.components) : [],
-      pages: pages.map((page) => ({
-        path: normalizeTemplatePagePath(page?.path || "/"),
-        name: String(page?.name || "").trim() || formatTemplatePageName(page?.path || "/"),
-        data: {
-          root: { props: { theme: page?.theme && typeof page.theme === "object" ? cloneJson(page.theme) : {} } },
-          content: (Array.isArray(page?.children) ? page.children : []).map((child, index) => ({
+      pages: pages.map((page) => {
+        const pageTheme = page?.theme && typeof page.theme === "object" ? cloneJson(page.theme) : {};
+        return {
+          path: normalizeTemplatePagePath(page?.path || "/"),
+          name: String(page?.name || "").trim() || formatTemplatePageName(page?.path || "/"),
+          data: {
+            root: { props: { theme: pageTheme } },
+            content: (Array.isArray(page?.children) ? page.children : []).map((child, index) => ({
             type: String(child?.type || "CreationFallbackSection").trim() || "CreationFallbackSection",
             props: (() => {
               const key = String(child?.id || `${String(child?.type || "section").toLowerCase()}-${index + 1}`);
               const seeded = seedPuckArrayItemIds(
-                child?.props && typeof child.props === "object" ? child.props : {},
+                {
+                  ...(child?.props && typeof child.props === "object" ? child.props : {}),
+                  theme: pageTheme,
+                },
                 key
               );
               if (!String(seeded.id || "").trim()) {
@@ -21180,9 +21483,10 @@ const buildPayloadFromPenDocument = async ({ penDoc = null, sourceDoc = null, pe
               return seeded;
             })(),
             _key: String(child?.id || `${String(child?.type || "section").toLowerCase()}-${index + 1}`),
-          })),
-        },
-      })),
+            })),
+          },
+        };
+      }),
     };
   }
 
@@ -21206,6 +21510,7 @@ const buildPayloadFromPenDocument = async ({ penDoc = null, sourceDoc = null, pe
   const compiledComponents = [];
   const pagesFromFrames = rootFrames.map((frame, pageIndex) => {
     const pagePath = resolvePenPagePath({ frame, sourcePayload });
+    const pageTheme = buildThemeFromPenPage(frame);
     const sectionFrames = (Array.isArray(frame?.children) ? frame.children : []).filter(
       (child) => String(child?.type || "").toLowerCase() === "frame"
     );
@@ -21227,6 +21532,7 @@ const buildPayloadFromPenDocument = async ({ penDoc = null, sourceDoc = null, pe
         pageCatalog,
         caseId,
         assetMap,
+        pageTheme,
         layoutContext: {
           pageWidth: resolvedPageWidth,
           pagePaddingLeft: pagePadding.left,
@@ -21250,7 +21556,10 @@ const buildPayloadFromPenDocument = async ({ penDoc = null, sourceDoc = null, pe
           penSectionName: String(node?.name || "").trim(),
           source: "pen_ast_compiled",
         },
-        props: seedPuckArrayItemIds(compiled.defaults, String(node?.id || `${sectionKind}-${i + 1}`)),
+        props: seedPuckArrayItemIds(
+          { ...compiled.defaults, theme: cloneJson(pageTheme) },
+          String(node?.id || `${sectionKind}-${i + 1}`)
+        ),
       };
     });
     const sectionOrder = content.map((section) => inferSectionKindFromPayloadSection(section) || "story");
@@ -21261,7 +21570,7 @@ const buildPayloadFromPenDocument = async ({ penDoc = null, sourceDoc = null, pe
         root: {
           props: {
             theme: {
-              ...buildThemeFromPenPage(frame),
+              ...pageTheme,
               templateMeta: {
                 source: "pen_document",
                 sectionOrder,
@@ -21287,11 +21596,21 @@ const sanitizePayloadForPuck = (payload = {}, fallbackSeed = "site") => {
   base.pages = pages.map((page, pageIndex) => {
     const pathValue = normalizeTemplatePagePath(page?.path || "/");
     const pageSeed = `${slug(pathValue) || slug(String(page?.name || "")) || fallbackSeed || "page"}-${pageIndex + 1}`;
+    const nextRootProps = page?.data?.root?.props && typeof page.data.root.props === "object"
+      ? cloneJson(page.data.root.props)
+      : {};
+    const pageTheme = nextRootProps.theme && typeof nextRootProps.theme === "object" ? cloneJson(nextRootProps.theme) : {};
     const content = Array.isArray(page?.data?.content) ? page.data.content : [];
     const nextContent = content.map((item, itemIndex) => {
       const type = String(item?.type || "CreationFallbackSection").trim() || "CreationFallbackSection";
       const key = String(item?._key || item?.id || `${slug(type) || "section"}-${itemIndex + 1}`);
-      const seededProps = seedPuckArrayItemIds(item?.props && typeof item.props === "object" ? item.props : {}, key);
+      const seededProps = seedPuckArrayItemIds(
+        {
+          ...(item?.props && typeof item.props === "object" ? item.props : {}),
+          theme: item?.props?.theme && typeof item.props.theme === "object" ? item.props.theme : pageTheme,
+        },
+        key
+      );
       if (!String(seededProps.id || "").trim()) seededProps.id = key;
       return {
         ...cloneJson(item || {}),
@@ -21301,9 +21620,6 @@ const sanitizePayloadForPuck = (payload = {}, fallbackSeed = "site") => {
       };
     });
     const nextPage = cloneJson(page || {});
-    const nextRootProps = nextPage?.data?.root?.props && typeof nextPage.data.root.props === "object"
-      ? nextPage.data.root.props
-      : {};
     nextPage.path = pathValue;
     nextPage.name = String(nextPage?.name || "").trim() || formatTemplatePageName(pathValue);
     nextPage.data = {
@@ -21573,7 +21889,7 @@ const buildRunLibraryFromPenBundle = async ({ penBundle, runId = "", runDir = ""
     const materialized = await materializeFromPayload(exported.payloadPath, String(artifact?.caseId || ""), {
       root: ROOT,
       namingRegistry,
-      overwrite: true,
+      overwrite: false,
     });
     if (Array.isArray(materialized?.components) && materialized.components.length) {
       materializedComponents.push(...materialized.components);
@@ -21621,22 +21937,57 @@ const buildRunLibraryFromPenBundle = async ({ penBundle, runId = "", runDir = ""
     );
   }
 
-  const generatedComponents = mergeTemplateExclusiveComponents(materializedComponents, []);
+  const generatedComponents = mergeTemplateExclusiveComponents(materializedComponents, []).map((component) => {
+    const publishReadyDefaults = augmentPublishReadyDefaults({
+      defaults: component.defaultProps || {},
+      sectionKind: String(component?.templateExclusive?.sectionKind || ""),
+      blockType:
+        String(component?.templateExclusive?.baseBlockType || "") ||
+        String(component?.name || ""),
+    });
+    return {
+      ...component,
+      defaultProps: publishReadyDefaults,
+      editableFields: Array.isArray(component.editableFields) ? component.editableFields : [],
+    };
+  });
   if (generatedComponents.length) {
     await writeGeneratedConfig(generatedComponents);
   }
 
-  const normalizedTemplateExclusiveComponents = generatedComponents.map((component) => ({
-    name: component.name,
-    kebabName: component.kebabName,
-    defaultProps: sanitizeTemplateAssetTextDeep(component.defaultProps || {}, {
+  const normalizedTemplateExclusiveComponents = generatedComponents.map((component) => {
+    const sanitizedDefaultProps = sanitizeTemplateAssetTextDeep(component.defaultProps || {}, {
       siteId: String(component?.templateExclusive?.siteId || ""),
       pagePath: String(component?.templateExclusive?.pagePath || "/"),
       sectionKind: String(component?.templateExclusive?.sectionKind || ""),
-    }),
-    editableFields: Array.isArray(component.editableFields) ? component.editableFields : [],
-    templateExclusive: component.templateExclusive,
-  }));
+    });
+    const publishReadyDefaults = augmentPublishReadyDefaults({
+      defaults: sanitizedDefaultProps,
+      sectionKind: String(component?.templateExclusive?.sectionKind || ""),
+      blockType:
+        String(component?.templateExclusive?.baseBlockType || "") ||
+        String(component?.name || ""),
+    });
+    return {
+      name: component.name,
+      kebabName: component.kebabName,
+      defaultProps: publishReadyDefaults,
+      editableFields: (() => {
+        const merged = new Map();
+        for (const field of [
+          ...(Array.isArray(component.editableFields) ? component.editableFields : []),
+          ...collectEditableFieldsFromDefaults(publishReadyDefaults || {}),
+        ]) {
+          const pathValue = String(field?.path || "").trim();
+          const typeValue = String(field?.type || "").trim();
+          if (!pathValue || !typeValue || merged.has(pathValue)) continue;
+          merged.set(pathValue, { path: pathValue, type: typeValue });
+        }
+        return Array.from(merged.values());
+      })(),
+      templateExclusive: component.templateExclusive,
+    };
+  });
   const templateExclusiveByName = new Map(
     normalizedTemplateExclusiveComponents
       .filter((component) => component?.name)
@@ -21724,6 +22075,7 @@ const buildRunLibraryFromPenBundle = async ({ penBundle, runId = "", runDir = ""
         String(entry.pagePath || "").trim(),
         String(entry.kind || "").trim(),
         String(entry.source || "").trim(),
+        String(entry.sectionOrdinal || 1).trim(),
       ].join("::");
       return [key, entry];
     })
@@ -21828,6 +22180,7 @@ const buildRunLibraryFromPenBundle = async ({ penBundle, runId = "", runDir = ""
           normalizedPagePath,
           String(kind || "").trim(),
           source,
+          String(Number(ordinal) || 1).trim(),
         ].join("::");
         const catalogEntry = templateBlockCatalogByKey.get(catalogKey) || null;
         const componentMeta = templateExclusiveByName.get(String(block.type || "").trim()) || null;
@@ -21867,23 +22220,30 @@ const buildRunLibraryFromPenBundle = async ({ penBundle, runId = "", runDir = ""
 
       const pages = (Array.isArray(profile?.pageSpecs) ? profile.pageSpecs : []).map((pageSpec) => {
         const pageType = resolvePublishedContractPageType(pageSpec);
+        const sectionEntries = Array.isArray(pageSpec?.sections) && pageSpec.sections.length
+          ? pageSpec.sections
+          : (Array.isArray(pageSpec?.requiredCategories)
+              ? unique(pageSpec.requiredCategories.map((entry) => String(entry || "").trim()).filter(Boolean)).map((kind) => ({
+                  kind,
+                  block: pageSpec?.templates?.[kind] || profile?.templates?.[kind],
+                  source: pageSpec?.templates?.[kind] ? "page" : "profile",
+                  ordinal: 1,
+                }))
+              : []);
         const requiredCategories = Array.isArray(pageSpec?.requiredCategories)
           ? unique(pageSpec.requiredCategories.map((entry) => String(entry || "").trim()).filter(Boolean))
-          : [];
-        const kindOrdinalMap = new Map();
-        const sections = requiredCategories
-          .map((kind) => {
-            const ordinal = Number(kindOrdinalMap.get(kind) || 0) + 1;
-            kindOrdinalMap.set(kind, ordinal);
-            return resolveSectionContract({
-              kind,
-              block: pageSpec?.templates?.[kind] || profile?.templates?.[kind],
-              source: pageSpec?.templates?.[kind] ? "page" : "profile",
-              pageSpec: pageSpec?.templates?.[kind] ? pageSpec : null,
+          : unique(sectionEntries.map((entry) => String(entry?.kind || "").trim()).filter(Boolean));
+        const sections = sectionEntries
+          .map((section, index) =>
+            resolveSectionContract({
+              kind: section?.kind,
+              block: section?.block,
+              source: section?.source || "page",
+              pageSpec,
               pageType,
-              ordinal,
-            });
-          })
+              ordinal: Number(section?.ordinal) || index + 1,
+            })
+          )
           .filter(Boolean);
         return {
           path: normalizeTemplatePagePath(pageSpec?.path || "/"),

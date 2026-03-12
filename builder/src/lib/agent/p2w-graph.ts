@@ -2127,9 +2127,7 @@ const applyTemplateFirstSectionPlan = (
   prompt: string
 ) => {
   if (sectionGenerationStrategy !== "template_first") return { pages, profileId: null as string | null };
-  const profile = selectStyleProfile(prompt, {
-    pagePaths: pages.map((page) => normalizeTemplatePagePath(page.path)),
-  });
+  const profile = selectStyleProfile(prompt);
   if (!profile?.templates) return { pages, profileId: null as string | null };
   const templateKinds = Object.keys(profile.templates)
     .map((key) => normalizeTemplatePlanKind(key))

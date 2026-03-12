@@ -5,6 +5,8 @@ import os from "node:os";
 import path from "node:path";
 import { spawn } from "node:child_process";
 
+const DEFAULT_PENCIL_MCP_COMMAND = "/Applications/Pencil.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64";
+
 const parseArgs = (argv) => {
   const out = {};
   for (let i = 2; i < argv.length; i += 1) {
@@ -35,6 +37,15 @@ const parseJsonMaybe = (value) => {
   }
 };
 
+const fileExists = async (targetPath) => {
+  try {
+    await fs.access(targetPath);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
 const loadClaudePencilServerConfig = async (serverName = "pencil") => {
   const configPath = path.join(os.homedir(), ".claude.json");
   const raw = await fs.readFile(configPath, "utf8");
@@ -57,10 +68,18 @@ const resolveConnection = async ({ app = "desktop", command = "", serverName = "
     return { command: explicit, args: app ? ["--app", app] : [] };
   }
   const fromClaude = await loadClaudePencilServerConfig(serverName).catch(() => null);
-  if (!fromClaude) throw new Error("No pencil MCP config found in ~/.claude.json");
-  const args = [...fromClaude.args];
-  if (app && !args.includes("--app")) args.push("--app", app);
-  return { command: fromClaude.command, args };
+  if (fromClaude) {
+    const args = [...fromClaude.args];
+    if (app && !args.includes("--app")) args.push("--app", app);
+    return { command: fromClaude.command, args };
+  }
+  if (!(await fileExists(DEFAULT_PENCIL_MCP_COMMAND))) {
+    throw new Error("No pencil MCP config found in ~/.claude.json and default Pencil.app MCP binary was not found");
+  }
+  return {
+    command: DEFAULT_PENCIL_MCP_COMMAND,
+    args: app ? ["--app", app] : [],
+  };
 };
 
 const callPencilTools = async ({ penFile = "", command = "", args = [], timeoutMs = 20000 } = {}) =>
@@ -123,7 +142,6 @@ const callPencilTools = async ({ penFile = "", command = "", args = [], timeoutM
         params: {
           name: "batch_get",
           arguments: {
-            filePath: penFile,
             readDepth: 4,
           },
         },
@@ -216,7 +234,44 @@ const toPayloadSection = (node = {}, index = 0) => {
   };
 };
 
+const slugifyRoute = (value = "") => {
+  const token = String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  if (!token || token === "home") return "/";
+  return `/${token}`;
+};
+
+const toPayloadPage = (node = {}, index = 0) => {
+  const pageName = String(node?.name || "").trim() || `Page ${index + 1}`;
+  const pageSections = Array.isArray(node?.children)
+    ? node.children.map((child, childIndex) => toPayloadSection(child, childIndex))
+    : [];
+  return {
+    path: slugifyRoute(pageName),
+    name: pageName,
+    data: {
+      root: { props: { theme: {} } },
+      content: pageSections,
+    },
+  };
+};
+
 const toPayload = (nodes = []) => {
+  const pageFrames = (Array.isArray(nodes) ? nodes : []).filter((node) => {
+    if (!node || typeof node !== "object") return false;
+    if (String(node?.type || "").toLowerCase() !== "frame") return false;
+    return Array.isArray(node?.children);
+  });
+  const pages = pageFrames.map((node, index) => toPayloadPage(node, index));
+  if (pages.length > 0) {
+    return {
+      components: [],
+      pages,
+    };
+  }
   const sections = (Array.isArray(nodes) ? nodes : []).map((node, index) => toPayloadSection(node, index));
   return {
     components: [],
@@ -239,6 +294,9 @@ const main = async () => {
   const outPath = normalizePath(args.out);
   if (!penFile || !outPath) {
     throw new Error("[pencil-export-payload] required args: --pen-file --out");
+  }
+  if (!(await fileExists(penFile))) {
+    throw new Error(`[pencil-export-payload] pen file not found: ${penFile}`);
   }
   const mcpApp = String(args["mcp-app"] || "desktop").trim() || "desktop";
   const mcpServerName = String(args["mcp-server-name"] || "pencil").trim() || "pencil";
@@ -280,4 +338,3 @@ main().catch((error) => {
   process.stderr.write(`[pencil-export-payload:fatal] ${message}\n`);
   process.exit(1);
 });
-

@@ -2,7 +2,6 @@ import * as Babel from "@babel/standalone";
 import * as React from "react";
 import * as Lucide from "lucide-react";
 import * as Motion from "framer-motion";
-import { usePathname, useSearchParams } from "next/navigation";
 
 import { cn } from "@/lib/cn";
 import { NavbarBlock } from "@/components/blocks/navbar/block";
@@ -22,7 +21,6 @@ import {
   TextReveal,
   SceneSwitcher,
 } from "@/components/magic-exports";
-import { useMotionMode } from "@/components/theme/motion";
 import { useInViewReveal, useParallaxY } from "@/lib/motion";
 import {
   uiImportMap,
@@ -117,6 +115,7 @@ import {
   TooltipTrigger,
   Textarea,
 } from "@/components/ui-exports";
+import { MotionProvider, useMotionMode } from "@/components/theme/motion";
 
 type JITComponent = {
   render: React.ComponentType<any>;
@@ -233,6 +232,111 @@ const lucideWithAliases = (() => {
   });
 })();
 
+const subscribeNavigation = (callback: () => void) => {
+  if (typeof window === "undefined") return () => undefined;
+  const handleLocationChange = () => callback();
+  const originalPushState = window.history.pushState.bind(window.history);
+  const originalReplaceState = window.history.replaceState.bind(window.history);
+
+  window.history.pushState = function pushStatePatched(...args) {
+    const result = originalPushState(...args);
+    handleLocationChange();
+    return result;
+  };
+
+  window.history.replaceState = function replaceStatePatched(...args) {
+    const result = originalReplaceState(...args);
+    handleLocationChange();
+    return result;
+  };
+
+  window.addEventListener("popstate", handleLocationChange);
+  window.addEventListener("hashchange", handleLocationChange);
+
+  return () => {
+    window.history.pushState = originalPushState;
+    window.history.replaceState = originalReplaceState;
+    window.removeEventListener("popstate", handleLocationChange);
+    window.removeEventListener("hashchange", handleLocationChange);
+  };
+};
+
+type LocationSnapshot = {
+  href: string;
+  pathname: string;
+  search: string;
+  hash: string;
+  searchParams: URLSearchParams;
+};
+
+const serverLocationSnapshot: LocationSnapshot = {
+  href: "",
+  pathname: "/",
+  search: "",
+  hash: "",
+  searchParams: new URLSearchParams(),
+};
+
+let cachedLocationSnapshot: LocationSnapshot | null = null;
+
+const getLocationSnapshot = (): LocationSnapshot => {
+  if (typeof window === "undefined") {
+    return serverLocationSnapshot;
+  }
+  const { href, pathname, search, hash } = window.location;
+  if (
+    cachedLocationSnapshot &&
+    cachedLocationSnapshot.href === href &&
+    cachedLocationSnapshot.pathname === (pathname || "/") &&
+    cachedLocationSnapshot.search === search &&
+    cachedLocationSnapshot.hash === hash
+  ) {
+    return cachedLocationSnapshot;
+  }
+  cachedLocationSnapshot = {
+    href,
+    pathname: pathname || "/",
+    search,
+    hash,
+    searchParams: new URLSearchParams(search),
+  };
+  return cachedLocationSnapshot;
+};
+
+const useLocationSnapshot = () =>
+  React.useSyncExternalStore(subscribeNavigation, getLocationSnapshot, getLocationSnapshot);
+
+const nextNavigationCompat = {
+  usePathname: () => useLocationSnapshot().pathname,
+  useSearchParams: () => useLocationSnapshot().searchParams,
+  useParams: () => ({}),
+  useSelectedLayoutSegment: () => null,
+  useSelectedLayoutSegments: () => [],
+  useRouter: () => ({
+    push: (href: string) => {
+      if (typeof window === "undefined") return;
+      window.history.pushState({}, "", href);
+    },
+    replace: (href: string) => {
+      if (typeof window === "undefined") return;
+      window.history.replaceState({}, "", href);
+    },
+    prefetch: async () => undefined,
+    refresh: () => {
+      if (typeof window === "undefined") return;
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    },
+    back: () => {
+      if (typeof window === "undefined") return;
+      window.history.back();
+    },
+    forward: () => {
+      if (typeof window === "undefined") return;
+      window.history.forward();
+    },
+  }),
+};
+
 const moduleMap: Record<string, Record<string, unknown>> = {
   ...magicImportMap,
   ...uiImportMap,
@@ -346,9 +450,9 @@ const moduleMap: Record<string, Record<string, unknown>> = {
   },
   "@/lib/cn": { cn },
   "@/lib/utils": { cn },
-  "@/components/theme/motion": { useMotionMode },
   "@/lib/motion": { useInViewReveal, useParallaxY },
-  "next/navigation": { usePathname, useSearchParams },
+  "@/components/theme/motion": { MotionProvider, useMotionMode },
+  "next/navigation": nextNavigationCompat,
   react: React,
   React,
   "lucide-react": lucideWithAliases,

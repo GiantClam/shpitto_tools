@@ -1,5 +1,8 @@
 import type { SiteBlueprint } from "@/lib/agent/site-planner";
-import { ENTERPRISE_SITE_PAGES } from "@/lib/agent/enterprise-site-structure";
+import {
+  ENTERPRISE_SITE_PAGES,
+  type EnterpriseSitePageKey,
+} from "@/lib/agent/enterprise-site-structure";
 
 type NavVariant = "primary" | "secondary" | "link";
 
@@ -150,7 +153,15 @@ const matchEnterprisePages = (blueprint: SiteBlueprint) => {
       label: sanitizeLabel(page.name, definition.name),
       href: normalizePath(page.path),
     };
-  }).filter((item): item is { key: string; label: string; href: string } => Boolean(item));
+  }).filter(
+    (
+      item
+    ): item is {
+      key: EnterpriseSitePageKey;
+      label: string;
+      href: string;
+    } => Boolean(item)
+  );
 };
 
 const isEnterpriseBlueprint = (blueprint: SiteBlueprint) => {
@@ -228,7 +239,7 @@ const buildFooterColumns = (blueprint: SiteBlueprint): SiteFooterColumn[] => {
   if (isEnterpriseBlueprint(blueprint)) {
     const enterpriseLinks = matchEnterprisePages(blueprint);
     const byKey = new Map(enterpriseLinks.map((item) => [item.key, item] as const));
-    const pick = (key: string, fallbackLabel: string, fallbackHref = "/") => ({
+    const pick = (key: EnterpriseSitePageKey, fallbackLabel: string, fallbackHref = "/") => ({
       label: byKey.get(key)?.label ?? fallbackLabel,
       href: byKey.get(key)?.href ?? fallbackHref,
       variant: "link" as const,

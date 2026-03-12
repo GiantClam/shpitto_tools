@@ -357,9 +357,7 @@ const planPageSections = (input: {
 };
 
 const chooseProfile = (prompt: string, pages: PageLike[] = []): StyleProfile | null => {
-  const direct = selectStyleProfile(prompt, {
-    pagePaths: pages.map((page) => normalizePagePath(page.path)),
-  });
+  const direct = selectStyleProfile(prompt);
   if (direct) return direct;
   const profiles = getStyleProfiles();
   const normalizedPrompt = String(prompt || "").toLowerCase();
