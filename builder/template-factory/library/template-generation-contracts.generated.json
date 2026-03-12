@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-03-11T00:49:36.302Z",
-  "sourceRunId": "tf-framework-template-from-pen-20260311-motionfix",
-  "count": 2,
+  "generatedAt": "2026-03-12T04:23:44.866Z",
+  "sourceRunId": "tf-framework-template-from-pen-20260312-current-mainrefresh-publish",
+  "count": 3,
   "contracts": [
     {
       "profileId": "unistellar-home",
@@ -6158,6 +6158,4472 @@
                 },
                 {
                   "path": "b7gutext",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].title",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].href",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "profileId": "framework-mainrefresh",
+      "name": "framework-mainrefresh",
+      "styleFamily": "home",
+      "keywords": [
+        "framework-mainrefresh",
+        "profile_selector_framework-mainrefresh",
+        "Home",
+        "About",
+        "Support",
+        "Products",
+        "Contact",
+        "Blog"
+      ],
+      "qualityScore": 100,
+      "shared": {
+        "navigation": {
+          "kind": "navigation",
+          "blockType": "TemplateExclusivePenSiteHomeNavigationTopnavpenPrimary",
+          "source": "profile",
+          "slotId": "shared.navigation.1",
+          "role": "shared-navigation-1",
+          "imageIntent": "none",
+          "editableFields": [
+            {
+              "path": "logotext",
+              "type": "text"
+            },
+            {
+              "path": "logohref",
+              "type": "link"
+            },
+            {
+              "path": "centernavtext",
+              "type": "text"
+            },
+            {
+              "path": "centernavhref",
+              "type": "link"
+            },
+            {
+              "path": "rightnavtext",
+              "type": "text"
+            },
+            {
+              "path": "rightnavhref",
+              "type": "link"
+            },
+            {
+              "path": "theme.mode",
+              "type": "text"
+            },
+            {
+              "path": "theme.fontHeading",
+              "type": "text"
+            },
+            {
+              "path": "theme.fontBody",
+              "type": "text"
+            },
+            {
+              "path": "theme.motion",
+              "type": "text"
+            },
+            {
+              "path": "theme.fontFamilies.[]",
+              "type": "text"
+            },
+            {
+              "path": "theme.palette.bg",
+              "type": "text"
+            },
+            {
+              "path": "theme.palette.text",
+              "type": "text"
+            },
+            {
+              "path": "theme.palette.primary",
+              "type": "text"
+            },
+            {
+              "path": "theme.palette.accent",
+              "type": "text"
+            },
+            {
+              "path": "theme.palette.neutral",
+              "type": "text"
+            },
+            {
+              "path": "theme.palette.textSecondary",
+              "type": "text"
+            },
+            {
+              "path": "theme.primaryColor",
+              "type": "style"
+            },
+            {
+              "path": "theme.layoutRules.sectionPadding",
+              "type": "text"
+            },
+            {
+              "path": "theme.layoutRules.grid",
+              "type": "text"
+            },
+            {
+              "path": "theme.tokens.surface",
+              "type": "text"
+            },
+            {
+              "path": "theme.tokens.border",
+              "type": "text"
+            },
+            {
+              "path": "theme.tokens.shadow",
+              "type": "style"
+            },
+            {
+              "path": "theme.tokens.accent",
+              "type": "text"
+            },
+            {
+              "path": "navItems.[].label",
+              "type": "text"
+            },
+            {
+              "path": "navItems.[].href",
+              "type": "link"
+            },
+            {
+              "path": "utilityItems.[].label",
+              "type": "text"
+            },
+            {
+              "path": "utilityItems.[].href",
+              "type": "link"
+            }
+          ]
+        },
+        "footer": {
+          "kind": "footer",
+          "blockType": "TemplateExclusivePenSiteAboutFooterFooterpenAlt2",
+          "source": "profile",
+          "slotId": "shared.footer.1",
+          "role": "shared-footer-1",
+          "imageIntent": "none",
+          "editableFields": [
+            {
+              "path": "vlbrhtext",
+              "type": "text"
+            },
+            {
+              "path": "imz8dtext",
+              "type": "text"
+            },
+            {
+              "path": "imz8dhref",
+              "type": "link"
+            },
+            {
+              "path": "zr0text",
+              "type": "text"
+            },
+            {
+              "path": "mbhbtext",
+              "type": "text"
+            },
+            {
+              "path": "mbhbhref",
+              "type": "link"
+            },
+            {
+              "path": "wer5jtext",
+              "type": "text"
+            },
+            {
+              "path": "hy3sbtext",
+              "type": "text"
+            },
+            {
+              "path": "hy3sbhref",
+              "type": "link"
+            },
+            {
+              "path": "iuru3text",
+              "type": "text"
+            },
+            {
+              "path": "g0outext",
+              "type": "text"
+            },
+            {
+              "path": "g0ouhref",
+              "type": "link"
+            },
+            {
+              "path": "nzlvptext",
+              "type": "text"
+            },
+            {
+              "path": "qjmimtext",
+              "type": "text"
+            },
+            {
+              "path": "qjmimhref",
+              "type": "link"
+            },
+            {
+              "path": "lsxlstext",
+              "type": "text"
+            },
+            {
+              "path": "xz2obhref",
+              "type": "link"
+            },
+            {
+              "path": "zelqitext",
+              "type": "text"
+            },
+            {
+              "path": "vb8xtext",
+              "type": "text"
+            },
+            {
+              "path": "lwirdtext",
+              "type": "text"
+            },
+            {
+              "path": "theme.mode",
+              "type": "text"
+            },
+            {
+              "path": "theme.fontHeading",
+              "type": "text"
+            },
+            {
+              "path": "theme.fontBody",
+              "type": "text"
+            },
+            {
+              "path": "theme.motion",
+              "type": "text"
+            },
+            {
+              "path": "theme.fontFamilies.[]",
+              "type": "text"
+            },
+            {
+              "path": "theme.palette.bg",
+              "type": "text"
+            },
+            {
+              "path": "theme.palette.text",
+              "type": "text"
+            },
+            {
+              "path": "theme.palette.primary",
+              "type": "text"
+            },
+            {
+              "path": "theme.palette.accent",
+              "type": "text"
+            },
+            {
+              "path": "theme.palette.neutral",
+              "type": "text"
+            },
+            {
+              "path": "theme.palette.textSecondary",
+              "type": "text"
+            },
+            {
+              "path": "theme.primaryColor",
+              "type": "style"
+            },
+            {
+              "path": "theme.layoutRules.sectionPadding",
+              "type": "text"
+            },
+            {
+              "path": "theme.layoutRules.grid",
+              "type": "text"
+            },
+            {
+              "path": "theme.tokens.surface",
+              "type": "text"
+            },
+            {
+              "path": "theme.tokens.border",
+              "type": "text"
+            },
+            {
+              "path": "theme.tokens.shadow",
+              "type": "style"
+            },
+            {
+              "path": "theme.tokens.accent",
+              "type": "text"
+            },
+            {
+              "path": "columns.[].title",
+              "type": "text"
+            },
+            {
+              "path": "columns.[].links.[].label",
+              "type": "text"
+            },
+            {
+              "path": "columns.[].links.[].href",
+              "type": "link"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "path": "/",
+          "name": "Home",
+          "pageType": "home",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "socialproof"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusivePenSiteHomeNavigationTopnavpenPrimary",
+              "source": "page",
+              "slotId": "home.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "centernavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "centernavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "rightnavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightnavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].href",
+                  "type": "link"
+                },
+                {
+                  "path": "utilityItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "utilityItems.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusivePenSiteHomeHeroHero1penAlt1",
+              "source": "page",
+              "slotId": "home.hero.1",
+              "role": "primary-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "h1t1text",
+                  "type": "text"
+                },
+                {
+                  "path": "h1t2text",
+                  "type": "text"
+                },
+                {
+                  "path": "h1bttext",
+                  "type": "text"
+                },
+                {
+                  "path": "akwvvtext",
+                  "type": "text"
+                },
+                {
+                  "path": "hero1rimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusivePenSiteHomeHeroHero2penAlt2",
+              "source": "page",
+              "slotId": "home.hero.2",
+              "role": "primary-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "hero2limagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "h2t1text",
+                  "type": "text"
+                },
+                {
+                  "path": "h2t2text",
+                  "type": "text"
+                },
+                {
+                  "path": "h2bttext",
+                  "type": "text"
+                },
+                {
+                  "path": "dxtv6text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusivePenSiteHomeHeroHero3penAlt3",
+              "source": "page",
+              "slotId": "home.hero.3",
+              "role": "primary-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "hero3limagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "h3t1text",
+                  "type": "text"
+                },
+                {
+                  "path": "h3bttext",
+                  "type": "text"
+                },
+                {
+                  "path": "cn9citext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusivePenSiteHomeHeroHero4penAlt4",
+              "source": "page",
+              "slotId": "home.hero.4",
+              "role": "primary-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "h4t1text",
+                  "type": "text"
+                },
+                {
+                  "path": "h4t2text",
+                  "type": "text"
+                },
+                {
+                  "path": "h4bttext",
+                  "type": "text"
+                },
+                {
+                  "path": "dsvsntext",
+                  "type": "text"
+                },
+                {
+                  "path": "hero4rimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "socialproof",
+              "blockType": "TemplateExclusivePenSiteHomeSocialproofLogorowpenAlt5",
+              "source": "page",
+              "slotId": "home.socialproof.1",
+              "role": "customer-proof",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusivePenSiteHomeStoryMidtitlepenAlt6",
+              "source": "page",
+              "slotId": "home.story.1",
+              "role": "brand-story",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "mid1text",
+                  "type": "text"
+                },
+                {
+                  "path": "fixlinetext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusivePenSiteHomeStoryFixheadingpenAlt7",
+              "source": "page",
+              "slotId": "home.story.2",
+              "role": "brand-story",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "jac8ltext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusivePenSiteHomeStoryMosaicpenAlt8",
+              "source": "page",
+              "slotId": "home.story.3",
+              "role": "brand-story",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "mosaicimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusivePenSiteHomeStoryHfpenAlt9",
+              "source": "page",
+              "slotId": "home.story.4",
+              "role": "brand-story",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "k1dhitext",
+                  "type": "text"
+                },
+                {
+                  "path": "ovze9text",
+                  "type": "text"
+                },
+                {
+                  "path": "rwrx5text",
+                  "type": "text"
+                },
+                {
+                  "path": "xgczptext",
+                  "type": "text"
+                },
+                {
+                  "path": "hi5gtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ggtmktext",
+                  "type": "text"
+                },
+                {
+                  "path": "sxn6ltext",
+                  "type": "text"
+                },
+                {
+                  "path": "gcbuvtext",
+                  "type": "text"
+                },
+                {
+                  "path": "xjrrqtext",
+                  "type": "text"
+                },
+                {
+                  "path": "c47vstext",
+                  "type": "text"
+                },
+                {
+                  "path": "fugfktext",
+                  "type": "text"
+                },
+                {
+                  "path": "kqqdxhref",
+                  "type": "link"
+                },
+                {
+                  "path": "ln0k2text",
+                  "type": "text"
+                },
+                {
+                  "path": "ks1jbtext",
+                  "type": "text"
+                },
+                {
+                  "path": "meabitext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/about",
+          "name": "About",
+          "pageType": "about",
+          "requiredCategories": [
+            "navigation",
+            "story",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusivePenSiteAboutNavigationTopnavpenPrimary",
+              "source": "page",
+              "slotId": "about.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "centernavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "centernavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "rightnavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightnavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].href",
+                  "type": "link"
+                },
+                {
+                  "path": "utilityItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "utilityItems.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusivePenSiteAboutStoryAboutmainpenAlt1",
+              "source": "page",
+              "slotId": "about.story.1",
+              "role": "company-story",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "h1text",
+                  "type": "text"
+                },
+                {
+                  "path": "p1text",
+                  "type": "text"
+                },
+                {
+                  "path": "p2text",
+                  "type": "text"
+                },
+                {
+                  "path": "p3text",
+                  "type": "text"
+                },
+                {
+                  "path": "p4text",
+                  "type": "text"
+                },
+                {
+                  "path": "nz0y9text",
+                  "type": "text"
+                },
+                {
+                  "path": "rejuxtext",
+                  "type": "text"
+                },
+                {
+                  "path": "zlzbctext",
+                  "type": "text"
+                },
+                {
+                  "path": "hquk0text",
+                  "type": "text"
+                },
+                {
+                  "path": "pfcsatext",
+                  "type": "text"
+                },
+                {
+                  "path": "xehzztext",
+                  "type": "text"
+                },
+                {
+                  "path": "gxwgytext",
+                  "type": "text"
+                },
+                {
+                  "path": "bcvntext",
+                  "type": "text"
+                },
+                {
+                  "path": "wvphotext",
+                  "type": "text"
+                },
+                {
+                  "path": "g7ozhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "l7kp3text",
+                  "type": "text"
+                },
+                {
+                  "path": "jiee6text",
+                  "type": "text"
+                },
+                {
+                  "path": "vtejrtext",
+                  "type": "text"
+                },
+                {
+                  "path": "w1text",
+                  "type": "text"
+                },
+                {
+                  "path": "w2text",
+                  "type": "text"
+                },
+                {
+                  "path": "w3imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "aawkatext",
+                  "type": "text"
+                },
+                {
+                  "path": "mq7tmtext",
+                  "type": "text"
+                },
+                {
+                  "path": "gfkkitext",
+                  "type": "text"
+                },
+                {
+                  "path": "c7mvmtext",
+                  "type": "text"
+                },
+                {
+                  "path": "z6bfhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "udgjetext",
+                  "type": "text"
+                },
+                {
+                  "path": "gtwntext",
+                  "type": "text"
+                },
+                {
+                  "path": "uzsgvtext",
+                  "type": "text"
+                },
+                {
+                  "path": "u0zlstext",
+                  "type": "text"
+                },
+                {
+                  "path": "rca6ctext",
+                  "type": "text"
+                },
+                {
+                  "path": "yf7koimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "xbbo6text",
+                  "type": "text"
+                },
+                {
+                  "path": "nt4buimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "bnlh2text",
+                  "type": "text"
+                },
+                {
+                  "path": "coacntext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusivePenSiteAboutFooterFooterpenAlt2",
+              "source": "page",
+              "slotId": "about.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "vlbrhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "imz8dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "imz8dhref",
+                  "type": "link"
+                },
+                {
+                  "path": "zr0text",
+                  "type": "text"
+                },
+                {
+                  "path": "mbhbtext",
+                  "type": "text"
+                },
+                {
+                  "path": "mbhbhref",
+                  "type": "link"
+                },
+                {
+                  "path": "wer5jtext",
+                  "type": "text"
+                },
+                {
+                  "path": "hy3sbtext",
+                  "type": "text"
+                },
+                {
+                  "path": "hy3sbhref",
+                  "type": "link"
+                },
+                {
+                  "path": "iuru3text",
+                  "type": "text"
+                },
+                {
+                  "path": "g0outext",
+                  "type": "text"
+                },
+                {
+                  "path": "g0ouhref",
+                  "type": "link"
+                },
+                {
+                  "path": "nzlvptext",
+                  "type": "text"
+                },
+                {
+                  "path": "qjmimtext",
+                  "type": "text"
+                },
+                {
+                  "path": "qjmimhref",
+                  "type": "link"
+                },
+                {
+                  "path": "lsxlstext",
+                  "type": "text"
+                },
+                {
+                  "path": "xz2obhref",
+                  "type": "link"
+                },
+                {
+                  "path": "zelqitext",
+                  "type": "text"
+                },
+                {
+                  "path": "vb8xtext",
+                  "type": "text"
+                },
+                {
+                  "path": "lwirdtext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].title",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].href",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/support",
+          "name": "Support",
+          "pageType": "support",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "contact",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusivePenSiteSupportNavigationNavpenPrimary",
+              "source": "page",
+              "slotId": "support.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "centernavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "centernavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "rightnavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightnavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].href",
+                  "type": "link"
+                },
+                {
+                  "path": "utilityItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "utilityItems.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusivePenSiteSupportHeroSupportheropenAlt1",
+              "source": "page",
+              "slotId": "support.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "herotitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "contact",
+              "blockType": "TemplateExclusivePenSiteSupportContactSupportmainpenAlt2",
+              "source": "page",
+              "slotId": "support.contact.1",
+              "role": "support-topics",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "kbtitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "kbdesctext",
+                  "type": "text"
+                },
+                {
+                  "path": "kbl1text",
+                  "type": "text"
+                },
+                {
+                  "path": "kbl2text",
+                  "type": "text"
+                },
+                {
+                  "path": "kbl3text",
+                  "type": "text"
+                },
+                {
+                  "path": "communityimageimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "commtitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "commdesctext",
+                  "type": "text"
+                },
+                {
+                  "path": "askbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "asktxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "guidestitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "viewbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "viewtxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "img1imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "cap1text",
+                  "type": "text"
+                },
+                {
+                  "path": "img2imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "cap2text",
+                  "type": "text"
+                },
+                {
+                  "path": "img3imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "cap3text",
+                  "type": "text"
+                },
+                {
+                  "path": "ctatitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "submitbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "submittxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "connectbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "connecttxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusivePenSiteSupportFooterFooterpenAlt3",
+              "source": "page",
+              "slotId": "support.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "clzbctext",
+                  "type": "text"
+                },
+                {
+                  "path": "pcfsktext",
+                  "type": "text"
+                },
+                {
+                  "path": "pcfskhref",
+                  "type": "link"
+                },
+                {
+                  "path": "g6yuftext",
+                  "type": "text"
+                },
+                {
+                  "path": "rdotctext",
+                  "type": "text"
+                },
+                {
+                  "path": "rdotchref",
+                  "type": "link"
+                },
+                {
+                  "path": "hu3uvtext",
+                  "type": "text"
+                },
+                {
+                  "path": "nqugstext",
+                  "type": "text"
+                },
+                {
+                  "path": "nqugshref",
+                  "type": "link"
+                },
+                {
+                  "path": "om4ndtext",
+                  "type": "text"
+                },
+                {
+                  "path": "tn1zntext",
+                  "type": "text"
+                },
+                {
+                  "path": "tn1znhref",
+                  "type": "link"
+                },
+                {
+                  "path": "d8wcftext",
+                  "type": "text"
+                },
+                {
+                  "path": "wwiyjtext",
+                  "type": "text"
+                },
+                {
+                  "path": "wwiyjhref",
+                  "type": "link"
+                },
+                {
+                  "path": "zao7qtext",
+                  "type": "text"
+                },
+                {
+                  "path": "j01f7href",
+                  "type": "link"
+                },
+                {
+                  "path": "fonnptext",
+                  "type": "text"
+                },
+                {
+                  "path": "irp3atext",
+                  "type": "text"
+                },
+                {
+                  "path": "quashtext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].title",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].href",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/products",
+          "name": "Products",
+          "pageType": "products",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusivePenSiteProductsNavigationNavpenPrimary",
+              "source": "page",
+              "slotId": "products.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "centernavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "centernavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "rightnavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightnavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].href",
+                  "type": "link"
+                },
+                {
+                  "path": "utilityItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "utilityItems.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusivePenSiteProductsHeroBizheropenAlt1",
+              "source": "page",
+              "slotId": "products.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "herot1text",
+                  "type": "text"
+                },
+                {
+                  "path": "herosubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "herorimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusivePenSiteProductsStoryBizmainpenAlt2",
+              "source": "page",
+              "slotId": "products.story.1",
+              "role": "product-context",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "ctitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "csubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "c1imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "c1txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "acjqhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "c2imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "c2txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ng7y8text",
+                  "type": "text"
+                },
+                {
+                  "path": "c3imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "c3txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "myvvrtext",
+                  "type": "text"
+                },
+                {
+                  "path": "c4imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "c4txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "mct7jtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ttitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "t1qtext",
+                  "type": "text"
+                },
+                {
+                  "path": "whtytext",
+                  "type": "text"
+                },
+                {
+                  "path": "t2qtext",
+                  "type": "text"
+                },
+                {
+                  "path": "b0iketext",
+                  "type": "text"
+                },
+                {
+                  "path": "t3qtext",
+                  "type": "text"
+                },
+                {
+                  "path": "dovaxtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ptitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "wt1iutext",
+                  "type": "text"
+                },
+                {
+                  "path": "snz8jtext",
+                  "type": "text"
+                },
+                {
+                  "path": "de4zxtext",
+                  "type": "text"
+                },
+                {
+                  "path": "iyptltext",
+                  "type": "text"
+                },
+                {
+                  "path": "vssixtext",
+                  "type": "text"
+                },
+                {
+                  "path": "pfa7htext",
+                  "type": "text"
+                },
+                {
+                  "path": "vptitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "vp1ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "y1etext",
+                  "type": "text"
+                },
+                {
+                  "path": "btn1href",
+                  "type": "link"
+                },
+                {
+                  "path": "kbw1vtext",
+                  "type": "text"
+                },
+                {
+                  "path": "vp2ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "wvjtvtext",
+                  "type": "text"
+                },
+                {
+                  "path": "btn2href",
+                  "type": "link"
+                },
+                {
+                  "path": "fzhcatext",
+                  "type": "text"
+                },
+                {
+                  "path": "story1imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "story1ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "story2imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "story2ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "contitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "introtext",
+                  "type": "text"
+                },
+                {
+                  "path": "fylwytext",
+                  "type": "text"
+                },
+                {
+                  "path": "vazprtext",
+                  "type": "text"
+                },
+                {
+                  "path": "zbknttext",
+                  "type": "text"
+                },
+                {
+                  "path": "w2r4vtext",
+                  "type": "text"
+                },
+                {
+                  "path": "hsfwotext",
+                  "type": "text"
+                },
+                {
+                  "path": "dimyjtext",
+                  "type": "text"
+                },
+                {
+                  "path": "check1text",
+                  "type": "text"
+                },
+                {
+                  "path": "checkstext",
+                  "type": "text"
+                },
+                {
+                  "path": "industrytext",
+                  "type": "text"
+                },
+                {
+                  "path": "notestext",
+                  "type": "text"
+                },
+                {
+                  "path": "policytext",
+                  "type": "text"
+                },
+                {
+                  "path": "c7r9text",
+                  "type": "text"
+                },
+                {
+                  "path": "contacttitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "contactsubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "contactbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "nthrutext",
+                  "type": "text"
+                },
+                {
+                  "path": "contactimgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "faqtitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "sec1text",
+                  "type": "text"
+                },
+                {
+                  "path": "q1text",
+                  "type": "text"
+                },
+                {
+                  "path": "p1text",
+                  "type": "text"
+                },
+                {
+                  "path": "q2text",
+                  "type": "text"
+                },
+                {
+                  "path": "p2text",
+                  "type": "text"
+                },
+                {
+                  "path": "sec2text",
+                  "type": "text"
+                },
+                {
+                  "path": "q3text",
+                  "type": "text"
+                },
+                {
+                  "path": "p3text",
+                  "type": "text"
+                },
+                {
+                  "path": "q4text",
+                  "type": "text"
+                },
+                {
+                  "path": "p4text",
+                  "type": "text"
+                },
+                {
+                  "path": "sec3text",
+                  "type": "text"
+                },
+                {
+                  "path": "q5text",
+                  "type": "text"
+                },
+                {
+                  "path": "p5text",
+                  "type": "text"
+                },
+                {
+                  "path": "q6text",
+                  "type": "text"
+                },
+                {
+                  "path": "p6text",
+                  "type": "text"
+                },
+                {
+                  "path": "legaltitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "legalbodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusivePenSiteProductsFooterFooterpenAlt3",
+              "source": "page",
+              "slotId": "products.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "i4katext",
+                  "type": "text"
+                },
+                {
+                  "path": "dyodktext",
+                  "type": "text"
+                },
+                {
+                  "path": "dyodkhref",
+                  "type": "link"
+                },
+                {
+                  "path": "xfwttext",
+                  "type": "text"
+                },
+                {
+                  "path": "dew7otext",
+                  "type": "text"
+                },
+                {
+                  "path": "dew7ohref",
+                  "type": "link"
+                },
+                {
+                  "path": "icru3text",
+                  "type": "text"
+                },
+                {
+                  "path": "httzhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "httzhhref",
+                  "type": "link"
+                },
+                {
+                  "path": "fplrvtext",
+                  "type": "text"
+                },
+                {
+                  "path": "yrfltext",
+                  "type": "text"
+                },
+                {
+                  "path": "yrflhref",
+                  "type": "link"
+                },
+                {
+                  "path": "emze2text",
+                  "type": "text"
+                },
+                {
+                  "path": "uqretext",
+                  "type": "text"
+                },
+                {
+                  "path": "uqrehref",
+                  "type": "link"
+                },
+                {
+                  "path": "juramtext",
+                  "type": "text"
+                },
+                {
+                  "path": "zvlavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "vux1ztext",
+                  "type": "text"
+                },
+                {
+                  "path": "n5q0utext",
+                  "type": "text"
+                },
+                {
+                  "path": "hl1oztext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].title",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].href",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/contact",
+          "name": "Contact",
+          "pageType": "contact",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "contact",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusivePenSiteContactNavigationNavpenPrimary",
+              "source": "page",
+              "slotId": "contact.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "centernavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "centernavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "rightnavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightnavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].href",
+                  "type": "link"
+                },
+                {
+                  "path": "utilityItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "utilityItems.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusivePenSiteContactHeroContactheropenAlt1",
+              "source": "page",
+              "slotId": "contact.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "herotitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "contact",
+              "blockType": "TemplateExclusivePenSiteContactContactContactmainpenAlt2",
+              "source": "page",
+              "slotId": "contact.contact.1",
+              "role": "contact-form",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "t1text",
+                  "type": "text"
+                },
+                {
+                  "path": "l1text",
+                  "type": "text"
+                },
+                {
+                  "path": "t2text",
+                  "type": "text"
+                },
+                {
+                  "path": "l2text",
+                  "type": "text"
+                },
+                {
+                  "path": "t3text",
+                  "type": "text"
+                },
+                {
+                  "path": "l3text",
+                  "type": "text"
+                },
+                {
+                  "path": "t4text",
+                  "type": "text"
+                },
+                {
+                  "path": "l4text",
+                  "type": "text"
+                },
+                {
+                  "path": "t5text",
+                  "type": "text"
+                },
+                {
+                  "path": "l5text",
+                  "type": "text"
+                },
+                {
+                  "path": "imptitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "i11text",
+                  "type": "text"
+                },
+                {
+                  "path": "i12text",
+                  "type": "text"
+                },
+                {
+                  "path": "i21text",
+                  "type": "text"
+                },
+                {
+                  "path": "i22text",
+                  "type": "text"
+                },
+                {
+                  "path": "i31text",
+                  "type": "text"
+                },
+                {
+                  "path": "i32text",
+                  "type": "text"
+                },
+                {
+                  "path": "i41text",
+                  "type": "text"
+                },
+                {
+                  "path": "i42text",
+                  "type": "text"
+                },
+                {
+                  "path": "i51text",
+                  "type": "text"
+                },
+                {
+                  "path": "i52text",
+                  "type": "text"
+                },
+                {
+                  "path": "i61text",
+                  "type": "text"
+                },
+                {
+                  "path": "i62text",
+                  "type": "text"
+                },
+                {
+                  "path": "worktitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "worksubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "worklinktext",
+                  "type": "text"
+                },
+                {
+                  "path": "workillustrationimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusivePenSiteContactFooterFooterpenAlt3",
+              "source": "page",
+              "slotId": "contact.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "a8p3ftext",
+                  "type": "text"
+                },
+                {
+                  "path": "mqbmrtext",
+                  "type": "text"
+                },
+                {
+                  "path": "mqbmrhref",
+                  "type": "link"
+                },
+                {
+                  "path": "dthwxtext",
+                  "type": "text"
+                },
+                {
+                  "path": "howybtext",
+                  "type": "text"
+                },
+                {
+                  "path": "howybhref",
+                  "type": "link"
+                },
+                {
+                  "path": "npx2text",
+                  "type": "text"
+                },
+                {
+                  "path": "t3cx4text",
+                  "type": "text"
+                },
+                {
+                  "path": "t3cx4href",
+                  "type": "link"
+                },
+                {
+                  "path": "fhzltext",
+                  "type": "text"
+                },
+                {
+                  "path": "puz92text",
+                  "type": "text"
+                },
+                {
+                  "path": "puz92href",
+                  "type": "link"
+                },
+                {
+                  "path": "xfcygtext",
+                  "type": "text"
+                },
+                {
+                  "path": "fnrsltext",
+                  "type": "text"
+                },
+                {
+                  "path": "fnrslhref",
+                  "type": "link"
+                },
+                {
+                  "path": "wpl5ptext",
+                  "type": "text"
+                },
+                {
+                  "path": "uwcuhref",
+                  "type": "link"
+                },
+                {
+                  "path": "uoytatext",
+                  "type": "text"
+                },
+                {
+                  "path": "dmqitext",
+                  "type": "text"
+                },
+                {
+                  "path": "thaqitext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].title",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].href",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/blog",
+          "name": "Blog",
+          "pageType": "blog",
+          "requiredCategories": [
+            "navigation",
+            "story",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusivePenSiteBlogNavigationNavpenPrimary",
+              "source": "page",
+              "slotId": "blog.navigation.1",
+              "role": "blog-navigation-1",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "centernavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "centernavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "rightnavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightnavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].href",
+                  "type": "link"
+                },
+                {
+                  "path": "utilityItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "utilityItems.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusivePenSiteBlogNavigationCategorybarpenAlt1",
+              "source": "page",
+              "slotId": "blog.navigation.2",
+              "role": "blog-navigation-2",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "fmwkqtext",
+                  "type": "text"
+                },
+                {
+                  "path": "fmwkqhref",
+                  "type": "link"
+                },
+                {
+                  "path": "shvcttext",
+                  "type": "text"
+                },
+                {
+                  "path": "shvcthref",
+                  "type": "link"
+                },
+                {
+                  "path": "fmg0utext",
+                  "type": "text"
+                },
+                {
+                  "path": "fmg0uhref",
+                  "type": "link"
+                },
+                {
+                  "path": "usnltext",
+                  "type": "text"
+                },
+                {
+                  "path": "usnlhref",
+                  "type": "link"
+                },
+                {
+                  "path": "krcrjtext",
+                  "type": "text"
+                },
+                {
+                  "path": "krcrjhref",
+                  "type": "link"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "categories.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "categories.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusivePenSiteBlogStoryBlogmainpenAlt2",
+              "source": "page",
+              "slotId": "blog.story.1",
+              "role": "blog-story-1",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "feat1imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "rghsptext",
+                  "type": "text"
+                },
+                {
+                  "path": "fxt71text",
+                  "type": "text"
+                },
+                {
+                  "path": "brptext",
+                  "type": "text"
+                },
+                {
+                  "path": "g8ks2text",
+                  "type": "text"
+                },
+                {
+                  "path": "r6kwtext",
+                  "type": "text"
+                },
+                {
+                  "path": "e7ntutext",
+                  "type": "text"
+                },
+                {
+                  "path": "b6akctext",
+                  "type": "text"
+                },
+                {
+                  "path": "ntqg2text",
+                  "type": "text"
+                },
+                {
+                  "path": "feat2imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "img1imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "lsaeetext",
+                  "type": "text"
+                },
+                {
+                  "path": "imrb8text",
+                  "type": "text"
+                },
+                {
+                  "path": "img2imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "swimttext",
+                  "type": "text"
+                },
+                {
+                  "path": "crfqetext",
+                  "type": "text"
+                },
+                {
+                  "path": "img3imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "zw96ntext",
+                  "type": "text"
+                },
+                {
+                  "path": "m28xttext",
+                  "type": "text"
+                },
+                {
+                  "path": "img4imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "ct8ldtext",
+                  "type": "text"
+                },
+                {
+                  "path": "o9jvftext",
+                  "type": "text"
+                },
+                {
+                  "path": "img5imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "cjpxtext",
+                  "type": "text"
+                },
+                {
+                  "path": "was8atext",
+                  "type": "text"
+                },
+                {
+                  "path": "img6imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "vuynwtext",
+                  "type": "text"
+                },
+                {
+                  "path": "wmziitext",
+                  "type": "text"
+                },
+                {
+                  "path": "l3hujtext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusivePenSiteBlogFooterFooterpenAlt3",
+              "source": "page",
+              "slotId": "blog.footer.1",
+              "role": "blog-footer-1",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "y1pjgtext",
+                  "type": "text"
+                },
+                {
+                  "path": "boahrtext",
+                  "type": "text"
+                },
+                {
+                  "path": "boahrhref",
+                  "type": "link"
+                },
+                {
+                  "path": "hqbpktext",
+                  "type": "text"
+                },
+                {
+                  "path": "uj2cktext",
+                  "type": "text"
+                },
+                {
+                  "path": "uj2ckhref",
+                  "type": "link"
+                },
+                {
+                  "path": "iiv5dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "tfjhstext",
+                  "type": "text"
+                },
+                {
+                  "path": "tfjhshref",
+                  "type": "link"
+                },
+                {
+                  "path": "iaikqtext",
+                  "type": "text"
+                },
+                {
+                  "path": "gzytext",
+                  "type": "text"
+                },
+                {
+                  "path": "gzyhref",
+                  "type": "link"
+                },
+                {
+                  "path": "hftivtext",
+                  "type": "text"
+                },
+                {
+                  "path": "brd7etext",
+                  "type": "text"
+                },
+                {
+                  "path": "brd7ehref",
+                  "type": "link"
+                },
+                {
+                  "path": "dmhketext",
+                  "type": "text"
+                },
+                {
+                  "path": "xjtjihref",
+                  "type": "link"
+                },
+                {
+                  "path": "vt300text",
+                  "type": "text"
+                },
+                {
+                  "path": "xsatptext",
+                  "type": "text"
+                },
+                {
+                  "path": "b7gutext",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.mode",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontHeading",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontBody",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.motion",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.fontFamilies.[]",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.bg",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.text",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.primary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.accent",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.neutral",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.palette.textSecondary",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.primaryColor",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.layoutRules.sectionPadding",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.layoutRules.grid",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.surface",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.border",
+                  "type": "text"
+                },
+                {
+                  "path": "theme.tokens.shadow",
+                  "type": "style"
+                },
+                {
+                  "path": "theme.tokens.accent",
                   "type": "text"
                 },
                 {
