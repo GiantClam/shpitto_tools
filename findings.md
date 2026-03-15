@@ -856,3 +856,27 @@
       - `pagani /3c-machines -> Navbar > HeroSplit > CardsGrid > FeatureGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
       - `pagani /custom-solutions -> Navbar > HeroSplit > FeatureGrid > CardsGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
       - `pagani /about -> Navbar > HeroSplit > ContentStory > CardsGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
+2026-03-15 (interior regression gate)
+  - the existing creation baseline runner did not have a way to fail on per-page skeleton drift; it only checked categories, fallback signals, and coarse profile/page-count assertions
+  - adding `expectedPageShapes` to `builder/regression/run-creation-baseline.mjs` closes that gap and lets release gating fail directly on generated page structure
+  - the first gate attempt failed for the right reason:
+    - unstructured fixtures did not enter `parseStructuredBrief()`
+    - the family-agnostic interior normalization path was therefore skipped
+    - generated pages kept their original template-family interior skeletons
+  - the correct fix for this gate was not to weaken assertions, but to make the fixtures exercise the real commercial path:
+    - `builder/regression/prompts.family-agnostic-interiors.json` now uses structured LC-CNC prompts with explicit hero, products, features, cases, about, and footer/business lines
+  - after switching fixtures to structured prompts, the interior gate passed across four families:
+    - `sandvik-desktop`
+    - `breton-desktop`
+    - `pamamachinetools-desktop`
+    - `pagani-desktop`
+  - fresh passing evidence:
+    - report: `builder/regression/reports/creation-baseline-20260315-190117.json`
+    - `successRate = 100%`
+    - `fallbackRate = 0%`
+    - `timeoutRate = 0%`
+  - representative gated shapes:
+    - `/3c-machines -> Navbar > HeroSplit > CardsGrid > FeatureGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
+    - `/custom-solutions -> Navbar > HeroSplit > FeatureGrid > CardsGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
+    - `/about -> Navbar > HeroSplit > ContentStory > CardsGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
+    - `/contact -> Navbar > HeroSplit > FeatureGrid > TestimonialsGrid > LeadCaptureCTA > Footer`

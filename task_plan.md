@@ -276,3 +276,8 @@ Read all `.pen` files under `/Users/beihuang/Documents/opencode/shpitto_tools/pe
 1. Extend the same family-agnostic assembly policy used for home pages to `products / solutions / cases / about / contact`.
 2. Normalize interior page skeletons by role and position instead of template-family block names, so every published family receives the same optimization strength.
 3. Remove duplicate canonical interior sections after normalization and re-verify fresh prompt generations across `sandvik / breton / pama / pagani`.
+
+## Interior Regression Gate
+1. Extend the creation baseline runner with per-page shape assertions so interior assembly can fail the release gate directly from `/api/creation` results.
+2. Add a dedicated cross-family fixture set for `sandvik / breton / pama / pagani` using the structured LC-CNC industrial prompt shape that exercises normalized inner pages.
+3. Wire the new fixture set into builder package scripts and docs, then verify `build`, `tsc`, and the new baseline gate on a fresh prod server.

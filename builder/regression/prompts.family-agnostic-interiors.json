@@ -1,0 +1,73 @@
+{
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "lc-cnc-sandvik-interiors",
+      "description": "Sandvik 家族下的工业站内页装配必须统一到标准 skeleton",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "contact", "cta", "footer"],
+      "expectedProfileId": "sandvik-desktop",
+      "minPages": 7,
+      "maxPages": 7,
+      "categoryScope": "site",
+      "expectedPageShapes": {
+        "/3c-machines": ["Navbar", "HeroSplit", "CardsGrid", "FeatureGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/custom-solutions": ["Navbar", "HeroSplit", "FeatureGrid", "CardsGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/cases": ["Navbar", "HeroSplit", "CardsGrid", "FeatureGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/about": ["Navbar", "HeroSplit", "ContentStory", "CardsGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/contact": ["Navbar", "HeroSplit", "FeatureGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"]
+      },
+      "prompt": "Create an English industrial manufacturing website for LC-CNC (Lingchuang Intelligent), a Shenzhen CNC machine factory specializing in 3C CNC machining centers for Southeast Asia. Use Sandvik as the exact template reference and base. Similar to Sandvik. Inspired by Sandvik. Match the Sandvik desktop industrial template family and visual language. Do not use Siemens or any other template family. Use template-first generation. Generate these pages exactly: Home, 3C Machines, Custom Solutions, Cases, About, Contact, Privacy. Routes must be exactly: /, /3c-machines, /custom-solutions, /cases, /about, /contact, /privacy. Navigation must be exactly: Home | 3C Machines | Custom Solutions | Cases | About | Contact.\n\nHome hero: Precision 3C CNC Machines for Southeast Asia Subtitle: 10-Day Prototype • 15-Day Delivery • 24/7 WhatsApp Support CTAs: Get Quote on WhatsApp | Request Catalog\nPrimary CTA: Get Quote on WhatsApp\nSecondary CTA: Request Catalog\nProduct cards must feature these four machines:\n- 3C Phone-Frame Center\n- 3C Laptop-Shell Center\n- 3C Camera-Bezel Center\n- 3C Keypad Center\nFeatures strip must include:\n- Fast Customization → 10-Day Sample\n- Short Lead-Time → 15-Day Shipment\n- Local Support → WhatsApp + Regional Agent\nCases section must focus on these applications:\n- Phone Display Frame Machining\n- Laptop Shell Machining\n- Camera Bezel Machining\n- Phone Keypad Machining\nAbout summary: LC-CNC, Shenzhen since 2013. ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.\nCertification section: ISO 9001 | CE | SGS\nBusiness details:\nCompany name: LC-CNC\nWhatsApp: +86-158-1370-3777\nEmail: sales@lc-cnc.com\nAddress: Bao'an, Shenzhen, China\nFooter: Products | Support | Privacy"
+    },
+    {
+      "id": "lc-cnc-breton-interiors",
+      "description": "Breton 家族下的工业站内页装配必须统一到标准 skeleton",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "contact", "cta", "footer"],
+      "expectedProfileId": "breton-desktop",
+      "minPages": 7,
+      "maxPages": 7,
+      "categoryScope": "site",
+      "expectedPageShapes": {
+        "/3c-machines": ["Navbar", "HeroSplit", "CardsGrid", "FeatureGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/custom-solutions": ["Navbar", "HeroSplit", "FeatureGrid", "CardsGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/cases": ["Navbar", "HeroSplit", "CardsGrid", "FeatureGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/about": ["Navbar", "HeroSplit", "ContentStory", "CardsGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/contact": ["Navbar", "HeroSplit", "FeatureGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"]
+      },
+      "prompt": "Create an English industrial manufacturing website for LC-CNC (Lingchuang Intelligent), a Shenzhen CNC machine factory specializing in 3C CNC machining centers for Southeast Asia. Use Breton as the exact template reference and base. Similar to Breton. Inspired by Breton. Match the Breton desktop industrial template family and visual language. Do not use Sandvik, Siemens, or any other template family. Use template-first generation. Generate these pages exactly: Home, 3C Machines, Custom Solutions, Cases, About, Contact, Privacy. Routes must be exactly: /, /3c-machines, /custom-solutions, /cases, /about, /contact, /privacy. Navigation must be exactly: Home | 3C Machines | Custom Solutions | Cases | About | Contact.\n\nHome hero: Precision 3C CNC Machines for Southeast Asia Subtitle: 10-Day Prototype • 15-Day Delivery • 24/7 WhatsApp Support CTAs: Get Quote on WhatsApp | Request Catalog\nPrimary CTA: Get Quote on WhatsApp\nSecondary CTA: Request Catalog\nProduct cards must feature these four machines:\n- 3C Phone-Frame Center\n- 3C Laptop-Shell Center\n- 3C Camera-Bezel Center\n- 3C Keypad Center\nFeatures strip must include:\n- Fast Customization → 10-Day Sample\n- Short Lead-Time → 15-Day Shipment\n- Local Support → WhatsApp + Regional Agent\nCases section must focus on these applications:\n- Phone Display Frame Machining\n- Laptop Shell Machining\n- Camera Bezel Machining\n- Phone Keypad Machining\nAbout summary: LC-CNC, Shenzhen since 2013. ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.\nCertification section: ISO 9001 | CE | SGS\nBusiness details:\nCompany name: LC-CNC\nWhatsApp: +86-158-1370-3777\nEmail: sales@lc-cnc.com\nAddress: Bao'an, Shenzhen, China\nFooter: Products | Support | Privacy"
+    },
+    {
+      "id": "lc-cnc-pama-interiors",
+      "description": "PAMA 家族下的工业站内页装配必须统一到标准 skeleton",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "contact", "cta", "footer"],
+      "expectedProfileId": "pamamachinetools-desktop",
+      "minPages": 7,
+      "maxPages": 7,
+      "categoryScope": "site",
+      "expectedPageShapes": {
+        "/3c-machines": ["Navbar", "HeroSplit", "CardsGrid", "FeatureGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/custom-solutions": ["Navbar", "HeroSplit", "FeatureGrid", "CardsGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/cases": ["Navbar", "HeroSplit", "CardsGrid", "FeatureGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/about": ["Navbar", "HeroSplit", "ContentStory", "CardsGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/contact": ["Navbar", "HeroSplit", "FeatureGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"]
+      },
+      "prompt": "Create an English industrial manufacturing website for LC-CNC (Lingchuang Intelligent), a Shenzhen CNC machine factory specializing in 3C CNC machining centers for Southeast Asia. Use PAMA Machine Tools as the exact template reference and base. Similar to PAMA Machine Tools. Inspired by PAMA Machine Tools. Match the Pamamachinetools desktop industrial template family and visual language. Do not use Sandvik, Breton, Siemens, or any other template family. Use template-first generation. Generate these pages exactly: Home, 3C Machines, Custom Solutions, Cases, About, Contact, Privacy. Routes must be exactly: /, /3c-machines, /custom-solutions, /cases, /about, /contact, /privacy. Navigation must be exactly: Home | 3C Machines | Custom Solutions | Cases | About | Contact.\n\nHome hero: Precision 3C CNC Machines for Southeast Asia Subtitle: 10-Day Prototype • 15-Day Delivery • 24/7 WhatsApp Support CTAs: Get Quote on WhatsApp | Request Catalog\nPrimary CTA: Get Quote on WhatsApp\nSecondary CTA: Request Catalog\nProduct cards must feature these four machines:\n- 3C Phone-Frame Center\n- 3C Laptop-Shell Center\n- 3C Camera-Bezel Center\n- 3C Keypad Center\nFeatures strip must include:\n- Fast Customization → 10-Day Sample\n- Short Lead-Time → 15-Day Shipment\n- Local Support → WhatsApp + Regional Agent\nCases section must focus on these applications:\n- Phone Display Frame Machining\n- Laptop Shell Machining\n- Camera Bezel Machining\n- Phone Keypad Machining\nAbout summary: LC-CNC, Shenzhen since 2013. ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.\nCertification section: ISO 9001 | CE | SGS\nBusiness details:\nCompany name: LC-CNC\nWhatsApp: +86-158-1370-3777\nEmail: sales@lc-cnc.com\nAddress: Bao'an, Shenzhen, China\nFooter: Products | Support | Privacy"
+    },
+    {
+      "id": "lc-cnc-pagani-interiors",
+      "description": "Pagani 家族下的工业站内页装配也必须被工具层统一，不允许残留家族特例",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "contact", "cta", "footer"],
+      "expectedProfileId": "pagani-desktop",
+      "minPages": 7,
+      "maxPages": 7,
+      "categoryScope": "site",
+      "expectedPageShapes": {
+        "/3c-machines": ["Navbar", "HeroSplit", "CardsGrid", "FeatureGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/custom-solutions": ["Navbar", "HeroSplit", "FeatureGrid", "CardsGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/cases": ["Navbar", "HeroSplit", "CardsGrid", "FeatureGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/about": ["Navbar", "HeroSplit", "ContentStory", "CardsGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"],
+        "/contact": ["Navbar", "HeroSplit", "FeatureGrid", "TestimonialsGrid", "LeadCaptureCTA", "Footer"]
+      },
+      "prompt": "Create an English industrial manufacturing website for LC-CNC (Lingchuang Intelligent), a Shenzhen CNC machine factory specializing in 3C CNC machining centers for Southeast Asia. Use Pagani as the exact template reference and base. Similar to Pagani. Inspired by Pagani. Match the Pagani desktop template family while preserving an industrial product-led business structure. Do not use Sandvik, Breton, Siemens, or any other template family. Use template-first generation. Generate these pages exactly: Home, 3C Machines, Custom Solutions, Cases, About, Contact, Privacy. Routes must be exactly: /, /3c-machines, /custom-solutions, /cases, /about, /contact, /privacy. Navigation must be exactly: Home | 3C Machines | Custom Solutions | Cases | About | Contact.\n\nHome hero: Precision 3C CNC Machines for Southeast Asia Subtitle: 10-Day Prototype • 15-Day Delivery • 24/7 WhatsApp Support CTAs: Get Quote on WhatsApp | Request Catalog\nPrimary CTA: Get Quote on WhatsApp\nSecondary CTA: Request Catalog\nProduct cards must feature these four machines:\n- 3C Phone-Frame Center\n- 3C Laptop-Shell Center\n- 3C Camera-Bezel Center\n- 3C Keypad Center\nFeatures strip must include:\n- Fast Customization → 10-Day Sample\n- Short Lead-Time → 15-Day Shipment\n- Local Support → WhatsApp + Regional Agent\nCases section must focus on these applications:\n- Phone Display Frame Machining\n- Laptop Shell Machining\n- Camera Bezel Machining\n- Phone Keypad Machining\nAbout summary: LC-CNC, Shenzhen since 2013. ISO-certified plant, 30+ R&D engineers, 200+ installed across SEA.\nCertification section: ISO 9001 | CE | SGS\nBusiness details:\nCompany name: LC-CNC\nWhatsApp: +86-158-1370-3777\nEmail: sales@lc-cnc.com\nAddress: Bao'an, Shenzhen, China\nFooter: Products | Support | Privacy"
+    }
+  ]
+}

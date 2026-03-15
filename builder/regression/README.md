@@ -15,6 +15,20 @@ cd builder
 npm run regression:creation
 ```
 
+Family-agnostic interior assembly gate:
+
+```bash
+cd builder
+npm run regression:creation:interiors -- --base-url http://127.0.0.1:3000
+```
+
+This gate fails if published template families stop producing the normalized interior skeletons for:
+- `/3c-machines`
+- `/custom-solutions`
+- `/cases`
+- `/about`
+- `/contact`
+
 Strategy comparison:
 
 ```bash

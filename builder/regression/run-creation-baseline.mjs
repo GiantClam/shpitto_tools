@@ -205,6 +205,43 @@ const toList = (value) => {
   return [value];
 };
 
+const extractPageShapes = (pages) => {
+  const shapes = {};
+  for (const page of Array.isArray(pages) ? pages : []) {
+    const pagePath = String(page?.path || "").trim();
+    if (!pagePath) continue;
+    const content = Array.isArray(page?.data?.content) ? page.data.content : [];
+    const blockTypes = content.map((item) => String(item?.type || "").trim()).filter(Boolean);
+    shapes[pagePath] = blockTypes;
+  }
+  return shapes;
+};
+
+const shapeToString = (shape) =>
+  (Array.isArray(shape) ? shape : toList(shape))
+    .map((item) => String(item || "").trim())
+    .filter(Boolean)
+    .join(" > ");
+
+const compareExpectedPageShapes = (actualShapes, expectedShapes) => {
+  const failures = [];
+  const normalizedExpected =
+    expectedShapes && typeof expectedShapes === "object" && !Array.isArray(expectedShapes) ? expectedShapes : {};
+  for (const [pagePath, expectedShape] of Object.entries(normalizedExpected)) {
+    const actualShape = Array.isArray(actualShapes?.[pagePath]) ? actualShapes[pagePath] : null;
+    if (!actualShape) {
+      failures.push(`pageShapeMissing:${pagePath}`);
+      continue;
+    }
+    const actualText = shapeToString(actualShape);
+    const expectedText = shapeToString(expectedShape);
+    if (actualText !== expectedText) {
+      failures.push(`pageShape:${pagePath}:${actualText || "-"}!=${expectedText || "-"}`);
+    }
+  }
+  return failures;
+};
+
 const matchesExpectedValue = (actual, expected) => {
   const actualValue = String(actual ?? "");
   return toList(expected).some((candidate) => String(candidate) === actualValue);
@@ -269,6 +306,7 @@ const run = async () => {
     const blocks = evaluationPages.flatMap((page) =>
       Array.isArray(page?.data?.content) ? page.data.content : []
     );
+    const pageShapes = extractPageShapes(payload?.pages);
     const blockTypes = blocks.map((item) => String(item?.type ?? "")).filter(Boolean);
     const categories = new Set();
     for (const block of blocks) {
@@ -319,6 +357,7 @@ const run = async () => {
     if (typeof c.expectShortCircuited === "boolean" && shortCircuited !== c.expectShortCircuited) {
       assertionFailures.push(`shortCircuited:${shortCircuited}`);
     }
+    assertionFailures.push(...compareExpectedPageShapes(pageShapes, c.expectedPageShapes));
 
     const passed =
       !requestError &&
@@ -347,6 +386,7 @@ const run = async () => {
       assertionFailures,
       componentsCount: Array.isArray(payload?.components) ? payload.components.length : 0,
       pageCount,
+      pageShapes,
       templatePlanProfile,
       resolutionLayer,
       shortCircuited,

@@ -1,0 +1,37 @@
+name: Pen Exact Template Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_dir:
+        description: "Absolute path to the pen source directory on the runner"
+        required: true
+        type: string
+      out_dir:
+        description: "Optional output directory"
+        required: false
+        default: "template-factory/generated/pen-exact-templates"
+        type: string
+
+jobs:
+  release:
+    runs-on:
+      - self-hosted
+      - macOS
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify Pencil Exists
+        run: test -x /Applications/Pencil.app/Contents/MacOS/Pencil
+
+      - name: Run Exact Template Release Gate
+        run: |
+          node scripts/release_pen_exact_templates.mjs \
+            --source-dir "${{ inputs.source_dir }}" \
+            --out-dir "${{ inputs.out_dir }}"

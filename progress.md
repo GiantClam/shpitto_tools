@@ -1028,3 +1028,19 @@
   - verification:
     - `cd builder && npm run build`
     - `cd builder && npx tsc --noEmit --pretty false`
+2026-03-15 (interior regression gate)
+  - extended `builder/regression/run-creation-baseline.mjs` with `expectedPageShapes`
+  - added `builder/regression/prompts.family-agnostic-interiors.json`
+  - added `npm run regression:creation:interiors`
+  - documented the new gate in `builder/regression/README.md`
+  - first run intentionally exposed the missing fixture shape:
+    - unstructured prompts did not enter `parseStructuredBrief()`
+    - interior normalization was skipped
+    - the gate failed on raw template-family skeletons
+  - updated the fixtures to use structured LC-CNC prompts that exercise the real commercial path
+  - fresh verification:
+    - `cd builder && npm run build`
+    - `cd builder && npx tsc --noEmit --pretty false`
+    - `cd builder && npm run regression:creation:interiors -- --base-url http://127.0.0.1:3186`
+  - fresh passing report:
+    - `builder/regression/reports/creation-baseline-20260315-190117.json`
