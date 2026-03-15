@@ -1,0 +1,40 @@
+{
+  "siteId": "transpa-rent",
+  "siteName": "Transpa Rent",
+  "bundleHash": "504b390a87b4704476d1ac898900c116ee69e484242549c8777c6cd894e35483",
+  "variants": [
+    {
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/transpa-rent.pen",
+      "sourceHash": "b6eb7b1b4056bc414f30be15cbe011ec410bd0792fdf9deb92c123784eca3b05",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 211,
+      "output": {
+        "templatePath": "sites/transpa-rent/variants/desktop/template.json",
+        "themePath": "sites/transpa-rent/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/transpa-rent/variants/desktop/pages",
+        "sectionsDir": "sites/transpa-rent/variants/desktop/sections",
+        "blocksDir": "sites/transpa-rent/variants/desktop/blocks"
+      }
+    },
+    {
+      "variant": "mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/transpa-rent-mobile.pen",
+      "sourceHash": "d19e29157b1377b5f89e39bcbac4510d7c4a57abd5fe7859da3e5e2ab3f7c96a",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 135,
+      "output": {
+        "templatePath": "sites/transpa-rent/variants/mobile/template.json",
+        "themePath": "sites/transpa-rent/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/transpa-rent/variants/mobile/pages",
+        "sectionsDir": "sites/transpa-rent/variants/mobile/sections",
+        "blocksDir": "sites/transpa-rent/variants/mobile/blocks"
+      }
+    }
+  ],
+  "output": {
+    "siteTemplatePath": "sites/transpa-rent/site.template.json"
+  }
+}

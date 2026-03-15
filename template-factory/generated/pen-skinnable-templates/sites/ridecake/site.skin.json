@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "pen-skinnable-site-bundle.v1",
+  "generatedAt": "2026-03-12T08:24:47.094Z",
+  "siteId": "ridecake",
+  "siteName": "Ridecake",
+  "variantCount": 2,
+  "variants": [
+    {
+      "siteId": "ridecake",
+      "siteName": "Ridecake",
+      "variant": "mobile",
+      "counts": {
+        "pageCount": 10,
+        "textSlotCount": 91,
+        "imageSlotCount": 12,
+        "linkSlotCount": 51,
+        "styleSlotCount": 161
+      },
+      "templatePath": "sites/ridecake/variants/mobile/template.skin.json",
+      "editableCatalogPath": "sites/ridecake/variants/mobile/editable.catalog.json"
+    },
+    {
+      "siteId": "ridecake",
+      "siteName": "Ridecake",
+      "variant": "desktop",
+      "counts": {
+        "pageCount": 10,
+        "textSlotCount": 171,
+        "imageSlotCount": 12,
+        "linkSlotCount": 91,
+        "styleSlotCount": 241
+      },
+      "templatePath": "sites/ridecake/variants/desktop/template.skin.json",
+      "editableCatalogPath": "sites/ridecake/variants/desktop/editable.catalog.json"
+    }
+  ],
+  "counts": {
+    "pageCount": 20,
+    "textSlotCount": 262,
+    "imageSlotCount": 24,
+    "linkSlotCount": 142,
+    "styleSlotCount": 402
+  }
+}

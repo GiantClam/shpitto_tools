@@ -1,0 +1,5147 @@
+{
+  "pageId": "unZMA",
+  "pageName": "SANDVIK_CONTACT",
+  "pageType": "contact",
+  "order": 5,
+  "bounds": {
+    "x": 7800,
+    "y": 0,
+    "width": 1440,
+    "height": 2265
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": true
+  },
+  "pageHash": "d033e581f0e5cd0f38ea94da7601a078d3406c1fba43dfbd6f3a7cc92a417008",
+  "directChildCount": 4,
+  "recursiveNodeCount": 103,
+  "sectionCount": 4,
+  "sectionIndex": [
+    {
+      "sectionId": "XkHQi",
+      "sectionName": "head",
+      "sectionKind": "generic",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 116
+      },
+      "directChildCount": 8,
+      "recursiveNodeCount": 9,
+      "treeHash": "4fdb3e9fcc2943a9cb1deef31feb6c3256ae7629ce61719da5c77d78193e9d3a",
+      "blockCount": 8
+    },
+    {
+      "sectionId": "4UEno",
+      "sectionName": "svc",
+      "sectionKind": "generic",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1466,
+        "width": 1440,
+        "height": 116
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "58b207c2b2293e40f042ab2be39388f974be6de794beac05219d90b16ee1a50e",
+      "blockCount": 4
+    },
+    {
+      "sectionId": "PvwzQ",
+      "sectionName": "foot",
+      "sectionKind": "generic",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 1582,
+        "width": 1440,
+        "height": 682
+      },
+      "directChildCount": 23,
+      "recursiveNodeCount": 24,
+      "treeHash": "0660259c65349d0d288d741de445fbc9c4af7ee53ec7a795c2386693d771756e",
+      "blockCount": 23
+    },
+    {
+      "sectionId": "Pv50O",
+      "sectionName": "contactMain",
+      "sectionKind": "contact",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 116,
+        "width": 1440,
+        "height": 1350
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 64,
+      "treeHash": "e78ecf51db5a0f7c0ee90764df0f59f750597074290763cf2a39fb96746eaac2",
+      "blockCount": 2
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "XkHQi",
+      "sectionName": "head",
+      "sectionKind": "generic",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 116
+      },
+      "directChildCount": 8,
+      "recursiveNodeCount": 9,
+      "treeHash": "4fdb3e9fcc2943a9cb1deef31feb6c3256ae7629ce61719da5c77d78193e9d3a",
+      "blockCount": 8,
+      "blockIndex": [
+        {
+          "blockId": "RknJe",
+          "blockName": "logo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 10,
+            "y": 10,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9dffd2c74d66eeb7de4ac71f562302179190e8bd2e4beadd2ff11e833011b16d"
+        },
+        {
+          "blockId": "P8OAq",
+          "blockName": "nav",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 10,
+            "y": 78,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3a72a1065c8a654850afad8bea4d54e4d764d83f6a3e0e93f8650ae7828c1ba3"
+        },
+        {
+          "blockId": "IwpOD",
+          "blockName": "actions",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 1318,
+            "y": 28,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dba499ff419ec4254d412abc7f0b6134894602b7e7fcdd970553743145609644"
+        },
+        {
+          "blockId": "3lgOh",
+          "blockName": "searchBg",
+          "blockType": "rectangle",
+          "order": 3,
+          "bounds": {
+            "x": 124,
+            "y": 14,
+            "width": 1040,
+            "height": 42
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dc7f0179cf8ccf5bc195e139df58a85d18d2d35c87ede7afa8b18fcc128475b6"
+        },
+        {
+          "blockId": "rZiXE",
+          "blockName": "searchTxt",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 170,
+            "y": 27,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f5f4b479d1313b55b3f2095e1c3eae6594bc4dec355d1a9e6bfed3351095a549"
+        },
+        {
+          "blockId": "7cnqw",
+          "blockName": "loginBtn",
+          "blockType": "rectangle",
+          "order": 5,
+          "bounds": {
+            "x": 1188,
+            "y": 14,
+            "width": 116,
+            "height": 42
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "43012532491090a5496f734559e213f722d58097587dc21a9185fc605d3915cb"
+        },
+        {
+          "blockId": "hf7lc",
+          "blockName": "loginTxt",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1232,
+            "y": 25,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "36978f2be558c0261d85d3b9fe0ab97e663a9e6bc235d29f8e9b166b9bf663f1"
+        },
+        {
+          "blockId": "1s8T2",
+          "blockName": "heroDivider",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 7,
+          "bounds": {
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5ab916e834f7d8ea5e1eeed340c2997bfd5f0d97928918478de1304ad83523c9"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "RknJe",
+          "blockName": "logo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 10,
+            "y": 10,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9dffd2c74d66eeb7de4ac71f562302179190e8bd2e4beadd2ff11e833011b16d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "RknJe",
+            "x": 10,
+            "y": 10,
+            "name": "logo",
+            "fill": "#222222",
+            "content": "SANDVIK\ncoromant",
+            "lineHeight": 1.05,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "P8OAq",
+          "blockName": "nav",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 10,
+            "y": 78,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3a72a1065c8a654850afad8bea4d54e4d764d83f6a3e0e93f8650ae7828c1ba3",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "P8OAq",
+            "x": 10,
+            "y": 78,
+            "name": "nav",
+            "fill": "#282828",
+            "content": "刀具        知识        服务        支持",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "IwpOD",
+          "blockName": "actions",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 1318,
+            "y": 28,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dba499ff419ec4254d412abc7f0b6134894602b7e7fcdd970553743145609644",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "IwpOD",
+            "x": 1318,
+            "y": 28,
+            "name": "actions",
+            "fill": "#1F1F1F",
+            "content": "购物车",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "3lgOh",
+          "blockName": "searchBg",
+          "blockType": "rectangle",
+          "order": 3,
+          "bounds": {
+            "x": 124,
+            "y": 14,
+            "width": 1040,
+            "height": 42
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dc7f0179cf8ccf5bc195e139df58a85d18d2d35c87ede7afa8b18fcc128475b6",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "cornerRadius": 21,
+            "id": "3lgOh",
+            "x": 124,
+            "y": 14,
+            "name": "searchBg",
+            "fill": "#DCD8CF",
+            "width": 1040,
+            "height": 42,
+            "stroke": {
+              "align": "inside",
+              "thickness": 1,
+              "fill": "#C5BFAF"
+            }
+          }
+        },
+        {
+          "blockId": "rZiXE",
+          "blockName": "searchTxt",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 170,
+            "y": 27,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f5f4b479d1313b55b3f2095e1c3eae6594bc4dec355d1a9e6bfed3351095a549",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "rZiXE",
+            "x": 170,
+            "y": 27,
+            "name": "searchTxt",
+            "fill": "#575246",
+            "content": "搜索",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "7cnqw",
+          "blockName": "loginBtn",
+          "blockType": "rectangle",
+          "order": 5,
+          "bounds": {
+            "x": 1188,
+            "y": 14,
+            "width": 116,
+            "height": 42
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "43012532491090a5496f734559e213f722d58097587dc21a9185fc605d3915cb",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "cornerRadius": 4,
+            "id": "7cnqw",
+            "x": 1188,
+            "y": 14,
+            "name": "loginBtn",
+            "fill": "#111111",
+            "width": 116,
+            "height": 42
+          }
+        },
+        {
+          "blockId": "hf7lc",
+          "blockName": "loginTxt",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1232,
+            "y": 25,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "36978f2be558c0261d85d3b9fe0ab97e663a9e6bc235d29f8e9b166b9bf663f1",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hf7lc",
+            "x": 1232,
+            "y": 25,
+            "name": "loginTxt",
+            "fill": "#FFFFFF",
+            "content": "登录",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "1s8T2",
+          "blockName": "heroDivider",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 7,
+          "bounds": {
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5ab916e834f7d8ea5e1eeed340c2997bfd5f0d97928918478de1304ad83523c9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "1s8T2",
+            "x": 0,
+            "y": 116,
+            "name": "heroDivider",
+            "fill": "#E4E4E1",
+            "width": 1440,
+            "height": 1
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "XkHQi",
+        "x": 0,
+        "y": 0,
+        "name": "head",
+        "width": 1440,
+        "height": 116,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "RknJe",
+            "x": 10,
+            "y": 10,
+            "name": "logo",
+            "fill": "#222222",
+            "content": "SANDVIK\ncoromant",
+            "lineHeight": 1.05,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "P8OAq",
+            "x": 10,
+            "y": 78,
+            "name": "nav",
+            "fill": "#282828",
+            "content": "刀具        知识        服务        支持",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "IwpOD",
+            "x": 1318,
+            "y": 28,
+            "name": "actions",
+            "fill": "#1F1F1F",
+            "content": "购物车",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 21,
+            "id": "3lgOh",
+            "x": 124,
+            "y": 14,
+            "name": "searchBg",
+            "fill": "#DCD8CF",
+            "width": 1040,
+            "height": 42,
+            "stroke": {
+              "align": "inside",
+              "thickness": 1,
+              "fill": "#C5BFAF"
+            }
+          },
+          {
+            "type": "text",
+            "id": "rZiXE",
+            "x": 170,
+            "y": 27,
+            "name": "searchTxt",
+            "fill": "#575246",
+            "content": "搜索",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 4,
+            "id": "7cnqw",
+            "x": 1188,
+            "y": 14,
+            "name": "loginBtn",
+            "fill": "#111111",
+            "width": 116,
+            "height": 42
+          },
+          {
+            "type": "text",
+            "id": "hf7lc",
+            "x": 1232,
+            "y": 25,
+            "name": "loginTxt",
+            "fill": "#FFFFFF",
+            "content": "登录",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "id": "1s8T2",
+            "x": 0,
+            "y": 116,
+            "name": "heroDivider",
+            "fill": "#E4E4E1",
+            "width": 1440,
+            "height": 1
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "4UEno",
+      "sectionName": "svc",
+      "sectionKind": "generic",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1466,
+        "width": 1440,
+        "height": 116
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "58b207c2b2293e40f042ab2be39388f974be6de794beac05219d90b16ee1a50e",
+      "blockCount": 4,
+      "blockIndex": [
+        {
+          "blockId": "rTXUc",
+          "blockName": "svc1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 0,
+          "bounds": {
+            "x": 106,
+            "y": 30,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "122690a1479a0cef5b56f54d52665a53b8827e0bf31e3e0a2c8647584463b42a"
+        },
+        {
+          "blockId": "MkqLY",
+          "blockName": "svc2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 827,
+            "y": 30,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8742ed90eef4d43fb172948eafdb4119c38f4a89d04cb1b79f568e6a9fe40ec1"
+        },
+        {
+          "blockId": "1Uax8",
+          "blockName": "si1",
+          "blockType": "icon_font",
+          "blockRole": "icon_font",
+          "order": 2,
+          "bounds": {
+            "x": 32,
+            "y": 35,
+            "width": 46,
+            "height": 46
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6969b34f6fbae5ce77283d2da269c476c14696cf1a837b8afd6cb61910b9e89d"
+        },
+        {
+          "blockId": "6eXUL",
+          "blockName": "si2",
+          "blockType": "icon_font",
+          "blockRole": "icon_font",
+          "order": 3,
+          "bounds": {
+            "x": 749,
+            "y": 35,
+            "width": 46,
+            "height": 46
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b34153876be706d23d8484582e7fb9beac318eb8c49fd4abaaa7aacd0ec5a85e"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "rTXUc",
+          "blockName": "svc1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 0,
+          "bounds": {
+            "x": 106,
+            "y": 30,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "122690a1479a0cef5b56f54d52665a53b8827e0bf31e3e0a2c8647584463b42a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "rTXUc",
+            "x": 106,
+            "y": 30,
+            "name": "svc1",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "创建账户  ›\n下订单、查看价格并检查刀具供货情况",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "MkqLY",
+          "blockName": "svc2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 827,
+            "y": 30,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8742ed90eef4d43fb172948eafdb4119c38f4a89d04cb1b79f568e6a9fe40ec1",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "MkqLY",
+            "x": 827,
+            "y": 30,
+            "name": "svc2",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "订阅我们的时事通讯  ›\n加入我们，获取最新信息！",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "1Uax8",
+          "blockName": "si1",
+          "blockType": "icon_font",
+          "blockRole": "icon_font",
+          "order": 2,
+          "bounds": {
+            "x": 32,
+            "y": 35,
+            "width": 46,
+            "height": 46
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6969b34f6fbae5ce77283d2da269c476c14696cf1a837b8afd6cb61910b9e89d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "icon_font",
+            "id": "1Uax8",
+            "x": 32,
+            "y": 35,
+            "name": "si1",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "account_circle",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          }
+        },
+        {
+          "blockId": "6eXUL",
+          "blockName": "si2",
+          "blockType": "icon_font",
+          "blockRole": "icon_font",
+          "order": 3,
+          "bounds": {
+            "x": 749,
+            "y": 35,
+            "width": 46,
+            "height": 46
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b34153876be706d23d8484582e7fb9beac318eb8c49fd4abaaa7aacd0ec5a85e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "icon_font",
+            "id": "6eXUL",
+            "x": 749,
+            "y": 35,
+            "name": "si2",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "mail",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "4UEno",
+        "x": 0,
+        "y": 1466,
+        "name": "svc",
+        "width": 1440,
+        "height": 116,
+        "fill": "#BBAF90",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "rTXUc",
+            "x": 106,
+            "y": 30,
+            "name": "svc1",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "创建账户  ›\n下订单、查看价格并检查刀具供货情况",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "MkqLY",
+            "x": 827,
+            "y": 30,
+            "name": "svc2",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "订阅我们的时事通讯  ›\n加入我们，获取最新信息！",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "icon_font",
+            "id": "1Uax8",
+            "x": 32,
+            "y": 35,
+            "name": "si1",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "account_circle",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          },
+          {
+            "type": "icon_font",
+            "id": "6eXUL",
+            "x": 749,
+            "y": 35,
+            "name": "si2",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "mail",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "PvwzQ",
+      "sectionName": "foot",
+      "sectionKind": "generic",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 1582,
+        "width": 1440,
+        "height": 682
+      },
+      "directChildCount": 23,
+      "recursiveNodeCount": 24,
+      "treeHash": "0660259c65349d0d288d741de445fbc9c4af7ee53ec7a795c2386693d771756e",
+      "blockCount": 23,
+      "blockIndex": [
+        {
+          "blockId": "vIEEk",
+          "blockName": "flogo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 10,
+            "y": 38,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3ef464f7863ece849a3cb9683cac7baa534b3662d62791502a5d8734b8e930ea"
+        },
+        {
+          "blockId": "ffZsu",
+          "blockName": "fdesc",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 10,
+            "y": 300,
+            "width": 665,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d3ec6f4da15e1f7661f890efa36e738d951cb35664261edad30d283dd35aa741"
+        },
+        {
+          "blockId": "o7mFu",
+          "blockName": "fcol1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 750,
+            "y": 60,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "789a8af389961b28c3dd883f3b907c19703de97dface46afc325d2e9467f0d49"
+        },
+        {
+          "blockId": "fBmYF",
+          "blockName": "fcol2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 750,
+            "y": 180,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8eb33e1f978b5e18850c6dd152c030c5af17afcf34de753e4d59d2d6d5abc752"
+        },
+        {
+          "blockId": "1mHyN",
+          "blockName": "fcol3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 750,
+            "y": 300,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "890e989a7e766855398be03b94c1ff291d67b87ed8af3371788df5a48c16a0a4"
+        },
+        {
+          "blockId": "ZSQf4",
+          "blockName": "fline",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 24,
+            "y": 580,
+            "width": 1392,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e2769b21b267bface836fe5c0c495c3dc7874067286bc1751699b34c0ef57e3b"
+        },
+        {
+          "blockId": "LiX8X",
+          "blockName": "fcopy",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 10,
+            "y": 600,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "02235f39b413acbaa29045bb9ba2f41e6e853320784ccfb87532b1dd2df40963"
+        },
+        {
+          "blockId": "42v32",
+          "blockName": "rb",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 750,
+            "y": 420,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b86db9587751de3fadae06aad80395905ab785d87da8f9a29b33e76dd269301e"
+        },
+        {
+          "blockId": "xkcJb",
+          "blockName": "rl1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 750,
+            "y": 150,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "51021425623a4b231b682f30dbfefd7735304574821bc17178e3175541743a24"
+        },
+        {
+          "blockId": "rj3ui",
+          "blockName": "rl2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 750,
+            "y": 270,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ec27e2932c78e0058113c5363c03b081348352eb3865155f3f2d43617aad1435"
+        },
+        {
+          "blockId": "RxbHB",
+          "blockName": "rl3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 10,
+          "bounds": {
+            "x": 750,
+            "y": 390,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "747d1278892f52a5c1d6476f318183e5a5f471dd80750a8ad125286549da1d5c"
+        },
+        {
+          "blockId": "0MiNB",
+          "blockName": "ch1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1380,
+            "y": 60,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "de751078fc11a8c46a95b6027be19398527e61281281e7ae6beb49174a29262a"
+        },
+        {
+          "blockId": "QrE5O",
+          "blockName": "ch2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 1380,
+            "y": 180,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "71777f2dd38a138095ced69de1c9f030a001f2d5f5d41a21c455b5255a822dd8"
+        },
+        {
+          "blockId": "scW8w",
+          "blockName": "ch3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 13,
+          "bounds": {
+            "x": 1380,
+            "y": 300,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0c3fab5864a45fd1dd97b2ad06016f2c189236ace5fa5bfee5c1472ededb6a0e"
+        },
+        {
+          "blockId": "xgMUn",
+          "blockName": "ch4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 14,
+          "bounds": {
+            "x": 1380,
+            "y": 420,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "df8d32b8b0da278afe0290972ee91ab922ee8524757e1cb41105ff2a043bcd63"
+        },
+        {
+          "blockId": "m2B73",
+          "blockName": "soc",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 10,
+            "y": 479,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a305b246e5d4e09c9871f8ea421d31343e22d18a902acdef10bff0bb4072e7db"
+        },
+        {
+          "blockId": "shD1K",
+          "blockName": "r1",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 16,
+          "bounds": {
+            "x": 1012,
+            "y": 600,
+            "width": 24,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "06e99bf5970c2c62d747386f3f5be8e42d2c9141ebdd04662f69d0a0abf9e71f"
+        },
+        {
+          "blockId": "Y1ZG4",
+          "blockName": "r1d",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 17,
+          "bounds": {
+            "x": 1018,
+            "y": 606,
+            "width": 12,
+            "height": 12
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ee14935a389bc81e6050d802c9ff19de90850398e5efa0e0f69f161a551e63c6"
+        },
+        {
+          "blockId": "9M2WG",
+          "blockName": "r2",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 18,
+          "bounds": {
+            "x": 1102,
+            "y": 600,
+            "width": 24,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7435d25708a3517e5f54a1dc25d4713067bea1af1b21212f98313d1df8c189f0"
+        },
+        {
+          "blockId": "5GEnt",
+          "blockName": "rt1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 1043,
+            "y": 596,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "52975d4568ec30e553d163f43a596c075723d4365fd757981377862f6c182e28"
+        },
+        {
+          "blockId": "hdihp",
+          "blockName": "rt2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 1136,
+            "y": 597,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b26bce5fdf622928fc0a8e8c74f9c08e725de5bede43318bee610b6b24c67031"
+        },
+        {
+          "blockId": "WQYCy",
+          "blockName": "loc",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 21,
+          "bounds": {
+            "x": 1214,
+            "y": 596,
+            "width": 202,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c4a98bf9e91a2f92a61065bb2d9dc9b40c639af29161a01847f547cea0b61878"
+        },
+        {
+          "blockId": "uA4d3",
+          "blockName": "loct",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 22,
+          "bounds": {
+            "x": 1240,
+            "y": 598,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a2ec3fa9d4ce0e4b12d7063cb9c21b8e0540c09b586ef38eab8a77161d272d45"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "vIEEk",
+          "blockName": "flogo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 10,
+            "y": 38,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3ef464f7863ece849a3cb9683cac7baa534b3662d62791502a5d8734b8e930ea",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "vIEEk",
+            "x": 10,
+            "y": 38,
+            "name": "flogo",
+            "fill": "#F1F1F1",
+            "content": "&",
+            "fontFamily": "Inter",
+            "fontSize": 84,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "ffZsu",
+          "blockName": "fdesc",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 10,
+            "y": 300,
+            "width": 665,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d3ec6f4da15e1f7661f890efa36e738d951cb35664261edad30d283dd35aa741",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "ffZsu",
+            "x": 10,
+            "y": 300,
+            "name": "fdesc",
+            "fill": "#E6E6E6",
+            "textGrowth": "fixed-width",
+            "width": 665,
+            "content": "Contact Center 客服中心\n☎ +86 800-820-2623(座机)/+86 400-820-2623(手机)\n沪ICP备20012694号-1\n京公网安备 11010502044395号",
+            "lineHeight": 1.42,
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "o7mFu",
+          "blockName": "fcol1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 750,
+            "y": 60,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "789a8af389961b28c3dd883f3b907c19703de97dface46afc325d2e9467f0d49",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "o7mFu",
+            "x": 750,
+            "y": 60,
+            "name": "fcol1",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "产品",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "fBmYF",
+          "blockName": "fcol2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 750,
+            "y": 180,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8eb33e1f978b5e18850c6dd152c030c5af17afcf34de753e4d59d2d6d5abc752",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "fBmYF",
+            "x": 750,
+            "y": 180,
+            "name": "fcol2",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "服务",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "1mHyN",
+          "blockName": "fcol3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 750,
+            "y": 300,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "890e989a7e766855398be03b94c1ff291d67b87ed8af3371788df5a48c16a0a4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "1mHyN",
+            "x": 750,
+            "y": 300,
+            "name": "fcol3",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "订购",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "ZSQf4",
+          "blockName": "fline",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 24,
+            "y": 580,
+            "width": 1392,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e2769b21b267bface836fe5c0c495c3dc7874067286bc1751699b34c0ef57e3b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "ZSQf4",
+            "x": 24,
+            "y": 580,
+            "name": "fline",
+            "fill": "#43464D",
+            "width": 1392,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "LiX8X",
+          "blockName": "fcopy",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 10,
+            "y": 600,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "02235f39b413acbaa29045bb9ba2f41e6e853320784ccfb87532b1dd2df40963",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "LiX8X",
+            "x": 10,
+            "y": 600,
+            "name": "fcopy",
+            "fill": "#E8E8E8",
+            "content": "法律声明      隐私政策      安全      通用条款和条件",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "42v32",
+          "blockName": "rb",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 750,
+            "y": 420,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b86db9587751de3fadae06aad80395905ab785d87da8f9a29b33e76dd269301e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "42v32",
+            "x": 750,
+            "y": 420,
+            "name": "rb",
+            "fill": "#F0F0F0",
+            "content": "关于我们",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "xkcJb",
+          "blockName": "rl1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 750,
+            "y": 150,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "51021425623a4b231b682f30dbfefd7735304574821bc17178e3175541743a24",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "xkcJb",
+            "x": 750,
+            "y": 150,
+            "name": "rl1",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "rj3ui",
+          "blockName": "rl2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 750,
+            "y": 270,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ec27e2932c78e0058113c5363c03b081348352eb3865155f3f2d43617aad1435",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "rj3ui",
+            "x": 750,
+            "y": 270,
+            "name": "rl2",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "RxbHB",
+          "blockName": "rl3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 10,
+          "bounds": {
+            "x": 750,
+            "y": 390,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "747d1278892f52a5c1d6476f318183e5a5f471dd80750a8ad125286549da1d5c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "RxbHB",
+            "x": 750,
+            "y": 390,
+            "name": "rl3",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "0MiNB",
+          "blockName": "ch1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1380,
+            "y": 60,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "de751078fc11a8c46a95b6027be19398527e61281281e7ae6beb49174a29262a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "0MiNB",
+            "x": 1380,
+            "y": 60,
+            "name": "ch1",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "QrE5O",
+          "blockName": "ch2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 1380,
+            "y": 180,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "71777f2dd38a138095ced69de1c9f030a001f2d5f5d41a21c455b5255a822dd8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "QrE5O",
+            "x": 1380,
+            "y": 180,
+            "name": "ch2",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "scW8w",
+          "blockName": "ch3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 13,
+          "bounds": {
+            "x": 1380,
+            "y": 300,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0c3fab5864a45fd1dd97b2ad06016f2c189236ace5fa5bfee5c1472ededb6a0e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "scW8w",
+            "x": 1380,
+            "y": 300,
+            "name": "ch3",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "xgMUn",
+          "blockName": "ch4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 14,
+          "bounds": {
+            "x": 1380,
+            "y": 420,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "df8d32b8b0da278afe0290972ee91ab922ee8524757e1cb41105ff2a043bcd63",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "xgMUn",
+            "x": 1380,
+            "y": 420,
+            "name": "ch4",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "m2B73",
+          "blockName": "soc",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 10,
+            "y": 479,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a305b246e5d4e09c9871f8ea421d31343e22d18a902acdef10bff0bb4072e7db",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "m2B73",
+            "x": 10,
+            "y": 479,
+            "name": "soc",
+            "fill": "#F1F1F1",
+            "content": "◉   ♪   ▶   知   ∞   微   RSS",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "shD1K",
+          "blockName": "r1",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 16,
+          "bounds": {
+            "x": 1012,
+            "y": 600,
+            "width": 24,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "06e99bf5970c2c62d747386f3f5be8e42d2c9141ebdd04662f69d0a0abf9e71f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "ellipse",
+            "id": "shD1K",
+            "x": 1012,
+            "y": 600,
+            "name": "r1",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          }
+        },
+        {
+          "blockId": "Y1ZG4",
+          "blockName": "r1d",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 17,
+          "bounds": {
+            "x": 1018,
+            "y": 606,
+            "width": 12,
+            "height": 12
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ee14935a389bc81e6050d802c9ff19de90850398e5efa0e0f69f161a551e63c6",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "ellipse",
+            "id": "Y1ZG4",
+            "x": 1018,
+            "y": 606,
+            "name": "r1d",
+            "fill": "#E8E8E8",
+            "width": 12,
+            "height": 12
+          }
+        },
+        {
+          "blockId": "9M2WG",
+          "blockName": "r2",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 18,
+          "bounds": {
+            "x": 1102,
+            "y": 600,
+            "width": 24,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7435d25708a3517e5f54a1dc25d4713067bea1af1b21212f98313d1df8c189f0",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "ellipse",
+            "id": "9M2WG",
+            "x": 1102,
+            "y": 600,
+            "name": "r2",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          }
+        },
+        {
+          "blockId": "5GEnt",
+          "blockName": "rt1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 1043,
+            "y": 596,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "52975d4568ec30e553d163f43a596c075723d4365fd757981377862f6c182e28",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "5GEnt",
+            "x": 1043,
+            "y": 596,
+            "name": "rt1",
+            "fill": "#E8E8E8",
+            "content": "公制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "hdihp",
+          "blockName": "rt2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 1136,
+            "y": 597,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b26bce5fdf622928fc0a8e8c74f9c08e725de5bede43318bee610b6b24c67031",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hdihp",
+            "x": 1136,
+            "y": 597,
+            "name": "rt2",
+            "fill": "#E8E8E8",
+            "content": "英制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "WQYCy",
+          "blockName": "loc",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 21,
+          "bounds": {
+            "x": 1214,
+            "y": 596,
+            "width": 202,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c4a98bf9e91a2f92a61065bb2d9dc9b40c639af29161a01847f547cea0b61878",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "cornerRadius": 6,
+            "id": "WQYCy",
+            "x": 1214,
+            "y": 596,
+            "name": "loc",
+            "fill": "#0F1114",
+            "width": 202,
+            "height": 40
+          }
+        },
+        {
+          "blockId": "uA4d3",
+          "blockName": "loct",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 22,
+          "bounds": {
+            "x": 1240,
+            "y": 598,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a2ec3fa9d4ce0e4b12d7063cb9c21b8e0540c09b586ef38eab8a77161d272d45",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "uA4d3",
+            "x": 1240,
+            "y": 598,
+            "name": "loct",
+            "fill": "#FFFFFF",
+            "content": "中国 | 中文   ›",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "PvwzQ",
+        "x": 0,
+        "y": 1582,
+        "name": "foot",
+        "width": 1440,
+        "height": 682,
+        "fill": "#212226",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "vIEEk",
+            "x": 10,
+            "y": 38,
+            "name": "flogo",
+            "fill": "#F1F1F1",
+            "content": "&",
+            "fontFamily": "Inter",
+            "fontSize": 84,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "ffZsu",
+            "x": 10,
+            "y": 300,
+            "name": "fdesc",
+            "fill": "#E6E6E6",
+            "textGrowth": "fixed-width",
+            "width": 665,
+            "content": "Contact Center 客服中心\n☎ +86 800-820-2623(座机)/+86 400-820-2623(手机)\n沪ICP备20012694号-1\n京公网安备 11010502044395号",
+            "lineHeight": 1.42,
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "o7mFu",
+            "x": 750,
+            "y": 60,
+            "name": "fcol1",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "产品",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "fBmYF",
+            "x": 750,
+            "y": 180,
+            "name": "fcol2",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "服务",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "1mHyN",
+            "x": 750,
+            "y": 300,
+            "name": "fcol3",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "订购",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "rectangle",
+            "id": "ZSQf4",
+            "x": 24,
+            "y": 580,
+            "name": "fline",
+            "fill": "#43464D",
+            "width": 1392,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "LiX8X",
+            "x": 10,
+            "y": 600,
+            "name": "fcopy",
+            "fill": "#E8E8E8",
+            "content": "法律声明      隐私政策      安全      通用条款和条件",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "42v32",
+            "x": 750,
+            "y": 420,
+            "name": "rb",
+            "fill": "#F0F0F0",
+            "content": "关于我们",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "rectangle",
+            "id": "xkcJb",
+            "x": 750,
+            "y": 150,
+            "name": "rl1",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "id": "rj3ui",
+            "x": 750,
+            "y": 270,
+            "name": "rl2",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "id": "RxbHB",
+            "x": 750,
+            "y": 390,
+            "name": "rl3",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "0MiNB",
+            "x": 1380,
+            "y": 60,
+            "name": "ch1",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "QrE5O",
+            "x": 1380,
+            "y": 180,
+            "name": "ch2",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "scW8w",
+            "x": 1380,
+            "y": 300,
+            "name": "ch3",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "xgMUn",
+            "x": 1380,
+            "y": 420,
+            "name": "ch4",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "m2B73",
+            "x": 10,
+            "y": 479,
+            "name": "soc",
+            "fill": "#F1F1F1",
+            "content": "◉   ♪   ▶   知   ∞   微   RSS",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "ellipse",
+            "id": "shD1K",
+            "x": 1012,
+            "y": 600,
+            "name": "r1",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "Y1ZG4",
+            "x": 1018,
+            "y": 606,
+            "name": "r1d",
+            "fill": "#E8E8E8",
+            "width": 12,
+            "height": 12
+          },
+          {
+            "type": "ellipse",
+            "id": "9M2WG",
+            "x": 1102,
+            "y": 600,
+            "name": "r2",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          },
+          {
+            "type": "text",
+            "id": "5GEnt",
+            "x": 1043,
+            "y": 596,
+            "name": "rt1",
+            "fill": "#E8E8E8",
+            "content": "公制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "hdihp",
+            "x": 1136,
+            "y": 597,
+            "name": "rt2",
+            "fill": "#E8E8E8",
+            "content": "英制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 6,
+            "id": "WQYCy",
+            "x": 1214,
+            "y": 596,
+            "name": "loc",
+            "fill": "#0F1114",
+            "width": 202,
+            "height": 40
+          },
+          {
+            "type": "text",
+            "id": "uA4d3",
+            "x": 1240,
+            "y": 598,
+            "name": "loct",
+            "fill": "#FFFFFF",
+            "content": "中国 | 中文   ›",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "Pv50O",
+      "sectionName": "contactMain",
+      "sectionKind": "contact",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 116,
+        "width": 1440,
+        "height": 1350
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 64,
+      "treeHash": "e78ecf51db5a0f7c0ee90764df0f59f750597074290763cf2a39fb96746eaac2",
+      "blockCount": 2,
+      "blockIndex": [
+        {
+          "blockId": "pazSb",
+          "blockName": "leftFilters",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 0,
+          "bounds": {
+            "x": 24,
+            "y": 40,
+            "width": 180,
+            "height": 220
+          },
+          "directChildCount": 5,
+          "recursiveNodeCount": 6,
+          "treeHash": "5c6af1e22e3ef7fa05e115f29450f57dc2d4f6826a4ea5477b7602055443f8eb"
+        },
+        {
+          "blockId": "X646J",
+          "blockName": "contactContent",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 1,
+          "bounds": {
+            "x": 220,
+            "y": 40,
+            "width": 1188,
+            "height": 1310
+          },
+          "directChildCount": 21,
+          "recursiveNodeCount": 57,
+          "treeHash": "a18603b209170a0dafb7a073dfbd8732afa2af866ebb855a22d888df10f7658e"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/China_administrative_blank_map.svg/1280px-China_administrative_blank_map.svg.png",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "pazSb",
+          "blockName": "leftFilters",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 0,
+          "bounds": {
+            "x": 24,
+            "y": 40,
+            "width": 180,
+            "height": 220
+          },
+          "directChildCount": 5,
+          "recursiveNodeCount": 6,
+          "treeHash": "5c6af1e22e3ef7fa05e115f29450f57dc2d4f6826a4ea5477b7602055443f8eb",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "pazSb",
+            "x": 24,
+            "y": 40,
+            "name": "leftFilters",
+            "width": 180,
+            "height": 220,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "W14Mh",
+                "x": 0,
+                "y": 0,
+                "name": "fltT",
+                "fill": "#606060",
+                "content": "按下列条件",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "Q7foD",
+                "x": 0,
+                "y": 34,
+                "name": "flt1",
+                "fill": "#1F1F1F",
+                "content": "类型",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "rectangle",
+                "id": "PRURd",
+                "x": 0,
+                "y": 58,
+                "name": "l1",
+                "fill": "#D6D6D6",
+                "width": 150,
+                "height": 1
+              },
+              {
+                "type": "text",
+                "id": "d6w4L",
+                "x": 0,
+                "y": 76,
+                "name": "flt2",
+                "fill": "#1F1F1F",
+                "content": "国家/地区",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "rectangle",
+                "id": "qFtZb",
+                "x": 0,
+                "y": 100,
+                "name": "l2",
+                "fill": "#D6D6D6",
+                "width": 150,
+                "height": 1
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "X646J",
+          "blockName": "contactContent",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 1,
+          "bounds": {
+            "x": 220,
+            "y": 40,
+            "width": 1188,
+            "height": 1310
+          },
+          "directChildCount": 21,
+          "recursiveNodeCount": 57,
+          "treeHash": "a18603b209170a0dafb7a073dfbd8732afa2af866ebb855a22d888df10f7658e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "X646J",
+            "x": 220,
+            "y": 40,
+            "name": "contactContent",
+            "width": 1188,
+            "height": 1310,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "yDkmz",
+                "x": 0,
+                "y": 0,
+                "name": "ctitle",
+                "fill": "#1F1F1F",
+                "content": "联系我们",
+                "fontFamily": "Inter",
+                "fontSize": 50,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "0Yksi",
+                "x": 0,
+                "y": 70,
+                "name": "sub",
+                "fill": "#202020",
+                "content": "查找离您最近的分销商和销售网络",
+                "fontFamily": "Inter",
+                "fontSize": 18,
+                "fontWeight": "600"
+              },
+              {
+                "type": "rectangle",
+                "id": "4hPCl",
+                "x": 0,
+                "y": 106,
+                "name": "inp",
+                "fill": "#F9F9F9",
+                "width": 270,
+                "height": 30,
+                "stroke": {
+                  "align": "inside",
+                  "thickness": 1,
+                  "fill": "#CFCFCF"
+                }
+              },
+              {
+                "type": "text",
+                "id": "MIRJN",
+                "x": 12,
+                "y": 114,
+                "name": "inpTxt",
+                "fill": "#777777",
+                "content": "按国家、城市、邮编搜索",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "kINv3",
+                "x": 0,
+                "y": 494,
+                "name": "sec1",
+                "fill": "#1F1F1F",
+                "content": "客户联系人",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "cnGgL",
+                "x": 0,
+                "y": 809,
+                "name": "sec2",
+                "fill": "#1F1F1F",
+                "content": "经销商",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "9CYbL",
+                "x": 0,
+                "y": 1028,
+                "name": "sec3",
+                "fill": "#1F1F1F",
+                "content": "分销商",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "EypHA",
+                "x": 0,
+                "y": 522,
+                "name": "r1",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "Xgwbb",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "zNciU",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "lyOJy",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "wTvOu",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "rC8er",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "iyMkF",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "nUtkb",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "09eQi",
+                "x": 0,
+                "y": 632,
+                "name": "r2",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "aFnGr",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "Ja9oK",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "dgjgv",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "4SDJ2",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "VWuEn",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "UvArx",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "W0uXc",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "yqj5k",
+                "x": 0,
+                "y": 164,
+                "name": "map",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "nope2107",
+                  "link": "https://unsplash.com/@nope2107",
+                  "author": "B C"
+                },
+                "width": 1100,
+                "height": 300,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/China_administrative_blank_map.svg/1280px-China_administrative_blank_map.svg.png",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "frame",
+                "id": "YFuJs",
+                "x": 0,
+                "y": 1074,
+                "name": "r8",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "y570U",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "f1xyA",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "rNhoq",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "nVCdd",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "I6XZb",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "GPbQe",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "4nj0k",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "xCknl",
+                "x": 0,
+                "y": 1184,
+                "name": "r9",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "JD9YT",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "fAoL5",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "6yGp4",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "8oz2C",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "GyMuq",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "qgbj0",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "3w6Hw",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "Gsy1y",
+                "x": 0,
+                "y": 854,
+                "name": "r10",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "nQD5c",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "5K92w",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "CyU4u",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "sKoEd",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "FrVby",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "iN5h4",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "Zn40l",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "rectangle",
+                "id": "CgPWI",
+                "x": 0,
+                "y": 164,
+                "name": "mapBd",
+                "fill": "#F7F7F7",
+                "width": 1100,
+                "height": 300,
+                "stroke": {
+                  "align": "inside",
+                  "thickness": 1,
+                  "fill": "#CFCFCF"
+                }
+              },
+              {
+                "type": "rectangle",
+                "id": "bZWcS",
+                "x": 0,
+                "y": 620,
+                "name": "ln2",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "yCarr",
+                "x": 0,
+                "y": 730,
+                "name": "ln3",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "rHsr4",
+                "x": 0,
+                "y": 840,
+                "name": "ln4",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "F1BYa",
+                "x": 0,
+                "y": 950,
+                "name": "ln5",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "4KeKC",
+                "x": 0,
+                "y": 1060,
+                "name": "ln6",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "sho0r",
+                "x": 0,
+                "y": 1170,
+                "name": "ln7",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "Ne7KH",
+                "x": 0,
+                "y": 1280,
+                "name": "ln8",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              }
+            ]
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "Pv50O",
+        "x": 0,
+        "y": 116,
+        "name": "contactMain",
+        "width": 1440,
+        "height": 1350,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "pazSb",
+            "x": 24,
+            "y": 40,
+            "name": "leftFilters",
+            "width": 180,
+            "height": 220,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "W14Mh",
+                "x": 0,
+                "y": 0,
+                "name": "fltT",
+                "fill": "#606060",
+                "content": "按下列条件",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "Q7foD",
+                "x": 0,
+                "y": 34,
+                "name": "flt1",
+                "fill": "#1F1F1F",
+                "content": "类型",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "rectangle",
+                "id": "PRURd",
+                "x": 0,
+                "y": 58,
+                "name": "l1",
+                "fill": "#D6D6D6",
+                "width": 150,
+                "height": 1
+              },
+              {
+                "type": "text",
+                "id": "d6w4L",
+                "x": 0,
+                "y": 76,
+                "name": "flt2",
+                "fill": "#1F1F1F",
+                "content": "国家/地区",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "rectangle",
+                "id": "qFtZb",
+                "x": 0,
+                "y": 100,
+                "name": "l2",
+                "fill": "#D6D6D6",
+                "width": 150,
+                "height": 1
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "X646J",
+            "x": 220,
+            "y": 40,
+            "name": "contactContent",
+            "width": 1188,
+            "height": 1310,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "yDkmz",
+                "x": 0,
+                "y": 0,
+                "name": "ctitle",
+                "fill": "#1F1F1F",
+                "content": "联系我们",
+                "fontFamily": "Inter",
+                "fontSize": 50,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "0Yksi",
+                "x": 0,
+                "y": 70,
+                "name": "sub",
+                "fill": "#202020",
+                "content": "查找离您最近的分销商和销售网络",
+                "fontFamily": "Inter",
+                "fontSize": 18,
+                "fontWeight": "600"
+              },
+              {
+                "type": "rectangle",
+                "id": "4hPCl",
+                "x": 0,
+                "y": 106,
+                "name": "inp",
+                "fill": "#F9F9F9",
+                "width": 270,
+                "height": 30,
+                "stroke": {
+                  "align": "inside",
+                  "thickness": 1,
+                  "fill": "#CFCFCF"
+                }
+              },
+              {
+                "type": "text",
+                "id": "MIRJN",
+                "x": 12,
+                "y": 114,
+                "name": "inpTxt",
+                "fill": "#777777",
+                "content": "按国家、城市、邮编搜索",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "kINv3",
+                "x": 0,
+                "y": 494,
+                "name": "sec1",
+                "fill": "#1F1F1F",
+                "content": "客户联系人",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "cnGgL",
+                "x": 0,
+                "y": 809,
+                "name": "sec2",
+                "fill": "#1F1F1F",
+                "content": "经销商",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "9CYbL",
+                "x": 0,
+                "y": 1028,
+                "name": "sec3",
+                "fill": "#1F1F1F",
+                "content": "分销商",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "EypHA",
+                "x": 0,
+                "y": 522,
+                "name": "r1",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "Xgwbb",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "zNciU",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "lyOJy",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "wTvOu",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "rC8er",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "iyMkF",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "nUtkb",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "09eQi",
+                "x": 0,
+                "y": 632,
+                "name": "r2",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "aFnGr",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "Ja9oK",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "dgjgv",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "4SDJ2",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "VWuEn",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "UvArx",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "W0uXc",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "yqj5k",
+                "x": 0,
+                "y": 164,
+                "name": "map",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "nope2107",
+                  "link": "https://unsplash.com/@nope2107",
+                  "author": "B C"
+                },
+                "width": 1100,
+                "height": 300,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/China_administrative_blank_map.svg/1280px-China_administrative_blank_map.svg.png",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "frame",
+                "id": "YFuJs",
+                "x": 0,
+                "y": 1074,
+                "name": "r8",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "y570U",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "f1xyA",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "rNhoq",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "nVCdd",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "I6XZb",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "GPbQe",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "4nj0k",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "xCknl",
+                "x": 0,
+                "y": 1184,
+                "name": "r9",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "JD9YT",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "fAoL5",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "6yGp4",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "8oz2C",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "GyMuq",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "qgbj0",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "3w6Hw",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "Gsy1y",
+                "x": 0,
+                "y": 854,
+                "name": "r10",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "nQD5c",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "5K92w",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "CyU4u",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "sKoEd",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "FrVby",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "iN5h4",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "Zn40l",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "rectangle",
+                "id": "CgPWI",
+                "x": 0,
+                "y": 164,
+                "name": "mapBd",
+                "fill": "#F7F7F7",
+                "width": 1100,
+                "height": 300,
+                "stroke": {
+                  "align": "inside",
+                  "thickness": 1,
+                  "fill": "#CFCFCF"
+                }
+              },
+              {
+                "type": "rectangle",
+                "id": "bZWcS",
+                "x": 0,
+                "y": 620,
+                "name": "ln2",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "yCarr",
+                "x": 0,
+                "y": 730,
+                "name": "ln3",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "rHsr4",
+                "x": 0,
+                "y": 840,
+                "name": "ln4",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "F1BYa",
+                "x": 0,
+                "y": 950,
+                "name": "ln5",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "4KeKC",
+                "x": 0,
+                "y": 1060,
+                "name": "ln6",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "sho0r",
+                "x": 0,
+                "y": 1170,
+                "name": "ln7",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "Ne7KH",
+                "x": 0,
+                "y": 1280,
+                "name": "ln8",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 37,
+  "looseNodeCount": 0,
+  "looseNodes": [],
+  "assetRefs": [
+    {
+      "rawUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/China_administrative_blank_map.svg/1280px-China_administrative_blank_map.svg.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "unZMA",
+    "x": 7800,
+    "y": 0,
+    "name": "SANDVIK_CONTACT",
+    "clip": true,
+    "width": 1440,
+    "height": 2265,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "XkHQi",
+        "x": 0,
+        "y": 0,
+        "name": "head",
+        "width": 1440,
+        "height": 116,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "RknJe",
+            "x": 10,
+            "y": 10,
+            "name": "logo",
+            "fill": "#222222",
+            "content": "SANDVIK\ncoromant",
+            "lineHeight": 1.05,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "P8OAq",
+            "x": 10,
+            "y": 78,
+            "name": "nav",
+            "fill": "#282828",
+            "content": "刀具        知识        服务        支持",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "IwpOD",
+            "x": 1318,
+            "y": 28,
+            "name": "actions",
+            "fill": "#1F1F1F",
+            "content": "购物车",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 21,
+            "id": "3lgOh",
+            "x": 124,
+            "y": 14,
+            "name": "searchBg",
+            "fill": "#DCD8CF",
+            "width": 1040,
+            "height": 42,
+            "stroke": {
+              "align": "inside",
+              "thickness": 1,
+              "fill": "#C5BFAF"
+            }
+          },
+          {
+            "type": "text",
+            "id": "rZiXE",
+            "x": 170,
+            "y": 27,
+            "name": "searchTxt",
+            "fill": "#575246",
+            "content": "搜索",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 4,
+            "id": "7cnqw",
+            "x": 1188,
+            "y": 14,
+            "name": "loginBtn",
+            "fill": "#111111",
+            "width": 116,
+            "height": 42
+          },
+          {
+            "type": "text",
+            "id": "hf7lc",
+            "x": 1232,
+            "y": 25,
+            "name": "loginTxt",
+            "fill": "#FFFFFF",
+            "content": "登录",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "id": "1s8T2",
+            "x": 0,
+            "y": 116,
+            "name": "heroDivider",
+            "fill": "#E4E4E1",
+            "width": 1440,
+            "height": 1
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "4UEno",
+        "x": 0,
+        "y": 1466,
+        "name": "svc",
+        "width": 1440,
+        "height": 116,
+        "fill": "#BBAF90",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "rTXUc",
+            "x": 106,
+            "y": 30,
+            "name": "svc1",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "创建账户  ›\n下订单、查看价格并检查刀具供货情况",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "MkqLY",
+            "x": 827,
+            "y": 30,
+            "name": "svc2",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "订阅我们的时事通讯  ›\n加入我们，获取最新信息！",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "icon_font",
+            "id": "1Uax8",
+            "x": 32,
+            "y": 35,
+            "name": "si1",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "account_circle",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          },
+          {
+            "type": "icon_font",
+            "id": "6eXUL",
+            "x": 749,
+            "y": 35,
+            "name": "si2",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "mail",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "PvwzQ",
+        "x": 0,
+        "y": 1582,
+        "name": "foot",
+        "width": 1440,
+        "height": 682,
+        "fill": "#212226",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "vIEEk",
+            "x": 10,
+            "y": 38,
+            "name": "flogo",
+            "fill": "#F1F1F1",
+            "content": "&",
+            "fontFamily": "Inter",
+            "fontSize": 84,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "ffZsu",
+            "x": 10,
+            "y": 300,
+            "name": "fdesc",
+            "fill": "#E6E6E6",
+            "textGrowth": "fixed-width",
+            "width": 665,
+            "content": "Contact Center 客服中心\n☎ +86 800-820-2623(座机)/+86 400-820-2623(手机)\n沪ICP备20012694号-1\n京公网安备 11010502044395号",
+            "lineHeight": 1.42,
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "o7mFu",
+            "x": 750,
+            "y": 60,
+            "name": "fcol1",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "产品",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "fBmYF",
+            "x": 750,
+            "y": 180,
+            "name": "fcol2",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "服务",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "1mHyN",
+            "x": 750,
+            "y": 300,
+            "name": "fcol3",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "订购",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "rectangle",
+            "id": "ZSQf4",
+            "x": 24,
+            "y": 580,
+            "name": "fline",
+            "fill": "#43464D",
+            "width": 1392,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "LiX8X",
+            "x": 10,
+            "y": 600,
+            "name": "fcopy",
+            "fill": "#E8E8E8",
+            "content": "法律声明      隐私政策      安全      通用条款和条件",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "42v32",
+            "x": 750,
+            "y": 420,
+            "name": "rb",
+            "fill": "#F0F0F0",
+            "content": "关于我们",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "rectangle",
+            "id": "xkcJb",
+            "x": 750,
+            "y": 150,
+            "name": "rl1",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "id": "rj3ui",
+            "x": 750,
+            "y": 270,
+            "name": "rl2",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "id": "RxbHB",
+            "x": 750,
+            "y": 390,
+            "name": "rl3",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "0MiNB",
+            "x": 1380,
+            "y": 60,
+            "name": "ch1",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "QrE5O",
+            "x": 1380,
+            "y": 180,
+            "name": "ch2",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "scW8w",
+            "x": 1380,
+            "y": 300,
+            "name": "ch3",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "xgMUn",
+            "x": 1380,
+            "y": 420,
+            "name": "ch4",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "m2B73",
+            "x": 10,
+            "y": 479,
+            "name": "soc",
+            "fill": "#F1F1F1",
+            "content": "◉   ♪   ▶   知   ∞   微   RSS",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "ellipse",
+            "id": "shD1K",
+            "x": 1012,
+            "y": 600,
+            "name": "r1",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "Y1ZG4",
+            "x": 1018,
+            "y": 606,
+            "name": "r1d",
+            "fill": "#E8E8E8",
+            "width": 12,
+            "height": 12
+          },
+          {
+            "type": "ellipse",
+            "id": "9M2WG",
+            "x": 1102,
+            "y": 600,
+            "name": "r2",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          },
+          {
+            "type": "text",
+            "id": "5GEnt",
+            "x": 1043,
+            "y": 596,
+            "name": "rt1",
+            "fill": "#E8E8E8",
+            "content": "公制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "hdihp",
+            "x": 1136,
+            "y": 597,
+            "name": "rt2",
+            "fill": "#E8E8E8",
+            "content": "英制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 6,
+            "id": "WQYCy",
+            "x": 1214,
+            "y": 596,
+            "name": "loc",
+            "fill": "#0F1114",
+            "width": 202,
+            "height": 40
+          },
+          {
+            "type": "text",
+            "id": "uA4d3",
+            "x": 1240,
+            "y": 598,
+            "name": "loct",
+            "fill": "#FFFFFF",
+            "content": "中国 | 中文   ›",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "Pv50O",
+        "x": 0,
+        "y": 116,
+        "name": "contactMain",
+        "width": 1440,
+        "height": 1350,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "pazSb",
+            "x": 24,
+            "y": 40,
+            "name": "leftFilters",
+            "width": 180,
+            "height": 220,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "W14Mh",
+                "x": 0,
+                "y": 0,
+                "name": "fltT",
+                "fill": "#606060",
+                "content": "按下列条件",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "Q7foD",
+                "x": 0,
+                "y": 34,
+                "name": "flt1",
+                "fill": "#1F1F1F",
+                "content": "类型",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "rectangle",
+                "id": "PRURd",
+                "x": 0,
+                "y": 58,
+                "name": "l1",
+                "fill": "#D6D6D6",
+                "width": 150,
+                "height": 1
+              },
+              {
+                "type": "text",
+                "id": "d6w4L",
+                "x": 0,
+                "y": 76,
+                "name": "flt2",
+                "fill": "#1F1F1F",
+                "content": "国家/地区",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "rectangle",
+                "id": "qFtZb",
+                "x": 0,
+                "y": 100,
+                "name": "l2",
+                "fill": "#D6D6D6",
+                "width": 150,
+                "height": 1
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "X646J",
+            "x": 220,
+            "y": 40,
+            "name": "contactContent",
+            "width": 1188,
+            "height": 1310,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "yDkmz",
+                "x": 0,
+                "y": 0,
+                "name": "ctitle",
+                "fill": "#1F1F1F",
+                "content": "联系我们",
+                "fontFamily": "Inter",
+                "fontSize": 50,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "0Yksi",
+                "x": 0,
+                "y": 70,
+                "name": "sub",
+                "fill": "#202020",
+                "content": "查找离您最近的分销商和销售网络",
+                "fontFamily": "Inter",
+                "fontSize": 18,
+                "fontWeight": "600"
+              },
+              {
+                "type": "rectangle",
+                "id": "4hPCl",
+                "x": 0,
+                "y": 106,
+                "name": "inp",
+                "fill": "#F9F9F9",
+                "width": 270,
+                "height": 30,
+                "stroke": {
+                  "align": "inside",
+                  "thickness": 1,
+                  "fill": "#CFCFCF"
+                }
+              },
+              {
+                "type": "text",
+                "id": "MIRJN",
+                "x": 12,
+                "y": 114,
+                "name": "inpTxt",
+                "fill": "#777777",
+                "content": "按国家、城市、邮编搜索",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "kINv3",
+                "x": 0,
+                "y": 494,
+                "name": "sec1",
+                "fill": "#1F1F1F",
+                "content": "客户联系人",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "cnGgL",
+                "x": 0,
+                "y": 809,
+                "name": "sec2",
+                "fill": "#1F1F1F",
+                "content": "经销商",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "9CYbL",
+                "x": 0,
+                "y": 1028,
+                "name": "sec3",
+                "fill": "#1F1F1F",
+                "content": "分销商",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "EypHA",
+                "x": 0,
+                "y": 522,
+                "name": "r1",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "Xgwbb",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "zNciU",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "lyOJy",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "wTvOu",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "rC8er",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "iyMkF",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "nUtkb",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "09eQi",
+                "x": 0,
+                "y": 632,
+                "name": "r2",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "aFnGr",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "Ja9oK",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "dgjgv",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "4SDJ2",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "VWuEn",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "UvArx",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "W0uXc",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "yqj5k",
+                "x": 0,
+                "y": 164,
+                "name": "map",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "nope2107",
+                  "link": "https://unsplash.com/@nope2107",
+                  "author": "B C"
+                },
+                "width": 1100,
+                "height": 300,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/China_administrative_blank_map.svg/1280px-China_administrative_blank_map.svg.png",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "frame",
+                "id": "YFuJs",
+                "x": 0,
+                "y": 1074,
+                "name": "r8",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "y570U",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "f1xyA",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "rNhoq",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "nVCdd",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "I6XZb",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "GPbQe",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "4nj0k",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "xCknl",
+                "x": 0,
+                "y": 1184,
+                "name": "r9",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "JD9YT",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "fAoL5",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "6yGp4",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "8oz2C",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "GyMuq",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "qgbj0",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "3w6Hw",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "Gsy1y",
+                "x": 0,
+                "y": 854,
+                "name": "r10",
+                "width": 1100,
+                "height": 96,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "nQD5c",
+                    "x": 0,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "客户服务 上海",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "5K92w",
+                    "x": 0,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n400-820-2623\nservice@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "CyU4u",
+                    "x": 300,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "销售支持 北京",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "sKoEd",
+                    "x": 300,
+                    "y": 28,
+                    "fill": "#5B5B5B",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "联系电话\n010-88886666\nchina@sandvik.com",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "FrVby",
+                    "x": 600,
+                    "y": 8,
+                    "fill": "#1F1F1F",
+                    "content": "济南",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "iN5h4",
+                    "x": 600,
+                    "y": 28,
+                    "fill": "#6A6A6A",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "📍 地址信息\n☎ 电话\n✉ 邮件",
+                    "lineHeight": 1.5,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "Zn40l",
+                    "x": 960,
+                    "y": 34,
+                    "fill": "#2B2B2B",
+                    "content": "sandvik\ncoromant",
+                    "lineHeight": 1,
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "rectangle",
+                "id": "CgPWI",
+                "x": 0,
+                "y": 164,
+                "name": "mapBd",
+                "fill": "#F7F7F7",
+                "width": 1100,
+                "height": 300,
+                "stroke": {
+                  "align": "inside",
+                  "thickness": 1,
+                  "fill": "#CFCFCF"
+                }
+              },
+              {
+                "type": "rectangle",
+                "id": "bZWcS",
+                "x": 0,
+                "y": 620,
+                "name": "ln2",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "yCarr",
+                "x": 0,
+                "y": 730,
+                "name": "ln3",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "rHsr4",
+                "x": 0,
+                "y": 840,
+                "name": "ln4",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "F1BYa",
+                "x": 0,
+                "y": 950,
+                "name": "ln5",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "4KeKC",
+                "x": 0,
+                "y": 1060,
+                "name": "ln6",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "sho0r",
+                "x": 0,
+                "y": 1170,
+                "name": "ln7",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              },
+              {
+                "type": "rectangle",
+                "id": "Ne7KH",
+                "x": 0,
+                "y": 1280,
+                "name": "ln8",
+                "fill": "#E1E1E1",
+                "width": 1100,
+                "height": 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

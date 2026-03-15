@@ -1,0 +1,940 @@
+{
+  "sectionId": "hero",
+  "sectionName": "Hero",
+  "sectionKind": "hero",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 720
+  },
+  "directChildCount": 9,
+  "recursiveNodeCount": 21,
+  "treeHash": "6f2af82236b3a518f35e82d8d2ea8b672c0ec8541f1c729645e2619e81882005",
+  "blockCount": 9,
+  "blockIndex": [
+    {
+      "blockId": "hero-bg",
+      "blockName": "hero-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 720
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "404bb8e73b3e4058f7a753363ec4c2191ff124406e453e0f24043e0e2366ef2a"
+    },
+    {
+      "blockId": "hero-shade",
+      "blockName": "hero-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 720
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a088d4dce74d3ca91f0b0c8b9cb824927c07eeea5f5f19e5d9628480cadf8fc6"
+    },
+    {
+      "blockId": "home-navbar",
+      "blockName": "Navbar",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 11,
+      "recursiveNodeCount": 12,
+      "treeHash": "133e56d4df6b87b3d9811d768c2eedc257a97c28c9893243af7f89ede69be7b9"
+    },
+    {
+      "blockId": "hero-title",
+      "blockName": "hero-title",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 24,
+        "y": 258,
+        "width": 620,
+        "height": 461
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dfbb705116fb01bee3e95b48f34f7977ebc1c43121e187d5e8ca18d6f9dfc085"
+    },
+    {
+      "blockId": "hero-cat-box",
+      "blockName": "hero-cat-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 4,
+      "bounds": {
+        "x": 24,
+        "y": 640,
+        "width": 34,
+        "height": 34
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "34ab349abe51765e3341a5c0a7aab45060e15ccd599a0d6d7556af25d2eae8d9"
+    },
+    {
+      "blockId": "hero-cat-arrow",
+      "blockName": "hero-cat-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 34,
+        "y": 648,
+        "width": 14,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ac86d262118e103e6eabfc4ffbead538a50e39277269fb84a373e371321fba4f"
+    },
+    {
+      "blockId": "hero-cat-label",
+      "blockName": "hero-cat-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 70,
+        "y": 648,
+        "width": 220,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e5fdd4e19cf34d80d84d50c7e17fa87d9a9ae830c478703cb0b826f687ea6fd7"
+    },
+    {
+      "blockId": "chat-box",
+      "blockName": "chat-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 1268,
+        "y": 664,
+        "width": 172,
+        "height": 42
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0d962aef87381043c3cfc910a48cdaf5f698a9da27735bd5afe34be148feedb0"
+    },
+    {
+      "blockId": "chat-label",
+      "blockName": "chat-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 1286,
+        "y": 676,
+        "width": 130,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "df17e2394885e3d27b1516f4b246f9111f3c51049dfaffe9cd7e9f879e8c5e30"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/breton-real-head.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "hero-bg",
+      "blockName": "hero-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 720
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "404bb8e73b3e4058f7a753363ec4c2191ff124406e453e0f24043e0e2366ef2a",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/breton-real-head.png",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-bg",
+        "name": "hero-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 720,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/breton-real-head.png",
+          "mode": "fill"
+        }
+      }
+    },
+    {
+      "blockId": "hero-shade",
+      "blockName": "hero-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 720
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a088d4dce74d3ca91f0b0c8b9cb824927c07eeea5f5f19e5d9628480cadf8fc6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-shade",
+        "name": "hero-shade",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 720,
+        "fill": "#0000002a"
+      }
+    },
+    {
+      "blockId": "home-navbar",
+      "blockName": "Navbar",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 11,
+      "recursiveNodeCount": 12,
+      "treeHash": "133e56d4df6b87b3d9811d768c2eedc257a97c28c9893243af7f89ede69be7b9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "home-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "home-navbar-bg",
+            "name": "home-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#B00046"
+          },
+          {
+            "type": "rectangle",
+            "id": "home-navbar-logo",
+            "name": "home-navbar-logo",
+            "x": 40,
+            "y": 18,
+            "width": 140,
+            "height": 44,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-Engineering",
+            "name": "home-navbar-Engineering",
+            "x": 260,
+            "y": 32,
+            "fill": "#FFFFFF",
+            "content": "Engineering",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 90,
+            "height": 18,
+            "letterSpacing": "0.02em",
+            "href": "#page-engineering"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-Products",
+            "name": "home-navbar-Products",
+            "x": 378,
+            "y": 32,
+            "fill": "#FFFFFF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 90,
+            "height": 18,
+            "letterSpacing": "0.02em",
+            "href": "#page-products"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-Services",
+            "name": "home-navbar-Services",
+            "x": 496,
+            "y": 32,
+            "fill": "#FFFFFF",
+            "content": "Services",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 90,
+            "height": 18,
+            "letterSpacing": "0.02em",
+            "href": "#page-services"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-BIT",
+            "name": "home-navbar-BIT",
+            "x": 614,
+            "y": 32,
+            "fill": "#FFFFFF",
+            "content": "BIT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 90,
+            "height": 18,
+            "letterSpacing": "0.02em",
+            "href": "#page-bit"
+          },
+          {
+            "type": "rectangle",
+            "id": "home-navbar-lets",
+            "name": "home-navbar-lets",
+            "x": 756,
+            "y": 0,
+            "width": 200,
+            "height": 84,
+            "fill": "#202329",
+            "href": "#page-contacts"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-lets-t",
+            "name": "home-navbar-lets-t",
+            "x": 782,
+            "y": 30,
+            "fill": "#FFFFFF",
+            "content": "Let's talk",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 15,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 22,
+            "href": "#page-contacts"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-search",
+            "name": "home-navbar-search",
+            "x": 1018,
+            "y": 30,
+            "fill": "#FFFFFF",
+            "content": "⌕",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 24,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 32,
+            "height": 24,
+            "href": "#page-products"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-lang",
+            "name": "home-navbar-lang",
+            "x": 1082,
+            "y": 30,
+            "fill": "#FFFFFF",
+            "content": "Language",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 90,
+            "height": 18,
+            "href": "#page-about"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-menu",
+            "name": "home-navbar-menu",
+            "x": 1222,
+            "y": 30,
+            "fill": "#FFFFFF",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 30,
+            "height": 18,
+            "href": "#page-products"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "hero-title",
+      "blockName": "hero-title",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 24,
+        "y": 258,
+        "width": 620,
+        "height": 461
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dfbb705116fb01bee3e95b48f34f7977ebc1c43121e187d5e8ca18d6f9dfc085",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-title",
+        "name": "hero-title",
+        "x": 24,
+        "y": 258,
+        "fill": "#FFFFFF",
+        "content": "PIONEER IN THE\nDEVELOPMENT OF\nADVANCED\nTECHNOLOGIES\nAND MATERIALS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 64,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 461
+      }
+    },
+    {
+      "blockId": "hero-cat-box",
+      "blockName": "hero-cat-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 4,
+      "bounds": {
+        "x": 24,
+        "y": 640,
+        "width": 34,
+        "height": 34
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "34ab349abe51765e3341a5c0a7aab45060e15ccd599a0d6d7556af25d2eae8d9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-cat-box",
+        "name": "hero-cat-box",
+        "x": 24,
+        "y": 640,
+        "width": 34,
+        "height": 34,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#FFFFFF",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "hero-cat-arrow",
+      "blockName": "hero-cat-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 34,
+        "y": 648,
+        "width": 14,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ac86d262118e103e6eabfc4ffbead538a50e39277269fb84a373e371321fba4f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-cat-arrow",
+        "name": "hero-cat-arrow",
+        "x": 34,
+        "y": 648,
+        "fill": "#FFFFFF",
+        "content": "⌄",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 14,
+        "height": 18,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "hero-cat-label",
+      "blockName": "hero-cat-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 70,
+        "y": 648,
+        "width": 220,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e5fdd4e19cf34d80d84d50c7e17fa87d9a9ae830c478703cb0b826f687ea6fd7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-cat-label",
+        "name": "hero-cat-label",
+        "x": 70,
+        "y": 648,
+        "fill": "#FFFFFF",
+        "content": "CHOOSE A CATEGORY",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 18,
+        "letterSpacing": "0.04em",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "chat-box",
+      "blockName": "chat-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 1268,
+        "y": 664,
+        "width": 172,
+        "height": 42
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0d962aef87381043c3cfc910a48cdaf5f698a9da27735bd5afe34be148feedb0",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "chat-box",
+        "name": "chat-box",
+        "x": 1268,
+        "y": 664,
+        "width": 172,
+        "height": 42,
+        "fill": "#B00046",
+        "href": "#page-contacts"
+      }
+    },
+    {
+      "blockId": "chat-label",
+      "blockName": "chat-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 1286,
+        "y": 676,
+        "width": 130,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "df17e2394885e3d27b1516f4b246f9111f3c51049dfaffe9cd7e9f879e8c5e30",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "chat-label",
+        "name": "chat-label",
+        "x": 1286,
+        "y": 676,
+        "fill": "#FFFFFF",
+        "content": "• CHAT WITH US",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 18,
+        "href": "#page-contacts"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "hero",
+    "name": "Hero",
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 720,
+    "fill": "#202329",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "hero-bg",
+        "name": "hero-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 720,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/breton-real-head.png",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-shade",
+        "name": "hero-shade",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 720,
+        "fill": "#0000002a"
+      },
+      {
+        "type": "frame",
+        "id": "home-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "home-navbar-bg",
+            "name": "home-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#B00046"
+          },
+          {
+            "type": "rectangle",
+            "id": "home-navbar-logo",
+            "name": "home-navbar-logo",
+            "x": 40,
+            "y": 18,
+            "width": 140,
+            "height": 44,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-Engineering",
+            "name": "home-navbar-Engineering",
+            "x": 260,
+            "y": 32,
+            "fill": "#FFFFFF",
+            "content": "Engineering",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 90,
+            "height": 18,
+            "letterSpacing": "0.02em",
+            "href": "#page-engineering"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-Products",
+            "name": "home-navbar-Products",
+            "x": 378,
+            "y": 32,
+            "fill": "#FFFFFF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 90,
+            "height": 18,
+            "letterSpacing": "0.02em",
+            "href": "#page-products"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-Services",
+            "name": "home-navbar-Services",
+            "x": 496,
+            "y": 32,
+            "fill": "#FFFFFF",
+            "content": "Services",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 90,
+            "height": 18,
+            "letterSpacing": "0.02em",
+            "href": "#page-services"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-BIT",
+            "name": "home-navbar-BIT",
+            "x": 614,
+            "y": 32,
+            "fill": "#FFFFFF",
+            "content": "BIT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 90,
+            "height": 18,
+            "letterSpacing": "0.02em",
+            "href": "#page-bit"
+          },
+          {
+            "type": "rectangle",
+            "id": "home-navbar-lets",
+            "name": "home-navbar-lets",
+            "x": 756,
+            "y": 0,
+            "width": 200,
+            "height": 84,
+            "fill": "#202329",
+            "href": "#page-contacts"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-lets-t",
+            "name": "home-navbar-lets-t",
+            "x": 782,
+            "y": 30,
+            "fill": "#FFFFFF",
+            "content": "Let's talk",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 15,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 22,
+            "href": "#page-contacts"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-search",
+            "name": "home-navbar-search",
+            "x": 1018,
+            "y": 30,
+            "fill": "#FFFFFF",
+            "content": "⌕",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 24,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 32,
+            "height": 24,
+            "href": "#page-products"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-lang",
+            "name": "home-navbar-lang",
+            "x": 1082,
+            "y": 30,
+            "fill": "#FFFFFF",
+            "content": "Language",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 90,
+            "height": 18,
+            "href": "#page-about"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-menu",
+            "name": "home-navbar-menu",
+            "x": 1222,
+            "y": 30,
+            "fill": "#FFFFFF",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 30,
+            "height": 18,
+            "href": "#page-products"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "hero-title",
+        "name": "hero-title",
+        "x": 24,
+        "y": 258,
+        "fill": "#FFFFFF",
+        "content": "PIONEER IN THE\nDEVELOPMENT OF\nADVANCED\nTECHNOLOGIES\nAND MATERIALS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 64,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 461
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-cat-box",
+        "name": "hero-cat-box",
+        "x": 24,
+        "y": 640,
+        "width": 34,
+        "height": 34,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#FFFFFF",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "hero-cat-arrow",
+        "name": "hero-cat-arrow",
+        "x": 34,
+        "y": 648,
+        "fill": "#FFFFFF",
+        "content": "⌄",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 14,
+        "height": 18,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "hero-cat-label",
+        "name": "hero-cat-label",
+        "x": 70,
+        "y": 648,
+        "fill": "#FFFFFF",
+        "content": "CHOOSE A CATEGORY",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 18,
+        "letterSpacing": "0.04em",
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "chat-box",
+        "name": "chat-box",
+        "x": 1268,
+        "y": 664,
+        "width": 172,
+        "height": 42,
+        "fill": "#B00046",
+        "href": "#page-contacts"
+      },
+      {
+        "type": "text",
+        "id": "chat-label",
+        "name": "chat-label",
+        "x": 1286,
+        "y": 676,
+        "fill": "#FFFFFF",
+        "content": "• CHAT WITH US",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 18,
+        "href": "#page-contacts"
+      }
+    ]
+  }
+}

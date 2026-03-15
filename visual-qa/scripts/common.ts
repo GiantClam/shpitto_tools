@@ -41,7 +41,7 @@ export async function stabilizePage(page: Page) {
         scroll-behavior: auto !important;
         caret-color: transparent !important;
       }
-      video, iframe { visibility: hidden !important; }
+      video { visibility: hidden !important; }
       [id*="cookie"], [class*="cookie"], [class*="Cookie"],
       [id*="consent"], [class*="consent"], [class*="Consent"],
       [id*="gdpr"], [class*="gdpr"], [class*="GDPR"],
@@ -64,6 +64,7 @@ export async function stabilizePage(page: Page) {
     await page.waitForLoadState(waitUntil, { timeout: stabilizeTimeout });
   } catch {}
   await autoScroll(page);
+  await stabilizeSandboxPreview(page);
   try {
     await page.waitForLoadState(waitUntil, { timeout: stabilizeTimeout });
   } catch {}
@@ -111,45 +112,101 @@ async function dismissCookieBanner(page: Page) {
 }
 
 async function autoScroll(page: Page) {
-  await page.evaluate(async () => {
-    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-    const step = Math.max(300, Math.floor(window.innerHeight * 0.7));
-    let lastHeight = 0;
-    let stableRounds = 0;
+  await page.evaluate(`
+    (async () => {
+      const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+      const step = Math.max(300, Math.floor(window.innerHeight * 0.7));
+      let lastHeight = 0;
+      let stableRounds = 0;
 
-    for (let round = 0; round < 6; round++) {
-      const total = document.body.scrollHeight;
-      for (let y = 0; y < total; y += step) {
+      for (let round = 0; round < 6; round += 1) {
+        const total = document.body.scrollHeight;
+        for (let y = 0; y < total; y += step) {
+          window.scrollTo(0, y);
+          await sleep(220);
+        }
+        window.scrollTo(0, document.body.scrollHeight);
+        await sleep(600);
+
+        const newHeight = document.body.scrollHeight;
+        if (newHeight === lastHeight) {
+          stableRounds += 1;
+        } else {
+          stableRounds = 0;
+        }
+        lastHeight = newHeight;
+        if (stableRounds >= 2) break;
+      }
+
+      const images = Array.from(document.images || []);
+      if (images.length) {
+        await Promise.race([
+          Promise.all(
+            images.map((img) =>
+              img.complete ? Promise.resolve() : new Promise((resolve) => img.addEventListener("load", resolve, { once: true }))
+            )
+          ),
+          sleep(1500),
+        ]);
+      } else {
+        await sleep(300);
+      }
+      window.scrollTo(0, 0);
+    })();
+  `);
+}
+
+async function stabilizeSandboxPreview(page: Page) {
+  const frameLocator = page.locator("iframe[data-pen-preview-frame='true']").first();
+  if ((await frameLocator.count()) === 0) return;
+  const frameHandle = await frameLocator.elementHandle();
+  const frame = await frameHandle?.contentFrame();
+  if (!frame) return;
+
+  await frame.addStyleTag({
+    content: `
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+        caret-color: transparent !important;
+      }
+      [data-pen-section='true'],
+      .pen-section-observe,
+      .pen-section-visible,
+      .pen-hero-media {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+    `,
+  });
+
+  await frame.evaluate(`
+    (async () => {
+      const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+      document.querySelectorAll("[data-pen-section='true']").forEach((element) => {
+        element.classList.add("pen-section-visible");
+        element.classList.remove("pen-section-observe");
+      });
+
+      const step = Math.max(400, Math.floor(window.innerHeight * 0.8));
+      for (let y = 0; y < document.body.scrollHeight; y += step) {
         window.scrollTo(0, y);
-        await sleep(220);
+        await sleep(120);
       }
       window.scrollTo(0, document.body.scrollHeight);
       await sleep(600);
+      window.scrollTo(0, 0);
+    })();
+  `);
 
-      const newHeight = document.body.scrollHeight;
-      if (newHeight === lastHeight) {
-        stableRounds += 1;
-      } else {
-        stableRounds = 0;
-      }
-      lastHeight = newHeight;
-      if (stableRounds >= 2) break;
+  await frame.evaluate(async () => {
+    // @ts-ignore
+    if (document.fonts && document.fonts.ready) {
+      // @ts-ignore
+      await document.fonts.ready;
     }
-
-    const images = Array.from(document.images || []);
-    if (images.length) {
-      await Promise.race([
-        Promise.all(
-          images.map((img) =>
-            img.complete ? Promise.resolve() : new Promise((r) => img.addEventListener("load", r, { once: true }))
-          )
-        ),
-        sleep(1500),
-      ]);
-    } else {
-      await sleep(300);
-    }
-    window.scrollTo(0, 0);
   });
 }
 

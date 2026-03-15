@@ -142,7 +142,9 @@ const callPencilTools = async ({ penFile = "", command = "", args = [], timeoutM
         params: {
           name: "batch_get",
           arguments: {
-            readDepth: 4,
+            filePath: penFile,
+            includePathGeometry: true,
+            readDepth: 12,
           },
         },
       });
@@ -301,6 +303,7 @@ const main = async () => {
   const mcpApp = String(args["mcp-app"] || "desktop").trim() || "desktop";
   const mcpServerName = String(args["mcp-server-name"] || "pencil").trim() || "pencil";
   const mcpCommand = String(args["mcp-command"] || "").trim();
+  const includeRaw = args["include-raw"] === "true";
   const connection = await resolveConnection({ app: mcpApp, command: mcpCommand, serverName: mcpServerName });
   const result = await callPencilTools({
     penFile,
@@ -324,7 +327,9 @@ const main = async () => {
           args: connection.args,
         },
         nodeCount: nodes.length,
+        rawNodes: nodes,
         payload,
+        ...(includeRaw ? { rawResult: result } : {}),
       },
       null,
       2

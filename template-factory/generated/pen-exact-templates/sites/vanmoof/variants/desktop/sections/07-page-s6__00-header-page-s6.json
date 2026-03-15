@@ -1,0 +1,491 @@
+{
+  "sectionId": "header-page-s6",
+  "sectionName": "Header",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 84
+  },
+  "directChildCount": 7,
+  "recursiveNodeCount": 8,
+  "treeHash": "66bebd452d5970cc8a16baaf77e5d85b623756ed8c9c2f109a97f245f7bc92bd",
+  "blockCount": 7,
+  "blockIndex": [
+    {
+      "blockId": "header-bg",
+      "blockName": "header-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7"
+    },
+    {
+      "blockId": "header-brand",
+      "blockName": "header-brand",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 24,
+        "width": 240,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a9a175d37c5f4f763b6bcafadd643626fc6e338057defeb380158506d0500d3d"
+    },
+    {
+      "blockId": "nav-page-our-rides",
+      "blockName": "nav-page-our-rides",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 840,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2bdc1af7aa04ef13ad3eedcd82af24350d5528aba3bd48b546c7e4cd44b142ac"
+    },
+    {
+      "blockId": "nav-page-accessories",
+      "blockName": "nav-page-accessories",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 948,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a62825a743446b54ed886ccecfb79606f1db811da1be49473f96afe0e9f992f7"
+    },
+    {
+      "blockId": "nav-page-our-story",
+      "blockName": "nav-page-our-story",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 1056,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "88dc5e28e00ccd915782a88ca20acd88c890657210368d396a6ec802a1debb5d"
+    },
+    {
+      "blockId": "nav-page-peak-design",
+      "blockName": "nav-page-peak-design",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 1164,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f3b5ce98cba0f591f564b22bdcf29faac0be2382869aea2357bc3c20b648b509"
+    },
+    {
+      "blockId": "nav-page-shipping-delivery",
+      "blockName": "nav-page-shipping-delivery",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 1272,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "61e92119e4933cb59acd27dfb07b345cfc63017e69f897216b86ebab5520fd75"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "header-bg",
+      "blockName": "header-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "header-bg",
+        "name": "header-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#FFFFFF"
+      }
+    },
+    {
+      "blockId": "header-brand",
+      "blockName": "header-brand",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 24,
+        "width": 240,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a9a175d37c5f4f763b6bcafadd643626fc6e338057defeb380158506d0500d3d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "header-brand",
+        "name": "header-brand",
+        "x": 40,
+        "y": 24,
+        "fill": "#151515",
+        "content": "VanMoof",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 28
+      }
+    },
+    {
+      "blockId": "nav-page-our-rides",
+      "blockName": "nav-page-our-rides",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 840,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2bdc1af7aa04ef13ad3eedcd82af24350d5528aba3bd48b546c7e4cd44b142ac",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-our-rides",
+        "name": "nav-page-our-rides",
+        "x": 840,
+        "y": 30,
+        "fill": "#151515",
+        "content": "OUR RIDES",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-our-rides",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-accessories",
+      "blockName": "nav-page-accessories",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 948,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a62825a743446b54ed886ccecfb79606f1db811da1be49473f96afe0e9f992f7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-accessories",
+        "name": "nav-page-accessories",
+        "x": 948,
+        "y": 30,
+        "fill": "#151515",
+        "content": "ACCESSORIES",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-accessories",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-our-story",
+      "blockName": "nav-page-our-story",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 1056,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "88dc5e28e00ccd915782a88ca20acd88c890657210368d396a6ec802a1debb5d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-our-story",
+        "name": "nav-page-our-story",
+        "x": 1056,
+        "y": 30,
+        "fill": "#151515",
+        "content": "OUR STORY",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-our-story",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-peak-design",
+      "blockName": "nav-page-peak-design",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 1164,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f3b5ce98cba0f591f564b22bdcf29faac0be2382869aea2357bc3c20b648b509",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-peak-design",
+        "name": "nav-page-peak-design",
+        "x": 1164,
+        "y": 30,
+        "fill": "#151515",
+        "content": "PEAK DESIGN",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-peak-design",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-shipping-delivery",
+      "blockName": "nav-page-shipping-delivery",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 1272,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "61e92119e4933cb59acd27dfb07b345cfc63017e69f897216b86ebab5520fd75",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-shipping-delivery",
+        "name": "nav-page-shipping-delivery",
+        "x": 1272,
+        "y": 30,
+        "fill": "#151515",
+        "content": "SHIPPING & DELIVERY",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-shipping-delivery",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "header-page-s6",
+    "name": "Header",
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 84,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "header-bg",
+        "name": "header-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#FFFFFF"
+      },
+      {
+        "type": "text",
+        "id": "header-brand",
+        "name": "header-brand",
+        "x": 40,
+        "y": 24,
+        "fill": "#151515",
+        "content": "VanMoof",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 28
+      },
+      {
+        "type": "text",
+        "id": "nav-page-our-rides",
+        "name": "nav-page-our-rides",
+        "x": 840,
+        "y": 30,
+        "fill": "#151515",
+        "content": "OUR RIDES",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-our-rides",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-accessories",
+        "name": "nav-page-accessories",
+        "x": 948,
+        "y": 30,
+        "fill": "#151515",
+        "content": "ACCESSORIES",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-accessories",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-our-story",
+        "name": "nav-page-our-story",
+        "x": 1056,
+        "y": 30,
+        "fill": "#151515",
+        "content": "OUR STORY",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-our-story",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-peak-design",
+        "name": "nav-page-peak-design",
+        "x": 1164,
+        "y": 30,
+        "fill": "#151515",
+        "content": "PEAK DESIGN",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-peak-design",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-shipping-delivery",
+        "name": "nav-page-shipping-delivery",
+        "x": 1272,
+        "y": 30,
+        "fill": "#151515",
+        "content": "SHIPPING & DELIVERY",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-shipping-delivery",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

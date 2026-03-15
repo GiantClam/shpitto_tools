@@ -1,0 +1,69 @@
+{
+  "blockId": "iZixY",
+  "blockName": "heroImg",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 276,
+    "width": 1440,
+    "height": 514
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "b328d9f897cff10d2b6c9ae0ab860b6cd1472f11a67149606cc29c4665a082be",
+  "assetRef": {
+    "rawUrl": "https://images.unsplash.com/photo-1763100351670-756f71d57c9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjU2NjJ8&ixlib=rb-4.1.0&q=80&w=1080",
+    "resolvedPath": "",
+    "relativePath": "",
+    "exists": false,
+    "mode": "fill"
+  },
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "iZixY",
+    "x": 0,
+    "y": 276,
+    "name": "heroImg",
+    "metadata": {
+      "type": "unsplash",
+      "username": "kikiz",
+      "link": "https://unsplash.com/@kikiz",
+      "author": "Yimeng Zhao"
+    },
+    "width": 1440,
+    "height": 514,
+    "fill": {
+      "type": "image",
+      "enabled": true,
+      "url": "https://images.unsplash.com/photo-1763100351670-756f71d57c9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjU2NjJ8&ixlib=rb-4.1.0&q=80&w=1080",
+      "mode": "fill"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "ellipse",
+        "id": "3gAy9",
+        "x": 680,
+        "y": 218,
+        "name": "playCircle",
+        "fill": "#B8A06B",
+        "width": 80,
+        "height": 80
+      },
+      {
+        "type": "text",
+        "id": "FU62c",
+        "x": 714,
+        "y": 244,
+        "name": "playTri",
+        "fill": "#FFFFFF",
+        "content": "▶",
+        "fontFamily": "Inter",
+        "fontSize": 28,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

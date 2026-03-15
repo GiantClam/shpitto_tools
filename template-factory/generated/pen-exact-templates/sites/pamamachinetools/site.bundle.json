@@ -1,0 +1,40 @@
+{
+  "siteId": "pamamachinetools",
+  "siteName": "Pamamachinetools",
+  "bundleHash": "bb5a328e516aad55336b76f7904eda1f2989c7e336cad05bc375b7ef74f1ca9e",
+  "variants": [
+    {
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/pamamachinetools.pen",
+      "sourceHash": "74d73d200c08a4bfab0a46f35476eb5a2c3481dc8fb7629dd4bc18c2bad4c34e",
+      "pageCount": 11,
+      "sectionCount": 28,
+      "blockCount": 385,
+      "output": {
+        "templatePath": "sites/pamamachinetools/variants/desktop/template.json",
+        "themePath": "sites/pamamachinetools/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/pamamachinetools/variants/desktop/pages",
+        "sectionsDir": "sites/pamamachinetools/variants/desktop/sections",
+        "blocksDir": "sites/pamamachinetools/variants/desktop/blocks"
+      }
+    },
+    {
+      "variant": "mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/pamamachinetools-mobile.pen",
+      "sourceHash": "d6c1493c158baa61ced1a029b83767c635108f1872a2eebb2ec3bed5c79181ea",
+      "pageCount": 11,
+      "sectionCount": 28,
+      "blockCount": 253,
+      "output": {
+        "templatePath": "sites/pamamachinetools/variants/mobile/template.json",
+        "themePath": "sites/pamamachinetools/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/pamamachinetools/variants/mobile/pages",
+        "sectionsDir": "sites/pamamachinetools/variants/mobile/sections",
+        "blocksDir": "sites/pamamachinetools/variants/mobile/blocks"
+      }
+    }
+  ],
+  "output": {
+    "siteTemplatePath": "sites/pamamachinetools/site.template.json"
+  }
+}

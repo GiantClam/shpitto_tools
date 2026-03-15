@@ -1,0 +1,105 @@
+{
+  "blockId": "KI5LR",
+  "blockName": "c2",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 1,
+  "bounds": {
+    "x": 684,
+    "y": 0,
+    "width": 644,
+    "height": 640
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "a348115241f2bda988fb0b486e5d4b7ec62ffa47f5d00aec2a78ff40a629057b",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "KI5LR",
+    "x": 684,
+    "y": 0,
+    "name": "c2",
+    "width": 644,
+    "height": 640,
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "u4Kun",
+        "x": 0,
+        "y": 0,
+        "name": "c2img",
+        "metadata": {
+          "type": "unsplash",
+          "username": "declansun",
+          "link": "https://unsplash.com/@declansun",
+          "author": "Declan Sun"
+        },
+        "width": 644,
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1753596726279-fcd814647a2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjM1MDF8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "674DY",
+        "x": 0,
+        "y": 386,
+        "name": "c2t",
+        "fill": "#2A313C",
+        "content": "Kymeta Access App Portal",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "PCAYv",
+        "x": 0,
+        "y": 420,
+        "name": "c2d",
+        "fill": "#5E6776",
+        "textGrowth": "fixed-width",
+        "width": 620,
+        "content": "Kymeta Access is available as an Android tablet and iOS mobile application or a web portal. Designed to support directly with your service, subscriptions + data management, and support ticket and service dispatch requests, subscription management, and support ticketing.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 3,
+        "id": "kqIvp",
+        "x": 0,
+        "y": 520,
+        "name": "c2b",
+        "fill": "#F5F8FD",
+        "width": 165,
+        "height": 28,
+        "stroke": {
+          "align": "inside",
+          "thickness": 1,
+          "fill": "#9AB0D7"
+        }
+      },
+      {
+        "type": "text",
+        "id": "WJza8",
+        "x": 16,
+        "y": 527,
+        "name": "c2bt",
+        "fill": "#2E446D",
+        "content": "Discover Kymeta Access",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

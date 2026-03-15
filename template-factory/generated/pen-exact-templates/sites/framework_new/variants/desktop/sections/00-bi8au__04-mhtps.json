@@ -1,0 +1,342 @@
+{
+  "sectionId": "MHTpS",
+  "sectionName": "Hero4",
+  "sectionKind": "hero",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": 270
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 10,
+  "treeHash": "a6f8e3c6e157894d0e146a6b05e1ea50290ee8db4962245a2d9d9eb5cc7c7ec2",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "a4rxf",
+      "blockName": "hero4l",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 500,
+        "height": "fill_container"
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 8,
+      "treeHash": "f48e70dae0b13ceac919f725c99fc6343653f175b36271755f3150b41ae2fea4"
+    },
+    {
+      "blockId": "7VZQA",
+      "blockName": "hero4r",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": "fill_container"
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d5b4dfdb70aabd7633da0b5b369e36ec8c6980d4c0f7290f891f53c49c6b91a9"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "a4rxf",
+      "blockName": "hero4l",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 500,
+        "height": "fill_container"
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 8,
+      "treeHash": "f48e70dae0b13ceac919f725c99fc6343653f175b36271755f3150b41ae2fea4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "a4rxf",
+        "name": "hero4l",
+        "width": 500,
+        "height": "fill_container",
+        "layout": "vertical",
+        "gap": 12,
+        "justifyContent": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "FouRa",
+            "name": "h4t1",
+            "fill": "#1F2A1F",
+            "textGrowth": "fixed-width",
+            "width": 470,
+            "content": "Computers shouldn't be boring.",
+            "lineHeight": 1.08,
+            "fontFamily": "Inter",
+            "fontSize": 40,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "sf4sd",
+            "name": "h4t2",
+            "fill": "#1F2A1F",
+            "content": "Starting at $799",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "frame",
+            "id": "gTKsB",
+            "name": "row4",
+            "height": 34,
+            "gap": 8,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "frame",
+                "id": "b2DLz",
+                "name": "h4b",
+                "width": 112,
+                "height": 34,
+                "fill": "#F46E35",
+                "cornerRadius": 17,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "2BxAx",
+                    "name": "h4bt",
+                    "fill": "#111111",
+                    "content": "Configure now",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "N8n31",
+                "name": "lm4",
+                "width": 96,
+                "height": 34,
+                "cornerRadius": 17,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#9CA3AA"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "DSvsN",
+                    "fill": "#5E6369",
+                    "content": "Learn more",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "7VZQA",
+      "blockName": "hero4r",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": "fill_container"
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d5b4dfdb70aabd7633da0b5b369e36ec8c6980d4c0f7290f891f53c49c6b91a9",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "7VZQA",
+        "name": "hero4r",
+        "metadata": {
+          "type": "unsplash",
+          "username": "unsplash",
+          "link": "https://unsplash.com/@unsplash",
+          "author": "Unsplash"
+        },
+        "width": "fill_container",
+        "height": "fill_container",
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 4
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "MHTpS",
+    "name": "Hero4",
+    "width": "fill_container",
+    "height": 270,
+    "fill": "#A7B2A0",
+    "cornerRadius": 6,
+    "gap": 20,
+    "padding": [
+      24,
+      20
+    ],
+    "children": [
+      {
+        "type": "frame",
+        "id": "a4rxf",
+        "name": "hero4l",
+        "width": 500,
+        "height": "fill_container",
+        "layout": "vertical",
+        "gap": 12,
+        "justifyContent": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "FouRa",
+            "name": "h4t1",
+            "fill": "#1F2A1F",
+            "textGrowth": "fixed-width",
+            "width": 470,
+            "content": "Computers shouldn't be boring.",
+            "lineHeight": 1.08,
+            "fontFamily": "Inter",
+            "fontSize": 40,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "sf4sd",
+            "name": "h4t2",
+            "fill": "#1F2A1F",
+            "content": "Starting at $799",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "frame",
+            "id": "gTKsB",
+            "name": "row4",
+            "height": 34,
+            "gap": 8,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "frame",
+                "id": "b2DLz",
+                "name": "h4b",
+                "width": 112,
+                "height": 34,
+                "fill": "#F46E35",
+                "cornerRadius": 17,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "2BxAx",
+                    "name": "h4bt",
+                    "fill": "#111111",
+                    "content": "Configure now",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "N8n31",
+                "name": "lm4",
+                "width": 96,
+                "height": 34,
+                "cornerRadius": 17,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#9CA3AA"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "DSvsN",
+                    "fill": "#5E6369",
+                    "content": "Learn more",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "7VZQA",
+        "name": "hero4r",
+        "metadata": {
+          "type": "unsplash",
+          "username": "unsplash",
+          "link": "https://unsplash.com/@unsplash",
+          "author": "Unsplash"
+        },
+        "width": "fill_container",
+        "height": "fill_container",
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 4
+      }
+    ]
+  }
+}

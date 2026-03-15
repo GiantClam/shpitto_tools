@@ -1,0 +1,107 @@
+{
+  "blockId": "6vAVc",
+  "blockName": "s2c3",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 3,
+  "bounds": {
+    "x": 964,
+    "y": 345,
+    "width": 420,
+    "height": 416
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "3392c932e60c53ebe208b4e4ce5b4970acd6e52cf4ec2f98b5af68f5737d175b",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "6vAVc",
+    "x": 964,
+    "y": 345,
+    "name": "s2c3",
+    "width": 420,
+    "height": 416,
+    "fill": "#ffffff00",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "W8BWI",
+        "x": 0,
+        "y": 0,
+        "name": "s2c3i",
+        "metadata": {
+          "type": "unsplash",
+          "username": "fermoar",
+          "link": "https://unsplash.com/@fermoar",
+          "author": "Fermoar.ro"
+        },
+        "width": 420,
+        "height": 210,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1674068974343-83d577b56ceb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDYzODl8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "layout": "none"
+      },
+      {
+        "type": "text",
+        "id": "JebSC",
+        "x": 0,
+        "y": 224,
+        "name": "s2c3t",
+        "fill": "#2E3948",
+        "content": "Land",
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "QyFEd",
+        "x": 0,
+        "y": 275,
+        "name": "s2c3d",
+        "fill": "#2b313a",
+        "textGrowth": "fixed-width",
+        "width": 400,
+        "content": "High-speed, low-latency broadband for seamless operations in isolated areas, for workforce connectivity and between autonomous vehicles.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 2,
+        "id": "Hq6ta",
+        "x": 0,
+        "y": 366,
+        "name": "btn23",
+        "fill": "#ECECEC",
+        "width": 104,
+        "height": 30,
+        "stroke": {
+          "align": "inside",
+          "thickness": 1,
+          "fill": "#8AA3D3"
+        }
+      },
+      {
+        "type": "text",
+        "id": "OM8f8",
+        "x": 21,
+        "y": 374,
+        "name": "btn23t",
+        "fill": "#2b313a",
+        "content": "Learn more",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

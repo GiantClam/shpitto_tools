@@ -1,0 +1,220 @@
+{
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "luxury-interior-sixtine",
+      "description": "高端住宅室内设计官网（偏编辑感）",
+      "requiredCategories": ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
+      "expectedProfileId": "auto_sixtine-reference",
+      "maxPages": 1,
+      "prompt": "为一家高端住宅室内设计工作室生成首页。必须包含：固定导航、非对称 Hero、Studio Story、Approach & Metrics、Social Proof、Footer CTA、Footer。视觉风格：画廊式极简，暖米白背景，衬线标题+无衬线正文，低调奢华。"
+    },
+    {
+      "id": "industrial-b2b",
+      "description": "工业制造 B2B 官网",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "socialproof", "cta", "footer"],
+      "expectedProfileId": "breton-desktop",
+      "maxPages": 1,
+      "expectShortCircuited": true,
+      "prompt": "生成工业设备制造商官网首页，面向B2B采购。需要：导航、Hero、能力与指标、产品目录、客户背书、行动召唤、页脚。视觉：硬朗、理性、现代工业风。"
+    },
+    {
+      "id": "ai-saas",
+      "description": "AI SaaS 营销首页",
+      "requiredCategories": ["navigation", "hero", "approach", "socialproof", "cta", "footer"],
+      "expectedProfileId": "ionq-desktop",
+      "maxPages": 1,
+      "expectShortCircuited": true,
+      "prompt": "Create a premium AI SaaS homepage with navigation, hero, features/stats, trust/testimonials, CTA, and footer. Keep it conversion-focused but clean."
+    },
+    {
+      "id": "fintech-app",
+      "description": "金融科技产品官网",
+      "requiredCategories": ["navigation", "hero", "approach", "socialproof", "cta", "footer"],
+      "expectedProfileId": "ionq-desktop",
+      "maxPages": 1,
+      "prompt": "生成金融科技产品官网首页。必须有导航、Hero、产品优势/指标、客户信任背书、页脚CTA、页脚。风格专业可信、不过度花哨。"
+    },
+    {
+      "id": "wellness-clinic",
+      "description": "高端健康诊所官网",
+      "requiredCategories": ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
+      "expectedProfilePattern": "auto_sixtine-reference|pagani-desktop",
+      "maxPages": 1,
+      "prompt": "为高端健康诊所生成官网首页，强调服务故事与用户信任。包含导航、Hero、品牌故事、方法与指标、口碑、咨询CTA、Footer。"
+    },
+    {
+      "id": "ecommerce-brand",
+      "description": "消费品牌电商首页",
+      "requiredCategories": ["navigation", "hero", "products", "socialproof", "cta", "footer"],
+      "expectedProfileId": "transpa-rent-desktop",
+      "maxPages": 1,
+      "expectShortCircuited": true,
+      "prompt": "生成消费品牌电商首页，必须包含：导航、Hero、产品展示区、社交证明、购买CTA、页脚。视觉简洁但有品牌辨识度。"
+    },
+    {
+      "id": "agency-portfolio",
+      "description": "创意工作室官网",
+      "requiredCategories": ["navigation", "hero", "story", "approach", "socialproof", "cta", "footer"],
+      "expectedProfilePattern": "auto_sixtine-reference|nothing-tech-desktop",
+      "maxPages": 1,
+      "prompt": "Create a creative studio portfolio homepage with a strong editorial hero, studio story, process/metrics, testimonials, CTA banner, and footer."
+    },
+    {
+      "id": "education-platform",
+      "description": "在线教育平台首页",
+      "requiredCategories": ["navigation", "hero", "approach", "socialproof", "cta", "footer"],
+      "expectedProfileId": "framework-new-desktop",
+      "maxPages": 1,
+      "prompt": "生成在线教育平台首页。包含导航、Hero、课程价值点、学员背书、主CTA、Footer，风格现代清晰，移动端友好。"
+    },
+    {
+      "id": "travel-hospitality",
+      "description": "旅行酒店品牌官网",
+      "requiredCategories": ["navigation", "hero", "story", "socialproof", "cta", "footer"],
+      "expectedProfileId": "pagani-desktop",
+      "maxPages": 1,
+      "prompt": "为精品旅行与酒店品牌生成官网首页，包含导航、沉浸式Hero、品牌故事、信任背书、预订CTA、Footer。"
+    },
+    {
+      "id": "developer-tooling",
+      "description": "开发者工具官网",
+      "requiredCategories": ["navigation", "hero", "approach", "socialproof", "cta", "footer"],
+      "expectedProfileId": "framework-new-desktop",
+      "maxPages": 1,
+      "prompt": "Create a developer tooling landing page with navigation, hero, capabilities/metrics, user trust, CTA, and footer. Keep copy concise and technical."
+    },
+    {
+      "id": "pagani-brand-en",
+      "description": "Pagani 风格超跑品牌首页",
+      "requiredCategories": ["navigation", "hero", "story", "products", "socialproof", "cta", "footer"],
+      "expectedProfileId": "pagani-desktop",
+      "maxPages": 1,
+      "prompt": "Create a cinematic ultra-luxury automotive homepage like Pagani with navigation, hero, story, product showcase, trust, CTA, and footer."
+    },
+    {
+      "id": "pagani-brand-cn-mobile",
+      "description": "Pagani 风格移动端品牌首页",
+      "requiredCategories": ["navigation", "hero", "story", "products", "cta", "footer"],
+      "expectedProfileId": "pagani-mobile",
+      "maxPages": 1,
+      "prompt": "生成一个 mobile 端 Pagani 风格的超跑品牌首页，包含导航、Hero、品牌故事、车型展示、CTA 和页脚，强调沉浸式视觉。"
+    },
+    {
+      "id": "vanmoof-brand-en",
+      "description": "VanMoof 风格高端电动自行车首页",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "socialproof", "cta", "footer"],
+      "expectedProfileId": "vanmoof-desktop",
+      "maxPages": 1,
+      "prompt": "Build a premium e-bike brand website inspired by VanMoof. Include navigation, hero, product lineup, technology section, trust, CTA, and footer."
+    },
+    {
+      "id": "vanmoof-brand-cn-mobile",
+      "description": "VanMoof 风格移动端电动自行车首页",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "cta", "footer"],
+      "expectedProfileId": "vanmoof-mobile",
+      "maxPages": 1,
+      "prompt": "生成一个 mobile 端、类似 VanMoof 的高端电动自行车品牌首页，要有导航、Hero、产品阵列、技术亮点、购买 CTA 和页脚。"
+    },
+    {
+      "id": "nothing-tech-brand-en",
+      "description": "Nothing Tech 风格消费科技首页",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "socialproof", "cta", "footer"],
+      "expectedProfileId": "nothing-tech-desktop",
+      "maxPages": 1,
+      "prompt": "Create a minimalist consumer tech homepage like Nothing Tech. Include navigation, hero, product showcase, feature strip, social proof, CTA, and footer."
+    },
+    {
+      "id": "nothing-tech-mobile-en",
+      "description": "Nothing Tech 风格移动端首页",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "cta", "footer"],
+      "expectedProfileId": "nothing-tech-mobile",
+      "maxPages": 1,
+      "prompt": "Create a mobile-first consumer tech landing page like Nothing Tech with navigation, hero, product cards, features, CTA, and footer."
+    },
+    {
+      "id": "kymeta-enterprise-multipage",
+      "description": "Kymeta 风格企业科技多页官网",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "contact", "cta", "footer"],
+      "expectedProfileId": "kymeta-desktop",
+      "minPages": 6,
+      "categoryScope": "site",
+      "prompt": "Build a satellite connectivity enterprise website like Kymeta. It must include home, products, solutions, about, contact, and privacy pages, plus hero, approach, contact path, CTA, and footer."
+    },
+    {
+      "id": "framework-brand-en",
+      "description": "Framework 风格模块化硬件首页",
+      "requiredCategories": ["navigation", "hero", "products", "story", "cta", "footer"],
+      "expectedProfileId": "framework-new-desktop",
+      "maxPages": 1,
+      "prompt": "Create a modular hardware brand homepage like Framework New. Include navigation, hero, product lineup, brand story, CTA, and footer."
+    },
+    {
+      "id": "fptindustrie-brand-en",
+      "description": "Fptindustrie 风格工业机械多页官网",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "socialproof", "cta", "footer"],
+      "expectedProfileId": "fptindustrie-desktop",
+      "minPages": 6,
+      "categoryScope": "site",
+      "prompt": "Build an industrial machinery website like Fptindustrie with home, products, solutions, cases, about, contact, and privacy pages. Include capability/process, catalog, trust, CTA, and footer."
+    },
+    {
+      "id": "breton-brand-cn-multipage",
+      "description": "Breton 风格工业多页官网",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "cta", "footer"],
+      "expectedProfileId": "breton-desktop",
+      "minPages": 6,
+      "categoryScope": "site",
+      "prompt": "生成类似 Breton 的工业制造企业官网，需要首页、产品页、解决方案页、案例页、关于页、联系页和隐私页。首页必须包含导航、Hero、能力与指标、产品、CTA、页脚。"
+    },
+    {
+      "id": "ionq-brand-en",
+      "description": "IonQ 风格量子/AI 企业首页",
+      "requiredCategories": ["navigation", "hero", "approach", "socialproof", "cta", "footer"],
+      "expectedProfileId": "ionq-desktop",
+      "maxPages": 1,
+      "prompt": "Create a deep-tech enterprise homepage like IonQ with navigation, hero, capability metrics, trust, CTA, and footer."
+    },
+    {
+      "id": "transpa-rent-brand-en",
+      "description": "Transpa Rent 风格消费电商首页",
+      "requiredCategories": ["navigation", "hero", "products", "socialproof", "cta", "footer"],
+      "expectedProfileId": "transpa-rent-desktop",
+      "maxPages": 1,
+      "prompt": "Create a clean lifestyle ecommerce homepage inspired by Transpa Rent. Include navigation, hero, featured products, testimonials, CTA, and footer."
+    },
+    {
+      "id": "bilingual-industrial-multipage",
+      "description": "中英混合工业制造多页官网",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "socialproof", "cta", "footer"],
+      "expectedProfileId": "breton-desktop",
+      "minPages": 6,
+      "categoryScope": "site",
+      "prompt": "Generate an industrial manufacturer website for B2B buyers. 需要首页、products page、solutions page、cases page、about page、contact page 和 privacy page。首页要有 navigation、Hero、capabilities & metrics、catalog、trust、CTA、footer。"
+    },
+    {
+      "id": "bilingual-fintech-singlepage",
+      "description": "中英混合金融科技单页首页",
+      "requiredCategories": ["navigation", "hero", "approach", "socialproof", "cta", "footer"],
+      "expectedProfileId": "ionq-desktop",
+      "maxPages": 1,
+      "prompt": "生成一个 fintech product homepage，面向 enterprise buyers。需要 navigation、Hero、核心能力与指标、客户信任背书、主 CTA、footer。Design 要 clean、credible、modern。"
+    },
+    {
+      "id": "hospitality-editorial-en",
+      "description": "高端酒店编辑感首页",
+      "requiredCategories": ["navigation", "hero", "story", "socialproof", "cta", "footer"],
+      "expectedProfilePattern": "pagani-desktop|auto_sixtine-reference",
+      "maxPages": 1,
+      "prompt": "Create an editorial luxury hospitality homepage with immersive hero, brand story, social proof, booking CTA, and footer."
+    },
+    {
+      "id": "education-framework-en",
+      "description": "Framework 风格教育产品首页",
+      "requiredCategories": ["navigation", "hero", "approach", "socialproof", "cta", "footer"],
+      "expectedProfileId": "framework-new-desktop",
+      "maxPages": 1,
+      "prompt": "Create a modern learning platform homepage with a Framework-like clean hardware-grade aesthetic. Include navigation, hero, value points, learner trust, CTA, and footer."
+    }
+  ]
+}

@@ -1,0 +1,1098 @@
+{
+  "sectionId": "future-research",
+  "sectionName": "Future Research",
+  "sectionKind": "story",
+  "order": 6,
+  "bounds": {
+    "x": 0,
+    "y": 5240,
+    "width": 1440,
+    "height": 820
+  },
+  "directChildCount": 17,
+  "recursiveNodeCount": 18,
+  "treeHash": "f08fc7d97f008959571b412923be5df68dd8b1db26f12582266705aedefcbf36",
+  "blockCount": 17,
+  "blockIndex": [
+    {
+      "blockId": "future-research-bg",
+      "blockName": "future-research-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 820
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bb937874260ef2541a070f82b94c065b3ee2008383de5a27d86619b508a9a57d"
+    },
+    {
+      "blockId": "future-research-shade",
+      "blockName": "future-research-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 820
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "471497d4fa2b78117a4fdcb3367897b76cf25daef8a33eea44e253034d8fb545"
+    },
+    {
+      "blockId": "future-research-shell",
+      "blockName": "future-research-shell",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 40,
+        "y": 210,
+        "width": 760,
+        "height": 300
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b5283c6a760c9abf35c31993718b1877a70a09119ef542753db6d3a10b3bee89"
+    },
+    {
+      "blockId": "future-research-chapter",
+      "blockName": "future-research-chapter",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 66,
+        "y": 234,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1e2eb4259089faad4a2dab0872722f576e914839349f295d6f459e553f39a9ae"
+    },
+    {
+      "blockId": "future-research-count",
+      "blockName": "future-research-count",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 710,
+        "y": 234,
+        "width": 80,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ff6e6652559355ea0baf96da7c733aabb54c4dc1f6df746ce4cf841968a8d490"
+    },
+    {
+      "blockId": "future-research-title",
+      "blockName": "future-research-title",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 66,
+        "y": 280,
+        "width": 640,
+        "height": 80
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a502a00598bace273048859bf3301cf8f0f8cc95aa3acdda151d38146cb3085b"
+    },
+    {
+      "blockId": "future-research-body",
+      "blockName": "future-research-body",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 66,
+        "y": 360,
+        "width": 620,
+        "height": 103
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bb885a3534fb0e89aae1031d2832e065435a1f86e1c544ac176cdfaefdb03e1c"
+    },
+    {
+      "blockId": "future-research-nav-chip-0",
+      "blockName": "future-research-nav-chip-0",
+      "blockType": "rectangle",
+      "order": 7,
+      "bounds": {
+        "x": 66,
+        "y": 448,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b3373c09ff9071fb8d5615f870dee5054c6cdfb9b698f9b69598082a4272a0fd"
+    },
+    {
+      "blockId": "future-research-nav-chip-text-0",
+      "blockName": "future-research-nav-chip-text-0",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 78,
+        "y": 457,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6a026231f29dca8f26096cfd378e23fb3a6e0e2b2f411cf2407ee764f57f8d16"
+    },
+    {
+      "blockId": "future-research-nav-chip-1",
+      "blockName": "future-research-nav-chip-1",
+      "blockType": "rectangle",
+      "order": 9,
+      "bounds": {
+        "x": 150,
+        "y": 448,
+        "width": 122.39999999999999,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "73a6d6f71ef589940ac75c4c7b9e80d1fc3b408c1a9b2e2c429869fac7649ef0"
+    },
+    {
+      "blockId": "future-research-nav-chip-text-1",
+      "blockName": "future-research-nav-chip-text-1",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 162,
+        "y": 457,
+        "width": 98.39999999999999,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "122bfb68195a25e98e572faf925eb89069ba62da23f58944bc21fc4150cf1ed5"
+    },
+    {
+      "blockId": "future-research-nav-chip-2",
+      "blockName": "future-research-nav-chip-2",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 282.4,
+        "y": 448,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c21a0e2c83a0d8b863693ef29274f1ce7a14582326e04a820b5d3c2442c50eb1"
+    },
+    {
+      "blockId": "future-research-nav-chip-text-2",
+      "blockName": "future-research-nav-chip-text-2",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 294.4,
+        "y": 457,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "80cd0e276109126766da408e9af11112d22836e089df1a29038889209ef2c824"
+    },
+    {
+      "blockId": "future-research-nav-chip-3",
+      "blockName": "future-research-nav-chip-3",
+      "blockType": "rectangle",
+      "order": 13,
+      "bounds": {
+        "x": 366.4,
+        "y": 448,
+        "width": 97.8,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0196256beba260c3811eb0ae73ecf285293d2074dbe6cf8a4738d1cba6b212c1"
+    },
+    {
+      "blockId": "future-research-nav-chip-text-3",
+      "blockName": "future-research-nav-chip-text-3",
+      "blockType": "text",
+      "order": 14,
+      "bounds": {
+        "x": 378.4,
+        "y": 457,
+        "width": 73.8,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "26a545164abc71d17222dd5c7869b9140da8f3901147795444803fc4b32c972f"
+    },
+    {
+      "blockId": "future-research-nav-chip-4",
+      "blockName": "future-research-nav-chip-4",
+      "blockType": "rectangle",
+      "order": 15,
+      "bounds": {
+        "x": 474.2,
+        "y": 448,
+        "width": 97.8,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "443c73e4a9d93aac857a63b68e5a1f5891b2f653fdfc5d87e28717fcde419909"
+    },
+    {
+      "blockId": "future-research-nav-chip-text-4",
+      "blockName": "future-research-nav-chip-text-4",
+      "blockType": "text",
+      "order": 16,
+      "bounds": {
+        "x": 486.2,
+        "y": 457,
+        "width": 73.8,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "81e2d381d6231ccaf33bb94ef9093d86a20031601241b848ef2a080fa6f3ff91"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/future-research.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/future-research.jpg",
+      "relativePath": "assets-structured/pagani/future-research.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "future-research-bg",
+      "blockName": "future-research-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 820
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bb937874260ef2541a070f82b94c065b3ee2008383de5a27d86619b508a9a57d",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/future-research.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/future-research.jpg",
+        "relativePath": "assets-structured/pagani/future-research.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-research-bg",
+        "x": 0,
+        "y": 0,
+        "name": "future-research-bg",
+        "width": 1440,
+        "height": 820,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/future-research.jpg",
+          "mode": "fill"
+        }
+      }
+    },
+    {
+      "blockId": "future-research-shade",
+      "blockName": "future-research-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 820
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "471497d4fa2b78117a4fdcb3367897b76cf25daef8a33eea44e253034d8fb545",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-research-shade",
+        "x": 0,
+        "y": 0,
+        "name": "future-research-shade",
+        "width": 1440,
+        "height": 820,
+        "fill": "#0000005A"
+      }
+    },
+    {
+      "blockId": "future-research-shell",
+      "blockName": "future-research-shell",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 40,
+        "y": 210,
+        "width": 760,
+        "height": 300
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b5283c6a760c9abf35c31993718b1877a70a09119ef542753db6d3a10b3bee89",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-research-shell",
+        "x": 40,
+        "y": 210,
+        "name": "future-research-shell",
+        "width": 760,
+        "height": 300,
+        "fill": "#0A0A0ACF"
+      }
+    },
+    {
+      "blockId": "future-research-chapter",
+      "blockName": "future-research-chapter",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 66,
+        "y": 234,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1e2eb4259089faad4a2dab0872722f576e914839349f295d6f459e553f39a9ae",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-research-chapter",
+        "x": 66,
+        "y": 234,
+        "name": "future-research-chapter",
+        "fill": "#B9B3AB",
+        "content": "Future",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.22em"
+      }
+    },
+    {
+      "blockId": "future-research-count",
+      "blockName": "future-research-count",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 710,
+        "y": 234,
+        "width": 80,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ff6e6652559355ea0baf96da7c733aabb54c4dc1f6df746ce4cf841968a8d490",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-research-count",
+        "x": 710,
+        "y": 234,
+        "name": "future-research-count",
+        "fill": "#B9B3AB",
+        "content": "2 / 5",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 80,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      }
+    },
+    {
+      "blockId": "future-research-title",
+      "blockName": "future-research-title",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 66,
+        "y": 280,
+        "width": 640,
+        "height": 80
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a502a00598bace273048859bf3301cf8f0f8cc95aa3acdda151d38146cb3085b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-research-title",
+        "x": 66,
+        "y": 280,
+        "name": "future-research-title",
+        "fill": "#F3F2ED",
+        "content": "The Research",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 52,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 640,
+        "height": 80
+      }
+    },
+    {
+      "blockId": "future-research-body",
+      "blockName": "future-research-body",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 66,
+        "y": 360,
+        "width": 620,
+        "height": 103
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bb885a3534fb0e89aae1031d2832e065435a1f86e1c544ac176cdfaefdb03e1c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-research-body",
+        "x": 66,
+        "y": 360,
+        "name": "future-research-body",
+        "fill": "#F3F2ED",
+        "content": "It is the quest for perfection that drives man to go beyond his limits and exceed, the science to rewrite its rules and the car to evolve constantly, in what can be defined as an ongoing challenge between intellect and creativity.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 17,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 103
+      }
+    },
+    {
+      "blockId": "future-research-nav-chip-0",
+      "blockName": "future-research-nav-chip-0",
+      "blockType": "rectangle",
+      "order": 7,
+      "bounds": {
+        "x": 66,
+        "y": 448,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b3373c09ff9071fb8d5615f870dee5054c6cdfb9b698f9b69598082a4272a0fd",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-research-nav-chip-0",
+        "x": 66,
+        "y": 448,
+        "name": "future-research-nav-chip-0",
+        "width": 74,
+        "height": 32,
+        "fill": "#FFFFFF14",
+        "stroke": {
+          "fill": "#C9B28B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-research-nav-chip-text-0",
+      "blockName": "future-research-nav-chip-text-0",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 78,
+        "y": 457,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6a026231f29dca8f26096cfd378e23fb3a6e0e2b2f411cf2407ee764f57f8d16",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-research-nav-chip-text-0",
+        "x": 78,
+        "y": 457,
+        "name": "future-research-nav-chip-text-0",
+        "fill": "#F3F2ED",
+        "content": "Intro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-research-nav-chip-1",
+      "blockName": "future-research-nav-chip-1",
+      "blockType": "rectangle",
+      "order": 9,
+      "bounds": {
+        "x": 150,
+        "y": 448,
+        "width": 122.39999999999999,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "73a6d6f71ef589940ac75c4c7b9e80d1fc3b408c1a9b2e2c429869fac7649ef0",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-research-nav-chip-1",
+        "x": 150,
+        "y": 448,
+        "name": "future-research-nav-chip-1",
+        "width": 122.39999999999999,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-research-nav-chip-text-1",
+      "blockName": "future-research-nav-chip-text-1",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 162,
+        "y": 457,
+        "width": 98.39999999999999,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "122bfb68195a25e98e572faf925eb89069ba62da23f58944bc21fc4150cf1ed5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-research-nav-chip-text-1",
+        "x": 162,
+        "y": 457,
+        "name": "future-research-nav-chip-text-1",
+        "fill": "#B9B3AB",
+        "content": "The Research",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 98.39999999999999,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-research-nav-chip-2",
+      "blockName": "future-research-nav-chip-2",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 282.4,
+        "y": 448,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c21a0e2c83a0d8b863693ef29274f1ce7a14582326e04a820b5d3c2442c50eb1",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-research-nav-chip-2",
+        "x": 282.4,
+        "y": 448,
+        "name": "future-research-nav-chip-2",
+        "width": 74,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-research-nav-chip-text-2",
+      "blockName": "future-research-nav-chip-text-2",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 294.4,
+        "y": 457,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "80cd0e276109126766da408e9af11112d22836e089df1a29038889209ef2c824",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-research-nav-chip-text-2",
+        "x": 294.4,
+        "y": 457,
+        "name": "future-research-nav-chip-text-2",
+        "fill": "#B9B3AB",
+        "content": "Beauty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-research-nav-chip-3",
+      "blockName": "future-research-nav-chip-3",
+      "blockType": "rectangle",
+      "order": 13,
+      "bounds": {
+        "x": 366.4,
+        "y": 448,
+        "width": 97.8,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0196256beba260c3811eb0ae73ecf285293d2074dbe6cf8a4738d1cba6b212c1",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-research-nav-chip-3",
+        "x": 366.4,
+        "y": 448,
+        "name": "future-research-nav-chip-3",
+        "width": 97.8,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-research-nav-chip-text-3",
+      "blockName": "future-research-nav-chip-text-3",
+      "blockType": "text",
+      "order": 14,
+      "bounds": {
+        "x": 378.4,
+        "y": 457,
+        "width": 73.8,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "26a545164abc71d17222dd5c7869b9140da8f3901147795444803fc4b32c972f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-research-nav-chip-text-3",
+        "x": 378.4,
+        "y": 457,
+        "name": "future-research-nav-chip-text-3",
+        "fill": "#B9B3AB",
+        "content": "The Dream",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 73.8,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-research-nav-chip-4",
+      "blockName": "future-research-nav-chip-4",
+      "blockType": "rectangle",
+      "order": 15,
+      "bounds": {
+        "x": 474.2,
+        "y": 448,
+        "width": 97.8,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "443c73e4a9d93aac857a63b68e5a1f5891b2f653fdfc5d87e28717fcde419909",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-research-nav-chip-4",
+        "x": 474.2,
+        "y": 448,
+        "name": "future-research-nav-chip-4",
+        "width": 97.8,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-research-nav-chip-text-4",
+      "blockName": "future-research-nav-chip-text-4",
+      "blockType": "text",
+      "order": 16,
+      "bounds": {
+        "x": 486.2,
+        "y": 457,
+        "width": 73.8,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "81e2d381d6231ccaf33bb94ef9093d86a20031601241b848ef2a080fa6f3ff91",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-research-nav-chip-text-4",
+        "x": 486.2,
+        "y": 457,
+        "name": "future-research-nav-chip-text-4",
+        "fill": "#B9B3AB",
+        "content": "Certainty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 73.8,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "future-research",
+    "x": 0,
+    "y": 5240,
+    "width": 1440,
+    "height": 820,
+    "name": "Future Research",
+    "fill": "#060606",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "future-research-bg",
+        "x": 0,
+        "y": 0,
+        "name": "future-research-bg",
+        "width": 1440,
+        "height": 820,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/future-research.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "future-research-shade",
+        "x": 0,
+        "y": 0,
+        "name": "future-research-shade",
+        "width": 1440,
+        "height": 820,
+        "fill": "#0000005A"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-research-shell",
+        "x": 40,
+        "y": 210,
+        "name": "future-research-shell",
+        "width": 760,
+        "height": 300,
+        "fill": "#0A0A0ACF"
+      },
+      {
+        "type": "text",
+        "id": "future-research-chapter",
+        "x": 66,
+        "y": 234,
+        "name": "future-research-chapter",
+        "fill": "#B9B3AB",
+        "content": "Future",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.22em"
+      },
+      {
+        "type": "text",
+        "id": "future-research-count",
+        "x": 710,
+        "y": 234,
+        "name": "future-research-count",
+        "fill": "#B9B3AB",
+        "content": "2 / 5",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 80,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      },
+      {
+        "type": "text",
+        "id": "future-research-title",
+        "x": 66,
+        "y": 280,
+        "name": "future-research-title",
+        "fill": "#F3F2ED",
+        "content": "The Research",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 52,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 640,
+        "height": 80
+      },
+      {
+        "type": "text",
+        "id": "future-research-body",
+        "x": 66,
+        "y": 360,
+        "name": "future-research-body",
+        "fill": "#F3F2ED",
+        "content": "It is the quest for perfection that drives man to go beyond his limits and exceed, the science to rewrite its rules and the car to evolve constantly, in what can be defined as an ongoing challenge between intellect and creativity.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 17,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 103
+      },
+      {
+        "type": "rectangle",
+        "id": "future-research-nav-chip-0",
+        "x": 66,
+        "y": 448,
+        "name": "future-research-nav-chip-0",
+        "width": 74,
+        "height": 32,
+        "fill": "#FFFFFF14",
+        "stroke": {
+          "fill": "#C9B28B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-research-nav-chip-text-0",
+        "x": 78,
+        "y": 457,
+        "name": "future-research-nav-chip-text-0",
+        "fill": "#F3F2ED",
+        "content": "Intro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-research-nav-chip-1",
+        "x": 150,
+        "y": 448,
+        "name": "future-research-nav-chip-1",
+        "width": 122.39999999999999,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-research-nav-chip-text-1",
+        "x": 162,
+        "y": 457,
+        "name": "future-research-nav-chip-text-1",
+        "fill": "#B9B3AB",
+        "content": "The Research",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 98.39999999999999,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-research-nav-chip-2",
+        "x": 282.4,
+        "y": 448,
+        "name": "future-research-nav-chip-2",
+        "width": 74,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-research-nav-chip-text-2",
+        "x": 294.4,
+        "y": 457,
+        "name": "future-research-nav-chip-text-2",
+        "fill": "#B9B3AB",
+        "content": "Beauty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-research-nav-chip-3",
+        "x": 366.4,
+        "y": 448,
+        "name": "future-research-nav-chip-3",
+        "width": 97.8,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-research-nav-chip-text-3",
+        "x": 378.4,
+        "y": 457,
+        "name": "future-research-nav-chip-text-3",
+        "fill": "#B9B3AB",
+        "content": "The Dream",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 73.8,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-research-nav-chip-4",
+        "x": 474.2,
+        "y": 448,
+        "name": "future-research-nav-chip-4",
+        "width": 97.8,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-research-nav-chip-text-4",
+        "x": 486.2,
+        "y": 457,
+        "name": "future-research-nav-chip-text-4",
+        "fill": "#B9B3AB",
+        "content": "Certainty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 73.8,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    ]
+  }
+}

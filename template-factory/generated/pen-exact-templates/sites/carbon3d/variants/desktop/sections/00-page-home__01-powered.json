@@ -1,0 +1,1660 @@
+{
+  "sectionId": "powered",
+  "sectionName": "Powered",
+  "sectionKind": "generic",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 760,
+    "width": 1440,
+    "height": 520
+  },
+  "directChildCount": 25,
+  "recursiveNodeCount": 26,
+  "treeHash": "31da416abfc9b01bbcc0e92caffdb1dd23a7b07411ea76a988767a7228a97fa0",
+  "blockCount": 25,
+  "blockIndex": [
+    {
+      "blockId": "powered-bg",
+      "blockName": "powered-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 520
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4388e1b5ddc7aeb5092a442400066371e7f80861357f498803c99a03cb8f347e"
+    },
+    {
+      "blockId": "powered-title-a",
+      "blockName": "powered-title-a",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 430,
+        "y": 58,
+        "width": 300,
+        "height": 83
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "95e3bac720142f701a9d4990f971cfa17b9ef403638e32307fb070125e4e2419"
+    },
+    {
+      "blockId": "powered-title-b",
+      "blockName": "powered-title-b",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 118,
+        "y": 124,
+        "width": 140,
+        "height": 83
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8b1c54bf132b7a445cba40df55ae2379d4dd3d4938ae806ed473f10587055356"
+    },
+    {
+      "blockId": "powered-title-c",
+      "blockName": "powered-title-c",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 208,
+        "y": 190,
+        "width": 220,
+        "height": 83
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f61c076bcf80afc186b6603ed5aa299609f11b49b764eb8a3a7d52214202807e"
+    },
+    {
+      "blockId": "powered-copy",
+      "blockName": "powered-copy",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 430,
+        "y": 270,
+        "width": 520,
+        "height": 70
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "751ce743b5ff291dbbc299ce9241001773c6d05661d9d12d6253eb9085e6069e"
+    },
+    {
+      "blockId": "powered-card-0",
+      "blockName": "powered-card-0",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 40,
+        "y": 50,
+        "width": 140,
+        "height": 140
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e8c84f189b4c90b2175ab0a95bd135489c3c291b849eb66fd883c9ac1b620eaa"
+    },
+    {
+      "blockId": "powered-card-img-0",
+      "blockName": "powered-card-img-0",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 6,
+      "bounds": {
+        "x": 48,
+        "y": 58,
+        "width": 124,
+        "height": 124
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5d6ee44117dc2171748e2bed1c37900a61cf7a15ca6a21e5e7cddf0e595fe32e"
+    },
+    {
+      "blockId": "powered-card-caption-0",
+      "blockName": "powered-card-caption-0",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 40,
+        "y": 164,
+        "width": 140,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "78855d35c6b7b0c9501bac7c770a2ec05f8f414bc2bca819a585fc971b892d68"
+    },
+    {
+      "blockId": "powered-card-label-0",
+      "blockName": "powered-card-label-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 48,
+        "y": 170,
+        "width": 124,
+        "height": 14
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "31c3729776036190ba8ea8bef8b7fc7156d70894859ee70611ad5855bc8ae4b2"
+    },
+    {
+      "blockId": "powered-card-1",
+      "blockName": "powered-card-1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 210,
+        "y": 50,
+        "width": 140,
+        "height": 140
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ba1f755789f845b821c190f91d373dc0a335fdfb8d86f032709bcb94d1c8978e"
+    },
+    {
+      "blockId": "powered-card-img-1",
+      "blockName": "powered-card-img-1",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 10,
+      "bounds": {
+        "x": 218,
+        "y": 58,
+        "width": 124,
+        "height": 124
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fac18eeb092599948b8ba3bcf50f3735ddce5bab26e3befd137270fe4c01998c"
+    },
+    {
+      "blockId": "powered-card-caption-1",
+      "blockName": "powered-card-caption-1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 11,
+      "bounds": {
+        "x": 210,
+        "y": 164,
+        "width": 140,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "13fa9f0a362b26ff1146a5f632d41af8346cfacba907a24f04c31769ffdfe98d"
+    },
+    {
+      "blockId": "powered-card-label-1",
+      "blockName": "powered-card-label-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 12,
+      "bounds": {
+        "x": 218,
+        "y": 170,
+        "width": 124,
+        "height": 14
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fa16ce7df73141f34d7a77524fca406ebd4138da39ed29166bd055956ef4c68e"
+    },
+    {
+      "blockId": "powered-card-2",
+      "blockName": "powered-card-2",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 13,
+      "bounds": {
+        "x": 380,
+        "y": 50,
+        "width": 140,
+        "height": 140
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c006525159f0705efe16c45aee1c634dbc972d22ec58cc4862443a6fd102ab60"
+    },
+    {
+      "blockId": "powered-card-img-2",
+      "blockName": "powered-card-img-2",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 14,
+      "bounds": {
+        "x": 388,
+        "y": 58,
+        "width": 124,
+        "height": 124
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e592290a93c6fd3882dec980efde9a3b5563af9da351938350f4b5a0866798db"
+    },
+    {
+      "blockId": "powered-card-caption-2",
+      "blockName": "powered-card-caption-2",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 15,
+      "bounds": {
+        "x": 380,
+        "y": 164,
+        "width": 140,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cfebe0fea5d415f724faa485f8af2eed60298248d565262a36a8ecef6cb12e7c"
+    },
+    {
+      "blockId": "powered-card-label-2",
+      "blockName": "powered-card-label-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 16,
+      "bounds": {
+        "x": 388,
+        "y": 170,
+        "width": 124,
+        "height": 14
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "21bea7f48f131058af0c791f0936cc3779aaf7cf41c11ce55570fbdfbba7d733"
+    },
+    {
+      "blockId": "powered-card-3",
+      "blockName": "powered-card-3",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 17,
+      "bounds": {
+        "x": 960,
+        "y": 50,
+        "width": 140,
+        "height": 140
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fa535b148793e66d5ab79452f5153ad0a078ce406992017ef683979e52fca977"
+    },
+    {
+      "blockId": "powered-card-img-3",
+      "blockName": "powered-card-img-3",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 18,
+      "bounds": {
+        "x": 968,
+        "y": 58,
+        "width": 124,
+        "height": 124
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d8f25e87aeec8038bf490fea8e9b1c1e6776667511075743dc5b83da76c00b92"
+    },
+    {
+      "blockId": "powered-card-caption-3",
+      "blockName": "powered-card-caption-3",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 19,
+      "bounds": {
+        "x": 960,
+        "y": 164,
+        "width": 140,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a08bdf737166df9297f46b5f41b8df35b34d03da85d6dd0d58b916ddca056c26"
+    },
+    {
+      "blockId": "powered-card-label-3",
+      "blockName": "powered-card-label-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 20,
+      "bounds": {
+        "x": 968,
+        "y": 170,
+        "width": 124,
+        "height": 14
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f64ce5a092b34898f83893afc8f8be88dd1fc6c8a82c8154ae9aa35f16e3c34e"
+    },
+    {
+      "blockId": "powered-card-4",
+      "blockName": "powered-card-4",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 21,
+      "bounds": {
+        "x": 1130,
+        "y": 50,
+        "width": 140,
+        "height": 140
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d47fc63e0a8cb2af6784300089674ce1ca71356bcb7096880d3c83afbdba710b"
+    },
+    {
+      "blockId": "powered-card-img-4",
+      "blockName": "powered-card-img-4",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 22,
+      "bounds": {
+        "x": 1138,
+        "y": 58,
+        "width": 124,
+        "height": 124
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2979020e53afa04628dc85f13231d199d1d14b173db980814947df7909dfdb70"
+    },
+    {
+      "blockId": "powered-card-caption-4",
+      "blockName": "powered-card-caption-4",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 23,
+      "bounds": {
+        "x": 1130,
+        "y": 164,
+        "width": 140,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b805735fb975eac99a6a1489fa664a28b29f81dbc9bde7ef60bfb2f9f4543047"
+    },
+    {
+      "blockId": "powered-card-label-4",
+      "blockName": "powered-card-label-4",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 24,
+      "bounds": {
+        "x": 1138,
+        "y": 170,
+        "width": 124,
+        "height": 14
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "971a4b85baf745909ea8e3d57b9c1e74b2686e5280808731e8f26b0f972ae3eb"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-send-56390b29.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-send-56390b29.jpg",
+      "relativePath": "assets-structured/carbon/home-send-56390b29.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-saddle-96b03382.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-saddle-96b03382.jpg",
+      "relativePath": "assets-structured/carbon/home-saddle-96b03382.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+      "relativePath": "assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-helmet-b170d235.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-helmet-b170d235.jpg",
+      "relativePath": "assets-structured/carbon/home-helmet-b170d235.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-bike-63f07d54.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-bike-63f07d54.jpg",
+      "relativePath": "assets-structured/carbon/home-bike-63f07d54.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "powered-bg",
+      "blockName": "powered-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 520
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4388e1b5ddc7aeb5092a442400066371e7f80861357f498803c99a03cb8f347e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-bg",
+        "name": "powered-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 520,
+        "fill": "#0D1022"
+      }
+    },
+    {
+      "blockId": "powered-title-a",
+      "blockName": "powered-title-a",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 430,
+        "y": 58,
+        "width": 300,
+        "height": 83
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "95e3bac720142f701a9d4990f971cfa17b9ef403638e32307fb070125e4e2419",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "powered-title-a",
+        "name": "powered-title-a",
+        "x": 430,
+        "y": 58,
+        "fill": "#747B9E",
+        "content": "Powered",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 54,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 83
+      }
+    },
+    {
+      "blockId": "powered-title-b",
+      "blockName": "powered-title-b",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 118,
+        "y": 124,
+        "width": 140,
+        "height": 83
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8b1c54bf132b7a445cba40df55ae2379d4dd3d4938ae806ed473f10587055356",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "powered-title-b",
+        "name": "powered-title-b",
+        "x": 118,
+        "y": 124,
+        "fill": "#747B9E",
+        "content": "By",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 54,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 140,
+        "height": 83
+      }
+    },
+    {
+      "blockId": "powered-title-c",
+      "blockName": "powered-title-c",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 208,
+        "y": 190,
+        "width": 220,
+        "height": 83
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f61c076bcf80afc186b6603ed5aa299609f11b49b764eb8a3a7d52214202807e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "powered-title-c",
+        "name": "powered-title-c",
+        "x": 208,
+        "y": 190,
+        "fill": "#5FD3FF",
+        "content": "Carbon",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 54,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 83
+      }
+    },
+    {
+      "blockId": "powered-copy",
+      "blockName": "powered-copy",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 430,
+        "y": 270,
+        "width": 520,
+        "height": 70
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "751ce743b5ff291dbbc299ce9241001773c6d05661d9d12d6253eb9085e6069e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "powered-copy",
+        "name": "powered-copy",
+        "x": 430,
+        "y": 270,
+        "fill": "#AAB0D0",
+        "content": "Our customers create products with exceptional mechanical properties using our advanced photopolymer resins, computational design tools, and 3D printing hardware.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 70
+      }
+    },
+    {
+      "blockId": "powered-card-0",
+      "blockName": "powered-card-0",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 40,
+        "y": 50,
+        "width": 140,
+        "height": 140
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e8c84f189b4c90b2175ab0a95bd135489c3c291b849eb66fd883c9ac1b620eaa",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-0",
+        "name": "powered-card-0",
+        "x": 40,
+        "y": 50,
+        "width": 140,
+        "height": 140,
+        "fill": "#101427",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 12
+      }
+    },
+    {
+      "blockId": "powered-card-img-0",
+      "blockName": "powered-card-img-0",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 6,
+      "bounds": {
+        "x": 48,
+        "y": 58,
+        "width": 124,
+        "height": 124
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5d6ee44117dc2171748e2bed1c37900a61cf7a15ca6a21e5e7cddf0e595fe32e",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-send-56390b29.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-send-56390b29.jpg",
+        "relativePath": "assets-structured/carbon/home-send-56390b29.jpg",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-img-0",
+        "name": "powered-card-img-0",
+        "x": 48,
+        "y": 58,
+        "width": 124,
+        "height": 124,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-send-56390b29.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "powered-card-caption-0",
+      "blockName": "powered-card-caption-0",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 40,
+        "y": 164,
+        "width": 140,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "78855d35c6b7b0c9501bac7c770a2ec05f8f414bc2bca819a585fc971b892d68",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-caption-0",
+        "name": "powered-card-caption-0",
+        "x": 40,
+        "y": 164,
+        "width": 140,
+        "height": 26,
+        "fill": "#00000044",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "powered-card-label-0",
+      "blockName": "powered-card-label-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 48,
+        "y": 170,
+        "width": 124,
+        "height": 14
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "31c3729776036190ba8ea8bef8b7fc7156d70894859ee70611ad5855bc8ae4b2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "powered-card-label-0",
+        "name": "powered-card-label-0",
+        "x": 48,
+        "y": 170,
+        "fill": "#FFFFFF",
+        "content": "SEND Impact Airpads",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 124,
+        "height": 14,
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "powered-card-1",
+      "blockName": "powered-card-1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 210,
+        "y": 50,
+        "width": 140,
+        "height": 140
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ba1f755789f845b821c190f91d373dc0a335fdfb8d86f032709bcb94d1c8978e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-1",
+        "name": "powered-card-1",
+        "x": 210,
+        "y": 50,
+        "width": 140,
+        "height": 140,
+        "fill": "#101427",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-footwear",
+        "cornerRadius": 12
+      }
+    },
+    {
+      "blockId": "powered-card-img-1",
+      "blockName": "powered-card-img-1",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 10,
+      "bounds": {
+        "x": 218,
+        "y": 58,
+        "width": 124,
+        "height": 124
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fac18eeb092599948b8ba3bcf50f3735ddce5bab26e3befd137270fe4c01998c",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-saddle-96b03382.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-saddle-96b03382.jpg",
+        "relativePath": "assets-structured/carbon/home-saddle-96b03382.jpg",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-img-1",
+        "name": "powered-card-img-1",
+        "x": 218,
+        "y": 58,
+        "width": 124,
+        "height": 124,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-saddle-96b03382.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-footwear"
+      }
+    },
+    {
+      "blockId": "powered-card-caption-1",
+      "blockName": "powered-card-caption-1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 11,
+      "bounds": {
+        "x": 210,
+        "y": 164,
+        "width": 140,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "13fa9f0a362b26ff1146a5f632d41af8346cfacba907a24f04c31769ffdfe98d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-caption-1",
+        "name": "powered-card-caption-1",
+        "x": 210,
+        "y": 164,
+        "width": 140,
+        "height": 26,
+        "fill": "#00000044",
+        "href": "#page-footwear"
+      }
+    },
+    {
+      "blockId": "powered-card-label-1",
+      "blockName": "powered-card-label-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 12,
+      "bounds": {
+        "x": 218,
+        "y": 170,
+        "width": 124,
+        "height": 14
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fa16ce7df73141f34d7a77524fca406ebd4138da39ed29166bd055956ef4c68e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "powered-card-label-1",
+        "name": "powered-card-label-1",
+        "x": 218,
+        "y": 170,
+        "fill": "#FFFFFF",
+        "content": "Specialized Mirror",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 124,
+        "height": 14,
+        "href": "#page-footwear",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "powered-card-2",
+      "blockName": "powered-card-2",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 13,
+      "bounds": {
+        "x": 380,
+        "y": 50,
+        "width": 140,
+        "height": 140
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c006525159f0705efe16c45aee1c634dbc972d22ec58cc4862443a6fd102ab60",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-2",
+        "name": "powered-card-2",
+        "x": 380,
+        "y": 50,
+        "width": 140,
+        "height": 140,
+        "fill": "#101427",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-footwear",
+        "cornerRadius": 12
+      }
+    },
+    {
+      "blockId": "powered-card-img-2",
+      "blockName": "powered-card-img-2",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 14,
+      "bounds": {
+        "x": 388,
+        "y": 58,
+        "width": 124,
+        "height": 124
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e592290a93c6fd3882dec980efde9a3b5563af9da351938350f4b5a0866798db",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+        "relativePath": "assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-img-2",
+        "name": "powered-card-img-2",
+        "x": 388,
+        "y": 58,
+        "width": 124,
+        "height": 124,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-footwear"
+      }
+    },
+    {
+      "blockId": "powered-card-caption-2",
+      "blockName": "powered-card-caption-2",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 15,
+      "bounds": {
+        "x": 380,
+        "y": 164,
+        "width": 140,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cfebe0fea5d415f724faa485f8af2eed60298248d565262a36a8ecef6cb12e7c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-caption-2",
+        "name": "powered-card-caption-2",
+        "x": 380,
+        "y": 164,
+        "width": 140,
+        "height": 26,
+        "fill": "#00000044",
+        "href": "#page-footwear"
+      }
+    },
+    {
+      "blockId": "powered-card-label-2",
+      "blockName": "powered-card-label-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 16,
+      "bounds": {
+        "x": 388,
+        "y": 170,
+        "width": 124,
+        "height": 14
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "21bea7f48f131058af0c791f0936cc3779aaf7cf41c11ce55570fbdfbba7d733",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "powered-card-label-2",
+        "name": "powered-card-label-2",
+        "x": 388,
+        "y": 170,
+        "fill": "#FFFFFF",
+        "content": "Adidas 4D",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 124,
+        "height": 14,
+        "href": "#page-footwear",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "powered-card-3",
+      "blockName": "powered-card-3",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 17,
+      "bounds": {
+        "x": 960,
+        "y": 50,
+        "width": 140,
+        "height": 140
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fa535b148793e66d5ab79452f5153ad0a078ce406992017ef683979e52fca977",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-3",
+        "name": "powered-card-3",
+        "x": 960,
+        "y": 50,
+        "width": 140,
+        "height": 140,
+        "fill": "#101427",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-industries",
+        "cornerRadius": 12
+      }
+    },
+    {
+      "blockId": "powered-card-img-3",
+      "blockName": "powered-card-img-3",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 18,
+      "bounds": {
+        "x": 968,
+        "y": 58,
+        "width": 124,
+        "height": 124
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d8f25e87aeec8038bf490fea8e9b1c1e6776667511075743dc5b83da76c00b92",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-helmet-b170d235.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-helmet-b170d235.jpg",
+        "relativePath": "assets-structured/carbon/home-helmet-b170d235.jpg",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-img-3",
+        "name": "powered-card-img-3",
+        "x": 968,
+        "y": 58,
+        "width": 124,
+        "height": 124,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-helmet-b170d235.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-industries"
+      }
+    },
+    {
+      "blockId": "powered-card-caption-3",
+      "blockName": "powered-card-caption-3",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 19,
+      "bounds": {
+        "x": 960,
+        "y": 164,
+        "width": 140,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a08bdf737166df9297f46b5f41b8df35b34d03da85d6dd0d58b916ddca056c26",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-caption-3",
+        "name": "powered-card-caption-3",
+        "x": 960,
+        "y": 164,
+        "width": 140,
+        "height": 26,
+        "fill": "#00000044",
+        "href": "#page-industries"
+      }
+    },
+    {
+      "blockId": "powered-card-label-3",
+      "blockName": "powered-card-label-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 20,
+      "bounds": {
+        "x": 968,
+        "y": 170,
+        "width": 124,
+        "height": 14
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f64ce5a092b34898f83893afc8f8be88dd1fc6c8a82c8154ae9aa35f16e3c34e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "powered-card-label-3",
+        "name": "powered-card-label-3",
+        "x": 968,
+        "y": 170,
+        "fill": "#FFFFFF",
+        "content": "Riddell Helmet",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 124,
+        "height": 14,
+        "href": "#page-industries",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "powered-card-4",
+      "blockName": "powered-card-4",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 21,
+      "bounds": {
+        "x": 1130,
+        "y": 50,
+        "width": 140,
+        "height": 140
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d47fc63e0a8cb2af6784300089674ce1ca71356bcb7096880d3c83afbdba710b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-4",
+        "name": "powered-card-4",
+        "x": 1130,
+        "y": 50,
+        "width": 140,
+        "height": 140,
+        "fill": "#101427",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 12
+      }
+    },
+    {
+      "blockId": "powered-card-img-4",
+      "blockName": "powered-card-img-4",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 22,
+      "bounds": {
+        "x": 1138,
+        "y": 58,
+        "width": 124,
+        "height": 124
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2979020e53afa04628dc85f13231d199d1d14b173db980814947df7909dfdb70",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-bike-63f07d54.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-bike-63f07d54.jpg",
+        "relativePath": "assets-structured/carbon/home-bike-63f07d54.jpg",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-img-4",
+        "name": "powered-card-img-4",
+        "x": 1138,
+        "y": 58,
+        "width": 124,
+        "height": 124,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-bike-63f07d54.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "powered-card-caption-4",
+      "blockName": "powered-card-caption-4",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 23,
+      "bounds": {
+        "x": 1130,
+        "y": 164,
+        "width": 140,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b805735fb975eac99a6a1489fa664a28b29f81dbc9bde7ef60bfb2f9f4543047",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "powered-card-caption-4",
+        "name": "powered-card-caption-4",
+        "x": 1130,
+        "y": 164,
+        "width": 140,
+        "height": 26,
+        "fill": "#00000044",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "powered-card-label-4",
+      "blockName": "powered-card-label-4",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 24,
+      "bounds": {
+        "x": 1138,
+        "y": 170,
+        "width": 124,
+        "height": 14
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "971a4b85baf745909ea8e3d57b9c1e74b2686e5280808731e8f26b0f972ae3eb",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "powered-card-label-4",
+        "name": "powered-card-label-4",
+        "x": 1138,
+        "y": 170,
+        "fill": "#FFFFFF",
+        "content": "KU Cycle",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 124,
+        "height": 14,
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "powered",
+    "name": "Powered",
+    "x": 0,
+    "y": 760,
+    "width": 1440,
+    "height": 520,
+    "fill": "#0D1022",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "powered-bg",
+        "name": "powered-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 520,
+        "fill": "#0D1022"
+      },
+      {
+        "type": "text",
+        "id": "powered-title-a",
+        "name": "powered-title-a",
+        "x": 430,
+        "y": 58,
+        "fill": "#747B9E",
+        "content": "Powered",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 54,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 83
+      },
+      {
+        "type": "text",
+        "id": "powered-title-b",
+        "name": "powered-title-b",
+        "x": 118,
+        "y": 124,
+        "fill": "#747B9E",
+        "content": "By",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 54,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 140,
+        "height": 83
+      },
+      {
+        "type": "text",
+        "id": "powered-title-c",
+        "name": "powered-title-c",
+        "x": 208,
+        "y": 190,
+        "fill": "#5FD3FF",
+        "content": "Carbon",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 54,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 83
+      },
+      {
+        "type": "text",
+        "id": "powered-copy",
+        "name": "powered-copy",
+        "x": 430,
+        "y": 270,
+        "fill": "#AAB0D0",
+        "content": "Our customers create products with exceptional mechanical properties using our advanced photopolymer resins, computational design tools, and 3D printing hardware.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 70
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-0",
+        "name": "powered-card-0",
+        "x": 40,
+        "y": 50,
+        "width": 140,
+        "height": 140,
+        "fill": "#101427",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 12
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-img-0",
+        "name": "powered-card-img-0",
+        "x": 48,
+        "y": 58,
+        "width": 124,
+        "height": 124,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-send-56390b29.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-caption-0",
+        "name": "powered-card-caption-0",
+        "x": 40,
+        "y": 164,
+        "width": 140,
+        "height": 26,
+        "fill": "#00000044",
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "powered-card-label-0",
+        "name": "powered-card-label-0",
+        "x": 48,
+        "y": 170,
+        "fill": "#FFFFFF",
+        "content": "SEND Impact Airpads",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 124,
+        "height": 14,
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-1",
+        "name": "powered-card-1",
+        "x": 210,
+        "y": 50,
+        "width": 140,
+        "height": 140,
+        "fill": "#101427",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-footwear",
+        "cornerRadius": 12
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-img-1",
+        "name": "powered-card-img-1",
+        "x": 218,
+        "y": 58,
+        "width": 124,
+        "height": 124,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-saddle-96b03382.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-footwear"
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-caption-1",
+        "name": "powered-card-caption-1",
+        "x": 210,
+        "y": 164,
+        "width": 140,
+        "height": 26,
+        "fill": "#00000044",
+        "href": "#page-footwear"
+      },
+      {
+        "type": "text",
+        "id": "powered-card-label-1",
+        "name": "powered-card-label-1",
+        "x": 218,
+        "y": 170,
+        "fill": "#FFFFFF",
+        "content": "Specialized Mirror",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 124,
+        "height": 14,
+        "href": "#page-footwear",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-2",
+        "name": "powered-card-2",
+        "x": 380,
+        "y": 50,
+        "width": 140,
+        "height": 140,
+        "fill": "#101427",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-footwear",
+        "cornerRadius": 12
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-img-2",
+        "name": "powered-card-img-2",
+        "x": 388,
+        "y": 58,
+        "width": 124,
+        "height": 124,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-footwear"
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-caption-2",
+        "name": "powered-card-caption-2",
+        "x": 380,
+        "y": 164,
+        "width": 140,
+        "height": 26,
+        "fill": "#00000044",
+        "href": "#page-footwear"
+      },
+      {
+        "type": "text",
+        "id": "powered-card-label-2",
+        "name": "powered-card-label-2",
+        "x": 388,
+        "y": 170,
+        "fill": "#FFFFFF",
+        "content": "Adidas 4D",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 124,
+        "height": 14,
+        "href": "#page-footwear",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-3",
+        "name": "powered-card-3",
+        "x": 960,
+        "y": 50,
+        "width": 140,
+        "height": 140,
+        "fill": "#101427",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-industries",
+        "cornerRadius": 12
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-img-3",
+        "name": "powered-card-img-3",
+        "x": 968,
+        "y": 58,
+        "width": 124,
+        "height": 124,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-helmet-b170d235.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-industries"
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-caption-3",
+        "name": "powered-card-caption-3",
+        "x": 960,
+        "y": 164,
+        "width": 140,
+        "height": 26,
+        "fill": "#00000044",
+        "href": "#page-industries"
+      },
+      {
+        "type": "text",
+        "id": "powered-card-label-3",
+        "name": "powered-card-label-3",
+        "x": 968,
+        "y": 170,
+        "fill": "#FFFFFF",
+        "content": "Riddell Helmet",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 124,
+        "height": 14,
+        "href": "#page-industries",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-4",
+        "name": "powered-card-4",
+        "x": 1130,
+        "y": 50,
+        "width": 140,
+        "height": 140,
+        "fill": "#101427",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 12
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-img-4",
+        "name": "powered-card-img-4",
+        "x": 1138,
+        "y": 58,
+        "width": 124,
+        "height": 124,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-bike-63f07d54.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "powered-card-caption-4",
+        "name": "powered-card-caption-4",
+        "x": 1130,
+        "y": 164,
+        "width": 140,
+        "height": 26,
+        "fill": "#00000044",
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "powered-card-label-4",
+        "name": "powered-card-label-4",
+        "x": 1138,
+        "y": 170,
+        "fill": "#FFFFFF",
+        "content": "KU Cycle",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 124,
+        "height": 14,
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "sectionId": "page-news-events-navbar",
+  "sectionName": "Navbar",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 62
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "a106e2fb71d0731e6ce76984047864b872b1714ce0b073e61d7b1475c01e1c2c",
+  "blockCount": 5,
+  "blockIndex": [
+    {
+      "blockId": "page-news-events-navbar-bg",
+      "blockName": "page-news-events-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 62
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2ee48041cc76500af96d03264ec5f69f6be96d1b80bb17b0bb133d74e47c204a"
+    },
+    {
+      "blockId": "page-news-events-navbar-logo",
+      "blockName": "page-news-events-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 14,
+        "width": 92,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3ab83dacfaa1fe64c561ca471bf964ef56441e651109543e259a70f6602670c9"
+    },
+    {
+      "blockId": "page-news-events-navbar-search",
+      "blockName": "page-news-events-navbar-search",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 278,
+        "y": 22,
+        "width": 24,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1a3e20e88e1d060758acab2aca5887acb45394dcb9a5f55579bdd92d05aac319"
+    },
+    {
+      "blockId": "page-news-events-navbar-lang",
+      "blockName": "page-news-events-navbar-lang",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 310,
+        "y": 24,
+        "width": 20,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "af6c5fe31985de1107eef8220ea7d4a628db8b87f662e14e046479a9b3de45f9"
+    },
+    {
+      "blockId": "page-news-events-navbar-menu",
+      "blockName": "page-news-events-navbar-menu",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 352,
+        "y": 22,
+        "width": 20,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9d51c21e180cbfe99854979704d8b7ea8b6e446f53ccbf8d978c79384a2fac35"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "page-news-events-navbar-bg",
+      "blockName": "page-news-events-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 62
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2ee48041cc76500af96d03264ec5f69f6be96d1b80bb17b0bb133d74e47c204a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-news-events-navbar-bg",
+        "name": "page-news-events-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 62,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "page-news-events-navbar-logo",
+      "blockName": "page-news-events-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 14,
+        "width": 92,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3ab83dacfaa1fe64c561ca471bf964ef56441e651109543e259a70f6602670c9",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-news-events-navbar-logo",
+        "name": "page-news-events-navbar-logo",
+        "x": 18,
+        "y": 14,
+        "width": 92,
+        "height": 32,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "page-news-events-navbar-search",
+      "blockName": "page-news-events-navbar-search",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 278,
+        "y": 22,
+        "width": 24,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1a3e20e88e1d060758acab2aca5887acb45394dcb9a5f55579bdd92d05aac319",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-news-events-navbar-search",
+        "name": "page-news-events-navbar-search",
+        "x": 278,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 24,
+        "height": 24,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "page-news-events-navbar-lang",
+      "blockName": "page-news-events-navbar-lang",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 310,
+        "y": 24,
+        "width": 20,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "af6c5fe31985de1107eef8220ea7d4a628db8b87f662e14e046479a9b3de45f9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-news-events-navbar-lang",
+        "name": "page-news-events-navbar-lang",
+        "x": 310,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "🌐",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 16,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-about"
+      }
+    },
+    {
+      "blockId": "page-news-events-navbar-menu",
+      "blockName": "page-news-events-navbar-menu",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 352,
+        "y": 22,
+        "width": 20,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9d51c21e180cbfe99854979704d8b7ea8b6e446f53ccbf8d978c79384a2fac35",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-news-events-navbar-menu",
+        "name": "page-news-events-navbar-menu",
+        "x": 352,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-products"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "page-news-events-navbar",
+    "name": "Navbar",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 62,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-news-events-navbar-bg",
+        "name": "page-news-events-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 62,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-navbar-logo",
+        "name": "page-news-events-navbar-logo",
+        "x": 18,
+        "y": 14,
+        "width": 92,
+        "height": 32,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-navbar-search",
+        "name": "page-news-events-navbar-search",
+        "x": 278,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 24,
+        "height": 24,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-navbar-lang",
+        "name": "page-news-events-navbar-lang",
+        "x": 310,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "🌐",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 16,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-about"
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-navbar-menu",
+        "name": "page-news-events-navbar-menu",
+        "x": 352,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-products"
+      }
+    ]
+  }
+}

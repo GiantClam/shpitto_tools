@@ -1,0 +1,311 @@
+{
+  "sectionId": "company-profile",
+  "sectionName": "Company Profile",
+  "sectionKind": "generic",
+  "order": 10,
+  "bounds": {
+    "x": 0,
+    "y": 3260,
+    "width": 1440,
+    "height": 340
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "054a2ddc85c9807adb034036c777fd55df6ba1569d1463dea2601c996d156a73",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "profile-title",
+      "blockName": "profile-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 40,
+        "y": 20,
+        "width": 300,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bcb7dab1701749153f4e79c384319c663a1ba7f6689c3ee97b24e390c2d353f0"
+    },
+    {
+      "blockId": "profile-copy",
+      "blockName": "profile-copy",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 60,
+        "width": 520,
+        "height": 66
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1e0717207934c05bd69177875ff878959407d7d2bb16156500f91e794d2b4470"
+    },
+    {
+      "blockId": "profile-img-0",
+      "blockName": "profile-img-0",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 2,
+      "bounds": {
+        "x": 760,
+        "y": 100,
+        "width": 240,
+        "height": 180
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5a9d58f97aa4844f98e3dbcd0b439b5182edc633ce301cc3251dcdbf7aa6c067"
+    },
+    {
+      "blockId": "profile-img-1",
+      "blockName": "profile-img-1",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 3,
+      "bounds": {
+        "x": 1040,
+        "y": 100,
+        "width": 240,
+        "height": 180
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8501c95fbd6e288bbdf189ab6a90ac508bf06a35eca34b2345bc25124be81a3f"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/bio-142e1546.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/bio-142e1546.jpg",
+      "relativePath": "assets-structured/breton/bio-142e1546.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/nik-815f020e.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/nik-815f020e.jpg",
+      "relativePath": "assets-structured/breton/nik-815f020e.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "profile-title",
+      "blockName": "profile-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 40,
+        "y": 20,
+        "width": 300,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bcb7dab1701749153f4e79c384319c663a1ba7f6689c3ee97b24e390c2d353f0",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "profile-title",
+        "name": "profile-title",
+        "x": 40,
+        "y": 20,
+        "fill": "#232529",
+        "content": "Breton Company profile",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "profile-copy",
+      "blockName": "profile-copy",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 60,
+        "width": 520,
+        "height": 66
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1e0717207934c05bd69177875ff878959407d7d2bb16156500f91e794d2b4470",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "profile-copy",
+        "name": "profile-copy",
+        "x": 40,
+        "y": 60,
+        "fill": "#666B73",
+        "content": "Breton is a global industrial group focused on advanced technologies, materials and process innovation, with a strong emphasis on research and long-term partnerships.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 66
+      }
+    },
+    {
+      "blockId": "profile-img-0",
+      "blockName": "profile-img-0",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 2,
+      "bounds": {
+        "x": 760,
+        "y": 100,
+        "width": 240,
+        "height": 180
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5a9d58f97aa4844f98e3dbcd0b439b5182edc633ce301cc3251dcdbf7aa6c067",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/bio-142e1546.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/bio-142e1546.jpg",
+        "relativePath": "assets-structured/breton/bio-142e1546.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "profile-img-0",
+        "name": "profile-img-0",
+        "x": 760,
+        "y": 100,
+        "width": 240,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/bio-142e1546.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-about"
+      }
+    },
+    {
+      "blockId": "profile-img-1",
+      "blockName": "profile-img-1",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 3,
+      "bounds": {
+        "x": 1040,
+        "y": 100,
+        "width": 240,
+        "height": 180
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8501c95fbd6e288bbdf189ab6a90ac508bf06a35eca34b2345bc25124be81a3f",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/nik-815f020e.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/nik-815f020e.jpg",
+        "relativePath": "assets-structured/breton/nik-815f020e.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "profile-img-1",
+        "name": "profile-img-1",
+        "x": 1040,
+        "y": 100,
+        "width": 240,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/nik-815f020e.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-about"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "company-profile",
+    "name": "Company Profile",
+    "x": 0,
+    "y": 3260,
+    "width": 1440,
+    "height": 340,
+    "fill": "#ECECEC",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "profile-title",
+        "name": "profile-title",
+        "x": 40,
+        "y": 20,
+        "fill": "#232529",
+        "content": "Breton Company profile",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "profile-copy",
+        "name": "profile-copy",
+        "x": 40,
+        "y": 60,
+        "fill": "#666B73",
+        "content": "Breton is a global industrial group focused on advanced technologies, materials and process innovation, with a strong emphasis on research and long-term partnerships.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 66
+      },
+      {
+        "type": "rectangle",
+        "id": "profile-img-0",
+        "name": "profile-img-0",
+        "x": 760,
+        "y": 100,
+        "width": 240,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/bio-142e1546.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-about"
+      },
+      {
+        "type": "rectangle",
+        "id": "profile-img-1",
+        "name": "profile-img-1",
+        "x": 1040,
+        "y": 100,
+        "width": 240,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/nik-815f020e.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-about"
+      }
+    ]
+  }
+}

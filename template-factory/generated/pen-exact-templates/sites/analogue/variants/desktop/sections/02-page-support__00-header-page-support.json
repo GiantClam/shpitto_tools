@@ -1,0 +1,491 @@
+{
+  "sectionId": "header-page-support",
+  "sectionName": "Header",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 84
+  },
+  "directChildCount": 7,
+  "recursiveNodeCount": 8,
+  "treeHash": "d187cec6aa144a0de73560789c249248efc7a26725832bf5f55dfc5eb32934b1",
+  "blockCount": 7,
+  "blockIndex": [
+    {
+      "blockId": "header-bg",
+      "blockName": "header-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7"
+    },
+    {
+      "blockId": "header-brand",
+      "blockName": "header-brand",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 24,
+        "width": 240,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "385f5ca2f10fb79be5debc15248b33114b773d71459e1d7f3a06b4e2bd2d549d"
+    },
+    {
+      "blockId": "nav-page-products",
+      "blockName": "nav-page-products",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 840,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "319c83b7f8af29b052bc86cfd1b7bff8105a01f8872d6f7dcc95e5d9687c3219"
+    },
+    {
+      "blockId": "nav-page-support",
+      "blockName": "nav-page-support",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 948,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a8ece9e59d31579f750fd89c65b5b4976c5ce258de3ad63fbd1ea57945300741"
+    },
+    {
+      "blockId": "nav-page-announcements",
+      "blockName": "nav-page-announcements",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 1056,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2d74537c52d78d1fea19bd4a31457e9b8c0ea8bb52f1c55d4783ee826a76b90f"
+    },
+    {
+      "blockId": "nav-page-developer",
+      "blockName": "nav-page-developer",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 1164,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1ef11c37a6310b8b327922eb684452f661e307997f8bd62dd3b6a0b752ccb4cf"
+    },
+    {
+      "blockId": "nav-page-editions",
+      "blockName": "nav-page-editions",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 1272,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1fdd9f45b2cde8970e0df15ff5b214fa7b7603f07547292d011a180eec70b54f"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "header-bg",
+      "blockName": "header-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "header-bg",
+        "name": "header-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#FFFFFF"
+      }
+    },
+    {
+      "blockId": "header-brand",
+      "blockName": "header-brand",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 24,
+        "width": 240,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "385f5ca2f10fb79be5debc15248b33114b773d71459e1d7f3a06b4e2bd2d549d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "header-brand",
+        "name": "header-brand",
+        "x": 40,
+        "y": 24,
+        "fill": "#111111",
+        "content": "Analogue",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 28
+      }
+    },
+    {
+      "blockId": "nav-page-products",
+      "blockName": "nav-page-products",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 840,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "319c83b7f8af29b052bc86cfd1b7bff8105a01f8872d6f7dcc95e5d9687c3219",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-products",
+        "name": "nav-page-products",
+        "x": 840,
+        "y": 30,
+        "fill": "#111111",
+        "content": "PRODUCTS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-support",
+      "blockName": "nav-page-support",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 948,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a8ece9e59d31579f750fd89c65b5b4976c5ce258de3ad63fbd1ea57945300741",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-support",
+        "name": "nav-page-support",
+        "x": 948,
+        "y": 30,
+        "fill": "#111111",
+        "content": "SUPPORT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-support",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-announcements",
+      "blockName": "nav-page-announcements",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 1056,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2d74537c52d78d1fea19bd4a31457e9b8c0ea8bb52f1c55d4783ee826a76b90f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-announcements",
+        "name": "nav-page-announcements",
+        "x": 1056,
+        "y": 30,
+        "fill": "#111111",
+        "content": "ANNOUNCEMENTS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-announcements",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-developer",
+      "blockName": "nav-page-developer",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 1164,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1ef11c37a6310b8b327922eb684452f661e307997f8bd62dd3b6a0b752ccb4cf",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-developer",
+        "name": "nav-page-developer",
+        "x": 1164,
+        "y": 30,
+        "fill": "#111111",
+        "content": "DEVELOPER",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-developer",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-editions",
+      "blockName": "nav-page-editions",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 1272,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1fdd9f45b2cde8970e0df15ff5b214fa7b7603f07547292d011a180eec70b54f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-editions",
+        "name": "nav-page-editions",
+        "x": 1272,
+        "y": 30,
+        "fill": "#111111",
+        "content": "EDITIONS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-editions",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "header-page-support",
+    "name": "Header",
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 84,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "header-bg",
+        "name": "header-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#FFFFFF"
+      },
+      {
+        "type": "text",
+        "id": "header-brand",
+        "name": "header-brand",
+        "x": 40,
+        "y": 24,
+        "fill": "#111111",
+        "content": "Analogue",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 28
+      },
+      {
+        "type": "text",
+        "id": "nav-page-products",
+        "name": "nav-page-products",
+        "x": 840,
+        "y": 30,
+        "fill": "#111111",
+        "content": "PRODUCTS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-support",
+        "name": "nav-page-support",
+        "x": 948,
+        "y": 30,
+        "fill": "#111111",
+        "content": "SUPPORT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-support",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-announcements",
+        "name": "nav-page-announcements",
+        "x": 1056,
+        "y": 30,
+        "fill": "#111111",
+        "content": "ANNOUNCEMENTS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-announcements",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-developer",
+        "name": "nav-page-developer",
+        "x": 1164,
+        "y": 30,
+        "fill": "#111111",
+        "content": "DEVELOPER",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-developer",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-editions",
+        "name": "nav-page-editions",
+        "x": 1272,
+        "y": 30,
+        "fill": "#111111",
+        "content": "EDITIONS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-editions",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

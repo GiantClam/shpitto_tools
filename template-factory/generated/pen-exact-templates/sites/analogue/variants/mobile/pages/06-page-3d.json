@@ -1,0 +1,1574 @@
+{
+  "pageId": "page-3d",
+  "pageName": "3D",
+  "pageType": "generic",
+  "order": 6,
+  "bounds": {
+    "x": 1040,
+    "y": 0,
+    "width": 390,
+    "height": 1996
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "0cfad1a45d13b18a8919a5d47ad4ecb3d7f66a587db01ebd6ecb985ed51e5824",
+  "directChildCount": 36,
+  "recursiveNodeCount": 45,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "header-page-3d",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "1975eca28a75db7b8bee2381c04b81504231b823e25fcb02086b1df6cef0bc0e",
+      "blockCount": 3
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1746,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "2813e010ddd31063c116e7bb0d33fd4f69b1513a479c037b24c30d3f59aa3b09",
+      "blockCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "header-page-3d",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "1975eca28a75db7b8bee2381c04b81504231b823e25fcb02086b1df6cef0bc0e",
+      "blockCount": 3,
+      "blockIndex": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db"
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3fad64e1f240e063c860a01267c07ed7d0586511d161c7b06e96fda59e76e6ae"
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b087b3d99c81249062fabb708d5043227c430fd8e4166762497fe0cc8764e110"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3fad64e1f240e063c860a01267c07ed7d0586511d161c7b06e96fda59e76e6ae",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          }
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b087b3d99c81249062fabb708d5043227c430fd8e4166762497fe0cc8764e110",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "header-page-3d",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1746,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "2813e010ddd31063c116e7bb0d33fd4f69b1513a479c037b24c30d3f59aa3b09",
+      "blockCount": 5,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f376df9ebf891ed1d89c5236f30961671f267ef85a1da8f44fb69cacae859970"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "35ba42ab8a6d205c35d35c6cee99806fee7ecdc591b1d7810c207c2a2fa7795f"
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "04e10cf421512ebfaf3feb95206ba60841bff4e04cb7cdee2f0f585972c64499"
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eaad21fdb86f142f396255c27dd69d7adbe1012c3bd45623f5dd21d29a786897"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "83bd82b9157dff5ec541c00599715d7fba85a7eec79776766b3ad3ff7ee51f72"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f376df9ebf891ed1d89c5236f30961671f267ef85a1da8f44fb69cacae859970",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#121212"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "35ba42ab8a6d205c35d35c6cee99806fee7ecdc591b1d7810c207c2a2fa7795f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F2F0EC",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "04e10cf421512ebfaf3feb95206ba60841bff4e04cb7cdee2f0f585972c64499",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Products Support Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eaad21fdb86f142f396255c27dd69d7adbe1012c3bd45623f5dd21d29a786897",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Developer Editions 3D Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "83bd82b9157dff5ec541c00599715d7fba85a7eec79776766b3ad3ff7ee51f72",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1746,
+        "width": 390,
+        "height": 250,
+        "fill": "#121212",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#121212"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F2F0EC",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Products Support Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Developer Editions 3D Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 8,
+  "looseNodeCount": 34,
+  "looseNodes": [
+    {
+      "id": "page-3d-bg",
+      "name": "page-3d-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 100
+    },
+    {
+      "id": "page-3d-hero",
+      "name": "page-3d-hero",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-3d-overlay",
+      "name": "page-3d-overlay",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-3d-panel",
+      "name": "page-3d-panel",
+      "type": "rectangle",
+      "width": 354,
+      "height": 1382
+    },
+    {
+      "id": "page-3d-crumb",
+      "name": "page-3d-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 18
+    },
+    {
+      "id": "page-3d-title",
+      "name": "page-3d-title",
+      "type": "text",
+      "width": 320,
+      "height": 49
+    },
+    {
+      "id": "page-3d-subtitle",
+      "name": "page-3d-subtitle",
+      "type": "text",
+      "width": 320,
+      "height": 25
+    },
+    {
+      "id": "page-3d-btn-home-box",
+      "name": "page-3d-btn-home-box",
+      "type": "rectangle",
+      "width": 128,
+      "height": 38
+    },
+    {
+      "id": "page-3d-btn-home-text",
+      "name": "page-3d-btn-home-text",
+      "type": "text",
+      "width": 100,
+      "height": 18
+    },
+    {
+      "id": "page-3d-btn-peer-box",
+      "name": "page-3d-btn-peer-box",
+      "type": "rectangle",
+      "width": 148,
+      "height": 38
+    },
+    {
+      "id": "page-3d-btn-peer-text",
+      "name": "page-3d-btn-peer-text",
+      "type": "text",
+      "width": 120,
+      "height": 18
+    },
+    {
+      "id": "page-3d-kicker",
+      "name": "page-3d-kicker",
+      "type": "text",
+      "width": 306,
+      "height": 18
+    },
+    {
+      "id": "page-3d-panel-title",
+      "name": "page-3d-panel-title",
+      "type": "text",
+      "width": 306,
+      "height": 41
+    },
+    {
+      "id": "page-3d-p-0",
+      "name": "page-3d-p-0",
+      "type": "text",
+      "width": 306,
+      "height": 25
+    },
+    {
+      "id": "page-3d-p-1",
+      "name": "page-3d-p-1",
+      "type": "text",
+      "width": 306,
+      "height": 283
+    },
+    {
+      "id": "page-3d-p-2",
+      "name": "page-3d-p-2",
+      "type": "text",
+      "width": 306,
+      "height": 210
+    },
+    {
+      "id": "page-3d-p-3",
+      "name": "page-3d-p-3",
+      "type": "text",
+      "width": 306,
+      "height": 210
+    },
+    {
+      "id": "page-3d-feature",
+      "name": "page-3d-feature",
+      "type": "rectangle",
+      "width": 306,
+      "height": 220
+    },
+    {
+      "id": "page-3d-feature-2",
+      "name": "page-3d-feature-2",
+      "type": "rectangle",
+      "width": 306,
+      "height": 180
+    },
+    {
+      "id": "page-3d-card-0",
+      "name": "page-3d-card-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 136
+    },
+    {
+      "id": "page-3d-card-img-0",
+      "name": "page-3d-card-img-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 82
+    },
+    {
+      "id": "page-3d-card-title-0",
+      "name": "page-3d-card-title-0",
+      "type": "text",
+      "width": 286,
+      "height": 18
+    },
+    {
+      "id": "page-3d-card-copy-0",
+      "name": "page-3d-card-copy-0",
+      "type": "text",
+      "width": 286,
+      "height": 22
+    },
+    {
+      "id": "page-3d-card-1",
+      "name": "page-3d-card-1",
+      "type": "rectangle",
+      "width": 306,
+      "height": 136
+    },
+    {
+      "id": "page-3d-card-img-1",
+      "name": "page-3d-card-img-1",
+      "type": "rectangle",
+      "width": 306,
+      "height": 82
+    },
+    {
+      "id": "page-3d-card-title-1",
+      "name": "page-3d-card-title-1",
+      "type": "text",
+      "width": 286,
+      "height": 18
+    },
+    {
+      "id": "page-3d-card-copy-1",
+      "name": "page-3d-card-copy-1",
+      "type": "text",
+      "width": 286,
+      "height": 53
+    },
+    {
+      "id": "page-3d-related-title",
+      "name": "page-3d-related-title",
+      "type": "text",
+      "width": 180,
+      "height": 18
+    },
+    {
+      "id": "page-3d-related-0-box",
+      "name": "page-3d-related-0-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-3d-related-0-text",
+      "name": "page-3d-related-0-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-3d-related-1-box",
+      "name": "page-3d-related-1-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-3d-related-1-text",
+      "name": "page-3d-related-1-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-3d-related-2-box",
+      "name": "page-3d-related-2-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-3d-related-2-text",
+      "name": "page-3d-related-2-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+      "relativePath": "assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+      "relativePath": "assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-4-166a335e.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-3d-img-4-166a335e.jpg",
+      "relativePath": "assets-structured/analogue/page-3d-img-4-166a335e.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+      "relativePath": "assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-4-166a335e.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-3d-img-4-166a335e.jpg",
+      "relativePath": "assets-structured/analogue/page-3d-img-4-166a335e.jpg",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-3d",
+    "name": "3D",
+    "x": 1040,
+    "y": 0,
+    "width": 390,
+    "height": 1996,
+    "fill": "#F6F4F1",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-3d-bg",
+        "name": "page-3d-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 100,
+        "fill": "#F6F4F1"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-hero",
+        "name": "page-3d-hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+          "mode": "cover"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-overlay",
+        "name": "page-3d-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": "#00000055"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-panel",
+        "name": "page-3d-panel",
+        "x": 18,
+        "y": 344,
+        "width": 354,
+        "height": 1382,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "cornerRadius": 20
+      },
+      {
+        "type": "frame",
+        "id": "header-page-3d",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-3d-crumb",
+        "name": "page-3d-crumb",
+        "x": 18,
+        "y": 82,
+        "fill": "#FFFFFF",
+        "content": "Home / 3D",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-3d-title",
+        "name": "page-3d-title",
+        "x": 18,
+        "y": 106,
+        "fill": "#FFFFFF",
+        "content": "3D - Analogue",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 30,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      },
+      {
+        "type": "text",
+        "id": "page-3d-subtitle",
+        "name": "page-3d-subtitle",
+        "x": 18,
+        "y": 184,
+        "fill": "#F0F0EE",
+        "content": "The Future is here.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 25
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-btn-home-box",
+        "name": "page-3d-btn-home-box",
+        "x": 18,
+        "y": 252,
+        "width": 128,
+        "height": 38,
+        "fill": "#1C4BFF",
+        "stroke": {
+          "fill": "#1C4BFF",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-3d-btn-home-text",
+        "name": "page-3d-btn-home-text",
+        "x": 32,
+        "y": 262,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-btn-peer-box",
+        "name": "page-3d-btn-peer-box",
+        "x": 158,
+        "y": 252,
+        "width": 148,
+        "height": 38,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-3d-btn-peer-text",
+        "name": "page-3d-btn-peer-text",
+        "x": 172,
+        "y": 262,
+        "fill": "#111111",
+        "content": "Section",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "page-3d-kicker",
+        "name": "page-3d-kicker",
+        "x": 42,
+        "y": 368,
+        "fill": "#1C4BFF",
+        "content": "THIRD LEVEL PAGE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 18,
+        "letterSpacing": "0.1em"
+      },
+      {
+        "type": "text",
+        "id": "page-3d-panel-title",
+        "name": "page-3d-panel-title",
+        "x": 42,
+        "y": 390,
+        "fill": "#111111",
+        "content": "The Future is here",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 24,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 41
+      },
+      {
+        "type": "text",
+        "id": "page-3d-p-0",
+        "name": "page-3d-p-0",
+        "x": 42,
+        "y": 422,
+        "fill": "#111111",
+        "content": "The Future is here.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 25
+      },
+      {
+        "type": "text",
+        "id": "page-3d-p-1",
+        "name": "page-3d-p-1",
+        "x": 42,
+        "y": 465,
+        "fill": "#111111",
+        "content": "1 2 3 4 One hundred percent compatibility. For the first time ever. Analogue 3D represents a milestone in video game preservation. It&#x27;s not just a reimagining of the N64—it&#x27;s the first fully compatible, hardware-accurate recreation, fully compatible with the entire N64 game library. After nearly four years of dedicated FPGA engineering, Analogue 3D overcomes the limitations of software emulation—no input lag, no graphic or audio inaccuracies, no timing or frame rate problems. This is the N64, perfected and true to its core",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 283
+      },
+      {
+        "type": "text",
+        "id": "page-3d-p-2",
+        "name": "page-3d-p-2",
+        "x": 42,
+        "y": 766,
+        "fill": "#111111",
+        "content": "New! Analogue Cartridge Cleaners. Made for your games to last. Analogue Cartridge Cleaners remove oxidation using a proprietarily designed dry, precision-fit cleaning pad without fluids or chemicals. Designed specifically for original cartridges to restore and maintain your physical media. Your games will be more reliable and preserved for the long run. Proper care - so you can play for generations.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 210
+      },
+      {
+        "type": "text",
+        "id": "page-3d-p-3",
+        "name": "page-3d-p-3",
+        "x": 42,
+        "y": 994,
+        "fill": "#111111",
+        "content": "The unmistakable Signature and Soul of the CRT. On your HDTV. In 4K. Unlike its 2D predecessors, the N64 wasn&#x27;t just about pixels. The original hardware&#x27;s distinctive approach to rendering polygons and textures depends on the CRT far more critically than simpler 2D systems. Even game developers had to leverage the interplay between the hardware and a CRT to achieve harmony.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 210
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-feature",
+        "name": "page-3d-feature",
+        "x": 42,
+        "y": 368,
+        "width": 306,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+          "mode": "cover"
+        },
+        "href": "#page-3d",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-feature-2",
+        "name": "page-3d-feature-2",
+        "x": 42,
+        "y": 606,
+        "width": 306,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-4-166a335e.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-3d",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-card-0",
+        "name": "page-3d-card-0",
+        "x": 42,
+        "y": 1244,
+        "width": 306,
+        "height": 136,
+        "fill": "#F1EFEB",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-card-img-0",
+        "name": "page-3d-card-img-0",
+        "x": 42,
+        "y": 1244,
+        "width": 306,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+          "mode": "cover"
+        },
+        "href": "#page-products",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-3d-card-title-0",
+        "name": "page-3d-card-title-0",
+        "x": 52,
+        "y": 1334,
+        "fill": "#111111",
+        "content": "Products",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 18,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "page-3d-card-copy-0",
+        "name": "page-3d-card-copy-0",
+        "x": 52,
+        "y": 1352,
+        "fill": "#5F5C57",
+        "content": "The Future is here.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 22,
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-card-1",
+        "name": "page-3d-card-1",
+        "x": 42,
+        "y": 1396,
+        "width": 306,
+        "height": 136,
+        "fill": "#F1EFEB",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "href": "#page-support",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-card-img-1",
+        "name": "page-3d-card-img-1",
+        "x": 42,
+        "y": 1396,
+        "width": 306,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-4-166a335e.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-support",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-3d-card-title-1",
+        "name": "page-3d-card-title-1",
+        "x": 52,
+        "y": 1486,
+        "fill": "#111111",
+        "content": "Support",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 18,
+        "href": "#page-support"
+      },
+      {
+        "type": "text",
+        "id": "page-3d-card-copy-1",
+        "name": "page-3d-card-copy-1",
+        "x": 52,
+        "y": 1504,
+        "fill": "#5F5C57",
+        "content": "1 2 3 4 One hundred percent compatibility. For the first time ever. Analogue 3D represents",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 53,
+        "href": "#page-support"
+      },
+      {
+        "type": "text",
+        "id": "page-3d-related-title",
+        "name": "page-3d-related-title",
+        "x": 42,
+        "y": 1560,
+        "fill": "#1C4BFF",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-related-0-box",
+        "name": "page-3d-related-0-box",
+        "x": 42,
+        "y": 1586,
+        "width": 150,
+        "height": 36,
+        "fill": "#1C4BFF",
+        "stroke": {
+          "fill": "#1C4BFF",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-3d-related-0-text",
+        "name": "page-3d-related-0-text",
+        "x": 56,
+        "y": 1595,
+        "fill": "#FFFFFF",
+        "content": "Products",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-related-1-box",
+        "name": "page-3d-related-1-box",
+        "x": 204,
+        "y": 1586,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "href": "#page-support",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-3d-related-1-text",
+        "name": "page-3d-related-1-text",
+        "x": 218,
+        "y": 1595,
+        "fill": "#111111",
+        "content": "Support",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-support",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-3d-related-2-box",
+        "name": "page-3d-related-2-box",
+        "x": 42,
+        "y": 1634,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-3d-related-2-text",
+        "name": "page-3d-related-2-text",
+        "x": 56,
+        "y": 1643,
+        "fill": "#111111",
+        "content": "Homepage",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1746,
+        "width": 390,
+        "height": 250,
+        "fill": "#121212",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#121212"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F2F0EC",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Products Support Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Developer Editions 3D Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    ]
+  }
+}

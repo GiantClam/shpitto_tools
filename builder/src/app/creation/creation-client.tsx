@@ -23,6 +23,9 @@ type GenerationResponse = {
   prompt: string;
   blueprint?: Record<string, unknown>;
   theme?: Record<string, unknown>;
+  siteBlueprint?: Record<string, unknown>;
+  qaReport?: Record<string, unknown>;
+  resolvedByLayer?: Record<string, unknown>;
   components: GeneratedComponent[];
   pages: GeneratedPage[];
   errors?: string[];
@@ -292,6 +295,22 @@ export default function CreationClient() {
                 <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Blueprint</p>
                 <pre className="mt-2 max-h-48 overflow-auto rounded-lg bg-muted/30 p-3 text-xs">
                   {JSON.stringify(result.blueprint, null, 2)}
+                </pre>
+              </div>
+            ) : null}
+            {result?.resolvedByLayer ? (
+              <div>
+                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Resolution</p>
+                <pre className="mt-2 max-h-48 overflow-auto rounded-lg bg-muted/30 p-3 text-xs">
+                  {JSON.stringify(result.resolvedByLayer, null, 2)}
+                </pre>
+              </div>
+            ) : null}
+            {result?.qaReport ? (
+              <div>
+                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">QA</p>
+                <pre className="mt-2 max-h-48 overflow-auto rounded-lg bg-muted/30 p-3 text-xs">
+                  {JSON.stringify(result.qaReport, null, 2)}
                 </pre>
               </div>
             ) : null}

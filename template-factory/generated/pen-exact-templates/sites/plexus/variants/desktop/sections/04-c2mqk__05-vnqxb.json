@@ -1,0 +1,307 @@
+{
+  "sectionId": "vnqXB",
+  "sectionName": "solContact",
+  "sectionKind": "contact",
+  "order": 5,
+  "bounds": {
+    "x": 0,
+    "y": 2890,
+    "width": 1440,
+    "height": 656
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 8,
+  "treeHash": "f85b0c9636f2dd9cde9ccfbf36152638d1a1c4f444c73167d2139df0736d85cd",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "17ULi",
+      "blockName": "contactImg",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 78,
+        "width": 663,
+        "height": 500
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0dac8cdf4ec10118702537886c1e3cf66ea3dbcd11934ad761978331e3064e13"
+    },
+    {
+      "blockId": "OyjUS",
+      "blockName": "contactCard",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 631,
+        "y": 163,
+        "width": 768,
+        "height": 330
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 6,
+      "treeHash": "1fe95b3e34216cae060c47b6c29975d0e99ce185579ee2dfaade73e61780a75b"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1758518729912-bf3a84c400e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxOTcwNzV8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "17ULi",
+      "blockName": "contactImg",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 78,
+        "width": 663,
+        "height": 500
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0dac8cdf4ec10118702537886c1e3cf66ea3dbcd11934ad761978331e3064e13",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1758518729912-bf3a84c400e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxOTcwNzV8&ixlib=rb-4.1.0&q=80&w=1080",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "17ULi",
+        "x": 32,
+        "y": 78,
+        "name": "contactImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "silverkblack",
+          "link": "https://unsplash.com/@silverkblack",
+          "author": "Vitaly Gariev"
+        },
+        "width": 663,
+        "height": 500,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1758518729912-bf3a84c400e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxOTcwNzV8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      }
+    },
+    {
+      "blockId": "OyjUS",
+      "blockName": "contactCard",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 631,
+        "y": 163,
+        "width": 768,
+        "height": 330
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 6,
+      "treeHash": "1fe95b3e34216cae060c47b6c29975d0e99ce185579ee2dfaade73e61780a75b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "OyjUS",
+        "x": 631,
+        "y": 163,
+        "name": "contactCard",
+        "width": 768,
+        "height": 330,
+        "fill": "#E9E9EA",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "y2loV",
+            "x": 70,
+            "y": 62,
+            "name": "contactTag",
+            "fill": "#D5164A",
+            "width": 42,
+            "height": 8
+          },
+          {
+            "type": "text",
+            "id": "Omv3H",
+            "x": 126,
+            "y": 56,
+            "name": "contactTagTxt",
+            "fill": "#5D6772",
+            "content": "联系我们的团队",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "xvrgU",
+            "x": 70,
+            "y": 94,
+            "name": "contactTitle",
+            "fill": "#3A434B",
+            "textGrowth": "fixed-width",
+            "width": 509,
+            "content": "准备好寻找一个致力于您的成功的合作伙伴吗？",
+            "lineHeight": 1.16,
+            "fontFamily": "Inter",
+            "fontSize": 44,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "kvntR",
+            "x": 70,
+            "y": 222,
+            "name": "contactBtn",
+            "width": 160,
+            "height": 52,
+            "fill": "#C70041",
+            "cornerRadius": 4,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "ZH4MK",
+                "x": 31,
+                "y": 16,
+                "name": "contactBtnTxt",
+                "fill": "#FFFFFF",
+                "content": "联系我们的团队",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "vnqXB",
+    "x": 0,
+    "y": 2890,
+    "name": "solContact",
+    "width": 1440,
+    "height": 656,
+    "fill": "#ffffff",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "17ULi",
+        "x": 32,
+        "y": 78,
+        "name": "contactImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "silverkblack",
+          "link": "https://unsplash.com/@silverkblack",
+          "author": "Vitaly Gariev"
+        },
+        "width": 663,
+        "height": 500,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1758518729912-bf3a84c400e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxOTcwNzV8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "frame",
+        "id": "OyjUS",
+        "x": 631,
+        "y": 163,
+        "name": "contactCard",
+        "width": 768,
+        "height": 330,
+        "fill": "#E9E9EA",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "y2loV",
+            "x": 70,
+            "y": 62,
+            "name": "contactTag",
+            "fill": "#D5164A",
+            "width": 42,
+            "height": 8
+          },
+          {
+            "type": "text",
+            "id": "Omv3H",
+            "x": 126,
+            "y": 56,
+            "name": "contactTagTxt",
+            "fill": "#5D6772",
+            "content": "联系我们的团队",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "xvrgU",
+            "x": 70,
+            "y": 94,
+            "name": "contactTitle",
+            "fill": "#3A434B",
+            "textGrowth": "fixed-width",
+            "width": 509,
+            "content": "准备好寻找一个致力于您的成功的合作伙伴吗？",
+            "lineHeight": 1.16,
+            "fontFamily": "Inter",
+            "fontSize": 44,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "kvntR",
+            "x": 70,
+            "y": 222,
+            "name": "contactBtn",
+            "width": 160,
+            "height": 52,
+            "fill": "#C70041",
+            "cornerRadius": 4,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "ZH4MK",
+                "x": 31,
+                "y": 16,
+                "name": "contactBtnTxt",
+                "fill": "#FFFFFF",
+                "content": "联系我们的团队",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

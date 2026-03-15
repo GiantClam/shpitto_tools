@@ -1,0 +1,40 @@
+{
+  "siteId": "vanmoof",
+  "siteName": "Vanmoof",
+  "bundleHash": "d6d730f334d473b024fbc2469d490340288dab9eaa1c7df3a7b43f5bf1ab6728",
+  "variants": [
+    {
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/vanmoof.pen",
+      "sourceHash": "1db1e8cfd454a5533d24137c070bb9b631f62934c8ae65e2bd3f7c6fca25c736",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 204,
+      "output": {
+        "templatePath": "sites/vanmoof/variants/desktop/template.json",
+        "themePath": "sites/vanmoof/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/vanmoof/variants/desktop/pages",
+        "sectionsDir": "sites/vanmoof/variants/desktop/sections",
+        "blocksDir": "sites/vanmoof/variants/desktop/blocks"
+      }
+    },
+    {
+      "variant": "mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/vanmoof-mobile.pen",
+      "sourceHash": "e4e3824db200d6d72def4a39c1fa2e2286bf3c63c46f5a71b5a663f87293b993",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 128,
+      "output": {
+        "templatePath": "sites/vanmoof/variants/mobile/template.json",
+        "themePath": "sites/vanmoof/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/vanmoof/variants/mobile/pages",
+        "sectionsDir": "sites/vanmoof/variants/mobile/sections",
+        "blocksDir": "sites/vanmoof/variants/mobile/blocks"
+      }
+    }
+  ],
+  "output": {
+    "siteTemplatePath": "sites/vanmoof/site.template.json"
+  }
+}

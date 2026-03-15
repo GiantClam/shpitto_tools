@@ -1,0 +1,88 @@
+{
+  "sectionId": "TXazb",
+  "sectionName": "ContactHero",
+  "sectionKind": "hero",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 1,
+  "recursiveNodeCount": 2,
+  "treeHash": "d21ec14fef6bd30edcaea45cf49b978497b0103e5ba399065d5315fd3ce3f451",
+  "blockCount": 1,
+  "blockIndex": [
+    {
+      "blockId": "4QWHH",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "11cbd0cb356592524534a3f7615648ff63940bbf589a1580b1793cdbabfd8165"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "4QWHH",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "11cbd0cb356592524534a3f7615648ff63940bbf589a1580b1793cdbabfd8165",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "4QWHH",
+        "name": "heroTitle",
+        "fill": "#1F2737",
+        "content": "Contact Framework",
+        "fontFamily": "Inter",
+        "fontSize": 56,
+        "fontWeight": "700"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "TXazb",
+    "name": "ContactHero",
+    "width": "fill_container",
+    "layout": "vertical",
+    "gap": 8,
+    "padding": [
+      22,
+      92,
+      10,
+      92
+    ],
+    "children": [
+      {
+        "type": "text",
+        "id": "4QWHH",
+        "name": "heroTitle",
+        "fill": "#1F2737",
+        "content": "Contact Framework",
+        "fontFamily": "Inter",
+        "fontSize": 56,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

@@ -6,6 +6,7 @@ import process from "node:process";
 import { spawn } from "node:child_process";
 import fetch from "node-fetch";
 import { captureSectionScreenshots } from "./capture-section-screenshots.mjs";
+import { buildRegressionEnv } from "./regression-env.mjs";
 
 const ROOT = process.cwd();
 const REPO_ROOT = path.resolve(ROOT, "..");
@@ -32,6 +33,9 @@ const parseArgs = (argv) => {
     groups: "",
     promptsFile: PROMPTS_FILE,
     renderer: "sandbox",
+    capture: String(process.env.STRATEGY_COMPARE_CAPTURE || "home")
+      .trim()
+      .toLowerCase(),
   };
   for (let i = 2; i < argv.length; i += 1) {
     const arg = argv[i];
@@ -54,6 +58,12 @@ const parseArgs = (argv) => {
     if (arg === "--renderer" && next) {
       const value = String(next).trim().toLowerCase();
       options.renderer = value === "render" ? "render" : "sandbox";
+      i += 1;
+      continue;
+    }
+    if (arg === "--capture" && next) {
+      const value = String(next).trim().toLowerCase();
+      options.capture = value === "all" || value === "none" ? value : "home";
       i += 1;
       continue;
     }
@@ -375,9 +385,22 @@ const { chromium } = require("playwright");
 
 const groups = [
   {
+    id: "AUTO_multi_candidate",
+    label: "AUTO: Multi-Candidate Selection",
+    env: {
+      BUILDER_MULTI_CANDIDATE_SELECTION: "true",
+      BUILDER_SECTION_GENERATION_STRATEGY: "template_first",
+      BUILDER_MULTI_CANDIDATE_STRATEGIES: "template_first,hybrid",
+      BUILDER_MULTI_CANDIDATE_DETAILED_STRATEGIES: "template_first,hybrid,llm_first",
+      CREATION_REQUEST_TIMEOUT_MS: String(CREATION_TIMEOUT_MS),
+      CREATION_PERSIST_REQUEST_TIMEOUT_MS: String(CREATION_TIMEOUT_MS),
+    },
+  },
+  {
     id: "A_hybrid_legacy",
     label: "A: Hybrid Legacy",
     env: {
+      BUILDER_MULTI_CANDIDATE_SELECTION: "false",
       BUILDER_SECTION_GENERATION_STRATEGY: "hybrid",
       BUILDER_TEMPLATE_SECTIONS: "footercta,footer-cta,cta,socialproof,social-proof,testimonial,trustlogo",
       BUILDER_LLM_SECTIONS: "",
@@ -390,6 +413,7 @@ const groups = [
     id: "B_hybrid_split",
     label: "B: Hybrid Split (Template-first + LLM Hero/Story)",
     env: {
+      BUILDER_MULTI_CANDIDATE_SELECTION: "false",
       BUILDER_SECTION_GENERATION_STRATEGY: "hybrid",
       BUILDER_TEMPLATE_SECTIONS:
         "navigation,footer,footercta,footer-cta,cta,socialproof,social-proof,testimonial,trustlogo,products,catalog,metrics,stats,contact",
@@ -403,6 +427,7 @@ const groups = [
     id: "C_template_first",
     label: "C: Template First",
     env: {
+      BUILDER_MULTI_CANDIDATE_SELECTION: "false",
       BUILDER_SECTION_GENERATION_STRATEGY: "template_first",
       BUILDER_TEMPLATE_SECTIONS:
         "navigation,hero,studiostory,story,showcase,approach,footer,footercta,footer-cta,cta,socialproof,social-proof,testimonial,trustlogo,products,catalog,metrics,stats,contact",
@@ -420,6 +445,7 @@ const buildMarkdownReport = (summary) => {
   lines.push("");
   lines.push(`Base URL: \`${BASE_URL}\``);
   lines.push(`Renderer: \`${summary.renderer}\``);
+  lines.push(`Capture: \`${summary.capture}\``);
   lines.push("");
   for (const group of summary.groups) {
     lines.push(`## ${group.label}`);
@@ -427,11 +453,11 @@ const buildMarkdownReport = (summary) => {
     lines.push(`- Pass: ${group.passed}/${group.total}`);
     lines.push(`- Avg duration: ${Math.round(group.avgDurationMs)} ms`);
     lines.push("");
-    lines.push("| Case | Status | Duration(ms) | QA | Layer | URL | Screenshot |");
-    lines.push("|---|---:|---:|---:|---|---|---|");
+    lines.push("| Case | Status | Duration(ms) | QA | Layer | Selected Strategy | Error | URL | Screenshot |");
+    lines.push("|---|---:|---:|---:|---|---|---|---|---|");
     for (const row of group.results) {
       lines.push(
-        `| ${row.caseId} | ${row.ok ? "PASS" : "FAIL"} | ${row.durationMs} | ${row.qaOverallScore != null ? row.qaOverallScore.toFixed(3) : "-"} | ${row.resolutionLayer || "-"} | [open](${row.url || ""}) | [image](${row.screenshot || ""}) |`
+        `| ${row.caseId} | ${row.ok ? "PASS" : "FAIL"} | ${row.durationMs} | ${row.qaOverallScore != null ? row.qaOverallScore.toFixed(3) : "-"} | ${row.resolutionLayer || "-"} | ${row.selectedStrategy || "-"} | ${row.errorSummary || "-"} | [open](${row.url || ""}) | [image](${row.screenshot || ""}) |`
       );
     }
     lines.push("");
@@ -444,6 +470,7 @@ const run = async () => {
   const runId = `compare-${nowStamp()}`;
   await fs.mkdir(REPORT_DIR, { recursive: true });
   await fs.mkdir(SCREENSHOT_DIR, { recursive: true });
+  const regressionEnvState = await buildRegressionEnv({ builderRoot: ROOT, repoRoot: REPO_ROOT });
 
   const promptsRaw = await fs.readFile(options.promptsFile, "utf8");
   const prompts = JSON.parse(promptsRaw);
@@ -466,14 +493,24 @@ const run = async () => {
     baseUrl: BASE_URL,
     serverMode: SERVER_MODE,
     renderer: options.renderer,
+    capture: options.capture,
     promptsFile: options.promptsFile,
+    envFiles: regressionEnvState.loadedFiles,
     groups: [],
   };
+
+  if (regressionEnvState.loadedFiles.length > 0) {
+    for (const item of regressionEnvState.loadedFiles) {
+      console.log(`[env] loaded ${item.filePath} keys=${item.applied}`);
+    }
+  } else {
+    console.log("[env] no env files discovered; relying on process env only");
+  }
 
   for (const group of selectedGroups) {
     console.log(`\n[group] ${group.label} start`);
     await killPort(PORT);
-    const server = await startServer(group.env);
+    const server = await startServer({ ...regressionEnvState.env, ...group.env });
     const groupRows = [];
     try {
       for (let i = 0; i < cases.length; i += 1) {
@@ -520,6 +557,10 @@ const run = async () => {
             ? persistedResult.resolvedByLayer
             : null) ||
           (payload?.resolvedByLayer && typeof payload.resolvedByLayer === "object" ? payload.resolvedByLayer : null);
+        const candidateSelection =
+          resolvedByLayer?.candidateSelection && typeof resolvedByLayer.candidateSelection === "object"
+            ? resolvedByLayer.candidateSelection
+            : null;
         const renderablePages = getRenderablePages(finalPayload);
         const primaryPage = renderablePages.find((page) => normalizePagePath(page?.path || "/") === "/") || renderablePages[0] || null;
         const ok = Boolean(
@@ -550,7 +591,14 @@ const run = async () => {
                   timeout: 30000,
                 };
 
-          for (const page of renderablePages) {
+          const pagesToCapture =
+            options.capture === "none"
+              ? []
+              : options.capture === "all"
+              ? renderablePages
+              : [primaryPage].filter(Boolean);
+
+          for (const page of pagesToCapture) {
             const pagePath = normalizePagePath(page?.path || "/");
             const pageSlug = pagePathToSlug(pagePath);
             const pageParam = pagePathToParam(pagePath);
@@ -600,8 +648,15 @@ const run = async () => {
             }
           }
 
+          if (!pageScreenshots.length && primaryPage) {
+            const pageParam = pagePathToParam(primaryPage?.path || "/");
+            renderUrl =
+              options.renderer === "render"
+                ? `${BASE_URL}/render?siteKey=${encodeURIComponent(siteKey)}&page=${encodeURIComponent(pageParam)}&motion=off`
+                : `${BASE_URL}/creation/sandbox?mode=preview&siteKey=${encodeURIComponent(siteKey)}&page=${encodeURIComponent(pageParam)}`;
+          }
           const homeEntry = pageScreenshots.find((p) => p.pagePath === "/");
-          renderUrl = homeEntry?.url || pageScreenshots[0]?.url || "";
+          renderUrl = homeEntry?.url || pageScreenshots[0]?.url || renderUrl;
           screenshotPath = homeEntry?.screenshot || pageScreenshots[0]?.screenshot || "";
         }
         groupRows.push({
@@ -610,6 +665,13 @@ const run = async () => {
           statusCode: res.status,
           durationMs,
           errors: Array.isArray(finalPayload?.errors) ? finalPayload.errors : [],
+          responseError: typeof finalPayload?.error === "string" ? finalPayload.error : "",
+          errorSummary:
+            typeof finalPayload?.error === "string" && finalPayload.error.trim()
+              ? finalPayload.error.trim()
+              : Array.isArray(finalPayload?.errors) && finalPayload.errors.length > 0
+              ? String(finalPayload.errors[0] || "").trim()
+              : "",
           persistWaitMs,
           persistWaitTimedOut,
           requestId: payload?.requestId ?? null,
@@ -621,6 +683,9 @@ const run = async () => {
           qaThemeConsistencyScore: Number.isFinite(Number(qaReport?.themeConsistencyScore)) ? Number(qaReport.themeConsistencyScore) : null,
           resolutionLayer: resolvedByLayer?.resolutionLayer ?? null,
           templatePlanProfile: resolvedByLayer?.templatePlanProfile ?? null,
+          selectedStrategy:
+            candidateSelection?.selectedStrategy ?? resolvedByLayer?.selectedStrategy ?? resolvedByLayer?.strategy ?? null,
+          candidateSelection,
           url: renderUrl,
           screenshot: screenshotPath,
           pageScreenshots,

@@ -1,0 +1,87 @@
+{
+  "blockId": "home-navbar",
+  "blockName": "Navbar",
+  "blockType": "frame",
+  "order": 5,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 68
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "a0f8f7f1d268af3f1742480f8b532f55cfb5c77c08808f95fe55895c64f0b1f1",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "home-navbar",
+    "name": "Navbar",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 68,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "home-navbar-bg",
+        "name": "home-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68,
+        "fill": "#000000"
+      },
+      {
+        "type": "rectangle",
+        "id": "home-navbar-logo",
+        "name": "home-navbar-logo",
+        "x": 18,
+        "y": 22,
+        "width": 84,
+        "height": 26,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "home-navbar-menu",
+        "name": "home-navbar-menu",
+        "x": 350,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 20,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "home-navbar-search",
+        "name": "home-navbar-search",
+        "x": 308,
+        "y": 26,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 18,
+        "href": "#page-products"
+      }
+    ]
+  }
+}

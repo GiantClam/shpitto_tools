@@ -1,0 +1,72 @@
+{
+  "blockId": "nWJCt",
+  "blockName": "Where",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1040,
+    "height": ""
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "e944a563e0bec4e2ed66d15b1d2acc22ac9ddc1d97850322c442a792fae08a59",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "nWJCt",
+    "name": "Where",
+    "width": 1040,
+    "layout": "vertical",
+    "gap": 14,
+    "children": [
+      {
+        "type": "text",
+        "id": "DL4LO",
+        "name": "w1",
+        "fill": "#1F2737",
+        "textGrowth": "fixed-width",
+        "width": 900,
+        "content": "Where we are and where we\nmanufacture",
+        "lineHeight": 1,
+        "fontFamily": "Inter",
+        "fontSize": 44,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "hLUwG",
+        "name": "w2",
+        "fill": "#4C4F53",
+        "textGrowth": "fixed-width",
+        "width": 900,
+        "content": "We're headquartered in San Francisco, with several offices in Taipei. Most of our manufacturing is in Taiwan, and we have team members in Seattle, EU, and all over the world.",
+        "lineHeight": 1.4,
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "frame",
+        "id": "A1mNq",
+        "name": "w3",
+        "metadata": {
+          "type": "unsplash",
+          "username": "sheta96",
+          "link": "https://unsplash.com/@sheta96",
+          "author": "Shweta Gupta"
+        },
+        "width": "fill_container",
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "./images/generated-1773114739067.png",
+          "mode": "fill"
+        }
+      }
+    ]
+  }
+}

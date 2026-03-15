@@ -1,0 +1,2247 @@
+{
+  "sectionId": "products-section",
+  "sectionName": "products-section",
+  "sectionKind": "products",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 1640,
+    "width": 1440,
+    "height": 670
+  },
+  "directChildCount": 34,
+  "recursiveNodeCount": 35,
+  "treeHash": "6ecab1987b7d5ffc2a086b0b6929a86ef939b875003199be8b533a9eb619ebca",
+  "blockCount": 34,
+  "blockIndex": [
+    {
+      "blockId": "products-bg",
+      "blockName": "products-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 670
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5c6d91e95020e9d131e2575fad8b2f77f544b6848ead76f7e901ce94df55ee68"
+    },
+    {
+      "blockId": "products-title",
+      "blockName": "products-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 36,
+        "width": 1360,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c4cd8d79100cb9980863a257a6b8b5f710030a416e63e019c0a4271476053f20"
+    },
+    {
+      "blockId": "products-copy",
+      "blockName": "products-copy",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 250,
+        "y": 72,
+        "width": 940,
+        "height": 44
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b00d6b3da753f286a4afa3ca0d6d6242a93b3d571d81088feb1683dedb3a3a30"
+    },
+    {
+      "blockId": "prod-tab-1-box",
+      "blockName": "prod-tab-1-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 420,
+        "y": 120,
+        "width": 180,
+        "height": 34
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "29b05135c4cb06ef2ebace86056b08fa8a1991946bd34c418265344419d8711c"
+    },
+    {
+      "blockId": "prod-tab-1-text",
+      "blockName": "prod-tab-1-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 430,
+        "y": 131,
+        "width": 160,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8f2081d627529dbe924296e765664113629d55284f51f3b7b89660e5264d1269"
+    },
+    {
+      "blockId": "prod-tab-2-box",
+      "blockName": "prod-tab-2-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 628,
+        "y": 120,
+        "width": 200,
+        "height": 34
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b896165a4f0459f93d1087d53f3a1196382d07e84f017b607725b69e6adcc7b9"
+    },
+    {
+      "blockId": "prod-tab-2-text",
+      "blockName": "prod-tab-2-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 638,
+        "y": 131,
+        "width": 180,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "278833a9ba5bb3013c05e5a2e0583543a547f1360dcf5c802a18cc29b2698525"
+    },
+    {
+      "blockId": "prod-tab-3-box",
+      "blockName": "prod-tab-3-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 856,
+        "y": 120,
+        "width": 168,
+        "height": 34
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f4e0cf5d82529ffd7f29452d92c11a04c3d37c63c647c4bd46a71c25f7c2b87b"
+    },
+    {
+      "blockId": "prod-tab-3-text",
+      "blockName": "prod-tab-3-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 866,
+        "y": 131,
+        "width": 148,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1bfedbb17daeeed0aae942ae624636d74dab2e77d787bea1545d18919ac7a3c6"
+    },
+    {
+      "blockId": "product-card-1-box",
+      "blockName": "product-card-1-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 40,
+        "y": 188,
+        "width": 430,
+        "height": 260
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ffe1661fef1e9515838c5cb0b180f82eedcc895ff43984e3561695aa61628f40"
+    },
+    {
+      "blockId": "product-card-1-image",
+      "blockName": "product-card-1-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 10,
+      "bounds": {
+        "x": 52,
+        "y": 200,
+        "width": 406,
+        "height": 96
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f4ef437b6b3deab83aa010b9e5295912c8a6073ba097a27f42e740b87c8d47c6"
+    },
+    {
+      "blockId": "product-card-1-eyebrow",
+      "blockName": "product-card-1-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 11,
+      "bounds": {
+        "x": 52,
+        "y": 308,
+        "width": 406,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e0b1e34754ff4e6f3dc225f989d096286a451353910b918079d01a0740db95fa"
+    },
+    {
+      "blockId": "product-card-1-title",
+      "blockName": "product-card-1-title",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 52,
+        "y": 330,
+        "width": 406,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3f53e3a67cde1fc738af5ac776b64576a0385716eb8fb9c3e2828dd5e9be82c3"
+    },
+    {
+      "blockId": "product-card-1-body",
+      "blockName": "product-card-1-body",
+      "blockType": "text",
+      "order": 13,
+      "bounds": {
+        "x": 52,
+        "y": 366,
+        "width": 406,
+        "height": 41
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2a4f04b91078731230da10c8c97f120bd2e78adad6c29c14c13a26fe9d38d369"
+    },
+    {
+      "blockId": "product-card-1-arrow",
+      "blockName": "product-card-1-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 14,
+      "bounds": {
+        "x": 446,
+        "y": 422,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a47ec6817cdedf2ead07909d1921a0755d14724d39c2b5fce261c8cad340819d"
+    },
+    {
+      "blockId": "product-card-2-box",
+      "blockName": "product-card-2-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 15,
+      "bounds": {
+        "x": 505,
+        "y": 188,
+        "width": 430,
+        "height": 260
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f14f7ef1dd64fc13f60ea84d6df724ae5f2fab7ac6da7fe6ac0c5be4be567c0a"
+    },
+    {
+      "blockId": "product-card-2-image",
+      "blockName": "product-card-2-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 16,
+      "bounds": {
+        "x": 517,
+        "y": 200,
+        "width": 406,
+        "height": 96
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9289e407269065817115b3978226db0ee5831ac3c5d5032f4701a839712d86a4"
+    },
+    {
+      "blockId": "product-card-2-eyebrow",
+      "blockName": "product-card-2-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 17,
+      "bounds": {
+        "x": 517,
+        "y": 308,
+        "width": 406,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7e1a6b05d819755ebed2dd2388ec1cdc02aed3f6cba7cab080932c9b32bbcb2d"
+    },
+    {
+      "blockId": "product-card-2-title",
+      "blockName": "product-card-2-title",
+      "blockType": "text",
+      "order": 18,
+      "bounds": {
+        "x": 517,
+        "y": 330,
+        "width": 406,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5b24cf64d0c52a266ad433766e4e4c25500eff7679213f20b9e89388ebff04ca"
+    },
+    {
+      "blockId": "product-card-2-body",
+      "blockName": "product-card-2-body",
+      "blockType": "text",
+      "order": 19,
+      "bounds": {
+        "x": 517,
+        "y": 366,
+        "width": 406,
+        "height": 41
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9089b290402e7e6444390bed34537ed03c5be70557cbc3fc14f6ebd65f292eaf"
+    },
+    {
+      "blockId": "product-card-2-arrow",
+      "blockName": "product-card-2-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 20,
+      "bounds": {
+        "x": 911,
+        "y": 422,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ae714926eda1f8ca035224e7f68fb519a626f0df204156100922c504ac2b6c3b"
+    },
+    {
+      "blockId": "product-card-3-box",
+      "blockName": "product-card-3-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 21,
+      "bounds": {
+        "x": 970,
+        "y": 188,
+        "width": 430,
+        "height": 260
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c962f8a2d79e8a8a317c400dd8ae7fd6367b5d8792e24e02ce50ae1cab7b8bf2"
+    },
+    {
+      "blockId": "product-card-3-image",
+      "blockName": "product-card-3-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 22,
+      "bounds": {
+        "x": 982,
+        "y": 200,
+        "width": 406,
+        "height": 96
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6522695536b2faab858a89a07a4f4732afdc48df6033fcad0efc6ed51984b200"
+    },
+    {
+      "blockId": "product-card-3-eyebrow",
+      "blockName": "product-card-3-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 23,
+      "bounds": {
+        "x": 982,
+        "y": 308,
+        "width": 406,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a393336f81fcaf45c1e668b00c01167da63a25766b58e4e71c7bdde6c55d5463"
+    },
+    {
+      "blockId": "product-card-3-title",
+      "blockName": "product-card-3-title",
+      "blockType": "text",
+      "order": 24,
+      "bounds": {
+        "x": 982,
+        "y": 330,
+        "width": 406,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b5bc52dc62456b21a3c43fb1f39c35df7d6c247c48e8d39014774288d3d847f9"
+    },
+    {
+      "blockId": "product-card-3-body",
+      "blockName": "product-card-3-body",
+      "blockType": "text",
+      "order": 25,
+      "bounds": {
+        "x": 982,
+        "y": 366,
+        "width": 406,
+        "height": 41
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a937abdb6d77eb6b20723f8acf3b9d18826752d913094e02dd62dd2de40648b9"
+    },
+    {
+      "blockId": "product-card-3-arrow",
+      "blockName": "product-card-3-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 26,
+      "bounds": {
+        "x": 1376,
+        "y": 422,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9a9c3cc0dba384194c6096143436f38f63f327236cf2a94b1dc1cc78f8b681c6"
+    },
+    {
+      "blockId": "products-dots-0",
+      "blockName": "products-dots-0",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 27,
+      "bounds": {
+        "x": 688,
+        "y": 486,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0f7f663e2d6ecb61a82f2b1445e56bc63e8db16855446312eed8cc370dc7a46b"
+    },
+    {
+      "blockId": "products-dots-1",
+      "blockName": "products-dots-1",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 28,
+      "bounds": {
+        "x": 706,
+        "y": 486,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "696c7419de7b93de51e6eb3c87bcaa098f5ea1a771a7ad7d9180f1d7c1252c38"
+    },
+    {
+      "blockId": "products-dots-2",
+      "blockName": "products-dots-2",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 29,
+      "bounds": {
+        "x": 724,
+        "y": 486,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ec4b1e6ca804b440536be0dc35714a599f49e08f5078e8c6ed500f83fa03b659"
+    },
+    {
+      "blockId": "products-dots-3",
+      "blockName": "products-dots-3",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 30,
+      "bounds": {
+        "x": 742,
+        "y": 486,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f08f809eb64438f17d431d30aed0d1ce194129794cfc38c7c122c12cbbaaf18a"
+    },
+    {
+      "blockId": "products-cta-box",
+      "blockName": "products-cta-box",
+      "blockType": "rectangle",
+      "order": 31,
+      "bounds": {
+        "x": 626,
+        "y": 532,
+        "width": 188,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "45e7219aa68069c4f657fe1b23f9b61bb42ef7c53949a139eb80590d252280ef"
+    },
+    {
+      "blockId": "products-cta-text",
+      "blockName": "products-cta-text",
+      "blockType": "text",
+      "order": 32,
+      "bounds": {
+        "x": 640,
+        "y": 543,
+        "width": 148,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "023962e2f561335546dd2b6349e4b5da0d228780ecc44a960b898d9dee537c52"
+    },
+    {
+      "blockId": "products-cta-arrow",
+      "blockName": "products-cta-arrow",
+      "blockType": "text",
+      "order": 33,
+      "bounds": {
+        "x": 794,
+        "y": 543,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "852a821805d46ede846b38cd2571603847db05d76da7fcfae958dde6247efbca"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/product-machining-267e98a6.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/product-machining-267e98a6.jpg",
+      "relativePath": "assets-structured/pama/product-machining-267e98a6.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/product-milling-4bd99504.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/product-milling-4bd99504.jpg",
+      "relativePath": "assets-structured/pama/product-milling-4bd99504.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/product-boring-8e0a2947.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/product-boring-8e0a2947.jpg",
+      "relativePath": "assets-structured/pama/product-boring-8e0a2947.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "products-bg",
+      "blockName": "products-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 670
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5c6d91e95020e9d131e2575fad8b2f77f544b6848ead76f7e901ce94df55ee68",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "products-bg",
+        "name": "products-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 670,
+        "fill": "#F4F4F1"
+      }
+    },
+    {
+      "blockId": "products-title",
+      "blockName": "products-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 36,
+        "width": 1360,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c4cd8d79100cb9980863a257a6b8b5f710030a416e63e019c0a4271476053f20",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "products-title",
+        "name": "products-title",
+        "x": 40,
+        "y": 36,
+        "fill": "#008D99",
+        "content": "OUR PRODUCTS",
+        "fontFamily": "Raleway",
+        "fontSize": 20,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 1360,
+        "height": 24,
+        "letterSpacing": "0.08em",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "products-copy",
+      "blockName": "products-copy",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 250,
+        "y": 72,
+        "width": 940,
+        "height": 44
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b00d6b3da753f286a4afa3ca0d6d6242a93b3d571d81088feb1683dedb3a3a30",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "products-copy",
+        "name": "products-copy",
+        "x": 250,
+        "y": 72,
+        "fill": "#66707A",
+        "content": "PAMA’s machine tools provide optimal precision and precisely perform boring, drilling, milling and turning operations, satisfying customer requirements in the most demanding industries.",
+        "fontFamily": "Raleway",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 940,
+        "height": 44,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "prod-tab-1-box",
+      "blockName": "prod-tab-1-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 420,
+        "y": 120,
+        "width": 180,
+        "height": 34
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "29b05135c4cb06ef2ebace86056b08fa8a1991946bd34c418265344419d8711c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "prod-tab-1-box",
+        "name": "prod-tab-1-box",
+        "x": 420,
+        "y": 120,
+        "width": 180,
+        "height": 34,
+        "fill": "#00A7B5",
+        "stroke": {
+          "fill": "#00A7B5",
+          "thickness": 1
+        },
+        "href": "#page-sector",
+        "cornerRadius": 2
+      }
+    },
+    {
+      "blockId": "prod-tab-1-text",
+      "blockName": "prod-tab-1-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 430,
+        "y": 131,
+        "width": 160,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8f2081d627529dbe924296e765664113629d55284f51f3b7b89660e5264d1269",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "prod-tab-1-text",
+        "name": "prod-tab-1-text",
+        "x": 430,
+        "y": 131,
+        "fill": "#FFFFFF",
+        "content": "SECTORS",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 160,
+        "height": 16,
+        "letterSpacing": "0.06em",
+        "href": "#page-sector",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "prod-tab-2-box",
+      "blockName": "prod-tab-2-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 628,
+        "y": 120,
+        "width": 200,
+        "height": 34
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b896165a4f0459f93d1087d53f3a1196382d07e84f017b607725b69e6adcc7b9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "prod-tab-2-box",
+        "name": "prod-tab-2-box",
+        "x": 628,
+        "y": 120,
+        "width": 200,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 2
+      }
+    },
+    {
+      "blockId": "prod-tab-2-text",
+      "blockName": "prod-tab-2-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 638,
+        "y": 131,
+        "width": 180,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "278833a9ba5bb3013c05e5a2e0583543a547f1360dcf5c802a18cc29b2698525",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "prod-tab-2-text",
+        "name": "prod-tab-2-text",
+        "x": 638,
+        "y": 131,
+        "fill": "#1A1F24",
+        "content": "HIGH LIFETIME COSTS",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 16,
+        "letterSpacing": "0.06em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "prod-tab-3-box",
+      "blockName": "prod-tab-3-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 856,
+        "y": 120,
+        "width": 168,
+        "height": 34
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f4e0cf5d82529ffd7f29452d92c11a04c3d37c63c647c4bd46a71c25f7c2b87b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "prod-tab-3-box",
+        "name": "prod-tab-3-box",
+        "x": 856,
+        "y": 120,
+        "width": 168,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-support",
+        "cornerRadius": 2
+      }
+    },
+    {
+      "blockId": "prod-tab-3-text",
+      "blockName": "prod-tab-3-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 866,
+        "y": 131,
+        "width": 148,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1bfedbb17daeeed0aae942ae624636d74dab2e77d787bea1545d18919ac7a3c6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "prod-tab-3-text",
+        "name": "prod-tab-3-text",
+        "x": 866,
+        "y": 131,
+        "fill": "#1A1F24",
+        "content": "AUTOMATION",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 148,
+        "height": 16,
+        "letterSpacing": "0.06em",
+        "href": "#page-support",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "product-card-1-box",
+      "blockName": "product-card-1-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 40,
+        "y": 188,
+        "width": 430,
+        "height": 260
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ffe1661fef1e9515838c5cb0b180f82eedcc895ff43984e3561695aa61628f40",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "product-card-1-box",
+        "name": "product-card-1-box",
+        "x": 40,
+        "y": 188,
+        "width": 430,
+        "height": 260,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-machining-centers"
+      }
+    },
+    {
+      "blockId": "product-card-1-image",
+      "blockName": "product-card-1-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 10,
+      "bounds": {
+        "x": 52,
+        "y": 200,
+        "width": 406,
+        "height": 96
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f4ef437b6b3deab83aa010b9e5295912c8a6073ba097a27f42e740b87c8d47c6",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/product-machining-267e98a6.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/product-machining-267e98a6.jpg",
+        "relativePath": "assets-structured/pama/product-machining-267e98a6.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "product-card-1-image",
+        "name": "product-card-1-image",
+        "x": 52,
+        "y": 200,
+        "width": 406,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/product-machining-267e98a6.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-machining-centers"
+      }
+    },
+    {
+      "blockId": "product-card-1-eyebrow",
+      "blockName": "product-card-1-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 11,
+      "bounds": {
+        "x": 52,
+        "y": 308,
+        "width": 406,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e0b1e34754ff4e6f3dc225f989d096286a451353910b918079d01a0740db95fa",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "product-card-1-eyebrow",
+        "name": "product-card-1-eyebrow",
+        "x": 52,
+        "y": 308,
+        "fill": "#008D99",
+        "content": "PRODUCT",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-machining-centers"
+      }
+    },
+    {
+      "blockId": "product-card-1-title",
+      "blockName": "product-card-1-title",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 52,
+        "y": 330,
+        "width": 406,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3f53e3a67cde1fc738af5ac776b64576a0385716eb8fb9c3e2828dd5e9be82c3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "product-card-1-title",
+        "name": "product-card-1-title",
+        "x": 52,
+        "y": 330,
+        "fill": "#1A1F24",
+        "content": "MACHINING CENTERS",
+        "fontFamily": "Raleway",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 28,
+        "href": "#page-machining-centers"
+      }
+    },
+    {
+      "blockId": "product-card-1-body",
+      "blockName": "product-card-1-body",
+      "blockType": "text",
+      "order": 13,
+      "bounds": {
+        "x": 52,
+        "y": 366,
+        "width": 406,
+        "height": 41
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2a4f04b91078731230da10c8c97f120bd2e78adad6c29c14c13a26fe9d38d369",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "product-card-1-body",
+        "name": "product-card-1-body",
+        "x": 52,
+        "y": 366,
+        "fill": "#66707A",
+        "content": "Portal and T-type structures designed for maximum versatility and high precision.",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 41,
+        "href": "#page-machining-centers"
+      }
+    },
+    {
+      "blockId": "product-card-1-arrow",
+      "blockName": "product-card-1-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 14,
+      "bounds": {
+        "x": 446,
+        "y": 422,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a47ec6817cdedf2ead07909d1921a0755d14724d39c2b5fce261c8cad340819d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "product-card-1-arrow",
+        "name": "product-card-1-arrow",
+        "x": 446,
+        "y": 422,
+        "fill": "#00A7B5",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-machining-centers"
+      }
+    },
+    {
+      "blockId": "product-card-2-box",
+      "blockName": "product-card-2-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 15,
+      "bounds": {
+        "x": 505,
+        "y": 188,
+        "width": 430,
+        "height": 260
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f14f7ef1dd64fc13f60ea84d6df724ae5f2fab7ac6da7fe6ac0c5be4be567c0a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "product-card-2-box",
+        "name": "product-card-2-box",
+        "x": 505,
+        "y": 188,
+        "width": 430,
+        "height": 260,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "product-card-2-image",
+      "blockName": "product-card-2-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 16,
+      "bounds": {
+        "x": 517,
+        "y": 200,
+        "width": 406,
+        "height": 96
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9289e407269065817115b3978226db0ee5831ac3c5d5032f4701a839712d86a4",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/product-milling-4bd99504.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/product-milling-4bd99504.jpg",
+        "relativePath": "assets-structured/pama/product-milling-4bd99504.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "product-card-2-image",
+        "name": "product-card-2-image",
+        "x": 517,
+        "y": 200,
+        "width": 406,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/product-milling-4bd99504.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "product-card-2-eyebrow",
+      "blockName": "product-card-2-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 17,
+      "bounds": {
+        "x": 517,
+        "y": 308,
+        "width": 406,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7e1a6b05d819755ebed2dd2388ec1cdc02aed3f6cba7cab080932c9b32bbcb2d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "product-card-2-eyebrow",
+        "name": "product-card-2-eyebrow",
+        "x": 517,
+        "y": 308,
+        "fill": "#008D99",
+        "content": "PRODUCT",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "product-card-2-title",
+      "blockName": "product-card-2-title",
+      "blockType": "text",
+      "order": 18,
+      "bounds": {
+        "x": 517,
+        "y": 330,
+        "width": 406,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5b24cf64d0c52a266ad433766e4e4c25500eff7679213f20b9e89388ebff04ca",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "product-card-2-title",
+        "name": "product-card-2-title",
+        "x": 517,
+        "y": 330,
+        "fill": "#1A1F24",
+        "content": "HORIZONTAL MILLING MACHINES",
+        "fontFamily": "Raleway",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 28,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "product-card-2-body",
+      "blockName": "product-card-2-body",
+      "blockType": "text",
+      "order": 19,
+      "bounds": {
+        "x": 517,
+        "y": 366,
+        "width": 406,
+        "height": 41
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9089b290402e7e6444390bed34537ed03c5be70557cbc3fc14f6ebd65f292eaf",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "product-card-2-body",
+        "name": "product-card-2-body",
+        "x": 517,
+        "y": 366,
+        "fill": "#66707A",
+        "content": "Central headstock milling machines built for dynamics, reliability and precision.",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 41,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "product-card-2-arrow",
+      "blockName": "product-card-2-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 20,
+      "bounds": {
+        "x": 911,
+        "y": 422,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ae714926eda1f8ca035224e7f68fb519a626f0df204156100922c504ac2b6c3b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "product-card-2-arrow",
+        "name": "product-card-2-arrow",
+        "x": 911,
+        "y": 422,
+        "fill": "#00A7B5",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "product-card-3-box",
+      "blockName": "product-card-3-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 21,
+      "bounds": {
+        "x": 970,
+        "y": 188,
+        "width": 430,
+        "height": 260
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c962f8a2d79e8a8a317c400dd8ae7fd6367b5d8792e24e02ce50ae1cab7b8bf2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "product-card-3-box",
+        "name": "product-card-3-box",
+        "x": 970,
+        "y": 188,
+        "width": 430,
+        "height": 260,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "product-card-3-image",
+      "blockName": "product-card-3-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 22,
+      "bounds": {
+        "x": 982,
+        "y": 200,
+        "width": 406,
+        "height": 96
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6522695536b2faab858a89a07a4f4732afdc48df6033fcad0efc6ed51984b200",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/product-boring-8e0a2947.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/product-boring-8e0a2947.jpg",
+        "relativePath": "assets-structured/pama/product-boring-8e0a2947.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "product-card-3-image",
+        "name": "product-card-3-image",
+        "x": 982,
+        "y": 200,
+        "width": 406,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/product-boring-8e0a2947.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "product-card-3-eyebrow",
+      "blockName": "product-card-3-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 23,
+      "bounds": {
+        "x": 982,
+        "y": 308,
+        "width": 406,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a393336f81fcaf45c1e668b00c01167da63a25766b58e4e71c7bdde6c55d5463",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "product-card-3-eyebrow",
+        "name": "product-card-3-eyebrow",
+        "x": 982,
+        "y": 308,
+        "fill": "#008D99",
+        "content": "PRODUCT",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "product-card-3-title",
+      "blockName": "product-card-3-title",
+      "blockType": "text",
+      "order": 24,
+      "bounds": {
+        "x": 982,
+        "y": 330,
+        "width": 406,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b5bc52dc62456b21a3c43fb1f39c35df7d6c247c48e8d39014774288d3d847f9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "product-card-3-title",
+        "name": "product-card-3-title",
+        "x": 982,
+        "y": 330,
+        "fill": "#1A1F24",
+        "content": "HORIZONTAL BORING – MILLING MACHINES",
+        "fontFamily": "Raleway",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 28,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "product-card-3-body",
+      "blockName": "product-card-3-body",
+      "blockType": "text",
+      "order": 25,
+      "bounds": {
+        "x": 982,
+        "y": 366,
+        "width": 406,
+        "height": 41
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a937abdb6d77eb6b20723f8acf3b9d18826752d913094e02dd62dd2de40648b9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "product-card-3-body",
+        "name": "product-card-3-body",
+        "x": 982,
+        "y": 366,
+        "fill": "#66707A",
+        "content": "High metal-removal boring and milling machines for demanding industrial work.",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 41,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "product-card-3-arrow",
+      "blockName": "product-card-3-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 26,
+      "bounds": {
+        "x": 1376,
+        "y": 422,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9a9c3cc0dba384194c6096143436f38f63f327236cf2a94b1dc1cc78f8b681c6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "product-card-3-arrow",
+        "name": "product-card-3-arrow",
+        "x": 1376,
+        "y": 422,
+        "fill": "#00A7B5",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "products-dots-0",
+      "blockName": "products-dots-0",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 27,
+      "bounds": {
+        "x": 688,
+        "y": 486,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0f7f663e2d6ecb61a82f2b1445e56bc63e8db16855446312eed8cc370dc7a46b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "products-dots-0",
+        "name": "products-dots-0",
+        "x": 688,
+        "y": 486,
+        "width": 8,
+        "height": 8,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "products-dots-1",
+      "blockName": "products-dots-1",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 28,
+      "bounds": {
+        "x": 706,
+        "y": 486,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "696c7419de7b93de51e6eb3c87bcaa098f5ea1a771a7ad7d9180f1d7c1252c38",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "products-dots-1",
+        "name": "products-dots-1",
+        "x": 706,
+        "y": 486,
+        "width": 8,
+        "height": 8,
+        "fill": "#00A7B5",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "products-dots-2",
+      "blockName": "products-dots-2",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 29,
+      "bounds": {
+        "x": 724,
+        "y": 486,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ec4b1e6ca804b440536be0dc35714a599f49e08f5078e8c6ed500f83fa03b659",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "products-dots-2",
+        "name": "products-dots-2",
+        "x": 724,
+        "y": 486,
+        "width": 8,
+        "height": 8,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "products-dots-3",
+      "blockName": "products-dots-3",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 30,
+      "bounds": {
+        "x": 742,
+        "y": 486,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f08f809eb64438f17d431d30aed0d1ce194129794cfc38c7c122c12cbbaaf18a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "products-dots-3",
+        "name": "products-dots-3",
+        "x": 742,
+        "y": 486,
+        "width": 8,
+        "height": 8,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "products-cta-box",
+      "blockName": "products-cta-box",
+      "blockType": "rectangle",
+      "order": 31,
+      "bounds": {
+        "x": 626,
+        "y": 532,
+        "width": 188,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "45e7219aa68069c4f657fe1b23f9b61bb42ef7c53949a139eb80590d252280ef",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "products-cta-box",
+        "name": "products-cta-box",
+        "x": 626,
+        "y": 532,
+        "width": 188,
+        "height": 40,
+        "fill": "#00A7B5",
+        "href": "#page-products",
+        "cornerRadius": 2
+      }
+    },
+    {
+      "blockId": "products-cta-text",
+      "blockName": "products-cta-text",
+      "blockType": "text",
+      "order": 32,
+      "bounds": {
+        "x": 640,
+        "y": 543,
+        "width": 148,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "023962e2f561335546dd2b6349e4b5da0d228780ecc44a960b898d9dee537c52",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "products-cta-text",
+        "name": "products-cta-text",
+        "x": 640,
+        "y": 543,
+        "fill": "#FFFFFF",
+        "content": "DISCOVER MORE",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 148,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "products-cta-arrow",
+      "blockName": "products-cta-arrow",
+      "blockType": "text",
+      "order": 33,
+      "bounds": {
+        "x": 794,
+        "y": 543,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "852a821805d46ede846b38cd2571603847db05d76da7fcfae958dde6247efbca",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "products-cta-arrow",
+        "name": "products-cta-arrow",
+        "x": 794,
+        "y": 543,
+        "fill": "#FFFFFF",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-products"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "products-section",
+    "name": "products-section",
+    "x": 0,
+    "y": 1640,
+    "width": 1440,
+    "height": 670,
+    "fill": "#F4F4F1",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "products-bg",
+        "name": "products-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 670,
+        "fill": "#F4F4F1"
+      },
+      {
+        "type": "text",
+        "id": "products-title",
+        "name": "products-title",
+        "x": 40,
+        "y": 36,
+        "fill": "#008D99",
+        "content": "OUR PRODUCTS",
+        "fontFamily": "Raleway",
+        "fontSize": 20,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 1360,
+        "height": 24,
+        "letterSpacing": "0.08em",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "products-copy",
+        "name": "products-copy",
+        "x": 250,
+        "y": 72,
+        "fill": "#66707A",
+        "content": "PAMA’s machine tools provide optimal precision and precisely perform boring, drilling, milling and turning operations, satisfying customer requirements in the most demanding industries.",
+        "fontFamily": "Raleway",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 940,
+        "height": 44,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "prod-tab-1-box",
+        "name": "prod-tab-1-box",
+        "x": 420,
+        "y": 120,
+        "width": 180,
+        "height": 34,
+        "fill": "#00A7B5",
+        "stroke": {
+          "fill": "#00A7B5",
+          "thickness": 1
+        },
+        "href": "#page-sector",
+        "cornerRadius": 2
+      },
+      {
+        "type": "text",
+        "id": "prod-tab-1-text",
+        "name": "prod-tab-1-text",
+        "x": 430,
+        "y": 131,
+        "fill": "#FFFFFF",
+        "content": "SECTORS",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 160,
+        "height": 16,
+        "letterSpacing": "0.06em",
+        "href": "#page-sector",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "prod-tab-2-box",
+        "name": "prod-tab-2-box",
+        "x": 628,
+        "y": 120,
+        "width": 200,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 2
+      },
+      {
+        "type": "text",
+        "id": "prod-tab-2-text",
+        "name": "prod-tab-2-text",
+        "x": 638,
+        "y": 131,
+        "fill": "#1A1F24",
+        "content": "HIGH LIFETIME COSTS",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 16,
+        "letterSpacing": "0.06em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "prod-tab-3-box",
+        "name": "prod-tab-3-box",
+        "x": 856,
+        "y": 120,
+        "width": 168,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-support",
+        "cornerRadius": 2
+      },
+      {
+        "type": "text",
+        "id": "prod-tab-3-text",
+        "name": "prod-tab-3-text",
+        "x": 866,
+        "y": 131,
+        "fill": "#1A1F24",
+        "content": "AUTOMATION",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 148,
+        "height": 16,
+        "letterSpacing": "0.06em",
+        "href": "#page-support",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "product-card-1-box",
+        "name": "product-card-1-box",
+        "x": 40,
+        "y": 188,
+        "width": 430,
+        "height": 260,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-machining-centers"
+      },
+      {
+        "type": "rectangle",
+        "id": "product-card-1-image",
+        "name": "product-card-1-image",
+        "x": 52,
+        "y": 200,
+        "width": 406,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/product-machining-267e98a6.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-machining-centers"
+      },
+      {
+        "type": "text",
+        "id": "product-card-1-eyebrow",
+        "name": "product-card-1-eyebrow",
+        "x": 52,
+        "y": 308,
+        "fill": "#008D99",
+        "content": "PRODUCT",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-machining-centers"
+      },
+      {
+        "type": "text",
+        "id": "product-card-1-title",
+        "name": "product-card-1-title",
+        "x": 52,
+        "y": 330,
+        "fill": "#1A1F24",
+        "content": "MACHINING CENTERS",
+        "fontFamily": "Raleway",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 28,
+        "href": "#page-machining-centers"
+      },
+      {
+        "type": "text",
+        "id": "product-card-1-body",
+        "name": "product-card-1-body",
+        "x": 52,
+        "y": 366,
+        "fill": "#66707A",
+        "content": "Portal and T-type structures designed for maximum versatility and high precision.",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 41,
+        "href": "#page-machining-centers"
+      },
+      {
+        "type": "text",
+        "id": "product-card-1-arrow",
+        "name": "product-card-1-arrow",
+        "x": 446,
+        "y": 422,
+        "fill": "#00A7B5",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-machining-centers"
+      },
+      {
+        "type": "rectangle",
+        "id": "product-card-2-box",
+        "name": "product-card-2-box",
+        "x": 505,
+        "y": 188,
+        "width": 430,
+        "height": 260,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "product-card-2-image",
+        "name": "product-card-2-image",
+        "x": 517,
+        "y": 200,
+        "width": 406,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/product-milling-4bd99504.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "product-card-2-eyebrow",
+        "name": "product-card-2-eyebrow",
+        "x": 517,
+        "y": 308,
+        "fill": "#008D99",
+        "content": "PRODUCT",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "product-card-2-title",
+        "name": "product-card-2-title",
+        "x": 517,
+        "y": 330,
+        "fill": "#1A1F24",
+        "content": "HORIZONTAL MILLING MACHINES",
+        "fontFamily": "Raleway",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 28,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "product-card-2-body",
+        "name": "product-card-2-body",
+        "x": 517,
+        "y": 366,
+        "fill": "#66707A",
+        "content": "Central headstock milling machines built for dynamics, reliability and precision.",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 41,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "product-card-2-arrow",
+        "name": "product-card-2-arrow",
+        "x": 911,
+        "y": 422,
+        "fill": "#00A7B5",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "product-card-3-box",
+        "name": "product-card-3-box",
+        "x": 970,
+        "y": 188,
+        "width": 430,
+        "height": 260,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "product-card-3-image",
+        "name": "product-card-3-image",
+        "x": 982,
+        "y": 200,
+        "width": 406,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/product-boring-8e0a2947.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "product-card-3-eyebrow",
+        "name": "product-card-3-eyebrow",
+        "x": 982,
+        "y": 308,
+        "fill": "#008D99",
+        "content": "PRODUCT",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "product-card-3-title",
+        "name": "product-card-3-title",
+        "x": 982,
+        "y": 330,
+        "fill": "#1A1F24",
+        "content": "HORIZONTAL BORING – MILLING MACHINES",
+        "fontFamily": "Raleway",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 28,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "product-card-3-body",
+        "name": "product-card-3-body",
+        "x": 982,
+        "y": 366,
+        "fill": "#66707A",
+        "content": "High metal-removal boring and milling machines for demanding industrial work.",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 406,
+        "height": 41,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "product-card-3-arrow",
+        "name": "product-card-3-arrow",
+        "x": 1376,
+        "y": 422,
+        "fill": "#00A7B5",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-products"
+      },
+      {
+        "type": "ellipse",
+        "id": "products-dots-0",
+        "name": "products-dots-0",
+        "x": 688,
+        "y": 486,
+        "width": 8,
+        "height": 8,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "ellipse",
+        "id": "products-dots-1",
+        "name": "products-dots-1",
+        "x": 706,
+        "y": 486,
+        "width": 8,
+        "height": 8,
+        "fill": "#00A7B5",
+        "href": "#page-products"
+      },
+      {
+        "type": "ellipse",
+        "id": "products-dots-2",
+        "name": "products-dots-2",
+        "x": 724,
+        "y": 486,
+        "width": 8,
+        "height": 8,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "ellipse",
+        "id": "products-dots-3",
+        "name": "products-dots-3",
+        "x": 742,
+        "y": 486,
+        "width": 8,
+        "height": 8,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "products-cta-box",
+        "name": "products-cta-box",
+        "x": 626,
+        "y": 532,
+        "width": 188,
+        "height": 40,
+        "fill": "#00A7B5",
+        "href": "#page-products",
+        "cornerRadius": 2
+      },
+      {
+        "type": "text",
+        "id": "products-cta-text",
+        "name": "products-cta-text",
+        "x": 640,
+        "y": 543,
+        "fill": "#FFFFFF",
+        "content": "DISCOVER MORE",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 148,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "products-cta-arrow",
+        "name": "products-cta-arrow",
+        "x": 794,
+        "y": 543,
+        "fill": "#FFFFFF",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-products"
+      }
+    ]
+  }
+}

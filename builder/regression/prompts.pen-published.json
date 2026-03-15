@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "pagani-brand",
+      "description": "Pagani 风格超跑品牌官网",
+      "requiredCategories": ["navigation", "hero", "story", "products", "socialproof", "cta", "footer"],
+      "prompt": "Create a cinematic luxury automotive brand website like Pagani. Keep it premium, technical, and editorial. Include navigation, hero, brand story, product showcase, trust, CTA, and footer."
+    },
+    {
+      "id": "vanmoof-brand",
+      "description": "VanMoof 风格高端电动自行车官网",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "socialproof", "cta", "footer"],
+      "prompt": "Build a premium e-bike brand website inspired by VanMoof. Include navigation, hero, product lineup, technology/capabilities, trust, CTA, and footer."
+    },
+    {
+      "id": "nothing-tech-brand",
+      "description": "Nothing Tech 风格消费科技官网",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "socialproof", "cta", "footer"],
+      "prompt": "Create a minimalist consumer tech website like Nothing Tech. Include navigation, hero, product showcase, feature/capability strip, social proof, CTA, and footer."
+    },
+    {
+      "id": "kymeta-enterprise",
+      "description": "Kymeta 风格企业科技官网",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "contact", "cta", "footer"],
+      "prompt": "Build a satellite connectivity enterprise website like Kymeta. Include navigation, hero, solution approach, product/service pages, contact path, CTA, and footer."
+    },
+    {
+      "id": "framework-modular",
+      "description": "Framework New 风格模块化硬件官网",
+      "requiredCategories": ["navigation", "hero", "products", "story", "cta", "footer"],
+      "prompt": "Create a modular laptop brand website like Framework New. Include navigation, hero, product lineup, brand story, CTA, and footer."
+    },
+    {
+      "id": "fptindustrie-industrial",
+      "description": "Fptindustrie 风格工业机械官网",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "socialproof", "cta", "footer"],
+      "prompt": "Build an industrial machinery website like Fptindustrie. Include navigation, hero, process/capability section, product catalog, trust, CTA, and footer."
+    }
+  ]
+}

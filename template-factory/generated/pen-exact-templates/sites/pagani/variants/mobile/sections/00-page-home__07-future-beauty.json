@@ -1,0 +1,1098 @@
+{
+  "sectionId": "future-beauty",
+  "sectionName": "Future Beauty",
+  "sectionKind": "story",
+  "order": 7,
+  "bounds": {
+    "x": 0,
+    "y": 5224,
+    "width": 390,
+    "height": 740
+  },
+  "directChildCount": 17,
+  "recursiveNodeCount": 18,
+  "treeHash": "a08da8f75e278db218a232563ac0f17ae63127c66baa4a726cb30ecae2038766",
+  "blockCount": 17,
+  "blockIndex": [
+    {
+      "blockId": "future-beauty-bg",
+      "blockName": "future-beauty-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 740
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d7107baa6156cc8ddd42b24a38756ec6b96c88f2aa6dc086c6fc0d80622bf185"
+    },
+    {
+      "blockId": "future-beauty-shade",
+      "blockName": "future-beauty-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 740
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2bf29cebc8b2ec70d36402b15ebdbea20333daef939c703f1b956b1127a01876"
+    },
+    {
+      "blockId": "future-beauty-shell",
+      "blockName": "future-beauty-shell",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 170,
+        "width": 330,
+        "height": 380
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "400c76416f5ab937e6262b456b92ae53461579caf1492541b71c70718a76f90b"
+    },
+    {
+      "blockId": "future-beauty-chapter",
+      "blockName": "future-beauty-chapter",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 44,
+        "y": 194,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ea1bd1772836fd1ab1d7a56f8891521c7f98d560a04aaaf1e329b4663ae8dc88"
+    },
+    {
+      "blockId": "future-beauty-count",
+      "blockName": "future-beauty-count",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 268,
+        "y": 194,
+        "width": 80,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "29e6f3600f5111ea5483a01f3f676b8cba0c3cbe38d1dbf7de06d8f14732396b"
+    },
+    {
+      "blockId": "future-beauty-title",
+      "blockName": "future-beauty-title",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 44,
+        "y": 240,
+        "width": 280,
+        "height": 48
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ef4aa400fa3f54d95c97dfa0c891cdae00a858f85c8453ac612ca93dc2f334ad"
+    },
+    {
+      "blockId": "future-beauty-body",
+      "blockName": "future-beauty-body",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 44,
+        "y": 316,
+        "width": 280,
+        "height": 106
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "57935da4edc4b00d54de0a16346561a8a25febd2ddc46cdb26f091f38b0f50c5"
+    },
+    {
+      "blockId": "future-beauty-nav-chip-0",
+      "blockName": "future-beauty-nav-chip-0",
+      "blockType": "rectangle",
+      "order": 7,
+      "bounds": {
+        "x": 44,
+        "y": 420,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c05aeb1824608502039e9d6004ab2f447427561d0a1973ebb72f568bc19ed2e6"
+    },
+    {
+      "blockId": "future-beauty-nav-chip-text-0",
+      "blockName": "future-beauty-nav-chip-text-0",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 56,
+        "y": 429,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "31fd5aa2f6b2525d12b4d62a757a0b202ed9902df9b8a623e9873087d77c301d"
+    },
+    {
+      "blockId": "future-beauty-nav-chip-1",
+      "blockName": "future-beauty-nav-chip-1",
+      "blockType": "rectangle",
+      "order": 9,
+      "bounds": {
+        "x": 128,
+        "y": 420,
+        "width": 110.4,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a2b1ff9b98dd7ad331a248f93a02616884c8e113cfa94e314b2cc6684787658e"
+    },
+    {
+      "blockId": "future-beauty-nav-chip-text-1",
+      "blockName": "future-beauty-nav-chip-text-1",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 140,
+        "y": 429,
+        "width": 86.4,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8613f4c950fececc1b7b84ca34933a257f1346bace604a2fb72cb0e33c75ad56"
+    },
+    {
+      "blockId": "future-beauty-nav-chip-2",
+      "blockName": "future-beauty-nav-chip-2",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 248.4,
+        "y": 420,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "969e8984b209e49c17524b2f8966185fbcde944b4c18fbe62a1ea2170fbded92"
+    },
+    {
+      "blockId": "future-beauty-nav-chip-text-2",
+      "blockName": "future-beauty-nav-chip-text-2",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 260.4,
+        "y": 429,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cfcee43809ed0b21312a5c11fc5cc099c6ca37927380955d6703a87b956e7083"
+    },
+    {
+      "blockId": "future-beauty-nav-chip-3",
+      "blockName": "future-beauty-nav-chip-3",
+      "blockType": "rectangle",
+      "order": 13,
+      "bounds": {
+        "x": 44,
+        "y": 460,
+        "width": 88.8,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "25b4b62e33d5142fdb80fe73c51c284e30ae95c1ebb6df6d34275858233bf3ec"
+    },
+    {
+      "blockId": "future-beauty-nav-chip-text-3",
+      "blockName": "future-beauty-nav-chip-text-3",
+      "blockType": "text",
+      "order": 14,
+      "bounds": {
+        "x": 56,
+        "y": 469,
+        "width": 64.8,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2dcb9098cb2d2617d605b1ee204d71ec2fba636cefff487be3e1ab321b977b72"
+    },
+    {
+      "blockId": "future-beauty-nav-chip-4",
+      "blockName": "future-beauty-nav-chip-4",
+      "blockType": "rectangle",
+      "order": 15,
+      "bounds": {
+        "x": 142.8,
+        "y": 460,
+        "width": 88.8,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e483849e28289195e79c09528f8e5044f2640e31b5fb214cc5945bcc79645b5a"
+    },
+    {
+      "blockId": "future-beauty-nav-chip-text-4",
+      "blockName": "future-beauty-nav-chip-text-4",
+      "blockType": "text",
+      "order": 16,
+      "bounds": {
+        "x": 154.8,
+        "y": 469,
+        "width": 64.8,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "437a2204b00f3bf8ce4d4cf22f6575c627ede759176b8cb9328429488e4096cc"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/future-beauty.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/future-beauty.jpg",
+      "relativePath": "assets-structured/pagani/future-beauty.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "future-beauty-bg",
+      "blockName": "future-beauty-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 740
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d7107baa6156cc8ddd42b24a38756ec6b96c88f2aa6dc086c6fc0d80622bf185",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/future-beauty.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/future-beauty.jpg",
+        "relativePath": "assets-structured/pagani/future-beauty.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-beauty-bg",
+        "x": 0,
+        "y": 0,
+        "name": "future-beauty-bg",
+        "width": 390,
+        "height": 740,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/future-beauty.jpg",
+          "mode": "fill"
+        }
+      }
+    },
+    {
+      "blockId": "future-beauty-shade",
+      "blockName": "future-beauty-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 740
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2bf29cebc8b2ec70d36402b15ebdbea20333daef939c703f1b956b1127a01876",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-beauty-shade",
+        "x": 0,
+        "y": 0,
+        "name": "future-beauty-shade",
+        "width": 390,
+        "height": 740,
+        "fill": "#0000005A"
+      }
+    },
+    {
+      "blockId": "future-beauty-shell",
+      "blockName": "future-beauty-shell",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 170,
+        "width": 330,
+        "height": 380
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "400c76416f5ab937e6262b456b92ae53461579caf1492541b71c70718a76f90b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-beauty-shell",
+        "x": 18,
+        "y": 170,
+        "name": "future-beauty-shell",
+        "width": 330,
+        "height": 380,
+        "fill": "#0A0A0ACF"
+      }
+    },
+    {
+      "blockId": "future-beauty-chapter",
+      "blockName": "future-beauty-chapter",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 44,
+        "y": 194,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ea1bd1772836fd1ab1d7a56f8891521c7f98d560a04aaaf1e329b4663ae8dc88",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-beauty-chapter",
+        "x": 44,
+        "y": 194,
+        "name": "future-beauty-chapter",
+        "fill": "#B9B3AB",
+        "content": "Future",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.22em"
+      }
+    },
+    {
+      "blockId": "future-beauty-count",
+      "blockName": "future-beauty-count",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 268,
+        "y": 194,
+        "width": 80,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "29e6f3600f5111ea5483a01f3f676b8cba0c3cbe38d1dbf7de06d8f14732396b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-beauty-count",
+        "x": 268,
+        "y": 194,
+        "name": "future-beauty-count",
+        "fill": "#B9B3AB",
+        "content": "3 / 5",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 80,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      }
+    },
+    {
+      "blockId": "future-beauty-title",
+      "blockName": "future-beauty-title",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 44,
+        "y": 240,
+        "width": 280,
+        "height": 48
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ef4aa400fa3f54d95c97dfa0c891cdae00a858f85c8453ac612ca93dc2f334ad",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-beauty-title",
+        "x": 44,
+        "y": 240,
+        "name": "future-beauty-title",
+        "fill": "#F3F2ED",
+        "content": "Beauty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 30,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 280,
+        "height": 48
+      }
+    },
+    {
+      "blockId": "future-beauty-body",
+      "blockName": "future-beauty-body",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 44,
+        "y": 316,
+        "width": 280,
+        "height": 106
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "57935da4edc4b00d54de0a16346561a8a25febd2ddc46cdb26f091f38b0f50c5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-beauty-body",
+        "x": 44,
+        "y": 316,
+        "name": "future-beauty-body",
+        "fill": "#F3F2ED",
+        "content": "None of this would make sense if it was not enclosed by the lines of beauty at its highest expression: a design language that captures the heart and thrills the eyes.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 280,
+        "height": 106
+      }
+    },
+    {
+      "blockId": "future-beauty-nav-chip-0",
+      "blockName": "future-beauty-nav-chip-0",
+      "blockType": "rectangle",
+      "order": 7,
+      "bounds": {
+        "x": 44,
+        "y": 420,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c05aeb1824608502039e9d6004ab2f447427561d0a1973ebb72f568bc19ed2e6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-beauty-nav-chip-0",
+        "x": 44,
+        "y": 420,
+        "name": "future-beauty-nav-chip-0",
+        "width": 74,
+        "height": 32,
+        "fill": "#FFFFFF14",
+        "stroke": {
+          "fill": "#C9B28B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-beauty-nav-chip-text-0",
+      "blockName": "future-beauty-nav-chip-text-0",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 56,
+        "y": 429,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "31fd5aa2f6b2525d12b4d62a757a0b202ed9902df9b8a623e9873087d77c301d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-beauty-nav-chip-text-0",
+        "x": 56,
+        "y": 429,
+        "name": "future-beauty-nav-chip-text-0",
+        "fill": "#F3F2ED",
+        "content": "Intro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-beauty-nav-chip-1",
+      "blockName": "future-beauty-nav-chip-1",
+      "blockType": "rectangle",
+      "order": 9,
+      "bounds": {
+        "x": 128,
+        "y": 420,
+        "width": 110.4,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a2b1ff9b98dd7ad331a248f93a02616884c8e113cfa94e314b2cc6684787658e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-beauty-nav-chip-1",
+        "x": 128,
+        "y": 420,
+        "name": "future-beauty-nav-chip-1",
+        "width": 110.4,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-beauty-nav-chip-text-1",
+      "blockName": "future-beauty-nav-chip-text-1",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 140,
+        "y": 429,
+        "width": 86.4,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8613f4c950fececc1b7b84ca34933a257f1346bace604a2fb72cb0e33c75ad56",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-beauty-nav-chip-text-1",
+        "x": 140,
+        "y": 429,
+        "name": "future-beauty-nav-chip-text-1",
+        "fill": "#B9B3AB",
+        "content": "The Research",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 86.4,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-beauty-nav-chip-2",
+      "blockName": "future-beauty-nav-chip-2",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 248.4,
+        "y": 420,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "969e8984b209e49c17524b2f8966185fbcde944b4c18fbe62a1ea2170fbded92",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-beauty-nav-chip-2",
+        "x": 248.4,
+        "y": 420,
+        "name": "future-beauty-nav-chip-2",
+        "width": 74,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-beauty-nav-chip-text-2",
+      "blockName": "future-beauty-nav-chip-text-2",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 260.4,
+        "y": 429,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cfcee43809ed0b21312a5c11fc5cc099c6ca37927380955d6703a87b956e7083",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-beauty-nav-chip-text-2",
+        "x": 260.4,
+        "y": 429,
+        "name": "future-beauty-nav-chip-text-2",
+        "fill": "#B9B3AB",
+        "content": "Beauty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-beauty-nav-chip-3",
+      "blockName": "future-beauty-nav-chip-3",
+      "blockType": "rectangle",
+      "order": 13,
+      "bounds": {
+        "x": 44,
+        "y": 460,
+        "width": 88.8,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "25b4b62e33d5142fdb80fe73c51c284e30ae95c1ebb6df6d34275858233bf3ec",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-beauty-nav-chip-3",
+        "x": 44,
+        "y": 460,
+        "name": "future-beauty-nav-chip-3",
+        "width": 88.8,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-beauty-nav-chip-text-3",
+      "blockName": "future-beauty-nav-chip-text-3",
+      "blockType": "text",
+      "order": 14,
+      "bounds": {
+        "x": 56,
+        "y": 469,
+        "width": 64.8,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2dcb9098cb2d2617d605b1ee204d71ec2fba636cefff487be3e1ab321b977b72",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-beauty-nav-chip-text-3",
+        "x": 56,
+        "y": 469,
+        "name": "future-beauty-nav-chip-text-3",
+        "fill": "#B9B3AB",
+        "content": "The Dream",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 64.8,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-beauty-nav-chip-4",
+      "blockName": "future-beauty-nav-chip-4",
+      "blockType": "rectangle",
+      "order": 15,
+      "bounds": {
+        "x": 142.8,
+        "y": 460,
+        "width": 88.8,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e483849e28289195e79c09528f8e5044f2640e31b5fb214cc5945bcc79645b5a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-beauty-nav-chip-4",
+        "x": 142.8,
+        "y": 460,
+        "name": "future-beauty-nav-chip-4",
+        "width": 88.8,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-beauty-nav-chip-text-4",
+      "blockName": "future-beauty-nav-chip-text-4",
+      "blockType": "text",
+      "order": 16,
+      "bounds": {
+        "x": 154.8,
+        "y": 469,
+        "width": 64.8,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "437a2204b00f3bf8ce4d4cf22f6575c627ede759176b8cb9328429488e4096cc",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-beauty-nav-chip-text-4",
+        "x": 154.8,
+        "y": 469,
+        "name": "future-beauty-nav-chip-text-4",
+        "fill": "#B9B3AB",
+        "content": "Certainty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 64.8,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "future-beauty",
+    "x": 0,
+    "y": 5224,
+    "width": 390,
+    "height": 740,
+    "name": "Future Beauty",
+    "fill": "#060606",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "future-beauty-bg",
+        "x": 0,
+        "y": 0,
+        "name": "future-beauty-bg",
+        "width": 390,
+        "height": 740,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/future-beauty.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "future-beauty-shade",
+        "x": 0,
+        "y": 0,
+        "name": "future-beauty-shade",
+        "width": 390,
+        "height": 740,
+        "fill": "#0000005A"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-beauty-shell",
+        "x": 18,
+        "y": 170,
+        "name": "future-beauty-shell",
+        "width": 330,
+        "height": 380,
+        "fill": "#0A0A0ACF"
+      },
+      {
+        "type": "text",
+        "id": "future-beauty-chapter",
+        "x": 44,
+        "y": 194,
+        "name": "future-beauty-chapter",
+        "fill": "#B9B3AB",
+        "content": "Future",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.22em"
+      },
+      {
+        "type": "text",
+        "id": "future-beauty-count",
+        "x": 268,
+        "y": 194,
+        "name": "future-beauty-count",
+        "fill": "#B9B3AB",
+        "content": "3 / 5",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 80,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      },
+      {
+        "type": "text",
+        "id": "future-beauty-title",
+        "x": 44,
+        "y": 240,
+        "name": "future-beauty-title",
+        "fill": "#F3F2ED",
+        "content": "Beauty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 30,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 280,
+        "height": 48
+      },
+      {
+        "type": "text",
+        "id": "future-beauty-body",
+        "x": 44,
+        "y": 316,
+        "name": "future-beauty-body",
+        "fill": "#F3F2ED",
+        "content": "None of this would make sense if it was not enclosed by the lines of beauty at its highest expression: a design language that captures the heart and thrills the eyes.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 280,
+        "height": 106
+      },
+      {
+        "type": "rectangle",
+        "id": "future-beauty-nav-chip-0",
+        "x": 44,
+        "y": 420,
+        "name": "future-beauty-nav-chip-0",
+        "width": 74,
+        "height": 32,
+        "fill": "#FFFFFF14",
+        "stroke": {
+          "fill": "#C9B28B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-beauty-nav-chip-text-0",
+        "x": 56,
+        "y": 429,
+        "name": "future-beauty-nav-chip-text-0",
+        "fill": "#F3F2ED",
+        "content": "Intro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-beauty-nav-chip-1",
+        "x": 128,
+        "y": 420,
+        "name": "future-beauty-nav-chip-1",
+        "width": 110.4,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-beauty-nav-chip-text-1",
+        "x": 140,
+        "y": 429,
+        "name": "future-beauty-nav-chip-text-1",
+        "fill": "#B9B3AB",
+        "content": "The Research",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 86.4,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-beauty-nav-chip-2",
+        "x": 248.4,
+        "y": 420,
+        "name": "future-beauty-nav-chip-2",
+        "width": 74,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-beauty-nav-chip-text-2",
+        "x": 260.4,
+        "y": 429,
+        "name": "future-beauty-nav-chip-text-2",
+        "fill": "#B9B3AB",
+        "content": "Beauty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-beauty-nav-chip-3",
+        "x": 44,
+        "y": 460,
+        "name": "future-beauty-nav-chip-3",
+        "width": 88.8,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-beauty-nav-chip-text-3",
+        "x": 56,
+        "y": 469,
+        "name": "future-beauty-nav-chip-text-3",
+        "fill": "#B9B3AB",
+        "content": "The Dream",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 64.8,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-beauty-nav-chip-4",
+        "x": 142.8,
+        "y": 460,
+        "name": "future-beauty-nav-chip-4",
+        "width": 88.8,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-beauty-nav-chip-text-4",
+        "x": 154.8,
+        "y": 469,
+        "name": "future-beauty-nav-chip-text-4",
+        "fill": "#B9B3AB",
+        "content": "Certainty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 64.8,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    ]
+  }
+}

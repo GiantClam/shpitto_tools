@@ -1,0 +1,921 @@
+{
+  "sectionId": "hero",
+  "sectionName": "Hero",
+  "sectionKind": "hero",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 700
+  },
+  "directChildCount": 10,
+  "recursiveNodeCount": 18,
+  "treeHash": "6ebca838f2ec85d6bf9c248a4d2738ff6d6abfedc3306ec4db111e83ee5e4c30",
+  "blockCount": 10,
+  "blockIndex": [
+    {
+      "blockId": "hero-bg",
+      "blockName": "hero-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 700
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "24434d7f4139314ba7eadfedeeaee82a2846e428954683c4a71cd0cdc6b2e7d4"
+    },
+    {
+      "blockId": "hero-image",
+      "blockName": "hero-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 830,
+        "y": 110,
+        "width": 530,
+        "height": 500
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "66a2087b426e543cacfa84a149c260482a90fd266e40399e2c857a78b87cb957"
+    },
+    {
+      "blockId": "header-page-home",
+      "blockName": "Header",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "ae3d92049c68023303eeafe2ed64ab372da4f91047672d5f32222e305b0ad690"
+    },
+    {
+      "blockId": "hero-kicker",
+      "blockName": "hero-kicker",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 40,
+        "y": 120,
+        "width": 200,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "873c35ad08a9cda9a00b7d40cb231078943151a99486a9c31befef493688d472"
+    },
+    {
+      "blockId": "hero-title",
+      "blockName": "hero-title",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 40,
+        "y": 160,
+        "width": 620,
+        "height": 296
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8f76cf68832491500171be149c8a64b2799157cc363bdbb29c8f6566fe345386"
+    },
+    {
+      "blockId": "hero-subtitle",
+      "blockName": "hero-subtitle",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 40,
+        "y": 334,
+        "width": 480,
+        "height": 83
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a3ceedbb484df9762db9504b849e218ec3e6564296fb53a25deef2990bd6bb3b"
+    },
+    {
+      "blockId": "hero-primary-box",
+      "blockName": "hero-primary-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 40,
+        "y": 434,
+        "width": 148,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7fd3dfeecfa5d5530740ebbcb915e384551b1f147e53ad820ab25f5d5ea86fd2"
+    },
+    {
+      "blockId": "hero-primary-text",
+      "blockName": "hero-primary-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 54,
+        "y": 445,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7347b25ca8dda72c2ec56545719f70c9c02b13f19840a4e554c611a0d01f652f"
+    },
+    {
+      "blockId": "hero-secondary-box",
+      "blockName": "hero-secondary-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 202,
+        "y": 434,
+        "width": 148,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3f33f7accffc293e2338bf12be61768392f204dc623eb8950d8ddf6becc7cc9f"
+    },
+    {
+      "blockId": "hero-secondary-text",
+      "blockName": "hero-secondary-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 216,
+        "y": 445,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a551258c7bc53ea1f4f573636076a1fa6e7a89589453f05db618c838980c8d61"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+      "relativePath": "assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "hero-bg",
+      "blockName": "hero-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 700
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "24434d7f4139314ba7eadfedeeaee82a2846e428954683c4a71cd0cdc6b2e7d4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-bg",
+        "name": "hero-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 700,
+        "fill": "#F6F5F0"
+      }
+    },
+    {
+      "blockId": "hero-image",
+      "blockName": "hero-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 830,
+        "y": 110,
+        "width": 530,
+        "height": 500
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "66a2087b426e543cacfa84a149c260482a90fd266e40399e2c857a78b87cb957",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+        "relativePath": "assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+        "exists": true,
+        "mode": "cover"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-image",
+        "name": "hero-image",
+        "x": 830,
+        "y": 110,
+        "width": 530,
+        "height": 500,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+          "mode": "cover"
+        },
+        "href": "#page-products",
+        "cornerRadius": 28
+      }
+    },
+    {
+      "blockId": "header-page-home",
+      "blockName": "Header",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "ae3d92049c68023303eeafe2ed64ab372da4f91047672d5f32222e305b0ad690",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "header-page-home",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#111111",
+            "content": "teenage engineering",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "nav-page-products",
+            "name": "nav-page-products",
+            "x": 840,
+            "y": 30,
+            "fill": "#111111",
+            "content": "PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-guides",
+            "name": "nav-page-guides",
+            "x": 948,
+            "y": 30,
+            "fill": "#111111",
+            "content": "GUIDES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-guides",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-downloads",
+            "name": "nav-page-downloads",
+            "x": 1056,
+            "y": 30,
+            "fill": "#111111",
+            "content": "DOWNLOADS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-downloads",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-designs",
+            "name": "nav-page-designs",
+            "x": 1164,
+            "y": 30,
+            "fill": "#111111",
+            "content": "DESIGNS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-designs",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-contact",
+            "name": "nav-page-contact",
+            "x": 1272,
+            "y": 30,
+            "fill": "#111111",
+            "content": "CONTACT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-contact",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "hero-kicker",
+      "blockName": "hero-kicker",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 40,
+        "y": 120,
+        "width": 200,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "873c35ad08a9cda9a00b7d40cb231078943151a99486a9c31befef493688d472",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-kicker",
+        "name": "hero-kicker",
+        "x": 40,
+        "y": 120,
+        "fill": "#FF7A00",
+        "content": "TEENAGE ENGINEERING",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 18,
+        "letterSpacing": "0.12em"
+      }
+    },
+    {
+      "blockId": "hero-title",
+      "blockName": "hero-title",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 40,
+        "y": 160,
+        "width": 620,
+        "height": 296
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8f76cf68832491500171be149c8a64b2799157cc363bdbb29c8f6566fe345386",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-title",
+        "name": "hero-title",
+        "x": 40,
+        "y": 160,
+        "fill": "#111111",
+        "content": "high quality ideas for sound, image and play",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 68,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 296
+      }
+    },
+    {
+      "blockId": "hero-subtitle",
+      "blockName": "hero-subtitle",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 40,
+        "y": 334,
+        "width": 480,
+        "height": 83
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a3ceedbb484df9762db9504b849e218ec3e6564296fb53a25deef2990bd6bb3b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-subtitle",
+        "name": "hero-subtitle",
+        "x": 40,
+        "y": 334,
+        "fill": "#66665F",
+        "content": "tools, instruments and objects from stockholm designed to make technology feel intentional, tactile and human.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 480,
+        "height": 83
+      }
+    },
+    {
+      "blockId": "hero-primary-box",
+      "blockName": "hero-primary-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 40,
+        "y": 434,
+        "width": 148,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7fd3dfeecfa5d5530740ebbcb915e384551b1f147e53ad820ab25f5d5ea86fd2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-primary-box",
+        "name": "hero-primary-box",
+        "x": 40,
+        "y": 434,
+        "width": 148,
+        "height": 40,
+        "fill": "#FF7A00",
+        "stroke": {
+          "fill": "#FF7A00",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 14
+      }
+    },
+    {
+      "blockId": "hero-primary-text",
+      "blockName": "hero-primary-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 54,
+        "y": 445,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7347b25ca8dda72c2ec56545719f70c9c02b13f19840a4e554c611a0d01f652f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-primary-text",
+        "name": "hero-primary-text",
+        "x": 54,
+        "y": 445,
+        "fill": "#FFFFFF",
+        "content": "Products",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "hero-secondary-box",
+      "blockName": "hero-secondary-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 202,
+        "y": 434,
+        "width": 148,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3f33f7accffc293e2338bf12be61768392f204dc623eb8950d8ddf6becc7cc9f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-secondary-box",
+        "name": "hero-secondary-box",
+        "x": 202,
+        "y": 434,
+        "width": 148,
+        "height": 40,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D6CC",
+          "thickness": 1
+        },
+        "href": "#page-guides",
+        "cornerRadius": 14
+      }
+    },
+    {
+      "blockId": "hero-secondary-text",
+      "blockName": "hero-secondary-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 216,
+        "y": 445,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a551258c7bc53ea1f4f573636076a1fa6e7a89589453f05db618c838980c8d61",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-secondary-text",
+        "name": "hero-secondary-text",
+        "x": 216,
+        "y": 445,
+        "fill": "#111111",
+        "content": "Guides",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-guides",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "hero",
+    "name": "Hero",
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 700,
+    "fill": "#F6F5F0",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "hero-bg",
+        "name": "hero-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 700,
+        "fill": "#F6F5F0"
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-image",
+        "name": "hero-image",
+        "x": 830,
+        "y": 110,
+        "width": 530,
+        "height": 500,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+          "mode": "cover"
+        },
+        "href": "#page-products",
+        "cornerRadius": 28
+      },
+      {
+        "type": "frame",
+        "id": "header-page-home",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#111111",
+            "content": "teenage engineering",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "nav-page-products",
+            "name": "nav-page-products",
+            "x": 840,
+            "y": 30,
+            "fill": "#111111",
+            "content": "PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-guides",
+            "name": "nav-page-guides",
+            "x": 948,
+            "y": 30,
+            "fill": "#111111",
+            "content": "GUIDES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-guides",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-downloads",
+            "name": "nav-page-downloads",
+            "x": 1056,
+            "y": 30,
+            "fill": "#111111",
+            "content": "DOWNLOADS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-downloads",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-designs",
+            "name": "nav-page-designs",
+            "x": 1164,
+            "y": 30,
+            "fill": "#111111",
+            "content": "DESIGNS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-designs",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-contact",
+            "name": "nav-page-contact",
+            "x": 1272,
+            "y": 30,
+            "fill": "#111111",
+            "content": "CONTACT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-contact",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "hero-kicker",
+        "name": "hero-kicker",
+        "x": 40,
+        "y": 120,
+        "fill": "#FF7A00",
+        "content": "TEENAGE ENGINEERING",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 18,
+        "letterSpacing": "0.12em"
+      },
+      {
+        "type": "text",
+        "id": "hero-title",
+        "name": "hero-title",
+        "x": 40,
+        "y": 160,
+        "fill": "#111111",
+        "content": "high quality ideas for sound, image and play",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 68,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 296
+      },
+      {
+        "type": "text",
+        "id": "hero-subtitle",
+        "name": "hero-subtitle",
+        "x": 40,
+        "y": 334,
+        "fill": "#66665F",
+        "content": "tools, instruments and objects from stockholm designed to make technology feel intentional, tactile and human.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 480,
+        "height": 83
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-primary-box",
+        "name": "hero-primary-box",
+        "x": 40,
+        "y": 434,
+        "width": 148,
+        "height": 40,
+        "fill": "#FF7A00",
+        "stroke": {
+          "fill": "#FF7A00",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "hero-primary-text",
+        "name": "hero-primary-text",
+        "x": 54,
+        "y": 445,
+        "fill": "#FFFFFF",
+        "content": "Products",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-secondary-box",
+        "name": "hero-secondary-box",
+        "x": 202,
+        "y": 434,
+        "width": 148,
+        "height": 40,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D6CC",
+          "thickness": 1
+        },
+        "href": "#page-guides",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "hero-secondary-text",
+        "name": "hero-secondary-text",
+        "x": 216,
+        "y": 445,
+        "fill": "#111111",
+        "content": "Guides",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-guides",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

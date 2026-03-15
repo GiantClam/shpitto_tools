@@ -1,0 +1,5003 @@
+{
+  "pageId": "qFoix",
+  "pageName": "CONTACT",
+  "pageType": "contact",
+  "order": 3,
+  "bounds": {
+    "x": 2649,
+    "y": -1959,
+    "width": 1200,
+    "height": 2003
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "ae9d65183bdf6b28e1bf382c9b3e5684777c4fe0cd3e0c45ba301cc4698ffb5b",
+  "directChildCount": 4,
+  "recursiveNodeCount": 82,
+  "sectionCount": 4,
+  "sectionIndex": [
+    {
+      "sectionId": "T0hYU",
+      "sectionName": "ann",
+      "sectionKind": "generic",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 40
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 4,
+      "treeHash": "590be2b3241cc58b26d1612259dab08555c53cc4d5b59c7e22dff9a09f5f3b24",
+      "blockCount": 2
+    },
+    {
+      "sectionId": "5jZu7",
+      "sectionName": "nav",
+      "sectionKind": "navigation",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 40,
+        "width": 1200,
+        "height": 78
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 9,
+      "treeHash": "5fe0a2a17fb6e3a2c6c40eb2458478f445057e7c3a9681ac26c03ed9c5202913",
+      "blockCount": 2
+    },
+    {
+      "sectionId": "ZDTmw",
+      "sectionName": "contactMain",
+      "sectionKind": "contact",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 118,
+        "width": 1200,
+        "height": 897
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 20,
+      "treeHash": "d0a5adb690ce0e021b28a007481496948b6a71d6f270c72bfa7b11861cd651d1",
+      "blockCount": 5
+    },
+    {
+      "sectionId": "QAj8Z",
+      "sectionName": "foot",
+      "sectionKind": "generic",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 1015,
+        "width": 1200,
+        "height": 978
+      },
+      "directChildCount": 46,
+      "recursiveNodeCount": 48,
+      "treeHash": "88664d02d3bda7b338a9a7d64e6581770d456a6e0c814f56f0a17a6807276464",
+      "blockCount": 46
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "T0hYU",
+      "sectionName": "ann",
+      "sectionKind": "generic",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 40
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 4,
+      "treeHash": "590be2b3241cc58b26d1612259dab08555c53cc4d5b59c7e22dff9a09f5f3b24",
+      "blockCount": 2,
+      "blockIndex": [
+        {
+          "blockId": "vRhFZ",
+          "blockName": "annText",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 0,
+          "bounds": {
+            "x": 308.5,
+            "y": 12,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "34504eb46d3933923e1f2a2d432d04eb42081327fd6df8a9a559cf3e229aadd5"
+        },
+        {
+          "blockId": "1jrT3",
+          "blockName": "annBtn",
+          "blockType": "frame",
+          "order": 1,
+          "bounds": {
+            "x": 783.5,
+            "y": 6,
+            "width": 108,
+            "height": 28
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "60ac73687ff0d4449e437fd4b64511d76278257e78879eb1704383510a67df27"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "vRhFZ",
+          "blockName": "annText",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 0,
+          "bounds": {
+            "x": 308.5,
+            "y": 12,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "34504eb46d3933923e1f2a2d432d04eb42081327fd6df8a9a559cf3e229aadd5",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "vRhFZ",
+            "x": 308.5,
+            "y": 12,
+            "name": "annText",
+            "fill": "#E7EDF4",
+            "content": "Watch IonQ&apos;s Quantum World Congress 2025 Keynote On Demand.",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "1jrT3",
+          "blockName": "annBtn",
+          "blockType": "frame",
+          "order": 1,
+          "bounds": {
+            "x": 783.5,
+            "y": 6,
+            "width": 108,
+            "height": 28
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "60ac73687ff0d4449e437fd4b64511d76278257e78879eb1704383510a67df27",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "1jrT3",
+            "x": 783.5,
+            "y": 6,
+            "name": "annBtn",
+            "width": 108,
+            "height": 28,
+            "fill": "#1A1E25",
+            "cornerRadius": 4,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#FF6A00"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "fEwb8",
+                "x": 24,
+                "y": 7.5,
+                "name": "annBtnTxt",
+                "fill": "#FF6A00",
+                "content": "Watch now",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "T0hYU",
+        "x": 0,
+        "y": 0,
+        "name": "ann",
+        "width": 1200,
+        "height": 40,
+        "fill": "#0A0C10",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "vRhFZ",
+            "x": 308.5,
+            "y": 12,
+            "name": "annText",
+            "fill": "#E7EDF4",
+            "content": "Watch IonQ&apos;s Quantum World Congress 2025 Keynote On Demand.",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "1jrT3",
+            "x": 783.5,
+            "y": 6,
+            "name": "annBtn",
+            "width": 108,
+            "height": 28,
+            "fill": "#1A1E25",
+            "cornerRadius": 4,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#FF6A00"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "fEwb8",
+                "x": 24,
+                "y": 7.5,
+                "name": "annBtnTxt",
+                "fill": "#FF6A00",
+                "content": "Watch now",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "5jZu7",
+      "sectionName": "nav",
+      "sectionKind": "navigation",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 40,
+        "width": 1200,
+        "height": 78
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 9,
+      "treeHash": "5fe0a2a17fb6e3a2c6c40eb2458478f445057e7c3a9681ac26c03ed9c5202913",
+      "blockCount": 2,
+      "blockIndex": [
+        {
+          "blockId": "ceV9X",
+          "blockName": "",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 0,
+          "bounds": {
+            "x": 32,
+            "y": 18.5,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a5328fb1e0f165f7b5bdd5666f3616865db245fe2fd4d039a7823bd2bc8dbbca"
+        },
+        {
+          "blockId": "f5kO0",
+          "blockName": "navRight",
+          "blockType": "frame",
+          "order": 1,
+          "bounds": {
+            "x": 525,
+            "y": 17,
+            "width": 643,
+            "height": 44
+          },
+          "directChildCount": 2,
+          "recursiveNodeCount": 7,
+          "treeHash": "ccb239f7b814da2174654774930dda687e2afdadf6fe6680cb42ab9057041226"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "ceV9X",
+          "blockName": "",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 0,
+          "bounds": {
+            "x": 32,
+            "y": 18.5,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a5328fb1e0f165f7b5bdd5666f3616865db245fe2fd4d039a7823bd2bc8dbbca",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "ceV9X",
+            "x": 32,
+            "y": 18.5,
+            "fill": "#FFFFFF",
+            "content": "IONQ",
+            "fontFamily": "Inter",
+            "fontSize": 34,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "f5kO0",
+          "blockName": "navRight",
+          "blockType": "frame",
+          "order": 1,
+          "bounds": {
+            "x": 525,
+            "y": 17,
+            "width": 643,
+            "height": 44
+          },
+          "directChildCount": 2,
+          "recursiveNodeCount": 7,
+          "treeHash": "ccb239f7b814da2174654774930dda687e2afdadf6fe6680cb42ab9057041226",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "f5kO0",
+            "x": 525,
+            "y": 17,
+            "name": "navRight",
+            "width": 643,
+            "height": 44,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "zHo6t",
+                "x": -60,
+                "y": 13,
+                "name": "navMenu",
+                "fill": "#E7EDF4",
+                "content": "Products   Company   Resources   Careers   Roadmap   Blog",
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "6cjbF",
+                "x": 403,
+                "y": 0,
+                "name": "navActions",
+                "width": 240,
+                "height": 44,
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "KHhKe",
+                    "x": 0,
+                    "y": 0,
+                    "name": "getStartedBtn",
+                    "width": 124,
+                    "height": 44,
+                    "fill": "#FF6A00",
+                    "cornerRadius": 10,
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "kjP11",
+                        "name": "getStartedTxt",
+                        "fill": "#FFFFFF",
+                        "content": "Get started",
+                        "fontFamily": "Inter",
+                        "fontSize": 15,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "a4KAD",
+                    "x": 138,
+                    "y": 0,
+                    "name": "signInBtn",
+                    "width": 102,
+                    "height": 44,
+                    "fill": "#2B2F36",
+                    "cornerRadius": 10,
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "uhf5X",
+                        "name": "signInTxt",
+                        "fill": "#FFFFFF",
+                        "content": "Sign in",
+                        "fontFamily": "Inter",
+                        "fontSize": 15,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "5jZu7",
+        "x": 0,
+        "y": 40,
+        "name": "nav",
+        "width": 1200,
+        "height": 78,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "ceV9X",
+            "x": 32,
+            "y": 18.5,
+            "fill": "#FFFFFF",
+            "content": "IONQ",
+            "fontFamily": "Inter",
+            "fontSize": 34,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "f5kO0",
+            "x": 525,
+            "y": 17,
+            "name": "navRight",
+            "width": 643,
+            "height": 44,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "zHo6t",
+                "x": -60,
+                "y": 13,
+                "name": "navMenu",
+                "fill": "#E7EDF4",
+                "content": "Products   Company   Resources   Careers   Roadmap   Blog",
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "6cjbF",
+                "x": 403,
+                "y": 0,
+                "name": "navActions",
+                "width": 240,
+                "height": 44,
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "KHhKe",
+                    "x": 0,
+                    "y": 0,
+                    "name": "getStartedBtn",
+                    "width": 124,
+                    "height": 44,
+                    "fill": "#FF6A00",
+                    "cornerRadius": 10,
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "kjP11",
+                        "name": "getStartedTxt",
+                        "fill": "#FFFFFF",
+                        "content": "Get started",
+                        "fontFamily": "Inter",
+                        "fontSize": 15,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "a4KAD",
+                    "x": 138,
+                    "y": 0,
+                    "name": "signInBtn",
+                    "width": 102,
+                    "height": 44,
+                    "fill": "#2B2F36",
+                    "cornerRadius": 10,
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "uhf5X",
+                        "name": "signInTxt",
+                        "fill": "#FFFFFF",
+                        "content": "Sign in",
+                        "fontFamily": "Inter",
+                        "fontSize": 15,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "ZDTmw",
+      "sectionName": "contactMain",
+      "sectionKind": "contact",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 118,
+        "width": 1200,
+        "height": 897
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 20,
+      "treeHash": "d0a5adb690ce0e021b28a007481496948b6a71d6f270c72bfa7b11861cd651d1",
+      "blockCount": 5,
+      "blockIndex": [
+        {
+          "blockId": "atD9H",
+          "blockName": "pageTitle",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 60,
+            "y": 80,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d10ea61e78e56030b5a31ee55929a08c6f38d5b23b7c04cf412c46a8a16e8efe"
+        },
+        {
+          "blockId": "Oy2yU",
+          "blockName": "pageSub",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 60,
+            "y": 168,
+            "width": 500,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "806b4fc01847a3cf872a066bd7009f874b6cf4473883a38993af403a1946999a"
+        },
+        {
+          "blockId": "KSPk1",
+          "blockName": "formCard",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 2,
+          "bounds": {
+            "x": 60,
+            "y": 220,
+            "width": 520,
+            "height": 560
+          },
+          "directChildCount": 10,
+          "recursiveNodeCount": 15,
+          "treeHash": "5dfe91a40d54335da95d82688306f4b4bfe2643d7385d2083f79afa1dbe15fdb"
+        },
+        {
+          "blockId": "SsTbz",
+          "blockName": "infoTitle",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 620,
+            "y": 222,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c746405a8f3d327774fb559fb5f00866723f89e4c541ed86af2859487f1e8d6d"
+        },
+        {
+          "blockId": "tIV0C",
+          "blockName": "infoText",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 620,
+            "y": 302,
+            "width": 500,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2c328b0e403beb1904f894bf4c2a07b1b091cbec6763f1bff855ad2311cdab78"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "atD9H",
+          "blockName": "pageTitle",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 60,
+            "y": 80,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d10ea61e78e56030b5a31ee55929a08c6f38d5b23b7c04cf412c46a8a16e8efe",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "atD9H",
+            "x": 60,
+            "y": 80,
+            "name": "pageTitle",
+            "fill": "#10151C",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "Contact IonQ",
+            "fontFamily": "Inter",
+            "fontSize": 58,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "Oy2yU",
+          "blockName": "pageSub",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 60,
+            "y": 168,
+            "width": 500,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "806b4fc01847a3cf872a066bd7009f874b6cf4473883a38993af403a1946999a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "Oy2yU",
+            "x": 60,
+            "y": 168,
+            "name": "pageSub",
+            "fill": "#6B737E",
+            "textGrowth": "fixed-width",
+            "width": 500,
+            "content": "To send us a message, please fill out the form below.",
+            "fontFamily": "Inter",
+            "fontSize": 15,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "KSPk1",
+          "blockName": "formCard",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 2,
+          "bounds": {
+            "x": 60,
+            "y": 220,
+            "width": 520,
+            "height": 560
+          },
+          "directChildCount": 10,
+          "recursiveNodeCount": 15,
+          "treeHash": "5dfe91a40d54335da95d82688306f4b4bfe2643d7385d2083f79afa1dbe15fdb",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "KSPk1",
+            "x": 60,
+            "y": 220,
+            "name": "formCard",
+            "width": 520,
+            "height": 560,
+            "fill": "#EFEFF1",
+            "cornerRadius": 4,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#C6CBD2"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "Cvicw",
+                "x": 24,
+                "y": 22,
+                "name": "lab1",
+                "fill": "#2B313A",
+                "content": "Your name",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "kropb",
+                "x": 24,
+                "y": 52,
+                "name": "inp1",
+                "width": 472,
+                "height": 48,
+                "fill": "#EFEFF1",
+                "cornerRadius": 2,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#C6CBD2"
+                },
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "SZ9XD",
+                    "x": 20,
+                    "y": 15,
+                    "name": "ph1",
+                    "fill": "#9AA2AE",
+                    "content": "Enter full name",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "sZfoU",
+                "x": 24,
+                "y": 124,
+                "name": "lab2",
+                "fill": "#2B313A",
+                "content": "Your email",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "uuoog",
+                "x": 24,
+                "y": 154,
+                "name": "inp2",
+                "width": 472,
+                "height": 48,
+                "fill": "#EFEFF1",
+                "cornerRadius": 2,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#C6CBD2"
+                },
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "GYjJP",
+                    "x": 20,
+                    "y": 15,
+                    "name": "ph2",
+                    "fill": "#9AA2AE",
+                    "content": "Enter email",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "20wZi",
+                "x": 24,
+                "y": 226,
+                "name": "lab3",
+                "fill": "#2B313A",
+                "content": "How can we help?",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "foOE0",
+                "x": 24,
+                "y": 256,
+                "name": "inp3",
+                "width": 472,
+                "height": 112,
+                "fill": "#EFEFF1",
+                "cornerRadius": 2,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#C6CBD2"
+                },
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "CisAO",
+                    "x": 20,
+                    "y": 15,
+                    "name": "ph3",
+                    "fill": "#9AA2AE",
+                    "content": "Your message",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "6nlP8",
+                "x": 361,
+                "y": 377,
+                "name": "remain",
+                "fill": "#9AA2AE",
+                "content": "256 characters remaining",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              },
+              {
+                "type": "frame",
+                "id": "qXll0",
+                "x": 24,
+                "y": 410,
+                "name": "chk",
+                "width": 16,
+                "height": 16,
+                "fill": "#EFEFF1",
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#C6CBD2"
+                }
+              },
+              {
+                "type": "text",
+                "id": "LRHZG",
+                "x": 50,
+                "y": 408,
+                "name": "agree",
+                "fill": "#6B737E",
+                "textGrowth": "fixed-width",
+                "width": 446,
+                "content": "I agree to receive periodic updates from IonQ about its hardware, services, and other programs.",
+                "lineHeight": 1.4,
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "500"
+              },
+              {
+                "type": "frame",
+                "id": "63sDn",
+                "x": 196,
+                "y": 488,
+                "name": "btn",
+                "width": 128,
+                "height": 40,
+                "fill": "#FF6A00",
+                "cornerRadius": 8,
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "AvxRp",
+                    "x": 33,
+                    "y": 11,
+                    "name": "btnT",
+                    "fill": "#FFFFFF",
+                    "content": "Contact us",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "SsTbz",
+          "blockName": "infoTitle",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 620,
+            "y": 222,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c746405a8f3d327774fb559fb5f00866723f89e4c541ed86af2859487f1e8d6d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "SsTbz",
+            "x": 620,
+            "y": 222,
+            "name": "infoTitle",
+            "fill": "#10151C",
+            "content": "Contact info",
+            "fontFamily": "Inter",
+            "fontSize": 52,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "tIV0C",
+          "blockName": "infoText",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 620,
+            "y": 302,
+            "width": 500,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2c328b0e403beb1904f894bf4c2a07b1b091cbec6763f1bff855ad2311cdab78",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "tIV0C",
+            "x": 620,
+            "y": 302,
+            "name": "infoText",
+            "fill": "#4C5561",
+            "textGrowth": "fixed-width",
+            "width": 500,
+            "content": "For general inquiries, you can also email info@ionq.com\n\nFor media inquiries, visit our newsroom or email media@ionq.com\n\nFor employment inquiries, view currently open positions or contact jobs@ionq.com\n\nOur mailing address:\n\nIonQ, Inc.\n4505 Campus Drive\nCollege Park, MD 20740",
+            "lineHeight": 1.5,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "500"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "ZDTmw",
+        "x": 0,
+        "y": 118,
+        "name": "contactMain",
+        "width": 1200,
+        "height": 897,
+        "fill": "#EFEFF1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "atD9H",
+            "x": 60,
+            "y": 80,
+            "name": "pageTitle",
+            "fill": "#10151C",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "Contact IonQ",
+            "fontFamily": "Inter",
+            "fontSize": 58,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "Oy2yU",
+            "x": 60,
+            "y": 168,
+            "name": "pageSub",
+            "fill": "#6B737E",
+            "textGrowth": "fixed-width",
+            "width": 500,
+            "content": "To send us a message, please fill out the form below.",
+            "fontFamily": "Inter",
+            "fontSize": 15,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "KSPk1",
+            "x": 60,
+            "y": 220,
+            "name": "formCard",
+            "width": 520,
+            "height": 560,
+            "fill": "#EFEFF1",
+            "cornerRadius": 4,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#C6CBD2"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "Cvicw",
+                "x": 24,
+                "y": 22,
+                "name": "lab1",
+                "fill": "#2B313A",
+                "content": "Your name",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "kropb",
+                "x": 24,
+                "y": 52,
+                "name": "inp1",
+                "width": 472,
+                "height": 48,
+                "fill": "#EFEFF1",
+                "cornerRadius": 2,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#C6CBD2"
+                },
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "SZ9XD",
+                    "x": 20,
+                    "y": 15,
+                    "name": "ph1",
+                    "fill": "#9AA2AE",
+                    "content": "Enter full name",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "sZfoU",
+                "x": 24,
+                "y": 124,
+                "name": "lab2",
+                "fill": "#2B313A",
+                "content": "Your email",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "uuoog",
+                "x": 24,
+                "y": 154,
+                "name": "inp2",
+                "width": 472,
+                "height": 48,
+                "fill": "#EFEFF1",
+                "cornerRadius": 2,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#C6CBD2"
+                },
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "GYjJP",
+                    "x": 20,
+                    "y": 15,
+                    "name": "ph2",
+                    "fill": "#9AA2AE",
+                    "content": "Enter email",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "20wZi",
+                "x": 24,
+                "y": 226,
+                "name": "lab3",
+                "fill": "#2B313A",
+                "content": "How can we help?",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "foOE0",
+                "x": 24,
+                "y": 256,
+                "name": "inp3",
+                "width": 472,
+                "height": 112,
+                "fill": "#EFEFF1",
+                "cornerRadius": 2,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#C6CBD2"
+                },
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "CisAO",
+                    "x": 20,
+                    "y": 15,
+                    "name": "ph3",
+                    "fill": "#9AA2AE",
+                    "content": "Your message",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "6nlP8",
+                "x": 361,
+                "y": 377,
+                "name": "remain",
+                "fill": "#9AA2AE",
+                "content": "256 characters remaining",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              },
+              {
+                "type": "frame",
+                "id": "qXll0",
+                "x": 24,
+                "y": 410,
+                "name": "chk",
+                "width": 16,
+                "height": 16,
+                "fill": "#EFEFF1",
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#C6CBD2"
+                }
+              },
+              {
+                "type": "text",
+                "id": "LRHZG",
+                "x": 50,
+                "y": 408,
+                "name": "agree",
+                "fill": "#6B737E",
+                "textGrowth": "fixed-width",
+                "width": 446,
+                "content": "I agree to receive periodic updates from IonQ about its hardware, services, and other programs.",
+                "lineHeight": 1.4,
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "500"
+              },
+              {
+                "type": "frame",
+                "id": "63sDn",
+                "x": 196,
+                "y": 488,
+                "name": "btn",
+                "width": 128,
+                "height": 40,
+                "fill": "#FF6A00",
+                "cornerRadius": 8,
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "AvxRp",
+                    "x": 33,
+                    "y": 11,
+                    "name": "btnT",
+                    "fill": "#FFFFFF",
+                    "content": "Contact us",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "SsTbz",
+            "x": 620,
+            "y": 222,
+            "name": "infoTitle",
+            "fill": "#10151C",
+            "content": "Contact info",
+            "fontFamily": "Inter",
+            "fontSize": 52,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "tIV0C",
+            "x": 620,
+            "y": 302,
+            "name": "infoText",
+            "fill": "#4C5561",
+            "textGrowth": "fixed-width",
+            "width": 500,
+            "content": "For general inquiries, you can also email info@ionq.com\n\nFor media inquiries, visit our newsroom or email media@ionq.com\n\nFor employment inquiries, view currently open positions or contact jobs@ionq.com\n\nOur mailing address:\n\nIonQ, Inc.\n4505 Campus Drive\nCollege Park, MD 20740",
+            "lineHeight": 1.5,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "QAj8Z",
+      "sectionName": "foot",
+      "sectionKind": "generic",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 1015,
+        "width": 1200,
+        "height": 978
+      },
+      "directChildCount": 46,
+      "recursiveNodeCount": 48,
+      "treeHash": "88664d02d3bda7b338a9a7d64e6581770d456a6e0c814f56f0a17a6807276464",
+      "blockCount": 46,
+      "blockIndex": [
+        {
+          "blockId": "AU3j8",
+          "blockName": "logo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 32,
+            "y": 84,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "727e8068c38698e014000461f121fc990135fdb11c056f5501af4288cd3f3458"
+        },
+        {
+          "blockId": "HEJWz",
+          "blockName": "stay",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 32,
+            "y": 146,
+            "width": 420,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "311f85e5ef908c059b29fffc4dee9531dde547cde4834666588d034409ddd60d"
+        },
+        {
+          "blockId": "B3Zfh",
+          "blockName": "desc",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 32,
+            "y": 240,
+            "width": 380,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "02dbfa09f717c0b0738bef46625098f01f90b5145351faa7ce8fd54c01ebbdbd"
+        },
+        {
+          "blockId": "nrl0i",
+          "blockName": "mail",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 392,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0c638434fa13ddcfc6f584df1d1b5d796cd82dc4594d3cc72c191ce5908b2ae2"
+        },
+        {
+          "blockId": "sUEyR",
+          "blockName": "line1",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 430,
+            "width": 420,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "be59e9290f707f1396317ee83842efcce45ed467a436ccd4a55c98259bd6f4c4"
+        },
+        {
+          "blockId": "JQ7gN",
+          "blockName": "name",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 5,
+          "bounds": {
+            "x": 32,
+            "y": 462,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f563e0334e540e09074f7d3e08befbd758dd885e2a27615bb1374951a0572e10"
+        },
+        {
+          "blockId": "iF4f5",
+          "blockName": "line2",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 6,
+          "bounds": {
+            "x": 32,
+            "y": 500,
+            "width": 420,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "02e8106085fd877868319f765b41fa8497085739f385539c081ea6c01d0468af"
+        },
+        {
+          "blockId": "bEfD3",
+          "blockName": "org",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 32,
+            "y": 532,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "48f84478531ce1ee90df4f5fdef42daa4385b58e824d3b5100a2092e8e2e7276"
+        },
+        {
+          "blockId": "t3vRz",
+          "blockName": "line3",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 8,
+          "bounds": {
+            "x": 32,
+            "y": 570,
+            "width": 420,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d989e42eec07b7a2b5cc357a75df33881af7c8efe50b2845d4af46873f13028e"
+        },
+        {
+          "blockId": "KOFtK",
+          "blockName": "chk",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 9,
+          "bounds": {
+            "x": 32,
+            "y": 608,
+            "width": 26,
+            "height": 26
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6e03783eedf98e42f4463534962e78f791e1d208b6b4a0a30db00867badbb0e6"
+        },
+        {
+          "blockId": "4f2ll",
+          "blockName": "agree",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 10,
+          "bounds": {
+            "x": 70,
+            "y": 606,
+            "width": 360,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d3e83b363f42bf9e70b4b9f9cdd72999c7ee92385811dac110a473c35316819d"
+        },
+        {
+          "blockId": "QyjMe",
+          "blockName": "subBtn",
+          "blockType": "frame",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 720,
+            "width": 150,
+            "height": 50
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "b91faab0b3ddcbfd5dfbe23a90079be3c1d3f5e1f907660b40123f2bbbcb857d"
+        },
+        {
+          "blockId": "gHNJA",
+          "blockName": "rh1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 472,
+            "y": 84,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "44e42278eb0a921fab83c218e12d653f5f75f8a46d3b535fb9cfb978ca425451"
+        },
+        {
+          "blockId": "51roG",
+          "blockName": "qh1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 13,
+          "bounds": {
+            "x": 652,
+            "y": 84,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f8a68388c019643402a8b36391b6be2b3b3a22abd4adc1bc480bdf886caa9382"
+        },
+        {
+          "blockId": "OEmO0",
+          "blockName": "ph1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 14,
+          "bounds": {
+            "x": 812,
+            "y": 84,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cb8fa4d805f536f25b108bd8002d4c1822447c96035ea5da365b8f94f0a35ae8"
+        },
+        {
+          "blockId": "zfxJh",
+          "blockName": "ch1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 962,
+            "y": 84,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4939e3a7b46f9f00d140f2aa41ef838036d66243cf8fdc263fee834cbb41677f"
+        },
+        {
+          "blockId": "VKlSV",
+          "blockName": "r1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 472,
+            "y": 146,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f153aecca1a56fae113186c5f49175e6e64a8f1b532a5b0ea9864729dd845502"
+        },
+        {
+          "blockId": "dqy7Q",
+          "blockName": "r2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 17,
+          "bounds": {
+            "x": 472,
+            "y": 188,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b201237371c57c5921a7cbc8d11e62416b13488fb8c1d3918b5f3f238e544738"
+        },
+        {
+          "blockId": "Rvd8W",
+          "blockName": "r3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 18,
+          "bounds": {
+            "x": 472,
+            "y": 230,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "737b7ad85c532ba62b4607a2ad40a0b7e103145ea69671db3fc30a783f20bf56"
+        },
+        {
+          "blockId": "fUlj2",
+          "blockName": "r4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 472,
+            "y": 272,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e6c53e78be0d901ea5ff133627972de2f7080df5cf81be73ac27b6657fa43345"
+        },
+        {
+          "blockId": "B3ra8",
+          "blockName": "r5",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 472,
+            "y": 314,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "00efb4244840c6232c43603e7f22006b92e78df1be7237bff4df76f198492eab"
+        },
+        {
+          "blockId": "bFlH6",
+          "blockName": "r6",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 21,
+          "bounds": {
+            "x": 472,
+            "y": 356,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "de03f530a0d374ea9a9308d08b55381fac9425c32dfce36069eca46964c7d8d7"
+        },
+        {
+          "blockId": "R9bpj",
+          "blockName": "r7",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 22,
+          "bounds": {
+            "x": 472,
+            "y": 398,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e09b7987fb7d90c8d40b965f8406f62310f0398f1ae6076d2797780036483f9d"
+        },
+        {
+          "blockId": "Yj5bj",
+          "blockName": "r8",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 23,
+          "bounds": {
+            "x": 472,
+            "y": 440,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "06634c06c24fd2ce8ea20b696f60e6bb902c10f672b34a0f0a3903d3bbbc369b"
+        },
+        {
+          "blockId": "3I9Nd",
+          "blockName": "q1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 24,
+          "bounds": {
+            "x": 652,
+            "y": 146,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2fa6e869df392150c261ff9986b9ac96f1b9b1a30691de30c4867c17cfbbe413"
+        },
+        {
+          "blockId": "gRpo4",
+          "blockName": "q2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 25,
+          "bounds": {
+            "x": 652,
+            "y": 188,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c01a524b2328836c002306e5f5d7099a511da3223bfc19f73e1a94294e29b6d2"
+        },
+        {
+          "blockId": "zP8dY",
+          "blockName": "q3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 26,
+          "bounds": {
+            "x": 652,
+            "y": 230,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d3dac35b173331b896f37e4ab374b7d5ca9683dca9e5127c07bc38631c296481"
+        },
+        {
+          "blockId": "7Ui0J",
+          "blockName": "q4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 27,
+          "bounds": {
+            "x": 652,
+            "y": 272,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0dda23b229876b3f952dfc960a4c309875dc8acea4809f687fb52a852ebf4de9"
+        },
+        {
+          "blockId": "eKW58",
+          "blockName": "q5",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 28,
+          "bounds": {
+            "x": 652,
+            "y": 314,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1f59c9405421da51d8e2a7059df1f73341a07e21311d5922ac132084011c0e6a"
+        },
+        {
+          "blockId": "R1sRB",
+          "blockName": "p1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 29,
+          "bounds": {
+            "x": 812,
+            "y": 146,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f57cc431d5ee24cd152b347822f630f12fd1985ccce384d36850a20f4deddd59"
+        },
+        {
+          "blockId": "UknTz",
+          "blockName": "p2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 30,
+          "bounds": {
+            "x": 812,
+            "y": 188,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e7ef085399afc36100d92a8008d8e3eca1da8199540838eae95d77af02ce5d38"
+        },
+        {
+          "blockId": "poDBi",
+          "blockName": "p3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 31,
+          "bounds": {
+            "x": 812,
+            "y": 230,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "64b0ec5068644ef8cbc870f181e9f22b78e5730f337abd8d3044a63ce0da2cf6"
+        },
+        {
+          "blockId": "LcO2U",
+          "blockName": "p4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 32,
+          "bounds": {
+            "x": 812,
+            "y": 272,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b56d27c43e86b2326054a1d28fb94ea868b30f8ee92c94dc9d18432bb429bc56"
+        },
+        {
+          "blockId": "8zBbs",
+          "blockName": "p5",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 33,
+          "bounds": {
+            "x": 812,
+            "y": 314,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b979f9fe073dcd3fa23d1f4f66a7e9a1c823f21e785e2e454e30a3188fa1744b"
+        },
+        {
+          "blockId": "nor5p",
+          "blockName": "c1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 34,
+          "bounds": {
+            "x": 962,
+            "y": 146,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2dcecd853634cf78048ac614dd51e9aa3c9c3b7f1dfabd692ecb96648b67e1a3"
+        },
+        {
+          "blockId": "4My2t",
+          "blockName": "c2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 35,
+          "bounds": {
+            "x": 962,
+            "y": 184,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9153e935e950e6abe932cd8db33e4a10d1a87682960e3b5aae1333dc87ad859f"
+        },
+        {
+          "blockId": "C7Zp9",
+          "blockName": "c3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 36,
+          "bounds": {
+            "x": 962,
+            "y": 222,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "31fb7ca61fd89992bfe8eba7f549ec1403dd002a68795d23156fe0620536d3a9"
+        },
+        {
+          "blockId": "Z6iqS",
+          "blockName": "c4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 37,
+          "bounds": {
+            "x": 962,
+            "y": 260,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "63f7c64f933ae8a20a4f66d2022a388c8264e08770d1eec2b5d596fbad2681a7"
+        },
+        {
+          "blockId": "taZDO",
+          "blockName": "c5",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 38,
+          "bounds": {
+            "x": 962,
+            "y": 298,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a8c01fb4e7a9f016c69bf8d253f55a1b6bb23de1bfc445add3f8a2d6774f0ea4"
+        },
+        {
+          "blockId": "UrK2S",
+          "blockName": "c6",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 39,
+          "bounds": {
+            "x": 962,
+            "y": 336,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "767d355e2e97bc01604b1bb164a21b5b190a3ee85aaaba4992bd00e7319c6bf1"
+        },
+        {
+          "blockId": "Z9R0K",
+          "blockName": "c7",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 40,
+          "bounds": {
+            "x": 962,
+            "y": 374,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "574b158c9230d898ecbbac01c1e08c606a3db5e800da34d1987c9b32e80e04e9"
+        },
+        {
+          "blockId": "0JzaA",
+          "blockName": "div2",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 41,
+          "bounds": {
+            "x": 32,
+            "y": 850,
+            "width": 1136,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4498d44cc74acc7d445f6d3d75693ab355dfd8b3223f2bc2b44d750e06bb1033"
+        },
+        {
+          "blockId": "910yo",
+          "blockName": "copy",
+          "blockType": "text",
+          "order": 42,
+          "bounds": {
+            "x": 32,
+            "y": 890,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f059de60ae90f4d799b4278ebac759e9242e244639c4675a8e5234063308bd2f"
+        },
+        {
+          "blockId": "pymfg",
+          "blockName": "mailI",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 43,
+          "bounds": {
+            "x": 1012,
+            "y": 885,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "df7958e0bce43783e86797948546d7985768eae7cbadaa1b8e7684dfa2d1ecf6"
+        },
+        {
+          "blockId": "EnJDV",
+          "blockName": "inI",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 44,
+          "bounds": {
+            "x": 1052,
+            "y": 885,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a6ca064b913ae053ebc5e6badc5c6c22c6cba834fd3a53f206a3f6d780bca6aa"
+        },
+        {
+          "blockId": "lD0Cl",
+          "blockName": "xI",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 45,
+          "bounds": {
+            "x": 1088,
+            "y": 885,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ed032357eabee69f0bdb12bf2f374a3f0f4c33d4e2262cffd1af0cf03c05e0ec"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "AU3j8",
+          "blockName": "logo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 32,
+            "y": 84,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "727e8068c38698e014000461f121fc990135fdb11c056f5501af4288cd3f3458",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "AU3j8",
+            "x": 32,
+            "y": 84,
+            "name": "logo",
+            "fill": "#F2F5F8",
+            "content": "IONQ",
+            "fontFamily": "Inter",
+            "fontSize": 34,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "HEJWz",
+          "blockName": "stay",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 32,
+            "y": 146,
+            "width": 420,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "311f85e5ef908c059b29fffc4dee9531dde547cde4834666588d034409ddd60d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "HEJWz",
+            "x": 32,
+            "y": 146,
+            "name": "stay",
+            "fill": "#F2F5F8",
+            "textGrowth": "fixed-width",
+            "width": 420,
+            "content": "Stay up to date.",
+            "lineHeight": 1.04,
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "B3Zfh",
+          "blockName": "desc",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 32,
+            "y": 240,
+            "width": 380,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "02dbfa09f717c0b0738bef46625098f01f90b5145351faa7ce8fd54c01ebbdbd",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "B3Zfh",
+            "x": 32,
+            "y": 240,
+            "name": "desc",
+            "fill": "#B3BCC7",
+            "textGrowth": "fixed-width",
+            "width": 380,
+            "content": "To keep up with our latest news and announcements, please fill out the form below.",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "nrl0i",
+          "blockName": "mail",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 392,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0c638434fa13ddcfc6f584df1d1b5d796cd82dc4594d3cc72c191ce5908b2ae2",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nrl0i",
+            "x": 32,
+            "y": 392,
+            "name": "mail",
+            "fill": "#8E99A7",
+            "content": "Your email",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "sUEyR",
+          "blockName": "line1",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 430,
+            "width": 420,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "be59e9290f707f1396317ee83842efcce45ed467a436ccd4a55c98259bd6f4c4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "sUEyR",
+            "x": 32,
+            "y": 430,
+            "name": "line1",
+            "width": 420,
+            "height": 1,
+            "fill": "#2A3038"
+          }
+        },
+        {
+          "blockId": "JQ7gN",
+          "blockName": "name",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 5,
+          "bounds": {
+            "x": 32,
+            "y": 462,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f563e0334e540e09074f7d3e08befbd758dd885e2a27615bb1374951a0572e10",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "JQ7gN",
+            "x": 32,
+            "y": 462,
+            "name": "name",
+            "fill": "#8E99A7",
+            "content": "Your name",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "iF4f5",
+          "blockName": "line2",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 6,
+          "bounds": {
+            "x": 32,
+            "y": 500,
+            "width": 420,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "02e8106085fd877868319f765b41fa8497085739f385539c081ea6c01d0468af",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "iF4f5",
+            "x": 32,
+            "y": 500,
+            "name": "line2",
+            "width": 420,
+            "height": 1,
+            "fill": "#2A3038"
+          }
+        },
+        {
+          "blockId": "bEfD3",
+          "blockName": "org",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 32,
+            "y": 532,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "48f84478531ce1ee90df4f5fdef42daa4385b58e824d3b5100a2092e8e2e7276",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "bEfD3",
+            "x": 32,
+            "y": 532,
+            "name": "org",
+            "fill": "#8E99A7",
+            "content": "Your organization",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "t3vRz",
+          "blockName": "line3",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 8,
+          "bounds": {
+            "x": 32,
+            "y": 570,
+            "width": 420,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d989e42eec07b7a2b5cc357a75df33881af7c8efe50b2845d4af46873f13028e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "t3vRz",
+            "x": 32,
+            "y": 570,
+            "name": "line3",
+            "width": 420,
+            "height": 1,
+            "fill": "#2A3038"
+          }
+        },
+        {
+          "blockId": "KOFtK",
+          "blockName": "chk",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 9,
+          "bounds": {
+            "x": 32,
+            "y": 608,
+            "width": 26,
+            "height": 26
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6e03783eedf98e42f4463534962e78f791e1d208b6b4a0a30db00867badbb0e6",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "KOFtK",
+            "x": 32,
+            "y": 608,
+            "name": "chk",
+            "width": 26,
+            "height": 26,
+            "fill": "#F5F7FA",
+            "cornerRadius": 6
+          }
+        },
+        {
+          "blockId": "4f2ll",
+          "blockName": "agree",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 10,
+          "bounds": {
+            "x": 70,
+            "y": 606,
+            "width": 360,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d3e83b363f42bf9e70b4b9f9cdd72999c7ee92385811dac110a473c35316819d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "4f2ll",
+            "x": 70,
+            "y": 606,
+            "name": "agree",
+            "fill": "#B3BCC7",
+            "textGrowth": "fixed-width",
+            "width": 360,
+            "content": "I agree to receive periodic updates from IonQ about its hardware, services, and other programs.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "QyjMe",
+          "blockName": "subBtn",
+          "blockType": "frame",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 720,
+            "width": 150,
+            "height": 50
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "b91faab0b3ddcbfd5dfbe23a90079be3c1d3f5e1f907660b40123f2bbbcb857d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "QyjMe",
+            "x": 32,
+            "y": 720,
+            "name": "subBtn",
+            "width": 150,
+            "height": 50,
+            "fill": "#FF6A00",
+            "cornerRadius": 12,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "XrGlz",
+                "x": 15,
+                "y": 10,
+                "name": "subTxt",
+                "fill": "#FFFFFF",
+                "content": "Subscribe",
+                "fontFamily": "Inter",
+                "fontSize": 24,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "gHNJA",
+          "blockName": "rh1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 472,
+            "y": 84,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "44e42278eb0a921fab83c218e12d653f5f75f8a46d3b535fb9cfb978ca425451",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "gHNJA",
+            "x": 472,
+            "y": 84,
+            "name": "rh1",
+            "fill": "#F2F5F8",
+            "content": "Resources",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "51roG",
+          "blockName": "qh1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 13,
+          "bounds": {
+            "x": 652,
+            "y": 84,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f8a68388c019643402a8b36391b6be2b3b3a22abd4adc1bc480bdf886caa9382",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "51roG",
+            "x": 652,
+            "y": 84,
+            "name": "qh1",
+            "fill": "#F2F5F8",
+            "content": "Quantum cloud",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "OEmO0",
+          "blockName": "ph1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 14,
+          "bounds": {
+            "x": 812,
+            "y": 84,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cb8fa4d805f536f25b108bd8002d4c1822447c96035ea5da365b8f94f0a35ae8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "OEmO0",
+            "x": 812,
+            "y": 84,
+            "name": "ph1",
+            "fill": "#F2F5F8",
+            "content": "IonQ products",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "zfxJh",
+          "blockName": "ch1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 962,
+            "y": 84,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4939e3a7b46f9f00d140f2aa41ef838036d66243cf8fdc263fee834cbb41677f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "zfxJh",
+            "x": 962,
+            "y": 84,
+            "name": "ch1",
+            "fill": "#F2F5F8",
+            "content": "Company",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "VKlSV",
+          "blockName": "r1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 472,
+            "y": 146,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f153aecca1a56fae113186c5f49175e6e64a8f1b532a5b0ea9864729dd845502",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "VKlSV",
+            "x": 472,
+            "y": 146,
+            "name": "r1",
+            "fill": "#B8C1CC",
+            "content": "Our roadmap",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "dqy7Q",
+          "blockName": "r2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 17,
+          "bounds": {
+            "x": 472,
+            "y": 188,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b201237371c57c5921a7cbc8d11e62416b13488fb8c1d3918b5f3f238e544738",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "dqy7Q",
+            "x": 472,
+            "y": 188,
+            "name": "r2",
+            "fill": "#B8C1CC",
+            "content": "Our technology",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "Rvd8W",
+          "blockName": "r3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 18,
+          "bounds": {
+            "x": 472,
+            "y": 230,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "737b7ad85c532ba62b4607a2ad40a0b7e103145ea69671db3fc30a783f20bf56",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "Rvd8W",
+            "x": 472,
+            "y": 230,
+            "name": "r3",
+            "fill": "#B8C1CC",
+            "content": "Blog",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "fUlj2",
+          "blockName": "r4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 472,
+            "y": 272,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e6c53e78be0d901ea5ff133627972de2f7080df5cf81be73ac27b6657fa43345",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "fUlj2",
+            "x": 472,
+            "y": 272,
+            "name": "r4",
+            "fill": "#B8C1CC",
+            "content": "Publications",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "B3ra8",
+          "blockName": "r5",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 472,
+            "y": 314,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "00efb4244840c6232c43603e7f22006b92e78df1be7237bff4df76f198492eab",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "B3ra8",
+            "x": 472,
+            "y": 314,
+            "name": "r5",
+            "fill": "#B8C1CC",
+            "content": "Newsroom",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "bFlH6",
+          "blockName": "r6",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 21,
+          "bounds": {
+            "x": 472,
+            "y": 356,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "de03f530a0d374ea9a9308d08b55381fac9425c32dfce36069eca46964c7d8d7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "bFlH6",
+            "x": 472,
+            "y": 356,
+            "name": "r6",
+            "fill": "#B8C1CC",
+            "content": "News & media",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "R9bpj",
+          "blockName": "r7",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 22,
+          "bounds": {
+            "x": 472,
+            "y": 398,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e09b7987fb7d90c8d40b965f8406f62310f0398f1ae6076d2797780036483f9d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "R9bpj",
+            "x": 472,
+            "y": 398,
+            "name": "r7",
+            "fill": "#B8C1CC",
+            "content": "Shop",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "Yj5bj",
+          "blockName": "r8",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 23,
+          "bounds": {
+            "x": 472,
+            "y": 440,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "06634c06c24fd2ce8ea20b696f60e6bb902c10f672b34a0f0a3903d3bbbc369b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "Yj5bj",
+            "x": 472,
+            "y": 440,
+            "name": "r8",
+            "fill": "#B8C1CC",
+            "content": "Subscribe",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "3I9Nd",
+          "blockName": "q1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 24,
+          "bounds": {
+            "x": 652,
+            "y": 146,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2fa6e869df392150c261ff9986b9ac96f1b9b1a30691de30c4867c17cfbbe413",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "3I9Nd",
+            "x": 652,
+            "y": 146,
+            "name": "q1",
+            "fill": "#B8C1CC",
+            "content": "Get started",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "gRpo4",
+          "blockName": "q2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 25,
+          "bounds": {
+            "x": 652,
+            "y": 188,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c01a524b2328836c002306e5f5d7099a511da3223bfc19f73e1a94294e29b6d2",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "gRpo4",
+            "x": 652,
+            "y": 188,
+            "name": "q2",
+            "fill": "#B8C1CC",
+            "content": "Docs & guides",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "zP8dY",
+          "blockName": "q3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 26,
+          "bounds": {
+            "x": 652,
+            "y": 230,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d3dac35b173331b896f37e4ab374b7d5ca9683dca9e5127c07bc38631c296481",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "zP8dY",
+            "x": 652,
+            "y": 230,
+            "name": "q3",
+            "fill": "#B8C1CC",
+            "content": "Partnerships",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "7Ui0J",
+          "blockName": "q4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 27,
+          "bounds": {
+            "x": 652,
+            "y": 272,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0dda23b229876b3f952dfc960a4c309875dc8acea4809f687fb52a852ebf4de9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "7Ui0J",
+            "x": 652,
+            "y": 272,
+            "name": "q4",
+            "fill": "#B8C1CC",
+            "content": "Research credits",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "eKW58",
+          "blockName": "q5",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 28,
+          "bounds": {
+            "x": 652,
+            "y": 314,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1f59c9405421da51d8e2a7059df1f73341a07e21311d5922ac132084011c0e6a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "eKW58",
+            "x": 652,
+            "y": 314,
+            "name": "q5",
+            "fill": "#B8C1CC",
+            "content": "Early access",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "R1sRB",
+          "blockName": "p1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 29,
+          "bounds": {
+            "x": 812,
+            "y": 146,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f57cc431d5ee24cd152b347822f630f12fd1985ccce384d36850a20f4deddd59",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "R1sRB",
+            "x": 812,
+            "y": 146,
+            "name": "p1",
+            "fill": "#B8C1CC",
+            "content": "IonQ Tempo",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "UknTz",
+          "blockName": "p2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 30,
+          "bounds": {
+            "x": 812,
+            "y": 188,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e7ef085399afc36100d92a8008d8e3eca1da8199540838eae95d77af02ce5d38",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "UknTz",
+            "x": 812,
+            "y": 188,
+            "name": "p2",
+            "fill": "#B8C1CC",
+            "content": "IonQ Forte Enterprise",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "poDBi",
+          "blockName": "p3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 31,
+          "bounds": {
+            "x": 812,
+            "y": 230,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "64b0ec5068644ef8cbc870f181e9f22b78e5730f337abd8d3044a63ce0da2cf6",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "poDBi",
+            "x": 812,
+            "y": 230,
+            "name": "p3",
+            "fill": "#B8C1CC",
+            "content": "IonQ Forte",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "LcO2U",
+          "blockName": "p4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 32,
+          "bounds": {
+            "x": 812,
+            "y": 272,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b56d27c43e86b2326054a1d28fb94ea868b30f8ee92c94dc9d18432bb429bc56",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "LcO2U",
+            "x": 812,
+            "y": 272,
+            "name": "p4",
+            "fill": "#B8C1CC",
+            "content": "IonQ Aria",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "8zBbs",
+          "blockName": "p5",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 33,
+          "bounds": {
+            "x": 812,
+            "y": 314,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b979f9fe073dcd3fa23d1f4f66a7e9a1c823f21e785e2e454e30a3188fa1744b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "8zBbs",
+            "x": 812,
+            "y": 314,
+            "name": "p5",
+            "fill": "#B8C1CC",
+            "content": "IonQ Harmony",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "nor5p",
+          "blockName": "c1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 34,
+          "bounds": {
+            "x": 962,
+            "y": 146,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2dcecd853634cf78048ac614dd51e9aa3c9c3b7f1dfabd692ecb96648b67e1a3",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nor5p",
+            "x": 962,
+            "y": 146,
+            "name": "c1",
+            "fill": "#B8C1CC",
+            "content": "Contact",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "4My2t",
+          "blockName": "c2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 35,
+          "bounds": {
+            "x": 962,
+            "y": 184,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9153e935e950e6abe932cd8db33e4a10d1a87682960e3b5aae1333dc87ad859f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "4My2t",
+            "x": 962,
+            "y": 184,
+            "name": "c2",
+            "fill": "#B8C1CC",
+            "content": "Data protection addendum",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "C7Zp9",
+          "blockName": "c3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 36,
+          "bounds": {
+            "x": 962,
+            "y": 222,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "31fb7ca61fd89992bfe8eba7f549ec1403dd002a68795d23156fe0620536d3a9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "C7Zp9",
+            "x": 962,
+            "y": 222,
+            "name": "c3",
+            "fill": "#B8C1CC",
+            "content": "Privacy policy",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "Z6iqS",
+          "blockName": "c4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 37,
+          "bounds": {
+            "x": 962,
+            "y": 260,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "63f7c64f933ae8a20a4f66d2022a388c8264e08770d1eec2b5d596fbad2681a7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "Z6iqS",
+            "x": 962,
+            "y": 260,
+            "name": "c4",
+            "fill": "#B8C1CC",
+            "content": "Terms of service",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "taZDO",
+          "blockName": "c5",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 38,
+          "bounds": {
+            "x": 962,
+            "y": 298,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a8c01fb4e7a9f016c69bf8d253f55a1b6bb23de1bfc445add3f8a2d6774f0ea4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "taZDO",
+            "x": 962,
+            "y": 298,
+            "name": "c5",
+            "fill": "#B8C1CC",
+            "content": "Supplier code of conduct",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "UrK2S",
+          "blockName": "c6",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 39,
+          "bounds": {
+            "x": 962,
+            "y": 336,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "767d355e2e97bc01604b1bb164a21b5b190a3ee85aaaba4992bd00e7319c6bf1",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "UrK2S",
+            "x": 962,
+            "y": 336,
+            "name": "c6",
+            "fill": "#B8C1CC",
+            "content": "Global export compliance",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "Z9R0K",
+          "blockName": "c7",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 40,
+          "bounds": {
+            "x": 962,
+            "y": 374,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "574b158c9230d898ecbbac01c1e08c606a3db5e800da34d1987c9b32e80e04e9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "Z9R0K",
+            "x": 962,
+            "y": 374,
+            "name": "c7",
+            "fill": "#B8C1CC",
+            "content": "Quality",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "0JzaA",
+          "blockName": "div2",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 41,
+          "bounds": {
+            "x": 32,
+            "y": 850,
+            "width": 1136,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4498d44cc74acc7d445f6d3d75693ab355dfd8b3223f2bc2b44d750e06bb1033",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "0JzaA",
+            "x": 32,
+            "y": 850,
+            "name": "div2",
+            "width": 1136,
+            "height": 1,
+            "fill": "#232A33"
+          }
+        },
+        {
+          "blockId": "910yo",
+          "blockName": "copy",
+          "blockType": "text",
+          "order": 42,
+          "bounds": {
+            "x": 32,
+            "y": 890,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f059de60ae90f4d799b4278ebac759e9242e244639c4675a8e5234063308bd2f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "910yo",
+            "x": 32,
+            "y": 890,
+            "name": "copy",
+            "fill": "#6E7886",
+            "content": "Copyright © 2017-2026 IonQ, Inc. All Rights Reserved.",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "pymfg",
+          "blockName": "mailI",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 43,
+          "bounds": {
+            "x": 1012,
+            "y": 885,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "df7958e0bce43783e86797948546d7985768eae7cbadaa1b8e7684dfa2d1ecf6",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "pymfg",
+            "x": 1012,
+            "y": 885,
+            "name": "mailI",
+            "fill": "#8F98A5",
+            "content": "✉",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "EnJDV",
+          "blockName": "inI",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 44,
+          "bounds": {
+            "x": 1052,
+            "y": 885,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a6ca064b913ae053ebc5e6badc5c6c22c6cba834fd3a53f206a3f6d780bca6aa",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "EnJDV",
+            "x": 1052,
+            "y": 885,
+            "name": "inI",
+            "fill": "#8F98A5",
+            "content": "in",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "lD0Cl",
+          "blockName": "xI",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 45,
+          "bounds": {
+            "x": 1088,
+            "y": 885,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ed032357eabee69f0bdb12bf2f374a3f0f4c33d4e2262cffd1af0cf03c05e0ec",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "lD0Cl",
+            "x": 1088,
+            "y": 885,
+            "name": "xI",
+            "fill": "#8F98A5",
+            "content": "X",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "QAj8Z",
+        "x": 0,
+        "y": 1015,
+        "name": "foot",
+        "width": 1200,
+        "height": 978,
+        "fill": "#040608",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "AU3j8",
+            "x": 32,
+            "y": 84,
+            "name": "logo",
+            "fill": "#F2F5F8",
+            "content": "IONQ",
+            "fontFamily": "Inter",
+            "fontSize": 34,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "HEJWz",
+            "x": 32,
+            "y": 146,
+            "name": "stay",
+            "fill": "#F2F5F8",
+            "textGrowth": "fixed-width",
+            "width": 420,
+            "content": "Stay up to date.",
+            "lineHeight": 1.04,
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "B3Zfh",
+            "x": 32,
+            "y": 240,
+            "name": "desc",
+            "fill": "#B3BCC7",
+            "textGrowth": "fixed-width",
+            "width": 380,
+            "content": "To keep up with our latest news and announcements, please fill out the form below.",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "nrl0i",
+            "x": 32,
+            "y": 392,
+            "name": "mail",
+            "fill": "#8E99A7",
+            "content": "Your email",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "sUEyR",
+            "x": 32,
+            "y": 430,
+            "name": "line1",
+            "width": 420,
+            "height": 1,
+            "fill": "#2A3038"
+          },
+          {
+            "type": "text",
+            "id": "JQ7gN",
+            "x": 32,
+            "y": 462,
+            "name": "name",
+            "fill": "#8E99A7",
+            "content": "Your name",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "iF4f5",
+            "x": 32,
+            "y": 500,
+            "name": "line2",
+            "width": 420,
+            "height": 1,
+            "fill": "#2A3038"
+          },
+          {
+            "type": "text",
+            "id": "bEfD3",
+            "x": 32,
+            "y": 532,
+            "name": "org",
+            "fill": "#8E99A7",
+            "content": "Your organization",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "t3vRz",
+            "x": 32,
+            "y": 570,
+            "name": "line3",
+            "width": 420,
+            "height": 1,
+            "fill": "#2A3038"
+          },
+          {
+            "type": "frame",
+            "id": "KOFtK",
+            "x": 32,
+            "y": 608,
+            "name": "chk",
+            "width": 26,
+            "height": 26,
+            "fill": "#F5F7FA",
+            "cornerRadius": 6
+          },
+          {
+            "type": "text",
+            "id": "4f2ll",
+            "x": 70,
+            "y": 606,
+            "name": "agree",
+            "fill": "#B3BCC7",
+            "textGrowth": "fixed-width",
+            "width": 360,
+            "content": "I agree to receive periodic updates from IonQ about its hardware, services, and other programs.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "QyjMe",
+            "x": 32,
+            "y": 720,
+            "name": "subBtn",
+            "width": 150,
+            "height": 50,
+            "fill": "#FF6A00",
+            "cornerRadius": 12,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "XrGlz",
+                "x": 15,
+                "y": 10,
+                "name": "subTxt",
+                "fill": "#FFFFFF",
+                "content": "Subscribe",
+                "fontFamily": "Inter",
+                "fontSize": 24,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "gHNJA",
+            "x": 472,
+            "y": 84,
+            "name": "rh1",
+            "fill": "#F2F5F8",
+            "content": "Resources",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "51roG",
+            "x": 652,
+            "y": 84,
+            "name": "qh1",
+            "fill": "#F2F5F8",
+            "content": "Quantum cloud",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "OEmO0",
+            "x": 812,
+            "y": 84,
+            "name": "ph1",
+            "fill": "#F2F5F8",
+            "content": "IonQ products",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "zfxJh",
+            "x": 962,
+            "y": 84,
+            "name": "ch1",
+            "fill": "#F2F5F8",
+            "content": "Company",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "VKlSV",
+            "x": 472,
+            "y": 146,
+            "name": "r1",
+            "fill": "#B8C1CC",
+            "content": "Our roadmap",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "dqy7Q",
+            "x": 472,
+            "y": 188,
+            "name": "r2",
+            "fill": "#B8C1CC",
+            "content": "Our technology",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "Rvd8W",
+            "x": 472,
+            "y": 230,
+            "name": "r3",
+            "fill": "#B8C1CC",
+            "content": "Blog",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "fUlj2",
+            "x": 472,
+            "y": 272,
+            "name": "r4",
+            "fill": "#B8C1CC",
+            "content": "Publications",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "B3ra8",
+            "x": 472,
+            "y": 314,
+            "name": "r5",
+            "fill": "#B8C1CC",
+            "content": "Newsroom",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "bFlH6",
+            "x": 472,
+            "y": 356,
+            "name": "r6",
+            "fill": "#B8C1CC",
+            "content": "News & media",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "R9bpj",
+            "x": 472,
+            "y": 398,
+            "name": "r7",
+            "fill": "#B8C1CC",
+            "content": "Shop",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "Yj5bj",
+            "x": 472,
+            "y": 440,
+            "name": "r8",
+            "fill": "#B8C1CC",
+            "content": "Subscribe",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "3I9Nd",
+            "x": 652,
+            "y": 146,
+            "name": "q1",
+            "fill": "#B8C1CC",
+            "content": "Get started",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "gRpo4",
+            "x": 652,
+            "y": 188,
+            "name": "q2",
+            "fill": "#B8C1CC",
+            "content": "Docs & guides",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "zP8dY",
+            "x": 652,
+            "y": 230,
+            "name": "q3",
+            "fill": "#B8C1CC",
+            "content": "Partnerships",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "7Ui0J",
+            "x": 652,
+            "y": 272,
+            "name": "q4",
+            "fill": "#B8C1CC",
+            "content": "Research credits",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "eKW58",
+            "x": 652,
+            "y": 314,
+            "name": "q5",
+            "fill": "#B8C1CC",
+            "content": "Early access",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "R1sRB",
+            "x": 812,
+            "y": 146,
+            "name": "p1",
+            "fill": "#B8C1CC",
+            "content": "IonQ Tempo",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "UknTz",
+            "x": 812,
+            "y": 188,
+            "name": "p2",
+            "fill": "#B8C1CC",
+            "content": "IonQ Forte Enterprise",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "poDBi",
+            "x": 812,
+            "y": 230,
+            "name": "p3",
+            "fill": "#B8C1CC",
+            "content": "IonQ Forte",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "LcO2U",
+            "x": 812,
+            "y": 272,
+            "name": "p4",
+            "fill": "#B8C1CC",
+            "content": "IonQ Aria",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "8zBbs",
+            "x": 812,
+            "y": 314,
+            "name": "p5",
+            "fill": "#B8C1CC",
+            "content": "IonQ Harmony",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "nor5p",
+            "x": 962,
+            "y": 146,
+            "name": "c1",
+            "fill": "#B8C1CC",
+            "content": "Contact",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "4My2t",
+            "x": 962,
+            "y": 184,
+            "name": "c2",
+            "fill": "#B8C1CC",
+            "content": "Data protection addendum",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "C7Zp9",
+            "x": 962,
+            "y": 222,
+            "name": "c3",
+            "fill": "#B8C1CC",
+            "content": "Privacy policy",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "Z6iqS",
+            "x": 962,
+            "y": 260,
+            "name": "c4",
+            "fill": "#B8C1CC",
+            "content": "Terms of service",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "taZDO",
+            "x": 962,
+            "y": 298,
+            "name": "c5",
+            "fill": "#B8C1CC",
+            "content": "Supplier code of conduct",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "UrK2S",
+            "x": 962,
+            "y": 336,
+            "name": "c6",
+            "fill": "#B8C1CC",
+            "content": "Global export compliance",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "Z9R0K",
+            "x": 962,
+            "y": 374,
+            "name": "c7",
+            "fill": "#B8C1CC",
+            "content": "Quality",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "0JzaA",
+            "x": 32,
+            "y": 850,
+            "name": "div2",
+            "width": 1136,
+            "height": 1,
+            "fill": "#232A33"
+          },
+          {
+            "type": "text",
+            "id": "910yo",
+            "x": 32,
+            "y": 890,
+            "name": "copy",
+            "fill": "#6E7886",
+            "content": "Copyright © 2017-2026 IonQ, Inc. All Rights Reserved.",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "pymfg",
+            "x": 1012,
+            "y": 885,
+            "name": "mailI",
+            "fill": "#8F98A5",
+            "content": "✉",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "EnJDV",
+            "x": 1052,
+            "y": 885,
+            "name": "inI",
+            "fill": "#8F98A5",
+            "content": "in",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "lD0Cl",
+            "x": 1088,
+            "y": 885,
+            "name": "xI",
+            "fill": "#8F98A5",
+            "content": "X",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 55,
+  "looseNodeCount": 0,
+  "looseNodes": [],
+  "assetRefs": [],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "qFoix",
+    "x": 2649,
+    "y": -1959,
+    "name": "CONTACT",
+    "width": 1200,
+    "height": 2003,
+    "fill": "#040608",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "T0hYU",
+        "x": 0,
+        "y": 0,
+        "name": "ann",
+        "width": 1200,
+        "height": 40,
+        "fill": "#0A0C10",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "vRhFZ",
+            "x": 308.5,
+            "y": 12,
+            "name": "annText",
+            "fill": "#E7EDF4",
+            "content": "Watch IonQ&apos;s Quantum World Congress 2025 Keynote On Demand.",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "1jrT3",
+            "x": 783.5,
+            "y": 6,
+            "name": "annBtn",
+            "width": 108,
+            "height": 28,
+            "fill": "#1A1E25",
+            "cornerRadius": 4,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#FF6A00"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "fEwb8",
+                "x": 24,
+                "y": 7.5,
+                "name": "annBtnTxt",
+                "fill": "#FF6A00",
+                "content": "Watch now",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "5jZu7",
+        "x": 0,
+        "y": 40,
+        "name": "nav",
+        "width": 1200,
+        "height": 78,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "ceV9X",
+            "x": 32,
+            "y": 18.5,
+            "fill": "#FFFFFF",
+            "content": "IONQ",
+            "fontFamily": "Inter",
+            "fontSize": 34,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "f5kO0",
+            "x": 525,
+            "y": 17,
+            "name": "navRight",
+            "width": 643,
+            "height": 44,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "zHo6t",
+                "x": -60,
+                "y": 13,
+                "name": "navMenu",
+                "fill": "#E7EDF4",
+                "content": "Products   Company   Resources   Careers   Roadmap   Blog",
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "6cjbF",
+                "x": 403,
+                "y": 0,
+                "name": "navActions",
+                "width": 240,
+                "height": 44,
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "KHhKe",
+                    "x": 0,
+                    "y": 0,
+                    "name": "getStartedBtn",
+                    "width": 124,
+                    "height": 44,
+                    "fill": "#FF6A00",
+                    "cornerRadius": 10,
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "kjP11",
+                        "name": "getStartedTxt",
+                        "fill": "#FFFFFF",
+                        "content": "Get started",
+                        "fontFamily": "Inter",
+                        "fontSize": 15,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "a4KAD",
+                    "x": 138,
+                    "y": 0,
+                    "name": "signInBtn",
+                    "width": 102,
+                    "height": 44,
+                    "fill": "#2B2F36",
+                    "cornerRadius": 10,
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "uhf5X",
+                        "name": "signInTxt",
+                        "fill": "#FFFFFF",
+                        "content": "Sign in",
+                        "fontFamily": "Inter",
+                        "fontSize": 15,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "ZDTmw",
+        "x": 0,
+        "y": 118,
+        "name": "contactMain",
+        "width": 1200,
+        "height": 897,
+        "fill": "#EFEFF1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "atD9H",
+            "x": 60,
+            "y": 80,
+            "name": "pageTitle",
+            "fill": "#10151C",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "Contact IonQ",
+            "fontFamily": "Inter",
+            "fontSize": 58,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "Oy2yU",
+            "x": 60,
+            "y": 168,
+            "name": "pageSub",
+            "fill": "#6B737E",
+            "textGrowth": "fixed-width",
+            "width": 500,
+            "content": "To send us a message, please fill out the form below.",
+            "fontFamily": "Inter",
+            "fontSize": 15,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "KSPk1",
+            "x": 60,
+            "y": 220,
+            "name": "formCard",
+            "width": 520,
+            "height": 560,
+            "fill": "#EFEFF1",
+            "cornerRadius": 4,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#C6CBD2"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "Cvicw",
+                "x": 24,
+                "y": 22,
+                "name": "lab1",
+                "fill": "#2B313A",
+                "content": "Your name",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "kropb",
+                "x": 24,
+                "y": 52,
+                "name": "inp1",
+                "width": 472,
+                "height": 48,
+                "fill": "#EFEFF1",
+                "cornerRadius": 2,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#C6CBD2"
+                },
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "SZ9XD",
+                    "x": 20,
+                    "y": 15,
+                    "name": "ph1",
+                    "fill": "#9AA2AE",
+                    "content": "Enter full name",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "sZfoU",
+                "x": 24,
+                "y": 124,
+                "name": "lab2",
+                "fill": "#2B313A",
+                "content": "Your email",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "uuoog",
+                "x": 24,
+                "y": 154,
+                "name": "inp2",
+                "width": 472,
+                "height": 48,
+                "fill": "#EFEFF1",
+                "cornerRadius": 2,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#C6CBD2"
+                },
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "GYjJP",
+                    "x": 20,
+                    "y": 15,
+                    "name": "ph2",
+                    "fill": "#9AA2AE",
+                    "content": "Enter email",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "20wZi",
+                "x": 24,
+                "y": 226,
+                "name": "lab3",
+                "fill": "#2B313A",
+                "content": "How can we help?",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "600"
+              },
+              {
+                "type": "frame",
+                "id": "foOE0",
+                "x": 24,
+                "y": 256,
+                "name": "inp3",
+                "width": 472,
+                "height": 112,
+                "fill": "#EFEFF1",
+                "cornerRadius": 2,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#C6CBD2"
+                },
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "CisAO",
+                    "x": 20,
+                    "y": 15,
+                    "name": "ph3",
+                    "fill": "#9AA2AE",
+                    "content": "Your message",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "6nlP8",
+                "x": 361,
+                "y": 377,
+                "name": "remain",
+                "fill": "#9AA2AE",
+                "content": "256 characters remaining",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              },
+              {
+                "type": "frame",
+                "id": "qXll0",
+                "x": 24,
+                "y": 410,
+                "name": "chk",
+                "width": 16,
+                "height": 16,
+                "fill": "#EFEFF1",
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#C6CBD2"
+                }
+              },
+              {
+                "type": "text",
+                "id": "LRHZG",
+                "x": 50,
+                "y": 408,
+                "name": "agree",
+                "fill": "#6B737E",
+                "textGrowth": "fixed-width",
+                "width": 446,
+                "content": "I agree to receive periodic updates from IonQ about its hardware, services, and other programs.",
+                "lineHeight": 1.4,
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "500"
+              },
+              {
+                "type": "frame",
+                "id": "63sDn",
+                "x": 196,
+                "y": 488,
+                "name": "btn",
+                "width": 128,
+                "height": 40,
+                "fill": "#FF6A00",
+                "cornerRadius": 8,
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "AvxRp",
+                    "x": 33,
+                    "y": 11,
+                    "name": "btnT",
+                    "fill": "#FFFFFF",
+                    "content": "Contact us",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "SsTbz",
+            "x": 620,
+            "y": 222,
+            "name": "infoTitle",
+            "fill": "#10151C",
+            "content": "Contact info",
+            "fontFamily": "Inter",
+            "fontSize": 52,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "tIV0C",
+            "x": 620,
+            "y": 302,
+            "name": "infoText",
+            "fill": "#4C5561",
+            "textGrowth": "fixed-width",
+            "width": 500,
+            "content": "For general inquiries, you can also email info@ionq.com\n\nFor media inquiries, visit our newsroom or email media@ionq.com\n\nFor employment inquiries, view currently open positions or contact jobs@ionq.com\n\nOur mailing address:\n\nIonQ, Inc.\n4505 Campus Drive\nCollege Park, MD 20740",
+            "lineHeight": 1.5,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "QAj8Z",
+        "x": 0,
+        "y": 1015,
+        "name": "foot",
+        "width": 1200,
+        "height": 978,
+        "fill": "#040608",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "AU3j8",
+            "x": 32,
+            "y": 84,
+            "name": "logo",
+            "fill": "#F2F5F8",
+            "content": "IONQ",
+            "fontFamily": "Inter",
+            "fontSize": 34,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "HEJWz",
+            "x": 32,
+            "y": 146,
+            "name": "stay",
+            "fill": "#F2F5F8",
+            "textGrowth": "fixed-width",
+            "width": 420,
+            "content": "Stay up to date.",
+            "lineHeight": 1.04,
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "B3Zfh",
+            "x": 32,
+            "y": 240,
+            "name": "desc",
+            "fill": "#B3BCC7",
+            "textGrowth": "fixed-width",
+            "width": 380,
+            "content": "To keep up with our latest news and announcements, please fill out the form below.",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "nrl0i",
+            "x": 32,
+            "y": 392,
+            "name": "mail",
+            "fill": "#8E99A7",
+            "content": "Your email",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "sUEyR",
+            "x": 32,
+            "y": 430,
+            "name": "line1",
+            "width": 420,
+            "height": 1,
+            "fill": "#2A3038"
+          },
+          {
+            "type": "text",
+            "id": "JQ7gN",
+            "x": 32,
+            "y": 462,
+            "name": "name",
+            "fill": "#8E99A7",
+            "content": "Your name",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "iF4f5",
+            "x": 32,
+            "y": 500,
+            "name": "line2",
+            "width": 420,
+            "height": 1,
+            "fill": "#2A3038"
+          },
+          {
+            "type": "text",
+            "id": "bEfD3",
+            "x": 32,
+            "y": 532,
+            "name": "org",
+            "fill": "#8E99A7",
+            "content": "Your organization",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "t3vRz",
+            "x": 32,
+            "y": 570,
+            "name": "line3",
+            "width": 420,
+            "height": 1,
+            "fill": "#2A3038"
+          },
+          {
+            "type": "frame",
+            "id": "KOFtK",
+            "x": 32,
+            "y": 608,
+            "name": "chk",
+            "width": 26,
+            "height": 26,
+            "fill": "#F5F7FA",
+            "cornerRadius": 6
+          },
+          {
+            "type": "text",
+            "id": "4f2ll",
+            "x": 70,
+            "y": 606,
+            "name": "agree",
+            "fill": "#B3BCC7",
+            "textGrowth": "fixed-width",
+            "width": 360,
+            "content": "I agree to receive periodic updates from IonQ about its hardware, services, and other programs.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "QyjMe",
+            "x": 32,
+            "y": 720,
+            "name": "subBtn",
+            "width": 150,
+            "height": 50,
+            "fill": "#FF6A00",
+            "cornerRadius": 12,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "XrGlz",
+                "x": 15,
+                "y": 10,
+                "name": "subTxt",
+                "fill": "#FFFFFF",
+                "content": "Subscribe",
+                "fontFamily": "Inter",
+                "fontSize": 24,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "gHNJA",
+            "x": 472,
+            "y": 84,
+            "name": "rh1",
+            "fill": "#F2F5F8",
+            "content": "Resources",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "51roG",
+            "x": 652,
+            "y": 84,
+            "name": "qh1",
+            "fill": "#F2F5F8",
+            "content": "Quantum cloud",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "OEmO0",
+            "x": 812,
+            "y": 84,
+            "name": "ph1",
+            "fill": "#F2F5F8",
+            "content": "IonQ products",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "zfxJh",
+            "x": 962,
+            "y": 84,
+            "name": "ch1",
+            "fill": "#F2F5F8",
+            "content": "Company",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "VKlSV",
+            "x": 472,
+            "y": 146,
+            "name": "r1",
+            "fill": "#B8C1CC",
+            "content": "Our roadmap",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "dqy7Q",
+            "x": 472,
+            "y": 188,
+            "name": "r2",
+            "fill": "#B8C1CC",
+            "content": "Our technology",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "Rvd8W",
+            "x": 472,
+            "y": 230,
+            "name": "r3",
+            "fill": "#B8C1CC",
+            "content": "Blog",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "fUlj2",
+            "x": 472,
+            "y": 272,
+            "name": "r4",
+            "fill": "#B8C1CC",
+            "content": "Publications",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "B3ra8",
+            "x": 472,
+            "y": 314,
+            "name": "r5",
+            "fill": "#B8C1CC",
+            "content": "Newsroom",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "bFlH6",
+            "x": 472,
+            "y": 356,
+            "name": "r6",
+            "fill": "#B8C1CC",
+            "content": "News & media",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "R9bpj",
+            "x": 472,
+            "y": 398,
+            "name": "r7",
+            "fill": "#B8C1CC",
+            "content": "Shop",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "Yj5bj",
+            "x": 472,
+            "y": 440,
+            "name": "r8",
+            "fill": "#B8C1CC",
+            "content": "Subscribe",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "3I9Nd",
+            "x": 652,
+            "y": 146,
+            "name": "q1",
+            "fill": "#B8C1CC",
+            "content": "Get started",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "gRpo4",
+            "x": 652,
+            "y": 188,
+            "name": "q2",
+            "fill": "#B8C1CC",
+            "content": "Docs & guides",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "zP8dY",
+            "x": 652,
+            "y": 230,
+            "name": "q3",
+            "fill": "#B8C1CC",
+            "content": "Partnerships",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "7Ui0J",
+            "x": 652,
+            "y": 272,
+            "name": "q4",
+            "fill": "#B8C1CC",
+            "content": "Research credits",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "eKW58",
+            "x": 652,
+            "y": 314,
+            "name": "q5",
+            "fill": "#B8C1CC",
+            "content": "Early access",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "R1sRB",
+            "x": 812,
+            "y": 146,
+            "name": "p1",
+            "fill": "#B8C1CC",
+            "content": "IonQ Tempo",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "UknTz",
+            "x": 812,
+            "y": 188,
+            "name": "p2",
+            "fill": "#B8C1CC",
+            "content": "IonQ Forte Enterprise",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "poDBi",
+            "x": 812,
+            "y": 230,
+            "name": "p3",
+            "fill": "#B8C1CC",
+            "content": "IonQ Forte",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "LcO2U",
+            "x": 812,
+            "y": 272,
+            "name": "p4",
+            "fill": "#B8C1CC",
+            "content": "IonQ Aria",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "8zBbs",
+            "x": 812,
+            "y": 314,
+            "name": "p5",
+            "fill": "#B8C1CC",
+            "content": "IonQ Harmony",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "nor5p",
+            "x": 962,
+            "y": 146,
+            "name": "c1",
+            "fill": "#B8C1CC",
+            "content": "Contact",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "4My2t",
+            "x": 962,
+            "y": 184,
+            "name": "c2",
+            "fill": "#B8C1CC",
+            "content": "Data protection addendum",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "C7Zp9",
+            "x": 962,
+            "y": 222,
+            "name": "c3",
+            "fill": "#B8C1CC",
+            "content": "Privacy policy",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "Z6iqS",
+            "x": 962,
+            "y": 260,
+            "name": "c4",
+            "fill": "#B8C1CC",
+            "content": "Terms of service",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "taZDO",
+            "x": 962,
+            "y": 298,
+            "name": "c5",
+            "fill": "#B8C1CC",
+            "content": "Supplier code of conduct",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "UrK2S",
+            "x": 962,
+            "y": 336,
+            "name": "c6",
+            "fill": "#B8C1CC",
+            "content": "Global export compliance",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "Z9R0K",
+            "x": 962,
+            "y": 374,
+            "name": "c7",
+            "fill": "#B8C1CC",
+            "content": "Quality",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "0JzaA",
+            "x": 32,
+            "y": 850,
+            "name": "div2",
+            "width": 1136,
+            "height": 1,
+            "fill": "#232A33"
+          },
+          {
+            "type": "text",
+            "id": "910yo",
+            "x": 32,
+            "y": 890,
+            "name": "copy",
+            "fill": "#6E7886",
+            "content": "Copyright © 2017-2026 IonQ, Inc. All Rights Reserved.",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "pymfg",
+            "x": 1012,
+            "y": 885,
+            "name": "mailI",
+            "fill": "#8F98A5",
+            "content": "✉",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "EnJDV",
+            "x": 1052,
+            "y": 885,
+            "name": "inI",
+            "fill": "#8F98A5",
+            "content": "in",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "lD0Cl",
+            "x": 1088,
+            "y": 885,
+            "name": "xI",
+            "fill": "#8F98A5",
+            "content": "X",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

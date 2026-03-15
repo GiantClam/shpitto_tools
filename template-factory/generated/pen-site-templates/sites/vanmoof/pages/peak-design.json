@@ -1,0 +1,2608 @@
+{
+  "pageId": "page-peak-design",
+  "pageKey": "peak-design",
+  "pageName": "Peak Design",
+  "pageType": "catalog",
+  "devices": {
+    "desktop": {
+      "bounds": {
+        "width": 1440,
+        "height": 1538
+      },
+      "supportBlocks": [
+        {
+          "id": "page-peak-design-bg",
+          "name": "page-peak-design-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 100
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#F4F5F0"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07"
+          }
+        },
+        {
+          "id": "page-peak-design-hero",
+          "name": "page-peak-design-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 420
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "relativePath": "assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-peak-design-overlay",
+          "name": "page-peak-design-overlay",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 420
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#00000055"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color11"
+          }
+        },
+        {
+          "id": "page-peak-design-panel",
+          "name": "page-peak-design-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 40,
+            "y": 444,
+            "width": 1360,
+            "height": 824
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8DDD4",
+              "thickness": 1
+            },
+            "cornerRadius": 20
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius03"
+          }
+        },
+        {
+          "id": "page-peak-design-crumb",
+          "name": "page-peak-design-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 40,
+            "y": 102,
+            "width": 220,
+            "height": 18
+          },
+          "href": "",
+          "content": "Home / Peak Design",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-title",
+          "name": "page-peak-design-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 126,
+            "width": 760,
+            "height": 166
+          },
+          "href": "",
+          "content": "Peak Design x VanMoof | VanMoof",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 56,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size13",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-subtitle",
+          "name": "page-peak-design-subtitle",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 226,
+            "width": 620,
+            "height": 55
+          },
+          "href": "",
+          "content": "Meet your ultimate phone mount. An exclusive, integrated design built to keep your device smartly locked in and secure.",
+          "style": {
+            "fill": "#F0F0EE",
+            "typography": {
+              "fill": "#F0F0EE",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 17,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color12",
+            "textColor": "textColor.palette.text07",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size07",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-peak-design-btn-home-box",
+          "name": "page-peak-design-btn-home-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 40,
+            "y": 298,
+            "width": 128,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#7AC943",
+            "stroke": {
+              "color": "#7AC943",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-peak-design-btn-home-text",
+          "name": "page-peak-design-btn-home-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 54,
+            "y": 308,
+            "width": 100,
+            "height": 18
+          },
+          "href": "#page-home",
+          "content": "Home",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-btn-peer-box",
+          "name": "page-peak-design-btn-peer-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 180,
+            "y": 298,
+            "width": 148,
+            "height": 38
+          },
+          "href": "#page-a5",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8DDD4",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-peak-design-btn-peer-text",
+          "name": "page-peak-design-btn-peer-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 194,
+            "y": 308,
+            "width": 120,
+            "height": 18
+          },
+          "href": "#page-a5",
+          "content": "Product page",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-kicker",
+          "name": "page-peak-design-kicker",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 468,
+            "width": 520,
+            "height": 18
+          },
+          "href": "",
+          "content": "SECOND LEVEL PAGE",
+          "style": {
+            "fill": "#7AC943",
+            "typography": {
+              "fill": "#7AC943",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.1em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-panel-title",
+          "name": "page-peak-design-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 490,
+            "width": 520,
+            "height": 60
+          },
+          "href": "",
+          "content": "Peak Design",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 38,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size12",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-p-0",
+          "name": "page-peak-design-p-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 522,
+            "width": 520,
+            "height": 49
+          },
+          "href": "",
+          "content": "Meet your ultimate phone mount. An exclusive, integrated design built to keep your device smartly locked in and secure.",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size06",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-peak-design-p-1",
+          "name": "page-peak-design-p-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 589,
+            "width": 520,
+            "height": 49
+          },
+          "href": "",
+          "content": "An integrated phone mount partnership between Peak Design and VanMoof.",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size06",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-peak-design-feature",
+          "name": "page-peak-design-feature",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 970,
+            "y": 468,
+            "width": 390,
+            "height": 260
+          },
+          "href": "#page-peak-design",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "relativePath": "assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-peak-design-feature-2",
+          "name": "page-peak-design-feature-2",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 970,
+            "y": 746,
+            "width": 390,
+            "height": 180
+          },
+          "href": "#page-peak-design",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "relativePath": "assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-peak-design-card-0",
+          "name": "page-peak-design-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 938,
+            "width": 196,
+            "height": 178
+          },
+          "href": "#page-a5",
+          "content": "",
+          "style": {
+            "fill": "#EEF0E9",
+            "stroke": {
+              "color": "#D8DDD4",
+              "thickness": 1
+            },
+            "cornerRadius": 16
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color13",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius04"
+          }
+        },
+        {
+          "id": "page-peak-design-card-img-0",
+          "name": "page-peak-design-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 64,
+            "y": 938,
+            "width": 196,
+            "height": 96
+          },
+          "href": "#page-a5",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 16
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius04"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "relativePath": "assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-peak-design-card-title-0",
+          "name": "page-peak-design-card-title-0",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 74,
+            "y": 1042,
+            "width": 176,
+            "height": 18
+          },
+          "href": "#page-a5",
+          "content": "A5",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-card-copy-0",
+          "name": "page-peak-design-card-copy-0",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 74,
+            "y": 1062,
+            "width": 176,
+            "height": 85
+          },
+          "href": "#page-a5",
+          "content": "Meet your ultimate phone mount. An exclusive, integrated design built to keep your device",
+          "style": {
+            "fill": "#646A62",
+            "typography": {
+              "fill": "#646A62",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text06",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-peak-design-related-title",
+          "name": "page-peak-design-related-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 1150,
+            "width": 180,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related pages",
+          "style": {
+            "fill": "#7AC943",
+            "typography": {
+              "fill": "#7AC943",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-related-0-box",
+          "name": "page-peak-design-related-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1176,
+            "width": 180,
+            "height": 36
+          },
+          "href": "#page-a5",
+          "content": "",
+          "style": {
+            "fill": "#7AC943",
+            "stroke": {
+              "color": "#7AC943",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-peak-design-related-0-text",
+          "name": "page-peak-design-related-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 78,
+            "y": 1185,
+            "width": 152,
+            "height": 18
+          },
+          "href": "#page-a5",
+          "content": "A5",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-related-1-box",
+          "name": "page-peak-design-related-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 256,
+            "y": 1176,
+            "width": 180,
+            "height": 36
+          },
+          "href": "#page-s6",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8DDD4",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-peak-design-related-1-text",
+          "name": "page-peak-design-related-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 270,
+            "y": 1185,
+            "width": 152,
+            "height": 18
+          },
+          "href": "#page-s6",
+          "content": "S6",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-related-2-box",
+          "name": "page-peak-design-related-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 448,
+            "y": 1176,
+            "width": 180,
+            "height": 36
+          },
+          "href": "#page-s5-a5-front-rack",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8DDD4",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-peak-design-related-2-text",
+          "name": "page-peak-design-related-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 462,
+            "y": 1185,
+            "width": 152,
+            "height": 18
+          },
+          "href": "#page-s5-a5-front-rack",
+          "content": "S5 & A5 Front Rack",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    },
+    "mobile": {
+      "bounds": {
+        "width": 390,
+        "height": 1398
+      },
+      "supportBlocks": [
+        {
+          "id": "page-peak-design-bg",
+          "name": "page-peak-design-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 100
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#F4F5F0"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07"
+          }
+        },
+        {
+          "id": "page-peak-design-hero",
+          "name": "page-peak-design-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 320
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "relativePath": "assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-peak-design-overlay",
+          "name": "page-peak-design-overlay",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 320
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#00000055"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color11"
+          }
+        },
+        {
+          "id": "page-peak-design-panel",
+          "name": "page-peak-design-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 18,
+            "y": 344,
+            "width": 354,
+            "height": 784
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8DDD4",
+              "thickness": 1
+            },
+            "cornerRadius": 20
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius03"
+          }
+        },
+        {
+          "id": "page-peak-design-crumb",
+          "name": "page-peak-design-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 18,
+            "y": 82,
+            "width": 220,
+            "height": 18
+          },
+          "href": "",
+          "content": "Home / Peak Design",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-title",
+          "name": "page-peak-design-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 106,
+            "width": 320,
+            "height": 92
+          },
+          "href": "",
+          "content": "Peak Design x VanMoof | VanMoof",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 30,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size11",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-subtitle",
+          "name": "page-peak-design-subtitle",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 184,
+            "width": 320,
+            "height": 62
+          },
+          "href": "",
+          "content": "Meet your ultimate phone mount. An exclusive, integrated design built to keep your device smartly locked in and secure.",
+          "style": {
+            "fill": "#F0F0EE",
+            "typography": {
+              "fill": "#F0F0EE",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color12",
+            "textColor": "textColor.palette.text07",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-peak-design-btn-home-box",
+          "name": "page-peak-design-btn-home-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 18,
+            "y": 252,
+            "width": 128,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#7AC943",
+            "stroke": {
+              "color": "#7AC943",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-peak-design-btn-home-text",
+          "name": "page-peak-design-btn-home-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 32,
+            "y": 262,
+            "width": 100,
+            "height": 18
+          },
+          "href": "#page-home",
+          "content": "Home",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-btn-peer-box",
+          "name": "page-peak-design-btn-peer-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 158,
+            "y": 252,
+            "width": 148,
+            "height": 38
+          },
+          "href": "#page-a5",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8DDD4",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-peak-design-btn-peer-text",
+          "name": "page-peak-design-btn-peer-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 172,
+            "y": 262,
+            "width": 120,
+            "height": 18
+          },
+          "href": "#page-a5",
+          "content": "Product page",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-kicker",
+          "name": "page-peak-design-kicker",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 368,
+            "width": 306,
+            "height": 18
+          },
+          "href": "",
+          "content": "SECOND LEVEL PAGE",
+          "style": {
+            "fill": "#7AC943",
+            "typography": {
+              "fill": "#7AC943",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.1em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-panel-title",
+          "name": "page-peak-design-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 390,
+            "width": 306,
+            "height": 41
+          },
+          "href": "",
+          "content": "Peak Design",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 24,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size09",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-p-0",
+          "name": "page-peak-design-p-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 422,
+            "width": 306,
+            "height": 80
+          },
+          "href": "",
+          "content": "Meet your ultimate phone mount. An exclusive, integrated design built to keep your device smartly locked in and secure.",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-peak-design-p-1",
+          "name": "page-peak-design-p-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 520,
+            "width": 306,
+            "height": 43
+          },
+          "href": "",
+          "content": "An integrated phone mount partnership between Peak Design and VanMoof.",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-peak-design-feature",
+          "name": "page-peak-design-feature",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 368,
+            "width": 306,
+            "height": 220
+          },
+          "href": "#page-peak-design",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "relativePath": "assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-peak-design-feature-2",
+          "name": "page-peak-design-feature-2",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 606,
+            "width": 306,
+            "height": 180
+          },
+          "href": "#page-peak-design",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "relativePath": "assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-peak-design-card-0",
+          "name": "page-peak-design-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 798,
+            "width": 306,
+            "height": 136
+          },
+          "href": "#page-a5",
+          "content": "",
+          "style": {
+            "fill": "#EEF0E9",
+            "stroke": {
+              "color": "#D8DDD4",
+              "thickness": 1
+            },
+            "cornerRadius": 16
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color13",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius04"
+          }
+        },
+        {
+          "id": "page-peak-design-card-img-0",
+          "name": "page-peak-design-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 798,
+            "width": 306,
+            "height": 82
+          },
+          "href": "#page-a5",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 16
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius04"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "relativePath": "assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-peak-design-card-title-0",
+          "name": "page-peak-design-card-title-0",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 52,
+            "y": 888,
+            "width": 286,
+            "height": 18
+          },
+          "href": "#page-a5",
+          "content": "A5",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-card-copy-0",
+          "name": "page-peak-design-card-copy-0",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 52,
+            "y": 906,
+            "width": 286,
+            "height": 53
+          },
+          "href": "#page-a5",
+          "content": "Meet your ultimate phone mount. An exclusive, integrated design built to keep your device",
+          "style": {
+            "fill": "#646A62",
+            "typography": {
+              "fill": "#646A62",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text06",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-peak-design-related-title",
+          "name": "page-peak-design-related-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 962,
+            "width": 180,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related pages",
+          "style": {
+            "fill": "#7AC943",
+            "typography": {
+              "fill": "#7AC943",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-related-0-box",
+          "name": "page-peak-design-related-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 988,
+            "width": 150,
+            "height": 36
+          },
+          "href": "#page-a5",
+          "content": "",
+          "style": {
+            "fill": "#7AC943",
+            "stroke": {
+              "color": "#7AC943",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-peak-design-related-0-text",
+          "name": "page-peak-design-related-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 56,
+            "y": 997,
+            "width": 122,
+            "height": 18
+          },
+          "href": "#page-a5",
+          "content": "A5",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-related-1-box",
+          "name": "page-peak-design-related-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 204,
+            "y": 988,
+            "width": 150,
+            "height": 36
+          },
+          "href": "#page-s6",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8DDD4",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-peak-design-related-1-text",
+          "name": "page-peak-design-related-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 218,
+            "y": 997,
+            "width": 122,
+            "height": 18
+          },
+          "href": "#page-s6",
+          "content": "S6",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-peak-design-related-2-box",
+          "name": "page-peak-design-related-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1036,
+            "width": 150,
+            "height": 36
+          },
+          "href": "#page-s5-a5-front-rack",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8DDD4",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-peak-design-related-2-text",
+          "name": "page-peak-design-related-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 56,
+            "y": 1045,
+            "width": 122,
+            "height": 18
+          },
+          "href": "#page-s5-a5-front-rack",
+          "content": "S5 & A5 Front Rack",
+          "style": {
+            "fill": "#151515",
+            "typography": {
+              "fill": "#151515",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "sectionId": "header-page-peak-design",
+      "sectionKey": "header-page-peak-design",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "blockCount": 7,
+          "blockTree": {
+            "id": "header-page-peak-design",
+            "name": "Header",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 84
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color10"
+            },
+            "children": [
+              {
+                "id": "header-bg",
+                "name": "header-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 84
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02"
+                }
+              },
+              {
+                "id": "header-brand",
+                "name": "header-brand",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 40,
+                  "y": 24,
+                  "width": 240,
+                  "height": 28
+                },
+                "href": "",
+                "content": "VanMoof",
+                "style": {
+                  "fill": "#151515",
+                  "typography": {
+                    "fill": "#151515",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 22,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size10",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "nav-page-our-rides",
+                "name": "nav-page-our-rides",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 840,
+                  "y": 30,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-our-rides",
+                "content": "OUR RIDES",
+                "style": {
+                  "fill": "#151515",
+                  "typography": {
+                    "fill": "#151515",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "nav-page-accessories",
+                "name": "nav-page-accessories",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 948,
+                  "y": 30,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-accessories",
+                "content": "ACCESSORIES",
+                "style": {
+                  "fill": "#151515",
+                  "typography": {
+                    "fill": "#151515",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "nav-page-our-story",
+                "name": "nav-page-our-story",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1056,
+                  "y": 30,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-our-story",
+                "content": "OUR STORY",
+                "style": {
+                  "fill": "#151515",
+                  "typography": {
+                    "fill": "#151515",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "nav-page-peak-design",
+                "name": "nav-page-peak-design",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1164,
+                  "y": 30,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-peak-design",
+                "content": "PEAK DESIGN",
+                "style": {
+                  "fill": "#151515",
+                  "typography": {
+                    "fill": "#151515",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "nav-page-shipping-delivery",
+                "name": "nav-page-shipping-delivery",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1272,
+                  "y": 30,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-shipping-delivery",
+                "content": "SHIPPING & DELIVERY",
+                "style": {
+                  "fill": "#151515",
+                  "typography": {
+                    "fill": "#151515",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "blockCount": 3,
+          "blockTree": {
+            "id": "header-page-peak-design",
+            "name": "Header",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 64
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color10"
+            },
+            "children": [
+              {
+                "id": "header-bg",
+                "name": "header-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 64
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02"
+                }
+              },
+              {
+                "id": "header-brand",
+                "name": "header-brand",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 18,
+                  "y": 18,
+                  "width": 180,
+                  "height": 28
+                },
+                "href": "",
+                "content": "VanMoof",
+                "style": {
+                  "fill": "#151515",
+                  "typography": {
+                    "fill": "#151515",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size04",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "header-menu",
+                "name": "header-menu",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 362,
+                  "y": 18,
+                  "width": 18,
+                  "height": 20
+                },
+                "href": "#page-our-rides",
+                "content": "☰",
+                "style": {
+                  "fill": "#151515",
+                  "typography": {
+                    "fill": "#151515",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size04",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionKey": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": {
+        "desktop": 1,
+        "mobile": 1
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 1308,
+            "width": 1440,
+            "height": 230
+          },
+          "blockCount": 9,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1308,
+              "width": 1440,
+              "height": 230
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#131714",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color08"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 230
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#131714"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color08"
+                }
+              },
+              {
+                "id": "footer-brand",
+                "name": "footer-brand",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 30,
+                  "width": 220,
+                  "height": 24
+                },
+                "href": "",
+                "content": "VanMoof",
+                "style": {
+                  "fill": "#F3F5EE",
+                  "typography": {
+                    "fill": "#F3F5EE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 20,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size08",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-title-0",
+                "name": "footer-title-0",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 40,
+                  "y": 76,
+                  "width": 180,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Sections",
+                "style": {
+                  "fill": "#F3F5EE",
+                  "typography": {
+                    "fill": "#F3F5EE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-body-0",
+                "name": "footer-body-0",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 40,
+                  "y": 100,
+                  "width": 180,
+                  "height": 24
+                },
+                "href": "",
+                "content": "Our Rides Accessories",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-title-1",
+                "name": "footer-title-1",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 260,
+                  "y": 76,
+                  "width": 180,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Explore",
+                "style": {
+                  "fill": "#F3F5EE",
+                  "typography": {
+                    "fill": "#F3F5EE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-body-1",
+                "name": "footer-body-1",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 260,
+                  "y": 100,
+                  "width": 180,
+                  "height": 24
+                },
+                "href": "",
+                "content": "Our Story Peak Design",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-title-2",
+                "name": "footer-title-2",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 480,
+                  "y": 76,
+                  "width": 180,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Products",
+                "style": {
+                  "fill": "#F3F5EE",
+                  "typography": {
+                    "fill": "#F3F5EE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-body-2",
+                "name": "footer-body-2",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 480,
+                  "y": 100,
+                  "width": 180,
+                  "height": 41
+                },
+                "href": "",
+                "content": "Shipping & Delivery A5 S6",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 1020,
+                  "y": 150,
+                  "width": 320,
+                  "height": 38
+                },
+                "href": "",
+                "content": "VanMoof structured clone pen with desktop and mobile page sets.",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 1148,
+            "width": 390,
+            "height": 250
+          },
+          "blockCount": 5,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1148,
+              "width": 390,
+              "height": 250
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#131714",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color08"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 250
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#131714"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color08"
+                }
+              },
+              {
+                "id": "footer-brand",
+                "name": "footer-brand",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 30,
+                  "width": 220,
+                  "height": 24
+                },
+                "href": "",
+                "content": "VanMoof",
+                "style": {
+                  "fill": "#F3F5EE",
+                  "typography": {
+                    "fill": "#F3F5EE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size04",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-col-1",
+                "name": "footer-col-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 68,
+                  "width": 130,
+                  "height": 38
+                },
+                "href": "",
+                "content": "Our Rides Accessories Our Story",
+                "style": {
+                  "fill": "#F3F5EE",
+                  "typography": {
+                    "fill": "#F3F5EE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-col-2",
+                "name": "footer-col-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 182,
+                  "y": 68,
+                  "width": 130,
+                  "height": 53
+                },
+                "href": "",
+                "content": "Peak Design Shipping & Delivery A5 S6",
+                "style": {
+                  "fill": "#F3F5EE",
+                  "typography": {
+                    "fill": "#F3F5EE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 18,
+                  "y": 188,
+                  "width": 320,
+                  "height": 49
+                },
+                "href": "",
+                "content": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

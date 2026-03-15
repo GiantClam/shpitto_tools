@@ -1,0 +1,74 @@
+{
+  "blockId": "h9sl2",
+  "blockName": "joinCard",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 0,
+  "bounds": {
+    "x": 32,
+    "y": 24,
+    "width": 1136,
+    "height": 140
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "bcf47faeabbc54ebc22cb2431504b6eb5632fbd0be77dcff03549232c58fea94",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "h9sl2",
+    "x": 32,
+    "y": 24,
+    "name": "joinCard",
+    "width": 1136,
+    "height": 140,
+    "fill": "#ECEFF3",
+    "cornerRadius": 12,
+    "stroke": {
+      "thickness": 1,
+      "fill": "#D8DEE5"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "nET0y",
+        "x": 24,
+        "y": 24,
+        "name": "joinH",
+        "fill": "#12161B",
+        "content": "Join us",
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "QLBY9",
+        "x": 24,
+        "y": 58,
+        "name": "joinD",
+        "fill": "#5A6573",
+        "textGrowth": "fixed-width",
+        "width": 820,
+        "content": "Whether you are an expert or just ready for a career pivot, if you love collaboration, we’d love to hear from you.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "QgLXb",
+        "x": 24,
+        "y": 106,
+        "name": "joinL",
+        "fill": "#FF6A00",
+        "content": "View open positions",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

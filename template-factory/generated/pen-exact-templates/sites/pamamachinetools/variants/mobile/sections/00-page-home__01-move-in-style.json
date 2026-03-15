@@ -1,0 +1,1412 @@
+{
+  "sectionId": "move-in-style",
+  "sectionName": "move-in-style",
+  "sectionKind": "generic",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 278,
+    "width": 390,
+    "height": 610
+  },
+  "directChildCount": 21,
+  "recursiveNodeCount": 22,
+  "treeHash": "cc2060eeb8421beb4b495dbd55a8b745311854e5dac12f70014cec97307a2850",
+  "blockCount": 21,
+  "blockIndex": [
+    {
+      "blockId": "story-bg",
+      "blockName": "story-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 610
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5d9de7cb3d1f33ac3a5aaf2acfa98cb47c08a24f7d7191c6dec6eb9447b57ec6"
+    },
+    {
+      "blockId": "story-title",
+      "blockName": "story-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 16,
+        "y": 34,
+        "width": 358,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "daa4e4bfadec01f947521b85575f69a2da8fe92ae5afd54a2e26399485cfa96b"
+    },
+    {
+      "blockId": "story-copy",
+      "blockName": "story-copy",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 28,
+        "y": 68,
+        "width": 334,
+        "height": 146
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "17093355fedf477b1c013d1dd29667c4ce6edfa1c3d9c74b02f2378cef7dbff3"
+    },
+    {
+      "blockId": "story-card-0-box",
+      "blockName": "story-card-0-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 20,
+        "y": 122,
+        "width": 350,
+        "height": 146
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8ee3a52a1d0c53db605ced7d1a4ae08129e4a7392e1889ee5ccc97d224247b78"
+    },
+    {
+      "blockId": "story-card-0-image",
+      "blockName": "story-card-0-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 4,
+      "bounds": {
+        "x": 32,
+        "y": 134,
+        "width": 326,
+        "height": 92
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7e0485e2c29fc4d1e8ccbb9a4cd0407e2bf7edc8240663871b2205229c85f256"
+    },
+    {
+      "blockId": "story-card-0-eyebrow",
+      "blockName": "story-card-0-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 32,
+        "y": 240,
+        "width": 326,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1d02134f81251c06cd4251fe331b95b02ee8e3f26fdf5d41a53dd3656ceff191"
+    },
+    {
+      "blockId": "story-card-0-title",
+      "blockName": "story-card-0-title",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 32,
+        "y": 262,
+        "width": 326,
+        "height": 27
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "877213d82cd446286de58f64b5bd38fb30548af91eeac8a0aad4dfdf350021e2"
+    },
+    {
+      "blockId": "story-card-0-body",
+      "blockName": "story-card-0-body",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 32,
+        "y": 296,
+        "width": 326,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d7e8197b96b21aed76003e0d54b5f20bef6a257f32fde0a5b633aa04cea43737"
+    },
+    {
+      "blockId": "story-card-0-arrow",
+      "blockName": "story-card-0-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 346,
+        "y": 242,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "10fdfb4af8c75845ddc0cfeead8780c9127bb5f02e8f09f971cde38cfe7e18d4"
+    },
+    {
+      "blockId": "story-card-1-box",
+      "blockName": "story-card-1-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 20,
+        "y": 280,
+        "width": 350,
+        "height": 146
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "67b72edd2c55c4deeee18d31adae2cc7ec840f6042424c915f7681005f95914a"
+    },
+    {
+      "blockId": "story-card-1-image",
+      "blockName": "story-card-1-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 10,
+      "bounds": {
+        "x": 32,
+        "y": 292,
+        "width": 326,
+        "height": 92
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "69378b378483d39975f8992d3d9d24fe2806627adc4bf2df42d8c690ae6e4c4a"
+    },
+    {
+      "blockId": "story-card-1-eyebrow",
+      "blockName": "story-card-1-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 11,
+      "bounds": {
+        "x": 32,
+        "y": 398,
+        "width": 326,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "129bc789664052f0c79151d72fcc72df4b8fb21a1e753bcc3bf91b41a88b3afb"
+    },
+    {
+      "blockId": "story-card-1-title",
+      "blockName": "story-card-1-title",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 32,
+        "y": 420,
+        "width": 326,
+        "height": 27
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e2f90320d31f01a4486e838a9a8a7ffa0ae91c4722afdc450c580f21b8a0ee90"
+    },
+    {
+      "blockId": "story-card-1-body",
+      "blockName": "story-card-1-body",
+      "blockType": "text",
+      "order": 13,
+      "bounds": {
+        "x": 32,
+        "y": 454,
+        "width": 326,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cfd5af953a718d2b742b91262ac9784810699583bbb0ca2030e5d6b15b424c32"
+    },
+    {
+      "blockId": "story-card-1-arrow",
+      "blockName": "story-card-1-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 14,
+      "bounds": {
+        "x": 346,
+        "y": 400,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1179a6aafd3309a3735ba769081c1eb19bac68ad020369b35ffe162f9ed59d33"
+    },
+    {
+      "blockId": "story-card-2-box",
+      "blockName": "story-card-2-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 15,
+      "bounds": {
+        "x": 20,
+        "y": 438,
+        "width": 350,
+        "height": 146
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "37f69486db1b3be019b43925a0a9f7a1e4f273f03011c746eeffeb93585d4e51"
+    },
+    {
+      "blockId": "story-card-2-image",
+      "blockName": "story-card-2-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 16,
+      "bounds": {
+        "x": 32,
+        "y": 450,
+        "width": 326,
+        "height": 92
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7b075971a96fead1a82445be7991492429df1ac47058e913e97af34f371850cf"
+    },
+    {
+      "blockId": "story-card-2-eyebrow",
+      "blockName": "story-card-2-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 17,
+      "bounds": {
+        "x": 32,
+        "y": 556,
+        "width": 326,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d257a21feef7236378ba6d506a005c18e90de225bd6b8a090fd247576e500eb5"
+    },
+    {
+      "blockId": "story-card-2-title",
+      "blockName": "story-card-2-title",
+      "blockType": "text",
+      "order": 18,
+      "bounds": {
+        "x": 32,
+        "y": 578,
+        "width": 326,
+        "height": 27
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c4c30333b41859197b50217a588362d08d4876f472bee539850e566bd8dce6aa"
+    },
+    {
+      "blockId": "story-card-2-body",
+      "blockName": "story-card-2-body",
+      "blockType": "text",
+      "order": 19,
+      "bounds": {
+        "x": 32,
+        "y": 612,
+        "width": 326,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4af63a67193d81362ab7bd1a40af0c6e6c082bfc1507bce060586c167ba7a103"
+    },
+    {
+      "blockId": "story-card-2-arrow",
+      "blockName": "story-card-2-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 20,
+      "bounds": {
+        "x": 346,
+        "y": 558,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2e9d55e9c23822d4702bfb7dcedb38bcc2850cdbcdd88630f824f70056777503"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/sector-aerospace-1c409b17.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/sector-aerospace-1c409b17.jpg",
+      "relativePath": "assets-structured/pama/sector-aerospace-1c409b17.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/sector-energy-40ca7931.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/sector-energy-40ca7931.jpg",
+      "relativePath": "assets-structured/pama/sector-energy-40ca7931.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/sector-transport-18e8f590.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/sector-transport-18e8f590.jpg",
+      "relativePath": "assets-structured/pama/sector-transport-18e8f590.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "story-bg",
+      "blockName": "story-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 610
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5d9de7cb3d1f33ac3a5aaf2acfa98cb47c08a24f7d7191c6dec6eb9447b57ec6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "story-bg",
+        "name": "story-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 610,
+        "fill": "#F4F4F1"
+      }
+    },
+    {
+      "blockId": "story-title",
+      "blockName": "story-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 16,
+        "y": 34,
+        "width": 358,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "daa4e4bfadec01f947521b85575f69a2da8fe92ae5afd54a2e26399485cfa96b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-title",
+        "name": "story-title",
+        "x": 16,
+        "y": 34,
+        "fill": "#008D99",
+        "content": "I MOVE IN STYLE",
+        "fontFamily": "Raleway",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 358,
+        "height": 24,
+        "letterSpacing": "0.08em",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "story-copy",
+      "blockName": "story-copy",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 28,
+        "y": 68,
+        "width": 334,
+        "height": 146
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "17093355fedf477b1c013d1dd29667c4ce6edfa1c3d9c74b02f2378cef7dbff3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-copy",
+        "name": "story-copy",
+        "x": 28,
+        "y": 68,
+        "fill": "#66707A",
+        "content": "With almost one century of experience and a research and development department that continuously studies and works on new technologies, PAMA develops and manufactures boring machines, milling machines and machining centres for various sectors for which it guarantees quality and reliability.",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 334,
+        "height": 146,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "story-card-0-box",
+      "blockName": "story-card-0-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 20,
+        "y": 122,
+        "width": 350,
+        "height": 146
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8ee3a52a1d0c53db605ced7d1a4ae08129e4a7392e1889ee5ccc97d224247b78",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "story-card-0-box",
+        "name": "story-card-0-box",
+        "x": 20,
+        "y": 122,
+        "width": 350,
+        "height": 146,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-aerospace-sector"
+      }
+    },
+    {
+      "blockId": "story-card-0-image",
+      "blockName": "story-card-0-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 4,
+      "bounds": {
+        "x": 32,
+        "y": 134,
+        "width": 326,
+        "height": 92
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7e0485e2c29fc4d1e8ccbb9a4cd0407e2bf7edc8240663871b2205229c85f256",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/sector-aerospace-1c409b17.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/sector-aerospace-1c409b17.jpg",
+        "relativePath": "assets-structured/pama/sector-aerospace-1c409b17.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "story-card-0-image",
+        "name": "story-card-0-image",
+        "x": 32,
+        "y": 134,
+        "width": 326,
+        "height": 92,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/sector-aerospace-1c409b17.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-aerospace-sector"
+      }
+    },
+    {
+      "blockId": "story-card-0-eyebrow",
+      "blockName": "story-card-0-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 32,
+        "y": 240,
+        "width": 326,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1d02134f81251c06cd4251fe331b95b02ee8e3f26fdf5d41a53dd3656ceff191",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-card-0-eyebrow",
+        "name": "story-card-0-eyebrow",
+        "x": 32,
+        "y": 240,
+        "fill": "#008D99",
+        "content": "SECTOR",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-aerospace-sector"
+      }
+    },
+    {
+      "blockId": "story-card-0-title",
+      "blockName": "story-card-0-title",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 32,
+        "y": 262,
+        "width": 326,
+        "height": 27
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "877213d82cd446286de58f64b5bd38fb30548af91eeac8a0aad4dfdf350021e2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-card-0-title",
+        "name": "story-card-0-title",
+        "x": 32,
+        "y": 262,
+        "fill": "#1A1F24",
+        "content": "AEROSPACE SECTOR",
+        "fontFamily": "Raleway",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 27,
+        "href": "#page-aerospace-sector"
+      }
+    },
+    {
+      "blockId": "story-card-0-body",
+      "blockName": "story-card-0-body",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 32,
+        "y": 296,
+        "width": 326,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d7e8197b96b21aed76003e0d54b5f20bef6a257f32fde0a5b633aa04cea43737",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-card-0-body",
+        "name": "story-card-0-body",
+        "x": 32,
+        "y": 296,
+        "fill": "#66707A",
+        "content": "Processing of hard materials for the aerospace sector.",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 38,
+        "href": "#page-aerospace-sector"
+      }
+    },
+    {
+      "blockId": "story-card-0-arrow",
+      "blockName": "story-card-0-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 346,
+        "y": 242,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "10fdfb4af8c75845ddc0cfeead8780c9127bb5f02e8f09f971cde38cfe7e18d4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-card-0-arrow",
+        "name": "story-card-0-arrow",
+        "x": 346,
+        "y": 242,
+        "fill": "#00A7B5",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-aerospace-sector"
+      }
+    },
+    {
+      "blockId": "story-card-1-box",
+      "blockName": "story-card-1-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 20,
+        "y": 280,
+        "width": 350,
+        "height": 146
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "67b72edd2c55c4deeee18d31adae2cc7ec840f6042424c915f7681005f95914a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "story-card-1-box",
+        "name": "story-card-1-box",
+        "x": 20,
+        "y": 280,
+        "width": 350,
+        "height": 146,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-sector"
+      }
+    },
+    {
+      "blockId": "story-card-1-image",
+      "blockName": "story-card-1-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 10,
+      "bounds": {
+        "x": 32,
+        "y": 292,
+        "width": 326,
+        "height": 92
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "69378b378483d39975f8992d3d9d24fe2806627adc4bf2df42d8c690ae6e4c4a",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/sector-energy-40ca7931.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/sector-energy-40ca7931.jpg",
+        "relativePath": "assets-structured/pama/sector-energy-40ca7931.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "story-card-1-image",
+        "name": "story-card-1-image",
+        "x": 32,
+        "y": 292,
+        "width": 326,
+        "height": 92,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/sector-energy-40ca7931.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-sector"
+      }
+    },
+    {
+      "blockId": "story-card-1-eyebrow",
+      "blockName": "story-card-1-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 11,
+      "bounds": {
+        "x": 32,
+        "y": 398,
+        "width": 326,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "129bc789664052f0c79151d72fcc72df4b8fb21a1e753bcc3bf91b41a88b3afb",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-card-1-eyebrow",
+        "name": "story-card-1-eyebrow",
+        "x": 32,
+        "y": 398,
+        "fill": "#008D99",
+        "content": "SECTOR",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-sector"
+      }
+    },
+    {
+      "blockId": "story-card-1-title",
+      "blockName": "story-card-1-title",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 32,
+        "y": 420,
+        "width": 326,
+        "height": 27
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e2f90320d31f01a4486e838a9a8a7ffa0ae91c4722afdc450c580f21b8a0ee90",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-card-1-title",
+        "name": "story-card-1-title",
+        "x": 32,
+        "y": 420,
+        "fill": "#1A1F24",
+        "content": "ENERGY SECTOR",
+        "fontFamily": "Raleway",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 27,
+        "href": "#page-sector"
+      }
+    },
+    {
+      "blockId": "story-card-1-body",
+      "blockName": "story-card-1-body",
+      "blockType": "text",
+      "order": 13,
+      "bounds": {
+        "x": 32,
+        "y": 454,
+        "width": 326,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cfd5af953a718d2b742b91262ac9784810699583bbb0ca2030e5d6b15b424c32",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-card-1-body",
+        "name": "story-card-1-body",
+        "x": 32,
+        "y": 454,
+        "fill": "#66707A",
+        "content": "Precision and repeatability for energy applications.",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 38,
+        "href": "#page-sector"
+      }
+    },
+    {
+      "blockId": "story-card-1-arrow",
+      "blockName": "story-card-1-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 14,
+      "bounds": {
+        "x": 346,
+        "y": 400,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1179a6aafd3309a3735ba769081c1eb19bac68ad020369b35ffe162f9ed59d33",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-card-1-arrow",
+        "name": "story-card-1-arrow",
+        "x": 346,
+        "y": 400,
+        "fill": "#00A7B5",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-sector"
+      }
+    },
+    {
+      "blockId": "story-card-2-box",
+      "blockName": "story-card-2-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 15,
+      "bounds": {
+        "x": 20,
+        "y": 438,
+        "width": 350,
+        "height": 146
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "37f69486db1b3be019b43925a0a9f7a1e4f273f03011c746eeffeb93585d4e51",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "story-card-2-box",
+        "name": "story-card-2-box",
+        "x": 20,
+        "y": 438,
+        "width": 350,
+        "height": 146,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-sector"
+      }
+    },
+    {
+      "blockId": "story-card-2-image",
+      "blockName": "story-card-2-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 16,
+      "bounds": {
+        "x": 32,
+        "y": 450,
+        "width": 326,
+        "height": 92
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7b075971a96fead1a82445be7991492429df1ac47058e913e97af34f371850cf",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/sector-transport-18e8f590.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/sector-transport-18e8f590.jpg",
+        "relativePath": "assets-structured/pama/sector-transport-18e8f590.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "story-card-2-image",
+        "name": "story-card-2-image",
+        "x": 32,
+        "y": 450,
+        "width": 326,
+        "height": 92,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/sector-transport-18e8f590.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-sector"
+      }
+    },
+    {
+      "blockId": "story-card-2-eyebrow",
+      "blockName": "story-card-2-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 17,
+      "bounds": {
+        "x": 32,
+        "y": 556,
+        "width": 326,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d257a21feef7236378ba6d506a005c18e90de225bd6b8a090fd247576e500eb5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-card-2-eyebrow",
+        "name": "story-card-2-eyebrow",
+        "x": 32,
+        "y": 556,
+        "fill": "#008D99",
+        "content": "SECTOR",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-sector"
+      }
+    },
+    {
+      "blockId": "story-card-2-title",
+      "blockName": "story-card-2-title",
+      "blockType": "text",
+      "order": 18,
+      "bounds": {
+        "x": 32,
+        "y": 578,
+        "width": 326,
+        "height": 27
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c4c30333b41859197b50217a588362d08d4876f472bee539850e566bd8dce6aa",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-card-2-title",
+        "name": "story-card-2-title",
+        "x": 32,
+        "y": 578,
+        "fill": "#1A1F24",
+        "content": "TRANSPORT SECTOR",
+        "fontFamily": "Raleway",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 27,
+        "href": "#page-sector"
+      }
+    },
+    {
+      "blockId": "story-card-2-body",
+      "blockName": "story-card-2-body",
+      "blockType": "text",
+      "order": 19,
+      "bounds": {
+        "x": 32,
+        "y": 612,
+        "width": 326,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4af63a67193d81362ab7bd1a40af0c6e6c082bfc1507bce060586c167ba7a103",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-card-2-body",
+        "name": "story-card-2-body",
+        "x": 32,
+        "y": 612,
+        "fill": "#66707A",
+        "content": "Flexible, reliable solutions for transport components.",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 38,
+        "href": "#page-sector"
+      }
+    },
+    {
+      "blockId": "story-card-2-arrow",
+      "blockName": "story-card-2-arrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 20,
+      "bounds": {
+        "x": 346,
+        "y": 558,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2e9d55e9c23822d4702bfb7dcedb38bcc2850cdbcdd88630f824f70056777503",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "story-card-2-arrow",
+        "name": "story-card-2-arrow",
+        "x": 346,
+        "y": 558,
+        "fill": "#00A7B5",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-sector"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "move-in-style",
+    "name": "move-in-style",
+    "x": 0,
+    "y": 278,
+    "width": 390,
+    "height": 610,
+    "fill": "#F4F4F1",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "story-bg",
+        "name": "story-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 610,
+        "fill": "#F4F4F1"
+      },
+      {
+        "type": "text",
+        "id": "story-title",
+        "name": "story-title",
+        "x": 16,
+        "y": 34,
+        "fill": "#008D99",
+        "content": "I MOVE IN STYLE",
+        "fontFamily": "Raleway",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 358,
+        "height": 24,
+        "letterSpacing": "0.08em",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "story-copy",
+        "name": "story-copy",
+        "x": 28,
+        "y": 68,
+        "fill": "#66707A",
+        "content": "With almost one century of experience and a research and development department that continuously studies and works on new technologies, PAMA develops and manufactures boring machines, milling machines and machining centres for various sectors for which it guarantees quality and reliability.",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 334,
+        "height": 146,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "story-card-0-box",
+        "name": "story-card-0-box",
+        "x": 20,
+        "y": 122,
+        "width": 350,
+        "height": 146,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-aerospace-sector"
+      },
+      {
+        "type": "rectangle",
+        "id": "story-card-0-image",
+        "name": "story-card-0-image",
+        "x": 32,
+        "y": 134,
+        "width": 326,
+        "height": 92,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/sector-aerospace-1c409b17.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-aerospace-sector"
+      },
+      {
+        "type": "text",
+        "id": "story-card-0-eyebrow",
+        "name": "story-card-0-eyebrow",
+        "x": 32,
+        "y": 240,
+        "fill": "#008D99",
+        "content": "SECTOR",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-aerospace-sector"
+      },
+      {
+        "type": "text",
+        "id": "story-card-0-title",
+        "name": "story-card-0-title",
+        "x": 32,
+        "y": 262,
+        "fill": "#1A1F24",
+        "content": "AEROSPACE SECTOR",
+        "fontFamily": "Raleway",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 27,
+        "href": "#page-aerospace-sector"
+      },
+      {
+        "type": "text",
+        "id": "story-card-0-body",
+        "name": "story-card-0-body",
+        "x": 32,
+        "y": 296,
+        "fill": "#66707A",
+        "content": "Processing of hard materials for the aerospace sector.",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 38,
+        "href": "#page-aerospace-sector"
+      },
+      {
+        "type": "text",
+        "id": "story-card-0-arrow",
+        "name": "story-card-0-arrow",
+        "x": 346,
+        "y": 242,
+        "fill": "#00A7B5",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-aerospace-sector"
+      },
+      {
+        "type": "rectangle",
+        "id": "story-card-1-box",
+        "name": "story-card-1-box",
+        "x": 20,
+        "y": 280,
+        "width": 350,
+        "height": 146,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-sector"
+      },
+      {
+        "type": "rectangle",
+        "id": "story-card-1-image",
+        "name": "story-card-1-image",
+        "x": 32,
+        "y": 292,
+        "width": 326,
+        "height": 92,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/sector-energy-40ca7931.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-sector"
+      },
+      {
+        "type": "text",
+        "id": "story-card-1-eyebrow",
+        "name": "story-card-1-eyebrow",
+        "x": 32,
+        "y": 398,
+        "fill": "#008D99",
+        "content": "SECTOR",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-sector"
+      },
+      {
+        "type": "text",
+        "id": "story-card-1-title",
+        "name": "story-card-1-title",
+        "x": 32,
+        "y": 420,
+        "fill": "#1A1F24",
+        "content": "ENERGY SECTOR",
+        "fontFamily": "Raleway",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 27,
+        "href": "#page-sector"
+      },
+      {
+        "type": "text",
+        "id": "story-card-1-body",
+        "name": "story-card-1-body",
+        "x": 32,
+        "y": 454,
+        "fill": "#66707A",
+        "content": "Precision and repeatability for energy applications.",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 38,
+        "href": "#page-sector"
+      },
+      {
+        "type": "text",
+        "id": "story-card-1-arrow",
+        "name": "story-card-1-arrow",
+        "x": 346,
+        "y": 400,
+        "fill": "#00A7B5",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-sector"
+      },
+      {
+        "type": "rectangle",
+        "id": "story-card-2-box",
+        "name": "story-card-2-box",
+        "x": 20,
+        "y": 438,
+        "width": 350,
+        "height": 146,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9DEDF",
+          "thickness": 1
+        },
+        "href": "#page-sector"
+      },
+      {
+        "type": "rectangle",
+        "id": "story-card-2-image",
+        "name": "story-card-2-image",
+        "x": 32,
+        "y": 450,
+        "width": 326,
+        "height": 92,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/sector-transport-18e8f590.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-sector"
+      },
+      {
+        "type": "text",
+        "id": "story-card-2-eyebrow",
+        "name": "story-card-2-eyebrow",
+        "x": 32,
+        "y": 556,
+        "fill": "#008D99",
+        "content": "SECTOR",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-sector"
+      },
+      {
+        "type": "text",
+        "id": "story-card-2-title",
+        "name": "story-card-2-title",
+        "x": 32,
+        "y": 578,
+        "fill": "#1A1F24",
+        "content": "TRANSPORT SECTOR",
+        "fontFamily": "Raleway",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 27,
+        "href": "#page-sector"
+      },
+      {
+        "type": "text",
+        "id": "story-card-2-body",
+        "name": "story-card-2-body",
+        "x": 32,
+        "y": 612,
+        "fill": "#66707A",
+        "content": "Flexible, reliable solutions for transport components.",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 326,
+        "height": 38,
+        "href": "#page-sector"
+      },
+      {
+        "type": "text",
+        "id": "story-card-2-arrow",
+        "name": "story-card-2-arrow",
+        "x": 346,
+        "y": 558,
+        "fill": "#00A7B5",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-sector"
+      }
+    ]
+  }
+}

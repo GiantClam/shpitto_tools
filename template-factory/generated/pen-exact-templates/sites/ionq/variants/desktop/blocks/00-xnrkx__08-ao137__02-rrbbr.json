@@ -1,0 +1,60 @@
+{
+  "blockId": "RRBbr",
+  "blockName": "b2",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 2,
+  "bounds": {
+    "x": 308,
+    "y": 208,
+    "width": 560,
+    "height": 230
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "67bc8fe0a14abc32c5acc03b62b46a6df8b54586cb03e84d10cb3c2720fa6cd9",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "RRBbr",
+    "x": 308,
+    "y": 208,
+    "name": "b2",
+    "width": 560,
+    "height": 230,
+    "fill": "#040506",
+    "cornerRadius": 14,
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "b13nQ",
+        "x": 26,
+        "y": 24,
+        "name": "tb2",
+        "fill": "#F4F7FA",
+        "textGrowth": "fixed-width",
+        "width": 500,
+        "content": "10–100s, ~1s",
+        "fontFamily": "Inter",
+        "fontSize": 62,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "Xg1ln",
+        "x": 28,
+        "y": 114,
+        "name": "db2",
+        "fill": "#C5CDD7",
+        "textGrowth": "fixed-width",
+        "width": 500,
+        "content": "T1 & T2 Time - Two factors of the amount of time a qubit \"stays a qubit,\" T1 measures how long you can tell what’s a one vs a zero, and T2 measures phase coherence.",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

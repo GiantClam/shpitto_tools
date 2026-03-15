@@ -1,0 +1,229 @@
+{
+  "sectionId": "Srexe",
+  "sectionName": "BizHero",
+  "sectionKind": "hero",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": 260
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 5,
+  "treeHash": "7fed7e8c61a14bdde13ea352a2692d2d3402bbcde41d10177ff32e4f60e80f5c",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "r1ICz",
+      "blockName": "heroL",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 560,
+        "height": ""
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "35ed58fee374f3e00659fb7d769fd1ab3b7a1c614bf4905e3e436ee8220ab3cc"
+    },
+    {
+      "blockId": "xxsiZ",
+      "blockName": "heroR",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": "fill_container"
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e859a6907b836a069cf6f5cc9bfc7cc78e34a7ab014502668abcbc725b600c60"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "r1ICz",
+      "blockName": "heroL",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 560,
+        "height": ""
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "35ed58fee374f3e00659fb7d769fd1ab3b7a1c614bf4905e3e436ee8220ab3cc",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "r1ICz",
+        "name": "heroL",
+        "width": 560,
+        "layout": "vertical",
+        "gap": 12,
+        "justifyContent": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "NrdXo",
+            "name": "heroT1",
+            "fill": "#1F2737",
+            "textGrowth": "fixed-width",
+            "width": 420,
+            "content": "Framework for\nBusiness",
+            "lineHeight": 0.98,
+            "fontFamily": "Inter",
+            "fontSize": 56,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "NQFsc",
+            "name": "heroSub",
+            "fill": "#4A5356",
+            "textGrowth": "fixed-width",
+            "width": 420,
+            "content": "Deploy modular laptops across your organization.",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "normal"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "xxsiZ",
+      "blockName": "heroR",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": "fill_container"
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e859a6907b836a069cf6f5cc9bfc7cc78e34a7ab014502668abcbc725b600c60",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "xxsiZ",
+        "name": "heroR",
+        "metadata": {
+          "type": "unsplash",
+          "username": "shuttergames",
+          "link": "https://unsplash.com/@shuttergames",
+          "author": "Shuttergames"
+        },
+        "width": "fill_container",
+        "height": "fill_container",
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 2
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "Srexe",
+    "name": "BizHero",
+    "width": "fill_container",
+    "height": 260,
+    "fill": "#D6DDDB",
+    "gap": 24,
+    "padding": [
+      28,
+      110
+    ],
+    "children": [
+      {
+        "type": "frame",
+        "id": "r1ICz",
+        "name": "heroL",
+        "width": 560,
+        "layout": "vertical",
+        "gap": 12,
+        "justifyContent": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "NrdXo",
+            "name": "heroT1",
+            "fill": "#1F2737",
+            "textGrowth": "fixed-width",
+            "width": 420,
+            "content": "Framework for\nBusiness",
+            "lineHeight": 0.98,
+            "fontFamily": "Inter",
+            "fontSize": 56,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "NQFsc",
+            "name": "heroSub",
+            "fill": "#4A5356",
+            "textGrowth": "fixed-width",
+            "width": 420,
+            "content": "Deploy modular laptops across your organization.",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "normal"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "xxsiZ",
+        "name": "heroR",
+        "metadata": {
+          "type": "unsplash",
+          "username": "shuttergames",
+          "link": "https://unsplash.com/@shuttergames",
+          "author": "Shuttergames"
+        },
+        "width": "fill_container",
+        "height": "fill_container",
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 2
+      }
+    ]
+  }
+}

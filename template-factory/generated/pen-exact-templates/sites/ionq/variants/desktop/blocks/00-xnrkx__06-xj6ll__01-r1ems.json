@@ -1,0 +1,347 @@
+{
+  "blockId": "r1EmS",
+  "blockName": "Highlights",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 1,
+  "bounds": {
+    "x": 32,
+    "y": 88,
+    "width": 1136,
+    "height": 320
+  },
+  "directChildCount": 1,
+  "recursiveNodeCount": 22,
+  "treeHash": "9432c4ef4b15f53033e88d661bcb2a86b829104795f4996fa8fdd1f9dd43e881",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "r1EmS",
+    "x": 32,
+    "y": 88,
+    "name": "Highlights",
+    "width": 1136,
+    "height": 320,
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "6YkSL",
+        "x": 0,
+        "y": 0,
+        "name": "hRow",
+        "width": 1136,
+        "height": 320,
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "jKPjw",
+            "x": 0,
+            "y": 0,
+            "name": "h1",
+            "metadata": {
+              "type": "unsplash",
+              "username": "markusspiske",
+              "link": "https://unsplash.com/@markusspiske",
+              "author": "Markus Spiske"
+            },
+            "width": 272,
+            "height": 320,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjIwMjd8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            },
+            "cornerRadius": 8,
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "HwNWe",
+                "x": 0,
+                "y": 128,
+                "name": "ov1",
+                "width": 272,
+                "height": 192,
+                "fill": "#161B22E6",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "gxUSp",
+                    "x": 14,
+                    "y": 14,
+                    "name": "b17",
+                    "fill": "#EEF3F8",
+                    "textGrowth": "fixed-width",
+                    "width": 244,
+                    "content": "Quantum-accelerated drug development",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "3s0m1",
+                    "x": 14,
+                    "y": 56,
+                    "name": "c5",
+                    "fill": "#A8B2BE",
+                    "textGrowth": "fixed-width",
+                    "width": 244,
+                    "content": "In collaboration with AstraZeneca, AWS, and NVIDIA, this stack accelerates chemistry simulation by at least 60x times.",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "PN648",
+                    "x": 14,
+                    "y": 168,
+                    "name": "c6",
+                    "fill": "#FF6A00",
+                    "content": "Read more  →",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "JHlPk",
+            "x": 288,
+            "y": 0,
+            "name": "h2",
+            "metadata": {
+              "type": "unsplash",
+              "username": "nasa",
+              "link": "https://unsplash.com/@nasa",
+              "author": "NASA"
+            },
+            "width": 272,
+            "height": 320,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjIwMjh8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            },
+            "cornerRadius": 8,
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "7flR8",
+                "x": 0,
+                "y": 128,
+                "name": "ov2",
+                "width": 272,
+                "height": 192,
+                "fill": "#161B22E6",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "gblWX",
+                    "x": 14,
+                    "y": 14,
+                    "name": "b18",
+                    "fill": "#EEF3F8",
+                    "textGrowth": "fixed-width",
+                    "width": 244,
+                    "content": "Enterprise-grade LLMs with quantum fine tuning",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "wTInX",
+                    "x": 14,
+                    "y": 56,
+                    "name": "c7",
+                    "fill": "#A8B2BE",
+                    "textGrowth": "fixed-width",
+                    "width": 244,
+                    "content": "IonQ quantum fine-tuning is a hybrid approach that adds a quantum layer to classical AI models.",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "l1mZi",
+                    "x": 14,
+                    "y": 168,
+                    "name": "c8",
+                    "fill": "#FF6A00",
+                    "content": "Read more  →",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "t00Le",
+            "x": 576,
+            "y": 0,
+            "name": "h3",
+            "metadata": {
+              "type": "unsplash",
+              "username": "ribhav17",
+              "link": "https://unsplash.com/@ribhav17",
+              "author": "Ribhav Kala"
+            },
+            "width": 272,
+            "height": 320,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1569910260389-a948497cfcfd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjIwMjh8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            },
+            "cornerRadius": 8,
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "c9g0i",
+                "x": 0,
+                "y": 128,
+                "name": "ov3",
+                "width": 272,
+                "height": 192,
+                "fill": "#161B22E6",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "Rac26",
+                    "x": 14,
+                    "y": 14,
+                    "name": "b19",
+                    "fill": "#EEF3F8",
+                    "textGrowth": "fixed-width",
+                    "width": 244,
+                    "content": "Advancing automotive materials with quantum AI",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "P8E5V",
+                    "x": 14,
+                    "y": 56,
+                    "name": "c9",
+                    "fill": "#A8B2BE",
+                    "textGrowth": "fixed-width",
+                    "width": 244,
+                    "content": "IonQ partnered with a leading global automotive manufacturer for advanced steel microstructures.",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "5MOzK",
+                    "x": 14,
+                    "y": 168,
+                    "name": "c10",
+                    "fill": "#FF6A00",
+                    "content": "Read more  →",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "HYbrf",
+            "x": 864,
+            "y": 0,
+            "name": "h4",
+            "width": 272,
+            "height": 320,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+              "mode": "fill"
+            },
+            "cornerRadius": 8,
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "fDzFr",
+                "x": 0,
+                "y": 128,
+                "name": "ov4",
+                "width": 272,
+                "height": 192,
+                "fill": "#161B22E6",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "96de6",
+                    "x": 14,
+                    "y": 14,
+                    "name": "b20",
+                    "fill": "#EEF3F8",
+                    "textGrowth": "fixed-width",
+                    "width": 244,
+                    "content": "Unlocking financial quantum potential",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "CzV5u",
+                    "x": 14,
+                    "y": 56,
+                    "name": "c11",
+                    "fill": "#A8B2BE",
+                    "textGrowth": "fixed-width",
+                    "width": 244,
+                    "content": "IonQ is pioneering quantum finance workflows with simulation and portfolio optimization.",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  },
+                  {
+                    "type": "text",
+                    "id": "xwSLy",
+                    "x": 14,
+                    "y": 168,
+                    "name": "c12",
+                    "fill": "#FF6A00",
+                    "content": "Read more  →",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

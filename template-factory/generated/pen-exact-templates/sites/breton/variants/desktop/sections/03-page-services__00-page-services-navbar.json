@@ -1,0 +1,728 @@
+{
+  "sectionId": "page-services-navbar",
+  "sectionName": "Navbar",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 84
+  },
+  "directChildCount": 11,
+  "recursiveNodeCount": 12,
+  "treeHash": "873a24aaade1126b520e7d5052934afe620dd199b90a0cadd53e433a3b9b1f36",
+  "blockCount": 11,
+  "blockIndex": [
+    {
+      "blockId": "page-services-navbar-bg",
+      "blockName": "page-services-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "048e1cc24d87430866304cd326df273798560ab850c87032260c4a49943e9fa2"
+    },
+    {
+      "blockId": "page-services-navbar-logo",
+      "blockName": "page-services-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 18,
+        "width": 140,
+        "height": 44
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "290fd20c7a296c4044c806f398e0431e2a0dc0c1be0769ad64d7e7f1546c2f5d"
+    },
+    {
+      "blockId": "page-services-navbar-Engineering",
+      "blockName": "page-services-navbar-Engineering",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 260,
+        "y": 32,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c7d9ce37e58440b0c2f32909346ce9840ea90ef8affb7ad9e3506d5dc517b61a"
+    },
+    {
+      "blockId": "page-services-navbar-Products",
+      "blockName": "page-services-navbar-Products",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 378,
+        "y": 32,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0dad0416ae6a6f24dc91d51de58be17caefa0e9d9cb119dbe906fa2e17d2f8af"
+    },
+    {
+      "blockId": "page-services-navbar-Services",
+      "blockName": "page-services-navbar-Services",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 496,
+        "y": 32,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ad55bbf9e28e76ab7c0043533f06dcde241a3508b0c09c1dad5947ba240843f8"
+    },
+    {
+      "blockId": "page-services-navbar-BIT",
+      "blockName": "page-services-navbar-BIT",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 614,
+        "y": 32,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3793cac00b05eea5f0ed620d878c3848c4b67b42b417e7ad80cda656bcf87043"
+    },
+    {
+      "blockId": "page-services-navbar-lets",
+      "blockName": "page-services-navbar-lets",
+      "blockType": "rectangle",
+      "order": 6,
+      "bounds": {
+        "x": 756,
+        "y": 0,
+        "width": 200,
+        "height": 84
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8682f77372bd0cb57c6fec5d077de40dd3a51a9707fce90e1c5fe20b1df68414"
+    },
+    {
+      "blockId": "page-services-navbar-lets-t",
+      "blockName": "page-services-navbar-lets-t",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 782,
+        "y": 30,
+        "width": 120,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cd4559051a90438a86d31b49d3a1b8d5cec5c903b33b3c9aa86494f93ef6b286"
+    },
+    {
+      "blockId": "page-services-navbar-search",
+      "blockName": "page-services-navbar-search",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 1018,
+        "y": 30,
+        "width": 32,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b57f07ab605ae54de29f0b66193607d541b25344e59020034b5daeac5f7b9528"
+    },
+    {
+      "blockId": "page-services-navbar-lang",
+      "blockName": "page-services-navbar-lang",
+      "blockType": "text",
+      "order": 9,
+      "bounds": {
+        "x": 1082,
+        "y": 30,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f8439d4bcbba16da7cb3ee17ab2678d1305d3656fd826191b28999471616f865"
+    },
+    {
+      "blockId": "page-services-navbar-menu",
+      "blockName": "page-services-navbar-menu",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 1222,
+        "y": 30,
+        "width": 30,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cb925731505cb7e2d68c57b19935181faaf1ffc4b4aa75c357e98903811f6ca0"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "page-services-navbar-bg",
+      "blockName": "page-services-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "048e1cc24d87430866304cd326df273798560ab850c87032260c4a49943e9fa2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-services-navbar-bg",
+        "name": "page-services-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "page-services-navbar-logo",
+      "blockName": "page-services-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 18,
+        "width": 140,
+        "height": 44
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "290fd20c7a296c4044c806f398e0431e2a0dc0c1be0769ad64d7e7f1546c2f5d",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-services-navbar-logo",
+        "name": "page-services-navbar-logo",
+        "x": 40,
+        "y": 18,
+        "width": 140,
+        "height": 44,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "page-services-navbar-Engineering",
+      "blockName": "page-services-navbar-Engineering",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 260,
+        "y": 32,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c7d9ce37e58440b0c2f32909346ce9840ea90ef8affb7ad9e3506d5dc517b61a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-services-navbar-Engineering",
+        "name": "page-services-navbar-Engineering",
+        "x": 260,
+        "y": 32,
+        "fill": "#FFFFFF",
+        "content": "Engineering",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-engineering"
+      }
+    },
+    {
+      "blockId": "page-services-navbar-Products",
+      "blockName": "page-services-navbar-Products",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 378,
+        "y": 32,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0dad0416ae6a6f24dc91d51de58be17caefa0e9d9cb119dbe906fa2e17d2f8af",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-services-navbar-Products",
+        "name": "page-services-navbar-Products",
+        "x": 378,
+        "y": 32,
+        "fill": "#FFFFFF",
+        "content": "Products",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "page-services-navbar-Services",
+      "blockName": "page-services-navbar-Services",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 496,
+        "y": 32,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ad55bbf9e28e76ab7c0043533f06dcde241a3508b0c09c1dad5947ba240843f8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-services-navbar-Services",
+        "name": "page-services-navbar-Services",
+        "x": 496,
+        "y": 32,
+        "fill": "#FFFFFF",
+        "content": "Services",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-services"
+      }
+    },
+    {
+      "blockId": "page-services-navbar-BIT",
+      "blockName": "page-services-navbar-BIT",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 614,
+        "y": 32,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3793cac00b05eea5f0ed620d878c3848c4b67b42b417e7ad80cda656bcf87043",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-services-navbar-BIT",
+        "name": "page-services-navbar-BIT",
+        "x": 614,
+        "y": 32,
+        "fill": "#FFFFFF",
+        "content": "BIT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-bit"
+      }
+    },
+    {
+      "blockId": "page-services-navbar-lets",
+      "blockName": "page-services-navbar-lets",
+      "blockType": "rectangle",
+      "order": 6,
+      "bounds": {
+        "x": 756,
+        "y": 0,
+        "width": 200,
+        "height": 84
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8682f77372bd0cb57c6fec5d077de40dd3a51a9707fce90e1c5fe20b1df68414",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-services-navbar-lets",
+        "name": "page-services-navbar-lets",
+        "x": 756,
+        "y": 0,
+        "width": 200,
+        "height": 84,
+        "fill": "#202329",
+        "href": "#page-contacts"
+      }
+    },
+    {
+      "blockId": "page-services-navbar-lets-t",
+      "blockName": "page-services-navbar-lets-t",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 782,
+        "y": 30,
+        "width": 120,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cd4559051a90438a86d31b49d3a1b8d5cec5c903b33b3c9aa86494f93ef6b286",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-services-navbar-lets-t",
+        "name": "page-services-navbar-lets-t",
+        "x": 782,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "Let's talk",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 22,
+        "href": "#page-contacts"
+      }
+    },
+    {
+      "blockId": "page-services-navbar-search",
+      "blockName": "page-services-navbar-search",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 1018,
+        "y": 30,
+        "width": 32,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b57f07ab605ae54de29f0b66193607d541b25344e59020034b5daeac5f7b9528",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-services-navbar-search",
+        "name": "page-services-navbar-search",
+        "x": 1018,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 24,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 32,
+        "height": 24,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "page-services-navbar-lang",
+      "blockName": "page-services-navbar-lang",
+      "blockType": "text",
+      "order": 9,
+      "bounds": {
+        "x": 1082,
+        "y": 30,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f8439d4bcbba16da7cb3ee17ab2678d1305d3656fd826191b28999471616f865",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-services-navbar-lang",
+        "name": "page-services-navbar-lang",
+        "x": 1082,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "Language",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "href": "#page-about"
+      }
+    },
+    {
+      "blockId": "page-services-navbar-menu",
+      "blockName": "page-services-navbar-menu",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 1222,
+        "y": 30,
+        "width": 30,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cb925731505cb7e2d68c57b19935181faaf1ffc4b4aa75c357e98903811f6ca0",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-services-navbar-menu",
+        "name": "page-services-navbar-menu",
+        "x": 1222,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 30,
+        "height": 18,
+        "href": "#page-products"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "page-services-navbar",
+    "name": "Navbar",
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 84,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-services-navbar-bg",
+        "name": "page-services-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-services-navbar-logo",
+        "name": "page-services-navbar-logo",
+        "x": 40,
+        "y": 18,
+        "width": 140,
+        "height": 44,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "page-services-navbar-Engineering",
+        "name": "page-services-navbar-Engineering",
+        "x": 260,
+        "y": 32,
+        "fill": "#FFFFFF",
+        "content": "Engineering",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-engineering"
+      },
+      {
+        "type": "text",
+        "id": "page-services-navbar-Products",
+        "name": "page-services-navbar-Products",
+        "x": 378,
+        "y": 32,
+        "fill": "#FFFFFF",
+        "content": "Products",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "page-services-navbar-Services",
+        "name": "page-services-navbar-Services",
+        "x": 496,
+        "y": 32,
+        "fill": "#FFFFFF",
+        "content": "Services",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-services"
+      },
+      {
+        "type": "text",
+        "id": "page-services-navbar-BIT",
+        "name": "page-services-navbar-BIT",
+        "x": 614,
+        "y": 32,
+        "fill": "#FFFFFF",
+        "content": "BIT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-bit"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-services-navbar-lets",
+        "name": "page-services-navbar-lets",
+        "x": 756,
+        "y": 0,
+        "width": 200,
+        "height": 84,
+        "fill": "#202329",
+        "href": "#page-contacts"
+      },
+      {
+        "type": "text",
+        "id": "page-services-navbar-lets-t",
+        "name": "page-services-navbar-lets-t",
+        "x": 782,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "Let's talk",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 22,
+        "href": "#page-contacts"
+      },
+      {
+        "type": "text",
+        "id": "page-services-navbar-search",
+        "name": "page-services-navbar-search",
+        "x": 1018,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 24,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 32,
+        "height": 24,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "page-services-navbar-lang",
+        "name": "page-services-navbar-lang",
+        "x": 1082,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "Language",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "href": "#page-about"
+      },
+      {
+        "type": "text",
+        "id": "page-services-navbar-menu",
+        "name": "page-services-navbar-menu",
+        "x": 1222,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 30,
+        "height": 18,
+        "href": "#page-products"
+      }
+    ]
+  }
+}

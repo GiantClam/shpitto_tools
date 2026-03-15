@@ -1,0 +1,3112 @@
+{
+  "pageId": "page-support-centre",
+  "pageKey": "support-centre",
+  "pageName": "Support Centre",
+  "pageType": "contact",
+  "devices": {
+    "desktop": {
+      "bounds": {
+        "width": 1440,
+        "height": 1797
+      },
+      "supportBlocks": [
+        {
+          "id": "page-support-centre-bg",
+          "name": "page-support-centre-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 100
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#F3F3F0"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08"
+          }
+        },
+        {
+          "id": "page-support-centre-hero",
+          "name": "page-support-centre-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 420
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "relativePath": "assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-support-centre-overlay",
+          "name": "page-support-centre-overlay",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 420
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#00000055"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color12"
+          }
+        },
+        {
+          "id": "page-support-centre-panel",
+          "name": "page-support-centre-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 40,
+            "y": 444,
+            "width": 1360,
+            "height": 1083
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D2",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-crumb",
+          "name": "page-support-centre-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 40,
+            "y": 102,
+            "width": 220,
+            "height": 18
+          },
+          "href": "",
+          "content": "Home / Support Centre",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-title",
+          "name": "page-support-centre-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 126,
+            "width": 760,
+            "height": 166
+          },
+          "href": "",
+          "content": "Support Centre &ndash; Nothing",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 56,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size13",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-subtitle",
+          "name": "page-support-centre-subtitle",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 226,
+            "width": 620,
+            "height": 55
+          },
+          "href": "",
+          "content": "Learn more about your Nothing products, find answers, troubleshoot problems, request help and more.",
+          "style": {
+            "fill": "#F0F0EE",
+            "typography": {
+              "fill": "#F0F0EE",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 17,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color13",
+            "textColor": "textColor.palette.text07",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size07",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-btn-home-box",
+          "name": "page-support-centre-btn-home-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 40,
+            "y": 298,
+            "width": 128,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#E63E3E",
+            "stroke": {
+              "color": "#E63E3E",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-btn-home-text",
+          "name": "page-support-centre-btn-home-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 54,
+            "y": 308,
+            "width": 100,
+            "height": 18
+          },
+          "href": "#page-home",
+          "content": "Home",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-btn-peer-box",
+          "name": "page-support-centre-btn-peer-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 180,
+            "y": 298,
+            "width": 148,
+            "height": 38
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D2",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-btn-peer-text",
+          "name": "page-support-centre-btn-peer-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 194,
+            "y": 308,
+            "width": 120,
+            "height": 18
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "Product page",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-kicker",
+          "name": "page-support-centre-kicker",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 468,
+            "width": 520,
+            "height": 18
+          },
+          "href": "",
+          "content": "SECOND LEVEL PAGE",
+          "style": {
+            "fill": "#E63E3E",
+            "typography": {
+              "fill": "#E63E3E",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.1em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "textColor": "textColor.palette.text06",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-panel-title",
+          "name": "page-support-centre-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 490,
+            "width": 520,
+            "height": 60
+          },
+          "href": "",
+          "content": "Support Centre",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 38,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size12",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-p-0",
+          "name": "page-support-centre-p-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 522,
+            "width": 520,
+            "height": 49
+          },
+          "href": "",
+          "content": "Learn more about your Nothing products, find answers, troubleshoot problems, request help and more.",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size06",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-p-1",
+          "name": "page-support-centre-p-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 589,
+            "width": 520,
+            "height": 49
+          },
+          "href": "",
+          "content": "You are using an outdated browser. Please upgrade your browser to improve your experience and security.",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size06",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-p-2",
+          "name": "page-support-centre-p-2",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 656,
+            "width": 520,
+            "height": 198
+          },
+          "href": "",
+          "content": "0 Phones Audio Watches CMF Community Support @media (max-width: 1280px) {#shopify-section-header-v3 .col-lg-4 {width: 30%; } #shopify-section-header-v3 .col-lg-3 {width: 21.333%; }} .img-wrap-template--28011420483968__banner { height: 0; padding-bottom: 55.55555555555556%; } @media screen and (max-width: 576px) {.img-wrap-template--28011420483968__banner { padding-bottom: 198.13333333333335%; } } Support Centre Learn more about your Nothing products, find answers, troubleshoot problems, request help and more",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size06",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-p-3",
+          "name": "page-support-centre-p-3",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 872,
+            "width": 520,
+            "height": 283
+          },
+          "href": "",
+          "content": "How Can We Help You? Product Guide Troubleshooting FAQs After-Sales Service Software Download Product Status Popular Questions How to install the latest Phone OS via OTA? ( Read More ) ( Read Less ) If you're looking to install the latest Operating System (OS) update for a Nothing phone through Over-The-Air (OTA) update, please follow these straightforward steps: 1. Ensure Connectivity: Connect your device to a stable Wi-Fi network to avoid any potential interruption during the download process. 2. Battery Check: Make sure that your phone's battery level is at least 50%, or keep it connected to a charger. 3. Backup Your Data: Although OTA updates are generally safe, it's a good habit to back up any crucial data before proceeding. 4. Initiate the Update:",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size06",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-feature",
+          "name": "page-support-centre-feature",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 970,
+            "y": 468,
+            "width": 390,
+            "height": 260
+          },
+          "href": "#page-support-centre",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius01"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "relativePath": "assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-support-centre-feature-2",
+          "name": "page-support-centre-feature-2",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 970,
+            "y": 746,
+            "width": 390,
+            "height": 180
+          },
+          "href": "#page-support-centre",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius01"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-support-centre-img-2-8e4d047e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-support-centre-img-2-8e4d047e.jpg",
+            "relativePath": "assets-structured/nothing-tech/page-support-centre-img-2-8e4d047e.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-support-centre-card-0",
+          "name": "page-support-centre-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1197,
+            "width": 196,
+            "height": 178
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "",
+          "style": {
+            "fill": "#ECECE8",
+            "stroke": {
+              "color": "#D8D8D2",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-card-img-0",
+          "name": "page-support-centre-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 64,
+            "y": 1197,
+            "width": 196,
+            "height": 96
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius01"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "relativePath": "assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-support-centre-card-title-0",
+          "name": "page-support-centre-card-title-0",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 74,
+            "y": 1301,
+            "width": 176,
+            "height": 18
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "Phone (3a) Pro",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-card-copy-0",
+          "name": "page-support-centre-card-copy-0",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 74,
+            "y": 1321,
+            "width": 176,
+            "height": 85
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "Learn more about your Nothing products, find answers, troubleshoot problems, request help",
+          "style": {
+            "fill": "#6B6B66",
+            "typography": {
+              "fill": "#6B6B66",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-card-1",
+          "name": "page-support-centre-card-1",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 284,
+            "y": 1197,
+            "width": 196,
+            "height": 178
+          },
+          "href": "#page-ear-3",
+          "content": "",
+          "style": {
+            "fill": "#ECECE8",
+            "stroke": {
+              "color": "#D8D8D2",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-card-img-1",
+          "name": "page-support-centre-card-img-1",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 284,
+            "y": 1197,
+            "width": 196,
+            "height": 96
+          },
+          "href": "#page-ear-3",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius01"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-support-centre-img-2-8e4d047e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-support-centre-img-2-8e4d047e.jpg",
+            "relativePath": "assets-structured/nothing-tech/page-support-centre-img-2-8e4d047e.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-support-centre-card-title-1",
+          "name": "page-support-centre-card-title-1",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 294,
+            "y": 1301,
+            "width": 176,
+            "height": 18
+          },
+          "href": "#page-ear-3",
+          "content": "Ear (3)",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-card-copy-1",
+          "name": "page-support-centre-card-copy-1",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 294,
+            "y": 1321,
+            "width": 176,
+            "height": 85
+          },
+          "href": "#page-ear-3",
+          "content": "You are using an outdated browser. Please upgrade your browser to improve your experience",
+          "style": {
+            "fill": "#6B6B66",
+            "typography": {
+              "fill": "#6B6B66",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-card-2",
+          "name": "page-support-centre-card-2",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 504,
+            "y": 1197,
+            "width": 196,
+            "height": 178
+          },
+          "href": "#page-cmf-phone-2-pro",
+          "content": "",
+          "style": {
+            "fill": "#ECECE8",
+            "stroke": {
+              "color": "#D8D8D2",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-card-img-2",
+          "name": "page-support-centre-card-img-2",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 504,
+            "y": 1197,
+            "width": 196,
+            "height": 96
+          },
+          "href": "#page-cmf-phone-2-pro",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius01"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-support-centre-img-4-96e4033f.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-support-centre-img-4-96e4033f.jpg",
+            "relativePath": "assets-structured/nothing-tech/page-support-centre-img-4-96e4033f.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-support-centre-card-title-2",
+          "name": "page-support-centre-card-title-2",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 514,
+            "y": 1301,
+            "width": 176,
+            "height": 18
+          },
+          "href": "#page-cmf-phone-2-pro",
+          "content": "CMF Phone 2 Pro",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-card-copy-2",
+          "name": "page-support-centre-card-copy-2",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 514,
+            "y": 1321,
+            "width": 176,
+            "height": 85
+          },
+          "href": "#page-cmf-phone-2-pro",
+          "content": "0 Phones Audio Watches CMF Community Support @media (max-width: 1280px) {#shopify-section-",
+          "style": {
+            "fill": "#6B6B66",
+            "typography": {
+              "fill": "#6B6B66",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-related-title",
+          "name": "page-support-centre-related-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 1409,
+            "width": 180,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related pages",
+          "style": {
+            "fill": "#E63E3E",
+            "typography": {
+              "fill": "#E63E3E",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "textColor": "textColor.palette.text06",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-related-0-box",
+          "name": "page-support-centre-related-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1435,
+            "width": 180,
+            "height": 36
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "",
+          "style": {
+            "fill": "#E63E3E",
+            "stroke": {
+              "color": "#E63E3E",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-related-0-text",
+          "name": "page-support-centre-related-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 78,
+            "y": 1444,
+            "width": 152,
+            "height": 18
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "Phone (3a) Pro",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-related-1-box",
+          "name": "page-support-centre-related-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 256,
+            "y": 1435,
+            "width": 180,
+            "height": 36
+          },
+          "href": "#page-ear-3",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D2",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-related-1-text",
+          "name": "page-support-centre-related-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 270,
+            "y": 1444,
+            "width": 152,
+            "height": 18
+          },
+          "href": "#page-ear-3",
+          "content": "Ear (3)",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-related-2-box",
+          "name": "page-support-centre-related-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 448,
+            "y": 1435,
+            "width": 180,
+            "height": 36
+          },
+          "href": "#page-cmf-phone-2-pro",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D2",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-related-2-text",
+          "name": "page-support-centre-related-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 462,
+            "y": 1444,
+            "width": 152,
+            "height": 18
+          },
+          "href": "#page-cmf-phone-2-pro",
+          "content": "CMF Phone 2 Pro",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    },
+    "mobile": {
+      "bounds": {
+        "width": 390,
+        "height": 2051
+      },
+      "supportBlocks": [
+        {
+          "id": "page-support-centre-bg",
+          "name": "page-support-centre-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 100
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#F3F3F0"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08"
+          }
+        },
+        {
+          "id": "page-support-centre-hero",
+          "name": "page-support-centre-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 320
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "relativePath": "assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-support-centre-overlay",
+          "name": "page-support-centre-overlay",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 320
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#00000055"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color12"
+          }
+        },
+        {
+          "id": "page-support-centre-panel",
+          "name": "page-support-centre-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 18,
+            "y": 344,
+            "width": 354,
+            "height": 1437
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D2",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-crumb",
+          "name": "page-support-centre-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 18,
+            "y": 82,
+            "width": 220,
+            "height": 18
+          },
+          "href": "",
+          "content": "Home / Support Centre",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-title",
+          "name": "page-support-centre-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 106,
+            "width": 320,
+            "height": 92
+          },
+          "href": "",
+          "content": "Support Centre &ndash; Nothing",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 30,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size11",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-subtitle",
+          "name": "page-support-centre-subtitle",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 184,
+            "width": 320,
+            "height": 62
+          },
+          "href": "",
+          "content": "Learn more about your Nothing products, find answers, troubleshoot problems, request help and more.",
+          "style": {
+            "fill": "#F0F0EE",
+            "typography": {
+              "fill": "#F0F0EE",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color13",
+            "textColor": "textColor.palette.text07",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-btn-home-box",
+          "name": "page-support-centre-btn-home-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 18,
+            "y": 252,
+            "width": 128,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#E63E3E",
+            "stroke": {
+              "color": "#E63E3E",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-btn-home-text",
+          "name": "page-support-centre-btn-home-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 32,
+            "y": 262,
+            "width": 100,
+            "height": 18
+          },
+          "href": "#page-home",
+          "content": "Home",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-btn-peer-box",
+          "name": "page-support-centre-btn-peer-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 158,
+            "y": 252,
+            "width": 148,
+            "height": 38
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D2",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-btn-peer-text",
+          "name": "page-support-centre-btn-peer-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 172,
+            "y": 262,
+            "width": 120,
+            "height": 18
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "Product page",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-kicker",
+          "name": "page-support-centre-kicker",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 368,
+            "width": 306,
+            "height": 18
+          },
+          "href": "",
+          "content": "SECOND LEVEL PAGE",
+          "style": {
+            "fill": "#E63E3E",
+            "typography": {
+              "fill": "#E63E3E",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.1em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "textColor": "textColor.palette.text06",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-panel-title",
+          "name": "page-support-centre-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 390,
+            "width": 306,
+            "height": 41
+          },
+          "href": "",
+          "content": "Support Centre",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 24,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size09",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-p-0",
+          "name": "page-support-centre-p-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 422,
+            "width": 306,
+            "height": 62
+          },
+          "href": "",
+          "content": "Learn more about your Nothing products, find answers, troubleshoot problems, request help and more.",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-p-1",
+          "name": "page-support-centre-p-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 502,
+            "width": 306,
+            "height": 62
+          },
+          "href": "",
+          "content": "You are using an outdated browser. Please upgrade your browser to improve your experience and security.",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-p-2",
+          "name": "page-support-centre-p-2",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 582,
+            "width": 306,
+            "height": 265
+          },
+          "href": "",
+          "content": "0 Phones Audio Watches CMF Community Support @media (max-width: 1280px) {#shopify-section-header-v3 .col-lg-4 {width: 30%; } #shopify-section-header-v3 .col-lg-3 {width: 21.333%; }} .img-wrap-template--28011420483968__banner { height: 0; padding-bottom: 55.55555555555556%; } @media screen and (max-width: 576px) {.img-wrap-template--28011420483968__banner { padding-bottom: 198.13333333333335%; } } Support Centre Learn more about your Nothing products, find answers, troubleshoot problems, request help and more",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-p-3",
+          "name": "page-support-centre-p-3",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 865,
+            "width": 306,
+            "height": 394
+          },
+          "href": "",
+          "content": "How Can We Help You? Product Guide Troubleshooting FAQs After-Sales Service Software Download Product Status Popular Questions How to install the latest Phone OS via OTA? ( Read More ) ( Read Less ) If you're looking to install the latest Operating System (OS) update for a Nothing phone through Over-The-Air (OTA) update, please follow these straightforward steps: 1. Ensure Connectivity: Connect your device to a stable Wi-Fi network to avoid any potential interruption during the download process. 2. Battery Check: Make sure that your phone's battery level is at least 50%, or keep it connected to a charger. 3. Backup Your Data: Although OTA updates are generally safe, it's a good habit to back up any crucial data before proceeding. 4. Initiate the Update:",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-feature",
+          "name": "page-support-centre-feature",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 368,
+            "width": 306,
+            "height": 220
+          },
+          "href": "#page-support-centre",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius01"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "relativePath": "assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-support-centre-feature-2",
+          "name": "page-support-centre-feature-2",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 606,
+            "width": 306,
+            "height": 180
+          },
+          "href": "#page-support-centre",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius01"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-support-centre-img-2-8e4d047e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-support-centre-img-2-8e4d047e.jpg",
+            "relativePath": "assets-structured/nothing-tech/page-support-centre-img-2-8e4d047e.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-support-centre-card-0",
+          "name": "page-support-centre-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1299,
+            "width": 306,
+            "height": 136
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "",
+          "style": {
+            "fill": "#ECECE8",
+            "stroke": {
+              "color": "#D8D8D2",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-card-img-0",
+          "name": "page-support-centre-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 1299,
+            "width": 306,
+            "height": 82
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius01"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "relativePath": "assets-structured/nothing-tech/page-support-centre-img-1-7b70ff2e.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-support-centre-card-title-0",
+          "name": "page-support-centre-card-title-0",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 52,
+            "y": 1389,
+            "width": 286,
+            "height": 18
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "Phone (3a) Pro",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-card-copy-0",
+          "name": "page-support-centre-card-copy-0",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 52,
+            "y": 1407,
+            "width": 286,
+            "height": 53
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "Learn more about your Nothing products, find answers, troubleshoot problems, request help",
+          "style": {
+            "fill": "#6B6B66",
+            "typography": {
+              "fill": "#6B6B66",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-card-1",
+          "name": "page-support-centre-card-1",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1451,
+            "width": 306,
+            "height": 136
+          },
+          "href": "#page-ear-3",
+          "content": "",
+          "style": {
+            "fill": "#ECECE8",
+            "stroke": {
+              "color": "#D8D8D2",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-card-img-1",
+          "name": "page-support-centre-card-img-1",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 1451,
+            "width": 306,
+            "height": 82
+          },
+          "href": "#page-ear-3",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "cover"
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius01"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-support-centre-img-2-8e4d047e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-support-centre-img-2-8e4d047e.jpg",
+            "relativePath": "assets-structured/nothing-tech/page-support-centre-img-2-8e4d047e.jpg",
+            "exists": true,
+            "mode": "cover"
+          }
+        },
+        {
+          "id": "page-support-centre-card-title-1",
+          "name": "page-support-centre-card-title-1",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 52,
+            "y": 1541,
+            "width": 286,
+            "height": 18
+          },
+          "href": "#page-ear-3",
+          "content": "Ear (3)",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-card-copy-1",
+          "name": "page-support-centre-card-copy-1",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 52,
+            "y": 1559,
+            "width": 286,
+            "height": 53
+          },
+          "href": "#page-ear-3",
+          "content": "You are using an outdated browser. Please upgrade your browser to improve your experience",
+          "style": {
+            "fill": "#6B6B66",
+            "typography": {
+              "fill": "#6B6B66",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-support-centre-related-title",
+          "name": "page-support-centre-related-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 1615,
+            "width": 180,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related pages",
+          "style": {
+            "fill": "#E63E3E",
+            "typography": {
+              "fill": "#E63E3E",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "textColor": "textColor.palette.text06",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-related-0-box",
+          "name": "page-support-centre-related-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1641,
+            "width": 150,
+            "height": 36
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "",
+          "style": {
+            "fill": "#E63E3E",
+            "stroke": {
+              "color": "#E63E3E",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-related-0-text",
+          "name": "page-support-centre-related-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 56,
+            "y": 1650,
+            "width": 122,
+            "height": 18
+          },
+          "href": "#page-phone-3a-pro",
+          "content": "Phone (3a) Pro",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-related-1-box",
+          "name": "page-support-centre-related-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 204,
+            "y": 1641,
+            "width": 150,
+            "height": 36
+          },
+          "href": "#page-ear-3",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D2",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-related-1-text",
+          "name": "page-support-centre-related-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 218,
+            "y": 1650,
+            "width": 122,
+            "height": 18
+          },
+          "href": "#page-ear-3",
+          "content": "Ear (3)",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-support-centre-related-2-box",
+          "name": "page-support-centre-related-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1689,
+            "width": 150,
+            "height": 36
+          },
+          "href": "#page-cmf-phone-2-pro",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D2",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-support-centre-related-2-text",
+          "name": "page-support-centre-related-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 56,
+            "y": 1698,
+            "width": 122,
+            "height": 18
+          },
+          "href": "#page-cmf-phone-2-pro",
+          "content": "CMF Phone 2 Pro",
+          "style": {
+            "fill": "#111111",
+            "typography": {
+              "fill": "#111111",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.03em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "sectionId": "header-page-support-centre",
+      "sectionKey": "header-page-support-centre",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "blockCount": 7,
+          "blockTree": {
+            "id": "header-page-support-centre",
+            "name": "Header",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 84
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color11"
+            },
+            "children": [
+              {
+                "id": "header-bg",
+                "name": "header-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 84
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02"
+                }
+              },
+              {
+                "id": "header-brand",
+                "name": "header-brand",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 40,
+                  "y": 24,
+                  "width": 240,
+                  "height": 28
+                },
+                "href": "",
+                "content": "Nothing",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 22,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size10",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "nav-page-offers",
+                "name": "nav-page-offers",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 840,
+                  "y": 30,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-offers",
+                "content": "OFFERS",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "nav-page-phones",
+                "name": "nav-page-phones",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 948,
+                  "y": 30,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-phones",
+                "content": "PHONES",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "nav-page-audio",
+                "name": "nav-page-audio",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1056,
+                  "y": 30,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-audio",
+                "content": "AUDIO",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "nav-page-support-centre",
+                "name": "nav-page-support-centre",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1164,
+                  "y": 30,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-support-centre",
+                "content": "SUPPORT CENTRE",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "nav-page-contact-support",
+                "name": "nav-page-contact-support",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1272,
+                  "y": 30,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-contact-support",
+                "content": "CONTACT SUPPORT",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "blockCount": 3,
+          "blockTree": {
+            "id": "header-page-support-centre",
+            "name": "Header",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 64
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color11"
+            },
+            "children": [
+              {
+                "id": "header-bg",
+                "name": "header-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 64
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02"
+                }
+              },
+              {
+                "id": "header-brand",
+                "name": "header-brand",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 18,
+                  "y": 18,
+                  "width": 180,
+                  "height": 28
+                },
+                "href": "",
+                "content": "Nothing",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size04",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "header-menu",
+                "name": "header-menu",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 362,
+                  "y": 18,
+                  "width": 18,
+                  "height": 20
+                },
+                "href": "#page-offers",
+                "content": "☰",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size04",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionKey": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": {
+        "desktop": 1,
+        "mobile": 1
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 1567,
+            "width": 1440,
+            "height": 230
+          },
+          "blockCount": 9,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1567,
+              "width": 1440,
+              "height": 230
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#0F0F10",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color10"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 230
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#0F0F10"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color10"
+                }
+              },
+              {
+                "id": "footer-brand",
+                "name": "footer-brand",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 30,
+                  "width": 220,
+                  "height": 24
+                },
+                "href": "",
+                "content": "Nothing",
+                "style": {
+                  "fill": "#F4F4F1",
+                  "typography": {
+                    "fill": "#F4F4F1",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 20,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size08",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-title-0",
+                "name": "footer-title-0",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 40,
+                  "y": 76,
+                  "width": 180,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Sections",
+                "style": {
+                  "fill": "#F4F4F1",
+                  "typography": {
+                    "fill": "#F4F4F1",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-body-0",
+                "name": "footer-body-0",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 40,
+                  "y": 100,
+                  "width": 180,
+                  "height": 24
+                },
+                "href": "",
+                "content": "Offers Phones",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-title-1",
+                "name": "footer-title-1",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 260,
+                  "y": 76,
+                  "width": 180,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Explore",
+                "style": {
+                  "fill": "#F4F4F1",
+                  "typography": {
+                    "fill": "#F4F4F1",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-body-1",
+                "name": "footer-body-1",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 260,
+                  "y": 100,
+                  "width": 180,
+                  "height": 24
+                },
+                "href": "",
+                "content": "Audio Support Centre",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-title-2",
+                "name": "footer-title-2",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 480,
+                  "y": 76,
+                  "width": 180,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Products",
+                "style": {
+                  "fill": "#F4F4F1",
+                  "typography": {
+                    "fill": "#F4F4F1",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-body-2",
+                "name": "footer-body-2",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 480,
+                  "y": 100,
+                  "width": 180,
+                  "height": 41
+                },
+                "href": "",
+                "content": "Contact Support Phone (3a) Pro Ear (3)",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 1020,
+                  "y": 150,
+                  "width": 320,
+                  "height": 38
+                },
+                "href": "",
+                "content": "Nothing structured clone pen with desktop and mobile page sets.",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 1801,
+            "width": 390,
+            "height": 250
+          },
+          "blockCount": 5,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1801,
+              "width": 390,
+              "height": 250
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#0F0F10",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color10"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 250
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#0F0F10"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color10"
+                }
+              },
+              {
+                "id": "footer-brand",
+                "name": "footer-brand",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 30,
+                  "width": 220,
+                  "height": 24
+                },
+                "href": "",
+                "content": "Nothing",
+                "style": {
+                  "fill": "#F4F4F1",
+                  "typography": {
+                    "fill": "#F4F4F1",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size04",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-col-1",
+                "name": "footer-col-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 68,
+                  "width": 130,
+                  "height": 38
+                },
+                "href": "",
+                "content": "Offers Phones Audio",
+                "style": {
+                  "fill": "#F4F4F1",
+                  "typography": {
+                    "fill": "#F4F4F1",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-col-2",
+                "name": "footer-col-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 182,
+                  "y": 68,
+                  "width": 130,
+                  "height": 69
+                },
+                "href": "",
+                "content": "Support Centre Contact Support Phone (3a) Pro Ear (3)",
+                "style": {
+                  "fill": "#F4F4F1",
+                  "typography": {
+                    "fill": "#F4F4F1",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 18,
+                  "y": 188,
+                  "width": 320,
+                  "height": 49
+                },
+                "href": "",
+                "content": "Nothing structured clone pen. Editable text, cards, buttons and image containers.",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

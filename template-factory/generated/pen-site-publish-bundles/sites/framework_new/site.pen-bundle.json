@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "template-factory.pen.v1",
+  "kind": "site-pen-bundle",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "siteId": "framework_new",
+  "siteName": "Framework New",
+  "reviewMode": "site-level",
+  "requiredVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "availableVariants": [
+    "desktop"
+  ],
+  "responsiveModes": {
+    "desktop": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "exact-source"
+    },
+    "mobile": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "responsive-derived-from-desktop"
+    }
+  },
+  "capabilities": {
+    "exactTemplate": true,
+    "skinnable": true,
+    "sandboxPreview": true,
+    "dualModeReady": true,
+    "exactMobileSource": false
+  },
+  "commercialReadiness": {
+    "structuralValidationPassed": true,
+    "visualValidationPassed": true,
+    "sandboxRuntimePassed": true,
+    "skinnableReady": true,
+    "publishInputReady": true
+  },
+  "artifacts": [
+    {
+      "caseId": "framework_new-desktop",
+      "siteId": "framework_new",
+      "siteName": "Framework New",
+      "siteGroupId": "framework_new",
+      "variant": "desktop",
+      "siteKey": "pen-exact-site-framework_new-desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/framework_new.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-framework_new-desktop/sandbox/payload.json",
+      "sourceHash": "15e68394f4d95e095c64e3c92bad168609f0ad745a2aff508e1243d48f233023",
+      "pageCount": 6,
+      "sectionCount": 29,
+      "blockCount": 85,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/framework_new/variants/desktop/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/framework_new/variants/desktop/template.skin.json",
+      "previewPages": 6,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-framework_new-desktop&page=home"
+    }
+  ]
+}

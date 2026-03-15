@@ -1,0 +1,120 @@
+{
+  "blockId": "ag2Vy",
+  "blockName": "p2Card",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 2,
+  "bounds": {
+    "x": 84,
+    "y": 550,
+    "width": 760,
+    "height": 250
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 7,
+  "treeHash": "5ede3c05cc1d457b85e8c73381b9cfe4f0176f3ce808d57559581da078031f90",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "ag2Vy",
+    "x": 84,
+    "y": 550,
+    "name": "p2Card",
+    "width": 760,
+    "height": 250,
+    "fill": "#F5F6F8",
+    "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "color": "#0F172A1F",
+      "offset": {
+        "x": 0,
+        "y": 16
+      },
+      "blur": 40
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "icon_font",
+        "id": "kHTVA",
+        "x": 64,
+        "y": 48,
+        "name": "p2icon",
+        "width": 28,
+        "height": 28,
+        "iconFontName": "broadcast",
+        "iconFontFamily": "phosphor",
+        "fill": "#2F456C"
+      },
+      {
+        "type": "text",
+        "id": "ERTSF",
+        "x": 100,
+        "y": 48,
+        "name": "p2title",
+        "fill": "#1F2937",
+        "content": "GOSHAWK.",
+        "fontFamily": "Inter",
+        "fontSize": 34,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "aWEWx",
+        "x": 64,
+        "y": 94,
+        "name": "p2desc",
+        "fill": "#5B6472",
+        "textGrowth": "fixed-width",
+        "width": 466,
+        "content": "Able to switch dynamically between LEO, GEO and cellular networks, this turnkey satellite user terminal offers enterprise uptime, robust and durable hardware suitable for security and intelligence agencies.",
+        "lineHeight": 1.5,
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 2,
+        "id": "MxUSk",
+        "x": 64,
+        "y": 184,
+        "name": "p2btn",
+        "fill": "#EEF2F7",
+        "width": 166,
+        "height": 34,
+        "stroke": {
+          "align": "inside",
+          "thickness": 1,
+          "fill": "#8AA3D3"
+        }
+      },
+      {
+        "type": "text",
+        "id": "JkkuX",
+        "x": 82,
+        "y": 194,
+        "name": "p2btnT",
+        "fill": "#2E446D",
+        "content": "Discover the Goshawk u8",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "b2Nsu",
+        "x": 64,
+        "y": 20,
+        "name": "p2cat",
+        "fill": "#5E81C5",
+        "content": "MILITARY & GOVERNMENT",
+        "fontFamily": "Inter",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "letterSpacing": 0.8
+      }
+    ]
+  }
+}

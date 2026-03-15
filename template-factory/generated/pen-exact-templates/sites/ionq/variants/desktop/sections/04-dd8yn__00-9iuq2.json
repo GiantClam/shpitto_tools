@@ -1,0 +1,182 @@
+{
+  "sectionId": "9IUQ2",
+  "sectionName": "ann",
+  "sectionKind": "generic",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1200,
+    "height": 40
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 4,
+  "treeHash": "29acdffceb3678d6dee8cd346f4acd0b80ea86a0df0e2265fa452e03390512d3",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "5eNH3",
+      "blockName": "annText",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 308.5,
+        "y": 12,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d04ddadcbdf5d062a978e5ab286513b4c771fb8eb0864f51c7c0fd353412ed14"
+    },
+    {
+      "blockId": "SVM7W",
+      "blockName": "annBtn",
+      "blockType": "frame",
+      "order": 1,
+      "bounds": {
+        "x": 783.5,
+        "y": 6,
+        "width": 108,
+        "height": 28
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "f6f8a6811f4d93a0cc43a11ed42e00a9aaa7dd9aef57434043587a4d0e4831dc"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "5eNH3",
+      "blockName": "annText",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 308.5,
+        "y": 12,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d04ddadcbdf5d062a978e5ab286513b4c771fb8eb0864f51c7c0fd353412ed14",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "5eNH3",
+        "x": 308.5,
+        "y": 12,
+        "name": "annText",
+        "fill": "#E7EDF4",
+        "content": "Watch IonQ&apos;s Quantum World Congress 2025 Keynote On Demand.",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "600"
+      }
+    },
+    {
+      "blockId": "SVM7W",
+      "blockName": "annBtn",
+      "blockType": "frame",
+      "order": 1,
+      "bounds": {
+        "x": 783.5,
+        "y": 6,
+        "width": 108,
+        "height": 28
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "f6f8a6811f4d93a0cc43a11ed42e00a9aaa7dd9aef57434043587a4d0e4831dc",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "SVM7W",
+        "x": 783.5,
+        "y": 6,
+        "name": "annBtn",
+        "width": 108,
+        "height": 28,
+        "fill": "#1A1E25",
+        "cornerRadius": 4,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#FF6A00"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "eoOoE",
+            "x": 24,
+            "y": 7.5,
+            "name": "annBtnTxt",
+            "fill": "#FF6A00",
+            "content": "Watch now",
+            "fontFamily": "Inter",
+            "fontSize": 11,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "9IUQ2",
+    "x": 0,
+    "y": 0,
+    "name": "ann",
+    "width": 1200,
+    "height": 40,
+    "fill": "#0A0C10",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "5eNH3",
+        "x": 308.5,
+        "y": 12,
+        "name": "annText",
+        "fill": "#E7EDF4",
+        "content": "Watch IonQ&apos;s Quantum World Congress 2025 Keynote On Demand.",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "600"
+      },
+      {
+        "type": "frame",
+        "id": "SVM7W",
+        "x": 783.5,
+        "y": 6,
+        "name": "annBtn",
+        "width": 108,
+        "height": 28,
+        "fill": "#1A1E25",
+        "cornerRadius": 4,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#FF6A00"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "eoOoE",
+            "x": 24,
+            "y": 7.5,
+            "name": "annBtnTxt",
+            "fill": "#FF6A00",
+            "content": "Watch now",
+            "fontFamily": "Inter",
+            "fontSize": 11,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

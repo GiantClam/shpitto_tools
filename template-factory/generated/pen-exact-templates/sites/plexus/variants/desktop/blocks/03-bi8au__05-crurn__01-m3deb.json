@@ -1,0 +1,112 @@
+{
+  "blockId": "M3DeB",
+  "blockName": "n1",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 1,
+  "bounds": {
+    "x": 80,
+    "y": 208,
+    "width": 400,
+    "height": 470
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 7,
+  "treeHash": "be4fb54b1f23e9626382db35154bba311260d1f42039597c34e73bb1cf5940d4",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "M3DeB",
+    "x": 80,
+    "y": 208,
+    "name": "n1",
+    "width": 400,
+    "height": 470,
+    "fill": "#F7F8F9",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "3I0uE",
+        "x": 0,
+        "y": 0,
+        "name": "ni1",
+        "metadata": {
+          "type": "unsplash",
+          "username": "giampierinik",
+          "link": "https://unsplash.com/@giampierinik",
+          "author": "Giampiero Fanni"
+        },
+        "width": 400,
+        "height": 200,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1704613269725-aabf5a26554c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxOTU0NzF8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "1L9df",
+        "x": 26,
+        "y": 248,
+        "name": "nt1",
+        "fill": "#21303D",
+        "textGrowth": "fixed-width",
+        "width": 336,
+        "content": "World Engineering Day: Engineering with Purpose at Plexus",
+        "lineHeight": 1.2,
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "VyeGK",
+        "x": 26,
+        "y": 216,
+        "name": "meta1",
+        "fill": "#0C5A67",
+        "content": "博客",
+        "fontFamily": "Inter",
+        "fontSize": 10,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "S1EE4",
+        "x": 26,
+        "y": 382,
+        "name": "time1",
+        "fill": "#6C7781",
+        "content": "4 分钟阅读",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "500"
+      },
+      {
+        "type": "ellipse",
+        "id": "bS0fX",
+        "x": 346,
+        "y": 414,
+        "name": "arr1c",
+        "fill": "#E5EBEE",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "type": "text",
+        "id": "1dUbp",
+        "x": 357,
+        "y": 422,
+        "name": "arr1t",
+        "fill": "#6C7A84",
+        "content": "→",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

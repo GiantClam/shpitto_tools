@@ -1,0 +1,790 @@
+{
+  "sectionId": "qDBpt",
+  "sectionName": "svc",
+  "sectionKind": "generic",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 1156,
+    "width": 1440,
+    "height": 547
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 23,
+  "treeHash": "06035877c81f6ac8773c9eb79d602e387e0035e5b3da3fdb87aa3eea10ac420a",
+  "blockCount": 6,
+  "blockIndex": [
+    {
+      "blockId": "0sUI6",
+      "blockName": "svcTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 106,
+        "width": 640,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "079aae3486d2daa408a5851372b8918eebee0cb1c9132aa3237e703062291e54"
+    },
+    {
+      "blockId": "QXRQg",
+      "blockName": "accWrap",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 786,
+        "y": 86,
+        "width": 620,
+        "height": 376
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 17,
+      "treeHash": "65410ee11cb9f56521e7c6a203c51d1f8065d4ba828f27fef309ce1dedb3a4e7"
+    },
+    {
+      "blockId": "8GQP6",
+      "blockName": "mktTag",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 66,
+        "width": 38,
+        "height": 6
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ba201423a452c2cb7c35840e573d87e8455028473f0e7886e96a44d987e5146e"
+    },
+    {
+      "blockId": "oOfmy",
+      "blockName": "mktTagTxt",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 86,
+        "y": 59,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6ad858c449cc0f371c13c9be8ebf26140500e03c70ff0028ee18a91bdcbcb744"
+    },
+    {
+      "blockId": "In8uX",
+      "blockName": "mktDesc",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 32,
+        "y": 206,
+        "width": 688,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b65dd9133200f67044e4714c9889b132003ca217677f29f06a72cec0ed0c55c1"
+    },
+    {
+      "blockId": "n50Wl",
+      "blockName": "solLink",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 32,
+        "y": 288,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "35ec699452e1d973586d503af8d3831068972ba729b1213bf507e0bb2bb697f1"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "0sUI6",
+      "blockName": "svcTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 106,
+        "width": 640,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "079aae3486d2daa408a5851372b8918eebee0cb1c9132aa3237e703062291e54",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "0sUI6",
+        "x": 32,
+        "y": 106,
+        "name": "svcTitle",
+        "fill": "#22303D",
+        "textGrowth": "fixed-width",
+        "width": 640,
+        "content": "服务于不同市场领域的行业专长",
+        "lineHeight": 1.12,
+        "fontFamily": "Inter",
+        "fontSize": 44,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "QXRQg",
+      "blockName": "accWrap",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 786,
+        "y": 86,
+        "width": 620,
+        "height": 376
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 17,
+      "treeHash": "65410ee11cb9f56521e7c6a203c51d1f8065d4ba828f27fef309ce1dedb3a4e7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "QXRQg",
+        "x": 786,
+        "y": 86,
+        "name": "accWrap",
+        "width": 620,
+        "height": 376,
+        "fill": "#FFFFFF",
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "V56gL",
+            "x": 0,
+            "y": 0,
+            "name": "a1",
+            "width": 620,
+            "height": 85,
+            "cornerRadius": 3,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#D6DDE3"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "OnzEu",
+                "x": 28,
+                "y": 33,
+                "name": "a1t",
+                "fill": "#21303D",
+                "content": "航空航天/国防",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "600"
+              },
+              {
+                "type": "ellipse",
+                "id": "WHpk8",
+                "x": 570,
+                "y": 27,
+                "name": "a1c",
+                "fill": "#E8EFF2",
+                "width": 30,
+                "height": 30
+              },
+              {
+                "type": "text",
+                "id": "BuoJC",
+                "x": 580,
+                "y": 34,
+                "name": "a1a",
+                "fill": "#6C7A84",
+                "content": "→",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "wSAq3",
+            "x": 0,
+            "y": 97,
+            "name": "a2",
+            "width": 620,
+            "height": 85,
+            "cornerRadius": 3,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#D6DDE3"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "4Bfnr",
+                "x": 28,
+                "y": 33,
+                "name": "a2t",
+                "fill": "#21303D",
+                "content": "医疗保健/生命科学",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "600"
+              },
+              {
+                "type": "ellipse",
+                "id": "5yT3C",
+                "x": 570,
+                "y": 27,
+                "name": "a2c",
+                "fill": "#E8EFF2",
+                "width": 30,
+                "height": 30
+              },
+              {
+                "type": "text",
+                "id": "QFnOJ",
+                "x": 580,
+                "y": 34,
+                "name": "a2a",
+                "fill": "#6C7A84",
+                "content": "→",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "jfqlz",
+            "x": 0,
+            "y": 194,
+            "name": "a3",
+            "width": 620,
+            "height": 85,
+            "cornerRadius": 3,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#D6DDE3"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "ndTuA",
+                "x": 28,
+                "y": 33,
+                "name": "a3t",
+                "fill": "#21303D",
+                "content": "工业",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "600"
+              },
+              {
+                "type": "ellipse",
+                "id": "eTGfR",
+                "x": 570,
+                "y": 27,
+                "name": "a3c",
+                "fill": "#E8EFF2",
+                "width": 30,
+                "height": 30
+              },
+              {
+                "type": "text",
+                "id": "SQSM4",
+                "x": 580,
+                "y": 34,
+                "name": "a3a",
+                "fill": "#6C7A84",
+                "content": "→",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "IY3Gx",
+            "x": 0,
+            "y": 291,
+            "name": "a4",
+            "width": 620,
+            "height": 85,
+            "cornerRadius": 3,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#D6DDE3"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "tU42t",
+                "x": 28,
+                "y": 33,
+                "name": "a4t",
+                "fill": "#21303D",
+                "content": "半导体资本设备",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "600"
+              },
+              {
+                "type": "ellipse",
+                "id": "JOiSM",
+                "x": 570,
+                "y": 27,
+                "name": "a4c",
+                "fill": "#E8EFF2",
+                "width": 30,
+                "height": 30
+              },
+              {
+                "type": "text",
+                "id": "XzuFq",
+                "x": 580,
+                "y": 34,
+                "name": "a4a",
+                "fill": "#6C7A84",
+                "content": "→",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "8GQP6",
+      "blockName": "mktTag",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 66,
+        "width": 38,
+        "height": 6
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ba201423a452c2cb7c35840e573d87e8455028473f0e7886e96a44d987e5146e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "8GQP6",
+        "x": 32,
+        "y": 66,
+        "name": "mktTag",
+        "fill": "#D5164A",
+        "width": 38,
+        "height": 6
+      }
+    },
+    {
+      "blockId": "oOfmy",
+      "blockName": "mktTagTxt",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 86,
+        "y": 59,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6ad858c449cc0f371c13c9be8ebf26140500e03c70ff0028ee18a91bdcbcb744",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "oOfmy",
+        "x": 86,
+        "y": 59,
+        "name": "mktTagTxt",
+        "fill": "#5a6470",
+        "content": "市场领域",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "In8uX",
+      "blockName": "mktDesc",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 32,
+        "y": 206,
+        "width": 688,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b65dd9133200f67044e4714c9889b132003ca217677f29f06a72cec0ed0c55c1",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "In8uX",
+        "x": 32,
+        "y": 206,
+        "name": "mktDesc",
+        "fill": "#6B7783",
+        "textGrowth": "fixed-width",
+        "width": 688,
+        "content": "为高度领先的市场领域提供的产品与 Plexus 的核心使命。凭借在不同行业的深厚行业专业知识，我们致力于为客户创造成功。",
+        "lineHeight": 1.5,
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "n50Wl",
+      "blockName": "solLink",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 32,
+        "y": 288,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "35ec699452e1d973586d503af8d3831068972ba729b1213bf507e0bb2bb697f1",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "n50Wl",
+        "x": 32,
+        "y": 288,
+        "name": "solLink",
+        "fill": "#6b7783",
+        "content": "查看我们的市场领域 →",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "700"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "qDBpt",
+    "x": 0,
+    "y": 1156,
+    "name": "svc",
+    "width": 1440,
+    "height": 547,
+    "fill": "#f2f2f2ff",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "0sUI6",
+        "x": 32,
+        "y": 106,
+        "name": "svcTitle",
+        "fill": "#22303D",
+        "textGrowth": "fixed-width",
+        "width": 640,
+        "content": "服务于不同市场领域的行业专长",
+        "lineHeight": 1.12,
+        "fontFamily": "Inter",
+        "fontSize": 44,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "QXRQg",
+        "x": 786,
+        "y": 86,
+        "name": "accWrap",
+        "width": 620,
+        "height": 376,
+        "fill": "#FFFFFF",
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "V56gL",
+            "x": 0,
+            "y": 0,
+            "name": "a1",
+            "width": 620,
+            "height": 85,
+            "cornerRadius": 3,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#D6DDE3"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "OnzEu",
+                "x": 28,
+                "y": 33,
+                "name": "a1t",
+                "fill": "#21303D",
+                "content": "航空航天/国防",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "600"
+              },
+              {
+                "type": "ellipse",
+                "id": "WHpk8",
+                "x": 570,
+                "y": 27,
+                "name": "a1c",
+                "fill": "#E8EFF2",
+                "width": 30,
+                "height": 30
+              },
+              {
+                "type": "text",
+                "id": "BuoJC",
+                "x": 580,
+                "y": 34,
+                "name": "a1a",
+                "fill": "#6C7A84",
+                "content": "→",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "wSAq3",
+            "x": 0,
+            "y": 97,
+            "name": "a2",
+            "width": 620,
+            "height": 85,
+            "cornerRadius": 3,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#D6DDE3"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "4Bfnr",
+                "x": 28,
+                "y": 33,
+                "name": "a2t",
+                "fill": "#21303D",
+                "content": "医疗保健/生命科学",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "600"
+              },
+              {
+                "type": "ellipse",
+                "id": "5yT3C",
+                "x": 570,
+                "y": 27,
+                "name": "a2c",
+                "fill": "#E8EFF2",
+                "width": 30,
+                "height": 30
+              },
+              {
+                "type": "text",
+                "id": "QFnOJ",
+                "x": 580,
+                "y": 34,
+                "name": "a2a",
+                "fill": "#6C7A84",
+                "content": "→",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "jfqlz",
+            "x": 0,
+            "y": 194,
+            "name": "a3",
+            "width": 620,
+            "height": 85,
+            "cornerRadius": 3,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#D6DDE3"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "ndTuA",
+                "x": 28,
+                "y": 33,
+                "name": "a3t",
+                "fill": "#21303D",
+                "content": "工业",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "600"
+              },
+              {
+                "type": "ellipse",
+                "id": "eTGfR",
+                "x": 570,
+                "y": 27,
+                "name": "a3c",
+                "fill": "#E8EFF2",
+                "width": 30,
+                "height": 30
+              },
+              {
+                "type": "text",
+                "id": "SQSM4",
+                "x": 580,
+                "y": 34,
+                "name": "a3a",
+                "fill": "#6C7A84",
+                "content": "→",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "IY3Gx",
+            "x": 0,
+            "y": 291,
+            "name": "a4",
+            "width": 620,
+            "height": 85,
+            "cornerRadius": 3,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#D6DDE3"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "tU42t",
+                "x": 28,
+                "y": 33,
+                "name": "a4t",
+                "fill": "#21303D",
+                "content": "半导体资本设备",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "600"
+              },
+              {
+                "type": "ellipse",
+                "id": "JOiSM",
+                "x": 570,
+                "y": 27,
+                "name": "a4c",
+                "fill": "#E8EFF2",
+                "width": 30,
+                "height": 30
+              },
+              {
+                "type": "text",
+                "id": "XzuFq",
+                "x": 580,
+                "y": 34,
+                "name": "a4a",
+                "fill": "#6C7A84",
+                "content": "→",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "rectangle",
+        "id": "8GQP6",
+        "x": 32,
+        "y": 66,
+        "name": "mktTag",
+        "fill": "#D5164A",
+        "width": 38,
+        "height": 6
+      },
+      {
+        "type": "text",
+        "id": "oOfmy",
+        "x": 86,
+        "y": 59,
+        "name": "mktTagTxt",
+        "fill": "#5a6470",
+        "content": "市场领域",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "In8uX",
+        "x": 32,
+        "y": 206,
+        "name": "mktDesc",
+        "fill": "#6B7783",
+        "textGrowth": "fixed-width",
+        "width": 688,
+        "content": "为高度领先的市场领域提供的产品与 Plexus 的核心使命。凭借在不同行业的深厚行业专业知识，我们致力于为客户创造成功。",
+        "lineHeight": 1.5,
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "n50Wl",
+        "x": 32,
+        "y": 288,
+        "name": "solLink",
+        "fill": "#6b7783",
+        "content": "查看我们的市场领域 →",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "blockId": "wOJxc",
+  "blockName": "SupportCTA",
+  "blockType": "frame",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 11,
+  "treeHash": "7f5188fef6260288fb2a350ea0a7fb53edecfe8262ee2f6578d4d1e8da65433b",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "wOJxc",
+    "name": "SupportCTA",
+    "width": "fill_container",
+    "layout": "vertical",
+    "gap": 14,
+    "padding": [
+      28,
+      0,
+      0,
+      0
+    ],
+    "alignItems": "center",
+    "children": [
+      {
+        "type": "frame",
+        "id": "qAkQy",
+        "name": "ctaIconWrap",
+        "width": 48,
+        "height": 48,
+        "fill": "#F26B2D",
+        "cornerRadius": 24,
+        "justifyContent": "center",
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "icon_font",
+            "id": "wPChw",
+            "name": "ctaIcon",
+            "width": 24,
+            "height": 24,
+            "iconFontName": "wrench",
+            "iconFontFamily": "lucide",
+            "fill": "#FFFFFF"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "6t6KD",
+        "name": "ctaTitle",
+        "fill": "#1F2737",
+        "textGrowth": "fixed-width",
+        "width": 410,
+        "content": "Still have questions?\nWe are here to help!",
+        "lineHeight": 1.05,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 38,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "ZGfmh",
+        "name": "submitBtn",
+        "width": 142,
+        "height": 34,
+        "fill": "#F26B2D",
+        "cornerRadius": 17,
+        "justifyContent": "center",
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "hawQ7",
+            "name": "submitTxt",
+            "fill": "#121416",
+            "content": "Submit support request",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "VVzq1",
+        "name": "connectBtn",
+        "width": 170,
+        "height": 34,
+        "cornerRadius": 17,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#A6A9AE"
+        },
+        "justifyContent": "center",
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "5YFwm",
+            "name": "connectTxt",
+            "fill": "#44484D",
+            "content": "Connect with the Business team",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "600"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "chJ7r",
+        "name": "divWrap",
+        "width": "fill_container",
+        "height": 8,
+        "layout": "vertical",
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "frame",
+            "id": "wqP0q",
+            "name": "sep",
+            "width": 420,
+            "height": 1,
+            "fill": "#EF8C64"
+          },
+          {
+            "type": "frame",
+            "id": "xqp3l",
+            "name": "divBase",
+            "width": "fill_container",
+            "height": 1,
+            "fill": "#D9DCDF"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "sectionId": "header-page-shipping-delivery",
+  "sectionName": "Header",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 64
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "aa429b620bde5c831a495d89c3cad4985ae4be46e81797d1344f1175f1e1e919",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "header-bg",
+      "blockName": "header-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db"
+    },
+    {
+      "blockId": "header-brand",
+      "blockName": "header-brand",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 18,
+        "width": 180,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e5a5e6707b89ee2d630a682baa0c3c98f97a8aebd884dac52c1f4fe5589cd842"
+    },
+    {
+      "blockId": "header-menu",
+      "blockName": "header-menu",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 362,
+        "y": 18,
+        "width": 18,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "37288733ecc1493062d22a62b5611bd1607b2e13468e546fef02455c325ae3ee"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "header-bg",
+      "blockName": "header-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "header-bg",
+        "name": "header-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#FFFFFF"
+      }
+    },
+    {
+      "blockId": "header-brand",
+      "blockName": "header-brand",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 18,
+        "width": 180,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e5a5e6707b89ee2d630a682baa0c3c98f97a8aebd884dac52c1f4fe5589cd842",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "header-brand",
+        "name": "header-brand",
+        "x": 18,
+        "y": 18,
+        "fill": "#151515",
+        "content": "VanMoof",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 28
+      }
+    },
+    {
+      "blockId": "header-menu",
+      "blockName": "header-menu",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 362,
+        "y": 18,
+        "width": 18,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "37288733ecc1493062d22a62b5611bd1607b2e13468e546fef02455c325ae3ee",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "header-menu",
+        "name": "header-menu",
+        "x": 362,
+        "y": 18,
+        "fill": "#151515",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 20,
+        "href": "#page-our-rides",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "header-page-shipping-delivery",
+    "name": "Header",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 64,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "header-bg",
+        "name": "header-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#FFFFFF"
+      },
+      {
+        "type": "text",
+        "id": "header-brand",
+        "name": "header-brand",
+        "x": 18,
+        "y": 18,
+        "fill": "#151515",
+        "content": "VanMoof",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 28
+      },
+      {
+        "type": "text",
+        "id": "header-menu",
+        "name": "header-menu",
+        "x": 362,
+        "y": 18,
+        "fill": "#151515",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 20,
+        "href": "#page-our-rides",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

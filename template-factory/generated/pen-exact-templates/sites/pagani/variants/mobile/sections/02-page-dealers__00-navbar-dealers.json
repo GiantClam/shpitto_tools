@@ -1,0 +1,375 @@
+{
+  "sectionId": "navbar-dealers",
+  "sectionName": "Navbar",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 72
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 7,
+  "treeHash": "e52a78ffa0bd4eac84f4f423bfd89de0db28294848e8735ddc1433fad80203e3",
+  "blockCount": 6,
+  "blockIndex": [
+    {
+      "blockId": "header-bg-dealers",
+      "blockName": "header-bg-dealers",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 72
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7b71be71fc4afd7a2f1185b2936d0c8e08cce6a4862612c365781fa3074f0bb2"
+    },
+    {
+      "blockId": "brand-logo-dealers",
+      "blockName": "brand-logo-dealers",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 22,
+        "width": 108,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "12f983380bcfda587370a7cf78df11123f7881e5d6da1502a76cde24ff35f5f3"
+    },
+    {
+      "blockId": "menu-box-dealers",
+      "blockName": "menu-box-dealers",
+      "blockType": "rectangle",
+      "order": 2,
+      "bounds": {
+        "x": 316,
+        "y": 10,
+        "width": 56,
+        "height": 56
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2c57f4f93f5550be5d1b71e73796ad39abe38281077e0f5dfd4f0d1c6b791b35"
+    },
+    {
+      "blockId": "menu-line-1-dealers",
+      "blockName": "menu-line-1-dealers",
+      "blockType": "rectangle",
+      "order": 3,
+      "bounds": {
+        "x": 334,
+        "y": 28,
+        "width": 18,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "10c591ab271be81ea4b57866ba98a1d0aa0051d80e1aa1414e79d710ffe7f36b"
+    },
+    {
+      "blockId": "menu-line-2-dealers",
+      "blockName": "menu-line-2-dealers",
+      "blockType": "rectangle",
+      "order": 4,
+      "bounds": {
+        "x": 334,
+        "y": 35,
+        "width": 18,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0f292cf04683d9d2254581debc1519ea1fb6fdef83607c146a0d2c6075f9e67f"
+    },
+    {
+      "blockId": "menu-line-3-dealers",
+      "blockName": "menu-line-3-dealers",
+      "blockType": "rectangle",
+      "order": 5,
+      "bounds": {
+        "x": 334,
+        "y": 42,
+        "width": 18,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "25710e24ffd3e708cf5e21983b7402dc059bb97b9146070fdba90144c5899c3e"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/pagani-logo.png",
+      "relativePath": "assets-structured/pagani/pagani-logo.png",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "header-bg-dealers",
+      "blockName": "header-bg-dealers",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 72
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7b71be71fc4afd7a2f1185b2936d0c8e08cce6a4862612c365781fa3074f0bb2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "header-bg-dealers",
+        "x": 0,
+        "y": 0,
+        "name": "header-bg-dealers",
+        "width": 390,
+        "height": 72,
+        "fill": "#000000DD"
+      }
+    },
+    {
+      "blockId": "brand-logo-dealers",
+      "blockName": "brand-logo-dealers",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 22,
+        "width": 108,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "12f983380bcfda587370a7cf78df11123f7881e5d6da1502a76cde24ff35f5f3",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/pagani-logo.png",
+        "relativePath": "assets-structured/pagani/pagani-logo.png",
+        "exists": true,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "brand-logo-dealers",
+        "x": 18,
+        "y": 22,
+        "name": "brand-logo-dealers",
+        "width": 108,
+        "height": 30,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "menu-box-dealers",
+      "blockName": "menu-box-dealers",
+      "blockType": "rectangle",
+      "order": 2,
+      "bounds": {
+        "x": 316,
+        "y": 10,
+        "width": 56,
+        "height": 56
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2c57f4f93f5550be5d1b71e73796ad39abe38281077e0f5dfd4f0d1c6b791b35",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "menu-box-dealers",
+        "x": 316,
+        "y": 10,
+        "name": "menu-box-dealers",
+        "width": 56,
+        "height": 56,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        }
+      }
+    },
+    {
+      "blockId": "menu-line-1-dealers",
+      "blockName": "menu-line-1-dealers",
+      "blockType": "rectangle",
+      "order": 3,
+      "bounds": {
+        "x": 334,
+        "y": 28,
+        "width": 18,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "10c591ab271be81ea4b57866ba98a1d0aa0051d80e1aa1414e79d710ffe7f36b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "menu-line-1-dealers",
+        "x": 334,
+        "y": 28,
+        "name": "menu-line-1-dealers",
+        "width": 18,
+        "height": 2,
+        "fill": "#F3F2ED"
+      }
+    },
+    {
+      "blockId": "menu-line-2-dealers",
+      "blockName": "menu-line-2-dealers",
+      "blockType": "rectangle",
+      "order": 4,
+      "bounds": {
+        "x": 334,
+        "y": 35,
+        "width": 18,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0f292cf04683d9d2254581debc1519ea1fb6fdef83607c146a0d2c6075f9e67f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "menu-line-2-dealers",
+        "x": 334,
+        "y": 35,
+        "name": "menu-line-2-dealers",
+        "width": 18,
+        "height": 2,
+        "fill": "#F3F2ED"
+      }
+    },
+    {
+      "blockId": "menu-line-3-dealers",
+      "blockName": "menu-line-3-dealers",
+      "blockType": "rectangle",
+      "order": 5,
+      "bounds": {
+        "x": 334,
+        "y": 42,
+        "width": 18,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "25710e24ffd3e708cf5e21983b7402dc059bb97b9146070fdba90144c5899c3e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "menu-line-3-dealers",
+        "x": 334,
+        "y": 42,
+        "name": "menu-line-3-dealers",
+        "width": 18,
+        "height": 2,
+        "fill": "#F3F2ED"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "navbar-dealers",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 72,
+    "name": "Navbar",
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "header-bg-dealers",
+        "x": 0,
+        "y": 0,
+        "name": "header-bg-dealers",
+        "width": 390,
+        "height": 72,
+        "fill": "#000000DD"
+      },
+      {
+        "type": "rectangle",
+        "id": "brand-logo-dealers",
+        "x": 18,
+        "y": 22,
+        "name": "brand-logo-dealers",
+        "width": 108,
+        "height": 30,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "rectangle",
+        "id": "menu-box-dealers",
+        "x": 316,
+        "y": 10,
+        "name": "menu-box-dealers",
+        "width": 56,
+        "height": 56,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "menu-line-1-dealers",
+        "x": 334,
+        "y": 28,
+        "name": "menu-line-1-dealers",
+        "width": 18,
+        "height": 2,
+        "fill": "#F3F2ED"
+      },
+      {
+        "type": "rectangle",
+        "id": "menu-line-2-dealers",
+        "x": 334,
+        "y": 35,
+        "name": "menu-line-2-dealers",
+        "width": 18,
+        "height": 2,
+        "fill": "#F3F2ED"
+      },
+      {
+        "type": "rectangle",
+        "id": "menu-line-3-dealers",
+        "x": 334,
+        "y": 42,
+        "name": "menu-line-3-dealers",
+        "width": 18,
+        "height": 2,
+        "fill": "#F3F2ED"
+      }
+    ]
+  }
+}

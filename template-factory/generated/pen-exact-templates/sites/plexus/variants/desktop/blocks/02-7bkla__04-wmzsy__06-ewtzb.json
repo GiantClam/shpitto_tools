@@ -1,0 +1,87 @@
+{
+  "blockId": "eWTzb",
+  "blockName": "valD",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 6,
+  "bounds": {
+    "x": 738,
+    "y": 464,
+    "width": 670,
+    "height": 260
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 5,
+  "treeHash": "f00b2f6cded84234aa8465e913616a747b49b92d58fcd9febf73ee2126ab230e",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "eWTzb",
+    "x": 738,
+    "y": 464,
+    "name": "valD",
+    "enabled": false,
+    "width": 670,
+    "height": 260,
+    "fill": "#FFFFFF",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "nrO7L",
+        "x": 32,
+        "y": 110,
+        "name": "valDTxt",
+        "fill": "#5A6470",
+        "textGrowth": "fixed-width",
+        "width": 606,
+        "content": "为了更好地服务全球客户，我们在组织、流程和能力上不断进化。",
+        "lineHeight": 1.5,
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "EyiXz",
+        "x": 32,
+        "y": 26,
+        "name": "dTitle",
+        "fill": "#303842",
+        "textGrowth": "fixed-width",
+        "width": 606,
+        "content": "我们与客户并肩，加速价值实现",
+        "lineHeight": 1.2,
+        "fontFamily": "Inter",
+        "fontSize": 30,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "JWnhf",
+        "x": 32,
+        "y": 194,
+        "name": "dBtn",
+        "width": 130,
+        "height": 36,
+        "fill": "#C70041",
+        "cornerRadius": 3,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "wOMBK",
+            "x": 24,
+            "y": 9,
+            "name": "dBtnTxt",
+            "fill": "#FFFFFF",
+            "content": "阅读案例",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

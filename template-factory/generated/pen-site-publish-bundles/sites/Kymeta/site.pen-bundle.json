@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "template-factory.pen.v1",
+  "kind": "site-pen-bundle",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "siteId": "Kymeta",
+  "siteName": "Kymeta",
+  "reviewMode": "site-level",
+  "requiredVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "availableVariants": [
+    "desktop"
+  ],
+  "responsiveModes": {
+    "desktop": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "exact-source"
+    },
+    "mobile": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "responsive-derived-from-desktop"
+    }
+  },
+  "capabilities": {
+    "exactTemplate": true,
+    "skinnable": true,
+    "sandboxPreview": true,
+    "dualModeReady": true,
+    "exactMobileSource": false
+  },
+  "commercialReadiness": {
+    "structuralValidationPassed": true,
+    "visualValidationPassed": true,
+    "sandboxRuntimePassed": true,
+    "skinnableReady": true,
+    "publishInputReady": true
+  },
+  "artifacts": [
+    {
+      "caseId": "Kymeta-desktop",
+      "siteId": "Kymeta",
+      "siteName": "Kymeta",
+      "siteGroupId": "Kymeta",
+      "variant": "desktop",
+      "siteKey": "pen-exact-site-Kymeta-desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/Kymeta.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-Kymeta-desktop/sandbox/payload.json",
+      "sourceHash": "b0747b91396e84fb6d56280b7ec8524486137e139e8bb4619fad8436551e3d3b",
+      "pageCount": 6,
+      "sectionCount": 43,
+      "blockCount": 294,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/Kymeta/variants/desktop/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/Kymeta/variants/desktop/template.skin.json",
+      "previewPages": 6,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-Kymeta-desktop&page=%2Fapplication"
+    }
+  ]
+}

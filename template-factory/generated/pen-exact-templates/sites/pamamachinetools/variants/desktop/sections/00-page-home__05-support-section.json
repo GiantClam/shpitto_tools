@@ -1,0 +1,465 @@
+{
+  "sectionId": "support-section",
+  "sectionName": "support-section",
+  "sectionKind": "contact",
+  "order": 5,
+  "bounds": {
+    "x": 0,
+    "y": 2310,
+    "width": 1440,
+    "height": 290
+  },
+  "directChildCount": 7,
+  "recursiveNodeCount": 8,
+  "treeHash": "3909ee4c828482432d55cd58b6052907ebb35cb733e561d0bdb3475b8f982a25",
+  "blockCount": 7,
+  "blockIndex": [
+    {
+      "blockId": "support-bg",
+      "blockName": "support-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 290
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3b4d219923fdf5b5e77a559fa2fb691df0db059043302ce81c3ee2b595b249ef"
+    },
+    {
+      "blockId": "support-title",
+      "blockName": "support-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 32,
+        "width": 1360,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "40228d5e5cac0791a83ae13cd309ebee4cb09a8130304a82fd7e299dd7e71375"
+    },
+    {
+      "blockId": "support-body",
+      "blockName": "support-body",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 250,
+        "y": 74,
+        "width": 940,
+        "height": 44
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "21706913c0634ef61d21cdd778fca2621398bffcf131766633870a709548801b"
+    },
+    {
+      "blockId": "support-body-2",
+      "blockName": "support-body-2",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 250,
+        "y": 122,
+        "width": 940,
+        "height": 44
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cfba1e70f3eecc1fc02d0b94a2719f51ead2105d91b481093886834493f520c4"
+    },
+    {
+      "blockId": "support-cta-box",
+      "blockName": "support-cta-box",
+      "blockType": "rectangle",
+      "order": 4,
+      "bounds": {
+        "x": 620,
+        "y": 202,
+        "width": 156,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3ecbc045cba2b26ae812bfc624ff7483c46b56e0a629840f8d0735872df20ca5"
+    },
+    {
+      "blockId": "support-cta-text",
+      "blockName": "support-cta-text",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 634,
+        "y": 212,
+        "width": 116,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2c69b885bed7c7e0ae1decc7b8f41e7e685fe0759582f09ea797fa72f7ee96ce"
+    },
+    {
+      "blockId": "support-cta-arrow",
+      "blockName": "support-cta-arrow",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 756,
+        "y": 212,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d3197e64d05c33bbba3144a86d27f4b1224f5750581989b8cf4cca5c011bf66c"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "support-bg",
+      "blockName": "support-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 290
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3b4d219923fdf5b5e77a559fa2fb691df0db059043302ce81c3ee2b595b249ef",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "support-bg",
+        "name": "support-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 290,
+        "fill": "#F4F4F1"
+      }
+    },
+    {
+      "blockId": "support-title",
+      "blockName": "support-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 32,
+        "width": 1360,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "40228d5e5cac0791a83ae13cd309ebee4cb09a8130304a82fd7e299dd7e71375",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "support-title",
+        "name": "support-title",
+        "x": 40,
+        "y": 32,
+        "fill": "#008D99",
+        "content": "SUPPORT",
+        "fontFamily": "Raleway",
+        "fontSize": 20,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 1360,
+        "height": 24,
+        "letterSpacing": "0.08em",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "support-body",
+      "blockName": "support-body",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 250,
+        "y": 74,
+        "width": 940,
+        "height": 44
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "21706913c0634ef61d21cdd778fca2621398bffcf131766633870a709548801b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "support-body",
+        "name": "support-body",
+        "x": 250,
+        "y": 74,
+        "fill": "#66707A",
+        "content": "PAMA is proud of its many years of experience in the field of machine tools and provides its customers with a wide range of services and contracts to ensure the sustained highest level of performance of its products.",
+        "fontFamily": "Raleway",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 940,
+        "height": 44,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "support-body-2",
+      "blockName": "support-body-2",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 250,
+        "y": 122,
+        "width": 940,
+        "height": 44
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cfba1e70f3eecc1fc02d0b94a2719f51ead2105d91b481093886834493f520c4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "support-body-2",
+        "name": "support-body-2",
+        "x": 250,
+        "y": 122,
+        "fill": "#66707A",
+        "content": "From dedicated helpline and remote diagnosis to preventative maintenance and machine geometry optimisation, PAMA keeps machine tools productive over time.",
+        "fontFamily": "Raleway",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 940,
+        "height": 44,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "support-cta-box",
+      "blockName": "support-cta-box",
+      "blockType": "rectangle",
+      "order": 4,
+      "bounds": {
+        "x": 620,
+        "y": 202,
+        "width": 156,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3ecbc045cba2b26ae812bfc624ff7483c46b56e0a629840f8d0735872df20ca5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "support-cta-box",
+        "name": "support-cta-box",
+        "x": 620,
+        "y": 202,
+        "width": 156,
+        "height": 38,
+        "fill": "#00A7B5",
+        "href": "#page-support",
+        "cornerRadius": 2
+      }
+    },
+    {
+      "blockId": "support-cta-text",
+      "blockName": "support-cta-text",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 634,
+        "y": 212,
+        "width": 116,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2c69b885bed7c7e0ae1decc7b8f41e7e685fe0759582f09ea797fa72f7ee96ce",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "support-cta-text",
+        "name": "support-cta-text",
+        "x": 634,
+        "y": 212,
+        "fill": "#FFFFFF",
+        "content": "DISCOVER MORE",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 116,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-support"
+      }
+    },
+    {
+      "blockId": "support-cta-arrow",
+      "blockName": "support-cta-arrow",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 756,
+        "y": 212,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d3197e64d05c33bbba3144a86d27f4b1224f5750581989b8cf4cca5c011bf66c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "support-cta-arrow",
+        "name": "support-cta-arrow",
+        "x": 756,
+        "y": 212,
+        "fill": "#FFFFFF",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-support"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "support-section",
+    "name": "support-section",
+    "x": 0,
+    "y": 2310,
+    "width": 1440,
+    "height": 290,
+    "fill": "#F4F4F1",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "support-bg",
+        "name": "support-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 290,
+        "fill": "#F4F4F1"
+      },
+      {
+        "type": "text",
+        "id": "support-title",
+        "name": "support-title",
+        "x": 40,
+        "y": 32,
+        "fill": "#008D99",
+        "content": "SUPPORT",
+        "fontFamily": "Raleway",
+        "fontSize": 20,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 1360,
+        "height": 24,
+        "letterSpacing": "0.08em",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "support-body",
+        "name": "support-body",
+        "x": 250,
+        "y": 74,
+        "fill": "#66707A",
+        "content": "PAMA is proud of its many years of experience in the field of machine tools and provides its customers with a wide range of services and contracts to ensure the sustained highest level of performance of its products.",
+        "fontFamily": "Raleway",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 940,
+        "height": 44,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "support-body-2",
+        "name": "support-body-2",
+        "x": 250,
+        "y": 122,
+        "fill": "#66707A",
+        "content": "From dedicated helpline and remote diagnosis to preventative maintenance and machine geometry optimisation, PAMA keeps machine tools productive over time.",
+        "fontFamily": "Raleway",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 940,
+        "height": 44,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "support-cta-box",
+        "name": "support-cta-box",
+        "x": 620,
+        "y": 202,
+        "width": 156,
+        "height": 38,
+        "fill": "#00A7B5",
+        "href": "#page-support",
+        "cornerRadius": 2
+      },
+      {
+        "type": "text",
+        "id": "support-cta-text",
+        "name": "support-cta-text",
+        "x": 634,
+        "y": 212,
+        "fill": "#FFFFFF",
+        "content": "DISCOVER MORE",
+        "fontFamily": "Raleway",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 116,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-support"
+      },
+      {
+        "type": "text",
+        "id": "support-cta-arrow",
+        "name": "support-cta-arrow",
+        "x": 756,
+        "y": 212,
+        "fill": "#FFFFFF",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 16,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-support"
+      }
+    ]
+  }
+}

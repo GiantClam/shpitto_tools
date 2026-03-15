@@ -1,0 +1,1621 @@
+{
+  "sectionId": "find-solution",
+  "sectionName": "Find your solution",
+  "sectionKind": "generic",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 1020,
+    "width": 1440,
+    "height": 280
+  },
+  "directChildCount": 26,
+  "recursiveNodeCount": 27,
+  "treeHash": "3577b1f583c3396fc5f53c8f4045ee1aa2a05ba402fda5ee6d8a3eaad0fa6880",
+  "blockCount": 26,
+  "blockIndex": [
+    {
+      "blockId": "find-title",
+      "blockName": "find-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 40,
+        "y": 26,
+        "width": 260,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "110c5919448754cd1ea037579a7438cbeabd85c7780c854b86de33fb938521ed"
+    },
+    {
+      "blockId": "find-copy",
+      "blockName": "find-copy",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 60,
+        "width": 300,
+        "height": 46
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4539b8269f3d1e97046b6089ccaa573094ee2b29bedb2f7200f7733fa46a8cc1"
+    },
+    {
+      "blockId": "find-card-0",
+      "blockName": "find-card-0",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 40,
+        "y": 108,
+        "width": 300,
+        "height": 94
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cc457b648ad5fb4f50bd908aa56a88ba86663070b6916a2823f6e10ae4a23a9c"
+    },
+    {
+      "blockId": "find-card-img-0",
+      "blockName": "find-card-img-0",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 3,
+      "bounds": {
+        "x": 48,
+        "y": 116,
+        "width": 84,
+        "height": 58
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bb621612e82baa208948cff01f2ca0ec84e8b71af0314b28de65dee7971c0d9e"
+    },
+    {
+      "blockId": "find-card-label-0",
+      "blockName": "find-card-label-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 144,
+        "y": 132,
+        "width": 184,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8fd66141fdf042eeada20237d2a2f23897b0656a6a101aa946161359c574b33b"
+    },
+    {
+      "blockId": "find-card-corner-0-a",
+      "blockName": "find-card-corner-0-a",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 324,
+        "y": 196,
+        "width": 12,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1fb1e260e777a773d13cb744403b2e68cdc6e6e6776789955c821774cb7c5c8c"
+    },
+    {
+      "blockId": "find-card-corner-0-b",
+      "blockName": "find-card-corner-0-b",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 334,
+        "y": 188,
+        "width": 2,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a2777496529baec7e62e9ba0194cd587ab9a647fbc7506409ee1e7bb898620cf"
+    },
+    {
+      "blockId": "find-card-corner-0-hit",
+      "blockName": "find-card-corner-0-hit",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 322,
+        "y": 186,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2f06622d7245e2bf63396c1f99357f80c780e3613b55ac34a0c240b2c0aacf92"
+    },
+    {
+      "blockId": "find-card-1",
+      "blockName": "find-card-1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 370,
+        "y": 108,
+        "width": 300,
+        "height": 94
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c544f41bef94327e0c0248aac52c3b6eda9635b9a36beb0d3a74b2021c1f5067"
+    },
+    {
+      "blockId": "find-card-img-1",
+      "blockName": "find-card-img-1",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 9,
+      "bounds": {
+        "x": 378,
+        "y": 116,
+        "width": 84,
+        "height": 58
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "020d92a43fa1f3b4a725146b28434f147f5d319f026d65f20931a1b9b540f555"
+    },
+    {
+      "blockId": "find-card-label-1",
+      "blockName": "find-card-label-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 10,
+      "bounds": {
+        "x": 474,
+        "y": 132,
+        "width": 184,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a92b506a89fda31c1d2c6503e499e3d014cff8ae820f03e7967f4bcc0ab73df5"
+    },
+    {
+      "blockId": "find-card-corner-1-a",
+      "blockName": "find-card-corner-1-a",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 11,
+      "bounds": {
+        "x": 654,
+        "y": 196,
+        "width": 12,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "099a397051b60bcc16ad3ec65763c88bf4708e6f145dbc33d976a917ed182c7e"
+    },
+    {
+      "blockId": "find-card-corner-1-b",
+      "blockName": "find-card-corner-1-b",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 12,
+      "bounds": {
+        "x": 664,
+        "y": 188,
+        "width": 2,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4d38600bae400744c786128a105c52a20419edd5a71b9e90e5f4e96034697789"
+    },
+    {
+      "blockId": "find-card-corner-1-hit",
+      "blockName": "find-card-corner-1-hit",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 13,
+      "bounds": {
+        "x": 652,
+        "y": 186,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b5db57a61a4dfde397996a78b52e6072f116e8ae6ef464fb44781c89d515ef85"
+    },
+    {
+      "blockId": "find-card-2",
+      "blockName": "find-card-2",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 14,
+      "bounds": {
+        "x": 700,
+        "y": 108,
+        "width": 300,
+        "height": 94
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f2910738290e21e00632ff2cbb6474f67a2a752ec6ef4ca65bf83b662cb719d7"
+    },
+    {
+      "blockId": "find-card-img-2",
+      "blockName": "find-card-img-2",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 15,
+      "bounds": {
+        "x": 708,
+        "y": 116,
+        "width": 84,
+        "height": 58
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3046da53974c0d262805642ec0dac9b9105cb7e236149bb8aee506479f5fd00c"
+    },
+    {
+      "blockId": "find-card-label-2",
+      "blockName": "find-card-label-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 16,
+      "bounds": {
+        "x": 804,
+        "y": 132,
+        "width": 184,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "70b838f44368746ebc45a1382a90349a309b635107bec50d8a31fc660d085e54"
+    },
+    {
+      "blockId": "find-card-corner-2-a",
+      "blockName": "find-card-corner-2-a",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 17,
+      "bounds": {
+        "x": 984,
+        "y": 196,
+        "width": 12,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "62246fac4422eabc0c66422a5aa6bd638eda5a0c0af78d549de05d9a6bcacccf"
+    },
+    {
+      "blockId": "find-card-corner-2-b",
+      "blockName": "find-card-corner-2-b",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 18,
+      "bounds": {
+        "x": 994,
+        "y": 188,
+        "width": 2,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5d26e383b484f01c34cab150c473edf9588844e132dcd974b517a361f0f47d50"
+    },
+    {
+      "blockId": "find-card-corner-2-hit",
+      "blockName": "find-card-corner-2-hit",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 19,
+      "bounds": {
+        "x": 982,
+        "y": 186,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "08bd611fa9015b1a8be25b4f1f3a05355faa359a4628a252a37d11b01e6978db"
+    },
+    {
+      "blockId": "find-card-3",
+      "blockName": "find-card-3",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 20,
+      "bounds": {
+        "x": 1030,
+        "y": 108,
+        "width": 300,
+        "height": 94
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "aa5f7b3f7962457138abc7d960d42f4d336822cf178a84435c6dc9d7effe6055"
+    },
+    {
+      "blockId": "find-card-img-3",
+      "blockName": "find-card-img-3",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 21,
+      "bounds": {
+        "x": 1038,
+        "y": 116,
+        "width": 84,
+        "height": 58
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c2027e7b4d35e1c9aa531aac3ef33fc55151b443b8dda589e063ef95702ed23e"
+    },
+    {
+      "blockId": "find-card-label-3",
+      "blockName": "find-card-label-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 22,
+      "bounds": {
+        "x": 1134,
+        "y": 132,
+        "width": 184,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "81b53dcfd3de06e9cb94d4cba84dd735c2a90b883654f80720f53dd24dc599e3"
+    },
+    {
+      "blockId": "find-card-corner-3-a",
+      "blockName": "find-card-corner-3-a",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 23,
+      "bounds": {
+        "x": 1314,
+        "y": 196,
+        "width": 12,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7fa56de57ce52d9227a462079ef9c97b6d215ac80632a12afb0cb01c28634ae8"
+    },
+    {
+      "blockId": "find-card-corner-3-b",
+      "blockName": "find-card-corner-3-b",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 24,
+      "bounds": {
+        "x": 1324,
+        "y": 188,
+        "width": 2,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9838162fb914f6b19092b4e01a900c48a45063a20047e0317db1903249bfd911"
+    },
+    {
+      "blockId": "find-card-corner-3-hit",
+      "blockName": "find-card-corner-3-hit",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 25,
+      "bounds": {
+        "x": 1312,
+        "y": 186,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e1f4acc0e900be0759a7d750edec94330b68b93fc518d76522b531cfee1952de"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/microwire-0ff9c364.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/microwire-0ff9c364.jpg",
+      "relativePath": "assets-structured/breton/microwire-0ff9c364.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/nexa-8a60fc23.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/nexa-8a60fc23.png",
+      "relativePath": "assets-structured/breton/nexa-8a60fc23.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/hydra-b461b69c.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/hydra-b461b69c.png",
+      "relativePath": "assets-structured/breton/hydra-b461b69c.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/kappa-9e8748c4.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/kappa-9e8748c4.png",
+      "relativePath": "assets-structured/breton/kappa-9e8748c4.png",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "find-title",
+      "blockName": "find-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 40,
+        "y": 26,
+        "width": 260,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "110c5919448754cd1ea037579a7438cbeabd85c7780c854b86de33fb938521ed",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "find-title",
+        "name": "find-title",
+        "x": 40,
+        "y": 26,
+        "fill": "#232529",
+        "content": "Find your solution",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 260,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "find-copy",
+      "blockName": "find-copy",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 60,
+        "width": 300,
+        "height": 46
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4539b8269f3d1e97046b6089ccaa573094ee2b29bedb2f7200f7733fa46a8cc1",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "find-copy",
+        "name": "find-copy",
+        "x": 40,
+        "y": 60,
+        "fill": "#666B73",
+        "content": "Discover Breton's new technological solutions",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 46
+      }
+    },
+    {
+      "blockId": "find-card-0",
+      "blockName": "find-card-0",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 40,
+        "y": 108,
+        "width": 300,
+        "height": 94
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cc457b648ad5fb4f50bd908aa56a88ba86663070b6916a2823f6e10ae4a23a9c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-0",
+        "name": "find-card-0",
+        "x": 40,
+        "y": 108,
+        "width": 300,
+        "height": 94,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "find-card-img-0",
+      "blockName": "find-card-img-0",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 3,
+      "bounds": {
+        "x": 48,
+        "y": 116,
+        "width": 84,
+        "height": 58
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bb621612e82baa208948cff01f2ca0ec84e8b71af0314b28de65dee7971c0d9e",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/microwire-0ff9c364.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/microwire-0ff9c364.jpg",
+        "relativePath": "assets-structured/breton/microwire-0ff9c364.jpg",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-img-0",
+        "name": "find-card-img-0",
+        "x": 48,
+        "y": 116,
+        "width": 84,
+        "height": 58,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/microwire-0ff9c364.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "find-card-label-0",
+      "blockName": "find-card-label-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 144,
+        "y": 132,
+        "width": 184,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8fd66141fdf042eeada20237d2a2f23897b0656a6a101aa946161359c574b33b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "find-card-label-0",
+        "name": "find-card-label-0",
+        "x": 144,
+        "y": 132,
+        "fill": "#232529",
+        "content": "Microwire",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 184,
+        "height": 18,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "find-card-corner-0-a",
+      "blockName": "find-card-corner-0-a",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 324,
+        "y": 196,
+        "width": 12,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1fb1e260e777a773d13cb744403b2e68cdc6e6e6776789955c821774cb7c5c8c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-corner-0-a",
+        "name": "find-card-corner-0-a",
+        "x": 324,
+        "y": 196,
+        "width": 12,
+        "height": 2,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "find-card-corner-0-b",
+      "blockName": "find-card-corner-0-b",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 334,
+        "y": 188,
+        "width": 2,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a2777496529baec7e62e9ba0194cd587ab9a647fbc7506409ee1e7bb898620cf",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-corner-0-b",
+        "name": "find-card-corner-0-b",
+        "x": 334,
+        "y": 188,
+        "width": 2,
+        "height": 10,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "find-card-corner-0-hit",
+      "blockName": "find-card-corner-0-hit",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 322,
+        "y": 186,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2f06622d7245e2bf63396c1f99357f80c780e3613b55ac34a0c240b2c0aacf92",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-corner-0-hit",
+        "name": "find-card-corner-0-hit",
+        "x": 322,
+        "y": 186,
+        "width": 18,
+        "height": 18,
+        "fill": "#00000000",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "find-card-1",
+      "blockName": "find-card-1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 370,
+        "y": 108,
+        "width": 300,
+        "height": 94
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c544f41bef94327e0c0248aac52c3b6eda9635b9a36beb0d3a74b2021c1f5067",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-1",
+        "name": "find-card-1",
+        "x": 370,
+        "y": 108,
+        "width": 300,
+        "height": 94,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "find-card-img-1",
+      "blockName": "find-card-img-1",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 9,
+      "bounds": {
+        "x": 378,
+        "y": 116,
+        "width": 84,
+        "height": 58
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "020d92a43fa1f3b4a725146b28434f147f5d319f026d65f20931a1b9b540f555",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/nexa-8a60fc23.png",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/nexa-8a60fc23.png",
+        "relativePath": "assets-structured/breton/nexa-8a60fc23.png",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-img-1",
+        "name": "find-card-img-1",
+        "x": 378,
+        "y": 116,
+        "width": 84,
+        "height": 58,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/nexa-8a60fc23.png",
+          "mode": "contain"
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "find-card-label-1",
+      "blockName": "find-card-label-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 10,
+      "bounds": {
+        "x": 474,
+        "y": 132,
+        "width": 184,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a92b506a89fda31c1d2c6503e499e3d014cff8ae820f03e7967f4bcc0ab73df5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "find-card-label-1",
+        "name": "find-card-label-1",
+        "x": 474,
+        "y": 132,
+        "fill": "#232529",
+        "content": "Breton Nexa",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 184,
+        "height": 18,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "find-card-corner-1-a",
+      "blockName": "find-card-corner-1-a",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 11,
+      "bounds": {
+        "x": 654,
+        "y": 196,
+        "width": 12,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "099a397051b60bcc16ad3ec65763c88bf4708e6f145dbc33d976a917ed182c7e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-corner-1-a",
+        "name": "find-card-corner-1-a",
+        "x": 654,
+        "y": 196,
+        "width": 12,
+        "height": 2,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "find-card-corner-1-b",
+      "blockName": "find-card-corner-1-b",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 12,
+      "bounds": {
+        "x": 664,
+        "y": 188,
+        "width": 2,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4d38600bae400744c786128a105c52a20419edd5a71b9e90e5f4e96034697789",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-corner-1-b",
+        "name": "find-card-corner-1-b",
+        "x": 664,
+        "y": 188,
+        "width": 2,
+        "height": 10,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "find-card-corner-1-hit",
+      "blockName": "find-card-corner-1-hit",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 13,
+      "bounds": {
+        "x": 652,
+        "y": 186,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b5db57a61a4dfde397996a78b52e6072f116e8ae6ef464fb44781c89d515ef85",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-corner-1-hit",
+        "name": "find-card-corner-1-hit",
+        "x": 652,
+        "y": 186,
+        "width": 18,
+        "height": 18,
+        "fill": "#00000000",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "find-card-2",
+      "blockName": "find-card-2",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 14,
+      "bounds": {
+        "x": 700,
+        "y": 108,
+        "width": 300,
+        "height": 94
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f2910738290e21e00632ff2cbb6474f67a2a752ec6ef4ca65bf83b662cb719d7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-2",
+        "name": "find-card-2",
+        "x": 700,
+        "y": 108,
+        "width": 300,
+        "height": 94,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        },
+        "href": "#page-breton-hydra"
+      }
+    },
+    {
+      "blockId": "find-card-img-2",
+      "blockName": "find-card-img-2",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 15,
+      "bounds": {
+        "x": 708,
+        "y": 116,
+        "width": 84,
+        "height": 58
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3046da53974c0d262805642ec0dac9b9105cb7e236149bb8aee506479f5fd00c",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/hydra-b461b69c.png",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/hydra-b461b69c.png",
+        "relativePath": "assets-structured/breton/hydra-b461b69c.png",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-img-2",
+        "name": "find-card-img-2",
+        "x": 708,
+        "y": 116,
+        "width": 84,
+        "height": 58,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/hydra-b461b69c.png",
+          "mode": "contain"
+        },
+        "href": "#page-breton-hydra"
+      }
+    },
+    {
+      "blockId": "find-card-label-2",
+      "blockName": "find-card-label-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 16,
+      "bounds": {
+        "x": 804,
+        "y": 132,
+        "width": 184,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "70b838f44368746ebc45a1382a90349a309b635107bec50d8a31fc660d085e54",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "find-card-label-2",
+        "name": "find-card-label-2",
+        "x": 804,
+        "y": 132,
+        "fill": "#232529",
+        "content": "Breton Hydra",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 184,
+        "height": 18,
+        "href": "#page-breton-hydra"
+      }
+    },
+    {
+      "blockId": "find-card-corner-2-a",
+      "blockName": "find-card-corner-2-a",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 17,
+      "bounds": {
+        "x": 984,
+        "y": 196,
+        "width": 12,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "62246fac4422eabc0c66422a5aa6bd638eda5a0c0af78d549de05d9a6bcacccf",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-corner-2-a",
+        "name": "find-card-corner-2-a",
+        "x": 984,
+        "y": 196,
+        "width": 12,
+        "height": 2,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "find-card-corner-2-b",
+      "blockName": "find-card-corner-2-b",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 18,
+      "bounds": {
+        "x": 994,
+        "y": 188,
+        "width": 2,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5d26e383b484f01c34cab150c473edf9588844e132dcd974b517a361f0f47d50",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-corner-2-b",
+        "name": "find-card-corner-2-b",
+        "x": 994,
+        "y": 188,
+        "width": 2,
+        "height": 10,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "find-card-corner-2-hit",
+      "blockName": "find-card-corner-2-hit",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 19,
+      "bounds": {
+        "x": 982,
+        "y": 186,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "08bd611fa9015b1a8be25b4f1f3a05355faa359a4628a252a37d11b01e6978db",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-corner-2-hit",
+        "name": "find-card-corner-2-hit",
+        "x": 982,
+        "y": 186,
+        "width": 18,
+        "height": 18,
+        "fill": "#00000000",
+        "href": "#page-breton-hydra"
+      }
+    },
+    {
+      "blockId": "find-card-3",
+      "blockName": "find-card-3",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 20,
+      "bounds": {
+        "x": 1030,
+        "y": 108,
+        "width": 300,
+        "height": 94
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "aa5f7b3f7962457138abc7d960d42f4d336822cf178a84435c6dc9d7effe6055",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-3",
+        "name": "find-card-3",
+        "x": 1030,
+        "y": 108,
+        "width": 300,
+        "height": 94,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        },
+        "href": "#page-breton-kappa-g"
+      }
+    },
+    {
+      "blockId": "find-card-img-3",
+      "blockName": "find-card-img-3",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 21,
+      "bounds": {
+        "x": 1038,
+        "y": 116,
+        "width": 84,
+        "height": 58
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c2027e7b4d35e1c9aa531aac3ef33fc55151b443b8dda589e063ef95702ed23e",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/kappa-9e8748c4.png",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/kappa-9e8748c4.png",
+        "relativePath": "assets-structured/breton/kappa-9e8748c4.png",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-img-3",
+        "name": "find-card-img-3",
+        "x": 1038,
+        "y": 116,
+        "width": 84,
+        "height": 58,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/kappa-9e8748c4.png",
+          "mode": "contain"
+        },
+        "href": "#page-breton-kappa-g"
+      }
+    },
+    {
+      "blockId": "find-card-label-3",
+      "blockName": "find-card-label-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 22,
+      "bounds": {
+        "x": 1134,
+        "y": 132,
+        "width": 184,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "81b53dcfd3de06e9cb94d4cba84dd735c2a90b883654f80720f53dd24dc599e3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "find-card-label-3",
+        "name": "find-card-label-3",
+        "x": 1134,
+        "y": 132,
+        "fill": "#232529",
+        "content": "Breton Kappa G",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 184,
+        "height": 18,
+        "href": "#page-breton-kappa-g"
+      }
+    },
+    {
+      "blockId": "find-card-corner-3-a",
+      "blockName": "find-card-corner-3-a",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 23,
+      "bounds": {
+        "x": 1314,
+        "y": 196,
+        "width": 12,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7fa56de57ce52d9227a462079ef9c97b6d215ac80632a12afb0cb01c28634ae8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-corner-3-a",
+        "name": "find-card-corner-3-a",
+        "x": 1314,
+        "y": 196,
+        "width": 12,
+        "height": 2,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "find-card-corner-3-b",
+      "blockName": "find-card-corner-3-b",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 24,
+      "bounds": {
+        "x": 1324,
+        "y": 188,
+        "width": 2,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9838162fb914f6b19092b4e01a900c48a45063a20047e0317db1903249bfd911",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-corner-3-b",
+        "name": "find-card-corner-3-b",
+        "x": 1324,
+        "y": 188,
+        "width": 2,
+        "height": 10,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "find-card-corner-3-hit",
+      "blockName": "find-card-corner-3-hit",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 25,
+      "bounds": {
+        "x": 1312,
+        "y": 186,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e1f4acc0e900be0759a7d750edec94330b68b93fc518d76522b531cfee1952de",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "find-card-corner-3-hit",
+        "name": "find-card-corner-3-hit",
+        "x": 1312,
+        "y": 186,
+        "width": 18,
+        "height": 18,
+        "fill": "#00000000",
+        "href": "#page-breton-kappa-g"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "find-solution",
+    "name": "Find your solution",
+    "x": 0,
+    "y": 1020,
+    "width": 1440,
+    "height": 280,
+    "fill": "#ECECEC",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "find-title",
+        "name": "find-title",
+        "x": 40,
+        "y": 26,
+        "fill": "#232529",
+        "content": "Find your solution",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 260,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "find-copy",
+        "name": "find-copy",
+        "x": 40,
+        "y": 60,
+        "fill": "#666B73",
+        "content": "Discover Breton's new technological solutions",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 46
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-0",
+        "name": "find-card-0",
+        "x": 40,
+        "y": 108,
+        "width": 300,
+        "height": 94,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-img-0",
+        "name": "find-card-img-0",
+        "x": 48,
+        "y": 116,
+        "width": 84,
+        "height": 58,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/microwire-0ff9c364.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "find-card-label-0",
+        "name": "find-card-label-0",
+        "x": 144,
+        "y": 132,
+        "fill": "#232529",
+        "content": "Microwire",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 184,
+        "height": 18,
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-corner-0-a",
+        "name": "find-card-corner-0-a",
+        "x": 324,
+        "y": 196,
+        "width": 12,
+        "height": 2,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-corner-0-b",
+        "name": "find-card-corner-0-b",
+        "x": 334,
+        "y": 188,
+        "width": 2,
+        "height": 10,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-corner-0-hit",
+        "name": "find-card-corner-0-hit",
+        "x": 322,
+        "y": 186,
+        "width": 18,
+        "height": 18,
+        "fill": "#00000000",
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-1",
+        "name": "find-card-1",
+        "x": 370,
+        "y": 108,
+        "width": 300,
+        "height": 94,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-img-1",
+        "name": "find-card-img-1",
+        "x": 378,
+        "y": 116,
+        "width": 84,
+        "height": 58,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/nexa-8a60fc23.png",
+          "mode": "contain"
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "find-card-label-1",
+        "name": "find-card-label-1",
+        "x": 474,
+        "y": 132,
+        "fill": "#232529",
+        "content": "Breton Nexa",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 184,
+        "height": 18,
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-corner-1-a",
+        "name": "find-card-corner-1-a",
+        "x": 654,
+        "y": 196,
+        "width": 12,
+        "height": 2,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-corner-1-b",
+        "name": "find-card-corner-1-b",
+        "x": 664,
+        "y": 188,
+        "width": 2,
+        "height": 10,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-corner-1-hit",
+        "name": "find-card-corner-1-hit",
+        "x": 652,
+        "y": 186,
+        "width": 18,
+        "height": 18,
+        "fill": "#00000000",
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-2",
+        "name": "find-card-2",
+        "x": 700,
+        "y": 108,
+        "width": 300,
+        "height": 94,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        },
+        "href": "#page-breton-hydra"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-img-2",
+        "name": "find-card-img-2",
+        "x": 708,
+        "y": 116,
+        "width": 84,
+        "height": 58,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/hydra-b461b69c.png",
+          "mode": "contain"
+        },
+        "href": "#page-breton-hydra"
+      },
+      {
+        "type": "text",
+        "id": "find-card-label-2",
+        "name": "find-card-label-2",
+        "x": 804,
+        "y": 132,
+        "fill": "#232529",
+        "content": "Breton Hydra",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 184,
+        "height": 18,
+        "href": "#page-breton-hydra"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-corner-2-a",
+        "name": "find-card-corner-2-a",
+        "x": 984,
+        "y": 196,
+        "width": 12,
+        "height": 2,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-corner-2-b",
+        "name": "find-card-corner-2-b",
+        "x": 994,
+        "y": 188,
+        "width": 2,
+        "height": 10,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-corner-2-hit",
+        "name": "find-card-corner-2-hit",
+        "x": 982,
+        "y": 186,
+        "width": 18,
+        "height": 18,
+        "fill": "#00000000",
+        "href": "#page-breton-hydra"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-3",
+        "name": "find-card-3",
+        "x": 1030,
+        "y": 108,
+        "width": 300,
+        "height": 94,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        },
+        "href": "#page-breton-kappa-g"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-img-3",
+        "name": "find-card-img-3",
+        "x": 1038,
+        "y": 116,
+        "width": 84,
+        "height": 58,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/kappa-9e8748c4.png",
+          "mode": "contain"
+        },
+        "href": "#page-breton-kappa-g"
+      },
+      {
+        "type": "text",
+        "id": "find-card-label-3",
+        "name": "find-card-label-3",
+        "x": 1134,
+        "y": 132,
+        "fill": "#232529",
+        "content": "Breton Kappa G",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 184,
+        "height": 18,
+        "href": "#page-breton-kappa-g"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-corner-3-a",
+        "name": "find-card-corner-3-a",
+        "x": 1314,
+        "y": 196,
+        "width": 12,
+        "height": 2,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-corner-3-b",
+        "name": "find-card-corner-3-b",
+        "x": 1324,
+        "y": 188,
+        "width": 2,
+        "height": 10,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "find-card-corner-3-hit",
+        "name": "find-card-corner-3-hit",
+        "x": 1312,
+        "y": 186,
+        "width": 18,
+        "height": 18,
+        "fill": "#00000000",
+        "href": "#page-breton-kappa-g"
+      }
+    ]
+  }
+}

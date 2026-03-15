@@ -1,0 +1,77 @@
+{
+  "blockId": "pboxk",
+  "blockName": "cardA",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 4,
+  "bounds": {
+    "x": 32,
+    "y": 250,
+    "width": 670,
+    "height": 280
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "e6d7c234e6581bbf1d5a22c004518761485b37936eb12b30ff15870c83d1f7ed",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "pboxk",
+    "x": 32,
+    "y": 250,
+    "name": "cardA",
+    "width": 670,
+    "height": 280,
+    "fill": "#E7EBEE",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "02z4I",
+        "x": 0,
+        "y": 0,
+        "name": "cardAImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "nahakiole",
+          "link": "https://unsplash.com/@nahakiole",
+          "author": "Robin Glauser"
+        },
+        "width": 670,
+        "height": 170,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1577976655502-85300c5ca2cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0MzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "BYDtb",
+        "x": 24,
+        "y": 188,
+        "name": "cardAT",
+        "fill": "#22303D",
+        "content": "设计与开发",
+        "fontFamily": "Inter",
+        "fontSize": 22,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "SIfRH",
+        "x": 24,
+        "y": 226,
+        "name": "cardAD",
+        "fill": "#6B7783",
+        "textGrowth": "fixed-width",
+        "width": 620,
+        "content": "提供需求澄清、架构规划、原型验证和可制造性评估。",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

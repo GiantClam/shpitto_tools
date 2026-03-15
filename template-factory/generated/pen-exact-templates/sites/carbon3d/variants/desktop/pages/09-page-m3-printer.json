@@ -1,0 +1,3204 @@
+{
+  "pageId": "page-m3-printer",
+  "pageName": "M3 3D Printer",
+  "pageType": "product-detail",
+  "order": 9,
+  "bounds": {
+    "x": 3320,
+    "y": 2000,
+    "width": 1440,
+    "height": 1880
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "bbf02b876a33c2725dd55dee600ce488b889c8c828128e9c5da9e6ed88ca8e66",
+  "directChildCount": 41,
+  "recursiveNodeCount": 69,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "page-m3-printer-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 14,
+      "recursiveNodeCount": 15,
+      "treeHash": "cae8110723e8f2b84b4c4a7216881597b4c190f1295974dea80f3e9895093005",
+      "blockCount": 14
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1560,
+        "width": 1440,
+        "height": 320
+      },
+      "directChildCount": 13,
+      "recursiveNodeCount": 14,
+      "treeHash": "c0e76750dd90660495859f1d2ff19226d9bd04fea698fc41cd007edfae53cd17",
+      "blockCount": 13
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "page-m3-printer-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 14,
+      "recursiveNodeCount": 15,
+      "treeHash": "cae8110723e8f2b84b4c4a7216881597b4c190f1295974dea80f3e9895093005",
+      "blockCount": 14,
+      "blockIndex": [
+        {
+          "blockId": "page-m3-printer-navbar-bg",
+          "blockName": "page-m3-printer-navbar-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a63e919506dbe0d5db450681eec8cdaa9f1ff65733c8b5e89832bbfd9b445373"
+        },
+        {
+          "blockId": "page-m3-printer-navbar-logo",
+          "blockName": "page-m3-printer-navbar-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 20,
+            "width": 110,
+            "height": 34
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "686df2a59efc344277c307e6093fa5d898c260c2655f74da9da11967b2e25bc4"
+        },
+        {
+          "blockId": "page-m3-printer-navbar-search",
+          "blockName": "page-m3-printer-navbar-search",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 474,
+            "y": 24,
+            "width": 70,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "260e8701ec1d50f7e0f6096c7ba0d54483a8c10e5feb59838f995ed2e6a0c70a"
+        },
+        {
+          "blockId": "page-m3-printer-navbar-intl",
+          "blockName": "page-m3-printer-navbar-intl",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 584,
+            "y": 24,
+            "width": 92,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ce0cf32a3a61f5070444811826ab3b429d0501bb98908e13d73f3f6b8bb594c8"
+        },
+        {
+          "blockId": "page-m3-printer-navbar-design",
+          "blockName": "page-m3-printer-navbar-design",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 732,
+            "y": 24,
+            "width": 110,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fafa2e7987ded013feda3d3e65fb1e6e6072d217a7a097937973f8955858418b"
+        },
+        {
+          "blockId": "page-m3-printer-navbar-support",
+          "blockName": "page-m3-printer-navbar-support",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 850,
+            "y": 24,
+            "width": 130,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a8c464f12be1c48e41187028dce90eef156f463b30dbd7497ab7e807dfb3896a"
+        },
+        {
+          "blockId": "page-m3-printer-navbar-iso",
+          "blockName": "page-m3-printer-navbar-iso",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1022,
+            "y": 24,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8f168ba03bdfbe3fbf10e8bf53a89b6cddfa446bfa10a33164662d2d13d0bad1"
+        },
+        {
+          "blockId": "page-m3-printer-navbar-PLATFORM",
+          "blockName": "page-m3-printer-navbar-PLATFORM",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 540,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9f60194dd23594b284d7710ac718bd4676b7dac7e27d64df587bdac1c07d3467"
+        },
+        {
+          "blockId": "page-m3-printer-navbar-INDUSTRIES",
+          "blockName": "page-m3-printer-navbar-INDUSTRIES",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 656,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2cf285ff193a9feac43ab3de61903f7ed548b9cef06245cdc2298a8c59ed5d68"
+        },
+        {
+          "blockId": "page-m3-printer-navbar-PARTNERS",
+          "blockName": "page-m3-printer-navbar-PARTNERS",
+          "blockType": "text",
+          "order": 9,
+          "bounds": {
+            "x": 782,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5f149dbba50ab96246c004162d9b7fde5876ba298adac487ca704c58a10bef2e"
+        },
+        {
+          "blockId": "page-m3-printer-navbar-RESOURCES",
+          "blockName": "page-m3-printer-navbar-RESOURCES",
+          "blockType": "text",
+          "order": 10,
+          "bounds": {
+            "x": 898,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c8067299b7858df3d781ac27e447af80cd6bdc8f1d78765692f092ddf0b4844b"
+        },
+        {
+          "blockId": "page-m3-printer-navbar-ABOUT",
+          "blockName": "page-m3-printer-navbar-ABOUT",
+          "blockType": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1014,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "02f73d76d77e23642d7d5b9b4efc4908e819c6a9081592bd4a3c7ca760d5e526"
+        },
+        {
+          "blockId": "page-m3-printer-navbar-contact-box",
+          "blockName": "page-m3-printer-navbar-contact-box",
+          "blockType": "rectangle",
+          "order": 12,
+          "bounds": {
+            "x": 1280,
+            "y": 32,
+            "width": 106,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0789da7240b78698e784597962b783664f6b6ced607bd5dd53782db919e9731a"
+        },
+        {
+          "blockId": "page-m3-printer-navbar-contact-text",
+          "blockName": "page-m3-printer-navbar-contact-text",
+          "blockType": "text",
+          "order": 13,
+          "bounds": {
+            "x": 1298,
+            "y": 42,
+            "width": 70,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d40d0d4e1de81219b5aa0add68e3c1520ff9e0ea3c820af1fb7ee057d4a4a5fd"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+          "relativePath": "assets-structured/carbon/carbon-logo.png",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "page-m3-printer-navbar-bg",
+          "blockName": "page-m3-printer-navbar-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a63e919506dbe0d5db450681eec8cdaa9f1ff65733c8b5e89832bbfd9b445373",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-m3-printer-navbar-bg",
+            "name": "page-m3-printer-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#000000"
+          }
+        },
+        {
+          "blockId": "page-m3-printer-navbar-logo",
+          "blockName": "page-m3-printer-navbar-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 20,
+            "width": 110,
+            "height": 34
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "686df2a59efc344277c307e6093fa5d898c260c2655f74da9da11967b2e25bc4",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+            "relativePath": "assets-structured/carbon/carbon-logo.png",
+            "exists": true,
+            "mode": "fit"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-m3-printer-navbar-logo",
+            "name": "page-m3-printer-navbar-logo",
+            "x": 40,
+            "y": 20,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          }
+        },
+        {
+          "blockId": "page-m3-printer-navbar-search",
+          "blockName": "page-m3-printer-navbar-search",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 474,
+            "y": 24,
+            "width": 70,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "260e8701ec1d50f7e0f6096c7ba0d54483a8c10e5feb59838f995ed2e6a0c70a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-m3-printer-navbar-search",
+            "name": "page-m3-printer-navbar-search",
+            "x": 474,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Search...",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 18
+          }
+        },
+        {
+          "blockId": "page-m3-printer-navbar-intl",
+          "blockName": "page-m3-printer-navbar-intl",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 584,
+            "y": 24,
+            "width": 92,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ce0cf32a3a61f5070444811826ab3b429d0501bb98908e13d73f3f6b8bb594c8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-m3-printer-navbar-intl",
+            "name": "page-m3-printer-navbar-intl",
+            "x": 584,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "International",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 92,
+            "height": 18
+          }
+        },
+        {
+          "blockId": "page-m3-printer-navbar-design",
+          "blockName": "page-m3-printer-navbar-design",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 732,
+            "y": 24,
+            "width": 110,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fafa2e7987ded013feda3d3e65fb1e6e6072d217a7a097937973f8955858418b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-m3-printer-navbar-design",
+            "name": "page-m3-printer-navbar-design",
+            "x": 732,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Design Engine",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 110,
+            "height": 18
+          }
+        },
+        {
+          "blockId": "page-m3-printer-navbar-support",
+          "blockName": "page-m3-printer-navbar-support",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 850,
+            "y": 24,
+            "width": 130,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a8c464f12be1c48e41187028dce90eef156f463b30dbd7497ab7e807dfb3896a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-m3-printer-navbar-support",
+            "name": "page-m3-printer-navbar-support",
+            "x": 850,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Customer Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 18
+          }
+        },
+        {
+          "blockId": "page-m3-printer-navbar-iso",
+          "blockName": "page-m3-printer-navbar-iso",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1022,
+            "y": 24,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8f168ba03bdfbe3fbf10e8bf53a89b6cddfa446bfa10a33164662d2d13d0bad1",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-m3-printer-navbar-iso",
+            "name": "page-m3-printer-navbar-iso",
+            "x": 1022,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "ISO 9001:2015",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18
+          }
+        },
+        {
+          "blockId": "page-m3-printer-navbar-PLATFORM",
+          "blockName": "page-m3-printer-navbar-PLATFORM",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 540,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9f60194dd23594b284d7710ac718bd4676b7dac7e27d64df587bdac1c07d3467",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-m3-printer-navbar-PLATFORM",
+            "name": "page-m3-printer-navbar-PLATFORM",
+            "x": 540,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-platform"
+          }
+        },
+        {
+          "blockId": "page-m3-printer-navbar-INDUSTRIES",
+          "blockName": "page-m3-printer-navbar-INDUSTRIES",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 656,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2cf285ff193a9feac43ab3de61903f7ed548b9cef06245cdc2298a8c59ed5d68",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-m3-printer-navbar-INDUSTRIES",
+            "name": "page-m3-printer-navbar-INDUSTRIES",
+            "x": 656,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-industries"
+          }
+        },
+        {
+          "blockId": "page-m3-printer-navbar-PARTNERS",
+          "blockName": "page-m3-printer-navbar-PARTNERS",
+          "blockType": "text",
+          "order": 9,
+          "bounds": {
+            "x": 782,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5f149dbba50ab96246c004162d9b7fde5876ba298adac487ca704c58a10bef2e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-m3-printer-navbar-PARTNERS",
+            "name": "page-m3-printer-navbar-PARTNERS",
+            "x": 782,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PARTNERS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-partners"
+          }
+        },
+        {
+          "blockId": "page-m3-printer-navbar-RESOURCES",
+          "blockName": "page-m3-printer-navbar-RESOURCES",
+          "blockType": "text",
+          "order": 10,
+          "bounds": {
+            "x": 898,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c8067299b7858df3d781ac27e447af80cd6bdc8f1d78765692f092ddf0b4844b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-m3-printer-navbar-RESOURCES",
+            "name": "page-m3-printer-navbar-RESOURCES",
+            "x": 898,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-resources"
+          }
+        },
+        {
+          "blockId": "page-m3-printer-navbar-ABOUT",
+          "blockName": "page-m3-printer-navbar-ABOUT",
+          "blockType": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1014,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "02f73d76d77e23642d7d5b9b4efc4908e819c6a9081592bd4a3c7ca760d5e526",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-m3-printer-navbar-ABOUT",
+            "name": "page-m3-printer-navbar-ABOUT",
+            "x": 1014,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-about"
+          }
+        },
+        {
+          "blockId": "page-m3-printer-navbar-contact-box",
+          "blockName": "page-m3-printer-navbar-contact-box",
+          "blockType": "rectangle",
+          "order": 12,
+          "bounds": {
+            "x": 1280,
+            "y": 32,
+            "width": 106,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0789da7240b78698e784597962b783664f6b6ced607bd5dd53782db919e9731a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-m3-printer-navbar-contact-box",
+            "name": "page-m3-printer-navbar-contact-box",
+            "x": 1280,
+            "y": 32,
+            "width": 106,
+            "height": 40,
+            "fill": "#7256FF",
+            "href": "#page-contact",
+            "cornerRadius": 12
+          }
+        },
+        {
+          "blockId": "page-m3-printer-navbar-contact-text",
+          "blockName": "page-m3-printer-navbar-contact-text",
+          "blockType": "text",
+          "order": 13,
+          "bounds": {
+            "x": 1298,
+            "y": 42,
+            "width": 70,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d40d0d4e1de81219b5aa0add68e3c1520ff9e0ea3c820af1fb7ee057d4a4a5fd",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-m3-printer-navbar-contact-text",
+            "name": "page-m3-printer-navbar-contact-text",
+            "x": 1298,
+            "y": 42,
+            "fill": "#FFFFFF",
+            "content": "CONTACT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 20,
+            "letterSpacing": "0.02em",
+            "href": "#page-contact",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "page-m3-printer-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "page-m3-printer-navbar-bg",
+            "name": "page-m3-printer-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#000000"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-m3-printer-navbar-logo",
+            "name": "page-m3-printer-navbar-logo",
+            "x": 40,
+            "y": 20,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-search",
+            "name": "page-m3-printer-navbar-search",
+            "x": 474,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Search...",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-intl",
+            "name": "page-m3-printer-navbar-intl",
+            "x": 584,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "International",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 92,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-design",
+            "name": "page-m3-printer-navbar-design",
+            "x": 732,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Design Engine",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 110,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-support",
+            "name": "page-m3-printer-navbar-support",
+            "x": 850,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Customer Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-iso",
+            "name": "page-m3-printer-navbar-iso",
+            "x": 1022,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "ISO 9001:2015",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-PLATFORM",
+            "name": "page-m3-printer-navbar-PLATFORM",
+            "x": 540,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-platform"
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-INDUSTRIES",
+            "name": "page-m3-printer-navbar-INDUSTRIES",
+            "x": 656,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-industries"
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-PARTNERS",
+            "name": "page-m3-printer-navbar-PARTNERS",
+            "x": 782,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PARTNERS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-partners"
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-RESOURCES",
+            "name": "page-m3-printer-navbar-RESOURCES",
+            "x": 898,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-resources"
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-ABOUT",
+            "name": "page-m3-printer-navbar-ABOUT",
+            "x": 1014,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-about"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-m3-printer-navbar-contact-box",
+            "name": "page-m3-printer-navbar-contact-box",
+            "x": 1280,
+            "y": 32,
+            "width": 106,
+            "height": 40,
+            "fill": "#7256FF",
+            "href": "#page-contact",
+            "cornerRadius": 12
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-contact-text",
+            "name": "page-m3-printer-navbar-contact-text",
+            "x": 1298,
+            "y": 42,
+            "fill": "#FFFFFF",
+            "content": "CONTACT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 20,
+            "letterSpacing": "0.02em",
+            "href": "#page-contact",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1560,
+        "width": 1440,
+        "height": 320
+      },
+      "directChildCount": 13,
+      "recursiveNodeCount": 14,
+      "treeHash": "c0e76750dd90660495859f1d2ff19226d9bd04fea698fc41cd007edfae53cd17",
+      "blockCount": 13,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 320
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7720fd4b54e8c3cecd39e1133de7c2cda6fd0f0ed1cfe2a736ca1be78ef9d92d"
+        },
+        {
+          "blockId": "footer-logo",
+          "blockName": "footer-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 28,
+            "width": 110,
+            "height": 34
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "21d4ed77c8499c7e45b3fedac9a1f1a655082eaa9fe580a079d7e8fb1e927068"
+        },
+        {
+          "blockId": "footer-Platform",
+          "blockName": "footer-Platform",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6f45cf35960fffa6baf0229d544c1eb2eb341818a2beb76d323299f58a814d6e"
+        },
+        {
+          "blockId": "footer-Platform-body",
+          "blockName": "footer-Platform-body",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7467191de89f848423dbc498fd1416fac72575b96eeda95cb469126466ba43f0"
+        },
+        {
+          "blockId": "footer-Products",
+          "blockName": "footer-Products",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 260,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3062a74f6c4d7548b3b5ae4d4c41b5580b3b83ab13138a597fc8b5474920de58"
+        },
+        {
+          "blockId": "footer-Products-body",
+          "blockName": "footer-Products-body",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 260,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2886d980bb70e82394336edc7aeab95c55407830f40312e26e6bab051064a780"
+        },
+        {
+          "blockId": "footer-Industries",
+          "blockName": "footer-Industries",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 500,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7b53b88657fa65ff2822c391184feb7316f7caa18c738ccc91caf92f45ced738"
+        },
+        {
+          "blockId": "footer-Industries-body",
+          "blockName": "footer-Industries-body",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 500,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ad2b9f6e2b27ac200c439ff4292dce66432d5dfd8b0a825f3571ce23f714ee6f"
+        },
+        {
+          "blockId": "footer-Resources",
+          "blockName": "footer-Resources",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 760,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c18d2bc750fb26a57136be2483fd094408d0039c1154c4e83362cc943a36a6a7"
+        },
+        {
+          "blockId": "footer-Resources-body",
+          "blockName": "footer-Resources-body",
+          "blockType": "text",
+          "order": 9,
+          "bounds": {
+            "x": 760,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "44ec2421fbcfdaf118d5d40a72b8c497033a53aa4cfcfa7c0b4186e49f693507"
+        },
+        {
+          "blockId": "footer-About",
+          "blockName": "footer-About",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 10,
+          "bounds": {
+            "x": 1020,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "20308211d5066bd154f621837bfa28ab3053dc6324806a1806a71b3265657ca7"
+        },
+        {
+          "blockId": "footer-About-body",
+          "blockName": "footer-About-body",
+          "blockType": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1020,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cd0745c0a1ab4fd0ec1e90c87ee52c025ab9ee80583df0ec2a6535d5a5573ed2"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 12,
+          "bounds": {
+            "x": 40,
+            "y": 282,
+            "width": 520,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9cfafc7f92a4202ff2db499fc846bd0fa598fc83d51fbb241937a6af3adff32b"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+          "relativePath": "assets-structured/carbon/carbon-logo.png",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 320
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7720fd4b54e8c3cecd39e1133de7c2cda6fd0f0ed1cfe2a736ca1be78ef9d92d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 320,
+            "fill": "#070A14"
+          }
+        },
+        {
+          "blockId": "footer-logo",
+          "blockName": "footer-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 28,
+            "width": 110,
+            "height": 34
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "21d4ed77c8499c7e45b3fedac9a1f1a655082eaa9fe580a079d7e8fb1e927068",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+            "relativePath": "assets-structured/carbon/carbon-logo.png",
+            "exists": true,
+            "mode": "fit"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 40,
+            "y": 28,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          }
+        },
+        {
+          "blockId": "footer-Platform",
+          "blockName": "footer-Platform",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6f45cf35960fffa6baf0229d544c1eb2eb341818a2beb76d323299f58a814d6e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Platform",
+            "name": "footer-Platform",
+            "x": 40,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-Platform-body",
+          "blockName": "footer-Platform-body",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7467191de89f848423dbc498fd1416fac72575b96eeda95cb469126466ba43f0",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Platform-body",
+            "name": "footer-Platform-body",
+            "x": 40,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "How it Works\nMaterials\nSoftware\nHardware",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          }
+        },
+        {
+          "blockId": "footer-Products",
+          "blockName": "footer-Products",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 260,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3062a74f6c4d7548b3b5ae4d4c41b5580b3b83ab13138a597fc8b5474920de58",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Products",
+            "name": "footer-Products",
+            "x": 260,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-Products-body",
+          "blockName": "footer-Products-body",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 260,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2886d980bb70e82394336edc7aeab95c55407830f40312e26e6bab051064a780",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Products-body",
+            "name": "footer-Products-body",
+            "x": 260,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          }
+        },
+        {
+          "blockId": "footer-Industries",
+          "blockName": "footer-Industries",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 500,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7b53b88657fa65ff2822c391184feb7316f7caa18c738ccc91caf92f45ced738",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Industries",
+            "name": "footer-Industries",
+            "x": 500,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-Industries-body",
+          "blockName": "footer-Industries-body",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 500,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ad2b9f6e2b27ac200c439ff4292dce66432d5dfd8b0a825f3571ce23f714ee6f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Industries-body",
+            "name": "footer-Industries-body",
+            "x": 500,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "Consumer\nDental\nOrthodontics\nIndustrial",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          }
+        },
+        {
+          "blockId": "footer-Resources",
+          "blockName": "footer-Resources",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 760,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c18d2bc750fb26a57136be2483fd094408d0039c1154c4e83362cc943a36a6a7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Resources",
+            "name": "footer-Resources",
+            "x": 760,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-Resources-body",
+          "blockName": "footer-Resources-body",
+          "blockType": "text",
+          "order": 9,
+          "bounds": {
+            "x": 760,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "44ec2421fbcfdaf118d5d40a72b8c497033a53aa4cfcfa7c0b4186e49f693507",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Resources-body",
+            "name": "footer-Resources-body",
+            "x": 760,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "Blog\nCase studies\nCourses\nDatasheets",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          }
+        },
+        {
+          "blockId": "footer-About",
+          "blockName": "footer-About",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 10,
+          "bounds": {
+            "x": 1020,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "20308211d5066bd154f621837bfa28ab3053dc6324806a1806a71b3265657ca7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-About",
+            "name": "footer-About",
+            "x": 1020,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-About-body",
+          "blockName": "footer-About-body",
+          "blockType": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1020,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cd0745c0a1ab4fd0ec1e90c87ee52c025ab9ee80583df0ec2a6535d5a5573ed2",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-About-body",
+            "name": "footer-About-body",
+            "x": 1020,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "About Carbon\nNewsroom\nContact Us\nPartners",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 12,
+          "bounds": {
+            "x": 40,
+            "y": 282,
+            "width": 520,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9cfafc7f92a4202ff2db499fc846bd0fa598fc83d51fbb241937a6af3adff32b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 40,
+            "y": 282,
+            "fill": "#B9C0DA",
+            "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 520,
+            "height": 38
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1560,
+        "width": 1440,
+        "height": 320,
+        "fill": "#070A14",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 320,
+            "fill": "#070A14"
+          },
+          {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 40,
+            "y": 28,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "footer-Platform",
+            "name": "footer-Platform",
+            "x": 40,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Platform-body",
+            "name": "footer-Platform-body",
+            "x": 40,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "How it Works\nMaterials\nSoftware\nHardware",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-Products",
+            "name": "footer-Products",
+            "x": 260,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Products-body",
+            "name": "footer-Products-body",
+            "x": 260,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-Industries",
+            "name": "footer-Industries",
+            "x": 500,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Industries-body",
+            "name": "footer-Industries-body",
+            "x": 500,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "Consumer\nDental\nOrthodontics\nIndustrial",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-Resources",
+            "name": "footer-Resources",
+            "x": 760,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Resources-body",
+            "name": "footer-Resources-body",
+            "x": 760,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "Blog\nCase studies\nCourses\nDatasheets",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-About",
+            "name": "footer-About",
+            "x": 1020,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-About-body",
+            "name": "footer-About-body",
+            "x": 1020,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "About Carbon\nNewsroom\nContact Us\nPartners",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 40,
+            "y": 282,
+            "fill": "#B9C0DA",
+            "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 520,
+            "height": 38
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 27,
+  "looseNodeCount": 39,
+  "looseNodes": [
+    {
+      "id": "page-m3-printer-bg",
+      "name": "page-m3-printer-bg",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 1880
+    },
+    {
+      "id": "page-m3-printer-hero",
+      "name": "page-m3-printer-hero",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 360
+    },
+    {
+      "id": "page-m3-printer-hero-overlay",
+      "name": "page-m3-printer-hero-overlay",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 360
+    },
+    {
+      "id": "page-m3-printer-crumb",
+      "name": "page-m3-printer-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 22
+    },
+    {
+      "id": "page-m3-printer-title",
+      "name": "page-m3-printer-title",
+      "type": "text",
+      "width": 760,
+      "height": 148
+    },
+    {
+      "id": "page-m3-printer-subtitle",
+      "name": "page-m3-printer-subtitle",
+      "type": "text",
+      "width": 700,
+      "height": 29
+    },
+    {
+      "id": "page-m3-printer-home-btn-box",
+      "name": "page-m3-printer-home-btn-box",
+      "type": "rectangle",
+      "width": 120,
+      "height": 38
+    },
+    {
+      "id": "page-m3-printer-home-btn-text",
+      "name": "page-m3-printer-home-btn-text",
+      "type": "text",
+      "width": 84,
+      "height": 20
+    },
+    {
+      "id": "page-m3-printer-more-btn-box",
+      "name": "page-m3-printer-more-btn-box",
+      "type": "rectangle",
+      "width": 160,
+      "height": 38
+    },
+    {
+      "id": "page-m3-printer-more-btn-text",
+      "name": "page-m3-printer-more-btn-text",
+      "type": "text",
+      "width": 124,
+      "height": 20
+    },
+    {
+      "id": "page-m3-printer-panel",
+      "name": "page-m3-printer-panel",
+      "type": "rectangle",
+      "width": 1360,
+      "height": 1120
+    },
+    {
+      "id": "page-m3-printer-eyebrow",
+      "name": "page-m3-printer-eyebrow",
+      "type": "text",
+      "width": 240,
+      "height": 18
+    },
+    {
+      "id": "page-m3-printer-panel-title",
+      "name": "page-m3-printer-panel-title",
+      "type": "text",
+      "width": 580,
+      "height": 120
+    },
+    {
+      "id": "page-m3-printer-p-0",
+      "name": "page-m3-printer-p-0",
+      "type": "text",
+      "width": 560,
+      "height": 113
+    },
+    {
+      "id": "page-m3-printer-p-1",
+      "name": "page-m3-printer-p-1",
+      "type": "text",
+      "width": 560,
+      "height": 156
+    },
+    {
+      "id": "page-m3-printer-p-2",
+      "name": "page-m3-printer-p-2",
+      "type": "text",
+      "width": 560,
+      "height": 134
+    },
+    {
+      "id": "page-m3-printer-p-3",
+      "name": "page-m3-printer-p-3",
+      "type": "text",
+      "width": 560,
+      "height": 92
+    },
+    {
+      "id": "page-m3-printer-p-4",
+      "name": "page-m3-printer-p-4",
+      "type": "text",
+      "width": 560,
+      "height": 92
+    },
+    {
+      "id": "page-m3-printer-img-main",
+      "name": "page-m3-printer-img-main",
+      "type": "rectangle",
+      "width": 480,
+      "height": 300
+    },
+    {
+      "id": "page-m3-printer-img-side",
+      "name": "page-m3-printer-img-side",
+      "type": "rectangle",
+      "width": 480,
+      "height": 220
+    },
+    {
+      "id": "page-m3-printer-card-0",
+      "name": "page-m3-printer-card-0",
+      "type": "rectangle",
+      "width": 260,
+      "height": 220
+    },
+    {
+      "id": "page-m3-printer-card-img-0",
+      "name": "page-m3-printer-card-img-0",
+      "type": "rectangle",
+      "width": 236,
+      "height": 120
+    },
+    {
+      "id": "page-m3-printer-card-title-0",
+      "name": "page-m3-printer-card-title-0",
+      "type": "text",
+      "width": 236,
+      "height": 49
+    },
+    {
+      "id": "page-m3-printer-card-body-0",
+      "name": "page-m3-printer-card-body-0",
+      "type": "text",
+      "width": 236,
+      "height": 109
+    },
+    {
+      "id": "page-m3-printer-card-1",
+      "name": "page-m3-printer-card-1",
+      "type": "rectangle",
+      "width": 260,
+      "height": 220
+    },
+    {
+      "id": "page-m3-printer-card-img-1",
+      "name": "page-m3-printer-card-img-1",
+      "type": "rectangle",
+      "width": 236,
+      "height": 120
+    },
+    {
+      "id": "page-m3-printer-card-title-1",
+      "name": "page-m3-printer-card-title-1",
+      "type": "text",
+      "width": 236,
+      "height": 49
+    },
+    {
+      "id": "page-m3-printer-card-body-1",
+      "name": "page-m3-printer-card-body-1",
+      "type": "text",
+      "width": 236,
+      "height": 109
+    },
+    {
+      "id": "page-m3-printer-card-2",
+      "name": "page-m3-printer-card-2",
+      "type": "rectangle",
+      "width": 260,
+      "height": 220
+    },
+    {
+      "id": "page-m3-printer-card-img-2",
+      "name": "page-m3-printer-card-img-2",
+      "type": "rectangle",
+      "width": 236,
+      "height": 120
+    },
+    {
+      "id": "page-m3-printer-card-title-2",
+      "name": "page-m3-printer-card-title-2",
+      "type": "text",
+      "width": 236,
+      "height": 49
+    },
+    {
+      "id": "page-m3-printer-card-body-2",
+      "name": "page-m3-printer-card-body-2",
+      "type": "text",
+      "width": 236,
+      "height": 109
+    },
+    {
+      "id": "page-m3-printer-rel-title",
+      "name": "page-m3-printer-rel-title",
+      "type": "text",
+      "width": 200,
+      "height": 18
+    },
+    {
+      "id": "page-m3-printer-rel-0-box",
+      "name": "page-m3-printer-rel-0-box",
+      "type": "rectangle",
+      "width": 186,
+      "height": 38
+    },
+    {
+      "id": "page-m3-printer-rel-0-text",
+      "name": "page-m3-printer-rel-0-text",
+      "type": "text",
+      "width": 150,
+      "height": 20
+    },
+    {
+      "id": "page-m3-printer-rel-1-box",
+      "name": "page-m3-printer-rel-1-box",
+      "type": "rectangle",
+      "width": 186,
+      "height": 38
+    },
+    {
+      "id": "page-m3-printer-rel-1-text",
+      "name": "page-m3-printer-rel-1-text",
+      "type": "text",
+      "width": 150,
+      "height": 20
+    },
+    {
+      "id": "page-m3-printer-rel-2-box",
+      "name": "page-m3-printer-rel-2-box",
+      "type": "rectangle",
+      "width": 186,
+      "height": 38
+    },
+    {
+      "id": "page-m3-printer-rel-2-text",
+      "name": "page-m3-printer-rel-2-text",
+      "type": "text",
+      "width": 150,
+      "height": 20
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-m3-printer-0-098debac.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-m3-printer-0-098debac.jpg",
+      "relativePath": "assets-structured/carbon/page-m3-printer-0-098debac.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+      "relativePath": "assets-structured/carbon/carbon-logo.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-m3-printer-1-55c59543.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-m3-printer-1-55c59543.jpg",
+      "relativePath": "assets-structured/carbon/page-m3-printer-1-55c59543.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-m3-printer-2-c8171bc8.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-m3-printer-2-c8171bc8.jpg",
+      "relativePath": "assets-structured/carbon/page-m3-printer-2-c8171bc8.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-m3-printer-0-098debac.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-m3-printer-0-098debac.jpg",
+      "relativePath": "assets-structured/carbon/page-m3-printer-0-098debac.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-m3-printer-1-55c59543.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-m3-printer-1-55c59543.jpg",
+      "relativePath": "assets-structured/carbon/page-m3-printer-1-55c59543.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-m3-printer-2-c8171bc8.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-m3-printer-2-c8171bc8.jpg",
+      "relativePath": "assets-structured/carbon/page-m3-printer-2-c8171bc8.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+      "relativePath": "assets-structured/carbon/carbon-logo.png",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-m3-printer",
+    "name": "M3 3D Printer",
+    "x": 3320,
+    "y": 2000,
+    "width": 1440,
+    "height": 1880,
+    "fill": "#0D1022",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-bg",
+        "name": "page-m3-printer-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1880,
+        "fill": "#0D1022"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-hero",
+        "name": "page-m3-printer-hero",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-m3-printer-0-098debac.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-hero-overlay",
+        "name": "page-m3-printer-hero-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 360,
+        "fill": "#0000004A"
+      },
+      {
+        "type": "frame",
+        "id": "page-m3-printer-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "page-m3-printer-navbar-bg",
+            "name": "page-m3-printer-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#000000"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-m3-printer-navbar-logo",
+            "name": "page-m3-printer-navbar-logo",
+            "x": 40,
+            "y": 20,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-search",
+            "name": "page-m3-printer-navbar-search",
+            "x": 474,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Search...",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-intl",
+            "name": "page-m3-printer-navbar-intl",
+            "x": 584,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "International",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 92,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-design",
+            "name": "page-m3-printer-navbar-design",
+            "x": 732,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Design Engine",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 110,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-support",
+            "name": "page-m3-printer-navbar-support",
+            "x": 850,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Customer Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-iso",
+            "name": "page-m3-printer-navbar-iso",
+            "x": 1022,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "ISO 9001:2015",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-PLATFORM",
+            "name": "page-m3-printer-navbar-PLATFORM",
+            "x": 540,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-platform"
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-INDUSTRIES",
+            "name": "page-m3-printer-navbar-INDUSTRIES",
+            "x": 656,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-industries"
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-PARTNERS",
+            "name": "page-m3-printer-navbar-PARTNERS",
+            "x": 782,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PARTNERS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-partners"
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-RESOURCES",
+            "name": "page-m3-printer-navbar-RESOURCES",
+            "x": 898,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-resources"
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-ABOUT",
+            "name": "page-m3-printer-navbar-ABOUT",
+            "x": 1014,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-about"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-m3-printer-navbar-contact-box",
+            "name": "page-m3-printer-navbar-contact-box",
+            "x": 1280,
+            "y": 32,
+            "width": 106,
+            "height": 40,
+            "fill": "#7256FF",
+            "href": "#page-contact",
+            "cornerRadius": 12
+          },
+          {
+            "type": "text",
+            "id": "page-m3-printer-navbar-contact-text",
+            "name": "page-m3-printer-navbar-contact-text",
+            "x": 1298,
+            "y": 42,
+            "fill": "#FFFFFF",
+            "content": "CONTACT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 20,
+            "letterSpacing": "0.02em",
+            "href": "#page-contact",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-crumb",
+        "name": "page-m3-printer-crumb",
+        "x": 40,
+        "y": 108,
+        "fill": "#FFFFFF",
+        "content": "Home / M3 3D Printer",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 22
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-title",
+        "name": "page-m3-printer-title",
+        "x": 40,
+        "y": 142,
+        "fill": "#FFFFFF",
+        "content": "Meet The All New M3 & M3 Max",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 50,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 760,
+        "height": 148
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-subtitle",
+        "name": "page-m3-printer-subtitle",
+        "x": 40,
+        "y": 210,
+        "fill": "#E3E7F5",
+        "content": "A Boon for Creativity, Productivity, and Efficiency",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 16,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 700,
+        "height": 29
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-home-btn-box",
+        "name": "page-m3-printer-home-btn-box",
+        "x": 40,
+        "y": 264,
+        "width": 120,
+        "height": 38,
+        "fill": "#7256FF",
+        "href": "#page-home",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-home-btn-text",
+        "name": "page-m3-printer-home-btn-text",
+        "x": 58,
+        "y": 273,
+        "fill": "#FFFFFF",
+        "content": "HOME",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 84,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-more-btn-box",
+        "name": "page-m3-printer-more-btn-box",
+        "x": 176,
+        "y": 264,
+        "width": 160,
+        "height": 38,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-more-btn-text",
+        "name": "page-m3-printer-more-btn-text",
+        "x": 194,
+        "y": 273,
+        "fill": "#FFFFFF",
+        "content": "RELATED",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 124,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-panel",
+        "name": "page-m3-printer-panel",
+        "x": 40,
+        "y": 396,
+        "width": 1360,
+        "height": 1120,
+        "fill": "#20243A",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-eyebrow",
+        "name": "page-m3-printer-eyebrow",
+        "x": 64,
+        "y": 418,
+        "fill": "#5FD3FF",
+        "content": "M3 3D PRINTER",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-panel-title",
+        "name": "page-m3-printer-panel-title",
+        "x": 64,
+        "y": 450,
+        "fill": "#FFFFFF",
+        "content": "Meet The All New M3 & M3 Max",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 40,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 580,
+        "height": 120
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-p-0",
+        "name": "page-m3-printer-p-0",
+        "x": 64,
+        "y": 510,
+        "fill": "#D9DDF0",
+        "content": "Expanding the space of what’s possible with a simplified print experience, making it easier than ever to get started printing the parts you want to make with the Digital Light Synthesis™ technology process. The evolution of DLS represents a new baseline for innovation and part quality.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 560,
+        "height": 113
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-p-1",
+        "name": "page-m3-printer-p-1",
+        "x": 64,
+        "y": 641,
+        "fill": "#D9DDF0",
+        "content": "Next-gen oxygen permeable optics, closed loop control of force and temperature, built-in IR-based resin heating means it has never been easier to get started printing the parts you want to make with DLS technology. The next generation of DLS creates substantially lower forces on the part and introduces closed loop control of force and temperature, opening more possible part orientations and reducing print failures.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 560,
+        "height": 156
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-p-2",
+        "name": "page-m3-printer-p-2",
+        "x": 64,
+        "y": 815,
+        "fill": "#D9DDF0",
+        "content": "Lower forces during printing and closed loop control of force and temperature unlock more geometries, especially for elastomeric parts, or parts with features most sensitive to high forces. Plus infrared resin heating is now a core part of the printing platform, allowing you to print with all Carbon’s engineering grade resins by default.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 560,
+        "height": 134
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-p-3",
+        "name": "page-m3-printer-p-3",
+        "x": 64,
+        "y": 967,
+        "fill": "#D9DDF0",
+        "content": "Thanks to better heat management, the next generation of DLS printers delivers more throughput per square foot in thermally limited scenarios with throughput improvements for dental models up to 2.5x faster than the M2 printer. †",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 560,
+        "height": 92
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-p-4",
+        "name": "page-m3-printer-p-4",
+        "x": 64,
+        "y": 1077,
+        "fill": "#D9DDF0",
+        "content": "The next-gen of DLS printing improves print consistency across the build platform, reducing the variation in parts across a single-build (cross-build variation) by 30% and producing a premium surface finish you can see and feel.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 560,
+        "height": 92
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-img-main",
+        "name": "page-m3-printer-img-main",
+        "x": 880,
+        "y": 420,
+        "width": 480,
+        "height": 300,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-m3-printer-1-55c59543.jpg",
+          "mode": "contain"
+        },
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-img-side",
+        "name": "page-m3-printer-img-side",
+        "x": 880,
+        "y": 752,
+        "width": 480,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-m3-printer-2-c8171bc8.jpg",
+          "mode": "contain"
+        },
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-card-0",
+        "name": "page-m3-printer-card-0",
+        "x": 64,
+        "y": 1080,
+        "width": 260,
+        "height": 220,
+        "fill": "#151827",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 14
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-card-img-0",
+        "name": "page-m3-printer-card-img-0",
+        "x": 76,
+        "y": 1092,
+        "width": 236,
+        "height": 120,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-m3-printer-0-098debac.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-products",
+        "cornerRadius": 10
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-card-title-0",
+        "name": "page-m3-printer-card-title-0",
+        "x": 76,
+        "y": 1224,
+        "fill": "#FFFFFF",
+        "content": "Simpler: Built with You in Mind",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 236,
+        "height": 49,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-card-body-0",
+        "name": "page-m3-printer-card-body-0",
+        "x": 76,
+        "y": 1250,
+        "fill": "#AAB0D0",
+        "content": "Expanding the space of what’s possible with a simplified print experience, making it easier than ever to get started printing the parts you want to ma",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 236,
+        "height": 109,
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-card-1",
+        "name": "page-m3-printer-card-1",
+        "x": 360,
+        "y": 1080,
+        "width": 260,
+        "height": 220,
+        "fill": "#151827",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-platform",
+        "cornerRadius": 14
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-card-img-1",
+        "name": "page-m3-printer-card-img-1",
+        "x": 372,
+        "y": 1092,
+        "width": 236,
+        "height": 120,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-m3-printer-1-55c59543.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-platform",
+        "cornerRadius": 10
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-card-title-1",
+        "name": "page-m3-printer-card-title-1",
+        "x": 372,
+        "y": 1224,
+        "fill": "#FFFFFF",
+        "content": "Smarter: A Broader Design Space",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 236,
+        "height": 49,
+        "href": "#page-platform"
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-card-body-1",
+        "name": "page-m3-printer-card-body-1",
+        "x": 372,
+        "y": 1250,
+        "fill": "#AAB0D0",
+        "content": "Next-gen oxygen permeable optics, closed loop control of force and temperature, built-in IR-based resin heating means it has never been easier to get ",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 236,
+        "height": 109,
+        "href": "#page-platform"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-card-2",
+        "name": "page-m3-printer-card-2",
+        "x": 656,
+        "y": 1080,
+        "width": 260,
+        "height": 220,
+        "fill": "#151827",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 14
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-card-img-2",
+        "name": "page-m3-printer-card-img-2",
+        "x": 668,
+        "y": 1092,
+        "width": 236,
+        "height": 120,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-m3-printer-2-c8171bc8.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-home",
+        "cornerRadius": 10
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-card-title-2",
+        "name": "page-m3-printer-card-title-2",
+        "x": 668,
+        "y": 1224,
+        "fill": "#FFFFFF",
+        "content": "Faster: Up to 2.5x Higher Throughput",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 236,
+        "height": 49,
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-card-body-2",
+        "name": "page-m3-printer-card-body-2",
+        "x": 668,
+        "y": 1250,
+        "fill": "#AAB0D0",
+        "content": "Lower forces during printing and closed loop control of force and temperature unlock more geometries, especially for elastomeric parts, or parts with ",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 236,
+        "height": 109,
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-rel-title",
+        "name": "page-m3-printer-rel-title",
+        "x": 64,
+        "y": 1540,
+        "fill": "#5FD3FF",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-rel-0-box",
+        "name": "page-m3-printer-rel-0-box",
+        "x": 64,
+        "y": 1568,
+        "width": 186,
+        "height": 38,
+        "fill": "#7256FF",
+        "href": "#page-products",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-rel-0-text",
+        "name": "page-m3-printer-rel-0-text",
+        "x": 82,
+        "y": 1577,
+        "fill": "#FFFFFF",
+        "content": "Products",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 150,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-rel-1-box",
+        "name": "page-m3-printer-rel-1-box",
+        "x": 262,
+        "y": 1568,
+        "width": 186,
+        "height": 38,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-platform",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-rel-1-text",
+        "name": "page-m3-printer-rel-1-text",
+        "x": 280,
+        "y": 1577,
+        "fill": "#FFFFFF",
+        "content": "Platform",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 150,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-platform",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-m3-printer-rel-2-box",
+        "name": "page-m3-printer-rel-2-box",
+        "x": 460,
+        "y": 1568,
+        "width": 186,
+        "height": 38,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-m3-printer-rel-2-text",
+        "name": "page-m3-printer-rel-2-text",
+        "x": 478,
+        "y": 1577,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 150,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1560,
+        "width": 1440,
+        "height": 320,
+        "fill": "#070A14",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 320,
+            "fill": "#070A14"
+          },
+          {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 40,
+            "y": 28,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "footer-Platform",
+            "name": "footer-Platform",
+            "x": 40,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Platform-body",
+            "name": "footer-Platform-body",
+            "x": 40,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "How it Works\nMaterials\nSoftware\nHardware",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-Products",
+            "name": "footer-Products",
+            "x": 260,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Products-body",
+            "name": "footer-Products-body",
+            "x": 260,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-Industries",
+            "name": "footer-Industries",
+            "x": 500,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Industries-body",
+            "name": "footer-Industries-body",
+            "x": 500,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "Consumer\nDental\nOrthodontics\nIndustrial",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-Resources",
+            "name": "footer-Resources",
+            "x": 760,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Resources-body",
+            "name": "footer-Resources-body",
+            "x": 760,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "Blog\nCase studies\nCourses\nDatasheets",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-About",
+            "name": "footer-About",
+            "x": 1020,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-About-body",
+            "name": "footer-About-body",
+            "x": 1020,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "About Carbon\nNewsroom\nContact Us\nPartners",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 40,
+            "y": 282,
+            "fill": "#B9C0DA",
+            "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 520,
+            "height": 38
+          }
+        ]
+      }
+    ]
+  }
+}

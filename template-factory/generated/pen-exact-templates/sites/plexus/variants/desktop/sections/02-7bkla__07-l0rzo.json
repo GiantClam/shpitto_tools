@@ -1,0 +1,426 @@
+{
+  "sectionId": "L0Rzo",
+  "sectionName": "aboutCta",
+  "sectionKind": "story",
+  "order": 7,
+  "bounds": {
+    "x": 0,
+    "y": 2737,
+    "width": 1440,
+    "height": 370
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 9,
+  "treeHash": "da47a2f9a7e0350aa2a4fe18aa8e58458b6e99f085568865f5b9da70edb889ef",
+  "blockCount": 6,
+  "blockIndex": [
+    {
+      "blockId": "KVbOM",
+      "blockName": "ctaTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 113,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c96b31aa231ca3aa8e5748911688a7ddd8633ca3c8a712bcc35240fa73f3084e"
+    },
+    {
+      "blockId": "82Nst",
+      "blockName": "ctaBtn1",
+      "blockType": "frame",
+      "order": 1,
+      "bounds": {
+        "x": 32,
+        "y": 258,
+        "width": 154,
+        "height": 38
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "b8c21aafdfbee3bd168a0f34132bbc2b42c85da6d2851363507481529380cd70"
+    },
+    {
+      "blockId": "vg6xr",
+      "blockName": "ctaBtn2",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 202,
+        "y": 258,
+        "width": 154,
+        "height": 38
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "c5bf6e88ddf39144a8f54823c14df568bc44439cc01c8e9c3193d2c4d2e7e98a"
+    },
+    {
+      "blockId": "vYgEn",
+      "blockName": "solTag",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 32,
+        "y": 80,
+        "width": 38,
+        "height": 6
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1934b3a58a7d4f58e27d8bb048990c6d8f03c281e80ce14b2a13b2e934194237"
+    },
+    {
+      "blockId": "7aFK1",
+      "blockName": "solTagTxt",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 82,
+        "y": 73,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a18010be10163498307db98364e9e646e5e853e645dea1bb61b5e50771bd5f59"
+    },
+    {
+      "blockId": "YbbjY",
+      "blockName": "solDesc",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 32,
+        "y": 197,
+        "width": 1367,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f83c73c88697b29e11ba44a244d78886db96479b5ca803e867fd2370d74eb1e4"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "KVbOM",
+      "blockName": "ctaTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 113,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c96b31aa231ca3aa8e5748911688a7ddd8633ca3c8a712bcc35240fa73f3084e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "KVbOM",
+        "x": 32,
+        "y": 113,
+        "name": "ctaTitle",
+        "fill": "#FFFFFF",
+        "content": "我们的业务遍及全球。我们的影响惠及未来。",
+        "fontFamily": "Inter",
+        "fontSize": 46,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "82Nst",
+      "blockName": "ctaBtn1",
+      "blockType": "frame",
+      "order": 1,
+      "bounds": {
+        "x": 32,
+        "y": 258,
+        "width": 154,
+        "height": 38
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "b8c21aafdfbee3bd168a0f34132bbc2b42c85da6d2851363507481529380cd70",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "82Nst",
+        "x": 32,
+        "y": 258,
+        "name": "ctaBtn1",
+        "width": 154,
+        "height": 38,
+        "fill": "#C70041",
+        "cornerRadius": 3,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "6MZud",
+            "x": 31,
+            "y": 9,
+            "name": "ctaBtn1Txt",
+            "fill": "#FFFFFF",
+            "content": "查看我们的地点",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "vg6xr",
+      "blockName": "ctaBtn2",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 202,
+        "y": 258,
+        "width": 154,
+        "height": 38
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "c5bf6e88ddf39144a8f54823c14df568bc44439cc01c8e9c3193d2c4d2e7e98a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "vg6xr",
+        "x": 202,
+        "y": 258,
+        "name": "ctaBtn2",
+        "width": 154,
+        "height": 38,
+        "fill": "#0A6B79",
+        "cornerRadius": 3,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "EuTNb",
+            "x": 31,
+            "y": 9,
+            "name": "ctaBtn2Txt",
+            "fill": "#FFFFFF",
+            "content": "查看我们的奖项",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "vYgEn",
+      "blockName": "solTag",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 32,
+        "y": 80,
+        "width": 38,
+        "height": 6
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1934b3a58a7d4f58e27d8bb048990c6d8f03c281e80ce14b2a13b2e934194237",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "vYgEn",
+        "x": 32,
+        "y": 80,
+        "name": "solTag",
+        "fill": "#D5164A",
+        "width": 38,
+        "height": 6
+      }
+    },
+    {
+      "blockId": "7aFK1",
+      "blockName": "solTagTxt",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 82,
+        "y": 73,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a18010be10163498307db98364e9e646e5e853e645dea1bb61b5e50771bd5f59",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "7aFK1",
+        "x": 82,
+        "y": 73,
+        "name": "solTagTxt",
+        "fill": "#ffffffff",
+        "content": "地点与奖项",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "YbbjY",
+      "blockName": "solDesc",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 32,
+        "y": 197,
+        "width": 1367,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f83c73c88697b29e11ba44a244d78886db96479b5ca803e867fd2370d74eb1e4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "YbbjY",
+        "x": 32,
+        "y": 197,
+        "name": "solDesc",
+        "fill": "#D0E3E8",
+        "textGrowth": "fixed-width",
+        "width": 1367,
+        "content": "我们的业务遍布全球四大洲，这使我们能够充分利用全球范围内的专业知识和人才，确保为世界各地的客户提供屡获殊荣的卓越产品。",
+        "lineHeight": 1.5,
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "L0Rzo",
+    "x": 0,
+    "y": 2737,
+    "name": "aboutCta",
+    "width": 1440,
+    "height": 370,
+    "fill": "#005060",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "KVbOM",
+        "x": 32,
+        "y": 113,
+        "name": "ctaTitle",
+        "fill": "#FFFFFF",
+        "content": "我们的业务遍及全球。我们的影响惠及未来。",
+        "fontFamily": "Inter",
+        "fontSize": 46,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "82Nst",
+        "x": 32,
+        "y": 258,
+        "name": "ctaBtn1",
+        "width": 154,
+        "height": 38,
+        "fill": "#C70041",
+        "cornerRadius": 3,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "6MZud",
+            "x": 31,
+            "y": 9,
+            "name": "ctaBtn1Txt",
+            "fill": "#FFFFFF",
+            "content": "查看我们的地点",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "vg6xr",
+        "x": 202,
+        "y": 258,
+        "name": "ctaBtn2",
+        "width": 154,
+        "height": 38,
+        "fill": "#0A6B79",
+        "cornerRadius": 3,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "EuTNb",
+            "x": 31,
+            "y": 9,
+            "name": "ctaBtn2Txt",
+            "fill": "#FFFFFF",
+            "content": "查看我们的奖项",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "rectangle",
+        "id": "vYgEn",
+        "x": 32,
+        "y": 80,
+        "name": "solTag",
+        "fill": "#D5164A",
+        "width": 38,
+        "height": 6
+      },
+      {
+        "type": "text",
+        "id": "7aFK1",
+        "x": 82,
+        "y": 73,
+        "name": "solTagTxt",
+        "fill": "#ffffffff",
+        "content": "地点与奖项",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "YbbjY",
+        "x": 32,
+        "y": 197,
+        "name": "solDesc",
+        "fill": "#D0E3E8",
+        "textGrowth": "fixed-width",
+        "width": 1367,
+        "content": "我们的业务遍布全球四大洲，这使我们能够充分利用全球范围内的专业知识和人才，确保为世界各地的客户提供屡获殊荣的卓越产品。",
+        "lineHeight": 1.5,
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

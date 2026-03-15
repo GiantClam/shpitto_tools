@@ -1,0 +1,80 @@
+{
+  "blockId": "s10rp",
+  "blockName": "c9",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 10,
+  "bounds": {
+    "x": 1032,
+    "y": 734,
+    "width": 390,
+    "height": 282
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "ea1af81c6bb34e7d7bda26b38f85e9a3ff3360e6bb9dcf857b1cf6f87f6ad77c",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "s10rp",
+    "x": 1032,
+    "y": 734,
+    "name": "c9",
+    "width": 390,
+    "height": 282,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "Ggkzf",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 138,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "ry4v3",
+        "x": 0,
+        "y": 152,
+        "fill": "#1F1F1F",
+        "content": "定制服务",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "ow2Ji",
+        "x": 0,
+        "y": 176,
+        "fill": "#2F2F2F",
+        "textGrowth": "fixed-width",
+        "width": 390,
+        "content": "基于应用与材料特性，快速生成可执行的刀具建议。",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "text",
+        "id": "yp9Cu",
+        "x": 0,
+        "y": 250,
+        "fill": "#6F5F43",
+        "content": "了解更多  ›",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "sectionId": "i3WWF",
+  "sectionName": "solHero",
+  "sectionKind": "hero",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 90,
+    "width": 1440,
+    "height": 510
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 6,
+  "treeHash": "557eea0042ca162b475e4e76983b4769f35dde763ff41a9f6b39ddf7ef8d739a",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "adrQQ",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 80,
+        "y": 120,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e47df1a1d0533c0929ae60f92d43a3cdc5cbbe22cc334a7077363665caeb1a23"
+    },
+    {
+      "blockId": "St07G",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 80,
+        "y": 212,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0858009530ff218ec1bee979fc7b284b1b48fe17d238ab35325810a39cf4c68c"
+    },
+    {
+      "blockId": "zDeca",
+      "blockName": "heroBtn",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 80,
+        "y": 284,
+        "width": 140,
+        "height": 42
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "ca9794b15299f3ab3bac41f05dfdfe7c63acd50c8eb45bd06f5d6bff755df28c"
+    },
+    {
+      "blockId": "FWmFL",
+      "blockName": "heroVisual",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 820,
+        "y": 42,
+        "width": 560,
+        "height": 360
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3bdaaa4074e72a8804406b9d8c0845f733ab276c6c32f5642320a048f3bd163d"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1636368085784-ceb7909dba73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDEzNDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "adrQQ",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 80,
+        "y": 120,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e47df1a1d0533c0929ae60f92d43a3cdc5cbbe22cc334a7077363665caeb1a23",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "adrQQ",
+        "x": 80,
+        "y": 120,
+        "name": "heroTitle",
+        "fill": "#23303D",
+        "content": "我们的解决方案",
+        "fontFamily": "Inter",
+        "fontSize": 58,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "St07G",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 80,
+        "y": 212,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0858009530ff218ec1bee979fc7b284b1b48fe17d238ab35325810a39cf4c68c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "St07G",
+        "x": 80,
+        "y": 212,
+        "name": "heroDesc",
+        "fill": "#65717D",
+        "content": "在整个产品生命周期中为客户创造价值",
+        "fontFamily": "Inter",
+        "fontSize": 22,
+        "fontWeight": "600"
+      }
+    },
+    {
+      "blockId": "zDeca",
+      "blockName": "heroBtn",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 80,
+        "y": 284,
+        "width": 140,
+        "height": 42
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "ca9794b15299f3ab3bac41f05dfdfe7c63acd50c8eb45bd06f5d6bff755df28c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "zDeca",
+        "x": 80,
+        "y": 284,
+        "name": "heroBtn",
+        "width": 140,
+        "height": 42,
+        "fill": "#C70041",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "nNU7R",
+            "x": 42,
+            "y": 11,
+            "name": "heroBtnTxt",
+            "fill": "#FFFFFF",
+            "content": "解决方案",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "FWmFL",
+      "blockName": "heroVisual",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 820,
+        "y": 42,
+        "width": 560,
+        "height": 360
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3bdaaa4074e72a8804406b9d8c0845f733ab276c6c32f5642320a048f3bd163d",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1636368085784-ceb7909dba73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDEzNDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "FWmFL",
+        "x": 820,
+        "y": 42,
+        "name": "heroVisual",
+        "opacity": 0.92,
+        "metadata": {
+          "type": "unsplash",
+          "username": "afshariam82",
+          "link": "https://unsplash.com/@afshariam82",
+          "author": "Mohammad h Afshari"
+        },
+        "width": 560,
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1636368085784-ceb7909dba73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDEzNDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 8,
+        "layout": "none"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "i3WWF",
+    "x": 0,
+    "y": 90,
+    "name": "solHero",
+    "width": 1440,
+    "height": 510,
+    "fill": "#F2F2F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "adrQQ",
+        "x": 80,
+        "y": 120,
+        "name": "heroTitle",
+        "fill": "#23303D",
+        "content": "我们的解决方案",
+        "fontFamily": "Inter",
+        "fontSize": 58,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "St07G",
+        "x": 80,
+        "y": 212,
+        "name": "heroDesc",
+        "fill": "#65717D",
+        "content": "在整个产品生命周期中为客户创造价值",
+        "fontFamily": "Inter",
+        "fontSize": 22,
+        "fontWeight": "600"
+      },
+      {
+        "type": "frame",
+        "id": "zDeca",
+        "x": 80,
+        "y": 284,
+        "name": "heroBtn",
+        "width": 140,
+        "height": 42,
+        "fill": "#C70041",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "nNU7R",
+            "x": 42,
+            "y": 11,
+            "name": "heroBtnTxt",
+            "fill": "#FFFFFF",
+            "content": "解决方案",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "FWmFL",
+        "x": 820,
+        "y": 42,
+        "name": "heroVisual",
+        "opacity": 0.92,
+        "metadata": {
+          "type": "unsplash",
+          "username": "afshariam82",
+          "link": "https://unsplash.com/@afshariam82",
+          "author": "Mohammad h Afshari"
+        },
+        "width": 560,
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1636368085784-ceb7909dba73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDEzNDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 8,
+        "layout": "none"
+      }
+    ]
+  }
+}

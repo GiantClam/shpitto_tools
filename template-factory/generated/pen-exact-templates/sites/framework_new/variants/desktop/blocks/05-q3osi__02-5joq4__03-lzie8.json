@@ -1,0 +1,38 @@
+{
+  "blockId": "lzIE8",
+  "blockName": "pager",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": 30
+  },
+  "directChildCount": 1,
+  "recursiveNodeCount": 2,
+  "treeHash": "e8352280b0e0aebe80ef8b93eaae5774207b4cf70ead45d1668bebe6df642838",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "lzIE8",
+    "name": "pager",
+    "width": "fill_container",
+    "height": 30,
+    "gap": 14,
+    "justifyContent": "center",
+    "alignItems": "center",
+    "children": [
+      {
+        "type": "text",
+        "id": "L3HUj",
+        "fill": "#98A0A8",
+        "content": "1 2 3 4 5 6 7 8 9 10 11",
+        "fontFamily": "Inter",
+        "fontSize": 10,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

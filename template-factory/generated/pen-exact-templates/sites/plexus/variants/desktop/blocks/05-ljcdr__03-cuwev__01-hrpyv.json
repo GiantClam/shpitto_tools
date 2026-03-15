@@ -1,0 +1,140 @@
+{
+  "blockId": "hRPYv",
+  "blockName": "row2",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 380,
+    "width": 1440,
+    "height": 360
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 9,
+  "treeHash": "5e2cec99c0549391daea08921086cc3c37150e36d615cdb59577aabba768bae8",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "hRPYv",
+    "x": 0,
+    "y": 380,
+    "name": "row2",
+    "width": 1440,
+    "height": 360,
+    "fill": "#FFFFFF",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "w4mg9",
+        "x": 0,
+        "y": 0,
+        "name": "row2txt",
+        "width": 720,
+        "height": 360,
+        "fill": "#FFFFFF",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "askht",
+            "x": 88,
+            "y": 96,
+            "name": "r2tag",
+            "fill": "#D5164A",
+            "width": 36,
+            "height": 6
+          },
+          {
+            "type": "text",
+            "id": "wHSuS",
+            "x": 88,
+            "y": 116,
+            "name": "r2title",
+            "fill": "#22303D",
+            "content": "医疗保健/生命科学",
+            "fontFamily": "Inter",
+            "fontSize": 42,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "tfOy0",
+            "x": 88,
+            "y": 180,
+            "name": "r2desc",
+            "fill": "#6B7783",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "合作创造下一个改变生命的创新成果",
+            "lineHeight": 1.5,
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "NZHzb",
+            "x": 88,
+            "y": 248,
+            "name": "r2btn",
+            "width": 86,
+            "height": 30,
+            "fill": "#C70041",
+            "cornerRadius": 2,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "TSitx",
+                "x": 20,
+                "y": 8,
+                "name": "r2btnT",
+                "fill": "#FFFFFF",
+                "content": "了解更多",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "HU4qd",
+            "x": 150,
+            "y": 89,
+            "name": "resTagTxt",
+            "fill": "#5A6470",
+            "content": "我们的市场行业",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "xmRI2",
+        "x": 720,
+        "y": 0,
+        "name": "row2img",
+        "metadata": {
+          "type": "unsplash",
+          "username": "ninthgrid_",
+          "link": "https://unsplash.com/@ninthgrid_",
+          "author": "Ninthgrid"
+        },
+        "width": 720,
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1739289696456-823ef234a417?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDMzMzZ8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "layout": "none"
+      }
+    ]
+  }
+}

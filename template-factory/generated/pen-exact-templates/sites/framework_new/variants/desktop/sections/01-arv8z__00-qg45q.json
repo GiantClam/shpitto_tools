@@ -1,0 +1,190 @@
+{
+  "sectionId": "qG45q",
+  "sectionName": "TopNav",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": 64
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "a0531b69f929586c6e06483b616021c2d360761a55435b62836643d9ed92a421",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "Qrc4I",
+      "blockName": "logo",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7e84f8ee57e11748249a3237430782ca95199d3d552eb9a0da784d5c3b2d7780"
+    },
+    {
+      "blockId": "EsYux",
+      "blockName": "centerNav",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5b621c90eb7a2b24490c164d64ca0ea30aaca0ac97ed477313df19938dd64aeb"
+    },
+    {
+      "blockId": "OYGri",
+      "blockName": "rightNav",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c856c099558cd42117b1722a4269db50efb57d7a2b617d5126d63a5a82070175"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "Qrc4I",
+      "blockName": "logo",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7e84f8ee57e11748249a3237430782ca95199d3d552eb9a0da784d5c3b2d7780",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "Qrc4I",
+        "name": "logo",
+        "fill": "#111111",
+        "content": "Framework",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "EsYux",
+      "blockName": "centerNav",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5b621c90eb7a2b24490c164d64ca0ea30aaca0ac97ed477313df19938dd64aeb",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "EsYux",
+        "name": "centerNav",
+        "fill": "#4A4A4A",
+        "content": "Products   Laptops   Desktops   Marketplace",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal"
+      }
+    },
+    {
+      "blockId": "OYGri",
+      "blockName": "rightNav",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c856c099558cd42117b1722a4269db50efb57d7a2b617d5126d63a5a82070175",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "OYGri",
+        "name": "rightNav",
+        "fill": "#666666",
+        "content": "Support   Sign In   Cart",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "qG45q",
+    "name": "TopNav",
+    "width": "fill_container",
+    "height": 64,
+    "fill": "#F3F3EF",
+    "padding": [
+      0,
+      48
+    ],
+    "justifyContent": "space_between",
+    "alignItems": "center",
+    "children": [
+      {
+        "type": "text",
+        "id": "Qrc4I",
+        "name": "logo",
+        "fill": "#111111",
+        "content": "Framework",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "EsYux",
+        "name": "centerNav",
+        "fill": "#4A4A4A",
+        "content": "Products   Laptops   Desktops   Marketplace",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "text",
+        "id": "OYGri",
+        "name": "rightNav",
+        "fill": "#666666",
+        "content": "Support   Sign In   Cart",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal"
+      }
+    ]
+  }
+}

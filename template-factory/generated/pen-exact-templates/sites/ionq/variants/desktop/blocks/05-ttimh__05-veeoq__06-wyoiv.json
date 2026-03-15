@@ -1,0 +1,100 @@
+{
+  "blockId": "WYoiv",
+  "blockName": "benefitCard2",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 6,
+  "bounds": {
+    "x": 428,
+    "y": 224,
+    "width": 344,
+    "height": 132
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 6,
+  "treeHash": "af4c882d91b801e5b013d3cdb3c8c6a4d96324332155d66661440c392806366b",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "WYoiv",
+    "x": 428,
+    "y": 224,
+    "name": "benefitCard2",
+    "width": 344,
+    "height": 132,
+    "fill": "#F1F2F4",
+    "cornerRadius": 10,
+    "stroke": {
+      "thickness": 1,
+      "fill": "#B8C0CA"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "8tkS5",
+        "x": 24,
+        "y": 16,
+        "name": "icon2",
+        "width": 34,
+        "height": 28,
+        "layout": "none",
+        "children": [
+          {
+            "type": "ellipse",
+            "id": "RRRRk",
+            "x": 2,
+            "y": 2,
+            "name": "i2a",
+            "width": 16,
+            "height": 24,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#8FA0B2"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "5tR0P",
+            "x": 16,
+            "y": 2,
+            "name": "i2b",
+            "width": 16,
+            "height": 24,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#FF6A00"
+            }
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "agN8h",
+        "x": 24,
+        "y": 56,
+        "name": "t2",
+        "fill": "#1A212B",
+        "content": "All-to-all connectivity",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "sPoeg",
+        "x": 24,
+        "y": 88,
+        "name": "d2",
+        "fill": "#5E6774",
+        "textGrowth": "fixed-width",
+        "width": 294,
+        "content": "Every qubit can interact with every other qubit directly.",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

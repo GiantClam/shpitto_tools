@@ -1,0 +1,253 @@
+{
+  "blockId": "48VrQ",
+  "blockName": "recSec",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 26,
+  "bounds": {
+    "x": 0,
+    "y": 1650,
+    "width": 1440,
+    "height": 674
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 17,
+  "treeHash": "00d16b88e827992814d3f4b80135f4d7f36885c9f089e3b3440c43e66a62b24c",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "48VrQ",
+    "x": 0,
+    "y": 1650,
+    "name": "recSec",
+    "width": 1440,
+    "height": 674,
+    "fill": "#ffffff",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "K05E0",
+        "x": 56,
+        "y": 104,
+        "name": "recTitle2",
+        "fill": "#2A313C",
+        "content": "Recommended\nproducts",
+        "lineHeight": 1.05,
+        "fontFamily": "Inter",
+        "fontSize": 54,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 3,
+        "id": "F8cEG",
+        "x": 56,
+        "y": 286,
+        "name": "recBtn2",
+        "fill": "#F5F8FD",
+        "width": 116,
+        "height": 36,
+        "stroke": {
+          "align": "inside",
+          "thickness": 1,
+          "fill": "#8AA3D3"
+        }
+      },
+      {
+        "type": "text",
+        "id": "2J7hg",
+        "x": 74,
+        "y": 296,
+        "name": "recBtn2T",
+        "fill": "#2E446D",
+        "content": "All Products",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "600"
+      },
+      {
+        "type": "frame",
+        "id": "Au6tc",
+        "x": 640,
+        "y": 72,
+        "name": "recRight",
+        "width": 744,
+        "height": 620,
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "qN1vZ",
+            "x": 0,
+            "y": 0,
+            "name": "recRow1",
+            "width": 744,
+            "height": 290,
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "ZIllw",
+                "x": 0,
+                "y": 20,
+                "name": "r1img",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "nci",
+                  "link": "https://unsplash.com/@nci",
+                  "author": "National Cancer Institute"
+                },
+                "width": 220,
+                "height": 140,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1582719471216-d2e7e332e19c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjA1MTN8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "UuGs9",
+                "x": 260,
+                "y": 20,
+                "name": "r1t",
+                "fill": "#2A313C",
+                "content": "Osprey u8",
+                "fontFamily": "Inter",
+                "fontSize": 34,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "eFfFH",
+                "x": 260,
+                "y": 72,
+                "name": "r1d",
+                "fill": "#4E5663",
+                "textGrowth": "fixed-width",
+                "width": 460,
+                "content": "Empowering defense and government operators with resilient, fully-integrated Multi-Orbit and Multi-Network connectivity in an easy-to-use terminal. Built to MIL-STD with embedded A-PNT and GNSS-denied capabilities.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 13,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "yAfSd",
+                "x": 260,
+                "y": 191,
+                "name": "r1l",
+                "fill": "#2A313C",
+                "content": "Learn more",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "line",
+            "id": "hGVLG",
+            "x": 0,
+            "y": 304,
+            "name": "div1",
+            "width": 744,
+            "height": 0,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#D2D7DF"
+            }
+          },
+          {
+            "type": "frame",
+            "id": "VXPxD",
+            "x": 0,
+            "y": 324,
+            "name": "recRow2",
+            "width": 744,
+            "height": 290,
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "1zrUZ",
+                "x": 0,
+                "y": 20,
+                "name": "r2img",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "fakurian",
+                  "link": "https://unsplash.com/@fakurian",
+                  "author": "Milad Fakurian"
+                },
+                "width": 220,
+                "height": 140,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1596532271345-ff45865793d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjA1MTR8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "oFEXZ",
+                "x": 260,
+                "y": 20,
+                "name": "r2t",
+                "fill": "#2A313C",
+                "content": "Goshawk u8",
+                "fontFamily": "Inter",
+                "fontSize": 34,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "MeOoP",
+                "x": 260,
+                "y": 72,
+                "name": "r2d",
+                "fill": "#4E5663",
+                "textGrowth": "fixed-width",
+                "width": 460,
+                "content": "Able to switch dynamically between LEO, GEO and cellular networks, this turnkey terminal easily integrates with existing systems. Robust and durable hardware suitable for security and intelligence agencies.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 13,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "k1Mdi",
+                "x": 260,
+                "y": 199,
+                "name": "r2l",
+                "fill": "#2A313C",
+                "content": "Learn more",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "line",
+            "id": "OK9U4",
+            "x": 0,
+            "y": 618,
+            "name": "div2",
+            "width": 744,
+            "height": 0,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#D2D7DF"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

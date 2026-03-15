@@ -1,0 +1,58 @@
+{
+  "blockId": "qDW76",
+  "blockName": "Legal",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 8,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "49706075ef8849fc11f5f24b6f3bd0685f80bab46f077bb9cb585df097b5957c",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "qDW76",
+    "name": "Legal",
+    "width": "fill_container",
+    "layout": "vertical",
+    "gap": 8,
+    "children": [
+      {
+        "type": "text",
+        "id": "pd9tY",
+        "name": "legalTitle",
+        "fill": "#1F2737",
+        "content": "Legal",
+        "fontFamily": "Inter",
+        "fontSize": 22,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "I4vKX",
+        "name": "legalBody",
+        "fill": "#5E646B",
+        "textGrowth": "fixed-width",
+        "width": "fill_container",
+        "content": "Availability and lead times vary by region and configuration. Terms and warranty coverage may differ by country.\nPlease contact our team for enterprise deployment details and procurement support.",
+        "lineHeight": 1.6,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "frame",
+        "id": "cFvbs",
+        "name": "legalSep",
+        "width": "fill_container",
+        "height": 1,
+        "fill": "#D7DBDE"
+      }
+    ]
+  }
+}

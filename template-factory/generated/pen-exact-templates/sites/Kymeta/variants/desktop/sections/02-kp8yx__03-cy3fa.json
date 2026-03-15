@@ -1,0 +1,368 @@
+{
+  "sectionId": "CY3FA",
+  "sectionName": "sec3",
+  "sectionKind": "generic",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 1243,
+    "width": 1440,
+    "height": 620
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 8,
+  "treeHash": "de7b5d6044e8337aa97de7dfabba0fe749e4eca1cb676ebfaf376a20ac952cc7",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "P0Vbn",
+      "blockName": "timelineImg",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 620
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e84e1c76bcac74cc068de2ad9f6b4042cd0202c5bc0d5b054e75e8efc714e095"
+    },
+    {
+      "blockId": "8xjoG",
+      "blockName": "imgFade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 620
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "be9960d5a077313464f7d092bbe3f3d27a0e432b3610cb1d7e77a01e4be8a8df"
+    },
+    {
+      "blockId": "UAwjy",
+      "blockName": "yearCard",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 945,
+        "y": 84,
+        "width": 410,
+        "height": 470
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "a8bc1796fc81e9acea9e9591f0f9700e95a6f936f8e61e03ff9fcf72c31cddd2"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1461360370896-922624d12aa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHNlYXJjaHwxfHxvbGQlMjBwcm9mZXNzb3IlMjBibGFja2JvYXJkfGVufDB8fHx8MTc3MzI3MTAwOXww&ixlib=rb-4.1.0&q=80&w=1600",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "P0Vbn",
+      "blockName": "timelineImg",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 620
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e84e1c76bcac74cc068de2ad9f6b4042cd0202c5bc0d5b054e75e8efc714e095",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1461360370896-922624d12aa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHNlYXJjaHwxfHxvbGQlMjBwcm9mZXNzb3IlMjBibGFja2JvYXJkfGVufDB8fHx8MTc3MzI3MTAwOXww&ixlib=rb-4.1.0&q=80&w=1600",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "P0Vbn",
+        "x": 0,
+        "y": 0,
+        "name": "timelineImg",
+        "width": 1440,
+        "height": 620,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1461360370896-922624d12aa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHNlYXJjaHwxfHxvbGQlMjBwcm9mZXNzb3IlMjBibGFja2JvYXJkfGVufDB8fHx8MTc3MzI3MTAwOXww&ixlib=rb-4.1.0&q=80&w=1600",
+          "mode": "fill"
+        },
+        "layout": "none"
+      }
+    },
+    {
+      "blockId": "8xjoG",
+      "blockName": "imgFade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 620
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "be9960d5a077313464f7d092bbe3f3d27a0e432b3610cb1d7e77a01e4be8a8df",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "8xjoG",
+        "x": 0,
+        "y": 0,
+        "name": "imgFade",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 0,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#00000000",
+              "position": 0
+            },
+            {
+              "color": "#00000030",
+              "position": 1
+            }
+          ]
+        },
+        "width": 1440,
+        "height": 620
+      }
+    },
+    {
+      "blockId": "UAwjy",
+      "blockName": "yearCard",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 945,
+        "y": 84,
+        "width": 410,
+        "height": 470
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "a8bc1796fc81e9acea9e9591f0f9700e95a6f936f8e61e03ff9fcf72c31cddd2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "UAwjy",
+        "x": 945,
+        "y": 84,
+        "name": "yearCard",
+        "width": 410,
+        "height": 470,
+        "fill": "#E6E7E8",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "PDIm5",
+            "x": 62,
+            "y": 50,
+            "name": "yearTitle",
+            "fill": "#1F2937",
+            "content": "1967",
+            "fontFamily": "Inter",
+            "fontSize": 42,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "dk8xd",
+            "x": 62,
+            "y": 123,
+            "name": "yearDesc",
+            "fill": "#4B5563",
+            "textGrowth": "fixed-width",
+            "width": 286,
+            "content": "Physicist Victor Veselago, Ph.D., publishes an analysis stating that materials could be created to have both negative permittivity and permeability. This theoretical material does not exist in nature, but Veselago's research shows the remarkable properties such a material would possess.",
+            "lineHeight": 1.55,
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "text",
+            "id": "aAydn",
+            "x": 62,
+            "y": 363,
+            "name": "yearCredit",
+            "fill": "#6B7280",
+            "textGrowth": "fixed-width-height",
+            "width": 286,
+            "height": 38,
+            "content": "Image source: Wikimedia Commons, modified to fit format",
+            "lineHeight": 1.5,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "id": "fkkOO",
+            "x": 0,
+            "y": 466,
+            "name": "activeBar",
+            "fill": "#5A84FF",
+            "width": 72,
+            "height": 4
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "CY3FA",
+    "x": 0,
+    "y": 1243,
+    "name": "sec3",
+    "width": 1440,
+    "height": 620,
+    "fill": "#FFFFFF",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "P0Vbn",
+        "x": 0,
+        "y": 0,
+        "name": "timelineImg",
+        "width": 1440,
+        "height": 620,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1461360370896-922624d12aa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHNlYXJjaHwxfHxvbGQlMjBwcm9mZXNzb3IlMjBibGFja2JvYXJkfGVufDB8fHx8MTc3MzI3MTAwOXww&ixlib=rb-4.1.0&q=80&w=1600",
+          "mode": "fill"
+        },
+        "layout": "none"
+      },
+      {
+        "type": "rectangle",
+        "id": "8xjoG",
+        "x": 0,
+        "y": 0,
+        "name": "imgFade",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 0,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#00000000",
+              "position": 0
+            },
+            {
+              "color": "#00000030",
+              "position": 1
+            }
+          ]
+        },
+        "width": 1440,
+        "height": 620
+      },
+      {
+        "type": "frame",
+        "id": "UAwjy",
+        "x": 945,
+        "y": 84,
+        "name": "yearCard",
+        "width": 410,
+        "height": 470,
+        "fill": "#E6E7E8",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "PDIm5",
+            "x": 62,
+            "y": 50,
+            "name": "yearTitle",
+            "fill": "#1F2937",
+            "content": "1967",
+            "fontFamily": "Inter",
+            "fontSize": 42,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "dk8xd",
+            "x": 62,
+            "y": 123,
+            "name": "yearDesc",
+            "fill": "#4B5563",
+            "textGrowth": "fixed-width",
+            "width": 286,
+            "content": "Physicist Victor Veselago, Ph.D., publishes an analysis stating that materials could be created to have both negative permittivity and permeability. This theoretical material does not exist in nature, but Veselago's research shows the remarkable properties such a material would possess.",
+            "lineHeight": 1.55,
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "text",
+            "id": "aAydn",
+            "x": 62,
+            "y": 363,
+            "name": "yearCredit",
+            "fill": "#6B7280",
+            "textGrowth": "fixed-width-height",
+            "width": 286,
+            "height": 38,
+            "content": "Image source: Wikimedia Commons, modified to fit format",
+            "lineHeight": 1.5,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "id": "fkkOO",
+            "x": 0,
+            "y": 466,
+            "name": "activeBar",
+            "fill": "#5A84FF",
+            "width": 72,
+            "height": 4
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "pen-site-publish-readiness.v1",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "siteId": "plexus",
+  "siteName": "Plexus",
+  "requiredVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "availableVariants": [
+    "desktop"
+  ],
+  "responsiveModes": {
+    "desktop": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "exact-source"
+    },
+    "mobile": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "responsive-derived-from-desktop"
+    }
+  },
+  "qualityGates": {
+    "structuralValidationPassed": true,
+    "visualValidationPassed": true,
+    "sandboxRuntimePassed": true,
+    "skinnableReady": true
+  },
+  "bundlePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-site-publish-bundles/sites/plexus/site.pen-bundle.json",
+  "reviewPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-site-publish-bundles/sites/plexus/site.pen-review.json",
+  "artifacts": [
+    {
+      "caseId": "plexus-desktop",
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/plexus.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-plexus-desktop/sandbox/payload.json",
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-plexus-desktop&page=%2Fcontact"
+    }
+  ]
+}

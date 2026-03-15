@@ -1,0 +1,25 @@
+{
+  "siteId": "sandvik",
+  "siteName": "Sandvik",
+  "bundleHash": "695da74764257581c4e8d30f7a5bb1244283bcd679acc4d13f726fd888c76f4d",
+  "variants": [
+    {
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/sandvik.pen",
+      "sourceHash": "0f60fa9735812ffa1818c313defe829bcbe752e386259db939f874e4d4e9edf2",
+      "pageCount": 7,
+      "sectionCount": 42,
+      "blockCount": 390,
+      "output": {
+        "templatePath": "sites/sandvik/variants/desktop/template.json",
+        "themePath": "sites/sandvik/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/sandvik/variants/desktop/pages",
+        "sectionsDir": "sites/sandvik/variants/desktop/sections",
+        "blocksDir": "sites/sandvik/variants/desktop/blocks"
+      }
+    }
+  ],
+  "output": {
+    "siteTemplatePath": "sites/sandvik/site.template.json"
+  }
+}

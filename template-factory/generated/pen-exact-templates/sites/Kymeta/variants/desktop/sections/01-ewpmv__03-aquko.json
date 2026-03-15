@@ -1,0 +1,314 @@
+{
+  "sectionId": "AQUKO",
+  "sectionName": "hero",
+  "sectionKind": "hero",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 86,
+    "width": 1440,
+    "height": 560
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "0931dac99aae140417511e9b6fdf959330f37e2437236f2a4e3a10569f9901df",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "mT1hY",
+      "blockName": "heroOver",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 560
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7e877e649949af50137390b7824f7138add27d6686c3678f6aa055719497e6fa"
+    },
+    {
+      "blockId": "KSf9q",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 36,
+        "y": 196,
+        "width": 950,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "66ef5579b22d3dab6d8d7fb84ffe98507f1539f8a37f067d8378e81a3eb1ec2d"
+    },
+    {
+      "blockId": "yWuQa",
+      "blockName": "heroTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 36,
+        "y": 88,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ff76f4e95bebd2b0de022976fb072a4fdaadb066d05fc921c57cd54a19703fae"
+    },
+    {
+      "blockId": "KN7r3",
+      "blockName": "heroTagLine",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 36,
+        "y": 160,
+        "width": 72,
+        "height": 3
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a18eeef5f50b8990c751aceb508880bbb75deeaccb456829490b0af4ad3cd905"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1493238792000-8113da705763?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHNlYXJjaHwxfHxtaWxpdGFyeSUyMHZlaGljbGUlMjBkZXNlcnR8ZW58MHx8fHwxNzczMjcxOTQ2fDA&ixlib=rb-4.1.0&q=80&w=1600",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "mT1hY",
+      "blockName": "heroOver",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 560
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7e877e649949af50137390b7824f7138add27d6686c3678f6aa055719497e6fa",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "mT1hY",
+        "x": 0,
+        "y": 0,
+        "name": "heroOver",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 90,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#03070ECC",
+              "position": 0
+            },
+            {
+              "color": "#03070E66",
+              "position": 0.45
+            },
+            {
+              "color": "#03070E20",
+              "position": 1
+            }
+          ]
+        },
+        "width": 1440,
+        "height": 560
+      }
+    },
+    {
+      "blockId": "KSf9q",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 36,
+        "y": 196,
+        "width": 950,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "66ef5579b22d3dab6d8d7fb84ffe98507f1539f8a37f067d8378e81a3eb1ec2d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "KSf9q",
+        "x": 36,
+        "y": 196,
+        "name": "heroTitle",
+        "fill": "#F2F5FA",
+        "textGrowth": "fixed-width",
+        "width": 950,
+        "content": "Durable user terminals for mission-critical operations",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 90,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "yWuQa",
+      "blockName": "heroTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 36,
+        "y": 88,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ff76f4e95bebd2b0de022976fb072a4fdaadb066d05fc921c57cd54a19703fae",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "yWuQa",
+        "x": 36,
+        "y": 88,
+        "name": "heroTag",
+        "fill": "#AAB7CC",
+        "content": "Products",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "KN7r3",
+      "blockName": "heroTagLine",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 36,
+        "y": 160,
+        "width": 72,
+        "height": 3
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a18eeef5f50b8990c751aceb508880bbb75deeaccb456829490b0af4ad3cd905",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "KN7r3",
+        "x": 36,
+        "y": 160,
+        "name": "heroTagLine",
+        "fill": "#5A84FF",
+        "width": 72,
+        "height": 3
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "AQUKO",
+    "x": 0,
+    "y": 86,
+    "name": "hero",
+    "width": 1440,
+    "height": 560,
+    "fill": {
+      "type": "image",
+      "enabled": true,
+      "url": "https://images.unsplash.com/photo-1493238792000-8113da705763?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHNlYXJjaHwxfHxtaWxpdGFyeSUyMHZlaGljbGUlMjBkZXNlcnR8ZW58MHx8fHwxNzczMjcxOTQ2fDA&ixlib=rb-4.1.0&q=80&w=1600",
+      "mode": "fill"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "mT1hY",
+        "x": 0,
+        "y": 0,
+        "name": "heroOver",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 90,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#03070ECC",
+              "position": 0
+            },
+            {
+              "color": "#03070E66",
+              "position": 0.45
+            },
+            {
+              "color": "#03070E20",
+              "position": 1
+            }
+          ]
+        },
+        "width": 1440,
+        "height": 560
+      },
+      {
+        "type": "text",
+        "id": "KSf9q",
+        "x": 36,
+        "y": 196,
+        "name": "heroTitle",
+        "fill": "#F2F5FA",
+        "textGrowth": "fixed-width",
+        "width": 950,
+        "content": "Durable user terminals for mission-critical operations",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 90,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "yWuQa",
+        "x": 36,
+        "y": 88,
+        "name": "heroTag",
+        "fill": "#AAB7CC",
+        "content": "Products",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "id": "KN7r3",
+        "x": 36,
+        "y": 160,
+        "name": "heroTagLine",
+        "fill": "#5A84FF",
+        "width": 72,
+        "height": 3
+      }
+    ]
+  }
+}

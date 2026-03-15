@@ -1,0 +1,114 @@
+{
+  "blockId": "ILrKz",
+  "blockName": "feat2",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 8,
+  "treeHash": "16545ad9bff13c03aa2eb622a0d82bbf9c9dea4f498089ad9edb72d64716084f",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "ILrKz",
+    "name": "feat2",
+    "width": "fill_container",
+    "gap": 36,
+    "children": [
+      {
+        "type": "frame",
+        "id": "LMkGF",
+        "name": "feat2Text",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 12,
+        "justifyContent": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "2r6kW",
+            "fill": "#1E252D",
+            "textGrowth": "fixed-width",
+            "width": 430,
+            "content": "Linux Gaming\nwith Framework",
+            "lineHeight": 0.95,
+            "fontFamily": "Inter",
+            "fontSize": 52,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "E7NtU",
+            "fill": "#8A9198",
+            "content": "News | Feb 26 2026",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "text",
+            "id": "b6akC",
+            "fill": "#4F565E",
+            "textGrowth": "fixed-width",
+            "width": 430,
+            "content": "One of the most common questions we see is Linux support. Today we share progress and setup tips.",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "frame",
+            "id": "0uWI1",
+            "name": "b2",
+            "width": 94,
+            "height": 30,
+            "cornerRadius": 16,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#8D9298"
+            },
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "nTqg2",
+                "fill": "#2F353B",
+                "content": "Read More",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "c1vp1",
+        "name": "feat2Img",
+        "metadata": {
+          "type": "unsplash",
+          "username": "rombo_guitar_picks",
+          "link": "https://unsplash.com/@rombo_guitar_picks",
+          "author": "Rombo"
+        },
+        "width": 520,
+        "height": 280,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1673552408313-6ebe5a43ccd4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjA1NTl8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 2
+      }
+    ]
+  }
+}

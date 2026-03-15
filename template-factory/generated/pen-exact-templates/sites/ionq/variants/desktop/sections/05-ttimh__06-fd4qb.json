@@ -1,0 +1,245 @@
+{
+  "sectionId": "Fd4Qb",
+  "sectionName": "cta",
+  "sectionKind": "cta",
+  "order": 6,
+  "bounds": {
+    "x": 0,
+    "y": 3636,
+    "width": 1200,
+    "height": 479
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 5,
+  "treeHash": "e162a49ae1d0270bf0cb32357cb6192c53a6f7f5afc9216ebafdc67a0c2ce7a5",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "QjOo1",
+      "blockName": "ctaT",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 128,
+        "width": 980,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ecc824b38a7a6f20932726b902501a77b8814a48703c72745885b927bc5f9942"
+    },
+    {
+      "blockId": "reKJC",
+      "blockName": "ctaD",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 32,
+        "y": 300,
+        "width": 700,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0c3bd72c92e4433714fa7651b4b931eb5e0bde47a173806c0c19a78fd59ce083"
+    },
+    {
+      "blockId": "llQKY",
+      "blockName": "ctaBtn",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 360,
+        "width": 120,
+        "height": 38
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "d210f44a973652d20077499645932cd0d5d3e816701687058dbec7bcbf01e0c5"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "QjOo1",
+      "blockName": "ctaT",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 128,
+        "width": 980,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ecc824b38a7a6f20932726b902501a77b8814a48703c72745885b927bc5f9942",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "QjOo1",
+        "x": 32,
+        "y": 128,
+        "name": "ctaT",
+        "fill": "#F1F5FA",
+        "textGrowth": "fixed-width",
+        "width": 980,
+        "content": "Harness the world-changing\npower of quantum computing",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 64,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "reKJC",
+      "blockName": "ctaD",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 32,
+        "y": 300,
+        "width": 700,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0c3bd72c92e4433714fa7651b4b931eb5e0bde47a173806c0c19a78fd59ce083",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "reKJC",
+        "x": 32,
+        "y": 300,
+        "name": "ctaD",
+        "fill": "#A1ACB8",
+        "textGrowth": "fixed-width",
+        "width": 700,
+        "content": "Access our quantum systems on the cloud in as little as ten minutes, or contact our experts to discuss a custom partnership for your business.",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "llQKY",
+      "blockName": "ctaBtn",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 360,
+        "width": 120,
+        "height": 38
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "d210f44a973652d20077499645932cd0d5d3e816701687058dbec7bcbf01e0c5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "llQKY",
+        "x": 32,
+        "y": 360,
+        "name": "ctaBtn",
+        "width": 120,
+        "height": 38,
+        "fill": "#FF6A00",
+        "cornerRadius": 8,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "PsgX9",
+            "x": 24,
+            "y": 11,
+            "name": "ctaBtnT",
+            "fill": "#FFFFFF",
+            "content": "Get started",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "Fd4Qb",
+    "x": 0,
+    "y": 3636,
+    "name": "cta",
+    "metadata": {
+      "type": "unsplash",
+      "username": "_zash_capturing",
+      "link": "https://unsplash.com/@_zash_capturing",
+      "author": "_zash_ capturing"
+    },
+    "width": 1200,
+    "height": 479,
+    "fill": "#04070B",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "QjOo1",
+        "x": 32,
+        "y": 128,
+        "name": "ctaT",
+        "fill": "#F1F5FA",
+        "textGrowth": "fixed-width",
+        "width": 980,
+        "content": "Harness the world-changing\npower of quantum computing",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 64,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "reKJC",
+        "x": 32,
+        "y": 300,
+        "name": "ctaD",
+        "fill": "#A1ACB8",
+        "textGrowth": "fixed-width",
+        "width": 700,
+        "content": "Access our quantum systems on the cloud in as little as ten minutes, or contact our experts to discuss a custom partnership for your business.",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "llQKY",
+        "x": 32,
+        "y": 360,
+        "name": "ctaBtn",
+        "width": 120,
+        "height": 38,
+        "fill": "#FF6A00",
+        "cornerRadius": 8,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "PsgX9",
+            "x": 24,
+            "y": 11,
+            "name": "ctaBtnT",
+            "fill": "#FFFFFF",
+            "content": "Get started",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

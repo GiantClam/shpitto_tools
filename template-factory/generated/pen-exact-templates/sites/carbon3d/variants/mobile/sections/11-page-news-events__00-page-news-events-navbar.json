@@ -1,0 +1,289 @@
+{
+  "sectionId": "page-news-events-navbar",
+  "sectionName": "Navbar",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 68
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "05d0e4d8b2f3b1c11861068d5eb4dbb77b8edf0a978bf2feb3eb90f04f0876a4",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "page-news-events-navbar-bg",
+      "blockName": "page-news-events-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "27ad64d8bc83b34618db6385844d83c9fc63b2902a55958ccd3e8c7c9a535735"
+    },
+    {
+      "blockId": "page-news-events-navbar-logo",
+      "blockName": "page-news-events-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 22,
+        "width": 84,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f9c00026e0b53675a8fb567f30068fa184629daaadf94e20be15f5da3e2d81e3"
+    },
+    {
+      "blockId": "page-news-events-navbar-menu",
+      "blockName": "page-news-events-navbar-menu",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 350,
+        "y": 24,
+        "width": 18,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7b13ecbd2f15a0d9879e6128f7db40dc004a1ac16dc510fba8bae333eda15c5c"
+    },
+    {
+      "blockId": "page-news-events-navbar-search",
+      "blockName": "page-news-events-navbar-search",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 308,
+        "y": 26,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5616d7bbaf88c3cafcfe0dd21b2944444461f6e94514e18a3070b9a80bbe979b"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+      "relativePath": "assets-structured/carbon/carbon-logo.png",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "page-news-events-navbar-bg",
+      "blockName": "page-news-events-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "27ad64d8bc83b34618db6385844d83c9fc63b2902a55958ccd3e8c7c9a535735",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-news-events-navbar-bg",
+        "name": "page-news-events-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68,
+        "fill": "#000000"
+      }
+    },
+    {
+      "blockId": "page-news-events-navbar-logo",
+      "blockName": "page-news-events-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 22,
+        "width": 84,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f9c00026e0b53675a8fb567f30068fa184629daaadf94e20be15f5da3e2d81e3",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+        "relativePath": "assets-structured/carbon/carbon-logo.png",
+        "exists": true,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-news-events-navbar-logo",
+        "name": "page-news-events-navbar-logo",
+        "x": 18,
+        "y": 22,
+        "width": 84,
+        "height": 26,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "page-news-events-navbar-menu",
+      "blockName": "page-news-events-navbar-menu",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 350,
+        "y": 24,
+        "width": 18,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7b13ecbd2f15a0d9879e6128f7db40dc004a1ac16dc510fba8bae333eda15c5c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-news-events-navbar-menu",
+        "name": "page-news-events-navbar-menu",
+        "x": 350,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 20,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "page-news-events-navbar-search",
+      "blockName": "page-news-events-navbar-search",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 308,
+        "y": 26,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5616d7bbaf88c3cafcfe0dd21b2944444461f6e94514e18a3070b9a80bbe979b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-news-events-navbar-search",
+        "name": "page-news-events-navbar-search",
+        "x": 308,
+        "y": 26,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 18,
+        "href": "#page-products"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "page-news-events-navbar",
+    "name": "Navbar",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 68,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-news-events-navbar-bg",
+        "name": "page-news-events-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68,
+        "fill": "#000000"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-navbar-logo",
+        "name": "page-news-events-navbar-logo",
+        "x": 18,
+        "y": 22,
+        "width": 84,
+        "height": 26,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-navbar-menu",
+        "name": "page-news-events-navbar-menu",
+        "x": 350,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 20,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-navbar-search",
+        "name": "page-news-events-navbar-search",
+        "x": 308,
+        "y": 26,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 18,
+        "href": "#page-products"
+      }
+    ]
+  }
+}

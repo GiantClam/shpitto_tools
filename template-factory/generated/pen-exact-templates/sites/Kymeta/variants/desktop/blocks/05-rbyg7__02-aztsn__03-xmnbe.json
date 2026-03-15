@@ -1,0 +1,105 @@
+{
+  "blockId": "XmNBE",
+  "blockName": "c4",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 3,
+  "bounds": {
+    "x": 684,
+    "y": 700,
+    "width": 644,
+    "height": 640
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "d82deb8affa322e9a938d971d87f357d56f6aef1257bad80ce90990e5d971f94",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "XmNBE",
+    "x": 684,
+    "y": 700,
+    "name": "c4",
+    "width": 644,
+    "height": 640,
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "fHUZ2",
+        "x": 0,
+        "y": 0,
+        "name": "c4img",
+        "metadata": {
+          "type": "unsplash",
+          "username": "brett_jordan",
+          "link": "https://unsplash.com/@brett_jordan",
+          "author": "Brett Jordan"
+        },
+        "width": 644,
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1590239683804-b9f5725fe77c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjM1MDN8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "YbE0P",
+        "x": 0,
+        "y": 386,
+        "name": "c4t",
+        "fill": "#2A313C",
+        "content": "Policies & warranties",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "xJxvV",
+        "x": 0,
+        "y": 420,
+        "name": "c4d",
+        "fill": "#5E6776",
+        "textGrowth": "fixed-width",
+        "width": 620,
+        "content": "Our products are backed by an included 12-month warranty with the option to extend up to an additional 24 years. Learn about terms and other policies, including downloadable warranty documentation.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 3,
+        "id": "zs0Nj",
+        "x": 0,
+        "y": 520,
+        "name": "c4b",
+        "fill": "#F5F8FD",
+        "width": 126,
+        "height": 28,
+        "stroke": {
+          "align": "inside",
+          "thickness": 1,
+          "fill": "#9AB0D7"
+        }
+      },
+      {
+        "type": "text",
+        "id": "NlDtS",
+        "x": 7,
+        "y": 527,
+        "name": "c4bt",
+        "fill": "#2E446D",
+        "content": "Policies & warranties",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

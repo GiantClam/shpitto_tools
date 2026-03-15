@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "template-factory.pen.v1",
+  "kind": "site-pen-bundle",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "siteId": "pagani",
+  "siteName": "Pagani",
+  "reviewMode": "site-level",
+  "requiredVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "availableVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "responsiveModes": {
+    "desktop": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "exact-source"
+    },
+    "mobile": {
+      "supported": true,
+      "sourceVariant": "mobile",
+      "mode": "exact-source"
+    }
+  },
+  "capabilities": {
+    "exactTemplate": true,
+    "skinnable": true,
+    "sandboxPreview": true,
+    "dualModeReady": true,
+    "exactMobileSource": true
+  },
+  "commercialReadiness": {
+    "structuralValidationPassed": true,
+    "visualValidationPassed": true,
+    "sandboxRuntimePassed": true,
+    "skinnableReady": true,
+    "publishInputReady": true
+  },
+  "artifacts": [
+    {
+      "caseId": "pagani-desktop",
+      "siteId": "pagani",
+      "siteName": "Pagani",
+      "siteGroupId": "pagani",
+      "variant": "desktop",
+      "siteKey": "pen-exact-site-pagani-desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/pagani.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-pagani-desktop/sandbox/payload.json",
+      "sourceHash": "d8841f59a2b6a424d47143ce3e5a7e98c01a5c59d24bf8a8ab7bb209d43202e4",
+      "pageCount": 10,
+      "sectionCount": 21,
+      "blockCount": 267,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/pagani/variants/desktop/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/pagani/variants/desktop/template.skin.json",
+      "previewPages": 10,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-pagani-desktop&page=home"
+    },
+    {
+      "caseId": "pagani-mobile",
+      "siteId": "pagani",
+      "siteName": "Pagani",
+      "siteGroupId": "pagani",
+      "variant": "mobile",
+      "siteKey": "pen-exact-site-pagani-mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/pagani-mobile.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-pagani-mobile/sandbox/payload.json",
+      "sourceHash": "1978e5e3b5e6b49b6559616cab7356985120b65f6cb48889d2fe658e957bb41a",
+      "pageCount": 10,
+      "sectionCount": 20,
+      "blockCount": 194,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/pagani/variants/mobile/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/pagani/variants/mobile/template.skin.json",
+      "previewPages": 10,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-pagani-mobile&page=home"
+    }
+  ]
+}

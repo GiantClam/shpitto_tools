@@ -1,0 +1,335 @@
+{
+  "sectionId": "footer",
+  "sectionName": "Footer",
+  "sectionKind": "footer",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 1354,
+    "width": 390,
+    "height": 250
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "181ec46edc041b8df51dbffc48e4af0eb468080ff39951cdcfa4aba99f8e213d",
+  "blockCount": 5,
+  "blockIndex": [
+    {
+      "blockId": "footer-bg",
+      "blockName": "footer-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f376df9ebf891ed1d89c5236f30961671f267ef85a1da8f44fb69cacae859970"
+    },
+    {
+      "blockId": "footer-brand",
+      "blockName": "footer-brand",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 30,
+        "width": 220,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "35ba42ab8a6d205c35d35c6cee99806fee7ecdc591b1d7810c207c2a2fa7795f"
+    },
+    {
+      "blockId": "footer-col-1",
+      "blockName": "footer-col-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 68,
+        "width": 130,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "04e10cf421512ebfaf3feb95206ba60841bff4e04cb7cdee2f0f585972c64499"
+    },
+    {
+      "blockId": "footer-col-2",
+      "blockName": "footer-col-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 182,
+        "y": 68,
+        "width": 130,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "eaad21fdb86f142f396255c27dd69d7adbe1012c3bd45623f5dd21d29a786897"
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 188,
+        "width": 320,
+        "height": 49
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "83bd82b9157dff5ec541c00599715d7fba85a7eec79776766b3ad3ff7ee51f72"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "footer-bg",
+      "blockName": "footer-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f376df9ebf891ed1d89c5236f30961671f267ef85a1da8f44fb69cacae859970",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "footer-bg",
+        "name": "footer-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250,
+        "fill": "#121212"
+      }
+    },
+    {
+      "blockId": "footer-brand",
+      "blockName": "footer-brand",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 30,
+        "width": 220,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "35ba42ab8a6d205c35d35c6cee99806fee7ecdc591b1d7810c207c2a2fa7795f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-brand",
+        "name": "footer-brand",
+        "x": 18,
+        "y": 30,
+        "fill": "#F2F0EC",
+        "content": "Analogue",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 24
+      }
+    },
+    {
+      "blockId": "footer-col-1",
+      "blockName": "footer-col-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 68,
+        "width": 130,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "04e10cf421512ebfaf3feb95206ba60841bff4e04cb7cdee2f0f585972c64499",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-col-1",
+        "name": "footer-col-1",
+        "x": 18,
+        "y": 68,
+        "fill": "#F2F0EC",
+        "content": "Products Support Announcements",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "footer-col-2",
+      "blockName": "footer-col-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 182,
+        "y": 68,
+        "width": 130,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "eaad21fdb86f142f396255c27dd69d7adbe1012c3bd45623f5dd21d29a786897",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-col-2",
+        "name": "footer-col-2",
+        "x": 182,
+        "y": 68,
+        "fill": "#F2F0EC",
+        "content": "Developer Editions 3D Pocket",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 188,
+        "width": 320,
+        "height": 49
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "83bd82b9157dff5ec541c00599715d7fba85a7eec79776766b3ad3ff7ee51f72",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-copy",
+        "name": "footer-copy",
+        "x": 18,
+        "y": 188,
+        "fill": "#D8D5CE",
+        "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "footer",
+    "name": "Footer",
+    "x": 0,
+    "y": 1354,
+    "width": 390,
+    "height": 250,
+    "fill": "#121212",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "footer-bg",
+        "name": "footer-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250,
+        "fill": "#121212"
+      },
+      {
+        "type": "text",
+        "id": "footer-brand",
+        "name": "footer-brand",
+        "x": 18,
+        "y": 30,
+        "fill": "#F2F0EC",
+        "content": "Analogue",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 24
+      },
+      {
+        "type": "text",
+        "id": "footer-col-1",
+        "name": "footer-col-1",
+        "x": 18,
+        "y": 68,
+        "fill": "#F2F0EC",
+        "content": "Products Support Announcements",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "footer-col-2",
+        "name": "footer-col-2",
+        "x": 182,
+        "y": 68,
+        "fill": "#F2F0EC",
+        "content": "Developer Editions 3D Pocket",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "footer-copy",
+        "name": "footer-copy",
+        "x": 18,
+        "y": 188,
+        "fill": "#D8D5CE",
+        "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      }
+    ]
+  }
+}

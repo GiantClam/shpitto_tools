@@ -1,0 +1,490 @@
+{
+  "sectionId": "focus",
+  "sectionName": "Focus",
+  "sectionKind": "generic",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 320,
+    "width": 390,
+    "height": 220
+  },
+  "directChildCount": 7,
+  "recursiveNodeCount": 8,
+  "treeHash": "ec640345a13f460d6ae1c12288f532c26f90c2acff86ba7de4d5f5e4d14c6b73",
+  "blockCount": 7,
+  "blockIndex": [
+    {
+      "blockId": "focus-label",
+      "blockName": "focus-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 16,
+        "width": 150,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "380311b001013cb40ee5ec9c08971dd133f25b6122e4d92a339a891aadbd58b6"
+    },
+    {
+      "blockId": "focus-card-box",
+      "blockName": "focus-card-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 46,
+        "width": 354,
+        "height": 148
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "060542d796d3f58b305beddabf99bd2f8b57d0ab5aae4639090c1e55d69b9e21"
+    },
+    {
+      "blockId": "focus-card-img",
+      "blockName": "focus-card-img",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 2,
+      "bounds": {
+        "x": 28,
+        "y": 56,
+        "width": 110,
+        "height": 88
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cbb07097ea44c474fea2a2c393f1ba52490ef03244a3cbe8c2f230b966e44c48"
+    },
+    {
+      "blockId": "focus-card-title",
+      "blockName": "focus-card-title",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 150,
+        "y": 64,
+        "width": 200,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "01574719bb588015b97e0d1e3af9e724032ab8a75a9cda1b40b6fbfc0d6e0d7c"
+    },
+    {
+      "blockId": "focus-card-body",
+      "blockName": "focus-card-body",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 150,
+        "y": 98,
+        "width": 200,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dd9eaf4bd23b6883c1eef04ae6fef7696252acb55ede301083b6f887725ff12b"
+    },
+    {
+      "blockId": "focus-card-btn-box",
+      "blockName": "focus-card-btn-box",
+      "blockType": "rectangle",
+      "order": 5,
+      "bounds": {
+        "x": 150,
+        "y": 146,
+        "width": 120,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6b666210308013f2fab4365747d47b52f665076e1316bb77f3af229a7157ef2b"
+    },
+    {
+      "blockId": "focus-card-btn-text",
+      "blockName": "focus-card-btn-text",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 166,
+        "y": 152,
+        "width": 88,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ec8a2f8f75168669e59e82ee6a6ca775f4ab816cbafcc6f037c7475d0106ba0c"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/focus-warcom.jpg",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "focus-label",
+      "blockName": "focus-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 16,
+        "width": 150,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "380311b001013cb40ee5ec9c08971dd133f25b6122e4d92a339a891aadbd58b6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "focus-label",
+        "name": "focus-label",
+        "x": 18,
+        "y": 16,
+        "fill": "#3E4248",
+        "content": "FOCUS ON",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 150,
+        "height": 25
+      }
+    },
+    {
+      "blockId": "focus-card-box",
+      "blockName": "focus-card-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 46,
+        "width": 354,
+        "height": 148
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "060542d796d3f58b305beddabf99bd2f8b57d0ab5aae4639090c1e55d69b9e21",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "focus-card-box",
+        "name": "focus-card-box",
+        "x": 18,
+        "y": 46,
+        "width": 354,
+        "height": 148,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-warcom-news",
+        "cornerRadius": 2
+      }
+    },
+    {
+      "blockId": "focus-card-img",
+      "blockName": "focus-card-img",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 2,
+      "bounds": {
+        "x": 28,
+        "y": 56,
+        "width": 110,
+        "height": 88
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cbb07097ea44c474fea2a2c393f1ba52490ef03244a3cbe8c2f230b966e44c48",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/focus-warcom.jpg",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "focus-card-img",
+        "name": "focus-card-img",
+        "x": 28,
+        "y": 56,
+        "width": 110,
+        "height": 88,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/focus-warcom.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-warcom-news"
+      }
+    },
+    {
+      "blockId": "focus-card-title",
+      "blockName": "focus-card-title",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 150,
+        "y": 64,
+        "width": 200,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "01574719bb588015b97e0d1e3af9e724032ab8a75a9cda1b40b6fbfc0d6e0d7c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "focus-card-title",
+        "name": "focus-card-title",
+        "x": 150,
+        "y": 64,
+        "fill": "#3E4248",
+        "content": "WARCOM AND FPT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 26,
+        "href": "#page-warcom-news"
+      }
+    },
+    {
+      "blockId": "focus-card-body",
+      "blockName": "focus-card-body",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 150,
+        "y": 98,
+        "width": 200,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dd9eaf4bd23b6883c1eef04ae6fef7696252acb55ede301083b6f887725ff12b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "focus-card-body",
+        "name": "focus-card-body",
+        "x": 150,
+        "y": 98,
+        "fill": "#72787F",
+        "content": "共享质量、创新与制造能力的客户案例。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 22,
+        "href": "#page-warcom-news"
+      }
+    },
+    {
+      "blockId": "focus-card-btn-box",
+      "blockName": "focus-card-btn-box",
+      "blockType": "rectangle",
+      "order": 5,
+      "bounds": {
+        "x": 150,
+        "y": 146,
+        "width": 120,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6b666210308013f2fab4365747d47b52f665076e1316bb77f3af229a7157ef2b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "focus-card-btn-box",
+        "name": "focus-card-btn-box",
+        "x": 150,
+        "y": 146,
+        "width": 120,
+        "height": 30,
+        "fill": "#E8C400",
+        "href": "#page-warcom-news",
+        "cornerRadius": 18
+      }
+    },
+    {
+      "blockId": "focus-card-btn-text",
+      "blockName": "focus-card-btn-text",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 166,
+        "y": 152,
+        "width": 88,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ec8a2f8f75168669e59e82ee6a6ca775f4ab816cbafcc6f037c7475d0106ba0c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "focus-card-btn-text",
+        "name": "focus-card-btn-text",
+        "x": 166,
+        "y": 152,
+        "fill": "#565D66",
+        "content": "了解更多",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 88,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-warcom-news",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "focus",
+    "name": "Focus",
+    "x": 0,
+    "y": 320,
+    "width": 390,
+    "height": 220,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "focus-label",
+        "name": "focus-label",
+        "x": 18,
+        "y": 16,
+        "fill": "#3E4248",
+        "content": "FOCUS ON",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 150,
+        "height": 25
+      },
+      {
+        "type": "rectangle",
+        "id": "focus-card-box",
+        "name": "focus-card-box",
+        "x": 18,
+        "y": 46,
+        "width": 354,
+        "height": 148,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-warcom-news",
+        "cornerRadius": 2
+      },
+      {
+        "type": "rectangle",
+        "id": "focus-card-img",
+        "name": "focus-card-img",
+        "x": 28,
+        "y": 56,
+        "width": 110,
+        "height": 88,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/focus-warcom.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-warcom-news"
+      },
+      {
+        "type": "text",
+        "id": "focus-card-title",
+        "name": "focus-card-title",
+        "x": 150,
+        "y": 64,
+        "fill": "#3E4248",
+        "content": "WARCOM AND FPT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 26,
+        "href": "#page-warcom-news"
+      },
+      {
+        "type": "text",
+        "id": "focus-card-body",
+        "name": "focus-card-body",
+        "x": 150,
+        "y": 98,
+        "fill": "#72787F",
+        "content": "共享质量、创新与制造能力的客户案例。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 22,
+        "href": "#page-warcom-news"
+      },
+      {
+        "type": "rectangle",
+        "id": "focus-card-btn-box",
+        "name": "focus-card-btn-box",
+        "x": 150,
+        "y": 146,
+        "width": 120,
+        "height": 30,
+        "fill": "#E8C400",
+        "href": "#page-warcom-news",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "focus-card-btn-text",
+        "name": "focus-card-btn-text",
+        "x": 166,
+        "y": 152,
+        "fill": "#565D66",
+        "content": "了解更多",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 88,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-warcom-news",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

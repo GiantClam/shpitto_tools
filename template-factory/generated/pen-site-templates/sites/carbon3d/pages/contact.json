@@ -1,0 +1,3393 @@
+{
+  "pageId": "page-contact",
+  "pageKey": "contact",
+  "pageName": "Contact",
+  "pageType": "contact",
+  "devices": {
+    "desktop": {
+      "bounds": {
+        "width": 1440,
+        "height": 1880
+      },
+      "supportBlocks": [
+        {
+          "id": "page-contact-bg",
+          "name": "page-contact-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1880
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0D1022"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07"
+          }
+        },
+        {
+          "id": "page-contact-hero",
+          "name": "page-contact-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 360
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-contact-hero-overlay",
+          "name": "page-contact-hero-overlay",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 360
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0000004A"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color14"
+          }
+        },
+        {
+          "id": "page-contact-crumb",
+          "name": "page-contact-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 40,
+            "y": 108,
+            "width": 220,
+            "height": 22
+          },
+          "href": "",
+          "content": "Home / Contact",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-title",
+          "name": "page-contact-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 142,
+            "width": 760,
+            "height": 77
+          },
+          "href": "",
+          "content": "Contact Us",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 50,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size10",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-subtitle",
+          "name": "page-contact-subtitle",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 210,
+            "width": 700,
+            "height": 29
+          },
+          "href": "",
+          "content": "Support and Service Requests",
+          "style": {
+            "fill": "#E3E7F5",
+            "typography": {
+              "fill": "#E3E7F5",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 16,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color16",
+            "textColor": "textColor.palette.text07",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size06",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-home-btn-box",
+          "name": "page-contact-home-btn-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 40,
+            "y": 264,
+            "width": 120,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-contact-home-btn-text",
+          "name": "page-contact-home-btn-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 58,
+            "y": 273,
+            "width": 84,
+            "height": 20
+          },
+          "href": "#page-home",
+          "content": "HOME",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-more-btn-box",
+          "name": "page-contact-more-btn-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 176,
+            "y": 264,
+            "width": 160,
+            "height": 38
+          },
+          "href": "#page-platform",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-contact-more-btn-text",
+          "name": "page-contact-more-btn-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 194,
+            "y": 273,
+            "width": 124,
+            "height": 20
+          },
+          "href": "#page-platform",
+          "content": "THIRD LEVEL",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-panel",
+          "name": "page-contact-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 40,
+            "y": 396,
+            "width": 1360,
+            "height": 1120
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#20243A",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color15",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius02"
+          }
+        },
+        {
+          "id": "page-contact-eyebrow",
+          "name": "page-contact-eyebrow",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 418,
+            "width": 240,
+            "height": 18
+          },
+          "href": "",
+          "content": "CONTACT",
+          "style": {
+            "fill": "#5FD3FF",
+            "typography": {
+              "fill": "#5FD3FF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-panel-title",
+          "name": "page-contact-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 450,
+            "width": 580,
+            "height": 63
+          },
+          "href": "",
+          "content": "Contact Us",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 40,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size08",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-p-0",
+          "name": "page-contact-p-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 510,
+            "width": 560,
+            "height": 92
+          },
+          "href": "",
+          "content": "Industry * —Please choose an option— Aerospace Automotive Industrial Military / Defense Consumer Goods Sporting Goods Education Medical / Healthcare Contract Manufacturer Service Provider Clear Aligners Dental / Orthodontic Laboratory Other",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-p-1",
+          "name": "page-contact-p-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 620,
+            "width": 560,
+            "height": 731
+          },
+          "href": "",
+          "content": "Country * —Please choose an option— United States Canada Afghanistan Albania Algeria American Samoa Andorra Angola Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia and Herzegovina Botswana Brazil Brunei Darussalam Bulgaria Burkina Faso Burundi Cambodia Cameroon Cape Verde Cayman Islands Central African Republic Chad Chile China Colombia Comoros Congo Congo, the Democratic Republic of the Cook Islands Costa Rica Côte d’Ivoire Croatia Cuba Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Fiji Finland France Gabon Gambia Georgia Germany Ghana Greece Grenada Guam Guatemala Guinea Guinea-Bissau Guyana Haiti Honduras Hungary Iceland India Indonesia Iran, Islamic Republic of Iraq Ireland Israel Italy Jamaica Japan Jordan Kazakhstan Kenya Kiribati Korea, Democratic People’s Republic of Korea, Republic of Kuwait Kyrgyzstan Lao People’s Democratic Republic Latvia Lebanon Lesotho Liberia Libya Liechtenstein Lithuania Luxembourg Madagascar Malawi Malaysia Maldives Mali Malta Marshall Islands Mauritania Mauritius Mexico Micronesia, Federated States of Moldova, Republic of Monaco Mongolia Montenegro Morocco Mozambique Myanmar Namibia Nauru Nepal Netherlands New Zealand Nicaragua Niger Nigeria Niue Norfolk Island Northern Mariana Islands Norway Oman Pakistan Palau Panama Papua New Guinea Paraguay Peru Philippines Poland Portugal Puerto Rico Qatar Romania Russian Federation Rwanda Saint Kitts and Nevis Saint Lucia Saint Vincent and the Grenadines Samoa San Marino Sao Tome and Principe Saudi Arabia Senegal Serbia Seychelles Sierra Leone Singapore Slovakia Slovenia Solomon Islands Somalia South Africa South Sudan Spain Sri Lanka Sudan Suriname Sweden Switzerland Syrian Arab Republic Taiwan Tajikistan Tanzania, United Republic of Thailand Timor-Leste Togo Tokelau Tonga Trinidad and Tobago Tunisia Turkey Turkmenistan Tuvalu Uganda Ukraine United Arab Emirates United Kingdom United States Uruguay Uzbekistan Vanuatu Venezuela, Bolivarian Republic of Viet Nam Western Sahara Yemen Zambia Zimbabwe",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-p-2",
+          "name": "page-contact-p-2",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 1369,
+            "width": 560,
+            "height": 241
+          },
+          "href": "",
+          "content": "State * Providing your state will help us connect you with a local sales rep. —Please choose an option— Alaska Alabama Arkansas American Samoa Arizona California Colorado Connecticut District of Columbia Delaware Florida Georgia Guam Hawaii Iowa Idaho Illinois Indiana Kansas Kentucky Louisiana Massachusetts Maryland Maine Michigan Minnesota Missouri Northern Mariana Islands Mississippi Montana North Carolina North Dakota Nebraska New Hampshire New Jersey New Mexico Nevada New York Ohio Oklahoma Oregon Pennsylvania Puerto Rico Rhode Island South Carolina South Dakota Tennessee Texas United States Minor Outlying Islands Utah Virginia Virgin Islands, U.S. Vermont Washington Wisconsin West Virginia Wyoming",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-p-3",
+          "name": "page-contact-p-3",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 1628,
+            "width": 560,
+            "height": 113
+          },
+          "href": "",
+          "content": "What best describes your interest? * —Please choose an option— Will Carbon work for my Dental/Ortho Lab? Develop a product on the Carbon Platform Produce a prototype on the Carbon Platform Become a Carbon Production Partner Get information about Carbon Design Software General inquires or other requests",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-p-4",
+          "name": "page-contact-p-4",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 1759,
+            "width": 560,
+            "height": 70
+          },
+          "href": "",
+          "content": "What appliances are you interested in? Please select as many as apply. Crown & Bridge Digital Dentures Models Splints Surgical Guides Removable Partial Dentures",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-img-main",
+          "name": "page-contact-img-main",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 880,
+            "y": 420,
+            "width": 480,
+            "height": 300
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-contact-img-side",
+          "name": "page-contact-img-side",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 880,
+            "y": 752,
+            "width": 480,
+            "height": 220
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-contact-card-0",
+          "name": "page-contact-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1080,
+            "width": 260,
+            "height": 220
+          },
+          "href": "#page-platform",
+          "content": "",
+          "style": {
+            "fill": "#151827",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color10",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius04"
+          }
+        },
+        {
+          "id": "page-contact-card-img-0",
+          "name": "page-contact-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 76,
+            "y": 1092,
+            "width": 236,
+            "height": 120
+          },
+          "href": "#page-platform",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 10
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius03"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-contact-card-title-0",
+          "name": "page-contact-card-title-0",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 76,
+            "y": 1224,
+            "width": 236,
+            "height": 28
+          },
+          "href": "#page-platform",
+          "content": "Need to Order Resin?",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-card-body-0",
+          "name": "page-contact-card-body-0",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 76,
+            "y": 1250,
+            "width": 236,
+            "height": 109
+          },
+          "href": "#page-platform",
+          "content": "Industry * —Please choose an option— Aerospace Automotive Industrial Military / Defense Consumer Goods Sporting Goods Education Medical / Healthcare C",
+          "style": {
+            "fill": "#AAB0D0",
+            "typography": {
+              "fill": "#AAB0D0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-rel-title",
+          "name": "page-contact-rel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 1540,
+            "width": 200,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related pages",
+          "style": {
+            "fill": "#5FD3FF",
+            "typography": {
+              "fill": "#5FD3FF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-rel-0-box",
+          "name": "page-contact-rel-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1568,
+            "width": 186,
+            "height": 38
+          },
+          "href": "#page-platform",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-contact-rel-0-text",
+          "name": "page-contact-rel-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 82,
+            "y": 1577,
+            "width": 150,
+            "height": 20
+          },
+          "href": "#page-platform",
+          "content": "Platform",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-rel-1-box",
+          "name": "page-contact-rel-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 262,
+            "y": 1568,
+            "width": 186,
+            "height": 38
+          },
+          "href": "#page-partners",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-contact-rel-1-text",
+          "name": "page-contact-rel-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 280,
+            "y": 1577,
+            "width": 150,
+            "height": 20
+          },
+          "href": "#page-partners",
+          "content": "Partners",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-rel-2-box",
+          "name": "page-contact-rel-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 460,
+            "y": 1568,
+            "width": 186,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-contact-rel-2-text",
+          "name": "page-contact-rel-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 478,
+            "y": 1577,
+            "width": 150,
+            "height": 20
+          },
+          "href": "#page-home",
+          "content": "Home",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "contact-chat",
+          "name": "contact-chat",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 1224,
+            "y": 1634,
+            "width": 170,
+            "height": 40
+          },
+          "href": "#page-contact",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "contact-chat-label",
+          "name": "contact-chat-label",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 1246,
+            "y": 1646,
+            "width": 140,
+            "height": 16
+          },
+          "href": "#page-contact",
+          "content": "• CONTACT US",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    },
+    "mobile": {
+      "bounds": {
+        "width": 390,
+        "height": 1700
+      },
+      "supportBlocks": [
+        {
+          "id": "page-contact-bg",
+          "name": "page-contact-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 1700
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0D1022"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07"
+          }
+        },
+        {
+          "id": "page-contact-hero",
+          "name": "page-contact-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 260
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-contact-hero-overlay",
+          "name": "page-contact-hero-overlay",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 260
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0000004A"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color14"
+          }
+        },
+        {
+          "id": "page-contact-crumb",
+          "name": "page-contact-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 18,
+            "y": 92,
+            "width": 220,
+            "height": 22
+          },
+          "href": "",
+          "content": "Home / Contact",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-title",
+          "name": "page-contact-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 126,
+            "width": 320,
+            "height": 49
+          },
+          "href": "",
+          "content": "Contact Us",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 30,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size07",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-subtitle",
+          "name": "page-contact-subtitle",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 186,
+            "width": 330,
+            "height": 25
+          },
+          "href": "",
+          "content": "Support and Service Requests",
+          "style": {
+            "fill": "#E3E7F5",
+            "typography": {
+              "fill": "#E3E7F5",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color16",
+            "textColor": "textColor.palette.text07",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-home-btn-box",
+          "name": "page-contact-home-btn-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 18,
+            "y": 248,
+            "width": 120,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-contact-home-btn-text",
+          "name": "page-contact-home-btn-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 36,
+            "y": 257,
+            "width": 84,
+            "height": 20
+          },
+          "href": "#page-home",
+          "content": "HOME",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-more-btn-box",
+          "name": "page-contact-more-btn-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 154,
+            "y": 248,
+            "width": 160,
+            "height": 38
+          },
+          "href": "#page-platform",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-contact-more-btn-text",
+          "name": "page-contact-more-btn-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 172,
+            "y": 257,
+            "width": 124,
+            "height": 20
+          },
+          "href": "#page-platform",
+          "content": "THIRD LEVEL",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-panel",
+          "name": "page-contact-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 18,
+            "y": 296,
+            "width": 354,
+            "height": 980
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#20243A",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color15",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius02"
+          }
+        },
+        {
+          "id": "page-contact-eyebrow",
+          "name": "page-contact-eyebrow",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 318,
+            "width": 240,
+            "height": 18
+          },
+          "href": "",
+          "content": "CONTACT",
+          "style": {
+            "fill": "#5FD3FF",
+            "typography": {
+              "fill": "#5FD3FF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-panel-title",
+          "name": "page-contact-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 350,
+            "width": 300,
+            "height": 41
+          },
+          "href": "",
+          "content": "Contact Us",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 24,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size09",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-p-0",
+          "name": "page-contact-p-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 410,
+            "width": 300,
+            "height": 136
+          },
+          "href": "",
+          "content": "Industry * —Please choose an option— Aerospace Automotive Industrial Military / Defense Consumer Goods Sporting Goods Education Medical / Healthcare Contract Manufacturer Service Provider Clear Aligners Dental / Orthodontic Laboratory Other",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-p-1",
+          "name": "page-contact-p-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 564,
+            "width": 300,
+            "height": 1114
+          },
+          "href": "",
+          "content": "Country * —Please choose an option— United States Canada Afghanistan Albania Algeria American Samoa Andorra Angola Antigua and Barbuda Argentina Armenia Aruba Australia Austria Azerbaijan Bahamas Bahrain Bangladesh Barbados Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bosnia and Herzegovina Botswana Brazil Brunei Darussalam Bulgaria Burkina Faso Burundi Cambodia Cameroon Cape Verde Cayman Islands Central African Republic Chad Chile China Colombia Comoros Congo Congo, the Democratic Republic of the Cook Islands Costa Rica Côte d’Ivoire Croatia Cuba Cyprus Czech Republic Denmark Djibouti Dominica Dominican Republic Ecuador Egypt El Salvador Equatorial Guinea Eritrea Estonia Ethiopia Fiji Finland France Gabon Gambia Georgia Germany Ghana Greece Grenada Guam Guatemala Guinea Guinea-Bissau Guyana Haiti Honduras Hungary Iceland India Indonesia Iran, Islamic Republic of Iraq Ireland Israel Italy Jamaica Japan Jordan Kazakhstan Kenya Kiribati Korea, Democratic People’s Republic of Korea, Republic of Kuwait Kyrgyzstan Lao People’s Democratic Republic Latvia Lebanon Lesotho Liberia Libya Liechtenstein Lithuania Luxembourg Madagascar Malawi Malaysia Maldives Mali Malta Marshall Islands Mauritania Mauritius Mexico Micronesia, Federated States of Moldova, Republic of Monaco Mongolia Montenegro Morocco Mozambique Myanmar Namibia Nauru Nepal Netherlands New Zealand Nicaragua Niger Nigeria Niue Norfolk Island Northern Mariana Islands Norway Oman Pakistan Palau Panama Papua New Guinea Paraguay Peru Philippines Poland Portugal Puerto Rico Qatar Romania Russian Federation Rwanda Saint Kitts and Nevis Saint Lucia Saint Vincent and the Grenadines Samoa San Marino Sao Tome and Principe Saudi Arabia Senegal Serbia Seychelles Sierra Leone Singapore Slovakia Slovenia Solomon Islands Somalia South Africa South Sudan Spain Sri Lanka Sudan Suriname Sweden Switzerland Syrian Arab Republic Taiwan Tajikistan Tanzania, United Republic of Thailand Timor-Leste Togo Tokelau Tonga Trinidad and Tobago Tunisia Turkey Turkmenistan Tuvalu Uganda Ukraine United Arab Emirates United Kingdom United States Uruguay Uzbekistan Vanuatu Venezuela, Bolivarian Republic of Viet Nam Western Sahara Yemen Zambia Zimbabwe",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-p-2",
+          "name": "page-contact-p-2",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 1696,
+            "width": 300,
+            "height": 376
+          },
+          "href": "",
+          "content": "State * Providing your state will help us connect you with a local sales rep. —Please choose an option— Alaska Alabama Arkansas American Samoa Arizona California Colorado Connecticut District of Columbia Delaware Florida Georgia Guam Hawaii Iowa Idaho Illinois Indiana Kansas Kentucky Louisiana Massachusetts Maryland Maine Michigan Minnesota Missouri Northern Mariana Islands Mississippi Montana North Carolina North Dakota Nebraska New Hampshire New Jersey New Mexico Nevada New York Ohio Oklahoma Oregon Pennsylvania Puerto Rico Rhode Island South Carolina South Dakota Tennessee Texas United States Minor Outlying Islands Utah Virginia Virgin Islands, U.S. Vermont Washington Wisconsin West Virginia Wyoming",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-p-3",
+          "name": "page-contact-p-3",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 2090,
+            "width": 300,
+            "height": 173
+          },
+          "href": "",
+          "content": "What best describes your interest? * —Please choose an option— Will Carbon work for my Dental/Ortho Lab? Develop a product on the Carbon Platform Produce a prototype on the Carbon Platform Become a Carbon Production Partner Get information about Carbon Design Software General inquires or other requests",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-p-4",
+          "name": "page-contact-p-4",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 2281,
+            "width": 300,
+            "height": 99
+          },
+          "href": "",
+          "content": "What appliances are you interested in? Please select as many as apply. Crown & Bridge Digital Dentures Models Splints Surgical Guides Removable Partial Dentures",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-img-main",
+          "name": "page-contact-img-main",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 320,
+            "width": 300,
+            "height": 220
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-contact-img-side",
+          "name": "page-contact-img-side",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 560,
+            "width": 300,
+            "height": 180
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-contact-card-0",
+          "name": "page-contact-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 808,
+            "width": 300,
+            "height": 146
+          },
+          "href": "#page-platform",
+          "content": "",
+          "style": {
+            "fill": "#151827",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color10",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius04"
+          }
+        },
+        {
+          "id": "page-contact-card-img-0",
+          "name": "page-contact-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 54,
+            "y": 820,
+            "width": 276,
+            "height": 82
+          },
+          "href": "#page-platform",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 10
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius03"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-contact-0-adf3909b.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-contact-card-title-0",
+          "name": "page-contact-card-title-0",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 54,
+            "y": 912,
+            "width": 276,
+            "height": 25
+          },
+          "href": "#page-platform",
+          "content": "Need to Order Resin?",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-card-body-0",
+          "name": "page-contact-card-body-0",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 54,
+            "y": 932,
+            "width": 276,
+            "height": 85
+          },
+          "href": "#page-platform",
+          "content": "Industry * —Please choose an option— Aerospace Automotive Industrial Military / Defense Consumer Goods Sporting Goods Education Medical / Healthcare C",
+          "style": {
+            "fill": "#AAB0D0",
+            "typography": {
+              "fill": "#AAB0D0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-contact-rel-title",
+          "name": "page-contact-rel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 1460,
+            "width": 200,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related pages",
+          "style": {
+            "fill": "#5FD3FF",
+            "typography": {
+              "fill": "#5FD3FF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-rel-0-box",
+          "name": "page-contact-rel-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1488,
+            "width": 150,
+            "height": 38
+          },
+          "href": "#page-platform",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-contact-rel-0-text",
+          "name": "page-contact-rel-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 60,
+            "y": 1497,
+            "width": 114,
+            "height": 20
+          },
+          "href": "#page-platform",
+          "content": "Platform",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-rel-1-box",
+          "name": "page-contact-rel-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 204,
+            "y": 1488,
+            "width": 150,
+            "height": 38
+          },
+          "href": "#page-partners",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-contact-rel-1-text",
+          "name": "page-contact-rel-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 222,
+            "y": 1497,
+            "width": 114,
+            "height": 20
+          },
+          "href": "#page-partners",
+          "content": "Partners",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-contact-rel-2-box",
+          "name": "page-contact-rel-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1536,
+            "width": 150,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-contact-rel-2-text",
+          "name": "page-contact-rel-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 60,
+            "y": 1545,
+            "width": 114,
+            "height": 20
+          },
+          "href": "#page-home",
+          "content": "Home",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "contact-chat",
+          "name": "contact-chat",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 240,
+            "y": 1554,
+            "width": 130,
+            "height": 40
+          },
+          "href": "#page-contact",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "contact-chat-label",
+          "name": "contact-chat-label",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 258,
+            "y": 1566,
+            "width": 140,
+            "height": 16
+          },
+          "href": "#page-contact",
+          "content": "• CONTACT US",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "sectionId": "page-contact-navbar",
+      "sectionKey": "page-contact-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "blockCount": 14,
+          "blockTree": {
+            "id": "page-contact-navbar",
+            "name": "Navbar",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 84
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color04"
+            },
+            "children": [
+              {
+                "id": "page-contact-navbar-bg",
+                "name": "page-contact-navbar-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 84
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#000000"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color12"
+                }
+              },
+              {
+                "id": "page-contact-navbar-logo",
+                "name": "page-contact-navbar-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 40,
+                  "y": 20,
+                  "width": 110,
+                  "height": 34
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "page-contact-navbar-search",
+                "name": "page-contact-navbar-search",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 474,
+                  "y": 24,
+                  "width": 70,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Search...",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "page-contact-navbar-intl",
+                "name": "page-contact-navbar-intl",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 584,
+                  "y": 24,
+                  "width": 92,
+                  "height": 18
+                },
+                "href": "",
+                "content": "International",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "page-contact-navbar-design",
+                "name": "page-contact-navbar-design",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 732,
+                  "y": 24,
+                  "width": 110,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Design Engine",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "page-contact-navbar-support",
+                "name": "page-contact-navbar-support",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 850,
+                  "y": 24,
+                  "width": 130,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Customer Support",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "page-contact-navbar-iso",
+                "name": "page-contact-navbar-iso",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1022,
+                  "y": 24,
+                  "width": 120,
+                  "height": 18
+                },
+                "href": "",
+                "content": "ISO 9001:2015",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-contact-navbar-PLATFORM",
+                "name": "page-contact-navbar-PLATFORM",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 540,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-platform",
+                "content": "PLATFORM",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-contact-navbar-INDUSTRIES",
+                "name": "page-contact-navbar-INDUSTRIES",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 656,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-industries",
+                "content": "INDUSTRIES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-contact-navbar-PARTNERS",
+                "name": "page-contact-navbar-PARTNERS",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 782,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-partners",
+                "content": "PARTNERS",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-contact-navbar-RESOURCES",
+                "name": "page-contact-navbar-RESOURCES",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 898,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-resources",
+                "content": "RESOURCES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-contact-navbar-ABOUT",
+                "name": "page-contact-navbar-ABOUT",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1014,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-about",
+                "content": "ABOUT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-contact-navbar-contact-box",
+                "name": "page-contact-navbar-contact-box",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1280,
+                  "y": 32,
+                  "width": 106,
+                  "height": 40
+                },
+                "href": "#page-contact",
+                "content": "",
+                "style": {
+                  "fill": "#7256FF",
+                  "cornerRadius": 12
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "page-contact-navbar-contact-text",
+                "name": "page-contact-navbar-contact-text",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1298,
+                  "y": 42,
+                  "width": 70,
+                  "height": 20
+                },
+                "href": "#page-contact",
+                "content": "CONTACT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.02em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 68
+          },
+          "blockCount": 4,
+          "blockTree": {
+            "id": "page-contact-navbar",
+            "name": "Navbar",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 68
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color04"
+            },
+            "children": [
+              {
+                "id": "page-contact-navbar-bg",
+                "name": "page-contact-navbar-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 68
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#000000"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color12"
+                }
+              },
+              {
+                "id": "page-contact-navbar-logo",
+                "name": "page-contact-navbar-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 18,
+                  "y": 22,
+                  "width": 84,
+                  "height": 26
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "page-contact-navbar-menu",
+                "name": "page-contact-navbar-menu",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 350,
+                  "y": 24,
+                  "width": 18,
+                  "height": 20
+                },
+                "href": "#page-products",
+                "content": "☰",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-contact-navbar-search",
+                "name": "page-contact-navbar-search",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 308,
+                  "y": 26,
+                  "width": 18,
+                  "height": 18
+                },
+                "href": "#page-products",
+                "content": "⌕",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionKey": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": {
+        "desktop": 1,
+        "mobile": 1
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 1560,
+            "width": 1440,
+            "height": 320
+          },
+          "blockCount": 13,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1560,
+              "width": 1440,
+              "height": 320
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#070A14",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color11"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 320
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#070A14"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color11"
+                }
+              },
+              {
+                "id": "footer-logo",
+                "name": "footer-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 40,
+                  "y": 28,
+                  "width": 110,
+                  "height": 34
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "footer-Platform",
+                "name": "footer-Platform",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PLATFORM",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Platform-body",
+                "name": "footer-Platform-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 40,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "How it Works\nMaterials\nSoftware\nHardware",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Products",
+                "name": "footer-Products",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 260,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PRODUCTS",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Products-body",
+                "name": "footer-Products-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 260,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Industries",
+                "name": "footer-Industries",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 500,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "INDUSTRIES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Industries-body",
+                "name": "footer-Industries-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 500,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "Consumer\nDental\nOrthodontics\nIndustrial",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Resources",
+                "name": "footer-Resources",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 760,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "RESOURCES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Resources-body",
+                "name": "footer-Resources-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 760,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "Blog\nCase studies\nCourses\nDatasheets",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-About",
+                "name": "footer-About",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 1020,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "ABOUT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-About-body",
+                "name": "footer-About-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 1020,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "About Carbon\nNewsroom\nContact Us\nPartners",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 40,
+                  "y": 282,
+                  "width": 520,
+                  "height": 38
+                },
+                "href": "",
+                "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+                "style": {
+                  "fill": "#B9C0DA",
+                  "typography": {
+                    "fill": "#B9C0DA",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color13",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 1340,
+            "width": 390,
+            "height": 360
+          },
+          "blockCount": 9,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1340,
+              "width": 390,
+              "height": 360
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#070A14",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color11"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 360
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#070A14"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color11"
+                }
+              },
+              {
+                "id": "footer-logo",
+                "name": "footer-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 18,
+                  "y": 24,
+                  "width": 84,
+                  "height": 26
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "footer-Platform",
+                "name": "footer-Platform",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 74,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PLATFORM",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Platform-body",
+                "name": "footer-Platform-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 18,
+                  "y": 98,
+                  "width": 100,
+                  "height": 53
+                },
+                "href": "",
+                "content": "How it Works\nMaterials\nSoftware",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Products",
+                "name": "footer-Products",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 140,
+                  "y": 74,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PRODUCTS",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Products-body",
+                "name": "footer-Products-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 140,
+                  "y": 98,
+                  "width": 100,
+                  "height": 53
+                },
+                "href": "",
+                "content": "M3 Printer\nM2 Printer\nL1 Printer",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-About",
+                "name": "footer-About",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 262,
+                  "y": 74,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "ABOUT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-About-body",
+                "name": "footer-About-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 262,
+                  "y": 98,
+                  "width": 100,
+                  "height": 53
+                },
+                "href": "",
+                "content": "About Carbon\nNewsroom\nContact",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 18,
+                  "y": 322,
+                  "width": 330,
+                  "height": 53
+                },
+                "href": "",
+                "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+                "style": {
+                  "fill": "#B9C0DA",
+                  "typography": {
+                    "fill": "#B9C0DA",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color13",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

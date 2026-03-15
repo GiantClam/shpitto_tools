@@ -1,0 +1,335 @@
+{
+  "sectionId": "footer",
+  "sectionName": "Footer",
+  "sectionKind": "footer",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 2527,
+    "width": 390,
+    "height": 250
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "d142fd468123980f6d7632f5d8051c515ebdf1eff853e7311501b3aa1c34f7a3",
+  "blockCount": 5,
+  "blockIndex": [
+    {
+      "blockId": "footer-bg",
+      "blockName": "footer-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3030104b6da362da5e686eac8b2c7efbbacc8ecf411b83d292b7f2012fb81484"
+    },
+    {
+      "blockId": "footer-brand",
+      "blockName": "footer-brand",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 30,
+        "width": 220,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "de3ddbeed7009949da6210aa92ef4af84d4894c9ca38a9989d68c0d5e9d0d792"
+    },
+    {
+      "blockId": "footer-col-1",
+      "blockName": "footer-col-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 68,
+        "width": 130,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "939a95b64652641822a351b91715fc75bba72d3fc84dc2be2d0a4e6c5417b71f"
+    },
+    {
+      "blockId": "footer-col-2",
+      "blockName": "footer-col-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 182,
+        "y": 68,
+        "width": 130,
+        "height": 69
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1e2864beef8a3c11aba71f07a87f8d1b397d535aee2481cef5b368b8ed7b361e"
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 188,
+        "width": 320,
+        "height": 49
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2b960f0fe42d50228d4289941093da358cbad2b8f4dc9e1b472c49d2bb354bfd"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "footer-bg",
+      "blockName": "footer-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3030104b6da362da5e686eac8b2c7efbbacc8ecf411b83d292b7f2012fb81484",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "footer-bg",
+        "name": "footer-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250,
+        "fill": "#0F0F10"
+      }
+    },
+    {
+      "blockId": "footer-brand",
+      "blockName": "footer-brand",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 30,
+        "width": 220,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "de3ddbeed7009949da6210aa92ef4af84d4894c9ca38a9989d68c0d5e9d0d792",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-brand",
+        "name": "footer-brand",
+        "x": 18,
+        "y": 30,
+        "fill": "#F4F4F1",
+        "content": "Nothing",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 24
+      }
+    },
+    {
+      "blockId": "footer-col-1",
+      "blockName": "footer-col-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 68,
+        "width": 130,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "939a95b64652641822a351b91715fc75bba72d3fc84dc2be2d0a4e6c5417b71f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-col-1",
+        "name": "footer-col-1",
+        "x": 18,
+        "y": 68,
+        "fill": "#F4F4F1",
+        "content": "Offers Phones Audio",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "footer-col-2",
+      "blockName": "footer-col-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 182,
+        "y": 68,
+        "width": 130,
+        "height": 69
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1e2864beef8a3c11aba71f07a87f8d1b397d535aee2481cef5b368b8ed7b361e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-col-2",
+        "name": "footer-col-2",
+        "x": 182,
+        "y": 68,
+        "fill": "#F4F4F1",
+        "content": "Support Centre Contact Support Phone (3a) Pro Ear (3)",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 69
+      }
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 188,
+        "width": 320,
+        "height": 49
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2b960f0fe42d50228d4289941093da358cbad2b8f4dc9e1b472c49d2bb354bfd",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-copy",
+        "name": "footer-copy",
+        "x": 18,
+        "y": 188,
+        "fill": "#D8D5CE",
+        "content": "Nothing structured clone pen. Editable text, cards, buttons and image containers.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "footer",
+    "name": "Footer",
+    "x": 0,
+    "y": 2527,
+    "width": 390,
+    "height": 250,
+    "fill": "#0F0F10",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "footer-bg",
+        "name": "footer-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250,
+        "fill": "#0F0F10"
+      },
+      {
+        "type": "text",
+        "id": "footer-brand",
+        "name": "footer-brand",
+        "x": 18,
+        "y": 30,
+        "fill": "#F4F4F1",
+        "content": "Nothing",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 24
+      },
+      {
+        "type": "text",
+        "id": "footer-col-1",
+        "name": "footer-col-1",
+        "x": 18,
+        "y": 68,
+        "fill": "#F4F4F1",
+        "content": "Offers Phones Audio",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "footer-col-2",
+        "name": "footer-col-2",
+        "x": 182,
+        "y": 68,
+        "fill": "#F4F4F1",
+        "content": "Support Centre Contact Support Phone (3a) Pro Ear (3)",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 69
+      },
+      {
+        "type": "text",
+        "id": "footer-copy",
+        "name": "footer-copy",
+        "x": 18,
+        "y": 188,
+        "fill": "#D8D5CE",
+        "content": "Nothing structured clone pen. Editable text, cards, buttons and image containers.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      }
+    ]
+  }
+}

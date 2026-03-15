@@ -1,0 +1,73 @@
+{
+  "blockId": "7Xpdr",
+  "blockName": "newsCard4",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 5,
+  "bounds": {
+    "x": 1087,
+    "y": 117,
+    "width": 343,
+    "height": 360
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "bbd99bf9a96574a01ad12307f394eaa40705ee3ccef79266fcf8f10618311bc6",
+  "assetRef": {
+    "rawUrl": "https://images.unsplash.com/photo-1720036237182-5e0adada1873?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjUxMzV8&ixlib=rb-4.1.0&q=80&w=1080",
+    "resolvedPath": "",
+    "relativePath": "",
+    "exists": false,
+    "mode": "fill"
+  },
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "7Xpdr",
+    "x": 1087,
+    "y": 117,
+    "name": "newsCard4",
+    "metadata": {
+      "type": "unsplash",
+      "username": "shavr",
+      "link": "https://unsplash.com/@shavr",
+      "author": "Shavr IK"
+    },
+    "width": 343,
+    "height": 360,
+    "fill": {
+      "type": "image",
+      "enabled": true,
+      "url": "https://images.unsplash.com/photo-1720036237182-5e0adada1873?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjUxMzV8&ixlib=rb-4.1.0&q=80&w=1080",
+      "mode": "fill"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "usSMa",
+        "x": 0,
+        "y": 300,
+        "name": "news4t",
+        "fill": "#6A665E",
+        "content": "新闻 2026-2-16",
+        "fontFamily": "Inter",
+        "fontSize": 10,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "A1ybc",
+        "x": 0,
+        "y": 322,
+        "name": "news4s",
+        "fill": "#222222",
+        "textGrowth": "fixed-width",
+        "width": 268,
+        "content": "展望2026年，以人为本、技术和可持续投资驱动行业发展",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

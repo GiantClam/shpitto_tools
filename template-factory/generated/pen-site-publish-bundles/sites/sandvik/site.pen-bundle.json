@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "template-factory.pen.v1",
+  "kind": "site-pen-bundle",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "siteId": "sandvik",
+  "siteName": "Sandvik",
+  "reviewMode": "site-level",
+  "requiredVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "availableVariants": [
+    "desktop"
+  ],
+  "responsiveModes": {
+    "desktop": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "exact-source"
+    },
+    "mobile": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "responsive-derived-from-desktop"
+    }
+  },
+  "capabilities": {
+    "exactTemplate": true,
+    "skinnable": true,
+    "sandboxPreview": true,
+    "dualModeReady": true,
+    "exactMobileSource": false
+  },
+  "commercialReadiness": {
+    "structuralValidationPassed": true,
+    "visualValidationPassed": true,
+    "sandboxRuntimePassed": true,
+    "skinnableReady": true,
+    "publishInputReady": true
+  },
+  "artifacts": [
+    {
+      "caseId": "sandvik-desktop",
+      "siteId": "sandvik",
+      "siteName": "Sandvik",
+      "siteGroupId": "sandvik",
+      "variant": "desktop",
+      "siteKey": "pen-exact-site-sandvik-desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/sandvik.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-sandvik-desktop/sandbox/payload.json",
+      "sourceHash": "0f60fa9735812ffa1818c313defe829bcbe752e386259db939f874e4d4e9edf2",
+      "pageCount": 7,
+      "sectionCount": 42,
+      "blockCount": 390,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/sandvik/variants/desktop/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/sandvik/variants/desktop/template.skin.json",
+      "previewPages": 7,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-sandvik-desktop&page=home"
+    }
+  ]
+}

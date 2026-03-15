@@ -1,0 +1,205 @@
+{
+  "sectionId": "suvnG",
+  "sectionName": "hero",
+  "sectionKind": "hero",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 86,
+    "width": 1440,
+    "height": 560
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "a75a24a003490adbca14ef309db6550418c1554416359b409f4edbfe51afe3eb",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "bw3gn",
+      "blockName": "heroTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 36,
+        "y": 88,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4067c6d8777a2bc4bcdbf08eb1582a8bc32d80c42f79351081d010922a583104"
+    },
+    {
+      "blockId": "OMLTi",
+      "blockName": "heroTagLine",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 36,
+        "y": 160,
+        "width": 72,
+        "height": 3
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2f4d28d2a1b431a913595c4e263d4c48231ff8e8d9474b4d7b2d586f339d9598"
+    },
+    {
+      "blockId": "YUNMo",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 36,
+        "y": 196,
+        "width": 684,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2ea1fc3a06c969aa290ff5281813902da469c77df2b058ee7392920e6997b6a5"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "bw3gn",
+      "blockName": "heroTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 36,
+        "y": 88,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4067c6d8777a2bc4bcdbf08eb1582a8bc32d80c42f79351081d010922a583104",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "bw3gn",
+        "x": 36,
+        "y": 88,
+        "name": "heroTag",
+        "fill": "#AAB7CC",
+        "content": "About Kymeta",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "OMLTi",
+      "blockName": "heroTagLine",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 36,
+        "y": 160,
+        "width": 72,
+        "height": 3
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2f4d28d2a1b431a913595c4e263d4c48231ff8e8d9474b4d7b2d586f339d9598",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "OMLTi",
+        "x": 36,
+        "y": 160,
+        "name": "heroTagLine",
+        "fill": "#5A84FF",
+        "width": 72,
+        "height": 3
+      }
+    },
+    {
+      "blockId": "YUNMo",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 36,
+        "y": 196,
+        "width": 684,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2ea1fc3a06c969aa290ff5281813902da469c77df2b058ee7392920e6997b6a5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "YUNMo",
+        "x": 36,
+        "y": 196,
+        "name": "heroTitle",
+        "fill": "#F2F5FA",
+        "textGrowth": "fixed-width",
+        "width": 684,
+        "content": "Born from\nmetamaterials\ninnovation",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 90,
+        "fontWeight": "500"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "suvnG",
+    "x": 0,
+    "y": 86,
+    "name": "hero",
+    "width": 1440,
+    "height": 560,
+    "fill": "#000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "bw3gn",
+        "x": 36,
+        "y": 88,
+        "name": "heroTag",
+        "fill": "#AAB7CC",
+        "content": "About Kymeta",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "id": "OMLTi",
+        "x": 36,
+        "y": 160,
+        "name": "heroTagLine",
+        "fill": "#5A84FF",
+        "width": 72,
+        "height": 3
+      },
+      {
+        "type": "text",
+        "id": "YUNMo",
+        "x": 36,
+        "y": 196,
+        "name": "heroTitle",
+        "fill": "#F2F5FA",
+        "textGrowth": "fixed-width",
+        "width": 684,
+        "content": "Born from\nmetamaterials\ninnovation",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 90,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "blockId": "13XNr",
+  "blockName": "b8",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 8,
+  "bounds": {
+    "x": 32,
+    "y": 700,
+    "width": 546,
+    "height": 192
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "878fb39f401c1ad58dd532a55b2e6a0d3db87ff01cda99c4228a5978e1696668",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "13XNr",
+    "x": 32,
+    "y": 700,
+    "name": "b8",
+    "width": 546,
+    "height": 192,
+    "fill": "#040506",
+    "cornerRadius": 14,
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "jpE22",
+        "x": 24,
+        "y": 22,
+        "name": "tb8",
+        "fill": "#F4F7FA",
+        "textGrowth": "fixed-width",
+        "width": 500,
+        "content": "2,000,000",
+        "fontFamily": "Inter",
+        "fontSize": 66,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "30v18",
+        "x": 26,
+        "y": 112,
+        "name": "db8",
+        "fill": "#C5CDD7",
+        "textGrowth": "fixed-width",
+        "width": 500,
+        "content": "Our rapidly scalable architecture will enable a system with over 2,000,000 physical qubits, translating to between 40,000 and 80,000 logical qubits.",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

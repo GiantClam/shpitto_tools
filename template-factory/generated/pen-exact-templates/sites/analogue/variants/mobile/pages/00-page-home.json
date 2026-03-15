@@ -1,0 +1,5786 @@
+{
+  "pageId": "page-home",
+  "pageName": "Analogue Homepage Mobile",
+  "pageType": "home",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 1960
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "de5a0b02697f35256553d2b53c958f04f85769e342655e883873718d17e0bd7d",
+  "directChildCount": 6,
+  "recursiveNodeCount": 73,
+  "sectionCount": 5,
+  "sectionIndex": [
+    {
+      "sectionId": "hero",
+      "sectionName": "Hero",
+      "sectionKind": "hero",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 14,
+      "treeHash": "5761f77483e30acfa85c7c2af635c336b4a37ee1ad81403ae33f9885e73f2920",
+      "blockCount": 10
+    },
+    {
+      "sectionId": "categories",
+      "sectionName": "Categories",
+      "sectionKind": "navigation",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360
+      },
+      "directChildCount": 21,
+      "recursiveNodeCount": 22,
+      "treeHash": "f03639bace8090cd25d1e8fffb6c119293041f6e3f32297fa8653088e6b9d7c7",
+      "blockCount": 21
+    },
+    {
+      "sectionId": "featured",
+      "sectionName": "Featured",
+      "sectionKind": "products",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410
+      },
+      "directChildCount": 17,
+      "recursiveNodeCount": 18,
+      "treeHash": "fe888ae4793bed1f90195e4f66e9f96605cc8724f9b82c08ce19c22b2285ff70",
+      "blockCount": 17
+    },
+    {
+      "sectionId": "insights",
+      "sectionName": "Insights",
+      "sectionKind": "story",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 11,
+      "treeHash": "c478648ceaaee3d852f170513f50d3ee2b0d3a8ef5e9e43d5fd24c26ea32d9bd",
+      "blockCount": 10
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 4,
+      "bounds": {
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "333f744405d7b86f6fcf9c9cef6d4429851437fe1a11e67a49862f89c85001ce",
+      "blockCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "hero",
+      "sectionName": "Hero",
+      "sectionKind": "hero",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 14,
+      "treeHash": "5761f77483e30acfa85c7c2af635c336b4a37ee1ad81403ae33f9885e73f2920",
+      "blockCount": 10,
+      "blockIndex": [
+        {
+          "blockId": "hero-bg",
+          "blockName": "hero-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d3c2a51ecdae060d01b855b814bc7cb69ad187b19631de29d91e872e27ea7649"
+        },
+        {
+          "blockId": "hero-image",
+          "blockName": "hero-image",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "83cdabb7cfe7bf5b88a809a9cc0c5da60e3f12d9a85fe6f353bcf66ea6b98500"
+        },
+        {
+          "blockId": "header-page-home",
+          "blockName": "Header",
+          "blockType": "frame",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 4,
+          "treeHash": "61eebbf43e702268232f3a00197f34b56b95ef02789c316b0124c77710eb3222"
+        },
+        {
+          "blockId": "hero-kicker",
+          "blockName": "hero-kicker",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 86,
+            "width": 200,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eb729c5caf6822b63af6cdc2ce9a440308f890520e32cfb4de3be92ad4c896c5"
+        },
+        {
+          "blockId": "hero-title",
+          "blockName": "hero-title",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 116,
+            "width": 320,
+            "height": 200
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1bbce7ead164b31fa93e756ce522eae1464f3e0f48bfa2e9fdefbee6fbcedeff"
+        },
+        {
+          "blockId": "hero-subtitle",
+          "blockName": "hero-subtitle",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 240,
+            "width": 320,
+            "height": 66
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "26f1234486c16c24700cf0272c113d3b7539b312afe5944069864818bd5619c7"
+        },
+        {
+          "blockId": "hero-primary-box",
+          "blockName": "hero-primary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 6,
+          "bounds": {
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3467ed9fee7f2579373761e53d175bdf9b9e54e0ad9779348117583099b0e58c"
+        },
+        {
+          "blockId": "hero-primary-text",
+          "blockName": "hero-primary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 32,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bdea40b2dbad2a88cc5351d6085f3538ded6e632fe7e167859d499d9a3a2100e"
+        },
+        {
+          "blockId": "hero-secondary-box",
+          "blockName": "hero-secondary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "41740892be672649bed209dd22b869e10c5b4a6c802209213fd11387ac1160d5"
+        },
+        {
+          "blockId": "hero-secondary-text",
+          "blockName": "hero-secondary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 194,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "92b187265236b4c42b868f931719c1e8215c5644d3593ce442fa2191141c1b7f"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "hero-bg",
+          "blockName": "hero-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d3c2a51ecdae060d01b855b814bc7cb69ad187b19631de29d91e872e27ea7649",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-bg",
+            "name": "hero-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520,
+            "fill": "#F6F4F1"
+          }
+        },
+        {
+          "blockId": "hero-image",
+          "blockName": "hero-image",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "83cdabb7cfe7bf5b88a809a9cc0c5da60e3f12d9a85fe6f353bcf66ea6b98500",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-image",
+            "name": "hero-image",
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 28
+          }
+        },
+        {
+          "blockId": "header-page-home",
+          "blockName": "Header",
+          "blockType": "frame",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 4,
+          "treeHash": "61eebbf43e702268232f3a00197f34b56b95ef02789c316b0124c77710eb3222",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "header-page-home",
+            "name": "Header",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#00000000",
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "header-bg",
+                "name": "header-bg",
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 64,
+                "fill": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "id": "header-brand",
+                "name": "header-brand",
+                "x": 18,
+                "y": 18,
+                "fill": "#111111",
+                "content": "Analogue",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 180,
+                "height": 28
+              },
+              {
+                "type": "text",
+                "id": "header-menu",
+                "name": "header-menu",
+                "x": 362,
+                "y": 18,
+                "fill": "#111111",
+                "content": "☰",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 18,
+                "height": 20,
+                "href": "#page-products",
+                "textAlign": "center",
+                "textAlignVertical": "middle"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "hero-kicker",
+          "blockName": "hero-kicker",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 86,
+            "width": 200,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eb729c5caf6822b63af6cdc2ce9a440308f890520e32cfb4de3be92ad4c896c5",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-kicker",
+            "name": "hero-kicker",
+            "x": 18,
+            "y": 86,
+            "fill": "#1C4BFF",
+            "content": "ANALOGUE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 18,
+            "letterSpacing": "0.12em"
+          }
+        },
+        {
+          "blockId": "hero-title",
+          "blockName": "hero-title",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 116,
+            "width": 320,
+            "height": 200
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1bbce7ead164b31fa93e756ce522eae1464f3e0f48bfa2e9fdefbee6fbcedeff",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-title",
+            "name": "hero-title",
+            "x": 18,
+            "y": 116,
+            "fill": "#111111",
+            "content": "Products to celebrate and explore the history of video games",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 34,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 200
+          }
+        },
+        {
+          "blockId": "hero-subtitle",
+          "blockName": "hero-subtitle",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 240,
+            "width": 320,
+            "height": 66
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "26f1234486c16c24700cf0272c113d3b7539b312afe5944069864818bd5619c7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-subtitle",
+            "name": "hero-subtitle",
+            "x": 18,
+            "y": 240,
+            "fill": "#5F5C57",
+            "content": "hardware, operating systems and editions built for preservation, accuracy and modern play.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 66
+          }
+        },
+        {
+          "blockId": "hero-primary-box",
+          "blockName": "hero-primary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 6,
+          "bounds": {
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3467ed9fee7f2579373761e53d175bdf9b9e54e0ad9779348117583099b0e58c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-primary-box",
+            "name": "hero-primary-box",
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#1C4BFF",
+            "stroke": {
+              "fill": "#1C4BFF",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 14
+          }
+        },
+        {
+          "blockId": "hero-primary-text",
+          "blockName": "hero-primary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 32,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bdea40b2dbad2a88cc5351d6085f3538ded6e632fe7e167859d499d9a3a2100e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-primary-text",
+            "name": "hero-primary-text",
+            "x": 32,
+            "y": 325,
+            "fill": "#FFFFFF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "hero-secondary-box",
+          "blockName": "hero-secondary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "41740892be672649bed209dd22b869e10c5b4a6c802209213fd11387ac1160d5",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-secondary-box",
+            "name": "hero-secondary-box",
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-support",
+            "cornerRadius": 14
+          }
+        },
+        {
+          "blockId": "hero-secondary-text",
+          "blockName": "hero-secondary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 194,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "92b187265236b4c42b868f931719c1e8215c5644d3593ce442fa2191141c1b7f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-secondary-text",
+            "name": "hero-secondary-text",
+            "x": 194,
+            "y": 325,
+            "fill": "#111111",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "hero",
+        "name": "Hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520,
+        "fill": "#F6F4F1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "hero-bg",
+            "name": "hero-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520,
+            "fill": "#F6F4F1"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-image",
+            "name": "hero-image",
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 28
+          },
+          {
+            "type": "frame",
+            "id": "header-page-home",
+            "name": "Header",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#00000000",
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "header-bg",
+                "name": "header-bg",
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 64,
+                "fill": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "id": "header-brand",
+                "name": "header-brand",
+                "x": 18,
+                "y": 18,
+                "fill": "#111111",
+                "content": "Analogue",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 180,
+                "height": 28
+              },
+              {
+                "type": "text",
+                "id": "header-menu",
+                "name": "header-menu",
+                "x": 362,
+                "y": 18,
+                "fill": "#111111",
+                "content": "☰",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 18,
+                "height": 20,
+                "href": "#page-products",
+                "textAlign": "center",
+                "textAlignVertical": "middle"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "hero-kicker",
+            "name": "hero-kicker",
+            "x": 18,
+            "y": 86,
+            "fill": "#1C4BFF",
+            "content": "ANALOGUE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 18,
+            "letterSpacing": "0.12em"
+          },
+          {
+            "type": "text",
+            "id": "hero-title",
+            "name": "hero-title",
+            "x": 18,
+            "y": 116,
+            "fill": "#111111",
+            "content": "Products to celebrate and explore the history of video games",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 34,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 200
+          },
+          {
+            "type": "text",
+            "id": "hero-subtitle",
+            "name": "hero-subtitle",
+            "x": 18,
+            "y": 240,
+            "fill": "#5F5C57",
+            "content": "hardware, operating systems and editions built for preservation, accuracy and modern play.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 66
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-primary-box",
+            "name": "hero-primary-box",
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#1C4BFF",
+            "stroke": {
+              "fill": "#1C4BFF",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-primary-text",
+            "name": "hero-primary-text",
+            "x": 32,
+            "y": 325,
+            "fill": "#FFFFFF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-secondary-box",
+            "name": "hero-secondary-box",
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-support",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-secondary-text",
+            "name": "hero-secondary-text",
+            "x": 194,
+            "y": 325,
+            "fill": "#111111",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "categories",
+      "sectionName": "Categories",
+      "sectionKind": "navigation",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360
+      },
+      "directChildCount": 21,
+      "recursiveNodeCount": 22,
+      "treeHash": "f03639bace8090cd25d1e8fffb6c119293041f6e3f32297fa8653088e6b9d7c7",
+      "blockCount": 21,
+      "blockIndex": [
+        {
+          "blockId": "cat-title",
+          "blockName": "cat-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 22,
+            "width": 200,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dc414c48d56d156c5d70e269db581a909f43f89a97845a64b88de74e0a86adc5"
+        },
+        {
+          "blockId": "cat-card-0",
+          "blockName": "cat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "743d77cfe167eb13eb64b938b51bd8762903bf040a57ab58507df663b35a1e6b"
+        },
+        {
+          "blockId": "cat-card-img-0",
+          "blockName": "cat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "29bd9e48c08f4389fb16859c330eb5fee8f8d50b43782108c03ab59ee7cf52da"
+        },
+        {
+          "blockId": "cat-card-t-0",
+          "blockName": "cat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f8aab234211ac86726914468117778dfb6354dac67fba5d9f15a965fdfd67fb7"
+        },
+        {
+          "blockId": "cat-card-b-0",
+          "blockName": "cat-card-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 154,
+            "width": 140,
+            "height": 92
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9b64033963c6e2ac74b88040e3267971b1284b6f3ce541854795747112d5e423"
+        },
+        {
+          "blockId": "cat-card-1",
+          "blockName": "cat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5aeb7e243bf4e9f54308246bd1932ae568f7b89628c23044fbc08b59ee6298b3"
+        },
+        {
+          "blockId": "cat-card-img-1",
+          "blockName": "cat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f4d36aa6bbc5b30fe14187b5e7c202e603060345c89b33cddd2a3caa819078c0"
+        },
+        {
+          "blockId": "cat-card-t-1",
+          "blockName": "cat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ecd99391a939183da4c04e9ef90399044a504ee43b42708d34141af919fd5592"
+        },
+        {
+          "blockId": "cat-card-b-1",
+          "blockName": "cat-card-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 154,
+            "width": 140,
+            "height": 92
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c39139e9d0f404e56e2213e4c80a832812aa5d306a90f55ff7fd3a13f169dda6"
+        },
+        {
+          "blockId": "cat-card-2",
+          "blockName": "cat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1f2688d309752cc9ded11d5de5cdf1c2e34c99245eab0208b4f0b38be3344a65"
+        },
+        {
+          "blockId": "cat-card-img-2",
+          "blockName": "cat-card-img-2",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 10,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dbf73ec2ec051ae09f48e74575a33188467177b350183ab16f1eb3f23eb58dee"
+        },
+        {
+          "blockId": "cat-card-t-2",
+          "blockName": "cat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4355f2c45594e7d5767cc96cd0c5e4c86b775efb3ca3bb0c484b53f0fa34fa47"
+        },
+        {
+          "blockId": "cat-card-b-2",
+          "blockName": "cat-card-b-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 32,
+            "y": 282,
+            "width": 140,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3a30da62b920e5e0a34139ad39ffb06a195798038202fafbd56ba714df700617"
+        },
+        {
+          "blockId": "cat-card-3",
+          "blockName": "cat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 13,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "033398b2b4fae5796a5935b970fd1bcdf9e87ae015907c93bf99109b19ae6f05"
+        },
+        {
+          "blockId": "cat-card-img-3",
+          "blockName": "cat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 14,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7658ef9de02d06acb51d1f29ddc58f11c5860c0cd58f1a0ef128c1153274d5b9"
+        },
+        {
+          "blockId": "cat-card-t-3",
+          "blockName": "cat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 206,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eb2b9dc2bae213c96dfb4669a328f8bd1327a44360d540f2db255b4eef8bda88"
+        },
+        {
+          "blockId": "cat-card-b-3",
+          "blockName": "cat-card-b-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 206,
+            "y": 282,
+            "width": 140,
+            "height": 63
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "88447ea26cde32b903988490c7ba2c776ffc15fa146e37ef492cd66ba70a9313"
+        },
+        {
+          "blockId": "cat-card-4",
+          "blockName": "cat-card-4",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 17,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a40d141e13b0b46bee61f19c05c47a51a03392dfc10927420dac9493140aa792"
+        },
+        {
+          "blockId": "cat-card-img-4",
+          "blockName": "cat-card-img-4",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 18,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "94f4dd47f8d1ff6be635f25e860ce0a0d0c058baafae3eee7b2923c3d6ea4789"
+        },
+        {
+          "blockId": "cat-card-t-4",
+          "blockName": "cat-card-t-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 32,
+            "y": 392,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e659645f46aefa9833fe5b2645faff97067f582e418d3f092422c402b78b8ced"
+        },
+        {
+          "blockId": "cat-card-b-4",
+          "blockName": "cat-card-b-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 32,
+            "y": 410,
+            "width": 140,
+            "height": 92
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9fd42e402b32ff75c18d74c9a8772023417e40dd42608f00e02f40e0e60ad4de"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+          "relativePath": "assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "cat-title",
+          "blockName": "cat-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 22,
+            "width": 200,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dc414c48d56d156c5d70e269db581a909f43f89a97845a64b88de74e0a86adc5",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-title",
+            "name": "cat-title",
+            "x": 18,
+            "y": 22,
+            "fill": "#111111",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 32
+          }
+        },
+        {
+          "blockId": "cat-card-0",
+          "blockName": "cat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "743d77cfe167eb13eb64b938b51bd8762903bf040a57ab58507df663b35a1e6b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-0",
+            "name": "cat-card-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-0",
+          "blockName": "cat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "29bd9e48c08f4389fb16859c330eb5fee8f8d50b43782108c03ab59ee7cf52da",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-0",
+            "name": "cat-card-img-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-0",
+          "blockName": "cat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f8aab234211ac86726914468117778dfb6354dac67fba5d9f15a965fdfd67fb7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-0",
+            "name": "cat-card-t-0",
+            "x": 32,
+            "y": 136,
+            "fill": "#111111",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-0",
+          "blockName": "cat-card-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 154,
+            "width": 140,
+            "height": 92
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9b64033963c6e2ac74b88040e3267971b1284b6f3ce541854795747112d5e423",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-0",
+            "name": "cat-card-b-0",
+            "x": 32,
+            "y": 154,
+            "fill": "#5F5C57",
+            "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 92
+          }
+        },
+        {
+          "blockId": "cat-card-1",
+          "blockName": "cat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5aeb7e243bf4e9f54308246bd1932ae568f7b89628c23044fbc08b59ee6298b3",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-1",
+            "name": "cat-card-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-support",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-1",
+          "blockName": "cat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f4d36aa6bbc5b30fe14187b5e7c202e603060345c89b33cddd2a3caa819078c0",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-1",
+            "name": "cat-card-img-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-support",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-1",
+          "blockName": "cat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ecd99391a939183da4c04e9ef90399044a504ee43b42708d34141af919fd5592",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-1",
+            "name": "cat-card-t-1",
+            "x": 206,
+            "y": 136,
+            "fill": "#111111",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-1",
+          "blockName": "cat-card-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 154,
+            "width": 140,
+            "height": 92
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c39139e9d0f404e56e2213e4c80a832812aa5d306a90f55ff7fd3a13f169dda6",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-1",
+            "name": "cat-card-b-1",
+            "x": 206,
+            "y": 154,
+            "fill": "#5F5C57",
+            "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 92
+          }
+        },
+        {
+          "blockId": "cat-card-2",
+          "blockName": "cat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1f2688d309752cc9ded11d5de5cdf1c2e34c99245eab0208b4f0b38be3344a65",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-2",
+            "name": "cat-card-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-announcements",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-2",
+          "blockName": "cat-card-img-2",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 10,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dbf73ec2ec051ae09f48e74575a33188467177b350183ab16f1eb3f23eb58dee",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+            "relativePath": "assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-2",
+            "name": "cat-card-img-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-announcements",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-2",
+          "blockName": "cat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4355f2c45594e7d5767cc96cd0c5e4c86b775efb3ca3bb0c484b53f0fa34fa47",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-2",
+            "name": "cat-card-t-2",
+            "x": 32,
+            "y": 264,
+            "fill": "#111111",
+            "content": "Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-2",
+          "blockName": "cat-card-b-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 32,
+            "y": 282,
+            "width": 140,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3a30da62b920e5e0a34139ad39ffb06a195798038202fafbd56ba714df700617",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-2",
+            "name": "cat-card-b-2",
+            "x": 32,
+            "y": 282,
+            "fill": "#5F5C57",
+            "content": "The latest announcements from Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 49
+          }
+        },
+        {
+          "blockId": "cat-card-3",
+          "blockName": "cat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 13,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "033398b2b4fae5796a5935b970fd1bcdf9e87ae015907c93bf99109b19ae6f05",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-3",
+            "name": "cat-card-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-developer",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-3",
+          "blockName": "cat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 14,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7658ef9de02d06acb51d1f29ddc58f11c5860c0cd58f1a0ef128c1153274d5b9",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-3",
+            "name": "cat-card-img-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-developer",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-3",
+          "blockName": "cat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 206,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eb2b9dc2bae213c96dfb4669a328f8bd1327a44360d540f2db255b4eef8bda88",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-3",
+            "name": "cat-card-t-3",
+            "x": 206,
+            "y": 264,
+            "fill": "#111111",
+            "content": "Developer",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-3",
+          "blockName": "cat-card-b-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 206,
+            "y": 282,
+            "width": 140,
+            "height": 63
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "88447ea26cde32b903988490c7ba2c776ffc15fa146e37ef492cd66ba70a9313",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-3",
+            "name": "cat-card-b-3",
+            "x": 206,
+            "y": 282,
+            "fill": "#5F5C57",
+            "content": "Introducing openFPGA. The future of video game preservation.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 63
+          }
+        },
+        {
+          "blockId": "cat-card-4",
+          "blockName": "cat-card-4",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 17,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a40d141e13b0b46bee61f19c05c47a51a03392dfc10927420dac9493140aa792",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-4",
+            "name": "cat-card-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-editions",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-4",
+          "blockName": "cat-card-img-4",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 18,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "94f4dd47f8d1ff6be635f25e860ce0a0d0c058baafae3eee7b2923c3d6ea4789",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-4",
+            "name": "cat-card-img-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-editions",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-4",
+          "blockName": "cat-card-t-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 32,
+            "y": 392,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e659645f46aefa9833fe5b2645faff97067f582e418d3f092422c402b78b8ced",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-4",
+            "name": "cat-card-t-4",
+            "x": 32,
+            "y": 392,
+            "fill": "#111111",
+            "content": "Editions",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-4",
+          "blockName": "cat-card-b-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 32,
+            "y": 410,
+            "width": 140,
+            "height": 92
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9fd42e402b32ff75c18d74c9a8772023417e40dd42608f00e02f40e0e60ad4de",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-4",
+            "name": "cat-card-b-4",
+            "x": 32,
+            "y": 410,
+            "fill": "#5F5C57",
+            "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 92
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "categories",
+        "name": "Categories",
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360,
+        "fill": "#F6F4F1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "cat-title",
+            "name": "cat-title",
+            "x": 18,
+            "y": 22,
+            "fill": "#111111",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-0",
+            "name": "cat-card-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-0",
+            "name": "cat-card-img-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-0",
+            "name": "cat-card-t-0",
+            "x": 32,
+            "y": 136,
+            "fill": "#111111",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-0",
+            "name": "cat-card-b-0",
+            "x": 32,
+            "y": 154,
+            "fill": "#5F5C57",
+            "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 92
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-1",
+            "name": "cat-card-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-support",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-1",
+            "name": "cat-card-img-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-support",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-1",
+            "name": "cat-card-t-1",
+            "x": 206,
+            "y": 136,
+            "fill": "#111111",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-1",
+            "name": "cat-card-b-1",
+            "x": 206,
+            "y": 154,
+            "fill": "#5F5C57",
+            "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 92
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-2",
+            "name": "cat-card-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-announcements",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-2",
+            "name": "cat-card-img-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-announcements",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-2",
+            "name": "cat-card-t-2",
+            "x": 32,
+            "y": 264,
+            "fill": "#111111",
+            "content": "Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-2",
+            "name": "cat-card-b-2",
+            "x": 32,
+            "y": 282,
+            "fill": "#5F5C57",
+            "content": "The latest announcements from Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 49
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-3",
+            "name": "cat-card-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-developer",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-3",
+            "name": "cat-card-img-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-developer",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-3",
+            "name": "cat-card-t-3",
+            "x": 206,
+            "y": 264,
+            "fill": "#111111",
+            "content": "Developer",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-3",
+            "name": "cat-card-b-3",
+            "x": 206,
+            "y": 282,
+            "fill": "#5F5C57",
+            "content": "Introducing openFPGA. The future of video game preservation.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 63
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-4",
+            "name": "cat-card-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-editions",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-4",
+            "name": "cat-card-img-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-editions",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-4",
+            "name": "cat-card-t-4",
+            "x": 32,
+            "y": 392,
+            "fill": "#111111",
+            "content": "Editions",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-4",
+            "name": "cat-card-b-4",
+            "x": 32,
+            "y": 410,
+            "fill": "#5F5C57",
+            "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 92
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "featured",
+      "sectionName": "Featured",
+      "sectionKind": "products",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410
+      },
+      "directChildCount": 17,
+      "recursiveNodeCount": 18,
+      "treeHash": "fe888ae4793bed1f90195e4f66e9f96605cc8724f9b82c08ce19c22b2285ff70",
+      "blockCount": 17,
+      "blockIndex": [
+        {
+          "blockId": "featured-title",
+          "blockName": "featured-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 24,
+            "width": 240,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c62eef199d5a8b35c532ea859e151ae42d3c39f8a1499834f8ad00f0d5e743f6"
+        },
+        {
+          "blockId": "feat-card-0",
+          "blockName": "feat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9555b8e8486c41920ef0506bb9e054fdbb8abcd0c5b32ab39544b98627397fa8"
+        },
+        {
+          "blockId": "feat-card-img-0",
+          "blockName": "feat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "08b751f3602620d7e780e45b3c5051865cd09c788b4952032b0e9cdcea728514"
+        },
+        {
+          "blockId": "feat-card-k-0",
+          "blockName": "feat-card-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "221ab9a857205153ccdd81ba411449a75905129d9a949f79ffc9fc474c4fe4f4"
+        },
+        {
+          "blockId": "feat-card-t-0",
+          "blockName": "feat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 180,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "64f70c5429edfca12e299397dd97f18c2dee4f2353c273d5d02732ac0f80276a"
+        },
+        {
+          "blockId": "feat-card-1",
+          "blockName": "feat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "99b2ccabde000d9db5acacc63e92f0dd193d852821b1cab8675ec83508d37141"
+        },
+        {
+          "blockId": "feat-card-img-1",
+          "blockName": "feat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b791ab4a8c57b5b85cf3a9213497e50d64ab6d03e74c4594cd676a6f3e4efba0"
+        },
+        {
+          "blockId": "feat-card-k-1",
+          "blockName": "feat-card-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "44e901448265774d39111d5eae75efb52431078d222e515393b12bbfabdea4c9"
+        },
+        {
+          "blockId": "feat-card-t-1",
+          "blockName": "feat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 180,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "446aa439c26bb9abd9e369b98c85a5180b28445190e7601c5950fda326af1ff5"
+        },
+        {
+          "blockId": "feat-card-2",
+          "blockName": "feat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a031ceb112b2978397bbf5725d3f49cec771cbafc2e61dc5ff620668302ac850"
+        },
+        {
+          "blockId": "feat-card-img-2",
+          "blockName": "feat-card-img-2",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 10,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7f77dde76543342c81f9a9186a3cfad8977b86e7aa6d4c301af3c1f9ac680dd4"
+        },
+        {
+          "blockId": "feat-card-k-2",
+          "blockName": "feat-card-k-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e10c9fcf91e276b04b74ff8edb3f27be8db2f4fefdc7a9991dcb11609dd6da46"
+        },
+        {
+          "blockId": "feat-card-t-2",
+          "blockName": "feat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 32,
+            "y": 334,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "22a785b1a2dc4296582a1cde5cd90298be566d7dd9a360277933f34ea52e4c85"
+        },
+        {
+          "blockId": "feat-card-3",
+          "blockName": "feat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 13,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7814e5478b2749893cc3add5e01b597af2b3c46664331b329a7bdfb613913413"
+        },
+        {
+          "blockId": "feat-card-img-3",
+          "blockName": "feat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 14,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ef7068285dc021a98f525b53cee566140ac4f868bf291fcd90298162a65e6744"
+        },
+        {
+          "blockId": "feat-card-k-3",
+          "blockName": "feat-card-k-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 206,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ca23d78326fddf0d2ab61d361005e7fec85415954be74f806bd6d8a5e64c1c71"
+        },
+        {
+          "blockId": "feat-card-t-3",
+          "blockName": "feat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 206,
+            "y": 334,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2792c826f7b2ddfe3bbfde23b898f13da792764b69130559b14dec14e5df712a"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+          "relativePath": "assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-pocket-img-1-0c002a80.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-pocket-img-1-0c002a80.png",
+          "relativePath": "assets-structured/analogue/page-pocket-img-1-0c002a80.png",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-duo-img-1-5a743f77.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-duo-img-1-5a743f77.png",
+          "relativePath": "assets-structured/analogue/page-duo-img-1-5a743f77.png",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "featured-title",
+          "blockName": "featured-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 24,
+            "width": 240,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c62eef199d5a8b35c532ea859e151ae42d3c39f8a1499834f8ad00f0d5e743f6",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "featured-title",
+            "name": "featured-title",
+            "x": 18,
+            "y": 24,
+            "fill": "#111111",
+            "content": "Featured pages",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 32
+          }
+        },
+        {
+          "blockId": "feat-card-0",
+          "blockName": "feat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9555b8e8486c41920ef0506bb9e054fdbb8abcd0c5b32ab39544b98627397fa8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-0",
+            "name": "feat-card-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-3d",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-0",
+          "blockName": "feat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "08b751f3602620d7e780e45b3c5051865cd09c788b4952032b0e9cdcea728514",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+            "relativePath": "assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-0",
+            "name": "feat-card-img-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+              "mode": "cover"
+            },
+            "href": "#page-3d",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-0",
+          "blockName": "feat-card-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "221ab9a857205153ccdd81ba411449a75905129d9a949f79ffc9fc474c4fe4f4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-0",
+            "name": "feat-card-k-0",
+            "x": 32,
+            "y": 162,
+            "fill": "#1C4BFF",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-3d"
+          }
+        },
+        {
+          "blockId": "feat-card-t-0",
+          "blockName": "feat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 180,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "64f70c5429edfca12e299397dd97f18c2dee4f2353c273d5d02732ac0f80276a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-0",
+            "name": "feat-card-t-0",
+            "x": 32,
+            "y": 180,
+            "fill": "#111111",
+            "content": "3D",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-3d"
+          }
+        },
+        {
+          "blockId": "feat-card-1",
+          "blockName": "feat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "99b2ccabde000d9db5acacc63e92f0dd193d852821b1cab8675ec83508d37141",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-1",
+            "name": "feat-card-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-pocket",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-1",
+          "blockName": "feat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b791ab4a8c57b5b85cf3a9213497e50d64ab6d03e74c4594cd676a6f3e4efba0",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-pocket-img-1-0c002a80.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-pocket-img-1-0c002a80.png",
+            "relativePath": "assets-structured/analogue/page-pocket-img-1-0c002a80.png",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-1",
+            "name": "feat-card-img-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-pocket-img-1-0c002a80.png",
+              "mode": "cover"
+            },
+            "href": "#page-pocket",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-1",
+          "blockName": "feat-card-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "44e901448265774d39111d5eae75efb52431078d222e515393b12bbfabdea4c9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-1",
+            "name": "feat-card-k-1",
+            "x": 206,
+            "y": 162,
+            "fill": "#1C4BFF",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-pocket"
+          }
+        },
+        {
+          "blockId": "feat-card-t-1",
+          "blockName": "feat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 180,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "446aa439c26bb9abd9e369b98c85a5180b28445190e7601c5950fda326af1ff5",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-1",
+            "name": "feat-card-t-1",
+            "x": 206,
+            "y": 180,
+            "fill": "#111111",
+            "content": "Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-pocket"
+          }
+        },
+        {
+          "blockId": "feat-card-2",
+          "blockName": "feat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a031ceb112b2978397bbf5725d3f49cec771cbafc2e61dc5ff620668302ac850",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-2",
+            "name": "feat-card-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-duo",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-2",
+          "blockName": "feat-card-img-2",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 10,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7f77dde76543342c81f9a9186a3cfad8977b86e7aa6d4c301af3c1f9ac680dd4",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-duo-img-1-5a743f77.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-duo-img-1-5a743f77.png",
+            "relativePath": "assets-structured/analogue/page-duo-img-1-5a743f77.png",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-2",
+            "name": "feat-card-img-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-duo-img-1-5a743f77.png",
+              "mode": "cover"
+            },
+            "href": "#page-duo",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-2",
+          "blockName": "feat-card-k-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e10c9fcf91e276b04b74ff8edb3f27be8db2f4fefdc7a9991dcb11609dd6da46",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-2",
+            "name": "feat-card-k-2",
+            "x": 32,
+            "y": 316,
+            "fill": "#1C4BFF",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-duo"
+          }
+        },
+        {
+          "blockId": "feat-card-t-2",
+          "blockName": "feat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 32,
+            "y": 334,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "22a785b1a2dc4296582a1cde5cd90298be566d7dd9a360277933f34ea52e4c85",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-2",
+            "name": "feat-card-t-2",
+            "x": 32,
+            "y": 334,
+            "fill": "#111111",
+            "content": "Duo",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-duo"
+          }
+        },
+        {
+          "blockId": "feat-card-3",
+          "blockName": "feat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 13,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7814e5478b2749893cc3add5e01b597af2b3c46664331b329a7bdfb613913413",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-3",
+            "name": "feat-card-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-contact-support",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-3",
+          "blockName": "feat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 14,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ef7068285dc021a98f525b53cee566140ac4f868bf291fcd90298162a65e6744",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-3",
+            "name": "feat-card-img-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-contact-support",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-3",
+          "blockName": "feat-card-k-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 206,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ca23d78326fddf0d2ab61d361005e7fec85415954be74f806bd6d8a5e64c1c71",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-3",
+            "name": "feat-card-k-3",
+            "x": 206,
+            "y": 316,
+            "fill": "#1C4BFF",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-contact-support"
+          }
+        },
+        {
+          "blockId": "feat-card-t-3",
+          "blockName": "feat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 206,
+            "y": 334,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2792c826f7b2ddfe3bbfde23b898f13da792764b69130559b14dec14e5df712a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-3",
+            "name": "feat-card-t-3",
+            "x": 206,
+            "y": 334,
+            "fill": "#111111",
+            "content": "Contact Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-contact-support"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "featured",
+        "name": "Featured",
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410,
+        "fill": "#F6F4F1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "featured-title",
+            "name": "featured-title",
+            "x": 18,
+            "y": 24,
+            "fill": "#111111",
+            "content": "Featured pages",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-0",
+            "name": "feat-card-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-3d",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-0",
+            "name": "feat-card-img-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+              "mode": "cover"
+            },
+            "href": "#page-3d",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-0",
+            "name": "feat-card-k-0",
+            "x": 32,
+            "y": 162,
+            "fill": "#1C4BFF",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-3d"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-0",
+            "name": "feat-card-t-0",
+            "x": 32,
+            "y": 180,
+            "fill": "#111111",
+            "content": "3D",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-3d"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-1",
+            "name": "feat-card-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-pocket",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-1",
+            "name": "feat-card-img-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-pocket-img-1-0c002a80.png",
+              "mode": "cover"
+            },
+            "href": "#page-pocket",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-1",
+            "name": "feat-card-k-1",
+            "x": 206,
+            "y": 162,
+            "fill": "#1C4BFF",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-pocket"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-1",
+            "name": "feat-card-t-1",
+            "x": 206,
+            "y": 180,
+            "fill": "#111111",
+            "content": "Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-pocket"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-2",
+            "name": "feat-card-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-duo",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-2",
+            "name": "feat-card-img-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-duo-img-1-5a743f77.png",
+              "mode": "cover"
+            },
+            "href": "#page-duo",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-2",
+            "name": "feat-card-k-2",
+            "x": 32,
+            "y": 316,
+            "fill": "#1C4BFF",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-duo"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-2",
+            "name": "feat-card-t-2",
+            "x": 32,
+            "y": 334,
+            "fill": "#111111",
+            "content": "Duo",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-duo"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-3",
+            "name": "feat-card-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-contact-support",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-3",
+            "name": "feat-card-img-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-contact-support",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-3",
+            "name": "feat-card-k-3",
+            "x": 206,
+            "y": 316,
+            "fill": "#1C4BFF",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-contact-support"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-3",
+            "name": "feat-card-t-3",
+            "x": 206,
+            "y": 334,
+            "fill": "#111111",
+            "content": "Contact Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-contact-support"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "insights",
+      "sectionName": "Insights",
+      "sectionKind": "story",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 11,
+      "treeHash": "c478648ceaaee3d852f170513f50d3ee2b0d3a8ef5e9e43d5fd24c26ea32d9bd",
+      "blockCount": 10,
+      "blockIndex": [
+        {
+          "blockId": "insight-card-0",
+          "blockName": "insight-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 0,
+          "bounds": {
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "855ec17832784a5f36b209d7ad4b027c2914cef03b2d91e149635c45a739b78d"
+        },
+        {
+          "blockId": "insight-img-0",
+          "blockName": "insight-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "13874bb02c0a2369a76f19173401aabdd46684722e184c9b2ca369d8becb8a68"
+        },
+        {
+          "blockId": "insight-k-0",
+          "blockName": "insight-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 42,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3c15a78b81a0ed779bece102cfce6b3b0894879ecd7eb16f9bcd4085658a8757"
+        },
+        {
+          "blockId": "insight-t-0",
+          "blockName": "insight-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 66,
+            "width": 136,
+            "height": 63
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c63aad49d7e3bc2d98e2f408937e426dbc3604d5a793f9533e81dc5c531916b1"
+        },
+        {
+          "blockId": "insight-b-0",
+          "blockName": "insight-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 40,
+            "y": 118,
+            "width": 136,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a73944fa580eafb70e172602371d4aac37e17c3ab69a97eab86c37deccf453b0"
+        },
+        {
+          "blockId": "insight-card-1",
+          "blockName": "insight-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "04dd03d4b4127bc884684ae048c795693f42093ceefc5fdd017aa74a58771f0e"
+        },
+        {
+          "blockId": "insight-img-1",
+          "blockName": "insight-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "23f1d1378492aab63e71c47417acbab0e4c6987d0764f4eb567b159b3ab1a038"
+        },
+        {
+          "blockId": "insight-k-1",
+          "blockName": "insight-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 40,
+            "y": 230,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "627b8845bce6464739a8e0bf51f4e0f99609345610031f851212beff7a3e1dac"
+        },
+        {
+          "blockId": "insight-t-1",
+          "blockName": "insight-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 40,
+            "y": 254,
+            "width": 136,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b114eac259bc0b4e6585d4c3db02aaf540a110eaa84724ac7327225d481c7c4b"
+        },
+        {
+          "blockId": "insight-b-1",
+          "blockName": "insight-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 40,
+            "y": 306,
+            "width": 136,
+            "height": 100
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c45886ee8bf05cfa68a133efdf4d2ccf9b0398742a55fc9ea61cc24c97bfbcc4"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+          "relativePath": "assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "insight-card-0",
+          "blockName": "insight-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 0,
+          "bounds": {
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "855ec17832784a5f36b209d7ad4b027c2914cef03b2d91e149635c45a739b78d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-card-0",
+            "name": "insight-card-0",
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168,
+            "fill": "#111111",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-announcements",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-img-0",
+          "blockName": "insight-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "13874bb02c0a2369a76f19173401aabdd46684722e184c9b2ca369d8becb8a68",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+            "relativePath": "assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-img-0",
+            "name": "insight-img-0",
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-announcements",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-k-0",
+          "blockName": "insight-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 42,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3c15a78b81a0ed779bece102cfce6b3b0894879ecd7eb16f9bcd4085658a8757",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-k-0",
+            "name": "insight-k-0",
+            "x": 40,
+            "y": 42,
+            "fill": "#E8EEFF",
+            "content": "Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-announcements"
+          }
+        },
+        {
+          "blockId": "insight-t-0",
+          "blockName": "insight-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 66,
+            "width": 136,
+            "height": 63
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c63aad49d7e3bc2d98e2f408937e426dbc3604d5a793f9533e81dc5c531916b1",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-t-0",
+            "name": "insight-t-0",
+            "x": 40,
+            "y": 66,
+            "fill": "#FFFFFF",
+            "content": "Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 63,
+            "href": "#page-announcements"
+          }
+        },
+        {
+          "blockId": "insight-b-0",
+          "blockName": "insight-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 40,
+            "y": 118,
+            "width": 136,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a73944fa580eafb70e172602371d4aac37e17c3ab69a97eab86c37deccf453b0",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-b-0",
+            "name": "insight-b-0",
+            "x": 40,
+            "y": 118,
+            "fill": "#EAE6DF",
+            "content": "The latest announcements from Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 53,
+            "href": "#page-announcements"
+          }
+        },
+        {
+          "blockId": "insight-card-1",
+          "blockName": "insight-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "04dd03d4b4127bc884684ae048c795693f42093ceefc5fdd017aa74a58771f0e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-card-1",
+            "name": "insight-card-1",
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168,
+            "fill": "#F1EFEB",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-editions",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-img-1",
+          "blockName": "insight-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "23f1d1378492aab63e71c47417acbab0e4c6987d0764f4eb567b159b3ab1a038",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+            "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-img-1",
+            "name": "insight-img-1",
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-editions",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-k-1",
+          "blockName": "insight-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 40,
+            "y": 230,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "627b8845bce6464739a8e0bf51f4e0f99609345610031f851212beff7a3e1dac",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-k-1",
+            "name": "insight-k-1",
+            "x": 40,
+            "y": 230,
+            "fill": "#1C4BFF",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-editions"
+          }
+        },
+        {
+          "blockId": "insight-t-1",
+          "blockName": "insight-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 40,
+            "y": 254,
+            "width": 136,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b114eac259bc0b4e6585d4c3db02aaf540a110eaa84724ac7327225d481c7c4b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-t-1",
+            "name": "insight-t-1",
+            "x": 40,
+            "y": 254,
+            "fill": "#111111",
+            "content": "Editions",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-editions"
+          }
+        },
+        {
+          "blockId": "insight-b-1",
+          "blockName": "insight-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 40,
+            "y": 306,
+            "width": 136,
+            "height": 100
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c45886ee8bf05cfa68a133efdf4d2ccf9b0398742a55fc9ea61cc24c97bfbcc4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-b-1",
+            "name": "insight-b-1",
+            "x": 40,
+            "y": 306,
+            "fill": "#5F5C57",
+            "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 100,
+            "href": "#page-editions"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "insights",
+        "name": "Insights",
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420,
+        "fill": "#F6F4F1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "insight-card-0",
+            "name": "insight-card-0",
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168,
+            "fill": "#111111",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-announcements",
+            "cornerRadius": 20
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-img-0",
+            "name": "insight-img-0",
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-announcements",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-0",
+            "name": "insight-k-0",
+            "x": 40,
+            "y": 42,
+            "fill": "#E8EEFF",
+            "content": "Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-announcements"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-0",
+            "name": "insight-t-0",
+            "x": 40,
+            "y": 66,
+            "fill": "#FFFFFF",
+            "content": "Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 63,
+            "href": "#page-announcements"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-0",
+            "name": "insight-b-0",
+            "x": 40,
+            "y": 118,
+            "fill": "#EAE6DF",
+            "content": "The latest announcements from Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 53,
+            "href": "#page-announcements"
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-card-1",
+            "name": "insight-card-1",
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168,
+            "fill": "#F1EFEB",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-editions",
+            "cornerRadius": 20
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-img-1",
+            "name": "insight-img-1",
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-editions",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-1",
+            "name": "insight-k-1",
+            "x": 40,
+            "y": 230,
+            "fill": "#1C4BFF",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-editions"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-1",
+            "name": "insight-t-1",
+            "x": 40,
+            "y": 254,
+            "fill": "#111111",
+            "content": "Editions",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-editions"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-1",
+            "name": "insight-b-1",
+            "x": 40,
+            "y": 306,
+            "fill": "#5F5C57",
+            "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 100,
+            "href": "#page-editions"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 4,
+      "bounds": {
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "333f744405d7b86f6fcf9c9cef6d4429851437fe1a11e67a49862f89c85001ce",
+      "blockCount": 5,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f376df9ebf891ed1d89c5236f30961671f267ef85a1da8f44fb69cacae859970"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "35ba42ab8a6d205c35d35c6cee99806fee7ecdc591b1d7810c207c2a2fa7795f"
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "04e10cf421512ebfaf3feb95206ba60841bff4e04cb7cdee2f0f585972c64499"
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eaad21fdb86f142f396255c27dd69d7adbe1012c3bd45623f5dd21d29a786897"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "83bd82b9157dff5ec541c00599715d7fba85a7eec79776766b3ad3ff7ee51f72"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f376df9ebf891ed1d89c5236f30961671f267ef85a1da8f44fb69cacae859970",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#121212"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "35ba42ab8a6d205c35d35c6cee99806fee7ecdc591b1d7810c207c2a2fa7795f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F2F0EC",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "04e10cf421512ebfaf3feb95206ba60841bff4e04cb7cdee2f0f585972c64499",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Products Support Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eaad21fdb86f142f396255c27dd69d7adbe1012c3bd45623f5dd21d29a786897",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Developer Editions 3D Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "83bd82b9157dff5ec541c00599715d7fba85a7eec79776766b3ad3ff7ee51f72",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250,
+        "fill": "#121212",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#121212"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F2F0EC",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Products Support Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Developer Editions 3D Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 63,
+  "looseNodeCount": 1,
+  "looseNodes": [
+    {
+      "id": "home-bg",
+      "name": "home-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 1960
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "relativePath": "assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+      "relativePath": "assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-pocket-img-1-0c002a80.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-pocket-img-1-0c002a80.png",
+      "relativePath": "assets-structured/analogue/page-pocket-img-1-0c002a80.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-duo-img-1-5a743f77.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-duo-img-1-5a743f77.png",
+      "relativePath": "assets-structured/analogue/page-duo-img-1-5a743f77.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "relativePath": "assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-home",
+    "name": "Analogue Homepage Mobile",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 1960,
+    "fill": "#F6F4F1",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "home-bg",
+        "name": "home-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 1960,
+        "fill": "#F6F4F1"
+      },
+      {
+        "type": "frame",
+        "id": "hero",
+        "name": "Hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520,
+        "fill": "#F6F4F1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "hero-bg",
+            "name": "hero-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520,
+            "fill": "#F6F4F1"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-image",
+            "name": "hero-image",
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 28
+          },
+          {
+            "type": "frame",
+            "id": "header-page-home",
+            "name": "Header",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#00000000",
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "header-bg",
+                "name": "header-bg",
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 64,
+                "fill": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "id": "header-brand",
+                "name": "header-brand",
+                "x": 18,
+                "y": 18,
+                "fill": "#111111",
+                "content": "Analogue",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 180,
+                "height": 28
+              },
+              {
+                "type": "text",
+                "id": "header-menu",
+                "name": "header-menu",
+                "x": 362,
+                "y": 18,
+                "fill": "#111111",
+                "content": "☰",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 18,
+                "height": 20,
+                "href": "#page-products",
+                "textAlign": "center",
+                "textAlignVertical": "middle"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "hero-kicker",
+            "name": "hero-kicker",
+            "x": 18,
+            "y": 86,
+            "fill": "#1C4BFF",
+            "content": "ANALOGUE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 18,
+            "letterSpacing": "0.12em"
+          },
+          {
+            "type": "text",
+            "id": "hero-title",
+            "name": "hero-title",
+            "x": 18,
+            "y": 116,
+            "fill": "#111111",
+            "content": "Products to celebrate and explore the history of video games",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 34,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 200
+          },
+          {
+            "type": "text",
+            "id": "hero-subtitle",
+            "name": "hero-subtitle",
+            "x": 18,
+            "y": 240,
+            "fill": "#5F5C57",
+            "content": "hardware, operating systems and editions built for preservation, accuracy and modern play.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 66
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-primary-box",
+            "name": "hero-primary-box",
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#1C4BFF",
+            "stroke": {
+              "fill": "#1C4BFF",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-primary-text",
+            "name": "hero-primary-text",
+            "x": 32,
+            "y": 325,
+            "fill": "#FFFFFF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-secondary-box",
+            "name": "hero-secondary-box",
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-support",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-secondary-text",
+            "name": "hero-secondary-text",
+            "x": 194,
+            "y": 325,
+            "fill": "#111111",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "categories",
+        "name": "Categories",
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360,
+        "fill": "#F6F4F1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "cat-title",
+            "name": "cat-title",
+            "x": 18,
+            "y": 22,
+            "fill": "#111111",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-0",
+            "name": "cat-card-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-0",
+            "name": "cat-card-img-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-0",
+            "name": "cat-card-t-0",
+            "x": 32,
+            "y": 136,
+            "fill": "#111111",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-0",
+            "name": "cat-card-b-0",
+            "x": 32,
+            "y": 154,
+            "fill": "#5F5C57",
+            "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 92
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-1",
+            "name": "cat-card-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-support",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-1",
+            "name": "cat-card-img-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-support",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-1",
+            "name": "cat-card-t-1",
+            "x": 206,
+            "y": 136,
+            "fill": "#111111",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-1",
+            "name": "cat-card-b-1",
+            "x": 206,
+            "y": 154,
+            "fill": "#5F5C57",
+            "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 92
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-2",
+            "name": "cat-card-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-announcements",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-2",
+            "name": "cat-card-img-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-announcements",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-2",
+            "name": "cat-card-t-2",
+            "x": 32,
+            "y": 264,
+            "fill": "#111111",
+            "content": "Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-2",
+            "name": "cat-card-b-2",
+            "x": 32,
+            "y": 282,
+            "fill": "#5F5C57",
+            "content": "The latest announcements from Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 49
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-3",
+            "name": "cat-card-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-developer",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-3",
+            "name": "cat-card-img-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-developer",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-3",
+            "name": "cat-card-t-3",
+            "x": 206,
+            "y": 264,
+            "fill": "#111111",
+            "content": "Developer",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-3",
+            "name": "cat-card-b-3",
+            "x": 206,
+            "y": 282,
+            "fill": "#5F5C57",
+            "content": "Introducing openFPGA. The future of video game preservation.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 63
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-4",
+            "name": "cat-card-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-editions",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-4",
+            "name": "cat-card-img-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-editions",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-4",
+            "name": "cat-card-t-4",
+            "x": 32,
+            "y": 392,
+            "fill": "#111111",
+            "content": "Editions",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-4",
+            "name": "cat-card-b-4",
+            "x": 32,
+            "y": 410,
+            "fill": "#5F5C57",
+            "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 92
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "featured",
+        "name": "Featured",
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410,
+        "fill": "#F6F4F1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "featured-title",
+            "name": "featured-title",
+            "x": 18,
+            "y": 24,
+            "fill": "#111111",
+            "content": "Featured pages",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-0",
+            "name": "feat-card-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-3d",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-0",
+            "name": "feat-card-img-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-3d-img-1-e3f9e903.png",
+              "mode": "cover"
+            },
+            "href": "#page-3d",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-0",
+            "name": "feat-card-k-0",
+            "x": 32,
+            "y": 162,
+            "fill": "#1C4BFF",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-3d"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-0",
+            "name": "feat-card-t-0",
+            "x": 32,
+            "y": 180,
+            "fill": "#111111",
+            "content": "3D",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-3d"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-1",
+            "name": "feat-card-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-pocket",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-1",
+            "name": "feat-card-img-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-pocket-img-1-0c002a80.png",
+              "mode": "cover"
+            },
+            "href": "#page-pocket",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-1",
+            "name": "feat-card-k-1",
+            "x": 206,
+            "y": 162,
+            "fill": "#1C4BFF",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-pocket"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-1",
+            "name": "feat-card-t-1",
+            "x": 206,
+            "y": 180,
+            "fill": "#111111",
+            "content": "Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-pocket"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-2",
+            "name": "feat-card-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-duo",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-2",
+            "name": "feat-card-img-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-duo-img-1-5a743f77.png",
+              "mode": "cover"
+            },
+            "href": "#page-duo",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-2",
+            "name": "feat-card-k-2",
+            "x": 32,
+            "y": 316,
+            "fill": "#1C4BFF",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-duo"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-2",
+            "name": "feat-card-t-2",
+            "x": 32,
+            "y": 334,
+            "fill": "#111111",
+            "content": "Duo",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-duo"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-3",
+            "name": "feat-card-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-contact-support",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-3",
+            "name": "feat-card-img-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-contact-support",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-3",
+            "name": "feat-card-k-3",
+            "x": 206,
+            "y": 316,
+            "fill": "#1C4BFF",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-contact-support"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-3",
+            "name": "feat-card-t-3",
+            "x": 206,
+            "y": 334,
+            "fill": "#111111",
+            "content": "Contact Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-contact-support"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "insights",
+        "name": "Insights",
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420,
+        "fill": "#F6F4F1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "insight-card-0",
+            "name": "insight-card-0",
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168,
+            "fill": "#111111",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-announcements",
+            "cornerRadius": 20
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-img-0",
+            "name": "insight-img-0",
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-announcements",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-0",
+            "name": "insight-k-0",
+            "x": 40,
+            "y": 42,
+            "fill": "#E8EEFF",
+            "content": "Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-announcements"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-0",
+            "name": "insight-t-0",
+            "x": 40,
+            "y": 66,
+            "fill": "#FFFFFF",
+            "content": "Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 63,
+            "href": "#page-announcements"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-0",
+            "name": "insight-b-0",
+            "x": 40,
+            "y": 118,
+            "fill": "#EAE6DF",
+            "content": "The latest announcements from Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 53,
+            "href": "#page-announcements"
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-card-1",
+            "name": "insight-card-1",
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168,
+            "fill": "#F1EFEB",
+            "stroke": {
+              "fill": "#D9D5CF",
+              "thickness": 1
+            },
+            "href": "#page-editions",
+            "cornerRadius": 20
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-img-1",
+            "name": "insight-img-1",
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+              "mode": "cover"
+            },
+            "href": "#page-editions",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-1",
+            "name": "insight-k-1",
+            "x": 40,
+            "y": 230,
+            "fill": "#1C4BFF",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-editions"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-1",
+            "name": "insight-t-1",
+            "x": 40,
+            "y": 254,
+            "fill": "#111111",
+            "content": "Editions",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-editions"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-1",
+            "name": "insight-b-1",
+            "x": 40,
+            "y": 306,
+            "fill": "#5F5C57",
+            "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 100,
+            "href": "#page-editions"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250,
+        "fill": "#121212",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#121212"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F2F0EC",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Products Support Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Developer Editions 3D Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    ]
+  }
+}

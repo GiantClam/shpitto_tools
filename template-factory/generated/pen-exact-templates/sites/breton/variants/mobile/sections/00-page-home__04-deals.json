@@ -1,0 +1,445 @@
+{
+  "sectionId": "deals",
+  "sectionName": "Breton Deals",
+  "sectionKind": "generic",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 1108,
+    "width": 390,
+    "height": 210
+  },
+  "directChildCount": 7,
+  "recursiveNodeCount": 8,
+  "treeHash": "24d3261f99e6279a14019dd6d2948a66e5997cb253ae10bf027fe4be31df7433",
+  "blockCount": 7,
+  "blockIndex": [
+    {
+      "blockId": "deals-title",
+      "blockName": "deals-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 20,
+        "y": 40,
+        "width": 220,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ffb12a9c0d44c64bfe157f06891120da451a43d3ded9eb302c5c48d58811e613"
+    },
+    {
+      "blockId": "deals-btn-box",
+      "blockName": "deals-btn-box",
+      "blockType": "rectangle",
+      "order": 1,
+      "bounds": {
+        "x": 20,
+        "y": 98,
+        "width": 160,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b6e4131efc198b709ba1cc629dd0670b979a01b4fe1868afef8eebdb37acfc6f"
+    },
+    {
+      "blockId": "deals-btn-text",
+      "blockName": "deals-btn-text",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 34,
+        "y": 109,
+        "width": 132,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "eacc31f097cb70c06c7aed2ea1511e56bcd9f3a6e6f88fa0e9092a86f33ee367"
+    },
+    {
+      "blockId": "deals-copy",
+      "blockName": "deals-copy",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 210,
+        "y": 92,
+        "width": 160,
+        "height": 92
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b978c4a66a3eb738fcb4dc66aea220c667da7950b7e2241968a8e7964d71e1cb"
+    },
+    {
+      "blockId": "deals-corner-a",
+      "blockName": "deals-corner-a",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 4,
+      "bounds": {
+        "x": 196,
+        "y": 96,
+        "width": 12,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6f9275b0c62931e7173c957aaa645540a94f06ea54232c5e2f4c1326b48ae4c9"
+    },
+    {
+      "blockId": "deals-corner-b",
+      "blockName": "deals-corner-b",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 206,
+        "y": 88,
+        "width": 2,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b5f44a0305177fd410ce264daddd9b8e92d833ed98ffa3db0babaa722add6f27"
+    },
+    {
+      "blockId": "deals-corner-hit",
+      "blockName": "deals-corner-hit",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 194,
+        "y": 86,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "56edc5c8c76b9caa7e167115ea82db3168a946edffe1c3b36b27c62f14c1caef"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "deals-title",
+      "blockName": "deals-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 20,
+        "y": 40,
+        "width": 220,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ffb12a9c0d44c64bfe157f06891120da451a43d3ded9eb302c5c48d58811e613",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "deals-title",
+        "name": "deals-title",
+        "x": 20,
+        "y": 40,
+        "fill": "#232529",
+        "content": "Breton Deals",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 32
+      }
+    },
+    {
+      "blockId": "deals-btn-box",
+      "blockName": "deals-btn-box",
+      "blockType": "rectangle",
+      "order": 1,
+      "bounds": {
+        "x": 20,
+        "y": 98,
+        "width": 160,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b6e4131efc198b709ba1cc629dd0670b979a01b4fe1868afef8eebdb37acfc6f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "deals-btn-box",
+        "name": "deals-btn-box",
+        "x": 20,
+        "y": 98,
+        "width": 160,
+        "height": 40,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        },
+        "href": "#page-services",
+        "cornerRadius": 0
+      }
+    },
+    {
+      "blockId": "deals-btn-text",
+      "blockName": "deals-btn-text",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 34,
+        "y": 109,
+        "width": 132,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "eacc31f097cb70c06c7aed2ea1511e56bcd9f3a6e6f88fa0e9092a86f33ee367",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "deals-btn-text",
+        "name": "deals-btn-text",
+        "x": 34,
+        "y": 109,
+        "fill": "#232529",
+        "content": "Discover more",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 132,
+        "height": 18,
+        "letterSpacing": "0.04em",
+        "href": "#page-services"
+      }
+    },
+    {
+      "blockId": "deals-copy",
+      "blockName": "deals-copy",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 210,
+        "y": 92,
+        "width": 160,
+        "height": 92
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b978c4a66a3eb738fcb4dc66aea220c667da7950b7e2241968a8e7964d71e1cb",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "deals-copy",
+        "name": "deals-copy",
+        "x": 210,
+        "y": 92,
+        "fill": "#232529",
+        "content": "Explore Breton second-hand machinery for compound stone and natural stone at attractive prices.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 160,
+        "height": 92
+      }
+    },
+    {
+      "blockId": "deals-corner-a",
+      "blockName": "deals-corner-a",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 4,
+      "bounds": {
+        "x": 196,
+        "y": 96,
+        "width": 12,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6f9275b0c62931e7173c957aaa645540a94f06ea54232c5e2f4c1326b48ae4c9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "deals-corner-a",
+        "name": "deals-corner-a",
+        "x": 196,
+        "y": 96,
+        "width": 12,
+        "height": 2,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "deals-corner-b",
+      "blockName": "deals-corner-b",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 206,
+        "y": 88,
+        "width": 2,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b5f44a0305177fd410ce264daddd9b8e92d833ed98ffa3db0babaa722add6f27",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "deals-corner-b",
+        "name": "deals-corner-b",
+        "x": 206,
+        "y": 88,
+        "width": 2,
+        "height": 10,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "deals-corner-hit",
+      "blockName": "deals-corner-hit",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 194,
+        "y": 86,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "56edc5c8c76b9caa7e167115ea82db3168a946edffe1c3b36b27c62f14c1caef",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "deals-corner-hit",
+        "name": "deals-corner-hit",
+        "x": 194,
+        "y": 86,
+        "width": 18,
+        "height": 18,
+        "fill": "#00000000",
+        "href": "#page-services"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "deals",
+    "name": "Breton Deals",
+    "x": 0,
+    "y": 1108,
+    "width": 390,
+    "height": 210,
+    "fill": "#ECECEC",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "deals-title",
+        "name": "deals-title",
+        "x": 20,
+        "y": 40,
+        "fill": "#232529",
+        "content": "Breton Deals",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 32
+      },
+      {
+        "type": "rectangle",
+        "id": "deals-btn-box",
+        "name": "deals-btn-box",
+        "x": 20,
+        "y": 98,
+        "width": 160,
+        "height": 40,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        },
+        "href": "#page-services",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "deals-btn-text",
+        "name": "deals-btn-text",
+        "x": 34,
+        "y": 109,
+        "fill": "#232529",
+        "content": "Discover more",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 132,
+        "height": 18,
+        "letterSpacing": "0.04em",
+        "href": "#page-services"
+      },
+      {
+        "type": "text",
+        "id": "deals-copy",
+        "name": "deals-copy",
+        "x": 210,
+        "y": 92,
+        "fill": "#232529",
+        "content": "Explore Breton second-hand machinery for compound stone and natural stone at attractive prices.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 160,
+        "height": 92
+      },
+      {
+        "type": "rectangle",
+        "id": "deals-corner-a",
+        "name": "deals-corner-a",
+        "x": 196,
+        "y": 96,
+        "width": 12,
+        "height": 2,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "deals-corner-b",
+        "name": "deals-corner-b",
+        "x": 206,
+        "y": 88,
+        "width": 2,
+        "height": 10,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "deals-corner-hit",
+        "name": "deals-corner-hit",
+        "x": 194,
+        "y": 86,
+        "width": 18,
+        "height": 18,
+        "fill": "#00000000",
+        "href": "#page-services"
+      }
+    ]
+  }
+}

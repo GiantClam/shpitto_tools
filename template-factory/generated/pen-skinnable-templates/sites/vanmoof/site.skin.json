@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "pen-skinnable-site-bundle.v1",
+  "generatedAt": "2026-03-12T08:24:47.164Z",
+  "siteId": "vanmoof",
+  "siteName": "Vanmoof",
+  "variantCount": 2,
+  "variants": [
+    {
+      "siteId": "vanmoof",
+      "siteName": "Vanmoof",
+      "variant": "mobile",
+      "counts": {
+        "pageCount": 10,
+        "textSlotCount": 91,
+        "imageSlotCount": 5,
+        "linkSlotCount": 44,
+        "styleSlotCount": 154
+      },
+      "templatePath": "sites/vanmoof/variants/mobile/template.skin.json",
+      "editableCatalogPath": "sites/vanmoof/variants/mobile/editable.catalog.json"
+    },
+    {
+      "siteId": "vanmoof",
+      "siteName": "Vanmoof",
+      "variant": "desktop",
+      "counts": {
+        "pageCount": 10,
+        "textSlotCount": 171,
+        "imageSlotCount": 5,
+        "linkSlotCount": 84,
+        "styleSlotCount": 234
+      },
+      "templatePath": "sites/vanmoof/variants/desktop/template.skin.json",
+      "editableCatalogPath": "sites/vanmoof/variants/desktop/editable.catalog.json"
+    }
+  ],
+  "counts": {
+    "pageCount": 20,
+    "textSlotCount": 262,
+    "imageSlotCount": 10,
+    "linkSlotCount": 128,
+    "styleSlotCount": 388
+  }
+}

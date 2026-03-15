@@ -1,0 +1,88 @@
+{
+  "sectionId": "WLxlM",
+  "sectionName": "FixHeading",
+  "sectionKind": "generic",
+  "order": 7,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": 140
+  },
+  "directChildCount": 1,
+  "recursiveNodeCount": 2,
+  "treeHash": "858e0e7026822bcf5de4edd0b3781224bbf28888a1e96c88f94dfbfa0c1c9723",
+  "blockCount": 1,
+  "blockIndex": [
+    {
+      "blockId": "JaC8l",
+      "blockName": "",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "90b9b74738f86e9bd1172679eaa5372d0a64221ec50bebd44c0ebf91b9887b38"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "JaC8l",
+      "blockName": "",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "90b9b74738f86e9bd1172679eaa5372d0a64221ec50bebd44c0ebf91b9887b38",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "JaC8l",
+        "fill": "#2B2B2B",
+        "content": "Let's fix Consumer Electronics.",
+        "fontFamily": "Inter",
+        "fontSize": 42,
+        "fontWeight": "500"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "WLxlM",
+    "name": "FixHeading",
+    "width": "fill_container",
+    "height": 140,
+    "fill": "#F3F3EF",
+    "layout": "vertical",
+    "padding": [
+      0,
+      32
+    ],
+    "justifyContent": "center",
+    "children": [
+      {
+        "type": "text",
+        "id": "JaC8l",
+        "fill": "#2B2B2B",
+        "content": "Let's fix Consumer Electronics.",
+        "fontFamily": "Inter",
+        "fontSize": 42,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

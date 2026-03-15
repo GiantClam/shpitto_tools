@@ -1,0 +1,289 @@
+{
+  "sectionId": "page-platform-navbar",
+  "sectionName": "Navbar",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 68
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "ca79229300676170d5f4095201a3852dd9fa1970775620ad412bafeed6eada02",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "page-platform-navbar-bg",
+      "blockName": "page-platform-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4f20ff0d3d578fe83bc27bc06d5e4567457ad2139086b9f22bcb9d7da21ac5a1"
+    },
+    {
+      "blockId": "page-platform-navbar-logo",
+      "blockName": "page-platform-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 22,
+        "width": 84,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9d53338ee1fd585919e06d9e4829f0c752d8e2e148b4ac2c0d53463347e65686"
+    },
+    {
+      "blockId": "page-platform-navbar-menu",
+      "blockName": "page-platform-navbar-menu",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 350,
+        "y": 24,
+        "width": 18,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "77807a110c13b18260726c0bf2f0214f70ed1d47c9b9b3738a134f9a98ab4876"
+    },
+    {
+      "blockId": "page-platform-navbar-search",
+      "blockName": "page-platform-navbar-search",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 308,
+        "y": 26,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9d8eae73e39cbbd02548ae1f390d4628a737eea1ca83a5329b67b6a993018f80"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+      "relativePath": "assets-structured/carbon/carbon-logo.png",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "page-platform-navbar-bg",
+      "blockName": "page-platform-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4f20ff0d3d578fe83bc27bc06d5e4567457ad2139086b9f22bcb9d7da21ac5a1",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-platform-navbar-bg",
+        "name": "page-platform-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68,
+        "fill": "#000000"
+      }
+    },
+    {
+      "blockId": "page-platform-navbar-logo",
+      "blockName": "page-platform-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 22,
+        "width": 84,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9d53338ee1fd585919e06d9e4829f0c752d8e2e148b4ac2c0d53463347e65686",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+        "relativePath": "assets-structured/carbon/carbon-logo.png",
+        "exists": true,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-platform-navbar-logo",
+        "name": "page-platform-navbar-logo",
+        "x": 18,
+        "y": 22,
+        "width": 84,
+        "height": 26,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "page-platform-navbar-menu",
+      "blockName": "page-platform-navbar-menu",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 350,
+        "y": 24,
+        "width": 18,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "77807a110c13b18260726c0bf2f0214f70ed1d47c9b9b3738a134f9a98ab4876",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-platform-navbar-menu",
+        "name": "page-platform-navbar-menu",
+        "x": 350,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 20,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "page-platform-navbar-search",
+      "blockName": "page-platform-navbar-search",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 308,
+        "y": 26,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9d8eae73e39cbbd02548ae1f390d4628a737eea1ca83a5329b67b6a993018f80",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-platform-navbar-search",
+        "name": "page-platform-navbar-search",
+        "x": 308,
+        "y": 26,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 18,
+        "href": "#page-products"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "page-platform-navbar",
+    "name": "Navbar",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 68,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-platform-navbar-bg",
+        "name": "page-platform-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68,
+        "fill": "#000000"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-platform-navbar-logo",
+        "name": "page-platform-navbar-logo",
+        "x": 18,
+        "y": 22,
+        "width": 84,
+        "height": 26,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "page-platform-navbar-menu",
+        "name": "page-platform-navbar-menu",
+        "x": 350,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 20,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "page-platform-navbar-search",
+        "name": "page-platform-navbar-search",
+        "x": 308,
+        "y": 26,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 18,
+        "href": "#page-products"
+      }
+    ]
+  }
+}

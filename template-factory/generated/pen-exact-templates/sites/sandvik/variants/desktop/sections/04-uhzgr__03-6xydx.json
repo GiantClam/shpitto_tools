@@ -1,0 +1,1359 @@
+{
+  "sectionId": "6XyDx",
+  "sectionName": "newsMain",
+  "sectionKind": "generic",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 116,
+    "width": 1440,
+    "height": 1643
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 46,
+  "treeHash": "ebfc9281572d419bae4d815d08fb29814511cd611dd90299ab17fa18c50ec028",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "IVShD",
+      "blockName": "leftCol",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 34,
+        "width": 920,
+        "height": 1609
+      },
+      "directChildCount": 12,
+      "recursiveNodeCount": 38,
+      "treeHash": "cc6f961e19e0ce7dcff2bf5e938fe3b17958be562cdefaf21f01c111085123eb"
+    },
+    {
+      "blockId": "oX2Tr",
+      "blockName": "rightCol",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 1010,
+        "y": 118,
+        "width": 380,
+        "height": 1450
+      },
+      "directChildCount": 6,
+      "recursiveNodeCount": 7,
+      "treeHash": "72ba6ebbb6b68523d150d4b9a0bd3c923044823bebb21be8dbd72488d5f8a811"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1726421690313-2e0519335b82?auto=format&fit=crop&w=600&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=600&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=600&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=600&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "IVShD",
+      "blockName": "leftCol",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 34,
+        "width": 920,
+        "height": 1609
+      },
+      "directChildCount": 12,
+      "recursiveNodeCount": 38,
+      "treeHash": "cc6f961e19e0ce7dcff2bf5e938fe3b17958be562cdefaf21f01c111085123eb",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "IVShD",
+        "x": 32,
+        "y": 34,
+        "name": "leftCol",
+        "width": 920,
+        "height": 1609,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "sIXuC",
+            "x": 0,
+            "y": 0,
+            "name": "newsTitle",
+            "fill": "#1E1E1E",
+            "content": "新闻",
+            "fontFamily": "Inter",
+            "fontSize": 48,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "LqycN",
+            "x": 0,
+            "y": 88,
+            "name": "n1",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "wW0ha",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1726421690313-2e0519335b82?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "lzgoS",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "展望2026年，以人才、技术和可持续发展领航新行业",
+                "lineHeight": 1.25,
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "SslgN",
+                "x": 146,
+                "y": 78,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2026-10-14",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "iOHRg",
+            "x": 0,
+            "y": 266,
+            "name": "n2",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "oN4q4",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "fC6Nb",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "利用数据驱动，降低制造业对环境的影响",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "Tv8pY",
+                "x": 146,
+                "y": 110,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2025-11-17",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "wEGZY",
+                "x": 146,
+                "y": 48,
+                "name": "desc2",
+                "fill": "#5B5B5B",
+                "textGrowth": "fixed-width",
+                "width": 700,
+                "content": "该新闻介绍了数据在切削领域中的应用，帮助制造商提升资源效率。",
+                "lineHeight": 1.35,
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "oCGpv",
+            "x": 0,
+            "y": 444,
+            "name": "n3",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "VCQ1a",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "fm6DM",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "超级车铣，“智”造未来。山特维克可乐满领跑直进博览——CIMT 2025精彩回顾",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "xPNGQ",
+                "x": 146,
+                "y": 110,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2025-06-10",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "MjUqx",
+            "x": 0,
+            "y": 622,
+            "name": "n4",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "conkW",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "DA261",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "利用 CoroDrill® Dura 462 拓宽钻孔可能性",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "Gqm7i",
+                "x": 146,
+                "y": 78,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2025-05-01",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "5Jwe8",
+            "x": 0,
+            "y": 800,
+            "name": "n5",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "aTcJt",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "IWI2T",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "牛逼大盘磨刀加工",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "4IoPi",
+                "x": 146,
+                "y": 78,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2025-03-19",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "B5mPE",
+            "x": 0,
+            "y": 978,
+            "name": "n6",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "38O2c",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "zQsOM",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "Data drives our sustainable future",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "qW5CV",
+                "x": 146,
+                "y": 78,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2025-02-28",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "YqCG2",
+            "x": 0,
+            "y": 1156,
+            "name": "n7",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "UE2ZM",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "hgs9b",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "Sandvik Coromant introduces new brand identity",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "oIfeV",
+                "x": 146,
+                "y": 95,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2024-09-17",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "DuY2U",
+            "x": 0,
+            "y": 1334,
+            "name": "n8",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "zv8NR",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "kXy7P",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "Celebrating 100 years of cemented carbide",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "UFRAM",
+                "x": 146,
+                "y": 95,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2024-06-27",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "rectangle",
+            "id": "KO1Pg",
+            "x": 0,
+            "y": 1510,
+            "name": "line1",
+            "fill": "#DFDFDF",
+            "width": 900,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 2,
+            "id": "Hpdwl",
+            "x": 0,
+            "y": 1530,
+            "name": "moreBtn",
+            "fill": "#EAEAEA",
+            "width": 86,
+            "height": 30,
+            "stroke": {
+              "align": "inside",
+              "thickness": 1,
+              "fill": "#D2D2D2"
+            }
+          },
+          {
+            "type": "text",
+            "id": "fIrmi",
+            "x": 14,
+            "y": 1538,
+            "name": "moreTxt",
+            "fill": "#484848",
+            "content": "查看更多",
+            "fontFamily": "Inter",
+            "fontSize": 11,
+            "fontWeight": "600"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "oX2Tr",
+      "blockName": "rightCol",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 1010,
+        "y": 118,
+        "width": 380,
+        "height": 1450
+      },
+      "directChildCount": 6,
+      "recursiveNodeCount": 7,
+      "treeHash": "72ba6ebbb6b68523d150d4b9a0bd3c923044823bebb21be8dbd72488d5f8a811",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "oX2Tr",
+        "x": 1010,
+        "y": 118,
+        "name": "rightCol",
+        "width": 380,
+        "height": 1450,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "a4OEX",
+            "x": 0,
+            "y": 0,
+            "name": "rcTitle1",
+            "fill": "#222222",
+            "content": "媒体联系人",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "KIJwK",
+            "x": 0,
+            "y": 44,
+            "name": "rcBody1",
+            "fill": "#4B4B4B",
+            "textGrowth": "fixed-width",
+            "width": 340,
+            "content": "全球 - 新闻\n姓名\n电子邮件\n电话\n\n新闻\n姓名 and 邮箱\n电话",
+            "lineHeight": 1.55,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "DJ9fk",
+            "x": 0,
+            "y": 262,
+            "name": "rcTitle2",
+            "fill": "#222222",
+            "content": "请在此阅读新闻和点击",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "sV80G",
+            "x": 0,
+            "y": 308,
+            "name": "rcBody2",
+            "fill": "#4B4B4B",
+            "textGrowth": "fixed-width",
+            "width": 320,
+            "content": "查阅与媒体相关的资产、新闻与品牌资料。",
+            "lineHeight": 1.55,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "q2tgD",
+            "x": 0,
+            "y": 392,
+            "name": "rcTitle3",
+            "fill": "#222222",
+            "content": "山特维克可乐满",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "5AEwf",
+            "x": 0,
+            "y": 440,
+            "name": "rcBody3",
+            "fill": "#4B4B4B",
+            "textGrowth": "fixed-width",
+            "width": 330,
+            "content": "企业新闻\n欢迎订阅我们的新闻更新，获取最新发布与活动信息。",
+            "lineHeight": 1.55,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "6XyDx",
+    "x": 0,
+    "y": 116,
+    "name": "newsMain",
+    "width": 1440,
+    "height": 1643,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "IVShD",
+        "x": 32,
+        "y": 34,
+        "name": "leftCol",
+        "width": 920,
+        "height": 1609,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "sIXuC",
+            "x": 0,
+            "y": 0,
+            "name": "newsTitle",
+            "fill": "#1E1E1E",
+            "content": "新闻",
+            "fontFamily": "Inter",
+            "fontSize": 48,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "LqycN",
+            "x": 0,
+            "y": 88,
+            "name": "n1",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "wW0ha",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1726421690313-2e0519335b82?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "lzgoS",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "展望2026年，以人才、技术和可持续发展领航新行业",
+                "lineHeight": 1.25,
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "SslgN",
+                "x": 146,
+                "y": 78,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2026-10-14",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "iOHRg",
+            "x": 0,
+            "y": 266,
+            "name": "n2",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "oN4q4",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "fC6Nb",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "利用数据驱动，降低制造业对环境的影响",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "Tv8pY",
+                "x": 146,
+                "y": 110,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2025-11-17",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "wEGZY",
+                "x": 146,
+                "y": 48,
+                "name": "desc2",
+                "fill": "#5B5B5B",
+                "textGrowth": "fixed-width",
+                "width": 700,
+                "content": "该新闻介绍了数据在切削领域中的应用，帮助制造商提升资源效率。",
+                "lineHeight": 1.35,
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "oCGpv",
+            "x": 0,
+            "y": 444,
+            "name": "n3",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "VCQ1a",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "fm6DM",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "超级车铣，“智”造未来。山特维克可乐满领跑直进博览——CIMT 2025精彩回顾",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "xPNGQ",
+                "x": 146,
+                "y": 110,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2025-06-10",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "MjUqx",
+            "x": 0,
+            "y": 622,
+            "name": "n4",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "conkW",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "DA261",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "利用 CoroDrill® Dura 462 拓宽钻孔可能性",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "Gqm7i",
+                "x": 146,
+                "y": 78,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2025-05-01",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "5Jwe8",
+            "x": 0,
+            "y": 800,
+            "name": "n5",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "aTcJt",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "IWI2T",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "牛逼大盘磨刀加工",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "4IoPi",
+                "x": 146,
+                "y": 78,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2025-03-19",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "B5mPE",
+            "x": 0,
+            "y": 978,
+            "name": "n6",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "38O2c",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "zQsOM",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "Data drives our sustainable future",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "qW5CV",
+                "x": 146,
+                "y": 78,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2025-02-28",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "YqCG2",
+            "x": 0,
+            "y": 1156,
+            "name": "n7",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "UE2ZM",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "hgs9b",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "Sandvik Coromant introduces new brand identity",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "oIfeV",
+                "x": 146,
+                "y": 95,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2024-09-17",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "DuY2U",
+            "x": 0,
+            "y": 1334,
+            "name": "n8",
+            "width": 900,
+            "height": 148,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "zv8NR",
+                "x": 0,
+                "y": 0,
+                "name": "img1",
+                "width": 120,
+                "height": 120,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=600&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "kXy7P",
+                "x": 146,
+                "y": 0,
+                "name": "t1",
+                "fill": "#222222",
+                "textGrowth": "fixed-width",
+                "width": 740,
+                "content": "Celebrating 100 years of cemented carbide",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "UFRAM",
+                "x": 146,
+                "y": 95,
+                "name": "d1",
+                "fill": "#8A8A8A",
+                "content": "2024-06-27",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "rectangle",
+            "id": "KO1Pg",
+            "x": 0,
+            "y": 1510,
+            "name": "line1",
+            "fill": "#DFDFDF",
+            "width": 900,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 2,
+            "id": "Hpdwl",
+            "x": 0,
+            "y": 1530,
+            "name": "moreBtn",
+            "fill": "#EAEAEA",
+            "width": 86,
+            "height": 30,
+            "stroke": {
+              "align": "inside",
+              "thickness": 1,
+              "fill": "#D2D2D2"
+            }
+          },
+          {
+            "type": "text",
+            "id": "fIrmi",
+            "x": 14,
+            "y": 1538,
+            "name": "moreTxt",
+            "fill": "#484848",
+            "content": "查看更多",
+            "fontFamily": "Inter",
+            "fontSize": 11,
+            "fontWeight": "600"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "oX2Tr",
+        "x": 1010,
+        "y": 118,
+        "name": "rightCol",
+        "width": 380,
+        "height": 1450,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "a4OEX",
+            "x": 0,
+            "y": 0,
+            "name": "rcTitle1",
+            "fill": "#222222",
+            "content": "媒体联系人",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "KIJwK",
+            "x": 0,
+            "y": 44,
+            "name": "rcBody1",
+            "fill": "#4B4B4B",
+            "textGrowth": "fixed-width",
+            "width": 340,
+            "content": "全球 - 新闻\n姓名\n电子邮件\n电话\n\n新闻\n姓名 and 邮箱\n电话",
+            "lineHeight": 1.55,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "DJ9fk",
+            "x": 0,
+            "y": 262,
+            "name": "rcTitle2",
+            "fill": "#222222",
+            "content": "请在此阅读新闻和点击",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "sV80G",
+            "x": 0,
+            "y": 308,
+            "name": "rcBody2",
+            "fill": "#4B4B4B",
+            "textGrowth": "fixed-width",
+            "width": 320,
+            "content": "查阅与媒体相关的资产、新闻与品牌资料。",
+            "lineHeight": 1.55,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "q2tgD",
+            "x": 0,
+            "y": 392,
+            "name": "rcTitle3",
+            "fill": "#222222",
+            "content": "山特维克可乐满",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "5AEwf",
+            "x": 0,
+            "y": 440,
+            "name": "rcBody3",
+            "fill": "#4B4B4B",
+            "textGrowth": "fixed-width",
+            "width": 330,
+            "content": "企业新闻\n欢迎订阅我们的新闻更新，获取最新发布与活动信息。",
+            "lineHeight": 1.55,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    ]
+  }
+}

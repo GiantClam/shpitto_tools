@@ -1,0 +1,93 @@
+{
+  "blockId": "ytB5D",
+  "blockName": "contactCard",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 1,
+  "bounds": {
+    "x": 631,
+    "y": 163,
+    "width": 768,
+    "height": 330
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 6,
+  "treeHash": "71055177bcdd089a4b1e52822250f78311e6a3ff25bc7233e6b603ba2296cfc7",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "ytB5D",
+    "x": 631,
+    "y": 163,
+    "name": "contactCard",
+    "width": 768,
+    "height": 330,
+    "fill": "#E9E9EA",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "IC8SJ",
+        "x": 70,
+        "y": 62,
+        "name": "contactTag",
+        "fill": "#D5164A",
+        "width": 42,
+        "height": 8
+      },
+      {
+        "type": "text",
+        "id": "Tznxm",
+        "x": 126,
+        "y": 56,
+        "name": "contactTagTxt",
+        "fill": "#5D6772",
+        "content": "联系我们的团队",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "wx50d",
+        "x": 70,
+        "y": 94,
+        "name": "contactTitle",
+        "fill": "#3A434B",
+        "textGrowth": "fixed-width",
+        "width": 509,
+        "content": "携手合作，共创非凡，将变革性产品变为现实。",
+        "lineHeight": 1.16,
+        "fontFamily": "Inter",
+        "fontSize": 44,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "lZgBV",
+        "x": 70,
+        "y": 222,
+        "name": "contactBtn",
+        "width": 160,
+        "height": 52,
+        "fill": "#C70041",
+        "cornerRadius": 4,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "zuB6c",
+            "x": 31,
+            "y": 16,
+            "name": "contactBtnTxt",
+            "fill": "#FFFFFF",
+            "content": "联系我们的团队",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

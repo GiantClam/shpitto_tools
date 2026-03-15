@@ -1,0 +1,5545 @@
+{
+  "pageId": "qO5OY",
+  "pageName": "SANDVIK_PRODUCTS",
+  "pageType": "catalog",
+  "order": 2,
+  "bounds": {
+    "x": 3120,
+    "y": 0,
+    "width": 1440,
+    "height": 2407
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": true
+  },
+  "pageHash": "b140864cd7a2c42163d2b53e7142bb9f2ba4a5cb883d0e6384dbf58fabb77953",
+  "directChildCount": 4,
+  "recursiveNodeCount": 85,
+  "sectionCount": 4,
+  "sectionIndex": [
+    {
+      "sectionId": "UJsER",
+      "sectionName": "head",
+      "sectionKind": "generic",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 116
+      },
+      "directChildCount": 8,
+      "recursiveNodeCount": 9,
+      "treeHash": "47b1733ffd62a4b527de495fbe5630cbd5b192159239cd0246e670f0ca0a30d2",
+      "blockCount": 8
+    },
+    {
+      "sectionId": "5aKBo",
+      "sectionName": "svc",
+      "sectionKind": "generic",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1614,
+        "width": 1440,
+        "height": 116
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "4046a3dd2f018bc805fbb1b4dc475612b3100a352c271237c72c75382927290c",
+      "blockCount": 4
+    },
+    {
+      "sectionId": "Srvdm",
+      "sectionName": "foot",
+      "sectionKind": "generic",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 1730,
+        "width": 1440,
+        "height": 682
+      },
+      "directChildCount": 23,
+      "recursiveNodeCount": 24,
+      "treeHash": "9837ff616464915952debf372c04099460e795dd1b8836f2d53c0f962a0effce",
+      "blockCount": 23
+    },
+    {
+      "sectionId": "pzjqo",
+      "sectionName": "productsMain",
+      "sectionKind": "products",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 124,
+        "width": 1440,
+        "height": 1490
+      },
+      "directChildCount": 32,
+      "recursiveNodeCount": 46,
+      "treeHash": "5e36daa413cf9f66eb4c3d13add55f398716d23597d8949a43b8f8b30e394816",
+      "blockCount": 32
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "UJsER",
+      "sectionName": "head",
+      "sectionKind": "generic",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 116
+      },
+      "directChildCount": 8,
+      "recursiveNodeCount": 9,
+      "treeHash": "47b1733ffd62a4b527de495fbe5630cbd5b192159239cd0246e670f0ca0a30d2",
+      "blockCount": 8,
+      "blockIndex": [
+        {
+          "blockId": "l7q6N",
+          "blockName": "logo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 10,
+            "y": 10,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f1ceef1062d1f702de2a314400f2562281919a15bd2fb858c3624caeb3b50aaa"
+        },
+        {
+          "blockId": "ExbD1",
+          "blockName": "nav",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 10,
+            "y": 78,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "008d1706be32183bb370a924291354491e6af9f48e09484983895534002d64d1"
+        },
+        {
+          "blockId": "6uLPR",
+          "blockName": "actions",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 1318,
+            "y": 28,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f707532a04431f5eb34404a3089474067660dc6679f4187ea8eb09709e8c45da"
+        },
+        {
+          "blockId": "EBDAb",
+          "blockName": "searchBg",
+          "blockType": "rectangle",
+          "order": 3,
+          "bounds": {
+            "x": 124,
+            "y": 14,
+            "width": 1040,
+            "height": 42
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3f20bdfd9ce52196eb93a128f325ae16a7e253f6de88aea7d1507d3d357782b5"
+        },
+        {
+          "blockId": "gFCSJ",
+          "blockName": "searchTxt",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 170,
+            "y": 27,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "259882097cc2e9aedbbcd04fca0c581857bba1443160cdc622508eb7347a0cf2"
+        },
+        {
+          "blockId": "I2ywp",
+          "blockName": "loginBtn",
+          "blockType": "rectangle",
+          "order": 5,
+          "bounds": {
+            "x": 1188,
+            "y": 14,
+            "width": 116,
+            "height": 42
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f78d587c8d0cc7d2731b47127ae4f7f5cee28af7363daca9d0880778e1184121"
+        },
+        {
+          "blockId": "SDJs5",
+          "blockName": "loginTxt",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1232,
+            "y": 25,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c9b43a07f6acbbe31f04db3ace5f16a25d5cf8e2ff659dcb71fde42c2a84ef00"
+        },
+        {
+          "blockId": "tOegp",
+          "blockName": "heroDivider",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 7,
+          "bounds": {
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8c2f31c49792fc2d20634e6db45e37d64c94b9ea30f6762176a53d15699bea4c"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "l7q6N",
+          "blockName": "logo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 10,
+            "y": 10,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f1ceef1062d1f702de2a314400f2562281919a15bd2fb858c3624caeb3b50aaa",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "l7q6N",
+            "x": 10,
+            "y": 10,
+            "name": "logo",
+            "fill": "#222222",
+            "content": "SANDVIK\ncoromant",
+            "lineHeight": 1.05,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "ExbD1",
+          "blockName": "nav",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 10,
+            "y": 78,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "008d1706be32183bb370a924291354491e6af9f48e09484983895534002d64d1",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "ExbD1",
+            "x": 10,
+            "y": 78,
+            "name": "nav",
+            "fill": "#282828",
+            "content": "刀具        知识        服务        支持",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "6uLPR",
+          "blockName": "actions",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 1318,
+            "y": 28,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f707532a04431f5eb34404a3089474067660dc6679f4187ea8eb09709e8c45da",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "6uLPR",
+            "x": 1318,
+            "y": 28,
+            "name": "actions",
+            "fill": "#1F1F1F",
+            "content": "购物车",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "EBDAb",
+          "blockName": "searchBg",
+          "blockType": "rectangle",
+          "order": 3,
+          "bounds": {
+            "x": 124,
+            "y": 14,
+            "width": 1040,
+            "height": 42
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3f20bdfd9ce52196eb93a128f325ae16a7e253f6de88aea7d1507d3d357782b5",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "cornerRadius": 21,
+            "id": "EBDAb",
+            "x": 124,
+            "y": 14,
+            "name": "searchBg",
+            "fill": "#DCD8CF",
+            "width": 1040,
+            "height": 42,
+            "stroke": {
+              "align": "inside",
+              "thickness": 1,
+              "fill": "#C5BFAF"
+            }
+          }
+        },
+        {
+          "blockId": "gFCSJ",
+          "blockName": "searchTxt",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 170,
+            "y": 27,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "259882097cc2e9aedbbcd04fca0c581857bba1443160cdc622508eb7347a0cf2",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "gFCSJ",
+            "x": 170,
+            "y": 27,
+            "name": "searchTxt",
+            "fill": "#575246",
+            "content": "搜索",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "I2ywp",
+          "blockName": "loginBtn",
+          "blockType": "rectangle",
+          "order": 5,
+          "bounds": {
+            "x": 1188,
+            "y": 14,
+            "width": 116,
+            "height": 42
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f78d587c8d0cc7d2731b47127ae4f7f5cee28af7363daca9d0880778e1184121",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "cornerRadius": 4,
+            "id": "I2ywp",
+            "x": 1188,
+            "y": 14,
+            "name": "loginBtn",
+            "fill": "#111111",
+            "width": 116,
+            "height": 42
+          }
+        },
+        {
+          "blockId": "SDJs5",
+          "blockName": "loginTxt",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1232,
+            "y": 25,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c9b43a07f6acbbe31f04db3ace5f16a25d5cf8e2ff659dcb71fde42c2a84ef00",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "SDJs5",
+            "x": 1232,
+            "y": 25,
+            "name": "loginTxt",
+            "fill": "#FFFFFF",
+            "content": "登录",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "tOegp",
+          "blockName": "heroDivider",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 7,
+          "bounds": {
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8c2f31c49792fc2d20634e6db45e37d64c94b9ea30f6762176a53d15699bea4c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "tOegp",
+            "x": 0,
+            "y": 116,
+            "name": "heroDivider",
+            "fill": "#E4E4E1",
+            "width": 1440,
+            "height": 1
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "UJsER",
+        "x": 0,
+        "y": 0,
+        "name": "head",
+        "width": 1440,
+        "height": 116,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "l7q6N",
+            "x": 10,
+            "y": 10,
+            "name": "logo",
+            "fill": "#222222",
+            "content": "SANDVIK\ncoromant",
+            "lineHeight": 1.05,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "ExbD1",
+            "x": 10,
+            "y": 78,
+            "name": "nav",
+            "fill": "#282828",
+            "content": "刀具        知识        服务        支持",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "6uLPR",
+            "x": 1318,
+            "y": 28,
+            "name": "actions",
+            "fill": "#1F1F1F",
+            "content": "购物车",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 21,
+            "id": "EBDAb",
+            "x": 124,
+            "y": 14,
+            "name": "searchBg",
+            "fill": "#DCD8CF",
+            "width": 1040,
+            "height": 42,
+            "stroke": {
+              "align": "inside",
+              "thickness": 1,
+              "fill": "#C5BFAF"
+            }
+          },
+          {
+            "type": "text",
+            "id": "gFCSJ",
+            "x": 170,
+            "y": 27,
+            "name": "searchTxt",
+            "fill": "#575246",
+            "content": "搜索",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 4,
+            "id": "I2ywp",
+            "x": 1188,
+            "y": 14,
+            "name": "loginBtn",
+            "fill": "#111111",
+            "width": 116,
+            "height": 42
+          },
+          {
+            "type": "text",
+            "id": "SDJs5",
+            "x": 1232,
+            "y": 25,
+            "name": "loginTxt",
+            "fill": "#FFFFFF",
+            "content": "登录",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "id": "tOegp",
+            "x": 0,
+            "y": 116,
+            "name": "heroDivider",
+            "fill": "#E4E4E1",
+            "width": 1440,
+            "height": 1
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "5aKBo",
+      "sectionName": "svc",
+      "sectionKind": "generic",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1614,
+        "width": 1440,
+        "height": 116
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "4046a3dd2f018bc805fbb1b4dc475612b3100a352c271237c72c75382927290c",
+      "blockCount": 4,
+      "blockIndex": [
+        {
+          "blockId": "fDNJs",
+          "blockName": "svc1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 0,
+          "bounds": {
+            "x": 106,
+            "y": 30,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bf3694c55bd1323ec84a4cc0dafa14f553b56011000fb22e1b9f015b912a32d3"
+        },
+        {
+          "blockId": "UzeK4",
+          "blockName": "svc2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 827,
+            "y": 30,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bb586f1133652c5fadd1ec950ece08de04dbe21b4863ac078a8b04fd6189d563"
+        },
+        {
+          "blockId": "Ot4yL",
+          "blockName": "si1",
+          "blockType": "icon_font",
+          "blockRole": "icon_font",
+          "order": 2,
+          "bounds": {
+            "x": 32,
+            "y": 35,
+            "width": 46,
+            "height": 46
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "205d581922684d0abae0ea45acd6236aecc8a8a5fbc01e3d28a880be5944dc34"
+        },
+        {
+          "blockId": "C9igS",
+          "blockName": "si2",
+          "blockType": "icon_font",
+          "blockRole": "icon_font",
+          "order": 3,
+          "bounds": {
+            "x": 749,
+            "y": 35,
+            "width": 46,
+            "height": 46
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4c56d9262aea0cb4faec99914153e53dc367f45a0cc4662aa3c01571c5b40120"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "fDNJs",
+          "blockName": "svc1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 0,
+          "bounds": {
+            "x": 106,
+            "y": 30,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bf3694c55bd1323ec84a4cc0dafa14f553b56011000fb22e1b9f015b912a32d3",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "fDNJs",
+            "x": 106,
+            "y": 30,
+            "name": "svc1",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "创建账户  ›\n下订单、查看价格并检查刀具供货情况",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "UzeK4",
+          "blockName": "svc2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 827,
+            "y": 30,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bb586f1133652c5fadd1ec950ece08de04dbe21b4863ac078a8b04fd6189d563",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "UzeK4",
+            "x": 827,
+            "y": 30,
+            "name": "svc2",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "订阅我们的时事通讯  ›\n加入我们，获取最新信息！",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "Ot4yL",
+          "blockName": "si1",
+          "blockType": "icon_font",
+          "blockRole": "icon_font",
+          "order": 2,
+          "bounds": {
+            "x": 32,
+            "y": 35,
+            "width": 46,
+            "height": 46
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "205d581922684d0abae0ea45acd6236aecc8a8a5fbc01e3d28a880be5944dc34",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "icon_font",
+            "id": "Ot4yL",
+            "x": 32,
+            "y": 35,
+            "name": "si1",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "account_circle",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          }
+        },
+        {
+          "blockId": "C9igS",
+          "blockName": "si2",
+          "blockType": "icon_font",
+          "blockRole": "icon_font",
+          "order": 3,
+          "bounds": {
+            "x": 749,
+            "y": 35,
+            "width": 46,
+            "height": 46
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4c56d9262aea0cb4faec99914153e53dc367f45a0cc4662aa3c01571c5b40120",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "icon_font",
+            "id": "C9igS",
+            "x": 749,
+            "y": 35,
+            "name": "si2",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "mail",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "5aKBo",
+        "x": 0,
+        "y": 1614,
+        "name": "svc",
+        "width": 1440,
+        "height": 116,
+        "fill": "#BBAF90",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "fDNJs",
+            "x": 106,
+            "y": 30,
+            "name": "svc1",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "创建账户  ›\n下订单、查看价格并检查刀具供货情况",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "UzeK4",
+            "x": 827,
+            "y": 30,
+            "name": "svc2",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "订阅我们的时事通讯  ›\n加入我们，获取最新信息！",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "icon_font",
+            "id": "Ot4yL",
+            "x": 32,
+            "y": 35,
+            "name": "si1",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "account_circle",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          },
+          {
+            "type": "icon_font",
+            "id": "C9igS",
+            "x": 749,
+            "y": 35,
+            "name": "si2",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "mail",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "Srvdm",
+      "sectionName": "foot",
+      "sectionKind": "generic",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 1730,
+        "width": 1440,
+        "height": 682
+      },
+      "directChildCount": 23,
+      "recursiveNodeCount": 24,
+      "treeHash": "9837ff616464915952debf372c04099460e795dd1b8836f2d53c0f962a0effce",
+      "blockCount": 23,
+      "blockIndex": [
+        {
+          "blockId": "WIpg9",
+          "blockName": "flogo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 10,
+            "y": 38,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f9e612a290312b747be43e0868c651e8837aad6942693a95480b665a0229b426"
+        },
+        {
+          "blockId": "zemKO",
+          "blockName": "fdesc",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 10,
+            "y": 300,
+            "width": 665,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cfc53f3047a9b8c452de202849918308537c76894617ebba03cab571aed59e75"
+        },
+        {
+          "blockId": "MhlHC",
+          "blockName": "fcol1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 750,
+            "y": 60,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "034d345e5d0cd4165e79e53590015926e39cef04ace402ba16c5d6754ce005d1"
+        },
+        {
+          "blockId": "CQ7jv",
+          "blockName": "fcol2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 750,
+            "y": 180,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "61bf0ba127a1a964768da69ba2693a9f0655b4ef13bd061a8c6ee2bb4879d737"
+        },
+        {
+          "blockId": "Jqzsd",
+          "blockName": "fcol3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 750,
+            "y": 300,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1815dd664a2c923dc102984153446a9f0f012ac2c04ad97cbe7a282e3c6c6133"
+        },
+        {
+          "blockId": "lpanF",
+          "blockName": "fline",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 24,
+            "y": 580,
+            "width": 1392,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fce011ff957ef961782bd1c030ea71220f337577ea748f73269e46b13a651ad9"
+        },
+        {
+          "blockId": "omRWf",
+          "blockName": "fcopy",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 10,
+            "y": 600,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a7ea5b68823ecade285507191db34a4b9c85ef47bce7dbbf67fa5814139992fb"
+        },
+        {
+          "blockId": "2Rzs2",
+          "blockName": "rb",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 750,
+            "y": 420,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3abafe7c60ac2e2bd15faf8d874b850d9324e29d0ded7d4b547575e24a76ff47"
+        },
+        {
+          "blockId": "TUuQH",
+          "blockName": "rl1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 750,
+            "y": 150,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e6f864f21be7dc2b4645cba70ecca16ce60e84cb5259905e563f7058d4b32147"
+        },
+        {
+          "blockId": "lq3p5",
+          "blockName": "rl2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 750,
+            "y": 270,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a30bd489449eaee16f48dc27f28a85b770acb89b2bbfab316550b9f3c5d08663"
+        },
+        {
+          "blockId": "2PBPB",
+          "blockName": "rl3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 10,
+          "bounds": {
+            "x": 750,
+            "y": 390,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0264b85067784ad1b48b1001ddfb2ab349c2717e76e1224d0cc2cc533d3ad12f"
+        },
+        {
+          "blockId": "mjbn3",
+          "blockName": "ch1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1380,
+            "y": 60,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dd4a8a394254125ccec190c2c8b2ef3de24b6ab58c06c566a955a95a62f53ba4"
+        },
+        {
+          "blockId": "P6T7V",
+          "blockName": "ch2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 1380,
+            "y": 180,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ee7e76b1abca4e1510c3bf775a621e0a409d3ae53f8942f66f4ef028d2f6a75d"
+        },
+        {
+          "blockId": "9m521",
+          "blockName": "ch3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 13,
+          "bounds": {
+            "x": 1380,
+            "y": 300,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fce0400c627dd3a37cdd549482bcbf8d50d76a2843f69daed72e068646b9448a"
+        },
+        {
+          "blockId": "McNaS",
+          "blockName": "ch4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 14,
+          "bounds": {
+            "x": 1380,
+            "y": 420,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a8700388d1851a2ba69131ac983b2f1fcf4b522e8c18e78406a5e8277c23d141"
+        },
+        {
+          "blockId": "tmWgn",
+          "blockName": "soc",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 10,
+            "y": 479,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8c25bfaf64f606a0b9be287a79be109aa4dcee809df7a1feea2fa220982e0c8e"
+        },
+        {
+          "blockId": "FKVQZ",
+          "blockName": "r1",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 16,
+          "bounds": {
+            "x": 1012,
+            "y": 600,
+            "width": 24,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5b1593c146aebcb602b04c9fa2a9b703ee466a72e09c8baa540a4462eff2e62a"
+        },
+        {
+          "blockId": "4scUS",
+          "blockName": "r1d",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 17,
+          "bounds": {
+            "x": 1018,
+            "y": 606,
+            "width": 12,
+            "height": 12
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0b7c00a2e3543b5050b5bdbe9080fc6684b96d8d34d038323ea6668d78abe4de"
+        },
+        {
+          "blockId": "70lQF",
+          "blockName": "r2",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 18,
+          "bounds": {
+            "x": 1102,
+            "y": 600,
+            "width": 24,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0b44d95f2c925c8c5f5080e649340e2b29e4d5ca90f4fd367d1aad1e93533cbd"
+        },
+        {
+          "blockId": "UNGTH",
+          "blockName": "rt1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 1043,
+            "y": 596,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "85a94a193530efaf68e1bfbd2ad53d0d4ac7e390a3f3d72022dd8a5059fcdb8c"
+        },
+        {
+          "blockId": "vpuPF",
+          "blockName": "rt2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 1136,
+            "y": 597,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "67ae2960366a31ef7208c4de725f94234181e0ac5c25fdca7f3a813cbc987c38"
+        },
+        {
+          "blockId": "SSgyB",
+          "blockName": "loc",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 21,
+          "bounds": {
+            "x": 1214,
+            "y": 596,
+            "width": 202,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "81346dbd5f1b1a29fbe19c2f327198e8c81c1277afb5452b6d1ab266b9a40f8e"
+        },
+        {
+          "blockId": "OZBeD",
+          "blockName": "loct",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 22,
+          "bounds": {
+            "x": 1240,
+            "y": 598,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "318efd0820520121c05fd907b06cfed7027d9b7911a87731172b59f3b3770654"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "WIpg9",
+          "blockName": "flogo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 10,
+            "y": 38,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f9e612a290312b747be43e0868c651e8837aad6942693a95480b665a0229b426",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "WIpg9",
+            "x": 10,
+            "y": 38,
+            "name": "flogo",
+            "fill": "#F1F1F1",
+            "content": "&",
+            "fontFamily": "Inter",
+            "fontSize": 84,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "zemKO",
+          "blockName": "fdesc",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 10,
+            "y": 300,
+            "width": 665,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cfc53f3047a9b8c452de202849918308537c76894617ebba03cab571aed59e75",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "zemKO",
+            "x": 10,
+            "y": 300,
+            "name": "fdesc",
+            "fill": "#E6E6E6",
+            "textGrowth": "fixed-width",
+            "width": 665,
+            "content": "Contact Center 客服中心\n☎ +86 800-820-2623(座机)/+86 400-820-2623(手机)\n沪ICP备20012694号-1\n京公网安备 11010502044395号",
+            "lineHeight": 1.42,
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "MhlHC",
+          "blockName": "fcol1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 750,
+            "y": 60,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "034d345e5d0cd4165e79e53590015926e39cef04ace402ba16c5d6754ce005d1",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "MhlHC",
+            "x": 750,
+            "y": 60,
+            "name": "fcol1",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "产品",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "CQ7jv",
+          "blockName": "fcol2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 750,
+            "y": 180,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "61bf0ba127a1a964768da69ba2693a9f0655b4ef13bd061a8c6ee2bb4879d737",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "CQ7jv",
+            "x": 750,
+            "y": 180,
+            "name": "fcol2",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "服务",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "Jqzsd",
+          "blockName": "fcol3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 750,
+            "y": 300,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1815dd664a2c923dc102984153446a9f0f012ac2c04ad97cbe7a282e3c6c6133",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "Jqzsd",
+            "x": 750,
+            "y": 300,
+            "name": "fcol3",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "订购",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "lpanF",
+          "blockName": "fline",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 24,
+            "y": 580,
+            "width": 1392,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fce011ff957ef961782bd1c030ea71220f337577ea748f73269e46b13a651ad9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "lpanF",
+            "x": 24,
+            "y": 580,
+            "name": "fline",
+            "fill": "#43464D",
+            "width": 1392,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "omRWf",
+          "blockName": "fcopy",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 10,
+            "y": 600,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a7ea5b68823ecade285507191db34a4b9c85ef47bce7dbbf67fa5814139992fb",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "omRWf",
+            "x": 10,
+            "y": 600,
+            "name": "fcopy",
+            "fill": "#E8E8E8",
+            "content": "法律声明      隐私政策      安全      通用条款和条件",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "2Rzs2",
+          "blockName": "rb",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 750,
+            "y": 420,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3abafe7c60ac2e2bd15faf8d874b850d9324e29d0ded7d4b547575e24a76ff47",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "2Rzs2",
+            "x": 750,
+            "y": 420,
+            "name": "rb",
+            "fill": "#F0F0F0",
+            "content": "关于我们",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "TUuQH",
+          "blockName": "rl1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 750,
+            "y": 150,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e6f864f21be7dc2b4645cba70ecca16ce60e84cb5259905e563f7058d4b32147",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "TUuQH",
+            "x": 750,
+            "y": 150,
+            "name": "rl1",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "lq3p5",
+          "blockName": "rl2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 750,
+            "y": 270,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a30bd489449eaee16f48dc27f28a85b770acb89b2bbfab316550b9f3c5d08663",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "lq3p5",
+            "x": 750,
+            "y": 270,
+            "name": "rl2",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "2PBPB",
+          "blockName": "rl3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 10,
+          "bounds": {
+            "x": 750,
+            "y": 390,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0264b85067784ad1b48b1001ddfb2ab349c2717e76e1224d0cc2cc533d3ad12f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "2PBPB",
+            "x": 750,
+            "y": 390,
+            "name": "rl3",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "mjbn3",
+          "blockName": "ch1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1380,
+            "y": 60,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dd4a8a394254125ccec190c2c8b2ef3de24b6ab58c06c566a955a95a62f53ba4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "mjbn3",
+            "x": 1380,
+            "y": 60,
+            "name": "ch1",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "P6T7V",
+          "blockName": "ch2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 1380,
+            "y": 180,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ee7e76b1abca4e1510c3bf775a621e0a409d3ae53f8942f66f4ef028d2f6a75d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "P6T7V",
+            "x": 1380,
+            "y": 180,
+            "name": "ch2",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "9m521",
+          "blockName": "ch3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 13,
+          "bounds": {
+            "x": 1380,
+            "y": 300,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fce0400c627dd3a37cdd549482bcbf8d50d76a2843f69daed72e068646b9448a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "9m521",
+            "x": 1380,
+            "y": 300,
+            "name": "ch3",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "McNaS",
+          "blockName": "ch4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 14,
+          "bounds": {
+            "x": 1380,
+            "y": 420,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a8700388d1851a2ba69131ac983b2f1fcf4b522e8c18e78406a5e8277c23d141",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "McNaS",
+            "x": 1380,
+            "y": 420,
+            "name": "ch4",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "tmWgn",
+          "blockName": "soc",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 10,
+            "y": 479,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8c25bfaf64f606a0b9be287a79be109aa4dcee809df7a1feea2fa220982e0c8e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "tmWgn",
+            "x": 10,
+            "y": 479,
+            "name": "soc",
+            "fill": "#F1F1F1",
+            "content": "◉   ♪   ▶   知   ∞   微   RSS",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "FKVQZ",
+          "blockName": "r1",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 16,
+          "bounds": {
+            "x": 1012,
+            "y": 600,
+            "width": 24,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5b1593c146aebcb602b04c9fa2a9b703ee466a72e09c8baa540a4462eff2e62a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "ellipse",
+            "id": "FKVQZ",
+            "x": 1012,
+            "y": 600,
+            "name": "r1",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          }
+        },
+        {
+          "blockId": "4scUS",
+          "blockName": "r1d",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 17,
+          "bounds": {
+            "x": 1018,
+            "y": 606,
+            "width": 12,
+            "height": 12
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0b7c00a2e3543b5050b5bdbe9080fc6684b96d8d34d038323ea6668d78abe4de",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "ellipse",
+            "id": "4scUS",
+            "x": 1018,
+            "y": 606,
+            "name": "r1d",
+            "fill": "#E8E8E8",
+            "width": 12,
+            "height": 12
+          }
+        },
+        {
+          "blockId": "70lQF",
+          "blockName": "r2",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 18,
+          "bounds": {
+            "x": 1102,
+            "y": 600,
+            "width": 24,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0b44d95f2c925c8c5f5080e649340e2b29e4d5ca90f4fd367d1aad1e93533cbd",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "ellipse",
+            "id": "70lQF",
+            "x": 1102,
+            "y": 600,
+            "name": "r2",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          }
+        },
+        {
+          "blockId": "UNGTH",
+          "blockName": "rt1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 1043,
+            "y": 596,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "85a94a193530efaf68e1bfbd2ad53d0d4ac7e390a3f3d72022dd8a5059fcdb8c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "UNGTH",
+            "x": 1043,
+            "y": 596,
+            "name": "rt1",
+            "fill": "#E8E8E8",
+            "content": "公制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "vpuPF",
+          "blockName": "rt2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 1136,
+            "y": 597,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "67ae2960366a31ef7208c4de725f94234181e0ac5c25fdca7f3a813cbc987c38",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "vpuPF",
+            "x": 1136,
+            "y": 597,
+            "name": "rt2",
+            "fill": "#E8E8E8",
+            "content": "英制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "SSgyB",
+          "blockName": "loc",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 21,
+          "bounds": {
+            "x": 1214,
+            "y": 596,
+            "width": 202,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "81346dbd5f1b1a29fbe19c2f327198e8c81c1277afb5452b6d1ab266b9a40f8e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "cornerRadius": 6,
+            "id": "SSgyB",
+            "x": 1214,
+            "y": 596,
+            "name": "loc",
+            "fill": "#0F1114",
+            "width": 202,
+            "height": 40
+          }
+        },
+        {
+          "blockId": "OZBeD",
+          "blockName": "loct",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 22,
+          "bounds": {
+            "x": 1240,
+            "y": 598,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "318efd0820520121c05fd907b06cfed7027d9b7911a87731172b59f3b3770654",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "OZBeD",
+            "x": 1240,
+            "y": 598,
+            "name": "loct",
+            "fill": "#FFFFFF",
+            "content": "中国 | 中文   ›",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "Srvdm",
+        "x": 0,
+        "y": 1730,
+        "name": "foot",
+        "width": 1440,
+        "height": 682,
+        "fill": "#212226",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "WIpg9",
+            "x": 10,
+            "y": 38,
+            "name": "flogo",
+            "fill": "#F1F1F1",
+            "content": "&",
+            "fontFamily": "Inter",
+            "fontSize": 84,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "zemKO",
+            "x": 10,
+            "y": 300,
+            "name": "fdesc",
+            "fill": "#E6E6E6",
+            "textGrowth": "fixed-width",
+            "width": 665,
+            "content": "Contact Center 客服中心\n☎ +86 800-820-2623(座机)/+86 400-820-2623(手机)\n沪ICP备20012694号-1\n京公网安备 11010502044395号",
+            "lineHeight": 1.42,
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "MhlHC",
+            "x": 750,
+            "y": 60,
+            "name": "fcol1",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "产品",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "CQ7jv",
+            "x": 750,
+            "y": 180,
+            "name": "fcol2",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "服务",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "Jqzsd",
+            "x": 750,
+            "y": 300,
+            "name": "fcol3",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "订购",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "rectangle",
+            "id": "lpanF",
+            "x": 24,
+            "y": 580,
+            "name": "fline",
+            "fill": "#43464D",
+            "width": 1392,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "omRWf",
+            "x": 10,
+            "y": 600,
+            "name": "fcopy",
+            "fill": "#E8E8E8",
+            "content": "法律声明      隐私政策      安全      通用条款和条件",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "2Rzs2",
+            "x": 750,
+            "y": 420,
+            "name": "rb",
+            "fill": "#F0F0F0",
+            "content": "关于我们",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "rectangle",
+            "id": "TUuQH",
+            "x": 750,
+            "y": 150,
+            "name": "rl1",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "id": "lq3p5",
+            "x": 750,
+            "y": 270,
+            "name": "rl2",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "id": "2PBPB",
+            "x": 750,
+            "y": 390,
+            "name": "rl3",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "mjbn3",
+            "x": 1380,
+            "y": 60,
+            "name": "ch1",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "P6T7V",
+            "x": 1380,
+            "y": 180,
+            "name": "ch2",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "9m521",
+            "x": 1380,
+            "y": 300,
+            "name": "ch3",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "McNaS",
+            "x": 1380,
+            "y": 420,
+            "name": "ch4",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "tmWgn",
+            "x": 10,
+            "y": 479,
+            "name": "soc",
+            "fill": "#F1F1F1",
+            "content": "◉   ♪   ▶   知   ∞   微   RSS",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "ellipse",
+            "id": "FKVQZ",
+            "x": 1012,
+            "y": 600,
+            "name": "r1",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "4scUS",
+            "x": 1018,
+            "y": 606,
+            "name": "r1d",
+            "fill": "#E8E8E8",
+            "width": 12,
+            "height": 12
+          },
+          {
+            "type": "ellipse",
+            "id": "70lQF",
+            "x": 1102,
+            "y": 600,
+            "name": "r2",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          },
+          {
+            "type": "text",
+            "id": "UNGTH",
+            "x": 1043,
+            "y": 596,
+            "name": "rt1",
+            "fill": "#E8E8E8",
+            "content": "公制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "vpuPF",
+            "x": 1136,
+            "y": 597,
+            "name": "rt2",
+            "fill": "#E8E8E8",
+            "content": "英制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 6,
+            "id": "SSgyB",
+            "x": 1214,
+            "y": 596,
+            "name": "loc",
+            "fill": "#0F1114",
+            "width": 202,
+            "height": 40
+          },
+          {
+            "type": "text",
+            "id": "OZBeD",
+            "x": 1240,
+            "y": 598,
+            "name": "loct",
+            "fill": "#FFFFFF",
+            "content": "中国 | 中文   ›",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "pzjqo",
+      "sectionName": "productsMain",
+      "sectionKind": "products",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 124,
+        "width": 1440,
+        "height": 1490
+      },
+      "directChildCount": 32,
+      "recursiveNodeCount": 46,
+      "treeHash": "5e36daa413cf9f66eb4c3d13add55f398716d23597d8949a43b8f8b30e394816",
+      "blockCount": 32,
+      "blockIndex": [
+        {
+          "blockId": "G92Eh",
+          "blockName": "title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 46,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "57d8d74e0c641444e62179fb47f155dc565f54a94d4b55419c270430070098d4"
+        },
+        {
+          "blockId": "M0oRR",
+          "blockName": "desc",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 166,
+            "width": 1359,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "feac1582a8340e931e0fa4fb467e9f6125bcc65d55e9418a26546ba9cf6102bb"
+        },
+        {
+          "blockId": "GRlTD",
+          "blockName": "allLink",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 207,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7937e1315bc643857f938aa358bc6627447a64b2e6ecbf467c083dc4ea2fea34"
+        },
+        {
+          "blockId": "YobBj",
+          "blockName": "g1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 312,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b80ae54789234c7547307d07abb7e0efe82d53a37608916c7d3b2b0e47d40d56"
+        },
+        {
+          "blockId": "Hs1QI",
+          "blockName": "g2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 512,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "07db6cdc4fa394bf596672ce9fba73113148ccd1f3a1c2313ec2acd088f62491"
+        },
+        {
+          "blockId": "60UPV",
+          "blockName": "g3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 792,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "44211d0fa4b197363d770cbab93041d301eda9e146cdad8033aee9c761d50e81"
+        },
+        {
+          "blockId": "KZHjs",
+          "blockName": "g4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 18,
+            "y": 1048,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "89add4f1ef2e06589a26884ee8916bdeb424b5d7179699a3c6ad887fe353c856"
+        },
+        {
+          "blockId": "DPfkR",
+          "blockName": "r3",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 7,
+          "bounds": {
+            "x": 18,
+            "y": 562,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "ccc11eebaa209dd1ab4543c4d5e2b912e573288205e0c850e0cff31ff8d848dc"
+        },
+        {
+          "blockId": "LVtpi",
+          "blockName": "r4",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 8,
+          "bounds": {
+            "x": 496,
+            "y": 562,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "7cf5f64fd5ed283f11ef522a85ebbdec3727055b4b32322075baa733e556673f"
+        },
+        {
+          "blockId": "uFESB",
+          "blockName": "r5",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 9,
+          "bounds": {
+            "x": 974,
+            "y": 562,
+            "width": 448,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "1796996e6669a0c3fd4da11ca199480edf66632e2eafd256f1a4d82097a3e841"
+        },
+        {
+          "blockId": "wvp3x",
+          "blockName": "r6",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 10,
+          "bounds": {
+            "x": 18,
+            "y": 626,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "31fd51bfbaf6d03d9bf888c99a4b5b85fd99701b3afec51ba9294e28ec755e0c"
+        },
+        {
+          "blockId": "NERCo",
+          "blockName": "r7",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 11,
+          "bounds": {
+            "x": 496,
+            "y": 626,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "6be67bd7584ed9188669efb460d48b8f4dc7fd28a37319505e3f54bc34212c84"
+        },
+        {
+          "blockId": "U7goa",
+          "blockName": "r8",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 12,
+          "bounds": {
+            "x": 974,
+            "y": 626,
+            "width": 448,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "11f601cc036dd3b25e16752f3d4b2c9b62187000cb8d4a9a6ec601e61bc19f14"
+        },
+        {
+          "blockId": "zBIOP",
+          "blockName": "a1",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 13,
+          "bounds": {
+            "x": 18,
+            "y": 842,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "a97e1a513096421b4147f90f06e81693fc480d2522ae1172045ef3655c750203"
+        },
+        {
+          "blockId": "2jdAz",
+          "blockName": "a2",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 14,
+          "bounds": {
+            "x": 496,
+            "y": 842,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "f949c781bc5f133b6cb5d94d65e27233ff6a4c00ce775f88df1386a52dd2b6c3"
+        },
+        {
+          "blockId": "DduOC",
+          "blockName": "a3",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 15,
+          "bounds": {
+            "x": 974,
+            "y": 842,
+            "width": 448,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "87a520103ccc1f89c21b74922db8721c6f593b9b05f2bff9ac5b9253964e144b"
+        },
+        {
+          "blockId": "6pwmY",
+          "blockName": "a4",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 16,
+          "bounds": {
+            "x": 18,
+            "y": 906,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "9fa6fd827a0856be261c4b67e9fc627fba7d65be3b2b1cc11a4361a2b9ea110e"
+        },
+        {
+          "blockId": "3KGgZ",
+          "blockName": "a5",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 17,
+          "bounds": {
+            "x": 18,
+            "y": 1098,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "bf9885f48567d425b2e144e8e3eb5ac9bd954ae68cb8c4e1b1c44de6dafd13dc"
+        },
+        {
+          "blockId": "LZTNr",
+          "blockName": "cat1",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 18,
+          "bounds": {
+            "x": 18,
+            "y": 1221,
+            "width": 268,
+            "height": 156
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "347b77f6ea3ff3186301b7760a1c3f673450c8398a18139702482e6772681fc8"
+        },
+        {
+          "blockId": "CIwEt",
+          "blockName": "cat2",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 19,
+          "bounds": {
+            "x": 300,
+            "y": 1221,
+            "width": 268,
+            "height": 156
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b607049c518cc6a6513107f092e8ea0e078bafbe8a97e50542b373a681191872"
+        },
+        {
+          "blockId": "M7nk2",
+          "blockName": "cat3",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 20,
+          "bounds": {
+            "x": 582,
+            "y": 1221,
+            "width": 268,
+            "height": 156
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5aaa20ab8ba53c0b7d3be1761e39ed1e8135ba62d7472c42db28a7f952a11090"
+        },
+        {
+          "blockId": "nOS99",
+          "blockName": "cat4",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 21,
+          "bounds": {
+            "x": 864,
+            "y": 1221,
+            "width": 268,
+            "height": 156
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2cdb5572c61a461547dd5c8ed0a50d2008561f8b3566fa3eefc3b6be23eee296"
+        },
+        {
+          "blockId": "av9wr",
+          "blockName": "cat5",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 22,
+          "bounds": {
+            "x": 1146,
+            "y": 1221,
+            "width": 276,
+            "height": 156
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ada7224254a66b6d92016eaa22434a09eb0570e82ceddc8bcfc4daba223eb479"
+        },
+        {
+          "blockId": "UwTWq",
+          "blockName": "",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 23,
+          "bounds": {
+            "x": 24,
+            "y": 1391,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bc0e41e1181b861ddc4676c3c06d211608e17893ab330a51cf3279bb2202b479"
+        },
+        {
+          "blockId": "rlhiK",
+          "blockName": "",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 24,
+          "bounds": {
+            "x": 306,
+            "y": 1391,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ea157a5f73b4c381a9b0b12b8c7facee51d1691d135ed2c6bc956557d5f1493e"
+        },
+        {
+          "blockId": "K8x22",
+          "blockName": "",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 25,
+          "bounds": {
+            "x": 588,
+            "y": 1391,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4b1559b79d6d12cf13e37799fddad3c1a523ec9f4beb6791bf19e3e4d4ccd6bd"
+        },
+        {
+          "blockId": "Aq6Y3",
+          "blockName": "",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 26,
+          "bounds": {
+            "x": 870,
+            "y": 1391,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6e9c37c392228a3afc00a711037746ec06e2ed6b0236c24c5b84421308bba32d"
+        },
+        {
+          "blockId": "5KBqW",
+          "blockName": "",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 27,
+          "bounds": {
+            "x": 1152,
+            "y": 1391,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f05d21cbb0d3c6ad441b0d860cc54b863ee5d3759e3edc02cd3ce69ae5bf1d70"
+        },
+        {
+          "blockId": "r2qyY",
+          "blockName": "",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 28,
+          "bounds": {
+            "x": 1368,
+            "y": 1423,
+            "width": 18,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "622c65cc762ef2b0b39d0b1aac244e49d78325553e8d9f5833bff7af59d48aff"
+        },
+        {
+          "blockId": "8CgOw",
+          "blockName": "",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 29,
+          "bounds": {
+            "x": 1392,
+            "y": 1423,
+            "width": 18,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "81f889bdd546b2312ada9429b775233354b491333bc4be5010807e35a9bf819c"
+        },
+        {
+          "blockId": "GJRj1",
+          "blockName": "d1",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 30,
+          "bounds": {
+            "x": 18,
+            "y": 373,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "f9d3a08f34595cced278c76ad978ce0bc2f6b439cb96af6a4a6b8f4917b3da85"
+        },
+        {
+          "blockId": "vPxKk",
+          "blockName": "d2",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 31,
+          "bounds": {
+            "x": 496,
+            "y": 373,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "5e6a1145ce6ded431becbae48f08e7363ff3c09cd706131730c275b34d017794"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "https://images.unsplash.com/photo-1616410011236-7a42121dd981?auto=format&fit=crop&w=1200&q=80",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        },
+        {
+          "rawUrl": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1200&q=80",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        },
+        {
+          "rawUrl": "https://images.unsplash.com/photo-1660183846659-1133f4637364?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMzIzMDh8&ixlib=rb-4.1.0&q=80&w=1080",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        },
+        {
+          "rawUrl": "https://images.unsplash.com/photo-1536064479547-7ee40b74b807?auto=format&fit=crop&w=1200&q=80",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        },
+        {
+          "rawUrl": "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=1200&q=80",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "G92Eh",
+          "blockName": "title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 46,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "57d8d74e0c641444e62179fb47f155dc565f54a94d4b55419c270430070098d4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "G92Eh",
+            "x": 18,
+            "y": 46,
+            "name": "title",
+            "fill": "#1F1F1F",
+            "content": "金属切削刀具",
+            "fontFamily": "Inter",
+            "fontSize": 72,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "M0oRR",
+          "blockName": "desc",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 166,
+            "width": 1359,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "feac1582a8340e931e0fa4fb467e9f6125bcc65d55e9418a26546ba9cf6102bb",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "M0oRR",
+            "x": 18,
+            "y": 166,
+            "name": "desc",
+            "fill": "#303030",
+            "textGrowth": "fixed-width",
+            "width": 1359,
+            "content": "在牢固可靠的基础上，我们提供的设备涵盖广泛材料、进给和应用工艺，数字化工具为精准刀具管理提供智能优势，从而释放出干净高效的可扩展价值。",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "normal"
+          }
+        },
+        {
+          "blockId": "GRlTD",
+          "blockName": "allLink",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 207,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7937e1315bc643857f938aa358bc6627447a64b2e6ecbf467c083dc4ea2fea34",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "GRlTD",
+            "x": 18,
+            "y": 207,
+            "name": "allLink",
+            "fill": "#7C6A4A",
+            "content": "探索金属切削刀具和解决方案  ›",
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "YobBj",
+          "blockName": "g1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 312,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b80ae54789234c7547307d07abb7e0efe82d53a37608916c7d3b2b0e47d40d56",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "YobBj",
+            "x": 18,
+            "y": 312,
+            "name": "g1",
+            "fill": "#2A2A2A",
+            "content": "刀片 (17507)",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "Hs1QI",
+          "blockName": "g2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 512,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "07db6cdc4fa394bf596672ce9fba73113148ccd1f3a1c2313ec2acd088f62491",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "Hs1QI",
+            "x": 18,
+            "y": 512,
+            "name": "g2",
+            "fill": "#2A2A2A",
+            "content": "刀具 (24805)",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "60UPV",
+          "blockName": "g3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 792,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "44211d0fa4b197363d770cbab93041d301eda9e146cdad8033aee9c761d50e81",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "60UPV",
+            "x": 18,
+            "y": 792,
+            "name": "g3",
+            "fill": "#2A2A2A",
+            "content": "自适应部件 (5445)",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "KZHjs",
+          "blockName": "g4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 18,
+            "y": 1048,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "89add4f1ef2e06589a26884ee8916bdeb424b5d7179699a3c6ad887fe353c856",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "KZHjs",
+            "x": 18,
+            "y": 1048,
+            "name": "g4",
+            "fill": "#2A2A2A",
+            "content": "其它 (4533)",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "DPfkR",
+          "blockName": "r3",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 7,
+          "bounds": {
+            "x": 18,
+            "y": 562,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "ccc11eebaa209dd1ab4543c4d5e2b912e573288205e0c850e0cff31ff8d848dc",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "DPfkR",
+            "x": 18,
+            "y": 562,
+            "name": "r3",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "GQTfc",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "铣刀 (7642)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "LVtpi",
+          "blockName": "r4",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 8,
+          "bounds": {
+            "x": 496,
+            "y": 562,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "7cf5f64fd5ed283f11ef522a85ebbdec3727055b4b32322075baa733e556673f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "LVtpi",
+            "x": 496,
+            "y": 562,
+            "name": "r4",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "fCyb2",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "钻头 (7902)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "uFESB",
+          "blockName": "r5",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 9,
+          "bounds": {
+            "x": 974,
+            "y": 562,
+            "width": 448,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "1796996e6669a0c3fd4da11ca199480edf66632e2eafd256f1a4d82097a3e841",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "uFESB",
+            "x": 974,
+            "y": 562,
+            "name": "r5",
+            "width": 448,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "3vG0c",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "铰刀 (3041)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "wvp3x",
+          "blockName": "r6",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 10,
+          "bounds": {
+            "x": 18,
+            "y": 626,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "31fd51bfbaf6d03d9bf888c99a4b5b85fd99701b3afec51ba9294e28ec755e0c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "wvp3x",
+            "x": 18,
+            "y": 626,
+            "name": "r6",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "P8bFF",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "镗刀 (2864)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "NERCo",
+          "blockName": "r7",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 11,
+          "bounds": {
+            "x": 496,
+            "y": 626,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "6be67bd7584ed9188669efb460d48b8f4dc7fd28a37319505e3f54bc34212c84",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "NERCo",
+            "x": 496,
+            "y": 626,
+            "name": "r7",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "kGeJm",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "刀杆 (4470)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "U7goa",
+          "blockName": "r8",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 12,
+          "bounds": {
+            "x": 974,
+            "y": 626,
+            "width": 448,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "11f601cc036dd3b25e16752f3d4b2c9b62187000cb8d4a9a6ec601e61bc19f14",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "U7goa",
+            "x": 974,
+            "y": 626,
+            "name": "r8",
+            "width": 448,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "RGFXK",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "锯齿刀 (4311)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "zBIOP",
+          "blockName": "a1",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 13,
+          "bounds": {
+            "x": 18,
+            "y": 842,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "a97e1a513096421b4147f90f06e81693fc480d2522ae1172045ef3655c750203",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "zBIOP",
+            "x": 18,
+            "y": 842,
+            "name": "a1",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "SDTts",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "防振切削部件 (1240)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "2jdAz",
+          "blockName": "a2",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 14,
+          "bounds": {
+            "x": 496,
+            "y": 842,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "f949c781bc5f133b6cb5d94d65e27233ff6a4c00ce775f88df1386a52dd2b6c3",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "2jdAz",
+            "x": 496,
+            "y": 842,
+            "name": "a2",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "ot6Wj",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "Adaptive items灵活自适应切削部件 (2529)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "DduOC",
+          "blockName": "a3",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 15,
+          "bounds": {
+            "x": 974,
+            "y": 842,
+            "width": 448,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "87a520103ccc1f89c21b74922db8721c6f593b9b05f2bff9ac5b9253964e144b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "DduOC",
+            "x": 974,
+            "y": 842,
+            "name": "a3",
+            "width": 448,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "aYObQ",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "夹头 (1693)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "6pwmY",
+          "blockName": "a4",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 16,
+          "bounds": {
+            "x": 18,
+            "y": 906,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "9fa6fd827a0856be261c4b67e9fc627fba7d65be3b2b1cc11a4361a2b9ea110e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "6pwmY",
+            "x": 18,
+            "y": 906,
+            "name": "a4",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "lnpyV",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "用于平衡刀具的部件 (974)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "3KGgZ",
+          "blockName": "a5",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 17,
+          "bounds": {
+            "x": 18,
+            "y": 1098,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "bf9885f48567d425b2e144e8e3eb5ac9bd954ae68cb8c4e1b1c44de6dafd13dc",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "3KGgZ",
+            "x": 18,
+            "y": 1098,
+            "name": "a5",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "CmTTV",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "Non-classified products (4533)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "LZTNr",
+          "blockName": "cat1",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 18,
+          "bounds": {
+            "x": 18,
+            "y": 1221,
+            "width": 268,
+            "height": 156
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "347b77f6ea3ff3186301b7760a1c3f673450c8398a18139702482e6772681fc8",
+          "assetRef": {
+            "rawUrl": "https://images.unsplash.com/photo-1616410011236-7a42121dd981?auto=format&fit=crop&w=1200&q=80",
+            "resolvedPath": "",
+            "relativePath": "",
+            "exists": false,
+            "mode": "fill"
+          },
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "LZTNr",
+            "x": 18,
+            "y": 1221,
+            "name": "cat1",
+            "width": 268,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1616410011236-7a42121dd981?auto=format&fit=crop&w=1200&q=80",
+              "mode": "fill"
+            }
+          }
+        },
+        {
+          "blockId": "CIwEt",
+          "blockName": "cat2",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 19,
+          "bounds": {
+            "x": 300,
+            "y": 1221,
+            "width": 268,
+            "height": 156
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b607049c518cc6a6513107f092e8ea0e078bafbe8a97e50542b373a681191872",
+          "assetRef": {
+            "rawUrl": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1200&q=80",
+            "resolvedPath": "",
+            "relativePath": "",
+            "exists": false,
+            "mode": "fill"
+          },
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "CIwEt",
+            "x": 300,
+            "y": 1221,
+            "name": "cat2",
+            "width": 268,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1200&q=80",
+              "mode": "fill"
+            }
+          }
+        },
+        {
+          "blockId": "M7nk2",
+          "blockName": "cat3",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 20,
+          "bounds": {
+            "x": 582,
+            "y": 1221,
+            "width": 268,
+            "height": 156
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5aaa20ab8ba53c0b7d3be1761e39ed1e8135ba62d7472c42db28a7f952a11090",
+          "assetRef": {
+            "rawUrl": "https://images.unsplash.com/photo-1660183846659-1133f4637364?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMzIzMDh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "resolvedPath": "",
+            "relativePath": "",
+            "exists": false,
+            "mode": "fill"
+          },
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "M7nk2",
+            "x": 582,
+            "y": 1221,
+            "name": "cat3",
+            "metadata": {
+              "type": "unsplash",
+              "username": "rubendaniel480",
+              "link": "https://unsplash.com/@rubendaniel480",
+              "author": "Ruben Daniel"
+            },
+            "width": 268,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1660183846659-1133f4637364?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMzIzMDh8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          }
+        },
+        {
+          "blockId": "nOS99",
+          "blockName": "cat4",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 21,
+          "bounds": {
+            "x": 864,
+            "y": 1221,
+            "width": 268,
+            "height": 156
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2cdb5572c61a461547dd5c8ed0a50d2008561f8b3566fa3eefc3b6be23eee296",
+          "assetRef": {
+            "rawUrl": "https://images.unsplash.com/photo-1536064479547-7ee40b74b807?auto=format&fit=crop&w=1200&q=80",
+            "resolvedPath": "",
+            "relativePath": "",
+            "exists": false,
+            "mode": "fill"
+          },
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "nOS99",
+            "x": 864,
+            "y": 1221,
+            "name": "cat4",
+            "width": 268,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1536064479547-7ee40b74b807?auto=format&fit=crop&w=1200&q=80",
+              "mode": "fill"
+            }
+          }
+        },
+        {
+          "blockId": "av9wr",
+          "blockName": "cat5",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 22,
+          "bounds": {
+            "x": 1146,
+            "y": 1221,
+            "width": 276,
+            "height": 156
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ada7224254a66b6d92016eaa22434a09eb0570e82ceddc8bcfc4daba223eb479",
+          "assetRef": {
+            "rawUrl": "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=1200&q=80",
+            "resolvedPath": "",
+            "relativePath": "",
+            "exists": false,
+            "mode": "fill"
+          },
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "av9wr",
+            "x": 1146,
+            "y": 1221,
+            "name": "cat5",
+            "width": 276,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=1200&q=80",
+              "mode": "fill"
+            }
+          }
+        },
+        {
+          "blockId": "UwTWq",
+          "blockName": "",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 23,
+          "bounds": {
+            "x": 24,
+            "y": 1391,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bc0e41e1181b861ddc4676c3c06d211608e17893ab330a51cf3279bb2202b479",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "UwTWq",
+            "x": 24,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "刀片和材质  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "rlhiK",
+          "blockName": "",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 24,
+          "bounds": {
+            "x": 306,
+            "y": 1391,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ea157a5f73b4c381a9b0b12b8c7facee51d1691d135ed2c6bc956557d5f1493e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "rlhiK",
+            "x": 306,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "车削  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "K8x22",
+          "blockName": "",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 25,
+          "bounds": {
+            "x": 588,
+            "y": 1391,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4b1559b79d6d12cf13e37799fddad3c1a523ec9f4beb6791bf19e3e4d4ccd6bd",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "K8x22",
+            "x": 588,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "切断和切槽刀片  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "Aq6Y3",
+          "blockName": "",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 26,
+          "bounds": {
+            "x": 870,
+            "y": 1391,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6e9c37c392228a3afc00a711037746ec06e2ed6b0236c24c5b84421308bba32d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "Aq6Y3",
+            "x": 870,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "切断和切槽  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "5KBqW",
+          "blockName": "",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 27,
+          "bounds": {
+            "x": 1152,
+            "y": 1391,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f05d21cbb0d3c6ad441b0d860cc54b863ee5d3759e3edc02cd3ce69ae5bf1d70",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "5KBqW",
+            "x": 1152,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "铣削刀具  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "r2qyY",
+          "blockName": "",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 28,
+          "bounds": {
+            "x": 1368,
+            "y": 1423,
+            "width": 18,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "622c65cc762ef2b0b39d0b1aac244e49d78325553e8d9f5833bff7af59d48aff",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "ellipse",
+            "id": "r2qyY",
+            "x": 1368,
+            "y": 1423,
+            "fill": "#D7D7D7",
+            "width": 18,
+            "height": 18
+          }
+        },
+        {
+          "blockId": "8CgOw",
+          "blockName": "",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 29,
+          "bounds": {
+            "x": 1392,
+            "y": 1423,
+            "width": 18,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "81f889bdd546b2312ada9429b775233354b491333bc4be5010807e35a9bf819c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "ellipse",
+            "id": "8CgOw",
+            "x": 1392,
+            "y": 1423,
+            "fill": "#B9A373",
+            "width": 18,
+            "height": 18
+          }
+        },
+        {
+          "blockId": "GJRj1",
+          "blockName": "d1",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 30,
+          "bounds": {
+            "x": 18,
+            "y": 373,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "f9d3a08f34595cced278c76ad978ce0bc2f6b439cb96af6a4a6b8f4917b3da85",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "GJRj1",
+            "x": 18,
+            "y": 373,
+            "name": "d1",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "8QNiB",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "铣刀 (7642)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "vPxKk",
+          "blockName": "d2",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 31,
+          "bounds": {
+            "x": 496,
+            "y": 373,
+            "width": 460,
+            "height": 56
+          },
+          "directChildCount": 1,
+          "recursiveNodeCount": 2,
+          "treeHash": "5e6a1145ce6ded431becbae48f08e7363ff3c09cd706131730c275b34d017794",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "vPxKk",
+            "x": 496,
+            "y": 373,
+            "name": "d2",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "o1Z3D",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "铣刀 (7642)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "pzjqo",
+        "x": 0,
+        "y": 124,
+        "name": "productsMain",
+        "width": 1440,
+        "height": 1490,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "G92Eh",
+            "x": 18,
+            "y": 46,
+            "name": "title",
+            "fill": "#1F1F1F",
+            "content": "金属切削刀具",
+            "fontFamily": "Inter",
+            "fontSize": 72,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "M0oRR",
+            "x": 18,
+            "y": 166,
+            "name": "desc",
+            "fill": "#303030",
+            "textGrowth": "fixed-width",
+            "width": 1359,
+            "content": "在牢固可靠的基础上，我们提供的设备涵盖广泛材料、进给和应用工艺，数字化工具为精准刀具管理提供智能优势，从而释放出干净高效的可扩展价值。",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "text",
+            "id": "GRlTD",
+            "x": 18,
+            "y": 207,
+            "name": "allLink",
+            "fill": "#7C6A4A",
+            "content": "探索金属切削刀具和解决方案  ›",
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "YobBj",
+            "x": 18,
+            "y": 312,
+            "name": "g1",
+            "fill": "#2A2A2A",
+            "content": "刀片 (17507)",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "Hs1QI",
+            "x": 18,
+            "y": 512,
+            "name": "g2",
+            "fill": "#2A2A2A",
+            "content": "刀具 (24805)",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "60UPV",
+            "x": 18,
+            "y": 792,
+            "name": "g3",
+            "fill": "#2A2A2A",
+            "content": "自适应部件 (5445)",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "KZHjs",
+            "x": 18,
+            "y": 1048,
+            "name": "g4",
+            "fill": "#2A2A2A",
+            "content": "其它 (4533)",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "DPfkR",
+            "x": 18,
+            "y": 562,
+            "name": "r3",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "GQTfc",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "铣刀 (7642)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "LVtpi",
+            "x": 496,
+            "y": 562,
+            "name": "r4",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "fCyb2",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "钻头 (7902)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "uFESB",
+            "x": 974,
+            "y": 562,
+            "name": "r5",
+            "width": 448,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "3vG0c",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "铰刀 (3041)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "wvp3x",
+            "x": 18,
+            "y": 626,
+            "name": "r6",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "P8bFF",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "镗刀 (2864)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "NERCo",
+            "x": 496,
+            "y": 626,
+            "name": "r7",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "kGeJm",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "刀杆 (4470)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "U7goa",
+            "x": 974,
+            "y": 626,
+            "name": "r8",
+            "width": 448,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "RGFXK",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "锯齿刀 (4311)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "zBIOP",
+            "x": 18,
+            "y": 842,
+            "name": "a1",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "SDTts",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "防振切削部件 (1240)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "2jdAz",
+            "x": 496,
+            "y": 842,
+            "name": "a2",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "ot6Wj",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "Adaptive items灵活自适应切削部件 (2529)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "DduOC",
+            "x": 974,
+            "y": 842,
+            "name": "a3",
+            "width": 448,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "aYObQ",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "夹头 (1693)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "6pwmY",
+            "x": 18,
+            "y": 906,
+            "name": "a4",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "lnpyV",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "用于平衡刀具的部件 (974)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "3KGgZ",
+            "x": 18,
+            "y": 1098,
+            "name": "a5",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "CmTTV",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "Non-classified products (4533)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "LZTNr",
+            "x": 18,
+            "y": 1221,
+            "name": "cat1",
+            "width": 268,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1616410011236-7a42121dd981?auto=format&fit=crop&w=1200&q=80",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "frame",
+            "id": "CIwEt",
+            "x": 300,
+            "y": 1221,
+            "name": "cat2",
+            "width": 268,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1200&q=80",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "frame",
+            "id": "M7nk2",
+            "x": 582,
+            "y": 1221,
+            "name": "cat3",
+            "metadata": {
+              "type": "unsplash",
+              "username": "rubendaniel480",
+              "link": "https://unsplash.com/@rubendaniel480",
+              "author": "Ruben Daniel"
+            },
+            "width": 268,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1660183846659-1133f4637364?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMzIzMDh8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "frame",
+            "id": "nOS99",
+            "x": 864,
+            "y": 1221,
+            "name": "cat4",
+            "width": 268,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1536064479547-7ee40b74b807?auto=format&fit=crop&w=1200&q=80",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "frame",
+            "id": "av9wr",
+            "x": 1146,
+            "y": 1221,
+            "name": "cat5",
+            "width": 276,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=1200&q=80",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "UwTWq",
+            "x": 24,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "刀片和材质  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "rlhiK",
+            "x": 306,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "车削  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "K8x22",
+            "x": 588,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "切断和切槽刀片  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "Aq6Y3",
+            "x": 870,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "切断和切槽  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "5KBqW",
+            "x": 1152,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "铣削刀具  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          },
+          {
+            "type": "ellipse",
+            "id": "r2qyY",
+            "x": 1368,
+            "y": 1423,
+            "fill": "#D7D7D7",
+            "width": 18,
+            "height": 18
+          },
+          {
+            "type": "ellipse",
+            "id": "8CgOw",
+            "x": 1392,
+            "y": 1423,
+            "fill": "#B9A373",
+            "width": 18,
+            "height": 18
+          },
+          {
+            "type": "frame",
+            "id": "GJRj1",
+            "x": 18,
+            "y": 373,
+            "name": "d1",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "8QNiB",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "铣刀 (7642)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "vPxKk",
+            "x": 496,
+            "y": 373,
+            "name": "d2",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "o1Z3D",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "铣刀 (7642)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 67,
+  "looseNodeCount": 0,
+  "looseNodes": [],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1616410011236-7a42121dd981?auto=format&fit=crop&w=1200&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1200&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1660183846659-1133f4637364?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMzIzMDh8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1536064479547-7ee40b74b807?auto=format&fit=crop&w=1200&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=1200&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "qO5OY",
+    "x": 3120,
+    "y": 0,
+    "name": "SANDVIK_PRODUCTS",
+    "clip": true,
+    "width": 1440,
+    "height": 2407,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "UJsER",
+        "x": 0,
+        "y": 0,
+        "name": "head",
+        "width": 1440,
+        "height": 116,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "l7q6N",
+            "x": 10,
+            "y": 10,
+            "name": "logo",
+            "fill": "#222222",
+            "content": "SANDVIK\ncoromant",
+            "lineHeight": 1.05,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "ExbD1",
+            "x": 10,
+            "y": 78,
+            "name": "nav",
+            "fill": "#282828",
+            "content": "刀具        知识        服务        支持",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "6uLPR",
+            "x": 1318,
+            "y": 28,
+            "name": "actions",
+            "fill": "#1F1F1F",
+            "content": "购物车",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 21,
+            "id": "EBDAb",
+            "x": 124,
+            "y": 14,
+            "name": "searchBg",
+            "fill": "#DCD8CF",
+            "width": 1040,
+            "height": 42,
+            "stroke": {
+              "align": "inside",
+              "thickness": 1,
+              "fill": "#C5BFAF"
+            }
+          },
+          {
+            "type": "text",
+            "id": "gFCSJ",
+            "x": 170,
+            "y": 27,
+            "name": "searchTxt",
+            "fill": "#575246",
+            "content": "搜索",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 4,
+            "id": "I2ywp",
+            "x": 1188,
+            "y": 14,
+            "name": "loginBtn",
+            "fill": "#111111",
+            "width": 116,
+            "height": 42
+          },
+          {
+            "type": "text",
+            "id": "SDJs5",
+            "x": 1232,
+            "y": 25,
+            "name": "loginTxt",
+            "fill": "#FFFFFF",
+            "content": "登录",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "id": "tOegp",
+            "x": 0,
+            "y": 116,
+            "name": "heroDivider",
+            "fill": "#E4E4E1",
+            "width": 1440,
+            "height": 1
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "5aKBo",
+        "x": 0,
+        "y": 1614,
+        "name": "svc",
+        "width": 1440,
+        "height": 116,
+        "fill": "#BBAF90",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "fDNJs",
+            "x": 106,
+            "y": 30,
+            "name": "svc1",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "创建账户  ›\n下订单、查看价格并检查刀具供货情况",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "UzeK4",
+            "x": 827,
+            "y": 30,
+            "name": "svc2",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "订阅我们的时事通讯  ›\n加入我们，获取最新信息！",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "icon_font",
+            "id": "Ot4yL",
+            "x": 32,
+            "y": 35,
+            "name": "si1",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "account_circle",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          },
+          {
+            "type": "icon_font",
+            "id": "C9igS",
+            "x": 749,
+            "y": 35,
+            "name": "si2",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "mail",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "Srvdm",
+        "x": 0,
+        "y": 1730,
+        "name": "foot",
+        "width": 1440,
+        "height": 682,
+        "fill": "#212226",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "WIpg9",
+            "x": 10,
+            "y": 38,
+            "name": "flogo",
+            "fill": "#F1F1F1",
+            "content": "&",
+            "fontFamily": "Inter",
+            "fontSize": 84,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "zemKO",
+            "x": 10,
+            "y": 300,
+            "name": "fdesc",
+            "fill": "#E6E6E6",
+            "textGrowth": "fixed-width",
+            "width": 665,
+            "content": "Contact Center 客服中心\n☎ +86 800-820-2623(座机)/+86 400-820-2623(手机)\n沪ICP备20012694号-1\n京公网安备 11010502044395号",
+            "lineHeight": 1.42,
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "MhlHC",
+            "x": 750,
+            "y": 60,
+            "name": "fcol1",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "产品",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "CQ7jv",
+            "x": 750,
+            "y": 180,
+            "name": "fcol2",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "服务",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "Jqzsd",
+            "x": 750,
+            "y": 300,
+            "name": "fcol3",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "订购",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "rectangle",
+            "id": "lpanF",
+            "x": 24,
+            "y": 580,
+            "name": "fline",
+            "fill": "#43464D",
+            "width": 1392,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "omRWf",
+            "x": 10,
+            "y": 600,
+            "name": "fcopy",
+            "fill": "#E8E8E8",
+            "content": "法律声明      隐私政策      安全      通用条款和条件",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "2Rzs2",
+            "x": 750,
+            "y": 420,
+            "name": "rb",
+            "fill": "#F0F0F0",
+            "content": "关于我们",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "rectangle",
+            "id": "TUuQH",
+            "x": 750,
+            "y": 150,
+            "name": "rl1",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "id": "lq3p5",
+            "x": 750,
+            "y": 270,
+            "name": "rl2",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "id": "2PBPB",
+            "x": 750,
+            "y": 390,
+            "name": "rl3",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "mjbn3",
+            "x": 1380,
+            "y": 60,
+            "name": "ch1",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "P6T7V",
+            "x": 1380,
+            "y": 180,
+            "name": "ch2",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "9m521",
+            "x": 1380,
+            "y": 300,
+            "name": "ch3",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "McNaS",
+            "x": 1380,
+            "y": 420,
+            "name": "ch4",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "tmWgn",
+            "x": 10,
+            "y": 479,
+            "name": "soc",
+            "fill": "#F1F1F1",
+            "content": "◉   ♪   ▶   知   ∞   微   RSS",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "ellipse",
+            "id": "FKVQZ",
+            "x": 1012,
+            "y": 600,
+            "name": "r1",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "4scUS",
+            "x": 1018,
+            "y": 606,
+            "name": "r1d",
+            "fill": "#E8E8E8",
+            "width": 12,
+            "height": 12
+          },
+          {
+            "type": "ellipse",
+            "id": "70lQF",
+            "x": 1102,
+            "y": 600,
+            "name": "r2",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          },
+          {
+            "type": "text",
+            "id": "UNGTH",
+            "x": 1043,
+            "y": 596,
+            "name": "rt1",
+            "fill": "#E8E8E8",
+            "content": "公制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "vpuPF",
+            "x": 1136,
+            "y": 597,
+            "name": "rt2",
+            "fill": "#E8E8E8",
+            "content": "英制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 6,
+            "id": "SSgyB",
+            "x": 1214,
+            "y": 596,
+            "name": "loc",
+            "fill": "#0F1114",
+            "width": 202,
+            "height": 40
+          },
+          {
+            "type": "text",
+            "id": "OZBeD",
+            "x": 1240,
+            "y": 598,
+            "name": "loct",
+            "fill": "#FFFFFF",
+            "content": "中国 | 中文   ›",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "pzjqo",
+        "x": 0,
+        "y": 124,
+        "name": "productsMain",
+        "width": 1440,
+        "height": 1490,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "G92Eh",
+            "x": 18,
+            "y": 46,
+            "name": "title",
+            "fill": "#1F1F1F",
+            "content": "金属切削刀具",
+            "fontFamily": "Inter",
+            "fontSize": 72,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "M0oRR",
+            "x": 18,
+            "y": 166,
+            "name": "desc",
+            "fill": "#303030",
+            "textGrowth": "fixed-width",
+            "width": 1359,
+            "content": "在牢固可靠的基础上，我们提供的设备涵盖广泛材料、进给和应用工艺，数字化工具为精准刀具管理提供智能优势，从而释放出干净高效的可扩展价值。",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "text",
+            "id": "GRlTD",
+            "x": 18,
+            "y": 207,
+            "name": "allLink",
+            "fill": "#7C6A4A",
+            "content": "探索金属切削刀具和解决方案  ›",
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "YobBj",
+            "x": 18,
+            "y": 312,
+            "name": "g1",
+            "fill": "#2A2A2A",
+            "content": "刀片 (17507)",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "Hs1QI",
+            "x": 18,
+            "y": 512,
+            "name": "g2",
+            "fill": "#2A2A2A",
+            "content": "刀具 (24805)",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "60UPV",
+            "x": 18,
+            "y": 792,
+            "name": "g3",
+            "fill": "#2A2A2A",
+            "content": "自适应部件 (5445)",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "KZHjs",
+            "x": 18,
+            "y": 1048,
+            "name": "g4",
+            "fill": "#2A2A2A",
+            "content": "其它 (4533)",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "DPfkR",
+            "x": 18,
+            "y": 562,
+            "name": "r3",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "GQTfc",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "铣刀 (7642)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "LVtpi",
+            "x": 496,
+            "y": 562,
+            "name": "r4",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "fCyb2",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "钻头 (7902)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "uFESB",
+            "x": 974,
+            "y": 562,
+            "name": "r5",
+            "width": 448,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "3vG0c",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "铰刀 (3041)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "wvp3x",
+            "x": 18,
+            "y": 626,
+            "name": "r6",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "P8bFF",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "镗刀 (2864)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "NERCo",
+            "x": 496,
+            "y": 626,
+            "name": "r7",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "kGeJm",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "刀杆 (4470)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "U7goa",
+            "x": 974,
+            "y": 626,
+            "name": "r8",
+            "width": 448,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "RGFXK",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "锯齿刀 (4311)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "zBIOP",
+            "x": 18,
+            "y": 842,
+            "name": "a1",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "SDTts",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "防振切削部件 (1240)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "2jdAz",
+            "x": 496,
+            "y": 842,
+            "name": "a2",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "ot6Wj",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "Adaptive items灵活自适应切削部件 (2529)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "DduOC",
+            "x": 974,
+            "y": 842,
+            "name": "a3",
+            "width": 448,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "aYObQ",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "夹头 (1693)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "6pwmY",
+            "x": 18,
+            "y": 906,
+            "name": "a4",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "lnpyV",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "用于平衡刀具的部件 (974)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "3KGgZ",
+            "x": 18,
+            "y": 1098,
+            "name": "a5",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "CmTTV",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "Non-classified products (4533)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "LZTNr",
+            "x": 18,
+            "y": 1221,
+            "name": "cat1",
+            "width": 268,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1616410011236-7a42121dd981?auto=format&fit=crop&w=1200&q=80",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "frame",
+            "id": "CIwEt",
+            "x": 300,
+            "y": 1221,
+            "name": "cat2",
+            "width": 268,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1200&q=80",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "frame",
+            "id": "M7nk2",
+            "x": 582,
+            "y": 1221,
+            "name": "cat3",
+            "metadata": {
+              "type": "unsplash",
+              "username": "rubendaniel480",
+              "link": "https://unsplash.com/@rubendaniel480",
+              "author": "Ruben Daniel"
+            },
+            "width": 268,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1660183846659-1133f4637364?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMzIzMDh8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "frame",
+            "id": "nOS99",
+            "x": 864,
+            "y": 1221,
+            "name": "cat4",
+            "width": 268,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1536064479547-7ee40b74b807?auto=format&fit=crop&w=1200&q=80",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "frame",
+            "id": "av9wr",
+            "x": 1146,
+            "y": 1221,
+            "name": "cat5",
+            "width": 276,
+            "height": 156,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=1200&q=80",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "UwTWq",
+            "x": 24,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "刀片和材质  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "rlhiK",
+            "x": 306,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "车削  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "K8x22",
+            "x": 588,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "切断和切槽刀片  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "Aq6Y3",
+            "x": 870,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "切断和切槽  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "5KBqW",
+            "x": 1152,
+            "y": 1391,
+            "fill": "#6A6A6A",
+            "content": "铣削刀具  ›",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "600"
+          },
+          {
+            "type": "ellipse",
+            "id": "r2qyY",
+            "x": 1368,
+            "y": 1423,
+            "fill": "#D7D7D7",
+            "width": 18,
+            "height": 18
+          },
+          {
+            "type": "ellipse",
+            "id": "8CgOw",
+            "x": 1392,
+            "y": 1423,
+            "fill": "#B9A373",
+            "width": 18,
+            "height": 18
+          },
+          {
+            "type": "frame",
+            "id": "GJRj1",
+            "x": 18,
+            "y": 373,
+            "name": "d1",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "8QNiB",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "铣刀 (7642)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "vPxKk",
+            "x": 496,
+            "y": 373,
+            "name": "d2",
+            "width": 460,
+            "height": 56,
+            "fill": "#ECEBE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "o1Z3D",
+                "x": 18,
+                "y": 16,
+                "fill": "#5A5A5A",
+                "content": "铣刀 (7642)  ›",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { NextRequest, NextResponse } from "next/server";
+import { auditSitePayload } from "@/lib/site-payload-audit";
 
 const ensureDir = async (dir: string) => {
   await fs.mkdir(dir, { recursive: true });
@@ -52,11 +53,29 @@ export async function POST(request: NextRequest) {
     const payload = body.payload ?? body;
     const outDir = path.join(process.cwd(), "..", "asset-factory", "out", "p2w", id);
     await ensureDir(outDir);
+    const sandboxPayload = toSandboxPayload(payload);
+    const payloadRecord = (payload && typeof payload === "object" ? payload : {}) as Record<string, unknown>;
+    const audit = auditSitePayload(sandboxPayload, {
+      prompt:
+        typeof body.prompt === "string"
+          ? body.prompt
+          : typeof payloadRecord.prompt === "string"
+            ? payloadRecord.prompt
+            : undefined,
+      resolvedByLayer:
+        payloadRecord.resolvedByLayer && typeof payloadRecord.resolvedByLayer === "object"
+          ? (payloadRecord.resolvedByLayer as Record<string, unknown>)
+          : null,
+    });
+    await fs.writeFile(path.join(outDir, "audit.json"), JSON.stringify(audit, null, 2));
+    if (!audit.ok) {
+      return NextResponse.json({ error: "payload_audit_failed", id, audit }, { status: 422 });
+    }
     await fs.writeFile(path.join(outDir, "result.json"), JSON.stringify(payload, null, 2));
     const sandboxDir = path.join(outDir, "sandbox");
     await ensureDir(sandboxDir);
-    await fs.writeFile(path.join(sandboxDir, "payload.json"), JSON.stringify(toSandboxPayload(payload), null, 2));
-    return NextResponse.json({ status: "ok", id });
+    await fs.writeFile(path.join(sandboxDir, "payload.json"), JSON.stringify(sandboxPayload, null, 2));
+    return NextResponse.json({ status: "ok", id, audit });
   } catch (error) {
     return NextResponse.json({ error: "save_failed" }, { status: 500 });
   }

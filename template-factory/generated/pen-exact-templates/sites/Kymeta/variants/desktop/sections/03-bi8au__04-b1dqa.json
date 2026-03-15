@@ -1,0 +1,461 @@
+{
+  "sectionId": "B1dqa",
+  "sectionName": "sec3",
+  "sectionKind": "generic",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 2147,
+    "width": 1440,
+    "height": 650
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 7,
+  "treeHash": "5a245eb20f59586cab93c117b29029dafa160e95c2ceaf850c74f8fd3bb107c4",
+  "blockCount": 6,
+  "blockIndex": [
+    {
+      "blockId": "A4any",
+      "blockName": "sec3title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 720,
+        "y": 88,
+        "width": 669,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2720bc4bb3650de7f5a34febb056398fd452d23f4cfc832b05940e7e56bd3584"
+    },
+    {
+      "blockId": "xfyvP",
+      "blockName": "imgOverlay",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 520,
+        "y": 88,
+        "width": 220,
+        "height": 440
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2c7eca30858006a5b7453788cc24ca3d3e459d5995e49153a134515458d3437e"
+    },
+    {
+      "blockId": "LbhZZ",
+      "blockName": "sec3desc",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 720,
+        "y": 250,
+        "width": 669,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d512181eaa514f564074efe122a29f1d96a208bbd1418d59b1c850a2506d178c"
+    },
+    {
+      "blockId": "2dTqv",
+      "blockName": "sec3img",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 56,
+        "y": 88,
+        "width": 598,
+        "height": 468
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "267d59f6ca15f49584f5175773f4e6ad4cca4c1aa8d841bb1f2f01687a381f82"
+    },
+    {
+      "blockId": "OWazC",
+      "blockName": "prodBtn",
+      "blockType": "rectangle",
+      "order": 4,
+      "bounds": {
+        "x": 720,
+        "y": 433,
+        "width": 126,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5fbf7dfd929a23a914f5f3a25938eac0b509e3eadfc04a0bdb40f0393e50f2cb"
+    },
+    {
+      "blockId": "f47up",
+      "blockName": "prodBtnT",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 744,
+        "y": 441,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e9fc2c065ad743e7e042a7d5c3adeff7383331a9568e6d458ab0a03d69642573"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1604773794174-0107c62f0968?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDYzOTB8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "A4any",
+      "blockName": "sec3title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 720,
+        "y": 88,
+        "width": 669,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2720bc4bb3650de7f5a34febb056398fd452d23f4cfc832b05940e7e56bd3584",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "A4any",
+        "x": 720,
+        "y": 88,
+        "name": "sec3title",
+        "fill": "#FFFFFF",
+        "textGrowth": "fixed-width",
+        "width": 669,
+        "content": "The intelligent \ncommunications platform",
+        "lineHeight": 1.1,
+        "fontFamily": "Inter",
+        "fontSize": 54,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "xfyvP",
+      "blockName": "imgOverlay",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 520,
+        "y": 88,
+        "width": 220,
+        "height": 440
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2c7eca30858006a5b7453788cc24ca3d3e459d5995e49153a134515458d3437e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "xfyvP",
+        "x": 520,
+        "y": 88,
+        "name": "imgOverlay",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 90,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#00000000",
+              "position": 0
+            },
+            {
+              "color": "#000000C8",
+              "position": 0.62
+            },
+            {
+              "color": "#000000F0",
+              "position": 1
+            }
+          ]
+        },
+        "width": 220,
+        "height": 440
+      }
+    },
+    {
+      "blockId": "LbhZZ",
+      "blockName": "sec3desc",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 720,
+        "y": 250,
+        "width": 669,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d512181eaa514f564074efe122a29f1d96a208bbd1418d59b1c850a2506d178c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "LbhZZ",
+        "x": 720,
+        "y": 250,
+        "name": "sec3desc",
+        "fill": "#ffffff",
+        "textGrowth": "fixed-width",
+        "width": 669,
+        "content": "Kymeta’s Intelligent Communications Platform leverages advanced processing at the edge, software-defined solutions, and hybrid multi-network capabilities. Our metamaterial-based innovations assure continuous connectivity and spatial intelligence, providing you with the resilient, high-performance communication needed to stay ahead in any situation.",
+        "lineHeight": 1.5,
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "2dTqv",
+      "blockName": "sec3img",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 56,
+        "y": 88,
+        "width": 598,
+        "height": 468
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "267d59f6ca15f49584f5175773f4e6ad4cca4c1aa8d841bb1f2f01687a381f82",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1604773794174-0107c62f0968?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDYzOTB8&ixlib=rb-4.1.0&q=80&w=1080",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "2dTqv",
+        "x": 56,
+        "y": 88,
+        "name": "sec3img",
+        "metadata": {
+          "type": "unsplash",
+          "username": "teo",
+          "link": "https://unsplash.com/@teo",
+          "author": "Teo Zac"
+        },
+        "width": 598,
+        "height": 468,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1604773794174-0107c62f0968?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDYzOTB8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "layout": "none"
+      }
+    },
+    {
+      "blockId": "OWazC",
+      "blockName": "prodBtn",
+      "blockType": "rectangle",
+      "order": 4,
+      "bounds": {
+        "x": 720,
+        "y": 433,
+        "width": 126,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5fbf7dfd929a23a914f5f3a25938eac0b509e3eadfc04a0bdb40f0393e50f2cb",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "cornerRadius": 3,
+        "id": "OWazC",
+        "x": 720,
+        "y": 433,
+        "name": "prodBtn",
+        "fill": "#00000000",
+        "width": 126,
+        "height": 32,
+        "stroke": {
+          "align": "inside",
+          "thickness": 1,
+          "fill": "#8aa3d3"
+        }
+      }
+    },
+    {
+      "blockId": "f47up",
+      "blockName": "prodBtnT",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 744,
+        "y": 441,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e9fc2c065ad743e7e042a7d5c3adeff7383331a9568e6d458ab0a03d69642573",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "f47up",
+        "x": 744,
+        "y": 441,
+        "name": "prodBtnT",
+        "fill": "#FFFFFF",
+        "content": "Our products",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "B1dqa",
+    "x": 0,
+    "y": 2147,
+    "name": "sec3",
+    "width": 1440,
+    "height": 650,
+    "fill": "#000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "A4any",
+        "x": 720,
+        "y": 88,
+        "name": "sec3title",
+        "fill": "#FFFFFF",
+        "textGrowth": "fixed-width",
+        "width": 669,
+        "content": "The intelligent \ncommunications platform",
+        "lineHeight": 1.1,
+        "fontFamily": "Inter",
+        "fontSize": 54,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "id": "xfyvP",
+        "x": 520,
+        "y": 88,
+        "name": "imgOverlay",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 90,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#00000000",
+              "position": 0
+            },
+            {
+              "color": "#000000C8",
+              "position": 0.62
+            },
+            {
+              "color": "#000000F0",
+              "position": 1
+            }
+          ]
+        },
+        "width": 220,
+        "height": 440
+      },
+      {
+        "type": "text",
+        "id": "LbhZZ",
+        "x": 720,
+        "y": 250,
+        "name": "sec3desc",
+        "fill": "#ffffff",
+        "textGrowth": "fixed-width",
+        "width": 669,
+        "content": "Kymeta’s Intelligent Communications Platform leverages advanced processing at the edge, software-defined solutions, and hybrid multi-network capabilities. Our metamaterial-based innovations assure continuous connectivity and spatial intelligence, providing you with the resilient, high-performance communication needed to stay ahead in any situation.",
+        "lineHeight": 1.5,
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "2dTqv",
+        "x": 56,
+        "y": 88,
+        "name": "sec3img",
+        "metadata": {
+          "type": "unsplash",
+          "username": "teo",
+          "link": "https://unsplash.com/@teo",
+          "author": "Teo Zac"
+        },
+        "width": 598,
+        "height": 468,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1604773794174-0107c62f0968?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDYzOTB8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "layout": "none"
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 3,
+        "id": "OWazC",
+        "x": 720,
+        "y": 433,
+        "name": "prodBtn",
+        "fill": "#00000000",
+        "width": 126,
+        "height": 32,
+        "stroke": {
+          "align": "inside",
+          "thickness": 1,
+          "fill": "#8aa3d3"
+        }
+      },
+      {
+        "type": "text",
+        "id": "f47up",
+        "x": 744,
+        "y": 441,
+        "name": "prodBtnT",
+        "fill": "#FFFFFF",
+        "content": "Our products",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

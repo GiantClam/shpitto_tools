@@ -1,0 +1,4764 @@
+{
+  "pageId": "page-home",
+  "pageKey": "home",
+  "pageName": "Transparent Homepage Desktop",
+  "pageType": "home",
+  "devices": {
+    "desktop": {
+      "bounds": {
+        "width": 1440,
+        "height": 1940
+      },
+      "supportBlocks": [
+        {
+          "id": "home-bg",
+          "name": "home-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1940
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#F5F5F2"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08"
+          }
+        }
+      ]
+    },
+    "mobile": {
+      "bounds": {
+        "width": 390,
+        "height": 1960
+      },
+      "supportBlocks": [
+        {
+          "id": "home-bg",
+          "name": "home-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 1960
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#F5F5F2"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08"
+          }
+        }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "sectionId": "hero",
+      "sectionKey": "hero",
+      "sectionName": "Hero",
+      "sectionKind": "hero",
+      "order": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 700
+          },
+          "blockCount": 10,
+          "blockTree": {
+            "id": "hero",
+            "name": "Hero",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 700
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#F5F5F2",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color08"
+            },
+            "children": [
+              {
+                "id": "hero-bg",
+                "name": "hero-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 700
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#F5F5F2"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color08"
+                }
+              },
+              {
+                "id": "hero-image",
+                "name": "hero-image",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 830,
+                  "y": 110,
+                  "width": 530,
+                  "height": 500
+                },
+                "href": "#page-all-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 28
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius05"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "header-page-home",
+                "name": "Header",
+                "type": "frame",
+                "role": "navigation",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 84
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#00000000",
+                  "layout": "none"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color11"
+                },
+                "children": [
+                  {
+                    "id": "header-bg",
+                    "name": "header-bg",
+                    "type": "rectangle",
+                    "role": "image",
+                    "bounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1440,
+                      "height": 84
+                    },
+                    "href": "",
+                    "content": "",
+                    "style": {
+                      "fill": "#FFFFFF"
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color02"
+                    }
+                  },
+                  {
+                    "id": "header-brand",
+                    "name": "header-brand",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 40,
+                      "y": 24,
+                      "width": 240,
+                      "height": 28
+                    },
+                    "href": "",
+                    "content": "Transparent",
+                    "style": {
+                      "fill": "#141414",
+                      "typography": {
+                        "fill": "#141414",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 22,
+                        "fontWeight": "700",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size10",
+                      "fontWeight": "fontWeight.palette.weight01"
+                    }
+                  },
+                  {
+                    "id": "nav-page-all-products",
+                    "name": "nav-page-all-products",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 840,
+                      "y": 30,
+                      "width": 100,
+                      "height": 18
+                    },
+                    "href": "#page-all-products",
+                    "content": "ALL PRODUCTS",
+                    "style": {
+                      "fill": "#141414",
+                      "typography": {
+                        "fill": "#141414",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 11,
+                        "fontWeight": "600",
+                        "letterSpacing": "0.08em",
+                        "textAlign": "center",
+                        "textAlignVertical": "middle"
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size01",
+                      "fontWeight": "fontWeight.palette.weight03"
+                    }
+                  },
+                  {
+                    "id": "nav-page-modular-system",
+                    "name": "nav-page-modular-system",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 948,
+                      "y": 30,
+                      "width": 100,
+                      "height": 18
+                    },
+                    "href": "#page-modular-system",
+                    "content": "MODULAR SYSTEM",
+                    "style": {
+                      "fill": "#141414",
+                      "typography": {
+                        "fill": "#141414",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 11,
+                        "fontWeight": "600",
+                        "letterSpacing": "0.08em",
+                        "textAlign": "center",
+                        "textAlignVertical": "middle"
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size01",
+                      "fontWeight": "fontWeight.palette.weight03"
+                    }
+                  },
+                  {
+                    "id": "nav-page-sound-room",
+                    "name": "nav-page-sound-room",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 1056,
+                      "y": 30,
+                      "width": 100,
+                      "height": 18
+                    },
+                    "href": "#page-sound-room",
+                    "content": "SOUND ROOM",
+                    "style": {
+                      "fill": "#141414",
+                      "typography": {
+                        "fill": "#141414",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 11,
+                        "fontWeight": "600",
+                        "letterSpacing": "0.08em",
+                        "textAlign": "center",
+                        "textAlignVertical": "middle"
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size01",
+                      "fontWeight": "fontWeight.palette.weight03"
+                    }
+                  },
+                  {
+                    "id": "nav-page-support",
+                    "name": "nav-page-support",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 1164,
+                      "y": 30,
+                      "width": 100,
+                      "height": 18
+                    },
+                    "href": "#page-support",
+                    "content": "SUPPORT",
+                    "style": {
+                      "fill": "#141414",
+                      "typography": {
+                        "fill": "#141414",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 11,
+                        "fontWeight": "600",
+                        "letterSpacing": "0.08em",
+                        "textAlign": "center",
+                        "textAlignVertical": "middle"
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size01",
+                      "fontWeight": "fontWeight.palette.weight03"
+                    }
+                  },
+                  {
+                    "id": "nav-page-about",
+                    "name": "nav-page-about",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 1272,
+                      "y": 30,
+                      "width": 100,
+                      "height": 18
+                    },
+                    "href": "#page-about",
+                    "content": "ABOUT",
+                    "style": {
+                      "fill": "#141414",
+                      "typography": {
+                        "fill": "#141414",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 11,
+                        "fontWeight": "600",
+                        "letterSpacing": "0.08em",
+                        "textAlign": "center",
+                        "textAlignVertical": "middle"
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size01",
+                      "fontWeight": "fontWeight.palette.weight03"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "hero-kicker",
+                "name": "hero-kicker",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 120,
+                  "width": 200,
+                  "height": 18
+                },
+                "href": "",
+                "content": "TRANSPARENT",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.12em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "hero-title",
+                "name": "hero-title",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 40,
+                  "y": 160,
+                  "width": 620,
+                  "height": 296
+                },
+                "href": "",
+                "content": "Timeless speakers and design tech",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 68,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size18",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "hero-subtitle",
+                "name": "hero-subtitle",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 40,
+                  "y": 334,
+                  "width": 480,
+                  "height": 83
+                },
+                "href": "",
+                "content": "scandinavian industrial design, modular systems and audio objects shaped to last and evolve over time.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "hero-primary-box",
+                "name": "hero-primary-box",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 40,
+                  "y": 434,
+                  "width": 148,
+                  "height": 40
+                },
+                "href": "#page-all-products",
+                "content": "",
+                "style": {
+                  "fill": "#111111",
+                  "stroke": {
+                    "color": "#111111",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 14
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "strokeColor": "color.palette.color04",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "hero-primary-text",
+                "name": "hero-primary-text",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 54,
+                  "y": 445,
+                  "width": 120,
+                  "height": 18
+                },
+                "href": "#page-all-products",
+                "content": "All Products",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.03em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "hero-secondary-box",
+                "name": "hero-secondary-box",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 202,
+                  "y": 434,
+                  "width": 148,
+                  "height": 40
+                },
+                "href": "#page-modular-system",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 14
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "hero-secondary-text",
+                "name": "hero-secondary-text",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 216,
+                  "y": 445,
+                  "width": 120,
+                  "height": 18
+                },
+                "href": "#page-modular-system",
+                "content": "Modular System",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.03em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520
+          },
+          "blockCount": 10,
+          "blockTree": {
+            "id": "hero",
+            "name": "Hero",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 520
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#F5F5F2",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color08"
+            },
+            "children": [
+              {
+                "id": "hero-bg",
+                "name": "hero-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 520
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#F5F5F2"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color08"
+                }
+              },
+              {
+                "id": "hero-image",
+                "name": "hero-image",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 20,
+                  "y": 250,
+                  "width": 350,
+                  "height": 220
+                },
+                "href": "#page-all-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 28
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius05"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "header-page-home",
+                "name": "Header",
+                "type": "frame",
+                "role": "navigation",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 64
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#00000000",
+                  "layout": "none"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color11"
+                },
+                "children": [
+                  {
+                    "id": "header-bg",
+                    "name": "header-bg",
+                    "type": "rectangle",
+                    "role": "image",
+                    "bounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 390,
+                      "height": 64
+                    },
+                    "href": "",
+                    "content": "",
+                    "style": {
+                      "fill": "#FFFFFF"
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color02"
+                    }
+                  },
+                  {
+                    "id": "header-brand",
+                    "name": "header-brand",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 18,
+                      "y": 18,
+                      "width": 180,
+                      "height": 28
+                    },
+                    "href": "",
+                    "content": "Transparent",
+                    "style": {
+                      "fill": "#141414",
+                      "typography": {
+                        "fill": "#141414",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 18,
+                        "fontWeight": "700",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size05",
+                      "fontWeight": "fontWeight.palette.weight01"
+                    }
+                  },
+                  {
+                    "id": "header-menu",
+                    "name": "header-menu",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 362,
+                      "y": 18,
+                      "width": 18,
+                      "height": 20
+                    },
+                    "href": "#page-all-products",
+                    "content": "☰",
+                    "style": {
+                      "fill": "#141414",
+                      "typography": {
+                        "fill": "#141414",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 18,
+                        "fontWeight": "700",
+                        "letterSpacing": "",
+                        "textAlign": "center",
+                        "textAlignVertical": "middle"
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size05",
+                      "fontWeight": "fontWeight.palette.weight01"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "hero-kicker",
+                "name": "hero-kicker",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 86,
+                  "width": 200,
+                  "height": 18
+                },
+                "href": "",
+                "content": "TRANSPARENT",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.12em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "hero-title",
+                "name": "hero-title",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 18,
+                  "y": 116,
+                  "width": 320,
+                  "height": 151
+                },
+                "href": "",
+                "content": "Timeless speakers and design tech",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 34,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size17",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "hero-subtitle",
+                "name": "hero-subtitle",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 18,
+                  "y": 240,
+                  "width": 320,
+                  "height": 66
+                },
+                "href": "",
+                "content": "scandinavian industrial design, modular systems and audio objects shaped to last and evolve over time.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 14,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size15",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "hero-primary-box",
+                "name": "hero-primary-box",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 18,
+                  "y": 314,
+                  "width": 148,
+                  "height": 40
+                },
+                "href": "#page-all-products",
+                "content": "",
+                "style": {
+                  "fill": "#111111",
+                  "stroke": {
+                    "color": "#111111",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 14
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "strokeColor": "color.palette.color04",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "hero-primary-text",
+                "name": "hero-primary-text",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 32,
+                  "y": 325,
+                  "width": 120,
+                  "height": 18
+                },
+                "href": "#page-all-products",
+                "content": "All Products",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.03em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "hero-secondary-box",
+                "name": "hero-secondary-box",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 180,
+                  "y": 314,
+                  "width": 148,
+                  "height": 40
+                },
+                "href": "#page-modular-system",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 14
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "hero-secondary-text",
+                "name": "hero-secondary-text",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 194,
+                  "y": 325,
+                  "width": 120,
+                  "height": 18
+                },
+                "href": "#page-modular-system",
+                "content": "Modular System",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.03em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "categories",
+      "sectionKey": "categories",
+      "sectionName": "Categories",
+      "sectionKind": "navigation",
+      "order": {
+        "desktop": 1,
+        "mobile": 1
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 700,
+            "width": 1440,
+            "height": 320
+          },
+          "blockCount": 21,
+          "blockTree": {
+            "id": "categories",
+            "name": "Categories",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 700,
+              "width": 1440,
+              "height": 320
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#F5F5F2",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color08"
+            },
+            "children": [
+              {
+                "id": "cat-title",
+                "name": "cat-title",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 40,
+                  "y": 22,
+                  "width": 200,
+                  "height": 41
+                },
+                "href": "",
+                "content": "Sections",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 24,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size09",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "cat-card-0",
+                "name": "cat-card-0",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 40,
+                  "y": 82,
+                  "width": 248,
+                  "height": 180
+                },
+                "href": "#page-all-products",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "cat-card-img-0",
+                "name": "cat-card-img-0",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 40,
+                  "y": 82,
+                  "width": 248,
+                  "height": 102
+                },
+                "href": "#page-all-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "cat-card-t-0",
+                "name": "cat-card-t-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 52,
+                  "y": 198,
+                  "width": 224,
+                  "height": 29
+                },
+                "href": "",
+                "content": "All Products",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 16,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size14",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "cat-card-b-0",
+                "name": "cat-card-b-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 52,
+                  "y": 224,
+                  "width": 224,
+                  "height": 109
+                },
+                "href": "",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "cat-card-1",
+                "name": "cat-card-1",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 308,
+                  "y": 82,
+                  "width": 248,
+                  "height": 180
+                },
+                "href": "#page-modular-system",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "cat-card-img-1",
+                "name": "cat-card-img-1",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 308,
+                  "y": 82,
+                  "width": 248,
+                  "height": 102
+                },
+                "href": "#page-modular-system",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "cat-card-t-1",
+                "name": "cat-card-t-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 320,
+                  "y": 198,
+                  "width": 224,
+                  "height": 29
+                },
+                "href": "",
+                "content": "Modular System",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 16,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size14",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "cat-card-b-1",
+                "name": "cat-card-b-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 320,
+                  "y": 224,
+                  "width": 224,
+                  "height": 109
+                },
+                "href": "",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "cat-card-2",
+                "name": "cat-card-2",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 576,
+                  "y": 82,
+                  "width": 248,
+                  "height": 180
+                },
+                "href": "#page-sound-room",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "cat-card-img-2",
+                "name": "cat-card-img-2",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 576,
+                  "y": 82,
+                  "width": 248,
+                  "height": 102
+                },
+                "href": "#page-sound-room",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "cat-card-t-2",
+                "name": "cat-card-t-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 588,
+                  "y": 198,
+                  "width": 224,
+                  "height": 29
+                },
+                "href": "",
+                "content": "Sound Room",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 16,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size14",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "cat-card-b-2",
+                "name": "cat-card-b-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 588,
+                  "y": 224,
+                  "width": 224,
+                  "height": 109
+                },
+                "href": "",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "cat-card-3",
+                "name": "cat-card-3",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 844,
+                  "y": 82,
+                  "width": 248,
+                  "height": 180
+                },
+                "href": "#page-support",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "cat-card-img-3",
+                "name": "cat-card-img-3",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 844,
+                  "y": 82,
+                  "width": 248,
+                  "height": 102
+                },
+                "href": "#page-support",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "cat-card-t-3",
+                "name": "cat-card-t-3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 856,
+                  "y": 198,
+                  "width": 224,
+                  "height": 29
+                },
+                "href": "",
+                "content": "Support",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 16,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size14",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "cat-card-b-3",
+                "name": "cat-card-b-3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 856,
+                  "y": 224,
+                  "width": 224,
+                  "height": 109
+                },
+                "href": "",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "cat-card-4",
+                "name": "cat-card-4",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 1112,
+                  "y": 82,
+                  "width": 248,
+                  "height": 180
+                },
+                "href": "#page-about",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "cat-card-img-4",
+                "name": "cat-card-img-4",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 1112,
+                  "y": 82,
+                  "width": 248,
+                  "height": 102
+                },
+                "href": "#page-about",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "cat-card-t-4",
+                "name": "cat-card-t-4",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 1124,
+                  "y": 198,
+                  "width": 224,
+                  "height": 29
+                },
+                "href": "",
+                "content": "About",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 16,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size14",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "cat-card-b-4",
+                "name": "cat-card-b-4",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 1124,
+                  "y": 224,
+                  "width": 224,
+                  "height": 109
+                },
+                "href": "",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 520,
+            "width": 390,
+            "height": 360
+          },
+          "blockCount": 21,
+          "blockTree": {
+            "id": "categories",
+            "name": "Categories",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 520,
+              "width": 390,
+              "height": 360
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#F5F5F2",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color08"
+            },
+            "children": [
+              {
+                "id": "cat-title",
+                "name": "cat-title",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 18,
+                  "y": 22,
+                  "width": 200,
+                  "height": 32
+                },
+                "href": "",
+                "content": "Sections",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "cat-card-0",
+                "name": "cat-card-0",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 66,
+                  "width": 164,
+                  "height": 108
+                },
+                "href": "#page-all-products",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "cat-card-img-0",
+                "name": "cat-card-img-0",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 20,
+                  "y": 66,
+                  "width": 164,
+                  "height": 60
+                },
+                "href": "#page-all-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "cat-card-t-0",
+                "name": "cat-card-t-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 32,
+                  "y": 136,
+                  "width": 140,
+                  "height": 25
+                },
+                "href": "",
+                "content": "All Products",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "cat-card-b-0",
+                "name": "cat-card-b-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 32,
+                  "y": 154,
+                  "width": 140,
+                  "height": 134
+                },
+                "href": "",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "cat-card-1",
+                "name": "cat-card-1",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 194,
+                  "y": 66,
+                  "width": 164,
+                  "height": 108
+                },
+                "href": "#page-modular-system",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "cat-card-img-1",
+                "name": "cat-card-img-1",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 194,
+                  "y": 66,
+                  "width": 164,
+                  "height": 60
+                },
+                "href": "#page-modular-system",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "cat-card-t-1",
+                "name": "cat-card-t-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 206,
+                  "y": 136,
+                  "width": 140,
+                  "height": 25
+                },
+                "href": "",
+                "content": "Modular System",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "cat-card-b-1",
+                "name": "cat-card-b-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 206,
+                  "y": 154,
+                  "width": 140,
+                  "height": 134
+                },
+                "href": "",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "cat-card-2",
+                "name": "cat-card-2",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 194,
+                  "width": 164,
+                  "height": 108
+                },
+                "href": "#page-sound-room",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "cat-card-img-2",
+                "name": "cat-card-img-2",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 20,
+                  "y": 194,
+                  "width": 164,
+                  "height": 60
+                },
+                "href": "#page-sound-room",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "cat-card-t-2",
+                "name": "cat-card-t-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 32,
+                  "y": 264,
+                  "width": 140,
+                  "height": 25
+                },
+                "href": "",
+                "content": "Sound Room",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "cat-card-b-2",
+                "name": "cat-card-b-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 32,
+                  "y": 282,
+                  "width": 140,
+                  "height": 134
+                },
+                "href": "",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "cat-card-3",
+                "name": "cat-card-3",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 194,
+                  "y": 194,
+                  "width": 164,
+                  "height": 108
+                },
+                "href": "#page-support",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "cat-card-img-3",
+                "name": "cat-card-img-3",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 194,
+                  "y": 194,
+                  "width": 164,
+                  "height": 60
+                },
+                "href": "#page-support",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "cat-card-t-3",
+                "name": "cat-card-t-3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 206,
+                  "y": 264,
+                  "width": 140,
+                  "height": 25
+                },
+                "href": "",
+                "content": "Support",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "cat-card-b-3",
+                "name": "cat-card-b-3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 206,
+                  "y": 282,
+                  "width": 140,
+                  "height": 134
+                },
+                "href": "",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "cat-card-4",
+                "name": "cat-card-4",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 322,
+                  "width": 164,
+                  "height": 108
+                },
+                "href": "#page-about",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "cat-card-img-4",
+                "name": "cat-card-img-4",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 20,
+                  "y": 322,
+                  "width": 164,
+                  "height": 60
+                },
+                "href": "#page-about",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "cat-card-t-4",
+                "name": "cat-card-t-4",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 32,
+                  "y": 392,
+                  "width": 140,
+                  "height": 25
+                },
+                "href": "",
+                "content": "About",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "cat-card-b-4",
+                "name": "cat-card-b-4",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 32,
+                  "y": 410,
+                  "width": 140,
+                  "height": 134
+                },
+                "href": "",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "featured",
+      "sectionKey": "featured",
+      "sectionName": "Featured",
+      "sectionKind": "products",
+      "order": {
+        "desktop": 2,
+        "mobile": 2
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 1020,
+            "width": 1440,
+            "height": 340
+          },
+          "blockCount": 17,
+          "blockTree": {
+            "id": "featured",
+            "name": "Featured",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1020,
+              "width": 1440,
+              "height": 340
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#F5F5F2",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color08"
+            },
+            "children": [
+              {
+                "id": "featured-title",
+                "name": "featured-title",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 40,
+                  "y": 24,
+                  "width": 240,
+                  "height": 41
+                },
+                "href": "",
+                "content": "Featured pages",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 24,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size09",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-0",
+                "name": "feat-card-0",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 40,
+                  "y": 84,
+                  "width": 300,
+                  "height": 206
+                },
+                "href": "#page-transparent-speaker-black-wifi",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "feat-card-img-0",
+                "name": "feat-card-img-0",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 40,
+                  "y": 84,
+                  "width": 300,
+                  "height": 126
+                },
+                "href": "#page-transparent-speaker-black-wifi",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "feat-card-k-0",
+                "name": "feat-card-k-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 52,
+                  "y": 222,
+                  "width": 276,
+                  "height": 16
+                },
+                "href": "#page-transparent-speaker-black-wifi",
+                "content": "THIRD LEVEL",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-t-0",
+                "name": "feat-card-t-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 52,
+                  "y": 242,
+                  "width": 276,
+                  "height": 55
+                },
+                "href": "#page-transparent-speaker-black-wifi",
+                "content": "Transparent Speaker Black Wi‑Fi",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 17,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size07",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-1",
+                "name": "feat-card-1",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 370,
+                  "y": 84,
+                  "width": 300,
+                  "height": 206
+                },
+                "href": "#page-turntable-black",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "feat-card-img-1",
+                "name": "feat-card-img-1",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 370,
+                  "y": 84,
+                  "width": 300,
+                  "height": 126
+                },
+                "href": "#page-turntable-black",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "feat-card-k-1",
+                "name": "feat-card-k-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 382,
+                  "y": 222,
+                  "width": 276,
+                  "height": 16
+                },
+                "href": "#page-turntable-black",
+                "content": "THIRD LEVEL",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-t-1",
+                "name": "feat-card-t-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 382,
+                  "y": 242,
+                  "width": 276,
+                  "height": 31
+                },
+                "href": "#page-turntable-black",
+                "content": "Transparent Turntable",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 17,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size07",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-2",
+                "name": "feat-card-2",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 700,
+                  "y": 84,
+                  "width": 300,
+                  "height": 206
+                },
+                "href": "#page-light-speaker-white",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "feat-card-img-2",
+                "name": "feat-card-img-2",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 700,
+                  "y": 84,
+                  "width": 300,
+                  "height": 126
+                },
+                "href": "#page-light-speaker-white",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "feat-card-k-2",
+                "name": "feat-card-k-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 712,
+                  "y": 222,
+                  "width": 276,
+                  "height": 16
+                },
+                "href": "#page-light-speaker-white",
+                "content": "THIRD LEVEL",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-t-2",
+                "name": "feat-card-t-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 712,
+                  "y": 242,
+                  "width": 276,
+                  "height": 31
+                },
+                "href": "#page-light-speaker-white",
+                "content": "Light Speaker White",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 17,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size07",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-3",
+                "name": "feat-card-3",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 1030,
+                  "y": 84,
+                  "width": 300,
+                  "height": 206
+                },
+                "href": "#page-aroma-diffuser",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "feat-card-img-3",
+                "name": "feat-card-img-3",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 1030,
+                  "y": 84,
+                  "width": 300,
+                  "height": 126
+                },
+                "href": "#page-aroma-diffuser",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "feat-card-k-3",
+                "name": "feat-card-k-3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 1042,
+                  "y": 222,
+                  "width": 276,
+                  "height": 16
+                },
+                "href": "#page-aroma-diffuser",
+                "content": "THIRD LEVEL",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-t-3",
+                "name": "feat-card-t-3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 1042,
+                  "y": 242,
+                  "width": 276,
+                  "height": 31
+                },
+                "href": "#page-aroma-diffuser",
+                "content": "Aroma Diffuser",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 17,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size07",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 880,
+            "width": 390,
+            "height": 410
+          },
+          "blockCount": 17,
+          "blockTree": {
+            "id": "featured",
+            "name": "Featured",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 880,
+              "width": 390,
+              "height": 410
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#F5F5F2",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color08"
+            },
+            "children": [
+              {
+                "id": "featured-title",
+                "name": "featured-title",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 18,
+                  "y": 24,
+                  "width": 240,
+                  "height": 32
+                },
+                "href": "",
+                "content": "Featured pages",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-0",
+                "name": "feat-card-0",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 68,
+                  "width": 164,
+                  "height": 132
+                },
+                "href": "#page-transparent-speaker-black-wifi",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "feat-card-img-0",
+                "name": "feat-card-img-0",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 20,
+                  "y": 68,
+                  "width": 164,
+                  "height": 86
+                },
+                "href": "#page-transparent-speaker-black-wifi",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "feat-card-k-0",
+                "name": "feat-card-k-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 32,
+                  "y": 162,
+                  "width": 140,
+                  "height": 16
+                },
+                "href": "#page-transparent-speaker-black-wifi",
+                "content": "THIRD LEVEL",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-t-0",
+                "name": "feat-card-t-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 32,
+                  "y": 180,
+                  "width": 140,
+                  "height": 43
+                },
+                "href": "#page-transparent-speaker-black-wifi",
+                "content": "Transparent Speaker Black Wi‑Fi",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-1",
+                "name": "feat-card-1",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 194,
+                  "y": 68,
+                  "width": 164,
+                  "height": 132
+                },
+                "href": "#page-turntable-black",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "feat-card-img-1",
+                "name": "feat-card-img-1",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 194,
+                  "y": 68,
+                  "width": 164,
+                  "height": 86
+                },
+                "href": "#page-turntable-black",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "feat-card-k-1",
+                "name": "feat-card-k-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 206,
+                  "y": 162,
+                  "width": 140,
+                  "height": 16
+                },
+                "href": "#page-turntable-black",
+                "content": "THIRD LEVEL",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-t-1",
+                "name": "feat-card-t-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 206,
+                  "y": 180,
+                  "width": 140,
+                  "height": 43
+                },
+                "href": "#page-turntable-black",
+                "content": "Transparent Turntable",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-2",
+                "name": "feat-card-2",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 222,
+                  "width": 164,
+                  "height": 132
+                },
+                "href": "#page-light-speaker-white",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "feat-card-img-2",
+                "name": "feat-card-img-2",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 20,
+                  "y": 222,
+                  "width": 164,
+                  "height": 86
+                },
+                "href": "#page-light-speaker-white",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "feat-card-k-2",
+                "name": "feat-card-k-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 32,
+                  "y": 316,
+                  "width": 140,
+                  "height": 16
+                },
+                "href": "#page-light-speaker-white",
+                "content": "THIRD LEVEL",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-t-2",
+                "name": "feat-card-t-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 32,
+                  "y": 334,
+                  "width": 140,
+                  "height": 43
+                },
+                "href": "#page-light-speaker-white",
+                "content": "Light Speaker White",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-3",
+                "name": "feat-card-3",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 194,
+                  "y": 222,
+                  "width": 164,
+                  "height": 132
+                },
+                "href": "#page-aroma-diffuser",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "feat-card-img-3",
+                "name": "feat-card-img-3",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 194,
+                  "y": 222,
+                  "width": 164,
+                  "height": 86
+                },
+                "href": "#page-aroma-diffuser",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 18
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius03"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "feat-card-k-3",
+                "name": "feat-card-k-3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 206,
+                  "y": 316,
+                  "width": 140,
+                  "height": 16
+                },
+                "href": "#page-aroma-diffuser",
+                "content": "THIRD LEVEL",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "feat-card-t-3",
+                "name": "feat-card-t-3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 206,
+                  "y": 334,
+                  "width": 140,
+                  "height": 25
+                },
+                "href": "#page-aroma-diffuser",
+                "content": "Aroma Diffuser",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "insights",
+      "sectionKey": "insights",
+      "sectionName": "Insights",
+      "sectionKind": "story",
+      "order": {
+        "desktop": 3,
+        "mobile": 3
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 1360,
+            "width": 1440,
+            "height": 350
+          },
+          "blockCount": 10,
+          "blockTree": {
+            "id": "insights",
+            "name": "Insights",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1360,
+              "width": 1440,
+              "height": 350
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#F5F5F2",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color08"
+            },
+            "children": [
+              {
+                "id": "insight-card-0",
+                "name": "insight-card-0",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 40,
+                  "y": 20,
+                  "width": 640,
+                  "height": 290
+                },
+                "href": "#page-sound-room",
+                "content": "",
+                "style": {
+                  "fill": "#141414",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 20
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius04"
+                }
+              },
+              {
+                "id": "insight-img-0",
+                "name": "insight-img-0",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 360,
+                  "y": 20,
+                  "width": 320,
+                  "height": 290
+                },
+                "href": "#page-sound-room",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 20
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius04"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "insight-k-0",
+                "name": "insight-k-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 60,
+                  "y": 42,
+                  "width": 160,
+                  "height": 16
+                },
+                "href": "#page-sound-room",
+                "content": "Story",
+                "style": {
+                  "fill": "#EAEAE4",
+                  "typography": {
+                    "fill": "#EAEAE4",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color15",
+                  "textColor": "textColor.palette.text09",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "insight-t-0",
+                "name": "insight-t-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 60,
+                  "y": 66,
+                  "width": 250,
+                  "height": 52
+                },
+                "href": "#page-sound-room",
+                "content": "Sound Room",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 32,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size16",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "insight-b-0",
+                "name": "insight-b-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 60,
+                  "y": 140,
+                  "width": 250,
+                  "height": 106
+                },
+                "href": "#page-sound-room",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#EAE6DF",
+                  "typography": {
+                    "fill": "#EAE6DF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 14,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color14",
+                  "textColor": "textColor.palette.text08",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size15",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "insight-card-1",
+                "name": "insight-card-1",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 720,
+                  "y": 20,
+                  "width": 640,
+                  "height": 290
+                },
+                "href": "#page-about",
+                "content": "",
+                "style": {
+                  "fill": "#F0F0EC",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 20
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color09",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius04"
+                }
+              },
+              {
+                "id": "insight-img-1",
+                "name": "insight-img-1",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 1040,
+                  "y": 20,
+                  "width": 320,
+                  "height": 290
+                },
+                "href": "#page-about",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 20
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius04"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "insight-k-1",
+                "name": "insight-k-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 740,
+                  "y": 42,
+                  "width": 160,
+                  "height": 16
+                },
+                "href": "#page-about",
+                "content": "Support",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "insight-t-1",
+                "name": "insight-t-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 740,
+                  "y": 66,
+                  "width": 250,
+                  "height": 52
+                },
+                "href": "#page-about",
+                "content": "About",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 32,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size16",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "insight-b-1",
+                "name": "insight-b-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 740,
+                  "y": 140,
+                  "width": 250,
+                  "height": 106
+                },
+                "href": "#page-about",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 14,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size15",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 1290,
+            "width": 390,
+            "height": 420
+          },
+          "blockCount": 10,
+          "blockTree": {
+            "id": "insights",
+            "name": "Insights",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1290,
+              "width": 390,
+              "height": 420
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#F5F5F2",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color08"
+            },
+            "children": [
+              {
+                "id": "insight-card-0",
+                "name": "insight-card-0",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 20,
+                  "width": 350,
+                  "height": 168
+                },
+                "href": "#page-sound-room",
+                "content": "",
+                "style": {
+                  "fill": "#141414",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 20
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius04"
+                }
+              },
+              {
+                "id": "insight-img-0",
+                "name": "insight-img-0",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 194,
+                  "y": 20,
+                  "width": 176,
+                  "height": 168
+                },
+                "href": "#page-sound-room",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 20
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius04"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "insight-k-0",
+                "name": "insight-k-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 42,
+                  "width": 160,
+                  "height": 16
+                },
+                "href": "#page-sound-room",
+                "content": "Story",
+                "style": {
+                  "fill": "#EAEAE4",
+                  "typography": {
+                    "fill": "#EAEAE4",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color15",
+                  "textColor": "textColor.palette.text09",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "insight-t-0",
+                "name": "insight-t-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 66,
+                  "width": 136,
+                  "height": 35
+                },
+                "href": "#page-sound-room",
+                "content": "Sound Room",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 20,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size08",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "insight-b-0",
+                "name": "insight-b-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 118,
+                  "width": 136,
+                  "height": 147
+                },
+                "href": "#page-sound-room",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#EAE6DF",
+                  "typography": {
+                    "fill": "#EAE6DF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color14",
+                  "textColor": "textColor.palette.text08",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "insight-card-1",
+                "name": "insight-card-1",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 208,
+                  "width": 350,
+                  "height": 168
+                },
+                "href": "#page-about",
+                "content": "",
+                "style": {
+                  "fill": "#F0F0EC",
+                  "stroke": {
+                    "color": "#D9D9D0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 20
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color09",
+                  "strokeColor": "color.palette.color03",
+                  "cornerRadius": "radius.palette.radius04"
+                }
+              },
+              {
+                "id": "insight-img-1",
+                "name": "insight-img-1",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 194,
+                  "y": 208,
+                  "width": 176,
+                  "height": 168
+                },
+                "href": "#page-about",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "cover"
+                  },
+                  "cornerRadius": 20
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius04"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+                  "exists": true,
+                  "mode": "cover"
+                }
+              },
+              {
+                "id": "insight-k-1",
+                "name": "insight-k-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 230,
+                  "width": 160,
+                  "height": 16
+                },
+                "href": "#page-about",
+                "content": "Support",
+                "style": {
+                  "fill": "#111111",
+                  "typography": {
+                    "fill": "#111111",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "insight-t-1",
+                "name": "insight-t-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 254,
+                  "width": 136,
+                  "height": 35
+                },
+                "href": "#page-about",
+                "content": "About",
+                "style": {
+                  "fill": "#141414",
+                  "typography": {
+                    "fill": "#141414",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 20,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size08",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "insight-b-1",
+                "name": "insight-b-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 306,
+                  "width": 136,
+                  "height": 147
+                },
+                "href": "#page-about",
+                "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+                "style": {
+                  "fill": "#666862",
+                  "typography": {
+                    "fill": "#666862",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionKey": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": {
+        "desktop": 4,
+        "mobile": 4
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 1710,
+            "width": 1440,
+            "height": 230
+          },
+          "blockCount": 9,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1710,
+              "width": 1440,
+              "height": 230
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#131313",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color10"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 230
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#131313"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color10"
+                }
+              },
+              {
+                "id": "footer-brand",
+                "name": "footer-brand",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 30,
+                  "width": 220,
+                  "height": 24
+                },
+                "href": "",
+                "content": "Transparent",
+                "style": {
+                  "fill": "#F4F4EF",
+                  "typography": {
+                    "fill": "#F4F4EF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 20,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size08",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-title-0",
+                "name": "footer-title-0",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 40,
+                  "y": 76,
+                  "width": 180,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Sections",
+                "style": {
+                  "fill": "#F4F4EF",
+                  "typography": {
+                    "fill": "#F4F4EF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-body-0",
+                "name": "footer-body-0",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 40,
+                  "y": 100,
+                  "width": 180,
+                  "height": 41
+                },
+                "href": "",
+                "content": "All Products Modular System",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-title-1",
+                "name": "footer-title-1",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 260,
+                  "y": 76,
+                  "width": 180,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Explore",
+                "style": {
+                  "fill": "#F4F4EF",
+                  "typography": {
+                    "fill": "#F4F4EF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-body-1",
+                "name": "footer-body-1",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 260,
+                  "y": 100,
+                  "width": 180,
+                  "height": 24
+                },
+                "href": "",
+                "content": "Sound Room Support",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-title-2",
+                "name": "footer-title-2",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 480,
+                  "y": 76,
+                  "width": 180,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Products",
+                "style": {
+                  "fill": "#F4F4EF",
+                  "typography": {
+                    "fill": "#F4F4EF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-body-2",
+                "name": "footer-body-2",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 480,
+                  "y": 100,
+                  "width": 180,
+                  "height": 58
+                },
+                "href": "",
+                "content": "About Transparent Speaker Black Wi‑Fi Transparent Turntable",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 1020,
+                  "y": 150,
+                  "width": 320,
+                  "height": 38
+                },
+                "href": "",
+                "content": "Transparent structured clone pen with desktop and mobile page sets.",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 1710,
+            "width": 390,
+            "height": 250
+          },
+          "blockCount": 5,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1710,
+              "width": 390,
+              "height": 250
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#131313",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color10"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 250
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#131313"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color10"
+                }
+              },
+              {
+                "id": "footer-brand",
+                "name": "footer-brand",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 30,
+                  "width": 220,
+                  "height": 24
+                },
+                "href": "",
+                "content": "Transparent",
+                "style": {
+                  "fill": "#F4F4EF",
+                  "typography": {
+                    "fill": "#F4F4EF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-col-1",
+                "name": "footer-col-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 68,
+                  "width": 130,
+                  "height": 53
+                },
+                "href": "",
+                "content": "All Products Modular System Sound Room",
+                "style": {
+                  "fill": "#F4F4EF",
+                  "typography": {
+                    "fill": "#F4F4EF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-col-2",
+                "name": "footer-col-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 182,
+                  "y": 68,
+                  "width": 130,
+                  "height": 85
+                },
+                "href": "",
+                "content": "Support About Transparent Speaker Black Wi‑Fi Transparent Turntable",
+                "style": {
+                  "fill": "#F4F4EF",
+                  "typography": {
+                    "fill": "#F4F4EF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 18,
+                  "y": 188,
+                  "width": 320,
+                  "height": 49
+                },
+                "href": "",
+                "content": "Transparent structured clone pen. Editable text, cards, buttons and image containers.",
+                "style": {
+                  "fill": "#D8D5CE",
+                  "typography": {
+                    "fill": "#D8D5CE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

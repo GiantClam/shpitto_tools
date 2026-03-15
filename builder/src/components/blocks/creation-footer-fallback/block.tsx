@@ -27,7 +27,7 @@ export const config = {
       },
       {
         title: "Legal",
-        links: [{ label: "Privacy", href: "#privacy" }, { label: "Sitemap", href: "#top" }]
+        links: [{ label: "Privacy", href: "#privacy" }]
       }
     ]
   }

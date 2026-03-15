@@ -1,0 +1,904 @@
+{
+  "sectionId": "numbers",
+  "sectionName": "Numbers",
+  "sectionKind": "generic",
+  "order": 8,
+  "bounds": {
+    "x": 0,
+    "y": 2760,
+    "width": 1440,
+    "height": 240
+  },
+  "directChildCount": 14,
+  "recursiveNodeCount": 15,
+  "treeHash": "ca0f2458388e7651f4f1289f61b7e0ff4749a7813ec5c341b0e72be211692f3f",
+  "blockCount": 14,
+  "blockIndex": [
+    {
+      "blockId": "num-title",
+      "blockName": "num-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 40,
+        "y": 24,
+        "width": 300,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b12103d6fd94498ef41537a2e17fe6d7eee1988c65505b4eef51b1d4bf997e34"
+    },
+    {
+      "blockId": "num-copy",
+      "blockName": "num-copy",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 58,
+        "width": 420,
+        "height": 80
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "389b647d8315c23a91f424d904462b2bad31aca4b66cb4bed83f0ecbf404bde9"
+    },
+    {
+      "blockId": "num-card-0",
+      "blockName": "num-card-0",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 20,
+        "y": 130,
+        "width": 330,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "517bca8e44e0e8a1ad18b8228c493cb756732d0414910841c34850a1d81c67e9"
+    },
+    {
+      "blockId": "num-v-0",
+      "blockName": "num-v-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 32,
+        "y": 138,
+        "width": 306,
+        "height": 52
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7876969b693acac3451f36a02e54b7b93d0d3d16814c87a8ad1a63cc0ebb5c2f"
+    },
+    {
+      "blockId": "num-l-0",
+      "blockName": "num-l-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 32,
+        "y": 178,
+        "width": 306,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6ff6e80a97687a696b647f05c05a578fa3702f1272978aaa4cf1468ef49202fe"
+    },
+    {
+      "blockId": "num-card-1",
+      "blockName": "num-card-1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 370,
+        "y": 130,
+        "width": 330,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "de0729c1db2ab7c7565a3859106e8b783ddedd023a74edf83a9f988189f014af"
+    },
+    {
+      "blockId": "num-v-1",
+      "blockName": "num-v-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 382,
+        "y": 138,
+        "width": 306,
+        "height": 52
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e323906cf15b4f3acbacdadeb4b35ad693bd64a3ebb098ff22010e6bd39d43c2"
+    },
+    {
+      "blockId": "num-l-1",
+      "blockName": "num-l-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 382,
+        "y": 178,
+        "width": 306,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "23d70fc26569d7e3872a329faaaf8ab2e59e17f5fc68e08c8b771edd077cf121"
+    },
+    {
+      "blockId": "num-card-2",
+      "blockName": "num-card-2",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 720,
+        "y": 130,
+        "width": 330,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "97bc251d31bd8a20089b697c920978c1d25bc00fb53a20d54a271874d3291894"
+    },
+    {
+      "blockId": "num-v-2",
+      "blockName": "num-v-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 732,
+        "y": 138,
+        "width": 306,
+        "height": 52
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8566bc8967d59e71ef7ee7bcf3a43d934e74c82c5fc30372b9c555ca8b6a338a"
+    },
+    {
+      "blockId": "num-l-2",
+      "blockName": "num-l-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 10,
+      "bounds": {
+        "x": 732,
+        "y": 178,
+        "width": 306,
+        "height": 43
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3311aa1abfee9c863a15f919fe57cf40fcd850df7c4383b56c307f5d8b28cc4f"
+    },
+    {
+      "blockId": "num-card-3",
+      "blockName": "num-card-3",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 11,
+      "bounds": {
+        "x": 1070,
+        "y": 130,
+        "width": 330,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "eb8f6c117aa38eac7ca3920548a128d63c770ad89b9192eb31e8f175b3a077b7"
+    },
+    {
+      "blockId": "num-v-3",
+      "blockName": "num-v-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 12,
+      "bounds": {
+        "x": 1082,
+        "y": 138,
+        "width": 306,
+        "height": 52
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9598b6b9ca6a17acaf420403304e8e77f6ccff049ee437b54ca79020bb01a977"
+    },
+    {
+      "blockId": "num-l-3",
+      "blockName": "num-l-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 13,
+      "bounds": {
+        "x": 1082,
+        "y": 178,
+        "width": 306,
+        "height": 43
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "696fd6b34c3593ad58119fd8b10325456021f493666b4f7708c9070f0b065022"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "num-title",
+      "blockName": "num-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 40,
+        "y": 24,
+        "width": 300,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b12103d6fd94498ef41537a2e17fe6d7eee1988c65505b4eef51b1d4bf997e34",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "num-title",
+        "name": "num-title",
+        "x": 40,
+        "y": 24,
+        "fill": "#232529",
+        "content": "A story told in numbers",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "num-copy",
+      "blockName": "num-copy",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 58,
+        "width": 420,
+        "height": 80
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "389b647d8315c23a91f424d904462b2bad31aca4b66cb4bed83f0ecbf404bde9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "num-copy",
+        "name": "num-copy",
+        "x": 40,
+        "y": 58,
+        "fill": "#666B73",
+        "content": "The numbers outline the philosophy, history and growth of Breton, starting from the vision of the founder and proceeding in the aim of anticipating future trends.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 420,
+        "height": 80
+      }
+    },
+    {
+      "blockId": "num-card-0",
+      "blockName": "num-card-0",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 20,
+        "y": 130,
+        "width": 330,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "517bca8e44e0e8a1ad18b8228c493cb756732d0414910841c34850a1d81c67e9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "num-card-0",
+        "name": "num-card-0",
+        "x": 20,
+        "y": 130,
+        "width": 330,
+        "height": 86,
+        "fill": "#B00046",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        }
+      }
+    },
+    {
+      "blockId": "num-v-0",
+      "blockName": "num-v-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 32,
+        "y": 138,
+        "width": 306,
+        "height": 52
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7876969b693acac3451f36a02e54b7b93d0d3d16814c87a8ad1a63cc0ebb5c2f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "num-v-0",
+        "name": "num-v-0",
+        "x": 32,
+        "y": 138,
+        "fill": "#FFFFFF",
+        "content": "+100",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 32,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 52
+      }
+    },
+    {
+      "blockId": "num-l-0",
+      "blockName": "num-l-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 32,
+        "y": 178,
+        "width": 306,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6ff6e80a97687a696b647f05c05a578fa3702f1272978aaa4cf1468ef49202fe",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "num-l-0",
+        "name": "num-l-0",
+        "x": 32,
+        "y": 178,
+        "fill": "#FFFFFF",
+        "content": "Countries in which Breton is present",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 25
+      }
+    },
+    {
+      "blockId": "num-card-1",
+      "blockName": "num-card-1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 370,
+        "y": 130,
+        "width": 330,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "de0729c1db2ab7c7565a3859106e8b783ddedd023a74edf83a9f988189f014af",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "num-card-1",
+        "name": "num-card-1",
+        "x": 370,
+        "y": 130,
+        "width": 330,
+        "height": 86,
+        "fill": "#F5F5F5",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        }
+      }
+    },
+    {
+      "blockId": "num-v-1",
+      "blockName": "num-v-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 382,
+        "y": 138,
+        "width": 306,
+        "height": 52
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e323906cf15b4f3acbacdadeb4b35ad693bd64a3ebb098ff22010e6bd39d43c2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "num-v-1",
+        "name": "num-v-1",
+        "x": 382,
+        "y": 138,
+        "fill": "#B00046",
+        "content": "+1700",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 32,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 52
+      }
+    },
+    {
+      "blockId": "num-l-1",
+      "blockName": "num-l-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 382,
+        "y": 178,
+        "width": 306,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "23d70fc26569d7e3872a329faaaf8ab2e59e17f5fc68e08c8b771edd077cf121",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "num-l-1",
+        "name": "num-l-1",
+        "x": 382,
+        "y": 178,
+        "fill": "#B00046",
+        "content": "Registered Patents",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 25
+      }
+    },
+    {
+      "blockId": "num-card-2",
+      "blockName": "num-card-2",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 720,
+        "y": 130,
+        "width": 330,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "97bc251d31bd8a20089b697c920978c1d25bc00fb53a20d54a271874d3291894",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "num-card-2",
+        "name": "num-card-2",
+        "x": 720,
+        "y": 130,
+        "width": 330,
+        "height": 86,
+        "fill": "#202329",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        }
+      }
+    },
+    {
+      "blockId": "num-v-2",
+      "blockName": "num-v-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 732,
+        "y": 138,
+        "width": 306,
+        "height": 52
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8566bc8967d59e71ef7ee7bcf3a43d934e74c82c5fc30372b9c555ca8b6a338a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "num-v-2",
+        "name": "num-v-2",
+        "x": 732,
+        "y": 138,
+        "fill": "#FFFFFF",
+        "content": "+50",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 32,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 52
+      }
+    },
+    {
+      "blockId": "num-l-2",
+      "blockName": "num-l-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 10,
+      "bounds": {
+        "x": 732,
+        "y": 178,
+        "width": 306,
+        "height": 43
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3311aa1abfee9c863a15f919fe57cf40fcd850df7c4383b56c307f5d8b28cc4f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "num-l-2",
+        "name": "num-l-2",
+        "x": 732,
+        "y": 178,
+        "fill": "#FFFFFF",
+        "content": "Scientific partnerships with top universities",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 43
+      }
+    },
+    {
+      "blockId": "num-card-3",
+      "blockName": "num-card-3",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 11,
+      "bounds": {
+        "x": 1070,
+        "y": 130,
+        "width": 330,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "eb8f6c117aa38eac7ca3920548a128d63c770ad89b9192eb31e8f175b3a077b7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "num-card-3",
+        "name": "num-card-3",
+        "x": 1070,
+        "y": 130,
+        "width": 330,
+        "height": 86,
+        "fill": "#B8C0C9",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        }
+      }
+    },
+    {
+      "blockId": "num-v-3",
+      "blockName": "num-v-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 12,
+      "bounds": {
+        "x": 1082,
+        "y": 138,
+        "width": 306,
+        "height": 52
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9598b6b9ca6a17acaf420403304e8e77f6ccff049ee437b54ca79020bb01a977",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "num-v-3",
+        "name": "num-v-3",
+        "x": 1082,
+        "y": 138,
+        "fill": "#B00046",
+        "content": "+40",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 32,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 52
+      }
+    },
+    {
+      "blockId": "num-l-3",
+      "blockName": "num-l-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 13,
+      "bounds": {
+        "x": 1082,
+        "y": 178,
+        "width": 306,
+        "height": 43
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "696fd6b34c3593ad58119fd8b10325456021f493666b4f7708c9070f0b065022",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "num-l-3",
+        "name": "num-l-3",
+        "x": 1082,
+        "y": 178,
+        "fill": "#B00046",
+        "content": "Authorized Technical Services Worldwide",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 43
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "numbers",
+    "name": "Numbers",
+    "x": 0,
+    "y": 2760,
+    "width": 1440,
+    "height": 240,
+    "fill": "#ECECEC",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "num-title",
+        "name": "num-title",
+        "x": 40,
+        "y": 24,
+        "fill": "#232529",
+        "content": "A story told in numbers",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "num-copy",
+        "name": "num-copy",
+        "x": 40,
+        "y": 58,
+        "fill": "#666B73",
+        "content": "The numbers outline the philosophy, history and growth of Breton, starting from the vision of the founder and proceeding in the aim of anticipating future trends.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 420,
+        "height": 80
+      },
+      {
+        "type": "rectangle",
+        "id": "num-card-0",
+        "name": "num-card-0",
+        "x": 20,
+        "y": 130,
+        "width": 330,
+        "height": 86,
+        "fill": "#B00046",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        }
+      },
+      {
+        "type": "text",
+        "id": "num-v-0",
+        "name": "num-v-0",
+        "x": 32,
+        "y": 138,
+        "fill": "#FFFFFF",
+        "content": "+100",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 32,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 52
+      },
+      {
+        "type": "text",
+        "id": "num-l-0",
+        "name": "num-l-0",
+        "x": 32,
+        "y": 178,
+        "fill": "#FFFFFF",
+        "content": "Countries in which Breton is present",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 25
+      },
+      {
+        "type": "rectangle",
+        "id": "num-card-1",
+        "name": "num-card-1",
+        "x": 370,
+        "y": 130,
+        "width": 330,
+        "height": 86,
+        "fill": "#F5F5F5",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        }
+      },
+      {
+        "type": "text",
+        "id": "num-v-1",
+        "name": "num-v-1",
+        "x": 382,
+        "y": 138,
+        "fill": "#B00046",
+        "content": "+1700",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 32,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 52
+      },
+      {
+        "type": "text",
+        "id": "num-l-1",
+        "name": "num-l-1",
+        "x": 382,
+        "y": 178,
+        "fill": "#B00046",
+        "content": "Registered Patents",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 25
+      },
+      {
+        "type": "rectangle",
+        "id": "num-card-2",
+        "name": "num-card-2",
+        "x": 720,
+        "y": 130,
+        "width": 330,
+        "height": 86,
+        "fill": "#202329",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        }
+      },
+      {
+        "type": "text",
+        "id": "num-v-2",
+        "name": "num-v-2",
+        "x": 732,
+        "y": 138,
+        "fill": "#FFFFFF",
+        "content": "+50",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 32,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 52
+      },
+      {
+        "type": "text",
+        "id": "num-l-2",
+        "name": "num-l-2",
+        "x": 732,
+        "y": 178,
+        "fill": "#FFFFFF",
+        "content": "Scientific partnerships with top universities",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 43
+      },
+      {
+        "type": "rectangle",
+        "id": "num-card-3",
+        "name": "num-card-3",
+        "x": 1070,
+        "y": 130,
+        "width": 330,
+        "height": 86,
+        "fill": "#B8C0C9",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        }
+      },
+      {
+        "type": "text",
+        "id": "num-v-3",
+        "name": "num-v-3",
+        "x": 1082,
+        "y": 138,
+        "fill": "#B00046",
+        "content": "+40",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 32,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 52
+      },
+      {
+        "type": "text",
+        "id": "num-l-3",
+        "name": "num-l-3",
+        "x": 1082,
+        "y": 178,
+        "fill": "#B00046",
+        "content": "Authorized Technical Services Worldwide",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 43
+      }
+    ]
+  }
+}

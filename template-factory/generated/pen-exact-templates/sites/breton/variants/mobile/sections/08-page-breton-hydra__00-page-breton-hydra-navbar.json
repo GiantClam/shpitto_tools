@@ -1,0 +1,352 @@
+{
+  "sectionId": "page-breton-hydra-navbar",
+  "sectionName": "Navbar",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 62
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "d6c06657a9d7700c5c536fb1357c1e6297d035bff6c016dbc793ef21f8551163",
+  "blockCount": 5,
+  "blockIndex": [
+    {
+      "blockId": "page-breton-hydra-navbar-bg",
+      "blockName": "page-breton-hydra-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 62
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d0e4e47bfff2f5a48775465060b56e89ca4a2372f6da5ff88cc72e2b337a57c7"
+    },
+    {
+      "blockId": "page-breton-hydra-navbar-logo",
+      "blockName": "page-breton-hydra-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 14,
+        "width": 92,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3ec16f226036d3a7dbdb802f8623c85ef77d3f8387815d9226cd155b5ada3a77"
+    },
+    {
+      "blockId": "page-breton-hydra-navbar-search",
+      "blockName": "page-breton-hydra-navbar-search",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 278,
+        "y": 22,
+        "width": 24,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "120bced531df1d82bff84ff96b4d4fdd4bbb8593d1d81004a291de3a33834fc8"
+    },
+    {
+      "blockId": "page-breton-hydra-navbar-lang",
+      "blockName": "page-breton-hydra-navbar-lang",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 310,
+        "y": 24,
+        "width": 20,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4974d3ae1d7e9abe4afbd9af18889f6e459eb103ffc24c223bcfed59245935f0"
+    },
+    {
+      "blockId": "page-breton-hydra-navbar-menu",
+      "blockName": "page-breton-hydra-navbar-menu",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 352,
+        "y": 22,
+        "width": 20,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a1d9b5333059212346e98f0a6440bb938f36ab5f064251759ee61e7f79db65e7"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "page-breton-hydra-navbar-bg",
+      "blockName": "page-breton-hydra-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 62
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d0e4e47bfff2f5a48775465060b56e89ca4a2372f6da5ff88cc72e2b337a57c7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-breton-hydra-navbar-bg",
+        "name": "page-breton-hydra-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 62,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "page-breton-hydra-navbar-logo",
+      "blockName": "page-breton-hydra-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 14,
+        "width": 92,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3ec16f226036d3a7dbdb802f8623c85ef77d3f8387815d9226cd155b5ada3a77",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-breton-hydra-navbar-logo",
+        "name": "page-breton-hydra-navbar-logo",
+        "x": 18,
+        "y": 14,
+        "width": 92,
+        "height": 32,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "page-breton-hydra-navbar-search",
+      "blockName": "page-breton-hydra-navbar-search",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 278,
+        "y": 22,
+        "width": 24,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "120bced531df1d82bff84ff96b4d4fdd4bbb8593d1d81004a291de3a33834fc8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-breton-hydra-navbar-search",
+        "name": "page-breton-hydra-navbar-search",
+        "x": 278,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 24,
+        "height": 24,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "page-breton-hydra-navbar-lang",
+      "blockName": "page-breton-hydra-navbar-lang",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 310,
+        "y": 24,
+        "width": 20,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4974d3ae1d7e9abe4afbd9af18889f6e459eb103ffc24c223bcfed59245935f0",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-breton-hydra-navbar-lang",
+        "name": "page-breton-hydra-navbar-lang",
+        "x": 310,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "🌐",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 16,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-about"
+      }
+    },
+    {
+      "blockId": "page-breton-hydra-navbar-menu",
+      "blockName": "page-breton-hydra-navbar-menu",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 352,
+        "y": 22,
+        "width": 20,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a1d9b5333059212346e98f0a6440bb938f36ab5f064251759ee61e7f79db65e7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-breton-hydra-navbar-menu",
+        "name": "page-breton-hydra-navbar-menu",
+        "x": 352,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-products"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "page-breton-hydra-navbar",
+    "name": "Navbar",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 62,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-breton-hydra-navbar-bg",
+        "name": "page-breton-hydra-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 62,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-breton-hydra-navbar-logo",
+        "name": "page-breton-hydra-navbar-logo",
+        "x": 18,
+        "y": 14,
+        "width": 92,
+        "height": 32,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "page-breton-hydra-navbar-search",
+        "name": "page-breton-hydra-navbar-search",
+        "x": 278,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 24,
+        "height": 24,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "page-breton-hydra-navbar-lang",
+        "name": "page-breton-hydra-navbar-lang",
+        "x": 310,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "🌐",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 16,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-about"
+      },
+      {
+        "type": "text",
+        "id": "page-breton-hydra-navbar-menu",
+        "name": "page-breton-hydra-navbar-menu",
+        "x": 352,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-products"
+      }
+    ]
+  }
+}

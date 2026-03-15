@@ -33,7 +33,9 @@
     "build": "NEXT_DIST_DIR=.next-prod node --max-old-space-size=8192 ./node_modules/next/dist/bin/next build",
     "start": "NEXT_DIST_DIR=.next-prod next start",
     "regression:creation": "node regression/run-creation-baseline.mjs",
+    "regression:adaptation": "node regression/run-template-adaptation-save-fixtures.mjs",
     "regression:strategy": "node regression/run-strategy-comparison.mjs",
+    "regression:strategy:pen": "node regression/run-strategy-comparison.mjs --prompts regression/prompts.pen-published.json",
     "template:factory": "node template-factory/run-template-factory.mjs"
   },
   "devDependencies": {

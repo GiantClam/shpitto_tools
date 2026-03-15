@@ -1,0 +1,314 @@
+{
+  "blockId": "iRpxD",
+  "blockName": "FAQ",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 7,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 24,
+  "treeHash": "5807bf74507fa7bed9397366e4ec12cbff3f5c422ff1e1ae8ac2282b982d6bea",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "iRpxD",
+    "name": "FAQ",
+    "width": "fill_container",
+    "layout": "vertical",
+    "gap": 12,
+    "children": [
+      {
+        "type": "text",
+        "id": "jsTao",
+        "name": "faqTitle",
+        "fill": "#1F2737",
+        "textGrowth": "fixed-width",
+        "width": 500,
+        "content": "Frequently asked\nquestions",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 44,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "nnG1q",
+        "name": "faqWrapNew",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 14,
+        "children": [
+          {
+            "type": "text",
+            "id": "oyvDB",
+            "name": "sec1",
+            "fill": "#2E3339",
+            "content": "Ordering & shipping",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "JXHwk",
+            "name": "row1",
+            "width": "fill_container",
+            "height": 34,
+            "stroke": {
+              "thickness": {
+                "bottom": 1
+              },
+              "fill": "#D7DBDE"
+            },
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "zTIcq",
+                "name": "q1",
+                "fill": "#52585F",
+                "textGrowth": "fixed-width",
+                "width": 1120,
+                "content": "Can your company sell in all countries?",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "text",
+                "id": "hI8kJ",
+                "name": "p1",
+                "fill": "#52585F",
+                "content": "+",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "zIeUO",
+            "name": "row2",
+            "width": "fill_container",
+            "height": 34,
+            "stroke": {
+              "thickness": {
+                "bottom": 1
+              },
+              "fill": "#D7DBDE"
+            },
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "vp5XA",
+                "name": "q2",
+                "fill": "#52585F",
+                "textGrowth": "fixed-width",
+                "width": 1120,
+                "content": "Can I purchase with a PO?",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "text",
+                "id": "BblE8",
+                "name": "p2",
+                "fill": "#52585F",
+                "content": "+",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "Qn4vu",
+            "name": "sec2",
+            "fill": "#2E3339",
+            "content": "Program & services",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "oQZC1",
+            "name": "row3",
+            "width": "fill_container",
+            "height": 34,
+            "stroke": {
+              "thickness": {
+                "bottom": 1
+              },
+              "fill": "#D7DBDE"
+            },
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "Tipwu",
+                "name": "q3",
+                "fill": "#52585F",
+                "textGrowth": "fixed-width",
+                "width": 1120,
+                "content": "Does Framework support MDM workflows?",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "text",
+                "id": "Y1xv2",
+                "name": "p3",
+                "fill": "#52585F",
+                "content": "+",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "qcsyJ",
+            "name": "row4",
+            "width": "fill_container",
+            "height": 34,
+            "stroke": {
+              "thickness": {
+                "bottom": 1
+              },
+              "fill": "#D7DBDE"
+            },
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "m8oOP",
+                "name": "q4",
+                "fill": "#52585F",
+                "textGrowth": "fixed-width",
+                "width": 1120,
+                "content": "How do I contact enterprise support?",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "text",
+                "id": "1VXgY",
+                "name": "p4",
+                "fill": "#52585F",
+                "content": "+",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "7jOd9",
+            "name": "sec3",
+            "fill": "#2E3339",
+            "content": "Product",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "or8pq",
+            "name": "row5",
+            "width": "fill_container",
+            "height": 34,
+            "stroke": {
+              "thickness": {
+                "bottom": 1
+              },
+              "fill": "#D7DBDE"
+            },
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "kMNQ2",
+                "name": "q5",
+                "fill": "#52585F",
+                "textGrowth": "fixed-width",
+                "width": 1120,
+                "content": "What options are available for pre-deployment setup?",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "text",
+                "id": "URJtt",
+                "name": "p5",
+                "fill": "#52585F",
+                "content": "+",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "SJnQJ",
+            "name": "row6",
+            "width": "fill_container",
+            "height": 34,
+            "stroke": {
+              "thickness": {
+                "bottom": 1
+              },
+              "fill": "#D7DBDE"
+            },
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "Qaqhf",
+                "name": "q6",
+                "fill": "#52585F",
+                "textGrowth": "fixed-width",
+                "width": 1120,
+                "content": "Can device lifecycle services include monthly fleet refreshes?",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "text",
+                "id": "KbiSI",
+                "name": "p6",
+                "fill": "#52585F",
+                "content": "+",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "600"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

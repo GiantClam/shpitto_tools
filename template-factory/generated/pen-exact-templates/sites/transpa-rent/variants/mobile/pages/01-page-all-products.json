@@ -1,0 +1,1574 @@
+{
+  "pageId": "page-all-products",
+  "pageName": "All Products",
+  "pageType": "catalog",
+  "order": 1,
+  "bounds": {
+    "x": 520,
+    "y": 0,
+    "width": 390,
+    "height": 3619
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "13c4442e853fe613b0a1b436fd220c65024ca0ef19c01f46623953458d3d8e06",
+  "directChildCount": 36,
+  "recursiveNodeCount": 45,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "header-page-all-products",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "faa6b1fce2a9331f2db7bfdf977ec0a937a0beaca1da0ba525822bc5a1e74ea3",
+      "blockCount": 3
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 3369,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "9485bc42770f919438af53ff29b2ced5fe5348ac570b205c7d0228c76dd2d784",
+      "blockCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "header-page-all-products",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "faa6b1fce2a9331f2db7bfdf977ec0a937a0beaca1da0ba525822bc5a1e74ea3",
+      "blockCount": 3,
+      "blockIndex": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db"
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b43946cb02b03fb3dbd7c6067297d483df7dd1508f77d116fdd735924516e31b"
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "838bcadf109a1b13bbe1424577e8b234d055e8a8f08dd8f7f93a8caab948c009"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b43946cb02b03fb3dbd7c6067297d483df7dd1508f77d116fdd735924516e31b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#141414",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          }
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "838bcadf109a1b13bbe1424577e8b234d055e8a8f08dd8f7f93a8caab948c009",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#141414",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-all-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "header-page-all-products",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#141414",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#141414",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-all-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 3369,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "9485bc42770f919438af53ff29b2ced5fe5348ac570b205c7d0228c76dd2d784",
+      "blockCount": 5,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b88a5b9ed2a096a8e296d09ad6d3e1ef08da5885003d5ed4b36c4f7dc2aa4dc8"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0d561b775b81032d117dd7845ddd8b01fec7e4747ea165d21991b31138166ef9"
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "be7e9b7368d12db1ea95ec576ddb361494f81ca38430a8c59fd2fa9149082d63"
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 85
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6c2634d43f4cf19913436fb769f46dc4c4d198ed449dbef4ab5585b1051e8ea7"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cd9c46af0683cdaf7957fd6b7e51bb6ead7947ef0014e1761343478c574ee137"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b88a5b9ed2a096a8e296d09ad6d3e1ef08da5885003d5ed4b36c4f7dc2aa4dc8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#131313"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0d561b775b81032d117dd7845ddd8b01fec7e4747ea165d21991b31138166ef9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F4F4EF",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "be7e9b7368d12db1ea95ec576ddb361494f81ca38430a8c59fd2fa9149082d63",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F4F4EF",
+            "content": "All Products Modular System Sound Room",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 53
+          }
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 85
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6c2634d43f4cf19913436fb769f46dc4c4d198ed449dbef4ab5585b1051e8ea7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F4F4EF",
+            "content": "Support About Transparent Speaker Black Wi‑Fi Transparent Turntable",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 85
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cd9c46af0683cdaf7957fd6b7e51bb6ead7947ef0014e1761343478c574ee137",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Transparent structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 3369,
+        "width": 390,
+        "height": 250,
+        "fill": "#131313",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#131313"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F4F4EF",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F4F4EF",
+            "content": "All Products Modular System Sound Room",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 53
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F4F4EF",
+            "content": "Support About Transparent Speaker Black Wi‑Fi Transparent Turntable",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 85
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Transparent structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 8,
+  "looseNodeCount": 34,
+  "looseNodes": [
+    {
+      "id": "page-all-products-bg",
+      "name": "page-all-products-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 100
+    },
+    {
+      "id": "page-all-products-hero",
+      "name": "page-all-products-hero",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-all-products-overlay",
+      "name": "page-all-products-overlay",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-all-products-panel",
+      "name": "page-all-products-panel",
+      "type": "rectangle",
+      "width": 354,
+      "height": 3005
+    },
+    {
+      "id": "page-all-products-crumb",
+      "name": "page-all-products-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 18
+    },
+    {
+      "id": "page-all-products-title",
+      "name": "page-all-products-title",
+      "type": "text",
+      "width": 320,
+      "height": 92
+    },
+    {
+      "id": "page-all-products-subtitle",
+      "name": "page-all-products-subtitle",
+      "type": "text",
+      "width": 320,
+      "height": 80
+    },
+    {
+      "id": "page-all-products-btn-home-box",
+      "name": "page-all-products-btn-home-box",
+      "type": "rectangle",
+      "width": 128,
+      "height": 38
+    },
+    {
+      "id": "page-all-products-btn-home-text",
+      "name": "page-all-products-btn-home-text",
+      "type": "text",
+      "width": 100,
+      "height": 18
+    },
+    {
+      "id": "page-all-products-btn-peer-box",
+      "name": "page-all-products-btn-peer-box",
+      "type": "rectangle",
+      "width": 148,
+      "height": 38
+    },
+    {
+      "id": "page-all-products-btn-peer-text",
+      "name": "page-all-products-btn-peer-text",
+      "type": "text",
+      "width": 120,
+      "height": 18
+    },
+    {
+      "id": "page-all-products-kicker",
+      "name": "page-all-products-kicker",
+      "type": "text",
+      "width": 306,
+      "height": 18
+    },
+    {
+      "id": "page-all-products-panel-title",
+      "name": "page-all-products-panel-title",
+      "type": "text",
+      "width": 306,
+      "height": 41
+    },
+    {
+      "id": "page-all-products-p-0",
+      "name": "page-all-products-p-0",
+      "type": "text",
+      "width": 306,
+      "height": 80
+    },
+    {
+      "id": "page-all-products-p-1",
+      "name": "page-all-products-p-1",
+      "type": "text",
+      "width": 306,
+      "height": 2129
+    },
+    {
+      "id": "page-all-products-p-2",
+      "name": "page-all-products-p-2",
+      "type": "text",
+      "width": 306,
+      "height": 80
+    },
+    {
+      "id": "page-all-products-p-3",
+      "name": "page-all-products-p-3",
+      "type": "text",
+      "width": 306,
+      "height": 62
+    },
+    {
+      "id": "page-all-products-feature",
+      "name": "page-all-products-feature",
+      "type": "rectangle",
+      "width": 306,
+      "height": 220
+    },
+    {
+      "id": "page-all-products-feature-2",
+      "name": "page-all-products-feature-2",
+      "type": "rectangle",
+      "width": 306,
+      "height": 180
+    },
+    {
+      "id": "page-all-products-card-0",
+      "name": "page-all-products-card-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 136
+    },
+    {
+      "id": "page-all-products-card-img-0",
+      "name": "page-all-products-card-img-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 82
+    },
+    {
+      "id": "page-all-products-card-title-0",
+      "name": "page-all-products-card-title-0",
+      "type": "text",
+      "width": 286,
+      "height": 18
+    },
+    {
+      "id": "page-all-products-card-copy-0",
+      "name": "page-all-products-card-copy-0",
+      "type": "text",
+      "width": 286,
+      "height": 53
+    },
+    {
+      "id": "page-all-products-card-1",
+      "name": "page-all-products-card-1",
+      "type": "rectangle",
+      "width": 306,
+      "height": 136
+    },
+    {
+      "id": "page-all-products-card-img-1",
+      "name": "page-all-products-card-img-1",
+      "type": "rectangle",
+      "width": 306,
+      "height": 82
+    },
+    {
+      "id": "page-all-products-card-title-1",
+      "name": "page-all-products-card-title-1",
+      "type": "text",
+      "width": 286,
+      "height": 18
+    },
+    {
+      "id": "page-all-products-card-copy-1",
+      "name": "page-all-products-card-copy-1",
+      "type": "text",
+      "width": 286,
+      "height": 53
+    },
+    {
+      "id": "page-all-products-related-title",
+      "name": "page-all-products-related-title",
+      "type": "text",
+      "width": 180,
+      "height": 18
+    },
+    {
+      "id": "page-all-products-related-0-box",
+      "name": "page-all-products-related-0-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-all-products-related-0-text",
+      "name": "page-all-products-related-0-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-all-products-related-1-box",
+      "name": "page-all-products-related-1-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-all-products-related-1-text",
+      "name": "page-all-products-related-1-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-all-products-related-2-box",
+      "name": "page-all-products-related-2-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-all-products-related-2-text",
+      "name": "page-all-products-related-2-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-2-0c2e17f0.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-2-0c2e17f0.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-2-0c2e17f0.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-2-0c2e17f0.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-2-0c2e17f0.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-2-0c2e17f0.jpg",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-all-products",
+    "name": "All Products",
+    "x": 520,
+    "y": 0,
+    "width": 390,
+    "height": 3619,
+    "fill": "#F5F5F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-all-products-bg",
+        "name": "page-all-products-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 100,
+        "fill": "#F5F5F2"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-hero",
+        "name": "page-all-products-hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "mode": "cover"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-overlay",
+        "name": "page-all-products-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": "#00000055"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-panel",
+        "name": "page-all-products-panel",
+        "x": 18,
+        "y": 344,
+        "width": 354,
+        "height": 3005,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D9D0",
+          "thickness": 1
+        },
+        "cornerRadius": 20
+      },
+      {
+        "type": "frame",
+        "id": "header-page-all-products",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#141414",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#141414",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-all-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-crumb",
+        "name": "page-all-products-crumb",
+        "x": 18,
+        "y": 82,
+        "fill": "#FFFFFF",
+        "content": "Home / All Products",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-title",
+        "name": "page-all-products-title",
+        "x": 18,
+        "y": 106,
+        "fill": "#FFFFFF",
+        "content": "Transparent | Official Online Store",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 30,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 92
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-subtitle",
+        "name": "page-all-products-subtitle",
+        "x": 18,
+        "y": 184,
+        "fill": "#F0F0EE",
+        "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 80
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-btn-home-box",
+        "name": "page-all-products-btn-home-box",
+        "x": 18,
+        "y": 252,
+        "width": 128,
+        "height": 38,
+        "fill": "#111111",
+        "stroke": {
+          "fill": "#111111",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-btn-home-text",
+        "name": "page-all-products-btn-home-text",
+        "x": 32,
+        "y": 262,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-btn-peer-box",
+        "name": "page-all-products-btn-peer-box",
+        "x": 158,
+        "y": 252,
+        "width": 148,
+        "height": 38,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D9D0",
+          "thickness": 1
+        },
+        "href": "#page-transparent-speaker-black-wifi",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-btn-peer-text",
+        "name": "page-all-products-btn-peer-text",
+        "x": 172,
+        "y": 262,
+        "fill": "#141414",
+        "content": "Product page",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-transparent-speaker-black-wifi",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-kicker",
+        "name": "page-all-products-kicker",
+        "x": 42,
+        "y": 368,
+        "fill": "#111111",
+        "content": "SECOND LEVEL PAGE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 18,
+        "letterSpacing": "0.1em"
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-panel-title",
+        "name": "page-all-products-panel-title",
+        "x": 42,
+        "y": 390,
+        "fill": "#141414",
+        "content": "Language",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 24,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 41
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-p-0",
+        "name": "page-all-products-p-0",
+        "x": 42,
+        "y": 422,
+        "fill": "#141414",
+        "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 80
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-p-1",
+        "name": "page-all-products-p-1",
+        "x": 42,
+        "y": 520,
+        "fill": "#141414",
+        "content": "#module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e { width: 100%; margin-top:15px; margin-bottom:15px; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.container { overflow: hidden; } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.products-grid .grid-item { display: inline-block; } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e .grid-product { height: 100%; margin-bottom:-4px; } @media (max-width: 1099px) { #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e { margin-top:0px; margin-bottom:0px; } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.products-grid .grid-item { /* width: calc(50% - 9px);*/ width: calc(100% - 10px); margin-bottom:8px; } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.products-grid .grid-item-x2 { width: calc(85% - 7.5px); margin-left: 0; margin-right: 0; } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.products-grid .grid-item .cta-button { visibility: hidden; } } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e .grid-items-wrapper { width: calc(100% + 11px); margin-left: -7.5px; margin-right: -7.5px; padding-left: 0; padding-right: 0; } @media (max-width: 1099px) { .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e .grid-items-wrapper { width: calc(100% + 10px); } } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e .grid-product { background-color: transparent; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-full-width.container { width: calc(100% + 4px); padding-left: 0; padding-right: 0; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-full-width.container { width: calc(100vw + 4px); margin-left: -15px; margin-right: -15px; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block.container { background: transparent; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block { padding: 0; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-items-wrapper { width: 100%; margin: 0; line-height: 0; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-item { width: 20%; margin: 0; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-item .grid-product { margin-bottom: 0; } /* quick-shop button */ #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product > .product { position: unset; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:not(.upselling-product):not(.grid-product-wholesale) .add-to-cart { display: none; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:not(.upselling-product):not(.grid-product-wholesale):hover .add-to-cart { display: block; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:not(.upselling-product):not(.grid-product-wholesale) .add-to-cart { width: 36px!important; min-width: 36px; height: 36px; margin-top: 19px; top: 0; background-size: 110%!important; background-position: -2px -2px!important; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:hover, #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:hover .product-info-block { background: #f7f7f7; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:hover .product-info-block { background: #eeeeee; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:hover a.product { mix-blend-mode: multiply; } /* product name + price */ #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block.products-grid .product-info-block { text-align: center; padding-left: 30px; padding-right: 30px; } @media (max-width: 1099px) { #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-item { width: 50%; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-item-x2 { width: calc(100% - 7.5px); } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block.products-grid .product-info-block { padding-left: 10px; padding-right: 10px; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block.products-grid .product-info-block .product-name { white-space: break-spaces; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-full-width.container { width: calc(100vw + 4px); margin-left: -7.5px; margin-right: -7.5px; } } --> 5.0 --> Transparent Turntable",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 2129
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-p-2",
+        "name": "page-all-products-p-2",
+        "x": 42,
+        "y": 2667,
+        "fill": "#141414",
+        "content": "Transparent expands the sensory landscape of the home with a completely new product category. Be among the first to experience the new sensation.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 80
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-p-3",
+        "name": "page-all-products-p-3",
+        "x": 42,
+        "y": 2765,
+        "fill": "#141414",
+        "content": "Transparent product catalogue across speakers, turntables and design audio objects.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 62
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-feature",
+        "name": "page-all-products-feature",
+        "x": 42,
+        "y": 368,
+        "width": 306,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-all-products",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-feature-2",
+        "name": "page-all-products-feature-2",
+        "x": 42,
+        "y": 606,
+        "width": 306,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-2-0c2e17f0.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-all-products",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-card-0",
+        "name": "page-all-products-card-0",
+        "x": 42,
+        "y": 2867,
+        "width": 306,
+        "height": 136,
+        "fill": "#F0F0EC",
+        "stroke": {
+          "fill": "#D9D9D0",
+          "thickness": 1
+        },
+        "href": "#page-transparent-speaker-black-wifi",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-card-img-0",
+        "name": "page-all-products-card-img-0",
+        "x": 42,
+        "y": 2867,
+        "width": 306,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-transparent-speaker-black-wifi",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-card-title-0",
+        "name": "page-all-products-card-title-0",
+        "x": 52,
+        "y": 2957,
+        "fill": "#141414",
+        "content": "Transparent Speaker Black Wi‑Fi",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 18,
+        "href": "#page-transparent-speaker-black-wifi"
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-card-copy-0",
+        "name": "page-all-products-card-copy-0",
+        "x": 52,
+        "y": 2975,
+        "fill": "#666862",
+        "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, su",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 53,
+        "href": "#page-transparent-speaker-black-wifi"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-card-1",
+        "name": "page-all-products-card-1",
+        "x": 42,
+        "y": 3019,
+        "width": 306,
+        "height": 136,
+        "fill": "#F0F0EC",
+        "stroke": {
+          "fill": "#D9D9D0",
+          "thickness": 1
+        },
+        "href": "#page-turntable-black",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-card-img-1",
+        "name": "page-all-products-card-img-1",
+        "x": 42,
+        "y": 3019,
+        "width": 306,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-2-0c2e17f0.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-turntable-black",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-card-title-1",
+        "name": "page-all-products-card-title-1",
+        "x": 52,
+        "y": 3109,
+        "fill": "#141414",
+        "content": "Transparent Turntable",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 18,
+        "href": "#page-turntable-black"
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-card-copy-1",
+        "name": "page-all-products-card-copy-1",
+        "x": 52,
+        "y": 3127,
+        "fill": "#666862",
+        "content": "#module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e { width: 100%; margin-top:15px; margin-bottom",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 53,
+        "href": "#page-turntable-black"
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-related-title",
+        "name": "page-all-products-related-title",
+        "x": 42,
+        "y": 3183,
+        "fill": "#111111",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-related-0-box",
+        "name": "page-all-products-related-0-box",
+        "x": 42,
+        "y": 3209,
+        "width": 150,
+        "height": 36,
+        "fill": "#111111",
+        "stroke": {
+          "fill": "#111111",
+          "thickness": 1
+        },
+        "href": "#page-transparent-speaker-black-wifi",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-related-0-text",
+        "name": "page-all-products-related-0-text",
+        "x": 56,
+        "y": 3218,
+        "fill": "#FFFFFF",
+        "content": "Transparent Speaker Black Wi‑Fi",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-transparent-speaker-black-wifi",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-related-1-box",
+        "name": "page-all-products-related-1-box",
+        "x": 204,
+        "y": 3209,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D9D0",
+          "thickness": 1
+        },
+        "href": "#page-turntable-black",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-related-1-text",
+        "name": "page-all-products-related-1-text",
+        "x": 218,
+        "y": 3218,
+        "fill": "#141414",
+        "content": "Transparent Turntable",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-turntable-black",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-all-products-related-2-box",
+        "name": "page-all-products-related-2-box",
+        "x": 42,
+        "y": 3257,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D9D0",
+          "thickness": 1
+        },
+        "href": "#page-light-speaker-white",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-all-products-related-2-text",
+        "name": "page-all-products-related-2-text",
+        "x": 56,
+        "y": 3266,
+        "fill": "#141414",
+        "content": "Light Speaker White",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-light-speaker-white",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 3369,
+        "width": 390,
+        "height": 250,
+        "fill": "#131313",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#131313"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F4F4EF",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F4F4EF",
+            "content": "All Products Modular System Sound Room",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 53
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F4F4EF",
+            "content": "Support About Transparent Speaker Black Wi‑Fi Transparent Turntable",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 85
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Transparent structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    ]
+  }
+}

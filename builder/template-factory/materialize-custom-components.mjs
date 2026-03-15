@@ -42,6 +42,7 @@ const rootPaths = (root = "") => {
     root: builderRoot,
     blocksDir: path.join(builderRoot, "src", "components", "blocks"),
     generatedConfigPath: path.join(builderRoot, "src", "puck", "config.generated.ts"),
+    generatedRuntimeRegistryPath: path.join(builderRoot, "src", "puck", "template-exclusive-runtime.generated.json"),
   };
 };
 
@@ -66,6 +67,80 @@ const toIdentifier = (value, fallback = "GeneratedBlock") => {
 
 const codeSignature = (code) =>
   crypto.createHash("sha1").update(String(code || "").trim(), "utf8").digest("hex");
+
+const isTemplateExclusiveRuntimeComponent = (component) =>
+  typeof component?.kebabName === "string" && component.kebabName.startsWith("template-exclusive-");
+
+const extractConstString = (source, constName) => {
+  const match = String(source || "").match(new RegExp(`const\\s+${constName}\\s*=\\s*(["'\`])([\\s\\S]*?)\\1;`));
+  return match?.[2] || "";
+};
+
+const extractConstObjectLiteral = (source, constName) => {
+  const marker = `const ${constName} = `;
+  const input = String(source || "");
+  const start = input.indexOf(marker);
+  if (start === -1) return null;
+  let index = start + marker.length;
+  while (/\s/.test(input[index] || "")) index += 1;
+  const openChar = input[index];
+  if (openChar !== "{" && openChar !== "[") return null;
+  const closeChar = openChar === "{" ? "}" : "]";
+  let depth = 0;
+  let inString = false;
+  let stringQuote = "";
+  let escaped = false;
+  for (let i = index; i < input.length; i += 1) {
+    const char = input[i];
+    if (inString) {
+      if (escaped) {
+        escaped = false;
+      } else if (char === "\\") {
+        escaped = true;
+      } else if (char === stringQuote) {
+        inString = false;
+        stringQuote = "";
+      }
+      continue;
+    }
+    if (char === '"' || char === "'" || char === "`") {
+      inString = true;
+      stringQuote = char;
+      continue;
+    }
+    if (char === openChar) {
+      depth += 1;
+      continue;
+    }
+    if (char === closeChar) {
+      depth -= 1;
+      if (depth === 0) {
+        return input.slice(index, i + 1);
+      }
+    }
+  }
+  return null;
+};
+
+const parseTemplateExclusiveRuntimeDefinition = async (component) => {
+  const source = await fs.readFile(component.blockFile, "utf8");
+  const sectionTreeLiteral = extractConstObjectLiteral(source, "SECTION_TREE");
+  const defaultPropsLiteral = extractConstObjectLiteral(source, "DEFAULT_PROPS");
+  const defaultThemeLiteral = extractConstObjectLiteral(source, "DEFAULT_THEME");
+  const layoutContextLiteral = extractConstObjectLiteral(source, "LAYOUT_CONTEXT");
+  if (!sectionTreeLiteral || !defaultPropsLiteral) {
+    throw new Error(`missing runtime literals for ${component.blockFile}`);
+  }
+  return {
+    name: component.name,
+    kebabName: component.kebabName,
+    sectionKind: extractConstString(source, "SECTION_KIND"),
+    sectionTree: JSON.parse(sectionTreeLiteral),
+    defaultProps: JSON.parse(defaultPropsLiteral),
+    defaultTheme: defaultThemeLiteral ? JSON.parse(defaultThemeLiteral) : {},
+    layoutContext: layoutContextLiteral ? JSON.parse(layoutContextLiteral) : {},
+  };
+};
 
 const resolveComponentIdentity = (name, code, registry = new Map()) => {
   const baseName = toIdentifier(name, "GeneratedBlock");
@@ -172,10 +247,16 @@ const detectListItemFields = (code, listPropName) => {
  */
 const normalizeForStatic = (code, componentName) => {
   let normalized = String(code || "").trim();
+  const hasTsNoCheck = normalized.startsWith("// @ts-nocheck");
 
   // Ensure "use client" at top
   if (!normalized.startsWith('"use client"') && !normalized.startsWith("'use client'")) {
     normalized = `"use client";\n\n${normalized}`;
+  }
+
+  // Generated blocks are validated via runtime/regression gates; skip expensive TS analysis.
+  if (!hasTsNoCheck) {
+    normalized = `// @ts-nocheck\n${normalized}`;
   }
 
   // Fix common import path issues
@@ -351,7 +432,7 @@ const materializeComponent = async ({
  * Generate the config.generated.ts file that registers all materialized components.
  */
 const generateConfigFile = async (components, root = "") => {
-  const { generatedConfigPath } = rootPaths(root);
+  const { generatedConfigPath, generatedRuntimeRegistryPath } = rootPaths(root);
   const deduped = new Map();
   for (const component of components || []) {
     if (!component?.name || !component?.kebabName) continue;
@@ -363,8 +444,16 @@ const generateConfigFile = async (components, root = "") => {
     return;
   }
 
+  const runtimeComponents = active.filter(isTemplateExclusiveRuntimeComponent);
+  const staticComponents = active.filter((component) => !isTemplateExclusiveRuntimeComponent(component));
+  const runtimeDefinitions = {};
+  for (const component of runtimeComponents) {
+    runtimeDefinitions[component.name] = await parseTemplateExclusiveRuntimeDefinition(component);
+  }
+  await fs.writeFile(generatedRuntimeRegistryPath, JSON.stringify(runtimeDefinitions, null, 2));
+
   const usedAliases = new Set();
-  const withAliases = active.map((component, index) => {
+  const withAliases = staticComponents.map((component, index) => {
     const baseAlias = toIdentifier(`${component.name}BlockModule`, `GeneratedBlockModule${index + 1}`);
     let alias = baseAlias;
     let nonce = 2;
@@ -380,11 +469,14 @@ const generateConfigFile = async (components, root = "") => {
     };
   });
 
-  const imports = withAliases
-    .map(
-      (c) =>
-        `import * as ${c.moduleAlias} from "@/components/blocks/${c.kebabName}/block";`
-    )
+  const imports = [
+    `import { TemplateExclusiveRuntimeBlock } from "@/components/blocks/template-exclusive-runtime/block";`,
+    runtimeComponents.length
+      ? `import templateExclusiveRuntimeDefinitions from "@/puck/template-exclusive-runtime.generated.json";`
+      : "",
+    ...withAliases.map((c) => `import * as ${c.moduleAlias} from "@/components/blocks/${c.kebabName}/block";`),
+  ]
+    .filter(Boolean)
     .join("\n");
 
   const fieldImport = `import {\n  booleanField,\n  listField,\n  selectField,\n  textField,\n  textareaField,\n} from "@/puck/field-adapters";`;
@@ -411,7 +503,32 @@ const generateConfigFile = async (components, root = "") => {
 const renderBlock = (Block: React.ComponentType<any>) => (props: any) =>
   React.createElement(Block, props);`;
 
-  const registrations = withAliases
+  const runtimeRenderHelper = runtimeComponents.length
+    ? `
+const renderTemplateExclusiveRuntime = (componentKey: string) => (props: any) =>
+  React.createElement(TemplateExclusiveRuntimeBlock, {
+    definition: (templateExclusiveRuntimeDefinitions as Record<string, any>)[componentKey],
+    ...props,
+  });`
+    : "";
+
+  const runtimeRegistrations = runtimeComponents
+    .map((c) => {
+      const propsStr = JSON.stringify(c.defaultProps, null, 6)
+        .split("\n")
+        .map((line, i) => (i === 0 ? line : `      ${line}`))
+        .join("\n");
+      return `    ${JSON.stringify(c.name)}: {
+      render: renderTemplateExclusiveRuntime(${JSON.stringify(c.name)}),
+      defaultProps: ${propsStr},
+      fields: {
+${c.fieldCode}
+      },
+    },`;
+    })
+    .join("\n");
+
+  const staticRegistrations = withAliases
     .map((c) => {
       const propsStr = JSON.stringify(c.defaultProps, null, 6)
         .split("\n")
@@ -431,8 +548,10 @@ ${c.fieldCode}
     },`;
     })
     .join("\n");
+  const registrations = [runtimeRegistrations, staticRegistrations].filter(Boolean).join("\n");
 
-  const content = `/**
+  const content = `// @ts-nocheck
+/**
  * Auto-generated by materialize-custom-components.mjs
  * DO NOT EDIT MANUALLY — re-run materialization to update.
  */
@@ -442,6 +561,7 @@ ${fieldImport}
 ${imports}
 
 ${renderHelper}
+${runtimeRenderHelper}
 
 export const generatedComponents: Record<string, any> = {
 ${registrations}
@@ -450,7 +570,7 @@ ${registrations}
 
   await fs.writeFile(generatedConfigPath, content);
   console.log(
-    `[materialize] wrote ${generatedConfigPath} (${active.length} components)`
+    `[materialize] wrote ${generatedConfigPath} (${active.length} components; runtime=${runtimeComponents.length}; static=${staticComponents.length})`
   );
 };
 

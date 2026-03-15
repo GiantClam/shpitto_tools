@@ -1,0 +1,158 @@
+{
+  "sectionId": "Ov90X",
+  "sectionName": "intro",
+  "sectionKind": "generic",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 646,
+    "width": 1440,
+    "height": 518
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "f1610d41257f903b1c4672d1f5e1e238dd7031f34577c0346f261ac85ef29ba4",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "CqfIA",
+      "blockName": "sec1desc",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 192,
+        "y": 89,
+        "width": 1055,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "acc3f7e07bab88fb169e8c7dd9987aecc4ce256939fd0c1496d683db25d42e33"
+    },
+    {
+      "blockId": "2BDBo",
+      "blockName": "sec1nav",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 384,
+        "y": 425,
+        "width": 672,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c3ef2e214e7304a31b60e6cfad6032082c8880bc4cdc2c2b712fb0ba99c28f35"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "CqfIA",
+      "blockName": "sec1desc",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 192,
+        "y": 89,
+        "width": 1055,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "acc3f7e07bab88fb169e8c7dd9987aecc4ce256939fd0c1496d683db25d42e33",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "CqfIA",
+        "x": 192,
+        "y": 89,
+        "name": "sec1desc",
+        "fill": "#ffffff",
+        "textGrowth": "fixed-width",
+        "width": 1055,
+        "content": "Kymeta is changing the way the world connects. Kymeta offers the first electronically scanning, flat-panel satellite terminal for fixed and mobile platforms. Combined with our global, high-bandwidth services and world class support, we offer a complete connectivity solution so you can stay connected wherever in the world you go.",
+        "lineHeight": 1.65,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "2BDBo",
+      "blockName": "sec1nav",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 384,
+        "y": 425,
+        "width": 672,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c3ef2e214e7304a31b60e6cfad6032082c8880bc4cdc2c2b712fb0ba99c28f35",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "2BDBo",
+        "x": 384,
+        "y": 425,
+        "name": "sec1nav",
+        "fill": "#ffffff",
+        "textGrowth": "fixed-width",
+        "width": 672,
+        "content": "↘  Latest News      ↘  Vision & Principles",
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "600"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "Ov90X",
+    "x": 0,
+    "y": 646,
+    "name": "intro",
+    "width": 1440,
+    "height": 518,
+    "fill": "#03070E",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "CqfIA",
+        "x": 192,
+        "y": 89,
+        "name": "sec1desc",
+        "fill": "#ffffff",
+        "textGrowth": "fixed-width",
+        "width": 1055,
+        "content": "Kymeta is changing the way the world connects. Kymeta offers the first electronically scanning, flat-panel satellite terminal for fixed and mobile platforms. Combined with our global, high-bandwidth services and world class support, we offer a complete connectivity solution so you can stay connected wherever in the world you go.",
+        "lineHeight": 1.65,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "2BDBo",
+        "x": 384,
+        "y": 425,
+        "name": "sec1nav",
+        "fill": "#ffffff",
+        "textGrowth": "fixed-width",
+        "width": 672,
+        "content": "↘  Latest News      ↘  Vision & Principles",
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

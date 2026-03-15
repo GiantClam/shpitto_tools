@@ -1,0 +1,437 @@
+{
+  "schemaVersion": "pen-skinnable-editable-catalog.v1",
+  "generatedAt": "2026-03-12T08:24:46.917Z",
+  "identity": {
+    "fileName": "fptindustrie-mobile.pen",
+    "penKey": "fptindustrie-mobile",
+    "siteId": "fptindustrie",
+    "siteName": "Fptindustrie",
+    "variant": "mobile",
+    "variantKey": "mobile"
+  },
+  "counts": {
+    "pageCount": 10,
+    "textSlotCount": 140,
+    "imageSlotCount": 31,
+    "linkSlotCount": 98,
+    "styleSlotCount": 280
+  },
+  "pages": [
+    {
+      "pageId": "page-home",
+      "pageName": "FPT Homepage Mobile",
+      "pageType": "home",
+      "counts": {
+        "textSlotCount": 59,
+        "imageSlotCount": 13,
+        "linkSlotCount": 71,
+        "styleSlotCount": 109
+      },
+      "sections": [
+        {
+          "sectionId": "home-navbar-mobile",
+          "sectionName": "Navbar",
+          "sectionKind": "navigation",
+          "order": 0,
+          "blockCount": 7,
+          "textSlotCount": 1,
+          "imageSlotCount": 1,
+          "linkSlotCount": 2,
+          "styleSlotCount": 8
+        },
+        {
+          "sectionId": "focus",
+          "sectionName": "Focus",
+          "sectionKind": "generic",
+          "order": 1,
+          "blockCount": 7,
+          "textSlotCount": 4,
+          "imageSlotCount": 1,
+          "linkSlotCount": 6,
+          "styleSlotCount": 8
+        },
+        {
+          "sectionId": "products",
+          "sectionName": "Products",
+          "sectionKind": "products",
+          "order": 2,
+          "blockCount": 13,
+          "textSlotCount": 7,
+          "imageSlotCount": 2,
+          "linkSlotCount": 12,
+          "styleSlotCount": 14
+        },
+        {
+          "sectionId": "industries",
+          "sectionName": "Industries",
+          "sectionKind": "generic",
+          "order": 3,
+          "blockCount": 14,
+          "textSlotCount": 8,
+          "imageSlotCount": 2,
+          "linkSlotCount": 12,
+          "styleSlotCount": 15
+        },
+        {
+          "sectionId": "companycards",
+          "sectionName": "Company Cards",
+          "sectionKind": "products",
+          "order": 4,
+          "blockCount": 19,
+          "textSlotCount": 10,
+          "imageSlotCount": 3,
+          "linkSlotCount": 18,
+          "styleSlotCount": 20
+        },
+        {
+          "sectionId": "news",
+          "sectionName": "News",
+          "sectionKind": "generic",
+          "order": 5,
+          "blockCount": 19,
+          "textSlotCount": 10,
+          "imageSlotCount": 3,
+          "linkSlotCount": 18,
+          "styleSlotCount": 20
+        },
+        {
+          "sectionId": "world",
+          "sectionName": "World",
+          "sectionKind": "generic",
+          "order": 6,
+          "blockCount": 12,
+          "textSlotCount": 11,
+          "imageSlotCount": 0,
+          "linkSlotCount": 2,
+          "styleSlotCount": 13
+        },
+        {
+          "sectionId": "footer",
+          "sectionName": "Footer",
+          "sectionKind": "footer",
+          "order": 7,
+          "blockCount": 10,
+          "textSlotCount": 8,
+          "imageSlotCount": 1,
+          "linkSlotCount": 1,
+          "styleSlotCount": 11
+        }
+      ]
+    },
+    {
+      "pageId": "page-company",
+      "pageName": "企业",
+      "pageType": "about",
+      "counts": {
+        "textSlotCount": 9,
+        "imageSlotCount": 2,
+        "linkSlotCount": 3,
+        "styleSlotCount": 19
+      },
+      "sections": [
+        {
+          "sectionId": "page-company-navbar",
+          "sectionName": "Navbar",
+          "sectionKind": "navigation",
+          "order": 0,
+          "blockCount": 7,
+          "textSlotCount": 1,
+          "imageSlotCount": 1,
+          "linkSlotCount": 2,
+          "styleSlotCount": 8
+        },
+        {
+          "sectionId": "footer",
+          "sectionName": "Footer",
+          "sectionKind": "footer",
+          "order": 1,
+          "blockCount": 10,
+          "textSlotCount": 8,
+          "imageSlotCount": 1,
+          "linkSlotCount": 1,
+          "styleSlotCount": 11
+        }
+      ]
+    },
+    {
+      "pageId": "page-products",
+      "pageName": "产品",
+      "pageType": "catalog",
+      "counts": {
+        "textSlotCount": 9,
+        "imageSlotCount": 2,
+        "linkSlotCount": 3,
+        "styleSlotCount": 19
+      },
+      "sections": [
+        {
+          "sectionId": "page-products-navbar",
+          "sectionName": "Navbar",
+          "sectionKind": "navigation",
+          "order": 0,
+          "blockCount": 7,
+          "textSlotCount": 1,
+          "imageSlotCount": 1,
+          "linkSlotCount": 2,
+          "styleSlotCount": 8
+        },
+        {
+          "sectionId": "footer",
+          "sectionName": "Footer",
+          "sectionKind": "footer",
+          "order": 1,
+          "blockCount": 10,
+          "textSlotCount": 8,
+          "imageSlotCount": 1,
+          "linkSlotCount": 1,
+          "styleSlotCount": 11
+        }
+      ]
+    },
+    {
+      "pageId": "page-industries",
+      "pageName": "应用行业",
+      "pageType": "catalog",
+      "counts": {
+        "textSlotCount": 9,
+        "imageSlotCount": 2,
+        "linkSlotCount": 3,
+        "styleSlotCount": 19
+      },
+      "sections": [
+        {
+          "sectionId": "page-industries-navbar",
+          "sectionName": "Navbar",
+          "sectionKind": "navigation",
+          "order": 0,
+          "blockCount": 7,
+          "textSlotCount": 1,
+          "imageSlotCount": 1,
+          "linkSlotCount": 2,
+          "styleSlotCount": 8
+        },
+        {
+          "sectionId": "footer",
+          "sectionName": "Footer",
+          "sectionKind": "footer",
+          "order": 1,
+          "blockCount": 10,
+          "textSlotCount": 8,
+          "imageSlotCount": 1,
+          "linkSlotCount": 1,
+          "styleSlotCount": 11
+        }
+      ]
+    },
+    {
+      "pageId": "page-technology",
+      "pageName": "技术",
+      "pageType": "catalog",
+      "counts": {
+        "textSlotCount": 9,
+        "imageSlotCount": 2,
+        "linkSlotCount": 3,
+        "styleSlotCount": 19
+      },
+      "sections": [
+        {
+          "sectionId": "page-technology-navbar",
+          "sectionName": "Navbar",
+          "sectionKind": "navigation",
+          "order": 0,
+          "blockCount": 7,
+          "textSlotCount": 1,
+          "imageSlotCount": 1,
+          "linkSlotCount": 2,
+          "styleSlotCount": 8
+        },
+        {
+          "sectionId": "footer",
+          "sectionName": "Footer",
+          "sectionKind": "footer",
+          "order": 1,
+          "blockCount": 10,
+          "textSlotCount": 8,
+          "imageSlotCount": 1,
+          "linkSlotCount": 1,
+          "styleSlotCount": 11
+        }
+      ]
+    },
+    {
+      "pageId": "page-contacts",
+      "pageName": "联系方式",
+      "pageType": "contact",
+      "counts": {
+        "textSlotCount": 9,
+        "imageSlotCount": 2,
+        "linkSlotCount": 3,
+        "styleSlotCount": 19
+      },
+      "sections": [
+        {
+          "sectionId": "page-contacts-navbar",
+          "sectionName": "Navbar",
+          "sectionKind": "navigation",
+          "order": 0,
+          "blockCount": 7,
+          "textSlotCount": 1,
+          "imageSlotCount": 1,
+          "linkSlotCount": 2,
+          "styleSlotCount": 8
+        },
+        {
+          "sectionId": "footer",
+          "sectionName": "Footer",
+          "sectionKind": "footer",
+          "order": 1,
+          "blockCount": 10,
+          "textSlotCount": 8,
+          "imageSlotCount": 1,
+          "linkSlotCount": 1,
+          "styleSlotCount": 11
+        }
+      ]
+    },
+    {
+      "pageId": "page-services",
+      "pageName": "销售工程",
+      "pageType": "catalog",
+      "counts": {
+        "textSlotCount": 9,
+        "imageSlotCount": 2,
+        "linkSlotCount": 3,
+        "styleSlotCount": 19
+      },
+      "sections": [
+        {
+          "sectionId": "page-services-navbar",
+          "sectionName": "Navbar",
+          "sectionKind": "navigation",
+          "order": 0,
+          "blockCount": 7,
+          "textSlotCount": 1,
+          "imageSlotCount": 1,
+          "linkSlotCount": 2,
+          "styleSlotCount": 8
+        },
+        {
+          "sectionId": "footer",
+          "sectionName": "Footer",
+          "sectionKind": "footer",
+          "order": 1,
+          "blockCount": 10,
+          "textSlotCount": 8,
+          "imageSlotCount": 1,
+          "linkSlotCount": 1,
+          "styleSlotCount": 11
+        }
+      ]
+    },
+    {
+      "pageId": "page-italian-style",
+      "pageName": "Italian Style",
+      "pageType": "generic",
+      "counts": {
+        "textSlotCount": 9,
+        "imageSlotCount": 2,
+        "linkSlotCount": 3,
+        "styleSlotCount": 19
+      },
+      "sections": [
+        {
+          "sectionId": "page-italian-style-navbar",
+          "sectionName": "Navbar",
+          "sectionKind": "navigation",
+          "order": 0,
+          "blockCount": 7,
+          "textSlotCount": 1,
+          "imageSlotCount": 1,
+          "linkSlotCount": 2,
+          "styleSlotCount": 8
+        },
+        {
+          "sectionId": "footer",
+          "sectionName": "Footer",
+          "sectionKind": "footer",
+          "order": 1,
+          "blockCount": 10,
+          "textSlotCount": 8,
+          "imageSlotCount": 1,
+          "linkSlotCount": 1,
+          "styleSlotCount": 11
+        }
+      ]
+    },
+    {
+      "pageId": "page-warcom-news",
+      "pageName": "Warcom News",
+      "pageType": "blog",
+      "counts": {
+        "textSlotCount": 9,
+        "imageSlotCount": 2,
+        "linkSlotCount": 3,
+        "styleSlotCount": 19
+      },
+      "sections": [
+        {
+          "sectionId": "page-warcom-news-navbar",
+          "sectionName": "Navbar",
+          "sectionKind": "navigation",
+          "order": 0,
+          "blockCount": 7,
+          "textSlotCount": 1,
+          "imageSlotCount": 1,
+          "linkSlotCount": 2,
+          "styleSlotCount": 8
+        },
+        {
+          "sectionId": "footer",
+          "sectionName": "Footer",
+          "sectionKind": "footer",
+          "order": 1,
+          "blockCount": 10,
+          "textSlotCount": 8,
+          "imageSlotCount": 1,
+          "linkSlotCount": 1,
+          "styleSlotCount": 11
+        }
+      ]
+    },
+    {
+      "pageId": "page-mecspe-2026",
+      "pageName": "MECSPE 2026",
+      "pageType": "generic",
+      "counts": {
+        "textSlotCount": 9,
+        "imageSlotCount": 2,
+        "linkSlotCount": 3,
+        "styleSlotCount": 19
+      },
+      "sections": [
+        {
+          "sectionId": "page-mecspe-2026-navbar",
+          "sectionName": "Navbar",
+          "sectionKind": "navigation",
+          "order": 0,
+          "blockCount": 7,
+          "textSlotCount": 1,
+          "imageSlotCount": 1,
+          "linkSlotCount": 2,
+          "styleSlotCount": 8
+        },
+        {
+          "sectionId": "footer",
+          "sectionName": "Footer",
+          "sectionKind": "footer",
+          "order": 1,
+          "blockCount": 10,
+          "textSlotCount": 8,
+          "imageSlotCount": 1,
+          "linkSlotCount": 1,
+          "styleSlotCount": 11
+        }
+      ]
+    }
+  ]
+}

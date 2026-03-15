@@ -1,0 +1,70 @@
+{
+  "blockId": "MvgNd",
+  "blockName": "r2",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 5,
+  "bounds": {
+    "x": 520,
+    "y": 130,
+    "width": 400,
+    "height": 350
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "2899ab0724323467e9d22033c041a423f235bea76d9887287709d1f58672c854",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "MvgNd",
+    "x": 520,
+    "y": 130,
+    "name": "r2",
+    "width": 400,
+    "height": 350,
+    "fill": "#FFFFFF",
+    "stroke": {
+      "thickness": 1,
+      "fill": "#D8DEE3"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "Q1Z34",
+        "x": 0,
+        "y": 0,
+        "name": "r2i",
+        "metadata": {
+          "type": "unsplash",
+          "username": "brett_jordan",
+          "link": "https://unsplash.com/@brett_jordan",
+          "author": "Brett Jordan"
+        },
+        "width": 400,
+        "height": 190,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1618835350763-ee971e156096?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "X4VuL",
+        "x": 24,
+        "y": 220,
+        "name": "r2t",
+        "fill": "#22303D",
+        "textGrowth": "fixed-width",
+        "width": 352,
+        "content": "Plexus to Present at the Raymond James 47th Annual Investors Conference",
+        "lineHeight": 1.12,
+        "fontFamily": "Inter",
+        "fontSize": 22,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

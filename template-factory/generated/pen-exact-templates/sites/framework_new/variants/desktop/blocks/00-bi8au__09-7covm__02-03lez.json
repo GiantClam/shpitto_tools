@@ -1,0 +1,62 @@
+{
+  "blockId": "03LeZ",
+  "blockName": "bottom",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": 34
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 4,
+  "treeHash": "6dee8240e3e4520e96e797214756469e26221630d04715f63c84833c559cd6c2",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "03LeZ",
+    "name": "bottom",
+    "width": "fill_container",
+    "height": 34,
+    "justifyContent": "space_between",
+    "alignItems": "center",
+    "children": [
+      {
+        "type": "text",
+        "id": "KS1Jb",
+        "fill": "#7D838B",
+        "content": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "frame",
+        "id": "bOCle",
+        "name": "lang",
+        "width": 86,
+        "height": 34,
+        "cornerRadius": 18,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#6C7076"
+        },
+        "justifyContent": "center",
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "MeABI",
+            "fill": "#D5D9DE",
+            "content": "USD",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

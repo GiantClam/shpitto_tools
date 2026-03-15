@@ -1,0 +1,234 @@
+{
+  "sectionId": "IBZ36",
+  "sectionName": "solTabs",
+  "sectionKind": "generic",
+  "order": 2,
+  "bounds": {
+    "x": 32,
+    "y": 568,
+    "width": 1376,
+    "height": 64
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 5,
+  "treeHash": "ba5c502f23f7e67a8959d8b66f1bc3856143ddbbd43c06b9e27b2ac1588f23cd",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "GS7Jf",
+      "blockName": "tab1",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 24,
+        "y": 15,
+        "width": 360,
+        "height": 34
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "9ec6691dbc0a0d3028d225aa03ad5bab83ae0f09c0df3890db7aa69d0d25a12c"
+    },
+    {
+      "blockId": "6l95n",
+      "blockName": "tab2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 607,
+        "y": 19,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7d9bf99ea8b616b06554f7af0127e4f3fcf1df0ca95be9a6f7452cddb3004de7"
+    },
+    {
+      "blockId": "IMoVH",
+      "blockName": "tab3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 1050,
+        "y": 19,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1c2a3c16917f282a0d6c9127572af42c8ec3c75a95c08decde8b338f507022d3"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "GS7Jf",
+      "blockName": "tab1",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 24,
+        "y": 15,
+        "width": 360,
+        "height": 34
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "9ec6691dbc0a0d3028d225aa03ad5bab83ae0f09c0df3890db7aa69d0d25a12c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "GS7Jf",
+        "x": 24,
+        "y": 15,
+        "name": "tab1",
+        "width": 360,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "1WxSV",
+            "x": 162,
+            "y": 4,
+            "name": "tab1t",
+            "fill": "#22303D",
+            "content": "设计",
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "6l95n",
+      "blockName": "tab2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 607,
+        "y": 19,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7d9bf99ea8b616b06554f7af0127e4f3fcf1df0ca95be9a6f7452cddb3004de7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "6l95n",
+        "x": 607,
+        "y": 19,
+        "name": "tab2",
+        "fill": "#FFFFFF",
+        "content": "制造",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "IMoVH",
+      "blockName": "tab3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 1050,
+        "y": 19,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1c2a3c16917f282a0d6c9127572af42c8ec3c75a95c08decde8b338f507022d3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "IMoVH",
+        "x": 1050,
+        "y": 19,
+        "name": "tab3",
+        "fill": "#FFFFFF",
+        "content": "服务",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "700"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "IBZ36",
+    "x": 32,
+    "y": 568,
+    "name": "solTabs",
+    "enabled": false,
+    "width": 1376,
+    "height": 64,
+    "fill": "#005060",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "GS7Jf",
+        "x": 24,
+        "y": 15,
+        "name": "tab1",
+        "width": 360,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "1WxSV",
+            "x": 162,
+            "y": 4,
+            "name": "tab1t",
+            "fill": "#22303D",
+            "content": "设计",
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "6l95n",
+        "x": 607,
+        "y": 19,
+        "name": "tab2",
+        "fill": "#FFFFFF",
+        "content": "制造",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "IMoVH",
+        "x": 1050,
+        "y": 19,
+        "name": "tab3",
+        "fill": "#FFFFFF",
+        "content": "服务",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

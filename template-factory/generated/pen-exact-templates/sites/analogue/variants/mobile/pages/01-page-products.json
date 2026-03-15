@@ -1,0 +1,1431 @@
+{
+  "pageId": "page-products",
+  "pageName": "Products",
+  "pageType": "catalog",
+  "order": 1,
+  "bounds": {
+    "x": 520,
+    "y": 0,
+    "width": 390,
+    "height": 1398
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "2f7ef0eddcae4e907be56f9b5f86c21d36869368d55112b6e4e2f5892cbf51b0",
+  "directChildCount": 30,
+  "recursiveNodeCount": 39,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "header-page-products",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "3c735d5e7f67d0c451da1a42105e04e471cd7a7d0451e5855230b6a94af97b7b",
+      "blockCount": 3
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1148,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "655a0dc96659eb22c4df38942218ff43e10859b83f5ec110eb71a296091eb64d",
+      "blockCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "header-page-products",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "3c735d5e7f67d0c451da1a42105e04e471cd7a7d0451e5855230b6a94af97b7b",
+      "blockCount": 3,
+      "blockIndex": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db"
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3fad64e1f240e063c860a01267c07ed7d0586511d161c7b06e96fda59e76e6ae"
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b087b3d99c81249062fabb708d5043227c430fd8e4166762497fe0cc8764e110"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3fad64e1f240e063c860a01267c07ed7d0586511d161c7b06e96fda59e76e6ae",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          }
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b087b3d99c81249062fabb708d5043227c430fd8e4166762497fe0cc8764e110",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "header-page-products",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1148,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "655a0dc96659eb22c4df38942218ff43e10859b83f5ec110eb71a296091eb64d",
+      "blockCount": 5,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f376df9ebf891ed1d89c5236f30961671f267ef85a1da8f44fb69cacae859970"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "35ba42ab8a6d205c35d35c6cee99806fee7ecdc591b1d7810c207c2a2fa7795f"
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "04e10cf421512ebfaf3feb95206ba60841bff4e04cb7cdee2f0f585972c64499"
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eaad21fdb86f142f396255c27dd69d7adbe1012c3bd45623f5dd21d29a786897"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "83bd82b9157dff5ec541c00599715d7fba85a7eec79776766b3ad3ff7ee51f72"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f376df9ebf891ed1d89c5236f30961671f267ef85a1da8f44fb69cacae859970",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#121212"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "35ba42ab8a6d205c35d35c6cee99806fee7ecdc591b1d7810c207c2a2fa7795f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F2F0EC",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "04e10cf421512ebfaf3feb95206ba60841bff4e04cb7cdee2f0f585972c64499",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Products Support Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eaad21fdb86f142f396255c27dd69d7adbe1012c3bd45623f5dd21d29a786897",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Developer Editions 3D Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "83bd82b9157dff5ec541c00599715d7fba85a7eec79776766b3ad3ff7ee51f72",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1148,
+        "width": 390,
+        "height": 250,
+        "fill": "#121212",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#121212"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F2F0EC",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Products Support Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Developer Editions 3D Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 8,
+  "looseNodeCount": 28,
+  "looseNodes": [
+    {
+      "id": "page-products-bg",
+      "name": "page-products-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 100
+    },
+    {
+      "id": "page-products-hero",
+      "name": "page-products-hero",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-products-overlay",
+      "name": "page-products-overlay",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-products-panel",
+      "name": "page-products-panel",
+      "type": "rectangle",
+      "width": 354,
+      "height": 784
+    },
+    {
+      "id": "page-products-crumb",
+      "name": "page-products-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 18
+    },
+    {
+      "id": "page-products-title",
+      "name": "page-products-title",
+      "type": "text",
+      "width": 320,
+      "height": 49
+    },
+    {
+      "id": "page-products-subtitle",
+      "name": "page-products-subtitle",
+      "type": "text",
+      "width": 320,
+      "height": 62
+    },
+    {
+      "id": "page-products-btn-home-box",
+      "name": "page-products-btn-home-box",
+      "type": "rectangle",
+      "width": 128,
+      "height": 38
+    },
+    {
+      "id": "page-products-btn-home-text",
+      "name": "page-products-btn-home-text",
+      "type": "text",
+      "width": 100,
+      "height": 18
+    },
+    {
+      "id": "page-products-btn-peer-box",
+      "name": "page-products-btn-peer-box",
+      "type": "rectangle",
+      "width": 148,
+      "height": 38
+    },
+    {
+      "id": "page-products-btn-peer-text",
+      "name": "page-products-btn-peer-text",
+      "type": "text",
+      "width": 120,
+      "height": 18
+    },
+    {
+      "id": "page-products-kicker",
+      "name": "page-products-kicker",
+      "type": "text",
+      "width": 306,
+      "height": 18
+    },
+    {
+      "id": "page-products-panel-title",
+      "name": "page-products-panel-title",
+      "type": "text",
+      "width": 306,
+      "height": 41
+    },
+    {
+      "id": "page-products-p-0",
+      "name": "page-products-p-0",
+      "type": "text",
+      "width": 306,
+      "height": 62
+    },
+    {
+      "id": "page-products-p-1",
+      "name": "page-products-p-1",
+      "type": "text",
+      "width": 306,
+      "height": 43
+    },
+    {
+      "id": "page-products-feature",
+      "name": "page-products-feature",
+      "type": "rectangle",
+      "width": 306,
+      "height": 220
+    },
+    {
+      "id": "page-products-feature-2",
+      "name": "page-products-feature-2",
+      "type": "rectangle",
+      "width": 306,
+      "height": 180
+    },
+    {
+      "id": "page-products-card-0",
+      "name": "page-products-card-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 136
+    },
+    {
+      "id": "page-products-card-img-0",
+      "name": "page-products-card-img-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 82
+    },
+    {
+      "id": "page-products-card-title-0",
+      "name": "page-products-card-title-0",
+      "type": "text",
+      "width": 286,
+      "height": 18
+    },
+    {
+      "id": "page-products-card-copy-0",
+      "name": "page-products-card-copy-0",
+      "type": "text",
+      "width": 286,
+      "height": 53
+    },
+    {
+      "id": "page-products-related-title",
+      "name": "page-products-related-title",
+      "type": "text",
+      "width": 180,
+      "height": 18
+    },
+    {
+      "id": "page-products-related-0-box",
+      "name": "page-products-related-0-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-products-related-0-text",
+      "name": "page-products-related-0-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-products-related-1-box",
+      "name": "page-products-related-1-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-products-related-1-text",
+      "name": "page-products-related-1-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-products-related-2-box",
+      "name": "page-products-related-2-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-products-related-2-text",
+      "name": "page-products-related-2-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-home-img-1-a413b285.png",
+      "relativePath": "assets-structured/analogue/page-home-img-1-a413b285.png",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-products",
+    "name": "Products",
+    "x": 520,
+    "y": 0,
+    "width": 390,
+    "height": 1398,
+    "fill": "#F6F4F1",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-products-bg",
+        "name": "page-products-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 100,
+        "fill": "#F6F4F1"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-products-hero",
+        "name": "page-products-hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "mode": "cover"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-products-overlay",
+        "name": "page-products-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": "#00000055"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-products-panel",
+        "name": "page-products-panel",
+        "x": 18,
+        "y": 344,
+        "width": 354,
+        "height": 784,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "cornerRadius": 20
+      },
+      {
+        "type": "frame",
+        "id": "header-page-products",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-products-crumb",
+        "name": "page-products-crumb",
+        "x": 18,
+        "y": 82,
+        "fill": "#FFFFFF",
+        "content": "Home / Products",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-products-title",
+        "name": "page-products-title",
+        "x": 18,
+        "y": 106,
+        "fill": "#FFFFFF",
+        "content": "Products - Analogue",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 30,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      },
+      {
+        "type": "text",
+        "id": "page-products-subtitle",
+        "name": "page-products-subtitle",
+        "x": 18,
+        "y": 184,
+        "fill": "#F0F0EE",
+        "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 62
+      },
+      {
+        "type": "rectangle",
+        "id": "page-products-btn-home-box",
+        "name": "page-products-btn-home-box",
+        "x": 18,
+        "y": 252,
+        "width": 128,
+        "height": 38,
+        "fill": "#1C4BFF",
+        "stroke": {
+          "fill": "#1C4BFF",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-products-btn-home-text",
+        "name": "page-products-btn-home-text",
+        "x": 32,
+        "y": 262,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-products-btn-peer-box",
+        "name": "page-products-btn-peer-box",
+        "x": 158,
+        "y": 252,
+        "width": 148,
+        "height": 38,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "href": "#page-3d",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-products-btn-peer-text",
+        "name": "page-products-btn-peer-text",
+        "x": 172,
+        "y": 262,
+        "fill": "#111111",
+        "content": "Product page",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-3d",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "page-products-kicker",
+        "name": "page-products-kicker",
+        "x": 42,
+        "y": 368,
+        "fill": "#1C4BFF",
+        "content": "SECOND LEVEL PAGE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 18,
+        "letterSpacing": "0.1em"
+      },
+      {
+        "type": "text",
+        "id": "page-products-panel-title",
+        "name": "page-products-panel-title",
+        "x": 42,
+        "y": 390,
+        "fill": "#111111",
+        "content": "3D",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 24,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 41
+      },
+      {
+        "type": "text",
+        "id": "page-products-p-0",
+        "name": "page-products-p-0",
+        "x": 42,
+        "y": 422,
+        "fill": "#111111",
+        "content": "We make products to celebrate and explore the history of video games with the respect it deserves.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 62
+      },
+      {
+        "type": "text",
+        "id": "page-products-p-1",
+        "name": "page-products-p-1",
+        "x": 42,
+        "y": 502,
+        "fill": "#111111",
+        "content": "The Analogue hardware portfolio across consoles, handhelds and accessories.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 43
+      },
+      {
+        "type": "rectangle",
+        "id": "page-products-feature",
+        "name": "page-products-feature",
+        "x": 42,
+        "y": 368,
+        "width": 306,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "mode": "cover"
+        },
+        "href": "#page-products",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-products-feature-2",
+        "name": "page-products-feature-2",
+        "x": 42,
+        "y": 606,
+        "width": 306,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "mode": "cover"
+        },
+        "href": "#page-products",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-products-card-0",
+        "name": "page-products-card-0",
+        "x": 42,
+        "y": 798,
+        "width": 306,
+        "height": 136,
+        "fill": "#F1EFEB",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "href": "#page-3d",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-products-card-img-0",
+        "name": "page-products-card-img-0",
+        "x": 42,
+        "y": 798,
+        "width": 306,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-home-img-1-a413b285.png",
+          "mode": "cover"
+        },
+        "href": "#page-3d",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-products-card-title-0",
+        "name": "page-products-card-title-0",
+        "x": 52,
+        "y": 888,
+        "fill": "#111111",
+        "content": "3D",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 18,
+        "href": "#page-3d"
+      },
+      {
+        "type": "text",
+        "id": "page-products-card-copy-0",
+        "name": "page-products-card-copy-0",
+        "x": 52,
+        "y": 906,
+        "fill": "#5F5C57",
+        "content": "We make products to celebrate and explore the history of video games with the respect it d",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 53,
+        "href": "#page-3d"
+      },
+      {
+        "type": "text",
+        "id": "page-products-related-title",
+        "name": "page-products-related-title",
+        "x": 42,
+        "y": 962,
+        "fill": "#1C4BFF",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-products-related-0-box",
+        "name": "page-products-related-0-box",
+        "x": 42,
+        "y": 988,
+        "width": 150,
+        "height": 36,
+        "fill": "#1C4BFF",
+        "stroke": {
+          "fill": "#1C4BFF",
+          "thickness": 1
+        },
+        "href": "#page-3d",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-products-related-0-text",
+        "name": "page-products-related-0-text",
+        "x": 56,
+        "y": 997,
+        "fill": "#FFFFFF",
+        "content": "3D",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-3d",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-products-related-1-box",
+        "name": "page-products-related-1-box",
+        "x": 204,
+        "y": 988,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "href": "#page-pocket",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-products-related-1-text",
+        "name": "page-products-related-1-text",
+        "x": 218,
+        "y": 997,
+        "fill": "#111111",
+        "content": "Pocket",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-pocket",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-products-related-2-box",
+        "name": "page-products-related-2-box",
+        "x": 42,
+        "y": 1036,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "href": "#page-duo",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-products-related-2-text",
+        "name": "page-products-related-2-text",
+        "x": 56,
+        "y": 1045,
+        "fill": "#111111",
+        "content": "Duo",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-duo",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1148,
+        "width": 390,
+        "height": 250,
+        "fill": "#121212",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#121212"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F2F0EC",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Products Support Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Developer Editions 3D Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    ]
+  }
+}

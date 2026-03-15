@@ -1,0 +1,5786 @@
+{
+  "pageId": "page-home",
+  "pageName": "teenage engineering Homepage Mobile",
+  "pageType": "home",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 1960
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "8a17d67dc659aa5924de7a467a9f6f0c0fb02bd6ece20006eef82e674779da96",
+  "directChildCount": 6,
+  "recursiveNodeCount": 73,
+  "sectionCount": 5,
+  "sectionIndex": [
+    {
+      "sectionId": "hero",
+      "sectionName": "Hero",
+      "sectionKind": "hero",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 14,
+      "treeHash": "38c91a7046130a4a47c3534469734a4214c4b09dee8460d4c3885396e4e571a6",
+      "blockCount": 10
+    },
+    {
+      "sectionId": "categories",
+      "sectionName": "Categories",
+      "sectionKind": "navigation",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360
+      },
+      "directChildCount": 21,
+      "recursiveNodeCount": 22,
+      "treeHash": "035f2718116698834d98be7316fdccc234c7fe0922e6e3b14e7f11282fb283f7",
+      "blockCount": 21
+    },
+    {
+      "sectionId": "featured",
+      "sectionName": "Featured",
+      "sectionKind": "products",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410
+      },
+      "directChildCount": 17,
+      "recursiveNodeCount": 18,
+      "treeHash": "d0812446992a310642c3cfc06828253c993e1056cc4a5148c5553bc43f8e3f4c",
+      "blockCount": 17
+    },
+    {
+      "sectionId": "insights",
+      "sectionName": "Insights",
+      "sectionKind": "story",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 11,
+      "treeHash": "cd8ad478151e92cfce692049bea68b25f6a1595ea8ff746e4b3af2fefa639c06",
+      "blockCount": 10
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 4,
+      "bounds": {
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "025f26e4e189ec52ca711d6d465d67add08d98334700f80c8d9d37ba8fc4e7fd",
+      "blockCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "hero",
+      "sectionName": "Hero",
+      "sectionKind": "hero",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 14,
+      "treeHash": "38c91a7046130a4a47c3534469734a4214c4b09dee8460d4c3885396e4e571a6",
+      "blockCount": 10,
+      "blockIndex": [
+        {
+          "blockId": "hero-bg",
+          "blockName": "hero-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ddd6987bf0ad35d90597d09febf4e728f0d7152d64b77e41543520ec8fda6a86"
+        },
+        {
+          "blockId": "hero-image",
+          "blockName": "hero-image",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "37905fd4e1ad58cd53718251b7343b278a5f6eb39f2834432c8af053d6cec767"
+        },
+        {
+          "blockId": "header-page-home",
+          "blockName": "Header",
+          "blockType": "frame",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 4,
+          "treeHash": "ab888beb4b3ed0cb1e56f5b6341f1f8fa56702869fbc4c8b7bd9ac632c41ec2b"
+        },
+        {
+          "blockId": "hero-kicker",
+          "blockName": "hero-kicker",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 86,
+            "width": 200,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "056b824415f22ef5f956505ecc2365fd39d15ad7a5f48c3ed76b636235d94498"
+        },
+        {
+          "blockId": "hero-title",
+          "blockName": "hero-title",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 116,
+            "width": 320,
+            "height": 151
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6d79975b6f4e3292fe0725227cbe89b0d60da7bfd6e27859d708e8ee21921581"
+        },
+        {
+          "blockId": "hero-subtitle",
+          "blockName": "hero-subtitle",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 240,
+            "width": 320,
+            "height": 66
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "97750ce7fb9881c6d9e13aa9f154c11f49e72c93233db3a375e3accf4013734c"
+        },
+        {
+          "blockId": "hero-primary-box",
+          "blockName": "hero-primary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 6,
+          "bounds": {
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eac633ab365122e81fa564f9a8d27cbe958f2fbbf719e54e12f6198b481b76c0"
+        },
+        {
+          "blockId": "hero-primary-text",
+          "blockName": "hero-primary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 32,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bdea40b2dbad2a88cc5351d6085f3538ded6e632fe7e167859d499d9a3a2100e"
+        },
+        {
+          "blockId": "hero-secondary-box",
+          "blockName": "hero-secondary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3f6b1f208089fe6de23b662cddd29d6c6ecc15592ff7fab347c20043d4a87e70"
+        },
+        {
+          "blockId": "hero-secondary-text",
+          "blockName": "hero-secondary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 194,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7d3b8ae3aafad4e7e62cf9eb51a97c30cf575e38f334e665938a25390ec62bb9"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+          "relativePath": "assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "hero-bg",
+          "blockName": "hero-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ddd6987bf0ad35d90597d09febf4e728f0d7152d64b77e41543520ec8fda6a86",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-bg",
+            "name": "hero-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520,
+            "fill": "#F6F5F0"
+          }
+        },
+        {
+          "blockId": "hero-image",
+          "blockName": "hero-image",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "37905fd4e1ad58cd53718251b7343b278a5f6eb39f2834432c8af053d6cec767",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+            "relativePath": "assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-image",
+            "name": "hero-image",
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 28
+          }
+        },
+        {
+          "blockId": "header-page-home",
+          "blockName": "Header",
+          "blockType": "frame",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 4,
+          "treeHash": "ab888beb4b3ed0cb1e56f5b6341f1f8fa56702869fbc4c8b7bd9ac632c41ec2b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "header-page-home",
+            "name": "Header",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#00000000",
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "header-bg",
+                "name": "header-bg",
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 64,
+                "fill": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "id": "header-brand",
+                "name": "header-brand",
+                "x": 18,
+                "y": 18,
+                "fill": "#111111",
+                "content": "teenage engineering",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 180,
+                "height": 28
+              },
+              {
+                "type": "text",
+                "id": "header-menu",
+                "name": "header-menu",
+                "x": 362,
+                "y": 18,
+                "fill": "#111111",
+                "content": "☰",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 18,
+                "height": 20,
+                "href": "#page-products",
+                "textAlign": "center",
+                "textAlignVertical": "middle"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "hero-kicker",
+          "blockName": "hero-kicker",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 86,
+            "width": 200,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "056b824415f22ef5f956505ecc2365fd39d15ad7a5f48c3ed76b636235d94498",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-kicker",
+            "name": "hero-kicker",
+            "x": 18,
+            "y": 86,
+            "fill": "#FF7A00",
+            "content": "TEENAGE ENGINEERING",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 18,
+            "letterSpacing": "0.12em"
+          }
+        },
+        {
+          "blockId": "hero-title",
+          "blockName": "hero-title",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 116,
+            "width": 320,
+            "height": 151
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6d79975b6f4e3292fe0725227cbe89b0d60da7bfd6e27859d708e8ee21921581",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-title",
+            "name": "hero-title",
+            "x": 18,
+            "y": 116,
+            "fill": "#111111",
+            "content": "high quality ideas for sound, image and play",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 34,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 151
+          }
+        },
+        {
+          "blockId": "hero-subtitle",
+          "blockName": "hero-subtitle",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 240,
+            "width": 320,
+            "height": 66
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "97750ce7fb9881c6d9e13aa9f154c11f49e72c93233db3a375e3accf4013734c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-subtitle",
+            "name": "hero-subtitle",
+            "x": 18,
+            "y": 240,
+            "fill": "#66665F",
+            "content": "tools, instruments and objects from stockholm designed to make technology feel intentional, tactile and human.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 66
+          }
+        },
+        {
+          "blockId": "hero-primary-box",
+          "blockName": "hero-primary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 6,
+          "bounds": {
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eac633ab365122e81fa564f9a8d27cbe958f2fbbf719e54e12f6198b481b76c0",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-primary-box",
+            "name": "hero-primary-box",
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FF7A00",
+            "stroke": {
+              "fill": "#FF7A00",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 14
+          }
+        },
+        {
+          "blockId": "hero-primary-text",
+          "blockName": "hero-primary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 32,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bdea40b2dbad2a88cc5351d6085f3538ded6e632fe7e167859d499d9a3a2100e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-primary-text",
+            "name": "hero-primary-text",
+            "x": 32,
+            "y": 325,
+            "fill": "#FFFFFF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "hero-secondary-box",
+          "blockName": "hero-secondary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3f6b1f208089fe6de23b662cddd29d6c6ecc15592ff7fab347c20043d4a87e70",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-secondary-box",
+            "name": "hero-secondary-box",
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-guides",
+            "cornerRadius": 14
+          }
+        },
+        {
+          "blockId": "hero-secondary-text",
+          "blockName": "hero-secondary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 194,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7d3b8ae3aafad4e7e62cf9eb51a97c30cf575e38f334e665938a25390ec62bb9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-secondary-text",
+            "name": "hero-secondary-text",
+            "x": 194,
+            "y": 325,
+            "fill": "#111111",
+            "content": "Guides",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-guides",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "hero",
+        "name": "Hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520,
+        "fill": "#F6F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "hero-bg",
+            "name": "hero-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520,
+            "fill": "#F6F5F0"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-image",
+            "name": "hero-image",
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 28
+          },
+          {
+            "type": "frame",
+            "id": "header-page-home",
+            "name": "Header",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#00000000",
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "header-bg",
+                "name": "header-bg",
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 64,
+                "fill": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "id": "header-brand",
+                "name": "header-brand",
+                "x": 18,
+                "y": 18,
+                "fill": "#111111",
+                "content": "teenage engineering",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 180,
+                "height": 28
+              },
+              {
+                "type": "text",
+                "id": "header-menu",
+                "name": "header-menu",
+                "x": 362,
+                "y": 18,
+                "fill": "#111111",
+                "content": "☰",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 18,
+                "height": 20,
+                "href": "#page-products",
+                "textAlign": "center",
+                "textAlignVertical": "middle"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "hero-kicker",
+            "name": "hero-kicker",
+            "x": 18,
+            "y": 86,
+            "fill": "#FF7A00",
+            "content": "TEENAGE ENGINEERING",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 18,
+            "letterSpacing": "0.12em"
+          },
+          {
+            "type": "text",
+            "id": "hero-title",
+            "name": "hero-title",
+            "x": 18,
+            "y": 116,
+            "fill": "#111111",
+            "content": "high quality ideas for sound, image and play",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 34,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 151
+          },
+          {
+            "type": "text",
+            "id": "hero-subtitle",
+            "name": "hero-subtitle",
+            "x": 18,
+            "y": 240,
+            "fill": "#66665F",
+            "content": "tools, instruments and objects from stockholm designed to make technology feel intentional, tactile and human.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 66
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-primary-box",
+            "name": "hero-primary-box",
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FF7A00",
+            "stroke": {
+              "fill": "#FF7A00",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-primary-text",
+            "name": "hero-primary-text",
+            "x": 32,
+            "y": 325,
+            "fill": "#FFFFFF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-secondary-box",
+            "name": "hero-secondary-box",
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-guides",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-secondary-text",
+            "name": "hero-secondary-text",
+            "x": 194,
+            "y": 325,
+            "fill": "#111111",
+            "content": "Guides",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-guides",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "categories",
+      "sectionName": "Categories",
+      "sectionKind": "navigation",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360
+      },
+      "directChildCount": 21,
+      "recursiveNodeCount": 22,
+      "treeHash": "035f2718116698834d98be7316fdccc234c7fe0922e6e3b14e7f11282fb283f7",
+      "blockCount": 21,
+      "blockIndex": [
+        {
+          "blockId": "cat-title",
+          "blockName": "cat-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 22,
+            "width": 200,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dc414c48d56d156c5d70e269db581a909f43f89a97845a64b88de74e0a86adc5"
+        },
+        {
+          "blockId": "cat-card-0",
+          "blockName": "cat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d77a96b1dfc0bbb1db4bcd7bfaf12d5e95e8aa26e2f90edc18dbd9ad74556442"
+        },
+        {
+          "blockId": "cat-card-img-0",
+          "blockName": "cat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "732ee01a1cfb214d955f6a21fd473f88e76455c3f93daecdd439606be3623208"
+        },
+        {
+          "blockId": "cat-card-t-0",
+          "blockName": "cat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f8aab234211ac86726914468117778dfb6354dac67fba5d9f15a965fdfd67fb7"
+        },
+        {
+          "blockId": "cat-card-b-0",
+          "blockName": "cat-card-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 154,
+            "width": 140,
+            "height": 106
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "df55a183d6873bf5f22b7b0b82e095e3ed130f6187578bf54ce900f52dd55ab7"
+        },
+        {
+          "blockId": "cat-card-1",
+          "blockName": "cat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8fc7c530e1bc8b4fba4b14a2e822482b505abf31bd01d06f773be48516a11bb9"
+        },
+        {
+          "blockId": "cat-card-img-1",
+          "blockName": "cat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5ff93934b53c09b28ae0e47bae48a16c2a8ae17756fa0b9131fd7563524ab0d6"
+        },
+        {
+          "blockId": "cat-card-t-1",
+          "blockName": "cat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6ba78e4ba1592f46e5c302038e43c611580b8f9639ae252a4acc2317fbaf9aa9"
+        },
+        {
+          "blockId": "cat-card-b-1",
+          "blockName": "cat-card-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 154,
+            "width": 140,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f895d737ade96bfebf20249b3b2b836ec300ffb2932bc60588e86dd6e39c0e51"
+        },
+        {
+          "blockId": "cat-card-2",
+          "blockName": "cat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8601601d5f69c417f603a62266d1db482c74b493d7c9d77a18be043b443028b1"
+        },
+        {
+          "blockId": "cat-card-img-2",
+          "blockName": "cat-card-img-2",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 10,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "97eb64b5a96c837e782be7ae1da5cbff3877667bbdd8ba1f6fdffceb53b11a42"
+        },
+        {
+          "blockId": "cat-card-t-2",
+          "blockName": "cat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e7a60bafcf4c5d6d6d0ffec5aedd10a0e63643c3b25f6e08d91c95dd829df5d9"
+        },
+        {
+          "blockId": "cat-card-b-2",
+          "blockName": "cat-card-b-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 32,
+            "y": 282,
+            "width": 140,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0016a655e5e5114ef82f3ddb8c278d35faaf1a0b0e901c68eac22b8cf0959fdf"
+        },
+        {
+          "blockId": "cat-card-3",
+          "blockName": "cat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 13,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4aa4dac4378797209aa04b5115cf5276eed58a90150a769428e28bc0c3d3f255"
+        },
+        {
+          "blockId": "cat-card-img-3",
+          "blockName": "cat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 14,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2c05ecb30392c87dcdd56d0f4af8969142dd3c9893bf2c10fd3362ab5908d208"
+        },
+        {
+          "blockId": "cat-card-t-3",
+          "blockName": "cat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 206,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ccf6e85e74a45c19cfea9183981843a824942823e3745f36ee6a794dca18b69b"
+        },
+        {
+          "blockId": "cat-card-b-3",
+          "blockName": "cat-card-b-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 206,
+            "y": 282,
+            "width": 140,
+            "height": 63
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a29fcefaf4fd1a933f12e59b6bd6ba0301f03413383e885c6e741d107cb1bd6d"
+        },
+        {
+          "blockId": "cat-card-4",
+          "blockName": "cat-card-4",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 17,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3ec22b819c64c6a821ada071bd806d022efe765dc54466a2bd10afa90ba48e22"
+        },
+        {
+          "blockId": "cat-card-img-4",
+          "blockName": "cat-card-img-4",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 18,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dc313231e0608f70e94db51fbad422b706a3b0c45809df56d1d3f928fd0280f9"
+        },
+        {
+          "blockId": "cat-card-t-4",
+          "blockName": "cat-card-t-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 32,
+            "y": 392,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "39a059bb5d0710484c8539fc142d3617ea11eeacdae68891916a9e5716369b27"
+        },
+        {
+          "blockId": "cat-card-b-4",
+          "blockName": "cat-card-b-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 32,
+            "y": 410,
+            "width": 140,
+            "height": 63
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9461a65dab7a2b73f7f496b8ac398b26179f8812c954196fd8d29f62925f023c"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+          "relativePath": "assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+          "relativePath": "assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guides-img-1-20c8c1f9.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-guides-img-1-20c8c1f9.jpg",
+          "relativePath": "assets-structured/teenage-engineering/page-guides-img-1-20c8c1f9.jpg",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guides-img-2-45ed4c17.webp",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-guides-img-2-45ed4c17.webp",
+          "relativePath": "assets-structured/teenage-engineering/page-guides-img-2-45ed4c17.webp",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-contact-fallback-2237e77b.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-contact-fallback-2237e77b.jpg",
+          "relativePath": "assets-structured/teenage-engineering/page-contact-fallback-2237e77b.jpg",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "cat-title",
+          "blockName": "cat-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 22,
+            "width": 200,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dc414c48d56d156c5d70e269db581a909f43f89a97845a64b88de74e0a86adc5",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-title",
+            "name": "cat-title",
+            "x": 18,
+            "y": 22,
+            "fill": "#111111",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 32
+          }
+        },
+        {
+          "blockId": "cat-card-0",
+          "blockName": "cat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d77a96b1dfc0bbb1db4bcd7bfaf12d5e95e8aa26e2f90edc18dbd9ad74556442",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-0",
+            "name": "cat-card-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-0",
+          "blockName": "cat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "732ee01a1cfb214d955f6a21fd473f88e76455c3f93daecdd439606be3623208",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+            "relativePath": "assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-0",
+            "name": "cat-card-img-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-0",
+          "blockName": "cat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f8aab234211ac86726914468117778dfb6354dac67fba5d9f15a965fdfd67fb7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-0",
+            "name": "cat-card-t-0",
+            "x": 32,
+            "y": 136,
+            "fill": "#111111",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-0",
+          "blockName": "cat-card-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 154,
+            "width": 140,
+            "height": 106
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "df55a183d6873bf5f22b7b0b82e095e3ed130f6187578bf54ce900f52dd55ab7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-0",
+            "name": "cat-card-b-0",
+            "x": 32,
+            "y": 154,
+            "fill": "#66665F",
+            "content": "teenage engineering creates high quality, well designed, electronic products for all people who love sound and music.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 106
+          }
+        },
+        {
+          "blockId": "cat-card-1",
+          "blockName": "cat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8fc7c530e1bc8b4fba4b14a2e822482b505abf31bd01d06f773be48516a11bb9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-1",
+            "name": "cat-card-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-designs",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-1",
+          "blockName": "cat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5ff93934b53c09b28ae0e47bae48a16c2a8ae17756fa0b9131fd7563524ab0d6",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+            "relativePath": "assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-1",
+            "name": "cat-card-img-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-designs",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-1",
+          "blockName": "cat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6ba78e4ba1592f46e5c302038e43c611580b8f9639ae252a4acc2317fbaf9aa9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-1",
+            "name": "cat-card-t-1",
+            "x": 206,
+            "y": 136,
+            "fill": "#111111",
+            "content": "Designs",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-1",
+          "blockName": "cat-card-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 154,
+            "width": 140,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f895d737ade96bfebf20249b3b2b836ec300ffb2932bc60588e86dd6e39c0e51",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-1",
+            "name": "cat-card-b-1",
+            "x": 206,
+            "y": 154,
+            "fill": "#66665F",
+            "content": "design and collaborations",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 35
+          }
+        },
+        {
+          "blockId": "cat-card-2",
+          "blockName": "cat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8601601d5f69c417f603a62266d1db482c74b493d7c9d77a18be043b443028b1",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-2",
+            "name": "cat-card-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-guides",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-2",
+          "blockName": "cat-card-img-2",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 10,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "97eb64b5a96c837e782be7ae1da5cbff3877667bbdd8ba1f6fdffceb53b11a42",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guides-img-1-20c8c1f9.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-guides-img-1-20c8c1f9.jpg",
+            "relativePath": "assets-structured/teenage-engineering/page-guides-img-1-20c8c1f9.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-2",
+            "name": "cat-card-img-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guides-img-1-20c8c1f9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-guides",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-2",
+          "blockName": "cat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e7a60bafcf4c5d6d6d0ffec5aedd10a0e63643c3b25f6e08d91c95dd829df5d9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-2",
+            "name": "cat-card-t-2",
+            "x": 32,
+            "y": 264,
+            "fill": "#111111",
+            "content": "Guides",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-2",
+          "blockName": "cat-card-b-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 32,
+            "y": 282,
+            "width": 140,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0016a655e5e5114ef82f3ddb8c278d35faaf1a0b0e901c68eac22b8cf0959fdf",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-2",
+            "name": "cat-card-b-2",
+            "x": 32,
+            "y": 282,
+            "fill": "#66665F",
+            "content": "user guides for all products.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 35
+          }
+        },
+        {
+          "blockId": "cat-card-3",
+          "blockName": "cat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 13,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4aa4dac4378797209aa04b5115cf5276eed58a90150a769428e28bc0c3d3f255",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-3",
+            "name": "cat-card-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-downloads",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-3",
+          "blockName": "cat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 14,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2c05ecb30392c87dcdd56d0f4af8969142dd3c9893bf2c10fd3362ab5908d208",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guides-img-2-45ed4c17.webp",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-guides-img-2-45ed4c17.webp",
+            "relativePath": "assets-structured/teenage-engineering/page-guides-img-2-45ed4c17.webp",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-3",
+            "name": "cat-card-img-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guides-img-2-45ed4c17.webp",
+              "mode": "cover"
+            },
+            "href": "#page-downloads",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-3",
+          "blockName": "cat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 206,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ccf6e85e74a45c19cfea9183981843a824942823e3745f36ee6a794dca18b69b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-3",
+            "name": "cat-card-t-3",
+            "x": 206,
+            "y": 264,
+            "fill": "#111111",
+            "content": "Downloads",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-3",
+          "blockName": "cat-card-b-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 206,
+            "y": 282,
+            "width": 140,
+            "height": 63
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a29fcefaf4fd1a933f12e59b6bd6ba0301f03413383e885c6e741d107cb1bd6d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-3",
+            "name": "cat-card-b-3",
+            "x": 206,
+            "y": 282,
+            "fill": "#66665F",
+            "content": "Downloads, firmware and files for ongoing product support.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 63
+          }
+        },
+        {
+          "blockId": "cat-card-4",
+          "blockName": "cat-card-4",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 17,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3ec22b819c64c6a821ada071bd806d022efe765dc54466a2bd10afa90ba48e22",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-4",
+            "name": "cat-card-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-contact",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-4",
+          "blockName": "cat-card-img-4",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 18,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dc313231e0608f70e94db51fbad422b706a3b0c45809df56d1d3f928fd0280f9",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-contact-fallback-2237e77b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-contact-fallback-2237e77b.jpg",
+            "relativePath": "assets-structured/teenage-engineering/page-contact-fallback-2237e77b.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-4",
+            "name": "cat-card-img-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-contact-fallback-2237e77b.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-contact",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-4",
+          "blockName": "cat-card-t-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 32,
+            "y": 392,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "39a059bb5d0710484c8539fc142d3617ea11eeacdae68891916a9e5716369b27",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-4",
+            "name": "cat-card-t-4",
+            "x": 32,
+            "y": 392,
+            "fill": "#111111",
+            "content": "Contact",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-4",
+          "blockName": "cat-card-b-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 32,
+            "y": 410,
+            "width": 140,
+            "height": 63
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9461a65dab7a2b73f7f496b8ac398b26179f8812c954196fd8d29f62925f023c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-4",
+            "name": "cat-card-b-4",
+            "x": 32,
+            "y": 410,
+            "fill": "#66665F",
+            "content": "Contact points, press and customer support information.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 63
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "categories",
+        "name": "Categories",
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360,
+        "fill": "#F6F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "cat-title",
+            "name": "cat-title",
+            "x": 18,
+            "y": 22,
+            "fill": "#111111",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-0",
+            "name": "cat-card-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-0",
+            "name": "cat-card-img-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-0",
+            "name": "cat-card-t-0",
+            "x": 32,
+            "y": 136,
+            "fill": "#111111",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-0",
+            "name": "cat-card-b-0",
+            "x": 32,
+            "y": 154,
+            "fill": "#66665F",
+            "content": "teenage engineering creates high quality, well designed, electronic products for all people who love sound and music.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 106
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-1",
+            "name": "cat-card-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-designs",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-1",
+            "name": "cat-card-img-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-designs",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-1",
+            "name": "cat-card-t-1",
+            "x": 206,
+            "y": 136,
+            "fill": "#111111",
+            "content": "Designs",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-1",
+            "name": "cat-card-b-1",
+            "x": 206,
+            "y": 154,
+            "fill": "#66665F",
+            "content": "design and collaborations",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 35
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-2",
+            "name": "cat-card-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-guides",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-2",
+            "name": "cat-card-img-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guides-img-1-20c8c1f9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-guides",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-2",
+            "name": "cat-card-t-2",
+            "x": 32,
+            "y": 264,
+            "fill": "#111111",
+            "content": "Guides",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-2",
+            "name": "cat-card-b-2",
+            "x": 32,
+            "y": 282,
+            "fill": "#66665F",
+            "content": "user guides for all products.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 35
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-3",
+            "name": "cat-card-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-downloads",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-3",
+            "name": "cat-card-img-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guides-img-2-45ed4c17.webp",
+              "mode": "cover"
+            },
+            "href": "#page-downloads",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-3",
+            "name": "cat-card-t-3",
+            "x": 206,
+            "y": 264,
+            "fill": "#111111",
+            "content": "Downloads",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-3",
+            "name": "cat-card-b-3",
+            "x": 206,
+            "y": 282,
+            "fill": "#66665F",
+            "content": "Downloads, firmware and files for ongoing product support.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 63
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-4",
+            "name": "cat-card-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-contact",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-4",
+            "name": "cat-card-img-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-contact-fallback-2237e77b.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-contact",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-4",
+            "name": "cat-card-t-4",
+            "x": 32,
+            "y": 392,
+            "fill": "#111111",
+            "content": "Contact",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-4",
+            "name": "cat-card-b-4",
+            "x": 32,
+            "y": 410,
+            "fill": "#66665F",
+            "content": "Contact points, press and customer support information.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 63
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "featured",
+      "sectionName": "Featured",
+      "sectionKind": "products",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410
+      },
+      "directChildCount": 17,
+      "recursiveNodeCount": 18,
+      "treeHash": "d0812446992a310642c3cfc06828253c993e1056cc4a5148c5553bc43f8e3f4c",
+      "blockCount": 17,
+      "blockIndex": [
+        {
+          "blockId": "featured-title",
+          "blockName": "featured-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 24,
+            "width": 240,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c62eef199d5a8b35c532ea859e151ae42d3c39f8a1499834f8ad00f0d5e743f6"
+        },
+        {
+          "blockId": "feat-card-0",
+          "blockName": "feat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8835233d126015fed393b828cfde637f166632627004831111f1aac30dfe2bd4"
+        },
+        {
+          "blockId": "feat-card-img-0",
+          "blockName": "feat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "31ee78cf9c927fd89763d34b9aab5c03f4ceaceceee1391ebd39523af43fb3a5"
+        },
+        {
+          "blockId": "feat-card-k-0",
+          "blockName": "feat-card-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e153f53da4b92667a8f4d48a8840ff179c0931be24f7f66e7a69ffef03eac13e"
+        },
+        {
+          "blockId": "feat-card-t-0",
+          "blockName": "feat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 180,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9f418f083ff1367f10986089e1b3cba6082837d0a8aaa98a1011189cf92380c0"
+        },
+        {
+          "blockId": "feat-card-1",
+          "blockName": "feat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7ec412d316b84549f4dda4b76f3e08bf6e66fa76752baec3b9b3a89ae0fd6a72"
+        },
+        {
+          "blockId": "feat-card-img-1",
+          "blockName": "feat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "32d7dab2601ed18cc9a4f45419e65a8d0e12b48a2eac2210c8623f16961de063"
+        },
+        {
+          "blockId": "feat-card-k-1",
+          "blockName": "feat-card-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dad37b3aa0be196c4abfc8cd42d5fe028bf1759104ce7c10b036889e9c3f4c68"
+        },
+        {
+          "blockId": "feat-card-t-1",
+          "blockName": "feat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 180,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8f404700a3ea79e721e5e4b2eceba2b9cc27605e021f2b44759657557e726393"
+        },
+        {
+          "blockId": "feat-card-2",
+          "blockName": "feat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2f8c67ee3a6a4e35e597f57c530d071dfda3ec0b36601086333653fc8d7b83f0"
+        },
+        {
+          "blockId": "feat-card-img-2",
+          "blockName": "feat-card-img-2",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 10,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "091c9a868fd570d422b6ffb799a6c5a9bc87842109133f2708ea64d619bab815"
+        },
+        {
+          "blockId": "feat-card-k-2",
+          "blockName": "feat-card-k-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5ef79a1021fe8646d3cd2bd22359be49cfb2a1d73949e8c36724185ed9a6eee4"
+        },
+        {
+          "blockId": "feat-card-t-2",
+          "blockName": "feat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 32,
+            "y": 334,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "00f3c1343506756775ec62cf5f11750497505a78efc8da98144143c0f8b5cce7"
+        },
+        {
+          "blockId": "feat-card-3",
+          "blockName": "feat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 13,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b6e747cae3e7102a0395c5193acce918373bad13f4c0ead85191fce656ae65a6"
+        },
+        {
+          "blockId": "feat-card-img-3",
+          "blockName": "feat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 14,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "128878def5b2ed4e46c9d9fce4c615ee958a65757f92c390aa227b3c9abb1b38"
+        },
+        {
+          "blockId": "feat-card-k-3",
+          "blockName": "feat-card-k-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 206,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c9545948b147ca8392afdba5146d1c425a965408437c96eeb23d280abbe6d511"
+        },
+        {
+          "blockId": "feat-card-t-3",
+          "blockName": "feat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 206,
+            "y": 334,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "162a97155c93490b01224abc1471cd4804037a72ad107c57dc636924bfd674f3"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-op-xy-img-1-7c1f877f.webp",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-op-xy-img-1-7c1f877f.webp",
+          "relativePath": "assets-structured/teenage-engineering/page-op-xy-img-1-7c1f877f.webp",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-tx-6-img-1-613d8690.webp",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-tx-6-img-1-613d8690.webp",
+          "relativePath": "assets-structured/teenage-engineering/page-tx-6-img-1-613d8690.webp",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guide-op-xy-fallback-f0f34660.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-guide-op-xy-fallback-f0f34660.jpg",
+          "relativePath": "assets-structured/teenage-engineering/page-guide-op-xy-fallback-f0f34660.jpg",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+          "relativePath": "assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "featured-title",
+          "blockName": "featured-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 24,
+            "width": 240,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c62eef199d5a8b35c532ea859e151ae42d3c39f8a1499834f8ad00f0d5e743f6",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "featured-title",
+            "name": "featured-title",
+            "x": 18,
+            "y": 24,
+            "fill": "#111111",
+            "content": "Featured pages",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 32
+          }
+        },
+        {
+          "blockId": "feat-card-0",
+          "blockName": "feat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8835233d126015fed393b828cfde637f166632627004831111f1aac30dfe2bd4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-0",
+            "name": "feat-card-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-op-xy",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-0",
+          "blockName": "feat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "31ee78cf9c927fd89763d34b9aab5c03f4ceaceceee1391ebd39523af43fb3a5",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-op-xy-img-1-7c1f877f.webp",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-op-xy-img-1-7c1f877f.webp",
+            "relativePath": "assets-structured/teenage-engineering/page-op-xy-img-1-7c1f877f.webp",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-0",
+            "name": "feat-card-img-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-op-xy-img-1-7c1f877f.webp",
+              "mode": "cover"
+            },
+            "href": "#page-op-xy",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-0",
+          "blockName": "feat-card-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e153f53da4b92667a8f4d48a8840ff179c0931be24f7f66e7a69ffef03eac13e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-0",
+            "name": "feat-card-k-0",
+            "x": 32,
+            "y": 162,
+            "fill": "#FF7A00",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-op-xy"
+          }
+        },
+        {
+          "blockId": "feat-card-t-0",
+          "blockName": "feat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 180,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9f418f083ff1367f10986089e1b3cba6082837d0a8aaa98a1011189cf92380c0",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-0",
+            "name": "feat-card-t-0",
+            "x": 32,
+            "y": 180,
+            "fill": "#111111",
+            "content": "OP-XY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-op-xy"
+          }
+        },
+        {
+          "blockId": "feat-card-1",
+          "blockName": "feat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7ec412d316b84549f4dda4b76f3e08bf6e66fa76752baec3b9b3a89ae0fd6a72",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-1",
+            "name": "feat-card-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-tx-6",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-1",
+          "blockName": "feat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "32d7dab2601ed18cc9a4f45419e65a8d0e12b48a2eac2210c8623f16961de063",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-tx-6-img-1-613d8690.webp",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-tx-6-img-1-613d8690.webp",
+            "relativePath": "assets-structured/teenage-engineering/page-tx-6-img-1-613d8690.webp",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-1",
+            "name": "feat-card-img-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-tx-6-img-1-613d8690.webp",
+              "mode": "cover"
+            },
+            "href": "#page-tx-6",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-1",
+          "blockName": "feat-card-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dad37b3aa0be196c4abfc8cd42d5fe028bf1759104ce7c10b036889e9c3f4c68",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-1",
+            "name": "feat-card-k-1",
+            "x": 206,
+            "y": 162,
+            "fill": "#FF7A00",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-tx-6"
+          }
+        },
+        {
+          "blockId": "feat-card-t-1",
+          "blockName": "feat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 180,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8f404700a3ea79e721e5e4b2eceba2b9cc27605e021f2b44759657557e726393",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-1",
+            "name": "feat-card-t-1",
+            "x": 206,
+            "y": 180,
+            "fill": "#111111",
+            "content": "TX-6",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-tx-6"
+          }
+        },
+        {
+          "blockId": "feat-card-2",
+          "blockName": "feat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2f8c67ee3a6a4e35e597f57c530d071dfda3ec0b36601086333653fc8d7b83f0",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-2",
+            "name": "feat-card-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-guide-op-xy",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-2",
+          "blockName": "feat-card-img-2",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 10,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "091c9a868fd570d422b6ffb799a6c5a9bc87842109133f2708ea64d619bab815",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guide-op-xy-fallback-f0f34660.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-guide-op-xy-fallback-f0f34660.jpg",
+            "relativePath": "assets-structured/teenage-engineering/page-guide-op-xy-fallback-f0f34660.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-2",
+            "name": "feat-card-img-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guide-op-xy-fallback-f0f34660.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-guide-op-xy",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-2",
+          "blockName": "feat-card-k-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5ef79a1021fe8646d3cd2bd22359be49cfb2a1d73949e8c36724185ed9a6eee4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-2",
+            "name": "feat-card-k-2",
+            "x": 32,
+            "y": 316,
+            "fill": "#FF7A00",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-guide-op-xy"
+          }
+        },
+        {
+          "blockId": "feat-card-t-2",
+          "blockName": "feat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 32,
+            "y": 334,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "00f3c1343506756775ec62cf5f11750497505a78efc8da98144143c0f8b5cce7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-2",
+            "name": "feat-card-t-2",
+            "x": 32,
+            "y": 334,
+            "fill": "#111111",
+            "content": "Guide: OP-XY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-guide-op-xy"
+          }
+        },
+        {
+          "blockId": "feat-card-3",
+          "blockName": "feat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 13,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b6e747cae3e7102a0395c5193acce918373bad13f4c0ead85191fce656ae65a6",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-3",
+            "name": "feat-card-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-design-popixel",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-3",
+          "blockName": "feat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 14,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "128878def5b2ed4e46c9d9fce4c615ee958a65757f92c390aa227b3c9abb1b38",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+            "relativePath": "assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-3",
+            "name": "feat-card-img-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-design-popixel",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-3",
+          "blockName": "feat-card-k-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 206,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c9545948b147ca8392afdba5146d1c425a965408437c96eeb23d280abbe6d511",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-3",
+            "name": "feat-card-k-3",
+            "x": 206,
+            "y": 316,
+            "fill": "#FF7A00",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-design-popixel"
+          }
+        },
+        {
+          "blockId": "feat-card-t-3",
+          "blockName": "feat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 206,
+            "y": 334,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "162a97155c93490b01224abc1471cd4804037a72ad107c57dc636924bfd674f3",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-3",
+            "name": "feat-card-t-3",
+            "x": 206,
+            "y": 334,
+            "fill": "#111111",
+            "content": "Design: Popixel",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-design-popixel"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "featured",
+        "name": "Featured",
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410,
+        "fill": "#F6F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "featured-title",
+            "name": "featured-title",
+            "x": 18,
+            "y": 24,
+            "fill": "#111111",
+            "content": "Featured pages",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-0",
+            "name": "feat-card-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-op-xy",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-0",
+            "name": "feat-card-img-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-op-xy-img-1-7c1f877f.webp",
+              "mode": "cover"
+            },
+            "href": "#page-op-xy",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-0",
+            "name": "feat-card-k-0",
+            "x": 32,
+            "y": 162,
+            "fill": "#FF7A00",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-op-xy"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-0",
+            "name": "feat-card-t-0",
+            "x": 32,
+            "y": 180,
+            "fill": "#111111",
+            "content": "OP-XY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-op-xy"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-1",
+            "name": "feat-card-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-tx-6",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-1",
+            "name": "feat-card-img-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-tx-6-img-1-613d8690.webp",
+              "mode": "cover"
+            },
+            "href": "#page-tx-6",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-1",
+            "name": "feat-card-k-1",
+            "x": 206,
+            "y": 162,
+            "fill": "#FF7A00",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-tx-6"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-1",
+            "name": "feat-card-t-1",
+            "x": 206,
+            "y": 180,
+            "fill": "#111111",
+            "content": "TX-6",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-tx-6"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-2",
+            "name": "feat-card-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-guide-op-xy",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-2",
+            "name": "feat-card-img-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guide-op-xy-fallback-f0f34660.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-guide-op-xy",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-2",
+            "name": "feat-card-k-2",
+            "x": 32,
+            "y": 316,
+            "fill": "#FF7A00",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-guide-op-xy"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-2",
+            "name": "feat-card-t-2",
+            "x": 32,
+            "y": 334,
+            "fill": "#111111",
+            "content": "Guide: OP-XY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-guide-op-xy"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-3",
+            "name": "feat-card-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-design-popixel",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-3",
+            "name": "feat-card-img-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-design-popixel",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-3",
+            "name": "feat-card-k-3",
+            "x": 206,
+            "y": 316,
+            "fill": "#FF7A00",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-design-popixel"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-3",
+            "name": "feat-card-t-3",
+            "x": 206,
+            "y": 334,
+            "fill": "#111111",
+            "content": "Design: Popixel",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-design-popixel"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "insights",
+      "sectionName": "Insights",
+      "sectionKind": "story",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 11,
+      "treeHash": "cd8ad478151e92cfce692049bea68b25f6a1595ea8ff746e4b3af2fefa639c06",
+      "blockCount": 10,
+      "blockIndex": [
+        {
+          "blockId": "insight-card-0",
+          "blockName": "insight-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 0,
+          "bounds": {
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7ebd55515bdf1c54dc57237e8a60d7ac479e0b5d2714c881e8e7be66ae083c2a"
+        },
+        {
+          "blockId": "insight-img-0",
+          "blockName": "insight-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e5981baea3dd699c8a96eb2ca16ee3eb3e390ee6ee6c815667a707f424064294"
+        },
+        {
+          "blockId": "insight-k-0",
+          "blockName": "insight-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 42,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "af53689fbd96a1867d21180eafa58f5b1cc603a0a49b2195e601c4662468f2f8"
+        },
+        {
+          "blockId": "insight-t-0",
+          "blockName": "insight-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 66,
+            "width": 136,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "412073c17746ea7fd540f793cc3698048f10c7f1cd0c9d9cc60e4dae23797ad3"
+        },
+        {
+          "blockId": "insight-b-0",
+          "blockName": "insight-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 40,
+            "y": 118,
+            "width": 136,
+            "height": 116
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "376d6983114b0b3fdd871160c4a1b65b1eb8f8f61a26d8966901f3783d236acf"
+        },
+        {
+          "blockId": "insight-card-1",
+          "blockName": "insight-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2dd8540aa5065a90411649bf7c0c9442f99e60d03ed4983f37114ef5116fbed8"
+        },
+        {
+          "blockId": "insight-img-1",
+          "blockName": "insight-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9c8936b996e74124e49549d83a6811573a00122202b395a943e1644cdcdce3b5"
+        },
+        {
+          "blockId": "insight-k-1",
+          "blockName": "insight-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 40,
+            "y": 230,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "70c4ddbcb3a7609c3a1b48f5970f5b1b6ec3995345c15faf8a43343ac73dff4b"
+        },
+        {
+          "blockId": "insight-t-1",
+          "blockName": "insight-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 40,
+            "y": 254,
+            "width": 136,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "33cf98f34ff6b774b3292dddf8eed68585f5784cdbe7ab30b30c1de83515dce9"
+        },
+        {
+          "blockId": "insight-b-1",
+          "blockName": "insight-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 40,
+            "y": 306,
+            "width": 136,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c94f2dd26e23dbd75c9c190596c4a917abb31c007e95a14b4c41c358a430a852"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+          "relativePath": "assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+          "relativePath": "assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "insight-card-0",
+          "blockName": "insight-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 0,
+          "bounds": {
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7ebd55515bdf1c54dc57237e8a60d7ac479e0b5d2714c881e8e7be66ae083c2a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-card-0",
+            "name": "insight-card-0",
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168,
+            "fill": "#111111",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-img-0",
+          "blockName": "insight-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e5981baea3dd699c8a96eb2ca16ee3eb3e390ee6ee6c815667a707f424064294",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+            "relativePath": "assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-img-0",
+            "name": "insight-img-0",
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-k-0",
+          "blockName": "insight-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 42,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "af53689fbd96a1867d21180eafa58f5b1cc603a0a49b2195e601c4662468f2f8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-k-0",
+            "name": "insight-k-0",
+            "x": 40,
+            "y": 42,
+            "fill": "#FFF0E0",
+            "content": "Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-products"
+          }
+        },
+        {
+          "blockId": "insight-t-0",
+          "blockName": "insight-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 66,
+            "width": 136,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "412073c17746ea7fd540f793cc3698048f10c7f1cd0c9d9cc60e4dae23797ad3",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-t-0",
+            "name": "insight-t-0",
+            "x": 40,
+            "y": 66,
+            "fill": "#FFFFFF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-products"
+          }
+        },
+        {
+          "blockId": "insight-b-0",
+          "blockName": "insight-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 40,
+            "y": 118,
+            "width": 136,
+            "height": 116
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "376d6983114b0b3fdd871160c4a1b65b1eb8f8f61a26d8966901f3783d236acf",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-b-0",
+            "name": "insight-b-0",
+            "x": 40,
+            "y": 118,
+            "fill": "#EAE6DF",
+            "content": "teenage engineering creates high quality, well designed, electronic products for all people who love sound and music.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 116,
+            "href": "#page-products"
+          }
+        },
+        {
+          "blockId": "insight-card-1",
+          "blockName": "insight-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2dd8540aa5065a90411649bf7c0c9442f99e60d03ed4983f37114ef5116fbed8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-card-1",
+            "name": "insight-card-1",
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168,
+            "fill": "#EFEEE7",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-designs",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-img-1",
+          "blockName": "insight-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9c8936b996e74124e49549d83a6811573a00122202b395a943e1644cdcdce3b5",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+            "relativePath": "assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-img-1",
+            "name": "insight-img-1",
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-designs",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-k-1",
+          "blockName": "insight-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 40,
+            "y": 230,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "70c4ddbcb3a7609c3a1b48f5970f5b1b6ec3995345c15faf8a43343ac73dff4b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-k-1",
+            "name": "insight-k-1",
+            "x": 40,
+            "y": 230,
+            "fill": "#FF7A00",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-designs"
+          }
+        },
+        {
+          "blockId": "insight-t-1",
+          "blockName": "insight-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 40,
+            "y": 254,
+            "width": 136,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "33cf98f34ff6b774b3292dddf8eed68585f5784cdbe7ab30b30c1de83515dce9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-t-1",
+            "name": "insight-t-1",
+            "x": 40,
+            "y": 254,
+            "fill": "#111111",
+            "content": "Designs",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-designs"
+          }
+        },
+        {
+          "blockId": "insight-b-1",
+          "blockName": "insight-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 40,
+            "y": 306,
+            "width": 136,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c94f2dd26e23dbd75c9c190596c4a917abb31c007e95a14b4c41c358a430a852",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-b-1",
+            "name": "insight-b-1",
+            "x": 40,
+            "y": 306,
+            "fill": "#66665F",
+            "content": "design and collaborations",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 38,
+            "href": "#page-designs"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "insights",
+        "name": "Insights",
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420,
+        "fill": "#F6F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "insight-card-0",
+            "name": "insight-card-0",
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168,
+            "fill": "#111111",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 20
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-img-0",
+            "name": "insight-img-0",
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-0",
+            "name": "insight-k-0",
+            "x": 40,
+            "y": 42,
+            "fill": "#FFF0E0",
+            "content": "Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-products"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-0",
+            "name": "insight-t-0",
+            "x": 40,
+            "y": 66,
+            "fill": "#FFFFFF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-products"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-0",
+            "name": "insight-b-0",
+            "x": 40,
+            "y": 118,
+            "fill": "#EAE6DF",
+            "content": "teenage engineering creates high quality, well designed, electronic products for all people who love sound and music.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 116,
+            "href": "#page-products"
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-card-1",
+            "name": "insight-card-1",
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168,
+            "fill": "#EFEEE7",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-designs",
+            "cornerRadius": 20
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-img-1",
+            "name": "insight-img-1",
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-designs",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-1",
+            "name": "insight-k-1",
+            "x": 40,
+            "y": 230,
+            "fill": "#FF7A00",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-designs"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-1",
+            "name": "insight-t-1",
+            "x": 40,
+            "y": 254,
+            "fill": "#111111",
+            "content": "Designs",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-designs"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-1",
+            "name": "insight-b-1",
+            "x": 40,
+            "y": 306,
+            "fill": "#66665F",
+            "content": "design and collaborations",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 38,
+            "href": "#page-designs"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 4,
+      "bounds": {
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "025f26e4e189ec52ca711d6d465d67add08d98334700f80c8d9d37ba8fc4e7fd",
+      "blockCount": 5,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0dcdf849f88154a374e1e5c30790465cb0279e0c2e82dc4ad824a95189aa59f4"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0a857d3e2bb04b0ba8ec81b07b55a08ceffd753384705759bbb14ab754cff873"
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "582544677c805e1c40341da766483309dcd98b34ec9d736ce7e8e10e6d48fd08"
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "638ab78065d4f9488415403c6947393ff6098420a6892a3daadee4e3c3c8b2f7"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "02a90e2a0c1a8a40bc90f7add2636d0368c42d920acb8100052bd41656690914"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0dcdf849f88154a374e1e5c30790465cb0279e0c2e82dc4ad824a95189aa59f4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#111111"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0a857d3e2bb04b0ba8ec81b07b55a08ceffd753384705759bbb14ab754cff873",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F0F0EB",
+            "content": "teenage engineering",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "582544677c805e1c40341da766483309dcd98b34ec9d736ce7e8e10e6d48fd08",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F0F0EB",
+            "content": "Products Guides Downloads",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "638ab78065d4f9488415403c6947393ff6098420a6892a3daadee4e3c3c8b2f7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F0F0EB",
+            "content": "Designs Contact TX-6 OP-XY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "02a90e2a0c1a8a40bc90f7add2636d0368c42d920acb8100052bd41656690914",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "teenage engineering structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250,
+        "fill": "#111111",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#111111"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F0F0EB",
+            "content": "teenage engineering",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F0F0EB",
+            "content": "Products Guides Downloads",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F0F0EB",
+            "content": "Designs Contact TX-6 OP-XY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "teenage engineering structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 63,
+  "looseNodeCount": 1,
+  "looseNodes": [
+    {
+      "id": "home-bg",
+      "name": "home-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 1960
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+      "relativePath": "assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+      "relativePath": "assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+      "relativePath": "assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guides-img-1-20c8c1f9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-guides-img-1-20c8c1f9.jpg",
+      "relativePath": "assets-structured/teenage-engineering/page-guides-img-1-20c8c1f9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guides-img-2-45ed4c17.webp",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-guides-img-2-45ed4c17.webp",
+      "relativePath": "assets-structured/teenage-engineering/page-guides-img-2-45ed4c17.webp",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-contact-fallback-2237e77b.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-contact-fallback-2237e77b.jpg",
+      "relativePath": "assets-structured/teenage-engineering/page-contact-fallback-2237e77b.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-op-xy-img-1-7c1f877f.webp",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-op-xy-img-1-7c1f877f.webp",
+      "relativePath": "assets-structured/teenage-engineering/page-op-xy-img-1-7c1f877f.webp",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-tx-6-img-1-613d8690.webp",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-tx-6-img-1-613d8690.webp",
+      "relativePath": "assets-structured/teenage-engineering/page-tx-6-img-1-613d8690.webp",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guide-op-xy-fallback-f0f34660.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-guide-op-xy-fallback-f0f34660.jpg",
+      "relativePath": "assets-structured/teenage-engineering/page-guide-op-xy-fallback-f0f34660.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+      "relativePath": "assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+      "relativePath": "assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+      "relativePath": "assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-home",
+    "name": "teenage engineering Homepage Mobile",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 1960,
+    "fill": "#F6F5F0",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "home-bg",
+        "name": "home-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 1960,
+        "fill": "#F6F5F0"
+      },
+      {
+        "type": "frame",
+        "id": "hero",
+        "name": "Hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520,
+        "fill": "#F6F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "hero-bg",
+            "name": "hero-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520,
+            "fill": "#F6F5F0"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-image",
+            "name": "hero-image",
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-home-img-1-ccece3a3.webp",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 28
+          },
+          {
+            "type": "frame",
+            "id": "header-page-home",
+            "name": "Header",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#00000000",
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "header-bg",
+                "name": "header-bg",
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 64,
+                "fill": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "id": "header-brand",
+                "name": "header-brand",
+                "x": 18,
+                "y": 18,
+                "fill": "#111111",
+                "content": "teenage engineering",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 180,
+                "height": 28
+              },
+              {
+                "type": "text",
+                "id": "header-menu",
+                "name": "header-menu",
+                "x": 362,
+                "y": 18,
+                "fill": "#111111",
+                "content": "☰",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 18,
+                "height": 20,
+                "href": "#page-products",
+                "textAlign": "center",
+                "textAlignVertical": "middle"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "hero-kicker",
+            "name": "hero-kicker",
+            "x": 18,
+            "y": 86,
+            "fill": "#FF7A00",
+            "content": "TEENAGE ENGINEERING",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 18,
+            "letterSpacing": "0.12em"
+          },
+          {
+            "type": "text",
+            "id": "hero-title",
+            "name": "hero-title",
+            "x": 18,
+            "y": 116,
+            "fill": "#111111",
+            "content": "high quality ideas for sound, image and play",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 34,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 151
+          },
+          {
+            "type": "text",
+            "id": "hero-subtitle",
+            "name": "hero-subtitle",
+            "x": 18,
+            "y": 240,
+            "fill": "#66665F",
+            "content": "tools, instruments and objects from stockholm designed to make technology feel intentional, tactile and human.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 66
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-primary-box",
+            "name": "hero-primary-box",
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FF7A00",
+            "stroke": {
+              "fill": "#FF7A00",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-primary-text",
+            "name": "hero-primary-text",
+            "x": 32,
+            "y": 325,
+            "fill": "#FFFFFF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-secondary-box",
+            "name": "hero-secondary-box",
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-guides",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-secondary-text",
+            "name": "hero-secondary-text",
+            "x": 194,
+            "y": 325,
+            "fill": "#111111",
+            "content": "Guides",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-guides",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "categories",
+        "name": "Categories",
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360,
+        "fill": "#F6F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "cat-title",
+            "name": "cat-title",
+            "x": 18,
+            "y": 22,
+            "fill": "#111111",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-0",
+            "name": "cat-card-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-0",
+            "name": "cat-card-img-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-0",
+            "name": "cat-card-t-0",
+            "x": 32,
+            "y": 136,
+            "fill": "#111111",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-0",
+            "name": "cat-card-b-0",
+            "x": 32,
+            "y": 154,
+            "fill": "#66665F",
+            "content": "teenage engineering creates high quality, well designed, electronic products for all people who love sound and music.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 106
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-1",
+            "name": "cat-card-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-designs",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-1",
+            "name": "cat-card-img-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-designs",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-1",
+            "name": "cat-card-t-1",
+            "x": 206,
+            "y": 136,
+            "fill": "#111111",
+            "content": "Designs",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-1",
+            "name": "cat-card-b-1",
+            "x": 206,
+            "y": 154,
+            "fill": "#66665F",
+            "content": "design and collaborations",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 35
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-2",
+            "name": "cat-card-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-guides",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-2",
+            "name": "cat-card-img-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guides-img-1-20c8c1f9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-guides",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-2",
+            "name": "cat-card-t-2",
+            "x": 32,
+            "y": 264,
+            "fill": "#111111",
+            "content": "Guides",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-2",
+            "name": "cat-card-b-2",
+            "x": 32,
+            "y": 282,
+            "fill": "#66665F",
+            "content": "user guides for all products.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 35
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-3",
+            "name": "cat-card-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-downloads",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-3",
+            "name": "cat-card-img-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guides-img-2-45ed4c17.webp",
+              "mode": "cover"
+            },
+            "href": "#page-downloads",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-3",
+            "name": "cat-card-t-3",
+            "x": 206,
+            "y": 264,
+            "fill": "#111111",
+            "content": "Downloads",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-3",
+            "name": "cat-card-b-3",
+            "x": 206,
+            "y": 282,
+            "fill": "#66665F",
+            "content": "Downloads, firmware and files for ongoing product support.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 63
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-4",
+            "name": "cat-card-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-contact",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-4",
+            "name": "cat-card-img-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-contact-fallback-2237e77b.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-contact",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-4",
+            "name": "cat-card-t-4",
+            "x": 32,
+            "y": 392,
+            "fill": "#111111",
+            "content": "Contact",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-4",
+            "name": "cat-card-b-4",
+            "x": 32,
+            "y": 410,
+            "fill": "#66665F",
+            "content": "Contact points, press and customer support information.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 63
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "featured",
+        "name": "Featured",
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410,
+        "fill": "#F6F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "featured-title",
+            "name": "featured-title",
+            "x": 18,
+            "y": 24,
+            "fill": "#111111",
+            "content": "Featured pages",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-0",
+            "name": "feat-card-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-op-xy",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-0",
+            "name": "feat-card-img-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-op-xy-img-1-7c1f877f.webp",
+              "mode": "cover"
+            },
+            "href": "#page-op-xy",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-0",
+            "name": "feat-card-k-0",
+            "x": 32,
+            "y": 162,
+            "fill": "#FF7A00",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-op-xy"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-0",
+            "name": "feat-card-t-0",
+            "x": 32,
+            "y": 180,
+            "fill": "#111111",
+            "content": "OP-XY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-op-xy"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-1",
+            "name": "feat-card-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-tx-6",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-1",
+            "name": "feat-card-img-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-tx-6-img-1-613d8690.webp",
+              "mode": "cover"
+            },
+            "href": "#page-tx-6",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-1",
+            "name": "feat-card-k-1",
+            "x": 206,
+            "y": 162,
+            "fill": "#FF7A00",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-tx-6"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-1",
+            "name": "feat-card-t-1",
+            "x": 206,
+            "y": 180,
+            "fill": "#111111",
+            "content": "TX-6",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-tx-6"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-2",
+            "name": "feat-card-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-guide-op-xy",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-2",
+            "name": "feat-card-img-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-guide-op-xy-fallback-f0f34660.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-guide-op-xy",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-2",
+            "name": "feat-card-k-2",
+            "x": 32,
+            "y": 316,
+            "fill": "#FF7A00",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-guide-op-xy"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-2",
+            "name": "feat-card-t-2",
+            "x": 32,
+            "y": 334,
+            "fill": "#111111",
+            "content": "Guide: OP-XY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-guide-op-xy"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-3",
+            "name": "feat-card-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-design-popixel",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-3",
+            "name": "feat-card-img-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-design-popixel",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-3",
+            "name": "feat-card-k-3",
+            "x": 206,
+            "y": 316,
+            "fill": "#FF7A00",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-design-popixel"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-3",
+            "name": "feat-card-t-3",
+            "x": 206,
+            "y": 334,
+            "fill": "#111111",
+            "content": "Design: Popixel",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-design-popixel"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "insights",
+        "name": "Insights",
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420,
+        "fill": "#F6F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "insight-card-0",
+            "name": "insight-card-0",
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168,
+            "fill": "#111111",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-products",
+            "cornerRadius": 20
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-img-0",
+            "name": "insight-img-0",
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-products-img-1-8254556d.webp",
+              "mode": "cover"
+            },
+            "href": "#page-products",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-0",
+            "name": "insight-k-0",
+            "x": 40,
+            "y": 42,
+            "fill": "#FFF0E0",
+            "content": "Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-products"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-0",
+            "name": "insight-t-0",
+            "x": 40,
+            "y": 66,
+            "fill": "#FFFFFF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-products"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-0",
+            "name": "insight-b-0",
+            "x": 40,
+            "y": 118,
+            "fill": "#EAE6DF",
+            "content": "teenage engineering creates high quality, well designed, electronic products for all people who love sound and music.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 116,
+            "href": "#page-products"
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-card-1",
+            "name": "insight-card-1",
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168,
+            "fill": "#EFEEE7",
+            "stroke": {
+              "fill": "#D8D6CC",
+              "thickness": 1
+            },
+            "href": "#page-designs",
+            "cornerRadius": 20
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-img-1",
+            "name": "insight-img-1",
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-designs-img-1-fdd48ab2.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-designs",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-1",
+            "name": "insight-k-1",
+            "x": 40,
+            "y": 230,
+            "fill": "#FF7A00",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-designs"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-1",
+            "name": "insight-t-1",
+            "x": 40,
+            "y": 254,
+            "fill": "#111111",
+            "content": "Designs",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-designs"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-1",
+            "name": "insight-b-1",
+            "x": 40,
+            "y": 306,
+            "fill": "#66665F",
+            "content": "design and collaborations",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 38,
+            "href": "#page-designs"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250,
+        "fill": "#111111",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#111111"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F0F0EB",
+            "content": "teenage engineering",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F0F0EB",
+            "content": "Products Guides Downloads",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F0F0EB",
+            "content": "Designs Contact TX-6 OP-XY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "teenage engineering structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    ]
+  }
+}

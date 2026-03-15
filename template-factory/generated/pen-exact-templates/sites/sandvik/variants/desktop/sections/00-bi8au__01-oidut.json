@@ -1,0 +1,398 @@
+{
+  "sectionId": "oidUt",
+  "sectionName": "hero",
+  "sectionKind": "hero",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 119,
+    "width": 1440,
+    "height": 276
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 8,
+  "treeHash": "18b0f8a2d63fcbb12b6412ac996617bd7aeb4da82bd56172ec4850a9a3cdaf61",
+  "blockCount": 5,
+  "blockIndex": [
+    {
+      "blockId": "oGL3p",
+      "blockName": "heroTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 10,
+        "y": 70,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c26ff667449d13243507bc1196bc81ff527494de5804d1796850df69fe5a91db"
+    },
+    {
+      "blockId": "WI0Xj",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 10,
+        "y": 138,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "488f5fe9e1f74dc10a1d82b2302881bad1d5dedfdbf340cbabf348922357ff60"
+    },
+    {
+      "blockId": "brXJ2",
+      "blockName": "heroBtn",
+      "blockType": "rectangle",
+      "order": 2,
+      "bounds": {
+        "x": 1262,
+        "y": 198,
+        "width": 166,
+        "height": 44
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cdfdb51778bdeb091a12d8c3ec50b5d13eb904f66efcd9e9e64202db3edb999f"
+    },
+    {
+      "blockId": "hrdUV",
+      "blockName": "heroBtnText",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 1290,
+        "y": 211,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "263aaec6799da0dd1f3a59cb4fe478f37e4eb0194c55f1ab040611af1f055f48"
+    },
+    {
+      "blockId": "iZixY",
+      "blockName": "heroImg",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 0,
+        "y": 276,
+        "width": 1440,
+        "height": 514
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "b328d9f897cff10d2b6c9ae0ab860b6cd1472f11a67149606cc29c4665a082be"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1763100351670-756f71d57c9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjU2NjJ8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "oGL3p",
+      "blockName": "heroTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 10,
+        "y": 70,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c26ff667449d13243507bc1196bc81ff527494de5804d1796850df69fe5a91db",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "oGL3p",
+        "x": 10,
+        "y": 70,
+        "name": "heroTag",
+        "fill": "#5E5A4F",
+        "content": "新产品",
+        "fontFamily": "Inter",
+        "fontSize": 44,
+        "fontWeight": "600"
+      }
+    },
+    {
+      "blockId": "WI0Xj",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 10,
+        "y": 138,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "488f5fe9e1f74dc10a1d82b2302881bad1d5dedfdbf340cbabf348922357ff60",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "WI0Xj",
+        "x": 10,
+        "y": 138,
+        "name": "heroTitle",
+        "fill": "#202020",
+        "content": "最新切削刀具和解决方案",
+        "fontFamily": "Inter",
+        "fontSize": 72,
+        "fontWeight": "600"
+      }
+    },
+    {
+      "blockId": "brXJ2",
+      "blockName": "heroBtn",
+      "blockType": "rectangle",
+      "order": 2,
+      "bounds": {
+        "x": 1262,
+        "y": 198,
+        "width": 166,
+        "height": 44
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cdfdb51778bdeb091a12d8c3ec50b5d13eb904f66efcd9e9e64202db3edb999f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "cornerRadius": 4,
+        "id": "brXJ2",
+        "x": 1262,
+        "y": 198,
+        "name": "heroBtn",
+        "fill": "#111111",
+        "width": 166,
+        "height": 44
+      }
+    },
+    {
+      "blockId": "hrdUV",
+      "blockName": "heroBtnText",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 1290,
+        "y": 211,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "263aaec6799da0dd1f3a59cb4fe478f37e4eb0194c55f1ab040611af1f055f48",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hrdUV",
+        "x": 1290,
+        "y": 211,
+        "name": "heroBtnText",
+        "fill": "#FFFFFF",
+        "content": "点击此处查看新产品",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "iZixY",
+      "blockName": "heroImg",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 0,
+        "y": 276,
+        "width": 1440,
+        "height": 514
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "b328d9f897cff10d2b6c9ae0ab860b6cd1472f11a67149606cc29c4665a082be",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1763100351670-756f71d57c9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjU2NjJ8&ixlib=rb-4.1.0&q=80&w=1080",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "iZixY",
+        "x": 0,
+        "y": 276,
+        "name": "heroImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "kikiz",
+          "link": "https://unsplash.com/@kikiz",
+          "author": "Yimeng Zhao"
+        },
+        "width": 1440,
+        "height": 514,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1763100351670-756f71d57c9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjU2NjJ8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "ellipse",
+            "id": "3gAy9",
+            "x": 680,
+            "y": 218,
+            "name": "playCircle",
+            "fill": "#B8A06B",
+            "width": 80,
+            "height": 80
+          },
+          {
+            "type": "text",
+            "id": "FU62c",
+            "x": 714,
+            "y": 244,
+            "name": "playTri",
+            "fill": "#FFFFFF",
+            "content": "▶",
+            "fontFamily": "Inter",
+            "fontSize": 28,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "oidUt",
+    "x": 0,
+    "y": 119,
+    "name": "hero",
+    "metadata": {
+      "type": "unsplash",
+      "username": "tama66",
+      "link": "https://unsplash.com/@tama66",
+      "author": "Peter Herrmann"
+    },
+    "width": 1440,
+    "height": 276,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "oGL3p",
+        "x": 10,
+        "y": 70,
+        "name": "heroTag",
+        "fill": "#5E5A4F",
+        "content": "新产品",
+        "fontFamily": "Inter",
+        "fontSize": 44,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "WI0Xj",
+        "x": 10,
+        "y": 138,
+        "name": "heroTitle",
+        "fill": "#202020",
+        "content": "最新切削刀具和解决方案",
+        "fontFamily": "Inter",
+        "fontSize": 72,
+        "fontWeight": "600"
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 4,
+        "id": "brXJ2",
+        "x": 1262,
+        "y": 198,
+        "name": "heroBtn",
+        "fill": "#111111",
+        "width": 166,
+        "height": 44
+      },
+      {
+        "type": "text",
+        "id": "hrdUV",
+        "x": 1290,
+        "y": 211,
+        "name": "heroBtnText",
+        "fill": "#FFFFFF",
+        "content": "点击此处查看新产品",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "iZixY",
+        "x": 0,
+        "y": 276,
+        "name": "heroImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "kikiz",
+          "link": "https://unsplash.com/@kikiz",
+          "author": "Yimeng Zhao"
+        },
+        "width": 1440,
+        "height": 514,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1763100351670-756f71d57c9f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjU2NjJ8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "ellipse",
+            "id": "3gAy9",
+            "x": 680,
+            "y": 218,
+            "name": "playCircle",
+            "fill": "#B8A06B",
+            "width": 80,
+            "height": 80
+          },
+          {
+            "type": "text",
+            "id": "FU62c",
+            "x": 714,
+            "y": 244,
+            "name": "playTri",
+            "fill": "#FFFFFF",
+            "content": "▶",
+            "fontFamily": "Inter",
+            "fontSize": 28,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

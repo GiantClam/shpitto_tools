@@ -1,0 +1,173 @@
+{
+  "sectionId": "world",
+  "sectionName": "World",
+  "sectionKind": "generic",
+  "order": 9,
+  "bounds": {
+    "x": 0,
+    "y": 2418,
+    "width": 390,
+    "height": 260
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "394e1670a2739f40f6509169fbfef754767b5b68d9340edfc0368e4c5583d347",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "world-title",
+      "blockName": "world-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 20,
+        "width": 260,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ecb0c19e2c46bbad93574731d9785b0e196627f5e7797d6c4386929e250b92e2"
+    },
+    {
+      "blockId": "world-map",
+      "blockName": "world-map",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 20,
+        "y": 60,
+        "width": 350,
+        "height": 160
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a899ae65745ea3a0d6bc8bab7e9aa27237511a5f6463e563d3b782ac78141ec7"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/map-92fb20e6.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/map-92fb20e6.jpg",
+      "relativePath": "assets-structured/breton/map-92fb20e6.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "world-title",
+      "blockName": "world-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 20,
+        "width": 260,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ecb0c19e2c46bbad93574731d9785b0e196627f5e7797d6c4386929e250b92e2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "world-title",
+        "name": "world-title",
+        "x": 18,
+        "y": 20,
+        "fill": "#232529",
+        "content": "Breton in the world",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 260,
+        "height": 32
+      }
+    },
+    {
+      "blockId": "world-map",
+      "blockName": "world-map",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 20,
+        "y": 60,
+        "width": 350,
+        "height": 160
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a899ae65745ea3a0d6bc8bab7e9aa27237511a5f6463e563d3b782ac78141ec7",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/map-92fb20e6.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/map-92fb20e6.jpg",
+        "relativePath": "assets-structured/breton/map-92fb20e6.jpg",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "world-map",
+        "name": "world-map",
+        "x": 20,
+        "y": 60,
+        "width": 350,
+        "height": 160,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/map-92fb20e6.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-about"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "world",
+    "name": "World",
+    "x": 0,
+    "y": 2418,
+    "width": 390,
+    "height": 260,
+    "fill": "#ECECEC",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "world-title",
+        "name": "world-title",
+        "x": 18,
+        "y": 20,
+        "fill": "#232529",
+        "content": "Breton in the world",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 260,
+        "height": 32
+      },
+      {
+        "type": "rectangle",
+        "id": "world-map",
+        "name": "world-map",
+        "x": 20,
+        "y": 60,
+        "width": 350,
+        "height": 160,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/map-92fb20e6.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-about"
+      }
+    ]
+  }
+}

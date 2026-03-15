@@ -1,0 +1,66 @@
+{
+  "blockId": "70aig",
+  "blockName": "valB",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 4,
+  "bounds": {
+    "x": 32,
+    "y": 500,
+    "width": 1376,
+    "height": 260
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "74952a5f15871b23b89c00ef9a787c8a4f91a73aa02f665aa8e89fa22fafec31",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "70aig",
+    "x": 32,
+    "y": 500,
+    "name": "valB",
+    "width": 1376,
+    "height": 260,
+    "fill": "#FFFFFF",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "r1tNR",
+        "x": 736,
+        "y": 0,
+        "name": "bImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "litoondev",
+          "link": "https://unsplash.com/@litoondev",
+          "author": "litoon dev"
+        },
+        "width": 640,
+        "height": 260,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1737573477556-ac3ed2db618c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxOTc5NTd8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "H568U",
+        "x": 32,
+        "y": 52,
+        "name": "bTxt",
+        "fill": "#3F474F",
+        "textGrowth": "fixed-width",
+        "width": 656,
+        "content": "团队成员\n\n“在 Plexus 工作期间，我看到了许多绝佳的机会。导师和领导帮助我持续成长，并不断拓展能力边界。”\n\n— Chris Draws，Plexus 员工工程师",
+        "lineHeight": 1.55,
+        "fontFamily": "Inter",
+        "fontSize": 15,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

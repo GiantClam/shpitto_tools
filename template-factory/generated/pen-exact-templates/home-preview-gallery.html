@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pen Home Sandbox Preview Links</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f4f1ea;
+        --surface: rgba(255,255,255,0.82);
+        --text: #161616;
+        --muted: #55514a;
+        --line: rgba(22,22,22,0.12);
+        --shadow: 0 16px 40px rgba(22,22,22,0.08);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 34%),
+          linear-gradient(180deg, #f8f5ef 0%, var(--bg) 100%);
+        color: var(--text);
+      }
+      main {
+        width: min(1400px, calc(100vw - 48px));
+        margin: 0 auto;
+        padding: 40px 0 72px;
+      }
+      .hero { margin-bottom: 32px; }
+      .hero h1 {
+        margin: 0 0 8px;
+        font-size: clamp(32px, 4vw, 54px);
+        line-height: 0.95;
+      }
+      .hero p {
+        margin: 0 0 6px;
+        color: var(--muted);
+        font-size: 16px;
+      }
+      .site-list {
+        display: grid;
+        gap: 24px;
+      }
+      .site-card {
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--surface);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow);
+      }
+      .site-card header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+      .site-card h2 {
+        margin: 0;
+        font-size: 24px;
+      }
+      .site-card header p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .variant-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+      }
+      .variant-card {
+        overflow: hidden;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.72);
+      }
+      .thumb-link {
+        display: block;
+        background: #e9e4db;
+      }
+      .thumb-link img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .variant-meta {
+        padding: 14px 14px 16px;
+      }
+      .variant-meta h3 {
+        margin: 0 0 4px;
+        font-size: 16px;
+        text-transform: capitalize;
+      }
+      .variant-meta p {
+        margin: 0 0 6px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .variant-meta .score {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .links a {
+        color: var(--text);
+        text-decoration: none;
+        border-bottom: 1px solid currentColor;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <h1>Pen Exact Template Home Sandbox Previews</h1>
+        <p>16 sites, 27 home pages.</p>
+        <p>Each link opens the builder sandbox preview route backed by a generated local payload.</p>
+      </section>
+      <section class="site-list">
+
+      <section class="site-card">
+        <header>
+          <h2>Analogue</h2>
+          <p>analogue</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-analogue-desktop&page=home">
+            <img src="visual-validation/analogue/desktop/page-home-analogue-homepage-desktop/template-render.png" alt="Analogue desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>Analogue Homepage Desktop</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-analogue-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-analogue-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/analogue/desktop/page-home-analogue-homepage-desktop/template-render.png">PNG</a>
+              <a href="visual-validation/analogue/desktop/page-home-analogue-homepage-desktop/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-analogue-mobile&page=home">
+            <img src="visual-validation/analogue/mobile/page-home-analogue-homepage-mobile/template-render.png" alt="Analogue mobile home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>mobile</h3>
+            <p>Analogue Homepage Mobile</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-analogue-mobile&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-analogue-mobile/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/analogue/mobile/page-home-analogue-homepage-mobile/template-render.png">PNG</a>
+              <a href="visual-validation/analogue/mobile/page-home-analogue-homepage-mobile/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Breton</h2>
+          <p>breton</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-breton-desktop&page=home">
+            <img src="visual-validation/breton/desktop/page-home-breton-homepage-desktop/template-render.png" alt="Breton desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>Breton Homepage Desktop</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-breton-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-breton-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/breton/desktop/page-home-breton-homepage-desktop/template-render.png">PNG</a>
+              <a href="visual-validation/breton/desktop/page-home-breton-homepage-desktop/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-breton-mobile&page=home">
+            <img src="visual-validation/breton/mobile/page-home-breton-homepage-mobile/template-render.png" alt="Breton mobile home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>mobile</h3>
+            <p>Breton Homepage Mobile</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-breton-mobile&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-breton-mobile/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/breton/mobile/page-home-breton-homepage-mobile/template-render.png">PNG</a>
+              <a href="visual-validation/breton/mobile/page-home-breton-homepage-mobile/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Carbon3d</h2>
+          <p>carbon3d</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-carbon3d-desktop&page=home">
+            <img src="visual-validation/carbon3d/desktop/page-home-carbon-homepage-desktop/template-render.png" alt="Carbon3d desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>Carbon Homepage Desktop</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-carbon3d-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-carbon3d-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/carbon3d/desktop/page-home-carbon-homepage-desktop/template-render.png">PNG</a>
+              <a href="visual-validation/carbon3d/desktop/page-home-carbon-homepage-desktop/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-carbon3d-mobile&page=home">
+            <img src="visual-validation/carbon3d/mobile/page-home-carbon-homepage-mobile/template-render.png" alt="Carbon3d mobile home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>mobile</h3>
+            <p>Carbon Homepage Mobile</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-carbon3d-mobile&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-carbon3d-mobile/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/carbon3d/mobile/page-home-carbon-homepage-mobile/template-render.png">PNG</a>
+              <a href="visual-validation/carbon3d/mobile/page-home-carbon-homepage-mobile/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Fptindustrie</h2>
+          <p>fptindustrie</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-fptindustrie-desktop&page=home">
+            <img src="visual-validation/fptindustrie/desktop/page-home-fpt-homepage-desktop/template-render.png" alt="Fptindustrie desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>FPT Homepage Desktop</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-fptindustrie-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-fptindustrie-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/fptindustrie/desktop/page-home-fpt-homepage-desktop/template-render.png">PNG</a>
+              <a href="visual-validation/fptindustrie/desktop/page-home-fpt-homepage-desktop/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-fptindustrie-mobile&page=home">
+            <img src="visual-validation/fptindustrie/mobile/page-home-fpt-homepage-mobile/template-render.png" alt="Fptindustrie mobile home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>mobile</h3>
+            <p>FPT Homepage Mobile</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-fptindustrie-mobile&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-fptindustrie-mobile/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/fptindustrie/mobile/page-home-fpt-homepage-mobile/template-render.png">PNG</a>
+              <a href="visual-validation/fptindustrie/mobile/page-home-fpt-homepage-mobile/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Framework New</h2>
+          <p>framework_new</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-framework_new-desktop&page=home">
+            <img src="visual-validation/framework_new/desktop/bi8au-home/template-render.png" alt="Framework New desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>Home</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-framework_new-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-framework_new-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/framework_new/desktop/bi8au-home/template-render.png">PNG</a>
+              <a href="visual-validation/framework_new/desktop/bi8au-home/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Ionq</h2>
+          <p>ionq</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-ionq-desktop&page=home">
+            <img src="visual-validation/ionq/desktop/xnrkx-home/template-render.png" alt="Ionq desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>HOME</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-ionq-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-ionq-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/ionq/desktop/xnrkx-home/template-render.png">PNG</a>
+              <a href="visual-validation/ionq/desktop/xnrkx-home/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Kymeta</h2>
+          <p>Kymeta</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-Kymeta-desktop&page=home">
+            <img src="visual-validation/Kymeta/desktop/bi8au-home/template-render.png" alt="Kymeta desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>HOME</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-Kymeta-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-Kymeta-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/Kymeta/desktop/bi8au-home/template-render.png">PNG</a>
+              <a href="visual-validation/Kymeta/desktop/bi8au-home/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Nothing Tech</h2>
+          <p>nothing-tech</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-nothing-tech-desktop&page=home">
+            <img src="visual-validation/nothing-tech/desktop/page-home-nothing-homepage-desktop/template-render.png" alt="Nothing Tech desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>Nothing Homepage Desktop</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-nothing-tech-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-nothing-tech-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/nothing-tech/desktop/page-home-nothing-homepage-desktop/template-render.png">PNG</a>
+              <a href="visual-validation/nothing-tech/desktop/page-home-nothing-homepage-desktop/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-nothing-tech-mobile&page=home">
+            <img src="visual-validation/nothing-tech/mobile/page-home-nothing-homepage-mobile/template-render.png" alt="Nothing Tech mobile home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>mobile</h3>
+            <p>Nothing Homepage Mobile</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-nothing-tech-mobile&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-nothing-tech-mobile/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/nothing-tech/mobile/page-home-nothing-homepage-mobile/template-render.png">PNG</a>
+              <a href="visual-validation/nothing-tech/mobile/page-home-nothing-homepage-mobile/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Pagani</h2>
+          <p>pagani</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-pagani-desktop&page=home">
+            <img src="visual-validation/pagani/desktop/page-home-pagani-homepage-desktop/template-render.png" alt="Pagani desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>Pagani Homepage Desktop</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-pagani-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-pagani-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/pagani/desktop/page-home-pagani-homepage-desktop/template-render.png">PNG</a>
+              <a href="visual-validation/pagani/desktop/page-home-pagani-homepage-desktop/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-pagani-mobile&page=home">
+            <img src="visual-validation/pagani/mobile/page-home-pagani-homepage-mobile/template-render.png" alt="Pagani mobile home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>mobile</h3>
+            <p>Pagani Homepage Mobile</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-pagani-mobile&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-pagani-mobile/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/pagani/mobile/page-home-pagani-homepage-mobile/template-render.png">PNG</a>
+              <a href="visual-validation/pagani/mobile/page-home-pagani-homepage-mobile/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Pamamachinetools</h2>
+          <p>pamamachinetools</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-pamamachinetools-desktop&page=home">
+            <img src="visual-validation/pamamachinetools/desktop/page-home-pama-homepage-desktop/template-render.png" alt="Pamamachinetools desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>PAMA Homepage Desktop</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-pamamachinetools-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-pamamachinetools-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/pamamachinetools/desktop/page-home-pama-homepage-desktop/template-render.png">PNG</a>
+              <a href="visual-validation/pamamachinetools/desktop/page-home-pama-homepage-desktop/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-pamamachinetools-mobile&page=home">
+            <img src="visual-validation/pamamachinetools/mobile/page-home-pama-homepage-mobile/template-render.png" alt="Pamamachinetools mobile home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>mobile</h3>
+            <p>PAMA Homepage Mobile</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-pamamachinetools-mobile&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-pamamachinetools-mobile/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/pamamachinetools/mobile/page-home-pama-homepage-mobile/template-render.png">PNG</a>
+              <a href="visual-validation/pamamachinetools/mobile/page-home-pama-homepage-mobile/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Plexus</h2>
+          <p>plexus</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-plexus-desktop&page=home">
+            <img src="visual-validation/plexus/desktop/bi8au-home/template-render.png" alt="Plexus desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>HOME</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-plexus-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-plexus-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/plexus/desktop/bi8au-home/template-render.png">PNG</a>
+              <a href="visual-validation/plexus/desktop/bi8au-home/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Ridecake</h2>
+          <p>ridecake</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-ridecake-desktop&page=home">
+            <img src="visual-validation/ridecake/desktop/page-home-cake-homepage-desktop/template-render.png" alt="Ridecake desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>CAKE Homepage Desktop</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-ridecake-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-ridecake-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/ridecake/desktop/page-home-cake-homepage-desktop/template-render.png">PNG</a>
+              <a href="visual-validation/ridecake/desktop/page-home-cake-homepage-desktop/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-ridecake-mobile&page=home">
+            <img src="visual-validation/ridecake/mobile/page-home-cake-homepage-mobile/template-render.png" alt="Ridecake mobile home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>mobile</h3>
+            <p>CAKE Homepage Mobile</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-ridecake-mobile&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-ridecake-mobile/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/ridecake/mobile/page-home-cake-homepage-mobile/template-render.png">PNG</a>
+              <a href="visual-validation/ridecake/mobile/page-home-cake-homepage-mobile/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Sandvik</h2>
+          <p>sandvik</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-sandvik-desktop&page=home">
+            <img src="visual-validation/sandvik/desktop/bi8au-sandvik-home/template-render.png" alt="Sandvik desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>SANDVIK_HOME</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-sandvik-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-sandvik-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/sandvik/desktop/bi8au-sandvik-home/template-render.png">PNG</a>
+              <a href="visual-validation/sandvik/desktop/bi8au-sandvik-home/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Teenage Engineering</h2>
+          <p>teenage-engineering</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-teenage-engineering-desktop&page=home">
+            <img src="visual-validation/teenage-engineering/desktop/page-home-teenage-engineering-homepage-desktop/template-render.png" alt="Teenage Engineering desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>teenage engineering Homepage Desktop</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-teenage-engineering-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-teenage-engineering-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/teenage-engineering/desktop/page-home-teenage-engineering-homepage-desktop/template-render.png">PNG</a>
+              <a href="visual-validation/teenage-engineering/desktop/page-home-teenage-engineering-homepage-desktop/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-teenage-engineering-mobile&page=home">
+            <img src="visual-validation/teenage-engineering/mobile/page-home-teenage-engineering-homepage-mobile/template-render.png" alt="Teenage Engineering mobile home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>mobile</h3>
+            <p>teenage engineering Homepage Mobile</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-teenage-engineering-mobile&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-teenage-engineering-mobile/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/teenage-engineering/mobile/page-home-teenage-engineering-homepage-mobile/template-render.png">PNG</a>
+              <a href="visual-validation/teenage-engineering/mobile/page-home-teenage-engineering-homepage-mobile/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Transpa Rent</h2>
+          <p>transpa-rent</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-transpa-rent-desktop&page=home">
+            <img src="visual-validation/transpa-rent/desktop/page-home-transparent-homepage-desktop/template-render.png" alt="Transpa Rent desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>Transparent Homepage Desktop</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-transpa-rent-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-transpa-rent-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/transpa-rent/desktop/page-home-transparent-homepage-desktop/template-render.png">PNG</a>
+              <a href="visual-validation/transpa-rent/desktop/page-home-transparent-homepage-desktop/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-transpa-rent-mobile&page=home">
+            <img src="visual-validation/transpa-rent/mobile/page-home-transparent-homepage-mobile/template-render.png" alt="Transpa Rent mobile home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>mobile</h3>
+            <p>Transparent Homepage Mobile</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-transpa-rent-mobile&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-transpa-rent-mobile/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/transpa-rent/mobile/page-home-transparent-homepage-mobile/template-render.png">PNG</a>
+              <a href="visual-validation/transpa-rent/mobile/page-home-transparent-homepage-mobile/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="site-card">
+        <header>
+          <h2>Vanmoof</h2>
+          <p>vanmoof</p>
+        </header>
+        <div class="variant-grid">
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-vanmoof-desktop&page=home">
+            <img src="visual-validation/vanmoof/desktop/page-home-vanmoof-homepage-desktop/template-render.png" alt="Vanmoof desktop home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>desktop</h3>
+            <p>VanMoof Homepage Desktop</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-vanmoof-desktop&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-vanmoof-desktop/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/vanmoof/desktop/page-home-vanmoof-homepage-desktop/template-render.png">PNG</a>
+              <a href="visual-validation/vanmoof/desktop/page-home-vanmoof-homepage-desktop/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="variant-card">
+          <a class="thumb-link" href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-vanmoof-mobile&page=home">
+            <img src="visual-validation/vanmoof/mobile/page-home-vanmoof-homepage-mobile/template-render.png" alt="Vanmoof mobile home preview" loading="lazy" />
+          </a>
+          <div class="variant-meta">
+            <h3>mobile</h3>
+            <p>VanMoof Homepage Mobile</p>
+            <p class="score">similarity 1.000</p>
+            <div class="links">
+              <a href="http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-home-vanmoof-mobile&page=home">Open Sandbox</a>
+              <a href="asset-factory/out/p2w/pen-exact-home-vanmoof-mobile/sandbox/payload.json">Payload</a>
+              <a href="visual-validation/vanmoof/mobile/page-home-vanmoof-homepage-mobile/template-render.png">PNG</a>
+              <a href="visual-validation/vanmoof/mobile/page-home-vanmoof-homepage-mobile/report.json">Report</a>
+            </div>
+          </div>
+        </article>
+        </div>
+      </section>
+      </section>
+    </main>
+  </body>
+</html>

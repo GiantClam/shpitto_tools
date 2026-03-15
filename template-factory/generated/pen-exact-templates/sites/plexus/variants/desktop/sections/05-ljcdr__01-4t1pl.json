@@ -1,0 +1,286 @@
+{
+  "sectionId": "4t1PL",
+  "sectionName": "solHero",
+  "sectionKind": "hero",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 90,
+    "width": 1440,
+    "height": 340
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 6,
+  "treeHash": "efbd2b0c4b49280a669624dd33cfb1cacefed5ed89993d279802df128ac0664b",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "vbREy",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 80,
+        "y": 88,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b1f0cdb16465961300c25a630ee2d62d330e5ebc7afae80bc823a6bdbe36fc19"
+    },
+    {
+      "blockId": "VkYDh",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 80,
+        "y": 176,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "799226e36ef72e1935061a2f4a6435d50614c61e7cd1032f776a91820570f4b8"
+    },
+    {
+      "blockId": "hXzS3",
+      "blockName": "heroBtn",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 80,
+        "y": 370,
+        "width": 140,
+        "height": 42
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "d9b7a0567156dab6d537fd6ac9b006830895b1b0635270e14d7ad4927e31350d"
+    },
+    {
+      "blockId": "qZw4z",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 80,
+        "y": 290,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e5ab77a61fc58bd71ae428d27ff5a5e0783033dcf32e21a32662955c2bb96f04"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "vbREy",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 80,
+        "y": 88,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b1f0cdb16465961300c25a630ee2d62d330e5ebc7afae80bc823a6bdbe36fc19",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "vbREy",
+        "x": 80,
+        "y": 88,
+        "name": "heroTitle",
+        "fill": "#23303D",
+        "content": "资源",
+        "fontFamily": "Inter",
+        "fontSize": 58,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "VkYDh",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 80,
+        "y": 176,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "799226e36ef72e1935061a2f4a6435d50614c61e7cd1032f776a91820570f4b8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "VkYDh",
+        "x": 80,
+        "y": 176,
+        "name": "heroDesc",
+        "fill": "#65717D",
+        "content": "探索专业知识和解决方案、案例研究和行业洞察",
+        "fontFamily": "Inter",
+        "fontSize": 30,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "hXzS3",
+      "blockName": "heroBtn",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 80,
+        "y": 370,
+        "width": 140,
+        "height": 42
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "d9b7a0567156dab6d537fd6ac9b006830895b1b0635270e14d7ad4927e31350d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "hXzS3",
+        "x": 80,
+        "y": 370,
+        "name": "heroBtn",
+        "enabled": false,
+        "width": 140,
+        "height": 42,
+        "fill": "#C70041",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "ckUEr",
+            "x": 42,
+            "y": 11,
+            "name": "heroBtnTxt",
+            "fill": "#FFFFFF",
+            "content": "解决方案",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "qZw4z",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 80,
+        "y": 290,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e5ab77a61fc58bd71ae428d27ff5a5e0783033dcf32e21a32662955c2bb96f04",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "qZw4z",
+        "x": 80,
+        "y": 290,
+        "name": "heroDesc",
+        "enabled": false,
+        "fill": "#65717D",
+        "content": "作为全球领先企业，我们专门为产品高度复杂、监管环境苛刻的行业客户提供服务。",
+        "fontFamily": "Inter",
+        "fontSize": 22,
+        "fontWeight": "600"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "4t1PL",
+    "x": 0,
+    "y": 90,
+    "name": "solHero",
+    "width": 1440,
+    "height": 340,
+    "fill": "#F2F2F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "vbREy",
+        "x": 80,
+        "y": 88,
+        "name": "heroTitle",
+        "fill": "#23303D",
+        "content": "资源",
+        "fontFamily": "Inter",
+        "fontSize": 58,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "VkYDh",
+        "x": 80,
+        "y": 176,
+        "name": "heroDesc",
+        "fill": "#65717D",
+        "content": "探索专业知识和解决方案、案例研究和行业洞察",
+        "fontFamily": "Inter",
+        "fontSize": 30,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "hXzS3",
+        "x": 80,
+        "y": 370,
+        "name": "heroBtn",
+        "enabled": false,
+        "width": 140,
+        "height": 42,
+        "fill": "#C70041",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "ckUEr",
+            "x": 42,
+            "y": 11,
+            "name": "heroBtnTxt",
+            "fill": "#FFFFFF",
+            "content": "解决方案",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "qZw4z",
+        "x": 80,
+        "y": 290,
+        "name": "heroDesc",
+        "enabled": false,
+        "fill": "#65717D",
+        "content": "作为全球领先企业，我们专门为产品高度复杂、监管环境苛刻的行业客户提供服务。",
+        "fontFamily": "Inter",
+        "fontSize": 22,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

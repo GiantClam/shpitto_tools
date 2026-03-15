@@ -1,0 +1,5786 @@
+{
+  "pageId": "page-home",
+  "pageName": "Transparent Homepage Mobile",
+  "pageType": "home",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 1960
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "5299a024fade86a8cb6566b6a03c4ef6d37ba97e088298d135465b632b66b609",
+  "directChildCount": 6,
+  "recursiveNodeCount": 73,
+  "sectionCount": 5,
+  "sectionIndex": [
+    {
+      "sectionId": "hero",
+      "sectionName": "Hero",
+      "sectionKind": "hero",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 14,
+      "treeHash": "9a94a0083496584403b20764d1bba046322622c88e5e182efb6c6b06edc5e574",
+      "blockCount": 10
+    },
+    {
+      "sectionId": "categories",
+      "sectionName": "Categories",
+      "sectionKind": "navigation",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360
+      },
+      "directChildCount": 21,
+      "recursiveNodeCount": 22,
+      "treeHash": "a9a32ffbc65e6361aeb633f457f200eb089c10faac85337234b73620f7352012",
+      "blockCount": 21
+    },
+    {
+      "sectionId": "featured",
+      "sectionName": "Featured",
+      "sectionKind": "products",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410
+      },
+      "directChildCount": 17,
+      "recursiveNodeCount": 18,
+      "treeHash": "134547d14e0e71e71711a2f2b49c27e68396f3576c08c181bbe01d4e9e641bde",
+      "blockCount": 17
+    },
+    {
+      "sectionId": "insights",
+      "sectionName": "Insights",
+      "sectionKind": "story",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 11,
+      "treeHash": "ac5275cefc3f4941279c44cacd6ffaa96ed60cca75249c8bd6240f547451a939",
+      "blockCount": 10
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 4,
+      "bounds": {
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "d6d697ddb4b9a8001f36b5df6ba23f2531d72f50fa525ac7cd72776bb494a43f",
+      "blockCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "hero",
+      "sectionName": "Hero",
+      "sectionKind": "hero",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 14,
+      "treeHash": "9a94a0083496584403b20764d1bba046322622c88e5e182efb6c6b06edc5e574",
+      "blockCount": 10,
+      "blockIndex": [
+        {
+          "blockId": "hero-bg",
+          "blockName": "hero-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e27799ed8c1e61fa5ab7f992bd6012fb30e6f0d5112af0aab8111a7b0c9d77d7"
+        },
+        {
+          "blockId": "hero-image",
+          "blockName": "hero-image",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a5490557cb0fc04c7ef02d09cdce18bbdd05764dfb2a4f5528f0ad25206ddf0b"
+        },
+        {
+          "blockId": "header-page-home",
+          "blockName": "Header",
+          "blockType": "frame",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 4,
+          "treeHash": "cc3f7c731d570f4b44f19eaad326673df83447bc7d176036c677cd0deddfbb5c"
+        },
+        {
+          "blockId": "hero-kicker",
+          "blockName": "hero-kicker",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 86,
+            "width": 200,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2bed1f578dad01380edc957ac71043004de214c2b2867cabb17697bdf1478f12"
+        },
+        {
+          "blockId": "hero-title",
+          "blockName": "hero-title",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 116,
+            "width": 320,
+            "height": 151
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "88871cf5c48aafcf2e57c48f39f823d42a6e0094b1b6c2a0174c4ffd1f72eb06"
+        },
+        {
+          "blockId": "hero-subtitle",
+          "blockName": "hero-subtitle",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 240,
+            "width": 320,
+            "height": 66
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0b966a578f1c37dd7642d10aa9c9bdc0da36eb0174b1d1789b31a963340e4498"
+        },
+        {
+          "blockId": "hero-primary-box",
+          "blockName": "hero-primary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 6,
+          "bounds": {
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "68a865ccc8220f61b0170549c2a9613d454f739fda854fc14d254bf6f116ca65"
+        },
+        {
+          "blockId": "hero-primary-text",
+          "blockName": "hero-primary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 32,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d057539d9d142352c68739c3235d65bbae6f6566dca77be872607da10a3a81d7"
+        },
+        {
+          "blockId": "hero-secondary-box",
+          "blockName": "hero-secondary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "14e4b561d6f611166fe1efa798f24ef4926317d0e273c6629ff62d929b6bc3a3"
+        },
+        {
+          "blockId": "hero-secondary-text",
+          "blockName": "hero-secondary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 194,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d6ff9f4393519eca148b5036e9ae483ee717d36b020787903ab7b74b860365dc"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "hero-bg",
+          "blockName": "hero-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e27799ed8c1e61fa5ab7f992bd6012fb30e6f0d5112af0aab8111a7b0c9d77d7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-bg",
+            "name": "hero-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520,
+            "fill": "#F5F5F2"
+          }
+        },
+        {
+          "blockId": "hero-image",
+          "blockName": "hero-image",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a5490557cb0fc04c7ef02d09cdce18bbdd05764dfb2a4f5528f0ad25206ddf0b",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-image",
+            "name": "hero-image",
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-all-products",
+            "cornerRadius": 28
+          }
+        },
+        {
+          "blockId": "header-page-home",
+          "blockName": "Header",
+          "blockType": "frame",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 4,
+          "treeHash": "cc3f7c731d570f4b44f19eaad326673df83447bc7d176036c677cd0deddfbb5c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "header-page-home",
+            "name": "Header",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#00000000",
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "header-bg",
+                "name": "header-bg",
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 64,
+                "fill": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "id": "header-brand",
+                "name": "header-brand",
+                "x": 18,
+                "y": 18,
+                "fill": "#141414",
+                "content": "Transparent",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 180,
+                "height": 28
+              },
+              {
+                "type": "text",
+                "id": "header-menu",
+                "name": "header-menu",
+                "x": 362,
+                "y": 18,
+                "fill": "#141414",
+                "content": "☰",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 18,
+                "height": 20,
+                "href": "#page-all-products",
+                "textAlign": "center",
+                "textAlignVertical": "middle"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "hero-kicker",
+          "blockName": "hero-kicker",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 86,
+            "width": 200,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2bed1f578dad01380edc957ac71043004de214c2b2867cabb17697bdf1478f12",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-kicker",
+            "name": "hero-kicker",
+            "x": 18,
+            "y": 86,
+            "fill": "#111111",
+            "content": "TRANSPARENT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 18,
+            "letterSpacing": "0.12em"
+          }
+        },
+        {
+          "blockId": "hero-title",
+          "blockName": "hero-title",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 116,
+            "width": 320,
+            "height": 151
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "88871cf5c48aafcf2e57c48f39f823d42a6e0094b1b6c2a0174c4ffd1f72eb06",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-title",
+            "name": "hero-title",
+            "x": 18,
+            "y": 116,
+            "fill": "#141414",
+            "content": "Timeless speakers and design tech",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 34,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 151
+          }
+        },
+        {
+          "blockId": "hero-subtitle",
+          "blockName": "hero-subtitle",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 240,
+            "width": 320,
+            "height": 66
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0b966a578f1c37dd7642d10aa9c9bdc0da36eb0174b1d1789b31a963340e4498",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-subtitle",
+            "name": "hero-subtitle",
+            "x": 18,
+            "y": 240,
+            "fill": "#666862",
+            "content": "scandinavian industrial design, modular systems and audio objects shaped to last and evolve over time.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 66
+          }
+        },
+        {
+          "blockId": "hero-primary-box",
+          "blockName": "hero-primary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 6,
+          "bounds": {
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "68a865ccc8220f61b0170549c2a9613d454f739fda854fc14d254bf6f116ca65",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-primary-box",
+            "name": "hero-primary-box",
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#111111",
+            "stroke": {
+              "fill": "#111111",
+              "thickness": 1
+            },
+            "href": "#page-all-products",
+            "cornerRadius": 14
+          }
+        },
+        {
+          "blockId": "hero-primary-text",
+          "blockName": "hero-primary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 32,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d057539d9d142352c68739c3235d65bbae6f6566dca77be872607da10a3a81d7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-primary-text",
+            "name": "hero-primary-text",
+            "x": 32,
+            "y": 325,
+            "fill": "#FFFFFF",
+            "content": "All Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-all-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "hero-secondary-box",
+          "blockName": "hero-secondary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "14e4b561d6f611166fe1efa798f24ef4926317d0e273c6629ff62d929b6bc3a3",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-secondary-box",
+            "name": "hero-secondary-box",
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-modular-system",
+            "cornerRadius": 14
+          }
+        },
+        {
+          "blockId": "hero-secondary-text",
+          "blockName": "hero-secondary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 194,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d6ff9f4393519eca148b5036e9ae483ee717d36b020787903ab7b74b860365dc",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-secondary-text",
+            "name": "hero-secondary-text",
+            "x": 194,
+            "y": 325,
+            "fill": "#141414",
+            "content": "Modular System",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-modular-system",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "hero",
+        "name": "Hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520,
+        "fill": "#F5F5F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "hero-bg",
+            "name": "hero-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520,
+            "fill": "#F5F5F2"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-image",
+            "name": "hero-image",
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-all-products",
+            "cornerRadius": 28
+          },
+          {
+            "type": "frame",
+            "id": "header-page-home",
+            "name": "Header",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#00000000",
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "header-bg",
+                "name": "header-bg",
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 64,
+                "fill": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "id": "header-brand",
+                "name": "header-brand",
+                "x": 18,
+                "y": 18,
+                "fill": "#141414",
+                "content": "Transparent",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 180,
+                "height": 28
+              },
+              {
+                "type": "text",
+                "id": "header-menu",
+                "name": "header-menu",
+                "x": 362,
+                "y": 18,
+                "fill": "#141414",
+                "content": "☰",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 18,
+                "height": 20,
+                "href": "#page-all-products",
+                "textAlign": "center",
+                "textAlignVertical": "middle"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "hero-kicker",
+            "name": "hero-kicker",
+            "x": 18,
+            "y": 86,
+            "fill": "#111111",
+            "content": "TRANSPARENT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 18,
+            "letterSpacing": "0.12em"
+          },
+          {
+            "type": "text",
+            "id": "hero-title",
+            "name": "hero-title",
+            "x": 18,
+            "y": 116,
+            "fill": "#141414",
+            "content": "Timeless speakers and design tech",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 34,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 151
+          },
+          {
+            "type": "text",
+            "id": "hero-subtitle",
+            "name": "hero-subtitle",
+            "x": 18,
+            "y": 240,
+            "fill": "#666862",
+            "content": "scandinavian industrial design, modular systems and audio objects shaped to last and evolve over time.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 66
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-primary-box",
+            "name": "hero-primary-box",
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#111111",
+            "stroke": {
+              "fill": "#111111",
+              "thickness": 1
+            },
+            "href": "#page-all-products",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-primary-text",
+            "name": "hero-primary-text",
+            "x": 32,
+            "y": 325,
+            "fill": "#FFFFFF",
+            "content": "All Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-all-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-secondary-box",
+            "name": "hero-secondary-box",
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-modular-system",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-secondary-text",
+            "name": "hero-secondary-text",
+            "x": 194,
+            "y": 325,
+            "fill": "#141414",
+            "content": "Modular System",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-modular-system",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "categories",
+      "sectionName": "Categories",
+      "sectionKind": "navigation",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360
+      },
+      "directChildCount": 21,
+      "recursiveNodeCount": 22,
+      "treeHash": "a9a32ffbc65e6361aeb633f457f200eb089c10faac85337234b73620f7352012",
+      "blockCount": 21,
+      "blockIndex": [
+        {
+          "blockId": "cat-title",
+          "blockName": "cat-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 22,
+            "width": 200,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "78243616da748e67f249a7226585f243cd240eed2c9c1e417030fa122642a7c5"
+        },
+        {
+          "blockId": "cat-card-0",
+          "blockName": "cat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e1b22c4da954f4b4bab6b127c8ee1f825fec88cef1d63538c5c981e8165be50f"
+        },
+        {
+          "blockId": "cat-card-img-0",
+          "blockName": "cat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "66b762fb423988a29d94e4e3b3aee28c9a282af7573408a89ce28970d61b2e9b"
+        },
+        {
+          "blockId": "cat-card-t-0",
+          "blockName": "cat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "409626733a37730cb741018365ba365c3418244866e9dba0816f6ab2a649e21f"
+        },
+        {
+          "blockId": "cat-card-b-0",
+          "blockName": "cat-card-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 154,
+            "width": 140,
+            "height": 134
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "33c6765ae934420eda7b92e85ae49fcad5c25162c48feb346fb0d1d2712db04c"
+        },
+        {
+          "blockId": "cat-card-1",
+          "blockName": "cat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0ebd4d4a4a876a0caaf41798c1bd8c34b750daadb763cca9648b41cf12ddc547"
+        },
+        {
+          "blockId": "cat-card-img-1",
+          "blockName": "cat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a84196d67ea21992744fec4c9288cd2c1eb55def814d8075b1f0f3f4d5cce4a0"
+        },
+        {
+          "blockId": "cat-card-t-1",
+          "blockName": "cat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b646e9c036b64c24994d45322ab8a7fa655214cd7c0a8cdcedfdc4c89d9a553b"
+        },
+        {
+          "blockId": "cat-card-b-1",
+          "blockName": "cat-card-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 154,
+            "width": 140,
+            "height": 134
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4e04e9460c67c85db0f29e1dc152f2c52ea01e383f3792ced40e181944cf8364"
+        },
+        {
+          "blockId": "cat-card-2",
+          "blockName": "cat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e48b437b03c37798758d506dabdc3fae39a56c2386b19ecfb8ca9d259cbe4285"
+        },
+        {
+          "blockId": "cat-card-img-2",
+          "blockName": "cat-card-img-2",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 10,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "58cb2715dcd4252306bb5f9ca7c3291aac711f93b770fa879bc6773bdbd05644"
+        },
+        {
+          "blockId": "cat-card-t-2",
+          "blockName": "cat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b4e706c7bfb4abaf1b94cffb6fe7d4c95a026d2be16d409b52ecbb15e41f1a9a"
+        },
+        {
+          "blockId": "cat-card-b-2",
+          "blockName": "cat-card-b-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 32,
+            "y": 282,
+            "width": 140,
+            "height": 134
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f9aaac50123c505c5446fdc4fa4db337bfa92c4a781334534c2c1d7942a6d757"
+        },
+        {
+          "blockId": "cat-card-3",
+          "blockName": "cat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 13,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7c9a4ac6af1b92611cbf32ac2624974a5d36147886957bb98dfa9c69a4652eda"
+        },
+        {
+          "blockId": "cat-card-img-3",
+          "blockName": "cat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 14,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1e7ee2214a1b7f8ba102e7188cef75e793ee76b3b276ea2f404e99231d7af1d3"
+        },
+        {
+          "blockId": "cat-card-t-3",
+          "blockName": "cat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 206,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e80f02ad1f52ace5a2cbecfd8e35f2e1f34e010b9c5407ab9649d303a38c48c4"
+        },
+        {
+          "blockId": "cat-card-b-3",
+          "blockName": "cat-card-b-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 206,
+            "y": 282,
+            "width": 140,
+            "height": 134
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "edf71b944fdad064f0304407e4635ca3d89dd46805ecb264aaab51790976251b"
+        },
+        {
+          "blockId": "cat-card-4",
+          "blockName": "cat-card-4",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 17,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7a2b061a01d1cc5702fdd2f2874f9801cf5b798426617f31fceaabefbf591c6c"
+        },
+        {
+          "blockId": "cat-card-img-4",
+          "blockName": "cat-card-img-4",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 18,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dced4b8cb5bd5dae8d2dccadecf35e7f1ce4a394340cee637c5c35aaf99daf0f"
+        },
+        {
+          "blockId": "cat-card-t-4",
+          "blockName": "cat-card-t-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 32,
+            "y": 392,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b1e4044a2a9823a4267a378c3518240c9a7e04ede1b68d3c715caa7229f60832"
+        },
+        {
+          "blockId": "cat-card-b-4",
+          "blockName": "cat-card-b-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 32,
+            "y": 410,
+            "width": 140,
+            "height": 134
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fe47f64f181a6e33d593d5fe0c3e00d6833c46d07c1741e91e8214aeb211034e"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "cat-title",
+          "blockName": "cat-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 22,
+            "width": 200,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "78243616da748e67f249a7226585f243cd240eed2c9c1e417030fa122642a7c5",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-title",
+            "name": "cat-title",
+            "x": 18,
+            "y": 22,
+            "fill": "#141414",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 32
+          }
+        },
+        {
+          "blockId": "cat-card-0",
+          "blockName": "cat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e1b22c4da954f4b4bab6b127c8ee1f825fec88cef1d63538c5c981e8165be50f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-0",
+            "name": "cat-card-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-all-products",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-0",
+          "blockName": "cat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "66b762fb423988a29d94e4e3b3aee28c9a282af7573408a89ce28970d61b2e9b",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-0",
+            "name": "cat-card-img-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-all-products",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-0",
+          "blockName": "cat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "409626733a37730cb741018365ba365c3418244866e9dba0816f6ab2a649e21f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-0",
+            "name": "cat-card-t-0",
+            "x": 32,
+            "y": 136,
+            "fill": "#141414",
+            "content": "All Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-0",
+          "blockName": "cat-card-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 154,
+            "width": 140,
+            "height": 134
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "33c6765ae934420eda7b92e85ae49fcad5c25162c48feb346fb0d1d2712db04c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-0",
+            "name": "cat-card-b-0",
+            "x": 32,
+            "y": 154,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          }
+        },
+        {
+          "blockId": "cat-card-1",
+          "blockName": "cat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0ebd4d4a4a876a0caaf41798c1bd8c34b750daadb763cca9648b41cf12ddc547",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-1",
+            "name": "cat-card-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-modular-system",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-1",
+          "blockName": "cat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a84196d67ea21992744fec4c9288cd2c1eb55def814d8075b1f0f3f4d5cce4a0",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-1",
+            "name": "cat-card-img-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-modular-system",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-1",
+          "blockName": "cat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b646e9c036b64c24994d45322ab8a7fa655214cd7c0a8cdcedfdc4c89d9a553b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-1",
+            "name": "cat-card-t-1",
+            "x": 206,
+            "y": 136,
+            "fill": "#141414",
+            "content": "Modular System",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-1",
+          "blockName": "cat-card-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 154,
+            "width": 140,
+            "height": 134
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4e04e9460c67c85db0f29e1dc152f2c52ea01e383f3792ced40e181944cf8364",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-1",
+            "name": "cat-card-b-1",
+            "x": 206,
+            "y": 154,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          }
+        },
+        {
+          "blockId": "cat-card-2",
+          "blockName": "cat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e48b437b03c37798758d506dabdc3fae39a56c2386b19ecfb8ca9d259cbe4285",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-2",
+            "name": "cat-card-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-sound-room",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-2",
+          "blockName": "cat-card-img-2",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 10,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "58cb2715dcd4252306bb5f9ca7c3291aac711f93b770fa879bc6773bdbd05644",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-2",
+            "name": "cat-card-img-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-sound-room",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-2",
+          "blockName": "cat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b4e706c7bfb4abaf1b94cffb6fe7d4c95a026d2be16d409b52ecbb15e41f1a9a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-2",
+            "name": "cat-card-t-2",
+            "x": 32,
+            "y": 264,
+            "fill": "#141414",
+            "content": "Sound Room",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-2",
+          "blockName": "cat-card-b-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 32,
+            "y": 282,
+            "width": 140,
+            "height": 134
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f9aaac50123c505c5446fdc4fa4db337bfa92c4a781334534c2c1d7942a6d757",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-2",
+            "name": "cat-card-b-2",
+            "x": 32,
+            "y": 282,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          }
+        },
+        {
+          "blockId": "cat-card-3",
+          "blockName": "cat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 13,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7c9a4ac6af1b92611cbf32ac2624974a5d36147886957bb98dfa9c69a4652eda",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-3",
+            "name": "cat-card-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-support",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-3",
+          "blockName": "cat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 14,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1e7ee2214a1b7f8ba102e7188cef75e793ee76b3b276ea2f404e99231d7af1d3",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-3",
+            "name": "cat-card-img-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-support",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-3",
+          "blockName": "cat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 206,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e80f02ad1f52ace5a2cbecfd8e35f2e1f34e010b9c5407ab9649d303a38c48c4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-3",
+            "name": "cat-card-t-3",
+            "x": 206,
+            "y": 264,
+            "fill": "#141414",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-3",
+          "blockName": "cat-card-b-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 206,
+            "y": 282,
+            "width": 140,
+            "height": 134
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "edf71b944fdad064f0304407e4635ca3d89dd46805ecb264aaab51790976251b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-3",
+            "name": "cat-card-b-3",
+            "x": 206,
+            "y": 282,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          }
+        },
+        {
+          "blockId": "cat-card-4",
+          "blockName": "cat-card-4",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 17,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7a2b061a01d1cc5702fdd2f2874f9801cf5b798426617f31fceaabefbf591c6c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-4",
+            "name": "cat-card-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-about",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-4",
+          "blockName": "cat-card-img-4",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 18,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dced4b8cb5bd5dae8d2dccadecf35e7f1ce4a394340cee637c5c35aaf99daf0f",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-4",
+            "name": "cat-card-img-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-about",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-4",
+          "blockName": "cat-card-t-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 32,
+            "y": 392,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b1e4044a2a9823a4267a378c3518240c9a7e04ede1b68d3c715caa7229f60832",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-4",
+            "name": "cat-card-t-4",
+            "x": 32,
+            "y": 392,
+            "fill": "#141414",
+            "content": "About",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-4",
+          "blockName": "cat-card-b-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 32,
+            "y": 410,
+            "width": 140,
+            "height": 134
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fe47f64f181a6e33d593d5fe0c3e00d6833c46d07c1741e91e8214aeb211034e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-4",
+            "name": "cat-card-b-4",
+            "x": 32,
+            "y": 410,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "categories",
+        "name": "Categories",
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360,
+        "fill": "#F5F5F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "cat-title",
+            "name": "cat-title",
+            "x": 18,
+            "y": 22,
+            "fill": "#141414",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-0",
+            "name": "cat-card-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-all-products",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-0",
+            "name": "cat-card-img-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-all-products",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-0",
+            "name": "cat-card-t-0",
+            "x": 32,
+            "y": 136,
+            "fill": "#141414",
+            "content": "All Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-0",
+            "name": "cat-card-b-0",
+            "x": 32,
+            "y": 154,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-1",
+            "name": "cat-card-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-modular-system",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-1",
+            "name": "cat-card-img-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-modular-system",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-1",
+            "name": "cat-card-t-1",
+            "x": 206,
+            "y": 136,
+            "fill": "#141414",
+            "content": "Modular System",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-1",
+            "name": "cat-card-b-1",
+            "x": 206,
+            "y": 154,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-2",
+            "name": "cat-card-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-sound-room",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-2",
+            "name": "cat-card-img-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-sound-room",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-2",
+            "name": "cat-card-t-2",
+            "x": 32,
+            "y": 264,
+            "fill": "#141414",
+            "content": "Sound Room",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-2",
+            "name": "cat-card-b-2",
+            "x": 32,
+            "y": 282,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-3",
+            "name": "cat-card-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-support",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-3",
+            "name": "cat-card-img-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-support",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-3",
+            "name": "cat-card-t-3",
+            "x": 206,
+            "y": 264,
+            "fill": "#141414",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-3",
+            "name": "cat-card-b-3",
+            "x": 206,
+            "y": 282,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-4",
+            "name": "cat-card-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-about",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-4",
+            "name": "cat-card-img-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-about",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-4",
+            "name": "cat-card-t-4",
+            "x": 32,
+            "y": 392,
+            "fill": "#141414",
+            "content": "About",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-4",
+            "name": "cat-card-b-4",
+            "x": 32,
+            "y": 410,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "featured",
+      "sectionName": "Featured",
+      "sectionKind": "products",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410
+      },
+      "directChildCount": 17,
+      "recursiveNodeCount": 18,
+      "treeHash": "134547d14e0e71e71711a2f2b49c27e68396f3576c08c181bbe01d4e9e641bde",
+      "blockCount": 17,
+      "blockIndex": [
+        {
+          "blockId": "featured-title",
+          "blockName": "featured-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 24,
+            "width": 240,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "abb534f49009126aba608a83b9ebe713ca28e85ffde0d7dcc407c3b547fe7ada"
+        },
+        {
+          "blockId": "feat-card-0",
+          "blockName": "feat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ebbca0f0b91e791a517150d56da4a6a587be88ffc501687cfae7550a10320355"
+        },
+        {
+          "blockId": "feat-card-img-0",
+          "blockName": "feat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "85cba38491f87c9ab4e81d5684eae2600b18f88767564aa6854a97ed2e633b85"
+        },
+        {
+          "blockId": "feat-card-k-0",
+          "blockName": "feat-card-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "63cfe98915ab2111d7649040db72c1bdbf44188bbc0976ca672c8ce62359eb28"
+        },
+        {
+          "blockId": "feat-card-t-0",
+          "blockName": "feat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 180,
+            "width": 140,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "41444b046a9bd00960839d0ea68bcc134beb592d5b04a1d2b95a1f82bb715136"
+        },
+        {
+          "blockId": "feat-card-1",
+          "blockName": "feat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d437e6111cf6647655f102d4b4f7e320f79a3c4e5bb721673aea323c1721689b"
+        },
+        {
+          "blockId": "feat-card-img-1",
+          "blockName": "feat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "03fcd5a2d2f5d35193e7fc7839e3cdf7c43438c9e59ddf798957d0c9f4d6dc70"
+        },
+        {
+          "blockId": "feat-card-k-1",
+          "blockName": "feat-card-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a07528b5b60718692b08c05ecafb4cfcd0b113ff175c3fa916de0f6f9044c577"
+        },
+        {
+          "blockId": "feat-card-t-1",
+          "blockName": "feat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 180,
+            "width": 140,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "09fcad8d37441c3446d01c9208ebbed8bf78217872f653843d24dadc456c52f2"
+        },
+        {
+          "blockId": "feat-card-2",
+          "blockName": "feat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "18e2053a081fb908c7a8e6bddf43db69b56718f5464d37992712aad2b7890f1a"
+        },
+        {
+          "blockId": "feat-card-img-2",
+          "blockName": "feat-card-img-2",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 10,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "badaf03b42b64e6b19260920955e41e5c24ffaa3d2ccdf6972a82bf8822e9955"
+        },
+        {
+          "blockId": "feat-card-k-2",
+          "blockName": "feat-card-k-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0bf66473ab63f7296e09957fbd032388420d97d71418ef5d4fea3d8787caffc1"
+        },
+        {
+          "blockId": "feat-card-t-2",
+          "blockName": "feat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 32,
+            "y": 334,
+            "width": 140,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "31b942d76a4e38b80a4f8198ec7433abeb55284f2879ca847ffeeaf34fe9ef17"
+        },
+        {
+          "blockId": "feat-card-3",
+          "blockName": "feat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 13,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ffb387ac7e49a56ca353c9b9f1ce8f8d601b6d8028adb3671481ab2941c4a960"
+        },
+        {
+          "blockId": "feat-card-img-3",
+          "blockName": "feat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 14,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5f01484d56f9a79a9790000a518cb01b841e94a3c0220818bc2353a3ea5f4523"
+        },
+        {
+          "blockId": "feat-card-k-3",
+          "blockName": "feat-card-k-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 206,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "03c0ce4cf94fcd3b22d8a8ea033c322623da84cd1de2adcf10eb1f9f86a52b02"
+        },
+        {
+          "blockId": "feat-card-t-3",
+          "blockName": "feat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 206,
+            "y": 334,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "06ce3a9f70f7c5d8c5356d91e101d26da54b3e73d1c4b9cdcc290b2590c15e3f"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "featured-title",
+          "blockName": "featured-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 24,
+            "width": 240,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "abb534f49009126aba608a83b9ebe713ca28e85ffde0d7dcc407c3b547fe7ada",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "featured-title",
+            "name": "featured-title",
+            "x": 18,
+            "y": 24,
+            "fill": "#141414",
+            "content": "Featured pages",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 32
+          }
+        },
+        {
+          "blockId": "feat-card-0",
+          "blockName": "feat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ebbca0f0b91e791a517150d56da4a6a587be88ffc501687cfae7550a10320355",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-0",
+            "name": "feat-card-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-transparent-speaker-black-wifi",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-0",
+          "blockName": "feat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "85cba38491f87c9ab4e81d5684eae2600b18f88767564aa6854a97ed2e633b85",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-0",
+            "name": "feat-card-img-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-transparent-speaker-black-wifi",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-0",
+          "blockName": "feat-card-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "63cfe98915ab2111d7649040db72c1bdbf44188bbc0976ca672c8ce62359eb28",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-0",
+            "name": "feat-card-k-0",
+            "x": 32,
+            "y": 162,
+            "fill": "#111111",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-transparent-speaker-black-wifi"
+          }
+        },
+        {
+          "blockId": "feat-card-t-0",
+          "blockName": "feat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 180,
+            "width": 140,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "41444b046a9bd00960839d0ea68bcc134beb592d5b04a1d2b95a1f82bb715136",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-0",
+            "name": "feat-card-t-0",
+            "x": 32,
+            "y": 180,
+            "fill": "#141414",
+            "content": "Transparent Speaker Black Wi‑Fi",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43,
+            "href": "#page-transparent-speaker-black-wifi"
+          }
+        },
+        {
+          "blockId": "feat-card-1",
+          "blockName": "feat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d437e6111cf6647655f102d4b4f7e320f79a3c4e5bb721673aea323c1721689b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-1",
+            "name": "feat-card-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-turntable-black",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-1",
+          "blockName": "feat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "03fcd5a2d2f5d35193e7fc7839e3cdf7c43438c9e59ddf798957d0c9f4d6dc70",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-1",
+            "name": "feat-card-img-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-turntable-black",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-1",
+          "blockName": "feat-card-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a07528b5b60718692b08c05ecafb4cfcd0b113ff175c3fa916de0f6f9044c577",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-1",
+            "name": "feat-card-k-1",
+            "x": 206,
+            "y": 162,
+            "fill": "#111111",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-turntable-black"
+          }
+        },
+        {
+          "blockId": "feat-card-t-1",
+          "blockName": "feat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 180,
+            "width": 140,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "09fcad8d37441c3446d01c9208ebbed8bf78217872f653843d24dadc456c52f2",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-1",
+            "name": "feat-card-t-1",
+            "x": 206,
+            "y": 180,
+            "fill": "#141414",
+            "content": "Transparent Turntable",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43,
+            "href": "#page-turntable-black"
+          }
+        },
+        {
+          "blockId": "feat-card-2",
+          "blockName": "feat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "18e2053a081fb908c7a8e6bddf43db69b56718f5464d37992712aad2b7890f1a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-2",
+            "name": "feat-card-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-light-speaker-white",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-2",
+          "blockName": "feat-card-img-2",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 10,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "badaf03b42b64e6b19260920955e41e5c24ffaa3d2ccdf6972a82bf8822e9955",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-2",
+            "name": "feat-card-img-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-light-speaker-white",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-2",
+          "blockName": "feat-card-k-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0bf66473ab63f7296e09957fbd032388420d97d71418ef5d4fea3d8787caffc1",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-2",
+            "name": "feat-card-k-2",
+            "x": 32,
+            "y": 316,
+            "fill": "#111111",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-light-speaker-white"
+          }
+        },
+        {
+          "blockId": "feat-card-t-2",
+          "blockName": "feat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 32,
+            "y": 334,
+            "width": 140,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "31b942d76a4e38b80a4f8198ec7433abeb55284f2879ca847ffeeaf34fe9ef17",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-2",
+            "name": "feat-card-t-2",
+            "x": 32,
+            "y": 334,
+            "fill": "#141414",
+            "content": "Light Speaker White",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43,
+            "href": "#page-light-speaker-white"
+          }
+        },
+        {
+          "blockId": "feat-card-3",
+          "blockName": "feat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 13,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ffb387ac7e49a56ca353c9b9f1ce8f8d601b6d8028adb3671481ab2941c4a960",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-3",
+            "name": "feat-card-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-aroma-diffuser",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-3",
+          "blockName": "feat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 14,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5f01484d56f9a79a9790000a518cb01b841e94a3c0220818bc2353a3ea5f4523",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-3",
+            "name": "feat-card-img-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-aroma-diffuser",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-3",
+          "blockName": "feat-card-k-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 206,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "03c0ce4cf94fcd3b22d8a8ea033c322623da84cd1de2adcf10eb1f9f86a52b02",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-3",
+            "name": "feat-card-k-3",
+            "x": 206,
+            "y": 316,
+            "fill": "#111111",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-aroma-diffuser"
+          }
+        },
+        {
+          "blockId": "feat-card-t-3",
+          "blockName": "feat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 206,
+            "y": 334,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "06ce3a9f70f7c5d8c5356d91e101d26da54b3e73d1c4b9cdcc290b2590c15e3f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-3",
+            "name": "feat-card-t-3",
+            "x": 206,
+            "y": 334,
+            "fill": "#141414",
+            "content": "Aroma Diffuser",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-aroma-diffuser"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "featured",
+        "name": "Featured",
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410,
+        "fill": "#F5F5F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "featured-title",
+            "name": "featured-title",
+            "x": 18,
+            "y": 24,
+            "fill": "#141414",
+            "content": "Featured pages",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-0",
+            "name": "feat-card-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-transparent-speaker-black-wifi",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-0",
+            "name": "feat-card-img-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-transparent-speaker-black-wifi",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-0",
+            "name": "feat-card-k-0",
+            "x": 32,
+            "y": 162,
+            "fill": "#111111",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-transparent-speaker-black-wifi"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-0",
+            "name": "feat-card-t-0",
+            "x": 32,
+            "y": 180,
+            "fill": "#141414",
+            "content": "Transparent Speaker Black Wi‑Fi",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43,
+            "href": "#page-transparent-speaker-black-wifi"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-1",
+            "name": "feat-card-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-turntable-black",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-1",
+            "name": "feat-card-img-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-turntable-black",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-1",
+            "name": "feat-card-k-1",
+            "x": 206,
+            "y": 162,
+            "fill": "#111111",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-turntable-black"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-1",
+            "name": "feat-card-t-1",
+            "x": 206,
+            "y": 180,
+            "fill": "#141414",
+            "content": "Transparent Turntable",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43,
+            "href": "#page-turntable-black"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-2",
+            "name": "feat-card-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-light-speaker-white",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-2",
+            "name": "feat-card-img-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-light-speaker-white",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-2",
+            "name": "feat-card-k-2",
+            "x": 32,
+            "y": 316,
+            "fill": "#111111",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-light-speaker-white"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-2",
+            "name": "feat-card-t-2",
+            "x": 32,
+            "y": 334,
+            "fill": "#141414",
+            "content": "Light Speaker White",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43,
+            "href": "#page-light-speaker-white"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-3",
+            "name": "feat-card-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-aroma-diffuser",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-3",
+            "name": "feat-card-img-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-aroma-diffuser",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-3",
+            "name": "feat-card-k-3",
+            "x": 206,
+            "y": 316,
+            "fill": "#111111",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-aroma-diffuser"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-3",
+            "name": "feat-card-t-3",
+            "x": 206,
+            "y": 334,
+            "fill": "#141414",
+            "content": "Aroma Diffuser",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-aroma-diffuser"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "insights",
+      "sectionName": "Insights",
+      "sectionKind": "story",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 11,
+      "treeHash": "ac5275cefc3f4941279c44cacd6ffaa96ed60cca75249c8bd6240f547451a939",
+      "blockCount": 10,
+      "blockIndex": [
+        {
+          "blockId": "insight-card-0",
+          "blockName": "insight-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 0,
+          "bounds": {
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cc7d7a2f8cdacd7308b6393d4caf429cc8eccebe963cd7495c39e8f2e9870539"
+        },
+        {
+          "blockId": "insight-img-0",
+          "blockName": "insight-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a2d7ee602b5feb11bdd379f7cf55d70950cc964d631c22280e8244306fc074ee"
+        },
+        {
+          "blockId": "insight-k-0",
+          "blockName": "insight-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 42,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3a29f5ae607116a8b75873e201c973e0a807d902513395f6acbb36680bf089e2"
+        },
+        {
+          "blockId": "insight-t-0",
+          "blockName": "insight-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 66,
+            "width": 136,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4ea50e86d624455e77f2d7d8bc106e0963d6ce81c91d91431da3cba84f17cf47"
+        },
+        {
+          "blockId": "insight-b-0",
+          "blockName": "insight-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 40,
+            "y": 118,
+            "width": 136,
+            "height": 147
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "52efb89432fadab02788a07a5c3dabdc6b089db5e48caa866579668f8f713291"
+        },
+        {
+          "blockId": "insight-card-1",
+          "blockName": "insight-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "485bebd46e8908807983f189f5bd462ea768ec3e98e3a9da2536de5b8b3e1ea0"
+        },
+        {
+          "blockId": "insight-img-1",
+          "blockName": "insight-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5188efb1a3b2ae5aa923b643140e7bbcd7e8897fa22cd4cdc8fa73f46b1634fd"
+        },
+        {
+          "blockId": "insight-k-1",
+          "blockName": "insight-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 40,
+            "y": 230,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bd6ae1a1fe65347091d4027f498ddf38b41793f290b235837bc31ebf858a7839"
+        },
+        {
+          "blockId": "insight-t-1",
+          "blockName": "insight-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 40,
+            "y": 254,
+            "width": 136,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4f17b1c8a2711728ecbba89de2bc782cf9147ae140cab52c14b63f0921ed8090"
+        },
+        {
+          "blockId": "insight-b-1",
+          "blockName": "insight-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 40,
+            "y": 306,
+            "width": 136,
+            "height": 147
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a8d4120e976e7559d9ec878b7f3e9e2ee5f52c127354c2707c331fafc0f3ca42"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "insight-card-0",
+          "blockName": "insight-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 0,
+          "bounds": {
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cc7d7a2f8cdacd7308b6393d4caf429cc8eccebe963cd7495c39e8f2e9870539",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-card-0",
+            "name": "insight-card-0",
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168,
+            "fill": "#141414",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-sound-room",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-img-0",
+          "blockName": "insight-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a2d7ee602b5feb11bdd379f7cf55d70950cc964d631c22280e8244306fc074ee",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-img-0",
+            "name": "insight-img-0",
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-sound-room",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-k-0",
+          "blockName": "insight-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 42,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3a29f5ae607116a8b75873e201c973e0a807d902513395f6acbb36680bf089e2",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-k-0",
+            "name": "insight-k-0",
+            "x": 40,
+            "y": 42,
+            "fill": "#EAEAE4",
+            "content": "Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-sound-room"
+          }
+        },
+        {
+          "blockId": "insight-t-0",
+          "blockName": "insight-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 66,
+            "width": 136,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4ea50e86d624455e77f2d7d8bc106e0963d6ce81c91d91431da3cba84f17cf47",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-t-0",
+            "name": "insight-t-0",
+            "x": 40,
+            "y": 66,
+            "fill": "#FFFFFF",
+            "content": "Sound Room",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-sound-room"
+          }
+        },
+        {
+          "blockId": "insight-b-0",
+          "blockName": "insight-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 40,
+            "y": 118,
+            "width": 136,
+            "height": 147
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "52efb89432fadab02788a07a5c3dabdc6b089db5e48caa866579668f8f713291",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-b-0",
+            "name": "insight-b-0",
+            "x": 40,
+            "y": 118,
+            "fill": "#EAE6DF",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 147,
+            "href": "#page-sound-room"
+          }
+        },
+        {
+          "blockId": "insight-card-1",
+          "blockName": "insight-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "485bebd46e8908807983f189f5bd462ea768ec3e98e3a9da2536de5b8b3e1ea0",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-card-1",
+            "name": "insight-card-1",
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168,
+            "fill": "#F0F0EC",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-about",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-img-1",
+          "blockName": "insight-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5188efb1a3b2ae5aa923b643140e7bbcd7e8897fa22cd4cdc8fa73f46b1634fd",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-img-1",
+            "name": "insight-img-1",
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-about",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-k-1",
+          "blockName": "insight-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 40,
+            "y": 230,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bd6ae1a1fe65347091d4027f498ddf38b41793f290b235837bc31ebf858a7839",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-k-1",
+            "name": "insight-k-1",
+            "x": 40,
+            "y": 230,
+            "fill": "#111111",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-about"
+          }
+        },
+        {
+          "blockId": "insight-t-1",
+          "blockName": "insight-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 40,
+            "y": 254,
+            "width": 136,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4f17b1c8a2711728ecbba89de2bc782cf9147ae140cab52c14b63f0921ed8090",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-t-1",
+            "name": "insight-t-1",
+            "x": 40,
+            "y": 254,
+            "fill": "#141414",
+            "content": "About",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-about"
+          }
+        },
+        {
+          "blockId": "insight-b-1",
+          "blockName": "insight-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 40,
+            "y": 306,
+            "width": 136,
+            "height": 147
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a8d4120e976e7559d9ec878b7f3e9e2ee5f52c127354c2707c331fafc0f3ca42",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-b-1",
+            "name": "insight-b-1",
+            "x": 40,
+            "y": 306,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 147,
+            "href": "#page-about"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "insights",
+        "name": "Insights",
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420,
+        "fill": "#F5F5F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "insight-card-0",
+            "name": "insight-card-0",
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168,
+            "fill": "#141414",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-sound-room",
+            "cornerRadius": 20
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-img-0",
+            "name": "insight-img-0",
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-sound-room",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-0",
+            "name": "insight-k-0",
+            "x": 40,
+            "y": 42,
+            "fill": "#EAEAE4",
+            "content": "Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-sound-room"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-0",
+            "name": "insight-t-0",
+            "x": 40,
+            "y": 66,
+            "fill": "#FFFFFF",
+            "content": "Sound Room",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-sound-room"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-0",
+            "name": "insight-b-0",
+            "x": 40,
+            "y": 118,
+            "fill": "#EAE6DF",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 147,
+            "href": "#page-sound-room"
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-card-1",
+            "name": "insight-card-1",
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168,
+            "fill": "#F0F0EC",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-about",
+            "cornerRadius": 20
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-img-1",
+            "name": "insight-img-1",
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-about",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-1",
+            "name": "insight-k-1",
+            "x": 40,
+            "y": 230,
+            "fill": "#111111",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-about"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-1",
+            "name": "insight-t-1",
+            "x": 40,
+            "y": 254,
+            "fill": "#141414",
+            "content": "About",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-about"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-1",
+            "name": "insight-b-1",
+            "x": 40,
+            "y": 306,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 147,
+            "href": "#page-about"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 4,
+      "bounds": {
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "d6d697ddb4b9a8001f36b5df6ba23f2531d72f50fa525ac7cd72776bb494a43f",
+      "blockCount": 5,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b88a5b9ed2a096a8e296d09ad6d3e1ef08da5885003d5ed4b36c4f7dc2aa4dc8"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0d561b775b81032d117dd7845ddd8b01fec7e4747ea165d21991b31138166ef9"
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "be7e9b7368d12db1ea95ec576ddb361494f81ca38430a8c59fd2fa9149082d63"
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 85
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6c2634d43f4cf19913436fb769f46dc4c4d198ed449dbef4ab5585b1051e8ea7"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cd9c46af0683cdaf7957fd6b7e51bb6ead7947ef0014e1761343478c574ee137"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b88a5b9ed2a096a8e296d09ad6d3e1ef08da5885003d5ed4b36c4f7dc2aa4dc8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#131313"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0d561b775b81032d117dd7845ddd8b01fec7e4747ea165d21991b31138166ef9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F4F4EF",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "be7e9b7368d12db1ea95ec576ddb361494f81ca38430a8c59fd2fa9149082d63",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F4F4EF",
+            "content": "All Products Modular System Sound Room",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 53
+          }
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 85
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6c2634d43f4cf19913436fb769f46dc4c4d198ed449dbef4ab5585b1051e8ea7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F4F4EF",
+            "content": "Support About Transparent Speaker Black Wi‑Fi Transparent Turntable",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 85
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cd9c46af0683cdaf7957fd6b7e51bb6ead7947ef0014e1761343478c574ee137",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Transparent structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250,
+        "fill": "#131313",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#131313"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F4F4EF",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F4F4EF",
+            "content": "All Products Modular System Sound Room",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 53
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F4F4EF",
+            "content": "Support About Transparent Speaker Black Wi‑Fi Transparent Turntable",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 85
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Transparent structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 63,
+  "looseNodeCount": 1,
+  "looseNodes": [
+    {
+      "id": "home-bg",
+      "name": "home-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 1960
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-home",
+    "name": "Transparent Homepage Mobile",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 1960,
+    "fill": "#F5F5F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "home-bg",
+        "name": "home-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 1960,
+        "fill": "#F5F5F2"
+      },
+      {
+        "type": "frame",
+        "id": "hero",
+        "name": "Hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520,
+        "fill": "#F5F5F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "hero-bg",
+            "name": "hero-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520,
+            "fill": "#F5F5F2"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-image",
+            "name": "hero-image",
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-all-products",
+            "cornerRadius": 28
+          },
+          {
+            "type": "frame",
+            "id": "header-page-home",
+            "name": "Header",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#00000000",
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "header-bg",
+                "name": "header-bg",
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 64,
+                "fill": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "id": "header-brand",
+                "name": "header-brand",
+                "x": 18,
+                "y": 18,
+                "fill": "#141414",
+                "content": "Transparent",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 180,
+                "height": 28
+              },
+              {
+                "type": "text",
+                "id": "header-menu",
+                "name": "header-menu",
+                "x": 362,
+                "y": 18,
+                "fill": "#141414",
+                "content": "☰",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 18,
+                "height": 20,
+                "href": "#page-all-products",
+                "textAlign": "center",
+                "textAlignVertical": "middle"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "hero-kicker",
+            "name": "hero-kicker",
+            "x": 18,
+            "y": 86,
+            "fill": "#111111",
+            "content": "TRANSPARENT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 18,
+            "letterSpacing": "0.12em"
+          },
+          {
+            "type": "text",
+            "id": "hero-title",
+            "name": "hero-title",
+            "x": 18,
+            "y": 116,
+            "fill": "#141414",
+            "content": "Timeless speakers and design tech",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 34,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 151
+          },
+          {
+            "type": "text",
+            "id": "hero-subtitle",
+            "name": "hero-subtitle",
+            "x": 18,
+            "y": 240,
+            "fill": "#666862",
+            "content": "scandinavian industrial design, modular systems and audio objects shaped to last and evolve over time.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 66
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-primary-box",
+            "name": "hero-primary-box",
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#111111",
+            "stroke": {
+              "fill": "#111111",
+              "thickness": 1
+            },
+            "href": "#page-all-products",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-primary-text",
+            "name": "hero-primary-text",
+            "x": 32,
+            "y": 325,
+            "fill": "#FFFFFF",
+            "content": "All Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-all-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-secondary-box",
+            "name": "hero-secondary-box",
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-modular-system",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-secondary-text",
+            "name": "hero-secondary-text",
+            "x": 194,
+            "y": 325,
+            "fill": "#141414",
+            "content": "Modular System",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-modular-system",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "categories",
+        "name": "Categories",
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360,
+        "fill": "#F5F5F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "cat-title",
+            "name": "cat-title",
+            "x": 18,
+            "y": 22,
+            "fill": "#141414",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-0",
+            "name": "cat-card-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-all-products",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-0",
+            "name": "cat-card-img-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-all-products",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-0",
+            "name": "cat-card-t-0",
+            "x": 32,
+            "y": 136,
+            "fill": "#141414",
+            "content": "All Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-0",
+            "name": "cat-card-b-0",
+            "x": 32,
+            "y": 154,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-1",
+            "name": "cat-card-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-modular-system",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-1",
+            "name": "cat-card-img-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-modular-system",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-1",
+            "name": "cat-card-t-1",
+            "x": 206,
+            "y": 136,
+            "fill": "#141414",
+            "content": "Modular System",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-1",
+            "name": "cat-card-b-1",
+            "x": 206,
+            "y": 154,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-2",
+            "name": "cat-card-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-sound-room",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-2",
+            "name": "cat-card-img-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-sound-room",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-2",
+            "name": "cat-card-t-2",
+            "x": 32,
+            "y": 264,
+            "fill": "#141414",
+            "content": "Sound Room",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-2",
+            "name": "cat-card-b-2",
+            "x": 32,
+            "y": 282,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-3",
+            "name": "cat-card-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-support",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-3",
+            "name": "cat-card-img-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-support",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-3",
+            "name": "cat-card-t-3",
+            "x": 206,
+            "y": 264,
+            "fill": "#141414",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-3",
+            "name": "cat-card-b-3",
+            "x": 206,
+            "y": 282,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-4",
+            "name": "cat-card-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-about",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-4",
+            "name": "cat-card-img-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-about",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-4",
+            "name": "cat-card-t-4",
+            "x": 32,
+            "y": 392,
+            "fill": "#141414",
+            "content": "About",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-4",
+            "name": "cat-card-b-4",
+            "x": 32,
+            "y": 410,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "featured",
+        "name": "Featured",
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410,
+        "fill": "#F5F5F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "featured-title",
+            "name": "featured-title",
+            "x": 18,
+            "y": 24,
+            "fill": "#141414",
+            "content": "Featured pages",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-0",
+            "name": "feat-card-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-transparent-speaker-black-wifi",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-0",
+            "name": "feat-card-img-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-transparent-speaker-black-wifi",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-0",
+            "name": "feat-card-k-0",
+            "x": 32,
+            "y": 162,
+            "fill": "#111111",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-transparent-speaker-black-wifi"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-0",
+            "name": "feat-card-t-0",
+            "x": 32,
+            "y": 180,
+            "fill": "#141414",
+            "content": "Transparent Speaker Black Wi‑Fi",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43,
+            "href": "#page-transparent-speaker-black-wifi"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-1",
+            "name": "feat-card-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-turntable-black",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-1",
+            "name": "feat-card-img-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-turntable-black",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-1",
+            "name": "feat-card-k-1",
+            "x": 206,
+            "y": 162,
+            "fill": "#111111",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-turntable-black"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-1",
+            "name": "feat-card-t-1",
+            "x": 206,
+            "y": 180,
+            "fill": "#141414",
+            "content": "Transparent Turntable",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43,
+            "href": "#page-turntable-black"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-2",
+            "name": "feat-card-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-light-speaker-white",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-2",
+            "name": "feat-card-img-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-light-speaker-white",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-2",
+            "name": "feat-card-k-2",
+            "x": 32,
+            "y": 316,
+            "fill": "#111111",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-light-speaker-white"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-2",
+            "name": "feat-card-t-2",
+            "x": 32,
+            "y": 334,
+            "fill": "#141414",
+            "content": "Light Speaker White",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43,
+            "href": "#page-light-speaker-white"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-3",
+            "name": "feat-card-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-aroma-diffuser",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-3",
+            "name": "feat-card-img-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-aroma-diffuser",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-3",
+            "name": "feat-card-k-3",
+            "x": 206,
+            "y": 316,
+            "fill": "#111111",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-aroma-diffuser"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-3",
+            "name": "feat-card-t-3",
+            "x": 206,
+            "y": 334,
+            "fill": "#141414",
+            "content": "Aroma Diffuser",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-aroma-diffuser"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "insights",
+        "name": "Insights",
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420,
+        "fill": "#F5F5F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "insight-card-0",
+            "name": "insight-card-0",
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168,
+            "fill": "#141414",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-sound-room",
+            "cornerRadius": 20
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-img-0",
+            "name": "insight-img-0",
+            "x": 194,
+            "y": 20,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-sound-room",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-0",
+            "name": "insight-k-0",
+            "x": 40,
+            "y": 42,
+            "fill": "#EAEAE4",
+            "content": "Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-sound-room"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-0",
+            "name": "insight-t-0",
+            "x": 40,
+            "y": 66,
+            "fill": "#FFFFFF",
+            "content": "Sound Room",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-sound-room"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-0",
+            "name": "insight-b-0",
+            "x": 40,
+            "y": 118,
+            "fill": "#EAE6DF",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 147,
+            "href": "#page-sound-room"
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-card-1",
+            "name": "insight-card-1",
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168,
+            "fill": "#F0F0EC",
+            "stroke": {
+              "fill": "#D9D9D0",
+              "thickness": 1
+            },
+            "href": "#page-about",
+            "cornerRadius": 20
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-img-1",
+            "name": "insight-img-1",
+            "x": 194,
+            "y": 208,
+            "width": 176,
+            "height": 168,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-home-img-1-1d7086e9.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-about",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-1",
+            "name": "insight-k-1",
+            "x": 40,
+            "y": 230,
+            "fill": "#111111",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-about"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-1",
+            "name": "insight-t-1",
+            "x": 40,
+            "y": 254,
+            "fill": "#141414",
+            "content": "About",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-about"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-1",
+            "name": "insight-b-1",
+            "x": 40,
+            "y": 306,
+            "fill": "#666862",
+            "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 147,
+            "href": "#page-about"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250,
+        "fill": "#131313",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#131313"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F4F4EF",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F4F4EF",
+            "content": "All Products Modular System Sound Room",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 53
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F4F4EF",
+            "content": "Support About Transparent Speaker Black Wi‑Fi Transparent Turntable",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 85
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Transparent structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    ]
+  }
+}

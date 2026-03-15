@@ -1,0 +1,189 @@
+{
+  "blockId": "xGnw7",
+  "blockName": "heroCards",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 7,
+  "bounds": {
+    "x": 24,
+    "y": 368,
+    "width": 1392,
+    "height": 360
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 13,
+  "treeHash": "7bde6ea20e58f0de9f8ee14b739f27a3a4027f7baa4c5de54ad65ad8b8bc8726",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "xGnw7",
+    "x": 24,
+    "y": 368,
+    "name": "heroCards",
+    "width": 1392,
+    "height": 360,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "GJGyk",
+        "x": 0,
+        "y": 0,
+        "name": "c1",
+        "width": 448,
+        "height": 360,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "9B6iY",
+            "x": 0,
+            "y": 0,
+            "name": "img1",
+            "width": 430,
+            "height": 230,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "pKvuZ",
+            "x": 0,
+            "y": 246,
+            "fill": "#1F1F1F",
+            "content": "订单支持",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "TagnO",
+            "x": 0,
+            "y": 266,
+            "fill": "#5D5D5D",
+            "textGrowth": "fixed-width",
+            "width": 410,
+            "content": "跟踪交付状态、发票和账户信息。",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "DM82i",
+        "x": 472,
+        "y": 0,
+        "name": "c2",
+        "width": 448,
+        "height": 360,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "v0UEI",
+            "x": 0,
+            "y": 0,
+            "name": "img1",
+            "width": 430,
+            "height": 230,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1516383740770-fbcc5ccbece0?auto=format&fit=crop&w=900&q=80",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "KQfzA",
+            "x": 0,
+            "y": 246,
+            "fill": "#1F1F1F",
+            "content": "计算器和数据",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "Q8E3c",
+            "x": 0,
+            "y": 266,
+            "fill": "#5D5D5D",
+            "textGrowth": "fixed-width",
+            "width": 410,
+            "content": "下载切削参数和加工建议，帮助快速完成工艺验证。",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "N9gHh",
+        "x": 944,
+        "y": 0,
+        "name": "c3",
+        "width": 448,
+        "height": 360,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "yUhcz",
+            "x": 0,
+            "y": 0,
+            "name": "img1",
+            "width": 430,
+            "height": 230,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&w=900&q=80",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "V8BNT",
+            "x": 0,
+            "y": 246,
+            "fill": "#1F1F1F",
+            "content": "备件和备件",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "tok3U",
+            "x": 0,
+            "y": 266,
+            "fill": "#5D5D5D",
+            "textGrowth": "fixed-width",
+            "width": 410,
+            "content": "我们的专家将帮助您在刀具与夹具的选择和维护方面取得更高效率。",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    ]
+  }
+}

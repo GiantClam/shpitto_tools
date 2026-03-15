@@ -1,0 +1,2337 @@
+{
+  "pageId": "page-sound-room",
+  "pageName": "Sound Room",
+  "pageType": "generic",
+  "order": 3,
+  "bounds": {
+    "x": 1640,
+    "y": 6113,
+    "width": 1440,
+    "height": 2947
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "c0b492e040c4d4c465fb8eae93a9fd84eb9b40f61c01eea9abb6e5eb3e737f97",
+  "directChildCount": 40,
+  "recursiveNodeCount": 57,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "header-page-sound-room",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "359d2907cdfcd90406681a05b4e1e4adffacafa023b61a60d17f267813f2d33e",
+      "blockCount": 7
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 2717,
+        "width": 1440,
+        "height": 230
+      },
+      "directChildCount": 9,
+      "recursiveNodeCount": 10,
+      "treeHash": "131fc0a5891364d324baab1ef111a3635854bdb0c057fd10a9b3947f2a4cd418",
+      "blockCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "header-page-sound-room",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "359d2907cdfcd90406681a05b4e1e4adffacafa023b61a60d17f267813f2d33e",
+      "blockCount": 7,
+      "blockIndex": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7"
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 24,
+            "width": 240,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "56eee186057a3afaf96770bb4607aac68532dc2cc860589d65325e19184ecdca"
+        },
+        {
+          "blockId": "nav-page-all-products",
+          "blockName": "nav-page-all-products",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 840,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2965b85f290ae892822bd77c720a76fc0255ff81ceb5260dcc2ba57d04d5364b"
+        },
+        {
+          "blockId": "nav-page-modular-system",
+          "blockName": "nav-page-modular-system",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 948,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "18a718e57fb49b8a227e083eddcb6e49d5b991b0ff10b4dd7baf51f41f295072"
+        },
+        {
+          "blockId": "nav-page-sound-room",
+          "blockName": "nav-page-sound-room",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 1056,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9a0e93a81e8296aba30abf7e9fc45ef6f180aabe23103d6e28d16ab49d61df6f"
+        },
+        {
+          "blockId": "nav-page-support",
+          "blockName": "nav-page-support",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 1164,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "52f6f3769e265d25ac95f69250b58485c27238b843487242ee00a513fa62b372"
+        },
+        {
+          "blockId": "nav-page-about",
+          "blockName": "nav-page-about",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1272,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f8080abdfddf8caa8f8808ee9a584217309c89d1422c1714e161e8154eabdb30"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 24,
+            "width": 240,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "56eee186057a3afaf96770bb4607aac68532dc2cc860589d65325e19184ecdca",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#141414",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          }
+        },
+        {
+          "blockId": "nav-page-all-products",
+          "blockName": "nav-page-all-products",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 840,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2965b85f290ae892822bd77c720a76fc0255ff81ceb5260dcc2ba57d04d5364b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-all-products",
+            "name": "nav-page-all-products",
+            "x": 840,
+            "y": 30,
+            "fill": "#141414",
+            "content": "ALL PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-all-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-modular-system",
+          "blockName": "nav-page-modular-system",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 948,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "18a718e57fb49b8a227e083eddcb6e49d5b991b0ff10b4dd7baf51f41f295072",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-modular-system",
+            "name": "nav-page-modular-system",
+            "x": 948,
+            "y": 30,
+            "fill": "#141414",
+            "content": "MODULAR SYSTEM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-modular-system",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-sound-room",
+          "blockName": "nav-page-sound-room",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 1056,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9a0e93a81e8296aba30abf7e9fc45ef6f180aabe23103d6e28d16ab49d61df6f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-sound-room",
+            "name": "nav-page-sound-room",
+            "x": 1056,
+            "y": 30,
+            "fill": "#141414",
+            "content": "SOUND ROOM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-sound-room",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-support",
+          "blockName": "nav-page-support",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 1164,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "52f6f3769e265d25ac95f69250b58485c27238b843487242ee00a513fa62b372",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-support",
+            "name": "nav-page-support",
+            "x": 1164,
+            "y": 30,
+            "fill": "#141414",
+            "content": "SUPPORT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-about",
+          "blockName": "nav-page-about",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1272,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f8080abdfddf8caa8f8808ee9a584217309c89d1422c1714e161e8154eabdb30",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-about",
+            "name": "nav-page-about",
+            "x": 1272,
+            "y": 30,
+            "fill": "#141414",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-about",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "header-page-sound-room",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#141414",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "nav-page-all-products",
+            "name": "nav-page-all-products",
+            "x": 840,
+            "y": 30,
+            "fill": "#141414",
+            "content": "ALL PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-all-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-modular-system",
+            "name": "nav-page-modular-system",
+            "x": 948,
+            "y": 30,
+            "fill": "#141414",
+            "content": "MODULAR SYSTEM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-modular-system",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-sound-room",
+            "name": "nav-page-sound-room",
+            "x": 1056,
+            "y": 30,
+            "fill": "#141414",
+            "content": "SOUND ROOM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-sound-room",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-support",
+            "name": "nav-page-support",
+            "x": 1164,
+            "y": 30,
+            "fill": "#141414",
+            "content": "SUPPORT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-about",
+            "name": "nav-page-about",
+            "x": 1272,
+            "y": 30,
+            "fill": "#141414",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-about",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 2717,
+        "width": 1440,
+        "height": 230
+      },
+      "directChildCount": 9,
+      "recursiveNodeCount": 10,
+      "treeHash": "131fc0a5891364d324baab1ef111a3635854bdb0c057fd10a9b3947f2a4cd418",
+      "blockCount": 9,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8ec7dd31a650127610d251ecb19ea609c6ed547c57272da650d7e965d276280f"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cf28c3d368a16b7629696ad1c09629dd29114ca7c5dcc76aedc356216a16fd15"
+        },
+        {
+          "blockId": "footer-title-0",
+          "blockName": "footer-title-0",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "39249e4dd64db59222451fe510edb6cd5a417825854ef043e8133a600222a517"
+        },
+        {
+          "blockId": "footer-body-0",
+          "blockName": "footer-body-0",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 100,
+            "width": 180,
+            "height": 41
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b75ba1129c54831ba1542bbc3bd740cc26b515480b6d056df5bfa9a760d0fe59"
+        },
+        {
+          "blockId": "footer-title-1",
+          "blockName": "footer-title-1",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 260,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1f93cbec1af567f8813d4ee480e5a5949818678b88327dcc7b3a47b5254e24ac"
+        },
+        {
+          "blockId": "footer-body-1",
+          "blockName": "footer-body-1",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 260,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8ff16789cc7154c53a89005c8ba32a10f98723a8ddc47120b6a628e48ebd94b7"
+        },
+        {
+          "blockId": "footer-title-2",
+          "blockName": "footer-title-2",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 480,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cfd3f872e258e0ac4ad1f4ea336e6de6dd10226fa84d9abbf68a856fde2886bb"
+        },
+        {
+          "blockId": "footer-body-2",
+          "blockName": "footer-body-2",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 480,
+            "y": 100,
+            "width": 180,
+            "height": 58
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d15f138b8fbac382d48021dd425efd087b21d49fde9c50d604f780de1bc8c747"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 1020,
+            "y": 150,
+            "width": 320,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "86139ebffddb94ec6163c0334e8d37644b7a7af20c1fe8238dcd0c14d0396be8"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8ec7dd31a650127610d251ecb19ea609c6ed547c57272da650d7e965d276280f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230,
+            "fill": "#131313"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cf28c3d368a16b7629696ad1c09629dd29114ca7c5dcc76aedc356216a16fd15",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 40,
+            "y": 30,
+            "fill": "#F4F4EF",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-title-0",
+          "blockName": "footer-title-0",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "39249e4dd64db59222451fe510edb6cd5a417825854ef043e8133a600222a517",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-title-0",
+            "name": "footer-title-0",
+            "x": 40,
+            "y": 76,
+            "fill": "#F4F4EF",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-body-0",
+          "blockName": "footer-body-0",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 100,
+            "width": 180,
+            "height": 41
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b75ba1129c54831ba1542bbc3bd740cc26b515480b6d056df5bfa9a760d0fe59",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-body-0",
+            "name": "footer-body-0",
+            "x": 40,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "All Products Modular System",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 41
+          }
+        },
+        {
+          "blockId": "footer-title-1",
+          "blockName": "footer-title-1",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 260,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1f93cbec1af567f8813d4ee480e5a5949818678b88327dcc7b3a47b5254e24ac",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-title-1",
+            "name": "footer-title-1",
+            "x": 260,
+            "y": 76,
+            "fill": "#F4F4EF",
+            "content": "Explore",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-body-1",
+          "blockName": "footer-body-1",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 260,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8ff16789cc7154c53a89005c8ba32a10f98723a8ddc47120b6a628e48ebd94b7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-body-1",
+            "name": "footer-body-1",
+            "x": 260,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Sound Room Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-title-2",
+          "blockName": "footer-title-2",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 480,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cfd3f872e258e0ac4ad1f4ea336e6de6dd10226fa84d9abbf68a856fde2886bb",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-title-2",
+            "name": "footer-title-2",
+            "x": 480,
+            "y": 76,
+            "fill": "#F4F4EF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-body-2",
+          "blockName": "footer-body-2",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 480,
+            "y": 100,
+            "width": 180,
+            "height": 58
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d15f138b8fbac382d48021dd425efd087b21d49fde9c50d604f780de1bc8c747",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-body-2",
+            "name": "footer-body-2",
+            "x": 480,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "About Transparent Speaker Black Wi‑Fi Transparent Turntable",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 58
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 1020,
+            "y": 150,
+            "width": 320,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "86139ebffddb94ec6163c0334e8d37644b7a7af20c1fe8238dcd0c14d0396be8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 1020,
+            "y": 150,
+            "fill": "#D8D5CE",
+            "content": "Transparent structured clone pen with desktop and mobile page sets.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 38
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 2717,
+        "width": 1440,
+        "height": 230,
+        "fill": "#131313",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230,
+            "fill": "#131313"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 40,
+            "y": 30,
+            "fill": "#F4F4EF",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-0",
+            "name": "footer-title-0",
+            "x": 40,
+            "y": 76,
+            "fill": "#F4F4EF",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-0",
+            "name": "footer-body-0",
+            "x": 40,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "All Products Modular System",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 41
+          },
+          {
+            "type": "text",
+            "id": "footer-title-1",
+            "name": "footer-title-1",
+            "x": 260,
+            "y": 76,
+            "fill": "#F4F4EF",
+            "content": "Explore",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-1",
+            "name": "footer-body-1",
+            "x": 260,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Sound Room Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-2",
+            "name": "footer-title-2",
+            "x": 480,
+            "y": 76,
+            "fill": "#F4F4EF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-2",
+            "name": "footer-body-2",
+            "x": 480,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "About Transparent Speaker Black Wi‑Fi Transparent Turntable",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 58
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 1020,
+            "y": 150,
+            "fill": "#D8D5CE",
+            "content": "Transparent structured clone pen with desktop and mobile page sets.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 38
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 16,
+  "looseNodeCount": 38,
+  "looseNodes": [
+    {
+      "id": "page-sound-room-bg",
+      "name": "page-sound-room-bg",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 100
+    },
+    {
+      "id": "page-sound-room-hero",
+      "name": "page-sound-room-hero",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 420
+    },
+    {
+      "id": "page-sound-room-overlay",
+      "name": "page-sound-room-overlay",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 420
+    },
+    {
+      "id": "page-sound-room-panel",
+      "name": "page-sound-room-panel",
+      "type": "rectangle",
+      "width": 1360,
+      "height": 2233
+    },
+    {
+      "id": "page-sound-room-crumb",
+      "name": "page-sound-room-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 18
+    },
+    {
+      "id": "page-sound-room-title",
+      "name": "page-sound-room-title",
+      "type": "text",
+      "width": 760,
+      "height": 166
+    },
+    {
+      "id": "page-sound-room-subtitle",
+      "name": "page-sound-room-subtitle",
+      "type": "text",
+      "width": 620,
+      "height": 79
+    },
+    {
+      "id": "page-sound-room-btn-home-box",
+      "name": "page-sound-room-btn-home-box",
+      "type": "rectangle",
+      "width": 128,
+      "height": 38
+    },
+    {
+      "id": "page-sound-room-btn-home-text",
+      "name": "page-sound-room-btn-home-text",
+      "type": "text",
+      "width": 100,
+      "height": 18
+    },
+    {
+      "id": "page-sound-room-btn-peer-box",
+      "name": "page-sound-room-btn-peer-box",
+      "type": "rectangle",
+      "width": 148,
+      "height": 38
+    },
+    {
+      "id": "page-sound-room-btn-peer-text",
+      "name": "page-sound-room-btn-peer-text",
+      "type": "text",
+      "width": 120,
+      "height": 18
+    },
+    {
+      "id": "page-sound-room-kicker",
+      "name": "page-sound-room-kicker",
+      "type": "text",
+      "width": 520,
+      "height": 18
+    },
+    {
+      "id": "page-sound-room-panel-title",
+      "name": "page-sound-room-panel-title",
+      "type": "text",
+      "width": 520,
+      "height": 60
+    },
+    {
+      "id": "page-sound-room-p-0",
+      "name": "page-sound-room-p-0",
+      "type": "text",
+      "width": 520,
+      "height": 70
+    },
+    {
+      "id": "page-sound-room-p-1",
+      "name": "page-sound-room-p-1",
+      "type": "text",
+      "width": 520,
+      "height": 1540
+    },
+    {
+      "id": "page-sound-room-p-2",
+      "name": "page-sound-room-p-2",
+      "type": "text",
+      "width": 520,
+      "height": 70
+    },
+    {
+      "id": "page-sound-room-p-3",
+      "name": "page-sound-room-p-3",
+      "type": "text",
+      "width": 520,
+      "height": 49
+    },
+    {
+      "id": "page-sound-room-feature",
+      "name": "page-sound-room-feature",
+      "type": "rectangle",
+      "width": 390,
+      "height": 260
+    },
+    {
+      "id": "page-sound-room-feature-2",
+      "name": "page-sound-room-feature-2",
+      "type": "rectangle",
+      "width": 390,
+      "height": 180
+    },
+    {
+      "id": "page-sound-room-card-0",
+      "name": "page-sound-room-card-0",
+      "type": "rectangle",
+      "width": 196,
+      "height": 178
+    },
+    {
+      "id": "page-sound-room-card-img-0",
+      "name": "page-sound-room-card-img-0",
+      "type": "rectangle",
+      "width": 196,
+      "height": 96
+    },
+    {
+      "id": "page-sound-room-card-title-0",
+      "name": "page-sound-room-card-title-0",
+      "type": "text",
+      "width": 176,
+      "height": 18
+    },
+    {
+      "id": "page-sound-room-card-copy-0",
+      "name": "page-sound-room-card-copy-0",
+      "type": "text",
+      "width": 176,
+      "height": 85
+    },
+    {
+      "id": "page-sound-room-card-1",
+      "name": "page-sound-room-card-1",
+      "type": "rectangle",
+      "width": 196,
+      "height": 178
+    },
+    {
+      "id": "page-sound-room-card-img-1",
+      "name": "page-sound-room-card-img-1",
+      "type": "rectangle",
+      "width": 196,
+      "height": 96
+    },
+    {
+      "id": "page-sound-room-card-title-1",
+      "name": "page-sound-room-card-title-1",
+      "type": "text",
+      "width": 176,
+      "height": 18
+    },
+    {
+      "id": "page-sound-room-card-copy-1",
+      "name": "page-sound-room-card-copy-1",
+      "type": "text",
+      "width": 176,
+      "height": 85
+    },
+    {
+      "id": "page-sound-room-card-2",
+      "name": "page-sound-room-card-2",
+      "type": "rectangle",
+      "width": 196,
+      "height": 178
+    },
+    {
+      "id": "page-sound-room-card-img-2",
+      "name": "page-sound-room-card-img-2",
+      "type": "rectangle",
+      "width": 196,
+      "height": 96
+    },
+    {
+      "id": "page-sound-room-card-title-2",
+      "name": "page-sound-room-card-title-2",
+      "type": "text",
+      "width": 176,
+      "height": 18
+    },
+    {
+      "id": "page-sound-room-card-copy-2",
+      "name": "page-sound-room-card-copy-2",
+      "type": "text",
+      "width": 176,
+      "height": 85
+    },
+    {
+      "id": "page-sound-room-related-title",
+      "name": "page-sound-room-related-title",
+      "type": "text",
+      "width": 180,
+      "height": 18
+    },
+    {
+      "id": "page-sound-room-related-0-box",
+      "name": "page-sound-room-related-0-box",
+      "type": "rectangle",
+      "width": 180,
+      "height": 36
+    },
+    {
+      "id": "page-sound-room-related-0-text",
+      "name": "page-sound-room-related-0-text",
+      "type": "text",
+      "width": 152,
+      "height": 18
+    },
+    {
+      "id": "page-sound-room-related-1-box",
+      "name": "page-sound-room-related-1-box",
+      "type": "rectangle",
+      "width": 180,
+      "height": 36
+    },
+    {
+      "id": "page-sound-room-related-1-text",
+      "name": "page-sound-room-related-1-text",
+      "type": "text",
+      "width": 152,
+      "height": 18
+    },
+    {
+      "id": "page-sound-room-related-2-box",
+      "name": "page-sound-room-related-2-box",
+      "type": "rectangle",
+      "width": 180,
+      "height": 36
+    },
+    {
+      "id": "page-sound-room-related-2-text",
+      "name": "page-sound-room-related-2-text",
+      "type": "text",
+      "width": 152,
+      "height": 18
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-2-0c2e17f0.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-2-0c2e17f0.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-all-products-img-2-0c2e17f0.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-2-0c2e17f0.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-2-0c2e17f0.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-all-products-img-2-0c2e17f0.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-3-a9f04880.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/transpa-rent/page-all-products-img-3-a9f04880.jpg",
+      "relativePath": "assets-structured/transpa-rent/page-all-products-img-3-a9f04880.jpg",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-sound-room",
+    "name": "Sound Room",
+    "x": 1640,
+    "y": 6113,
+    "width": 1440,
+    "height": 2947,
+    "fill": "#F5F5F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-bg",
+        "name": "page-sound-room-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 100,
+        "fill": "#F5F5F2"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-hero",
+        "name": "page-sound-room-hero",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 420,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+          "mode": "cover"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-overlay",
+        "name": "page-sound-room-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 420,
+        "fill": "#00000055"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-panel",
+        "name": "page-sound-room-panel",
+        "x": 40,
+        "y": 444,
+        "width": 1360,
+        "height": 2233,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D9D0",
+          "thickness": 1
+        },
+        "cornerRadius": 20
+      },
+      {
+        "type": "frame",
+        "id": "header-page-sound-room",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#141414",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "nav-page-all-products",
+            "name": "nav-page-all-products",
+            "x": 840,
+            "y": 30,
+            "fill": "#141414",
+            "content": "ALL PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-all-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-modular-system",
+            "name": "nav-page-modular-system",
+            "x": 948,
+            "y": 30,
+            "fill": "#141414",
+            "content": "MODULAR SYSTEM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-modular-system",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-sound-room",
+            "name": "nav-page-sound-room",
+            "x": 1056,
+            "y": 30,
+            "fill": "#141414",
+            "content": "SOUND ROOM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-sound-room",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-support",
+            "name": "nav-page-support",
+            "x": 1164,
+            "y": 30,
+            "fill": "#141414",
+            "content": "SUPPORT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-about",
+            "name": "nav-page-about",
+            "x": 1272,
+            "y": 30,
+            "fill": "#141414",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-about",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-crumb",
+        "name": "page-sound-room-crumb",
+        "x": 40,
+        "y": 102,
+        "fill": "#FFFFFF",
+        "content": "Home / Sound Room",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-title",
+        "name": "page-sound-room-title",
+        "x": 40,
+        "y": 126,
+        "fill": "#FFFFFF",
+        "content": "Transparent | Official Online Store",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 56,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 760,
+        "height": 166
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-subtitle",
+        "name": "page-sound-room-subtitle",
+        "x": 40,
+        "y": 226,
+        "fill": "#F0F0EE",
+        "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 17,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 79
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-btn-home-box",
+        "name": "page-sound-room-btn-home-box",
+        "x": 40,
+        "y": 298,
+        "width": 128,
+        "height": 38,
+        "fill": "#111111",
+        "stroke": {
+          "fill": "#111111",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-btn-home-text",
+        "name": "page-sound-room-btn-home-text",
+        "x": 54,
+        "y": 308,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-btn-peer-box",
+        "name": "page-sound-room-btn-peer-box",
+        "x": 180,
+        "y": 298,
+        "width": 148,
+        "height": 38,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D9D0",
+          "thickness": 1
+        },
+        "href": "#page-transparent-speaker-black-wifi",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-btn-peer-text",
+        "name": "page-sound-room-btn-peer-text",
+        "x": 194,
+        "y": 308,
+        "fill": "#141414",
+        "content": "Product page",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-transparent-speaker-black-wifi",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-kicker",
+        "name": "page-sound-room-kicker",
+        "x": 64,
+        "y": 468,
+        "fill": "#111111",
+        "content": "SECOND LEVEL PAGE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 18,
+        "letterSpacing": "0.1em"
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-panel-title",
+        "name": "page-sound-room-panel-title",
+        "x": 64,
+        "y": 490,
+        "fill": "#141414",
+        "content": "Language",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 38,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 60
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-p-0",
+        "name": "page-sound-room-p-0",
+        "x": 64,
+        "y": 522,
+        "fill": "#141414",
+        "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, sustainability and crystal-clear sound. Explore the collection.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 70
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-p-1",
+        "name": "page-sound-room-p-1",
+        "x": 64,
+        "y": 610,
+        "fill": "#141414",
+        "content": "#module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e { width: 100%; margin-top:15px; margin-bottom:15px; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.container { overflow: hidden; } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.products-grid .grid-item { display: inline-block; } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e .grid-product { height: 100%; margin-bottom:-4px; } @media (max-width: 1099px) { #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e { margin-top:0px; margin-bottom:0px; } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.products-grid .grid-item { /* width: calc(50% - 9px);*/ width: calc(100% - 10px); margin-bottom:8px; } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.products-grid .grid-item-x2 { width: calc(85% - 7.5px); margin-left: 0; margin-right: 0; } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.products-grid .grid-item .cta-button { visibility: hidden; } } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e .grid-items-wrapper { width: calc(100% + 11px); margin-left: -7.5px; margin-right: -7.5px; padding-left: 0; padding-right: 0; } @media (max-width: 1099px) { .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e .grid-items-wrapper { width: calc(100% + 10px); } } .module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e .grid-product { background-color: transparent; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-full-width.container { width: calc(100% + 4px); padding-left: 0; padding-right: 0; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-full-width.container { width: calc(100vw + 4px); margin-left: -15px; margin-right: -15px; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block.container { background: transparent; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block { padding: 0; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-items-wrapper { width: 100%; margin: 0; line-height: 0; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-item { width: 20%; margin: 0; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-item .grid-product { margin-bottom: 0; } /* quick-shop button */ #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product > .product { position: unset; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:not(.upselling-product):not(.grid-product-wholesale) .add-to-cart { display: none; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:not(.upselling-product):not(.grid-product-wholesale):hover .add-to-cart { display: block; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:not(.upselling-product):not(.grid-product-wholesale) .add-to-cart { width: 36px!important; min-width: 36px; height: 36px; margin-top: 19px; top: 0; background-size: 110%!important; background-position: -2px -2px!important; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:hover, #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:hover .product-info-block { background: #f7f7f7; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:hover .product-info-block { background: #eeeeee; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-product:hover a.product { mix-blend-mode: multiply; } /* product name + price */ #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block.products-grid .product-info-block { text-align: center; padding-left: 30px; padding-right: 30px; } @media (max-width: 1099px) { #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-item { width: 50%; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block .grid-item-x2 { width: calc(100% - 7.5px); } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block.products-grid .product-info-block { padding-left: 10px; padding-right: 10px; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-inline-block.products-grid .product-info-block .product-name { white-space: break-spaces; } #module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e.module-style-full-width.container { width: calc(100vw + 4px); margin-left: -7.5px; margin-right: -7.5px; } } --> 5.0 --> Transparent Turntable",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 1540
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-p-2",
+        "name": "page-sound-room-p-2",
+        "x": 64,
+        "y": 2168,
+        "fill": "#141414",
+        "content": "Transparent expands the sensory landscape of the home with a completely new product category. Be among the first to experience the new sensation.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 70
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-p-3",
+        "name": "page-sound-room-p-3",
+        "x": 64,
+        "y": 2256,
+        "fill": "#141414",
+        "content": "Interior and listening environments shaped around the Transparent philosophy.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 49
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-feature",
+        "name": "page-sound-room-feature",
+        "x": 970,
+        "y": 468,
+        "width": 390,
+        "height": 260,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-sound-room",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-feature-2",
+        "name": "page-sound-room-feature-2",
+        "x": 970,
+        "y": 746,
+        "width": 390,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-2-0c2e17f0.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-sound-room",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-card-0",
+        "name": "page-sound-room-card-0",
+        "x": 64,
+        "y": 2347,
+        "width": 196,
+        "height": 178,
+        "fill": "#F0F0EC",
+        "stroke": {
+          "fill": "#D9D9D0",
+          "thickness": 1
+        },
+        "href": "#page-transparent-speaker-black-wifi",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-card-img-0",
+        "name": "page-sound-room-card-img-0",
+        "x": 64,
+        "y": 2347,
+        "width": 196,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-1-1d7086e9.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-transparent-speaker-black-wifi",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-card-title-0",
+        "name": "page-sound-room-card-title-0",
+        "x": 74,
+        "y": 2451,
+        "fill": "#141414",
+        "content": "Transparent Speaker Black Wi‑Fi",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 18,
+        "href": "#page-transparent-speaker-black-wifi"
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-card-copy-0",
+        "name": "page-sound-room-card-copy-0",
+        "x": 74,
+        "y": 2471,
+        "fill": "#666862",
+        "content": "Transparent creates timeless speakers and design tech blending Scandinavian aesthetics, su",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 85,
+        "href": "#page-transparent-speaker-black-wifi"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-card-1",
+        "name": "page-sound-room-card-1",
+        "x": 284,
+        "y": 2347,
+        "width": 196,
+        "height": 178,
+        "fill": "#F0F0EC",
+        "stroke": {
+          "fill": "#D9D9D0",
+          "thickness": 1
+        },
+        "href": "#page-turntable-black",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-card-img-1",
+        "name": "page-sound-room-card-img-1",
+        "x": 284,
+        "y": 2347,
+        "width": 196,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-2-0c2e17f0.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-turntable-black",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-card-title-1",
+        "name": "page-sound-room-card-title-1",
+        "x": 294,
+        "y": 2451,
+        "fill": "#141414",
+        "content": "Transparent Turntable",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 18,
+        "href": "#page-turntable-black"
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-card-copy-1",
+        "name": "page-sound-room-card-copy-1",
+        "x": 294,
+        "y": 2471,
+        "fill": "#666862",
+        "content": "#module_3412c53d-02b7-4e3f-b9ea-c9b51119ae6e { width: 100%; margin-top:15px; margin-bottom",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 85,
+        "href": "#page-turntable-black"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-card-2",
+        "name": "page-sound-room-card-2",
+        "x": 504,
+        "y": 2347,
+        "width": 196,
+        "height": 178,
+        "fill": "#F0F0EC",
+        "stroke": {
+          "fill": "#D9D9D0",
+          "thickness": 1
+        },
+        "href": "#page-light-speaker-white",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-card-img-2",
+        "name": "page-sound-room-card-img-2",
+        "x": 504,
+        "y": 2347,
+        "width": 196,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/transpa-rent/page-all-products-img-3-a9f04880.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-light-speaker-white",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-card-title-2",
+        "name": "page-sound-room-card-title-2",
+        "x": 514,
+        "y": 2451,
+        "fill": "#141414",
+        "content": "Light Speaker White",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 18,
+        "href": "#page-light-speaker-white"
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-card-copy-2",
+        "name": "page-sound-room-card-copy-2",
+        "x": 514,
+        "y": 2471,
+        "fill": "#666862",
+        "content": "Transparent expands the sensory landscape of the home with a completely new product catego",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 85,
+        "href": "#page-light-speaker-white"
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-related-title",
+        "name": "page-sound-room-related-title",
+        "x": 64,
+        "y": 2559,
+        "fill": "#111111",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-related-0-box",
+        "name": "page-sound-room-related-0-box",
+        "x": 64,
+        "y": 2585,
+        "width": 180,
+        "height": 36,
+        "fill": "#111111",
+        "stroke": {
+          "fill": "#111111",
+          "thickness": 1
+        },
+        "href": "#page-transparent-speaker-black-wifi",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-related-0-text",
+        "name": "page-sound-room-related-0-text",
+        "x": 78,
+        "y": 2594,
+        "fill": "#FFFFFF",
+        "content": "Transparent Speaker Black Wi‑Fi",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 152,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-transparent-speaker-black-wifi",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-related-1-box",
+        "name": "page-sound-room-related-1-box",
+        "x": 256,
+        "y": 2585,
+        "width": 180,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D9D0",
+          "thickness": 1
+        },
+        "href": "#page-turntable-black",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-related-1-text",
+        "name": "page-sound-room-related-1-text",
+        "x": 270,
+        "y": 2594,
+        "fill": "#141414",
+        "content": "Transparent Turntable",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 152,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-turntable-black",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-sound-room-related-2-box",
+        "name": "page-sound-room-related-2-box",
+        "x": 448,
+        "y": 2585,
+        "width": 180,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D9D0",
+          "thickness": 1
+        },
+        "href": "#page-light-speaker-white",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-sound-room-related-2-text",
+        "name": "page-sound-room-related-2-text",
+        "x": 462,
+        "y": 2594,
+        "fill": "#141414",
+        "content": "Light Speaker White",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 152,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-light-speaker-white",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 2717,
+        "width": 1440,
+        "height": 230,
+        "fill": "#131313",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230,
+            "fill": "#131313"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 40,
+            "y": 30,
+            "fill": "#F4F4EF",
+            "content": "Transparent",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-0",
+            "name": "footer-title-0",
+            "x": 40,
+            "y": 76,
+            "fill": "#F4F4EF",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-0",
+            "name": "footer-body-0",
+            "x": 40,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "All Products Modular System",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 41
+          },
+          {
+            "type": "text",
+            "id": "footer-title-1",
+            "name": "footer-title-1",
+            "x": 260,
+            "y": 76,
+            "fill": "#F4F4EF",
+            "content": "Explore",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-1",
+            "name": "footer-body-1",
+            "x": 260,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Sound Room Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-2",
+            "name": "footer-title-2",
+            "x": 480,
+            "y": 76,
+            "fill": "#F4F4EF",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-2",
+            "name": "footer-body-2",
+            "x": 480,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "About Transparent Speaker Black Wi‑Fi Transparent Turntable",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 58
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 1020,
+            "y": 150,
+            "fill": "#D8D5CE",
+            "content": "Transparent structured clone pen with desktop and mobile page sets.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 38
+          }
+        ]
+      }
+    ]
+  }
+}

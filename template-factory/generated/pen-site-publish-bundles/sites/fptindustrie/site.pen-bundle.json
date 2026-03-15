@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "template-factory.pen.v1",
+  "kind": "site-pen-bundle",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "siteId": "fptindustrie",
+  "siteName": "Fptindustrie",
+  "reviewMode": "site-level",
+  "requiredVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "availableVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "responsiveModes": {
+    "desktop": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "exact-source"
+    },
+    "mobile": {
+      "supported": true,
+      "sourceVariant": "mobile",
+      "mode": "exact-source"
+    }
+  },
+  "capabilities": {
+    "exactTemplate": true,
+    "skinnable": true,
+    "sandboxPreview": true,
+    "dualModeReady": true,
+    "exactMobileSource": true
+  },
+  "commercialReadiness": {
+    "structuralValidationPassed": true,
+    "visualValidationPassed": true,
+    "sandboxRuntimePassed": true,
+    "skinnableReady": true,
+    "publishInputReady": true
+  },
+  "artifacts": [
+    {
+      "caseId": "fptindustrie-desktop",
+      "siteId": "fptindustrie",
+      "siteName": "Fptindustrie",
+      "siteGroupId": "fptindustrie",
+      "variant": "desktop",
+      "siteKey": "pen-exact-site-fptindustrie-desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/fptindustrie.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-fptindustrie-desktop/sandbox/payload.json",
+      "sourceHash": "69e1a907210aff5b6363f1a871c6c3a8189dca38ea478b0f0b856beb6ba18f40",
+      "pageCount": 10,
+      "sectionCount": 27,
+      "blockCount": 378,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/fptindustrie/variants/desktop/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/fptindustrie/variants/desktop/template.skin.json",
+      "previewPages": 10,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-fptindustrie-desktop&page=home"
+    },
+    {
+      "caseId": "fptindustrie-mobile",
+      "siteId": "fptindustrie",
+      "siteName": "Fptindustrie",
+      "siteGroupId": "fptindustrie",
+      "variant": "mobile",
+      "siteKey": "pen-exact-site-fptindustrie-mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/fptindustrie-mobile.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-fptindustrie-mobile/sandbox/payload.json",
+      "sourceHash": "6c9c0ef247e4ab86382b0e3b4101e99970e6051f581638de16f2a497bfd0ba32",
+      "pageCount": 10,
+      "sectionCount": 26,
+      "blockCount": 254,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/fptindustrie/variants/mobile/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/fptindustrie/variants/mobile/template.skin.json",
+      "previewPages": 10,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-fptindustrie-mobile&page=home"
+    }
+  ]
+}

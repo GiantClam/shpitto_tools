@@ -1,0 +1,109 @@
+{
+  "blockId": "6wEsO",
+  "blockName": "ContactSupport",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 6,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 7,
+  "treeHash": "6405669776a949d408a519fad50d459e43cec96072fb734d013429d92581cdf0",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "6wEsO",
+    "name": "ContactSupport",
+    "width": "fill_container",
+    "gap": 22,
+    "alignItems": "center",
+    "children": [
+      {
+        "type": "frame",
+        "id": "OjHfh",
+        "name": "contactLeft",
+        "width": 500,
+        "height": 250,
+        "fill": "#F6F6F3",
+        "layout": "vertical",
+        "gap": 12,
+        "padding": [
+          26,
+          24
+        ],
+        "justifyContent": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "qxY69",
+            "name": "contactTitle",
+            "fill": "#1F2737",
+            "content": "Contact support",
+            "fontFamily": "Inter",
+            "fontSize": 34,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "3q9dJ",
+            "name": "contactSub",
+            "fill": "#5C636A",
+            "textGrowth": "fixed-width",
+            "width": 430,
+            "content": "Got support questions for your existing fleet?\nOur support team can help.",
+            "lineHeight": 1.5,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "frame",
+            "id": "C80Ug",
+            "name": "contactBtn",
+            "width": 110,
+            "height": 24,
+            "fill": "#16181D",
+            "cornerRadius": 12,
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "nTHRu",
+                "fill": "#FFFFFF",
+                "content": "Contact support",
+                "fontFamily": "Inter",
+                "fontSize": 8,
+                "fontWeight": "600"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "IiEs5",
+        "name": "contactImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "nublson",
+          "link": "https://unsplash.com/@nublson",
+          "author": "Nubelson Fernandes"
+        },
+        "width": 700,
+        "height": 250,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 2
+      }
+    ]
+  }
+}

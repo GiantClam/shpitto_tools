@@ -1,0 +1,921 @@
+{
+  "sectionId": "hero",
+  "sectionName": "Hero",
+  "sectionKind": "hero",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 700
+  },
+  "directChildCount": 10,
+  "recursiveNodeCount": 18,
+  "treeHash": "d0b28969f339b47324d60b9490ab6ce0d7d502084e809b7e0b60d25f06154b2f",
+  "blockCount": 10,
+  "blockIndex": [
+    {
+      "blockId": "hero-bg",
+      "blockName": "hero-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 700
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "81d6ec4fb04325415656fd7463a574017dffd4172e8bc84b6e2a4929ce213ebb"
+    },
+    {
+      "blockId": "hero-image",
+      "blockName": "hero-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 830,
+        "y": 110,
+        "width": 530,
+        "height": 500
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5c784c9c2ef6662efcfb2626ecd35a76e7a86641c267bf8cd14caf859cea26fb"
+    },
+    {
+      "blockId": "header-page-home",
+      "blockName": "Header",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "bbc93d3a9457f563a82dbcf34e44cd608d2c4844b6b6e180dc38bbd310287e1b"
+    },
+    {
+      "blockId": "hero-kicker",
+      "blockName": "hero-kicker",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 40,
+        "y": 120,
+        "width": 200,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6620504d1ccd326bc1bf452639298f73beeecf749759fc68ff7767f716a40648"
+    },
+    {
+      "blockId": "hero-title",
+      "blockName": "hero-title",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 40,
+        "y": 160,
+        "width": 620,
+        "height": 200
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b102ab581327e29f640fa2bbe345b263a17f3b41473a05674f59c22bb9b47d26"
+    },
+    {
+      "blockId": "hero-subtitle",
+      "blockName": "hero-subtitle",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 40,
+        "y": 334,
+        "width": 480,
+        "height": 83
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8769eb845c45c83c9819dc5080fa5467153136e1ff2ae0f92a6efceaed023207"
+    },
+    {
+      "blockId": "hero-primary-box",
+      "blockName": "hero-primary-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 40,
+        "y": 434,
+        "width": 148,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d7f7c346dc26ac0c6da13ef3534aeb7ab4469367c3bf120c50a2ea79b972d6f3"
+    },
+    {
+      "blockId": "hero-primary-text",
+      "blockName": "hero-primary-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 54,
+        "y": 445,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3718d280d99a05b2173dc1a96b12a9333e58c0817a380c72af76435689ab9bf2"
+    },
+    {
+      "blockId": "hero-secondary-box",
+      "blockName": "hero-secondary-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 202,
+        "y": 434,
+        "width": 148,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e75a461910e6f39e90a5db94c03ddce6c5067f743b1d084f87dcedc225793cf8"
+    },
+    {
+      "blockId": "hero-secondary-text",
+      "blockName": "hero-secondary-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 216,
+        "y": 445,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "407b7ec54f5dbd7291384802febdddde120fbc333584d5d5e6ba49f8df398326"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-home-img-2-3285f3b8.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-home-img-2-3285f3b8.jpg",
+      "relativePath": "assets-structured/nothing-tech/page-home-img-2-3285f3b8.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "hero-bg",
+      "blockName": "hero-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 700
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "81d6ec4fb04325415656fd7463a574017dffd4172e8bc84b6e2a4929ce213ebb",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-bg",
+        "name": "hero-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 700,
+        "fill": "#F3F3F0"
+      }
+    },
+    {
+      "blockId": "hero-image",
+      "blockName": "hero-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 830,
+        "y": 110,
+        "width": 530,
+        "height": 500
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5c784c9c2ef6662efcfb2626ecd35a76e7a86641c267bf8cd14caf859cea26fb",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-home-img-2-3285f3b8.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-home-img-2-3285f3b8.jpg",
+        "relativePath": "assets-structured/nothing-tech/page-home-img-2-3285f3b8.jpg",
+        "exists": true,
+        "mode": "cover"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-image",
+        "name": "hero-image",
+        "x": 830,
+        "y": 110,
+        "width": 530,
+        "height": 500,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-home-img-2-3285f3b8.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-phones",
+        "cornerRadius": 0
+      }
+    },
+    {
+      "blockId": "header-page-home",
+      "blockName": "Header",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "bbc93d3a9457f563a82dbcf34e44cd608d2c4844b6b6e180dc38bbd310287e1b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "header-page-home",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#111111",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "nav-page-offers",
+            "name": "nav-page-offers",
+            "x": 840,
+            "y": 30,
+            "fill": "#111111",
+            "content": "OFFERS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-offers",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-phones",
+            "name": "nav-page-phones",
+            "x": 948,
+            "y": 30,
+            "fill": "#111111",
+            "content": "PHONES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-phones",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-audio",
+            "name": "nav-page-audio",
+            "x": 1056,
+            "y": 30,
+            "fill": "#111111",
+            "content": "AUDIO",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-audio",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-support-centre",
+            "name": "nav-page-support-centre",
+            "x": 1164,
+            "y": 30,
+            "fill": "#111111",
+            "content": "SUPPORT CENTRE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-support-centre",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-contact-support",
+            "name": "nav-page-contact-support",
+            "x": 1272,
+            "y": 30,
+            "fill": "#111111",
+            "content": "CONTACT SUPPORT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-contact-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "hero-kicker",
+      "blockName": "hero-kicker",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 40,
+        "y": 120,
+        "width": 200,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6620504d1ccd326bc1bf452639298f73beeecf749759fc68ff7767f716a40648",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-kicker",
+        "name": "hero-kicker",
+        "x": 40,
+        "y": 120,
+        "fill": "#E63E3E",
+        "content": "NOTHING",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 18,
+        "letterSpacing": "0.12em"
+      }
+    },
+    {
+      "blockId": "hero-title",
+      "blockName": "hero-title",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 40,
+        "y": 160,
+        "width": 620,
+        "height": 200
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b102ab581327e29f640fa2bbe345b263a17f3b41473a05674f59c22bb9b47d26",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-title",
+        "name": "hero-title",
+        "x": 40,
+        "y": 160,
+        "fill": "#111111",
+        "content": "Tech that feels playful again",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 68,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 200
+      }
+    },
+    {
+      "blockId": "hero-subtitle",
+      "blockName": "hero-subtitle",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 40,
+        "y": 334,
+        "width": 480,
+        "height": 83
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8769eb845c45c83c9819dc5080fa5467153136e1ff2ae0f92a6efceaed023207",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-subtitle",
+        "name": "hero-subtitle",
+        "x": 40,
+        "y": 334,
+        "fill": "#6B6B66",
+        "content": "phones, audio and support systems shaped by a clear visual identity and stripped-back industrial design.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 480,
+        "height": 83
+      }
+    },
+    {
+      "blockId": "hero-primary-box",
+      "blockName": "hero-primary-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 40,
+        "y": 434,
+        "width": 148,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d7f7c346dc26ac0c6da13ef3534aeb7ab4469367c3bf120c50a2ea79b972d6f3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-primary-box",
+        "name": "hero-primary-box",
+        "x": 40,
+        "y": 434,
+        "width": 148,
+        "height": 40,
+        "fill": "#E63E3E",
+        "stroke": {
+          "fill": "#E63E3E",
+          "thickness": 1
+        },
+        "href": "#page-phones",
+        "cornerRadius": 0
+      }
+    },
+    {
+      "blockId": "hero-primary-text",
+      "blockName": "hero-primary-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 54,
+        "y": 445,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3718d280d99a05b2173dc1a96b12a9333e58c0817a380c72af76435689ab9bf2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-primary-text",
+        "name": "hero-primary-text",
+        "x": 54,
+        "y": 445,
+        "fill": "#FFFFFF",
+        "content": "Phones",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-phones",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "hero-secondary-box",
+      "blockName": "hero-secondary-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 202,
+        "y": 434,
+        "width": 148,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e75a461910e6f39e90a5db94c03ddce6c5067f743b1d084f87dcedc225793cf8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-secondary-box",
+        "name": "hero-secondary-box",
+        "x": 202,
+        "y": 434,
+        "width": 148,
+        "height": 40,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-support-centre",
+        "cornerRadius": 0
+      }
+    },
+    {
+      "blockId": "hero-secondary-text",
+      "blockName": "hero-secondary-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 216,
+        "y": 445,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "407b7ec54f5dbd7291384802febdddde120fbc333584d5d5e6ba49f8df398326",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-secondary-text",
+        "name": "hero-secondary-text",
+        "x": 216,
+        "y": 445,
+        "fill": "#111111",
+        "content": "Support Centre",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-support-centre",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "hero",
+    "name": "Hero",
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 700,
+    "fill": "#F3F3F0",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "hero-bg",
+        "name": "hero-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 700,
+        "fill": "#F3F3F0"
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-image",
+        "name": "hero-image",
+        "x": 830,
+        "y": 110,
+        "width": 530,
+        "height": 500,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-home-img-2-3285f3b8.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-phones",
+        "cornerRadius": 0
+      },
+      {
+        "type": "frame",
+        "id": "header-page-home",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#111111",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "nav-page-offers",
+            "name": "nav-page-offers",
+            "x": 840,
+            "y": 30,
+            "fill": "#111111",
+            "content": "OFFERS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-offers",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-phones",
+            "name": "nav-page-phones",
+            "x": 948,
+            "y": 30,
+            "fill": "#111111",
+            "content": "PHONES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-phones",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-audio",
+            "name": "nav-page-audio",
+            "x": 1056,
+            "y": 30,
+            "fill": "#111111",
+            "content": "AUDIO",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-audio",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-support-centre",
+            "name": "nav-page-support-centre",
+            "x": 1164,
+            "y": 30,
+            "fill": "#111111",
+            "content": "SUPPORT CENTRE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-support-centre",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-contact-support",
+            "name": "nav-page-contact-support",
+            "x": 1272,
+            "y": 30,
+            "fill": "#111111",
+            "content": "CONTACT SUPPORT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-contact-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "hero-kicker",
+        "name": "hero-kicker",
+        "x": 40,
+        "y": 120,
+        "fill": "#E63E3E",
+        "content": "NOTHING",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 18,
+        "letterSpacing": "0.12em"
+      },
+      {
+        "type": "text",
+        "id": "hero-title",
+        "name": "hero-title",
+        "x": 40,
+        "y": 160,
+        "fill": "#111111",
+        "content": "Tech that feels playful again",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 68,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 200
+      },
+      {
+        "type": "text",
+        "id": "hero-subtitle",
+        "name": "hero-subtitle",
+        "x": 40,
+        "y": 334,
+        "fill": "#6B6B66",
+        "content": "phones, audio and support systems shaped by a clear visual identity and stripped-back industrial design.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 480,
+        "height": 83
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-primary-box",
+        "name": "hero-primary-box",
+        "x": 40,
+        "y": 434,
+        "width": 148,
+        "height": 40,
+        "fill": "#E63E3E",
+        "stroke": {
+          "fill": "#E63E3E",
+          "thickness": 1
+        },
+        "href": "#page-phones",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "hero-primary-text",
+        "name": "hero-primary-text",
+        "x": 54,
+        "y": 445,
+        "fill": "#FFFFFF",
+        "content": "Phones",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-phones",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-secondary-box",
+        "name": "hero-secondary-box",
+        "x": 202,
+        "y": 434,
+        "width": 148,
+        "height": 40,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-support-centre",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "hero-secondary-text",
+        "name": "hero-secondary-text",
+        "x": 216,
+        "y": 445,
+        "fill": "#111111",
+        "content": "Support Centre",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-support-centre",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

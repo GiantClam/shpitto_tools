@@ -1,0 +1,120 @@
+{
+  "blockId": "V1Suo",
+  "blockName": "p1Card",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 1,
+  "bounds": {
+    "x": 556,
+    "y": 150,
+    "width": 760,
+    "height": 250
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 7,
+  "treeHash": "d2479630a06eb20837ae84f401bd06c51f551450a86ca0a27d28bcb77b00322c",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "V1Suo",
+    "x": 556,
+    "y": 150,
+    "name": "p1Card",
+    "width": 760,
+    "height": 250,
+    "fill": "#F5F6F8",
+    "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "color": "#0F172A1F",
+      "offset": {
+        "x": 0,
+        "y": 16
+      },
+      "blur": 40
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "icon_font",
+        "id": "0sxHz",
+        "x": 64,
+        "y": 48,
+        "name": "p1icon",
+        "width": 28,
+        "height": 28,
+        "iconFontName": "broadcast",
+        "iconFontFamily": "phosphor",
+        "fill": "#2F456C"
+      },
+      {
+        "type": "text",
+        "id": "fyeBl",
+        "x": 100,
+        "y": 48,
+        "name": "p1title",
+        "fill": "#1F2937",
+        "content": "OSPREY.",
+        "fontFamily": "Inter",
+        "fontSize": 34,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "3dyfL",
+        "x": 64,
+        "y": 94,
+        "name": "p1desc",
+        "fill": "#5B6472",
+        "textGrowth": "fixed-width",
+        "width": 620,
+        "content": "The Kymeta Osprey is all-purpose defense and government operation with resilient, integrated, and always-connected communications-on-the-move capabilities.",
+        "lineHeight": 1.5,
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 2,
+        "id": "qlrET",
+        "x": 64,
+        "y": 184,
+        "name": "p1btn",
+        "fill": "#EEF2F7",
+        "width": 148,
+        "height": 34,
+        "stroke": {
+          "align": "inside",
+          "thickness": 1,
+          "fill": "#8AA3D3"
+        }
+      },
+      {
+        "type": "text",
+        "id": "CooLa",
+        "x": 82,
+        "y": 194,
+        "name": "p1btnT",
+        "fill": "#2E446D",
+        "content": "Explore the Osprey u8",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "7gfsQ",
+        "x": 64,
+        "y": 20,
+        "name": "p1cat",
+        "fill": "#5E81C5",
+        "content": "MILITARY & GOVERNMENT",
+        "fontFamily": "Inter",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "letterSpacing": 0.8
+      }
+    ]
+  }
+}

@@ -1,0 +1,1060 @@
+{
+  "sectionId": "trusted",
+  "sectionName": "Trusted",
+  "sectionKind": "generic",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 1710,
+    "width": 1440,
+    "height": 360
+  },
+  "directChildCount": 15,
+  "recursiveNodeCount": 16,
+  "treeHash": "56d98f170f3551e9273554a870753784b09a0951ada3f7332f3ae77de41a29ea",
+  "blockCount": 15,
+  "blockIndex": [
+    {
+      "blockId": "trusted-bg",
+      "blockName": "trusted-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 360
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6de714b3b2b5b55ec1f5eb93eb9c0f98822854b1e502f05392e4743171e0ac7c"
+    },
+    {
+      "blockId": "trusted-title",
+      "blockName": "trusted-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 560,
+        "y": 34,
+        "width": 220,
+        "height": 66
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5301db6882304e79d550fb9f576dc35919929a2c2c3eb767842e65e3b311d57c"
+    },
+    {
+      "blockId": "trusted-sub",
+      "blockName": "trusted-sub",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 514,
+        "y": 86,
+        "width": 320,
+        "height": 69
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "df3b671be283da966218d1db4e8de463cffbfff85b103e1f5b47ffeee62bf393"
+    },
+    {
+      "blockId": "trusted-card-0",
+      "blockName": "trusted-card-0",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 40,
+        "y": 146,
+        "width": 300,
+        "height": 150
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "27184d6bddbc77ee513258b47802298579658d3ed5d98160fe73b80cb3f0bb11"
+    },
+    {
+      "blockId": "trusted-img-0",
+      "blockName": "trusted-img-0",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 4,
+      "bounds": {
+        "x": 52,
+        "y": 156,
+        "width": 276,
+        "height": 104
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5b492dc73c91592b28d829065f1e314a2df419c1492042f6e58ab2e5d2f9bd3b"
+    },
+    {
+      "blockId": "trusted-label-0",
+      "blockName": "trusted-label-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 52,
+        "y": 268,
+        "width": 276,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "856476fffa2c47b899a34034fce2fc3efcaf23e3cf25f16aade5b740cd7f0f16"
+    },
+    {
+      "blockId": "trusted-card-1",
+      "blockName": "trusted-card-1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 380,
+        "y": 146,
+        "width": 300,
+        "height": 150
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "22f670c4b3c7606a3ff9dce6bbdb8080119856ef80ec6647e28d60f0f53a273d"
+    },
+    {
+      "blockId": "trusted-img-1",
+      "blockName": "trusted-img-1",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 7,
+      "bounds": {
+        "x": 392,
+        "y": 156,
+        "width": 276,
+        "height": 104
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6a6d26bb08414bfc47fcbfded9b1579417c2e575be619338814fc158205130d1"
+    },
+    {
+      "blockId": "trusted-label-1",
+      "blockName": "trusted-label-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 392,
+        "y": 268,
+        "width": 276,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f7d7b033ba6e7ddf22421bfd8f0e062842b37249cfbcc1acb0a4b4a31aa78436"
+    },
+    {
+      "blockId": "trusted-card-2",
+      "blockName": "trusted-card-2",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 720,
+        "y": 146,
+        "width": 300,
+        "height": 150
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d6934ced6c3e877d8485bbcd7f1d8e7d092449c7f62c22faaa650f1fc92fbccc"
+    },
+    {
+      "blockId": "trusted-img-2",
+      "blockName": "trusted-img-2",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 10,
+      "bounds": {
+        "x": 732,
+        "y": 156,
+        "width": 276,
+        "height": 104
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9c6449875a692b48e320eeed027841fbd9ed6447be71dc8a9dd524d46f476f99"
+    },
+    {
+      "blockId": "trusted-label-2",
+      "blockName": "trusted-label-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 11,
+      "bounds": {
+        "x": 732,
+        "y": 268,
+        "width": 276,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4f4d5d787a72f124b72b8ebb5109a2b923b52ef3c598592664e0cc429d2919b1"
+    },
+    {
+      "blockId": "trusted-card-3",
+      "blockName": "trusted-card-3",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 12,
+      "bounds": {
+        "x": 1060,
+        "y": 146,
+        "width": 300,
+        "height": 150
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f9090d54c5f8b68924420e608be69fe8f575d82523a22a09c9bcf05ccabf4f1b"
+    },
+    {
+      "blockId": "trusted-img-3",
+      "blockName": "trusted-img-3",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 13,
+      "bounds": {
+        "x": 1072,
+        "y": 156,
+        "width": 276,
+        "height": 104
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ba7a8496389ae691cd9427cff258ef7ae48f46e02bcd50f847f22e6f1b9403b3"
+    },
+    {
+      "blockId": "trusted-label-3",
+      "blockName": "trusted-label-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 14,
+      "bounds": {
+        "x": 1072,
+        "y": 268,
+        "width": 276,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "54f77b59ffade74610ddf0a1f417d71d6ed9ca7c032e339c2603f9b5df51638a"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+      "relativePath": "assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+      "relativePath": "assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted3-d85f2352.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted3-d85f2352.jpg",
+      "relativePath": "assets-structured/carbon/home-trusted3-d85f2352.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+      "relativePath": "assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "trusted-bg",
+      "blockName": "trusted-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 360
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6de714b3b2b5b55ec1f5eb93eb9c0f98822854b1e502f05392e4743171e0ac7c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "trusted-bg",
+        "name": "trusted-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 360,
+        "fill": "#F7F7FB"
+      }
+    },
+    {
+      "blockId": "trusted-title",
+      "blockName": "trusted-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 560,
+        "y": 34,
+        "width": 220,
+        "height": 66
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5301db6882304e79d550fb9f576dc35919929a2c2c3eb767842e65e3b311d57c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "trusted-title",
+        "name": "trusted-title",
+        "x": 560,
+        "y": 34,
+        "fill": "#7256FF",
+        "content": "Trusted",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 42,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 66,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "trusted-sub",
+      "blockName": "trusted-sub",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 514,
+        "y": 86,
+        "width": 320,
+        "height": 69
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "df3b671be283da966218d1db4e8de463cffbfff85b103e1f5b47ffeee62bf393",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "trusted-sub",
+        "name": "trusted-sub",
+        "x": 514,
+        "y": 86,
+        "fill": "#6F7390",
+        "content": "and Proven in Your Industry",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 69,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "trusted-card-0",
+      "blockName": "trusted-card-0",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 40,
+        "y": 146,
+        "width": 300,
+        "height": 150
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "27184d6bddbc77ee513258b47802298579658d3ed5d98160fe73b80cb3f0bb11",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "trusted-card-0",
+        "name": "trusted-card-0",
+        "x": 40,
+        "y": 146,
+        "width": 300,
+        "height": 150,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#E0E3F0",
+          "thickness": 1
+        },
+        "href": "#page-industries",
+        "cornerRadius": 10
+      }
+    },
+    {
+      "blockId": "trusted-img-0",
+      "blockName": "trusted-img-0",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 4,
+      "bounds": {
+        "x": 52,
+        "y": 156,
+        "width": 276,
+        "height": 104
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5b492dc73c91592b28d829065f1e314a2df419c1492042f6e58ab2e5d2f9bd3b",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+        "relativePath": "assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "trusted-img-0",
+        "name": "trusted-img-0",
+        "x": 52,
+        "y": 156,
+        "width": 276,
+        "height": 104,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-industries"
+      }
+    },
+    {
+      "blockId": "trusted-label-0",
+      "blockName": "trusted-label-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 52,
+        "y": 268,
+        "width": 276,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "856476fffa2c47b899a34034fce2fc3efcaf23e3cf25f16aade5b740cd7f0f16",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "trusted-label-0",
+        "name": "trusted-label-0",
+        "x": 52,
+        "y": 268,
+        "fill": "#1D2240",
+        "content": "Sports",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 276,
+        "height": 18,
+        "href": "#page-industries",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "trusted-card-1",
+      "blockName": "trusted-card-1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 380,
+        "y": 146,
+        "width": 300,
+        "height": 150
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "22f670c4b3c7606a3ff9dce6bbdb8080119856ef80ec6647e28d60f0f53a273d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "trusted-card-1",
+        "name": "trusted-card-1",
+        "x": 380,
+        "y": 146,
+        "width": 300,
+        "height": 150,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#E0E3F0",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 10
+      }
+    },
+    {
+      "blockId": "trusted-img-1",
+      "blockName": "trusted-img-1",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 7,
+      "bounds": {
+        "x": 392,
+        "y": 156,
+        "width": 276,
+        "height": 104
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6a6d26bb08414bfc47fcbfded9b1579417c2e575be619338814fc158205130d1",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+        "relativePath": "assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "trusted-img-1",
+        "name": "trusted-img-1",
+        "x": 392,
+        "y": 156,
+        "width": 276,
+        "height": 104,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "trusted-label-1",
+      "blockName": "trusted-label-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 392,
+        "y": 268,
+        "width": 276,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f7d7b033ba6e7ddf22421bfd8f0e062842b37249cfbcc1acb0a4b4a31aa78436",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "trusted-label-1",
+        "name": "trusted-label-1",
+        "x": 392,
+        "y": 268,
+        "fill": "#1D2240",
+        "content": "Backpacks",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 276,
+        "height": 18,
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "trusted-card-2",
+      "blockName": "trusted-card-2",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 720,
+        "y": 146,
+        "width": 300,
+        "height": 150
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d6934ced6c3e877d8485bbcd7f1d8e7d092449c7f62c22faaa650f1fc92fbccc",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "trusted-card-2",
+        "name": "trusted-card-2",
+        "x": 720,
+        "y": 146,
+        "width": 300,
+        "height": 150,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#E0E3F0",
+          "thickness": 1
+        },
+        "href": "#page-industries",
+        "cornerRadius": 10
+      }
+    },
+    {
+      "blockId": "trusted-img-2",
+      "blockName": "trusted-img-2",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 10,
+      "bounds": {
+        "x": 732,
+        "y": 156,
+        "width": 276,
+        "height": 104
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9c6449875a692b48e320eeed027841fbd9ed6447be71dc8a9dd524d46f476f99",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted3-d85f2352.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted3-d85f2352.jpg",
+        "relativePath": "assets-structured/carbon/home-trusted3-d85f2352.jpg",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "trusted-img-2",
+        "name": "trusted-img-2",
+        "x": 732,
+        "y": 156,
+        "width": 276,
+        "height": 104,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted3-d85f2352.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-industries"
+      }
+    },
+    {
+      "blockId": "trusted-label-2",
+      "blockName": "trusted-label-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 11,
+      "bounds": {
+        "x": 732,
+        "y": 268,
+        "width": 276,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4f4d5d787a72f124b72b8ebb5109a2b923b52ef3c598592664e0cc429d2919b1",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "trusted-label-2",
+        "name": "trusted-label-2",
+        "x": 732,
+        "y": 268,
+        "fill": "#1D2240",
+        "content": "Protection",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 276,
+        "height": 18,
+        "href": "#page-industries",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "trusted-card-3",
+      "blockName": "trusted-card-3",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 12,
+      "bounds": {
+        "x": 1060,
+        "y": 146,
+        "width": 300,
+        "height": 150
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f9090d54c5f8b68924420e608be69fe8f575d82523a22a09c9bcf05ccabf4f1b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "trusted-card-3",
+        "name": "trusted-card-3",
+        "x": 1060,
+        "y": 146,
+        "width": 300,
+        "height": 150,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#E0E3F0",
+          "thickness": 1
+        },
+        "href": "#page-platform",
+        "cornerRadius": 10
+      }
+    },
+    {
+      "blockId": "trusted-img-3",
+      "blockName": "trusted-img-3",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 13,
+      "bounds": {
+        "x": 1072,
+        "y": 156,
+        "width": 276,
+        "height": 104
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ba7a8496389ae691cd9427cff258ef7ae48f46e02bcd50f847f22e6f1b9403b3",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+        "relativePath": "assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "trusted-img-3",
+        "name": "trusted-img-3",
+        "x": 1072,
+        "y": 156,
+        "width": 276,
+        "height": 104,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-platform"
+      }
+    },
+    {
+      "blockId": "trusted-label-3",
+      "blockName": "trusted-label-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 14,
+      "bounds": {
+        "x": 1072,
+        "y": 268,
+        "width": 276,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "54f77b59ffade74610ddf0a1f417d71d6ed9ca7c032e339c2603f9b5df51638a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "trusted-label-3",
+        "name": "trusted-label-3",
+        "x": 1072,
+        "y": 268,
+        "fill": "#1D2240",
+        "content": "Custom Fit",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 276,
+        "height": 18,
+        "href": "#page-platform",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "trusted",
+    "name": "Trusted",
+    "x": 0,
+    "y": 1710,
+    "width": 1440,
+    "height": 360,
+    "fill": "#F7F7FB",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "trusted-bg",
+        "name": "trusted-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 360,
+        "fill": "#F7F7FB"
+      },
+      {
+        "type": "text",
+        "id": "trusted-title",
+        "name": "trusted-title",
+        "x": 560,
+        "y": 34,
+        "fill": "#7256FF",
+        "content": "Trusted",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 42,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 66,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "trusted-sub",
+        "name": "trusted-sub",
+        "x": 514,
+        "y": 86,
+        "fill": "#6F7390",
+        "content": "and Proven in Your Industry",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 69,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "trusted-card-0",
+        "name": "trusted-card-0",
+        "x": 40,
+        "y": 146,
+        "width": 300,
+        "height": 150,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#E0E3F0",
+          "thickness": 1
+        },
+        "href": "#page-industries",
+        "cornerRadius": 10
+      },
+      {
+        "type": "rectangle",
+        "id": "trusted-img-0",
+        "name": "trusted-img-0",
+        "x": 52,
+        "y": 156,
+        "width": 276,
+        "height": 104,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-industries"
+      },
+      {
+        "type": "text",
+        "id": "trusted-label-0",
+        "name": "trusted-label-0",
+        "x": 52,
+        "y": 268,
+        "fill": "#1D2240",
+        "content": "Sports",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 276,
+        "height": 18,
+        "href": "#page-industries",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "trusted-card-1",
+        "name": "trusted-card-1",
+        "x": 380,
+        "y": 146,
+        "width": 300,
+        "height": 150,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#E0E3F0",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 10
+      },
+      {
+        "type": "rectangle",
+        "id": "trusted-img-1",
+        "name": "trusted-img-1",
+        "x": 392,
+        "y": 156,
+        "width": 276,
+        "height": 104,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "trusted-label-1",
+        "name": "trusted-label-1",
+        "x": 392,
+        "y": 268,
+        "fill": "#1D2240",
+        "content": "Backpacks",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 276,
+        "height": 18,
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "trusted-card-2",
+        "name": "trusted-card-2",
+        "x": 720,
+        "y": 146,
+        "width": 300,
+        "height": 150,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#E0E3F0",
+          "thickness": 1
+        },
+        "href": "#page-industries",
+        "cornerRadius": 10
+      },
+      {
+        "type": "rectangle",
+        "id": "trusted-img-2",
+        "name": "trusted-img-2",
+        "x": 732,
+        "y": 156,
+        "width": 276,
+        "height": 104,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted3-d85f2352.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-industries"
+      },
+      {
+        "type": "text",
+        "id": "trusted-label-2",
+        "name": "trusted-label-2",
+        "x": 732,
+        "y": 268,
+        "fill": "#1D2240",
+        "content": "Protection",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 276,
+        "height": 18,
+        "href": "#page-industries",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "trusted-card-3",
+        "name": "trusted-card-3",
+        "x": 1060,
+        "y": 146,
+        "width": 300,
+        "height": 150,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#E0E3F0",
+          "thickness": 1
+        },
+        "href": "#page-platform",
+        "cornerRadius": 10
+      },
+      {
+        "type": "rectangle",
+        "id": "trusted-img-3",
+        "name": "trusted-img-3",
+        "x": 1072,
+        "y": 156,
+        "width": 276,
+        "height": 104,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-platform"
+      },
+      {
+        "type": "text",
+        "id": "trusted-label-3",
+        "name": "trusted-label-3",
+        "x": 1072,
+        "y": 268,
+        "fill": "#1D2240",
+        "content": "Custom Fit",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 276,
+        "height": 18,
+        "href": "#page-platform",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

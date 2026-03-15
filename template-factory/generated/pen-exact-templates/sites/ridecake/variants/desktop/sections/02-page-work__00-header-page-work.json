@@ -1,0 +1,491 @@
+{
+  "sectionId": "header-page-work",
+  "sectionName": "Header",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 84
+  },
+  "directChildCount": 7,
+  "recursiveNodeCount": 8,
+  "treeHash": "70a11457d4a5b9659f45f0cf7a01fceb86273e558d5c884f0c48fd1618face00",
+  "blockCount": 7,
+  "blockIndex": [
+    {
+      "blockId": "header-bg",
+      "blockName": "header-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7"
+    },
+    {
+      "blockId": "header-brand",
+      "blockName": "header-brand",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 24,
+        "width": 240,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2d35b6633d40f6b72994e88262605817de7894998003c6b23458a36e4f908809"
+    },
+    {
+      "blockId": "nav-page-all-our-bikes",
+      "blockName": "nav-page-all-our-bikes",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 840,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "85e6dd34ace7cb54fa18d83341a5e365779879ce8f723bc4bf568aaacc559f9d"
+    },
+    {
+      "blockId": "nav-page-work",
+      "blockName": "nav-page-work",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 948,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d3beeda13e0e33020deb419706c2a46c9be378b46c977ded848e10eb8ca0684c"
+    },
+    {
+      "blockId": "nav-page-friends",
+      "blockName": "nav-page-friends",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 1056,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "de28c991bcac066a7f3aeba70ef0cbd0b96cebc9d9b00b619e4386ba4d4809ed"
+    },
+    {
+      "blockId": "nav-page-contact-us",
+      "blockName": "nav-page-contact-us",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 1164,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b1d9915cd6ee21b8eea4f96a2e13e690940a746bbf63804679a0ad24e7d3436d"
+    },
+    {
+      "blockId": "nav-page-service-support",
+      "blockName": "nav-page-service-support",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 1272,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "eba43a4706165a26af6ce81f7cbefea569fe6b393c7204ae430f02c42a28b813"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "header-bg",
+      "blockName": "header-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "header-bg",
+        "name": "header-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#FFFFFF"
+      }
+    },
+    {
+      "blockId": "header-brand",
+      "blockName": "header-brand",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 24,
+        "width": 240,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2d35b6633d40f6b72994e88262605817de7894998003c6b23458a36e4f908809",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "header-brand",
+        "name": "header-brand",
+        "x": 40,
+        "y": 24,
+        "fill": "#121212",
+        "content": "CAKE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 28
+      }
+    },
+    {
+      "blockId": "nav-page-all-our-bikes",
+      "blockName": "nav-page-all-our-bikes",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 840,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "85e6dd34ace7cb54fa18d83341a5e365779879ce8f723bc4bf568aaacc559f9d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-all-our-bikes",
+        "name": "nav-page-all-our-bikes",
+        "x": 840,
+        "y": 30,
+        "fill": "#121212",
+        "content": "ALL OUR BIKES",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-all-our-bikes",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-work",
+      "blockName": "nav-page-work",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 948,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d3beeda13e0e33020deb419706c2a46c9be378b46c977ded848e10eb8ca0684c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-work",
+        "name": "nav-page-work",
+        "x": 948,
+        "y": 30,
+        "fill": "#121212",
+        "content": "WORK",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-work",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-friends",
+      "blockName": "nav-page-friends",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 1056,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "de28c991bcac066a7f3aeba70ef0cbd0b96cebc9d9b00b619e4386ba4d4809ed",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-friends",
+        "name": "nav-page-friends",
+        "x": 1056,
+        "y": 30,
+        "fill": "#121212",
+        "content": "FRIENDS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-friends",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-contact-us",
+      "blockName": "nav-page-contact-us",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 1164,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b1d9915cd6ee21b8eea4f96a2e13e690940a746bbf63804679a0ad24e7d3436d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-contact-us",
+        "name": "nav-page-contact-us",
+        "x": 1164,
+        "y": 30,
+        "fill": "#121212",
+        "content": "CONTACT US",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-contact-us",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-service-support",
+      "blockName": "nav-page-service-support",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 1272,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "eba43a4706165a26af6ce81f7cbefea569fe6b393c7204ae430f02c42a28b813",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-service-support",
+        "name": "nav-page-service-support",
+        "x": 1272,
+        "y": 30,
+        "fill": "#121212",
+        "content": "SERVICE & SUPPORT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-service-support",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "header-page-work",
+    "name": "Header",
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 84,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "header-bg",
+        "name": "header-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#FFFFFF"
+      },
+      {
+        "type": "text",
+        "id": "header-brand",
+        "name": "header-brand",
+        "x": 40,
+        "y": 24,
+        "fill": "#121212",
+        "content": "CAKE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 28
+      },
+      {
+        "type": "text",
+        "id": "nav-page-all-our-bikes",
+        "name": "nav-page-all-our-bikes",
+        "x": 840,
+        "y": 30,
+        "fill": "#121212",
+        "content": "ALL OUR BIKES",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-all-our-bikes",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-work",
+        "name": "nav-page-work",
+        "x": 948,
+        "y": 30,
+        "fill": "#121212",
+        "content": "WORK",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-work",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-friends",
+        "name": "nav-page-friends",
+        "x": 1056,
+        "y": 30,
+        "fill": "#121212",
+        "content": "FRIENDS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-friends",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-contact-us",
+        "name": "nav-page-contact-us",
+        "x": 1164,
+        "y": 30,
+        "fill": "#121212",
+        "content": "CONTACT US",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-contact-us",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-service-support",
+        "name": "nav-page-service-support",
+        "x": 1272,
+        "y": 30,
+        "fill": "#121212",
+        "content": "SERVICE & SUPPORT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-service-support",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

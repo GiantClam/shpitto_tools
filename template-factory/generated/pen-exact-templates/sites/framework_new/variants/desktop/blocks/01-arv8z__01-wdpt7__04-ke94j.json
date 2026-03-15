@@ -1,0 +1,177 @@
+{
+  "blockId": "ke94j",
+  "blockName": "BottomMedia",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1040,
+    "height": ""
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 15,
+  "treeHash": "367277e5ed104ae93576840ca58d55ff1859ad8a616c23c4b60bfee1078335ce",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "ke94j",
+    "name": "BottomMedia",
+    "width": 1040,
+    "layout": "vertical",
+    "gap": 22,
+    "children": [
+      {
+        "type": "frame",
+        "id": "y22PE",
+        "name": "head",
+        "width": "fill_container",
+        "gap": 20,
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "u0ZLs",
+            "fill": "#1F2737",
+            "content": "Latest Updates",
+            "fontFamily": "Inter",
+            "fontSize": 62,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "J9PWX",
+            "width": 240,
+            "height": 56,
+            "fill": "#F3F3EF",
+            "cornerRadius": 28,
+            "stroke": {
+              "thickness": 2,
+              "fill": "#4A4A4A"
+            },
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "rCa6C",
+                "fill": "#333333",
+                "content": "View More Posts",
+                "fontFamily": "Inter",
+                "fontSize": 18,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "gHjon",
+        "name": "posts",
+        "width": "fill_container",
+        "gap": 20,
+        "children": [
+          {
+            "type": "frame",
+            "id": "S2yd5",
+            "name": "p1",
+            "width": "fill_container",
+            "layout": "vertical",
+            "gap": 10,
+            "children": [
+              {
+                "type": "frame",
+                "id": "Yf7ko",
+                "width": "fill_container",
+                "height": 260,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1200&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "xBBo6",
+                "fill": "#24262B",
+                "textGrowth": "fixed-width",
+                "width": "fill_container",
+                "content": "Updates and livestream\nNews | Feb 26 2026",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 17,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "u7Pd6",
+            "name": "p2",
+            "width": "fill_container",
+            "layout": "vertical",
+            "gap": 10,
+            "children": [
+              {
+                "type": "frame",
+                "id": "nT4bu",
+                "width": "fill_container",
+                "height": 260,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1200&q=80",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "bnlH2",
+                "fill": "#24262B",
+                "textGrowth": "fixed-width",
+                "width": "fill_container",
+                "content": "Linux Gaming with Framework\nNews | Feb 26 2026",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 17,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "frbxg",
+            "name": "p3",
+            "width": "fill_container",
+            "layout": "vertical",
+            "gap": 10,
+            "children": [
+              {
+                "type": "frame",
+                "id": "G3MKv",
+                "width": "fill_container",
+                "height": 260,
+                "fill": "#FB7147"
+              },
+              {
+                "type": "text",
+                "id": "COAcn",
+                "fill": "#24262B",
+                "textGrowth": "fixed-width",
+                "width": "fill_container",
+                "content": "In stock on Framework Desktop and updates on the industry-wide silicon crunch\nNews | Dec 22 2025",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 17,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

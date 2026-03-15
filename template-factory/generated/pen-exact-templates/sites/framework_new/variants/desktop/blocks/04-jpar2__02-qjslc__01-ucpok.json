@@ -1,0 +1,249 @@
+{
+  "blockId": "UcPOk",
+  "blockName": "Impressum",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 23,
+  "treeHash": "61ebba0c7538a0a294adafda2d35c5a6e010ddcf8abcd3666acb602c50adb7a4",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "UcPOk",
+    "name": "Impressum",
+    "width": "fill_container",
+    "layout": "vertical",
+    "gap": 16,
+    "children": [
+      {
+        "type": "text",
+        "id": "Sm7WO",
+        "name": "impTitle",
+        "fill": "#1F2737",
+        "content": "Impressum",
+        "fontFamily": "Inter",
+        "fontSize": 48,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "yPXco",
+        "name": "impLine",
+        "width": "fill_container",
+        "height": 1,
+        "fill": "#D8DCE0"
+      },
+      {
+        "type": "frame",
+        "id": "Xjff9",
+        "name": "impRow1",
+        "width": "fill_container",
+        "gap": 36,
+        "children": [
+          {
+            "type": "frame",
+            "id": "f4hlX",
+            "name": "impC1",
+            "width": "fill_container",
+            "layout": "vertical",
+            "gap": 6,
+            "children": [
+              {
+                "type": "text",
+                "id": "EIyhk",
+                "name": "i11",
+                "fill": "#2F353B",
+                "content": "Company Name",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "lrT2z",
+                "name": "i12",
+                "fill": "#5A6067",
+                "content": "Framework* Computer Inc",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "3Ld7O",
+            "name": "impC2",
+            "width": "fill_container",
+            "layout": "vertical",
+            "gap": 6,
+            "children": [
+              {
+                "type": "text",
+                "id": "4Yil1",
+                "name": "i21",
+                "fill": "#2F353B",
+                "content": "Headquarters Address",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "zoSja",
+                "name": "i22",
+                "fill": "#5A6067",
+                "textGrowth": "fixed-width",
+                "width": "fill_container",
+                "content": "447 Sutter St, PMB 135, San Francisco, CA 94108-4928, United States",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "JLBYC",
+            "name": "impC3",
+            "width": "fill_container",
+            "layout": "vertical",
+            "gap": 6,
+            "children": [
+              {
+                "type": "text",
+                "id": "e3gSn",
+                "name": "i31",
+                "fill": "#2F353B",
+                "content": "Managing Director",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "UqySO",
+                "name": "i32",
+                "fill": "#5A6067",
+                "content": "Nirav Patel",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "normal"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "RQSvZ",
+        "name": "impRow2",
+        "width": "fill_container",
+        "gap": 36,
+        "children": [
+          {
+            "type": "frame",
+            "id": "iqpMK",
+            "name": "impC4",
+            "width": "fill_container",
+            "layout": "vertical",
+            "gap": 6,
+            "children": [
+              {
+                "type": "text",
+                "id": "Gs34p",
+                "name": "i41",
+                "fill": "#2F353B",
+                "content": "Contact",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "rjBqW",
+                "name": "i42",
+                "fill": "#5A6067",
+                "textGrowth": "fixed-width",
+                "width": "fill_container",
+                "content": "media@frame.work, +1 (415) 475-1196",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "4SnGb",
+            "name": "impC5",
+            "width": "fill_container",
+            "layout": "vertical",
+            "gap": 6,
+            "children": [
+              {
+                "type": "text",
+                "id": "PBXEe",
+                "name": "i51",
+                "fill": "#2F353B",
+                "content": "VAT number",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "mPGF8",
+                "name": "i52",
+                "fill": "#5A6067",
+                "content": "NL864036020B01",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "RsOzl",
+            "name": "impC6",
+            "width": "fill_container",
+            "layout": "vertical",
+            "gap": 6,
+            "children": [
+              {
+                "type": "text",
+                "id": "U6cMf",
+                "name": "i61",
+                "fill": "#2F353B",
+                "content": "Trademark",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "rbZuw",
+                "name": "i62",
+                "fill": "#5A6067",
+                "textGrowth": "fixed-width",
+                "width": "fill_container",
+                "content": "Framework® is Registered in U.S. Patent and Trademark Office",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "normal"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "blockId": "T14dU",
+  "blockName": "c2",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 3,
+  "bounds": {
+    "x": 658,
+    "y": 126,
+    "width": 356,
+    "height": 282
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "611751788b45dd67fbfdab48be61ef32e88ee9f8c1439a97bc1c5c7646121df7",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "T14dU",
+    "x": 658,
+    "y": 126,
+    "name": "c2",
+    "width": 356,
+    "height": 282,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "0xMfH",
+        "x": 0,
+        "y": 0,
+        "name": "img2",
+        "width": 356,
+        "height": 138,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1565791380709-49e529af4b06?auto=format&fit=crop&w=1200&q=80",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "5YdH7",
+        "x": 0,
+        "y": 152,
+        "fill": "#1F1F1F",
+        "content": "健康检查服务",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "knuMC",
+        "x": 0,
+        "y": 176,
+        "fill": "#2F2F2F",
+        "textGrowth": "fixed-width",
+        "width": 356,
+        "content": "通过数据化评估加工系统与刀具参数，识别可量化的质量、效率与成本改进空间。",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "text",
+        "id": "G2EX4",
+        "x": 0,
+        "y": 250,
+        "fill": "#6F5F43",
+        "content": "了解更多  ›",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

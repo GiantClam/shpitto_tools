@@ -1,0 +1,4057 @@
+{
+  "pageId": "ARV8z",
+  "pageName": "About",
+  "pageType": "about",
+  "order": 1,
+  "bounds": {
+    "x": -1440,
+    "y": -543,
+    "width": 1440,
+    "height": ""
+  },
+  "layout": {
+    "layout": "vertical",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "c766c6f3eac94283df342093810d19c748ea92367444fa22ff4a7686b8618542",
+  "directChildCount": 3,
+  "recursiveNodeCount": 113,
+  "sectionCount": 3,
+  "sectionIndex": [
+    {
+      "sectionId": "qG45q",
+      "sectionName": "TopNav",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "a0531b69f929586c6e06483b616021c2d360761a55435b62836643d9ed92a421",
+      "blockCount": 3
+    },
+    {
+      "sectionId": "WDpt7",
+      "sectionName": "AboutMain",
+      "sectionKind": "story",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 81,
+      "treeHash": "46d47a6545516fc15f9b3937b3e93b77f74e1ef5595118ac06fcf0bb68db5880",
+      "blockCount": 5
+    },
+    {
+      "sectionId": "VdTK9",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 27,
+      "treeHash": "67c50f7ae62ce80c412b2acb7028d087f37681723cbb9058a770891938140f3d",
+      "blockCount": 3
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "qG45q",
+      "sectionName": "TopNav",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "a0531b69f929586c6e06483b616021c2d360761a55435b62836643d9ed92a421",
+      "blockCount": 3,
+      "blockIndex": [
+        {
+          "blockId": "Qrc4I",
+          "blockName": "logo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7e84f8ee57e11748249a3237430782ca95199d3d552eb9a0da784d5c3b2d7780"
+        },
+        {
+          "blockId": "EsYux",
+          "blockName": "centerNav",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5b621c90eb7a2b24490c164d64ca0ea30aaca0ac97ed477313df19938dd64aeb"
+        },
+        {
+          "blockId": "OYGri",
+          "blockName": "rightNav",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c856c099558cd42117b1722a4269db50efb57d7a2b617d5126d63a5a82070175"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "Qrc4I",
+          "blockName": "logo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7e84f8ee57e11748249a3237430782ca95199d3d552eb9a0da784d5c3b2d7780",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "Qrc4I",
+            "name": "logo",
+            "fill": "#111111",
+            "content": "Framework",
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "EsYux",
+          "blockName": "centerNav",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5b621c90eb7a2b24490c164d64ca0ea30aaca0ac97ed477313df19938dd64aeb",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "EsYux",
+            "name": "centerNav",
+            "fill": "#4A4A4A",
+            "content": "Products   Laptops   Desktops   Marketplace",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          }
+        },
+        {
+          "blockId": "OYGri",
+          "blockName": "rightNav",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c856c099558cd42117b1722a4269db50efb57d7a2b617d5126d63a5a82070175",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "OYGri",
+            "name": "rightNav",
+            "fill": "#666666",
+            "content": "Support   Sign In   Cart",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "qG45q",
+        "name": "TopNav",
+        "width": "fill_container",
+        "height": 64,
+        "fill": "#F3F3EF",
+        "padding": [
+          0,
+          48
+        ],
+        "justifyContent": "space_between",
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "Qrc4I",
+            "name": "logo",
+            "fill": "#111111",
+            "content": "Framework",
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "EsYux",
+            "name": "centerNav",
+            "fill": "#4A4A4A",
+            "content": "Products   Laptops   Desktops   Marketplace",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "text",
+            "id": "OYGri",
+            "name": "rightNav",
+            "fill": "#666666",
+            "content": "Support   Sign In   Cart",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "WDpt7",
+      "sectionName": "AboutMain",
+      "sectionKind": "story",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 81,
+      "treeHash": "46d47a6545516fc15f9b3937b3e93b77f74e1ef5595118ac06fcf0bb68db5880",
+      "blockCount": 5,
+      "blockIndex": [
+        {
+          "blockId": "dWeB7",
+          "blockName": "Hero",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1027,
+            "height": ""
+          },
+          "directChildCount": 6,
+          "recursiveNodeCount": 9,
+          "treeHash": "a0da036f93bfc1ba31e80535abf109fcd513fa074366730af20b077da7c3fd32"
+        },
+        {
+          "blockId": "T6mK5",
+          "blockName": "Timeline",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 1,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1040,
+            "height": ""
+          },
+          "directChildCount": 4,
+          "recursiveNodeCount": 27,
+          "treeHash": "9a3b990554bbc0391fa7feb469c312f2bdb8632b92c5bf3a48e5679cb512a4e1"
+        },
+        {
+          "blockId": "nWJCt",
+          "blockName": "Where",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1040,
+            "height": ""
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 4,
+          "treeHash": "e944a563e0bec4e2ed66d15b1d2acc22ac9ddc1d97850322c442a792fae08a59"
+        },
+        {
+          "blockId": "p6UXX",
+          "blockName": "Who",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 3,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1040,
+            "height": ""
+          },
+          "directChildCount": 2,
+          "recursiveNodeCount": 25,
+          "treeHash": "88bef50b8b9e62ef76b6a2786294205be7232f040c86a91ee26827d12199a80b"
+        },
+        {
+          "blockId": "ke94j",
+          "blockName": "BottomMedia",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 4,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1040,
+            "height": ""
+          },
+          "directChildCount": 2,
+          "recursiveNodeCount": 15,
+          "treeHash": "367277e5ed104ae93576840ca58d55ff1859ad8a616c23c4b60bfee1078335ce"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "./images/generated-1773114739067.png",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        },
+        {
+          "rawUrl": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1200&q=80",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        },
+        {
+          "rawUrl": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1200&q=80",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "dWeB7",
+          "blockName": "Hero",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1027,
+            "height": ""
+          },
+          "directChildCount": 6,
+          "recursiveNodeCount": 9,
+          "treeHash": "a0da036f93bfc1ba31e80535abf109fcd513fa074366730af20b077da7c3fd32",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "dWeB7",
+            "name": "Hero",
+            "width": 1027,
+            "layout": "vertical",
+            "gap": 18,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "gX6R5",
+                "name": "h1",
+                "fill": "#1F2737",
+                "textGrowth": "fixed-width",
+                "width": 860,
+                "content": "Fix Consumer\nElectronics",
+                "lineHeight": 0.95,
+                "textAlign": "center",
+                "fontFamily": "Inter",
+                "fontSize": 72,
+                "fontWeight": "700"
+              },
+              {
+                "type": "frame",
+                "id": "6qqjJ",
+                "name": "iconRow",
+                "gap": 14,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "ellipse",
+                    "id": "mOmpR",
+                    "name": "globe",
+                    "fill": "#F46E35",
+                    "width": 46,
+                    "height": 46
+                  },
+                  {
+                    "type": "frame",
+                    "id": "BLfHu",
+                    "name": "tool",
+                    "width": 12,
+                    "height": 42,
+                    "fill": "#F46E35",
+                    "cornerRadius": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "rGjFr",
+                "name": "p1",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 1012,
+                "content": "We're here to remake consumer electronics to respect people and the planet. Unlike most products, ours are open for you to repair, customize, upgrade, and own at the deepest level.",
+                "lineHeight": 1.35,
+                "fontFamily": "Inter",
+                "fontSize": 24,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "bOVtC",
+                "name": "p2",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 1015,
+                "content": "Consumer electronics follows a few of the opposite principles of what makes consumer products useful, reliable, and durable over time. We’ve optimized every experience of use and service over product lifecycle and have done this through decisions that increase short-term business metrics while reducing long-term value.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "text",
+                "id": "kKlT5",
+                "name": "p3",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 1016,
+                "content": "It doesn’t have to be this way. There are sensible patterns where products are designed from the start to be repaired and upgraded over years. The constraints in materials, supply chains, and energy use are real, but this is exactly where better design and open standards can create long-term value.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "text",
+                "id": "2Xpmz",
+                "name": "p4",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 1014,
+                "content": "Every company can align with this but not every model supports any part of it. We believe that when products are durable, modular, and maintained transparently, customers get better experiences and less waste over time.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "normal"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "T6mK5",
+          "blockName": "Timeline",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 1,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1040,
+            "height": ""
+          },
+          "directChildCount": 4,
+          "recursiveNodeCount": 27,
+          "treeHash": "9a3b990554bbc0391fa7feb469c312f2bdb8632b92c5bf3a48e5679cb512a4e1",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "T6mK5",
+            "name": "Timeline",
+            "width": 1040,
+            "layout": "vertical",
+            "gap": 20,
+            "children": [
+              {
+                "type": "frame",
+                "id": "uUPp5",
+                "name": "lineTop",
+                "width": "fill_container",
+                "height": 8,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "Cy5w5",
+                    "width": 22,
+                    "height": 2,
+                    "fill": "#F46E35"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "xemwk",
+                    "width": "fill_container",
+                    "height": 2,
+                    "fill": "#1F2737"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "T2hn5",
+                "name": "row1",
+                "width": "fill_container",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "AWErK",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "nz0Y9",
+                        "fill": "#1F2737",
+                        "content": "2020",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "REjUX",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Framework was founded in San Francisco in 2020, with a mission to remake consumer electronics to respect people and the planet.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "9IiDk",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "zlZBC",
+                        "fill": "#1F2737",
+                        "content": "2021",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "hQuk0",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Framework Laptop shipped with full repairability and expansion support. We launched parts, guides, and upgrades together with the product.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "Ourfz",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "pfCsA",
+                        "fill": "#1F2737",
+                        "content": "2022",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "XEHZZ",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "We announced and delivered major upgrades while maintaining compatibility. Core modules and accessories continued to expand.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "M83J8",
+                "name": "lineMid",
+                "width": "fill_container",
+                "height": 8,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "m513e",
+                    "width": "fill_container",
+                    "height": 2,
+                    "fill": "#1F2737"
+                  },
+                  {
+                    "type": "text",
+                    "id": "GxwGY",
+                    "fill": "#1F2737",
+                    "content": "→",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "TGdZi",
+                "name": "row2",
+                "width": "fill_container",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "5zQgc",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "3bCVn",
+                        "fill": "#1F2737",
+                        "content": "2023",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "wVPhO",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Introduced more product variants and opened new manufacturing and logistics paths while keeping repair-first principles.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "Fx6s6",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "g7OZH",
+                        "fill": "#1F2737",
+                        "content": "2024",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "L7Kp3",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Framework Desktop entered development and new ecosystem parts shipped. Community contributions accelerated across regions.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "XzsdP",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "JiEe6",
+                        "fill": "#1F2737",
+                        "content": "2025",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "VteJr",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Expanded platform support and scale while preserving the promise of longevity, upgradeability, and transparent documentation.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "nWJCt",
+          "blockName": "Where",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1040,
+            "height": ""
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 4,
+          "treeHash": "e944a563e0bec4e2ed66d15b1d2acc22ac9ddc1d97850322c442a792fae08a59",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "nWJCt",
+            "name": "Where",
+            "width": 1040,
+            "layout": "vertical",
+            "gap": 14,
+            "children": [
+              {
+                "type": "text",
+                "id": "DL4LO",
+                "name": "w1",
+                "fill": "#1F2737",
+                "textGrowth": "fixed-width",
+                "width": 900,
+                "content": "Where we are and where we\nmanufacture",
+                "lineHeight": 1,
+                "fontFamily": "Inter",
+                "fontSize": 44,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "hLUwG",
+                "name": "w2",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 900,
+                "content": "We're headquartered in San Francisco, with several offices in Taipei. Most of our manufacturing is in Taiwan, and we have team members in Seattle, EU, and all over the world.",
+                "lineHeight": 1.4,
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "frame",
+                "id": "A1mNq",
+                "name": "w3",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "sheta96",
+                  "link": "https://unsplash.com/@sheta96",
+                  "author": "Shweta Gupta"
+                },
+                "width": "fill_container",
+                "height": 360,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "./images/generated-1773114739067.png",
+                  "mode": "fill"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "p6UXX",
+          "blockName": "Who",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 3,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1040,
+            "height": ""
+          },
+          "directChildCount": 2,
+          "recursiveNodeCount": 25,
+          "treeHash": "88bef50b8b9e62ef76b6a2786294205be7232f040c86a91ee26827d12199a80b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "p6UXX",
+            "name": "Who",
+            "width": 1040,
+            "gap": 88,
+            "children": [
+              {
+                "type": "frame",
+                "id": "KMR5H",
+                "name": "leftCol",
+                "width": 220,
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "aawka",
+                    "fill": "#1F2737",
+                    "content": "Who",
+                    "fontFamily": "Inter",
+                    "fontSize": 68,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "MQ7TM",
+                    "fill": "#F46E35",
+                    "content": "we are",
+                    "fontFamily": "Inter",
+                    "fontSize": 68,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "LHlHU",
+                "name": "rightCol",
+                "width": 760,
+                "layout": "vertical",
+                "gap": 56,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "UHwyB",
+                    "name": "row1",
+                    "width": "fill_container",
+                    "gap": 34,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "rFm9w",
+                        "name": "card1",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "itg2i",
+                            "name": "avatar1",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#F8B91A",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "gfKki",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Nirav Patel\nFounder\n🌐  in  𝕏",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "eHQNJ",
+                        "name": "card2",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "ybdKb",
+                            "name": "avatar2",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#DED4A7",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "C7mvM",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Kieran L\nDirector, Device Software\n🌐  in  𝕏  ◎",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "YOY1K",
+                        "name": "card3",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "ZWEHB",
+                            "name": "avatar3",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#FC7A00",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "z6bFH",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Po Yu C\nHead of Industrial Design\nin  𝕏",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "IvOFx",
+                    "name": "row2",
+                    "width": "fill_container",
+                    "gap": 34,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "d1riw",
+                        "name": "card4",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "Wn3gI",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#74C5E8",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "uDgJe",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Kate C\nTechnical Program Manager\nin",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "wxY7T",
+                        "name": "card5",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "kfjeq",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#EBB7CC",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "0GTwN",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Mendy N\nChief Operating Officer\nin",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "5MIst",
+                        "name": "card6",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "dBeCk",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#FF1A9A",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "uzSGV",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Adila L\nSenior Global Supply Manager\nin",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "ke94j",
+          "blockName": "BottomMedia",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 4,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1040,
+            "height": ""
+          },
+          "directChildCount": 2,
+          "recursiveNodeCount": 15,
+          "treeHash": "367277e5ed104ae93576840ca58d55ff1859ad8a616c23c4b60bfee1078335ce",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "ke94j",
+            "name": "BottomMedia",
+            "width": 1040,
+            "layout": "vertical",
+            "gap": 22,
+            "children": [
+              {
+                "type": "frame",
+                "id": "y22PE",
+                "name": "head",
+                "width": "fill_container",
+                "gap": 20,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "u0ZLs",
+                    "fill": "#1F2737",
+                    "content": "Latest Updates",
+                    "fontFamily": "Inter",
+                    "fontSize": 62,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "J9PWX",
+                    "width": 240,
+                    "height": 56,
+                    "fill": "#F3F3EF",
+                    "cornerRadius": 28,
+                    "stroke": {
+                      "thickness": 2,
+                      "fill": "#4A4A4A"
+                    },
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "rCa6C",
+                        "fill": "#333333",
+                        "content": "View More Posts",
+                        "fontFamily": "Inter",
+                        "fontSize": 18,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "gHjon",
+                "name": "posts",
+                "width": "fill_container",
+                "gap": 20,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "S2yd5",
+                    "name": "p1",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 10,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "Yf7ko",
+                        "width": "fill_container",
+                        "height": 260,
+                        "fill": {
+                          "type": "image",
+                          "enabled": true,
+                          "url": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1200&q=80",
+                          "mode": "fill"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "id": "xBBo6",
+                        "fill": "#24262B",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Updates and livestream\nNews | Feb 26 2026",
+                        "lineHeight": 1.45,
+                        "fontFamily": "Inter",
+                        "fontSize": 17,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "u7Pd6",
+                    "name": "p2",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 10,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "nT4bu",
+                        "width": "fill_container",
+                        "height": 260,
+                        "fill": {
+                          "type": "image",
+                          "enabled": true,
+                          "url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1200&q=80",
+                          "mode": "fill"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "id": "bnlH2",
+                        "fill": "#24262B",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Linux Gaming with Framework\nNews | Feb 26 2026",
+                        "lineHeight": 1.45,
+                        "fontFamily": "Inter",
+                        "fontSize": 17,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "frbxg",
+                    "name": "p3",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 10,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "G3MKv",
+                        "width": "fill_container",
+                        "height": 260,
+                        "fill": "#FB7147"
+                      },
+                      {
+                        "type": "text",
+                        "id": "COAcn",
+                        "fill": "#24262B",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "In stock on Framework Desktop and updates on the industry-wide silicon crunch\nNews | Dec 22 2025",
+                        "lineHeight": 1.45,
+                        "fontFamily": "Inter",
+                        "fontSize": 17,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "WDpt7",
+        "name": "AboutMain",
+        "width": "fill_container",
+        "fill": "#F3F3EF",
+        "layout": "vertical",
+        "gap": 56,
+        "padding": [
+          48,
+          0
+        ],
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "frame",
+            "id": "dWeB7",
+            "name": "Hero",
+            "width": 1027,
+            "layout": "vertical",
+            "gap": 18,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "gX6R5",
+                "name": "h1",
+                "fill": "#1F2737",
+                "textGrowth": "fixed-width",
+                "width": 860,
+                "content": "Fix Consumer\nElectronics",
+                "lineHeight": 0.95,
+                "textAlign": "center",
+                "fontFamily": "Inter",
+                "fontSize": 72,
+                "fontWeight": "700"
+              },
+              {
+                "type": "frame",
+                "id": "6qqjJ",
+                "name": "iconRow",
+                "gap": 14,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "ellipse",
+                    "id": "mOmpR",
+                    "name": "globe",
+                    "fill": "#F46E35",
+                    "width": 46,
+                    "height": 46
+                  },
+                  {
+                    "type": "frame",
+                    "id": "BLfHu",
+                    "name": "tool",
+                    "width": 12,
+                    "height": 42,
+                    "fill": "#F46E35",
+                    "cornerRadius": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "rGjFr",
+                "name": "p1",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 1012,
+                "content": "We're here to remake consumer electronics to respect people and the planet. Unlike most products, ours are open for you to repair, customize, upgrade, and own at the deepest level.",
+                "lineHeight": 1.35,
+                "fontFamily": "Inter",
+                "fontSize": 24,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "bOVtC",
+                "name": "p2",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 1015,
+                "content": "Consumer electronics follows a few of the opposite principles of what makes consumer products useful, reliable, and durable over time. We’ve optimized every experience of use and service over product lifecycle and have done this through decisions that increase short-term business metrics while reducing long-term value.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "text",
+                "id": "kKlT5",
+                "name": "p3",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 1016,
+                "content": "It doesn’t have to be this way. There are sensible patterns where products are designed from the start to be repaired and upgraded over years. The constraints in materials, supply chains, and energy use are real, but this is exactly where better design and open standards can create long-term value.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "text",
+                "id": "2Xpmz",
+                "name": "p4",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 1014,
+                "content": "Every company can align with this but not every model supports any part of it. We believe that when products are durable, modular, and maintained transparently, customers get better experiences and less waste over time.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "T6mK5",
+            "name": "Timeline",
+            "width": 1040,
+            "layout": "vertical",
+            "gap": 20,
+            "children": [
+              {
+                "type": "frame",
+                "id": "uUPp5",
+                "name": "lineTop",
+                "width": "fill_container",
+                "height": 8,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "Cy5w5",
+                    "width": 22,
+                    "height": 2,
+                    "fill": "#F46E35"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "xemwk",
+                    "width": "fill_container",
+                    "height": 2,
+                    "fill": "#1F2737"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "T2hn5",
+                "name": "row1",
+                "width": "fill_container",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "AWErK",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "nz0Y9",
+                        "fill": "#1F2737",
+                        "content": "2020",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "REjUX",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Framework was founded in San Francisco in 2020, with a mission to remake consumer electronics to respect people and the planet.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "9IiDk",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "zlZBC",
+                        "fill": "#1F2737",
+                        "content": "2021",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "hQuk0",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Framework Laptop shipped with full repairability and expansion support. We launched parts, guides, and upgrades together with the product.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "Ourfz",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "pfCsA",
+                        "fill": "#1F2737",
+                        "content": "2022",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "XEHZZ",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "We announced and delivered major upgrades while maintaining compatibility. Core modules and accessories continued to expand.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "M83J8",
+                "name": "lineMid",
+                "width": "fill_container",
+                "height": 8,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "m513e",
+                    "width": "fill_container",
+                    "height": 2,
+                    "fill": "#1F2737"
+                  },
+                  {
+                    "type": "text",
+                    "id": "GxwGY",
+                    "fill": "#1F2737",
+                    "content": "→",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "TGdZi",
+                "name": "row2",
+                "width": "fill_container",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "5zQgc",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "3bCVn",
+                        "fill": "#1F2737",
+                        "content": "2023",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "wVPhO",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Introduced more product variants and opened new manufacturing and logistics paths while keeping repair-first principles.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "Fx6s6",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "g7OZH",
+                        "fill": "#1F2737",
+                        "content": "2024",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "L7Kp3",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Framework Desktop entered development and new ecosystem parts shipped. Community contributions accelerated across regions.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "XzsdP",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "JiEe6",
+                        "fill": "#1F2737",
+                        "content": "2025",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "VteJr",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Expanded platform support and scale while preserving the promise of longevity, upgradeability, and transparent documentation.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "nWJCt",
+            "name": "Where",
+            "width": 1040,
+            "layout": "vertical",
+            "gap": 14,
+            "children": [
+              {
+                "type": "text",
+                "id": "DL4LO",
+                "name": "w1",
+                "fill": "#1F2737",
+                "textGrowth": "fixed-width",
+                "width": 900,
+                "content": "Where we are and where we\nmanufacture",
+                "lineHeight": 1,
+                "fontFamily": "Inter",
+                "fontSize": 44,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "hLUwG",
+                "name": "w2",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 900,
+                "content": "We're headquartered in San Francisco, with several offices in Taipei. Most of our manufacturing is in Taiwan, and we have team members in Seattle, EU, and all over the world.",
+                "lineHeight": 1.4,
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "frame",
+                "id": "A1mNq",
+                "name": "w3",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "sheta96",
+                  "link": "https://unsplash.com/@sheta96",
+                  "author": "Shweta Gupta"
+                },
+                "width": "fill_container",
+                "height": 360,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "./images/generated-1773114739067.png",
+                  "mode": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "p6UXX",
+            "name": "Who",
+            "width": 1040,
+            "gap": 88,
+            "children": [
+              {
+                "type": "frame",
+                "id": "KMR5H",
+                "name": "leftCol",
+                "width": 220,
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "aawka",
+                    "fill": "#1F2737",
+                    "content": "Who",
+                    "fontFamily": "Inter",
+                    "fontSize": 68,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "MQ7TM",
+                    "fill": "#F46E35",
+                    "content": "we are",
+                    "fontFamily": "Inter",
+                    "fontSize": 68,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "LHlHU",
+                "name": "rightCol",
+                "width": 760,
+                "layout": "vertical",
+                "gap": 56,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "UHwyB",
+                    "name": "row1",
+                    "width": "fill_container",
+                    "gap": 34,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "rFm9w",
+                        "name": "card1",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "itg2i",
+                            "name": "avatar1",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#F8B91A",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "gfKki",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Nirav Patel\nFounder\n🌐  in  𝕏",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "eHQNJ",
+                        "name": "card2",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "ybdKb",
+                            "name": "avatar2",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#DED4A7",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "C7mvM",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Kieran L\nDirector, Device Software\n🌐  in  𝕏  ◎",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "YOY1K",
+                        "name": "card3",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "ZWEHB",
+                            "name": "avatar3",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#FC7A00",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "z6bFH",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Po Yu C\nHead of Industrial Design\nin  𝕏",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "IvOFx",
+                    "name": "row2",
+                    "width": "fill_container",
+                    "gap": 34,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "d1riw",
+                        "name": "card4",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "Wn3gI",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#74C5E8",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "uDgJe",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Kate C\nTechnical Program Manager\nin",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "wxY7T",
+                        "name": "card5",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "kfjeq",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#EBB7CC",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "0GTwN",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Mendy N\nChief Operating Officer\nin",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "5MIst",
+                        "name": "card6",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "dBeCk",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#FF1A9A",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "uzSGV",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Adila L\nSenior Global Supply Manager\nin",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "ke94j",
+            "name": "BottomMedia",
+            "width": 1040,
+            "layout": "vertical",
+            "gap": 22,
+            "children": [
+              {
+                "type": "frame",
+                "id": "y22PE",
+                "name": "head",
+                "width": "fill_container",
+                "gap": 20,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "u0ZLs",
+                    "fill": "#1F2737",
+                    "content": "Latest Updates",
+                    "fontFamily": "Inter",
+                    "fontSize": 62,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "J9PWX",
+                    "width": 240,
+                    "height": 56,
+                    "fill": "#F3F3EF",
+                    "cornerRadius": 28,
+                    "stroke": {
+                      "thickness": 2,
+                      "fill": "#4A4A4A"
+                    },
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "rCa6C",
+                        "fill": "#333333",
+                        "content": "View More Posts",
+                        "fontFamily": "Inter",
+                        "fontSize": 18,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "gHjon",
+                "name": "posts",
+                "width": "fill_container",
+                "gap": 20,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "S2yd5",
+                    "name": "p1",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 10,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "Yf7ko",
+                        "width": "fill_container",
+                        "height": 260,
+                        "fill": {
+                          "type": "image",
+                          "enabled": true,
+                          "url": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1200&q=80",
+                          "mode": "fill"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "id": "xBBo6",
+                        "fill": "#24262B",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Updates and livestream\nNews | Feb 26 2026",
+                        "lineHeight": 1.45,
+                        "fontFamily": "Inter",
+                        "fontSize": 17,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "u7Pd6",
+                    "name": "p2",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 10,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "nT4bu",
+                        "width": "fill_container",
+                        "height": 260,
+                        "fill": {
+                          "type": "image",
+                          "enabled": true,
+                          "url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1200&q=80",
+                          "mode": "fill"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "id": "bnlH2",
+                        "fill": "#24262B",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Linux Gaming with Framework\nNews | Feb 26 2026",
+                        "lineHeight": 1.45,
+                        "fontFamily": "Inter",
+                        "fontSize": 17,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "frbxg",
+                    "name": "p3",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 10,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "G3MKv",
+                        "width": "fill_container",
+                        "height": 260,
+                        "fill": "#FB7147"
+                      },
+                      {
+                        "type": "text",
+                        "id": "COAcn",
+                        "fill": "#24262B",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "In stock on Framework Desktop and updates on the industry-wide silicon crunch\nNews | Dec 22 2025",
+                        "lineHeight": 1.45,
+                        "fontFamily": "Inter",
+                        "fontSize": 17,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "VdTK9",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 27,
+      "treeHash": "67c50f7ae62ce80c412b2acb7028d087f37681723cbb9058a770891938140f3d",
+      "blockCount": 3,
+      "blockIndex": [
+        {
+          "blockId": "WgJfn",
+          "blockName": "cols",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": "fill_container",
+            "height": ""
+          },
+          "directChildCount": 5,
+          "recursiveNodeCount": 21,
+          "treeHash": "1ec00538573ea13f97bf3b2c672414143c84a19709712756ef3d6a99c27dabf8"
+        },
+        {
+          "blockId": "19ZSd",
+          "blockName": "",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 1,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": "fill_container",
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3ad1530442e88d5919d32198f75d319a4b825e7ddf399f427c1959e56f333788"
+        },
+        {
+          "blockId": "Aqrsx",
+          "blockName": "bottom",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": "fill_container",
+            "height": 34
+          },
+          "directChildCount": 2,
+          "recursiveNodeCount": 4,
+          "treeHash": "39dd03a9779d74347a7d2a8e24cf7f1a65519c005daf551918496523d73b7e85"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "WgJfn",
+          "blockName": "cols",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": "fill_container",
+            "height": ""
+          },
+          "directChildCount": 5,
+          "recursiveNodeCount": 21,
+          "treeHash": "1ec00538573ea13f97bf3b2c672414143c84a19709712756ef3d6a99c27dabf8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "WgJfn",
+            "name": "cols",
+            "width": "fill_container",
+            "justifyContent": "space_between",
+            "children": [
+              {
+                "type": "frame",
+                "id": "gKg0D",
+                "name": "col1",
+                "width": 180,
+                "layout": "vertical",
+                "gap": 12,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "VlBrH",
+                    "fill": "#FFFFFF",
+                    "content": "Company",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "ImZ8D",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 180,
+                    "content": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+                    "lineHeight": 1.8,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "3unzh",
+                "name": "col2",
+                "width": 180,
+                "layout": "vertical",
+                "gap": 12,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "97ZR0",
+                    "fill": "#FFFFFF",
+                    "content": "Social",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "1Mbhb",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 180,
+                    "content": "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+                    "lineHeight": 1.8,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "ShvxW",
+                "name": "col3",
+                "width": 220,
+                "layout": "vertical",
+                "gap": 12,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "wer5J",
+                    "fill": "#FFFFFF",
+                    "content": "Community",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "HY3sB",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "Community Forum\nSupport\nRepair Guides",
+                    "lineHeight": 1.8,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "iqVXX",
+                "name": "col4",
+                "width": 220,
+                "layout": "vertical",
+                "gap": 12,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "IUrU3",
+                    "fill": "#FFFFFF",
+                    "content": "Shop all",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "8G0oU",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+                    "lineHeight": 1.8,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "yvpIB",
+                "name": "col5",
+                "width": 360,
+                "layout": "vertical",
+                "gap": 16,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "NZlVP",
+                    "fill": "#FFFFFF",
+                    "content": "Subscribe",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "QjMIM",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 360,
+                    "content": "Stay up to date with the Framework Newsletter (a few times a month)",
+                    "lineHeight": 1.4,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "bXB5M",
+                    "name": "sub",
+                    "width": "fill_container",
+                    "height": 52,
+                    "gap": 10,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "Xz2OB",
+                        "width": 250,
+                        "height": 52,
+                        "fill": "#F3F3EF",
+                        "cornerRadius": 12,
+                        "padding": [
+                          0,
+                          16
+                        ],
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "text",
+                            "id": "lSXLS",
+                            "fill": "#8C9198",
+                            "content": "Your email",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "normal"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "o41vu",
+                        "width": 100,
+                        "height": 52,
+                        "fill": "#F46E35",
+                        "cornerRadius": 26,
+                        "justifyContent": "center",
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "text",
+                            "id": "ZElqi",
+                            "fill": "#111111",
+                            "content": "Sign up",
+                            "fontFamily": "Inter",
+                            "fontSize": 22,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "19ZSd",
+          "blockName": "",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 1,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": "fill_container",
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3ad1530442e88d5919d32198f75d319a4b825e7ddf399f427c1959e56f333788",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "19ZSd",
+            "width": "fill_container",
+            "height": 1,
+            "fill": "#2B2E33"
+          }
+        },
+        {
+          "blockId": "Aqrsx",
+          "blockName": "bottom",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": "fill_container",
+            "height": 34
+          },
+          "directChildCount": 2,
+          "recursiveNodeCount": 4,
+          "treeHash": "39dd03a9779d74347a7d2a8e24cf7f1a65519c005daf551918496523d73b7e85",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "Aqrsx",
+            "name": "bottom",
+            "width": "fill_container",
+            "height": 34,
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "2VB8X",
+                "fill": "#7D838B",
+                "content": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "frame",
+                "id": "Dehet",
+                "name": "lang",
+                "width": 86,
+                "height": 34,
+                "cornerRadius": 18,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#6C7076"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "LWIrD",
+                    "fill": "#D5D9DE",
+                    "content": "USD",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "VdTK9",
+        "name": "Footer",
+        "width": "fill_container",
+        "fill": "#16181D",
+        "layout": "vertical",
+        "gap": 28,
+        "padding": [
+          44,
+          84,
+          24,
+          84
+        ],
+        "children": [
+          {
+            "type": "frame",
+            "id": "WgJfn",
+            "name": "cols",
+            "width": "fill_container",
+            "justifyContent": "space_between",
+            "children": [
+              {
+                "type": "frame",
+                "id": "gKg0D",
+                "name": "col1",
+                "width": 180,
+                "layout": "vertical",
+                "gap": 12,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "VlBrH",
+                    "fill": "#FFFFFF",
+                    "content": "Company",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "ImZ8D",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 180,
+                    "content": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+                    "lineHeight": 1.8,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "3unzh",
+                "name": "col2",
+                "width": 180,
+                "layout": "vertical",
+                "gap": 12,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "97ZR0",
+                    "fill": "#FFFFFF",
+                    "content": "Social",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "1Mbhb",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 180,
+                    "content": "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+                    "lineHeight": 1.8,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "ShvxW",
+                "name": "col3",
+                "width": 220,
+                "layout": "vertical",
+                "gap": 12,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "wer5J",
+                    "fill": "#FFFFFF",
+                    "content": "Community",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "HY3sB",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "Community Forum\nSupport\nRepair Guides",
+                    "lineHeight": 1.8,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "iqVXX",
+                "name": "col4",
+                "width": 220,
+                "layout": "vertical",
+                "gap": 12,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "IUrU3",
+                    "fill": "#FFFFFF",
+                    "content": "Shop all",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "8G0oU",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+                    "lineHeight": 1.8,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "yvpIB",
+                "name": "col5",
+                "width": 360,
+                "layout": "vertical",
+                "gap": 16,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "NZlVP",
+                    "fill": "#FFFFFF",
+                    "content": "Subscribe",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "QjMIM",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 360,
+                    "content": "Stay up to date with the Framework Newsletter (a few times a month)",
+                    "lineHeight": 1.4,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "bXB5M",
+                    "name": "sub",
+                    "width": "fill_container",
+                    "height": 52,
+                    "gap": 10,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "Xz2OB",
+                        "width": 250,
+                        "height": 52,
+                        "fill": "#F3F3EF",
+                        "cornerRadius": 12,
+                        "padding": [
+                          0,
+                          16
+                        ],
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "text",
+                            "id": "lSXLS",
+                            "fill": "#8C9198",
+                            "content": "Your email",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "normal"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "o41vu",
+                        "width": 100,
+                        "height": 52,
+                        "fill": "#F46E35",
+                        "cornerRadius": 26,
+                        "justifyContent": "center",
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "text",
+                            "id": "ZElqi",
+                            "fill": "#111111",
+                            "content": "Sign up",
+                            "fontFamily": "Inter",
+                            "fontSize": 22,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "19ZSd",
+            "width": "fill_container",
+            "height": 1,
+            "fill": "#2B2E33"
+          },
+          {
+            "type": "frame",
+            "id": "Aqrsx",
+            "name": "bottom",
+            "width": "fill_container",
+            "height": 34,
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "2VB8X",
+                "fill": "#7D838B",
+                "content": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "frame",
+                "id": "Dehet",
+                "name": "lang",
+                "width": 86,
+                "height": 34,
+                "cornerRadius": 18,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#6C7076"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "LWIrD",
+                    "fill": "#D5D9DE",
+                    "content": "USD",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 11,
+  "looseNodeCount": 0,
+  "looseNodes": [],
+  "assetRefs": [
+    {
+      "rawUrl": "./images/generated-1773114739067.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1200&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1200&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "ARV8z",
+    "x": -1440,
+    "y": -543,
+    "name": "About",
+    "width": 1440,
+    "fill": "#F3F3EF",
+    "layout": "vertical",
+    "children": [
+      {
+        "type": "frame",
+        "id": "qG45q",
+        "name": "TopNav",
+        "width": "fill_container",
+        "height": 64,
+        "fill": "#F3F3EF",
+        "padding": [
+          0,
+          48
+        ],
+        "justifyContent": "space_between",
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "Qrc4I",
+            "name": "logo",
+            "fill": "#111111",
+            "content": "Framework",
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "EsYux",
+            "name": "centerNav",
+            "fill": "#4A4A4A",
+            "content": "Products   Laptops   Desktops   Marketplace",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "text",
+            "id": "OYGri",
+            "name": "rightNav",
+            "fill": "#666666",
+            "content": "Support   Sign In   Cart",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "WDpt7",
+        "name": "AboutMain",
+        "width": "fill_container",
+        "fill": "#F3F3EF",
+        "layout": "vertical",
+        "gap": 56,
+        "padding": [
+          48,
+          0
+        ],
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "frame",
+            "id": "dWeB7",
+            "name": "Hero",
+            "width": 1027,
+            "layout": "vertical",
+            "gap": 18,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "gX6R5",
+                "name": "h1",
+                "fill": "#1F2737",
+                "textGrowth": "fixed-width",
+                "width": 860,
+                "content": "Fix Consumer\nElectronics",
+                "lineHeight": 0.95,
+                "textAlign": "center",
+                "fontFamily": "Inter",
+                "fontSize": 72,
+                "fontWeight": "700"
+              },
+              {
+                "type": "frame",
+                "id": "6qqjJ",
+                "name": "iconRow",
+                "gap": 14,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "ellipse",
+                    "id": "mOmpR",
+                    "name": "globe",
+                    "fill": "#F46E35",
+                    "width": 46,
+                    "height": 46
+                  },
+                  {
+                    "type": "frame",
+                    "id": "BLfHu",
+                    "name": "tool",
+                    "width": 12,
+                    "height": 42,
+                    "fill": "#F46E35",
+                    "cornerRadius": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "rGjFr",
+                "name": "p1",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 1012,
+                "content": "We're here to remake consumer electronics to respect people and the planet. Unlike most products, ours are open for you to repair, customize, upgrade, and own at the deepest level.",
+                "lineHeight": 1.35,
+                "fontFamily": "Inter",
+                "fontSize": 24,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "bOVtC",
+                "name": "p2",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 1015,
+                "content": "Consumer electronics follows a few of the opposite principles of what makes consumer products useful, reliable, and durable over time. We’ve optimized every experience of use and service over product lifecycle and have done this through decisions that increase short-term business metrics while reducing long-term value.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "text",
+                "id": "kKlT5",
+                "name": "p3",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 1016,
+                "content": "It doesn’t have to be this way. There are sensible patterns where products are designed from the start to be repaired and upgraded over years. The constraints in materials, supply chains, and energy use are real, but this is exactly where better design and open standards can create long-term value.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "text",
+                "id": "2Xpmz",
+                "name": "p4",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 1014,
+                "content": "Every company can align with this but not every model supports any part of it. We believe that when products are durable, modular, and maintained transparently, customers get better experiences and less waste over time.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "T6mK5",
+            "name": "Timeline",
+            "width": 1040,
+            "layout": "vertical",
+            "gap": 20,
+            "children": [
+              {
+                "type": "frame",
+                "id": "uUPp5",
+                "name": "lineTop",
+                "width": "fill_container",
+                "height": 8,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "Cy5w5",
+                    "width": 22,
+                    "height": 2,
+                    "fill": "#F46E35"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "xemwk",
+                    "width": "fill_container",
+                    "height": 2,
+                    "fill": "#1F2737"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "T2hn5",
+                "name": "row1",
+                "width": "fill_container",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "AWErK",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "nz0Y9",
+                        "fill": "#1F2737",
+                        "content": "2020",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "REjUX",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Framework was founded in San Francisco in 2020, with a mission to remake consumer electronics to respect people and the planet.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "9IiDk",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "zlZBC",
+                        "fill": "#1F2737",
+                        "content": "2021",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "hQuk0",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Framework Laptop shipped with full repairability and expansion support. We launched parts, guides, and upgrades together with the product.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "Ourfz",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "pfCsA",
+                        "fill": "#1F2737",
+                        "content": "2022",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "XEHZZ",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "We announced and delivered major upgrades while maintaining compatibility. Core modules and accessories continued to expand.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "M83J8",
+                "name": "lineMid",
+                "width": "fill_container",
+                "height": 8,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "m513e",
+                    "width": "fill_container",
+                    "height": 2,
+                    "fill": "#1F2737"
+                  },
+                  {
+                    "type": "text",
+                    "id": "GxwGY",
+                    "fill": "#1F2737",
+                    "content": "→",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "TGdZi",
+                "name": "row2",
+                "width": "fill_container",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "5zQgc",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "3bCVn",
+                        "fill": "#1F2737",
+                        "content": "2023",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "wVPhO",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Introduced more product variants and opened new manufacturing and logistics paths while keeping repair-first principles.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "Fx6s6",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "g7OZH",
+                        "fill": "#1F2737",
+                        "content": "2024",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "L7Kp3",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Framework Desktop entered development and new ecosystem parts shipped. Community contributions accelerated across regions.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "XzsdP",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 3,
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "JiEe6",
+                        "fill": "#1F2737",
+                        "content": "2025",
+                        "fontFamily": "Inter",
+                        "fontSize": 30,
+                        "fontWeight": "700"
+                      },
+                      {
+                        "type": "text",
+                        "id": "VteJr",
+                        "fill": "#4C4F53",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Expanded platform support and scale while preserving the promise of longevity, upgradeability, and transparent documentation.",
+                        "lineHeight": 1.25,
+                        "fontFamily": "Inter",
+                        "fontSize": 6,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "nWJCt",
+            "name": "Where",
+            "width": 1040,
+            "layout": "vertical",
+            "gap": 14,
+            "children": [
+              {
+                "type": "text",
+                "id": "DL4LO",
+                "name": "w1",
+                "fill": "#1F2737",
+                "textGrowth": "fixed-width",
+                "width": 900,
+                "content": "Where we are and where we\nmanufacture",
+                "lineHeight": 1,
+                "fontFamily": "Inter",
+                "fontSize": 44,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "hLUwG",
+                "name": "w2",
+                "fill": "#4C4F53",
+                "textGrowth": "fixed-width",
+                "width": 900,
+                "content": "We're headquartered in San Francisco, with several offices in Taipei. Most of our manufacturing is in Taiwan, and we have team members in Seattle, EU, and all over the world.",
+                "lineHeight": 1.4,
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "frame",
+                "id": "A1mNq",
+                "name": "w3",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "sheta96",
+                  "link": "https://unsplash.com/@sheta96",
+                  "author": "Shweta Gupta"
+                },
+                "width": "fill_container",
+                "height": 360,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "./images/generated-1773114739067.png",
+                  "mode": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "p6UXX",
+            "name": "Who",
+            "width": 1040,
+            "gap": 88,
+            "children": [
+              {
+                "type": "frame",
+                "id": "KMR5H",
+                "name": "leftCol",
+                "width": 220,
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "aawka",
+                    "fill": "#1F2737",
+                    "content": "Who",
+                    "fontFamily": "Inter",
+                    "fontSize": 68,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "MQ7TM",
+                    "fill": "#F46E35",
+                    "content": "we are",
+                    "fontFamily": "Inter",
+                    "fontSize": 68,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "LHlHU",
+                "name": "rightCol",
+                "width": 760,
+                "layout": "vertical",
+                "gap": 56,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "UHwyB",
+                    "name": "row1",
+                    "width": "fill_container",
+                    "gap": 34,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "rFm9w",
+                        "name": "card1",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "itg2i",
+                            "name": "avatar1",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#F8B91A",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "gfKki",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Nirav Patel\nFounder\n🌐  in  𝕏",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "eHQNJ",
+                        "name": "card2",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "ybdKb",
+                            "name": "avatar2",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#DED4A7",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "C7mvM",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Kieran L\nDirector, Device Software\n🌐  in  𝕏  ◎",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "YOY1K",
+                        "name": "card3",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "ZWEHB",
+                            "name": "avatar3",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#FC7A00",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "z6bFH",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Po Yu C\nHead of Industrial Design\nin  𝕏",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "IvOFx",
+                    "name": "row2",
+                    "width": "fill_container",
+                    "gap": 34,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "d1riw",
+                        "name": "card4",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "Wn3gI",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#74C5E8",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "uDgJe",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Kate C\nTechnical Program Manager\nin",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "wxY7T",
+                        "name": "card5",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "kfjeq",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#EBB7CC",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "0GTwN",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Mendy N\nChief Operating Officer\nin",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "5MIst",
+                        "name": "card6",
+                        "width": "fill_container",
+                        "layout": "vertical",
+                        "gap": 12,
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "frame",
+                            "id": "dBeCk",
+                            "width": 170,
+                            "height": 170,
+                            "fill": "#FF1A9A",
+                            "cornerRadius": 85
+                          },
+                          {
+                            "type": "text",
+                            "id": "uzSGV",
+                            "fill": "#24262B",
+                            "textGrowth": "fixed-width",
+                            "width": "fill_container",
+                            "content": "Adila L\nSenior Global Supply Manager\nin",
+                            "lineHeight": 1.55,
+                            "textAlign": "center",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "ke94j",
+            "name": "BottomMedia",
+            "width": 1040,
+            "layout": "vertical",
+            "gap": 22,
+            "children": [
+              {
+                "type": "frame",
+                "id": "y22PE",
+                "name": "head",
+                "width": "fill_container",
+                "gap": 20,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "u0ZLs",
+                    "fill": "#1F2737",
+                    "content": "Latest Updates",
+                    "fontFamily": "Inter",
+                    "fontSize": 62,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "J9PWX",
+                    "width": 240,
+                    "height": 56,
+                    "fill": "#F3F3EF",
+                    "cornerRadius": 28,
+                    "stroke": {
+                      "thickness": 2,
+                      "fill": "#4A4A4A"
+                    },
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "rCa6C",
+                        "fill": "#333333",
+                        "content": "View More Posts",
+                        "fontFamily": "Inter",
+                        "fontSize": 18,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "gHjon",
+                "name": "posts",
+                "width": "fill_container",
+                "gap": 20,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "S2yd5",
+                    "name": "p1",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 10,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "Yf7ko",
+                        "width": "fill_container",
+                        "height": 260,
+                        "fill": {
+                          "type": "image",
+                          "enabled": true,
+                          "url": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1200&q=80",
+                          "mode": "fill"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "id": "xBBo6",
+                        "fill": "#24262B",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Updates and livestream\nNews | Feb 26 2026",
+                        "lineHeight": 1.45,
+                        "fontFamily": "Inter",
+                        "fontSize": 17,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "u7Pd6",
+                    "name": "p2",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 10,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "nT4bu",
+                        "width": "fill_container",
+                        "height": 260,
+                        "fill": {
+                          "type": "image",
+                          "enabled": true,
+                          "url": "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1200&q=80",
+                          "mode": "fill"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "id": "bnlH2",
+                        "fill": "#24262B",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "Linux Gaming with Framework\nNews | Feb 26 2026",
+                        "lineHeight": 1.45,
+                        "fontFamily": "Inter",
+                        "fontSize": 17,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "frbxg",
+                    "name": "p3",
+                    "width": "fill_container",
+                    "layout": "vertical",
+                    "gap": 10,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "G3MKv",
+                        "width": "fill_container",
+                        "height": 260,
+                        "fill": "#FB7147"
+                      },
+                      {
+                        "type": "text",
+                        "id": "COAcn",
+                        "fill": "#24262B",
+                        "textGrowth": "fixed-width",
+                        "width": "fill_container",
+                        "content": "In stock on Framework Desktop and updates on the industry-wide silicon crunch\nNews | Dec 22 2025",
+                        "lineHeight": 1.45,
+                        "fontFamily": "Inter",
+                        "fontSize": 17,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "VdTK9",
+        "name": "Footer",
+        "width": "fill_container",
+        "fill": "#16181D",
+        "layout": "vertical",
+        "gap": 28,
+        "padding": [
+          44,
+          84,
+          24,
+          84
+        ],
+        "children": [
+          {
+            "type": "frame",
+            "id": "WgJfn",
+            "name": "cols",
+            "width": "fill_container",
+            "justifyContent": "space_between",
+            "children": [
+              {
+                "type": "frame",
+                "id": "gKg0D",
+                "name": "col1",
+                "width": 180,
+                "layout": "vertical",
+                "gap": 12,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "VlBrH",
+                    "fill": "#FFFFFF",
+                    "content": "Company",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "ImZ8D",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 180,
+                    "content": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+                    "lineHeight": 1.8,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "3unzh",
+                "name": "col2",
+                "width": 180,
+                "layout": "vertical",
+                "gap": 12,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "97ZR0",
+                    "fill": "#FFFFFF",
+                    "content": "Social",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "1Mbhb",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 180,
+                    "content": "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+                    "lineHeight": 1.8,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "ShvxW",
+                "name": "col3",
+                "width": 220,
+                "layout": "vertical",
+                "gap": 12,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "wer5J",
+                    "fill": "#FFFFFF",
+                    "content": "Community",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "HY3sB",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "Community Forum\nSupport\nRepair Guides",
+                    "lineHeight": 1.8,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "iqVXX",
+                "name": "col4",
+                "width": 220,
+                "layout": "vertical",
+                "gap": 12,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "IUrU3",
+                    "fill": "#FFFFFF",
+                    "content": "Shop all",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "8G0oU",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 220,
+                    "content": "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+                    "lineHeight": 1.8,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "yvpIB",
+                "name": "col5",
+                "width": 360,
+                "layout": "vertical",
+                "gap": 16,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "NZlVP",
+                    "fill": "#FFFFFF",
+                    "content": "Subscribe",
+                    "fontFamily": "Inter",
+                    "fontSize": 30,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "QjMIM",
+                    "fill": "#C5CBD3",
+                    "textGrowth": "fixed-width",
+                    "width": 360,
+                    "content": "Stay up to date with the Framework Newsletter (a few times a month)",
+                    "lineHeight": 1.4,
+                    "fontFamily": "Inter",
+                    "fontSize": 20,
+                    "fontWeight": "normal"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "bXB5M",
+                    "name": "sub",
+                    "width": "fill_container",
+                    "height": 52,
+                    "gap": 10,
+                    "children": [
+                      {
+                        "type": "frame",
+                        "id": "Xz2OB",
+                        "width": 250,
+                        "height": 52,
+                        "fill": "#F3F3EF",
+                        "cornerRadius": 12,
+                        "padding": [
+                          0,
+                          16
+                        ],
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "text",
+                            "id": "lSXLS",
+                            "fill": "#8C9198",
+                            "content": "Your email",
+                            "fontFamily": "Inter",
+                            "fontSize": 16,
+                            "fontWeight": "normal"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "frame",
+                        "id": "o41vu",
+                        "width": 100,
+                        "height": 52,
+                        "fill": "#F46E35",
+                        "cornerRadius": 26,
+                        "justifyContent": "center",
+                        "alignItems": "center",
+                        "children": [
+                          {
+                            "type": "text",
+                            "id": "ZElqi",
+                            "fill": "#111111",
+                            "content": "Sign up",
+                            "fontFamily": "Inter",
+                            "fontSize": 22,
+                            "fontWeight": "700"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "19ZSd",
+            "width": "fill_container",
+            "height": 1,
+            "fill": "#2B2E33"
+          },
+          {
+            "type": "frame",
+            "id": "Aqrsx",
+            "name": "bottom",
+            "width": "fill_container",
+            "height": 34,
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "2VB8X",
+                "fill": "#7D838B",
+                "content": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "frame",
+                "id": "Dehet",
+                "name": "lang",
+                "width": 86,
+                "height": 34,
+                "cornerRadius": 18,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#6C7076"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "LWIrD",
+                    "fill": "#D5D9DE",
+                    "content": "USD",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

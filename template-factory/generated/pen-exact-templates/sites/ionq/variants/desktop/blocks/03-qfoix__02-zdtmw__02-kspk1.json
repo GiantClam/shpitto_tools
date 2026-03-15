@@ -1,0 +1,228 @@
+{
+  "blockId": "KSPk1",
+  "blockName": "formCard",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 2,
+  "bounds": {
+    "x": 60,
+    "y": 220,
+    "width": 520,
+    "height": 560
+  },
+  "directChildCount": 10,
+  "recursiveNodeCount": 15,
+  "treeHash": "5dfe91a40d54335da95d82688306f4b4bfe2643d7385d2083f79afa1dbe15fdb",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "KSPk1",
+    "x": 60,
+    "y": 220,
+    "name": "formCard",
+    "width": 520,
+    "height": 560,
+    "fill": "#EFEFF1",
+    "cornerRadius": 4,
+    "stroke": {
+      "thickness": 1,
+      "fill": "#C6CBD2"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "Cvicw",
+        "x": 24,
+        "y": 22,
+        "name": "lab1",
+        "fill": "#2B313A",
+        "content": "Your name",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "600"
+      },
+      {
+        "type": "frame",
+        "id": "kropb",
+        "x": 24,
+        "y": 52,
+        "name": "inp1",
+        "width": 472,
+        "height": 48,
+        "fill": "#EFEFF1",
+        "cornerRadius": 2,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#C6CBD2"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "SZ9XD",
+            "x": 20,
+            "y": 15,
+            "name": "ph1",
+            "fill": "#9AA2AE",
+            "content": "Enter full name",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "sZfoU",
+        "x": 24,
+        "y": 124,
+        "name": "lab2",
+        "fill": "#2B313A",
+        "content": "Your email",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "600"
+      },
+      {
+        "type": "frame",
+        "id": "uuoog",
+        "x": 24,
+        "y": 154,
+        "name": "inp2",
+        "width": 472,
+        "height": 48,
+        "fill": "#EFEFF1",
+        "cornerRadius": 2,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#C6CBD2"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "GYjJP",
+            "x": 20,
+            "y": 15,
+            "name": "ph2",
+            "fill": "#9AA2AE",
+            "content": "Enter email",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "20wZi",
+        "x": 24,
+        "y": 226,
+        "name": "lab3",
+        "fill": "#2B313A",
+        "content": "How can we help?",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "600"
+      },
+      {
+        "type": "frame",
+        "id": "foOE0",
+        "x": 24,
+        "y": 256,
+        "name": "inp3",
+        "width": 472,
+        "height": 112,
+        "fill": "#EFEFF1",
+        "cornerRadius": 2,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#C6CBD2"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "CisAO",
+            "x": 20,
+            "y": 15,
+            "name": "ph3",
+            "fill": "#9AA2AE",
+            "content": "Your message",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "6nlP8",
+        "x": 361,
+        "y": 377,
+        "name": "remain",
+        "fill": "#9AA2AE",
+        "content": "256 characters remaining",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "qXll0",
+        "x": 24,
+        "y": 410,
+        "name": "chk",
+        "width": 16,
+        "height": 16,
+        "fill": "#EFEFF1",
+        "stroke": {
+          "thickness": 1,
+          "fill": "#C6CBD2"
+        }
+      },
+      {
+        "type": "text",
+        "id": "LRHZG",
+        "x": 50,
+        "y": 408,
+        "name": "agree",
+        "fill": "#6B737E",
+        "textGrowth": "fixed-width",
+        "width": 446,
+        "content": "I agree to receive periodic updates from IonQ about its hardware, services, and other programs.",
+        "lineHeight": 1.4,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "63sDn",
+        "x": 196,
+        "y": 488,
+        "name": "btn",
+        "width": 128,
+        "height": 40,
+        "fill": "#FF6A00",
+        "cornerRadius": 8,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "AvxRp",
+            "x": 33,
+            "y": 11,
+            "name": "btnT",
+            "fill": "#FFFFFF",
+            "content": "Contact us",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,335 @@
+{
+  "sectionId": "footer",
+  "sectionName": "Footer",
+  "sectionKind": "footer",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 1300,
+    "width": 390,
+    "height": 250
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "979044fa4ac669ffdd80c22edae2be325be7fd8da3efa89f05de3f2717016276",
+  "blockCount": 5,
+  "blockIndex": [
+    {
+      "blockId": "footer-bg",
+      "blockName": "footer-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0dcdf849f88154a374e1e5c30790465cb0279e0c2e82dc4ad824a95189aa59f4"
+    },
+    {
+      "blockId": "footer-brand",
+      "blockName": "footer-brand",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 30,
+        "width": 220,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0a857d3e2bb04b0ba8ec81b07b55a08ceffd753384705759bbb14ab754cff873"
+    },
+    {
+      "blockId": "footer-col-1",
+      "blockName": "footer-col-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 68,
+        "width": 130,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "582544677c805e1c40341da766483309dcd98b34ec9d736ce7e8e10e6d48fd08"
+    },
+    {
+      "blockId": "footer-col-2",
+      "blockName": "footer-col-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 182,
+        "y": 68,
+        "width": 130,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "638ab78065d4f9488415403c6947393ff6098420a6892a3daadee4e3c3c8b2f7"
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 188,
+        "width": 320,
+        "height": 49
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "02a90e2a0c1a8a40bc90f7add2636d0368c42d920acb8100052bd41656690914"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "footer-bg",
+      "blockName": "footer-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0dcdf849f88154a374e1e5c30790465cb0279e0c2e82dc4ad824a95189aa59f4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "footer-bg",
+        "name": "footer-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250,
+        "fill": "#111111"
+      }
+    },
+    {
+      "blockId": "footer-brand",
+      "blockName": "footer-brand",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 30,
+        "width": 220,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0a857d3e2bb04b0ba8ec81b07b55a08ceffd753384705759bbb14ab754cff873",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-brand",
+        "name": "footer-brand",
+        "x": 18,
+        "y": 30,
+        "fill": "#F0F0EB",
+        "content": "teenage engineering",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 24
+      }
+    },
+    {
+      "blockId": "footer-col-1",
+      "blockName": "footer-col-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 68,
+        "width": 130,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "582544677c805e1c40341da766483309dcd98b34ec9d736ce7e8e10e6d48fd08",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-col-1",
+        "name": "footer-col-1",
+        "x": 18,
+        "y": 68,
+        "fill": "#F0F0EB",
+        "content": "Products Guides Downloads",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "footer-col-2",
+      "blockName": "footer-col-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 182,
+        "y": 68,
+        "width": 130,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "638ab78065d4f9488415403c6947393ff6098420a6892a3daadee4e3c3c8b2f7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-col-2",
+        "name": "footer-col-2",
+        "x": 182,
+        "y": 68,
+        "fill": "#F0F0EB",
+        "content": "Designs Contact TX-6 OP-XY",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 188,
+        "width": 320,
+        "height": 49
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "02a90e2a0c1a8a40bc90f7add2636d0368c42d920acb8100052bd41656690914",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-copy",
+        "name": "footer-copy",
+        "x": 18,
+        "y": 188,
+        "fill": "#D8D5CE",
+        "content": "teenage engineering structured clone pen. Editable text, cards, buttons and image containers.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "footer",
+    "name": "Footer",
+    "x": 0,
+    "y": 1300,
+    "width": 390,
+    "height": 250,
+    "fill": "#111111",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "footer-bg",
+        "name": "footer-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250,
+        "fill": "#111111"
+      },
+      {
+        "type": "text",
+        "id": "footer-brand",
+        "name": "footer-brand",
+        "x": 18,
+        "y": 30,
+        "fill": "#F0F0EB",
+        "content": "teenage engineering",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 24
+      },
+      {
+        "type": "text",
+        "id": "footer-col-1",
+        "name": "footer-col-1",
+        "x": 18,
+        "y": 68,
+        "fill": "#F0F0EB",
+        "content": "Products Guides Downloads",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "footer-col-2",
+        "name": "footer-col-2",
+        "x": 182,
+        "y": 68,
+        "fill": "#F0F0EB",
+        "content": "Designs Contact TX-6 OP-XY",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "footer-copy",
+        "name": "footer-copy",
+        "x": 18,
+        "y": 188,
+        "fill": "#D8D5CE",
+        "content": "teenage engineering structured clone pen. Editable text, cards, buttons and image containers.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      }
+    ]
+  }
+}

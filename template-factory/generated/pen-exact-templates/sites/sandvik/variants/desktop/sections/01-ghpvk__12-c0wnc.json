@@ -1,0 +1,207 @@
+{
+  "sectionId": "c0WNc",
+  "sectionName": "heritageSec",
+  "sectionKind": "generic",
+  "order": 12,
+  "bounds": {
+    "x": 0,
+    "y": 3525,
+    "width": 1440,
+    "height": 170
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "cdf9d0c63373e5fce77f01ec2056afec1320574b80fab91563e0a96a3386b7ea",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "VVfcz",
+      "blockName": "herTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 32,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c294c72fac117748554b1bb35349c8b9949ac6c09acf1a9a6dd3817cb91edd53"
+    },
+    {
+      "blockId": "czncm",
+      "blockName": "herBody",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 360,
+        "y": 34,
+        "width": 1020,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "18db5dc3c5a6b1d5ec8c894c4782e7a000339e133a4acd124a5d82d91d1d04fc"
+    },
+    {
+      "blockId": "jyd1G",
+      "blockName": "herLink",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 360,
+        "y": 114,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a69510ef02b11d1c8111f9940bba551f7c76bc605849ad262e0c0ecf4fb83d2c"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "VVfcz",
+      "blockName": "herTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 32,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c294c72fac117748554b1bb35349c8b9949ac6c09acf1a9a6dd3817cb91edd53",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "VVfcz",
+        "x": 18,
+        "y": 32,
+        "name": "herTitle",
+        "fill": "#1F1F1F",
+        "content": "我们的传承",
+        "fontFamily": "Inter",
+        "fontSize": 40,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "czncm",
+      "blockName": "herBody",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 360,
+        "y": 34,
+        "width": 1020,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "18db5dc3c5a6b1d5ec8c894c4782e7a000339e133a4acd124a5d82d91d1d04fc",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "czncm",
+        "x": 360,
+        "y": 34,
+        "name": "herBody",
+        "fill": "#303030",
+        "textGrowth": "fixed-width",
+        "width": 1020,
+        "content": "自1942年在瑞典桑德维肯创立以来，我们一直与客户共同发展，在多个行业都建立了长期合作关系。以强健生命力与开拓的传承不断演进，经历了可持续发展、技能提升与人才发展。两点对长期未来和创造平衡至关重要，未来还需要更多值得期待。",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "normal"
+      }
+    },
+    {
+      "blockId": "jyd1G",
+      "blockName": "herLink",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 360,
+        "y": 114,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a69510ef02b11d1c8111f9940bba551f7c76bc605849ad262e0c0ecf4fb83d2c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "jyd1G",
+        "x": 360,
+        "y": 114,
+        "name": "herLink",
+        "fill": "#1F1F1F",
+        "content": "我们的传承  ›",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "c0WNc",
+    "x": 0,
+    "y": 3525,
+    "name": "heritageSec",
+    "width": 1440,
+    "height": 170,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "VVfcz",
+        "x": 18,
+        "y": 32,
+        "name": "herTitle",
+        "fill": "#1F1F1F",
+        "content": "我们的传承",
+        "fontFamily": "Inter",
+        "fontSize": 40,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "czncm",
+        "x": 360,
+        "y": 34,
+        "name": "herBody",
+        "fill": "#303030",
+        "textGrowth": "fixed-width",
+        "width": 1020,
+        "content": "自1942年在瑞典桑德维肯创立以来，我们一直与客户共同发展，在多个行业都建立了长期合作关系。以强健生命力与开拓的传承不断演进，经历了可持续发展、技能提升与人才发展。两点对长期未来和创造平衡至关重要，未来还需要更多值得期待。",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "text",
+        "id": "jyd1G",
+        "x": 360,
+        "y": 114,
+        "name": "herLink",
+        "fill": "#1F1F1F",
+        "content": "我们的传承  ›",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

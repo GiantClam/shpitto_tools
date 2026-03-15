@@ -1,0 +1,3655 @@
+{
+  "pageId": "page-industries",
+  "pageKey": "industries",
+  "pageName": "Industries",
+  "pageType": "catalog",
+  "devices": {
+    "desktop": {
+      "bounds": {
+        "width": 1440,
+        "height": 1880
+      },
+      "supportBlocks": [
+        {
+          "id": "page-industries-bg",
+          "name": "page-industries-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1880
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0D1022"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07"
+          }
+        },
+        {
+          "id": "page-industries-hero",
+          "name": "page-industries-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 360
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-industries-0-a4ccbb55.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-industries-0-a4ccbb55.jpg",
+            "relativePath": "assets-structured/carbon/page-industries-0-a4ccbb55.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-industries-hero-overlay",
+          "name": "page-industries-hero-overlay",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 360
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0000004A"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color14"
+          }
+        },
+        {
+          "id": "page-industries-crumb",
+          "name": "page-industries-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 40,
+            "y": 108,
+            "width": 220,
+            "height": 22
+          },
+          "href": "",
+          "content": "Home / Industries",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-title",
+          "name": "page-industries-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 142,
+            "width": 760,
+            "height": 148
+          },
+          "href": "",
+          "content": "Produce Radically Better Parts",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 50,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size10",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-subtitle",
+          "name": "page-industries-subtitle",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 210,
+            "width": 700,
+            "height": 29
+          },
+          "href": "",
+          "content": "Consumer",
+          "style": {
+            "fill": "#E3E7F5",
+            "typography": {
+              "fill": "#E3E7F5",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 16,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color16",
+            "textColor": "textColor.palette.text07",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size06",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-home-btn-box",
+          "name": "page-industries-home-btn-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 40,
+            "y": 264,
+            "width": 120,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-industries-home-btn-text",
+          "name": "page-industries-home-btn-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 58,
+            "y": 273,
+            "width": 84,
+            "height": 20
+          },
+          "href": "#page-home",
+          "content": "HOME",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-more-btn-box",
+          "name": "page-industries-more-btn-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 176,
+            "y": 264,
+            "width": 160,
+            "height": 38
+          },
+          "href": "#page-footwear",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-industries-more-btn-text",
+          "name": "page-industries-more-btn-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 194,
+            "y": 273,
+            "width": 124,
+            "height": 20
+          },
+          "href": "#page-footwear",
+          "content": "THIRD LEVEL",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-panel",
+          "name": "page-industries-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 40,
+            "y": 396,
+            "width": 1360,
+            "height": 1120
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#20243A",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color15",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius02"
+          }
+        },
+        {
+          "id": "page-industries-eyebrow",
+          "name": "page-industries-eyebrow",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 418,
+            "width": 240,
+            "height": 18
+          },
+          "href": "",
+          "content": "INDUSTRIES",
+          "style": {
+            "fill": "#5FD3FF",
+            "typography": {
+              "fill": "#5FD3FF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-panel-title",
+          "name": "page-industries-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 450,
+            "width": 580,
+            "height": 120
+          },
+          "href": "",
+          "content": "Produce Radically Better Parts",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 40,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size08",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-p-0",
+          "name": "page-industries-p-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 510,
+            "width": 560,
+            "height": 70
+          },
+          "href": "",
+          "content": "Consumer MedTech Dental Automotive Industrial Consumer High-value products that deliver performance, protection, and standout aesthetics.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-p-1",
+          "name": "page-industries-p-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 598,
+            "width": 560,
+            "height": 70
+          },
+          "href": "",
+          "content": "Next Arrow Previous 1 of 8 MedTech Cutting-edge medtech products produced with a full suite of rigid and flexible biocompatible-capable materials.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-p-2",
+          "name": "page-industries-p-2",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 686,
+            "width": 560,
+            "height": 70
+          },
+          "href": "",
+          "content": "Next Arrow Previous 1 of 8 Dental The new standard of care for dentures, splints, trays, thermoforming models, surgical guides, and cast metal crowns.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-p-3",
+          "name": "page-industries-p-3",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 774,
+            "width": 560,
+            "height": 70
+          },
+          "href": "",
+          "content": "Next Arrow Previous 1 of 8 Automotive On-demand production of electrical connectors, caps, and cabin features that meet stringent engineering requirements.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-p-4",
+          "name": "page-industries-p-4",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 862,
+            "width": 560,
+            "height": 70
+          },
+          "href": "",
+          "content": "Next Arrow Previous 1 of 8 Industrial The digital manufacturing platform for everything from jigs and fixtures to high-performance industrial components.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-img-main",
+          "name": "page-industries-img-main",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 880,
+            "y": 420,
+            "width": 480,
+            "height": 300
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-industries-1-ecd33621.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-industries-1-ecd33621.jpg",
+            "relativePath": "assets-structured/carbon/page-industries-1-ecd33621.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-industries-img-side",
+          "name": "page-industries-img-side",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 880,
+            "y": 752,
+            "width": 480,
+            "height": 220
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-industries-2-a9f0ec2f.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-industries-2-a9f0ec2f.jpg",
+            "relativePath": "assets-structured/carbon/page-industries-2-a9f0ec2f.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-industries-card-0",
+          "name": "page-industries-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1080,
+            "width": 260,
+            "height": 220
+          },
+          "href": "#page-footwear",
+          "content": "",
+          "style": {
+            "fill": "#151827",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color10",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius04"
+          }
+        },
+        {
+          "id": "page-industries-card-img-0",
+          "name": "page-industries-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 76,
+            "y": 1092,
+            "width": 236,
+            "height": 120
+          },
+          "href": "#page-footwear",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 10
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius03"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-industries-0-a4ccbb55.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-industries-0-a4ccbb55.jpg",
+            "relativePath": "assets-structured/carbon/page-industries-0-a4ccbb55.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-industries-card-title-0",
+          "name": "page-industries-card-title-0",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 76,
+            "y": 1224,
+            "width": 236,
+            "height": 70
+          },
+          "href": "#page-footwear",
+          "content": "CarboXtrem Revolutionizes Cycling with High-Performance Saddles, Grips, and Arm Pads",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-card-body-0",
+          "name": "page-industries-card-body-0",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 76,
+            "y": 1250,
+            "width": 236,
+            "height": 92
+          },
+          "href": "#page-footwear",
+          "content": "Consumer MedTech Dental Automotive Industrial Consumer High-value products that deliver performance, protection, and standout aesthetics.",
+          "style": {
+            "fill": "#AAB0D0",
+            "typography": {
+              "fill": "#AAB0D0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-card-1",
+          "name": "page-industries-card-1",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 360,
+            "y": 1080,
+            "width": 260,
+            "height": 220
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#151827",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color10",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius04"
+          }
+        },
+        {
+          "id": "page-industries-card-img-1",
+          "name": "page-industries-card-img-1",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 372,
+            "y": 1092,
+            "width": 236,
+            "height": 120
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 10
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius03"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-industries-1-ecd33621.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-industries-1-ecd33621.jpg",
+            "relativePath": "assets-structured/carbon/page-industries-1-ecd33621.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-industries-card-title-1",
+          "name": "page-industries-card-title-1",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 372,
+            "y": 1224,
+            "width": 236,
+            "height": 70
+          },
+          "href": "#page-products",
+          "content": "Bringing Unmoldable Designs & Unique Textures to Scalable Production",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-card-body-1",
+          "name": "page-industries-card-body-1",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 372,
+            "y": 1250,
+            "width": 236,
+            "height": 109
+          },
+          "href": "#page-products",
+          "content": "Next Arrow Previous 1 of 8 MedTech Cutting-edge medtech products produced with a full suite of rigid and flexible biocompatible-capable materials.",
+          "style": {
+            "fill": "#AAB0D0",
+            "typography": {
+              "fill": "#AAB0D0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-card-2",
+          "name": "page-industries-card-2",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 656,
+            "y": 1080,
+            "width": 260,
+            "height": 220
+          },
+          "href": "#page-platform",
+          "content": "",
+          "style": {
+            "fill": "#151827",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color10",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius04"
+          }
+        },
+        {
+          "id": "page-industries-card-img-2",
+          "name": "page-industries-card-img-2",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 668,
+            "y": 1092,
+            "width": 236,
+            "height": 120
+          },
+          "href": "#page-platform",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 10
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius03"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-industries-2-a9f0ec2f.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-industries-2-a9f0ec2f.jpg",
+            "relativePath": "assets-structured/carbon/page-industries-2-a9f0ec2f.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-industries-card-title-2",
+          "name": "page-industries-card-title-2",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 668,
+            "y": 1224,
+            "width": 236,
+            "height": 49
+          },
+          "href": "#page-platform",
+          "content": "Meet the Additive MVPs: Specialized",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-card-body-2",
+          "name": "page-industries-card-body-2",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 668,
+            "y": 1250,
+            "width": 236,
+            "height": 109
+          },
+          "href": "#page-platform",
+          "content": "Next Arrow Previous 1 of 8 Dental The new standard of care for dentures, splints, trays, thermoforming models, surgical guides, and cast metal crowns.",
+          "style": {
+            "fill": "#AAB0D0",
+            "typography": {
+              "fill": "#AAB0D0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-rel-title",
+          "name": "page-industries-rel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 1540,
+            "width": 200,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related pages",
+          "style": {
+            "fill": "#5FD3FF",
+            "typography": {
+              "fill": "#5FD3FF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-rel-0-box",
+          "name": "page-industries-rel-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1568,
+            "width": 186,
+            "height": 38
+          },
+          "href": "#page-footwear",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-industries-rel-0-text",
+          "name": "page-industries-rel-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 82,
+            "y": 1577,
+            "width": 150,
+            "height": 20
+          },
+          "href": "#page-footwear",
+          "content": "Footwear",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-rel-1-box",
+          "name": "page-industries-rel-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 262,
+            "y": 1568,
+            "width": 186,
+            "height": 38
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-industries-rel-1-text",
+          "name": "page-industries-rel-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 280,
+            "y": 1577,
+            "width": 150,
+            "height": 20
+          },
+          "href": "#page-products",
+          "content": "Products",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-rel-2-box",
+          "name": "page-industries-rel-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 460,
+            "y": 1568,
+            "width": 186,
+            "height": 38
+          },
+          "href": "#page-platform",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-industries-rel-2-text",
+          "name": "page-industries-rel-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 478,
+            "y": 1577,
+            "width": 150,
+            "height": 20
+          },
+          "href": "#page-platform",
+          "content": "Platform",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    },
+    "mobile": {
+      "bounds": {
+        "width": 390,
+        "height": 1700
+      },
+      "supportBlocks": [
+        {
+          "id": "page-industries-bg",
+          "name": "page-industries-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 1700
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0D1022"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07"
+          }
+        },
+        {
+          "id": "page-industries-hero",
+          "name": "page-industries-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 260
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-industries-0-a4ccbb55.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-industries-0-a4ccbb55.jpg",
+            "relativePath": "assets-structured/carbon/page-industries-0-a4ccbb55.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-industries-hero-overlay",
+          "name": "page-industries-hero-overlay",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 260
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0000004A"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color14"
+          }
+        },
+        {
+          "id": "page-industries-crumb",
+          "name": "page-industries-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 18,
+            "y": 92,
+            "width": 220,
+            "height": 22
+          },
+          "href": "",
+          "content": "Home / Industries",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-title",
+          "name": "page-industries-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 126,
+            "width": 320,
+            "height": 92
+          },
+          "href": "",
+          "content": "Produce Radically Better Parts",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 30,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size07",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-subtitle",
+          "name": "page-industries-subtitle",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 186,
+            "width": 330,
+            "height": 25
+          },
+          "href": "",
+          "content": "Consumer",
+          "style": {
+            "fill": "#E3E7F5",
+            "typography": {
+              "fill": "#E3E7F5",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color16",
+            "textColor": "textColor.palette.text07",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-home-btn-box",
+          "name": "page-industries-home-btn-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 18,
+            "y": 248,
+            "width": 120,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-industries-home-btn-text",
+          "name": "page-industries-home-btn-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 36,
+            "y": 257,
+            "width": 84,
+            "height": 20
+          },
+          "href": "#page-home",
+          "content": "HOME",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-more-btn-box",
+          "name": "page-industries-more-btn-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 154,
+            "y": 248,
+            "width": 160,
+            "height": 38
+          },
+          "href": "#page-footwear",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-industries-more-btn-text",
+          "name": "page-industries-more-btn-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 172,
+            "y": 257,
+            "width": 124,
+            "height": 20
+          },
+          "href": "#page-footwear",
+          "content": "THIRD LEVEL",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-panel",
+          "name": "page-industries-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 18,
+            "y": 296,
+            "width": 354,
+            "height": 980
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#20243A",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color15",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius02"
+          }
+        },
+        {
+          "id": "page-industries-eyebrow",
+          "name": "page-industries-eyebrow",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 318,
+            "width": 240,
+            "height": 18
+          },
+          "href": "",
+          "content": "INDUSTRIES",
+          "style": {
+            "fill": "#5FD3FF",
+            "typography": {
+              "fill": "#5FD3FF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-panel-title",
+          "name": "page-industries-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 350,
+            "width": 300,
+            "height": 75
+          },
+          "href": "",
+          "content": "Produce Radically Better Parts",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 24,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size09",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-p-0",
+          "name": "page-industries-p-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 410,
+            "width": 300,
+            "height": 80
+          },
+          "href": "",
+          "content": "Consumer MedTech Dental Automotive Industrial Consumer High-value products that deliver performance, protection, and standout aesthetics.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-p-1",
+          "name": "page-industries-p-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 508,
+            "width": 300,
+            "height": 80
+          },
+          "href": "",
+          "content": "Next Arrow Previous 1 of 8 MedTech Cutting-edge medtech products produced with a full suite of rigid and flexible biocompatible-capable materials.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-p-2",
+          "name": "page-industries-p-2",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 606,
+            "width": 300,
+            "height": 99
+          },
+          "href": "",
+          "content": "Next Arrow Previous 1 of 8 Dental The new standard of care for dentures, splints, trays, thermoforming models, surgical guides, and cast metal crowns.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-p-3",
+          "name": "page-industries-p-3",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 723,
+            "width": 300,
+            "height": 99
+          },
+          "href": "",
+          "content": "Next Arrow Previous 1 of 8 Automotive On-demand production of electrical connectors, caps, and cabin features that meet stringent engineering requirements.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-p-4",
+          "name": "page-industries-p-4",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 840,
+            "width": 300,
+            "height": 99
+          },
+          "href": "",
+          "content": "Next Arrow Previous 1 of 8 Industrial The digital manufacturing platform for everything from jigs and fixtures to high-performance industrial components.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-img-main",
+          "name": "page-industries-img-main",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 320,
+            "width": 300,
+            "height": 220
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-industries-1-ecd33621.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-industries-1-ecd33621.jpg",
+            "relativePath": "assets-structured/carbon/page-industries-1-ecd33621.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-industries-img-side",
+          "name": "page-industries-img-side",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 560,
+            "width": 300,
+            "height": 180
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-industries-2-a9f0ec2f.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-industries-2-a9f0ec2f.jpg",
+            "relativePath": "assets-structured/carbon/page-industries-2-a9f0ec2f.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-industries-card-0",
+          "name": "page-industries-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 808,
+            "width": 300,
+            "height": 146
+          },
+          "href": "#page-footwear",
+          "content": "",
+          "style": {
+            "fill": "#151827",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color10",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius04"
+          }
+        },
+        {
+          "id": "page-industries-card-img-0",
+          "name": "page-industries-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 54,
+            "y": 820,
+            "width": 276,
+            "height": 82
+          },
+          "href": "#page-footwear",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 10
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius03"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-industries-0-a4ccbb55.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-industries-0-a4ccbb55.jpg",
+            "relativePath": "assets-structured/carbon/page-industries-0-a4ccbb55.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-industries-card-title-0",
+          "name": "page-industries-card-title-0",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 54,
+            "y": 912,
+            "width": 276,
+            "height": 62
+          },
+          "href": "#page-footwear",
+          "content": "CarboXtrem Revolutionizes Cycling with High-Performance Saddles, Grips, and Arm Pads",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-card-body-0",
+          "name": "page-industries-card-body-0",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 54,
+            "y": 932,
+            "width": 276,
+            "height": 85
+          },
+          "href": "#page-footwear",
+          "content": "Consumer MedTech Dental Automotive Industrial Consumer High-value products that deliver performance, protection, and standout aesthetics.",
+          "style": {
+            "fill": "#AAB0D0",
+            "typography": {
+              "fill": "#AAB0D0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-card-1",
+          "name": "page-industries-card-1",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 970,
+            "width": 300,
+            "height": 146
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#151827",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color10",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius04"
+          }
+        },
+        {
+          "id": "page-industries-card-img-1",
+          "name": "page-industries-card-img-1",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 54,
+            "y": 982,
+            "width": 276,
+            "height": 82
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 10
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius03"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-industries-1-ecd33621.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-industries-1-ecd33621.jpg",
+            "relativePath": "assets-structured/carbon/page-industries-1-ecd33621.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-industries-card-title-1",
+          "name": "page-industries-card-title-1",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 54,
+            "y": 1074,
+            "width": 276,
+            "height": 43
+          },
+          "href": "#page-products",
+          "content": "Bringing Unmoldable Designs & Unique Textures to Scalable Production",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-card-body-1",
+          "name": "page-industries-card-body-1",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 54,
+            "y": 1094,
+            "width": 276,
+            "height": 85
+          },
+          "href": "#page-products",
+          "content": "Next Arrow Previous 1 of 8 MedTech Cutting-edge medtech products produced with a full suite of rigid and flexible biocompatible-capable materials.",
+          "style": {
+            "fill": "#AAB0D0",
+            "typography": {
+              "fill": "#AAB0D0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-industries-rel-title",
+          "name": "page-industries-rel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 1460,
+            "width": 200,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related pages",
+          "style": {
+            "fill": "#5FD3FF",
+            "typography": {
+              "fill": "#5FD3FF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-rel-0-box",
+          "name": "page-industries-rel-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1488,
+            "width": 150,
+            "height": 38
+          },
+          "href": "#page-footwear",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-industries-rel-0-text",
+          "name": "page-industries-rel-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 60,
+            "y": 1497,
+            "width": 114,
+            "height": 20
+          },
+          "href": "#page-footwear",
+          "content": "Footwear",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-rel-1-box",
+          "name": "page-industries-rel-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 204,
+            "y": 1488,
+            "width": 150,
+            "height": 38
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-industries-rel-1-text",
+          "name": "page-industries-rel-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 222,
+            "y": 1497,
+            "width": 114,
+            "height": 20
+          },
+          "href": "#page-products",
+          "content": "Products",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-industries-rel-2-box",
+          "name": "page-industries-rel-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1536,
+            "width": 150,
+            "height": 38
+          },
+          "href": "#page-platform",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-industries-rel-2-text",
+          "name": "page-industries-rel-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 60,
+            "y": 1545,
+            "width": 114,
+            "height": 20
+          },
+          "href": "#page-platform",
+          "content": "Platform",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "sectionId": "page-industries-navbar",
+      "sectionKey": "page-industries-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "blockCount": 14,
+          "blockTree": {
+            "id": "page-industries-navbar",
+            "name": "Navbar",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 84
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color04"
+            },
+            "children": [
+              {
+                "id": "page-industries-navbar-bg",
+                "name": "page-industries-navbar-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 84
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#000000"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color12"
+                }
+              },
+              {
+                "id": "page-industries-navbar-logo",
+                "name": "page-industries-navbar-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 40,
+                  "y": 20,
+                  "width": 110,
+                  "height": 34
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "page-industries-navbar-search",
+                "name": "page-industries-navbar-search",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 474,
+                  "y": 24,
+                  "width": 70,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Search...",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "page-industries-navbar-intl",
+                "name": "page-industries-navbar-intl",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 584,
+                  "y": 24,
+                  "width": 92,
+                  "height": 18
+                },
+                "href": "",
+                "content": "International",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "page-industries-navbar-design",
+                "name": "page-industries-navbar-design",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 732,
+                  "y": 24,
+                  "width": 110,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Design Engine",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "page-industries-navbar-support",
+                "name": "page-industries-navbar-support",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 850,
+                  "y": 24,
+                  "width": 130,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Customer Support",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "page-industries-navbar-iso",
+                "name": "page-industries-navbar-iso",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1022,
+                  "y": 24,
+                  "width": 120,
+                  "height": 18
+                },
+                "href": "",
+                "content": "ISO 9001:2015",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-industries-navbar-PLATFORM",
+                "name": "page-industries-navbar-PLATFORM",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 540,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-platform",
+                "content": "PLATFORM",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-industries-navbar-INDUSTRIES",
+                "name": "page-industries-navbar-INDUSTRIES",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 656,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-industries",
+                "content": "INDUSTRIES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-industries-navbar-PARTNERS",
+                "name": "page-industries-navbar-PARTNERS",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 782,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-partners",
+                "content": "PARTNERS",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-industries-navbar-RESOURCES",
+                "name": "page-industries-navbar-RESOURCES",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 898,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-resources",
+                "content": "RESOURCES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-industries-navbar-ABOUT",
+                "name": "page-industries-navbar-ABOUT",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1014,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-about",
+                "content": "ABOUT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-industries-navbar-contact-box",
+                "name": "page-industries-navbar-contact-box",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1280,
+                  "y": 32,
+                  "width": 106,
+                  "height": 40
+                },
+                "href": "#page-contact",
+                "content": "",
+                "style": {
+                  "fill": "#7256FF",
+                  "cornerRadius": 12
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "page-industries-navbar-contact-text",
+                "name": "page-industries-navbar-contact-text",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1298,
+                  "y": 42,
+                  "width": 70,
+                  "height": 20
+                },
+                "href": "#page-contact",
+                "content": "CONTACT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.02em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 68
+          },
+          "blockCount": 4,
+          "blockTree": {
+            "id": "page-industries-navbar",
+            "name": "Navbar",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 68
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color04"
+            },
+            "children": [
+              {
+                "id": "page-industries-navbar-bg",
+                "name": "page-industries-navbar-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 68
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#000000"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color12"
+                }
+              },
+              {
+                "id": "page-industries-navbar-logo",
+                "name": "page-industries-navbar-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 18,
+                  "y": 22,
+                  "width": 84,
+                  "height": 26
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "page-industries-navbar-menu",
+                "name": "page-industries-navbar-menu",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 350,
+                  "y": 24,
+                  "width": 18,
+                  "height": 20
+                },
+                "href": "#page-products",
+                "content": "☰",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-industries-navbar-search",
+                "name": "page-industries-navbar-search",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 308,
+                  "y": 26,
+                  "width": 18,
+                  "height": 18
+                },
+                "href": "#page-products",
+                "content": "⌕",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionKey": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": {
+        "desktop": 1,
+        "mobile": 1
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 1560,
+            "width": 1440,
+            "height": 320
+          },
+          "blockCount": 13,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1560,
+              "width": 1440,
+              "height": 320
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#070A14",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color11"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 320
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#070A14"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color11"
+                }
+              },
+              {
+                "id": "footer-logo",
+                "name": "footer-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 40,
+                  "y": 28,
+                  "width": 110,
+                  "height": 34
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "footer-Platform",
+                "name": "footer-Platform",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PLATFORM",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Platform-body",
+                "name": "footer-Platform-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 40,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "How it Works\nMaterials\nSoftware\nHardware",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Products",
+                "name": "footer-Products",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 260,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PRODUCTS",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Products-body",
+                "name": "footer-Products-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 260,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Industries",
+                "name": "footer-Industries",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 500,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "INDUSTRIES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Industries-body",
+                "name": "footer-Industries-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 500,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "Consumer\nDental\nOrthodontics\nIndustrial",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Resources",
+                "name": "footer-Resources",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 760,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "RESOURCES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Resources-body",
+                "name": "footer-Resources-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 760,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "Blog\nCase studies\nCourses\nDatasheets",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-About",
+                "name": "footer-About",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 1020,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "ABOUT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-About-body",
+                "name": "footer-About-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 1020,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "About Carbon\nNewsroom\nContact Us\nPartners",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 40,
+                  "y": 282,
+                  "width": 520,
+                  "height": 38
+                },
+                "href": "",
+                "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+                "style": {
+                  "fill": "#B9C0DA",
+                  "typography": {
+                    "fill": "#B9C0DA",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color13",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 1340,
+            "width": 390,
+            "height": 360
+          },
+          "blockCount": 9,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1340,
+              "width": 390,
+              "height": 360
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#070A14",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color11"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 360
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#070A14"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color11"
+                }
+              },
+              {
+                "id": "footer-logo",
+                "name": "footer-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 18,
+                  "y": 24,
+                  "width": 84,
+                  "height": 26
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "footer-Platform",
+                "name": "footer-Platform",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 74,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PLATFORM",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Platform-body",
+                "name": "footer-Platform-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 18,
+                  "y": 98,
+                  "width": 100,
+                  "height": 53
+                },
+                "href": "",
+                "content": "How it Works\nMaterials\nSoftware",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Products",
+                "name": "footer-Products",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 140,
+                  "y": 74,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PRODUCTS",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Products-body",
+                "name": "footer-Products-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 140,
+                  "y": 98,
+                  "width": 100,
+                  "height": 53
+                },
+                "href": "",
+                "content": "M3 Printer\nM2 Printer\nL1 Printer",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-About",
+                "name": "footer-About",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 262,
+                  "y": 74,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "ABOUT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-About-body",
+                "name": "footer-About-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 262,
+                  "y": 98,
+                  "width": 100,
+                  "height": 53
+                },
+                "href": "",
+                "content": "About Carbon\nNewsroom\nContact",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 18,
+                  "y": 322,
+                  "width": 330,
+                  "height": 53
+                },
+                "href": "",
+                "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+                "style": {
+                  "fill": "#B9C0DA",
+                  "typography": {
+                    "fill": "#B9C0DA",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color13",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

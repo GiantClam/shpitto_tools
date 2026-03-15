@@ -1,0 +1,77 @@
+{
+  "blockId": "QNlYV",
+  "blockName": "cardB",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 5,
+  "bounds": {
+    "x": 738,
+    "y": 250,
+    "width": 670,
+    "height": 280
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "24d3bdcab1ec8c9619464d3051cf4b1c38159381f3aef2cfa2df8e33ebd070c4",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "QNlYV",
+    "x": 738,
+    "y": 250,
+    "name": "cardB",
+    "width": 670,
+    "height": 280,
+    "fill": "#E7EBEE",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "hDiha",
+        "x": 0,
+        "y": 0,
+        "name": "cardBImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "harrisonbroadbent",
+          "link": "https://unsplash.com/@harrisonbroadbent",
+          "author": "Harrison Broadbent"
+        },
+        "width": 670,
+        "height": 170,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1583199873799-135c4ac1f5cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0MzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "yo6FZ",
+        "x": 24,
+        "y": 188,
+        "name": "cardBT",
+        "fill": "#22303D",
+        "content": "客户合作",
+        "fontFamily": "Inter",
+        "fontSize": 22,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "5PprH",
+        "x": 24,
+        "y": 226,
+        "name": "cardBD",
+        "fill": "#6B7783",
+        "textGrowth": "fixed-width",
+        "width": 620,
+        "content": "将工程能力、交付流程和质量体系与客户目标协同。",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1300 @@
+{
+  "sectionId": "Gbj9A",
+  "sectionName": "SupportMain",
+  "sectionKind": "contact",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 49,
+  "treeHash": "98e488dc5b5ce550c82c163dd28f5bf37cf7e22da0ae0932a461252347845a23",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "VKhzL",
+      "blockName": "TopGrid",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 22,
+      "treeHash": "da34849caa02b9f6410c7ca3f49b6f74c0fc984e05b381539ed6f072a4a9d2e7"
+    },
+    {
+      "blockId": "6ZrMx",
+      "blockName": "GuidesSection",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 15,
+      "treeHash": "5daa1695190c37e9959c9fad250789ebdb4f5ade2bf4e98f1b5d83ed9e23b254"
+    },
+    {
+      "blockId": "wOJxc",
+      "blockName": "SupportCTA",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 11,
+      "treeHash": "7f5188fef6260288fb2a350ea0a7fb53edecfe8262ee2f6578d4d1e8da65433b"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "VKhzL",
+      "blockName": "TopGrid",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 22,
+      "treeHash": "da34849caa02b9f6410c7ca3f49b6f74c0fc984e05b381539ed6f072a4a9d2e7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "VKhzL",
+        "name": "TopGrid",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 36,
+        "children": [
+          {
+            "type": "frame",
+            "id": "BVz3z",
+            "name": "KBRow",
+            "width": "fill_container",
+            "gap": 54,
+            "children": [
+              {
+                "type": "frame",
+                "id": "5EjuM",
+                "name": "KBLeft",
+                "width": 556,
+                "layout": "vertical",
+                "gap": 10,
+                "padding": [
+                  0,
+                  0,
+                  0,
+                  4
+                ],
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "3Pqir",
+                    "name": "kbTitle",
+                    "fill": "#1F2737",
+                    "content": "Knowledge Base",
+                    "fontFamily": "Inter",
+                    "fontSize": 38,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "hDOfc",
+                    "name": "kbDesc",
+                    "fill": "#6A6F74",
+                    "textGrowth": "fixed-width",
+                    "width": 510,
+                    "content": "A collection of frequently asked questions around ordering, product specs, software debugging, and troubleshooting.",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 13,
+                    "fontWeight": "normal"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "pz6Kc",
+                    "name": "kbLinks",
+                    "width": 510,
+                    "layout": "vertical",
+                    "padding": [
+                      8,
+                      0,
+                      0,
+                      0
+                    ],
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "bDAcy",
+                        "name": "kbL1",
+                        "fill": "#2C3037",
+                        "content": "Orders & Shipping",
+                        "fontFamily": "Inter",
+                        "fontSize": 11,
+                        "fontWeight": "600"
+                      },
+                      {
+                        "type": "frame",
+                        "id": "KmYpj",
+                        "name": "kbSep1",
+                        "width": "fill_container",
+                        "height": 1,
+                        "fill": "#CACFD3"
+                      },
+                      {
+                        "type": "text",
+                        "id": "KmgCF",
+                        "name": "kbL2",
+                        "fill": "#2C3037",
+                        "content": "Account & Profile",
+                        "fontFamily": "Inter",
+                        "fontSize": 11,
+                        "fontWeight": "600"
+                      },
+                      {
+                        "type": "frame",
+                        "id": "P9NIU",
+                        "name": "kbSep2",
+                        "width": "fill_container",
+                        "height": 1,
+                        "fill": "#CACFD3"
+                      },
+                      {
+                        "type": "text",
+                        "id": "cs35u",
+                        "name": "kbL3",
+                        "fill": "#2C3037",
+                        "content": "Products",
+                        "fontFamily": "Inter",
+                        "fontSize": 11,
+                        "fontWeight": "600"
+                      },
+                      {
+                        "type": "frame",
+                        "id": "By2RC",
+                        "name": "kbSep3",
+                        "width": "fill_container",
+                        "height": 1,
+                        "fill": "#CACFD3"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "TldaS",
+                "name": "KBIconCard",
+                "width": 520,
+                "height": 250,
+                "fill": "#DFEAEC",
+                "gap": 12,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "VYue1",
+                    "name": "msgIcon",
+                    "width": 70,
+                    "height": 70,
+                    "iconFontName": "message-square",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2E353D"
+                  },
+                  {
+                    "type": "icon_font",
+                    "id": "eKLFU",
+                    "name": "searchIcon",
+                    "width": 44,
+                    "height": 44,
+                    "iconFontName": "search",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2E353D"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "GQtJA",
+            "name": "CommunityRow",
+            "width": "fill_container",
+            "gap": 54,
+            "children": [
+              {
+                "type": "frame",
+                "id": "z0u4u",
+                "name": "CommunityImage",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "nublson",
+                  "link": "https://unsplash.com/@nublson",
+                  "author": "Nubelson Fernandes"
+                },
+                "width": 520,
+                "height": 276,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                },
+                "cornerRadius": 2
+              },
+              {
+                "type": "frame",
+                "id": "OmuGG",
+                "name": "CommunityText",
+                "width": 520,
+                "layout": "vertical",
+                "gap": 10,
+                "justifyContent": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "58f9m",
+                    "name": "commTitle",
+                    "fill": "#1F2737",
+                    "content": "Community",
+                    "fontFamily": "Inter",
+                    "fontSize": 40,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "v85jD",
+                    "name": "commDesc",
+                    "fill": "#6A6F74",
+                    "textGrowth": "fixed-width",
+                    "width": 470,
+                    "content": "A community forum where users can ask questions, get advice, and brainstorm projects, and participate in discussions topics around Framework products.",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 13,
+                    "fontWeight": "normal"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "6PHT8",
+                    "name": "askBtn",
+                    "width": 136,
+                    "height": 34,
+                    "fill": "#F26B2D",
+                    "cornerRadius": 17,
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "e3AEE",
+                        "name": "askTxt",
+                        "fill": "#121416",
+                        "content": "Ask the Community",
+                        "fontFamily": "Inter",
+                        "fontSize": 10,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "6ZrMx",
+      "blockName": "GuidesSection",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 15,
+      "treeHash": "5daa1695190c37e9959c9fad250789ebdb4f5ade2bf4e98f1b5d83ed9e23b254",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "6ZrMx",
+        "name": "GuidesSection",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 18,
+        "children": [
+          {
+            "type": "frame",
+            "id": "o0Zeb",
+            "name": "GuidesHead",
+            "width": "fill_container",
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "85vVo",
+                "name": "guidesTitle",
+                "fill": "#1F2737",
+                "content": "Setup, Upgrade, and Repair Guides",
+                "fontFamily": "Inter",
+                "fontSize": 40,
+                "fontWeight": "700"
+              },
+              {
+                "type": "frame",
+                "id": "5hRC3",
+                "name": "viewBtn",
+                "width": 122,
+                "height": 34,
+                "cornerRadius": 17,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#A6A9AE"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "mLR9N",
+                    "name": "viewTxt",
+                    "fill": "#44484D",
+                    "content": "View All Guides",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "t1DVu",
+            "name": "GuideCards",
+            "width": "fill_container",
+            "gap": 19,
+            "children": [
+              {
+                "type": "frame",
+                "id": "5DEan",
+                "name": "card1",
+                "width": 394,
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "a77fC",
+                    "name": "img1",
+                    "metadata": {
+                      "type": "unsplash",
+                      "username": "shuttergames",
+                      "link": "https://unsplash.com/@shuttergames",
+                      "author": "Shuttergames"
+                    },
+                    "width": 394,
+                    "height": 170,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+                      "mode": "fill"
+                    },
+                    "cornerRadius": 2
+                  },
+                  {
+                    "type": "text",
+                    "id": "ok16w",
+                    "name": "cap1",
+                    "fill": "#30343A",
+                    "textGrowth": "fixed-width",
+                    "width": 394,
+                    "content": "Framework Laptop 13 DIY (Intel Core Ultra Series 1) Quick Start / Editor's Guide, Black Edition",
+                    "lineHeight": 1.35,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "JbNQP",
+                "name": "card2",
+                "width": 394,
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "Ffvyh",
+                    "name": "img2",
+                    "metadata": {
+                      "type": "unsplash",
+                      "username": "muxin_250",
+                      "link": "https://unsplash.com/@muxin_250",
+                      "author": "muxin alkayis"
+                    },
+                    "width": 394,
+                    "height": 170,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+                      "mode": "fill"
+                    },
+                    "cornerRadius": 2
+                  },
+                  {
+                    "type": "text",
+                    "id": "nXvsF",
+                    "name": "cap2",
+                    "fill": "#30343A",
+                    "textGrowth": "fixed-width",
+                    "width": 394,
+                    "content": "Mainboard Replacements Guide",
+                    "lineHeight": 1.35,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "WG35z",
+                "name": "card3",
+                "width": 394,
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "nZDoT",
+                    "name": "img3",
+                    "metadata": {
+                      "type": "unsplash",
+                      "username": "unsplash",
+                      "link": "https://unsplash.com/@unsplash",
+                      "author": "Unsplash"
+                    },
+                    "width": 394,
+                    "height": 170,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                      "mode": "fill"
+                    },
+                    "cornerRadius": 2
+                  },
+                  {
+                    "type": "text",
+                    "id": "P7JQZ",
+                    "name": "cap3",
+                    "fill": "#30343A",
+                    "textGrowth": "fixed-width",
+                    "width": 394,
+                    "content": "Framework Laptop 13 Fully DIY Quick Start Guide",
+                    "lineHeight": 1.35,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "normal"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "wOJxc",
+      "blockName": "SupportCTA",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 11,
+      "treeHash": "7f5188fef6260288fb2a350ea0a7fb53edecfe8262ee2f6578d4d1e8da65433b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "wOJxc",
+        "name": "SupportCTA",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 14,
+        "padding": [
+          28,
+          0,
+          0,
+          0
+        ],
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "frame",
+            "id": "qAkQy",
+            "name": "ctaIconWrap",
+            "width": 48,
+            "height": 48,
+            "fill": "#F26B2D",
+            "cornerRadius": 24,
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "icon_font",
+                "id": "wPChw",
+                "name": "ctaIcon",
+                "width": 24,
+                "height": 24,
+                "iconFontName": "wrench",
+                "iconFontFamily": "lucide",
+                "fill": "#FFFFFF"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "6t6KD",
+            "name": "ctaTitle",
+            "fill": "#1F2737",
+            "textGrowth": "fixed-width",
+            "width": 410,
+            "content": "Still have questions?\nWe are here to help!",
+            "lineHeight": 1.05,
+            "textAlign": "center",
+            "fontFamily": "Inter",
+            "fontSize": 38,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "ZGfmh",
+            "name": "submitBtn",
+            "width": 142,
+            "height": 34,
+            "fill": "#F26B2D",
+            "cornerRadius": 17,
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "hawQ7",
+                "name": "submitTxt",
+                "fill": "#121416",
+                "content": "Submit support request",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "VVzq1",
+            "name": "connectBtn",
+            "width": 170,
+            "height": 34,
+            "cornerRadius": 17,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#A6A9AE"
+            },
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "5YFwm",
+                "name": "connectTxt",
+                "fill": "#44484D",
+                "content": "Connect with the Business team",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "600"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "chJ7r",
+            "name": "divWrap",
+            "width": "fill_container",
+            "height": 8,
+            "layout": "vertical",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "frame",
+                "id": "wqP0q",
+                "name": "sep",
+                "width": 420,
+                "height": 1,
+                "fill": "#EF8C64"
+              },
+              {
+                "type": "frame",
+                "id": "xqp3l",
+                "name": "divBase",
+                "width": "fill_container",
+                "height": 1,
+                "fill": "#D9DCDF"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "Gbj9A",
+    "name": "SupportMain",
+    "width": "fill_container",
+    "fill": "#F3F3EF",
+    "layout": "vertical",
+    "gap": 38,
+    "padding": [
+      36,
+      110,
+      52,
+      110
+    ],
+    "children": [
+      {
+        "type": "frame",
+        "id": "VKhzL",
+        "name": "TopGrid",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 36,
+        "children": [
+          {
+            "type": "frame",
+            "id": "BVz3z",
+            "name": "KBRow",
+            "width": "fill_container",
+            "gap": 54,
+            "children": [
+              {
+                "type": "frame",
+                "id": "5EjuM",
+                "name": "KBLeft",
+                "width": 556,
+                "layout": "vertical",
+                "gap": 10,
+                "padding": [
+                  0,
+                  0,
+                  0,
+                  4
+                ],
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "3Pqir",
+                    "name": "kbTitle",
+                    "fill": "#1F2737",
+                    "content": "Knowledge Base",
+                    "fontFamily": "Inter",
+                    "fontSize": 38,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "hDOfc",
+                    "name": "kbDesc",
+                    "fill": "#6A6F74",
+                    "textGrowth": "fixed-width",
+                    "width": 510,
+                    "content": "A collection of frequently asked questions around ordering, product specs, software debugging, and troubleshooting.",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 13,
+                    "fontWeight": "normal"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "pz6Kc",
+                    "name": "kbLinks",
+                    "width": 510,
+                    "layout": "vertical",
+                    "padding": [
+                      8,
+                      0,
+                      0,
+                      0
+                    ],
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "bDAcy",
+                        "name": "kbL1",
+                        "fill": "#2C3037",
+                        "content": "Orders & Shipping",
+                        "fontFamily": "Inter",
+                        "fontSize": 11,
+                        "fontWeight": "600"
+                      },
+                      {
+                        "type": "frame",
+                        "id": "KmYpj",
+                        "name": "kbSep1",
+                        "width": "fill_container",
+                        "height": 1,
+                        "fill": "#CACFD3"
+                      },
+                      {
+                        "type": "text",
+                        "id": "KmgCF",
+                        "name": "kbL2",
+                        "fill": "#2C3037",
+                        "content": "Account & Profile",
+                        "fontFamily": "Inter",
+                        "fontSize": 11,
+                        "fontWeight": "600"
+                      },
+                      {
+                        "type": "frame",
+                        "id": "P9NIU",
+                        "name": "kbSep2",
+                        "width": "fill_container",
+                        "height": 1,
+                        "fill": "#CACFD3"
+                      },
+                      {
+                        "type": "text",
+                        "id": "cs35u",
+                        "name": "kbL3",
+                        "fill": "#2C3037",
+                        "content": "Products",
+                        "fontFamily": "Inter",
+                        "fontSize": 11,
+                        "fontWeight": "600"
+                      },
+                      {
+                        "type": "frame",
+                        "id": "By2RC",
+                        "name": "kbSep3",
+                        "width": "fill_container",
+                        "height": 1,
+                        "fill": "#CACFD3"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "TldaS",
+                "name": "KBIconCard",
+                "width": 520,
+                "height": 250,
+                "fill": "#DFEAEC",
+                "gap": 12,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "VYue1",
+                    "name": "msgIcon",
+                    "width": 70,
+                    "height": 70,
+                    "iconFontName": "message-square",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2E353D"
+                  },
+                  {
+                    "type": "icon_font",
+                    "id": "eKLFU",
+                    "name": "searchIcon",
+                    "width": 44,
+                    "height": 44,
+                    "iconFontName": "search",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2E353D"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "GQtJA",
+            "name": "CommunityRow",
+            "width": "fill_container",
+            "gap": 54,
+            "children": [
+              {
+                "type": "frame",
+                "id": "z0u4u",
+                "name": "CommunityImage",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "nublson",
+                  "link": "https://unsplash.com/@nublson",
+                  "author": "Nubelson Fernandes"
+                },
+                "width": 520,
+                "height": 276,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                },
+                "cornerRadius": 2
+              },
+              {
+                "type": "frame",
+                "id": "OmuGG",
+                "name": "CommunityText",
+                "width": 520,
+                "layout": "vertical",
+                "gap": 10,
+                "justifyContent": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "58f9m",
+                    "name": "commTitle",
+                    "fill": "#1F2737",
+                    "content": "Community",
+                    "fontFamily": "Inter",
+                    "fontSize": 40,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "v85jD",
+                    "name": "commDesc",
+                    "fill": "#6A6F74",
+                    "textGrowth": "fixed-width",
+                    "width": 470,
+                    "content": "A community forum where users can ask questions, get advice, and brainstorm projects, and participate in discussions topics around Framework products.",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 13,
+                    "fontWeight": "normal"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "6PHT8",
+                    "name": "askBtn",
+                    "width": 136,
+                    "height": 34,
+                    "fill": "#F26B2D",
+                    "cornerRadius": 17,
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "e3AEE",
+                        "name": "askTxt",
+                        "fill": "#121416",
+                        "content": "Ask the Community",
+                        "fontFamily": "Inter",
+                        "fontSize": 10,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "6ZrMx",
+        "name": "GuidesSection",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 18,
+        "children": [
+          {
+            "type": "frame",
+            "id": "o0Zeb",
+            "name": "GuidesHead",
+            "width": "fill_container",
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "85vVo",
+                "name": "guidesTitle",
+                "fill": "#1F2737",
+                "content": "Setup, Upgrade, and Repair Guides",
+                "fontFamily": "Inter",
+                "fontSize": 40,
+                "fontWeight": "700"
+              },
+              {
+                "type": "frame",
+                "id": "5hRC3",
+                "name": "viewBtn",
+                "width": 122,
+                "height": 34,
+                "cornerRadius": 17,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#A6A9AE"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "mLR9N",
+                    "name": "viewTxt",
+                    "fill": "#44484D",
+                    "content": "View All Guides",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "t1DVu",
+            "name": "GuideCards",
+            "width": "fill_container",
+            "gap": 19,
+            "children": [
+              {
+                "type": "frame",
+                "id": "5DEan",
+                "name": "card1",
+                "width": 394,
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "a77fC",
+                    "name": "img1",
+                    "metadata": {
+                      "type": "unsplash",
+                      "username": "shuttergames",
+                      "link": "https://unsplash.com/@shuttergames",
+                      "author": "Shuttergames"
+                    },
+                    "width": 394,
+                    "height": 170,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+                      "mode": "fill"
+                    },
+                    "cornerRadius": 2
+                  },
+                  {
+                    "type": "text",
+                    "id": "ok16w",
+                    "name": "cap1",
+                    "fill": "#30343A",
+                    "textGrowth": "fixed-width",
+                    "width": 394,
+                    "content": "Framework Laptop 13 DIY (Intel Core Ultra Series 1) Quick Start / Editor's Guide, Black Edition",
+                    "lineHeight": 1.35,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "JbNQP",
+                "name": "card2",
+                "width": 394,
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "Ffvyh",
+                    "name": "img2",
+                    "metadata": {
+                      "type": "unsplash",
+                      "username": "muxin_250",
+                      "link": "https://unsplash.com/@muxin_250",
+                      "author": "muxin alkayis"
+                    },
+                    "width": 394,
+                    "height": 170,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+                      "mode": "fill"
+                    },
+                    "cornerRadius": 2
+                  },
+                  {
+                    "type": "text",
+                    "id": "nXvsF",
+                    "name": "cap2",
+                    "fill": "#30343A",
+                    "textGrowth": "fixed-width",
+                    "width": 394,
+                    "content": "Mainboard Replacements Guide",
+                    "lineHeight": 1.35,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "WG35z",
+                "name": "card3",
+                "width": 394,
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "nZDoT",
+                    "name": "img3",
+                    "metadata": {
+                      "type": "unsplash",
+                      "username": "unsplash",
+                      "link": "https://unsplash.com/@unsplash",
+                      "author": "Unsplash"
+                    },
+                    "width": 394,
+                    "height": 170,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                      "mode": "fill"
+                    },
+                    "cornerRadius": 2
+                  },
+                  {
+                    "type": "text",
+                    "id": "P7JQZ",
+                    "name": "cap3",
+                    "fill": "#30343A",
+                    "textGrowth": "fixed-width",
+                    "width": 394,
+                    "content": "Framework Laptop 13 Fully DIY Quick Start Guide",
+                    "lineHeight": 1.35,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "normal"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "wOJxc",
+        "name": "SupportCTA",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 14,
+        "padding": [
+          28,
+          0,
+          0,
+          0
+        ],
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "frame",
+            "id": "qAkQy",
+            "name": "ctaIconWrap",
+            "width": 48,
+            "height": 48,
+            "fill": "#F26B2D",
+            "cornerRadius": 24,
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "icon_font",
+                "id": "wPChw",
+                "name": "ctaIcon",
+                "width": 24,
+                "height": 24,
+                "iconFontName": "wrench",
+                "iconFontFamily": "lucide",
+                "fill": "#FFFFFF"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "6t6KD",
+            "name": "ctaTitle",
+            "fill": "#1F2737",
+            "textGrowth": "fixed-width",
+            "width": 410,
+            "content": "Still have questions?\nWe are here to help!",
+            "lineHeight": 1.05,
+            "textAlign": "center",
+            "fontFamily": "Inter",
+            "fontSize": 38,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "ZGfmh",
+            "name": "submitBtn",
+            "width": 142,
+            "height": 34,
+            "fill": "#F26B2D",
+            "cornerRadius": 17,
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "hawQ7",
+                "name": "submitTxt",
+                "fill": "#121416",
+                "content": "Submit support request",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "VVzq1",
+            "name": "connectBtn",
+            "width": 170,
+            "height": 34,
+            "cornerRadius": 17,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#A6A9AE"
+            },
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "5YFwm",
+                "name": "connectTxt",
+                "fill": "#44484D",
+                "content": "Connect with the Business team",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "600"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "chJ7r",
+            "name": "divWrap",
+            "width": "fill_container",
+            "height": 8,
+            "layout": "vertical",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "frame",
+                "id": "wqP0q",
+                "name": "sep",
+                "width": 420,
+                "height": 1,
+                "fill": "#EF8C64"
+              },
+              {
+                "type": "frame",
+                "id": "xqp3l",
+                "name": "divBase",
+                "width": "fill_container",
+                "height": 1,
+                "fill": "#D9DCDF"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

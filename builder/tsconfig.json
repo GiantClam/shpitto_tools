@@ -38,6 +38,8 @@
     ".next-prod/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/components/blocks/template-exclusive-*/**",
+    "src/components/blocks/custom-template-exclusive-*/**"
   ]
 }

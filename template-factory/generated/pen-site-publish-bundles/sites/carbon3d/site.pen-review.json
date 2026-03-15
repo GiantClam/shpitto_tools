@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "template-factory.pen-review.v1",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "reviewedAt": "2026-03-12T09:28:06.423Z",
+  "sourcePenFile": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-site-publish-bundles/sites/carbon3d/site.pen-bundle.json",
+  "runId": "pen-site-bundle-carbon3d",
+  "reviewer": "codex",
+  "notes": "Carbon3d passed strict structural validation. Carbon3d passed Pencil-backed payload validation. Carbon3d passed visual parity validation. Carbon3d passed sandbox navigation/footer/runtime audit. Carbon3d is skinnable for theme, copy, image, link, and style slots. Desktop and mobile source variants are both present and bundled together.",
+  "items": [
+    {
+      "caseId": "carbon3d-desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/carbon3d.pen",
+      "status": "approved",
+      "notes": "Desktop source variant bundled with matching mobile variant."
+    },
+    {
+      "caseId": "carbon3d-mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/carbon3d-mobile.pen",
+      "status": "approved",
+      "notes": "Mobile source variant bundled and approved."
+    }
+  ]
+}

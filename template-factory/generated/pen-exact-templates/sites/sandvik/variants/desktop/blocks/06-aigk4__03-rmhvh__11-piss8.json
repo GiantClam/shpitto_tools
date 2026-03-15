@@ -1,0 +1,177 @@
+{
+  "blockId": "pIss8",
+  "blockName": "contactRow",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 11,
+  "bounds": {
+    "x": 24,
+    "y": 914,
+    "width": 1392,
+    "height": 220
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 13,
+  "treeHash": "d64d8f195d69b3701a0352b799ca18f6134f8334da06985af071f57bdf73e2be",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "pIss8",
+    "x": 24,
+    "y": 914,
+    "name": "contactRow",
+    "width": 1392,
+    "height": 220,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "MerKs",
+        "x": 0,
+        "y": 0,
+        "name": "ct1",
+        "width": 448,
+        "height": 180,
+        "fill": "#EFEDE8",
+        "layout": "none",
+        "children": [
+          {
+            "type": "icon_font",
+            "id": "jHPPL",
+            "x": 20,
+            "y": 22,
+            "width": 34,
+            "height": 34,
+            "iconFontName": "chat",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#8D7A57"
+          },
+          {
+            "type": "text",
+            "id": "hDYPC",
+            "x": 20,
+            "y": 68,
+            "fill": "#1E1E1E",
+            "content": "与我们聊天",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "58gux",
+            "x": 20,
+            "y": 103,
+            "fill": "#4F4F4F",
+            "textGrowth": "fixed-width",
+            "width": 390,
+            "content": "每周工作日 8:00 到 17:00 CST\n由客服支持，立即获取解答。",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "faKOq",
+        "x": 472,
+        "y": 0,
+        "name": "ct2",
+        "width": 448,
+        "height": 180,
+        "fill": "#EFEDE8",
+        "layout": "none",
+        "children": [
+          {
+            "type": "icon_font",
+            "id": "PYoyU",
+            "x": 20,
+            "y": 22,
+            "width": 34,
+            "height": 34,
+            "iconFontName": "call",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#8D7A57"
+          },
+          {
+            "type": "text",
+            "id": "w6OUS",
+            "x": 20,
+            "y": 68,
+            "fill": "#1E1E1E",
+            "content": "致电我们",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "jM9Ut",
+            "x": 20,
+            "y": 103,
+            "fill": "#4F4F4F",
+            "textGrowth": "fixed-width",
+            "width": 390,
+            "content": "客服专线可为您解答订单与应用问题。\n座机 400 820 2623(座机)/+86 400 820 2623(手机)",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "xMQfU",
+        "x": 944,
+        "y": 0,
+        "name": "ct3",
+        "width": 448,
+        "height": 180,
+        "fill": "#EFEDE8",
+        "layout": "none",
+        "children": [
+          {
+            "type": "icon_font",
+            "id": "U1HB7",
+            "x": 20,
+            "y": 22,
+            "width": 34,
+            "height": 34,
+            "iconFontName": "mail",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#8D7A57"
+          },
+          {
+            "type": "text",
+            "id": "EWBMd",
+            "x": 20,
+            "y": 68,
+            "fill": "#1E1E1E",
+            "content": "给我们填写电子邮件",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "LH0BB",
+            "x": 20,
+            "y": 100,
+            "fill": "#4F4F4F",
+            "textGrowth": "fixed-width",
+            "width": 390,
+            "content": "通过表单提交需求，客服团队将在工作时间内尽快回复。",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    ]
+  }
+}

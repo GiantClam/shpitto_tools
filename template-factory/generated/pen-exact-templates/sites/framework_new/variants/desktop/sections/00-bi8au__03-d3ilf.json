@@ -1,0 +1,322 @@
+{
+  "sectionId": "d3ilf",
+  "sectionName": "Hero3",
+  "sectionKind": "hero",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": 270
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 9,
+  "treeHash": "67b2f89a207a6dce081b0ae2c59769d32faf8528fdd1b7c677d80c9228c26855",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "keOGH",
+      "blockName": "hero3l",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 420,
+        "height": "fill_container"
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d85752c37e9cbf6fff32568d2d71002ddd56a34b8dcc74ce7f149b33df1b5511"
+    },
+    {
+      "blockId": "u31Yq",
+      "blockName": "hero3r",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 748,
+        "height": "fill_container"
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 7,
+      "treeHash": "a9e9fe7bfb90174dc67dcb6e2e6566d5a83e2ccc0e17584933441fe9853a5f34"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "keOGH",
+      "blockName": "hero3l",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 420,
+        "height": "fill_container"
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d85752c37e9cbf6fff32568d2d71002ddd56a34b8dcc74ce7f149b33df1b5511",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "keOGH",
+        "name": "hero3l",
+        "metadata": {
+          "type": "unsplash",
+          "username": "muxin_250",
+          "link": "https://unsplash.com/@muxin_250",
+          "author": "muxin alkayis"
+        },
+        "width": 420,
+        "height": "fill_container",
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 4
+      }
+    },
+    {
+      "blockId": "u31Yq",
+      "blockName": "hero3r",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 748,
+        "height": "fill_container"
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 7,
+      "treeHash": "a9e9fe7bfb90174dc67dcb6e2e6566d5a83e2ccc0e17584933441fe9853a5f34",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "u31Yq",
+        "name": "hero3r",
+        "width": 748,
+        "height": "fill_container",
+        "layout": "vertical",
+        "gap": 12,
+        "justifyContent": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "XA6xE",
+            "name": "h3t1",
+            "fill": "#202020",
+            "textGrowth": "fixed-width",
+            "width": 590,
+            "content": "Framework Desktop is a big\ncomputer made mini.",
+            "lineHeight": 1.08,
+            "fontFamily": "Inter",
+            "fontSize": 40,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "8WHRi",
+            "name": "row3",
+            "height": 34,
+            "gap": 8,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "frame",
+                "id": "9pF7k",
+                "name": "h3b",
+                "width": 112,
+                "height": 34,
+                "fill": "#F46E35",
+                "cornerRadius": 17,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "Ujx9f",
+                    "name": "h3bt",
+                    "fill": "#111111",
+                    "content": "Configure now",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "ooQv9",
+                "name": "lm3",
+                "width": 96,
+                "height": 34,
+                "cornerRadius": 17,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#9CA3AA"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "CN9cI",
+                    "fill": "#5E6369",
+                    "content": "Learn more",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "d3ilf",
+    "name": "Hero3",
+    "width": "fill_container",
+    "height": 270,
+    "fill": "#F1F1ED",
+    "cornerRadius": 6,
+    "gap": 20,
+    "padding": [
+      24,
+      20
+    ],
+    "children": [
+      {
+        "type": "frame",
+        "id": "keOGH",
+        "name": "hero3l",
+        "metadata": {
+          "type": "unsplash",
+          "username": "muxin_250",
+          "link": "https://unsplash.com/@muxin_250",
+          "author": "muxin alkayis"
+        },
+        "width": 420,
+        "height": "fill_container",
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 4
+      },
+      {
+        "type": "frame",
+        "id": "u31Yq",
+        "name": "hero3r",
+        "width": 748,
+        "height": "fill_container",
+        "layout": "vertical",
+        "gap": 12,
+        "justifyContent": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "XA6xE",
+            "name": "h3t1",
+            "fill": "#202020",
+            "textGrowth": "fixed-width",
+            "width": 590,
+            "content": "Framework Desktop is a big\ncomputer made mini.",
+            "lineHeight": 1.08,
+            "fontFamily": "Inter",
+            "fontSize": 40,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "8WHRi",
+            "name": "row3",
+            "height": 34,
+            "gap": 8,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "frame",
+                "id": "9pF7k",
+                "name": "h3b",
+                "width": 112,
+                "height": 34,
+                "fill": "#F46E35",
+                "cornerRadius": 17,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "Ujx9f",
+                    "name": "h3bt",
+                    "fill": "#111111",
+                    "content": "Configure now",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "ooQv9",
+                "name": "lm3",
+                "width": 96,
+                "height": 34,
+                "cornerRadius": 17,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#9CA3AA"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "CN9cI",
+                    "fill": "#5E6369",
+                    "content": "Learn more",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

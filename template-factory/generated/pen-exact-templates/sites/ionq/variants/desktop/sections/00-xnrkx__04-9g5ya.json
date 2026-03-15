@@ -1,0 +1,821 @@
+{
+  "sectionId": "9G5Ya",
+  "sectionName": "PlatformSection",
+  "sectionKind": "contact",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 1136,
+    "width": 1200,
+    "height": 681
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 24,
+  "treeHash": "35ccef3b8dbe00da92b729c76e303e2d4772ea60ba555662db3678c74514e3d2",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "leeyu",
+      "blockName": "head",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 28,
+        "width": 1135,
+        "height": 119
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 7,
+      "treeHash": "afb97523a529785e7bc6b42c0c15fefbe2c272d9d2e7fba32987566882e7bac6"
+    },
+    {
+      "blockId": "RSscm",
+      "blockName": "cards",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 32,
+        "y": 165,
+        "width": 1136,
+        "height": 500
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 16,
+      "treeHash": "8f6c8e6600ae05eecb8980151d6c494bda4757e7e44c161a766fcb9dc30810b5"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1733424114804-b7369094b139?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNDU5MzB8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1584610300019-74e90ede7573?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNDU5NDF8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1726244786561-522f88e8b813?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNDU5NTB8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "leeyu",
+      "blockName": "head",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 28,
+        "width": 1135,
+        "height": 119
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 7,
+      "treeHash": "afb97523a529785e7bc6b42c0c15fefbe2c272d9d2e7fba32987566882e7bac6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "leeyu",
+        "x": 32,
+        "y": 28,
+        "name": "head",
+        "width": 1135,
+        "height": 119,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "FC1Ck",
+            "x": 0,
+            "y": 0,
+            "name": "title",
+            "fill": "#0B0F14",
+            "textGrowth": "fixed-width",
+            "width": 876,
+            "content": "The only full-stack\nquantum platform",
+            "lineHeight": 1.08,
+            "fontFamily": "Inter",
+            "fontSize": 48,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "bKcX2",
+            "x": 1000,
+            "y": 60,
+            "name": "arrows",
+            "width": 106,
+            "height": 48,
+            "gap": 10,
+            "children": [
+              {
+                "type": "frame",
+                "id": "bunD2",
+                "name": "leftBtn",
+                "width": 48,
+                "height": 48,
+                "fill": "#EAECEE",
+                "cornerRadius": 10,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#A8ADB3"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "S4Mbi",
+                    "name": "leftTxt",
+                    "fill": "#73787F",
+                    "content": "←",
+                    "fontFamily": "Inter",
+                    "fontSize": 26,
+                    "fontWeight": "600"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "6IKUW",
+                "name": "rightBtn",
+                "width": 48,
+                "height": 48,
+                "fill": "#EAECEE",
+                "cornerRadius": 10,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#A8ADB3"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "1QOr5",
+                    "name": "rightTxt",
+                    "fill": "#73787F",
+                    "content": "→",
+                    "fontFamily": "Inter",
+                    "fontSize": 26,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "RSscm",
+      "blockName": "cards",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 32,
+        "y": 165,
+        "width": 1136,
+        "height": 500
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 16,
+      "treeHash": "8f6c8e6600ae05eecb8980151d6c494bda4757e7e44c161a766fcb9dc30810b5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "RSscm",
+        "x": 32,
+        "y": 165,
+        "name": "cards",
+        "width": 1136,
+        "height": 500,
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "WI4by",
+            "x": 0,
+            "y": 0,
+            "name": "card1",
+            "width": 368,
+            "height": 480,
+            "fill": "#EAECEE",
+            "cornerRadius": 10,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#B9BEC4"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "31T1O",
+                "x": 18,
+                "y": 18,
+                "name": "img1",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "steve_j",
+                  "link": "https://unsplash.com/@steve_j",
+                  "author": "Steve Johnson"
+                },
+                "width": 332,
+                "height": 206,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1733424114804-b7369094b139?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNDU5MzB8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                },
+                "cornerRadius": 14
+              },
+              {
+                "type": "text",
+                "id": "5NsgL",
+                "x": 18,
+                "y": 240,
+                "name": "t1",
+                "fill": "#11151B",
+                "textGrowth": "fixed-width",
+                "width": 332,
+                "content": "Quantum computing",
+                "lineHeight": 1.05,
+                "fontFamily": "Inter",
+                "fontSize": 28,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "uuQlG",
+                "x": 18,
+                "y": 300,
+                "name": "d1",
+                "fill": "#30353C",
+                "textGrowth": "fixed-width",
+                "width": 332,
+                "content": "Unlock the power of quantum computing with industry-leading trapped-ion systems delivering fidelity, scale, and enterprise-ready performance for complex challenges.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "ptnEX",
+                "x": 18,
+                "y": 420,
+                "name": "l1",
+                "fill": "#FF6A00",
+                "content": "Learn more  →",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "9zzd0",
+            "x": 384,
+            "y": 0,
+            "name": "card2",
+            "width": 368,
+            "height": 480,
+            "fill": "#EAECEE",
+            "cornerRadius": 10,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#B9BEC4"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "IPZkJ",
+                "x": 18,
+                "y": 18,
+                "name": "img2",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "yogidan2012",
+                  "link": "https://unsplash.com/@yogidan2012",
+                  "author": "Daniele Levis Pelusi"
+                },
+                "width": 332,
+                "height": 206,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1584610300019-74e90ede7573?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNDU5NDF8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                },
+                "cornerRadius": 14
+              },
+              {
+                "type": "text",
+                "id": "9J2QG",
+                "x": 18,
+                "y": 240,
+                "name": "t2",
+                "fill": "#11151B",
+                "textGrowth": "fixed-width",
+                "width": 332,
+                "content": "Quantum networking",
+                "lineHeight": 1.05,
+                "fontFamily": "Inter",
+                "fontSize": 28,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "pxcou",
+                "x": 18,
+                "y": 300,
+                "name": "d2",
+                "fill": "#30353C",
+                "textGrowth": "fixed-width",
+                "width": 332,
+                "content": "IonQ is at the forefront of quantum networking to secure communications and protect critical data from current and future threats.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "AMIkB",
+                "x": 18,
+                "y": 420,
+                "name": "l2",
+                "fill": "#FF6A00",
+                "content": "Learn more  →",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "uUrnt",
+            "x": 768,
+            "y": 0,
+            "name": "card3",
+            "width": 368,
+            "height": 480,
+            "fill": "#EAECEE",
+            "cornerRadius": 10,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#B9BEC4"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "jJZ9j",
+                "x": 18,
+                "y": 18,
+                "name": "img3",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "ulikverse",
+                  "link": "https://unsplash.com/@ulikverse",
+                  "author": "Yulii Shtel"
+                },
+                "width": 332,
+                "height": 206,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1726244786561-522f88e8b813?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNDU5NTB8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                },
+                "cornerRadius": 14
+              },
+              {
+                "type": "text",
+                "id": "2ahKb",
+                "x": 18,
+                "y": 240,
+                "name": "t3",
+                "fill": "#11151B",
+                "textGrowth": "fixed-width",
+                "width": 332,
+                "content": "Quantum security",
+                "lineHeight": 1.05,
+                "fontFamily": "Inter",
+                "fontSize": 28,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "3qgxC",
+                "x": 18,
+                "y": 300,
+                "name": "d3",
+                "fill": "#30353C",
+                "textGrowth": "fixed-width",
+                "width": 332,
+                "content": "Quantum key distribution (QKD) is used to secure communications and build the foundation of a quantum internet.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "Mv1Xf",
+                "x": 18,
+                "y": 420,
+                "name": "l3",
+                "fill": "#FF6A00",
+                "content": "Learn more  →",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "9G5Ya",
+    "x": 0,
+    "y": 1136,
+    "name": "PlatformSection",
+    "width": 1200,
+    "height": 681,
+    "fill": "#EAECEE",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "leeyu",
+        "x": 32,
+        "y": 28,
+        "name": "head",
+        "width": 1135,
+        "height": 119,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "FC1Ck",
+            "x": 0,
+            "y": 0,
+            "name": "title",
+            "fill": "#0B0F14",
+            "textGrowth": "fixed-width",
+            "width": 876,
+            "content": "The only full-stack\nquantum platform",
+            "lineHeight": 1.08,
+            "fontFamily": "Inter",
+            "fontSize": 48,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "bKcX2",
+            "x": 1000,
+            "y": 60,
+            "name": "arrows",
+            "width": 106,
+            "height": 48,
+            "gap": 10,
+            "children": [
+              {
+                "type": "frame",
+                "id": "bunD2",
+                "name": "leftBtn",
+                "width": 48,
+                "height": 48,
+                "fill": "#EAECEE",
+                "cornerRadius": 10,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#A8ADB3"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "S4Mbi",
+                    "name": "leftTxt",
+                    "fill": "#73787F",
+                    "content": "←",
+                    "fontFamily": "Inter",
+                    "fontSize": 26,
+                    "fontWeight": "600"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "6IKUW",
+                "name": "rightBtn",
+                "width": 48,
+                "height": 48,
+                "fill": "#EAECEE",
+                "cornerRadius": 10,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#A8ADB3"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "1QOr5",
+                    "name": "rightTxt",
+                    "fill": "#73787F",
+                    "content": "→",
+                    "fontFamily": "Inter",
+                    "fontSize": 26,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "RSscm",
+        "x": 32,
+        "y": 165,
+        "name": "cards",
+        "width": 1136,
+        "height": 500,
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "WI4by",
+            "x": 0,
+            "y": 0,
+            "name": "card1",
+            "width": 368,
+            "height": 480,
+            "fill": "#EAECEE",
+            "cornerRadius": 10,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#B9BEC4"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "31T1O",
+                "x": 18,
+                "y": 18,
+                "name": "img1",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "steve_j",
+                  "link": "https://unsplash.com/@steve_j",
+                  "author": "Steve Johnson"
+                },
+                "width": 332,
+                "height": 206,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1733424114804-b7369094b139?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNDU5MzB8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                },
+                "cornerRadius": 14
+              },
+              {
+                "type": "text",
+                "id": "5NsgL",
+                "x": 18,
+                "y": 240,
+                "name": "t1",
+                "fill": "#11151B",
+                "textGrowth": "fixed-width",
+                "width": 332,
+                "content": "Quantum computing",
+                "lineHeight": 1.05,
+                "fontFamily": "Inter",
+                "fontSize": 28,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "uuQlG",
+                "x": 18,
+                "y": 300,
+                "name": "d1",
+                "fill": "#30353C",
+                "textGrowth": "fixed-width",
+                "width": 332,
+                "content": "Unlock the power of quantum computing with industry-leading trapped-ion systems delivering fidelity, scale, and enterprise-ready performance for complex challenges.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "ptnEX",
+                "x": 18,
+                "y": 420,
+                "name": "l1",
+                "fill": "#FF6A00",
+                "content": "Learn more  →",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "9zzd0",
+            "x": 384,
+            "y": 0,
+            "name": "card2",
+            "width": 368,
+            "height": 480,
+            "fill": "#EAECEE",
+            "cornerRadius": 10,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#B9BEC4"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "IPZkJ",
+                "x": 18,
+                "y": 18,
+                "name": "img2",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "yogidan2012",
+                  "link": "https://unsplash.com/@yogidan2012",
+                  "author": "Daniele Levis Pelusi"
+                },
+                "width": 332,
+                "height": 206,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1584610300019-74e90ede7573?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNDU5NDF8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                },
+                "cornerRadius": 14
+              },
+              {
+                "type": "text",
+                "id": "9J2QG",
+                "x": 18,
+                "y": 240,
+                "name": "t2",
+                "fill": "#11151B",
+                "textGrowth": "fixed-width",
+                "width": 332,
+                "content": "Quantum networking",
+                "lineHeight": 1.05,
+                "fontFamily": "Inter",
+                "fontSize": 28,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "pxcou",
+                "x": 18,
+                "y": 300,
+                "name": "d2",
+                "fill": "#30353C",
+                "textGrowth": "fixed-width",
+                "width": 332,
+                "content": "IonQ is at the forefront of quantum networking to secure communications and protect critical data from current and future threats.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "AMIkB",
+                "x": 18,
+                "y": 420,
+                "name": "l2",
+                "fill": "#FF6A00",
+                "content": "Learn more  →",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "uUrnt",
+            "x": 768,
+            "y": 0,
+            "name": "card3",
+            "width": 368,
+            "height": 480,
+            "fill": "#EAECEE",
+            "cornerRadius": 10,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#B9BEC4"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "jJZ9j",
+                "x": 18,
+                "y": 18,
+                "name": "img3",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "ulikverse",
+                  "link": "https://unsplash.com/@ulikverse",
+                  "author": "Yulii Shtel"
+                },
+                "width": 332,
+                "height": 206,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1726244786561-522f88e8b813?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNDU5NTB8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                },
+                "cornerRadius": 14
+              },
+              {
+                "type": "text",
+                "id": "2ahKb",
+                "x": 18,
+                "y": 240,
+                "name": "t3",
+                "fill": "#11151B",
+                "textGrowth": "fixed-width",
+                "width": 332,
+                "content": "Quantum security",
+                "lineHeight": 1.05,
+                "fontFamily": "Inter",
+                "fontSize": 28,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "3qgxC",
+                "x": 18,
+                "y": 300,
+                "name": "d3",
+                "fill": "#30353C",
+                "textGrowth": "fixed-width",
+                "width": 332,
+                "content": "Quantum key distribution (QKD) is used to secure communications and build the foundation of a quantum internet.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "Mv1Xf",
+                "x": 18,
+                "y": 420,
+                "name": "l3",
+                "fill": "#FF6A00",
+                "content": "Learn more  →",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

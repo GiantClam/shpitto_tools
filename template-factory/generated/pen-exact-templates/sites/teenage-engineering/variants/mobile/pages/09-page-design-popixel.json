@@ -1,0 +1,1530 @@
+{
+  "pageId": "page-design-popixel",
+  "pageName": "Design: Popixel",
+  "pageType": "catalog",
+  "order": 9,
+  "bounds": {
+    "x": 1040,
+    "y": 4666,
+    "width": 390,
+    "height": 1550
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "902338dbf4cbdd9555a584384f191c72d0d20c8865df8611975fceadc01d6782",
+  "directChildCount": 34,
+  "recursiveNodeCount": 43,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "header-page-design-popixel",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "d8df03fb56180158dae1ffa482452649fbe5362973ca28173d3958aab1cb79d6",
+      "blockCount": 3
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1300,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "979044fa4ac669ffdd80c22edae2be325be7fd8da3efa89f05de3f2717016276",
+      "blockCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "header-page-design-popixel",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "d8df03fb56180158dae1ffa482452649fbe5362973ca28173d3958aab1cb79d6",
+      "blockCount": 3,
+      "blockIndex": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db"
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "66cef29a304d8eb0b6c0180c5432eca40c0c2bc3f36872ec77be02c167a1425b"
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b087b3d99c81249062fabb708d5043227c430fd8e4166762497fe0cc8764e110"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "66cef29a304d8eb0b6c0180c5432eca40c0c2bc3f36872ec77be02c167a1425b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "teenage engineering",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          }
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b087b3d99c81249062fabb708d5043227c430fd8e4166762497fe0cc8764e110",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "header-page-design-popixel",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "teenage engineering",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1300,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "979044fa4ac669ffdd80c22edae2be325be7fd8da3efa89f05de3f2717016276",
+      "blockCount": 5,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0dcdf849f88154a374e1e5c30790465cb0279e0c2e82dc4ad824a95189aa59f4"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0a857d3e2bb04b0ba8ec81b07b55a08ceffd753384705759bbb14ab754cff873"
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "582544677c805e1c40341da766483309dcd98b34ec9d736ce7e8e10e6d48fd08"
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "638ab78065d4f9488415403c6947393ff6098420a6892a3daadee4e3c3c8b2f7"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "02a90e2a0c1a8a40bc90f7add2636d0368c42d920acb8100052bd41656690914"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0dcdf849f88154a374e1e5c30790465cb0279e0c2e82dc4ad824a95189aa59f4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#111111"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0a857d3e2bb04b0ba8ec81b07b55a08ceffd753384705759bbb14ab754cff873",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F0F0EB",
+            "content": "teenage engineering",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "582544677c805e1c40341da766483309dcd98b34ec9d736ce7e8e10e6d48fd08",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F0F0EB",
+            "content": "Products Guides Downloads",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "638ab78065d4f9488415403c6947393ff6098420a6892a3daadee4e3c3c8b2f7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F0F0EB",
+            "content": "Designs Contact TX-6 OP-XY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "02a90e2a0c1a8a40bc90f7add2636d0368c42d920acb8100052bd41656690914",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "teenage engineering structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1300,
+        "width": 390,
+        "height": 250,
+        "fill": "#111111",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#111111"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F0F0EB",
+            "content": "teenage engineering",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F0F0EB",
+            "content": "Products Guides Downloads",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F0F0EB",
+            "content": "Designs Contact TX-6 OP-XY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "teenage engineering structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 8,
+  "looseNodeCount": 32,
+  "looseNodes": [
+    {
+      "id": "page-design-popixel-bg",
+      "name": "page-design-popixel-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 100
+    },
+    {
+      "id": "page-design-popixel-hero",
+      "name": "page-design-popixel-hero",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-design-popixel-overlay",
+      "name": "page-design-popixel-overlay",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-design-popixel-panel",
+      "name": "page-design-popixel-panel",
+      "type": "rectangle",
+      "width": 354,
+      "height": 936
+    },
+    {
+      "id": "page-design-popixel-crumb",
+      "name": "page-design-popixel-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 18
+    },
+    {
+      "id": "page-design-popixel-title",
+      "name": "page-design-popixel-title",
+      "type": "text",
+      "width": 320,
+      "height": 49
+    },
+    {
+      "id": "page-design-popixel-subtitle",
+      "name": "page-design-popixel-subtitle",
+      "type": "text",
+      "width": 320,
+      "height": 25
+    },
+    {
+      "id": "page-design-popixel-btn-home-box",
+      "name": "page-design-popixel-btn-home-box",
+      "type": "rectangle",
+      "width": 128,
+      "height": 38
+    },
+    {
+      "id": "page-design-popixel-btn-home-text",
+      "name": "page-design-popixel-btn-home-text",
+      "type": "text",
+      "width": 100,
+      "height": 18
+    },
+    {
+      "id": "page-design-popixel-btn-peer-box",
+      "name": "page-design-popixel-btn-peer-box",
+      "type": "rectangle",
+      "width": 148,
+      "height": 38
+    },
+    {
+      "id": "page-design-popixel-btn-peer-text",
+      "name": "page-design-popixel-btn-peer-text",
+      "type": "text",
+      "width": 120,
+      "height": 18
+    },
+    {
+      "id": "page-design-popixel-kicker",
+      "name": "page-design-popixel-kicker",
+      "type": "text",
+      "width": 306,
+      "height": 18
+    },
+    {
+      "id": "page-design-popixel-panel-title",
+      "name": "page-design-popixel-panel-title",
+      "type": "text",
+      "width": 306,
+      "height": 41
+    },
+    {
+      "id": "page-design-popixel-p-0",
+      "name": "page-design-popixel-p-0",
+      "type": "text",
+      "width": 306,
+      "height": 25
+    },
+    {
+      "id": "page-design-popixel-p-1",
+      "name": "page-design-popixel-p-1",
+      "type": "text",
+      "width": 306,
+      "height": 43
+    },
+    {
+      "id": "page-design-popixel-feature",
+      "name": "page-design-popixel-feature",
+      "type": "rectangle",
+      "width": 306,
+      "height": 220
+    },
+    {
+      "id": "page-design-popixel-feature-2",
+      "name": "page-design-popixel-feature-2",
+      "type": "rectangle",
+      "width": 306,
+      "height": 180
+    },
+    {
+      "id": "page-design-popixel-card-0",
+      "name": "page-design-popixel-card-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 136
+    },
+    {
+      "id": "page-design-popixel-card-img-0",
+      "name": "page-design-popixel-card-img-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 82
+    },
+    {
+      "id": "page-design-popixel-card-title-0",
+      "name": "page-design-popixel-card-title-0",
+      "type": "text",
+      "width": 286,
+      "height": 18
+    },
+    {
+      "id": "page-design-popixel-card-copy-0",
+      "name": "page-design-popixel-card-copy-0",
+      "type": "text",
+      "width": 286,
+      "height": 22
+    },
+    {
+      "id": "page-design-popixel-card-1",
+      "name": "page-design-popixel-card-1",
+      "type": "rectangle",
+      "width": 306,
+      "height": 136
+    },
+    {
+      "id": "page-design-popixel-card-img-1",
+      "name": "page-design-popixel-card-img-1",
+      "type": "rectangle",
+      "width": 306,
+      "height": 82
+    },
+    {
+      "id": "page-design-popixel-card-title-1",
+      "name": "page-design-popixel-card-title-1",
+      "type": "text",
+      "width": 286,
+      "height": 18
+    },
+    {
+      "id": "page-design-popixel-card-copy-1",
+      "name": "page-design-popixel-card-copy-1",
+      "type": "text",
+      "width": 286,
+      "height": 38
+    },
+    {
+      "id": "page-design-popixel-related-title",
+      "name": "page-design-popixel-related-title",
+      "type": "text",
+      "width": 180,
+      "height": 18
+    },
+    {
+      "id": "page-design-popixel-related-0-box",
+      "name": "page-design-popixel-related-0-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-design-popixel-related-0-text",
+      "name": "page-design-popixel-related-0-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-design-popixel-related-1-box",
+      "name": "page-design-popixel-related-1-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-design-popixel-related-1-text",
+      "name": "page-design-popixel-related-1-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-design-popixel-related-2-box",
+      "name": "page-design-popixel-related-2-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-design-popixel-related-2-text",
+      "name": "page-design-popixel-related-2-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+      "relativePath": "assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+      "relativePath": "assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-2-aad0cd9f.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-design-popixel-img-2-aad0cd9f.jpg",
+      "relativePath": "assets-structured/teenage-engineering/page-design-popixel-img-2-aad0cd9f.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+      "relativePath": "assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-2-aad0cd9f.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/teenage-engineering/page-design-popixel-img-2-aad0cd9f.jpg",
+      "relativePath": "assets-structured/teenage-engineering/page-design-popixel-img-2-aad0cd9f.jpg",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-design-popixel",
+    "name": "Design: Popixel",
+    "x": 1040,
+    "y": 4666,
+    "width": 390,
+    "height": 1550,
+    "fill": "#F6F5F0",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-bg",
+        "name": "page-design-popixel-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 100,
+        "fill": "#F6F5F0"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-hero",
+        "name": "page-design-popixel-hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+          "mode": "cover"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-overlay",
+        "name": "page-design-popixel-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": "#00000055"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-panel",
+        "name": "page-design-popixel-panel",
+        "x": 18,
+        "y": 344,
+        "width": 354,
+        "height": 936,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D6CC",
+          "thickness": 1
+        },
+        "cornerRadius": 20
+      },
+      {
+        "type": "frame",
+        "id": "header-page-design-popixel",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "teenage engineering",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-crumb",
+        "name": "page-design-popixel-crumb",
+        "x": 18,
+        "y": 82,
+        "fill": "#FFFFFF",
+        "content": "Home / Design: Popixel",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-title",
+        "name": "page-design-popixel-title",
+        "x": 18,
+        "y": 106,
+        "fill": "#FFFFFF",
+        "content": "Design: Popixel",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 30,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-subtitle",
+        "name": "page-design-popixel-subtitle",
+        "x": 18,
+        "y": 184,
+        "fill": "#F0F0EE",
+        "content": "meta description",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 25
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-btn-home-box",
+        "name": "page-design-popixel-btn-home-box",
+        "x": 18,
+        "y": 252,
+        "width": 128,
+        "height": 38,
+        "fill": "#FF7A00",
+        "stroke": {
+          "fill": "#FF7A00",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-btn-home-text",
+        "name": "page-design-popixel-btn-home-text",
+        "x": 32,
+        "y": 262,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-btn-peer-box",
+        "name": "page-design-popixel-btn-peer-box",
+        "x": 158,
+        "y": 252,
+        "width": 148,
+        "height": 38,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D6CC",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-btn-peer-text",
+        "name": "page-design-popixel-btn-peer-text",
+        "x": 172,
+        "y": 262,
+        "fill": "#111111",
+        "content": "Section",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-kicker",
+        "name": "page-design-popixel-kicker",
+        "x": 42,
+        "y": 368,
+        "fill": "#FF7A00",
+        "content": "THIRD LEVEL PAGE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 18,
+        "letterSpacing": "0.1em"
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-panel-title",
+        "name": "page-design-popixel-panel-title",
+        "x": 42,
+        "y": 390,
+        "fill": "#111111",
+        "content": "Design: Popixel",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 24,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 41
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-p-0",
+        "name": "page-design-popixel-p-0",
+        "x": 42,
+        "y": 422,
+        "fill": "#111111",
+        "content": "meta description",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 25
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-p-1",
+        "name": "page-design-popixel-p-1",
+        "x": 42,
+        "y": 465,
+        "fill": "#111111",
+        "content": "A design and collaboration story from teenage engineering.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 43
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-feature",
+        "name": "page-design-popixel-feature",
+        "x": 42,
+        "y": 368,
+        "width": 306,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-design-popixel",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-feature-2",
+        "name": "page-design-popixel-feature-2",
+        "x": 42,
+        "y": 606,
+        "width": 306,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-2-aad0cd9f.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-design-popixel",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-card-0",
+        "name": "page-design-popixel-card-0",
+        "x": 42,
+        "y": 798,
+        "width": 306,
+        "height": 136,
+        "fill": "#EFEEE7",
+        "stroke": {
+          "fill": "#D8D6CC",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-card-img-0",
+        "name": "page-design-popixel-card-img-0",
+        "x": 42,
+        "y": 798,
+        "width": 306,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-1-54ea8df7.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-products",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-card-title-0",
+        "name": "page-design-popixel-card-title-0",
+        "x": 52,
+        "y": 888,
+        "fill": "#111111",
+        "content": "Products",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 18,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-card-copy-0",
+        "name": "page-design-popixel-card-copy-0",
+        "x": 52,
+        "y": 906,
+        "fill": "#66665F",
+        "content": "meta description",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 22,
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-card-1",
+        "name": "page-design-popixel-card-1",
+        "x": 42,
+        "y": 950,
+        "width": 306,
+        "height": 136,
+        "fill": "#EFEEE7",
+        "stroke": {
+          "fill": "#D8D6CC",
+          "thickness": 1
+        },
+        "href": "#page-guides",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-card-img-1",
+        "name": "page-design-popixel-card-img-1",
+        "x": 42,
+        "y": 950,
+        "width": 306,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/teenage-engineering/page-design-popixel-img-2-aad0cd9f.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-guides",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-card-title-1",
+        "name": "page-design-popixel-card-title-1",
+        "x": 52,
+        "y": 1040,
+        "fill": "#111111",
+        "content": "Guides",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 18,
+        "href": "#page-guides"
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-card-copy-1",
+        "name": "page-design-popixel-card-copy-1",
+        "x": 52,
+        "y": 1058,
+        "fill": "#66665F",
+        "content": "A design and collaboration story from teenage engineering.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 38,
+        "href": "#page-guides"
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-related-title",
+        "name": "page-design-popixel-related-title",
+        "x": 42,
+        "y": 1114,
+        "fill": "#FF7A00",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-related-0-box",
+        "name": "page-design-popixel-related-0-box",
+        "x": 42,
+        "y": 1140,
+        "width": 150,
+        "height": 36,
+        "fill": "#FF7A00",
+        "stroke": {
+          "fill": "#FF7A00",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-related-0-text",
+        "name": "page-design-popixel-related-0-text",
+        "x": 56,
+        "y": 1149,
+        "fill": "#FFFFFF",
+        "content": "Products",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-related-1-box",
+        "name": "page-design-popixel-related-1-box",
+        "x": 204,
+        "y": 1140,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D6CC",
+          "thickness": 1
+        },
+        "href": "#page-guides",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-related-1-text",
+        "name": "page-design-popixel-related-1-text",
+        "x": 218,
+        "y": 1149,
+        "fill": "#111111",
+        "content": "Guides",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-guides",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-design-popixel-related-2-box",
+        "name": "page-design-popixel-related-2-box",
+        "x": 42,
+        "y": 1188,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D6CC",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-design-popixel-related-2-text",
+        "name": "page-design-popixel-related-2-text",
+        "x": 56,
+        "y": 1197,
+        "fill": "#111111",
+        "content": "Homepage",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1300,
+        "width": 390,
+        "height": 250,
+        "fill": "#111111",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#111111"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F0F0EB",
+            "content": "teenage engineering",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F0F0EB",
+            "content": "Products Guides Downloads",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F0F0EB",
+            "content": "Designs Contact TX-6 OP-XY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "teenage engineering structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    ]
+  }
+}

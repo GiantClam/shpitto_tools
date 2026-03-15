@@ -77,6 +77,27 @@ export type StyleProfile = {
 };
 
 const normalizeToken = (value: string) => value.trim().toLowerCase().replace(/[^a-z0-9]+/g, "");
+const normalizeSemanticText = (value: string) => value.trim().toLowerCase().normalize("NFKC");
+const normalizeComparableToken = (value: string) =>
+  normalizeSemanticText(value).replace(/[^a-z0-9\u3400-\u9fff]+/g, "");
+const containsCjk = (value: string) => /[\u3400-\u9fff]/.test(value);
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const includesSemanticToken = (haystack: string, needle: string) => {
+  const normalizedNeedle = normalizeComparableToken(needle);
+  if (!normalizedNeedle) return false;
+  if (!containsCjk(needle) && /^[a-z0-9]+$/.test(normalizedNeedle) && normalizedNeedle.length <= 3) {
+    const wordHaystack = normalizeSemanticText(haystack).replace(/[^a-z0-9\u3400-\u9fff]+/g, " ");
+    return new RegExp(`(^|\\s)${escapeRegExp(normalizedNeedle)}(?=$|\\s)`, "i").test(wordHaystack);
+  }
+  const normalizedHaystack = normalizeComparableToken(haystack);
+  if (normalizedHaystack.includes(normalizedNeedle)) return true;
+  if (!containsCjk(needle)) return false;
+  const rawNeedle = normalizeSemanticText(needle).replace(/\s+/g, "");
+  const rawHaystack = normalizeSemanticText(haystack).replace(/\s+/g, "");
+  return !!rawNeedle && rawHaystack.includes(rawNeedle);
+};
+const countSemanticTokenMatches = (haystack: string, needles: string[]) =>
+  needles.reduce((count, needle) => count + (includesSemanticToken(haystack, needle) ? 1 : 0), 0);
 
 const cloneProps = (value: Record<string, unknown>) => JSON.parse(JSON.stringify(value)) as Record<string, unknown>;
 
@@ -1289,39 +1310,240 @@ export const getStyleProfiles = () => styleProfiles;
 // Industry taxonomy for semantic matching
 // ---------------------------------------------------------------------------
 const industryTaxonomy: Record<string, string[]> = {
-  technology: ["tech", "saas", "software", "app", "platform", "ai", "cloud", "startup", "digital", "api", "devtool", "iot", "automation"],
-  ecommerce: ["shop", "store", "ecommerce", "commerce", "retail", "product", "marketplace", "brand", "fashion", "apparel", "clothing", "sneaker", "shoe"],
-  industrial: ["industrial", "manufacturing", "factory", "machinery", "engineering", "automation", "cnc", "steel", "metal", "heavy", "equipment"],
-  luxury: ["luxury", "premium", "highend", "bespoke", "exclusive", "couture", "artisan", "craftsmanship", "heritage"],
-  creative: ["design", "studio", "agency", "creative", "portfolio", "photography", "art", "gallery", "architect", "interior"],
+  technology: [
+    "tech",
+    "saas",
+    "software",
+    "app",
+    "platform",
+    "ai",
+    "cloud",
+    "startup",
+    "digital",
+    "api",
+    "devtool",
+    "iot",
+    "automation",
+    "technology",
+    "developer",
+    "tooling",
+    "人工智能",
+    "技术",
+    "软件",
+    "平台",
+    "开发者",
+    "云",
+  ],
+  ecommerce: [
+    "shop",
+    "store",
+    "ecommerce",
+    "commerce",
+    "retail",
+    "marketplace",
+    "fashion",
+    "apparel",
+    "clothing",
+    "sneaker",
+    "shoe",
+    "shopping",
+    "consumer",
+    "d2c",
+    "电商",
+    "零售",
+    "消费品牌",
+    "商品",
+    "购买",
+  ],
+  industrial: [
+    "industrial",
+    "manufacturing",
+    "manufacturer",
+    "factory",
+    "machinery",
+    "machine",
+    "engineering",
+    "automation",
+    "cnc",
+    "steel",
+    "metal",
+    "heavy",
+    "equipment",
+    "b2b",
+    "industrialtech",
+    "industrialtechnology",
+    "precision",
+    "robot",
+    "inspection",
+    "industrialoperations",
+    "industrialmetaverse",
+    "procurement",
+    "工业",
+    "制造",
+    "制造业",
+    "制造商",
+    "工厂",
+    "设备",
+    "装备",
+    "机械",
+    "机床",
+    "工程",
+    "企业",
+    "采购",
+    "工业风",
+    "自动化",
+    "数控",
+    "机器人",
+    "产线",
+    "生产线",
+    "零部件",
+    "解决方案",
+    "质检",
+    "检测",
+  ],
+  luxury: [
+    "luxury",
+    "premium",
+    "highend",
+    "bespoke",
+    "exclusive",
+    "couture",
+    "artisan",
+    "craftsmanship",
+    "heritage",
+    "高端",
+    "奢华",
+    "精品",
+    "定制",
+    "低调奢华",
+  ],
+  creative: [
+    "design",
+    "studio",
+    "agency",
+    "creative",
+    "portfolio",
+    "photography",
+    "art",
+    "gallery",
+    "architect",
+    "interior",
+    "设计",
+    "工作室",
+    "创意",
+    "画廊",
+    "建筑",
+    "室内",
+    "室内设计",
+  ],
   food: ["restaurant", "cafe", "food", "dining", "bakery", "coffee", "tea", "culinary", "chef", "catering", "bar"],
-  health: ["health", "medical", "clinic", "wellness", "fitness", "gym", "yoga", "spa", "pharma", "dental", "hospital"],
-  education: ["education", "school", "university", "course", "learning", "academy", "training", "tutorial", "edtech"],
-  finance: ["finance", "bank", "fintech", "insurance", "investment", "crypto", "trading", "payment", "accounting"],
+  health: [
+    "health",
+    "medical",
+    "clinic",
+    "wellness",
+    "fitness",
+    "gym",
+    "yoga",
+    "spa",
+    "pharma",
+    "dental",
+    "hospital",
+    "care",
+    "healthcare",
+    "诊所",
+    "医疗",
+    "健康",
+    "体检",
+    "康复",
+    "护理",
+  ],
+  education: [
+    "education",
+    "school",
+    "university",
+    "course",
+    "learning",
+    "academy",
+    "training",
+    "tutorial",
+    "edtech",
+    "student",
+    "lesson",
+    "curriculum",
+    "教育",
+    "在线教育",
+    "课程",
+    "学员",
+    "培训",
+    "学习",
+    "平台",
+  ],
+  finance: [
+    "finance",
+    "bank",
+    "fintech",
+    "insurance",
+    "investment",
+    "crypto",
+    "trading",
+    "payment",
+    "accounting",
+    "wealth",
+    "capital",
+    "wallet",
+    "payments",
+    "financial",
+    "金融",
+    "银行",
+    "支付",
+    "保险",
+    "投资",
+    "理财",
+    "交易",
+  ],
+  travel: [
+    "travel",
+    "hospitality",
+    "hotel",
+    "resort",
+    "booking",
+    "destination",
+    "tour",
+    "journey",
+    "stay",
+    "retreat",
+    "旅行",
+    "旅游",
+    "酒店",
+    "度假",
+    "预订",
+    "民宿",
+    "精品酒店",
+  ],
   realestate: ["realestate", "property", "housing", "apartment", "home", "villa", "estate", "realtor", "construction"],
 };
 
 // Style taxonomy for visual tone matching
 const styleTaxonomy: Record<string, string[]> = {
-  minimal: ["minimal", "minimalist", "clean", "simple", "whitespace", "understated", "zen", "scandinavian", "nordic"],
+  minimal: ["minimal", "minimalist", "clean", "simple", "whitespace", "understated", "zen", "scandinavian", "nordic", "极简", "简洁", "留白"],
   bold: ["bold", "vibrant", "colorful", "energetic", "dynamic", "loud", "striking", "neon", "gradient"],
-  elegant: ["elegant", "sophisticated", "refined", "classic", "timeless", "graceful", "editorial", "serif"],
+  elegant: ["elegant", "sophisticated", "refined", "classic", "timeless", "graceful", "editorial", "serif", "优雅", "典雅", "精致", "衬线"],
   modern: ["modern", "contemporary", "sleek", "futuristic", "geometric", "sharp", "glassmorphism"],
   dark: ["dark", "darkmode", "night", "moody", "cinematic", "noir", "dramatic"],
   playful: ["playful", "fun", "whimsical", "cartoon", "rounded", "friendly", "casual", "warm"],
-  corporate: ["corporate", "professional", "enterprise", "business", "formal", "trustworthy", "institutional"],
+  corporate: ["corporate", "professional", "enterprise", "business", "formal", "trustworthy", "institutional", "专业", "企业级", "可信"],
   japanese: ["japanese", "japan", "wabi", "sabi", "zen", "tatami", "matcha", "sakura", "nihon"],
 };
 
 const extractTaxonomySignals = (text: string): { industries: string[]; styles: string[] } => {
-  const normalized = normalizeToken(text);
   const industries: string[] = [];
   const styles: string[] = [];
   for (const [category, tokens] of Object.entries(industryTaxonomy)) {
-    if (tokens.some((t) => normalized.includes(t))) industries.push(category);
+    if (tokens.some((t) => includesSemanticToken(text, t))) industries.push(category);
   }
   for (const [category, tokens] of Object.entries(styleTaxonomy)) {
-    if (tokens.some((t) => normalized.includes(t))) styles.push(category);
+    if (tokens.some((t) => includesSemanticToken(text, t))) styles.push(category);
   }
   return { industries, styles };
 };
@@ -1330,9 +1552,7 @@ const computeProfileSemanticScore = (
   profile: StyleProfile,
   promptSignals: { industries: string[]; styles: string[] }
 ): number => {
-  const profileText = normalizeToken(
-    `${profile.name} ${profile.keywords.join(" ")}`
-  );
+  const profileText = `${profile.name} ${profile.keywords.join(" ")}`;
   const profileSignals = extractTaxonomySignals(profileText);
 
   let score = 0;
@@ -1376,18 +1596,818 @@ const computeDomainMatchScore = (profile: StyleProfile, promptDomain: string): n
   return 0;
 };
 
+const PROFILE_IDENTITY_BLACKLIST = new Set([
+  "desktop",
+  "mobile",
+  "homepage",
+  "website",
+  "site",
+  "home",
+  "page",
+  "official",
+  "group",
+  "global",
+  "tech",
+  "new",
+]);
+
+const GENERIC_PROFILE_KEYWORD_BLACKLIST = new Set([
+  "home",
+  "homepage",
+  "website",
+  "site",
+  "template",
+  "navigation",
+  "hero",
+  "story",
+  "about",
+  "contact",
+  "footer",
+  "cta",
+  "news",
+  "events",
+  "blog",
+  "company",
+  "official",
+  "comprehensive",
+  "enterprise",
+  "technology",
+  "tech",
+  "industrial",
+  "product",
+  "products",
+  "solution",
+  "solutions",
+  "service",
+  "services",
+  "support",
+  "showcase",
+  "trust",
+  "proof",
+  "platform",
+  "digital",
+  "profileselector",
+]);
+
+const collectProfileIdentityTokens = (profile: StyleProfile): string[] => {
+  const tokens = new Set<string>();
+  const pushToken = (value: string) => {
+    const token = normalizeComparableToken(value);
+    if (token.length >= 4) tokens.add(token);
+  };
+
+  for (const rawValue of [profile.id, profile.name, profile.sourceDomain || ""]) {
+    const raw = String(rawValue || "").trim();
+    if (!raw) continue;
+    pushToken(raw);
+    const parts = raw
+      .toLowerCase()
+      .replace(/https?:\/\//g, " ")
+      .replace(/[^a-z0-9\u3400-\u9fff]+/g, " ")
+      .split(/\s+/)
+      .map((item) => item.trim())
+      .filter((item) => item.length >= 4 && !PROFILE_IDENTITY_BLACKLIST.has(item));
+    for (const part of parts) pushToken(part);
+    if (parts.length > 1) pushToken(parts.join(""));
+  }
+
+  return Array.from(tokens);
+};
+
+const computeIdentityMatch = (
+  profile: StyleProfile,
+  normalizedPrompt: string
+): { score: number; matchedChars: number } => {
+  let bestScore = 0;
+  let bestMatchedChars = 0;
+  for (const token of collectProfileIdentityTokens(profile)) {
+    if (!token || !normalizedPrompt.includes(token)) continue;
+    const nextScore = token.length >= 12 ? 12 : token.length >= 8 ? 10 : 8;
+    if (nextScore > bestScore || (nextScore === bestScore && token.length > bestMatchedChars)) {
+      bestScore = nextScore;
+      bestMatchedChars = token.length;
+    }
+  }
+  return { score: bestScore, matchedChars: bestMatchedChars };
+};
+
+const extractExplicitReferenceTokens = (prompt: string): string[] => {
+  const raw = String(prompt || "");
+  if (!raw.trim()) return [];
+  const matches = new Set<string>();
+  const patterns = [
+    /\b(?:like|inspired by|based on|similar to|reference(?:d)? from|modeled on)\s+(.+?)(?=\b(?:with|for|and|to|using|featuring|that|but|need|needs|include|includes|including|must)\b|[,.!?;:，。！？；：]|$)/gi,
+    /\buse\s+(.+?)\s+as\s+(?:the\s+)?(?:(?:visual\s+style|visual\s+template|template|style|visual)\s+)?(?:reference|base)\b/gi,
+    /(?:类似|像|参考|参照|对标|仿照)\s*([a-z0-9\u3400-\u9fff -]+?)(?=(?:的|风格|官网|首页|网站|页面|版本|移动端|桌面端|需要|包含|必须|整站)|[，。！？；：,.;!?]|$)/gi,
+  ];
+
+  for (const pattern of patterns) {
+    let match: RegExpExecArray | null = pattern.exec(raw);
+    while (match) {
+      const value = String(match[1] || "").trim();
+      if (value) matches.add(value);
+      match = pattern.exec(raw);
+    }
+  }
+
+  const tokens = new Set<string>();
+  for (const value of matches) {
+    const normalized = normalizeComparableToken(value);
+    if (normalized.length >= 4) tokens.add(normalized);
+    const parts = value
+      .toLowerCase()
+      .replace(/[^a-z0-9\u3400-\u9fff]+/g, " ")
+      .split(/\s+/)
+      .map((item) => item.trim())
+      .filter((item) => item.length >= 4 && !PROFILE_IDENTITY_BLACKLIST.has(item));
+    for (const part of parts) tokens.add(normalizeComparableToken(part));
+    if (parts.length > 1) tokens.add(normalizeComparableToken(parts.join("")));
+  }
+  return Array.from(tokens);
+};
+
+const computeExplicitReferenceMatch = (
+  profile: StyleProfile,
+  prompt: string
+): { score: number; matchedChars: number } => {
+  const references = extractExplicitReferenceTokens(prompt);
+  if (!references.length) return { score: 0, matchedChars: 0 };
+  const identityTokens = collectProfileIdentityTokens(profile);
+
+  let bestScore = 0;
+  let bestMatchedChars = 0;
+  for (const reference of references) {
+    for (const token of identityTokens) {
+      if (!reference || !token) continue;
+      const isMatch =
+        reference === token ||
+        reference.includes(token) ||
+        token.includes(reference);
+      if (!isMatch) continue;
+      const nextChars = Math.min(reference.length, token.length);
+      const nextScore = nextChars >= 10 ? 24 : 20;
+      if (nextScore > bestScore || (nextScore === bestScore && nextChars > bestMatchedChars)) {
+        bestScore = nextScore;
+        bestMatchedChars = nextChars;
+      }
+    }
+  }
+  return { score: bestScore, matchedChars: bestMatchedChars };
+};
+
+const inferPromptViewportPreference = (prompt: string): "desktop" | "mobile" | null => {
+  const raw = String(prompt || "");
+  if (!raw.trim()) return null;
+  if (
+    /\b(mobile(?:-first)?|mobile first|mobile version|mobile site|mobile layout|for mobile|phone layout|phone version|handheld)\b/i.test(raw) ||
+    /(移动端版本|手机版|手机端|移动版|手机页面|移动页面|移动端首页|移动端网站|移动端落地页|mobile端)/i.test(raw)
+  ) {
+    return "mobile";
+  }
+  if (/\b(desktop|website|web site|web|landing page|homepage|home page)\b/i.test(raw) || /(桌面端|官网|网站|落地页|首页)/.test(raw))
+    return "desktop";
+  return null;
+};
+
+const computeViewportPreferenceScore = (
+  profile: StyleProfile,
+  promptPreference: "desktop" | "mobile" | null
+): number => {
+  const identity = normalizeToken(`${profile.id} ${profile.name}`);
+  const isMobile = identity.includes("mobile");
+  const isDesktop = identity.includes("desktop");
+  if (promptPreference === "mobile") {
+    if (isMobile) return 8;
+    if (isDesktop) return -6;
+    return 0;
+  }
+  if (promptPreference === "desktop") {
+    if (isDesktop) return 4;
+    if (isMobile) return -2;
+    return 0;
+  }
+  if (isDesktop) return 1;
+  return 0;
+};
+
+const INDUSTRIAL_INTENT_TOKENS = industryTaxonomy.industrial;
+const TECHNOLOGY_INTENT_TOKENS = industryTaxonomy.technology;
+const ECOMMERCE_INTENT_TOKENS = industryTaxonomy.ecommerce;
+const FINANCE_INTENT_TOKENS = industryTaxonomy.finance;
+const HEALTH_INTENT_TOKENS = industryTaxonomy.health;
+const EDUCATION_INTENT_TOKENS = industryTaxonomy.education;
+const TRAVEL_INTENT_TOKENS = industryTaxonomy.travel;
+const ADDITIVE_MANUFACTURING_INTENT_TOKENS = [
+  "3d printing",
+  "3d-printing",
+  "3d printer",
+  "3d printers",
+  "additive manufacturing",
+  "打印",
+  "3d打印",
+  "增材制造",
+  "打印科技",
+];
+const SATELLITE_CONNECTIVITY_INTENT_TOKENS = [
+  "satellite",
+  "connectivity",
+  "satcom",
+  "mobility network",
+  "卫星",
+  "卫星通信",
+  "连接",
+  "移动通信",
+];
+const RETRO_EDITORIAL_TECH_INTENT_TOKENS = [
+  "retro-tech",
+  "retro tech",
+  "nostalgic",
+  "nostalgia",
+  "editorial tech",
+  "retro hardware",
+  "复古科技",
+  "怀旧科技",
+  "编辑感",
+];
+const AUDIO_HARDWARE_INTENT_TOKENS = [
+  "audio hardware",
+  "music hardware",
+  "synth",
+  "synthesizer",
+  "sound device",
+  "audio device",
+  "premium audio",
+  "音频硬件",
+  "合成器",
+  "音乐硬件",
+];
+const DESIGN_LED_ECOMMERCE_INTENT_TOKENS = [
+  "design-led ecommerce",
+  "lifestyle ecommerce",
+  "featured products",
+  "consumer lifestyle",
+  "生活方式",
+  "设计驱动",
+  "精选产品",
+];
+const DEVELOPER_INTENT_TOKENS = [
+  "developer",
+  "developers",
+  "tooling",
+  "devtool",
+  "devtools",
+  "docs",
+  "documentation",
+  "sdk",
+  "api",
+  "cli",
+  "open source",
+  "opensource",
+  "平台工程",
+  "开发者",
+  "文档",
+  "工具链",
+  "接口",
+];
+const INDUSTRIAL_PROFILE_TOKENS = [
+  "industrial",
+  "enterprise",
+  "manufacturing",
+  "manufacturer",
+  "factory",
+  "machinery",
+  "equipment",
+  "engineering",
+  "automation",
+  "solution",
+  "solutions",
+  "product",
+  "products",
+  "service",
+  "services",
+  "support",
+  "procurement",
+  "precision",
+  "工业",
+  "制造",
+  "制造商",
+  "设备",
+  "机械",
+  "工程",
+  "企业",
+  "采购",
+  "解决方案",
+  "产品",
+  "服务",
+  "应用行业",
+];
+const CONSUMER_LIFESTYLE_TOKENS = [
+  "luxury",
+  "editorial",
+  "interior",
+  "fashion",
+  "beauty",
+  "wellness",
+  "travel",
+  "hotel",
+  "audio",
+  "acoustic",
+  "ecommerce",
+  "retail",
+  "consumer",
+  "餐厅",
+  "酒店",
+  "时尚",
+  "电商",
+];
+const TECHNOLOGY_PROFILE_TOKENS = [
+  "technology",
+  "tech",
+  "software",
+  "saas",
+  "platform",
+  "cloud",
+  "api",
+  "developer",
+  "tooling",
+  "data",
+  "analytics",
+  "automation",
+  "infrastructure",
+  "digital",
+  "artificial intelligence",
+  "ai",
+  "support",
+  "blog",
+  "documentation",
+  "技术",
+  "平台",
+  "软件",
+  "云",
+  "开发者",
+  "数据",
+  "人工智能",
+];
+const CONSUMER_HARDWARE_TOKENS = [
+  "audio",
+  "apparel",
+  "accessories",
+  "fashion",
+  "clothing",
+  "retail",
+  "ecommerce",
+  "headphone",
+  "ear",
+  "phone",
+  "offers",
+  "telescope",
+  "telescopes",
+  "binocular",
+  "binoculars",
+  "鞋",
+  "服饰",
+  "耳机",
+  "手机",
+];
+const FINANCE_PROFILE_TOKENS = [
+  "finance",
+  "fintech",
+  "payment",
+  "payments",
+  "bank",
+  "banking",
+  "insurance",
+  "investment",
+  "trading",
+  "trust",
+  "trusted",
+  "secure",
+  "security",
+  "金融",
+  "支付",
+  "银行",
+  "可信",
+];
+const ECOMMERCE_PROFILE_TOKENS = [
+  "shop",
+  "store",
+  "retail",
+  "brand",
+  "offers",
+  "product",
+  "products",
+  "accessories",
+  "audio",
+  "phone",
+  "phones",
+  "apparel",
+  "clothing",
+  "bike",
+  "bikes",
+  "speaker",
+  "turntable",
+  "diffuser",
+  "rides",
+  "shopping",
+  "consumer",
+  "offer",
+  "offers",
+  "shop",
+  "购买",
+  "零售",
+  "电商",
+  "商品",
+  "品牌",
+];
+const ECOMMERCE_B2B_MISMATCH_TOKENS = [
+  "industrial",
+  "manufacturing",
+  "industries",
+  "partners",
+  "resources",
+  "solutions",
+  "services",
+  "engineering",
+  "precision",
+  "procurement",
+  "enterprise",
+  "工业",
+  "制造",
+  "合作伙伴",
+  "解决方案",
+  "服务",
+];
+const EDUCATION_PROFILE_TOKENS = [
+  "learning",
+  "academy",
+  "course",
+  "tutorial",
+  "support",
+  "blog",
+  "guides",
+  "downloads",
+  "resources",
+  "platform",
+  "technology",
+  "documentation",
+  "community",
+  "教育",
+  "课程",
+  "资源",
+  "指南",
+  "平台",
+];
+const HEALTH_PROFILE_TOKENS = [
+  "health",
+  "medical",
+  "clinic",
+  "wellness",
+  "care",
+  "spa",
+  "premium",
+  "luxury",
+  "editorial",
+  "story",
+  "trust",
+  "approach",
+  "metrics",
+  "proof",
+  "cta",
+  "healthcare",
+  "医疗",
+  "健康",
+  "诊所",
+  "护理",
+];
+const TRAVEL_PROFILE_TOKENS = [
+  "travel",
+  "hotel",
+  "hospitality",
+  "tour",
+  "guided",
+  "journey",
+  "story",
+  "history",
+  "premium",
+  "luxury",
+  "editorial",
+  "booking",
+  "destination",
+  "旅行",
+  "酒店",
+  "预订",
+  "度假",
+];
+const DEVELOPER_PROFILE_TOKENS = [
+  "developer",
+  "developers",
+  "tooling",
+  "devtool",
+  "platform",
+  "api",
+  "support",
+  "blog",
+  "documentation",
+  "guides",
+  "downloads",
+  "open source",
+  "opensource",
+  "technical",
+  "开发者",
+  "文档",
+  "平台",
+  "工具",
+];
+
+const computeSpecializedIntentScore = (profile: StyleProfile, prompt: string): number => {
+  const profileId = String(profile.id || "").toLowerCase();
+  const profileToken = normalizeToken(profile.id);
+  const additivePrompt = countSemanticTokenMatches(prompt, ADDITIVE_MANUFACTURING_INTENT_TOKENS) > 0;
+  const satellitePrompt = countSemanticTokenMatches(prompt, SATELLITE_CONNECTIVITY_INTENT_TOKENS) > 0;
+  const retroEditorialPrompt = countSemanticTokenMatches(prompt, RETRO_EDITORIAL_TECH_INTENT_TOKENS) > 0;
+  const audioHardwarePrompt = countSemanticTokenMatches(prompt, AUDIO_HARDWARE_INTENT_TOKENS) > 0;
+  const designLedCommercePrompt = countSemanticTokenMatches(prompt, DESIGN_LED_ECOMMERCE_INTENT_TOKENS) > 0;
+  let score = 0;
+
+  if (additivePrompt) {
+    if (profileId.includes("carbon3d")) score += 18;
+    else if (/(breton|fptindustrie|pamamachinetools|sandvik)/.test(profileId)) score += 4;
+    else if (/(siemens|ionq|analogue|teenage|audeze)/.test(profileId)) score -= 5;
+  }
+
+  if (satellitePrompt) {
+    if (profileId.includes("kymeta")) score += 18;
+    else if (/(ionq|breton|sandvik|fptindustrie)/.test(profileId)) score += 3;
+    else if (/(pagani|vanmoof|nothing|teenage|analogue|audeze)/.test(profileId)) score -= 5;
+  }
+
+  if (retroEditorialPrompt) {
+    if (profileId.includes("analogue")) score += 16;
+    else if (/(nothing[-_\s]?tech|teenage[-_\s]?engineering)/.test(profileId)) score += 4;
+    else if (/(ionq|kymeta|breton|fptindustrie|siemens)/.test(profileId)) score -= 4;
+  }
+
+  if (audioHardwarePrompt) {
+    if (/(teenage[-_\s]?engineering)/.test(profileId)) score += 28;
+    else if (/(transpa[-_\s]?rent|nothing[-_\s]?tech|auto_audeze-home)/.test(profileId)) score += 8;
+    else if (/(breton|fptindustrie|kymeta|sandvik|siemens|pamamachinetools)/.test(profileId)) score -= 10;
+  }
+
+  if (designLedCommercePrompt) {
+    if (/(transpa[-_\s]?rent)/.test(profileId)) score += 22;
+    else if (/(auto_audeze-home|nothing[-_\s]?tech|analogue)/.test(profileId)) score += 4;
+    else if (/(breton|fptindustrie|kymeta|sandvik|siemens|pamamachinetools)/.test(profileId)) score -= 8;
+  }
+
+  // Fallback for normalized ids that lose punctuation.
+  if (audioHardwarePrompt && /(teenage engineering)/.test(profileToken)) score += 8;
+  if (designLedCommercePrompt && /(transpa rent|transparent)/.test(profileToken)) score += 8;
+  return score;
+};
+
+const buildProfileSearchText = (profile: StyleProfile) =>
+  [
+    profile.id,
+    profile.name,
+    profile.sourceDomain || "",
+    profile.keywords.join(" "),
+    ...(profile.siteTemplates ?? []).flatMap((page) => [page.pageType ?? "", page.name, page.path]),
+    ...(profile.pageSpecs ?? []).flatMap((page) => [page.pageType ?? "", page.name, page.path]),
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+const computeIntentStructureScore = (
+  profile: StyleProfile,
+  prompt: string,
+  promptSignals: { industries: string[]; styles: string[] }
+): number => {
+  const profileText = buildProfileSearchText(profile);
+  const pageTypes = new Set(
+    [...(profile.siteTemplates ?? []), ...(profile.pageSpecs ?? [])]
+      .map((page) => page.pageType)
+      .filter((value): value is TemplatePageType => Boolean(value))
+  );
+
+  let score = 0;
+  const industrialPrompt =
+    promptSignals.industries.includes("industrial") || countSemanticTokenMatches(prompt, INDUSTRIAL_INTENT_TOKENS) > 0;
+  const technologyPrompt =
+    promptSignals.industries.includes("technology") || countSemanticTokenMatches(prompt, TECHNOLOGY_INTENT_TOKENS) > 0;
+  const financePrompt =
+    promptSignals.industries.includes("finance") || countSemanticTokenMatches(prompt, FINANCE_INTENT_TOKENS) > 0;
+  const ecommercePrompt =
+    promptSignals.industries.includes("ecommerce") || countSemanticTokenMatches(prompt, ECOMMERCE_INTENT_TOKENS) > 0;
+  const educationPrompt =
+    promptSignals.industries.includes("education") || countSemanticTokenMatches(prompt, EDUCATION_INTENT_TOKENS) > 0;
+  const healthPrompt =
+    promptSignals.industries.includes("health") || countSemanticTokenMatches(prompt, HEALTH_INTENT_TOKENS) > 0;
+  const travelPrompt =
+    promptSignals.industries.includes("travel") || countSemanticTokenMatches(prompt, TRAVEL_INTENT_TOKENS) > 0;
+  const developerPrompt = countSemanticTokenMatches(prompt, DEVELOPER_INTENT_TOKENS) > 0;
+  const explicitMultiPagePrompt =
+    /(?:about|contact|privacy|products?|solutions?|cases?|support|blog)\s*(?:page|pages|route|routes|menu|menus|nav)|(?:关于|联系|隐私|产品页|产品中心|解决方案页|案例页|支持页|博客页)/i.test(
+      prompt
+    ) && /(?:about|contact|privacy|products?|solutions?|cases?|support|blog|关于|联系|隐私|产品页|产品中心|解决方案页|案例页|支持页|博客页)/i.test(prompt);
+
+  if (explicitMultiPagePrompt) {
+    if (pageTypes.has("products")) score += 2;
+    if (pageTypes.has("solutions")) score += 2;
+    if (pageTypes.has("about")) score += 1;
+    if (pageTypes.has("contact")) score += 1;
+    if (pageTypes.has("blog") || pageTypes.has("support")) score += 1;
+    if (pageTypes.size === 0) score -= 14;
+  }
+
+  if (industrialPrompt) {
+    const industrialMatches = countSemanticTokenMatches(profileText, INDUSTRIAL_PROFILE_TOKENS);
+    const consumerMatches = countSemanticTokenMatches(profileText, CONSUMER_LIFESTYLE_TOKENS);
+    const consumerHardwareMatches = countSemanticTokenMatches(profileText, CONSUMER_HARDWARE_TOKENS);
+
+    if (industrialMatches >= 6) score += 8;
+    else if (industrialMatches >= 4) score += 6;
+    else if (industrialMatches >= 2) score += 4;
+    else if (industrialMatches >= 1) score += 2;
+
+    if (pageTypes.has("products")) score += 2;
+    if (pageTypes.has("solutions")) score += 2;
+    if (pageTypes.has("support")) score += 1;
+    if (pageTypes.has("contact")) score += 1;
+    if (pageTypes.has("about")) score += 1;
+
+    if (consumerMatches >= 2 && industrialMatches <= 2) score -= 4;
+    else if (consumerMatches >= 1 && industrialMatches === 0) score -= 2;
+    if (consumerHardwareMatches >= 3) score -= 12;
+    else if (consumerHardwareMatches >= 2) score -= 10;
+    else if (consumerHardwareMatches >= 1 && industrialMatches === 0) score -= 5;
+  }
+
+  if (technologyPrompt && !promptSignals.industries.includes("ecommerce")) {
+    const technologyMatches = countSemanticTokenMatches(profileText, TECHNOLOGY_PROFILE_TOKENS);
+    const consumerHardwareMatches = countSemanticTokenMatches(profileText, CONSUMER_HARDWARE_TOKENS);
+
+    if (technologyMatches >= 6) score += 6;
+    else if (technologyMatches >= 4) score += 4;
+    else if (technologyMatches >= 2) score += 2;
+
+    if (pageTypes.has("support")) score += 1;
+    if (pageTypes.has("blog")) score += 1;
+    if (pageTypes.has("products")) score += 1;
+    if (pageTypes.has("contact")) score += 1;
+
+    if (consumerHardwareMatches >= 2 && technologyMatches <= 2) score -= 4;
+    else if (consumerHardwareMatches >= 1 && technologyMatches === 0) score -= 2;
+  }
+
+  if (financePrompt) {
+    const financeMatches = countSemanticTokenMatches(profileText, FINANCE_PROFILE_TOKENS);
+    const industrialMatches = countSemanticTokenMatches(profileText, INDUSTRIAL_PROFILE_TOKENS);
+    const ecommerceMatches = countSemanticTokenMatches(profileText, ECOMMERCE_PROFILE_TOKENS);
+    const consumerHardwareMatches = countSemanticTokenMatches(profileText, CONSUMER_HARDWARE_TOKENS);
+    const consumerMatches = countSemanticTokenMatches(profileText, CONSUMER_LIFESTYLE_TOKENS);
+    const technologyMatches = countSemanticTokenMatches(profileText, TECHNOLOGY_PROFILE_TOKENS);
+
+    if (financeMatches >= 6) score += 7;
+    else if (financeMatches >= 4) score += 5;
+    else if (financeMatches >= 2) score += 3;
+    else if (technologyMatches >= 4) score += 5;
+    else if (technologyMatches >= 2) score += 3;
+    else if (technologyPrompt) score += 1;
+
+    if (pageTypes.has("about")) score += 1;
+    if (pageTypes.has("contact")) score += 1;
+    if (pageTypes.has("blog")) score += 1;
+    if (pageTypes.has("support")) score += 1;
+    if (technologyMatches >= 3 && pageTypes.has("products") && pageTypes.has("contact")) score += 4;
+    if (technologyMatches >= 3 && (pageTypes.has("blog") || pageTypes.has("support"))) score += 2;
+
+    if (industrialMatches >= 2 && financeMatches <= 2) score -= 10;
+    if (ecommerceMatches >= 3 && financeMatches <= 2) score -= 3;
+    if (consumerHardwareMatches >= 1 && financeMatches <= 2) score -= 6;
+    if (consumerMatches >= 2 && financeMatches === 0 && technologyMatches <= 1) score -= 4;
+    if (technologyMatches === 0 && financeMatches === 0) score -= 4;
+    if (pageTypes.size === 0 && financeMatches <= 1) score -= 12;
+  }
+
+  if (ecommercePrompt) {
+    const ecommerceMatches = countSemanticTokenMatches(profileText, ECOMMERCE_PROFILE_TOKENS);
+    const industrialMatches = countSemanticTokenMatches(profileText, INDUSTRIAL_PROFILE_TOKENS);
+    const financeMatches = countSemanticTokenMatches(profileText, FINANCE_PROFILE_TOKENS);
+    const technologyMatches = countSemanticTokenMatches(profileText, TECHNOLOGY_PROFILE_TOKENS);
+    const b2bMismatchMatches = countSemanticTokenMatches(profileText, ECOMMERCE_B2B_MISMATCH_TOKENS);
+
+    if (ecommerceMatches >= 6) score += 8;
+    else if (ecommerceMatches >= 4) score += 6;
+    else if (ecommerceMatches >= 2) score += 4;
+    else if (pageTypes.has("products")) score += 1;
+
+    if (pageTypes.has("products")) score += 2;
+    if (pageTypes.has("support")) score += 1;
+    if (pageTypes.has("contact")) score += 1;
+    if (pageTypes.has("about")) score += 1;
+
+    if (industrialMatches >= 3 && ecommerceMatches <= 2) score -= 5;
+    if (financeMatches >= 3 && ecommerceMatches <= 2) score -= 2;
+    if (technologyMatches >= 4 && ecommerceMatches <= 2) score -= 3;
+    if (b2bMismatchMatches >= 3 && ecommerceMatches <= 3) score -= 5;
+  }
+
+  if (educationPrompt) {
+    const educationMatches = countSemanticTokenMatches(profileText, EDUCATION_PROFILE_TOKENS);
+    const technologyMatches = countSemanticTokenMatches(profileText, TECHNOLOGY_PROFILE_TOKENS);
+    const industrialMatches = countSemanticTokenMatches(profileText, INDUSTRIAL_PROFILE_TOKENS);
+
+    if (educationMatches >= 5) score += 7;
+    else if (educationMatches >= 3) score += 5;
+    else if (educationMatches >= 1) score += 3;
+    else if (technologyMatches >= 3) score += 2;
+
+    if (pageTypes.has("support")) score += 2;
+    if (pageTypes.has("blog")) score += 2;
+    if (pageTypes.has("about")) score += 1;
+    if (pageTypes.has("contact")) score += 1;
+    if (pageTypes.has("support") && pageTypes.has("blog")) score += 2;
+
+    if (industrialMatches >= 3 && educationMatches === 0) score -= 4;
+  }
+
+  if (healthPrompt) {
+    const healthMatches = countSemanticTokenMatches(profileText, HEALTH_PROFILE_TOKENS);
+    const luxuryMatches = countSemanticTokenMatches(profileText, industryTaxonomy.luxury);
+    const industrialMatches = countSemanticTokenMatches(profileText, INDUSTRIAL_PROFILE_TOKENS);
+    const technologyMatches = countSemanticTokenMatches(profileText, TECHNOLOGY_PROFILE_TOKENS);
+
+    if (healthMatches >= 5) score += 7;
+    else if (healthMatches >= 3) score += 5;
+    else if (healthMatches >= 1) score += 3;
+    else if (luxuryMatches >= 2) score += 4;
+    if (promptSignals.industries.includes("luxury") && luxuryMatches >= 2) score += 2;
+    if (promptSignals.styles.includes("elegant") && luxuryMatches >= 2) score += 1;
+
+    if (pageTypes.has("about")) score += 1;
+    if (pageTypes.has("contact")) score += 1;
+
+    if (industrialMatches >= 2 && healthMatches === 0) score -= 6;
+    if (technologyMatches >= 4 && healthMatches === 0 && luxuryMatches < 2) score -= 2;
+  }
+
+  if (travelPrompt) {
+    const travelMatches = countSemanticTokenMatches(profileText, TRAVEL_PROFILE_TOKENS);
+    const luxuryMatches = countSemanticTokenMatches(profileText, industryTaxonomy.luxury);
+    const industrialMatches = countSemanticTokenMatches(profileText, INDUSTRIAL_PROFILE_TOKENS);
+    const technologyMatches = countSemanticTokenMatches(profileText, TECHNOLOGY_PROFILE_TOKENS);
+
+    if (travelMatches >= 5) score += 7;
+    else if (travelMatches >= 3) score += 5;
+    else if (travelMatches >= 1) score += 3;
+    else if (luxuryMatches >= 2) score += 4;
+    if (promptSignals.industries.includes("luxury") && luxuryMatches >= 2) score += 2;
+    if (promptSignals.styles.includes("elegant") && luxuryMatches >= 2) score += 1;
+
+    if (pageTypes.has("about")) score += 1;
+    if (pageTypes.has("contact")) score += 1;
+
+    if (industrialMatches >= 3 && travelMatches === 0) score -= 3;
+    if (technologyMatches >= 4 && travelMatches === 0 && luxuryMatches < 2) score -= 2;
+  }
+
+  if (developerPrompt) {
+    const developerMatches = countSemanticTokenMatches(profileText, DEVELOPER_PROFILE_TOKENS);
+    const technologyMatches = countSemanticTokenMatches(profileText, TECHNOLOGY_PROFILE_TOKENS);
+    const industrialMatches = countSemanticTokenMatches(profileText, INDUSTRIAL_PROFILE_TOKENS);
+    const consumerHardwareMatches = countSemanticTokenMatches(profileText, CONSUMER_HARDWARE_TOKENS);
+
+    if (developerMatches >= 5) score += 8;
+    else if (developerMatches >= 3) score += 6;
+    else if (developerMatches >= 1) score += 4;
+    else if (technologyMatches >= 3) score += 2;
+
+    if (pageTypes.has("support")) score += 2;
+    if (pageTypes.has("blog")) score += 2;
+    if (pageTypes.has("products")) score += 1;
+    if (pageTypes.has("contact")) score += 1;
+    if (pageTypes.has("support") && pageTypes.has("blog")) score += 3;
+
+    if (industrialMatches >= 3 && developerMatches === 0) score -= 3;
+    if (consumerHardwareMatches >= 2 && developerMatches <= 2) score -= 3;
+  }
+
+  return score;
+};
+
 const computeQualityBonus = (profile: StyleProfile): number => {
   const quality = clampScore(profile.qualityScore);
-  if (quality === undefined) return 0;
+  if (quality === undefined) return -1;
   return Number((quality / 25).toFixed(2));
 };
 
 export const selectStyleProfile = (prompt: string): StyleProfile | null => {
-  const normalizedPrompt = normalizeToken(prompt);
+  const normalizedPrompt = normalizeComparableToken(prompt);
   if (!normalizedPrompt) return null;
 
   const promptSignals = extractTaxonomySignals(prompt);
   const promptDomain = extractPromptDomain(prompt);
+  const promptViewportPreference = inferPromptViewportPreference(prompt);
 
   let best: StyleProfile | null = null;
   let bestScore = 0;
@@ -1398,8 +2418,9 @@ export const selectStyleProfile = (prompt: string): StyleProfile | null => {
     // --- Layer 1: exact keyword matching (original logic) ---
     let matchedChars = 0;
     const keywordScore = profile.keywords.reduce((acc, keyword) => {
-      const token = normalizeToken(keyword);
-      if (token && normalizedPrompt.includes(token)) {
+      const token = normalizeComparableToken(keyword);
+      if (!token || GENERIC_PROFILE_KEYWORD_BLACKLIST.has(token)) return acc;
+      if (token && includesSemanticToken(prompt, keyword)) {
         matchedChars += token.length;
         return acc + 1;
       }
@@ -1407,14 +2428,37 @@ export const selectStyleProfile = (prompt: string): StyleProfile | null => {
     }, 0);
 
     // --- Layer 2: semantic taxonomy matching ---
+    const explicitReferenceMatch = computeExplicitReferenceMatch(profile, prompt);
+    const identityMatch = computeIdentityMatch(profile, normalizedPrompt);
     const semanticScore = computeProfileSemanticScore(profile, promptSignals);
     const domainScore = computeDomainMatchScore(profile, promptDomain);
+    const viewportScore = computeViewportPreferenceScore(profile, promptViewportPreference);
+    const intentStructureScore = computeIntentStructureScore(profile, prompt, promptSignals);
+    const specializedIntentScore = computeSpecializedIntentScore(profile, prompt);
     const qualityBonus = computeQualityBonus(profile);
 
     // Require at least one intent signal, avoid selecting only by quality.
-    if (keywordScore <= 0 && semanticScore <= 0 && domainScore <= 0) continue;
+    if (
+      keywordScore <= 0 &&
+      explicitReferenceMatch.score <= 0 &&
+      identityMatch.score <= 0 &&
+      semanticScore <= 0 &&
+      domainScore <= 0 &&
+      intentStructureScore <= 0 &&
+      specializedIntentScore <= 0
+    ) continue;
 
-    const score = keywordScore + semanticScore + domainScore + qualityBonus;
+    matchedChars += explicitReferenceMatch.matchedChars + identityMatch.matchedChars;
+    const score =
+      keywordScore +
+      explicitReferenceMatch.score +
+      identityMatch.score +
+      semanticScore +
+      domainScore +
+      viewportScore +
+      intentStructureScore +
+      specializedIntentScore +
+      qualityBonus;
     if (score <= 0) continue;
 
     const templateCount = Object.keys(profile.templates ?? {}).length;
@@ -1543,6 +2587,35 @@ const computeBlockFallbackScore = (
   return score;
 };
 
+const computeKindFitBonus = (
+  kind: SectionKind,
+  template: { type: string; props: Record<string, unknown> }
+): number => {
+  const typeToken = normalizeToken(template.type);
+  const keyToken = Object.keys(template.props ?? {})
+    .map((key) => normalizeToken(key))
+    .join(" ");
+  if (kind === "products") {
+    const productSignals = /(product|catalog|collection|sku|store|shop|plan|pricing|module|capability|grid|item|accordion|spec)/;
+    const contactSignals = /(contact|lead|inquiry|form|consult)/;
+    let score = 0;
+    if (productSignals.test(typeToken)) score += 180;
+    if (productSignals.test(keyToken)) score += 120;
+    if (contactSignals.test(typeToken) && !productSignals.test(typeToken)) score -= 220;
+    if (contactSignals.test(keyToken) && !productSignals.test(keyToken)) score -= 180;
+    return score;
+  }
+  if (kind === "contact") {
+    if (/(contact|lead|inquiry|form|consult)/.test(typeToken)) return 120;
+    if (/(contact|lead|inquiry|form|consult)/.test(keyToken)) return 80;
+  }
+  if (kind === "cta") {
+    if (/(cta|lead|capture|signup|trial|book|requestdemo)/.test(typeToken)) return 120;
+    if (/(cta|lead|capture|signup|trial|book|requestdemo)/.test(keyToken)) return 80;
+  }
+  return 0;
+};
+
 const findBlockLevelCandidate = (input: {
   profiles: StyleProfile[];
   kind: SectionKind;
@@ -1559,6 +2632,10 @@ const findBlockLevelCandidate = (input: {
       if (!profile) continue;
       const entryPagePath = entry.pagePath ? normalizeTemplatePagePath(entry.pagePath) : input.normalizedPagePath;
       const entryPageType = entry.pageType ?? inferTemplatePageType(entryPagePath, "");
+      const template = {
+        type: entry.blockType,
+        props: cloneProps(entry.props),
+      };
       const pageSpec =
         entry.source === "page"
           ? findMatchingPageSpec(profile, entryPagePath, entryPageType)
@@ -1566,10 +2643,7 @@ const findBlockLevelCandidate = (input: {
       rankedPublished.push({
         profile,
         pageSpec,
-        template: {
-          type: entry.blockType,
-          props: cloneProps(entry.props),
-        },
+        template,
         layer: input.layer,
         catalogSource: "published",
         score: computeBlockFallbackScore(
@@ -1586,7 +2660,7 @@ const findBlockLevelCandidate = (input: {
           input.normalizedPagePath,
           input.targetPageType,
           entry.source
-        ),
+        ) + computeKindFitBonus(input.kind, template),
       });
     }
     rankedPublished.sort((a, b) => b.score - a.score);

@@ -1,0 +1,190 @@
+{
+  "sectionId": "VESxn",
+  "sectionName": "nav",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": 64
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "9addc8000a7906530021d71d35b290c713d4cf7ba6b7b68d4a4ee0823190fe11",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "lBU4z",
+      "blockName": "logo",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "988d0e9f4bbf1d0a0aae7728a2c69c02f386d671fcf6d2b2afd38540641fd9f0"
+    },
+    {
+      "blockId": "0QJik",
+      "blockName": "centerNav",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b2285e7c8f9c2469b7658ea46a4fd1ea1e589ad6080379132fca682c75b20abd"
+    },
+    {
+      "blockId": "sH40y",
+      "blockName": "rightNav",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "eaeb32e6fe221f0cfbcc48ce3dd1258ff18c8c1a96700d906a9e37a8218f3f8d"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "lBU4z",
+      "blockName": "logo",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "988d0e9f4bbf1d0a0aae7728a2c69c02f386d671fcf6d2b2afd38540641fd9f0",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "lBU4z",
+        "name": "logo",
+        "fill": "#111111",
+        "content": "Framework",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "0QJik",
+      "blockName": "centerNav",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b2285e7c8f9c2469b7658ea46a4fd1ea1e589ad6080379132fca682c75b20abd",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "0QJik",
+        "name": "centerNav",
+        "fill": "#4A4A4A",
+        "content": "Products   Laptops   Desktops   Marketplace",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal"
+      }
+    },
+    {
+      "blockId": "sH40y",
+      "blockName": "rightNav",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "eaeb32e6fe221f0cfbcc48ce3dd1258ff18c8c1a96700d906a9e37a8218f3f8d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "sH40y",
+        "name": "rightNav",
+        "fill": "#666666",
+        "content": "Support   Sign In   Cart",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "VESxn",
+    "name": "nav",
+    "width": "fill_container",
+    "height": 64,
+    "fill": "#F3F3EF",
+    "padding": [
+      0,
+      48
+    ],
+    "justifyContent": "space_between",
+    "alignItems": "center",
+    "children": [
+      {
+        "type": "text",
+        "id": "lBU4z",
+        "name": "logo",
+        "fill": "#111111",
+        "content": "Framework",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "0QJik",
+        "name": "centerNav",
+        "fill": "#4A4A4A",
+        "content": "Products   Laptops   Desktops   Marketplace",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "text",
+        "id": "sH40y",
+        "name": "rightNav",
+        "fill": "#666666",
+        "content": "Support   Sign In   Cart",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal"
+      }
+    ]
+  }
+}

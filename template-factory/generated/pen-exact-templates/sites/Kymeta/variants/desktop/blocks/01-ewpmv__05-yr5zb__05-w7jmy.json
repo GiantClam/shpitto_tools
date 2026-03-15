@@ -1,0 +1,120 @@
+{
+  "blockId": "W7JMy",
+  "blockName": "p3Card",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 5,
+  "bounds": {
+    "x": 556,
+    "y": 980,
+    "width": 760,
+    "height": 250
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 7,
+  "treeHash": "a7b74a7c1d77e5be02158ddd25d8a7b67be3a6845809a8d6f6a9beb78f9bad41",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "W7JMy",
+    "x": 556,
+    "y": 980,
+    "name": "p3Card",
+    "width": 760,
+    "height": 250,
+    "fill": "#F5F6F8",
+    "effect": {
+      "type": "shadow",
+      "shadowType": "outer",
+      "color": "#0F172A1F",
+      "offset": {
+        "x": 0,
+        "y": 16
+      },
+      "blur": 40
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "1tInt",
+        "x": 64,
+        "y": 20,
+        "name": "p3cat",
+        "fill": "#5E81C5",
+        "content": "LAND CONNECTIVITY",
+        "fontFamily": "Inter",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "letterSpacing": 0.8
+      },
+      {
+        "type": "icon_font",
+        "id": "8Qx3J",
+        "x": 64,
+        "y": 48,
+        "name": "p3icon",
+        "width": 28,
+        "height": 28,
+        "iconFontName": "broadcast",
+        "iconFontFamily": "phosphor",
+        "fill": "#2F456C"
+      },
+      {
+        "type": "text",
+        "id": "V5FyV",
+        "x": 100,
+        "y": 48,
+        "name": "p3title",
+        "fill": "#1F2937",
+        "content": "PEREGRINE.",
+        "fontFamily": "Inter",
+        "fontSize": 34,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "XxJzG",
+        "x": 64,
+        "y": 94,
+        "name": "p3desc",
+        "fill": "#5B6472",
+        "textGrowth": "fixed-width",
+        "width": 620,
+        "content": "Stay connected even in rough conditions on the open ocean. Instant waterway, or more flow. The Peregrine u8 seamlessly integrates with your vessel's IT infrastructure.",
+        "lineHeight": 1.5,
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 2,
+        "id": "ZXr36",
+        "x": 64,
+        "y": 184,
+        "name": "p3btn",
+        "fill": "#EEF2F7",
+        "width": 162,
+        "height": 34,
+        "stroke": {
+          "align": "inside",
+          "thickness": 1,
+          "fill": "#8AA3D3"
+        }
+      },
+      {
+        "type": "text",
+        "id": "XCVKK",
+        "x": 82,
+        "y": 194,
+        "name": "p3btnT",
+        "fill": "#2E446D",
+        "content": "More about Peregrine u8",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

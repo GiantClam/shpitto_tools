@@ -1,0 +1,3217 @@
+{
+  "pageId": "page-about",
+  "pageKey": "about",
+  "pageName": "About Us",
+  "pageType": "about",
+  "devices": {
+    "desktop": {
+      "bounds": {
+        "width": 1440,
+        "height": 1820
+      },
+      "supportBlocks": [
+        {
+          "id": "page-about-bg",
+          "name": "page-about-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1820
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#ECECEC"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08"
+          }
+        },
+        {
+          "id": "page-about-hero",
+          "name": "page-about-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 360
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "relativePath": "assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-about-overlay",
+          "name": "page-about-overlay",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 360
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#00000030"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color13"
+          }
+        },
+        {
+          "id": "page-about-crumb",
+          "name": "page-about-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 40,
+            "y": 108,
+            "width": 220,
+            "height": 22
+          },
+          "href": "",
+          "content": "Home / About Us",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-title",
+          "name": "page-about-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 140,
+            "width": 760,
+            "height": 80
+          },
+          "href": "",
+          "content": "About us",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 52,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size15",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-sub",
+          "name": "page-about-sub",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 40,
+            "y": 210,
+            "width": 700,
+            "height": 31
+          },
+          "href": "",
+          "content": "Company Profile",
+          "style": {
+            "fill": "#F0F3F7",
+            "typography": {
+              "fill": "#F0F3F7",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 17,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color14",
+            "textColor": "textColor.palette.text07",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size12",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-home-box",
+          "name": "page-about-home-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 40,
+            "y": 262,
+            "width": 120,
+            "height": 34
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#B00046",
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-about-home-text",
+          "name": "page-about-home-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 54,
+            "y": 270,
+            "width": 92,
+            "height": 18
+          },
+          "href": "#page-home",
+          "content": "Home",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.04em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-peer-box",
+          "name": "page-about-peer-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 176,
+            "y": 262,
+            "width": 150,
+            "height": 34
+          },
+          "href": "#page-bit",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D7D8DA",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-about-peer-text",
+          "name": "page-about-peer-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 190,
+            "y": 270,
+            "width": 122,
+            "height": 18
+          },
+          "href": "#page-bit",
+          "content": "Third level",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.04em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-panel",
+          "name": "page-about-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 40,
+            "y": 394,
+            "width": 1360,
+            "height": 1080
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#F5F5F5",
+            "stroke": {
+              "color": "#D7D8DA",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "strokeColor": "color.palette.color03"
+          }
+        },
+        {
+          "id": "page-about-kicker",
+          "name": "page-about-kicker",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 418,
+            "width": 1360,
+            "height": 18
+          },
+          "href": "",
+          "content": "ABOUT US",
+          "style": {
+            "fill": "#B00046",
+            "typography": {
+              "fill": "#B00046",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-panel-title",
+          "name": "page-about-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 448,
+            "width": 560,
+            "height": 63
+          },
+          "href": "",
+          "content": "About us",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 40,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size14",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-p-0",
+          "name": "page-about-p-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 510,
+            "width": 540,
+            "height": 28
+          },
+          "href": "",
+          "content": "Tell us your project and Breton team will contact you.",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-p-1",
+          "name": "page-about-p-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 556,
+            "width": 540,
+            "height": 49
+          },
+          "href": "",
+          "content": "Since 1963, Breton has pioneered advanced technologies for natural stone, engineered stone, metals and additive manufacturing.",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-p-2",
+          "name": "page-about-p-2",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 623,
+            "width": 540,
+            "height": 49
+          },
+          "href": "",
+          "content": "Over six decades of industrial innovation, with global installations and long-term customer partnerships.",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-p-3",
+          "name": "page-about-p-3",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 690,
+            "width": 540,
+            "height": 49
+          },
+          "href": "",
+          "content": "Transparent governance model focused on quality, integrity and sustainable growth.",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-p-4",
+          "name": "page-about-p-4",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 757,
+            "width": 540,
+            "height": 49
+          },
+          "href": "",
+          "content": "Continuous investment in research with a strong connection to universities and institutes.",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-img-main",
+          "name": "page-about-img-main",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 880,
+            "y": 420,
+            "width": 480,
+            "height": 300
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "relativePath": "assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-about-img-side",
+          "name": "page-about-img-side",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 880,
+            "y": 756,
+            "width": 480,
+            "height": 220
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "relativePath": "assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-about-card-0",
+          "name": "page-about-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1070,
+            "width": 260,
+            "height": 220
+          },
+          "href": "#page-bit",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D7D8DA",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03"
+          }
+        },
+        {
+          "id": "page-about-card-img-0",
+          "name": "page-about-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 64,
+            "y": 1070,
+            "width": 260,
+            "height": 120
+          },
+          "href": "#page-bit",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "relativePath": "assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-about-card-t-0",
+          "name": "page-about-card-t-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 76,
+            "y": 1202,
+            "width": 236,
+            "height": 28
+          },
+          "href": "#page-bit",
+          "content": "Company Profile",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-card-b-0",
+          "name": "page-about-card-b-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 76,
+            "y": 1228,
+            "width": 236,
+            "height": 41
+          },
+          "href": "#page-bit",
+          "content": "Tell us your project and Breton team will contact you.",
+          "style": {
+            "fill": "#666B73",
+            "typography": {
+              "fill": "#666B73",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color10",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-rel-title",
+          "name": "page-about-rel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 1500,
+            "width": 200,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related pages",
+          "style": {
+            "fill": "#B00046",
+            "typography": {
+              "fill": "#B00046",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-rel-0-box",
+          "name": "page-about-rel-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1528,
+            "width": 180,
+            "height": 36
+          },
+          "href": "#page-bit",
+          "content": "",
+          "style": {
+            "fill": "#B00046",
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-about-rel-0-text",
+          "name": "page-about-rel-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 78,
+            "y": 1537,
+            "width": 152,
+            "height": 18
+          },
+          "href": "#page-bit",
+          "content": "BIT",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.04em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-rel-1-box",
+          "name": "page-about-rel-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 256,
+            "y": 1528,
+            "width": 180,
+            "height": 36
+          },
+          "href": "#page-contacts",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D7D8DA",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-about-rel-1-text",
+          "name": "page-about-rel-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 270,
+            "y": 1537,
+            "width": 152,
+            "height": 18
+          },
+          "href": "#page-contacts",
+          "content": "Contacts",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.04em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-rel-2-box",
+          "name": "page-about-rel-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 448,
+            "y": 1528,
+            "width": 180,
+            "height": 36
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D7D8DA",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-about-rel-2-text",
+          "name": "page-about-rel-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 462,
+            "y": 1537,
+            "width": 152,
+            "height": 18
+          },
+          "href": "#page-home",
+          "content": "Home",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.04em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    },
+    "mobile": {
+      "bounds": {
+        "width": 390,
+        "height": 1680
+      },
+      "supportBlocks": [
+        {
+          "id": "page-about-bg",
+          "name": "page-about-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 1680
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#ECECEC"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08"
+          }
+        },
+        {
+          "id": "page-about-hero",
+          "name": "page-about-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 260
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "relativePath": "assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-about-overlay",
+          "name": "page-about-overlay",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 260
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#00000030"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color13"
+          }
+        },
+        {
+          "id": "page-about-crumb",
+          "name": "page-about-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 18,
+            "y": 86,
+            "width": 220,
+            "height": 22
+          },
+          "href": "",
+          "content": "Home / About Us",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-title",
+          "name": "page-about-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 118,
+            "width": 320,
+            "height": 52
+          },
+          "href": "",
+          "content": "About us",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 32,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size09",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-sub",
+          "name": "page-about-sub",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 18,
+            "y": 190,
+            "width": 320,
+            "height": 25
+          },
+          "href": "",
+          "content": "Company Profile",
+          "style": {
+            "fill": "#F0F3F7",
+            "typography": {
+              "fill": "#F0F3F7",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color14",
+            "textColor": "textColor.palette.text07",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-home-box",
+          "name": "page-about-home-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 18,
+            "y": 246,
+            "width": 120,
+            "height": 34
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#B00046",
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-about-home-text",
+          "name": "page-about-home-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 32,
+            "y": 254,
+            "width": 92,
+            "height": 18
+          },
+          "href": "#page-home",
+          "content": "Home",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.04em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-peer-box",
+          "name": "page-about-peer-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 154,
+            "y": 246,
+            "width": 150,
+            "height": 34
+          },
+          "href": "#page-bit",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D7D8DA",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-about-peer-text",
+          "name": "page-about-peer-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 168,
+            "y": 254,
+            "width": 122,
+            "height": 18
+          },
+          "href": "#page-bit",
+          "content": "Third level",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.04em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-panel",
+          "name": "page-about-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 18,
+            "y": 294,
+            "width": 354,
+            "height": 980
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#F5F5F5",
+            "stroke": {
+              "color": "#D7D8DA",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "strokeColor": "color.palette.color03"
+          }
+        },
+        {
+          "id": "page-about-kicker",
+          "name": "page-about-kicker",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 318,
+            "width": 310,
+            "height": 18
+          },
+          "href": "",
+          "content": "ABOUT US",
+          "style": {
+            "fill": "#B00046",
+            "typography": {
+              "fill": "#B00046",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-panel-title",
+          "name": "page-about-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 348,
+            "width": 300,
+            "height": 43
+          },
+          "href": "",
+          "content": "About us",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 26,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size13",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-p-0",
+          "name": "page-about-p-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 410,
+            "width": 300,
+            "height": 43
+          },
+          "href": "",
+          "content": "Tell us your project and Breton team will contact you.",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-p-1",
+          "name": "page-about-p-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 471,
+            "width": 300,
+            "height": 80
+          },
+          "href": "",
+          "content": "Since 1963, Breton has pioneered advanced technologies for natural stone, engineered stone, metals and additive manufacturing.",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-p-2",
+          "name": "page-about-p-2",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 569,
+            "width": 300,
+            "height": 62
+          },
+          "href": "",
+          "content": "Over six decades of industrial innovation, with global installations and long-term customer partnerships.",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-p-3",
+          "name": "page-about-p-3",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 649,
+            "width": 300,
+            "height": 62
+          },
+          "href": "",
+          "content": "Transparent governance model focused on quality, integrity and sustainable growth.",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-p-4",
+          "name": "page-about-p-4",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 729,
+            "width": 300,
+            "height": 62
+          },
+          "href": "",
+          "content": "Continuous investment in research with a strong connection to universities and institutes.",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-img-main",
+          "name": "page-about-img-main",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 320,
+            "width": 300,
+            "height": 220
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "relativePath": "assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-about-img-side",
+          "name": "page-about-img-side",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 560,
+            "width": 300,
+            "height": 180
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "relativePath": "assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-about-card-0",
+          "name": "page-about-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 800,
+            "width": 300,
+            "height": 142
+          },
+          "href": "#page-bit",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D7D8DA",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03"
+          }
+        },
+        {
+          "id": "page-about-card-img-0",
+          "name": "page-about-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 800,
+            "width": 300,
+            "height": 84
+          },
+          "href": "#page-bit",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "relativePath": "assets-structured/breton/page-about-0-92fb20e6.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-about-card-t-0",
+          "name": "page-about-card-t-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 54,
+            "y": 896,
+            "width": 276,
+            "height": 25
+          },
+          "href": "#page-bit",
+          "content": "Company Profile",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-card-b-0",
+          "name": "page-about-card-b-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 54,
+            "y": 918,
+            "width": 276,
+            "height": 38
+          },
+          "href": "#page-bit",
+          "content": "Tell us your project and Breton team will contact you.",
+          "style": {
+            "fill": "#666B73",
+            "typography": {
+              "fill": "#666B73",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color10",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-about-rel-title",
+          "name": "page-about-rel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 1460,
+            "width": 200,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related pages",
+          "style": {
+            "fill": "#B00046",
+            "typography": {
+              "fill": "#B00046",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-rel-0-box",
+          "name": "page-about-rel-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1488,
+            "width": 154,
+            "height": 36
+          },
+          "href": "#page-bit",
+          "content": "",
+          "style": {
+            "fill": "#B00046",
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-about-rel-0-text",
+          "name": "page-about-rel-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 56,
+            "y": 1497,
+            "width": 126,
+            "height": 18
+          },
+          "href": "#page-bit",
+          "content": "BIT",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.04em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-rel-1-box",
+          "name": "page-about-rel-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 208,
+            "y": 1488,
+            "width": 154,
+            "height": 36
+          },
+          "href": "#page-contacts",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D7D8DA",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-about-rel-1-text",
+          "name": "page-about-rel-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 222,
+            "y": 1497,
+            "width": 126,
+            "height": 18
+          },
+          "href": "#page-contacts",
+          "content": "Contacts",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.04em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-about-rel-2-box",
+          "name": "page-about-rel-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1534,
+            "width": 154,
+            "height": 36
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D7D8DA",
+              "thickness": 1
+            },
+            "cornerRadius": 0
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-about-rel-2-text",
+          "name": "page-about-rel-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 56,
+            "y": 1543,
+            "width": 126,
+            "height": 18
+          },
+          "href": "#page-home",
+          "content": "Home",
+          "style": {
+            "fill": "#232529",
+            "typography": {
+              "fill": "#232529",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.04em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "sectionId": "page-about-navbar",
+      "sectionKey": "page-about-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "blockCount": 11,
+          "blockTree": {
+            "id": "page-about-navbar",
+            "name": "Navbar",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 84
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color11"
+            },
+            "children": [
+              {
+                "id": "page-about-navbar-bg",
+                "name": "page-about-navbar-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 84
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#B00046"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04"
+                }
+              },
+              {
+                "id": "page-about-navbar-logo",
+                "name": "page-about-navbar-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 40,
+                  "y": 18,
+                  "width": 140,
+                  "height": 44
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+                  "resolvedPath": "",
+                  "relativePath": "",
+                  "exists": false,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "page-about-navbar-Engineering",
+                "name": "page-about-navbar-Engineering",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 260,
+                  "y": 32,
+                  "width": 90,
+                  "height": 18
+                },
+                "href": "#page-engineering",
+                "content": "Engineering",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.02em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "page-about-navbar-Products",
+                "name": "page-about-navbar-Products",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 378,
+                  "y": 32,
+                  "width": 90,
+                  "height": 18
+                },
+                "href": "#page-products",
+                "content": "Products",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.02em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "page-about-navbar-Services",
+                "name": "page-about-navbar-Services",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 496,
+                  "y": 32,
+                  "width": 90,
+                  "height": 18
+                },
+                "href": "#page-services",
+                "content": "Services",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.02em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "page-about-navbar-BIT",
+                "name": "page-about-navbar-BIT",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 614,
+                  "y": 32,
+                  "width": 90,
+                  "height": 18
+                },
+                "href": "#page-bit",
+                "content": "BIT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "0.02em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "page-about-navbar-lets",
+                "name": "page-about-navbar-lets",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 756,
+                  "y": 0,
+                  "width": 200,
+                  "height": 84
+                },
+                "href": "#page-contacts",
+                "content": "",
+                "style": {
+                  "fill": "#202329"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color09"
+                }
+              },
+              {
+                "id": "page-about-navbar-lets-t",
+                "name": "page-about-navbar-lets-t",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 782,
+                  "y": 30,
+                  "width": 120,
+                  "height": 22
+                },
+                "href": "#page-contacts",
+                "content": "Let's talk",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 15,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size04",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-about-navbar-search",
+                "name": "page-about-navbar-search",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1018,
+                  "y": 30,
+                  "width": 32,
+                  "height": 24
+                },
+                "href": "#page-products",
+                "content": "⌕",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 24,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size11",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "page-about-navbar-lang",
+                "name": "page-about-navbar-lang",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1082,
+                  "y": 30,
+                  "width": 90,
+                  "height": 18
+                },
+                "href": "#page-about",
+                "content": "Language",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-about-navbar-menu",
+                "name": "page-about-navbar-menu",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1222,
+                  "y": 30,
+                  "width": 30,
+                  "height": 18
+                },
+                "href": "#page-products",
+                "content": "☰",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 62
+          },
+          "blockCount": 5,
+          "blockTree": {
+            "id": "page-about-navbar",
+            "name": "Navbar",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 62
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color11"
+            },
+            "children": [
+              {
+                "id": "page-about-navbar-bg",
+                "name": "page-about-navbar-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 62
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#B00046"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04"
+                }
+              },
+              {
+                "id": "page-about-navbar-logo",
+                "name": "page-about-navbar-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 18,
+                  "y": 14,
+                  "width": 92,
+                  "height": 32
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+                  "resolvedPath": "",
+                  "relativePath": "",
+                  "exists": false,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "page-about-navbar-search",
+                "name": "page-about-navbar-search",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 278,
+                  "y": 22,
+                  "width": 24,
+                  "height": 24
+                },
+                "href": "#page-products",
+                "content": "⌕",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 22,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "page-about-navbar-lang",
+                "name": "page-about-navbar-lang",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 310,
+                  "y": 24,
+                  "width": 20,
+                  "height": 20
+                },
+                "href": "#page-about",
+                "content": "🌐",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 16,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size07",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "page-about-navbar-menu",
+                "name": "page-about-navbar-menu",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 352,
+                  "y": 22,
+                  "width": 20,
+                  "height": 20
+                },
+                "href": "#page-products",
+                "content": "☰",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionKey": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": {
+        "desktop": 1,
+        "mobile": 1
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 1590,
+            "width": 1440,
+            "height": 230
+          },
+          "blockCount": 12,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1590,
+              "width": 1440,
+              "height": 230
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#202329",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color09"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 230
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#202329"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color09"
+                }
+              },
+              {
+                "id": "footer-follow",
+                "name": "footer-follow",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 188,
+                  "width": 240,
+                  "height": 38
+                },
+                "href": "",
+                "content": "Follow Breton on: Facebook • LinkedIn • YouTube",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-vat",
+                "name": "footer-vat",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 560,
+                  "y": 188,
+                  "width": 320,
+                  "height": 38
+                },
+                "href": "",
+                "content": "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved.",
+                "style": {
+                  "fill": "#D4D8DE",
+                  "typography": {
+                    "fill": "#D4D8DE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color12",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-link-Customer Service",
+                "name": "footer-link-Customer Service",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 40,
+                  "y": 54,
+                  "width": 240,
+                  "height": 36
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": "#F5F5F5",
+                  "stroke": {
+                    "color": "#AAAAAA",
+                    "thickness": 1
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "strokeColor": "color.palette.color07"
+                }
+              },
+              {
+                "id": "footer-link-t-Customer Service",
+                "name": "footer-link-t-Customer Service",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 52,
+                  "y": 65,
+                  "width": 216,
+                  "height": 16
+                },
+                "href": "#page-home",
+                "content": "Customer Service",
+                "style": {
+                  "fill": "#232529",
+                  "typography": {
+                    "fill": "#232529",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-link-a-Customer Service",
+                "name": "footer-link-a-Customer Service",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 262,
+                  "y": 64,
+                  "width": 12,
+                  "height": 16
+                },
+                "href": "#page-home",
+                "content": "↗",
+                "style": {
+                  "fill": "#888",
+                  "typography": {
+                    "fill": "#888",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-link-Contacts",
+                "name": "footer-link-Contacts",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 300,
+                  "y": 54,
+                  "width": 240,
+                  "height": 36
+                },
+                "href": "#page-contacts",
+                "content": "",
+                "style": {
+                  "fill": "#F5F5F5",
+                  "stroke": {
+                    "color": "#AAAAAA",
+                    "thickness": 1
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "strokeColor": "color.palette.color07"
+                }
+              },
+              {
+                "id": "footer-link-t-Contacts",
+                "name": "footer-link-t-Contacts",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 312,
+                  "y": 65,
+                  "width": 216,
+                  "height": 16
+                },
+                "href": "#page-contacts",
+                "content": "Contacts",
+                "style": {
+                  "fill": "#232529",
+                  "typography": {
+                    "fill": "#232529",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-link-a-Contacts",
+                "name": "footer-link-a-Contacts",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 522,
+                  "y": 64,
+                  "width": 12,
+                  "height": 16
+                },
+                "href": "#page-contacts",
+                "content": "↗",
+                "style": {
+                  "fill": "#888",
+                  "typography": {
+                    "fill": "#888",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-link-Terms",
+                "name": "footer-link-Terms",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 560,
+                  "y": 54,
+                  "width": 240,
+                  "height": 36
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": "#F5F5F5",
+                  "stroke": {
+                    "color": "#AAAAAA",
+                    "thickness": 1
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "strokeColor": "color.palette.color07"
+                }
+              },
+              {
+                "id": "footer-link-t-Terms",
+                "name": "footer-link-t-Terms",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 572,
+                  "y": 65,
+                  "width": 216,
+                  "height": 16
+                },
+                "href": "#page-home",
+                "content": "Terms",
+                "style": {
+                  "fill": "#232529",
+                  "typography": {
+                    "fill": "#232529",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-link-a-Terms",
+                "name": "footer-link-a-Terms",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 782,
+                  "y": 64,
+                  "width": 12,
+                  "height": 16
+                },
+                "href": "#page-home",
+                "content": "↗",
+                "style": {
+                  "fill": "#888",
+                  "typography": {
+                    "fill": "#888",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 1400,
+            "width": 390,
+            "height": 312
+          },
+          "blockCount": 12,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1400,
+              "width": 390,
+              "height": 312
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#202329",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color09"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 312
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#202329"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color09"
+                }
+              },
+              {
+                "id": "footer-follow",
+                "name": "footer-follow",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 224,
+                  "width": 220,
+                  "height": 38
+                },
+                "href": "",
+                "content": "Follow Breton on: Facebook • LinkedIn • YouTube",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-vat",
+                "name": "footer-vat",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 258,
+                  "width": 300,
+                  "height": 35
+                },
+                "href": "",
+                "content": "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved.",
+                "style": {
+                  "fill": "#D4D8DE",
+                  "typography": {
+                    "fill": "#D4D8DE",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color12",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size08",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-link-Customer Service",
+                "name": "footer-link-Customer Service",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 18,
+                  "y": 40,
+                  "width": 110,
+                  "height": 36
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": "#F5F5F5",
+                  "stroke": {
+                    "color": "#AAAAAA",
+                    "thickness": 1
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "strokeColor": "color.palette.color07"
+                }
+              },
+              {
+                "id": "footer-link-t-Customer Service",
+                "name": "footer-link-t-Customer Service",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 30,
+                  "y": 51,
+                  "width": 86,
+                  "height": 16
+                },
+                "href": "#page-home",
+                "content": "Customer Service",
+                "style": {
+                  "fill": "#232529",
+                  "typography": {
+                    "fill": "#232529",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-link-a-Customer Service",
+                "name": "footer-link-a-Customer Service",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 110,
+                  "y": 50,
+                  "width": 12,
+                  "height": 16
+                },
+                "href": "#page-home",
+                "content": "↗",
+                "style": {
+                  "fill": "#888",
+                  "typography": {
+                    "fill": "#888",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-link-Contacts",
+                "name": "footer-link-Contacts",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 140,
+                  "y": 40,
+                  "width": 110,
+                  "height": 36
+                },
+                "href": "#page-contacts",
+                "content": "",
+                "style": {
+                  "fill": "#F5F5F5",
+                  "stroke": {
+                    "color": "#AAAAAA",
+                    "thickness": 1
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "strokeColor": "color.palette.color07"
+                }
+              },
+              {
+                "id": "footer-link-t-Contacts",
+                "name": "footer-link-t-Contacts",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 152,
+                  "y": 51,
+                  "width": 86,
+                  "height": 16
+                },
+                "href": "#page-contacts",
+                "content": "Contacts",
+                "style": {
+                  "fill": "#232529",
+                  "typography": {
+                    "fill": "#232529",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-link-a-Contacts",
+                "name": "footer-link-a-Contacts",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 232,
+                  "y": 50,
+                  "width": 12,
+                  "height": 16
+                },
+                "href": "#page-contacts",
+                "content": "↗",
+                "style": {
+                  "fill": "#888",
+                  "typography": {
+                    "fill": "#888",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-link-Terms",
+                "name": "footer-link-Terms",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 262,
+                  "y": 40,
+                  "width": 110,
+                  "height": 36
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": "#F5F5F5",
+                  "stroke": {
+                    "color": "#AAAAAA",
+                    "thickness": 1
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "strokeColor": "color.palette.color07"
+                }
+              },
+              {
+                "id": "footer-link-t-Terms",
+                "name": "footer-link-t-Terms",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 274,
+                  "y": 51,
+                  "width": 86,
+                  "height": 16
+                },
+                "href": "#page-home",
+                "content": "Terms",
+                "style": {
+                  "fill": "#232529",
+                  "typography": {
+                    "fill": "#232529",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color02",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-link-a-Terms",
+                "name": "footer-link-a-Terms",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 354,
+                  "y": 50,
+                  "width": 12,
+                  "height": 16
+                },
+                "href": "#page-home",
+                "content": "↗",
+                "style": {
+                  "fill": "#888",
+                  "typography": {
+                    "fill": "#888",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

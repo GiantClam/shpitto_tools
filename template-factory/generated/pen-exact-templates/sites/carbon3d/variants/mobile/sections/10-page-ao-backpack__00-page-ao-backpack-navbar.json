@@ -1,0 +1,289 @@
+{
+  "sectionId": "page-ao-backpack-navbar",
+  "sectionName": "Navbar",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 68
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "e196a112637a076de7f8806adba24161a25e3cb0fe19b9b65f3e94a371d04ea4",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "page-ao-backpack-navbar-bg",
+      "blockName": "page-ao-backpack-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "30f2d8e941bf7af528f409f1d451377fbf4a8930710425c1bcd39f2d2aded239"
+    },
+    {
+      "blockId": "page-ao-backpack-navbar-logo",
+      "blockName": "page-ao-backpack-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 22,
+        "width": 84,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "43a79500bc1ad50740a36ec25fa03786e5138df78b8ff9475b628d99d4ae3611"
+    },
+    {
+      "blockId": "page-ao-backpack-navbar-menu",
+      "blockName": "page-ao-backpack-navbar-menu",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 350,
+        "y": 24,
+        "width": 18,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "38ee7d0c9751bc95ea0ec181b3a7be145f97b85b8d0ed58214daed9310b2e2dc"
+    },
+    {
+      "blockId": "page-ao-backpack-navbar-search",
+      "blockName": "page-ao-backpack-navbar-search",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 308,
+        "y": 26,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3f0b52765f96c0ec75baa38a18f2e6ab5c7577b69b94d82a8f0b406b9fd70128"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+      "relativePath": "assets-structured/carbon/carbon-logo.png",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "page-ao-backpack-navbar-bg",
+      "blockName": "page-ao-backpack-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "30f2d8e941bf7af528f409f1d451377fbf4a8930710425c1bcd39f2d2aded239",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-ao-backpack-navbar-bg",
+        "name": "page-ao-backpack-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68,
+        "fill": "#000000"
+      }
+    },
+    {
+      "blockId": "page-ao-backpack-navbar-logo",
+      "blockName": "page-ao-backpack-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 22,
+        "width": 84,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "43a79500bc1ad50740a36ec25fa03786e5138df78b8ff9475b628d99d4ae3611",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+        "relativePath": "assets-structured/carbon/carbon-logo.png",
+        "exists": true,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-ao-backpack-navbar-logo",
+        "name": "page-ao-backpack-navbar-logo",
+        "x": 18,
+        "y": 22,
+        "width": 84,
+        "height": 26,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "page-ao-backpack-navbar-menu",
+      "blockName": "page-ao-backpack-navbar-menu",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 350,
+        "y": 24,
+        "width": 18,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "38ee7d0c9751bc95ea0ec181b3a7be145f97b85b8d0ed58214daed9310b2e2dc",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-ao-backpack-navbar-menu",
+        "name": "page-ao-backpack-navbar-menu",
+        "x": 350,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 20,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "page-ao-backpack-navbar-search",
+      "blockName": "page-ao-backpack-navbar-search",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 308,
+        "y": 26,
+        "width": 18,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3f0b52765f96c0ec75baa38a18f2e6ab5c7577b69b94d82a8f0b406b9fd70128",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-ao-backpack-navbar-search",
+        "name": "page-ao-backpack-navbar-search",
+        "x": 308,
+        "y": 26,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 18,
+        "href": "#page-products"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "page-ao-backpack-navbar",
+    "name": "Navbar",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 68,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-ao-backpack-navbar-bg",
+        "name": "page-ao-backpack-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68,
+        "fill": "#000000"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-ao-backpack-navbar-logo",
+        "name": "page-ao-backpack-navbar-logo",
+        "x": 18,
+        "y": 22,
+        "width": 84,
+        "height": 26,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "page-ao-backpack-navbar-menu",
+        "name": "page-ao-backpack-navbar-menu",
+        "x": 350,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 20,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "page-ao-backpack-navbar-search",
+        "name": "page-ao-backpack-navbar-search",
+        "x": 308,
+        "y": 26,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 18,
+        "href": "#page-products"
+      }
+    ]
+  }
+}

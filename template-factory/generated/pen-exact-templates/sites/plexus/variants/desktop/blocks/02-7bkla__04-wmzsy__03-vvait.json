@@ -1,0 +1,66 @@
+{
+  "blockId": "vVaIt",
+  "blockName": "valA",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 3,
+  "bounds": {
+    "x": 32,
+    "y": 220,
+    "width": 1376,
+    "height": 260
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "68efcd38ca1ccbf625a0579bbdf1aa867332a85e25bbb6e40bfa7ffe70d56c71",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "vVaIt",
+    "x": 32,
+    "y": 220,
+    "name": "valA",
+    "width": 1376,
+    "height": 260,
+    "fill": "#FFFFFF",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "LJsa0",
+        "x": 0,
+        "y": 0,
+        "name": "aImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "fata1ity",
+          "link": "https://unsplash.com/@fata1ity",
+          "author": "Andrey Myasnikov"
+        },
+        "width": 640,
+        "height": 260,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1763550662603-78aa2f2033bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxOTc5NTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "nwwo1",
+        "x": 672,
+        "y": 52,
+        "name": "aTxt",
+        "fill": "#3F474F",
+        "textGrowth": "fixed-width",
+        "width": 656,
+        "content": "为我们的客户\n\n“在 Bevi，我们正在用可持续的智能饮水系统为一次性塑料瓶减负。随着 Plexus 团队在产品交付、能力建设与质量控制方面的持续支持，我们实现了快速扩展。”\n\n— Bevi 首席运营官 Matt Gannon",
+        "lineHeight": 1.55,
+        "fontFamily": "Inter",
+        "fontSize": 15,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "blockId": "t3tkk",
+  "blockName": "benefitCard1",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 5,
+  "bounds": {
+    "x": 62,
+    "y": 224,
+    "width": 344,
+    "height": 132
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 6,
+  "treeHash": "f73e9f34da7f575f778661cd33175afad6b98864376fef2063b6981d71441a38",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "t3tkk",
+    "x": 62,
+    "y": 224,
+    "name": "benefitCard1",
+    "width": 344,
+    "height": 132,
+    "fill": "#F1F2F4",
+    "cornerRadius": 10,
+    "stroke": {
+      "thickness": 1,
+      "fill": "#B8C0CA"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "K2KEq",
+        "x": 24,
+        "y": 18,
+        "name": "icon1",
+        "width": 34,
+        "height": 24,
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "cornerRadius": 2,
+            "id": "nwMVJ",
+            "x": 2,
+            "y": 6,
+            "name": "i1a",
+            "width": 20,
+            "height": 12,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#FF6A00"
+            }
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 2,
+            "id": "ycmmh",
+            "x": 8,
+            "y": 2,
+            "name": "i1b",
+            "width": 20,
+            "height": 12,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#8FA0B2"
+            }
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "aM3L9",
+        "x": 24,
+        "y": 56,
+        "name": "t1",
+        "fill": "#1A212B",
+        "content": "Ultra-high fidelity",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "hRtCw",
+        "x": 24,
+        "y": 88,
+        "name": "d1",
+        "fill": "#5E6774",
+        "textGrowth": "fixed-width",
+        "width": 294,
+        "content": "Reduced error rates mean fewer corrections and more reliable computations.",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

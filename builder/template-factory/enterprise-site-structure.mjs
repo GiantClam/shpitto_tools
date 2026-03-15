@@ -179,9 +179,7 @@ export const selectEnterpriseRequiredPages = ({ pages = [], site = {} } = {}) =>
 
 export const buildEnterpriseCanonicalLinks = ({ pages = [], site = {}, requireExisting = false } = {}) => {
   const normalizedPages = ensureEnterpriseSitePages({ pages, site });
-  const byPath = new Map(
-    normalizedPages.map((page) => [normalizeEnterprisePagePath(page?.path || "/"), page])
-  );
+  const byPath = new Map(normalizedPages.map((page) => [normalizeEnterprisePagePath(page?.path || "/"), page]));
   return ENTERPRISE_SITE_PAGES.map((definition) => {
     const existing = byPath.get(definition.path);
     if (requireExisting && !existing) return null;

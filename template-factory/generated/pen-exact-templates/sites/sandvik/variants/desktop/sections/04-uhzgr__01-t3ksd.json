@@ -1,0 +1,274 @@
+{
+  "sectionId": "t3ksd",
+  "sectionName": "svc",
+  "sectionKind": "generic",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 1759,
+    "width": 1440,
+    "height": 116
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "75a06f6cc08bd8283062f9a068bdc5247fa116e249505fa1574bff7ebe793023",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "ZsyNd",
+      "blockName": "svc1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 106,
+        "y": 30,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b8d5e0c2eebc055157c343d61cbf9884ad5d266d928fb77778862b9d1f68f749"
+    },
+    {
+      "blockId": "CuptM",
+      "blockName": "svc2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 827,
+        "y": 30,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b082151f1b228c3d4bdb22c89dcd0d73b2c63085a42b051f31c9a6c5ac3022e8"
+    },
+    {
+      "blockId": "9yxuq",
+      "blockName": "si1",
+      "blockType": "icon_font",
+      "blockRole": "icon_font",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 35,
+        "width": 46,
+        "height": 46
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d34646542eb1a7b7f181efaba2fc26f80f09bca35de588963e6a56f8920a9836"
+    },
+    {
+      "blockId": "poXxx",
+      "blockName": "si2",
+      "blockType": "icon_font",
+      "blockRole": "icon_font",
+      "order": 3,
+      "bounds": {
+        "x": 749,
+        "y": 35,
+        "width": 46,
+        "height": 46
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "14af5e253edeb427c220af16b97979a4b2caabe011514e2a011aadf7af55313a"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "ZsyNd",
+      "blockName": "svc1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 106,
+        "y": 30,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b8d5e0c2eebc055157c343d61cbf9884ad5d266d928fb77778862b9d1f68f749",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ZsyNd",
+        "x": 106,
+        "y": 30,
+        "name": "svc1",
+        "fill": "#171717",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "创建账户  ›\n下订单、查看价格并检查刀具供货情况",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 20,
+        "fontWeight": "600"
+      }
+    },
+    {
+      "blockId": "CuptM",
+      "blockName": "svc2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 827,
+        "y": 30,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b082151f1b228c3d4bdb22c89dcd0d73b2c63085a42b051f31c9a6c5ac3022e8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "CuptM",
+        "x": 827,
+        "y": 30,
+        "name": "svc2",
+        "fill": "#171717",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "订阅我们的时事通讯  ›\n加入我们，获取最新信息！",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 20,
+        "fontWeight": "600"
+      }
+    },
+    {
+      "blockId": "9yxuq",
+      "blockName": "si1",
+      "blockType": "icon_font",
+      "blockRole": "icon_font",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 35,
+        "width": 46,
+        "height": 46
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d34646542eb1a7b7f181efaba2fc26f80f09bca35de588963e6a56f8920a9836",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "icon_font",
+        "id": "9yxuq",
+        "x": 32,
+        "y": 35,
+        "name": "si1",
+        "width": 46,
+        "height": 46,
+        "iconFontName": "account_circle",
+        "iconFontFamily": "Material Symbols Rounded",
+        "fill": "#756A53"
+      }
+    },
+    {
+      "blockId": "poXxx",
+      "blockName": "si2",
+      "blockType": "icon_font",
+      "blockRole": "icon_font",
+      "order": 3,
+      "bounds": {
+        "x": 749,
+        "y": 35,
+        "width": 46,
+        "height": 46
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "14af5e253edeb427c220af16b97979a4b2caabe011514e2a011aadf7af55313a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "icon_font",
+        "id": "poXxx",
+        "x": 749,
+        "y": 35,
+        "name": "si2",
+        "width": 46,
+        "height": 46,
+        "iconFontName": "mail",
+        "iconFontFamily": "Material Symbols Rounded",
+        "fill": "#756A53"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "t3ksd",
+    "x": 0,
+    "y": 1759,
+    "name": "svc",
+    "width": 1440,
+    "height": 116,
+    "fill": "#BBAF90",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "ZsyNd",
+        "x": 106,
+        "y": 30,
+        "name": "svc1",
+        "fill": "#171717",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "创建账户  ›\n下订单、查看价格并检查刀具供货情况",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 20,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "CuptM",
+        "x": 827,
+        "y": 30,
+        "name": "svc2",
+        "fill": "#171717",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "订阅我们的时事通讯  ›\n加入我们，获取最新信息！",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 20,
+        "fontWeight": "600"
+      },
+      {
+        "type": "icon_font",
+        "id": "9yxuq",
+        "x": 32,
+        "y": 35,
+        "name": "si1",
+        "width": 46,
+        "height": 46,
+        "iconFontName": "account_circle",
+        "iconFontFamily": "Material Symbols Rounded",
+        "fill": "#756A53"
+      },
+      {
+        "type": "icon_font",
+        "id": "poXxx",
+        "x": 749,
+        "y": 35,
+        "name": "si2",
+        "width": 46,
+        "height": 46,
+        "iconFontName": "mail",
+        "iconFontFamily": "Material Symbols Rounded",
+        "fill": "#756A53"
+      }
+    ]
+  }
+}

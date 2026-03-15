@@ -1,0 +1,4334 @@
+{
+  "schemaVersion": "pen-exact-site-template.v1",
+  "generatedAt": "2026-03-12T03:58:28.619Z",
+  "siteId": "framework_new",
+  "siteName": "Framework New",
+  "variants": [
+    {
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/framework_new.pen",
+      "sourceHash": "15e68394f4d95e095c64e3c92bad168609f0ad745a2aff508e1243d48f233023",
+      "pageCount": 6,
+      "sectionCount": 29,
+      "blockCount": 85,
+      "output": {
+        "templatePath": "sites/framework_new/variants/desktop/template.json",
+        "themePath": "sites/framework_new/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/framework_new/variants/desktop/pages",
+        "sectionsDir": "sites/framework_new/variants/desktop/sections",
+        "blocksDir": "sites/framework_new/variants/desktop/blocks"
+      }
+    }
+  ],
+  "themes": {
+    "desktop": {
+      "schemaVersion": "pen-exact-theme.v1",
+      "siteId": "framework_new",
+      "tokens": {
+        "color": {
+          "palette": {
+            "color01": {
+              "value": "#FFFFFF",
+              "raw": "#FFFFFF",
+              "usageCount": 35
+            },
+            "color02": {
+              "value": "#1F2737",
+              "raw": "#1F2737",
+              "usageCount": 30
+            },
+            "color03": {
+              "value": "#C5CBD3",
+              "raw": "#C5CBD3",
+              "usageCount": 30
+            },
+            "color04": {
+              "value": "#F3F3EF",
+              "raw": "#F3F3EF",
+              "usageCount": 27
+            },
+            "color05": {
+              "value": "#111111",
+              "raw": "#111111",
+              "usageCount": 16
+            },
+            "color06": {
+              "value": "#4A4F55",
+              "raw": "#4A4F55",
+              "usageCount": 14
+            },
+            "color07": {
+              "value": "#F46E35",
+              "raw": "#F46E35",
+              "usageCount": 14
+            },
+            "color08": {
+              "value": "#52585F",
+              "raw": "#52585F",
+              "usageCount": 12
+            },
+            "color09": {
+              "value": "#4C4F53",
+              "raw": "#4C4F53",
+              "usageCount": 11
+            },
+            "color10": {
+              "value": "#2B3138",
+              "raw": "#2B3138",
+              "usageCount": 10
+            },
+            "color11": {
+              "value": "#24262B",
+              "raw": "#24262B",
+              "usageCount": 9
+            },
+            "color12": {
+              "value": "#2F353B",
+              "raw": "#2F353B",
+              "usageCount": 8
+            },
+            "color13": {
+              "value": "#5E646B",
+              "raw": "#5E646B",
+              "usageCount": 8
+            },
+            "color14": {
+              "value": "#E9ECEF",
+              "raw": "#E9ECEF",
+              "usageCount": 8
+            },
+            "color15": {
+              "value": "#16181D",
+              "raw": "#16181D",
+              "usageCount": 7
+            },
+            "color16": {
+              "value": "#4A4A4A",
+              "raw": "#4A4A4A",
+              "usageCount": 7
+            },
+            "color17": {
+              "value": "#D7DBDE",
+              "raw": "#D7DBDE",
+              "usageCount": 7
+            },
+            "color18": {
+              "value": "#2B2E33",
+              "raw": "#2B2E33",
+              "usageCount": 6
+            },
+            "color19": {
+              "value": "#5A6067",
+              "raw": "#5A6067",
+              "usageCount": 6
+            },
+            "color20": {
+              "value": "#666666",
+              "raw": "#666666",
+              "usageCount": 6
+            },
+            "color21": {
+              "value": "#6C7076",
+              "raw": "#6C7076",
+              "usageCount": 6
+            },
+            "color22": {
+              "value": "#7D838B",
+              "raw": "#7D838B",
+              "usageCount": 6
+            },
+            "color23": {
+              "value": "#7E858D",
+              "raw": "#7E858D",
+              "usageCount": 6
+            },
+            "color24": {
+              "value": "#8C9198",
+              "raw": "#8C9198",
+              "usageCount": 6
+            },
+            "color25": {
+              "value": "#D5D9DE",
+              "raw": "#D5D9DE",
+              "usageCount": 6
+            },
+            "color26": {
+              "value": "#2A2F34",
+              "raw": "#2A2F34",
+              "usageCount": 5
+            },
+            "color27": {
+              "value": "#2F3338",
+              "raw": "#2F3338",
+              "usageCount": 5
+            },
+            "color28": {
+              "value": "#2E3339",
+              "raw": "#2E3339",
+              "usageCount": 4
+            },
+            "color29": {
+              "value": "#5B6066",
+              "raw": "#5B6066",
+              "usageCount": 4
+            },
+            "color30": {
+              "value": "#5E6369",
+              "raw": "#5E6369",
+              "usageCount": 4
+            },
+            "color31": {
+              "value": "#9CA3AA",
+              "raw": "#9CA3AA",
+              "usageCount": 4
+            },
+            "color32": {
+              "value": "#D0D5DA",
+              "raw": "#D0D5DA",
+              "usageCount": 4
+            },
+            "color33": {
+              "value": "#F26B2D",
+              "raw": "#F26B2D",
+              "usageCount": 4
+            },
+            "color34": {
+              "value": "#202020",
+              "raw": "#202020",
+              "usageCount": 3
+            },
+            "color35": {
+              "value": "#2C3037",
+              "raw": "#2C3037",
+              "usageCount": 3
+            },
+            "color36": {
+              "value": "#30343A",
+              "raw": "#30343A",
+              "usageCount": 3
+            },
+            "color37": {
+              "value": "#3F464E",
+              "raw": "#3F464E",
+              "usageCount": 3
+            },
+            "color38": {
+              "value": "#CACFD3",
+              "raw": "#CACFD3",
+              "usageCount": 3
+            },
+            "color39": {
+              "value": "#121416",
+              "raw": "#121416",
+              "usageCount": 2
+            },
+            "color40": {
+              "value": "#1E252D",
+              "raw": "#1E252D",
+              "usageCount": 2
+            },
+            "color41": {
+              "value": "#1F2A1F",
+              "raw": "#1F2A1F",
+              "usageCount": 2
+            },
+            "color42": {
+              "value": "#2C3137",
+              "raw": "#2C3137",
+              "usageCount": 2
+            },
+            "color43": {
+              "value": "#2E353D",
+              "raw": "#2E353D",
+              "usageCount": 2
+            },
+            "color44": {
+              "value": "#343A40",
+              "raw": "#343A40",
+              "usageCount": 2
+            },
+            "color45": {
+              "value": "#3B4046",
+              "raw": "#3B4046",
+              "usageCount": 2
+            },
+            "color46": {
+              "value": "#3B82F6",
+              "raw": "#3B82F6",
+              "usageCount": 2
+            },
+            "color47": {
+              "value": "#44484D",
+              "raw": "#44484D",
+              "usageCount": 2
+            },
+            "color48": {
+              "value": "#4E545A",
+              "raw": "#4E545A",
+              "usageCount": 2
+            },
+            "color49": {
+              "value": "#4F565E",
+              "raw": "#4F565E",
+              "usageCount": 2
+            },
+            "color50": {
+              "value": "#5C636A",
+              "raw": "#5C636A",
+              "usageCount": 2
+            },
+            "color51": {
+              "value": "#6A6F74",
+              "raw": "#6A6F74",
+              "usageCount": 2
+            },
+            "color52": {
+              "value": "#74787D",
+              "raw": "#74787D",
+              "usageCount": 2
+            },
+            "color53": {
+              "value": "#8A9198",
+              "raw": "#8A9198",
+              "usageCount": 2
+            },
+            "color54": {
+              "value": "#8D9298",
+              "raw": "#8D9298",
+              "usageCount": 2
+            },
+            "color55": {
+              "value": "#A6A9AE",
+              "raw": "#A6A9AE",
+              "usageCount": 2
+            },
+            "color56": {
+              "value": "#0F1113",
+              "raw": "#0F1113",
+              "usageCount": 1
+            },
+            "color57": {
+              "value": "#14171A",
+              "raw": "#14171A",
+              "usageCount": 1
+            },
+            "color58": {
+              "value": "#1A1C20",
+              "raw": "#1A1C20",
+              "usageCount": 1
+            },
+            "color59": {
+              "value": "#2A2A2A",
+              "raw": "#2A2A2A",
+              "usageCount": 1
+            },
+            "color60": {
+              "value": "#2B2B2B",
+              "raw": "#2B2B2B",
+              "usageCount": 1
+            },
+            "color61": {
+              "value": "#2B2D30",
+              "raw": "#2B2D30",
+              "usageCount": 1
+            },
+            "color62": {
+              "value": "#2D2D2D",
+              "raw": "#2D2D2D",
+              "usageCount": 1
+            },
+            "color63": {
+              "value": "#333333",
+              "raw": "#333333",
+              "usageCount": 1
+            },
+            "color64": {
+              "value": "#4A5356",
+              "raw": "#4A5356",
+              "usageCount": 1
+            },
+            "color65": {
+              "value": "#5A5A5A",
+              "raw": "#5A5A5A",
+              "usageCount": 1
+            },
+            "color66": {
+              "value": "#5A6168",
+              "raw": "#5A6168",
+              "usageCount": 1
+            },
+            "color67": {
+              "value": "#5B3FFF",
+              "raw": "#5B3FFF",
+              "usageCount": 1
+            },
+            "color68": {
+              "value": "#6A7076",
+              "raw": "#6A7076",
+              "usageCount": 1
+            },
+            "color69": {
+              "value": "#74C5E8",
+              "raw": "#74C5E8",
+              "usageCount": 1
+            },
+            "color70": {
+              "value": "#78956F",
+              "raw": "#78956F",
+              "usageCount": 1
+            },
+            "color71": {
+              "value": "#7A8086",
+              "raw": "#7A8086",
+              "usageCount": 1
+            },
+            "color72": {
+              "value": "#8F8F8F",
+              "raw": "#8F8F8F",
+              "usageCount": 1
+            },
+            "color73": {
+              "value": "#98A0A8",
+              "raw": "#98A0A8",
+              "usageCount": 1
+            },
+            "color74": {
+              "value": "#A7B2A0",
+              "raw": "#A7B2A0",
+              "usageCount": 1
+            },
+            "color75": {
+              "value": "#B4C3D8",
+              "raw": "#B4C3D8",
+              "usageCount": 1
+            },
+            "color76": {
+              "value": "#BECBCD",
+              "raw": "#BECBCD",
+              "usageCount": 1
+            },
+            "color77": {
+              "value": "#D27C57",
+              "raw": "#D27C57",
+              "usageCount": 1
+            },
+            "color78": {
+              "value": "#D6DDDB",
+              "raw": "#D6DDDB",
+              "usageCount": 1
+            },
+            "color79": {
+              "value": "#D8DCE0",
+              "raw": "#D8DCE0",
+              "usageCount": 1
+            },
+            "color80": {
+              "value": "#D9DCDF",
+              "raw": "#D9DCDF",
+              "usageCount": 1
+            },
+            "color81": {
+              "value": "#DED4A7",
+              "raw": "#DED4A7",
+              "usageCount": 1
+            },
+            "color82": {
+              "value": "#DFEAEC",
+              "raw": "#DFEAEC",
+              "usageCount": 1
+            },
+            "color83": {
+              "value": "#E7BC52",
+              "raw": "#E7BC52",
+              "usageCount": 1
+            },
+            "color84": {
+              "value": "#E9EEE8",
+              "raw": "#E9EEE8",
+              "usageCount": 1
+            },
+            "color85": {
+              "value": "#EBB7CC",
+              "raw": "#EBB7CC",
+              "usageCount": 1
+            },
+            "color86": {
+              "value": "#EED7A1",
+              "raw": "#EED7A1",
+              "usageCount": 1
+            },
+            "color87": {
+              "value": "#EF8C64",
+              "raw": "#EF8C64",
+              "usageCount": 1
+            },
+            "color88": {
+              "value": "#F0D693",
+              "raw": "#F0D693",
+              "usageCount": 1
+            },
+            "color89": {
+              "value": "#F1F1ED",
+              "raw": "#F1F1ED",
+              "usageCount": 1
+            },
+            "color90": {
+              "value": "#F3F6F0",
+              "raw": "#F3F6F0",
+              "usageCount": 1
+            },
+            "color91": {
+              "value": "#F6F6F3",
+              "raw": "#F6F6F3",
+              "usageCount": 1
+            },
+            "color92": {
+              "value": "#F8B91A",
+              "raw": "#F8B91A",
+              "usageCount": 1
+            },
+            "color93": {
+              "value": "#FB7147",
+              "raw": "#FB7147",
+              "usageCount": 1
+            },
+            "color94": {
+              "value": "#FC7A00",
+              "raw": "#FC7A00",
+              "usageCount": 1
+            },
+            "color95": {
+              "value": "#FF1A9A",
+              "raw": "#FF1A9A",
+              "usageCount": 1
+            }
+          }
+        },
+        "textColor": {
+          "palette": {
+            "text01": {
+              "value": "#FFFFFF",
+              "raw": "#FFFFFF",
+              "usageCount": 34
+            },
+            "text02": {
+              "value": "#C5CBD3",
+              "raw": "#C5CBD3",
+              "usageCount": 30
+            },
+            "text03": {
+              "value": "#1F2737",
+              "raw": "#1F2737",
+              "usageCount": 28
+            },
+            "text04": {
+              "value": "#111111",
+              "raw": "#111111",
+              "usageCount": 16
+            },
+            "text05": {
+              "value": "#4A4F55",
+              "raw": "#4A4F55",
+              "usageCount": 14
+            },
+            "text06": {
+              "value": "#52585F",
+              "raw": "#52585F",
+              "usageCount": 12
+            },
+            "text07": {
+              "value": "#4C4F53",
+              "raw": "#4C4F53",
+              "usageCount": 11
+            },
+            "text08": {
+              "value": "#2B3138",
+              "raw": "#2B3138",
+              "usageCount": 10
+            },
+            "text09": {
+              "value": "#24262B",
+              "raw": "#24262B",
+              "usageCount": 9
+            },
+            "text10": {
+              "value": "#2F353B",
+              "raw": "#2F353B",
+              "usageCount": 8
+            },
+            "text11": {
+              "value": "#5E646B",
+              "raw": "#5E646B",
+              "usageCount": 8
+            },
+            "text12": {
+              "value": "#4A4A4A",
+              "raw": "#4A4A4A",
+              "usageCount": 6
+            },
+            "text13": {
+              "value": "#5A6067",
+              "raw": "#5A6067",
+              "usageCount": 6
+            },
+            "text14": {
+              "value": "#666666",
+              "raw": "#666666",
+              "usageCount": 6
+            },
+            "text15": {
+              "value": "#7D838B",
+              "raw": "#7D838B",
+              "usageCount": 6
+            },
+            "text16": {
+              "value": "#7E858D",
+              "raw": "#7E858D",
+              "usageCount": 6
+            },
+            "text17": {
+              "value": "#8C9198",
+              "raw": "#8C9198",
+              "usageCount": 6
+            },
+            "text18": {
+              "value": "#D5D9DE",
+              "raw": "#D5D9DE",
+              "usageCount": 6
+            },
+            "text19": {
+              "value": "#2A2F34",
+              "raw": "#2A2F34",
+              "usageCount": 5
+            },
+            "text20": {
+              "value": "#2E3339",
+              "raw": "#2E3339",
+              "usageCount": 4
+            },
+            "text21": {
+              "value": "#5B6066",
+              "raw": "#5B6066",
+              "usageCount": 4
+            },
+            "text22": {
+              "value": "#5E6369",
+              "raw": "#5E6369",
+              "usageCount": 4
+            },
+            "text23": {
+              "value": "#D0D5DA",
+              "raw": "#D0D5DA",
+              "usageCount": 4
+            },
+            "text24": {
+              "value": "#202020",
+              "raw": "#202020",
+              "usageCount": 3
+            },
+            "text25": {
+              "value": "#2C3037",
+              "raw": "#2C3037",
+              "usageCount": 3
+            },
+            "text26": {
+              "value": "#30343A",
+              "raw": "#30343A",
+              "usageCount": 3
+            },
+            "text27": {
+              "value": "#3F464E",
+              "raw": "#3F464E",
+              "usageCount": 3
+            },
+            "text28": {
+              "value": "#121416",
+              "raw": "#121416",
+              "usageCount": 2
+            },
+            "text29": {
+              "value": "#1E252D",
+              "raw": "#1E252D",
+              "usageCount": 2
+            },
+            "text30": {
+              "value": "#1F2A1F",
+              "raw": "#1F2A1F",
+              "usageCount": 2
+            },
+            "text31": {
+              "value": "#2C3137",
+              "raw": "#2C3137",
+              "usageCount": 2
+            },
+            "text32": {
+              "value": "#343A40",
+              "raw": "#343A40",
+              "usageCount": 2
+            },
+            "text33": {
+              "value": "#3B4046",
+              "raw": "#3B4046",
+              "usageCount": 2
+            },
+            "text34": {
+              "value": "#44484D",
+              "raw": "#44484D",
+              "usageCount": 2
+            },
+            "text35": {
+              "value": "#4E545A",
+              "raw": "#4E545A",
+              "usageCount": 2
+            },
+            "text36": {
+              "value": "#4F565E",
+              "raw": "#4F565E",
+              "usageCount": 2
+            },
+            "text37": {
+              "value": "#5C636A",
+              "raw": "#5C636A",
+              "usageCount": 2
+            },
+            "text38": {
+              "value": "#6A6F74",
+              "raw": "#6A6F74",
+              "usageCount": 2
+            },
+            "text39": {
+              "value": "#8A9198",
+              "raw": "#8A9198",
+              "usageCount": 2
+            },
+            "text40": {
+              "value": "#14171A",
+              "raw": "#14171A",
+              "usageCount": 1
+            },
+            "text41": {
+              "value": "#2B2B2B",
+              "raw": "#2B2B2B",
+              "usageCount": 1
+            },
+            "text42": {
+              "value": "#2D2D2D",
+              "raw": "#2D2D2D",
+              "usageCount": 1
+            },
+            "text43": {
+              "value": "#333333",
+              "raw": "#333333",
+              "usageCount": 1
+            },
+            "text44": {
+              "value": "#3B82F6",
+              "raw": "#3B82F6",
+              "usageCount": 1
+            },
+            "text45": {
+              "value": "#4A5356",
+              "raw": "#4A5356",
+              "usageCount": 1
+            },
+            "text46": {
+              "value": "#5A5A5A",
+              "raw": "#5A5A5A",
+              "usageCount": 1
+            },
+            "text47": {
+              "value": "#5A6168",
+              "raw": "#5A6168",
+              "usageCount": 1
+            },
+            "text48": {
+              "value": "#6A7076",
+              "raw": "#6A7076",
+              "usageCount": 1
+            },
+            "text49": {
+              "value": "#7A8086",
+              "raw": "#7A8086",
+              "usageCount": 1
+            },
+            "text50": {
+              "value": "#98A0A8",
+              "raw": "#98A0A8",
+              "usageCount": 1
+            },
+            "text51": {
+              "value": "#E9EEE8",
+              "raw": "#E9EEE8",
+              "usageCount": 1
+            },
+            "text52": {
+              "value": "#F3F6F0",
+              "raw": "#F3F6F0",
+              "usageCount": 1
+            },
+            "text53": {
+              "value": "#F46E35",
+              "raw": "#F46E35",
+              "usageCount": 1
+            }
+          }
+        },
+        "fontFamily": {
+          "palette": {
+            "family01": {
+              "value": "Inter",
+              "raw": "Inter",
+              "usageCount": 293
+            }
+          }
+        },
+        "fontSize": {
+          "palette": {
+            "size01": {
+              "value": 30,
+              "raw": "30",
+              "usageCount": 36
+            },
+            "size02": {
+              "value": 12,
+              "raw": "12",
+              "usageCount": 34
+            },
+            "size03": {
+              "value": 10,
+              "raw": "10",
+              "usageCount": 31
+            },
+            "size04": {
+              "value": 20,
+              "raw": "20",
+              "usageCount": 30
+            },
+            "size05": {
+              "value": 11,
+              "raw": "11",
+              "usageCount": 27
+            },
+            "size06": {
+              "value": 14,
+              "raw": "14",
+              "usageCount": 23
+            },
+            "size07": {
+              "value": 13,
+              "raw": "13",
+              "usageCount": 20
+            },
+            "size08": {
+              "value": 9,
+              "raw": "9",
+              "usageCount": 16
+            },
+            "size09": {
+              "value": 16,
+              "raw": "16",
+              "usageCount": 13
+            },
+            "size10": {
+              "value": 18,
+              "raw": "18",
+              "usageCount": 9
+            },
+            "size11": {
+              "value": 22,
+              "raw": "22",
+              "usageCount": 7
+            },
+            "size12": {
+              "value": 6,
+              "raw": "6",
+              "usageCount": 6
+            },
+            "size13": {
+              "value": 38,
+              "raw": "38",
+              "usageCount": 5
+            },
+            "size14": {
+              "value": 8,
+              "raw": "8",
+              "usageCount": 5
+            },
+            "size15": {
+              "value": 40,
+              "raw": "40",
+              "usageCount": 4
+            },
+            "size16": {
+              "value": 42,
+              "raw": "42",
+              "usageCount": 4
+            },
+            "size17": {
+              "value": 44,
+              "raw": "44",
+              "usageCount": 4
+            },
+            "size18": {
+              "value": 15,
+              "raw": "15",
+              "usageCount": 3
+            },
+            "size19": {
+              "value": 17,
+              "raw": "17",
+              "usageCount": 3
+            },
+            "size20": {
+              "value": 56,
+              "raw": "56",
+              "usageCount": 3
+            },
+            "size21": {
+              "value": 68,
+              "raw": "68",
+              "usageCount": 2
+            },
+            "size22": {
+              "value": 24,
+              "raw": "24",
+              "usageCount": 1
+            },
+            "size23": {
+              "value": 34,
+              "raw": "34",
+              "usageCount": 1
+            },
+            "size24": {
+              "value": 46,
+              "raw": "46",
+              "usageCount": 1
+            },
+            "size25": {
+              "value": 48,
+              "raw": "48",
+              "usageCount": 1
+            },
+            "size26": {
+              "value": 52,
+              "raw": "52",
+              "usageCount": 1
+            },
+            "size27": {
+              "value": 53,
+              "raw": "53",
+              "usageCount": 1
+            },
+            "size28": {
+              "value": 62,
+              "raw": "62",
+              "usageCount": 1
+            },
+            "size29": {
+              "value": 72,
+              "raw": "72",
+              "usageCount": 1
+            }
+          }
+        },
+        "fontWeight": {
+          "palette": {
+            "weight01": {
+              "value": "700",
+              "raw": "700",
+              "usageCount": 129
+            },
+            "weight02": {
+              "value": "normal",
+              "raw": "normal",
+              "usageCount": 118
+            },
+            "weight03": {
+              "value": "600",
+              "raw": "600",
+              "usageCount": 44
+            },
+            "weight04": {
+              "value": "500",
+              "raw": "500",
+              "usageCount": 2
+            }
+          }
+        },
+        "radius": {
+          "palette": {
+            "radius01": {
+              "value": 2,
+              "raw": "2",
+              "usageCount": 23
+            },
+            "radius02": {
+              "value": 17,
+              "raw": "17",
+              "usageCount": 12
+            },
+            "radius03": {
+              "value": 11,
+              "raw": "11",
+              "usageCount": 10
+            },
+            "radius04": {
+              "value": 12,
+              "raw": "12",
+              "usageCount": 9
+            },
+            "radius05": {
+              "value": 6,
+              "raw": "6",
+              "usageCount": 8
+            },
+            "radius06": {
+              "value": 18,
+              "raw": "18",
+              "usageCount": 6
+            },
+            "radius07": {
+              "value": 26,
+              "raw": "26",
+              "usageCount": 6
+            },
+            "radius08": {
+              "value": 85,
+              "raw": "85",
+              "usageCount": 6
+            },
+            "radius09": {
+              "value": 4,
+              "raw": "4",
+              "usageCount": 4
+            },
+            "radius10": {
+              "value": 16,
+              "raw": "16",
+              "usageCount": 2
+            },
+            "radius11": {
+              "value": 20,
+              "raw": "20",
+              "usageCount": 1
+            },
+            "radius12": {
+              "value": 24,
+              "raw": "24",
+              "usageCount": 1
+            },
+            "radius13": {
+              "value": 28,
+              "raw": "28",
+              "usageCount": 1
+            },
+            "radius14": {
+              "value": 8,
+              "raw": "8",
+              "usageCount": 1
+            }
+          }
+        }
+      },
+      "skinSlots": {
+        "background": "color.palette.color01",
+        "textPrimary": "textColor.palette.text01",
+        "textSecondary": "textColor.palette.text02",
+        "accent": "color.palette.color02",
+        "fontPrimary": "fontFamily.palette.family01",
+        "fontSecondary": "fontFamily.palette.family01"
+      },
+      "stats": {
+        "colorCount": 95,
+        "textColorCount": 53,
+        "fontFamilyCount": 1,
+        "fontSizeCount": 29,
+        "fontWeightCount": 4,
+        "radiusCount": 14
+      }
+    }
+  },
+  "counts": {
+    "variantCount": 1,
+    "pageCount": 6,
+    "sectionCount": 29,
+    "blockCount": 85
+  },
+  "pages": [
+    {
+      "pageId": "bi8Au",
+      "pageKey": "bi8au",
+      "pageName": "Home",
+      "pageType": "home",
+      "variants": {
+        "desktop": {
+          "pageId": "bi8Au",
+          "pageName": "Home",
+          "pageType": "home",
+          "order": 0,
+          "bounds": {
+            "x": -3199,
+            "y": -543,
+            "width": 1440,
+            "height": ""
+          },
+          "layout": {
+            "layout": "vertical",
+            "gap": 14,
+            "padding": "",
+            "clip": false
+          },
+          "pageHash": "39c646e2a0801418c98add4a4260584c00d4f22059712da8c98049baaf885dc4",
+          "sectionCount": 10,
+          "blockCount": 22,
+          "output": {
+            "templatePath": "sites/framework_new/variants/desktop/template.json",
+            "pagePath": "sites/framework_new/variants/desktop/pages/00-bi8au.json"
+          }
+        }
+      },
+      "sections": [
+        {
+          "sectionId": "1dXGT",
+          "sectionKey": "1dxgt",
+          "sectionName": "TopNav",
+          "sectionKind": "navigation",
+          "variants": {
+            "desktop": {
+              "sectionId": "1dXGT",
+              "sectionName": "TopNav",
+              "sectionKind": "navigation",
+              "order": 0,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 64
+              },
+              "treeHash": "cf0155cd4f51414ebe3079be3638fa3c25b22f419df7a73599ae93bac817740a",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/00-bi8au__00-1dxgt.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "wc4K3",
+              "blockKey": "wc4k3",
+              "blockName": "logo",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "wc4K3",
+                  "blockName": "logo",
+                  "blockType": "text",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "7b491345c66aa7d986ef90dbbd9c3b382594679e260ce01a2496a7ee214f4358",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__00-1dxgt__00-wc4k3.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "FfSUj",
+              "blockKey": "ffsuj",
+              "blockName": "centerNav",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "FfSUj",
+                  "blockName": "centerNav",
+                  "blockType": "text",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "27c5ecc849b6c59ce8ad654d06cefdc1314e20fcb56988af751d9631900e2f45",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__00-1dxgt__01-ffsuj.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "utCTH",
+              "blockKey": "utcth",
+              "blockName": "rightNav",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "utCTH",
+                  "blockName": "rightNav",
+                  "blockType": "text",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "ef3d24d6888fb58fc4bc5f6e8fc6453394ffe30efdb2f38add877081b3c7f40d",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__00-1dxgt__02-utcth.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "eyxpn",
+          "sectionKey": "eyxpn",
+          "sectionName": "Hero1",
+          "sectionKind": "hero",
+          "variants": {
+            "desktop": {
+              "sectionId": "eyxpn",
+              "sectionName": "Hero1",
+              "sectionKind": "hero",
+              "order": 1,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 270
+              },
+              "treeHash": "b6ea3247c30a81b0f137f371a39bda12d10ca4a4236b8b4edfe14533e6535d10",
+              "blockCount": 2,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/00-bi8au__01-eyxpn.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "8SLYy",
+              "blockKey": "8slyy",
+              "blockName": "hero1l",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "8SLYy",
+                  "blockName": "hero1l",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 658,
+                    "height": "fill_container"
+                  },
+                  "treeHash": "a6d9ed580c61967e7127110653e662b8be6a3caef50e7faa02952cc7144564fa",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__01-eyxpn__00-8slyy.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "HcMPu",
+              "blockKey": "hcmpu",
+              "blockName": "hero1r",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "HcMPu",
+                  "blockName": "hero1r",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 553,
+                    "height": "fill_container"
+                  },
+                  "treeHash": "9cb85f941c2fdfa6309535de9a0c18a55adff2d5e97530fc8c99219b5039b164",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__01-eyxpn__01-hcmpu.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "2x287",
+          "sectionKey": "2x287",
+          "sectionName": "Hero2",
+          "sectionKind": "hero",
+          "variants": {
+            "desktop": {
+              "sectionId": "2x287",
+              "sectionName": "Hero2",
+              "sectionKind": "hero",
+              "order": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 270
+              },
+              "treeHash": "797dde3777edb7d37a889cd8001b281034be508132299ad7aff93db1ad6c6f6a",
+              "blockCount": 2,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/00-bi8au__02-2x287.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "NysbZ",
+              "blockKey": "nysbz",
+              "blockName": "hero2l",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "NysbZ",
+                  "blockName": "hero2l",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 420,
+                    "height": "fill_container"
+                  },
+                  "treeHash": "c118bf1d312f0acde1d3704288c4fc9e7e0d2adbc2c1ef864f6821e64832b4db",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__02-2x287__00-nysbz.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "8WKDx",
+              "blockKey": "8wkdx",
+              "blockName": "hero2r",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "8WKDx",
+                  "blockName": "hero2r",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 706,
+                    "height": "fill_container"
+                  },
+                  "treeHash": "c8a6c61ddf154cc762858e6ec4c3b5d18f42abd464ab09d03cc4374e360d978f",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__02-2x287__01-8wkdx.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "d3ilf",
+          "sectionKey": "d3ilf",
+          "sectionName": "Hero3",
+          "sectionKind": "hero",
+          "variants": {
+            "desktop": {
+              "sectionId": "d3ilf",
+              "sectionName": "Hero3",
+              "sectionKind": "hero",
+              "order": 3,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 270
+              },
+              "treeHash": "67b2f89a207a6dce081b0ae2c59769d32faf8528fdd1b7c677d80c9228c26855",
+              "blockCount": 2,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/00-bi8au__03-d3ilf.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "keOGH",
+              "blockKey": "keogh",
+              "blockName": "hero3l",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "keOGH",
+                  "blockName": "hero3l",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 420,
+                    "height": "fill_container"
+                  },
+                  "treeHash": "d85752c37e9cbf6fff32568d2d71002ddd56a34b8dcc74ce7f149b33df1b5511",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__03-d3ilf__00-keogh.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "u31Yq",
+              "blockKey": "u31yq",
+              "blockName": "hero3r",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "u31Yq",
+                  "blockName": "hero3r",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 748,
+                    "height": "fill_container"
+                  },
+                  "treeHash": "a9e9fe7bfb90174dc67dcb6e2e6566d5a83e2ccc0e17584933441fe9853a5f34",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__03-d3ilf__01-u31yq.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "MHTpS",
+          "sectionKey": "mhtps",
+          "sectionName": "Hero4",
+          "sectionKind": "hero",
+          "variants": {
+            "desktop": {
+              "sectionId": "MHTpS",
+              "sectionName": "Hero4",
+              "sectionKind": "hero",
+              "order": 4,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 270
+              },
+              "treeHash": "a6f8e3c6e157894d0e146a6b05e1ea50290ee8db4962245a2d9d9eb5cc7c7ec2",
+              "blockCount": 2,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/00-bi8au__04-mhtps.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "a4rxf",
+              "blockKey": "a4rxf",
+              "blockName": "hero4l",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "a4rxf",
+                  "blockName": "hero4l",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 500,
+                    "height": "fill_container"
+                  },
+                  "treeHash": "f48e70dae0b13ceac919f725c99fc6343653f175b36271755f3150b41ae2fea4",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__04-mhtps__00-a4rxf.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "7VZQA",
+              "blockKey": "7vzqa",
+              "blockName": "hero4r",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "7VZQA",
+                  "blockName": "hero4r",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": "fill_container"
+                  },
+                  "treeHash": "d5b4dfdb70aabd7633da0b5b369e36ec8c6980d4c0f7290f891f53c49c6b91a9",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__04-mhtps__01-7vzqa.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "wfDIM",
+          "sectionKey": "wfdim",
+          "sectionName": "LogoRow",
+          "sectionKind": "generic",
+          "variants": {
+            "desktop": {
+              "sectionId": "wfDIM",
+              "sectionName": "LogoRow",
+              "sectionKind": "generic",
+              "order": 5,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 120
+              },
+              "treeHash": "6b5e7899847c51a9909686c8a700aa82f33cbc3edf3467bc43c8d1beb8fa2a2b",
+              "blockCount": 4,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/00-bi8au__05-wfdim.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "XrRkS",
+              "blockKey": "xrrks",
+              "blockName": "l1",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "XrRkS",
+                  "blockName": "l1",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 44,
+                    "height": 44
+                  },
+                  "treeHash": "1f649e3d30768a4092993beaea5e7155d9811e9bf4150d0545aea2a66772076e",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__05-wfdim__00-xrrks.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "KSshe",
+              "blockKey": "ksshe",
+              "blockName": "l2",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "KSshe",
+                  "blockName": "l2",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 44,
+                    "height": 44
+                  },
+                  "treeHash": "a91517f91e65fde251e01a3cf632ea492557a125c12aa48bb592140d7f7822b8",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__05-wfdim__01-ksshe.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "bqUIi",
+              "blockKey": "bquii",
+              "blockName": "l3",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "bqUIi",
+                  "blockName": "l3",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 44,
+                    "height": 44
+                  },
+                  "treeHash": "a156b4290f7fc11f1e18a6d58cd0c54cfc5431d17574062f5756dbe9fc8ad217",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__05-wfdim__02-bquii.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "k6iNz",
+              "blockKey": "k6inz",
+              "blockName": "l4",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "k6iNz",
+                  "blockName": "l4",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 3,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 44,
+                    "height": 44
+                  },
+                  "treeHash": "0d06f942fea2d14b00cad59ae9d325e285a0fb22cc16aff8ce3a07772f8c79aa",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__05-wfdim__03-k6inz.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "27ARw",
+          "sectionKey": "27arw",
+          "sectionName": "MidTitle",
+          "sectionKind": "generic",
+          "variants": {
+            "desktop": {
+              "sectionId": "27ARw",
+              "sectionName": "MidTitle",
+              "sectionKind": "generic",
+              "order": 6,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 220
+              },
+              "treeHash": "79fb4d01186176b5ca80b7b88250ae0b51f0b647609c4b414f1d80f15a48d8ed",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/00-bi8au__06-27arw.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "THdEe",
+              "blockKey": "thdee",
+              "blockName": "mid1",
+              "blockType": "text",
+              "blockRole": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "THdEe",
+                  "blockName": "mid1",
+                  "blockType": "text",
+                  "blockRole": "text",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "89c0fe3bcc6b44573775a0e992117812a7166a4ce39e57e35011b76bd862379f",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__06-27arw__00-thdee.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "dsfCw",
+              "blockKey": "dsfcw",
+              "blockName": "mid2",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "dsfCw",
+                  "blockName": "mid2",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 220,
+                    "height": 22
+                  },
+                  "treeHash": "05f2831fbb26c3c55734502813dcda41974badcafbde82882be357acc99a01ac",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__06-27arw__01-dsfcw.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "WpSrl",
+              "blockKey": "wpsrl",
+              "blockName": "fixline",
+              "blockType": "text",
+              "blockRole": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "WpSrl",
+                  "blockName": "fixline",
+                  "blockType": "text",
+                  "blockRole": "text",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 520,
+                    "height": ""
+                  },
+                  "treeHash": "4973067723fb869f05358bc9c7b79451848d369e210580f9188ef3bb49a57e0f",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__06-27arw__02-wpsrl.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "WLxlM",
+          "sectionKey": "wlxlm",
+          "sectionName": "FixHeading",
+          "sectionKind": "generic",
+          "variants": {
+            "desktop": {
+              "sectionId": "WLxlM",
+              "sectionName": "FixHeading",
+              "sectionKind": "generic",
+              "order": 7,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 140
+              },
+              "treeHash": "858e0e7026822bcf5de4edd0b3781224bbf28888a1e96c88f94dfbfa0c1c9723",
+              "blockCount": 1,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/00-bi8au__07-wlxlm.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "JaC8l",
+              "blockKey": "jac8l",
+              "blockName": "",
+              "blockType": "text",
+              "blockRole": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "JaC8l",
+                  "blockName": "",
+                  "blockType": "text",
+                  "blockRole": "text",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "90b9b74738f86e9bd1172679eaa5372d0a64221ec50bebd44c0ebf91b9887b38",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__07-wlxlm__00-jac8l.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "XrEv6",
+          "sectionKey": "xrev6",
+          "sectionName": "Mosaic",
+          "sectionKind": "generic",
+          "variants": {
+            "desktop": {
+              "sectionId": "XrEv6",
+              "sectionName": "Mosaic",
+              "sectionKind": "generic",
+              "order": 8,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 420
+              },
+              "treeHash": "37ab116c23ae2ff0fdf187e1a935146853a13766affd7323d3caeeb3208555fa",
+              "blockCount": 0,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/00-bi8au__08-xrev6.json"
+              }
+            }
+          },
+          "blocks": []
+        },
+        {
+          "sectionId": "7COVM",
+          "sectionKey": "7covm",
+          "sectionName": "hf",
+          "sectionKind": "generic",
+          "variants": {
+            "desktop": {
+              "sectionId": "7COVM",
+              "sectionName": "hf",
+              "sectionKind": "generic",
+              "order": 9,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": ""
+              },
+              "treeHash": "2f2d81b19de2e7ffb698cfaee5e4bbb1a3861c8da824a416d15daf3153362a77",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/00-bi8au__09-7covm.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "V8EyQ",
+              "blockKey": "v8eyq",
+              "blockName": "cols",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "V8EyQ",
+                  "blockName": "cols",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "20ed2cd0f55d536f4a65b881dbcff413c10bcd9c7126a5b5c51294a0fa59dc2c",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__09-7covm__00-v8eyq.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "hrqSr",
+              "blockKey": "hrqsr",
+              "blockName": "",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "hrqSr",
+                  "blockName": "",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": 1
+                  },
+                  "treeHash": "401f3d3ce5b5e1e919b2c8583a5f1842e2889792dda2e16875a00240ad738808",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__09-7covm__01-hrqsr.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "03LeZ",
+              "blockKey": "03lez",
+              "blockName": "bottom",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "03LeZ",
+                  "blockName": "bottom",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": 34
+                  },
+                  "treeHash": "6dee8240e3e4520e96e797214756469e26221630d04715f63c84833c559cd6c2",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/00-bi8au__09-7covm__02-03lez.json"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pageId": "ARV8z",
+      "pageKey": "arv8z",
+      "pageName": "About",
+      "pageType": "about",
+      "variants": {
+        "desktop": {
+          "pageId": "ARV8z",
+          "pageName": "About",
+          "pageType": "about",
+          "order": 1,
+          "bounds": {
+            "x": -1440,
+            "y": -543,
+            "width": 1440,
+            "height": ""
+          },
+          "layout": {
+            "layout": "vertical",
+            "gap": "",
+            "padding": "",
+            "clip": false
+          },
+          "pageHash": "c766c6f3eac94283df342093810d19c748ea92367444fa22ff4a7686b8618542",
+          "sectionCount": 3,
+          "blockCount": 11,
+          "output": {
+            "templatePath": "sites/framework_new/variants/desktop/template.json",
+            "pagePath": "sites/framework_new/variants/desktop/pages/01-arv8z.json"
+          }
+        }
+      },
+      "sections": [
+        {
+          "sectionId": "qG45q",
+          "sectionKey": "qg45q",
+          "sectionName": "TopNav",
+          "sectionKind": "navigation",
+          "variants": {
+            "desktop": {
+              "sectionId": "qG45q",
+              "sectionName": "TopNav",
+              "sectionKind": "navigation",
+              "order": 0,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 64
+              },
+              "treeHash": "a0531b69f929586c6e06483b616021c2d360761a55435b62836643d9ed92a421",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/01-arv8z__00-qg45q.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "Qrc4I",
+              "blockKey": "qrc4i",
+              "blockName": "logo",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "Qrc4I",
+                  "blockName": "logo",
+                  "blockType": "text",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "7e84f8ee57e11748249a3237430782ca95199d3d552eb9a0da784d5c3b2d7780",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/01-arv8z__00-qg45q__00-qrc4i.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "EsYux",
+              "blockKey": "esyux",
+              "blockName": "centerNav",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "EsYux",
+                  "blockName": "centerNav",
+                  "blockType": "text",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "5b621c90eb7a2b24490c164d64ca0ea30aaca0ac97ed477313df19938dd64aeb",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/01-arv8z__00-qg45q__01-esyux.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "OYGri",
+              "blockKey": "oygri",
+              "blockName": "rightNav",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "OYGri",
+                  "blockName": "rightNav",
+                  "blockType": "text",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "c856c099558cd42117b1722a4269db50efb57d7a2b617d5126d63a5a82070175",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/01-arv8z__00-qg45q__02-oygri.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "WDpt7",
+          "sectionKey": "wdpt7",
+          "sectionName": "AboutMain",
+          "sectionKind": "story",
+          "variants": {
+            "desktop": {
+              "sectionId": "WDpt7",
+              "sectionName": "AboutMain",
+              "sectionKind": "story",
+              "order": 1,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": ""
+              },
+              "treeHash": "46d47a6545516fc15f9b3937b3e93b77f74e1ef5595118ac06fcf0bb68db5880",
+              "blockCount": 5,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/01-arv8z__01-wdpt7.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "dWeB7",
+              "blockKey": "dweb7",
+              "blockName": "Hero",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "dWeB7",
+                  "blockName": "Hero",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 1027,
+                    "height": ""
+                  },
+                  "treeHash": "a0da036f93bfc1ba31e80535abf109fcd513fa074366730af20b077da7c3fd32",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/01-arv8z__01-wdpt7__00-dweb7.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "T6mK5",
+              "blockKey": "t6mk5",
+              "blockName": "Timeline",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "T6mK5",
+                  "blockName": "Timeline",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 1040,
+                    "height": ""
+                  },
+                  "treeHash": "9a3b990554bbc0391fa7feb469c312f2bdb8632b92c5bf3a48e5679cb512a4e1",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/01-arv8z__01-wdpt7__01-t6mk5.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "nWJCt",
+              "blockKey": "nwjct",
+              "blockName": "Where",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "nWJCt",
+                  "blockName": "Where",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 1040,
+                    "height": ""
+                  },
+                  "treeHash": "e944a563e0bec4e2ed66d15b1d2acc22ac9ddc1d97850322c442a792fae08a59",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/01-arv8z__01-wdpt7__02-nwjct.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "p6UXX",
+              "blockKey": "p6uxx",
+              "blockName": "Who",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "p6UXX",
+                  "blockName": "Who",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 3,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 1040,
+                    "height": ""
+                  },
+                  "treeHash": "88bef50b8b9e62ef76b6a2786294205be7232f040c86a91ee26827d12199a80b",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/01-arv8z__01-wdpt7__03-p6uxx.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "ke94j",
+              "blockKey": "ke94j",
+              "blockName": "BottomMedia",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "ke94j",
+                  "blockName": "BottomMedia",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 4,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 1040,
+                    "height": ""
+                  },
+                  "treeHash": "367277e5ed104ae93576840ca58d55ff1859ad8a616c23c4b60bfee1078335ce",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/01-arv8z__01-wdpt7__04-ke94j.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "VdTK9",
+          "sectionKey": "vdtk9",
+          "sectionName": "Footer",
+          "sectionKind": "footer",
+          "variants": {
+            "desktop": {
+              "sectionId": "VdTK9",
+              "sectionName": "Footer",
+              "sectionKind": "footer",
+              "order": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": ""
+              },
+              "treeHash": "67c50f7ae62ce80c412b2acb7028d087f37681723cbb9058a770891938140f3d",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/01-arv8z__02-vdtk9.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "WgJfn",
+              "blockKey": "wgjfn",
+              "blockName": "cols",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "WgJfn",
+                  "blockName": "cols",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "1ec00538573ea13f97bf3b2c672414143c84a19709712756ef3d6a99c27dabf8",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/01-arv8z__02-vdtk9__00-wgjfn.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "19ZSd",
+              "blockKey": "19zsd",
+              "blockName": "",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "19ZSd",
+                  "blockName": "",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": 1
+                  },
+                  "treeHash": "3ad1530442e88d5919d32198f75d319a4b825e7ddf399f427c1959e56f333788",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/01-arv8z__02-vdtk9__01-19zsd.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "Aqrsx",
+              "blockKey": "aqrsx",
+              "blockName": "bottom",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "Aqrsx",
+                  "blockName": "bottom",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": 34
+                  },
+                  "treeHash": "39dd03a9779d74347a7d2a8e24cf7f1a65519c005daf551918496523d73b7e85",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/01-arv8z__02-vdtk9__02-aqrsx.json"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pageId": "bKfsl",
+      "pageKey": "bkfsl",
+      "pageName": "Support",
+      "pageType": "contact",
+      "variants": {
+        "desktop": {
+          "pageId": "bKfsl",
+          "pageName": "Support",
+          "pageType": "contact",
+          "order": 2,
+          "bounds": {
+            "x": 196,
+            "y": -543,
+            "width": 1440,
+            "height": ""
+          },
+          "layout": {
+            "layout": "vertical",
+            "gap": "",
+            "padding": "",
+            "clip": false
+          },
+          "pageHash": "a4d5c951748a1d84d963cbaada51f03fbb66206b6128f9c150040b97d6fc88b3",
+          "sectionCount": 4,
+          "blockCount": 10,
+          "output": {
+            "templatePath": "sites/framework_new/variants/desktop/template.json",
+            "pagePath": "sites/framework_new/variants/desktop/pages/02-bkfsl.json"
+          }
+        }
+      },
+      "sections": [
+        {
+          "sectionId": "ZWNtu",
+          "sectionKey": "zwntu",
+          "sectionName": "nav",
+          "sectionKind": "navigation",
+          "variants": {
+            "desktop": {
+              "sectionId": "ZWNtu",
+              "sectionName": "nav",
+              "sectionKind": "navigation",
+              "order": 0,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 64
+              },
+              "treeHash": "8f5d868cc3ad7c0b69de0582a4d4046e2f9b1bf21e42061820113efaa36e05a1",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/02-bkfsl__00-zwntu.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "coEO3",
+              "blockKey": "coeo3",
+              "blockName": "logo",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "coEO3",
+                  "blockName": "logo",
+                  "blockType": "text",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "83e6b4586df9c59bc8f5986e822b4ccaba76ea0cefa9ff161217453c365f3702",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/02-bkfsl__00-zwntu__00-coeo3.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "v6LkF",
+              "blockKey": "v6lkf",
+              "blockName": "centerNav",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "v6LkF",
+                  "blockName": "centerNav",
+                  "blockType": "text",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "e80d57edc34f473bf2417ec6da8d3b237d80783875d6dbbccc9ae422114ff6e2",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/02-bkfsl__00-zwntu__01-v6lkf.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "aZ05d",
+              "blockKey": "az05d",
+              "blockName": "rightNav",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "aZ05d",
+                  "blockName": "rightNav",
+                  "blockType": "text",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "18a32f47290a70bc6d1b3285388394d4b016a7ba3f29bbf2ed822520d79e92b4",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/02-bkfsl__00-zwntu__02-az05d.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "Xm7BJ",
+          "sectionKey": "xm7bj",
+          "sectionName": "SupportHero",
+          "sectionKind": "hero",
+          "variants": {
+            "desktop": {
+              "sectionId": "Xm7BJ",
+              "sectionName": "SupportHero",
+              "sectionKind": "hero",
+              "order": 1,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 154
+              },
+              "treeHash": "11b77ca2eb39778338d633e2ffd3f717cb9a98f284982ca2283f971e6cb9f7ea",
+              "blockCount": 1,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/02-bkfsl__01-xm7bj.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "rqgTO",
+              "blockKey": "rqgto",
+              "blockName": "HeroTitle",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "rqgTO",
+                  "blockName": "HeroTitle",
+                  "blockType": "text",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "bf3b5e4f05183fcd3aabf7bf98bb6f2b73cf7d4bccf445ad7f95fd81e9d3ff43",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/02-bkfsl__01-xm7bj__00-rqgto.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "Gbj9A",
+          "sectionKey": "gbj9a",
+          "sectionName": "SupportMain",
+          "sectionKind": "contact",
+          "variants": {
+            "desktop": {
+              "sectionId": "Gbj9A",
+              "sectionName": "SupportMain",
+              "sectionKind": "contact",
+              "order": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": ""
+              },
+              "treeHash": "98e488dc5b5ce550c82c163dd28f5bf37cf7e22da0ae0932a461252347845a23",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/02-bkfsl__02-gbj9a.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "VKhzL",
+              "blockKey": "vkhzl",
+              "blockName": "TopGrid",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "VKhzL",
+                  "blockName": "TopGrid",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "da34849caa02b9f6410c7ca3f49b6f74c0fc984e05b381539ed6f072a4a9d2e7",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/02-bkfsl__02-gbj9a__00-vkhzl.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "6ZrMx",
+              "blockKey": "6zrmx",
+              "blockName": "GuidesSection",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "6ZrMx",
+                  "blockName": "GuidesSection",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "5daa1695190c37e9959c9fad250789ebdb4f5ade2bf4e98f1b5d83ed9e23b254",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/02-bkfsl__02-gbj9a__01-6zrmx.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "wOJxc",
+              "blockKey": "wojxc",
+              "blockName": "SupportCTA",
+              "blockType": "frame",
+              "variants": {
+                "desktop": {
+                  "blockId": "wOJxc",
+                  "blockName": "SupportCTA",
+                  "blockType": "frame",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "7f5188fef6260288fb2a350ea0a7fb53edecfe8262ee2f6578d4d1e8da65433b",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/02-bkfsl__02-gbj9a__02-wojxc.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "nTRCw",
+          "sectionKey": "ntrcw",
+          "sectionName": "footer",
+          "sectionKind": "footer",
+          "variants": {
+            "desktop": {
+              "sectionId": "nTRCw",
+              "sectionName": "footer",
+              "sectionKind": "footer",
+              "order": 3,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": ""
+              },
+              "treeHash": "407c43c91383a380ebffb5e5bfc07b42b8d0431b111f51215c9df6e5e4c04eb3",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/02-bkfsl__03-ntrcw.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "Dqokq",
+              "blockKey": "dqokq",
+              "blockName": "cols",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "Dqokq",
+                  "blockName": "cols",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "00f070a74357e1032867f06a93a4ec02ec2810a55635241739ce26c7d0787226",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/02-bkfsl__03-ntrcw__00-dqokq.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "Kqa7W",
+              "blockKey": "kqa7w",
+              "blockName": "",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "Kqa7W",
+                  "blockName": "",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": 1
+                  },
+                  "treeHash": "2641c8a6a20406f811a40c4086e1c290dca09927c7d1f9e2f4c3b40c0c08f2cd",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/02-bkfsl__03-ntrcw__01-kqa7w.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "Vomgq",
+              "blockKey": "vomgq",
+              "blockName": "bottom",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "Vomgq",
+                  "blockName": "bottom",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": 34
+                  },
+                  "treeHash": "7497da2e3832d91c932f08ad5f746123450e465cab403aac13e23e11bbf3b79a",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/02-bkfsl__03-ntrcw__02-vomgq.json"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pageId": "H5dwI",
+      "pageKey": "h5dwi",
+      "pageName": "Products",
+      "pageType": "catalog",
+      "variants": {
+        "desktop": {
+          "pageId": "H5dwI",
+          "pageName": "Products",
+          "pageType": "catalog",
+          "order": 3,
+          "bounds": {
+            "x": 1759,
+            "y": -543,
+            "width": 1440,
+            "height": ""
+          },
+          "layout": {
+            "layout": "vertical",
+            "gap": "",
+            "padding": "",
+            "clip": false
+          },
+          "pageHash": "b73b6449d72b40a17bd122519a78022c12729a421d932a4a9e08aeef1410a73d",
+          "sectionCount": 4,
+          "blockCount": 17,
+          "output": {
+            "templatePath": "sites/framework_new/variants/desktop/template.json",
+            "pagePath": "sites/framework_new/variants/desktop/pages/03-h5dwi.json"
+          }
+        }
+      },
+      "sections": [
+        {
+          "sectionId": "4fScJ",
+          "sectionKey": "4fscj",
+          "sectionName": "nav",
+          "sectionKind": "navigation",
+          "variants": {
+            "desktop": {
+              "sectionId": "4fScJ",
+              "sectionName": "nav",
+              "sectionKind": "navigation",
+              "order": 0,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 64
+              },
+              "treeHash": "970b4a1a5cfc70d2d416197b37b016946355123ed385da802e6753ed43c5ecbd",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/03-h5dwi__00-4fscj.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "JR7kt",
+              "blockKey": "jr7kt",
+              "blockName": "logo",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "JR7kt",
+                  "blockName": "logo",
+                  "blockType": "text",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "2aec9751a7b6821644f4016fcb91e77e92e6cfc48df1db7ffea4e397bc5dfa08",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__00-4fscj__00-jr7kt.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "ljcyN",
+              "blockKey": "ljcyn",
+              "blockName": "centerNav",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "ljcyN",
+                  "blockName": "centerNav",
+                  "blockType": "text",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "14d6bb09b0d493fa38853ee3dd29cdd6d2207c540f10c53a2233c975765e0d66",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__00-4fscj__01-ljcyn.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "iR903",
+              "blockKey": "ir903",
+              "blockName": "rightNav",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "iR903",
+                  "blockName": "rightNav",
+                  "blockType": "text",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "51210c47badaa8f40e09260ab0f9f6f7e9e1bdc24f41c348f5cccf3bc7844a57",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__00-4fscj__02-ir903.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "Srexe",
+          "sectionKey": "srexe",
+          "sectionName": "BizHero",
+          "sectionKind": "hero",
+          "variants": {
+            "desktop": {
+              "sectionId": "Srexe",
+              "sectionName": "BizHero",
+              "sectionKind": "hero",
+              "order": 1,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 260
+              },
+              "treeHash": "7fed7e8c61a14bdde13ea352a2692d2d3402bbcde41d10177ff32e4f60e80f5c",
+              "blockCount": 2,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/03-h5dwi__01-srexe.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "r1ICz",
+              "blockKey": "r1icz",
+              "blockName": "heroL",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "r1ICz",
+                  "blockName": "heroL",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 560,
+                    "height": ""
+                  },
+                  "treeHash": "35ed58fee374f3e00659fb7d769fd1ab3b7a1c614bf4905e3e436ee8220ab3cc",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__01-srexe__00-r1icz.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "xxsiZ",
+              "blockKey": "xxsiz",
+              "blockName": "heroR",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "xxsiZ",
+                  "blockName": "heroR",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": "fill_container"
+                  },
+                  "treeHash": "e859a6907b836a069cf6f5cc9bfc7cc78e34a7ab014502668abcbc725b600c60",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__01-srexe__01-xxsiz.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "eu2qW",
+          "sectionKey": "eu2qw",
+          "sectionName": "BizMain",
+          "sectionKind": "generic",
+          "variants": {
+            "desktop": {
+              "sectionId": "eu2qW",
+              "sectionName": "BizMain",
+              "sectionKind": "generic",
+              "order": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": ""
+              },
+              "treeHash": "6580b5a47c9bf7bf786740ff618ec3e506a2e682a098bc77c8d0aaae037421d3",
+              "blockCount": 9,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/03-h5dwi__02-eu2qw.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "bHCwQ",
+              "blockKey": "bhcwq",
+              "blockName": "Customize",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "bHCwQ",
+                  "blockName": "Customize",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "310b00f08523e985d8a85c5e2ab5f24c9cc1f796bde95b034cc827e48d81ea9e",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__02-eu2qw__00-bhcwq.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "qmDEn",
+              "blockKey": "qmden",
+              "blockName": "Testimonials",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "qmDEn",
+                  "blockName": "Testimonials",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "6571851a458cb89b4218d15f0d5b843f60dc9accfcb302c7ed9cda8f833b6e28",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__02-eu2qw__01-qmden.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "vKk3t",
+              "blockKey": "vkk3t",
+              "blockName": "Press",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "vKk3t",
+                  "blockName": "Press",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "e036c6c8f8404d7ecfda2553b007e37107911aba763a5d5f9df4a7b4e3b0d540",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__02-eu2qw__02-vkk3t.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "dPzOY",
+              "blockKey": "dpzoy",
+              "blockName": "ValueProps",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "dPzOY",
+                  "blockName": "ValueProps",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 3,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "8526fb3a6356c69de1228758456c41f5858346bce341d903c3beb9a596b939e0",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__02-eu2qw__03-dpzoy.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "b7w8p",
+              "blockKey": "b7w8p",
+              "blockName": "Stories",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "b7w8p",
+                  "blockName": "Stories",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 4,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "d46026f7b5dc9371166a0bc1b93abd45fad55a825bbc7b97689c65c35cace546",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__02-eu2qw__04-b7w8p.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "LCg4e",
+              "blockKey": "lcg4e",
+              "blockName": "ConnectTeam",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "LCg4e",
+                  "blockName": "ConnectTeam",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 5,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "cbd5fdbe3241378aff2c39637db100d51863d89d9713870613dd57afb5ccca8d",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__02-eu2qw__05-lcg4e.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "6wEsO",
+              "blockKey": "6weso",
+              "blockName": "ContactSupport",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "6wEsO",
+                  "blockName": "ContactSupport",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 6,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "6405669776a949d408a519fad50d459e43cec96072fb734d013429d92581cdf0",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__02-eu2qw__06-6weso.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "iRpxD",
+              "blockKey": "irpxd",
+              "blockName": "FAQ",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "iRpxD",
+                  "blockName": "FAQ",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 7,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "5807bf74507fa7bed9397366e4ec12cbff3f5c422ff1e1ae8ac2282b982d6bea",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__02-eu2qw__07-irpxd.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "qDW76",
+              "blockKey": "qdw76",
+              "blockName": "Legal",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "qDW76",
+                  "blockName": "Legal",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 8,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "49706075ef8849fc11f5f24b6f3bd0685f80bab46f077bb9cb585df097b5957c",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__02-eu2qw__08-qdw76.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "fjJRU",
+          "sectionKey": "fjjru",
+          "sectionName": "footer",
+          "sectionKind": "footer",
+          "variants": {
+            "desktop": {
+              "sectionId": "fjJRU",
+              "sectionName": "footer",
+              "sectionKind": "footer",
+              "order": 3,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": ""
+              },
+              "treeHash": "0cc02f635b5203504a9739fed35ca0d6954e1c9823f183f3b0008647857fd5b9",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/03-h5dwi__03-fjjru.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "QAxFr",
+              "blockKey": "qaxfr",
+              "blockName": "cols",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "QAxFr",
+                  "blockName": "cols",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "af3c52ee4072d92dec0c5d3bd3c91ffb2f5e411d3efb9664aea9efe59ab10ab5",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__03-fjjru__00-qaxfr.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "sdXUb",
+              "blockKey": "sdxub",
+              "blockName": "",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "sdXUb",
+                  "blockName": "",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": 1
+                  },
+                  "treeHash": "90de19a2d26edba51bf3ec0db5fac466440eeb6e8a80af9b48cc25e33521a84b",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__03-fjjru__01-sdxub.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "tb4AJ",
+              "blockKey": "tb4aj",
+              "blockName": "bottom",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "tb4AJ",
+                  "blockName": "bottom",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": 34
+                  },
+                  "treeHash": "57f43df311bf9f2e0e18951198ba70d6ef76a9c30acdd78e1d0b4dbfafbe5ab9",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/03-h5dwi__03-fjjru__02-tb4aj.json"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pageId": "jPAr2",
+      "pageKey": "jpar2",
+      "pageName": "Contact",
+      "pageType": "contact",
+      "variants": {
+        "desktop": {
+          "pageId": "jPAr2",
+          "pageName": "Contact",
+          "pageType": "contact",
+          "order": 4,
+          "bounds": {
+            "x": 3360,
+            "y": -543,
+            "width": 1440,
+            "height": ""
+          },
+          "layout": {
+            "layout": "vertical",
+            "gap": "",
+            "padding": "",
+            "clip": false
+          },
+          "pageHash": "b5ebe43430b95194d885a0a5e3dc751867f4270e1812469b1200f96002204674",
+          "sectionCount": 4,
+          "blockCount": 10,
+          "output": {
+            "templatePath": "sites/framework_new/variants/desktop/template.json",
+            "pagePath": "sites/framework_new/variants/desktop/pages/04-jpar2.json"
+          }
+        }
+      },
+      "sections": [
+        {
+          "sectionId": "VESxn",
+          "sectionKey": "vesxn",
+          "sectionName": "nav",
+          "sectionKind": "navigation",
+          "variants": {
+            "desktop": {
+              "sectionId": "VESxn",
+              "sectionName": "nav",
+              "sectionKind": "navigation",
+              "order": 0,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 64
+              },
+              "treeHash": "9addc8000a7906530021d71d35b290c713d4cf7ba6b7b68d4a4ee0823190fe11",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/04-jpar2__00-vesxn.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "lBU4z",
+              "blockKey": "lbu4z",
+              "blockName": "logo",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "lBU4z",
+                  "blockName": "logo",
+                  "blockType": "text",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "988d0e9f4bbf1d0a0aae7728a2c69c02f386d671fcf6d2b2afd38540641fd9f0",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/04-jpar2__00-vesxn__00-lbu4z.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "0QJik",
+              "blockKey": "0qjik",
+              "blockName": "centerNav",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "0QJik",
+                  "blockName": "centerNav",
+                  "blockType": "text",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "b2285e7c8f9c2469b7658ea46a4fd1ea1e589ad6080379132fca682c75b20abd",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/04-jpar2__00-vesxn__01-0qjik.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "sH40y",
+              "blockKey": "sh40y",
+              "blockName": "rightNav",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "sH40y",
+                  "blockName": "rightNav",
+                  "blockType": "text",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "eaeb32e6fe221f0cfbcc48ce3dd1258ff18c8c1a96700d906a9e37a8218f3f8d",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/04-jpar2__00-vesxn__02-sh40y.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "TXazb",
+          "sectionKey": "txazb",
+          "sectionName": "ContactHero",
+          "sectionKind": "hero",
+          "variants": {
+            "desktop": {
+              "sectionId": "TXazb",
+              "sectionName": "ContactHero",
+              "sectionKind": "hero",
+              "order": 1,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": ""
+              },
+              "treeHash": "d21ec14fef6bd30edcaea45cf49b978497b0103e5ba399065d5315fd3ce3f451",
+              "blockCount": 1,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/04-jpar2__01-txazb.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "4QWHH",
+              "blockKey": "4qwhh",
+              "blockName": "heroTitle",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "4QWHH",
+                  "blockName": "heroTitle",
+                  "blockType": "text",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "11cbd0cb356592524534a3f7615648ff63940bbf589a1580b1793cdbabfd8165",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/04-jpar2__01-txazb__00-4qwhh.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "qJSlC",
+          "sectionKey": "qjslc",
+          "sectionName": "ContactMain",
+          "sectionKind": "contact",
+          "variants": {
+            "desktop": {
+              "sectionId": "qJSlC",
+              "sectionName": "ContactMain",
+              "sectionKind": "contact",
+              "order": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": ""
+              },
+              "treeHash": "c6e0108bd9385ac778a336ff5316da167e46ee312a8eb95fc99c7719870bf5fe",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/04-jpar2__02-qjslc.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "7PBfS",
+              "blockKey": "7pbfs",
+              "blockName": "ContactMethods",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "7PBfS",
+                  "blockName": "ContactMethods",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "81839914aec4d732d592f16e3fc8d9606937ae560a9683ef87411492ea5d05c3",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/04-jpar2__02-qjslc__00-7pbfs.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "UcPOk",
+              "blockKey": "ucpok",
+              "blockName": "Impressum",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "UcPOk",
+                  "blockName": "Impressum",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "61ebba0c7538a0a294adafda2d35c5a6e010ddcf8abcd3666acb602c50adb7a4",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/04-jpar2__02-qjslc__01-ucpok.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "A9sPR",
+              "blockKey": "a9spr",
+              "blockName": "WorkWithUs",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "A9sPR",
+                  "blockName": "WorkWithUs",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "6c6e95cc88c4775d2ffb2d1ca89d6d059a34ac586aee3ee8ad6f70ec20b00b7c",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/04-jpar2__02-qjslc__02-a9spr.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "xVCho",
+          "sectionKey": "xvcho",
+          "sectionName": "footer",
+          "sectionKind": "footer",
+          "variants": {
+            "desktop": {
+              "sectionId": "xVCho",
+              "sectionName": "footer",
+              "sectionKind": "footer",
+              "order": 3,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": ""
+              },
+              "treeHash": "3bb0d7d625c80105875874d1ae0a9ea20704f7417e7d35f8c494099cd0421f43",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/04-jpar2__03-xvcho.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "mXdyo",
+              "blockKey": "mxdyo",
+              "blockName": "cols",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "mXdyo",
+                  "blockName": "cols",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "a03c44508b183380b2413ab601a13a8cfab72d3bda234c7bc1ef866e942f31a9",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/04-jpar2__03-xvcho__00-mxdyo.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "avtF1",
+              "blockKey": "avtf1",
+              "blockName": "",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "avtF1",
+                  "blockName": "",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": 1
+                  },
+                  "treeHash": "b5b0badd3cc13cab325609357d9983f70465a37ea5f3ac8bfd9c2f2297a1c13b",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/04-jpar2__03-xvcho__01-avtf1.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "D0cEW",
+              "blockKey": "d0cew",
+              "blockName": "bottom",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "D0cEW",
+                  "blockName": "bottom",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": 34
+                  },
+                  "treeHash": "837cd3c09b0f484d03a9b084d7415425727dd1c945a8fce8f957330c1bb53853",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/04-jpar2__03-xvcho__02-d0cew.json"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pageId": "Q3oSI",
+      "pageKey": "q3osi",
+      "pageName": "Blog",
+      "pageType": "blog",
+      "variants": {
+        "desktop": {
+          "pageId": "Q3oSI",
+          "pageName": "Blog",
+          "pageType": "blog",
+          "order": 5,
+          "bounds": {
+            "x": 5197,
+            "y": -543,
+            "width": 1440,
+            "height": ""
+          },
+          "layout": {
+            "layout": "vertical",
+            "gap": "",
+            "padding": "",
+            "clip": false
+          },
+          "pageHash": "c6de0df53d141fb136e4203223f5ee7fd797712b38af8ea200f68f01912abf45",
+          "sectionCount": 4,
+          "blockCount": 15,
+          "output": {
+            "templatePath": "sites/framework_new/variants/desktop/template.json",
+            "pagePath": "sites/framework_new/variants/desktop/pages/05-q3osi.json"
+          }
+        }
+      },
+      "sections": [
+        {
+          "sectionId": "Cl2fZ",
+          "sectionKey": "cl2fz",
+          "sectionName": "nav",
+          "sectionKind": "navigation",
+          "variants": {
+            "desktop": {
+              "sectionId": "Cl2fZ",
+              "sectionName": "nav",
+              "sectionKind": "navigation",
+              "order": 0,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 64
+              },
+              "treeHash": "e59edc5968e5c6fa41ceda02131135b24df0837d04dda7632402a0c401b83f66",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/05-q3osi__00-cl2fz.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "wFCR8",
+              "blockKey": "wfcr8",
+              "blockName": "logo",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "wFCR8",
+                  "blockName": "logo",
+                  "blockType": "text",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "92878040de3419075fb6f18a0b6d51e4e57d8e6a82a7d1433e4d9a37713466f6",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__00-cl2fz__00-wfcr8.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "TqHfc",
+              "blockKey": "tqhfc",
+              "blockName": "centerNav",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "TqHfc",
+                  "blockName": "centerNav",
+                  "blockType": "text",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "cbc59bb00901733f7ca8fec196ff3d457d02392961a5dfdd7f5e84cd2b4bb381",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__00-cl2fz__01-tqhfc.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "544lz",
+              "blockKey": "544lz",
+              "blockName": "rightNav",
+              "blockType": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "544lz",
+                  "blockName": "rightNav",
+                  "blockType": "text",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "d10c2037d69f68b1a25ba9dac457d32a74f44535d9337064a2a85d64da82872b",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__00-cl2fz__02-544lz.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "bSTRz",
+          "sectionKey": "bstrz",
+          "sectionName": "CategoryBar",
+          "sectionKind": "generic",
+          "variants": {
+            "desktop": {
+              "sectionId": "bSTRz",
+              "sectionName": "CategoryBar",
+              "sectionKind": "generic",
+              "order": 1,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": 36
+              },
+              "treeHash": "68c410f9462b9d4c56ca7c8cfde164f9ad498806e88149ba50301dda7c4a58d1",
+              "blockCount": 5,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/05-q3osi__01-bstrz.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "Fmwkq",
+              "blockKey": "fmwkq",
+              "blockName": "",
+              "blockType": "text",
+              "blockRole": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "Fmwkq",
+                  "blockName": "",
+                  "blockType": "text",
+                  "blockRole": "text",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "cf230213b8cb2d8d7065cac9462edfd8ce739def4bf0f9f48a7bfb18211a44e2",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__01-bstrz__00-fmwkq.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "sHvCT",
+              "blockKey": "shvct",
+              "blockName": "",
+              "blockType": "text",
+              "blockRole": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "sHvCT",
+                  "blockName": "",
+                  "blockType": "text",
+                  "blockRole": "text",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "ab5fbb148f223363104e491954ffc34846157100c065866798bddd2207f98daf",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__01-bstrz__01-shvct.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "fmg0U",
+              "blockKey": "fmg0u",
+              "blockName": "",
+              "blockType": "text",
+              "blockRole": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "fmg0U",
+                  "blockName": "",
+                  "blockType": "text",
+                  "blockRole": "text",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "0ba9c74d86de9badf73c28345add98c83e726a9295b1925ef8ce74139ba661bd",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__01-bstrz__02-fmg0u.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "9usNl",
+              "blockKey": "9usnl",
+              "blockName": "",
+              "blockType": "text",
+              "blockRole": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "9usNl",
+                  "blockName": "",
+                  "blockType": "text",
+                  "blockRole": "text",
+                  "order": 3,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "ba72ea0a5fc42b7850b70befcf55f8c873f88b3499e7ecca74c2e16739e7a1d8",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__01-bstrz__03-9usnl.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "KrcrJ",
+              "blockKey": "krcrj",
+              "blockName": "",
+              "blockType": "text",
+              "blockRole": "text",
+              "variants": {
+                "desktop": {
+                  "blockId": "KrcrJ",
+                  "blockName": "",
+                  "blockType": "text",
+                  "blockRole": "text",
+                  "order": 4,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "",
+                    "height": ""
+                  },
+                  "treeHash": "6aef23995903d4198c5e1f70f88c3ea9e55248330e3da18cb884fecadce3abf8",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__01-bstrz__04-krcrj.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "5jOQ4",
+          "sectionKey": "5joq4",
+          "sectionName": "BlogMain",
+          "sectionKind": "generic",
+          "variants": {
+            "desktop": {
+              "sectionId": "5jOQ4",
+              "sectionName": "BlogMain",
+              "sectionKind": "generic",
+              "order": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": ""
+              },
+              "treeHash": "532812e3b92f9c988230215781c82fbcb24892cfcfd174bf3eca0ee89bdf8acc",
+              "blockCount": 4,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/05-q3osi__02-5joq4.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "bjz85",
+              "blockKey": "bjz85",
+              "blockName": "feat1",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "bjz85",
+                  "blockName": "feat1",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "db3fb35bef67ef3b44f7cb7eede38f0694b6fab3173138892e1b40b96c14a843",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__02-5joq4__00-bjz85.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "ILrKz",
+              "blockKey": "ilrkz",
+              "blockName": "feat2",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "ILrKz",
+                  "blockName": "feat2",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "16545ad9bff13c03aa2eb622a0d82bbf9c9dea4f498089ad9edb72d64716084f",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__02-5joq4__01-ilrkz.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "DexWC",
+              "blockKey": "dexwc",
+              "blockName": "PostGrid",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "DexWC",
+                  "blockName": "PostGrid",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "40f3d9386fa2ae6250882a02365189af558da77ad2fdd716d3d86560e66fee18",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__02-5joq4__02-dexwc.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "lzIE8",
+              "blockKey": "lzie8",
+              "blockName": "pager",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "lzIE8",
+                  "blockName": "pager",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 3,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": 30
+                  },
+                  "treeHash": "e8352280b0e0aebe80ef8b93eaae5774207b4cf70ead45d1668bebe6df642838",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__02-5joq4__03-lzie8.json"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "sectionId": "hYNFr",
+          "sectionKey": "hynfr",
+          "sectionName": "footer",
+          "sectionKind": "footer",
+          "variants": {
+            "desktop": {
+              "sectionId": "hYNFr",
+              "sectionName": "footer",
+              "sectionKind": "footer",
+              "order": 3,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": "fill_container",
+                "height": ""
+              },
+              "treeHash": "8b44d1ff68ad208f239d4ec68fddd5b04a4a4867e191bd66fddb3c3a95fdecb2",
+              "blockCount": 3,
+              "output": {
+                "templatePath": "sites/framework_new/variants/desktop/template.json",
+                "sectionPath": "sites/framework_new/variants/desktop/sections/05-q3osi__03-hynfr.json"
+              }
+            }
+          },
+          "blocks": [
+            {
+              "blockId": "FdiOJ",
+              "blockKey": "fdioj",
+              "blockName": "cols",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "FdiOJ",
+                  "blockName": "cols",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 0,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": ""
+                  },
+                  "treeHash": "a25de071c5f117a35b243b012a5f9d9747f966a01c6a55c646df4163f121098d",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__03-hynfr__00-fdioj.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "jPnjI",
+              "blockKey": "jpnji",
+              "blockName": "",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "jPnjI",
+                  "blockName": "",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 1,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": 1
+                  },
+                  "treeHash": "45daa40f70882992df81ff94b677164490060abce8449060dfac1c567a7b689f",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__03-hynfr__01-jpnji.json"
+                  }
+                }
+              }
+            },
+            {
+              "blockId": "Se8MR",
+              "blockKey": "se8mr",
+              "blockName": "bottom",
+              "blockType": "frame",
+              "blockRole": "container",
+              "variants": {
+                "desktop": {
+                  "blockId": "Se8MR",
+                  "blockName": "bottom",
+                  "blockType": "frame",
+                  "blockRole": "container",
+                  "order": 2,
+                  "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": "fill_container",
+                    "height": 34
+                  },
+                  "treeHash": "376fd9787268dc70aa06c23390cb46dd8eeeff2143592a64c0e6d9f0fec129dd",
+                  "output": {
+                    "templatePath": "sites/framework_new/variants/desktop/template.json",
+                    "blockPath": "sites/framework_new/variants/desktop/blocks/05-q3osi__03-hynfr__02-se8mr.json"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bundleHash": "badc3f21edac8c451eeab7d0d4485b49078840ee794258329f65621fad9ca29e"
+}

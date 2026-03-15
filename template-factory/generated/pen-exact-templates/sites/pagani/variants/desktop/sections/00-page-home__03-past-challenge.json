@@ -1,0 +1,777 @@
+{
+  "sectionId": "past-challenge",
+  "sectionName": "Past Challenge",
+  "sectionKind": "story",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 2540,
+    "width": 1440,
+    "height": 980
+  },
+  "directChildCount": 12,
+  "recursiveNodeCount": 13,
+  "treeHash": "8eda8655300c3d11db07e6e9e892becebe9651ac5b4a0ebca1e164f9656167a0",
+  "blockCount": 12,
+  "blockIndex": [
+    {
+      "blockId": "timeline-bg-overlay",
+      "blockName": "timeline-bg-overlay",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 980
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2f2050ddbee111200bb267c50f55026c40d45ca449e7d71251be895bb8ac375b"
+    },
+    {
+      "blockId": "timeline-title",
+      "blockName": "timeline-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 96,
+        "y": 120,
+        "width": 300,
+        "height": 553
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "301bdb6c9a91fcb1fe71af9708b69c3ffc0d6ec9405088a71b38b97e7bd4695d"
+    },
+    {
+      "blockId": "timeline-quote",
+      "blockName": "timeline-quote",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 96,
+        "y": 408,
+        "width": 330,
+        "height": 157
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ad9aeb9fc17644d0afc12b1ba90ee9101faf6cc03e259a6060495657a9e9322b"
+    },
+    {
+      "blockId": "timeline-read",
+      "blockName": "timeline-read",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 96,
+        "y": 630,
+        "width": 180,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2601209442bd2f53310bff9b9715d82a388c335747cfcc81bc0b86cf3b8afb8f"
+    },
+    {
+      "blockId": "timeline-image",
+      "blockName": "timeline-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 4,
+      "bounds": {
+        "x": 530,
+        "y": 162,
+        "width": 620,
+        "height": 410
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0633bef501502bd494792c0005a456cf8910f470b4fc21a36ff853ea5cbd276c"
+    },
+    {
+      "blockId": "timeline-line",
+      "blockName": "timeline-line",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 60,
+        "y": 842,
+        "width": 1320,
+        "height": 1
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "233969767bf0e51ba6239b9fb7b06a8d6f87de00a3ff69eaf3a7abc133c70984"
+    },
+    {
+      "blockId": "timeline-marker",
+      "blockName": "timeline-marker",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 820,
+        "y": 802,
+        "width": 1,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "375044ade0dbe4cbb7fc87c0abd4a463bbe9eb47ee1371a96359b0365257d44c"
+    },
+    {
+      "blockId": "timeline-year-0",
+      "blockName": "timeline-year-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 662,
+        "y": 854,
+        "width": 100,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8ce2af4c0c33b5ca0bc1cca91adf6980d8554d7abb34fba7ead0185eee70687a"
+    },
+    {
+      "blockId": "timeline-year-1",
+      "blockName": "timeline-year-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 862,
+        "y": 854,
+        "width": 120,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a426cbf3ec3bc904af6c36647770b86f66919b10468bfd94d360238191156931"
+    },
+    {
+      "blockId": "timeline-year-2",
+      "blockName": "timeline-year-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 1056,
+        "y": 854,
+        "width": 120,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "efd3827f2d3cf9658d5e202fac28f857b907ea6f46134dd8234c632b617c69e5"
+    },
+    {
+      "blockId": "timeline-year-3",
+      "blockName": "timeline-year-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 10,
+      "bounds": {
+        "x": 1222,
+        "y": 854,
+        "width": 120,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5658d17485ec4d00aa958b74eeaccf206df3e36aeb12bf179ea0f4132f6c7f2d"
+    },
+    {
+      "blockId": "timeline-year-4",
+      "blockName": "timeline-year-4",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 11,
+      "bounds": {
+        "x": 1360,
+        "y": 854,
+        "width": 120,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0764f240ec6114d25c10a0c5bd14aa82031d62ed249f58ea573beb4f1dbd2bd0"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/timeline-boy.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/timeline-boy.jpg",
+      "relativePath": "assets-structured/pagani/timeline-boy.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "timeline-bg-overlay",
+      "blockName": "timeline-bg-overlay",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 980
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2f2050ddbee111200bb267c50f55026c40d45ca449e7d71251be895bb8ac375b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "timeline-bg-overlay",
+        "x": 0,
+        "y": 0,
+        "name": "timeline-bg-overlay",
+        "width": 1440,
+        "height": 980,
+        "fill": "#080808"
+      }
+    },
+    {
+      "blockId": "timeline-title",
+      "blockName": "timeline-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 96,
+        "y": 120,
+        "width": 300,
+        "height": 553
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "301bdb6c9a91fcb1fe71af9708b69c3ffc0d6ec9405088a71b38b97e7bd4695d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "timeline-title",
+        "x": 96,
+        "y": 120,
+        "name": "timeline-title",
+        "fill": "#F3F2ED",
+        "content": "The boy who wanted to create the most beautiful car in the world.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 54,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 553
+      }
+    },
+    {
+      "blockId": "timeline-quote",
+      "blockName": "timeline-quote",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 96,
+        "y": 408,
+        "width": 330,
+        "height": 157
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ad9aeb9fc17644d0afc12b1ba90ee9101faf6cc03e259a6060495657a9e9322b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "timeline-quote",
+        "x": 96,
+        "y": 408,
+        "name": "timeline-quote",
+        "fill": "#A7A19A",
+        "content": "\"When you point a visionary bow to a star and let yourself float on the wings of the dream towards an unpredictable destination, thirsty of perfection and rebel to mediocrity, you carry with you the mysterious spring of an ideal.\"\nJosé Ingenieros, Argentinian writer",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 330,
+        "height": 157
+      }
+    },
+    {
+      "blockId": "timeline-read",
+      "blockName": "timeline-read",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 96,
+        "y": 630,
+        "width": 180,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2601209442bd2f53310bff9b9715d82a388c335747cfcc81bc0b86cf3b8afb8f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "timeline-read",
+        "x": 96,
+        "y": 630,
+        "name": "timeline-read",
+        "fill": "#F3F2ED",
+        "content": "READ MORE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 16,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 22,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "timeline-image",
+      "blockName": "timeline-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 4,
+      "bounds": {
+        "x": 530,
+        "y": 162,
+        "width": 620,
+        "height": 410
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0633bef501502bd494792c0005a456cf8910f470b4fc21a36ff853ea5cbd276c",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/timeline-boy.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/timeline-boy.jpg",
+        "relativePath": "assets-structured/pagani/timeline-boy.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "timeline-image",
+        "x": 530,
+        "y": 162,
+        "name": "timeline-image",
+        "width": 620,
+        "height": 410,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/timeline-boy.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "timeline-line",
+      "blockName": "timeline-line",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 60,
+        "y": 842,
+        "width": 1320,
+        "height": 1
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "233969767bf0e51ba6239b9fb7b06a8d6f87de00a3ff69eaf3a7abc133c70984",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "timeline-line",
+        "x": 60,
+        "y": 842,
+        "name": "timeline-line",
+        "width": 1320,
+        "height": 1,
+        "fill": "#FFFFFF33"
+      }
+    },
+    {
+      "blockId": "timeline-marker",
+      "blockName": "timeline-marker",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 820,
+        "y": 802,
+        "width": 1,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "375044ade0dbe4cbb7fc87c0abd4a463bbe9eb47ee1371a96359b0365257d44c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "timeline-marker",
+        "x": 820,
+        "y": 802,
+        "name": "timeline-marker",
+        "width": 1,
+        "height": 40,
+        "fill": "#FFFFFFAA"
+      }
+    },
+    {
+      "blockId": "timeline-year-0",
+      "blockName": "timeline-year-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 662,
+        "y": 854,
+        "width": 100,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8ce2af4c0c33b5ca0bc1cca91adf6980d8554d7abb34fba7ead0185eee70687a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "timeline-year-0",
+        "x": 662,
+        "y": 854,
+        "name": "timeline-year-0",
+        "fill": "#F3F2ED",
+        "content": "1955",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 25
+      }
+    },
+    {
+      "blockId": "timeline-year-1",
+      "blockName": "timeline-year-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 862,
+        "y": 854,
+        "width": 120,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a426cbf3ec3bc904af6c36647770b86f66919b10468bfd94d360238191156931",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "timeline-year-1",
+        "x": 862,
+        "y": 854,
+        "name": "timeline-year-1",
+        "fill": "#B9B3AB",
+        "content": "1967",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 25
+      }
+    },
+    {
+      "blockId": "timeline-year-2",
+      "blockName": "timeline-year-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 1056,
+        "y": 854,
+        "width": 120,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "efd3827f2d3cf9658d5e202fac28f857b907ea6f46134dd8234c632b617c69e5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "timeline-year-2",
+        "x": 1056,
+        "y": 854,
+        "name": "timeline-year-2",
+        "fill": "#B9B3AB",
+        "content": "1971",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 25
+      }
+    },
+    {
+      "blockId": "timeline-year-3",
+      "blockName": "timeline-year-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 10,
+      "bounds": {
+        "x": 1222,
+        "y": 854,
+        "width": 120,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5658d17485ec4d00aa958b74eeaccf206df3e36aeb12bf179ea0f4132f6c7f2d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "timeline-year-3",
+        "x": 1222,
+        "y": 854,
+        "name": "timeline-year-3",
+        "fill": "#B9B3AB",
+        "content": "1972",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 25
+      }
+    },
+    {
+      "blockId": "timeline-year-4",
+      "blockName": "timeline-year-4",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 11,
+      "bounds": {
+        "x": 1360,
+        "y": 854,
+        "width": 120,
+        "height": 25
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0764f240ec6114d25c10a0c5bd14aa82031d62ed249f58ea573beb4f1dbd2bd0",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "timeline-year-4",
+        "x": 1360,
+        "y": 854,
+        "name": "timeline-year-4",
+        "fill": "#B9B3AB",
+        "content": "1974 - 1975",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 25
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "past-challenge",
+    "x": 0,
+    "y": 2540,
+    "width": 1440,
+    "height": 980,
+    "name": "Past Challenge",
+    "fill": "#080808",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "timeline-bg-overlay",
+        "x": 0,
+        "y": 0,
+        "name": "timeline-bg-overlay",
+        "width": 1440,
+        "height": 980,
+        "fill": "#080808"
+      },
+      {
+        "type": "text",
+        "id": "timeline-title",
+        "x": 96,
+        "y": 120,
+        "name": "timeline-title",
+        "fill": "#F3F2ED",
+        "content": "The boy who wanted to create the most beautiful car in the world.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 54,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 553
+      },
+      {
+        "type": "text",
+        "id": "timeline-quote",
+        "x": 96,
+        "y": 408,
+        "name": "timeline-quote",
+        "fill": "#A7A19A",
+        "content": "\"When you point a visionary bow to a star and let yourself float on the wings of the dream towards an unpredictable destination, thirsty of perfection and rebel to mediocrity, you carry with you the mysterious spring of an ideal.\"\nJosé Ingenieros, Argentinian writer",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 330,
+        "height": 157
+      },
+      {
+        "type": "text",
+        "id": "timeline-read",
+        "x": 96,
+        "y": 630,
+        "name": "timeline-read",
+        "fill": "#F3F2ED",
+        "content": "READ MORE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 16,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 22,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      },
+      {
+        "type": "rectangle",
+        "id": "timeline-image",
+        "x": 530,
+        "y": 162,
+        "name": "timeline-image",
+        "width": 620,
+        "height": 410,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/timeline-boy.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-history"
+      },
+      {
+        "type": "rectangle",
+        "id": "timeline-line",
+        "x": 60,
+        "y": 842,
+        "name": "timeline-line",
+        "width": 1320,
+        "height": 1,
+        "fill": "#FFFFFF33"
+      },
+      {
+        "type": "rectangle",
+        "id": "timeline-marker",
+        "x": 820,
+        "y": 802,
+        "name": "timeline-marker",
+        "width": 1,
+        "height": 40,
+        "fill": "#FFFFFFAA"
+      },
+      {
+        "type": "text",
+        "id": "timeline-year-0",
+        "x": 662,
+        "y": 854,
+        "name": "timeline-year-0",
+        "fill": "#F3F2ED",
+        "content": "1955",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 25
+      },
+      {
+        "type": "text",
+        "id": "timeline-year-1",
+        "x": 862,
+        "y": 854,
+        "name": "timeline-year-1",
+        "fill": "#B9B3AB",
+        "content": "1967",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 25
+      },
+      {
+        "type": "text",
+        "id": "timeline-year-2",
+        "x": 1056,
+        "y": 854,
+        "name": "timeline-year-2",
+        "fill": "#B9B3AB",
+        "content": "1971",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 25
+      },
+      {
+        "type": "text",
+        "id": "timeline-year-3",
+        "x": 1222,
+        "y": 854,
+        "name": "timeline-year-3",
+        "fill": "#B9B3AB",
+        "content": "1972",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 25
+      },
+      {
+        "type": "text",
+        "id": "timeline-year-4",
+        "x": 1360,
+        "y": 854,
+        "name": "timeline-year-4",
+        "fill": "#B9B3AB",
+        "content": "1974 - 1975",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 25
+      }
+    ]
+  }
+}

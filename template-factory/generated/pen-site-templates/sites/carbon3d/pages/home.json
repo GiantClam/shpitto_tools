@@ -1,0 +1,5045 @@
+{
+  "pageId": "page-home",
+  "pageKey": "home",
+  "pageName": "Carbon Homepage Desktop",
+  "pageType": "home",
+  "devices": {
+    "desktop": {
+      "bounds": {
+        "width": 1440,
+        "height": 2390
+      },
+      "supportBlocks": [
+        {
+          "id": "page-home-bg",
+          "name": "page-home-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 2390
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0D1022"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07"
+          }
+        }
+      ]
+    },
+    "mobile": {
+      "bounds": {
+        "width": 390,
+        "height": 2220
+      },
+      "supportBlocks": [
+        {
+          "id": "page-home-bg",
+          "name": "page-home-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 2220
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0D1022"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07"
+          }
+        }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "sectionId": "hero",
+      "sectionKey": "hero",
+      "sectionName": "Hero",
+      "sectionKind": "hero",
+      "order": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 760
+          },
+          "blockCount": 15,
+          "blockTree": {
+            "id": "hero",
+            "name": "Hero",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 760
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#1C1143",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color21"
+            },
+            "children": [
+              {
+                "id": "hero-bg",
+                "name": "hero-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 760
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#1C1143"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color21"
+                }
+              },
+              {
+                "id": "hero-banner",
+                "name": "hero-banner",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 360,
+                  "y": 146,
+                  "width": 620,
+                  "height": 66
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 30
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius05"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-hero-787a4dd2.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-hero-787a4dd2.jpg",
+                  "relativePath": "assets-structured/carbon/home-hero-787a4dd2.jpg",
+                  "exists": true,
+                  "mode": "fill"
+                }
+              },
+              {
+                "id": "hero-banner-overlay",
+                "name": "hero-banner-overlay",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 360,
+                  "y": 146,
+                  "width": 620,
+                  "height": 66
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#00000033",
+                  "cornerRadius": 30
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color25",
+                  "cornerRadius": "radius.palette.radius05"
+                }
+              },
+              {
+                "id": "hero-banner-dot",
+                "name": "hero-banner-dot",
+                "type": "ellipse",
+                "role": "shape",
+                "bounds": {
+                  "x": 384,
+                  "y": 164,
+                  "width": 16,
+                  "height": 16
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#5FD3FF"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color09"
+                }
+              },
+              {
+                "id": "hero-banner-badge",
+                "name": "hero-banner-badge",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 970,
+                  "y": 138,
+                  "width": 94,
+                  "height": 94
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 47
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius12"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-hero-787a4dd2.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-hero-787a4dd2.jpg",
+                  "relativePath": "assets-structured/carbon/home-hero-787a4dd2.jpg",
+                  "exists": true,
+                  "mode": "fill"
+                }
+              },
+              {
+                "id": "home-navbar",
+                "name": "Navbar",
+                "type": "frame",
+                "role": "navigation",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 84
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#00000000",
+                  "layout": "none"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04"
+                },
+                "children": [
+                  {
+                    "id": "home-navbar-bg",
+                    "name": "home-navbar-bg",
+                    "type": "rectangle",
+                    "role": "image",
+                    "bounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 1440,
+                      "height": 84
+                    },
+                    "href": "",
+                    "content": "",
+                    "style": {
+                      "fill": "#000000"
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color12"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-logo",
+                    "name": "home-navbar-logo",
+                    "type": "rectangle",
+                    "role": "image",
+                    "bounds": {
+                      "x": 40,
+                      "y": 20,
+                      "width": 110,
+                      "height": 34
+                    },
+                    "href": "#page-home",
+                    "content": "",
+                    "style": {
+                      "fill": {
+                        "type": "image",
+                        "mode": "fit"
+                      }
+                    },
+                    "tokenRefs": {},
+                    "asset": {
+                      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                      "relativePath": "assets-structured/carbon/carbon-logo.png",
+                      "exists": true,
+                      "mode": "fit"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-search",
+                    "name": "home-navbar-search",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 474,
+                      "y": 24,
+                      "width": 70,
+                      "height": 18
+                    },
+                    "href": "",
+                    "content": "Search...",
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "typography": {
+                        "fill": "#FFFFFF",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 12,
+                        "fontWeight": "500",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size02",
+                      "fontWeight": "fontWeight.palette.weight02"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-intl",
+                    "name": "home-navbar-intl",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 584,
+                      "y": 24,
+                      "width": 92,
+                      "height": 18
+                    },
+                    "href": "",
+                    "content": "International",
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "typography": {
+                        "fill": "#FFFFFF",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 12,
+                        "fontWeight": "600",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size02",
+                      "fontWeight": "fontWeight.palette.weight03"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-design",
+                    "name": "home-navbar-design",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 732,
+                      "y": 24,
+                      "width": 110,
+                      "height": 18
+                    },
+                    "href": "",
+                    "content": "Design Engine",
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "typography": {
+                        "fill": "#FFFFFF",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 12,
+                        "fontWeight": "600",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size02",
+                      "fontWeight": "fontWeight.palette.weight03"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-support",
+                    "name": "home-navbar-support",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 850,
+                      "y": 24,
+                      "width": 130,
+                      "height": 18
+                    },
+                    "href": "",
+                    "content": "Customer Support",
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "typography": {
+                        "fill": "#FFFFFF",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 12,
+                        "fontWeight": "600",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size02",
+                      "fontWeight": "fontWeight.palette.weight03"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-iso",
+                    "name": "home-navbar-iso",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 1022,
+                      "y": 24,
+                      "width": 120,
+                      "height": 18
+                    },
+                    "href": "",
+                    "content": "ISO 9001:2015",
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "typography": {
+                        "fill": "#FFFFFF",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 12,
+                        "fontWeight": "700",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size02",
+                      "fontWeight": "fontWeight.palette.weight01"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-PLATFORM",
+                    "name": "home-navbar-PLATFORM",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 540,
+                      "y": 54,
+                      "width": 100,
+                      "height": 18
+                    },
+                    "href": "#page-platform",
+                    "content": "PLATFORM",
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "typography": {
+                        "fill": "#FFFFFF",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 12,
+                        "fontWeight": "700",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size02",
+                      "fontWeight": "fontWeight.palette.weight01"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-INDUSTRIES",
+                    "name": "home-navbar-INDUSTRIES",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 656,
+                      "y": 54,
+                      "width": 100,
+                      "height": 18
+                    },
+                    "href": "#page-industries",
+                    "content": "INDUSTRIES",
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "typography": {
+                        "fill": "#FFFFFF",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 12,
+                        "fontWeight": "700",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size02",
+                      "fontWeight": "fontWeight.palette.weight01"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-PARTNERS",
+                    "name": "home-navbar-PARTNERS",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 782,
+                      "y": 54,
+                      "width": 100,
+                      "height": 18
+                    },
+                    "href": "#page-partners",
+                    "content": "PARTNERS",
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "typography": {
+                        "fill": "#FFFFFF",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 12,
+                        "fontWeight": "700",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size02",
+                      "fontWeight": "fontWeight.palette.weight01"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-RESOURCES",
+                    "name": "home-navbar-RESOURCES",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 898,
+                      "y": 54,
+                      "width": 100,
+                      "height": 18
+                    },
+                    "href": "#page-resources",
+                    "content": "RESOURCES",
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "typography": {
+                        "fill": "#FFFFFF",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 12,
+                        "fontWeight": "700",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size02",
+                      "fontWeight": "fontWeight.palette.weight01"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-ABOUT",
+                    "name": "home-navbar-ABOUT",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 1014,
+                      "y": 54,
+                      "width": 100,
+                      "height": 18
+                    },
+                    "href": "#page-about",
+                    "content": "ABOUT",
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "typography": {
+                        "fill": "#FFFFFF",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 12,
+                        "fontWeight": "700",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size02",
+                      "fontWeight": "fontWeight.palette.weight01"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-contact-box",
+                    "name": "home-navbar-contact-box",
+                    "type": "rectangle",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 1280,
+                      "y": 32,
+                      "width": 106,
+                      "height": 40
+                    },
+                    "href": "#page-contact",
+                    "content": "",
+                    "style": {
+                      "fill": "#7256FF",
+                      "cornerRadius": 12
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color06",
+                      "cornerRadius": "radius.palette.radius01"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-contact-text",
+                    "name": "home-navbar-contact-text",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 1298,
+                      "y": 42,
+                      "width": 70,
+                      "height": 20
+                    },
+                    "href": "#page-contact",
+                    "content": "CONTACT",
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "typography": {
+                        "fill": "#FFFFFF",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 12,
+                        "fontWeight": "700",
+                        "letterSpacing": "0.02em",
+                        "textAlign": "center",
+                        "textAlignVertical": "middle"
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size02",
+                      "fontWeight": "fontWeight.palette.weight01"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "hero-banner-text",
+                "name": "hero-banner-text",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 438,
+                  "y": 164,
+                  "width": 420,
+                  "height": 24
+                },
+                "href": "",
+                "content": "Introducing EPU Pro 50 & EPU Pro 90",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 16,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "hero-kicker",
+                "name": "hero-kicker",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 474,
+                  "y": 276,
+                  "width": 520,
+                  "height": 34
+                },
+                "href": "",
+                "content": "DESIGN, DEVELOP, AND PRINT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 26,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size18",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "hero-title",
+                "name": "hero-title",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 212,
+                  "y": 336,
+                  "width": 980,
+                  "height": 211
+                },
+                "href": "",
+                "content": "Radically Better Products",
+                "style": {
+                  "fill": "#5FD3FF",
+                  "typography": {
+                    "fill": "#5FD3FF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 72,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color09",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size21",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "hero-card-left",
+                "name": "hero-card-left",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 132,
+                  "y": 508,
+                  "width": 430,
+                  "height": 270
+                },
+                "href": "#page-platform",
+                "content": "",
+                "style": {
+                  "fill": "#26125D",
+                  "cornerRadius": 34
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color26",
+                  "cornerRadius": "radius.palette.radius08"
+                }
+              },
+              {
+                "id": "hero-card-right",
+                "name": "hero-card-right",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 658,
+                  "y": 508,
+                  "width": 452,
+                  "height": 270
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#2BBEB1",
+                  "cornerRadius": 34
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color27",
+                  "cornerRadius": "radius.palette.radius08"
+                }
+              },
+              {
+                "id": "hero-card-left-image",
+                "name": "hero-card-left-image",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 190,
+                  "y": 472,
+                  "width": 270,
+                  "height": 268
+                },
+                "href": "#page-platform",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-tech-224715e8.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-tech-224715e8.png",
+                  "relativePath": "assets-structured/carbon/home-tech-224715e8.png",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "hero-card-right-image",
+                "name": "hero-card-right-image",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 706,
+                  "y": 462,
+                  "width": 360,
+                  "height": 286
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-results-3ac2f4d6.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-results-3ac2f4d6.png",
+                  "relativePath": "assets-structured/carbon/home-results-3ac2f4d6.png",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "hero-card-left-label",
+                "name": "hero-card-left-label",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 170,
+                  "y": 692,
+                  "width": 260,
+                  "height": 32
+                },
+                "href": "#page-platform",
+                "content": "Our Technology",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 28,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size16",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "hero-card-right-label",
+                "name": "hero-card-right-label",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 778,
+                  "y": 692,
+                  "width": 220,
+                  "height": 32
+                },
+                "href": "#page-products",
+                "content": "Your Results",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 28,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size16",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 560
+          },
+          "blockCount": 15,
+          "blockTree": {
+            "id": "hero",
+            "name": "Hero",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 560
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#1C1143",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color21"
+            },
+            "children": [
+              {
+                "id": "hero-bg",
+                "name": "hero-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 560
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#1C1143"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color21"
+                }
+              },
+              {
+                "id": "hero-banner",
+                "name": "hero-banner",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 20,
+                  "y": 82,
+                  "width": 350,
+                  "height": 44
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 22
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius07"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-hero-787a4dd2.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-hero-787a4dd2.jpg",
+                  "relativePath": "assets-structured/carbon/home-hero-787a4dd2.jpg",
+                  "exists": true,
+                  "mode": "fill"
+                }
+              },
+              {
+                "id": "hero-banner-overlay",
+                "name": "hero-banner-overlay",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 82,
+                  "width": 350,
+                  "height": 44
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#00000033",
+                  "cornerRadius": 22
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color25",
+                  "cornerRadius": "radius.palette.radius07"
+                }
+              },
+              {
+                "id": "hero-banner-dot",
+                "name": "hero-banner-dot",
+                "type": "ellipse",
+                "role": "shape",
+                "bounds": {
+                  "x": 38,
+                  "y": 96,
+                  "width": 10,
+                  "height": 10
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#5FD3FF"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color09"
+                }
+              },
+              {
+                "id": "hero-banner-badge",
+                "name": "hero-banner-badge",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 290,
+                  "y": 76,
+                  "width": 72,
+                  "height": 72
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 36
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius11"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-hero-787a4dd2.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-hero-787a4dd2.jpg",
+                  "relativePath": "assets-structured/carbon/home-hero-787a4dd2.jpg",
+                  "exists": true,
+                  "mode": "fill"
+                }
+              },
+              {
+                "id": "home-navbar",
+                "name": "Navbar",
+                "type": "frame",
+                "role": "navigation",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 68
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#00000000",
+                  "layout": "none"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04"
+                },
+                "children": [
+                  {
+                    "id": "home-navbar-bg",
+                    "name": "home-navbar-bg",
+                    "type": "rectangle",
+                    "role": "image",
+                    "bounds": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 390,
+                      "height": 68
+                    },
+                    "href": "",
+                    "content": "",
+                    "style": {
+                      "fill": "#000000"
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color12"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-logo",
+                    "name": "home-navbar-logo",
+                    "type": "rectangle",
+                    "role": "image",
+                    "bounds": {
+                      "x": 18,
+                      "y": 22,
+                      "width": 84,
+                      "height": 26
+                    },
+                    "href": "#page-home",
+                    "content": "",
+                    "style": {
+                      "fill": {
+                        "type": "image",
+                        "mode": "fit"
+                      }
+                    },
+                    "tokenRefs": {},
+                    "asset": {
+                      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                      "relativePath": "assets-structured/carbon/carbon-logo.png",
+                      "exists": true,
+                      "mode": "fit"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-menu",
+                    "name": "home-navbar-menu",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 350,
+                      "y": 24,
+                      "width": 18,
+                      "height": 20
+                    },
+                    "href": "#page-products",
+                    "content": "☰",
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "typography": {
+                        "fill": "#FFFFFF",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 18,
+                        "fontWeight": "700",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size05",
+                      "fontWeight": "fontWeight.palette.weight01"
+                    }
+                  },
+                  {
+                    "id": "home-navbar-search",
+                    "name": "home-navbar-search",
+                    "type": "text",
+                    "role": "navigation",
+                    "bounds": {
+                      "x": 308,
+                      "y": 26,
+                      "width": 18,
+                      "height": 18
+                    },
+                    "href": "#page-products",
+                    "content": "⌕",
+                    "style": {
+                      "fill": "#FFFFFF",
+                      "typography": {
+                        "fill": "#FFFFFF",
+                        "fontFamily": "Helvetica Neue",
+                        "fontSize": 18,
+                        "fontWeight": "500",
+                        "letterSpacing": "",
+                        "textAlign": "",
+                        "textAlignVertical": ""
+                      }
+                    },
+                    "tokenRefs": {
+                      "fill": "color.palette.color01",
+                      "textColor": "textColor.palette.text01",
+                      "fontFamily": "fontFamily.palette.family01",
+                      "fontSize": "fontSize.palette.size05",
+                      "fontWeight": "fontWeight.palette.weight02"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "hero-banner-text",
+                "name": "hero-banner-text",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 60,
+                  "y": 92,
+                  "width": 210,
+                  "height": 24
+                },
+                "href": "",
+                "content": "Introducing EPU Pro 50 & EPU Pro 90",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "hero-kicker",
+                "name": "hero-kicker",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 68,
+                  "y": 162,
+                  "width": 250,
+                  "height": 34
+                },
+                "href": "",
+                "content": "DESIGN, DEVELOP, AND PRINT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 16,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "hero-title",
+                "name": "hero-title",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 20,
+                  "y": 206,
+                  "width": 350,
+                  "height": 120
+                },
+                "href": "",
+                "content": "Radically Better Products",
+                "style": {
+                  "fill": "#5FD3FF",
+                  "typography": {
+                    "fill": "#5FD3FF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 40,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color09",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size08",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "hero-card-left",
+                "name": "hero-card-left",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 312,
+                  "width": 166,
+                  "height": 208
+                },
+                "href": "#page-platform",
+                "content": "",
+                "style": {
+                  "fill": "#26125D",
+                  "cornerRadius": 30
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color26",
+                  "cornerRadius": "radius.palette.radius05"
+                }
+              },
+              {
+                "id": "hero-card-right",
+                "name": "hero-card-right",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 204,
+                  "y": 312,
+                  "width": 166,
+                  "height": 208
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#2BBEB1",
+                  "cornerRadius": 30
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color27",
+                  "cornerRadius": "radius.palette.radius05"
+                }
+              },
+              {
+                "id": "hero-card-left-image",
+                "name": "hero-card-left-image",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 44,
+                  "y": 348,
+                  "width": 118,
+                  "height": 168
+                },
+                "href": "#page-platform",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-tech-224715e8.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-tech-224715e8.png",
+                  "relativePath": "assets-structured/carbon/home-tech-224715e8.png",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "hero-card-right-image",
+                "name": "hero-card-right-image",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 224,
+                  "y": 340,
+                  "width": 136,
+                  "height": 170
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-results-3ac2f4d6.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-results-3ac2f4d6.png",
+                  "relativePath": "assets-structured/carbon/home-results-3ac2f4d6.png",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "hero-card-left-label",
+                "name": "hero-card-left-label",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 500,
+                  "width": 110,
+                  "height": 32
+                },
+                "href": "#page-platform",
+                "content": "Our Technology",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "hero-card-right-label",
+                "name": "hero-card-right-label",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 236,
+                  "y": 500,
+                  "width": 100,
+                  "height": 32
+                },
+                "href": "#page-products",
+                "content": "Your Results",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "powered",
+      "sectionKey": "powered",
+      "sectionName": "Powered",
+      "sectionKind": "generic",
+      "order": {
+        "desktop": 1,
+        "mobile": 1
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 760,
+            "width": 1440,
+            "height": 520
+          },
+          "blockCount": 25,
+          "blockTree": {
+            "id": "powered",
+            "name": "Powered",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 760,
+              "width": 1440,
+              "height": 520
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#0D1022",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color07"
+            },
+            "children": [
+              {
+                "id": "powered-bg",
+                "name": "powered-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 520
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#0D1022"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07"
+                }
+              },
+              {
+                "id": "powered-title-a",
+                "name": "powered-title-a",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 430,
+                  "y": 58,
+                  "width": 300,
+                  "height": 83
+                },
+                "href": "",
+                "content": "Powered",
+                "style": {
+                  "fill": "#747B9E",
+                  "typography": {
+                    "fill": "#747B9E",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 54,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color23",
+                  "textColor": "textColor.palette.text09",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size14",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "powered-title-b",
+                "name": "powered-title-b",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 118,
+                  "y": 124,
+                  "width": 140,
+                  "height": 83
+                },
+                "href": "",
+                "content": "By",
+                "style": {
+                  "fill": "#747B9E",
+                  "typography": {
+                    "fill": "#747B9E",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 54,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color23",
+                  "textColor": "textColor.palette.text09",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size14",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "powered-title-c",
+                "name": "powered-title-c",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 208,
+                  "y": 190,
+                  "width": 220,
+                  "height": 83
+                },
+                "href": "",
+                "content": "Carbon",
+                "style": {
+                  "fill": "#5FD3FF",
+                  "typography": {
+                    "fill": "#5FD3FF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 54,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color09",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size14",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "powered-copy",
+                "name": "powered-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 430,
+                  "y": 270,
+                  "width": 520,
+                  "height": 70
+                },
+                "href": "",
+                "content": "Our customers create products with exceptional mechanical properties using our advanced photopolymer resins, computational design tools, and 3D printing hardware.",
+                "style": {
+                  "fill": "#AAB0D0",
+                  "typography": {
+                    "fill": "#AAB0D0",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 15,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color08",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size04",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "powered-card-0",
+                "name": "powered-card-0",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 40,
+                  "y": 50,
+                  "width": 140,
+                  "height": 140
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#101427",
+                  "stroke": {
+                    "color": "#31375A",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 12
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color18",
+                  "strokeColor": "color.palette.color02",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "powered-card-img-0",
+                "name": "powered-card-img-0",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 48,
+                  "y": 58,
+                  "width": 124,
+                  "height": 124
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-send-56390b29.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-send-56390b29.jpg",
+                  "relativePath": "assets-structured/carbon/home-send-56390b29.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "powered-card-caption-0",
+                "name": "powered-card-caption-0",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 40,
+                  "y": 164,
+                  "width": 140,
+                  "height": 26
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#00000044"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color17"
+                }
+              },
+              {
+                "id": "powered-card-label-0",
+                "name": "powered-card-label-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 48,
+                  "y": 170,
+                  "width": 124,
+                  "height": 14
+                },
+                "href": "#page-products",
+                "content": "SEND Impact Airpads",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size11",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "powered-card-1",
+                "name": "powered-card-1",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 210,
+                  "y": 50,
+                  "width": 140,
+                  "height": 140
+                },
+                "href": "#page-footwear",
+                "content": "",
+                "style": {
+                  "fill": "#101427",
+                  "stroke": {
+                    "color": "#31375A",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 12
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color18",
+                  "strokeColor": "color.palette.color02",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "powered-card-img-1",
+                "name": "powered-card-img-1",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 218,
+                  "y": 58,
+                  "width": 124,
+                  "height": 124
+                },
+                "href": "#page-footwear",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-saddle-96b03382.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-saddle-96b03382.jpg",
+                  "relativePath": "assets-structured/carbon/home-saddle-96b03382.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "powered-card-caption-1",
+                "name": "powered-card-caption-1",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 210,
+                  "y": 164,
+                  "width": 140,
+                  "height": 26
+                },
+                "href": "#page-footwear",
+                "content": "",
+                "style": {
+                  "fill": "#00000044"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color17"
+                }
+              },
+              {
+                "id": "powered-card-label-1",
+                "name": "powered-card-label-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 218,
+                  "y": 170,
+                  "width": 124,
+                  "height": 14
+                },
+                "href": "#page-footwear",
+                "content": "Specialized Mirror",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size11",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "powered-card-2",
+                "name": "powered-card-2",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 380,
+                  "y": 50,
+                  "width": 140,
+                  "height": 140
+                },
+                "href": "#page-footwear",
+                "content": "",
+                "style": {
+                  "fill": "#101427",
+                  "stroke": {
+                    "color": "#31375A",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 12
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color18",
+                  "strokeColor": "color.palette.color02",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "powered-card-img-2",
+                "name": "powered-card-img-2",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 388,
+                  "y": 58,
+                  "width": 124,
+                  "height": 124
+                },
+                "href": "#page-footwear",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+                  "relativePath": "assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "powered-card-caption-2",
+                "name": "powered-card-caption-2",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 380,
+                  "y": 164,
+                  "width": 140,
+                  "height": 26
+                },
+                "href": "#page-footwear",
+                "content": "",
+                "style": {
+                  "fill": "#00000044"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color17"
+                }
+              },
+              {
+                "id": "powered-card-label-2",
+                "name": "powered-card-label-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 388,
+                  "y": 170,
+                  "width": 124,
+                  "height": 14
+                },
+                "href": "#page-footwear",
+                "content": "Adidas 4D",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size11",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "powered-card-3",
+                "name": "powered-card-3",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 960,
+                  "y": 50,
+                  "width": 140,
+                  "height": 140
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": "#101427",
+                  "stroke": {
+                    "color": "#31375A",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 12
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color18",
+                  "strokeColor": "color.palette.color02",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "powered-card-img-3",
+                "name": "powered-card-img-3",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 968,
+                  "y": 58,
+                  "width": 124,
+                  "height": 124
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-helmet-b170d235.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-helmet-b170d235.jpg",
+                  "relativePath": "assets-structured/carbon/home-helmet-b170d235.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "powered-card-caption-3",
+                "name": "powered-card-caption-3",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 960,
+                  "y": 164,
+                  "width": 140,
+                  "height": 26
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": "#00000044"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color17"
+                }
+              },
+              {
+                "id": "powered-card-label-3",
+                "name": "powered-card-label-3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 968,
+                  "y": 170,
+                  "width": 124,
+                  "height": 14
+                },
+                "href": "#page-industries",
+                "content": "Riddell Helmet",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size11",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "powered-card-4",
+                "name": "powered-card-4",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 1130,
+                  "y": 50,
+                  "width": 140,
+                  "height": 140
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#101427",
+                  "stroke": {
+                    "color": "#31375A",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 12
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color18",
+                  "strokeColor": "color.palette.color02",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "powered-card-img-4",
+                "name": "powered-card-img-4",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 1138,
+                  "y": 58,
+                  "width": 124,
+                  "height": 124
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-bike-63f07d54.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-bike-63f07d54.jpg",
+                  "relativePath": "assets-structured/carbon/home-bike-63f07d54.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "powered-card-caption-4",
+                "name": "powered-card-caption-4",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 1130,
+                  "y": 164,
+                  "width": 140,
+                  "height": 26
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#00000044"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color17"
+                }
+              },
+              {
+                "id": "powered-card-label-4",
+                "name": "powered-card-label-4",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 1138,
+                  "y": 170,
+                  "width": 124,
+                  "height": 14
+                },
+                "href": "#page-products",
+                "content": "KU Cycle",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size11",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 560,
+            "width": 390,
+            "height": 480
+          },
+          "blockCount": 25,
+          "blockTree": {
+            "id": "powered",
+            "name": "Powered",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 560,
+              "width": 390,
+              "height": 480
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#0D1022",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color07"
+            },
+            "children": [
+              {
+                "id": "powered-bg",
+                "name": "powered-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 480
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#0D1022"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07"
+                }
+              },
+              {
+                "id": "powered-title-a",
+                "name": "powered-title-a",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 20,
+                  "y": 26,
+                  "width": 300,
+                  "height": 58
+                },
+                "href": "",
+                "content": "Powered",
+                "style": {
+                  "fill": "#747B9E",
+                  "typography": {
+                    "fill": "#747B9E",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 36,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color23",
+                  "textColor": "textColor.palette.text09",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size13",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "powered-title-b",
+                "name": "powered-title-b",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 20,
+                  "y": 74,
+                  "width": 140,
+                  "height": 58
+                },
+                "href": "",
+                "content": "By",
+                "style": {
+                  "fill": "#747B9E",
+                  "typography": {
+                    "fill": "#747B9E",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 36,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color23",
+                  "textColor": "textColor.palette.text09",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size13",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "powered-title-c",
+                "name": "powered-title-c",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 20,
+                  "y": 118,
+                  "width": 220,
+                  "height": 58
+                },
+                "href": "",
+                "content": "Carbon",
+                "style": {
+                  "fill": "#5FD3FF",
+                  "typography": {
+                    "fill": "#5FD3FF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 36,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color09",
+                  "textColor": "textColor.palette.text05",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size13",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "powered-copy",
+                "name": "powered-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 20,
+                  "y": 174,
+                  "width": 350,
+                  "height": 75
+                },
+                "href": "",
+                "content": "Our customers create products with exceptional mechanical properties using our advanced photopolymer resins, computational design tools, and 3D printing hardware.",
+                "style": {
+                  "fill": "#AAB0D0",
+                  "typography": {
+                    "fill": "#AAB0D0",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color08",
+                  "textColor": "textColor.palette.text04",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "powered-card-0",
+                "name": "powered-card-0",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 238,
+                  "width": 164,
+                  "height": 92
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#101427",
+                  "stroke": {
+                    "color": "#31375A",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 12
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color18",
+                  "strokeColor": "color.palette.color02",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "powered-card-img-0",
+                "name": "powered-card-img-0",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 28,
+                  "y": 246,
+                  "width": 148,
+                  "height": 76
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-send-56390b29.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-send-56390b29.jpg",
+                  "relativePath": "assets-structured/carbon/home-send-56390b29.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "powered-card-caption-0",
+                "name": "powered-card-caption-0",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 304,
+                  "width": 164,
+                  "height": 26
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#00000044"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color17"
+                }
+              },
+              {
+                "id": "powered-card-label-0",
+                "name": "powered-card-label-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 28,
+                  "y": 310,
+                  "width": 148,
+                  "height": 14
+                },
+                "href": "#page-products",
+                "content": "SEND Impact Airpads",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size11",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "powered-card-1",
+                "name": "powered-card-1",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 194,
+                  "y": 238,
+                  "width": 164,
+                  "height": 92
+                },
+                "href": "#page-footwear",
+                "content": "",
+                "style": {
+                  "fill": "#101427",
+                  "stroke": {
+                    "color": "#31375A",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 12
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color18",
+                  "strokeColor": "color.palette.color02",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "powered-card-img-1",
+                "name": "powered-card-img-1",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 202,
+                  "y": 246,
+                  "width": 148,
+                  "height": 76
+                },
+                "href": "#page-footwear",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-saddle-96b03382.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-saddle-96b03382.jpg",
+                  "relativePath": "assets-structured/carbon/home-saddle-96b03382.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "powered-card-caption-1",
+                "name": "powered-card-caption-1",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 194,
+                  "y": 304,
+                  "width": 164,
+                  "height": 26
+                },
+                "href": "#page-footwear",
+                "content": "",
+                "style": {
+                  "fill": "#00000044"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color17"
+                }
+              },
+              {
+                "id": "powered-card-label-1",
+                "name": "powered-card-label-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 202,
+                  "y": 310,
+                  "width": 148,
+                  "height": 14
+                },
+                "href": "#page-footwear",
+                "content": "Specialized Mirror",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size11",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "powered-card-2",
+                "name": "powered-card-2",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 356,
+                  "width": 164,
+                  "height": 92
+                },
+                "href": "#page-footwear",
+                "content": "",
+                "style": {
+                  "fill": "#101427",
+                  "stroke": {
+                    "color": "#31375A",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 12
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color18",
+                  "strokeColor": "color.palette.color02",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "powered-card-img-2",
+                "name": "powered-card-img-2",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 28,
+                  "y": 364,
+                  "width": 148,
+                  "height": 76
+                },
+                "href": "#page-footwear",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+                  "relativePath": "assets-structured/carbon/home-adidas-00a4f7b3.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "powered-card-caption-2",
+                "name": "powered-card-caption-2",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 422,
+                  "width": 164,
+                  "height": 26
+                },
+                "href": "#page-footwear",
+                "content": "",
+                "style": {
+                  "fill": "#00000044"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color17"
+                }
+              },
+              {
+                "id": "powered-card-label-2",
+                "name": "powered-card-label-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 28,
+                  "y": 428,
+                  "width": 148,
+                  "height": 14
+                },
+                "href": "#page-footwear",
+                "content": "Adidas 4D",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size11",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "powered-card-3",
+                "name": "powered-card-3",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 194,
+                  "y": 356,
+                  "width": 164,
+                  "height": 92
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": "#101427",
+                  "stroke": {
+                    "color": "#31375A",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 12
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color18",
+                  "strokeColor": "color.palette.color02",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "powered-card-img-3",
+                "name": "powered-card-img-3",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 202,
+                  "y": 364,
+                  "width": 148,
+                  "height": 76
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-helmet-b170d235.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-helmet-b170d235.jpg",
+                  "relativePath": "assets-structured/carbon/home-helmet-b170d235.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "powered-card-caption-3",
+                "name": "powered-card-caption-3",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 194,
+                  "y": 422,
+                  "width": 164,
+                  "height": 26
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": "#00000044"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color17"
+                }
+              },
+              {
+                "id": "powered-card-label-3",
+                "name": "powered-card-label-3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 202,
+                  "y": 428,
+                  "width": 148,
+                  "height": 14
+                },
+                "href": "#page-industries",
+                "content": "Riddell Helmet",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size11",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "powered-card-4",
+                "name": "powered-card-4",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 474,
+                  "width": 164,
+                  "height": 92
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#101427",
+                  "stroke": {
+                    "color": "#31375A",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 12
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color18",
+                  "strokeColor": "color.palette.color02",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "powered-card-img-4",
+                "name": "powered-card-img-4",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 28,
+                  "y": 482,
+                  "width": 148,
+                  "height": 76
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-bike-63f07d54.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-bike-63f07d54.jpg",
+                  "relativePath": "assets-structured/carbon/home-bike-63f07d54.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "powered-card-caption-4",
+                "name": "powered-card-caption-4",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 540,
+                  "width": 164,
+                  "height": 26
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#00000044"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color17"
+                }
+              },
+              {
+                "id": "powered-card-label-4",
+                "name": "powered-card-label-4",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 28,
+                  "y": 546,
+                  "width": 148,
+                  "height": 14
+                },
+                "href": "#page-products",
+                "content": "KU Cycle",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 10,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size11",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "fusion",
+      "sectionKey": "fusion",
+      "sectionName": "Fusion",
+      "sectionKind": "generic",
+      "order": {
+        "desktop": 2,
+        "mobile": 2
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 1280,
+            "width": 1440,
+            "height": 430
+          },
+          "blockCount": 5,
+          "blockTree": {
+            "id": "fusion",
+            "name": "Fusion",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1280,
+              "width": 1440,
+              "height": 430
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#2C245B",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color22"
+            },
+            "children": [
+              {
+                "id": "fusion-bg",
+                "name": "fusion-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 430
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#2C245B"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color22"
+                }
+              },
+              {
+                "id": "fusion-title",
+                "name": "fusion-title",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 350,
+                  "y": 34,
+                  "width": 760,
+                  "height": 103
+                },
+                "href": "",
+                "content": "A Fusion of Innovative Tools and Your Imagination",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 34,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size19",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "fusion-video",
+                "name": "fusion-video",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 290,
+                  "y": 108,
+                  "width": 860,
+                  "height": 260
+                },
+                "href": "#page-platform",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 20
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius06"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-video-619161bb.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-video-619161bb.jpg",
+                  "relativePath": "assets-structured/carbon/home-video-619161bb.jpg",
+                  "exists": true,
+                  "mode": "fill"
+                }
+              },
+              {
+                "id": "fusion-play-bg",
+                "name": "fusion-play-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 694,
+                  "y": 205,
+                  "width": 58,
+                  "height": 58
+                },
+                "href": "#page-platform",
+                "content": "",
+                "style": {
+                  "fill": "#7256FF",
+                  "cornerRadius": 29
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "cornerRadius": "radius.palette.radius10"
+                }
+              },
+              {
+                "id": "fusion-play",
+                "name": "fusion-play",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 716,
+                  "y": 217,
+                  "width": 22,
+                  "height": 22
+                },
+                "href": "#page-platform",
+                "content": "▶",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 20,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size17",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 1040,
+            "width": 390,
+            "height": 400
+          },
+          "blockCount": 5,
+          "blockTree": {
+            "id": "fusion",
+            "name": "Fusion",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1040,
+              "width": 390,
+              "height": 400
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#2C245B",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color22"
+            },
+            "children": [
+              {
+                "id": "fusion-bg",
+                "name": "fusion-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 400
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#2C245B"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color22"
+                }
+              },
+              {
+                "id": "fusion-title",
+                "name": "fusion-title",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 22,
+                  "y": 26,
+                  "width": 320,
+                  "height": 69
+                },
+                "href": "",
+                "content": "A Fusion of Innovative Tools and Your Imagination",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 22,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size15",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "fusion-video",
+                "name": "fusion-video",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 20,
+                  "y": 86,
+                  "width": 350,
+                  "height": 196
+                },
+                "href": "#page-platform",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 20
+                },
+                "tokenRefs": {
+                  "cornerRadius": "radius.palette.radius06"
+                },
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-video-619161bb.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-video-619161bb.jpg",
+                  "relativePath": "assets-structured/carbon/home-video-619161bb.jpg",
+                  "exists": true,
+                  "mode": "fill"
+                }
+              },
+              {
+                "id": "fusion-play-bg",
+                "name": "fusion-play-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 164,
+                  "y": 170,
+                  "width": 42,
+                  "height": 42
+                },
+                "href": "#page-platform",
+                "content": "",
+                "style": {
+                  "fill": "#7256FF",
+                  "cornerRadius": 21
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "cornerRadius": "radius.palette.radius09"
+                }
+              },
+              {
+                "id": "fusion-play",
+                "name": "fusion-play",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 179,
+                  "y": 178,
+                  "width": 22,
+                  "height": 22
+                },
+                "href": "#page-platform",
+                "content": "▶",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 14,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size12",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "trusted",
+      "sectionKey": "trusted",
+      "sectionName": "Trusted",
+      "sectionKind": "generic",
+      "order": {
+        "desktop": 3,
+        "mobile": 3
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 1710,
+            "width": 1440,
+            "height": 360
+          },
+          "blockCount": 15,
+          "blockTree": {
+            "id": "trusted",
+            "name": "Trusted",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1710,
+              "width": 1440,
+              "height": 360
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#F7F7FB",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color24"
+            },
+            "children": [
+              {
+                "id": "trusted-bg",
+                "name": "trusted-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 360
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#F7F7FB"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color24"
+                }
+              },
+              {
+                "id": "trusted-title",
+                "name": "trusted-title",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 560,
+                  "y": 34,
+                  "width": 220,
+                  "height": 66
+                },
+                "href": "",
+                "content": "Trusted",
+                "style": {
+                  "fill": "#7256FF",
+                  "typography": {
+                    "fill": "#7256FF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 42,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text11",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size20",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "trusted-sub",
+                "name": "trusted-sub",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 514,
+                  "y": 86,
+                  "width": 320,
+                  "height": 69
+                },
+                "href": "",
+                "content": "and Proven in Your Industry",
+                "style": {
+                  "fill": "#6F7390",
+                  "typography": {
+                    "fill": "#6F7390",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 22,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color28",
+                  "textColor": "textColor.palette.text10",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size15",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "trusted-card-0",
+                "name": "trusted-card-0",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 40,
+                  "y": 146,
+                  "width": 300,
+                  "height": 150
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#E0E3F0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 10
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "strokeColor": "color.palette.color20",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "trusted-img-0",
+                "name": "trusted-img-0",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 52,
+                  "y": 156,
+                  "width": 276,
+                  "height": 104
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+                  "relativePath": "assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "trusted-label-0",
+                "name": "trusted-label-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 52,
+                  "y": 268,
+                  "width": 276,
+                  "height": 18
+                },
+                "href": "#page-industries",
+                "content": "Sports",
+                "style": {
+                  "fill": "#1D2240",
+                  "typography": {
+                    "fill": "#1D2240",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 14,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color19",
+                  "textColor": "textColor.palette.text08",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size12",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "trusted-card-1",
+                "name": "trusted-card-1",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 380,
+                  "y": 146,
+                  "width": 300,
+                  "height": 150
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#E0E3F0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 10
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "strokeColor": "color.palette.color20",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "trusted-img-1",
+                "name": "trusted-img-1",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 392,
+                  "y": 156,
+                  "width": 276,
+                  "height": 104
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+                  "relativePath": "assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "trusted-label-1",
+                "name": "trusted-label-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 392,
+                  "y": 268,
+                  "width": 276,
+                  "height": 18
+                },
+                "href": "#page-products",
+                "content": "Backpacks",
+                "style": {
+                  "fill": "#1D2240",
+                  "typography": {
+                    "fill": "#1D2240",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 14,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color19",
+                  "textColor": "textColor.palette.text08",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size12",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "trusted-card-2",
+                "name": "trusted-card-2",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 720,
+                  "y": 146,
+                  "width": 300,
+                  "height": 150
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#E0E3F0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 10
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "strokeColor": "color.palette.color20",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "trusted-img-2",
+                "name": "trusted-img-2",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 732,
+                  "y": 156,
+                  "width": 276,
+                  "height": 104
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted3-d85f2352.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted3-d85f2352.jpg",
+                  "relativePath": "assets-structured/carbon/home-trusted3-d85f2352.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "trusted-label-2",
+                "name": "trusted-label-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 732,
+                  "y": 268,
+                  "width": 276,
+                  "height": 18
+                },
+                "href": "#page-industries",
+                "content": "Protection",
+                "style": {
+                  "fill": "#1D2240",
+                  "typography": {
+                    "fill": "#1D2240",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 14,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color19",
+                  "textColor": "textColor.palette.text08",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size12",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "trusted-card-3",
+                "name": "trusted-card-3",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 1060,
+                  "y": 146,
+                  "width": 300,
+                  "height": 150
+                },
+                "href": "#page-platform",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#E0E3F0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 10
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "strokeColor": "color.palette.color20",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "trusted-img-3",
+                "name": "trusted-img-3",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 1072,
+                  "y": 156,
+                  "width": 276,
+                  "height": 104
+                },
+                "href": "#page-platform",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+                  "relativePath": "assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "trusted-label-3",
+                "name": "trusted-label-3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 1072,
+                  "y": 268,
+                  "width": 276,
+                  "height": 18
+                },
+                "href": "#page-platform",
+                "content": "Custom Fit",
+                "style": {
+                  "fill": "#1D2240",
+                  "typography": {
+                    "fill": "#1D2240",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 14,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color19",
+                  "textColor": "textColor.palette.text08",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size12",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 1440,
+            "width": 390,
+            "height": 420
+          },
+          "blockCount": 15,
+          "blockTree": {
+            "id": "trusted",
+            "name": "Trusted",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1440,
+              "width": 390,
+              "height": 420
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#F7F7FB",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color24"
+            },
+            "children": [
+              {
+                "id": "trusted-bg",
+                "name": "trusted-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 420
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#F7F7FB"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color24"
+                }
+              },
+              {
+                "id": "trusted-title",
+                "name": "trusted-title",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 20,
+                  "y": 28,
+                  "width": 220,
+                  "height": 49
+                },
+                "href": "",
+                "content": "Trusted",
+                "style": {
+                  "fill": "#7256FF",
+                  "typography": {
+                    "fill": "#7256FF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 30,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "textColor": "textColor.palette.text11",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size07",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "trusted-sub",
+                "name": "trusted-sub",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 20,
+                  "y": 68,
+                  "width": 350,
+                  "height": 32
+                },
+                "href": "",
+                "content": "and Proven in Your Industry",
+                "style": {
+                  "fill": "#6F7390",
+                  "typography": {
+                    "fill": "#6F7390",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color28",
+                  "textColor": "textColor.palette.text10",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "trusted-card-0",
+                "name": "trusted-card-0",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 122,
+                  "width": 164,
+                  "height": 116
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#E0E3F0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 10
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "strokeColor": "color.palette.color20",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "trusted-img-0",
+                "name": "trusted-img-0",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 32,
+                  "y": 132,
+                  "width": 140,
+                  "height": 70
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+                  "relativePath": "assets-structured/carbon/home-trusted1-3ebe5f85.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "trusted-label-0",
+                "name": "trusted-label-0",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 32,
+                  "y": 210,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "#page-industries",
+                "content": "Sports",
+                "style": {
+                  "fill": "#1D2240",
+                  "typography": {
+                    "fill": "#1D2240",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color19",
+                  "textColor": "textColor.palette.text08",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "trusted-card-1",
+                "name": "trusted-card-1",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 194,
+                  "y": 122,
+                  "width": 164,
+                  "height": 116
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#E0E3F0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 10
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "strokeColor": "color.palette.color20",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "trusted-img-1",
+                "name": "trusted-img-1",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 206,
+                  "y": 132,
+                  "width": 140,
+                  "height": 70
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+                  "relativePath": "assets-structured/carbon/home-trusted2-c4d52ba1.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "trusted-label-1",
+                "name": "trusted-label-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 206,
+                  "y": 210,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "#page-products",
+                "content": "Backpacks",
+                "style": {
+                  "fill": "#1D2240",
+                  "typography": {
+                    "fill": "#1D2240",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color19",
+                  "textColor": "textColor.palette.text08",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "trusted-card-2",
+                "name": "trusted-card-2",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 20,
+                  "y": 254,
+                  "width": 164,
+                  "height": 116
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#E0E3F0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 10
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "strokeColor": "color.palette.color20",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "trusted-img-2",
+                "name": "trusted-img-2",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 32,
+                  "y": 264,
+                  "width": 140,
+                  "height": 70
+                },
+                "href": "#page-industries",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted3-d85f2352.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted3-d85f2352.jpg",
+                  "relativePath": "assets-structured/carbon/home-trusted3-d85f2352.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "trusted-label-2",
+                "name": "trusted-label-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 32,
+                  "y": 342,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "#page-industries",
+                "content": "Protection",
+                "style": {
+                  "fill": "#1D2240",
+                  "typography": {
+                    "fill": "#1D2240",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color19",
+                  "textColor": "textColor.palette.text08",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "trusted-card-3",
+                "name": "trusted-card-3",
+                "type": "rectangle",
+                "role": "shape",
+                "bounds": {
+                  "x": 194,
+                  "y": 254,
+                  "width": 164,
+                  "height": 116
+                },
+                "href": "#page-platform",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "color": "#E0E3F0",
+                    "thickness": 1
+                  },
+                  "cornerRadius": 10
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "strokeColor": "color.palette.color20",
+                  "cornerRadius": "radius.palette.radius03"
+                }
+              },
+              {
+                "id": "trusted-img-3",
+                "name": "trusted-img-3",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 206,
+                  "y": 264,
+                  "width": 140,
+                  "height": 70
+                },
+                "href": "#page-platform",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "contain"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+                  "relativePath": "assets-structured/carbon/home-trusted4-bfb7840a.jpg",
+                  "exists": true,
+                  "mode": "contain"
+                }
+              },
+              {
+                "id": "trusted-label-3",
+                "name": "trusted-label-3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 206,
+                  "y": 342,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "#page-platform",
+                "content": "Custom Fit",
+                "style": {
+                  "fill": "#1D2240",
+                  "typography": {
+                    "fill": "#1D2240",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color19",
+                  "textColor": "textColor.palette.text08",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionKey": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": {
+        "desktop": 4,
+        "mobile": 4
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 2070,
+            "width": 1440,
+            "height": 320
+          },
+          "blockCount": 13,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 2070,
+              "width": 1440,
+              "height": 320
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#070A14",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color11"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 320
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#070A14"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color11"
+                }
+              },
+              {
+                "id": "footer-logo",
+                "name": "footer-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 40,
+                  "y": 28,
+                  "width": 110,
+                  "height": 34
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "footer-Platform",
+                "name": "footer-Platform",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PLATFORM",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Platform-body",
+                "name": "footer-Platform-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 40,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "How it Works\nMaterials\nSoftware\nHardware",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Products",
+                "name": "footer-Products",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 260,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PRODUCTS",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Products-body",
+                "name": "footer-Products-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 260,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Industries",
+                "name": "footer-Industries",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 500,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "INDUSTRIES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Industries-body",
+                "name": "footer-Industries-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 500,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "Consumer\nDental\nOrthodontics\nIndustrial",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Resources",
+                "name": "footer-Resources",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 760,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "RESOURCES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Resources-body",
+                "name": "footer-Resources-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 760,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "Blog\nCase studies\nCourses\nDatasheets",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-About",
+                "name": "footer-About",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 1020,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "ABOUT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-About-body",
+                "name": "footer-About-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 1020,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "About Carbon\nNewsroom\nContact Us\nPartners",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 40,
+                  "y": 282,
+                  "width": 520,
+                  "height": 38
+                },
+                "href": "",
+                "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+                "style": {
+                  "fill": "#B9C0DA",
+                  "typography": {
+                    "fill": "#B9C0DA",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color13",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 1860,
+            "width": 390,
+            "height": 360
+          },
+          "blockCount": 9,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1860,
+              "width": 390,
+              "height": 360
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#070A14",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color11"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 360
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#070A14"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color11"
+                }
+              },
+              {
+                "id": "footer-logo",
+                "name": "footer-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 18,
+                  "y": 24,
+                  "width": 84,
+                  "height": 26
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "footer-Platform",
+                "name": "footer-Platform",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 74,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PLATFORM",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Platform-body",
+                "name": "footer-Platform-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 18,
+                  "y": 98,
+                  "width": 100,
+                  "height": 53
+                },
+                "href": "",
+                "content": "How it Works\nMaterials\nSoftware",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Products",
+                "name": "footer-Products",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 140,
+                  "y": 74,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PRODUCTS",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Products-body",
+                "name": "footer-Products-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 140,
+                  "y": 98,
+                  "width": 100,
+                  "height": 53
+                },
+                "href": "",
+                "content": "M3 Printer\nM2 Printer\nL1 Printer",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-About",
+                "name": "footer-About",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 262,
+                  "y": 74,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "ABOUT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-About-body",
+                "name": "footer-About-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 262,
+                  "y": 98,
+                  "width": 100,
+                  "height": 53
+                },
+                "href": "",
+                "content": "About Carbon\nNewsroom\nContact",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 18,
+                  "y": 322,
+                  "width": 330,
+                  "height": 53
+                },
+                "href": "",
+                "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+                "style": {
+                  "fill": "#B9C0DA",
+                  "typography": {
+                    "fill": "#B9C0DA",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color13",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

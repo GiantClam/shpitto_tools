@@ -1,0 +1,291 @@
+{
+  "sectionId": "5jZu7",
+  "sectionName": "nav",
+  "sectionKind": "navigation",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 40,
+    "width": 1200,
+    "height": 78
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 9,
+  "treeHash": "5fe0a2a17fb6e3a2c6c40eb2458478f445057e7c3a9681ac26c03ed9c5202913",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "ceV9X",
+      "blockName": "",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 18.5,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a5328fb1e0f165f7b5bdd5666f3616865db245fe2fd4d039a7823bd2bc8dbbca"
+    },
+    {
+      "blockId": "f5kO0",
+      "blockName": "navRight",
+      "blockType": "frame",
+      "order": 1,
+      "bounds": {
+        "x": 525,
+        "y": 17,
+        "width": 643,
+        "height": 44
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 7,
+      "treeHash": "ccb239f7b814da2174654774930dda687e2afdadf6fe6680cb42ab9057041226"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "ceV9X",
+      "blockName": "",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 18.5,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a5328fb1e0f165f7b5bdd5666f3616865db245fe2fd4d039a7823bd2bc8dbbca",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ceV9X",
+        "x": 32,
+        "y": 18.5,
+        "fill": "#FFFFFF",
+        "content": "IONQ",
+        "fontFamily": "Inter",
+        "fontSize": 34,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "f5kO0",
+      "blockName": "navRight",
+      "blockType": "frame",
+      "order": 1,
+      "bounds": {
+        "x": 525,
+        "y": 17,
+        "width": 643,
+        "height": 44
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 7,
+      "treeHash": "ccb239f7b814da2174654774930dda687e2afdadf6fe6680cb42ab9057041226",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "f5kO0",
+        "x": 525,
+        "y": 17,
+        "name": "navRight",
+        "width": 643,
+        "height": 44,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "zHo6t",
+            "x": -60,
+            "y": 13,
+            "name": "navMenu",
+            "fill": "#E7EDF4",
+            "content": "Products   Company   Resources   Careers   Roadmap   Blog",
+            "fontFamily": "Inter",
+            "fontSize": 15,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "6cjbF",
+            "x": 403,
+            "y": 0,
+            "name": "navActions",
+            "width": 240,
+            "height": 44,
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "KHhKe",
+                "x": 0,
+                "y": 0,
+                "name": "getStartedBtn",
+                "width": 124,
+                "height": 44,
+                "fill": "#FF6A00",
+                "cornerRadius": 10,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "kjP11",
+                    "name": "getStartedTxt",
+                    "fill": "#FFFFFF",
+                    "content": "Get started",
+                    "fontFamily": "Inter",
+                    "fontSize": 15,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "a4KAD",
+                "x": 138,
+                "y": 0,
+                "name": "signInBtn",
+                "width": 102,
+                "height": 44,
+                "fill": "#2B2F36",
+                "cornerRadius": 10,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "uhf5X",
+                    "name": "signInTxt",
+                    "fill": "#FFFFFF",
+                    "content": "Sign in",
+                    "fontFamily": "Inter",
+                    "fontSize": 15,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "5jZu7",
+    "x": 0,
+    "y": 40,
+    "name": "nav",
+    "width": 1200,
+    "height": 78,
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "ceV9X",
+        "x": 32,
+        "y": 18.5,
+        "fill": "#FFFFFF",
+        "content": "IONQ",
+        "fontFamily": "Inter",
+        "fontSize": 34,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "f5kO0",
+        "x": 525,
+        "y": 17,
+        "name": "navRight",
+        "width": 643,
+        "height": 44,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "zHo6t",
+            "x": -60,
+            "y": 13,
+            "name": "navMenu",
+            "fill": "#E7EDF4",
+            "content": "Products   Company   Resources   Careers   Roadmap   Blog",
+            "fontFamily": "Inter",
+            "fontSize": 15,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "6cjbF",
+            "x": 403,
+            "y": 0,
+            "name": "navActions",
+            "width": 240,
+            "height": 44,
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "KHhKe",
+                "x": 0,
+                "y": 0,
+                "name": "getStartedBtn",
+                "width": 124,
+                "height": 44,
+                "fill": "#FF6A00",
+                "cornerRadius": 10,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "kjP11",
+                    "name": "getStartedTxt",
+                    "fill": "#FFFFFF",
+                    "content": "Get started",
+                    "fontFamily": "Inter",
+                    "fontSize": 15,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "a4KAD",
+                "x": 138,
+                "y": 0,
+                "name": "signInBtn",
+                "width": 102,
+                "height": 44,
+                "fill": "#2B2F36",
+                "cornerRadius": 10,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "uhf5X",
+                    "name": "signInTxt",
+                    "fill": "#FFFFFF",
+                    "content": "Sign in",
+                    "fontFamily": "Inter",
+                    "fontSize": 15,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

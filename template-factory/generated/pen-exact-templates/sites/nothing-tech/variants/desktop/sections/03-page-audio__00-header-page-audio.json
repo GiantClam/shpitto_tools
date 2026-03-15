@@ -1,0 +1,491 @@
+{
+  "sectionId": "header-page-audio",
+  "sectionName": "Header",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 84
+  },
+  "directChildCount": 7,
+  "recursiveNodeCount": 8,
+  "treeHash": "364476adc6a6ab82c492c42a0ad7837d7571114b297daaf9558d8d398a4d2902",
+  "blockCount": 7,
+  "blockIndex": [
+    {
+      "blockId": "header-bg",
+      "blockName": "header-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7"
+    },
+    {
+      "blockId": "header-brand",
+      "blockName": "header-brand",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 24,
+        "width": 240,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2b539879e82b39cc6497ce9b41c85669ddb553439b78af9aa1cbd3e640216ce3"
+    },
+    {
+      "blockId": "nav-page-offers",
+      "blockName": "nav-page-offers",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 840,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "88b99c76f9ccdbee4ca4d4038004b89a5f195356c62c9226bbeef933363faba4"
+    },
+    {
+      "blockId": "nav-page-phones",
+      "blockName": "nav-page-phones",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 948,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6a54b18777824be37969488c9eca4a0341880b0384e94986618a6974648fdcb6"
+    },
+    {
+      "blockId": "nav-page-audio",
+      "blockName": "nav-page-audio",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 1056,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "26dade94af7c65f8576445eaecec5b3330c1a42b6f62eabe137830b60a094afc"
+    },
+    {
+      "blockId": "nav-page-support-centre",
+      "blockName": "nav-page-support-centre",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 1164,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "49d25c7ad98b6b59989dfce607a1397b7e547357e5718c725e36940c78da84d3"
+    },
+    {
+      "blockId": "nav-page-contact-support",
+      "blockName": "nav-page-contact-support",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 1272,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4950503d6074fca1ec857f2d7b7013067d64f2cf34ebad7ea7de3d8d4f0071d4"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "header-bg",
+      "blockName": "header-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "header-bg",
+        "name": "header-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#FFFFFF"
+      }
+    },
+    {
+      "blockId": "header-brand",
+      "blockName": "header-brand",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 24,
+        "width": 240,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2b539879e82b39cc6497ce9b41c85669ddb553439b78af9aa1cbd3e640216ce3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "header-brand",
+        "name": "header-brand",
+        "x": 40,
+        "y": 24,
+        "fill": "#111111",
+        "content": "Nothing",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 28
+      }
+    },
+    {
+      "blockId": "nav-page-offers",
+      "blockName": "nav-page-offers",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 840,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "88b99c76f9ccdbee4ca4d4038004b89a5f195356c62c9226bbeef933363faba4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-offers",
+        "name": "nav-page-offers",
+        "x": 840,
+        "y": 30,
+        "fill": "#111111",
+        "content": "OFFERS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-offers",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-phones",
+      "blockName": "nav-page-phones",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 948,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6a54b18777824be37969488c9eca4a0341880b0384e94986618a6974648fdcb6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-phones",
+        "name": "nav-page-phones",
+        "x": 948,
+        "y": 30,
+        "fill": "#111111",
+        "content": "PHONES",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-phones",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-audio",
+      "blockName": "nav-page-audio",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 1056,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "26dade94af7c65f8576445eaecec5b3330c1a42b6f62eabe137830b60a094afc",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-audio",
+        "name": "nav-page-audio",
+        "x": 1056,
+        "y": 30,
+        "fill": "#111111",
+        "content": "AUDIO",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-audio",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-support-centre",
+      "blockName": "nav-page-support-centre",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 1164,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "49d25c7ad98b6b59989dfce607a1397b7e547357e5718c725e36940c78da84d3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-support-centre",
+        "name": "nav-page-support-centre",
+        "x": 1164,
+        "y": 30,
+        "fill": "#111111",
+        "content": "SUPPORT CENTRE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-support-centre",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "nav-page-contact-support",
+      "blockName": "nav-page-contact-support",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 1272,
+        "y": 30,
+        "width": 100,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4950503d6074fca1ec857f2d7b7013067d64f2cf34ebad7ea7de3d8d4f0071d4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nav-page-contact-support",
+        "name": "nav-page-contact-support",
+        "x": 1272,
+        "y": 30,
+        "fill": "#111111",
+        "content": "CONTACT SUPPORT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-contact-support",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "header-page-audio",
+    "name": "Header",
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 84,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "header-bg",
+        "name": "header-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#FFFFFF"
+      },
+      {
+        "type": "text",
+        "id": "header-brand",
+        "name": "header-brand",
+        "x": 40,
+        "y": 24,
+        "fill": "#111111",
+        "content": "Nothing",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 28
+      },
+      {
+        "type": "text",
+        "id": "nav-page-offers",
+        "name": "nav-page-offers",
+        "x": 840,
+        "y": 30,
+        "fill": "#111111",
+        "content": "OFFERS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-offers",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-phones",
+        "name": "nav-page-phones",
+        "x": 948,
+        "y": 30,
+        "fill": "#111111",
+        "content": "PHONES",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-phones",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-audio",
+        "name": "nav-page-audio",
+        "x": 1056,
+        "y": 30,
+        "fill": "#111111",
+        "content": "AUDIO",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-audio",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-support-centre",
+        "name": "nav-page-support-centre",
+        "x": 1164,
+        "y": 30,
+        "fill": "#111111",
+        "content": "SUPPORT CENTRE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-support-centre",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "nav-page-contact-support",
+        "name": "nav-page-contact-support",
+        "x": 1272,
+        "y": 30,
+        "fill": "#111111",
+        "content": "CONTACT SUPPORT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-contact-support",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

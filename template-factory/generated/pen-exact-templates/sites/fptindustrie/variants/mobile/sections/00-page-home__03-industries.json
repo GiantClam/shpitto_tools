@@ -1,0 +1,941 @@
+{
+  "sectionId": "industries",
+  "sectionName": "Industries",
+  "sectionKind": "generic",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 852,
+    "width": 390,
+    "height": 324
+  },
+  "directChildCount": 14,
+  "recursiveNodeCount": 15,
+  "treeHash": "d830ff34f9a5e03acfc236ff7a36113b60e0f2b6fa1933d8e5deb3dcce926ee9",
+  "blockCount": 14,
+  "blockIndex": [
+    {
+      "blockId": "ind-title",
+      "blockName": "ind-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 10,
+        "width": 180,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "53aeb7c788e32c8c7caa2a2694ddc6a5f91419c62e1b4f378f478c5e373f04c1"
+    },
+    {
+      "blockId": "ind-copy",
+      "blockName": "ind-copy",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 44,
+        "width": 350,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "06f82b8dcdf8ae65c673c77a0198fdf5cc5097ea1b5367db6a69d76839683a1a"
+    },
+    {
+      "blockId": "ind-card-1-box",
+      "blockName": "ind-card-1-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 92,
+        "width": 354,
+        "height": 148
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ac806e91d8703bfcb3bd2adf5eaa4059126834c925f6c2972c36025601c8c951"
+    },
+    {
+      "blockId": "ind-card-1-img",
+      "blockName": "ind-card-1-img",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 3,
+      "bounds": {
+        "x": 28,
+        "y": 102,
+        "width": 110,
+        "height": 88
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ac8246b1ed491096a36f00b6048743bc08997a5c490443b1201329c8f27bc7b4"
+    },
+    {
+      "blockId": "ind-card-1-title",
+      "blockName": "ind-card-1-title",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 150,
+        "y": 110,
+        "width": 200,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f7abbc7a51dc4af7a9d66a0299be7255614b05cee88d94901aea0b4eaa692cce"
+    },
+    {
+      "blockId": "ind-card-1-body",
+      "blockName": "ind-card-1-body",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 150,
+        "y": 144,
+        "width": 200,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "703c535fa2a77598928a942107780933faf999c9633fbd28e5b10d5053ceaef1"
+    },
+    {
+      "blockId": "ind-card-1-btn-box",
+      "blockName": "ind-card-1-btn-box",
+      "blockType": "rectangle",
+      "order": 6,
+      "bounds": {
+        "x": 150,
+        "y": 192,
+        "width": 120,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fa5dfeb77349d879dda62d10bd0efd8f28e084ebed39467b991b0d8df23d589e"
+    },
+    {
+      "blockId": "ind-card-1-btn-text",
+      "blockName": "ind-card-1-btn-text",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 166,
+        "y": 198,
+        "width": 88,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1c29996de06b9ec884076521a9856aee7a444e07c16af0d4371342b9210f41ad"
+    },
+    {
+      "blockId": "ind-card-2-box",
+      "blockName": "ind-card-2-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 18,
+        "y": 248,
+        "width": 354,
+        "height": 148
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cd5a99eec4dfb54eff889fe196e239a8b5a4ca6e2a69160f03861e2a140c59ad"
+    },
+    {
+      "blockId": "ind-card-2-img",
+      "blockName": "ind-card-2-img",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 9,
+      "bounds": {
+        "x": 28,
+        "y": 258,
+        "width": 110,
+        "height": 88
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dabdced25f283b46e889414bfa58ccf255b879c2c8582d03f72aa4ff4ada3dba"
+    },
+    {
+      "blockId": "ind-card-2-title",
+      "blockName": "ind-card-2-title",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 150,
+        "y": 266,
+        "width": 200,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "07f3eb67fdde7c59f4c6afabd320cc1d249016ab2be8085e87bf97f23b8f808f"
+    },
+    {
+      "blockId": "ind-card-2-body",
+      "blockName": "ind-card-2-body",
+      "blockType": "text",
+      "order": 11,
+      "bounds": {
+        "x": 150,
+        "y": 300,
+        "width": 200,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "67e2a0e89760c6806b9f0da1ea8fa4d3830043de918dc5ca23dc44c1a6d9370e"
+    },
+    {
+      "blockId": "ind-card-2-btn-box",
+      "blockName": "ind-card-2-btn-box",
+      "blockType": "rectangle",
+      "order": 12,
+      "bounds": {
+        "x": 150,
+        "y": 348,
+        "width": 120,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "adc2dc36eb0ab595069d01b506ffecd652b0cfb991fe9e8c1eaa6645d2c9315b"
+    },
+    {
+      "blockId": "ind-card-2-btn-text",
+      "blockName": "ind-card-2-btn-text",
+      "blockType": "text",
+      "order": 13,
+      "bounds": {
+        "x": 166,
+        "y": 354,
+        "width": 88,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b59abe029969fd3ac5a3e9818475d4ae29780765ad677161eca7d3d03db31a5b"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-rail.jpg",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-defense.jpg",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "ind-title",
+      "blockName": "ind-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 10,
+        "width": 180,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "53aeb7c788e32c8c7caa2a2694ddc6a5f91419c62e1b4f378f478c5e373f04c1",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ind-title",
+        "name": "ind-title",
+        "x": 18,
+        "y": 10,
+        "fill": "#3E4248",
+        "content": "应用行业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "ind-copy",
+      "blockName": "ind-copy",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 44,
+        "width": 350,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "06f82b8dcdf8ae65c673c77a0198fdf5cc5097ea1b5367db6a69d76839683a1a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ind-copy",
+        "name": "ind-copy",
+        "x": 18,
+        "y": 44,
+        "fill": "#72787F",
+        "content": "FPT 可在多个工业领域开展业务，每台机器都根据行业需求与客户生产特性制造。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 350,
+        "height": 24
+      }
+    },
+    {
+      "blockId": "ind-card-1-box",
+      "blockName": "ind-card-1-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 92,
+        "width": 354,
+        "height": 148
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ac806e91d8703bfcb3bd2adf5eaa4059126834c925f6c2972c36025601c8c951",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "ind-card-1-box",
+        "name": "ind-card-1-box",
+        "x": 18,
+        "y": 92,
+        "width": 354,
+        "height": 148,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-industries",
+        "cornerRadius": 2
+      }
+    },
+    {
+      "blockId": "ind-card-1-img",
+      "blockName": "ind-card-1-img",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 3,
+      "bounds": {
+        "x": 28,
+        "y": 102,
+        "width": 110,
+        "height": 88
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ac8246b1ed491096a36f00b6048743bc08997a5c490443b1201329c8f27bc7b4",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-rail.jpg",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "ind-card-1-img",
+        "name": "ind-card-1-img",
+        "x": 28,
+        "y": 102,
+        "width": 110,
+        "height": 88,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-rail.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-industries"
+      }
+    },
+    {
+      "blockId": "ind-card-1-title",
+      "blockName": "ind-card-1-title",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 150,
+        "y": 110,
+        "width": 200,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f7abbc7a51dc4af7a9d66a0299be7255614b05cee88d94901aea0b4eaa692cce",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ind-card-1-title",
+        "name": "ind-card-1-title",
+        "x": 150,
+        "y": 110,
+        "fill": "#3E4248",
+        "content": "铁路",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 26,
+        "href": "#page-industries"
+      }
+    },
+    {
+      "blockId": "ind-card-1-body",
+      "blockName": "ind-card-1-body",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 150,
+        "y": 144,
+        "width": 200,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "703c535fa2a77598928a942107780933faf999c9633fbd28e5b10d5053ceaef1",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ind-card-1-body",
+        "name": "ind-card-1-body",
+        "x": 150,
+        "y": 144,
+        "fill": "#72787F",
+        "content": "高稳定性和大尺寸零件加工。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 22,
+        "href": "#page-industries"
+      }
+    },
+    {
+      "blockId": "ind-card-1-btn-box",
+      "blockName": "ind-card-1-btn-box",
+      "blockType": "rectangle",
+      "order": 6,
+      "bounds": {
+        "x": 150,
+        "y": 192,
+        "width": 120,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fa5dfeb77349d879dda62d10bd0efd8f28e084ebed39467b991b0d8df23d589e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "ind-card-1-btn-box",
+        "name": "ind-card-1-btn-box",
+        "x": 150,
+        "y": 192,
+        "width": 120,
+        "height": 30,
+        "fill": "#E8C400",
+        "href": "#page-industries",
+        "cornerRadius": 18
+      }
+    },
+    {
+      "blockId": "ind-card-1-btn-text",
+      "blockName": "ind-card-1-btn-text",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 166,
+        "y": 198,
+        "width": 88,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1c29996de06b9ec884076521a9856aee7a444e07c16af0d4371342b9210f41ad",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ind-card-1-btn-text",
+        "name": "ind-card-1-btn-text",
+        "x": 166,
+        "y": 198,
+        "fill": "#565D66",
+        "content": "了解更多",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 88,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-industries",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "ind-card-2-box",
+      "blockName": "ind-card-2-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 18,
+        "y": 248,
+        "width": 354,
+        "height": 148
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cd5a99eec4dfb54eff889fe196e239a8b5a4ca6e2a69160f03861e2a140c59ad",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "ind-card-2-box",
+        "name": "ind-card-2-box",
+        "x": 18,
+        "y": 248,
+        "width": 354,
+        "height": 148,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-industries",
+        "cornerRadius": 2
+      }
+    },
+    {
+      "blockId": "ind-card-2-img",
+      "blockName": "ind-card-2-img",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 9,
+      "bounds": {
+        "x": 28,
+        "y": 258,
+        "width": 110,
+        "height": 88
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dabdced25f283b46e889414bfa58ccf255b879c2c8582d03f72aa4ff4ada3dba",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-defense.jpg",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "ind-card-2-img",
+        "name": "ind-card-2-img",
+        "x": 28,
+        "y": 258,
+        "width": 110,
+        "height": 88,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-defense.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-industries"
+      }
+    },
+    {
+      "blockId": "ind-card-2-title",
+      "blockName": "ind-card-2-title",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 150,
+        "y": 266,
+        "width": 200,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "07f3eb67fdde7c59f4c6afabd320cc1d249016ab2be8085e87bf97f23b8f808f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ind-card-2-title",
+        "name": "ind-card-2-title",
+        "x": 150,
+        "y": 266,
+        "fill": "#3E4248",
+        "content": "防务",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 26,
+        "href": "#page-industries"
+      }
+    },
+    {
+      "blockId": "ind-card-2-body",
+      "blockName": "ind-card-2-body",
+      "blockType": "text",
+      "order": 11,
+      "bounds": {
+        "x": 150,
+        "y": 300,
+        "width": 200,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "67e2a0e89760c6806b9f0da1ea8fa4d3830043de918dc5ca23dc44c1a6d9370e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ind-card-2-body",
+        "name": "ind-card-2-body",
+        "x": 150,
+        "y": 300,
+        "fill": "#72787F",
+        "content": "复杂、高精度加工场景。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 22,
+        "href": "#page-industries"
+      }
+    },
+    {
+      "blockId": "ind-card-2-btn-box",
+      "blockName": "ind-card-2-btn-box",
+      "blockType": "rectangle",
+      "order": 12,
+      "bounds": {
+        "x": 150,
+        "y": 348,
+        "width": 120,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "adc2dc36eb0ab595069d01b506ffecd652b0cfb991fe9e8c1eaa6645d2c9315b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "ind-card-2-btn-box",
+        "name": "ind-card-2-btn-box",
+        "x": 150,
+        "y": 348,
+        "width": 120,
+        "height": 30,
+        "fill": "#E8C400",
+        "href": "#page-industries",
+        "cornerRadius": 18
+      }
+    },
+    {
+      "blockId": "ind-card-2-btn-text",
+      "blockName": "ind-card-2-btn-text",
+      "blockType": "text",
+      "order": 13,
+      "bounds": {
+        "x": 166,
+        "y": 354,
+        "width": 88,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b59abe029969fd3ac5a3e9818475d4ae29780765ad677161eca7d3d03db31a5b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ind-card-2-btn-text",
+        "name": "ind-card-2-btn-text",
+        "x": 166,
+        "y": 354,
+        "fill": "#565D66",
+        "content": "了解更多",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 88,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-industries",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "industries",
+    "name": "Industries",
+    "x": 0,
+    "y": 852,
+    "width": 390,
+    "height": 324,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "ind-title",
+        "name": "ind-title",
+        "x": 18,
+        "y": 10,
+        "fill": "#3E4248",
+        "content": "应用行业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "ind-copy",
+        "name": "ind-copy",
+        "x": 18,
+        "y": 44,
+        "fill": "#72787F",
+        "content": "FPT 可在多个工业领域开展业务，每台机器都根据行业需求与客户生产特性制造。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 350,
+        "height": 24
+      },
+      {
+        "type": "rectangle",
+        "id": "ind-card-1-box",
+        "name": "ind-card-1-box",
+        "x": 18,
+        "y": 92,
+        "width": 354,
+        "height": 148,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-industries",
+        "cornerRadius": 2
+      },
+      {
+        "type": "rectangle",
+        "id": "ind-card-1-img",
+        "name": "ind-card-1-img",
+        "x": 28,
+        "y": 102,
+        "width": 110,
+        "height": 88,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-rail.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-industries"
+      },
+      {
+        "type": "text",
+        "id": "ind-card-1-title",
+        "name": "ind-card-1-title",
+        "x": 150,
+        "y": 110,
+        "fill": "#3E4248",
+        "content": "铁路",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 26,
+        "href": "#page-industries"
+      },
+      {
+        "type": "text",
+        "id": "ind-card-1-body",
+        "name": "ind-card-1-body",
+        "x": 150,
+        "y": 144,
+        "fill": "#72787F",
+        "content": "高稳定性和大尺寸零件加工。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 22,
+        "href": "#page-industries"
+      },
+      {
+        "type": "rectangle",
+        "id": "ind-card-1-btn-box",
+        "name": "ind-card-1-btn-box",
+        "x": 150,
+        "y": 192,
+        "width": 120,
+        "height": 30,
+        "fill": "#E8C400",
+        "href": "#page-industries",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "ind-card-1-btn-text",
+        "name": "ind-card-1-btn-text",
+        "x": 166,
+        "y": 198,
+        "fill": "#565D66",
+        "content": "了解更多",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 88,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-industries",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "ind-card-2-box",
+        "name": "ind-card-2-box",
+        "x": 18,
+        "y": 248,
+        "width": 354,
+        "height": 148,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-industries",
+        "cornerRadius": 2
+      },
+      {
+        "type": "rectangle",
+        "id": "ind-card-2-img",
+        "name": "ind-card-2-img",
+        "x": 28,
+        "y": 258,
+        "width": 110,
+        "height": 88,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-defense.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-industries"
+      },
+      {
+        "type": "text",
+        "id": "ind-card-2-title",
+        "name": "ind-card-2-title",
+        "x": 150,
+        "y": 266,
+        "fill": "#3E4248",
+        "content": "防务",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 26,
+        "href": "#page-industries"
+      },
+      {
+        "type": "text",
+        "id": "ind-card-2-body",
+        "name": "ind-card-2-body",
+        "x": 150,
+        "y": 300,
+        "fill": "#72787F",
+        "content": "复杂、高精度加工场景。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 22,
+        "href": "#page-industries"
+      },
+      {
+        "type": "rectangle",
+        "id": "ind-card-2-btn-box",
+        "name": "ind-card-2-btn-box",
+        "x": 150,
+        "y": 348,
+        "width": 120,
+        "height": 30,
+        "fill": "#E8C400",
+        "href": "#page-industries",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "ind-card-2-btn-text",
+        "name": "ind-card-2-btn-text",
+        "x": 166,
+        "y": 354,
+        "fill": "#565D66",
+        "content": "了解更多",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 88,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-industries",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

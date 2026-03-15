@@ -1,0 +1,6182 @@
+{
+  "generatedAt": "2026-03-11T00:49:36.302Z",
+  "sourceRunId": "tf-framework-template-from-pen-20260311-motionfix",
+  "count": 2,
+  "contracts": [
+    {
+      "profileId": "unistellar-home",
+      "name": "unistellar-home",
+      "sourceDomain": "www.unistellar.com",
+      "styleFamily": "www-unistellar-com",
+      "keywords": [
+        "unistellar-home",
+        "www.unistellar.com",
+        "profile_selector_unistellar-home",
+        "Unistellar Home",
+        "Smart Telescopes",
+        "Smart Binoculars",
+        "Technologies",
+        "Reviews",
+        "Contact",
+        "Support",
+        "Policy",
+        "About",
+        "Use Cases",
+        "Blog"
+      ],
+      "qualityScore": 100,
+      "shared": {
+        "navigation": {
+          "kind": "navigation",
+          "blockType": "TemplateExclusiveUnistellarHomeHomeNavigationNavpenPrimary",
+          "source": "profile",
+          "slotId": "shared.navigation.1",
+          "role": "shared-navigation-1",
+          "imageIntent": "none",
+          "editableFields": [
+            {
+              "path": "logotext",
+              "type": "text"
+            },
+            {
+              "path": "logohref",
+              "type": "link"
+            },
+            {
+              "path": "navl1text",
+              "type": "text"
+            },
+            {
+              "path": "navl1href",
+              "type": "link"
+            },
+            {
+              "path": "navl2text",
+              "type": "text"
+            },
+            {
+              "path": "navl2href",
+              "type": "link"
+            },
+            {
+              "path": "navl3text",
+              "type": "text"
+            },
+            {
+              "path": "navl3href",
+              "type": "link"
+            },
+            {
+              "path": "navl4text",
+              "type": "text"
+            },
+            {
+              "path": "navl4href",
+              "type": "link"
+            },
+            {
+              "path": "navl5text",
+              "type": "text"
+            },
+            {
+              "path": "navl5href",
+              "type": "link"
+            },
+            {
+              "path": "ctahref",
+              "type": "link"
+            },
+            {
+              "path": "ctatexttext",
+              "type": "text"
+            }
+          ]
+        },
+        "footer": {
+          "kind": "footer",
+          "blockType": "TemplateExclusiveUnistellarHomeHomeFooterFooterpenAlt8",
+          "source": "profile",
+          "slotId": "shared.footer.1",
+          "role": "shared-footer-1",
+          "imageIntent": "none",
+          "editableFields": [
+            {
+              "path": "ftlogotext",
+              "type": "text"
+            },
+            {
+              "path": "ftdesctext",
+              "type": "text"
+            },
+            {
+              "path": "ftdeschref",
+              "type": "link"
+            },
+            {
+              "path": "col1text",
+              "type": "text"
+            },
+            {
+              "path": "col2text",
+              "type": "text"
+            },
+            {
+              "path": "col2href",
+              "type": "link"
+            },
+            {
+              "path": "col3text",
+              "type": "text"
+            },
+            {
+              "path": "col3href",
+              "type": "link"
+            },
+            {
+              "path": "col4text",
+              "type": "text"
+            },
+            {
+              "path": "col4href",
+              "type": "link"
+            },
+            {
+              "path": "copytext",
+              "type": "text"
+            },
+            {
+              "path": "policyhome1text",
+              "type": "text"
+            },
+            {
+              "path": "policyhome2text",
+              "type": "text"
+            },
+            {
+              "path": "policyhome2href",
+              "type": "link"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "path": "/",
+          "name": "Unistellar Home",
+          "pageType": "home",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "products",
+            "socialproof",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveUnistellarHomeHomeNavigationNavpenPrimary",
+              "source": "page",
+              "slotId": "home.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "navl1text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl1href",
+                  "type": "link"
+                },
+                {
+                  "path": "navl2text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl2href",
+                  "type": "link"
+                },
+                {
+                  "path": "navl3text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl3href",
+                  "type": "link"
+                },
+                {
+                  "path": "navl4text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl4href",
+                  "type": "link"
+                },
+                {
+                  "path": "navl5text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl5href",
+                  "type": "link"
+                },
+                {
+                  "path": "ctahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctatexttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveUnistellarHomeHomeHeroHero1penAlt1",
+              "source": "page",
+              "slotId": "home.hero.1",
+              "role": "primary-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "hero1imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "h1tagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "h1text",
+                  "type": "text"
+                },
+                {
+                  "path": "h1desctext",
+                  "type": "text"
+                },
+                {
+                  "path": "learnbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "learntxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "orderbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "ordertxttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveUnistellarHomeHomeStoryExppenAlt4",
+              "source": "page",
+              "slotId": "home.story.1",
+              "role": "brand-story",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "exptagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "exptitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "expbodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "capture01imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "cap1text",
+                  "type": "text"
+                },
+                {
+                  "path": "capturemeta01text",
+                  "type": "text"
+                },
+                {
+                  "path": "capture02imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "cap2text",
+                  "type": "text"
+                },
+                {
+                  "path": "capturemeta02text",
+                  "type": "text"
+                },
+                {
+                  "path": "capture03imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "cap3text",
+                  "type": "text"
+                },
+                {
+                  "path": "capturemeta03text",
+                  "type": "text"
+                },
+                {
+                  "path": "expmetacopytext",
+                  "type": "text"
+                },
+                {
+                  "path": "expcountertext",
+                  "type": "text"
+                },
+                {
+                  "path": "expnavhinttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "products",
+              "blockType": "TemplateExclusiveUnistellarHomeHomeProductsProductpenAlt3",
+              "source": "page",
+              "slotId": "home.products.1",
+              "role": "featured-products",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "productimage01imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "prodtag01text",
+                  "type": "text"
+                },
+                {
+                  "path": "prodtitle01text",
+                  "type": "text"
+                },
+                {
+                  "path": "proddesc01text",
+                  "type": "text"
+                },
+                {
+                  "path": "prodbtn01href",
+                  "type": "link"
+                },
+                {
+                  "path": "prodbtnlabel01text",
+                  "type": "text"
+                },
+                {
+                  "path": "productimage02imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "prodtag02text",
+                  "type": "text"
+                },
+                {
+                  "path": "prodtitle02text",
+                  "type": "text"
+                },
+                {
+                  "path": "proddesc02text",
+                  "type": "text"
+                },
+                {
+                  "path": "prodbtn02href",
+                  "type": "link"
+                },
+                {
+                  "path": "prodbtnlabel02text",
+                  "type": "text"
+                },
+                {
+                  "path": "productimage03imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "prodtag03text",
+                  "type": "text"
+                },
+                {
+                  "path": "prodtitle03text",
+                  "type": "text"
+                },
+                {
+                  "path": "proddesc03text",
+                  "type": "text"
+                },
+                {
+                  "path": "prodbtn03href",
+                  "type": "link"
+                },
+                {
+                  "path": "prodbtnlabel03text",
+                  "type": "text"
+                },
+                {
+                  "path": "productimage04imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "prodtag04text",
+                  "type": "text"
+                },
+                {
+                  "path": "prodtitle04text",
+                  "type": "text"
+                },
+                {
+                  "path": "proddesc04text",
+                  "type": "text"
+                },
+                {
+                  "path": "prodbtn04href",
+                  "type": "link"
+                },
+                {
+                  "path": "prodbtnlabel04text",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "socialproof",
+              "blockType": "TemplateExclusiveUnistellarHomeHomeSocialproofTrustpenAlt6",
+              "source": "page",
+              "slotId": "home.socialproof.1",
+              "role": "customer-proof",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "trustttext",
+                  "type": "text"
+                },
+                {
+                  "path": "trustdtext",
+                  "type": "text"
+                },
+                {
+                  "path": "labela1text",
+                  "type": "text"
+                },
+                {
+                  "path": "labela2text",
+                  "type": "text"
+                },
+                {
+                  "path": "labela3text",
+                  "type": "text"
+                },
+                {
+                  "path": "labelb1text",
+                  "type": "text"
+                },
+                {
+                  "path": "labelb2text",
+                  "type": "text"
+                },
+                {
+                  "path": "labelb3text",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveUnistellarHomeHomeFooterFooterpenAlt8",
+              "source": "page",
+              "slotId": "home.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "ftlogotext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdesctext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdeschref",
+                  "type": "link"
+                },
+                {
+                  "path": "col1text",
+                  "type": "text"
+                },
+                {
+                  "path": "col2text",
+                  "type": "text"
+                },
+                {
+                  "path": "col2href",
+                  "type": "link"
+                },
+                {
+                  "path": "col3text",
+                  "type": "text"
+                },
+                {
+                  "path": "col3href",
+                  "type": "link"
+                },
+                {
+                  "path": "col4text",
+                  "type": "text"
+                },
+                {
+                  "path": "col4href",
+                  "type": "link"
+                },
+                {
+                  "path": "copytext",
+                  "type": "text"
+                },
+                {
+                  "path": "policyhome1text",
+                  "type": "text"
+                },
+                {
+                  "path": "policyhome2text",
+                  "type": "text"
+                },
+                {
+                  "path": "policyhome2href",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/smart-telescopes",
+          "name": "Smart Telescopes",
+          "pageType": "products",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "products",
+            "cta",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveUnistellarHomeSmartTelescopesNavigationHeaderpenPrimary",
+              "source": "page",
+              "slotId": "products.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "nhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "nhhref",
+                  "type": "link"
+                },
+                {
+                  "path": "nstext",
+                  "type": "text"
+                },
+                {
+                  "path": "nshref",
+                  "type": "link"
+                },
+                {
+                  "path": "nbtext",
+                  "type": "text"
+                },
+                {
+                  "path": "nbhref",
+                  "type": "link"
+                },
+                {
+                  "path": "nttext",
+                  "type": "text"
+                },
+                {
+                  "path": "nthref",
+                  "type": "link"
+                },
+                {
+                  "path": "nrtext",
+                  "type": "text"
+                },
+                {
+                  "path": "nrhref",
+                  "type": "link"
+                },
+                {
+                  "path": "headerbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "btnttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveUnistellarHomeSmartTelescopesHeroHeropenAlt1",
+              "source": "page",
+              "slotId": "products.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "eyetext",
+                  "type": "text"
+                },
+                {
+                  "path": "hedtext",
+                  "type": "text"
+                },
+                {
+                  "path": "subtext",
+                  "type": "text"
+                },
+                {
+                  "path": "cta1href",
+                  "type": "link"
+                },
+                {
+                  "path": "cta1ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "cta2href",
+                  "type": "link"
+                },
+                {
+                  "path": "cta2ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "credtext",
+                  "type": "text"
+                },
+                {
+                  "path": "visualimagesrc",
+                  "type": "image"
+                }
+              ]
+            },
+            {
+              "kind": "approach",
+              "blockType": "TemplateExclusiveUnistellarHomeSmartTelescopesApproachFeatureblockspenAlt3",
+              "source": "page",
+              "slotId": "products.approach.1",
+              "role": "specification-summary",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "fttext",
+                  "type": "text"
+                },
+                {
+                  "path": "fb1htext",
+                  "type": "text"
+                },
+                {
+                  "path": "fb1dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "fb1mimagesrc",
+                  "type": "image"
+                }
+              ]
+            },
+            {
+              "kind": "products",
+              "blockType": "TemplateExclusiveUnistellarHomeSmartTelescopesProductsProducthighlightspenAlt2",
+              "source": "page",
+              "slotId": "products.products.1",
+              "role": "product-catalog",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "httext",
+                  "type": "text"
+                },
+                {
+                  "path": "c1ntext",
+                  "type": "text"
+                },
+                {
+                  "path": "c1dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "c1href",
+                  "type": "link"
+                },
+                {
+                  "path": "c2ntext",
+                  "type": "text"
+                },
+                {
+                  "path": "c2dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "c2href",
+                  "type": "link"
+                },
+                {
+                  "path": "c3ntext",
+                  "type": "text"
+                },
+                {
+                  "path": "c3dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "c3href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "cta",
+              "blockType": "TemplateExclusiveUnistellarHomeSmartTelescopesCtaCtapenAlt4",
+              "source": "page",
+              "slotId": "products.cta.1",
+              "role": "catalog-cta",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "ctahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctahtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabhref",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveUnistellarHomeSmartTelescopesFooterFooterpenAlt5",
+              "source": "page",
+              "slotId": "products.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "brandtext",
+                  "type": "text"
+                },
+                {
+                  "path": "contactbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "contacttxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "col1htext",
+                  "type": "text"
+                },
+                {
+                  "path": "col1atext",
+                  "type": "text"
+                },
+                {
+                  "path": "col1ahref",
+                  "type": "link"
+                },
+                {
+                  "path": "col1btext",
+                  "type": "text"
+                },
+                {
+                  "path": "col1bhref",
+                  "type": "link"
+                },
+                {
+                  "path": "col2htext",
+                  "type": "text"
+                },
+                {
+                  "path": "col2atext",
+                  "type": "text"
+                },
+                {
+                  "path": "col2ahref",
+                  "type": "link"
+                },
+                {
+                  "path": "col2btext",
+                  "type": "text"
+                },
+                {
+                  "path": "col2bhref",
+                  "type": "link"
+                },
+                {
+                  "path": "copytext",
+                  "type": "text"
+                },
+                {
+                  "path": "privacytext",
+                  "type": "text"
+                },
+                {
+                  "path": "legaltext",
+                  "type": "text"
+                },
+                {
+                  "path": "legalhref",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/smart-binoculars",
+          "name": "Smart Binoculars",
+          "pageType": "products",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "approach",
+            "cta",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveUnistellarHomeSmartBinocularsNavigationHeaderpenPrimary",
+              "source": "page",
+              "slotId": "products.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "navhometext",
+                  "type": "text"
+                },
+                {
+                  "path": "navhomehref",
+                  "type": "link"
+                },
+                {
+                  "path": "navscopestext",
+                  "type": "text"
+                },
+                {
+                  "path": "navscopeshref",
+                  "type": "link"
+                },
+                {
+                  "path": "navbinocstext",
+                  "type": "text"
+                },
+                {
+                  "path": "navbinocshref",
+                  "type": "link"
+                },
+                {
+                  "path": "navtechtext",
+                  "type": "text"
+                },
+                {
+                  "path": "navtechhref",
+                  "type": "link"
+                },
+                {
+                  "path": "navcontacttext",
+                  "type": "text"
+                },
+                {
+                  "path": "navcontacthref",
+                  "type": "link"
+                },
+                {
+                  "path": "headerbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "headerbtntexttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveUnistellarHomeSmartBinocularsHeroHeropenAlt1",
+              "source": "page",
+              "slotId": "products.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "herokickertext",
+                  "type": "text"
+                },
+                {
+                  "path": "herotitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "herobodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "btnprimaryhref",
+                  "type": "link"
+                },
+                {
+                  "path": "btnprimarytexttext",
+                  "type": "text"
+                },
+                {
+                  "path": "btnghosthref",
+                  "type": "link"
+                },
+                {
+                  "path": "btnghosttexttext",
+                  "type": "text"
+                },
+                {
+                  "path": "herotrusttext",
+                  "type": "text"
+                },
+                {
+                  "path": "heroimageimagesrc",
+                  "type": "image"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveUnistellarHomeSmartBinocularsStoryUsecasespenAlt3",
+              "source": "page",
+              "slotId": "products.story.1",
+              "role": "product-context",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "usetitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "usesubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "usecard1tagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "usecard1titletext",
+                  "type": "text"
+                },
+                {
+                  "path": "usecard1bodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "usecard1href",
+                  "type": "link"
+                },
+                {
+                  "path": "usecard2titletext",
+                  "type": "text"
+                },
+                {
+                  "path": "usecard2bodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "usecard2href",
+                  "type": "link"
+                },
+                {
+                  "path": "usecard3titletext",
+                  "type": "text"
+                },
+                {
+                  "path": "usecard3bodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "usecard3href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "approach",
+              "blockType": "TemplateExclusiveUnistellarHomeSmartBinocularsApproachFeaturecardspenAlt2",
+              "source": "page",
+              "slotId": "products.approach.1",
+              "role": "specification-summary",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "featureseyebrowtext",
+                  "type": "text"
+                },
+                {
+                  "path": "featurestitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "featuressubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "card1tagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "card1titletext",
+                  "type": "text"
+                },
+                {
+                  "path": "card1bodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "card2tagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "card2titletext",
+                  "type": "text"
+                },
+                {
+                  "path": "card2bodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "card3tagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "card3titletext",
+                  "type": "text"
+                },
+                {
+                  "path": "card3bodytext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "cta",
+              "blockType": "TemplateExclusiveUnistellarHomeSmartBinocularsCtaCtapenAlt4",
+              "source": "page",
+              "slotId": "products.cta.1",
+              "role": "catalog-cta",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "ctahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctakickertext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctatitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabuttontexttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabuttontexthref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctabuttonhref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctas1ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctas1href",
+                  "type": "link"
+                },
+                {
+                  "path": "ctas2ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctas2href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveUnistellarHomeSmartBinocularsFooterFootercompatiblepenAlt5",
+              "source": "page",
+              "slotId": "products.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "footerBrandtext",
+                  "type": "text"
+                },
+                {
+                  "path": "footerDescriptiontext",
+                  "type": "text"
+                },
+                {
+                  "path": "footerDescriptionhref",
+                  "type": "link"
+                },
+                {
+                  "path": "footerCtahref",
+                  "type": "link"
+                },
+                {
+                  "path": "footerCtaTexttext",
+                  "type": "text"
+                },
+                {
+                  "path": "productHeadingtext",
+                  "type": "text"
+                },
+                {
+                  "path": "productSmartTelescopestext",
+                  "type": "text"
+                },
+                {
+                  "path": "productSmartTelescopeshref",
+                  "type": "link"
+                },
+                {
+                  "path": "productSmartBinocularstext",
+                  "type": "text"
+                },
+                {
+                  "path": "productSmartBinocularshref",
+                  "type": "link"
+                },
+                {
+                  "path": "productAppSoftwaretext",
+                  "type": "text"
+                },
+                {
+                  "path": "productAppSoftwarehref",
+                  "type": "link"
+                },
+                {
+                  "path": "companyHeadingtext",
+                  "type": "text"
+                },
+                {
+                  "path": "companyAbouttext",
+                  "type": "text"
+                },
+                {
+                  "path": "companyAbouthref",
+                  "type": "link"
+                },
+                {
+                  "path": "companyTechnologiestext",
+                  "type": "text"
+                },
+                {
+                  "path": "companyTechnologieshref",
+                  "type": "link"
+                },
+                {
+                  "path": "companyContacttext",
+                  "type": "text"
+                },
+                {
+                  "path": "companyContacthref",
+                  "type": "link"
+                },
+                {
+                  "path": "resourceHeadingtext",
+                  "type": "text"
+                },
+                {
+                  "path": "resourceKnowledgeBasetext",
+                  "type": "text"
+                },
+                {
+                  "path": "resourceKnowledgeBasehref",
+                  "type": "link"
+                },
+                {
+                  "path": "resourceWarrantytext",
+                  "type": "text"
+                },
+                {
+                  "path": "resourceWarrantyhref",
+                  "type": "link"
+                },
+                {
+                  "path": "resourcePrivacytext",
+                  "type": "text"
+                },
+                {
+                  "path": "resourcePrivacyhref",
+                  "type": "link"
+                },
+                {
+                  "path": "resourceProductUpdatestext",
+                  "type": "text"
+                },
+                {
+                  "path": "resourceProductUpdateshref",
+                  "type": "link"
+                },
+                {
+                  "path": "footerCopyrighttext",
+                  "type": "text"
+                },
+                {
+                  "path": "regionalSupporttext",
+                  "type": "text"
+                },
+                {
+                  "path": "demoAppointmentstext",
+                  "type": "text"
+                },
+                {
+                  "path": "demoAppointmentshref",
+                  "type": "link"
+                },
+                {
+                  "path": "pressPartnershipstext",
+                  "type": "text"
+                },
+                {
+                  "path": "pressPartnershipshref",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/technologies",
+          "name": "Technologies",
+          "pageType": "solutions",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "approach",
+            "cta",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveUnistellarHomeTechnologiesNavigationHeadpenPrimary",
+              "source": "page",
+              "slotId": "solutions.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "nhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "nhhref",
+                  "type": "link"
+                },
+                {
+                  "path": "nstext",
+                  "type": "text"
+                },
+                {
+                  "path": "nshref",
+                  "type": "link"
+                },
+                {
+                  "path": "nbtext",
+                  "type": "text"
+                },
+                {
+                  "path": "nbhref",
+                  "type": "link"
+                },
+                {
+                  "path": "nttext",
+                  "type": "text"
+                },
+                {
+                  "path": "nthref",
+                  "type": "link"
+                },
+                {
+                  "path": "nrtext",
+                  "type": "text"
+                },
+                {
+                  "path": "nrhref",
+                  "type": "link"
+                },
+                {
+                  "path": "btnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "btnttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveUnistellarHomeTechnologiesHeroHeropenAlt1",
+              "source": "page",
+              "slotId": "solutions.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "badgetext",
+                  "type": "text"
+                },
+                {
+                  "path": "httext",
+                  "type": "text"
+                },
+                {
+                  "path": "hstext",
+                  "type": "text"
+                },
+                {
+                  "path": "cta1href",
+                  "type": "link"
+                },
+                {
+                  "path": "cta1ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "cta2href",
+                  "type": "link"
+                },
+                {
+                  "path": "cta2ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "visualimagesrc",
+                  "type": "image"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveUnistellarHomeTechnologiesStoryPillarspenAlt2",
+              "source": "page",
+              "slotId": "solutions.story.1",
+              "role": "solution-context",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "pltext",
+                  "type": "text"
+                },
+                {
+                  "path": "pttext",
+                  "type": "text"
+                },
+                {
+                  "path": "p1ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "p1dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "p1href",
+                  "type": "link"
+                },
+                {
+                  "path": "p2ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "p2dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "p2href",
+                  "type": "link"
+                },
+                {
+                  "path": "p3ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "p3dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "p3href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "approach",
+              "blockType": "TemplateExclusiveUnistellarHomeTechnologiesApproachBenefitspenAlt3",
+              "source": "page",
+              "slotId": "solutions.approach.1",
+              "role": "solution-categories",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "bhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "m1ntext",
+                  "type": "text"
+                },
+                {
+                  "path": "m1dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "m1href",
+                  "type": "link"
+                },
+                {
+                  "path": "m2ntext",
+                  "type": "text"
+                },
+                {
+                  "path": "m2dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "m2href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "cta",
+              "blockType": "TemplateExclusiveUnistellarHomeTechnologiesCtaCtapenAlt4",
+              "source": "page",
+              "slotId": "solutions.cta.1",
+              "role": "consultation-cta",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "ctahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctahtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctadtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabhref",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveUnistellarHomeTechnologiesFooterFootpenAlt5",
+              "source": "page",
+              "slotId": "solutions.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "brandtext",
+                  "type": "text"
+                },
+                {
+                  "path": "contactbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "contacttxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "col1htext",
+                  "type": "text"
+                },
+                {
+                  "path": "col1atext",
+                  "type": "text"
+                },
+                {
+                  "path": "col1ahref",
+                  "type": "link"
+                },
+                {
+                  "path": "col1btext",
+                  "type": "text"
+                },
+                {
+                  "path": "col1bhref",
+                  "type": "link"
+                },
+                {
+                  "path": "col2htext",
+                  "type": "text"
+                },
+                {
+                  "path": "col2atext",
+                  "type": "text"
+                },
+                {
+                  "path": "col2ahref",
+                  "type": "link"
+                },
+                {
+                  "path": "col2btext",
+                  "type": "text"
+                },
+                {
+                  "path": "col2bhref",
+                  "type": "link"
+                },
+                {
+                  "path": "copytext",
+                  "type": "text"
+                },
+                {
+                  "path": "privacytext",
+                  "type": "text"
+                },
+                {
+                  "path": "legaltext",
+                  "type": "text"
+                },
+                {
+                  "path": "legalhref",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/reviews",
+          "name": "Reviews",
+          "pageType": "cases",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "products",
+            "cta",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveUnistellarHomeReviewsNavigationHeadpenPrimary",
+              "source": "page",
+              "slotId": "cases.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "nhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "nhhref",
+                  "type": "link"
+                },
+                {
+                  "path": "nstext",
+                  "type": "text"
+                },
+                {
+                  "path": "nshref",
+                  "type": "link"
+                },
+                {
+                  "path": "nbtext",
+                  "type": "text"
+                },
+                {
+                  "path": "nbhref",
+                  "type": "link"
+                },
+                {
+                  "path": "nttext",
+                  "type": "text"
+                },
+                {
+                  "path": "nthref",
+                  "type": "link"
+                },
+                {
+                  "path": "nrtext",
+                  "type": "text"
+                },
+                {
+                  "path": "nrhref",
+                  "type": "link"
+                },
+                {
+                  "path": "btnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "btnttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveUnistellarHomeReviewsHeroHeropenAlt1",
+              "source": "page",
+              "slotId": "cases.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "tagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "httext",
+                  "type": "text"
+                },
+                {
+                  "path": "hstext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "products",
+              "blockType": "TemplateExclusiveUnistellarHomeReviewsProductsGridpenAlt2",
+              "source": "page",
+              "slotId": "cases.products.1",
+              "role": "case-gallery",
+              "imageIntent": "cnc-case",
+              "editableFields": [
+                {
+                  "path": "q1text",
+                  "type": "text"
+                },
+                {
+                  "path": "a1text",
+                  "type": "text"
+                },
+                {
+                  "path": "card1href",
+                  "type": "link"
+                },
+                {
+                  "path": "q2text",
+                  "type": "text"
+                },
+                {
+                  "path": "a2text",
+                  "type": "text"
+                },
+                {
+                  "path": "card2href",
+                  "type": "link"
+                },
+                {
+                  "path": "q3text",
+                  "type": "text"
+                },
+                {
+                  "path": "a3text",
+                  "type": "text"
+                },
+                {
+                  "path": "card3href",
+                  "type": "link"
+                },
+                {
+                  "path": "q4text",
+                  "type": "text"
+                },
+                {
+                  "path": "a4text",
+                  "type": "text"
+                },
+                {
+                  "path": "card4href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "cta",
+              "blockType": "TemplateExclusiveUnistellarHomeReviewsCtaCtapenAlt3",
+              "source": "page",
+              "slotId": "cases.cta.1",
+              "role": "case-cta",
+              "imageIntent": "cnc-case",
+              "editableFields": [
+                {
+                  "path": "ctahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctahtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabhref",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveUnistellarHomeReviewsFooterFootpenAlt4",
+              "source": "page",
+              "slotId": "cases.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "brandtext",
+                  "type": "text"
+                },
+                {
+                  "path": "contactbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "contacttxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "col1htext",
+                  "type": "text"
+                },
+                {
+                  "path": "col1atext",
+                  "type": "text"
+                },
+                {
+                  "path": "col1ahref",
+                  "type": "link"
+                },
+                {
+                  "path": "col1btext",
+                  "type": "text"
+                },
+                {
+                  "path": "col1bhref",
+                  "type": "link"
+                },
+                {
+                  "path": "col2htext",
+                  "type": "text"
+                },
+                {
+                  "path": "col2atext",
+                  "type": "text"
+                },
+                {
+                  "path": "col2ahref",
+                  "type": "link"
+                },
+                {
+                  "path": "col2btext",
+                  "type": "text"
+                },
+                {
+                  "path": "col2bhref",
+                  "type": "link"
+                },
+                {
+                  "path": "copytext",
+                  "type": "text"
+                },
+                {
+                  "path": "privacytext",
+                  "type": "text"
+                },
+                {
+                  "path": "legaltext",
+                  "type": "text"
+                },
+                {
+                  "path": "legalhref",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/contact",
+          "name": "Contact",
+          "pageType": "contact",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "contact",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveUnistellarHomeHomeNavigationNavpenPrimary",
+              "source": "profile",
+              "slotId": "contact.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "navl1text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl1href",
+                  "type": "link"
+                },
+                {
+                  "path": "navl2text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl2href",
+                  "type": "link"
+                },
+                {
+                  "path": "navl3text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl3href",
+                  "type": "link"
+                },
+                {
+                  "path": "navl4text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl4href",
+                  "type": "link"
+                },
+                {
+                  "path": "navl5text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl5href",
+                  "type": "link"
+                },
+                {
+                  "path": "ctahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctatexttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveUnistellarHomeContactHeroHeropenAlt1",
+              "source": "page",
+              "slotId": "contact.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "herotagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "herotitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "herosubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "primaryCtahref",
+                  "type": "link"
+                },
+                {
+                  "path": "primaryCtaTexttext",
+                  "type": "text"
+                },
+                {
+                  "path": "secondaryCtahref",
+                  "type": "link"
+                },
+                {
+                  "path": "secondaryCtaTexttext",
+                  "type": "text"
+                },
+                {
+                  "path": "promiseTexttext",
+                  "type": "text"
+                },
+                {
+                  "path": "promisePillhref",
+                  "type": "link"
+                },
+                {
+                  "path": "coverageTexttext",
+                  "type": "text"
+                },
+                {
+                  "path": "coveragePillhref",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "contact",
+              "blockType": "TemplateExclusiveUnistellarHomeContactContactContactheaderpenPrimary",
+              "source": "page",
+              "slotId": "contact.contact.1",
+              "role": "contact-form",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "navtelescopestext",
+                  "type": "text"
+                },
+                {
+                  "path": "navbinocularstext",
+                  "type": "text"
+                },
+                {
+                  "path": "navreviewstext",
+                  "type": "text"
+                },
+                {
+                  "path": "navtechnologiestext",
+                  "type": "text"
+                },
+                {
+                  "path": "navusecasestext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctatexttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveUnistellarHomeContactFooterContactfooterpenAlt3",
+              "source": "page",
+              "slotId": "contact.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "ftlogotext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdesctext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdeschref",
+                  "type": "link"
+                },
+                {
+                  "path": "titletext",
+                  "type": "text"
+                },
+                {
+                  "path": "smarttelescopestext",
+                  "type": "text"
+                },
+                {
+                  "path": "smarttelescopeshref",
+                  "type": "link"
+                },
+                {
+                  "path": "smartbinocularstext",
+                  "type": "text"
+                },
+                {
+                  "path": "smartbinocularshref",
+                  "type": "link"
+                },
+                {
+                  "path": "accessoriestext",
+                  "type": "text"
+                },
+                {
+                  "path": "accessorieshref",
+                  "type": "link"
+                },
+                {
+                  "path": "titletext2",
+                  "type": "text"
+                },
+                {
+                  "path": "helpcentertext",
+                  "type": "text"
+                },
+                {
+                  "path": "helpcenterhref",
+                  "type": "link"
+                },
+                {
+                  "path": "manualstext",
+                  "type": "text"
+                },
+                {
+                  "path": "manualshref",
+                  "type": "link"
+                },
+                {
+                  "path": "contacttext",
+                  "type": "text"
+                },
+                {
+                  "path": "contacthref",
+                  "type": "link"
+                },
+                {
+                  "path": "titletext3",
+                  "type": "text"
+                },
+                {
+                  "path": "abouttext",
+                  "type": "text"
+                },
+                {
+                  "path": "abouthref",
+                  "type": "link"
+                },
+                {
+                  "path": "presstext",
+                  "type": "text"
+                },
+                {
+                  "path": "presshref",
+                  "type": "link"
+                },
+                {
+                  "path": "careerstext",
+                  "type": "text"
+                },
+                {
+                  "path": "careershref",
+                  "type": "link"
+                },
+                {
+                  "path": "titletext4",
+                  "type": "text"
+                },
+                {
+                  "path": "eventstext",
+                  "type": "text"
+                },
+                {
+                  "path": "eventshref",
+                  "type": "link"
+                },
+                {
+                  "path": "blogtext",
+                  "type": "text"
+                },
+                {
+                  "path": "bloghref",
+                  "type": "link"
+                },
+                {
+                  "path": "partnerstext",
+                  "type": "text"
+                },
+                {
+                  "path": "partnershref",
+                  "type": "link"
+                },
+                {
+                  "path": "copytext",
+                  "type": "text"
+                },
+                {
+                  "path": "privacypolicytext",
+                  "type": "text"
+                },
+                {
+                  "path": "termstext",
+                  "type": "text"
+                },
+                {
+                  "path": "termshref",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/support",
+          "name": "Support",
+          "pageType": "support",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "contact",
+            "cta",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveUnistellarHomeHomeNavigationNavpenPrimary",
+              "source": "profile",
+              "slotId": "support.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "navl1text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl1href",
+                  "type": "link"
+                },
+                {
+                  "path": "navl2text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl2href",
+                  "type": "link"
+                },
+                {
+                  "path": "navl3text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl3href",
+                  "type": "link"
+                },
+                {
+                  "path": "navl4text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl4href",
+                  "type": "link"
+                },
+                {
+                  "path": "navl5text",
+                  "type": "text"
+                },
+                {
+                  "path": "navl5href",
+                  "type": "link"
+                },
+                {
+                  "path": "ctahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctatexttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveUnistellarHomeSupportHeroSupportheropenAlt1",
+              "source": "page",
+              "slotId": "support.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "eyebrowlabeltext",
+                  "type": "text"
+                },
+                {
+                  "path": "herotitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "herosubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "searchprompttext",
+                  "type": "text"
+                },
+                {
+                  "path": "searchbadgetexttext",
+                  "type": "text"
+                },
+                {
+                  "path": "metaatext",
+                  "type": "text"
+                },
+                {
+                  "path": "metabtext",
+                  "type": "text"
+                },
+                {
+                  "path": "metactext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightlabeltext",
+                  "type": "text"
+                },
+                {
+                  "path": "righttitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "t1text",
+                  "type": "text"
+                },
+                {
+                  "path": "d1text",
+                  "type": "text"
+                },
+                {
+                  "path": "foot1text",
+                  "type": "text"
+                },
+                {
+                  "path": "lane1href",
+                  "type": "link"
+                },
+                {
+                  "path": "t2text",
+                  "type": "text"
+                },
+                {
+                  "path": "d2text",
+                  "type": "text"
+                },
+                {
+                  "path": "foot2text",
+                  "type": "text"
+                },
+                {
+                  "path": "lane2href",
+                  "type": "link"
+                },
+                {
+                  "path": "t3text",
+                  "type": "text"
+                },
+                {
+                  "path": "d3text",
+                  "type": "text"
+                },
+                {
+                  "path": "foot3text",
+                  "type": "text"
+                },
+                {
+                  "path": "lane3href",
+                  "type": "link"
+                },
+                {
+                  "path": "herobottomtexttext",
+                  "type": "text"
+                },
+                {
+                  "path": "herobottomtagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "herobottomhref",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveUnistellarHomeSupportStoryResourcespenAlt3",
+              "source": "page",
+              "slotId": "support.story.1",
+              "role": "resource-links",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "reslabeltext",
+                  "type": "text"
+                },
+                {
+                  "path": "restitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "resmetatext",
+                  "type": "text"
+                },
+                {
+                  "path": "res1ktext",
+                  "type": "text"
+                },
+                {
+                  "path": "res1ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "res1dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "res1ftext",
+                  "type": "text"
+                },
+                {
+                  "path": "res2ktext",
+                  "type": "text"
+                },
+                {
+                  "path": "res2ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "res2dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "res2ftext",
+                  "type": "text"
+                },
+                {
+                  "path": "res3ktext",
+                  "type": "text"
+                },
+                {
+                  "path": "res3ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "res3dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "res3ftext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "contact",
+              "blockType": "TemplateExclusiveUnistellarHomeSupportContactSupportheaderpenPrimary",
+              "source": "page",
+              "slotId": "support.contact.1",
+              "role": "support-topics",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "navtelescopestext",
+                  "type": "text"
+                },
+                {
+                  "path": "navbinocularstext",
+                  "type": "text"
+                },
+                {
+                  "path": "navreviewstext",
+                  "type": "text"
+                },
+                {
+                  "path": "navtechnologiestext",
+                  "type": "text"
+                },
+                {
+                  "path": "navusecasestext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctatexttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "cta",
+              "blockType": "TemplateExclusiveUnistellarHomeSupportCtaContactctapenAlt4",
+              "source": "page",
+              "slotId": "support.cta.1",
+              "role": "support-cta",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "contactCtahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctalabeltext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctatitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctasubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctabtntexttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctametatext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveUnistellarHomeSupportFooterSupportfooterpenAlt5",
+              "source": "page",
+              "slotId": "support.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "ftlogotext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdesctext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdeschref",
+                  "type": "link"
+                },
+                {
+                  "path": "titletext",
+                  "type": "text"
+                },
+                {
+                  "path": "smarttelescopestext",
+                  "type": "text"
+                },
+                {
+                  "path": "smarttelescopeshref",
+                  "type": "link"
+                },
+                {
+                  "path": "smartbinocularstext",
+                  "type": "text"
+                },
+                {
+                  "path": "smartbinocularshref",
+                  "type": "link"
+                },
+                {
+                  "path": "accessoriestext",
+                  "type": "text"
+                },
+                {
+                  "path": "accessorieshref",
+                  "type": "link"
+                },
+                {
+                  "path": "titletext2",
+                  "type": "text"
+                },
+                {
+                  "path": "helpcentertext",
+                  "type": "text"
+                },
+                {
+                  "path": "helpcenterhref",
+                  "type": "link"
+                },
+                {
+                  "path": "manualstext",
+                  "type": "text"
+                },
+                {
+                  "path": "manualshref",
+                  "type": "link"
+                },
+                {
+                  "path": "contacttext",
+                  "type": "text"
+                },
+                {
+                  "path": "contacthref",
+                  "type": "link"
+                },
+                {
+                  "path": "titletext3",
+                  "type": "text"
+                },
+                {
+                  "path": "abouttext",
+                  "type": "text"
+                },
+                {
+                  "path": "abouthref",
+                  "type": "link"
+                },
+                {
+                  "path": "presstext",
+                  "type": "text"
+                },
+                {
+                  "path": "presshref",
+                  "type": "link"
+                },
+                {
+                  "path": "careerstext",
+                  "type": "text"
+                },
+                {
+                  "path": "careershref",
+                  "type": "link"
+                },
+                {
+                  "path": "titletext4",
+                  "type": "text"
+                },
+                {
+                  "path": "eventstext",
+                  "type": "text"
+                },
+                {
+                  "path": "eventshref",
+                  "type": "link"
+                },
+                {
+                  "path": "blogtext",
+                  "type": "text"
+                },
+                {
+                  "path": "bloghref",
+                  "type": "link"
+                },
+                {
+                  "path": "partnerstext",
+                  "type": "text"
+                },
+                {
+                  "path": "partnershref",
+                  "type": "link"
+                },
+                {
+                  "path": "copytext",
+                  "type": "text"
+                },
+                {
+                  "path": "privacypolicytext",
+                  "type": "text"
+                },
+                {
+                  "path": "termstext",
+                  "type": "text"
+                },
+                {
+                  "path": "termshref",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/policy",
+          "name": "Policy",
+          "pageType": "legal",
+          "requiredCategories": [
+            "navigation",
+            "story",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveUnistellarHomePolicyNavigationNavpolicypenPrimary",
+              "source": "page",
+              "slotId": "legal.navigation.1",
+              "role": "legal-navigation-1",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "g7iitext",
+                  "type": "text"
+                },
+                {
+                  "path": "g7iihref",
+                  "type": "link"
+                },
+                {
+                  "path": "ahwkftext",
+                  "type": "text"
+                },
+                {
+                  "path": "ahwkfhref",
+                  "type": "link"
+                },
+                {
+                  "path": "seg1mtext",
+                  "type": "text"
+                },
+                {
+                  "path": "seg1mhref",
+                  "type": "link"
+                },
+                {
+                  "path": "zoypptext",
+                  "type": "text"
+                },
+                {
+                  "path": "zoypphref",
+                  "type": "link"
+                },
+                {
+                  "path": "hatqitext",
+                  "type": "text"
+                },
+                {
+                  "path": "hatqihref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctatexttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveUnistellarHomePolicyStoryPolicywrappenAlt1",
+              "source": "page",
+              "slotId": "legal.story.1",
+              "role": "legal-story-1",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "herokickertext",
+                  "type": "text"
+                },
+                {
+                  "path": "herotitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "herocopytext",
+                  "type": "text"
+                },
+                {
+                  "path": "effectivelabeltext",
+                  "type": "text"
+                },
+                {
+                  "path": "effectivebodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "effectivecardhref",
+                  "type": "link"
+                },
+                {
+                  "path": "scopelabeltext",
+                  "type": "text"
+                },
+                {
+                  "path": "scopebodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "scopecardhref",
+                  "type": "link"
+                },
+                {
+                  "path": "responselabeltext",
+                  "type": "text"
+                },
+                {
+                  "path": "responsebodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "responsecardhref",
+                  "type": "link"
+                },
+                {
+                  "path": "indextitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "indexlisttext",
+                  "type": "text"
+                },
+                {
+                  "path": "applieslabeltext",
+                  "type": "text"
+                },
+                {
+                  "path": "appliesbodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "appliescardhref",
+                  "type": "link"
+                },
+                {
+                  "path": "contactlabeltext",
+                  "type": "text"
+                },
+                {
+                  "path": "contactbodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "contactcardhref",
+                  "type": "link"
+                },
+                {
+                  "path": "privacylabeltext",
+                  "type": "text"
+                },
+                {
+                  "path": "privacybodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "privacycardhref",
+                  "type": "link"
+                },
+                {
+                  "path": "termslabeltext",
+                  "type": "text"
+                },
+                {
+                  "path": "termsbodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "termscardhref",
+                  "type": "link"
+                },
+                {
+                  "path": "rightslabeltext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightsbodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightscardhref",
+                  "type": "link"
+                },
+                {
+                  "path": "sectiontitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "sectionbodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "sectionDataCollecthref",
+                  "type": "link"
+                },
+                {
+                  "path": "sectiontitletext2",
+                  "type": "text"
+                },
+                {
+                  "path": "sectionbodytext2",
+                  "type": "text"
+                },
+                {
+                  "path": "sectionDataUsehref",
+                  "type": "link"
+                },
+                {
+                  "path": "sectiontitletext3",
+                  "type": "text"
+                },
+                {
+                  "path": "sectionbodytext3",
+                  "type": "text"
+                },
+                {
+                  "path": "sectionSharinghref",
+                  "type": "link"
+                },
+                {
+                  "path": "sectiontitletext4",
+                  "type": "text"
+                },
+                {
+                  "path": "sectionbodytext4",
+                  "type": "text"
+                },
+                {
+                  "path": "sectionSecurityhref",
+                  "type": "link"
+                },
+                {
+                  "path": "sectiontitletext5",
+                  "type": "text"
+                },
+                {
+                  "path": "sectionbodytext5",
+                  "type": "text"
+                },
+                {
+                  "path": "sectionRightshref",
+                  "type": "link"
+                },
+                {
+                  "path": "sectiontitletext6",
+                  "type": "text"
+                },
+                {
+                  "path": "sectionbodytext6",
+                  "type": "text"
+                },
+                {
+                  "path": "sectionTermsNoticeshref",
+                  "type": "link"
+                },
+                {
+                  "path": "legalnoticetitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "legalnoticebodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "noticemetatext",
+                  "type": "text"
+                },
+                {
+                  "path": "legalnoticehref",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveUnistellarHomePolicyFooterFootpolicypenAlt2",
+              "source": "page",
+              "slotId": "legal.footer.1",
+              "role": "legal-footer-1",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "ftlogotext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdesctext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdeschref",
+                  "type": "link"
+                },
+                {
+                  "path": "col1text",
+                  "type": "text"
+                },
+                {
+                  "path": "col2text",
+                  "type": "text"
+                },
+                {
+                  "path": "col2href",
+                  "type": "link"
+                },
+                {
+                  "path": "col3text",
+                  "type": "text"
+                },
+                {
+                  "path": "col3href",
+                  "type": "link"
+                },
+                {
+                  "path": "col4text",
+                  "type": "text"
+                },
+                {
+                  "path": "col4href",
+                  "type": "link"
+                },
+                {
+                  "path": "copytext",
+                  "type": "text"
+                },
+                {
+                  "path": "zsugstext",
+                  "type": "text"
+                },
+                {
+                  "path": "yv7iztext",
+                  "type": "text"
+                },
+                {
+                  "path": "yv7izhref",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/about",
+          "name": "About",
+          "pageType": "about",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "cta",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveUnistellarHomeAboutNavigationNavaboutpenPrimary",
+              "source": "page",
+              "slotId": "about.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "oc9eltext",
+                  "type": "text"
+                },
+                {
+                  "path": "oc9elhref",
+                  "type": "link"
+                },
+                {
+                  "path": "euio2text",
+                  "type": "text"
+                },
+                {
+                  "path": "euio2href",
+                  "type": "link"
+                },
+                {
+                  "path": "lm0tptext",
+                  "type": "text"
+                },
+                {
+                  "path": "lm0tphref",
+                  "type": "link"
+                },
+                {
+                  "path": "zyby0text",
+                  "type": "text"
+                },
+                {
+                  "path": "zyby0href",
+                  "type": "link"
+                },
+                {
+                  "path": "jhibgtext",
+                  "type": "text"
+                },
+                {
+                  "path": "jhibghref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctatexttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveUnistellarHomeAboutHeroAboutheropenAlt1",
+              "source": "page",
+              "slotId": "about.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "heroeyebrowtext",
+                  "type": "text"
+                },
+                {
+                  "path": "herotitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "herobodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "heroStoryImageimagesrc",
+                  "type": "image"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveUnistellarHomeAboutStoryMissionbandpenAlt2",
+              "source": "page",
+              "slotId": "about.story.1",
+              "role": "company-story",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "missioneyebrowtext",
+                  "type": "text"
+                },
+                {
+                  "path": "missiontagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "missionheadlinetext",
+                  "type": "text"
+                },
+                {
+                  "path": "missionsupporttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "cta",
+              "blockType": "TemplateExclusiveUnistellarHomeAboutCtaAboutctapenAlt5",
+              "source": "page",
+              "slotId": "about.cta.1",
+              "role": "about-cta",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "ctaeyebrowtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctaheadtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabuttonshref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctatxtprimarytext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabtnprimaryhref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctatxtsecondarytext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabtnsecondaryhref",
+                  "type": "link"
+                },
+                {
+                  "path": "sub1ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "sub2ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "sub3ttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveUnistellarHomeAboutFooterFootaboutpenAlt6",
+              "source": "page",
+              "slotId": "about.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "ftlogotext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdesctext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdeschref",
+                  "type": "link"
+                },
+                {
+                  "path": "col1text",
+                  "type": "text"
+                },
+                {
+                  "path": "col2text",
+                  "type": "text"
+                },
+                {
+                  "path": "col2href",
+                  "type": "link"
+                },
+                {
+                  "path": "col3text",
+                  "type": "text"
+                },
+                {
+                  "path": "col3href",
+                  "type": "link"
+                },
+                {
+                  "path": "col4text",
+                  "type": "text"
+                },
+                {
+                  "path": "col4href",
+                  "type": "link"
+                },
+                {
+                  "path": "copytext",
+                  "type": "text"
+                },
+                {
+                  "path": "jxbxptext",
+                  "type": "text"
+                },
+                {
+                  "path": "aay6otext",
+                  "type": "text"
+                },
+                {
+                  "path": "aay6ohref",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/use-cases",
+          "name": "Use Cases",
+          "pageType": "cases",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "cta",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveUnistellarHomeUseCasesNavigationNavcasepenPrimary",
+              "source": "page",
+              "slotId": "cases.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "wsq4ktext",
+                  "type": "text"
+                },
+                {
+                  "path": "wsq4khref",
+                  "type": "link"
+                },
+                {
+                  "path": "n5edjtext",
+                  "type": "text"
+                },
+                {
+                  "path": "n5edjhref",
+                  "type": "link"
+                },
+                {
+                  "path": "ogvgetext",
+                  "type": "text"
+                },
+                {
+                  "path": "ogvgehref",
+                  "type": "link"
+                },
+                {
+                  "path": "jr51atext",
+                  "type": "text"
+                },
+                {
+                  "path": "jr51ahref",
+                  "type": "link"
+                },
+                {
+                  "path": "it5gftext",
+                  "type": "text"
+                },
+                {
+                  "path": "it5gfhref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctatexttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveUnistellarHomeUseCasesHeroUsecaseheropenAlt1",
+              "source": "page",
+              "slotId": "cases.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "herotagtxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "herotitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "herosubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctaprimarytxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctaprimaryhref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctasecondarytxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctasecondaryhref",
+                  "type": "link"
+                },
+                {
+                  "path": "trustchip1txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "trustchip1href",
+                  "type": "link"
+                },
+                {
+                  "path": "trustchip2txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "trustchip2href",
+                  "type": "link"
+                },
+                {
+                  "path": "trustchip3txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "trustchip3href",
+                  "type": "link"
+                },
+                {
+                  "path": "heromediaimagesrc",
+                  "type": "image"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveUnistellarHomeUseCasesStoryAudiencesegmentspenAlt2",
+              "source": "page",
+              "slotId": "cases.story.1",
+              "role": "case-narrative",
+              "imageIntent": "cnc-case",
+              "editableFields": [
+                {
+                  "path": "audlabeltext",
+                  "type": "text"
+                },
+                {
+                  "path": "audtitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "audcard1tagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "audcard1titletext",
+                  "type": "text"
+                },
+                {
+                  "path": "audcard1bodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "audcard1metatext",
+                  "type": "text"
+                },
+                {
+                  "path": "audcard2tagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "audcard2titletext",
+                  "type": "text"
+                },
+                {
+                  "path": "audcard2bodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "audcard2metatext",
+                  "type": "text"
+                },
+                {
+                  "path": "audcard3tagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "audcard3titletext",
+                  "type": "text"
+                },
+                {
+                  "path": "audcard3bodytext",
+                  "type": "text"
+                },
+                {
+                  "path": "audcard3metatext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "cta",
+              "blockType": "TemplateExclusiveUnistellarHomeUseCasesCtaBottomctapenAlt4",
+              "source": "page",
+              "slotId": "cases.cta.1",
+              "role": "case-cta",
+              "imageIntent": "cnc-case",
+              "editableFields": [
+                {
+                  "path": "bottomCtahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctatitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctasubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabtntxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctabtntxthref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctabtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctachip1txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctachip1href",
+                  "type": "link"
+                },
+                {
+                  "path": "ctachip2txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctachip2href",
+                  "type": "link"
+                },
+                {
+                  "path": "ctachip3txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ctachip3href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveUnistellarHomeUseCasesFooterFootcasepenAlt5",
+              "source": "page",
+              "slotId": "cases.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "ftlogotext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdesctext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdeschref",
+                  "type": "link"
+                },
+                {
+                  "path": "col1text",
+                  "type": "text"
+                },
+                {
+                  "path": "col2text",
+                  "type": "text"
+                },
+                {
+                  "path": "col2href",
+                  "type": "link"
+                },
+                {
+                  "path": "col3text",
+                  "type": "text"
+                },
+                {
+                  "path": "col3href",
+                  "type": "link"
+                },
+                {
+                  "path": "col4text",
+                  "type": "text"
+                },
+                {
+                  "path": "col4href",
+                  "type": "link"
+                },
+                {
+                  "path": "copytext",
+                  "type": "text"
+                },
+                {
+                  "path": "jrk5text",
+                  "type": "text"
+                },
+                {
+                  "path": "cjahntext",
+                  "type": "text"
+                },
+                {
+                  "path": "cjahnhref",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/blog",
+          "name": "Blog",
+          "pageType": "blog",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "approach",
+            "products",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveUnistellarHomeBlogNavigationNavblogpenPrimary",
+              "source": "page",
+              "slotId": "blog.navigation.1",
+              "role": "blog-navigation-1",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "fhzntext",
+                  "type": "text"
+                },
+                {
+                  "path": "fhznhref",
+                  "type": "link"
+                },
+                {
+                  "path": "epqxytext",
+                  "type": "text"
+                },
+                {
+                  "path": "epqxyhref",
+                  "type": "link"
+                },
+                {
+                  "path": "cqffstext",
+                  "type": "text"
+                },
+                {
+                  "path": "cqffshref",
+                  "type": "link"
+                },
+                {
+                  "path": "xxcbtext",
+                  "type": "text"
+                },
+                {
+                  "path": "xxcbhref",
+                  "type": "link"
+                },
+                {
+                  "path": "jgphtext",
+                  "type": "text"
+                },
+                {
+                  "path": "jgphhref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctahref",
+                  "type": "link"
+                },
+                {
+                  "path": "ctatexttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveUnistellarHomeBlogHeroHeropenAlt1",
+              "source": "page",
+              "slotId": "blog.hero.1",
+              "role": "blog-hero-1",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "herotagtext",
+                  "type": "text"
+                },
+                {
+                  "path": "herotitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "herodesctext",
+                  "type": "text"
+                },
+                {
+                  "path": "cat1ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "cat1href",
+                  "type": "link"
+                },
+                {
+                  "path": "cat2ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "cat2href",
+                  "type": "link"
+                },
+                {
+                  "path": "cat3ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "cat3href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "approach",
+              "blockType": "TemplateExclusiveUnistellarHomeBlogApproachFeatpenAlt2",
+              "source": "page",
+              "slotId": "blog.approach.1",
+              "role": "blog-approach-1",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "featimgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "featktext",
+                  "type": "text"
+                },
+                {
+                  "path": "featttext",
+                  "type": "text"
+                },
+                {
+                  "path": "featdtext",
+                  "type": "text"
+                },
+                {
+                  "path": "featbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "featbtnttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "products",
+              "blockType": "TemplateExclusiveUnistellarHomeBlogProductsCardspenAlt3",
+              "source": "page",
+              "slotId": "blog.products.1",
+              "role": "blog-products-1",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "c1imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "c1ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "c1ktext",
+                  "type": "text"
+                },
+                {
+                  "path": "c2imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "c2ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "c2ktext",
+                  "type": "text"
+                },
+                {
+                  "path": "c3imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "c3ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "c3ktext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveUnistellarHomeBlogFooterFootblogpenAlt4",
+              "source": "page",
+              "slotId": "blog.footer.1",
+              "role": "blog-footer-1",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "ftlogotext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdesctext",
+                  "type": "text"
+                },
+                {
+                  "path": "ftdeschref",
+                  "type": "link"
+                },
+                {
+                  "path": "col1text",
+                  "type": "text"
+                },
+                {
+                  "path": "col2text",
+                  "type": "text"
+                },
+                {
+                  "path": "col2href",
+                  "type": "link"
+                },
+                {
+                  "path": "col3text",
+                  "type": "text"
+                },
+                {
+                  "path": "col3href",
+                  "type": "link"
+                },
+                {
+                  "path": "col4text",
+                  "type": "text"
+                },
+                {
+                  "path": "col4href",
+                  "type": "link"
+                },
+                {
+                  "path": "copytext",
+                  "type": "text"
+                },
+                {
+                  "path": "qgl8gtext",
+                  "type": "text"
+                },
+                {
+                  "path": "vqwutext",
+                  "type": "text"
+                },
+                {
+                  "path": "vqwuhref",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "profileId": "framework",
+      "name": "framework",
+      "styleFamily": "home",
+      "keywords": [
+        "framework",
+        "profile_selector_framework",
+        "Home",
+        "About",
+        "Support",
+        "Products",
+        "Contact",
+        "Blog"
+      ],
+      "qualityScore": 100,
+      "shared": {
+        "navigation": {
+          "kind": "navigation",
+          "blockType": "TemplateExclusiveFrameworkHomeNavigationTopnavpenPrimary",
+          "source": "profile",
+          "slotId": "shared.navigation.1",
+          "role": "shared-navigation-1",
+          "imageIntent": "none",
+          "editableFields": [
+            {
+              "path": "logotext",
+              "type": "text"
+            },
+            {
+              "path": "logohref",
+              "type": "link"
+            },
+            {
+              "path": "centernavtext",
+              "type": "text"
+            },
+            {
+              "path": "centernavhref",
+              "type": "link"
+            },
+            {
+              "path": "rightnavtext",
+              "type": "text"
+            },
+            {
+              "path": "rightnavhref",
+              "type": "link"
+            },
+            {
+              "path": "navItems.[].label",
+              "type": "text"
+            },
+            {
+              "path": "navItems.[].href",
+              "type": "link"
+            },
+            {
+              "path": "utilityItems.[].label",
+              "type": "text"
+            },
+            {
+              "path": "utilityItems.[].href",
+              "type": "link"
+            }
+          ]
+        },
+        "footer": {
+          "kind": "footer",
+          "blockType": "TemplateExclusiveFrameworkAboutFooterFooterpenAlt2",
+          "source": "profile",
+          "slotId": "shared.footer.1",
+          "role": "shared-footer-1",
+          "imageIntent": "none",
+          "editableFields": [
+            {
+              "path": "vlbrhtext",
+              "type": "text"
+            },
+            {
+              "path": "imz8dtext",
+              "type": "text"
+            },
+            {
+              "path": "imz8dhref",
+              "type": "link"
+            },
+            {
+              "path": "zr0text",
+              "type": "text"
+            },
+            {
+              "path": "mbhbtext",
+              "type": "text"
+            },
+            {
+              "path": "mbhbhref",
+              "type": "link"
+            },
+            {
+              "path": "wer5jtext",
+              "type": "text"
+            },
+            {
+              "path": "hy3sbtext",
+              "type": "text"
+            },
+            {
+              "path": "hy3sbhref",
+              "type": "link"
+            },
+            {
+              "path": "iuru3text",
+              "type": "text"
+            },
+            {
+              "path": "g0outext",
+              "type": "text"
+            },
+            {
+              "path": "g0ouhref",
+              "type": "link"
+            },
+            {
+              "path": "nzlvptext",
+              "type": "text"
+            },
+            {
+              "path": "qjmimtext",
+              "type": "text"
+            },
+            {
+              "path": "qjmimhref",
+              "type": "link"
+            },
+            {
+              "path": "lsxlstext",
+              "type": "text"
+            },
+            {
+              "path": "xz2obhref",
+              "type": "link"
+            },
+            {
+              "path": "zelqitext",
+              "type": "text"
+            },
+            {
+              "path": "vb8xtext",
+              "type": "text"
+            },
+            {
+              "path": "lwirdtext",
+              "type": "text"
+            },
+            {
+              "path": "columns.[].title",
+              "type": "text"
+            },
+            {
+              "path": "columns.[].links.[].label",
+              "type": "text"
+            },
+            {
+              "path": "columns.[].links.[].href",
+              "type": "link"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "path": "/",
+          "name": "Home",
+          "pageType": "home",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "socialproof"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveFrameworkHomeNavigationTopnavpenPrimary",
+              "source": "page",
+              "slotId": "home.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "centernavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "centernavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "rightnavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightnavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "navItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].href",
+                  "type": "link"
+                },
+                {
+                  "path": "utilityItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "utilityItems.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveFrameworkHomeHeroHero1penAlt1",
+              "source": "page",
+              "slotId": "home.hero.1",
+              "role": "primary-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "h1t1text",
+                  "type": "text"
+                },
+                {
+                  "path": "h1t2text",
+                  "type": "text"
+                },
+                {
+                  "path": "h1bttext",
+                  "type": "text"
+                },
+                {
+                  "path": "akwvvtext",
+                  "type": "text"
+                },
+                {
+                  "path": "hero1rimagesrc",
+                  "type": "image"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveFrameworkHomeHeroHero2penAlt2",
+              "source": "page",
+              "slotId": "home.hero.2",
+              "role": "primary-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "hero2limagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "h2t1text",
+                  "type": "text"
+                },
+                {
+                  "path": "h2t2text",
+                  "type": "text"
+                },
+                {
+                  "path": "h2bttext",
+                  "type": "text"
+                },
+                {
+                  "path": "dxtv6text",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveFrameworkHomeHeroHero3penAlt3",
+              "source": "page",
+              "slotId": "home.hero.3",
+              "role": "primary-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "hero3limagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "h3t1text",
+                  "type": "text"
+                },
+                {
+                  "path": "h3bttext",
+                  "type": "text"
+                },
+                {
+                  "path": "cn9citext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveFrameworkHomeHeroHero4penAlt4",
+              "source": "page",
+              "slotId": "home.hero.4",
+              "role": "primary-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "h4t1text",
+                  "type": "text"
+                },
+                {
+                  "path": "h4t2text",
+                  "type": "text"
+                },
+                {
+                  "path": "h4bttext",
+                  "type": "text"
+                },
+                {
+                  "path": "dsvsntext",
+                  "type": "text"
+                },
+                {
+                  "path": "hero4rimagesrc",
+                  "type": "image"
+                }
+              ]
+            },
+            {
+              "kind": "socialproof",
+              "blockType": "TemplateExclusiveFrameworkHomeSocialproofLogorowpenAlt5",
+              "source": "page",
+              "slotId": "home.socialproof.1",
+              "role": "customer-proof",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "logos.[].label",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveFrameworkHomeStoryMidtitlepenAlt6",
+              "source": "page",
+              "slotId": "home.story.1",
+              "role": "brand-story",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "mid1text",
+                  "type": "text"
+                },
+                {
+                  "path": "fixlinetext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveFrameworkHomeStoryFixheadingpenAlt7",
+              "source": "page",
+              "slotId": "home.story.2",
+              "role": "brand-story",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "jac8ltext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveFrameworkHomeStoryMosaicpenAlt8",
+              "source": "page",
+              "slotId": "home.story.3",
+              "role": "brand-story",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "mosaicimagesrc",
+                  "type": "image"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveFrameworkHomeStoryHfpenAlt9",
+              "source": "page",
+              "slotId": "home.story.4",
+              "role": "brand-story",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "k1dhitext",
+                  "type": "text"
+                },
+                {
+                  "path": "ovze9text",
+                  "type": "text"
+                },
+                {
+                  "path": "rwrx5text",
+                  "type": "text"
+                },
+                {
+                  "path": "xgczptext",
+                  "type": "text"
+                },
+                {
+                  "path": "hi5gtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ggtmktext",
+                  "type": "text"
+                },
+                {
+                  "path": "sxn6ltext",
+                  "type": "text"
+                },
+                {
+                  "path": "gcbuvtext",
+                  "type": "text"
+                },
+                {
+                  "path": "xjrrqtext",
+                  "type": "text"
+                },
+                {
+                  "path": "c47vstext",
+                  "type": "text"
+                },
+                {
+                  "path": "fugfktext",
+                  "type": "text"
+                },
+                {
+                  "path": "kqqdxhref",
+                  "type": "link"
+                },
+                {
+                  "path": "ln0k2text",
+                  "type": "text"
+                },
+                {
+                  "path": "ks1jbtext",
+                  "type": "text"
+                },
+                {
+                  "path": "meabitext",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/about",
+          "name": "About",
+          "pageType": "about",
+          "requiredCategories": [
+            "navigation",
+            "story",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveFrameworkAboutNavigationTopnavpenPrimary",
+              "source": "page",
+              "slotId": "about.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "centernavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "centernavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "rightnavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightnavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "navItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].href",
+                  "type": "link"
+                },
+                {
+                  "path": "utilityItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "utilityItems.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveFrameworkAboutStoryAboutmainpenAlt1",
+              "source": "page",
+              "slotId": "about.story.1",
+              "role": "company-story",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "h1text",
+                  "type": "text"
+                },
+                {
+                  "path": "p1text",
+                  "type": "text"
+                },
+                {
+                  "path": "p2text",
+                  "type": "text"
+                },
+                {
+                  "path": "p3text",
+                  "type": "text"
+                },
+                {
+                  "path": "p4text",
+                  "type": "text"
+                },
+                {
+                  "path": "nz0y9text",
+                  "type": "text"
+                },
+                {
+                  "path": "rejuxtext",
+                  "type": "text"
+                },
+                {
+                  "path": "zlzbctext",
+                  "type": "text"
+                },
+                {
+                  "path": "hquk0text",
+                  "type": "text"
+                },
+                {
+                  "path": "pfcsatext",
+                  "type": "text"
+                },
+                {
+                  "path": "xehzztext",
+                  "type": "text"
+                },
+                {
+                  "path": "gxwgytext",
+                  "type": "text"
+                },
+                {
+                  "path": "bcvntext",
+                  "type": "text"
+                },
+                {
+                  "path": "wvphotext",
+                  "type": "text"
+                },
+                {
+                  "path": "g7ozhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "l7kp3text",
+                  "type": "text"
+                },
+                {
+                  "path": "jiee6text",
+                  "type": "text"
+                },
+                {
+                  "path": "vtejrtext",
+                  "type": "text"
+                },
+                {
+                  "path": "w1text",
+                  "type": "text"
+                },
+                {
+                  "path": "w2text",
+                  "type": "text"
+                },
+                {
+                  "path": "w3imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "aawkatext",
+                  "type": "text"
+                },
+                {
+                  "path": "mq7tmtext",
+                  "type": "text"
+                },
+                {
+                  "path": "gfkkitext",
+                  "type": "text"
+                },
+                {
+                  "path": "c7mvmtext",
+                  "type": "text"
+                },
+                {
+                  "path": "z6bfhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "udgjetext",
+                  "type": "text"
+                },
+                {
+                  "path": "gtwntext",
+                  "type": "text"
+                },
+                {
+                  "path": "uzsgvtext",
+                  "type": "text"
+                },
+                {
+                  "path": "u0zlstext",
+                  "type": "text"
+                },
+                {
+                  "path": "rca6ctext",
+                  "type": "text"
+                },
+                {
+                  "path": "yf7koimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "xbbo6text",
+                  "type": "text"
+                },
+                {
+                  "path": "nt4buimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "bnlh2text",
+                  "type": "text"
+                },
+                {
+                  "path": "coacntext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveFrameworkAboutFooterFooterpenAlt2",
+              "source": "page",
+              "slotId": "about.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "vlbrhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "imz8dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "imz8dhref",
+                  "type": "link"
+                },
+                {
+                  "path": "zr0text",
+                  "type": "text"
+                },
+                {
+                  "path": "mbhbtext",
+                  "type": "text"
+                },
+                {
+                  "path": "mbhbhref",
+                  "type": "link"
+                },
+                {
+                  "path": "wer5jtext",
+                  "type": "text"
+                },
+                {
+                  "path": "hy3sbtext",
+                  "type": "text"
+                },
+                {
+                  "path": "hy3sbhref",
+                  "type": "link"
+                },
+                {
+                  "path": "iuru3text",
+                  "type": "text"
+                },
+                {
+                  "path": "g0outext",
+                  "type": "text"
+                },
+                {
+                  "path": "g0ouhref",
+                  "type": "link"
+                },
+                {
+                  "path": "nzlvptext",
+                  "type": "text"
+                },
+                {
+                  "path": "qjmimtext",
+                  "type": "text"
+                },
+                {
+                  "path": "qjmimhref",
+                  "type": "link"
+                },
+                {
+                  "path": "lsxlstext",
+                  "type": "text"
+                },
+                {
+                  "path": "xz2obhref",
+                  "type": "link"
+                },
+                {
+                  "path": "zelqitext",
+                  "type": "text"
+                },
+                {
+                  "path": "vb8xtext",
+                  "type": "text"
+                },
+                {
+                  "path": "lwirdtext",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].title",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].href",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/support",
+          "name": "Support",
+          "pageType": "support",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "contact",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveFrameworkSupportNavigationNavpenPrimary",
+              "source": "page",
+              "slotId": "support.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "centernavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "centernavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "rightnavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightnavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "navItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].href",
+                  "type": "link"
+                },
+                {
+                  "path": "utilityItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "utilityItems.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveFrameworkSupportHeroSupportheropenAlt1",
+              "source": "page",
+              "slotId": "support.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "herotitletext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "contact",
+              "blockType": "TemplateExclusiveFrameworkSupportContactSupportmainpenAlt2",
+              "source": "page",
+              "slotId": "support.contact.1",
+              "role": "support-topics",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "kbtitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "kbdesctext",
+                  "type": "text"
+                },
+                {
+                  "path": "kbl1text",
+                  "type": "text"
+                },
+                {
+                  "path": "kbl2text",
+                  "type": "text"
+                },
+                {
+                  "path": "kbl3text",
+                  "type": "text"
+                },
+                {
+                  "path": "communityimageimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "commtitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "commdesctext",
+                  "type": "text"
+                },
+                {
+                  "path": "askbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "asktxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "guidestitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "viewbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "viewtxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "img1imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "cap1text",
+                  "type": "text"
+                },
+                {
+                  "path": "img2imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "cap2text",
+                  "type": "text"
+                },
+                {
+                  "path": "img3imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "cap3text",
+                  "type": "text"
+                },
+                {
+                  "path": "ctatitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "submitbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "submittxttext",
+                  "type": "text"
+                },
+                {
+                  "path": "connectbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "connecttxttext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveFrameworkSupportFooterFooterpenAlt3",
+              "source": "page",
+              "slotId": "support.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "clzbctext",
+                  "type": "text"
+                },
+                {
+                  "path": "pcfsktext",
+                  "type": "text"
+                },
+                {
+                  "path": "pcfskhref",
+                  "type": "link"
+                },
+                {
+                  "path": "g6yuftext",
+                  "type": "text"
+                },
+                {
+                  "path": "rdotctext",
+                  "type": "text"
+                },
+                {
+                  "path": "rdotchref",
+                  "type": "link"
+                },
+                {
+                  "path": "hu3uvtext",
+                  "type": "text"
+                },
+                {
+                  "path": "nqugstext",
+                  "type": "text"
+                },
+                {
+                  "path": "nqugshref",
+                  "type": "link"
+                },
+                {
+                  "path": "om4ndtext",
+                  "type": "text"
+                },
+                {
+                  "path": "tn1zntext",
+                  "type": "text"
+                },
+                {
+                  "path": "tn1znhref",
+                  "type": "link"
+                },
+                {
+                  "path": "d8wcftext",
+                  "type": "text"
+                },
+                {
+                  "path": "wwiyjtext",
+                  "type": "text"
+                },
+                {
+                  "path": "wwiyjhref",
+                  "type": "link"
+                },
+                {
+                  "path": "zao7qtext",
+                  "type": "text"
+                },
+                {
+                  "path": "j01f7href",
+                  "type": "link"
+                },
+                {
+                  "path": "fonnptext",
+                  "type": "text"
+                },
+                {
+                  "path": "irp3atext",
+                  "type": "text"
+                },
+                {
+                  "path": "quashtext",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].title",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].href",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/products",
+          "name": "Products",
+          "pageType": "products",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "story",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveFrameworkProductsNavigationNavpenPrimary",
+              "source": "page",
+              "slotId": "products.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "centernavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "centernavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "rightnavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightnavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "navItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].href",
+                  "type": "link"
+                },
+                {
+                  "path": "utilityItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "utilityItems.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveFrameworkProductsHeroBizheropenAlt1",
+              "source": "page",
+              "slotId": "products.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "herot1text",
+                  "type": "text"
+                },
+                {
+                  "path": "herosubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "herorimagesrc",
+                  "type": "image"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveFrameworkProductsStoryBizmainpenAlt2",
+              "source": "page",
+              "slotId": "products.story.1",
+              "role": "product-context",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "ctitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "csubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "c1imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "c1txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "acjqhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "c2imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "c2txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "ng7y8text",
+                  "type": "text"
+                },
+                {
+                  "path": "c3imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "c3txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "myvvrtext",
+                  "type": "text"
+                },
+                {
+                  "path": "c4imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "c4txttext",
+                  "type": "text"
+                },
+                {
+                  "path": "mct7jtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ttitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "t1qtext",
+                  "type": "text"
+                },
+                {
+                  "path": "whtytext",
+                  "type": "text"
+                },
+                {
+                  "path": "t2qtext",
+                  "type": "text"
+                },
+                {
+                  "path": "b0iketext",
+                  "type": "text"
+                },
+                {
+                  "path": "t3qtext",
+                  "type": "text"
+                },
+                {
+                  "path": "dovaxtext",
+                  "type": "text"
+                },
+                {
+                  "path": "ptitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "wt1iutext",
+                  "type": "text"
+                },
+                {
+                  "path": "snz8jtext",
+                  "type": "text"
+                },
+                {
+                  "path": "de4zxtext",
+                  "type": "text"
+                },
+                {
+                  "path": "iyptltext",
+                  "type": "text"
+                },
+                {
+                  "path": "vssixtext",
+                  "type": "text"
+                },
+                {
+                  "path": "pfa7htext",
+                  "type": "text"
+                },
+                {
+                  "path": "vptitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "vp1ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "y1etext",
+                  "type": "text"
+                },
+                {
+                  "path": "btn1href",
+                  "type": "link"
+                },
+                {
+                  "path": "kbw1vtext",
+                  "type": "text"
+                },
+                {
+                  "path": "vp2ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "wvjtvtext",
+                  "type": "text"
+                },
+                {
+                  "path": "btn2href",
+                  "type": "link"
+                },
+                {
+                  "path": "fzhcatext",
+                  "type": "text"
+                },
+                {
+                  "path": "story1imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "story1ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "story2imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "story2ttext",
+                  "type": "text"
+                },
+                {
+                  "path": "contitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "introtext",
+                  "type": "text"
+                },
+                {
+                  "path": "fylwytext",
+                  "type": "text"
+                },
+                {
+                  "path": "vazprtext",
+                  "type": "text"
+                },
+                {
+                  "path": "zbknttext",
+                  "type": "text"
+                },
+                {
+                  "path": "w2r4vtext",
+                  "type": "text"
+                },
+                {
+                  "path": "hsfwotext",
+                  "type": "text"
+                },
+                {
+                  "path": "dimyjtext",
+                  "type": "text"
+                },
+                {
+                  "path": "check1text",
+                  "type": "text"
+                },
+                {
+                  "path": "checkstext",
+                  "type": "text"
+                },
+                {
+                  "path": "industrytext",
+                  "type": "text"
+                },
+                {
+                  "path": "notestext",
+                  "type": "text"
+                },
+                {
+                  "path": "policytext",
+                  "type": "text"
+                },
+                {
+                  "path": "c7r9text",
+                  "type": "text"
+                },
+                {
+                  "path": "contacttitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "contactsubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "contactbtnhref",
+                  "type": "link"
+                },
+                {
+                  "path": "nthrutext",
+                  "type": "text"
+                },
+                {
+                  "path": "contactimgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "faqtitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "sec1text",
+                  "type": "text"
+                },
+                {
+                  "path": "q1text",
+                  "type": "text"
+                },
+                {
+                  "path": "p1text",
+                  "type": "text"
+                },
+                {
+                  "path": "q2text",
+                  "type": "text"
+                },
+                {
+                  "path": "p2text",
+                  "type": "text"
+                },
+                {
+                  "path": "sec2text",
+                  "type": "text"
+                },
+                {
+                  "path": "q3text",
+                  "type": "text"
+                },
+                {
+                  "path": "p3text",
+                  "type": "text"
+                },
+                {
+                  "path": "q4text",
+                  "type": "text"
+                },
+                {
+                  "path": "p4text",
+                  "type": "text"
+                },
+                {
+                  "path": "sec3text",
+                  "type": "text"
+                },
+                {
+                  "path": "q5text",
+                  "type": "text"
+                },
+                {
+                  "path": "p5text",
+                  "type": "text"
+                },
+                {
+                  "path": "q6text",
+                  "type": "text"
+                },
+                {
+                  "path": "p6text",
+                  "type": "text"
+                },
+                {
+                  "path": "legaltitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "legalbodytext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveFrameworkProductsFooterFooterpenAlt3",
+              "source": "page",
+              "slotId": "products.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "i4katext",
+                  "type": "text"
+                },
+                {
+                  "path": "dyodktext",
+                  "type": "text"
+                },
+                {
+                  "path": "dyodkhref",
+                  "type": "link"
+                },
+                {
+                  "path": "xfwttext",
+                  "type": "text"
+                },
+                {
+                  "path": "dew7otext",
+                  "type": "text"
+                },
+                {
+                  "path": "dew7ohref",
+                  "type": "link"
+                },
+                {
+                  "path": "icru3text",
+                  "type": "text"
+                },
+                {
+                  "path": "httzhtext",
+                  "type": "text"
+                },
+                {
+                  "path": "httzhhref",
+                  "type": "link"
+                },
+                {
+                  "path": "fplrvtext",
+                  "type": "text"
+                },
+                {
+                  "path": "yrfltext",
+                  "type": "text"
+                },
+                {
+                  "path": "yrflhref",
+                  "type": "link"
+                },
+                {
+                  "path": "emze2text",
+                  "type": "text"
+                },
+                {
+                  "path": "uqretext",
+                  "type": "text"
+                },
+                {
+                  "path": "uqrehref",
+                  "type": "link"
+                },
+                {
+                  "path": "juramtext",
+                  "type": "text"
+                },
+                {
+                  "path": "zvlavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "vux1ztext",
+                  "type": "text"
+                },
+                {
+                  "path": "n5q0utext",
+                  "type": "text"
+                },
+                {
+                  "path": "hl1oztext",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].title",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].href",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/contact",
+          "name": "Contact",
+          "pageType": "contact",
+          "requiredCategories": [
+            "navigation",
+            "hero",
+            "contact",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveFrameworkContactNavigationNavpenPrimary",
+              "source": "page",
+              "slotId": "contact.navigation.1",
+              "role": "site-navigation",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "centernavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "centernavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "rightnavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightnavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "navItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].href",
+                  "type": "link"
+                },
+                {
+                  "path": "utilityItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "utilityItems.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "blockType": "TemplateExclusiveFrameworkContactHeroContactheropenAlt1",
+              "source": "page",
+              "slotId": "contact.hero.1",
+              "role": "page-hero",
+              "imageIntent": "cnc-hero",
+              "editableFields": [
+                {
+                  "path": "herotitletext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "contact",
+              "blockType": "TemplateExclusiveFrameworkContactContactContactmainpenAlt2",
+              "source": "page",
+              "slotId": "contact.contact.1",
+              "role": "contact-form",
+              "imageIntent": "industrial",
+              "editableFields": [
+                {
+                  "path": "t1text",
+                  "type": "text"
+                },
+                {
+                  "path": "l1text",
+                  "type": "text"
+                },
+                {
+                  "path": "t2text",
+                  "type": "text"
+                },
+                {
+                  "path": "l2text",
+                  "type": "text"
+                },
+                {
+                  "path": "t3text",
+                  "type": "text"
+                },
+                {
+                  "path": "l3text",
+                  "type": "text"
+                },
+                {
+                  "path": "t4text",
+                  "type": "text"
+                },
+                {
+                  "path": "l4text",
+                  "type": "text"
+                },
+                {
+                  "path": "t5text",
+                  "type": "text"
+                },
+                {
+                  "path": "l5text",
+                  "type": "text"
+                },
+                {
+                  "path": "imptitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "i11text",
+                  "type": "text"
+                },
+                {
+                  "path": "i12text",
+                  "type": "text"
+                },
+                {
+                  "path": "i21text",
+                  "type": "text"
+                },
+                {
+                  "path": "i22text",
+                  "type": "text"
+                },
+                {
+                  "path": "i31text",
+                  "type": "text"
+                },
+                {
+                  "path": "i32text",
+                  "type": "text"
+                },
+                {
+                  "path": "i41text",
+                  "type": "text"
+                },
+                {
+                  "path": "i42text",
+                  "type": "text"
+                },
+                {
+                  "path": "i51text",
+                  "type": "text"
+                },
+                {
+                  "path": "i52text",
+                  "type": "text"
+                },
+                {
+                  "path": "i61text",
+                  "type": "text"
+                },
+                {
+                  "path": "i62text",
+                  "type": "text"
+                },
+                {
+                  "path": "worktitletext",
+                  "type": "text"
+                },
+                {
+                  "path": "worksubtext",
+                  "type": "text"
+                },
+                {
+                  "path": "worklinktext",
+                  "type": "text"
+                },
+                {
+                  "path": "workillustrationimagesrc",
+                  "type": "image"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveFrameworkContactFooterFooterpenAlt3",
+              "source": "page",
+              "slotId": "contact.footer.1",
+              "role": "site-footer",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "a8p3ftext",
+                  "type": "text"
+                },
+                {
+                  "path": "mqbmrtext",
+                  "type": "text"
+                },
+                {
+                  "path": "mqbmrhref",
+                  "type": "link"
+                },
+                {
+                  "path": "dthwxtext",
+                  "type": "text"
+                },
+                {
+                  "path": "howybtext",
+                  "type": "text"
+                },
+                {
+                  "path": "howybhref",
+                  "type": "link"
+                },
+                {
+                  "path": "npx2text",
+                  "type": "text"
+                },
+                {
+                  "path": "t3cx4text",
+                  "type": "text"
+                },
+                {
+                  "path": "t3cx4href",
+                  "type": "link"
+                },
+                {
+                  "path": "fhzltext",
+                  "type": "text"
+                },
+                {
+                  "path": "puz92text",
+                  "type": "text"
+                },
+                {
+                  "path": "puz92href",
+                  "type": "link"
+                },
+                {
+                  "path": "xfcygtext",
+                  "type": "text"
+                },
+                {
+                  "path": "fnrsltext",
+                  "type": "text"
+                },
+                {
+                  "path": "fnrslhref",
+                  "type": "link"
+                },
+                {
+                  "path": "wpl5ptext",
+                  "type": "text"
+                },
+                {
+                  "path": "uwcuhref",
+                  "type": "link"
+                },
+                {
+                  "path": "uoytatext",
+                  "type": "text"
+                },
+                {
+                  "path": "dmqitext",
+                  "type": "text"
+                },
+                {
+                  "path": "thaqitext",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].title",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].href",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/blog",
+          "name": "Blog",
+          "pageType": "blog",
+          "requiredCategories": [
+            "navigation",
+            "story",
+            "footer"
+          ],
+          "sections": [
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveFrameworkBlogNavigationNavpenPrimary",
+              "source": "page",
+              "slotId": "blog.navigation.1",
+              "role": "blog-navigation-1",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "logotext",
+                  "type": "text"
+                },
+                {
+                  "path": "logohref",
+                  "type": "link"
+                },
+                {
+                  "path": "centernavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "centernavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "rightnavtext",
+                  "type": "text"
+                },
+                {
+                  "path": "rightnavhref",
+                  "type": "link"
+                },
+                {
+                  "path": "navItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "navItems.[].href",
+                  "type": "link"
+                },
+                {
+                  "path": "utilityItems.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "utilityItems.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "navigation",
+              "blockType": "TemplateExclusiveFrameworkBlogNavigationCategorybarpenAlt1",
+              "source": "page",
+              "slotId": "blog.navigation.2",
+              "role": "blog-navigation-2",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "fmwkqtext",
+                  "type": "text"
+                },
+                {
+                  "path": "fmwkqhref",
+                  "type": "link"
+                },
+                {
+                  "path": "shvcttext",
+                  "type": "text"
+                },
+                {
+                  "path": "shvcthref",
+                  "type": "link"
+                },
+                {
+                  "path": "fmg0utext",
+                  "type": "text"
+                },
+                {
+                  "path": "fmg0uhref",
+                  "type": "link"
+                },
+                {
+                  "path": "usnltext",
+                  "type": "text"
+                },
+                {
+                  "path": "usnlhref",
+                  "type": "link"
+                },
+                {
+                  "path": "krcrjtext",
+                  "type": "text"
+                },
+                {
+                  "path": "krcrjhref",
+                  "type": "link"
+                },
+                {
+                  "path": "categories.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "categories.[].href",
+                  "type": "link"
+                }
+              ]
+            },
+            {
+              "kind": "story",
+              "blockType": "TemplateExclusiveFrameworkBlogStoryBlogmainpenAlt2",
+              "source": "page",
+              "slotId": "blog.story.1",
+              "role": "blog-story-1",
+              "imageIntent": "cnc-product",
+              "editableFields": [
+                {
+                  "path": "feat1imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "rghsptext",
+                  "type": "text"
+                },
+                {
+                  "path": "fxt71text",
+                  "type": "text"
+                },
+                {
+                  "path": "brptext",
+                  "type": "text"
+                },
+                {
+                  "path": "g8ks2text",
+                  "type": "text"
+                },
+                {
+                  "path": "r6kwtext",
+                  "type": "text"
+                },
+                {
+                  "path": "e7ntutext",
+                  "type": "text"
+                },
+                {
+                  "path": "b6akctext",
+                  "type": "text"
+                },
+                {
+                  "path": "ntqg2text",
+                  "type": "text"
+                },
+                {
+                  "path": "feat2imgimagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "img1imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "lsaeetext",
+                  "type": "text"
+                },
+                {
+                  "path": "imrb8text",
+                  "type": "text"
+                },
+                {
+                  "path": "img2imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "swimttext",
+                  "type": "text"
+                },
+                {
+                  "path": "crfqetext",
+                  "type": "text"
+                },
+                {
+                  "path": "img3imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "zw96ntext",
+                  "type": "text"
+                },
+                {
+                  "path": "m28xttext",
+                  "type": "text"
+                },
+                {
+                  "path": "img4imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "ct8ldtext",
+                  "type": "text"
+                },
+                {
+                  "path": "o9jvftext",
+                  "type": "text"
+                },
+                {
+                  "path": "img5imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "cjpxtext",
+                  "type": "text"
+                },
+                {
+                  "path": "was8atext",
+                  "type": "text"
+                },
+                {
+                  "path": "img6imagesrc",
+                  "type": "image"
+                },
+                {
+                  "path": "vuynwtext",
+                  "type": "text"
+                },
+                {
+                  "path": "wmziitext",
+                  "type": "text"
+                },
+                {
+                  "path": "l3hujtext",
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "kind": "footer",
+              "blockType": "TemplateExclusiveFrameworkBlogFooterFooterpenAlt3",
+              "source": "page",
+              "slotId": "blog.footer.1",
+              "role": "blog-footer-1",
+              "imageIntent": "none",
+              "editableFields": [
+                {
+                  "path": "y1pjgtext",
+                  "type": "text"
+                },
+                {
+                  "path": "boahrtext",
+                  "type": "text"
+                },
+                {
+                  "path": "boahrhref",
+                  "type": "link"
+                },
+                {
+                  "path": "hqbpktext",
+                  "type": "text"
+                },
+                {
+                  "path": "uj2cktext",
+                  "type": "text"
+                },
+                {
+                  "path": "uj2ckhref",
+                  "type": "link"
+                },
+                {
+                  "path": "iiv5dtext",
+                  "type": "text"
+                },
+                {
+                  "path": "tfjhstext",
+                  "type": "text"
+                },
+                {
+                  "path": "tfjhshref",
+                  "type": "link"
+                },
+                {
+                  "path": "iaikqtext",
+                  "type": "text"
+                },
+                {
+                  "path": "gzytext",
+                  "type": "text"
+                },
+                {
+                  "path": "gzyhref",
+                  "type": "link"
+                },
+                {
+                  "path": "hftivtext",
+                  "type": "text"
+                },
+                {
+                  "path": "brd7etext",
+                  "type": "text"
+                },
+                {
+                  "path": "brd7ehref",
+                  "type": "link"
+                },
+                {
+                  "path": "dmhketext",
+                  "type": "text"
+                },
+                {
+                  "path": "xjtjihref",
+                  "type": "link"
+                },
+                {
+                  "path": "vt300text",
+                  "type": "text"
+                },
+                {
+                  "path": "xsatptext",
+                  "type": "text"
+                },
+                {
+                  "path": "b7gutext",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].title",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].label",
+                  "type": "text"
+                },
+                {
+                  "path": "columns.[].links.[].href",
+                  "type": "link"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

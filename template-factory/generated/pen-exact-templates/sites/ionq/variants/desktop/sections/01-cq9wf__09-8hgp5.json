@@ -1,0 +1,181 @@
+{
+  "sectionId": "8HGP5",
+  "sectionName": "joinSec",
+  "sectionKind": "generic",
+  "order": 9,
+  "bounds": {
+    "x": 0,
+    "y": 3088,
+    "width": 1200,
+    "height": 190
+  },
+  "directChildCount": 1,
+  "recursiveNodeCount": 5,
+  "treeHash": "b44d8e1e191ceed49e6a892900fb85ef9fcf5ef2c23f2df4d7c49706d01b09d2",
+  "blockCount": 1,
+  "blockIndex": [
+    {
+      "blockId": "h9sl2",
+      "blockName": "joinCard",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 24,
+        "width": 1136,
+        "height": 140
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "bcf47faeabbc54ebc22cb2431504b6eb5632fbd0be77dcff03549232c58fea94"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "h9sl2",
+      "blockName": "joinCard",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 24,
+        "width": 1136,
+        "height": 140
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "bcf47faeabbc54ebc22cb2431504b6eb5632fbd0be77dcff03549232c58fea94",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "h9sl2",
+        "x": 32,
+        "y": 24,
+        "name": "joinCard",
+        "width": 1136,
+        "height": 140,
+        "fill": "#ECEFF3",
+        "cornerRadius": 12,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#D8DEE5"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "nET0y",
+            "x": 24,
+            "y": 24,
+            "name": "joinH",
+            "fill": "#12161B",
+            "content": "Join us",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "QLBY9",
+            "x": 24,
+            "y": 58,
+            "name": "joinD",
+            "fill": "#5A6573",
+            "textGrowth": "fixed-width",
+            "width": 820,
+            "content": "Whether you are an expert or just ready for a career pivot, if you love collaboration, we’d love to hear from you.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "QgLXb",
+            "x": 24,
+            "y": 106,
+            "name": "joinL",
+            "fill": "#FF6A00",
+            "content": "View open positions",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "8HGP5",
+    "x": 0,
+    "y": 3088,
+    "name": "joinSec",
+    "width": 1200,
+    "height": 190,
+    "fill": "#F4F5F6",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "h9sl2",
+        "x": 32,
+        "y": 24,
+        "name": "joinCard",
+        "width": 1136,
+        "height": 140,
+        "fill": "#ECEFF3",
+        "cornerRadius": 12,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#D8DEE5"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "nET0y",
+            "x": 24,
+            "y": 24,
+            "name": "joinH",
+            "fill": "#12161B",
+            "content": "Join us",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "QLBY9",
+            "x": 24,
+            "y": 58,
+            "name": "joinD",
+            "fill": "#5A6573",
+            "textGrowth": "fixed-width",
+            "width": 820,
+            "content": "Whether you are an expert or just ready for a career pivot, if you love collaboration, we’d love to hear from you.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "QgLXb",
+            "x": 24,
+            "y": 106,
+            "name": "joinL",
+            "fill": "#FF6A00",
+            "content": "View open positions",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

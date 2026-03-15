@@ -1,0 +1,2293 @@
+{
+  "pageId": "page-audio",
+  "pageName": "Audio",
+  "pageType": "catalog",
+  "order": 3,
+  "bounds": {
+    "x": 1640,
+    "y": 3316,
+    "width": 1440,
+    "height": 1538
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "0d7eeba18ca3184c39eb711e36d1d180bfe778e6e491dd6d7925122cce2a0ed6",
+  "directChildCount": 38,
+  "recursiveNodeCount": 55,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "header-page-audio",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "364476adc6a6ab82c492c42a0ad7837d7571114b297daaf9558d8d398a4d2902",
+      "blockCount": 7
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1308,
+        "width": 1440,
+        "height": 230
+      },
+      "directChildCount": 9,
+      "recursiveNodeCount": 10,
+      "treeHash": "bc2c422404b48eaa670168df19df7ed1cc745a0b9375fec85e3c26e9ba810c40",
+      "blockCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "header-page-audio",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "364476adc6a6ab82c492c42a0ad7837d7571114b297daaf9558d8d398a4d2902",
+      "blockCount": 7,
+      "blockIndex": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7"
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 24,
+            "width": 240,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2b539879e82b39cc6497ce9b41c85669ddb553439b78af9aa1cbd3e640216ce3"
+        },
+        {
+          "blockId": "nav-page-offers",
+          "blockName": "nav-page-offers",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 840,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "88b99c76f9ccdbee4ca4d4038004b89a5f195356c62c9226bbeef933363faba4"
+        },
+        {
+          "blockId": "nav-page-phones",
+          "blockName": "nav-page-phones",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 948,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6a54b18777824be37969488c9eca4a0341880b0384e94986618a6974648fdcb6"
+        },
+        {
+          "blockId": "nav-page-audio",
+          "blockName": "nav-page-audio",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 1056,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "26dade94af7c65f8576445eaecec5b3330c1a42b6f62eabe137830b60a094afc"
+        },
+        {
+          "blockId": "nav-page-support-centre",
+          "blockName": "nav-page-support-centre",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 1164,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "49d25c7ad98b6b59989dfce607a1397b7e547357e5718c725e36940c78da84d3"
+        },
+        {
+          "blockId": "nav-page-contact-support",
+          "blockName": "nav-page-contact-support",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1272,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4950503d6074fca1ec857f2d7b7013067d64f2cf34ebad7ea7de3d8d4f0071d4"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 24,
+            "width": 240,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2b539879e82b39cc6497ce9b41c85669ddb553439b78af9aa1cbd3e640216ce3",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#111111",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          }
+        },
+        {
+          "blockId": "nav-page-offers",
+          "blockName": "nav-page-offers",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 840,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "88b99c76f9ccdbee4ca4d4038004b89a5f195356c62c9226bbeef933363faba4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-offers",
+            "name": "nav-page-offers",
+            "x": 840,
+            "y": 30,
+            "fill": "#111111",
+            "content": "OFFERS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-offers",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-phones",
+          "blockName": "nav-page-phones",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 948,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6a54b18777824be37969488c9eca4a0341880b0384e94986618a6974648fdcb6",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-phones",
+            "name": "nav-page-phones",
+            "x": 948,
+            "y": 30,
+            "fill": "#111111",
+            "content": "PHONES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-phones",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-audio",
+          "blockName": "nav-page-audio",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 1056,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "26dade94af7c65f8576445eaecec5b3330c1a42b6f62eabe137830b60a094afc",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-audio",
+            "name": "nav-page-audio",
+            "x": 1056,
+            "y": 30,
+            "fill": "#111111",
+            "content": "AUDIO",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-audio",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-support-centre",
+          "blockName": "nav-page-support-centre",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 1164,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "49d25c7ad98b6b59989dfce607a1397b7e547357e5718c725e36940c78da84d3",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-support-centre",
+            "name": "nav-page-support-centre",
+            "x": 1164,
+            "y": 30,
+            "fill": "#111111",
+            "content": "SUPPORT CENTRE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-support-centre",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-contact-support",
+          "blockName": "nav-page-contact-support",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1272,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4950503d6074fca1ec857f2d7b7013067d64f2cf34ebad7ea7de3d8d4f0071d4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-contact-support",
+            "name": "nav-page-contact-support",
+            "x": 1272,
+            "y": 30,
+            "fill": "#111111",
+            "content": "CONTACT SUPPORT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-contact-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "header-page-audio",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#111111",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "nav-page-offers",
+            "name": "nav-page-offers",
+            "x": 840,
+            "y": 30,
+            "fill": "#111111",
+            "content": "OFFERS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-offers",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-phones",
+            "name": "nav-page-phones",
+            "x": 948,
+            "y": 30,
+            "fill": "#111111",
+            "content": "PHONES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-phones",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-audio",
+            "name": "nav-page-audio",
+            "x": 1056,
+            "y": 30,
+            "fill": "#111111",
+            "content": "AUDIO",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-audio",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-support-centre",
+            "name": "nav-page-support-centre",
+            "x": 1164,
+            "y": 30,
+            "fill": "#111111",
+            "content": "SUPPORT CENTRE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-support-centre",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-contact-support",
+            "name": "nav-page-contact-support",
+            "x": 1272,
+            "y": 30,
+            "fill": "#111111",
+            "content": "CONTACT SUPPORT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-contact-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1308,
+        "width": 1440,
+        "height": 230
+      },
+      "directChildCount": 9,
+      "recursiveNodeCount": 10,
+      "treeHash": "bc2c422404b48eaa670168df19df7ed1cc745a0b9375fec85e3c26e9ba810c40",
+      "blockCount": 9,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e949a37f338d493e1566ece0b2a41ff593339bb70fb8b5ec83f857f923ec4cb4"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "38f30c9f17254af1126b5c7794d8fb3517a8b05926150c376d97832408191d95"
+        },
+        {
+          "blockId": "footer-title-0",
+          "blockName": "footer-title-0",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6da0218794e73a6344abe3c0a5e3a8d73aaeb8d8be96c4c8d1b2a34b1dc93d20"
+        },
+        {
+          "blockId": "footer-body-0",
+          "blockName": "footer-body-0",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "450d4f2e8ecf3094a432af560498eb1e3a6dc08b95a867023a1e1856db7cd309"
+        },
+        {
+          "blockId": "footer-title-1",
+          "blockName": "footer-title-1",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 260,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "91e030464da75db49527e23c5fbc2d7df1537781f9bf2ef28cbdbdc624458a51"
+        },
+        {
+          "blockId": "footer-body-1",
+          "blockName": "footer-body-1",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 260,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "69d4874b0af81e06f98d5cb8af934bbbad628bc888ea3d47cf5330f29e2cec24"
+        },
+        {
+          "blockId": "footer-title-2",
+          "blockName": "footer-title-2",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 480,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "badc9ee3b0762fb3971f9ac12716516497e5acd8a2473054fb7c0041a6f2a581"
+        },
+        {
+          "blockId": "footer-body-2",
+          "blockName": "footer-body-2",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 480,
+            "y": 100,
+            "width": 180,
+            "height": 41
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "775bcce13601d22f8d64c4ec3aedf5d83280cb90b4c8a4d01642c7ef26240b73"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 1020,
+            "y": 150,
+            "width": 320,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "044a0b6f85ecac6fb1e3e75845381c0c2a39e28c7623107a3812f1c9017ea113"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e949a37f338d493e1566ece0b2a41ff593339bb70fb8b5ec83f857f923ec4cb4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230,
+            "fill": "#0F0F10"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "38f30c9f17254af1126b5c7794d8fb3517a8b05926150c376d97832408191d95",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 40,
+            "y": 30,
+            "fill": "#F4F4F1",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-title-0",
+          "blockName": "footer-title-0",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6da0218794e73a6344abe3c0a5e3a8d73aaeb8d8be96c4c8d1b2a34b1dc93d20",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-title-0",
+            "name": "footer-title-0",
+            "x": 40,
+            "y": 76,
+            "fill": "#F4F4F1",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-body-0",
+          "blockName": "footer-body-0",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "450d4f2e8ecf3094a432af560498eb1e3a6dc08b95a867023a1e1856db7cd309",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-body-0",
+            "name": "footer-body-0",
+            "x": 40,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Offers Phones",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-title-1",
+          "blockName": "footer-title-1",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 260,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "91e030464da75db49527e23c5fbc2d7df1537781f9bf2ef28cbdbdc624458a51",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-title-1",
+            "name": "footer-title-1",
+            "x": 260,
+            "y": 76,
+            "fill": "#F4F4F1",
+            "content": "Explore",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-body-1",
+          "blockName": "footer-body-1",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 260,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "69d4874b0af81e06f98d5cb8af934bbbad628bc888ea3d47cf5330f29e2cec24",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-body-1",
+            "name": "footer-body-1",
+            "x": 260,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Audio Support Centre",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-title-2",
+          "blockName": "footer-title-2",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 480,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "badc9ee3b0762fb3971f9ac12716516497e5acd8a2473054fb7c0041a6f2a581",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-title-2",
+            "name": "footer-title-2",
+            "x": 480,
+            "y": 76,
+            "fill": "#F4F4F1",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-body-2",
+          "blockName": "footer-body-2",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 480,
+            "y": 100,
+            "width": 180,
+            "height": 41
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "775bcce13601d22f8d64c4ec3aedf5d83280cb90b4c8a4d01642c7ef26240b73",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-body-2",
+            "name": "footer-body-2",
+            "x": 480,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Contact Support Phone (3a) Pro Ear (3)",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 41
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 1020,
+            "y": 150,
+            "width": 320,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "044a0b6f85ecac6fb1e3e75845381c0c2a39e28c7623107a3812f1c9017ea113",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 1020,
+            "y": 150,
+            "fill": "#D8D5CE",
+            "content": "Nothing structured clone pen with desktop and mobile page sets.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 38
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1308,
+        "width": 1440,
+        "height": 230,
+        "fill": "#0F0F10",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230,
+            "fill": "#0F0F10"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 40,
+            "y": 30,
+            "fill": "#F4F4F1",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-0",
+            "name": "footer-title-0",
+            "x": 40,
+            "y": 76,
+            "fill": "#F4F4F1",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-0",
+            "name": "footer-body-0",
+            "x": 40,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Offers Phones",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-1",
+            "name": "footer-title-1",
+            "x": 260,
+            "y": 76,
+            "fill": "#F4F4F1",
+            "content": "Explore",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-1",
+            "name": "footer-body-1",
+            "x": 260,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Audio Support Centre",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-2",
+            "name": "footer-title-2",
+            "x": 480,
+            "y": 76,
+            "fill": "#F4F4F1",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-2",
+            "name": "footer-body-2",
+            "x": 480,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Contact Support Phone (3a) Pro Ear (3)",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 41
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 1020,
+            "y": 150,
+            "fill": "#D8D5CE",
+            "content": "Nothing structured clone pen with desktop and mobile page sets.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 38
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 16,
+  "looseNodeCount": 36,
+  "looseNodes": [
+    {
+      "id": "page-audio-bg",
+      "name": "page-audio-bg",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 100
+    },
+    {
+      "id": "page-audio-hero",
+      "name": "page-audio-hero",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 420
+    },
+    {
+      "id": "page-audio-overlay",
+      "name": "page-audio-overlay",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 420
+    },
+    {
+      "id": "page-audio-panel",
+      "name": "page-audio-panel",
+      "type": "rectangle",
+      "width": 1360,
+      "height": 824
+    },
+    {
+      "id": "page-audio-crumb",
+      "name": "page-audio-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 18
+    },
+    {
+      "id": "page-audio-title",
+      "name": "page-audio-title",
+      "type": "text",
+      "width": 760,
+      "height": 86
+    },
+    {
+      "id": "page-audio-subtitle",
+      "name": "page-audio-subtitle",
+      "type": "text",
+      "width": 620,
+      "height": 55
+    },
+    {
+      "id": "page-audio-btn-home-box",
+      "name": "page-audio-btn-home-box",
+      "type": "rectangle",
+      "width": 128,
+      "height": 38
+    },
+    {
+      "id": "page-audio-btn-home-text",
+      "name": "page-audio-btn-home-text",
+      "type": "text",
+      "width": 100,
+      "height": 18
+    },
+    {
+      "id": "page-audio-btn-peer-box",
+      "name": "page-audio-btn-peer-box",
+      "type": "rectangle",
+      "width": 148,
+      "height": 38
+    },
+    {
+      "id": "page-audio-btn-peer-text",
+      "name": "page-audio-btn-peer-text",
+      "type": "text",
+      "width": 120,
+      "height": 18
+    },
+    {
+      "id": "page-audio-kicker",
+      "name": "page-audio-kicker",
+      "type": "text",
+      "width": 520,
+      "height": 18
+    },
+    {
+      "id": "page-audio-panel-title",
+      "name": "page-audio-panel-title",
+      "type": "text",
+      "width": 520,
+      "height": 60
+    },
+    {
+      "id": "page-audio-p-0",
+      "name": "page-audio-p-0",
+      "type": "text",
+      "width": 520,
+      "height": 49
+    },
+    {
+      "id": "page-audio-p-1",
+      "name": "page-audio-p-1",
+      "type": "text",
+      "width": 520,
+      "height": 49
+    },
+    {
+      "id": "page-audio-feature",
+      "name": "page-audio-feature",
+      "type": "rectangle",
+      "width": 390,
+      "height": 260
+    },
+    {
+      "id": "page-audio-feature-2",
+      "name": "page-audio-feature-2",
+      "type": "rectangle",
+      "width": 390,
+      "height": 180
+    },
+    {
+      "id": "page-audio-card-0",
+      "name": "page-audio-card-0",
+      "type": "rectangle",
+      "width": 196,
+      "height": 178
+    },
+    {
+      "id": "page-audio-card-img-0",
+      "name": "page-audio-card-img-0",
+      "type": "rectangle",
+      "width": 196,
+      "height": 96
+    },
+    {
+      "id": "page-audio-card-title-0",
+      "name": "page-audio-card-title-0",
+      "type": "text",
+      "width": 176,
+      "height": 18
+    },
+    {
+      "id": "page-audio-card-copy-0",
+      "name": "page-audio-card-copy-0",
+      "type": "text",
+      "width": 176,
+      "height": 69
+    },
+    {
+      "id": "page-audio-card-1",
+      "name": "page-audio-card-1",
+      "type": "rectangle",
+      "width": 196,
+      "height": 178
+    },
+    {
+      "id": "page-audio-card-img-1",
+      "name": "page-audio-card-img-1",
+      "type": "rectangle",
+      "width": 196,
+      "height": 96
+    },
+    {
+      "id": "page-audio-card-title-1",
+      "name": "page-audio-card-title-1",
+      "type": "text",
+      "width": 176,
+      "height": 18
+    },
+    {
+      "id": "page-audio-card-copy-1",
+      "name": "page-audio-card-copy-1",
+      "type": "text",
+      "width": 176,
+      "height": 85
+    },
+    {
+      "id": "page-audio-card-2",
+      "name": "page-audio-card-2",
+      "type": "rectangle",
+      "width": 196,
+      "height": 178
+    },
+    {
+      "id": "page-audio-card-img-2",
+      "name": "page-audio-card-img-2",
+      "type": "rectangle",
+      "width": 196,
+      "height": 96
+    },
+    {
+      "id": "page-audio-card-title-2",
+      "name": "page-audio-card-title-2",
+      "type": "text",
+      "width": 176,
+      "height": 18
+    },
+    {
+      "id": "page-audio-card-copy-2",
+      "name": "page-audio-card-copy-2",
+      "type": "text",
+      "width": 176,
+      "height": 69
+    },
+    {
+      "id": "page-audio-related-title",
+      "name": "page-audio-related-title",
+      "type": "text",
+      "width": 180,
+      "height": 18
+    },
+    {
+      "id": "page-audio-related-0-box",
+      "name": "page-audio-related-0-box",
+      "type": "rectangle",
+      "width": 180,
+      "height": 36
+    },
+    {
+      "id": "page-audio-related-0-text",
+      "name": "page-audio-related-0-text",
+      "type": "text",
+      "width": 152,
+      "height": 18
+    },
+    {
+      "id": "page-audio-related-1-box",
+      "name": "page-audio-related-1-box",
+      "type": "rectangle",
+      "width": 180,
+      "height": 36
+    },
+    {
+      "id": "page-audio-related-1-text",
+      "name": "page-audio-related-1-text",
+      "type": "text",
+      "width": 152,
+      "height": 18
+    },
+    {
+      "id": "page-audio-related-2-box",
+      "name": "page-audio-related-2-box",
+      "type": "rectangle",
+      "width": 180,
+      "height": 36
+    },
+    {
+      "id": "page-audio-related-2-text",
+      "name": "page-audio-related-2-text",
+      "type": "text",
+      "width": 152,
+      "height": 18
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-audio-img-2-ce2e5c54.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-audio-img-2-ce2e5c54.png",
+      "relativePath": "assets-structured/nothing-tech/page-audio-img-2-ce2e5c54.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-audio-img-2-ce2e5c54.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-audio-img-2-ce2e5c54.png",
+      "relativePath": "assets-structured/nothing-tech/page-audio-img-2-ce2e5c54.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-audio-img-3-49079888.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-audio-img-3-49079888.png",
+      "relativePath": "assets-structured/nothing-tech/page-audio-img-3-49079888.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-audio-img-2-ce2e5c54.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-audio-img-2-ce2e5c54.png",
+      "relativePath": "assets-structured/nothing-tech/page-audio-img-2-ce2e5c54.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-audio-img-3-49079888.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-audio-img-3-49079888.png",
+      "relativePath": "assets-structured/nothing-tech/page-audio-img-3-49079888.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-audio-img-4-6d3b86e8.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-audio-img-4-6d3b86e8.png",
+      "relativePath": "assets-structured/nothing-tech/page-audio-img-4-6d3b86e8.png",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-audio",
+    "name": "Audio",
+    "x": 1640,
+    "y": 3316,
+    "width": 1440,
+    "height": 1538,
+    "fill": "#F3F3F0",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-audio-bg",
+        "name": "page-audio-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 100,
+        "fill": "#F3F3F0"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-hero",
+        "name": "page-audio-hero",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 420,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-audio-img-2-ce2e5c54.png",
+          "mode": "cover"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-overlay",
+        "name": "page-audio-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 420,
+        "fill": "#00000055"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-panel",
+        "name": "page-audio-panel",
+        "x": 40,
+        "y": 444,
+        "width": 1360,
+        "height": 824,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "cornerRadius": 0
+      },
+      {
+        "type": "frame",
+        "id": "header-page-audio",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#111111",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "nav-page-offers",
+            "name": "nav-page-offers",
+            "x": 840,
+            "y": 30,
+            "fill": "#111111",
+            "content": "OFFERS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-offers",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-phones",
+            "name": "nav-page-phones",
+            "x": 948,
+            "y": 30,
+            "fill": "#111111",
+            "content": "PHONES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-phones",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-audio",
+            "name": "nav-page-audio",
+            "x": 1056,
+            "y": 30,
+            "fill": "#111111",
+            "content": "AUDIO",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-audio",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-support-centre",
+            "name": "nav-page-support-centre",
+            "x": 1164,
+            "y": 30,
+            "fill": "#111111",
+            "content": "SUPPORT CENTRE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-support-centre",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-contact-support",
+            "name": "nav-page-contact-support",
+            "x": 1272,
+            "y": 30,
+            "fill": "#111111",
+            "content": "CONTACT SUPPORT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-contact-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-audio-crumb",
+        "name": "page-audio-crumb",
+        "x": 40,
+        "y": 102,
+        "fill": "#FFFFFF",
+        "content": "Home / Audio",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-audio-title",
+        "name": "page-audio-title",
+        "x": 40,
+        "y": 126,
+        "fill": "#FFFFFF",
+        "content": "Earbuds & Headphones",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 56,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 760,
+        "height": 86
+      },
+      {
+        "type": "text",
+        "id": "page-audio-subtitle",
+        "name": "page-audio-subtitle",
+        "x": 40,
+        "y": 226,
+        "fill": "#F0F0EE",
+        "content": "Earbuds and headphones tuned for clarity, utility and brand character.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 17,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 55
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-btn-home-box",
+        "name": "page-audio-btn-home-box",
+        "x": 40,
+        "y": 298,
+        "width": 128,
+        "height": 38,
+        "fill": "#E63E3E",
+        "stroke": {
+          "fill": "#E63E3E",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-audio-btn-home-text",
+        "name": "page-audio-btn-home-text",
+        "x": 54,
+        "y": 308,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-btn-peer-box",
+        "name": "page-audio-btn-peer-box",
+        "x": 180,
+        "y": 298,
+        "width": 148,
+        "height": 38,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-phone-3a-pro",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-audio-btn-peer-text",
+        "name": "page-audio-btn-peer-text",
+        "x": 194,
+        "y": 308,
+        "fill": "#111111",
+        "content": "Product page",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-phone-3a-pro",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "page-audio-kicker",
+        "name": "page-audio-kicker",
+        "x": 64,
+        "y": 468,
+        "fill": "#E63E3E",
+        "content": "SECOND LEVEL PAGE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 18,
+        "letterSpacing": "0.1em"
+      },
+      {
+        "type": "text",
+        "id": "page-audio-panel-title",
+        "name": "page-audio-panel-title",
+        "x": 64,
+        "y": 490,
+        "fill": "#111111",
+        "content": "Nothing (R)",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 38,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 60
+      },
+      {
+        "type": "text",
+        "id": "page-audio-p-0",
+        "name": "page-audio-p-0",
+        "x": 64,
+        "y": 522,
+        "fill": "#111111",
+        "content": "Earbuds and headphones tuned for clarity, utility and brand character.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 49
+      },
+      {
+        "type": "text",
+        "id": "page-audio-p-1",
+        "name": "page-audio-p-1",
+        "x": 64,
+        "y": 589,
+        "fill": "#111111",
+        "content": "Nothing (R) Explore Offers Learn More Audio Phone (4a) available now Get a free Ear (a) when you order Phone (4a).",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 49
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-feature",
+        "name": "page-audio-feature",
+        "x": 970,
+        "y": 468,
+        "width": 390,
+        "height": 260,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-audio-img-2-ce2e5c54.png",
+          "mode": "cover"
+        },
+        "href": "#page-audio",
+        "cornerRadius": 0
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-feature-2",
+        "name": "page-audio-feature-2",
+        "x": 970,
+        "y": 746,
+        "width": 390,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-audio-img-3-49079888.png",
+          "mode": "cover"
+        },
+        "href": "#page-audio",
+        "cornerRadius": 0
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-card-0",
+        "name": "page-audio-card-0",
+        "x": 64,
+        "y": 938,
+        "width": 196,
+        "height": 178,
+        "fill": "#ECECE8",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-phone-3a-pro",
+        "cornerRadius": 0
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-card-img-0",
+        "name": "page-audio-card-img-0",
+        "x": 64,
+        "y": 938,
+        "width": 196,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-audio-img-2-ce2e5c54.png",
+          "mode": "cover"
+        },
+        "href": "#page-phone-3a-pro",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-audio-card-title-0",
+        "name": "page-audio-card-title-0",
+        "x": 74,
+        "y": 1042,
+        "fill": "#111111",
+        "content": "Phone (3a) Pro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 18,
+        "href": "#page-phone-3a-pro"
+      },
+      {
+        "type": "text",
+        "id": "page-audio-card-copy-0",
+        "name": "page-audio-card-copy-0",
+        "x": 74,
+        "y": 1062,
+        "fill": "#6B6B66",
+        "content": "Earbuds and headphones tuned for clarity, utility and brand character.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 69,
+        "href": "#page-phone-3a-pro"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-card-1",
+        "name": "page-audio-card-1",
+        "x": 284,
+        "y": 938,
+        "width": 196,
+        "height": 178,
+        "fill": "#ECECE8",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-ear-3",
+        "cornerRadius": 0
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-card-img-1",
+        "name": "page-audio-card-img-1",
+        "x": 284,
+        "y": 938,
+        "width": 196,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-audio-img-3-49079888.png",
+          "mode": "cover"
+        },
+        "href": "#page-ear-3",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-audio-card-title-1",
+        "name": "page-audio-card-title-1",
+        "x": 294,
+        "y": 1042,
+        "fill": "#111111",
+        "content": "Ear (3)",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 18,
+        "href": "#page-ear-3"
+      },
+      {
+        "type": "text",
+        "id": "page-audio-card-copy-1",
+        "name": "page-audio-card-copy-1",
+        "x": 294,
+        "y": 1062,
+        "fill": "#6B6B66",
+        "content": "Nothing (R) Explore Offers Learn More Audio Phone (4a) available now Get a free Ear (a) wh",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 85,
+        "href": "#page-ear-3"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-card-2",
+        "name": "page-audio-card-2",
+        "x": 504,
+        "y": 938,
+        "width": 196,
+        "height": 178,
+        "fill": "#ECECE8",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-cmf-phone-2-pro",
+        "cornerRadius": 0
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-card-img-2",
+        "name": "page-audio-card-img-2",
+        "x": 504,
+        "y": 938,
+        "width": 196,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-audio-img-4-6d3b86e8.png",
+          "mode": "cover"
+        },
+        "href": "#page-cmf-phone-2-pro",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-audio-card-title-2",
+        "name": "page-audio-card-title-2",
+        "x": 514,
+        "y": 1042,
+        "fill": "#111111",
+        "content": "CMF Phone 2 Pro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 18,
+        "href": "#page-cmf-phone-2-pro"
+      },
+      {
+        "type": "text",
+        "id": "page-audio-card-copy-2",
+        "name": "page-audio-card-copy-2",
+        "x": 514,
+        "y": 1062,
+        "fill": "#6B6B66",
+        "content": "Earbuds and headphones tuned for clarity, utility and brand character.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 69,
+        "href": "#page-cmf-phone-2-pro"
+      },
+      {
+        "type": "text",
+        "id": "page-audio-related-title",
+        "name": "page-audio-related-title",
+        "x": 64,
+        "y": 1150,
+        "fill": "#E63E3E",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-related-0-box",
+        "name": "page-audio-related-0-box",
+        "x": 64,
+        "y": 1176,
+        "width": 180,
+        "height": 36,
+        "fill": "#E63E3E",
+        "stroke": {
+          "fill": "#E63E3E",
+          "thickness": 1
+        },
+        "href": "#page-phone-3a-pro",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-audio-related-0-text",
+        "name": "page-audio-related-0-text",
+        "x": 78,
+        "y": 1185,
+        "fill": "#FFFFFF",
+        "content": "Phone (3a) Pro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 152,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-phone-3a-pro",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-related-1-box",
+        "name": "page-audio-related-1-box",
+        "x": 256,
+        "y": 1176,
+        "width": 180,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-ear-3",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-audio-related-1-text",
+        "name": "page-audio-related-1-text",
+        "x": 270,
+        "y": 1185,
+        "fill": "#111111",
+        "content": "Ear (3)",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 152,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-ear-3",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-audio-related-2-box",
+        "name": "page-audio-related-2-box",
+        "x": 448,
+        "y": 1176,
+        "width": 180,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-cmf-phone-2-pro",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-audio-related-2-text",
+        "name": "page-audio-related-2-text",
+        "x": 462,
+        "y": 1185,
+        "fill": "#111111",
+        "content": "CMF Phone 2 Pro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 152,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-cmf-phone-2-pro",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1308,
+        "width": 1440,
+        "height": 230,
+        "fill": "#0F0F10",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230,
+            "fill": "#0F0F10"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 40,
+            "y": 30,
+            "fill": "#F4F4F1",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-0",
+            "name": "footer-title-0",
+            "x": 40,
+            "y": 76,
+            "fill": "#F4F4F1",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-0",
+            "name": "footer-body-0",
+            "x": 40,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Offers Phones",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-1",
+            "name": "footer-title-1",
+            "x": 260,
+            "y": 76,
+            "fill": "#F4F4F1",
+            "content": "Explore",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-1",
+            "name": "footer-body-1",
+            "x": 260,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Audio Support Centre",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-2",
+            "name": "footer-title-2",
+            "x": 480,
+            "y": 76,
+            "fill": "#F4F4F1",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-2",
+            "name": "footer-body-2",
+            "x": 480,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Contact Support Phone (3a) Pro Ear (3)",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 41
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 1020,
+            "y": 150,
+            "fill": "#D8D5CE",
+            "content": "Nothing structured clone pen with desktop and mobile page sets.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 38
+          }
+        ]
+      }
+    ]
+  }
+}

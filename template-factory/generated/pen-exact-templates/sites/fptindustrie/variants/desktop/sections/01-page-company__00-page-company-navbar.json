@@ -1,0 +1,820 @@
+{
+  "sectionId": "page-company-navbar",
+  "sectionName": "Navbar",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 86
+  },
+  "directChildCount": 13,
+  "recursiveNodeCount": 14,
+  "treeHash": "e9f169052ee9db0edb6907cb194b7c990a2c9576bb041a79796d86a0151e39b3",
+  "blockCount": 13,
+  "blockIndex": [
+    {
+      "blockId": "page-company-navbar-bg",
+      "blockName": "page-company-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ed71a3bb77772b1962c8f0cb30f4c865f4e9158eac807bd199522a1e0d8e098e"
+    },
+    {
+      "blockId": "page-company-navbar-logo",
+      "blockName": "page-company-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 10,
+        "width": 106,
+        "height": 64
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2ddc5f0f4d69328899fd67c1499f72997d8826b2aa184cde81ecacaa13f3455e"
+    },
+    {
+      "blockId": "page-company-navbar-lang",
+      "blockName": "page-company-navbar-lang",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 1340,
+        "y": 30,
+        "width": 30,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4744710b035e7e5f87a9798e45afb80e11c9d9f7deabb9b2ea11073d58925804"
+    },
+    {
+      "blockId": "page-company-navbar-企业",
+      "blockName": "page-company-navbar-企业",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 310,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "df8c5377c10696132a4ad333a9621e2c9ebc585f7590c23a337d547337794b80"
+    },
+    {
+      "blockId": "page-company-navbar-产品",
+      "blockName": "page-company-navbar-产品",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 366,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "784574cceab59b7b4979e1a43301e91c66a1e2620d693187dfa4cee04bec8cbd"
+    },
+    {
+      "blockId": "page-company-navbar-行业",
+      "blockName": "page-company-navbar-行业",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 422,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c9e987ef9b244b8c39e2a56b5eb3b63b9d1678cbd8eafacf1c71cf7131e2728c"
+    },
+    {
+      "blockId": "page-company-navbar-技术",
+      "blockName": "page-company-navbar-技术",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 478,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "588315853433410bb95fe716a918ab44d17944c126def5f8248f1727556bf23b"
+    },
+    {
+      "blockId": "page-company-navbar-通信",
+      "blockName": "page-company-navbar-通信",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 534,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "81168942cca16dc43abc9c70c68195b3395c8f6a199b873eb2f7cb950d5467e8"
+    },
+    {
+      "blockId": "page-company-navbar-联系方式",
+      "blockName": "page-company-navbar-联系方式",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 590,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9447a279953185ba05aae1af51079275560966a4e38196f3a245269584892168"
+    },
+    {
+      "blockId": "page-company-navbar-menu-hit",
+      "blockName": "page-company-navbar-menu-hit",
+      "blockType": "rectangle",
+      "order": 9,
+      "bounds": {
+        "x": 1390,
+        "y": 28,
+        "width": 16,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "842adc4d2e35777e9a843cc072ae128f2b90584e2db1e7d4288841bd64f15713"
+    },
+    {
+      "blockId": "page-company-navbar-menu-line1",
+      "blockName": "page-company-navbar-menu-line1",
+      "blockType": "rectangle",
+      "order": 10,
+      "bounds": {
+        "x": 1390,
+        "y": 30,
+        "width": 16,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "24d87d307ff3093ec402c2b87e663559bdff09ce03e61406cabd8d7548287a25"
+    },
+    {
+      "blockId": "page-company-navbar-menu-line2",
+      "blockName": "page-company-navbar-menu-line2",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 1390,
+        "y": 36,
+        "width": 16,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "620313518af8b0c4cb59c492bf76449549e30bd08cc0b0ccc212c0cf872789da"
+    },
+    {
+      "blockId": "page-company-navbar-menu-line3",
+      "blockName": "page-company-navbar-menu-line3",
+      "blockType": "rectangle",
+      "order": 12,
+      "bounds": {
+        "x": 1390,
+        "y": 42,
+        "width": 16,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8f470fb65a6fcc1c247094f299902d16a87ae9f3459800d152d7052b516ba7a5"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "page-company-navbar-bg",
+      "blockName": "page-company-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ed71a3bb77772b1962c8f0cb30f4c865f4e9158eac807bd199522a1e0d8e098e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-company-navbar-bg",
+        "name": "page-company-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 86,
+        "fill": "#000000A0"
+      }
+    },
+    {
+      "blockId": "page-company-navbar-logo",
+      "blockName": "page-company-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 10,
+        "width": 106,
+        "height": 64
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2ddc5f0f4d69328899fd67c1499f72997d8826b2aa184cde81ecacaa13f3455e",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-company-navbar-logo",
+        "name": "page-company-navbar-logo",
+        "x": 40,
+        "y": 10,
+        "width": 106,
+        "height": 64,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "page-company-navbar-lang",
+      "blockName": "page-company-navbar-lang",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 1340,
+        "y": 30,
+        "width": 30,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4744710b035e7e5f87a9798e45afb80e11c9d9f7deabb9b2ea11073d58925804",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-company-navbar-lang",
+        "name": "page-company-navbar-lang",
+        "x": 1340,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "ZH",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 30,
+        "height": 24
+      }
+    },
+    {
+      "blockId": "page-company-navbar-企业",
+      "blockName": "page-company-navbar-企业",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 310,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "df8c5377c10696132a4ad333a9621e2c9ebc585f7590c23a337d547337794b80",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-company-navbar-企业",
+        "name": "page-company-navbar-企业",
+        "x": 310,
+        "y": 30,
+        "fill": "#E8C400",
+        "content": "企业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-company"
+      }
+    },
+    {
+      "blockId": "page-company-navbar-产品",
+      "blockName": "page-company-navbar-产品",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 366,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "784574cceab59b7b4979e1a43301e91c66a1e2620d693187dfa4cee04bec8cbd",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-company-navbar-产品",
+        "name": "page-company-navbar-产品",
+        "x": 366,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "产品",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "page-company-navbar-行业",
+      "blockName": "page-company-navbar-行业",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 422,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c9e987ef9b244b8c39e2a56b5eb3b63b9d1678cbd8eafacf1c71cf7131e2728c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-company-navbar-行业",
+        "name": "page-company-navbar-行业",
+        "x": 422,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "行业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-industries"
+      }
+    },
+    {
+      "blockId": "page-company-navbar-技术",
+      "blockName": "page-company-navbar-技术",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 478,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "588315853433410bb95fe716a918ab44d17944c126def5f8248f1727556bf23b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-company-navbar-技术",
+        "name": "page-company-navbar-技术",
+        "x": 478,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "技术",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-technology"
+      }
+    },
+    {
+      "blockId": "page-company-navbar-通信",
+      "blockName": "page-company-navbar-通信",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 534,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "81168942cca16dc43abc9c70c68195b3395c8f6a199b873eb2f7cb950d5467e8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-company-navbar-通信",
+        "name": "page-company-navbar-通信",
+        "x": 534,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "通信",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-services"
+      }
+    },
+    {
+      "blockId": "page-company-navbar-联系方式",
+      "blockName": "page-company-navbar-联系方式",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 590,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9447a279953185ba05aae1af51079275560966a4e38196f3a245269584892168",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-company-navbar-联系方式",
+        "name": "page-company-navbar-联系方式",
+        "x": 590,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "联系方式",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-contacts"
+      }
+    },
+    {
+      "blockId": "page-company-navbar-menu-hit",
+      "blockName": "page-company-navbar-menu-hit",
+      "blockType": "rectangle",
+      "order": 9,
+      "bounds": {
+        "x": 1390,
+        "y": 28,
+        "width": 16,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "842adc4d2e35777e9a843cc072ae128f2b90584e2db1e7d4288841bd64f15713",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-company-navbar-menu-hit",
+        "name": "page-company-navbar-menu-hit",
+        "x": 1390,
+        "y": 28,
+        "width": 16,
+        "height": 16,
+        "fill": "#00000000",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "page-company-navbar-menu-line1",
+      "blockName": "page-company-navbar-menu-line1",
+      "blockType": "rectangle",
+      "order": 10,
+      "bounds": {
+        "x": 1390,
+        "y": 30,
+        "width": 16,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "24d87d307ff3093ec402c2b87e663559bdff09ce03e61406cabd8d7548287a25",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-company-navbar-menu-line1",
+        "name": "page-company-navbar-menu-line1",
+        "x": 1390,
+        "y": 30,
+        "width": 16,
+        "height": 2,
+        "fill": "#FFFFFF"
+      }
+    },
+    {
+      "blockId": "page-company-navbar-menu-line2",
+      "blockName": "page-company-navbar-menu-line2",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 1390,
+        "y": 36,
+        "width": 16,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "620313518af8b0c4cb59c492bf76449549e30bd08cc0b0ccc212c0cf872789da",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-company-navbar-menu-line2",
+        "name": "page-company-navbar-menu-line2",
+        "x": 1390,
+        "y": 36,
+        "width": 16,
+        "height": 2,
+        "fill": "#FFFFFF"
+      }
+    },
+    {
+      "blockId": "page-company-navbar-menu-line3",
+      "blockName": "page-company-navbar-menu-line3",
+      "blockType": "rectangle",
+      "order": 12,
+      "bounds": {
+        "x": 1390,
+        "y": 42,
+        "width": 16,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8f470fb65a6fcc1c247094f299902d16a87ae9f3459800d152d7052b516ba7a5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-company-navbar-menu-line3",
+        "name": "page-company-navbar-menu-line3",
+        "x": 1390,
+        "y": 42,
+        "width": 16,
+        "height": 2,
+        "fill": "#FFFFFF"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "page-company-navbar",
+    "name": "Navbar",
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 86,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-company-navbar-bg",
+        "name": "page-company-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 86,
+        "fill": "#000000A0"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-navbar-logo",
+        "name": "page-company-navbar-logo",
+        "x": 40,
+        "y": 10,
+        "width": 106,
+        "height": 64,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "page-company-navbar-lang",
+        "name": "page-company-navbar-lang",
+        "x": 1340,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "ZH",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 30,
+        "height": 24
+      },
+      {
+        "type": "text",
+        "id": "page-company-navbar-企业",
+        "name": "page-company-navbar-企业",
+        "x": 310,
+        "y": 30,
+        "fill": "#E8C400",
+        "content": "企业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-company"
+      },
+      {
+        "type": "text",
+        "id": "page-company-navbar-产品",
+        "name": "page-company-navbar-产品",
+        "x": 366,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "产品",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "page-company-navbar-行业",
+        "name": "page-company-navbar-行业",
+        "x": 422,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "行业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-industries"
+      },
+      {
+        "type": "text",
+        "id": "page-company-navbar-技术",
+        "name": "page-company-navbar-技术",
+        "x": 478,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "技术",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-technology"
+      },
+      {
+        "type": "text",
+        "id": "page-company-navbar-通信",
+        "name": "page-company-navbar-通信",
+        "x": 534,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "通信",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-services"
+      },
+      {
+        "type": "text",
+        "id": "page-company-navbar-联系方式",
+        "name": "page-company-navbar-联系方式",
+        "x": 590,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "联系方式",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-contacts"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-navbar-menu-hit",
+        "name": "page-company-navbar-menu-hit",
+        "x": 1390,
+        "y": 28,
+        "width": 16,
+        "height": 16,
+        "fill": "#00000000",
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-navbar-menu-line1",
+        "name": "page-company-navbar-menu-line1",
+        "x": 1390,
+        "y": 30,
+        "width": 16,
+        "height": 2,
+        "fill": "#FFFFFF"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-navbar-menu-line2",
+        "name": "page-company-navbar-menu-line2",
+        "x": 1390,
+        "y": 36,
+        "width": 16,
+        "height": 2,
+        "fill": "#FFFFFF"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-navbar-menu-line3",
+        "name": "page-company-navbar-menu-line3",
+        "x": 1390,
+        "y": 42,
+        "width": 16,
+        "height": 2,
+        "fill": "#FFFFFF"
+      }
+    ]
+  }
+}

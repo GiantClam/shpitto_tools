@@ -1,0 +1,3105 @@
+{
+  "pageId": "page-about",
+  "pageName": "About",
+  "pageType": "about",
+  "order": 6,
+  "bounds": {
+    "x": 1660,
+    "y": 10000,
+    "width": 1440,
+    "height": 1880
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "c45a4daddd530e66d3fc65fe4a1d655be5bf05643cf92f4eee0bd9573ab83e55",
+  "directChildCount": 37,
+  "recursiveNodeCount": 65,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "page-about-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 14,
+      "recursiveNodeCount": 15,
+      "treeHash": "39b4849f4946b0d42010b08f2e2500f86a9efe12f0e1b96133052a1eeafb5008",
+      "blockCount": 14
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1560,
+        "width": 1440,
+        "height": 320
+      },
+      "directChildCount": 13,
+      "recursiveNodeCount": 14,
+      "treeHash": "c0e76750dd90660495859f1d2ff19226d9bd04fea698fc41cd007edfae53cd17",
+      "blockCount": 13
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "page-about-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 14,
+      "recursiveNodeCount": 15,
+      "treeHash": "39b4849f4946b0d42010b08f2e2500f86a9efe12f0e1b96133052a1eeafb5008",
+      "blockCount": 14,
+      "blockIndex": [
+        {
+          "blockId": "page-about-navbar-bg",
+          "blockName": "page-about-navbar-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ba244dc5160860458e7ee2e62af0f7d89c46ab60877545b9bf84fbf170db2cf1"
+        },
+        {
+          "blockId": "page-about-navbar-logo",
+          "blockName": "page-about-navbar-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 20,
+            "width": 110,
+            "height": 34
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fe625f8dc3c3fb6f7fba8ba25e2142f675d8afda3866135c4107640a172bb258"
+        },
+        {
+          "blockId": "page-about-navbar-search",
+          "blockName": "page-about-navbar-search",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 474,
+            "y": 24,
+            "width": 70,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f1151f49b90e156c4d7743f8be389dcb8b41ff3f2b04105cc9cf2c7c9e2db433"
+        },
+        {
+          "blockId": "page-about-navbar-intl",
+          "blockName": "page-about-navbar-intl",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 584,
+            "y": 24,
+            "width": 92,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bd3178745d9884e3a077388a8cf9e807223f21b3b7a22bc8b4e6ccfee645e8fe"
+        },
+        {
+          "blockId": "page-about-navbar-design",
+          "blockName": "page-about-navbar-design",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 732,
+            "y": 24,
+            "width": 110,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "62e5c2b25fb7add746c16cb48d637d36dea48eeb2cf0af32e5c320ba8c45ee57"
+        },
+        {
+          "blockId": "page-about-navbar-support",
+          "blockName": "page-about-navbar-support",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 850,
+            "y": 24,
+            "width": 130,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5bd05c985291b77d9880170fc0e8f86b9f0d2f423ac49c15ae459305c461746e"
+        },
+        {
+          "blockId": "page-about-navbar-iso",
+          "blockName": "page-about-navbar-iso",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1022,
+            "y": 24,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "60af9ce88d2f89227680d5c827152965021a88296c98fda73693775601ea861d"
+        },
+        {
+          "blockId": "page-about-navbar-PLATFORM",
+          "blockName": "page-about-navbar-PLATFORM",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 540,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4480acc0ec6d909eb55275fc95d6e0be5208b44f05834ebe14f8d6447898d367"
+        },
+        {
+          "blockId": "page-about-navbar-INDUSTRIES",
+          "blockName": "page-about-navbar-INDUSTRIES",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 656,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0b958fa0a00efdabeea0d86dce981ba1f8d0cf4a46573fe103c09dcdc4c7f929"
+        },
+        {
+          "blockId": "page-about-navbar-PARTNERS",
+          "blockName": "page-about-navbar-PARTNERS",
+          "blockType": "text",
+          "order": 9,
+          "bounds": {
+            "x": 782,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c8f6ebf6c80bfec3a27adc70a9f550731a843849696fafe9947fad7868effbcc"
+        },
+        {
+          "blockId": "page-about-navbar-RESOURCES",
+          "blockName": "page-about-navbar-RESOURCES",
+          "blockType": "text",
+          "order": 10,
+          "bounds": {
+            "x": 898,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "87ab0e521a35e58358db337629fc1be316c345892e61601602dcf398256e1d0b"
+        },
+        {
+          "blockId": "page-about-navbar-ABOUT",
+          "blockName": "page-about-navbar-ABOUT",
+          "blockType": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1014,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "276fe1d28272f2537db07160f0ef4080c836fce78362fd738e504aa1f4422b95"
+        },
+        {
+          "blockId": "page-about-navbar-contact-box",
+          "blockName": "page-about-navbar-contact-box",
+          "blockType": "rectangle",
+          "order": 12,
+          "bounds": {
+            "x": 1280,
+            "y": 32,
+            "width": 106,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c749346e0268c2e3a28bd545535c9c29ab61509c85f776ba22c5e631f3a53640"
+        },
+        {
+          "blockId": "page-about-navbar-contact-text",
+          "blockName": "page-about-navbar-contact-text",
+          "blockType": "text",
+          "order": 13,
+          "bounds": {
+            "x": 1298,
+            "y": 42,
+            "width": 70,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c094f87d343b434394baf396958af5dc2eecabeb16dd988a659a872646959bad"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+          "relativePath": "assets-structured/carbon/carbon-logo.png",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "page-about-navbar-bg",
+          "blockName": "page-about-navbar-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ba244dc5160860458e7ee2e62af0f7d89c46ab60877545b9bf84fbf170db2cf1",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-about-navbar-bg",
+            "name": "page-about-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#000000"
+          }
+        },
+        {
+          "blockId": "page-about-navbar-logo",
+          "blockName": "page-about-navbar-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 20,
+            "width": 110,
+            "height": 34
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fe625f8dc3c3fb6f7fba8ba25e2142f675d8afda3866135c4107640a172bb258",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+            "relativePath": "assets-structured/carbon/carbon-logo.png",
+            "exists": true,
+            "mode": "fit"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-about-navbar-logo",
+            "name": "page-about-navbar-logo",
+            "x": 40,
+            "y": 20,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          }
+        },
+        {
+          "blockId": "page-about-navbar-search",
+          "blockName": "page-about-navbar-search",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 474,
+            "y": 24,
+            "width": 70,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f1151f49b90e156c4d7743f8be389dcb8b41ff3f2b04105cc9cf2c7c9e2db433",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-about-navbar-search",
+            "name": "page-about-navbar-search",
+            "x": 474,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Search...",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 18
+          }
+        },
+        {
+          "blockId": "page-about-navbar-intl",
+          "blockName": "page-about-navbar-intl",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 584,
+            "y": 24,
+            "width": 92,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bd3178745d9884e3a077388a8cf9e807223f21b3b7a22bc8b4e6ccfee645e8fe",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-about-navbar-intl",
+            "name": "page-about-navbar-intl",
+            "x": 584,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "International",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 92,
+            "height": 18
+          }
+        },
+        {
+          "blockId": "page-about-navbar-design",
+          "blockName": "page-about-navbar-design",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 732,
+            "y": 24,
+            "width": 110,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "62e5c2b25fb7add746c16cb48d637d36dea48eeb2cf0af32e5c320ba8c45ee57",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-about-navbar-design",
+            "name": "page-about-navbar-design",
+            "x": 732,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Design Engine",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 110,
+            "height": 18
+          }
+        },
+        {
+          "blockId": "page-about-navbar-support",
+          "blockName": "page-about-navbar-support",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 850,
+            "y": 24,
+            "width": 130,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5bd05c985291b77d9880170fc0e8f86b9f0d2f423ac49c15ae459305c461746e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-about-navbar-support",
+            "name": "page-about-navbar-support",
+            "x": 850,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Customer Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 18
+          }
+        },
+        {
+          "blockId": "page-about-navbar-iso",
+          "blockName": "page-about-navbar-iso",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1022,
+            "y": 24,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "60af9ce88d2f89227680d5c827152965021a88296c98fda73693775601ea861d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-about-navbar-iso",
+            "name": "page-about-navbar-iso",
+            "x": 1022,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "ISO 9001:2015",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18
+          }
+        },
+        {
+          "blockId": "page-about-navbar-PLATFORM",
+          "blockName": "page-about-navbar-PLATFORM",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 540,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4480acc0ec6d909eb55275fc95d6e0be5208b44f05834ebe14f8d6447898d367",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-about-navbar-PLATFORM",
+            "name": "page-about-navbar-PLATFORM",
+            "x": 540,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-platform"
+          }
+        },
+        {
+          "blockId": "page-about-navbar-INDUSTRIES",
+          "blockName": "page-about-navbar-INDUSTRIES",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 656,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0b958fa0a00efdabeea0d86dce981ba1f8d0cf4a46573fe103c09dcdc4c7f929",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-about-navbar-INDUSTRIES",
+            "name": "page-about-navbar-INDUSTRIES",
+            "x": 656,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-industries"
+          }
+        },
+        {
+          "blockId": "page-about-navbar-PARTNERS",
+          "blockName": "page-about-navbar-PARTNERS",
+          "blockType": "text",
+          "order": 9,
+          "bounds": {
+            "x": 782,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c8f6ebf6c80bfec3a27adc70a9f550731a843849696fafe9947fad7868effbcc",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-about-navbar-PARTNERS",
+            "name": "page-about-navbar-PARTNERS",
+            "x": 782,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PARTNERS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-partners"
+          }
+        },
+        {
+          "blockId": "page-about-navbar-RESOURCES",
+          "blockName": "page-about-navbar-RESOURCES",
+          "blockType": "text",
+          "order": 10,
+          "bounds": {
+            "x": 898,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "87ab0e521a35e58358db337629fc1be316c345892e61601602dcf398256e1d0b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-about-navbar-RESOURCES",
+            "name": "page-about-navbar-RESOURCES",
+            "x": 898,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-resources"
+          }
+        },
+        {
+          "blockId": "page-about-navbar-ABOUT",
+          "blockName": "page-about-navbar-ABOUT",
+          "blockType": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1014,
+            "y": 54,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "276fe1d28272f2537db07160f0ef4080c836fce78362fd738e504aa1f4422b95",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-about-navbar-ABOUT",
+            "name": "page-about-navbar-ABOUT",
+            "x": 1014,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-about"
+          }
+        },
+        {
+          "blockId": "page-about-navbar-contact-box",
+          "blockName": "page-about-navbar-contact-box",
+          "blockType": "rectangle",
+          "order": 12,
+          "bounds": {
+            "x": 1280,
+            "y": 32,
+            "width": 106,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c749346e0268c2e3a28bd545535c9c29ab61509c85f776ba22c5e631f3a53640",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-about-navbar-contact-box",
+            "name": "page-about-navbar-contact-box",
+            "x": 1280,
+            "y": 32,
+            "width": 106,
+            "height": 40,
+            "fill": "#7256FF",
+            "href": "#page-contact",
+            "cornerRadius": 12
+          }
+        },
+        {
+          "blockId": "page-about-navbar-contact-text",
+          "blockName": "page-about-navbar-contact-text",
+          "blockType": "text",
+          "order": 13,
+          "bounds": {
+            "x": 1298,
+            "y": 42,
+            "width": 70,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c094f87d343b434394baf396958af5dc2eecabeb16dd988a659a872646959bad",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-about-navbar-contact-text",
+            "name": "page-about-navbar-contact-text",
+            "x": 1298,
+            "y": 42,
+            "fill": "#FFFFFF",
+            "content": "CONTACT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 20,
+            "letterSpacing": "0.02em",
+            "href": "#page-contact",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "page-about-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "page-about-navbar-bg",
+            "name": "page-about-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#000000"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-about-navbar-logo",
+            "name": "page-about-navbar-logo",
+            "x": 40,
+            "y": 20,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-search",
+            "name": "page-about-navbar-search",
+            "x": 474,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Search...",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-intl",
+            "name": "page-about-navbar-intl",
+            "x": 584,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "International",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 92,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-design",
+            "name": "page-about-navbar-design",
+            "x": 732,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Design Engine",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 110,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-support",
+            "name": "page-about-navbar-support",
+            "x": 850,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Customer Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-iso",
+            "name": "page-about-navbar-iso",
+            "x": 1022,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "ISO 9001:2015",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-PLATFORM",
+            "name": "page-about-navbar-PLATFORM",
+            "x": 540,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-platform"
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-INDUSTRIES",
+            "name": "page-about-navbar-INDUSTRIES",
+            "x": 656,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-industries"
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-PARTNERS",
+            "name": "page-about-navbar-PARTNERS",
+            "x": 782,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PARTNERS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-partners"
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-RESOURCES",
+            "name": "page-about-navbar-RESOURCES",
+            "x": 898,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-resources"
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-ABOUT",
+            "name": "page-about-navbar-ABOUT",
+            "x": 1014,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-about"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-about-navbar-contact-box",
+            "name": "page-about-navbar-contact-box",
+            "x": 1280,
+            "y": 32,
+            "width": 106,
+            "height": 40,
+            "fill": "#7256FF",
+            "href": "#page-contact",
+            "cornerRadius": 12
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-contact-text",
+            "name": "page-about-navbar-contact-text",
+            "x": 1298,
+            "y": 42,
+            "fill": "#FFFFFF",
+            "content": "CONTACT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 20,
+            "letterSpacing": "0.02em",
+            "href": "#page-contact",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1560,
+        "width": 1440,
+        "height": 320
+      },
+      "directChildCount": 13,
+      "recursiveNodeCount": 14,
+      "treeHash": "c0e76750dd90660495859f1d2ff19226d9bd04fea698fc41cd007edfae53cd17",
+      "blockCount": 13,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 320
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7720fd4b54e8c3cecd39e1133de7c2cda6fd0f0ed1cfe2a736ca1be78ef9d92d"
+        },
+        {
+          "blockId": "footer-logo",
+          "blockName": "footer-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 28,
+            "width": 110,
+            "height": 34
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "21d4ed77c8499c7e45b3fedac9a1f1a655082eaa9fe580a079d7e8fb1e927068"
+        },
+        {
+          "blockId": "footer-Platform",
+          "blockName": "footer-Platform",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6f45cf35960fffa6baf0229d544c1eb2eb341818a2beb76d323299f58a814d6e"
+        },
+        {
+          "blockId": "footer-Platform-body",
+          "blockName": "footer-Platform-body",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7467191de89f848423dbc498fd1416fac72575b96eeda95cb469126466ba43f0"
+        },
+        {
+          "blockId": "footer-Products",
+          "blockName": "footer-Products",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 260,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3062a74f6c4d7548b3b5ae4d4c41b5580b3b83ab13138a597fc8b5474920de58"
+        },
+        {
+          "blockId": "footer-Products-body",
+          "blockName": "footer-Products-body",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 260,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2886d980bb70e82394336edc7aeab95c55407830f40312e26e6bab051064a780"
+        },
+        {
+          "blockId": "footer-Industries",
+          "blockName": "footer-Industries",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 500,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7b53b88657fa65ff2822c391184feb7316f7caa18c738ccc91caf92f45ced738"
+        },
+        {
+          "blockId": "footer-Industries-body",
+          "blockName": "footer-Industries-body",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 500,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ad2b9f6e2b27ac200c439ff4292dce66432d5dfd8b0a825f3571ce23f714ee6f"
+        },
+        {
+          "blockId": "footer-Resources",
+          "blockName": "footer-Resources",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 760,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c18d2bc750fb26a57136be2483fd094408d0039c1154c4e83362cc943a36a6a7"
+        },
+        {
+          "blockId": "footer-Resources-body",
+          "blockName": "footer-Resources-body",
+          "blockType": "text",
+          "order": 9,
+          "bounds": {
+            "x": 760,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "44ec2421fbcfdaf118d5d40a72b8c497033a53aa4cfcfa7c0b4186e49f693507"
+        },
+        {
+          "blockId": "footer-About",
+          "blockName": "footer-About",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 10,
+          "bounds": {
+            "x": 1020,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "20308211d5066bd154f621837bfa28ab3053dc6324806a1806a71b3265657ca7"
+        },
+        {
+          "blockId": "footer-About-body",
+          "blockName": "footer-About-body",
+          "blockType": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1020,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cd0745c0a1ab4fd0ec1e90c87ee52c025ab9ee80583df0ec2a6535d5a5573ed2"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 12,
+          "bounds": {
+            "x": 40,
+            "y": 282,
+            "width": 520,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9cfafc7f92a4202ff2db499fc846bd0fa598fc83d51fbb241937a6af3adff32b"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+          "relativePath": "assets-structured/carbon/carbon-logo.png",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 320
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7720fd4b54e8c3cecd39e1133de7c2cda6fd0f0ed1cfe2a736ca1be78ef9d92d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 320,
+            "fill": "#070A14"
+          }
+        },
+        {
+          "blockId": "footer-logo",
+          "blockName": "footer-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 28,
+            "width": 110,
+            "height": 34
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "21d4ed77c8499c7e45b3fedac9a1f1a655082eaa9fe580a079d7e8fb1e927068",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+            "relativePath": "assets-structured/carbon/carbon-logo.png",
+            "exists": true,
+            "mode": "fit"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 40,
+            "y": 28,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          }
+        },
+        {
+          "blockId": "footer-Platform",
+          "blockName": "footer-Platform",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6f45cf35960fffa6baf0229d544c1eb2eb341818a2beb76d323299f58a814d6e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Platform",
+            "name": "footer-Platform",
+            "x": 40,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-Platform-body",
+          "blockName": "footer-Platform-body",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7467191de89f848423dbc498fd1416fac72575b96eeda95cb469126466ba43f0",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Platform-body",
+            "name": "footer-Platform-body",
+            "x": 40,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "How it Works\nMaterials\nSoftware\nHardware",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          }
+        },
+        {
+          "blockId": "footer-Products",
+          "blockName": "footer-Products",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 260,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3062a74f6c4d7548b3b5ae4d4c41b5580b3b83ab13138a597fc8b5474920de58",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Products",
+            "name": "footer-Products",
+            "x": 260,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-Products-body",
+          "blockName": "footer-Products-body",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 260,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2886d980bb70e82394336edc7aeab95c55407830f40312e26e6bab051064a780",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Products-body",
+            "name": "footer-Products-body",
+            "x": 260,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          }
+        },
+        {
+          "blockId": "footer-Industries",
+          "blockName": "footer-Industries",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 500,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7b53b88657fa65ff2822c391184feb7316f7caa18c738ccc91caf92f45ced738",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Industries",
+            "name": "footer-Industries",
+            "x": 500,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-Industries-body",
+          "blockName": "footer-Industries-body",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 500,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ad2b9f6e2b27ac200c439ff4292dce66432d5dfd8b0a825f3571ce23f714ee6f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Industries-body",
+            "name": "footer-Industries-body",
+            "x": 500,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "Consumer\nDental\nOrthodontics\nIndustrial",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          }
+        },
+        {
+          "blockId": "footer-Resources",
+          "blockName": "footer-Resources",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 760,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c18d2bc750fb26a57136be2483fd094408d0039c1154c4e83362cc943a36a6a7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Resources",
+            "name": "footer-Resources",
+            "x": 760,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-Resources-body",
+          "blockName": "footer-Resources-body",
+          "blockType": "text",
+          "order": 9,
+          "bounds": {
+            "x": 760,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "44ec2421fbcfdaf118d5d40a72b8c497033a53aa4cfcfa7c0b4186e49f693507",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Resources-body",
+            "name": "footer-Resources-body",
+            "x": 760,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "Blog\nCase studies\nCourses\nDatasheets",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          }
+        },
+        {
+          "blockId": "footer-About",
+          "blockName": "footer-About",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 10,
+          "bounds": {
+            "x": 1020,
+            "y": 90,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "20308211d5066bd154f621837bfa28ab3053dc6324806a1806a71b3265657ca7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-About",
+            "name": "footer-About",
+            "x": 1020,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-About-body",
+          "blockName": "footer-About-body",
+          "blockType": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1020,
+            "y": 114,
+            "width": 160,
+            "height": 75
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cd0745c0a1ab4fd0ec1e90c87ee52c025ab9ee80583df0ec2a6535d5a5573ed2",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-About-body",
+            "name": "footer-About-body",
+            "x": 1020,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "About Carbon\nNewsroom\nContact Us\nPartners",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 12,
+          "bounds": {
+            "x": 40,
+            "y": 282,
+            "width": 520,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9cfafc7f92a4202ff2db499fc846bd0fa598fc83d51fbb241937a6af3adff32b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 40,
+            "y": 282,
+            "fill": "#B9C0DA",
+            "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 520,
+            "height": 38
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1560,
+        "width": 1440,
+        "height": 320,
+        "fill": "#070A14",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 320,
+            "fill": "#070A14"
+          },
+          {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 40,
+            "y": 28,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "footer-Platform",
+            "name": "footer-Platform",
+            "x": 40,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Platform-body",
+            "name": "footer-Platform-body",
+            "x": 40,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "How it Works\nMaterials\nSoftware\nHardware",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-Products",
+            "name": "footer-Products",
+            "x": 260,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Products-body",
+            "name": "footer-Products-body",
+            "x": 260,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-Industries",
+            "name": "footer-Industries",
+            "x": 500,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Industries-body",
+            "name": "footer-Industries-body",
+            "x": 500,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "Consumer\nDental\nOrthodontics\nIndustrial",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-Resources",
+            "name": "footer-Resources",
+            "x": 760,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Resources-body",
+            "name": "footer-Resources-body",
+            "x": 760,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "Blog\nCase studies\nCourses\nDatasheets",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-About",
+            "name": "footer-About",
+            "x": 1020,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-About-body",
+            "name": "footer-About-body",
+            "x": 1020,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "About Carbon\nNewsroom\nContact Us\nPartners",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 40,
+            "y": 282,
+            "fill": "#B9C0DA",
+            "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 520,
+            "height": 38
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 27,
+  "looseNodeCount": 35,
+  "looseNodes": [
+    {
+      "id": "page-about-bg",
+      "name": "page-about-bg",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 1880
+    },
+    {
+      "id": "page-about-hero",
+      "name": "page-about-hero",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 360
+    },
+    {
+      "id": "page-about-hero-overlay",
+      "name": "page-about-hero-overlay",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 360
+    },
+    {
+      "id": "page-about-crumb",
+      "name": "page-about-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 22
+    },
+    {
+      "id": "page-about-title",
+      "name": "page-about-title",
+      "type": "text",
+      "width": 760,
+      "height": 77
+    },
+    {
+      "id": "page-about-subtitle",
+      "name": "page-about-subtitle",
+      "type": "text",
+      "width": 700,
+      "height": 29
+    },
+    {
+      "id": "page-about-home-btn-box",
+      "name": "page-about-home-btn-box",
+      "type": "rectangle",
+      "width": 120,
+      "height": 38
+    },
+    {
+      "id": "page-about-home-btn-text",
+      "name": "page-about-home-btn-text",
+      "type": "text",
+      "width": 84,
+      "height": 20
+    },
+    {
+      "id": "page-about-more-btn-box",
+      "name": "page-about-more-btn-box",
+      "type": "rectangle",
+      "width": 160,
+      "height": 38
+    },
+    {
+      "id": "page-about-more-btn-text",
+      "name": "page-about-more-btn-text",
+      "type": "text",
+      "width": 124,
+      "height": 20
+    },
+    {
+      "id": "page-about-panel",
+      "name": "page-about-panel",
+      "type": "rectangle",
+      "width": 1360,
+      "height": 1120
+    },
+    {
+      "id": "page-about-eyebrow",
+      "name": "page-about-eyebrow",
+      "type": "text",
+      "width": 240,
+      "height": 18
+    },
+    {
+      "id": "page-about-panel-title",
+      "name": "page-about-panel-title",
+      "type": "text",
+      "width": 580,
+      "height": 63
+    },
+    {
+      "id": "page-about-p-0",
+      "name": "page-about-p-0",
+      "type": "text",
+      "width": 560,
+      "height": 49
+    },
+    {
+      "id": "page-about-p-1",
+      "name": "page-about-p-1",
+      "type": "text",
+      "width": 560,
+      "height": 198
+    },
+    {
+      "id": "page-about-p-2",
+      "name": "page-about-p-2",
+      "type": "text",
+      "width": 560,
+      "height": 28
+    },
+    {
+      "id": "page-about-p-3",
+      "name": "page-about-p-3",
+      "type": "text",
+      "width": 560,
+      "height": 28
+    },
+    {
+      "id": "page-about-p-4",
+      "name": "page-about-p-4",
+      "type": "text",
+      "width": 560,
+      "height": 28
+    },
+    {
+      "id": "page-about-img-main",
+      "name": "page-about-img-main",
+      "type": "rectangle",
+      "width": 480,
+      "height": 300
+    },
+    {
+      "id": "page-about-img-side",
+      "name": "page-about-img-side",
+      "type": "rectangle",
+      "width": 480,
+      "height": 220
+    },
+    {
+      "id": "page-about-card-0",
+      "name": "page-about-card-0",
+      "type": "rectangle",
+      "width": 260,
+      "height": 220
+    },
+    {
+      "id": "page-about-card-img-0",
+      "name": "page-about-card-img-0",
+      "type": "rectangle",
+      "width": 236,
+      "height": 120
+    },
+    {
+      "id": "page-about-card-title-0",
+      "name": "page-about-card-title-0",
+      "type": "text",
+      "width": 236,
+      "height": 28
+    },
+    {
+      "id": "page-about-card-body-0",
+      "name": "page-about-card-body-0",
+      "type": "text",
+      "width": 236,
+      "height": 58
+    },
+    {
+      "id": "page-about-card-1",
+      "name": "page-about-card-1",
+      "type": "rectangle",
+      "width": 260,
+      "height": 220
+    },
+    {
+      "id": "page-about-card-img-1",
+      "name": "page-about-card-img-1",
+      "type": "rectangle",
+      "width": 236,
+      "height": 120
+    },
+    {
+      "id": "page-about-card-title-1",
+      "name": "page-about-card-title-1",
+      "type": "text",
+      "width": 236,
+      "height": 28
+    },
+    {
+      "id": "page-about-card-body-1",
+      "name": "page-about-card-body-1",
+      "type": "text",
+      "width": 236,
+      "height": 109
+    },
+    {
+      "id": "page-about-rel-title",
+      "name": "page-about-rel-title",
+      "type": "text",
+      "width": 200,
+      "height": 18
+    },
+    {
+      "id": "page-about-rel-0-box",
+      "name": "page-about-rel-0-box",
+      "type": "rectangle",
+      "width": 186,
+      "height": 38
+    },
+    {
+      "id": "page-about-rel-0-text",
+      "name": "page-about-rel-0-text",
+      "type": "text",
+      "width": 150,
+      "height": 20
+    },
+    {
+      "id": "page-about-rel-1-box",
+      "name": "page-about-rel-1-box",
+      "type": "rectangle",
+      "width": 186,
+      "height": 38
+    },
+    {
+      "id": "page-about-rel-1-text",
+      "name": "page-about-rel-1-text",
+      "type": "text",
+      "width": 150,
+      "height": 20
+    },
+    {
+      "id": "page-about-rel-2-box",
+      "name": "page-about-rel-2-box",
+      "type": "rectangle",
+      "width": 186,
+      "height": 38
+    },
+    {
+      "id": "page-about-rel-2-text",
+      "name": "page-about-rel-2-text",
+      "type": "text",
+      "width": 150,
+      "height": 20
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-about-0-9deec890.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-about-0-9deec890.jpg",
+      "relativePath": "assets-structured/carbon/page-about-0-9deec890.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+      "relativePath": "assets-structured/carbon/carbon-logo.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-about-1-adf3909b.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-about-1-adf3909b.jpg",
+      "relativePath": "assets-structured/carbon/page-about-1-adf3909b.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-about-1-adf3909b.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-about-1-adf3909b.jpg",
+      "relativePath": "assets-structured/carbon/page-about-1-adf3909b.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-about-0-9deec890.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-about-0-9deec890.jpg",
+      "relativePath": "assets-structured/carbon/page-about-0-9deec890.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-about-1-adf3909b.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-about-1-adf3909b.jpg",
+      "relativePath": "assets-structured/carbon/page-about-1-adf3909b.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+      "relativePath": "assets-structured/carbon/carbon-logo.png",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-about",
+    "name": "About",
+    "x": 1660,
+    "y": 10000,
+    "width": 1440,
+    "height": 1880,
+    "fill": "#0D1022",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-about-bg",
+        "name": "page-about-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1880,
+        "fill": "#0D1022"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-hero",
+        "name": "page-about-hero",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-about-0-9deec890.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-hero-overlay",
+        "name": "page-about-hero-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 360,
+        "fill": "#0000004A"
+      },
+      {
+        "type": "frame",
+        "id": "page-about-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "page-about-navbar-bg",
+            "name": "page-about-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#000000"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-about-navbar-logo",
+            "name": "page-about-navbar-logo",
+            "x": 40,
+            "y": 20,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-search",
+            "name": "page-about-navbar-search",
+            "x": 474,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Search...",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-intl",
+            "name": "page-about-navbar-intl",
+            "x": 584,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "International",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 92,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-design",
+            "name": "page-about-navbar-design",
+            "x": 732,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Design Engine",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 110,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-support",
+            "name": "page-about-navbar-support",
+            "x": 850,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Customer Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-iso",
+            "name": "page-about-navbar-iso",
+            "x": 1022,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "ISO 9001:2015",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-PLATFORM",
+            "name": "page-about-navbar-PLATFORM",
+            "x": 540,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-platform"
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-INDUSTRIES",
+            "name": "page-about-navbar-INDUSTRIES",
+            "x": 656,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-industries"
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-PARTNERS",
+            "name": "page-about-navbar-PARTNERS",
+            "x": 782,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PARTNERS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-partners"
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-RESOURCES",
+            "name": "page-about-navbar-RESOURCES",
+            "x": 898,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-resources"
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-ABOUT",
+            "name": "page-about-navbar-ABOUT",
+            "x": 1014,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-about"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-about-navbar-contact-box",
+            "name": "page-about-navbar-contact-box",
+            "x": 1280,
+            "y": 32,
+            "width": 106,
+            "height": 40,
+            "fill": "#7256FF",
+            "href": "#page-contact",
+            "cornerRadius": 12
+          },
+          {
+            "type": "text",
+            "id": "page-about-navbar-contact-text",
+            "name": "page-about-navbar-contact-text",
+            "x": 1298,
+            "y": 42,
+            "fill": "#FFFFFF",
+            "content": "CONTACT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 20,
+            "letterSpacing": "0.02em",
+            "href": "#page-contact",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-about-crumb",
+        "name": "page-about-crumb",
+        "x": 40,
+        "y": 108,
+        "fill": "#FFFFFF",
+        "content": "Home / About",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 22
+      },
+      {
+        "type": "text",
+        "id": "page-about-title",
+        "name": "page-about-title",
+        "x": 40,
+        "y": 142,
+        "fill": "#FFFFFF",
+        "content": "Who We Are",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 50,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 760,
+        "height": 77
+      },
+      {
+        "type": "text",
+        "id": "page-about-subtitle",
+        "name": "page-about-subtitle",
+        "x": 40,
+        "y": 210,
+        "fill": "#E3E7F5",
+        "content": "Carbon's Mission",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 16,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 700,
+        "height": 29
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-home-btn-box",
+        "name": "page-about-home-btn-box",
+        "x": 40,
+        "y": 264,
+        "width": 120,
+        "height": 38,
+        "fill": "#7256FF",
+        "href": "#page-home",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-about-home-btn-text",
+        "name": "page-about-home-btn-text",
+        "x": 58,
+        "y": 273,
+        "fill": "#FFFFFF",
+        "content": "HOME",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 84,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-more-btn-box",
+        "name": "page-about-more-btn-box",
+        "x": 176,
+        "y": 264,
+        "width": 160,
+        "height": 38,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-platform",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-about-more-btn-text",
+        "name": "page-about-more-btn-text",
+        "x": 194,
+        "y": 273,
+        "fill": "#FFFFFF",
+        "content": "THIRD LEVEL",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 124,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-platform",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-panel",
+        "name": "page-about-panel",
+        "x": 40,
+        "y": 396,
+        "width": 1360,
+        "height": 1120,
+        "fill": "#20243A",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "page-about-eyebrow",
+        "name": "page-about-eyebrow",
+        "x": 64,
+        "y": 418,
+        "fill": "#5FD3FF",
+        "content": "ABOUT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-about-panel-title",
+        "name": "page-about-panel-title",
+        "x": 64,
+        "y": 450,
+        "fill": "#FFFFFF",
+        "content": "Who We Are",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 40,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 580,
+        "height": 63
+      },
+      {
+        "type": "text",
+        "id": "page-about-p-0",
+        "name": "page-about-p-0",
+        "x": 64,
+        "y": 510,
+        "fill": "#D9DDF0",
+        "content": "Carbon has customers in 17 countries and is continuing to expand globally.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 560,
+        "height": 49
+      },
+      {
+        "type": "text",
+        "id": "page-about-p-1",
+        "name": "page-about-p-1",
+        "x": 64,
+        "y": 577,
+        "fill": "#D9DDF0",
+        "content": "The Carbon DLS ™ process combines versatile printers, advanced software, and best-in-class materials to deliver functional parts with end-use performance and aesthetics, helping engineers and designers to create products that outperform. From prototyping and low-volume production to production-at-scale, hundreds of global organizations, including adidas, Ford, and Becton Dickinson, use the Carbon process to create a wide range of functional end-use parts and print them reliably wherever and whenever they need them through our production network partners.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 560,
+        "height": 198
+      },
+      {
+        "type": "text",
+        "id": "page-about-p-2",
+        "name": "page-about-p-2",
+        "x": 64,
+        "y": 793,
+        "fill": "#D9DDF0",
+        "content": "Discover what the Carbon platform is all about",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 560,
+        "height": 28
+      },
+      {
+        "type": "text",
+        "id": "page-about-p-3",
+        "name": "page-about-p-3",
+        "x": 64,
+        "y": 839,
+        "fill": "#D9DDF0",
+        "content": "The talk that introduced us to the world",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 560,
+        "height": 28
+      },
+      {
+        "type": "text",
+        "id": "page-about-p-4",
+        "name": "page-about-p-4",
+        "x": 64,
+        "y": 885,
+        "fill": "#D9DDF0",
+        "content": "The science behind Carbon technology, on the cover of Science",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 560,
+        "height": 28
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-img-main",
+        "name": "page-about-img-main",
+        "x": 880,
+        "y": 420,
+        "width": 480,
+        "height": 300,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-about-1-adf3909b.jpg",
+          "mode": "contain"
+        },
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-img-side",
+        "name": "page-about-img-side",
+        "x": 880,
+        "y": 752,
+        "width": 480,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-about-1-adf3909b.jpg",
+          "mode": "contain"
+        },
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-card-0",
+        "name": "page-about-card-0",
+        "x": 64,
+        "y": 1080,
+        "width": 260,
+        "height": 220,
+        "fill": "#151827",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-platform",
+        "cornerRadius": 14
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-card-img-0",
+        "name": "page-about-card-img-0",
+        "x": 76,
+        "y": 1092,
+        "width": 236,
+        "height": 120,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-about-0-9deec890.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-platform",
+        "cornerRadius": 10
+      },
+      {
+        "type": "text",
+        "id": "page-about-card-title-0",
+        "name": "page-about-card-title-0",
+        "x": 76,
+        "y": 1224,
+        "fill": "#FFFFFF",
+        "content": "Light and Oxygen",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 236,
+        "height": 28,
+        "href": "#page-platform"
+      },
+      {
+        "type": "text",
+        "id": "page-about-card-body-0",
+        "name": "page-about-card-body-0",
+        "x": 76,
+        "y": 1250,
+        "fill": "#AAB0D0",
+        "content": "Carbon has customers in 17 countries and is continuing to expand globally.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 236,
+        "height": 58,
+        "href": "#page-platform"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-card-1",
+        "name": "page-about-card-1",
+        "x": 360,
+        "y": 1080,
+        "width": 260,
+        "height": 220,
+        "fill": "#151827",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-contact",
+        "cornerRadius": 14
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-card-img-1",
+        "name": "page-about-card-img-1",
+        "x": 372,
+        "y": 1092,
+        "width": 236,
+        "height": 120,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-about-1-adf3909b.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-contact",
+        "cornerRadius": 10
+      },
+      {
+        "type": "text",
+        "id": "page-about-card-title-1",
+        "name": "page-about-card-title-1",
+        "x": 372,
+        "y": 1224,
+        "fill": "#FFFFFF",
+        "content": "Latticed Bike Saddles",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 236,
+        "height": 28,
+        "href": "#page-contact"
+      },
+      {
+        "type": "text",
+        "id": "page-about-card-body-1",
+        "name": "page-about-card-body-1",
+        "x": 372,
+        "y": 1250,
+        "fill": "#AAB0D0",
+        "content": "The Carbon DLS ™ process combines versatile printers, advanced software, and best-in-class materials to deliver functional parts with end-use performa",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 236,
+        "height": 109,
+        "href": "#page-contact"
+      },
+      {
+        "type": "text",
+        "id": "page-about-rel-title",
+        "name": "page-about-rel-title",
+        "x": 64,
+        "y": 1540,
+        "fill": "#5FD3FF",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-rel-0-box",
+        "name": "page-about-rel-0-box",
+        "x": 64,
+        "y": 1568,
+        "width": 186,
+        "height": 38,
+        "fill": "#7256FF",
+        "href": "#page-platform",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-about-rel-0-text",
+        "name": "page-about-rel-0-text",
+        "x": 82,
+        "y": 1577,
+        "fill": "#FFFFFF",
+        "content": "Platform",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 150,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-platform",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-rel-1-box",
+        "name": "page-about-rel-1-box",
+        "x": 262,
+        "y": 1568,
+        "width": 186,
+        "height": 38,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-contact",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-about-rel-1-text",
+        "name": "page-about-rel-1-text",
+        "x": 280,
+        "y": 1577,
+        "fill": "#FFFFFF",
+        "content": "Contact",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 150,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-contact",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-rel-2-box",
+        "name": "page-about-rel-2-box",
+        "x": 460,
+        "y": 1568,
+        "width": 186,
+        "height": 38,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-about-rel-2-text",
+        "name": "page-about-rel-2-text",
+        "x": 478,
+        "y": 1577,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 150,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1560,
+        "width": 1440,
+        "height": 320,
+        "fill": "#070A14",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 320,
+            "fill": "#070A14"
+          },
+          {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 40,
+            "y": 28,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "footer-Platform",
+            "name": "footer-Platform",
+            "x": 40,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Platform-body",
+            "name": "footer-Platform-body",
+            "x": 40,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "How it Works\nMaterials\nSoftware\nHardware",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-Products",
+            "name": "footer-Products",
+            "x": 260,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Products-body",
+            "name": "footer-Products-body",
+            "x": 260,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-Industries",
+            "name": "footer-Industries",
+            "x": 500,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Industries-body",
+            "name": "footer-Industries-body",
+            "x": 500,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "Consumer\nDental\nOrthodontics\nIndustrial",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-Resources",
+            "name": "footer-Resources",
+            "x": 760,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Resources-body",
+            "name": "footer-Resources-body",
+            "x": 760,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "Blog\nCase studies\nCourses\nDatasheets",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-About",
+            "name": "footer-About",
+            "x": 1020,
+            "y": 90,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-About-body",
+            "name": "footer-About-body",
+            "x": 1020,
+            "y": 114,
+            "fill": "#C7CEE7",
+            "content": "About Carbon\nNewsroom\nContact Us\nPartners",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 75
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 40,
+            "y": 282,
+            "fill": "#B9C0DA",
+            "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 520,
+            "height": 38
+          }
+        ]
+      }
+    ]
+  }
+}

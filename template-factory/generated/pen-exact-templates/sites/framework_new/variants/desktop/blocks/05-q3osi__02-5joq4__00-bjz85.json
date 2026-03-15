@@ -1,0 +1,114 @@
+{
+  "blockId": "bjz85",
+  "blockName": "feat1",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 8,
+  "treeHash": "db3fb35bef67ef3b44f7cb7eede38f0694b6fab3173138892e1b40b96c14a843",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "bjz85",
+    "name": "feat1",
+    "width": "fill_container",
+    "gap": 36,
+    "children": [
+      {
+        "type": "frame",
+        "id": "U9Sgy",
+        "name": "feat1Img",
+        "metadata": {
+          "type": "unsplash",
+          "username": "chubawang",
+          "link": "https://unsplash.com/@chubawang",
+          "author": "chu lei"
+        },
+        "width": 520,
+        "height": 280,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1594047686814-9f74e5c56ccd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxMjA1NTh8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 2
+      },
+      {
+        "type": "frame",
+        "id": "oYX3A",
+        "name": "feat1Text",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 12,
+        "justifyContent": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "RghSP",
+            "fill": "#1E252D",
+            "textGrowth": "fixed-width",
+            "width": 430,
+            "content": "Updates and\nlivestream",
+            "lineHeight": 0.95,
+            "fontFamily": "Inter",
+            "fontSize": 56,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "fxt71",
+            "fill": "#8A9198",
+            "content": "News | Feb 26 2026",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "text",
+            "id": "85BRP",
+            "fill": "#4F565E",
+            "textGrowth": "fixed-width",
+            "width": 430,
+            "content": "We have a roundup of announcements and updates from this week.",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "frame",
+            "id": "q2mQe",
+            "name": "b1",
+            "width": 94,
+            "height": 30,
+            "cornerRadius": 16,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#8D9298"
+            },
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "g8kS2",
+                "fill": "#2F353B",
+                "content": "Read More",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

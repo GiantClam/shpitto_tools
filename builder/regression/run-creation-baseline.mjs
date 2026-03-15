@@ -92,6 +92,18 @@ const categorizeBlock = (block) => {
   return categories;
 };
 
+const inferCategoriesFromPagePaths = (pages) => {
+  const inferred = new Set();
+  const normalizedPaths = (Array.isArray(pages) ? pages : []).map((page) => String(page?.path || "").trim().toLowerCase());
+  normalizedPaths.forEach((pathValue) => {
+    if (/^\/products?(\/|$)/.test(pathValue) || /^\/core-product(\/|$)/.test(pathValue)) inferred.add("products");
+    if (/^\/contact(\/|$)/.test(pathValue)) inferred.add("contact");
+    if (/^\/about(\/|$)/.test(pathValue)) inferred.add("story");
+    if (/^\/solutions?(\/|$)/.test(pathValue)) inferred.add("approach");
+  });
+  return inferred;
+};
+
 const toPercent = (value) => `${(value * 100).toFixed(1)}%`;
 
 const percentile = (items, p) => {
@@ -179,6 +191,34 @@ const formatMs = (ms) => {
   return `${(ms / 1000).toFixed(2)}s`;
 };
 
+const pickEvaluationPages = (pages, scope = "home") => {
+  const allPages = Array.isArray(pages) ? pages : [];
+  if (!allPages.length) return [];
+  if (scope === "site") return allPages;
+  const home = allPages.find((page) => String(page?.path || "").trim() === "/");
+  return [home || allPages[0]];
+};
+
+const toList = (value) => {
+  if (Array.isArray(value)) return value;
+  if (value === undefined || value === null || value === "") return [];
+  return [value];
+};
+
+const matchesExpectedValue = (actual, expected) => {
+  const actualValue = String(actual ?? "");
+  return toList(expected).some((candidate) => String(candidate) === actualValue);
+};
+
+const matchesExpectedPattern = (actual, expectedPattern) => {
+  if (!expectedPattern) return true;
+  try {
+    return new RegExp(String(expectedPattern), "i").test(String(actual ?? ""));
+  } catch {
+    return false;
+  }
+};
+
 const run = async () => {
   const options = parseArgs(process.argv);
   const promptsRaw = await fs.readFile(options.promptsFile, "utf8");
@@ -224,12 +264,20 @@ const run = async () => {
     const logSlice = await readLogSlice(options.logFile, before, after);
     const logMetrics = parseLogMetrics(logSlice);
 
-    const blocks = Array.isArray(payload?.pages?.[0]?.data?.content) ? payload.pages[0].data.content : [];
+    const evaluationScope = c.categoryScope === "site" ? "site" : "home";
+    const evaluationPages = pickEvaluationPages(payload?.pages, evaluationScope);
+    const blocks = evaluationPages.flatMap((page) =>
+      Array.isArray(page?.data?.content) ? page.data.content : []
+    );
     const blockTypes = blocks.map((item) => String(item?.type ?? "")).filter(Boolean);
     const categories = new Set();
     for (const block of blocks) {
       const mapped = categorizeBlock(block);
       for (const cat of mapped) categories.add(cat);
+    }
+    if (evaluationScope === "site") {
+      const inferredByPath = inferCategoriesFromPagePaths(payload?.pages);
+      for (const cat of inferredByPath) categories.add(cat);
     }
 
     const errors = Array.isArray(payload?.errors) ? payload.errors.map((e) => String(e)) : [];
@@ -241,6 +289,36 @@ const run = async () => {
     const hasFallbackBlock = blockTypes.some((type) => normalizeType(type) === "creationfallbacksection");
     const hasSectionFallbackError = errors.some((item) => item.includes("builder_section_fallback"));
     const hasTimeoutFallback = errors.includes("generation_timeout_fallback") || logMetrics.timeoutFallback > 0;
+    const resolvedByLayer =
+      payload?.resolvedByLayer && typeof payload.resolvedByLayer === "object" ? payload.resolvedByLayer : {};
+    const candidateSelection =
+      resolvedByLayer?.candidateSelection && typeof resolvedByLayer.candidateSelection === "object"
+        ? resolvedByLayer.candidateSelection
+        : {};
+    const templatePlanProfile = String(resolvedByLayer?.templatePlanProfile ?? "");
+    const resolutionLayer = String(resolvedByLayer?.resolutionLayer ?? "");
+    const pageCount = Array.isArray(payload?.pages) ? payload.pages.length : 0;
+    const shortCircuited = Boolean(candidateSelection?.shortCircuited);
+
+    const assertionFailures = [];
+    if (c.expectedProfileId && !matchesExpectedValue(templatePlanProfile, c.expectedProfileId)) {
+      assertionFailures.push(`profile:${templatePlanProfile || "-"}`);
+    }
+    if (c.expectedProfilePattern && !matchesExpectedPattern(templatePlanProfile, c.expectedProfilePattern)) {
+      assertionFailures.push(`profilePattern:${templatePlanProfile || "-"}`);
+    }
+    if (c.expectedResolutionLayer && !matchesExpectedValue(resolutionLayer, c.expectedResolutionLayer)) {
+      assertionFailures.push(`layer:${resolutionLayer || "-"}`);
+    }
+    if (typeof c.minPages === "number" && pageCount < c.minPages) {
+      assertionFailures.push(`minPages:${pageCount}<${c.minPages}`);
+    }
+    if (typeof c.maxPages === "number" && pageCount > c.maxPages) {
+      assertionFailures.push(`maxPages:${pageCount}>${c.maxPages}`);
+    }
+    if (typeof c.expectShortCircuited === "boolean" && shortCircuited !== c.expectShortCircuited) {
+      assertionFailures.push(`shortCircuited:${shortCircuited}`);
+    }
 
     const passed =
       !requestError &&
@@ -248,7 +326,8 @@ const run = async () => {
       missingRequired.length === 0 &&
       !hasFallbackBlock &&
       !hasSectionFallbackError &&
-      !hasTimeoutFallback;
+      !hasTimeoutFallback &&
+      assertionFailures.length === 0;
 
     const row = {
       id: c.id,
@@ -265,8 +344,12 @@ const run = async () => {
       hasFallbackBlock,
       hasSectionFallbackError,
       hasTimeoutFallback,
+      assertionFailures,
       componentsCount: Array.isArray(payload?.components) ? payload.components.length : 0,
-      pageCount: Array.isArray(payload?.pages) ? payload.pages.length : 0,
+      pageCount,
+      templatePlanProfile,
+      resolutionLayer,
+      shortCircuited,
       requestError,
       logMetrics,
     };
@@ -276,7 +359,7 @@ const run = async () => {
     const statusTag = passed ? "PASS" : "FAIL";
     console.log(
       `[${statusTag}] ${title} duration=${formatMs(durationMs)} ` +
-        `types=${blockTypes.length} missing=[${missingRequired.join(",")}] ` +
+        `types=${blockTypes.length} missing=[${missingRequired.join(",")}] asserts=[${assertionFailures.join(",")}] ` +
         `inTok=${logMetrics.usageInputTokens} outTok=${logMetrics.usageOutputTokens}`
     );
   }
@@ -286,6 +369,7 @@ const run = async () => {
   const failed = total - passed;
   const withFallback = results.filter((item) => item.hasFallbackBlock || item.hasSectionFallbackError).length;
   const withTimeout = results.filter((item) => item.hasTimeoutFallback).length;
+  const withAssertionFailures = results.filter((item) => item.assertionFailures.length > 0).length;
 
   const durationList = results.map((item) => item.durationMs);
   const summary = {
@@ -304,6 +388,7 @@ const run = async () => {
     totalLayoutInvalid: results.reduce((sum, item) => sum + item.logMetrics.layoutInvalid, 0),
     totalToolMissing: results.reduce((sum, item) => sum + item.logMetrics.toolMissing, 0),
     totalToolEmptyPayload: results.reduce((sum, item) => sum + item.logMetrics.toolEmptyPayload, 0),
+    assertionFailureRate: total ? withAssertionFailures / total : 0,
   };
 
   await fs.mkdir(options.outDir, { recursive: true });
@@ -335,6 +420,7 @@ const run = async () => {
     `- successRate: ${toPercent(summary.successRate)}`,
     `- fallbackRate: ${toPercent(summary.fallbackRate)}`,
     `- timeoutRate: ${toPercent(summary.timeoutRate)}`,
+    `- assertionFailureRate: ${toPercent(summary.assertionFailureRate)}`,
     `- avgDuration: ${formatMs(summary.avgDurationMs)}`,
     `- p95Duration: ${formatMs(summary.p95DurationMs)}`,
     `- inputTokens(sum): ${summary.totalUsageInputTokens}`,
@@ -342,12 +428,13 @@ const run = async () => {
     "",
     "## Cases",
     "",
-    "| case | status | duration | missingRequired | inputTokens | outputTokens |",
-    "|---|---|---:|---|---:|---:|",
+    "| case | status | duration | profile | pages | missingRequired | assertionFailures | inputTokens | outputTokens |",
+    "|---|---|---:|---|---:|---|---|---:|---:|",
     ...results.map((item) => {
       const status = item.passed ? "PASS" : "FAIL";
       const missing = item.missingRequired.length ? item.missingRequired.join(",") : "-";
-      return `| ${item.id} | ${status} | ${formatMs(item.durationMs)} | ${missing} | ${item.logMetrics.usageInputTokens} | ${item.logMetrics.usageOutputTokens} |`;
+      const assertions = item.assertionFailures.length ? item.assertionFailures.join(",") : "-";
+      return `| ${item.id} | ${status} | ${formatMs(item.durationMs)} | ${item.templatePlanProfile || "-"} | ${item.pageCount} | ${missing} | ${assertions} | ${item.logMetrics.usageInputTokens} | ${item.logMetrics.usageOutputTokens} |`;
     }),
     "",
   ];

@@ -1,0 +1,763 @@
+{
+  "sectionId": "bMKSx",
+  "sectionName": "newsSection",
+  "sectionKind": "generic",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 1328,
+    "width": 1440,
+    "height": 568
+  },
+  "directChildCount": 8,
+  "recursiveNodeCount": 17,
+  "treeHash": "196b48a0e5011e719e48c41097a5a19f193545e9f5d571434b1b8ade09eee2c0",
+  "blockCount": 8,
+  "blockIndex": [
+    {
+      "blockId": "M0hcp",
+      "blockName": "newsTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 10,
+        "y": 32,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ad9995a0d1bd952556b3c3fb0371d06182e2b79197d71a7d9945700d4a7a7ca1"
+    },
+    {
+      "blockId": "DfjuQ",
+      "blockName": "newsLine",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 28,
+        "width": 1280,
+        "height": 1
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "337140b9618811fd3cfcad274fb5e73f74ee6c155ea56fc0955717798c050f3a"
+    },
+    {
+      "blockId": "ILcxz",
+      "blockName": "newsCard1",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 10,
+        "y": 117,
+        "width": 343,
+        "height": 360
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "b167ddf38a55e95883deeb3fba97290d81e8ebdc796f24114f01491766acfb9b"
+    },
+    {
+      "blockId": "oqdJY",
+      "blockName": "newsCard2",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 369,
+        "y": 117,
+        "width": 343,
+        "height": 360
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "8dd4e1bbfbf11d839d9b05bbf6007e11df53e92e8082b8c84200fed94eef5431"
+    },
+    {
+      "blockId": "HRiq0",
+      "blockName": "newsCard3",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 728,
+        "y": 117,
+        "width": 343,
+        "height": 360
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "2a05b164e67e7926a7804f580881aafa5cc0eff76e8acdd36cfc27eff9761bc9"
+    },
+    {
+      "blockId": "7Xpdr",
+      "blockName": "newsCard4",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 5,
+      "bounds": {
+        "x": 1087,
+        "y": 117,
+        "width": 343,
+        "height": 360
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "bbd99bf9a96574a01ad12307f394eaa40705ee3ccef79266fcf8f10618311bc6"
+    },
+    {
+      "blockId": "lMr7H",
+      "blockName": "p2",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 1404,
+        "y": 508,
+        "width": 26,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d102b7fdbd74f6e5bd7e4f2e2fe08c691b76b2b2219afb32374500087c0e6247"
+    },
+    {
+      "blockId": "WB7Qr",
+      "blockName": "p1",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 1368,
+        "y": 508,
+        "width": 26,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0a1951ecfcb0927288f353d143aa687a8b144acb7ce12aa7f1dc20b28c37bde3"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1720036237182-5e0adada1873?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjUxMzV8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "M0hcp",
+      "blockName": "newsTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 10,
+        "y": 32,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ad9995a0d1bd952556b3c3fb0371d06182e2b79197d71a7d9945700d4a7a7ca1",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "M0hcp",
+        "x": 10,
+        "y": 32,
+        "name": "newsTitle",
+        "fill": "#1E1E1E",
+        "content": "新闻和见解",
+        "fontFamily": "Inter",
+        "fontSize": 40,
+        "fontWeight": "600"
+      }
+    },
+    {
+      "blockId": "DfjuQ",
+      "blockName": "newsLine",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 28,
+        "width": 1280,
+        "height": 1
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "337140b9618811fd3cfcad274fb5e73f74ee6c155ea56fc0955717798c050f3a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "DfjuQ",
+        "x": 0,
+        "y": 28,
+        "name": "newsLine",
+        "enabled": false,
+        "fill": "#E3E3E3",
+        "width": 1280,
+        "height": 1
+      }
+    },
+    {
+      "blockId": "ILcxz",
+      "blockName": "newsCard1",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 10,
+        "y": 117,
+        "width": 343,
+        "height": 360
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "b167ddf38a55e95883deeb3fba97290d81e8ebdc796f24114f01491766acfb9b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "ILcxz",
+        "x": 10,
+        "y": 117,
+        "name": "newsCard1",
+        "metadata": {
+          "type": "unsplash",
+          "username": "travisjohansen",
+          "link": "https://unsplash.com/@travisjohansen",
+          "author": "Travis Johansen"
+        },
+        "width": 343,
+        "height": 360,
+        "fill": "#F3F3F1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "MA0fs",
+            "x": 0,
+            "y": 300,
+            "name": "newsCard1T",
+            "fill": "#6A665E",
+            "content": "新闻: 2026-02-16",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "DpMCL",
+            "x": 0,
+            "y": 322,
+            "name": "newsCard1S",
+            "fill": "#222222",
+            "textGrowth": "fixed-width",
+            "width": 332,
+            "content": "展望2026年，以人为本、技术和可持续投资驱动行业发展",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "oqdJY",
+      "blockName": "newsCard2",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 369,
+        "y": 117,
+        "width": 343,
+        "height": 360
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "8dd4e1bbfbf11d839d9b05bbf6007e11df53e92e8082b8c84200fed94eef5431",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "oqdJY",
+        "x": 369,
+        "y": 117,
+        "name": "newsCard2",
+        "metadata": {
+          "type": "unsplash",
+          "username": "jakubzerdzicki",
+          "link": "https://unsplash.com/@jakubzerdzicki",
+          "author": "Jakub Żerdzicki"
+        },
+        "width": 343,
+        "height": 360,
+        "fill": "#13151A",
+        "cornerRadius": 8,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "CQc5x",
+            "x": 18,
+            "y": 18,
+            "name": "newsCard2T",
+            "fill": "#B79B5D",
+            "content": "12 三月",
+            "fontFamily": "Inter",
+            "fontSize": 50,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "CuSxJ",
+            "x": 18,
+            "y": 100,
+            "name": "newsCard2S",
+            "fill": "#F2F2F2",
+            "content": "高级车削技术与应用培训",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "600"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "HRiq0",
+      "blockName": "newsCard3",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 728,
+        "y": 117,
+        "width": 343,
+        "height": 360
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "2a05b164e67e7926a7804f580881aafa5cc0eff76e8acdd36cfc27eff9761bc9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "HRiq0",
+        "x": 728,
+        "y": 117,
+        "name": "newsCard3",
+        "metadata": {
+          "type": "unsplash",
+          "username": "blingcoffee",
+          "link": "https://unsplash.com/@blingcoffee",
+          "author": "Bling Coffee"
+        },
+        "width": 343,
+        "height": 360,
+        "fill": "#F3F3F1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "6btpG",
+            "x": 0,
+            "y": 300,
+            "name": "newsCard3T",
+            "fill": "#6A665E",
+            "content": "新闻洞察和出版",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "7LdD0",
+            "x": 0,
+            "y": 322,
+            "name": "newsCard3S",
+            "fill": "#222222",
+            "textGrowth": "fixed-width",
+            "width": 332,
+            "content": "了解 CoroDrill DE10i 等重大上市和加工创新",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "7Xpdr",
+      "blockName": "newsCard4",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 5,
+      "bounds": {
+        "x": 1087,
+        "y": 117,
+        "width": 343,
+        "height": 360
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "bbd99bf9a96574a01ad12307f394eaa40705ee3ccef79266fcf8f10618311bc6",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1720036237182-5e0adada1873?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjUxMzV8&ixlib=rb-4.1.0&q=80&w=1080",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "7Xpdr",
+        "x": 1087,
+        "y": 117,
+        "name": "newsCard4",
+        "metadata": {
+          "type": "unsplash",
+          "username": "shavr",
+          "link": "https://unsplash.com/@shavr",
+          "author": "Shavr IK"
+        },
+        "width": 343,
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1720036237182-5e0adada1873?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjUxMzV8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "usSMa",
+            "x": 0,
+            "y": 300,
+            "name": "news4t",
+            "fill": "#6A665E",
+            "content": "新闻 2026-2-16",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "A1ybc",
+            "x": 0,
+            "y": 322,
+            "name": "news4s",
+            "fill": "#222222",
+            "textGrowth": "fixed-width",
+            "width": 268,
+            "content": "展望2026年，以人为本、技术和可持续投资驱动行业发展",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "lMr7H",
+      "blockName": "p2",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 1404,
+        "y": 508,
+        "width": 26,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d102b7fdbd74f6e5bd7e4f2e2fe08c691b76b2b2219afb32374500087c0e6247",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "lMr7H",
+        "x": 1404,
+        "y": 508,
+        "name": "p2",
+        "fill": "#B9A373",
+        "width": 26,
+        "height": 26
+      }
+    },
+    {
+      "blockId": "WB7Qr",
+      "blockName": "p1",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 1368,
+        "y": 508,
+        "width": 26,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0a1951ecfcb0927288f353d143aa687a8b144acb7ce12aa7f1dc20b28c37bde3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "WB7Qr",
+        "x": 1368,
+        "y": 508,
+        "name": "p1",
+        "fill": "#D9D9D9",
+        "width": 26,
+        "height": 26
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "bMKSx",
+    "x": 0,
+    "y": 1328,
+    "name": "newsSection",
+    "width": 1440,
+    "height": 568,
+    "fill": "#F3F3F1",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "M0hcp",
+        "x": 10,
+        "y": 32,
+        "name": "newsTitle",
+        "fill": "#1E1E1E",
+        "content": "新闻和见解",
+        "fontFamily": "Inter",
+        "fontSize": 40,
+        "fontWeight": "600"
+      },
+      {
+        "type": "rectangle",
+        "id": "DfjuQ",
+        "x": 0,
+        "y": 28,
+        "name": "newsLine",
+        "enabled": false,
+        "fill": "#E3E3E3",
+        "width": 1280,
+        "height": 1
+      },
+      {
+        "type": "frame",
+        "id": "ILcxz",
+        "x": 10,
+        "y": 117,
+        "name": "newsCard1",
+        "metadata": {
+          "type": "unsplash",
+          "username": "travisjohansen",
+          "link": "https://unsplash.com/@travisjohansen",
+          "author": "Travis Johansen"
+        },
+        "width": 343,
+        "height": 360,
+        "fill": "#F3F3F1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "MA0fs",
+            "x": 0,
+            "y": 300,
+            "name": "newsCard1T",
+            "fill": "#6A665E",
+            "content": "新闻: 2026-02-16",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "DpMCL",
+            "x": 0,
+            "y": 322,
+            "name": "newsCard1S",
+            "fill": "#222222",
+            "textGrowth": "fixed-width",
+            "width": 332,
+            "content": "展望2026年，以人为本、技术和可持续投资驱动行业发展",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "oqdJY",
+        "x": 369,
+        "y": 117,
+        "name": "newsCard2",
+        "metadata": {
+          "type": "unsplash",
+          "username": "jakubzerdzicki",
+          "link": "https://unsplash.com/@jakubzerdzicki",
+          "author": "Jakub Żerdzicki"
+        },
+        "width": 343,
+        "height": 360,
+        "fill": "#13151A",
+        "cornerRadius": 8,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "CQc5x",
+            "x": 18,
+            "y": 18,
+            "name": "newsCard2T",
+            "fill": "#B79B5D",
+            "content": "12 三月",
+            "fontFamily": "Inter",
+            "fontSize": 50,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "CuSxJ",
+            "x": 18,
+            "y": 100,
+            "name": "newsCard2S",
+            "fill": "#F2F2F2",
+            "content": "高级车削技术与应用培训",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "600"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "HRiq0",
+        "x": 728,
+        "y": 117,
+        "name": "newsCard3",
+        "metadata": {
+          "type": "unsplash",
+          "username": "blingcoffee",
+          "link": "https://unsplash.com/@blingcoffee",
+          "author": "Bling Coffee"
+        },
+        "width": 343,
+        "height": 360,
+        "fill": "#F3F3F1",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "6btpG",
+            "x": 0,
+            "y": 300,
+            "name": "newsCard3T",
+            "fill": "#6A665E",
+            "content": "新闻洞察和出版",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "7LdD0",
+            "x": 0,
+            "y": 322,
+            "name": "newsCard3S",
+            "fill": "#222222",
+            "textGrowth": "fixed-width",
+            "width": 332,
+            "content": "了解 CoroDrill DE10i 等重大上市和加工创新",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "7Xpdr",
+        "x": 1087,
+        "y": 117,
+        "name": "newsCard4",
+        "metadata": {
+          "type": "unsplash",
+          "username": "shavr",
+          "link": "https://unsplash.com/@shavr",
+          "author": "Shavr IK"
+        },
+        "width": 343,
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1720036237182-5e0adada1873?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjUxMzV8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "usSMa",
+            "x": 0,
+            "y": 300,
+            "name": "news4t",
+            "fill": "#6A665E",
+            "content": "新闻 2026-2-16",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "A1ybc",
+            "x": 0,
+            "y": 322,
+            "name": "news4s",
+            "fill": "#222222",
+            "textGrowth": "fixed-width",
+            "width": 268,
+            "content": "展望2026年，以人为本、技术和可持续投资驱动行业发展",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "ellipse",
+        "id": "lMr7H",
+        "x": 1404,
+        "y": 508,
+        "name": "p2",
+        "fill": "#B9A373",
+        "width": 26,
+        "height": 26
+      },
+      {
+        "type": "ellipse",
+        "id": "WB7Qr",
+        "x": 1368,
+        "y": 508,
+        "name": "p1",
+        "fill": "#D9D9D9",
+        "width": 26,
+        "height": 26
+      }
+    ]
+  }
+}

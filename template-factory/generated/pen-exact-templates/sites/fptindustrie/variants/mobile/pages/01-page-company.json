@@ -1,0 +1,2247 @@
+{
+  "pageId": "page-company",
+  "pageName": "企业",
+  "pageType": "about",
+  "order": 1,
+  "bounds": {
+    "x": 520,
+    "y": 0,
+    "width": 390,
+    "height": 1760
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "f7f98afc7203eb6a0f54eaa7a911d993be70403b1f90a43dafdd06390f57a4d4",
+  "directChildCount": 37,
+  "recursiveNodeCount": 55,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "page-company-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 72
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "902088cc141a6a9d8f4a9f2e701301ded01461e949bc21feb49079254a01f268",
+      "blockCount": 7
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1240,
+        "width": 390,
+        "height": 610
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 11,
+      "treeHash": "fa8cd26dadc90da4c12b2c79c116966bd4709b2e5c1cb1cf9c73b95a31b3ebb6",
+      "blockCount": 10
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "page-company-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 72
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "902088cc141a6a9d8f4a9f2e701301ded01461e949bc21feb49079254a01f268",
+      "blockCount": 7,
+      "blockIndex": [
+        {
+          "blockId": "page-company-navbar-bg",
+          "blockName": "page-company-navbar-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 72
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cb6a7948ff6b4182c6a6d9b6dfda793b577591f8847707d8e6720afd9aafe0b3"
+        },
+        {
+          "blockId": "page-company-navbar-logo",
+          "blockName": "page-company-navbar-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 16,
+            "width": 72,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "46a793c4e2570441cfb3cce56028f58262631a305b8420300c46819061ca4232"
+        },
+        {
+          "blockId": "page-company-navbar-lang",
+          "blockName": "page-company-navbar-lang",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 326,
+            "y": 26,
+            "width": 30,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e9685a27645638cc625fe6fbed739959a48faedda7aa4d73455529cc44316c10"
+        },
+        {
+          "blockId": "page-company-navbar-menu-hit",
+          "blockName": "page-company-navbar-menu-hit",
+          "blockType": "rectangle",
+          "order": 3,
+          "bounds": {
+            "x": 362,
+            "y": 22,
+            "width": 16,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0c8a4b8e2c0d5b3b85e47ac0c8a5951771aa084ca3bb9de5659946bd6a1ce87d"
+        },
+        {
+          "blockId": "page-company-navbar-menu-line1",
+          "blockName": "page-company-navbar-menu-line1",
+          "blockType": "rectangle",
+          "order": 4,
+          "bounds": {
+            "x": 362,
+            "y": 24,
+            "width": 16,
+            "height": 2
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "be14339232a7106f748896edd3454bb8eec9eff3343206a7d83e83f8d6b6e1b0"
+        },
+        {
+          "blockId": "page-company-navbar-menu-line2",
+          "blockName": "page-company-navbar-menu-line2",
+          "blockType": "rectangle",
+          "order": 5,
+          "bounds": {
+            "x": 362,
+            "y": 30,
+            "width": 16,
+            "height": 2
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "072e036b335968f164a9306323ba3180d2926537b1c0bebe29aa8fb6d1957ea2"
+        },
+        {
+          "blockId": "page-company-navbar-menu-line3",
+          "blockName": "page-company-navbar-menu-line3",
+          "blockType": "rectangle",
+          "order": 6,
+          "bounds": {
+            "x": 362,
+            "y": 36,
+            "width": 16,
+            "height": 2
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c03ed6ddfe3394860d5c25642911b96a35f19c237c36e69d445c2fd5565e8a8b"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "page-company-navbar-bg",
+          "blockName": "page-company-navbar-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 72
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "cb6a7948ff6b4182c6a6d9b6dfda793b577591f8847707d8e6720afd9aafe0b3",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-company-navbar-bg",
+            "name": "page-company-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 72,
+            "fill": "#000000A0"
+          }
+        },
+        {
+          "blockId": "page-company-navbar-logo",
+          "blockName": "page-company-navbar-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 16,
+            "width": 72,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "46a793c4e2570441cfb3cce56028f58262631a305b8420300c46819061ca4232",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+            "resolvedPath": "",
+            "relativePath": "",
+            "exists": false,
+            "mode": "fit"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-company-navbar-logo",
+            "name": "page-company-navbar-logo",
+            "x": 18,
+            "y": 16,
+            "width": 72,
+            "height": 40,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          }
+        },
+        {
+          "blockId": "page-company-navbar-lang",
+          "blockName": "page-company-navbar-lang",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 326,
+            "y": 26,
+            "width": 30,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e9685a27645638cc625fe6fbed739959a48faedda7aa4d73455529cc44316c10",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-company-navbar-lang",
+            "name": "page-company-navbar-lang",
+            "x": 326,
+            "y": 26,
+            "fill": "#FFFFFF",
+            "content": "ZH",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 30,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "page-company-navbar-menu-hit",
+          "blockName": "page-company-navbar-menu-hit",
+          "blockType": "rectangle",
+          "order": 3,
+          "bounds": {
+            "x": 362,
+            "y": 22,
+            "width": 16,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0c8a4b8e2c0d5b3b85e47ac0c8a5951771aa084ca3bb9de5659946bd6a1ce87d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-company-navbar-menu-hit",
+            "name": "page-company-navbar-menu-hit",
+            "x": 362,
+            "y": 22,
+            "width": 16,
+            "height": 16,
+            "fill": "#00000000",
+            "href": "#page-products"
+          }
+        },
+        {
+          "blockId": "page-company-navbar-menu-line1",
+          "blockName": "page-company-navbar-menu-line1",
+          "blockType": "rectangle",
+          "order": 4,
+          "bounds": {
+            "x": 362,
+            "y": 24,
+            "width": 16,
+            "height": 2
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "be14339232a7106f748896edd3454bb8eec9eff3343206a7d83e83f8d6b6e1b0",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-company-navbar-menu-line1",
+            "name": "page-company-navbar-menu-line1",
+            "x": 362,
+            "y": 24,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "page-company-navbar-menu-line2",
+          "blockName": "page-company-navbar-menu-line2",
+          "blockType": "rectangle",
+          "order": 5,
+          "bounds": {
+            "x": 362,
+            "y": 30,
+            "width": 16,
+            "height": 2
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "072e036b335968f164a9306323ba3180d2926537b1c0bebe29aa8fb6d1957ea2",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-company-navbar-menu-line2",
+            "name": "page-company-navbar-menu-line2",
+            "x": 362,
+            "y": 30,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "page-company-navbar-menu-line3",
+          "blockName": "page-company-navbar-menu-line3",
+          "blockType": "rectangle",
+          "order": 6,
+          "bounds": {
+            "x": 362,
+            "y": 36,
+            "width": 16,
+            "height": 2
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c03ed6ddfe3394860d5c25642911b96a35f19c237c36e69d445c2fd5565e8a8b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-company-navbar-menu-line3",
+            "name": "page-company-navbar-menu-line3",
+            "x": 362,
+            "y": 36,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "page-company-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 72,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "page-company-navbar-bg",
+            "name": "page-company-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 72,
+            "fill": "#000000A0"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-company-navbar-logo",
+            "name": "page-company-navbar-logo",
+            "x": 18,
+            "y": 16,
+            "width": 72,
+            "height": 40,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "page-company-navbar-lang",
+            "name": "page-company-navbar-lang",
+            "x": 326,
+            "y": 26,
+            "fill": "#FFFFFF",
+            "content": "ZH",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 30,
+            "height": 24
+          },
+          {
+            "type": "rectangle",
+            "id": "page-company-navbar-menu-hit",
+            "name": "page-company-navbar-menu-hit",
+            "x": 362,
+            "y": 22,
+            "width": 16,
+            "height": 16,
+            "fill": "#00000000",
+            "href": "#page-products"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-company-navbar-menu-line1",
+            "name": "page-company-navbar-menu-line1",
+            "x": 362,
+            "y": 24,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-company-navbar-menu-line2",
+            "name": "page-company-navbar-menu-line2",
+            "x": 362,
+            "y": 30,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-company-navbar-menu-line3",
+            "name": "page-company-navbar-menu-line3",
+            "x": 362,
+            "y": 36,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1240,
+        "width": 390,
+        "height": 610
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 11,
+      "treeHash": "fa8cd26dadc90da4c12b2c79c116966bd4709b2e5c1cb1cf9c73b95a31b3ebb6",
+      "blockCount": 10,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 610
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e9faef11331fe9e085cbbcfd3816823575afa42242405922969a36caaddfdd49"
+        },
+        {
+          "blockId": "footer-logo",
+          "blockName": "footer-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 28,
+            "width": 90,
+            "height": 44
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "451d03fdcce80735a1eaab54d3e6092791a5996eca00a5efba68584f9aa9e39b"
+        },
+        {
+          "blockId": "footer-company",
+          "blockName": "footer-company",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 92,
+            "width": 220,
+            "height": 29
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "09a4b550a4158c0d18b6522118ecffef4b92aabd676bcee9680b7feb87f5c840"
+        },
+        {
+          "blockId": "footer-address",
+          "blockName": "footer-address",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 128,
+            "width": 320,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "49c5c4c592b888b3aad9c531a962db4b63209a9f2f7a0c5d1613846f7474c78c"
+        },
+        {
+          "blockId": "footer-contact",
+          "blockName": "footer-contact",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 204,
+            "width": 320,
+            "height": 92
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ce0dc92162259027581bdcdd85906f0bee069deb2b3ac70936170e3858df995b"
+        },
+        {
+          "blockId": "footer-col1",
+          "blockName": "footer-col1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 330,
+            "width": 130,
+            "height": 80
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "50fab1479c4b8ec6711fc029f38b12ad15c5bea3f4eaac9d03c855aae0e90068"
+        },
+        {
+          "blockId": "footer-col2",
+          "blockName": "footer-col2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 190,
+            "y": 330,
+            "width": 130,
+            "height": 80
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eaf544dbd9c7fb10b6fce6c63daf9fb58e41dee94b45cb2735d8f35381b72867"
+        },
+        {
+          "blockId": "footer-col3",
+          "blockName": "footer-col3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 18,
+            "y": 426,
+            "width": 130,
+            "height": 99
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "aeb970710cf4527e19558437293b1feef0675edf32ad7ec06055f542395afe0a"
+        },
+        {
+          "blockId": "footer-lang",
+          "blockName": "footer-lang",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 18,
+            "y": 528,
+            "width": 350,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7a2c12ed0f2868ff3e24d2771d76e5cb38c1406fb6a0e46925746954ae4069d9"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 9,
+          "bounds": {
+            "x": 18,
+            "y": 562,
+            "width": 350,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "beb8665eaeaae271b2da735d3ff2352fcf08498d0e68e12506cc0c41e4579088"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 610
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e9faef11331fe9e085cbbcfd3816823575afa42242405922969a36caaddfdd49",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 610,
+            "fill": "#565D66"
+          }
+        },
+        {
+          "blockId": "footer-logo",
+          "blockName": "footer-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 28,
+            "width": 90,
+            "height": 44
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "451d03fdcce80735a1eaab54d3e6092791a5996eca00a5efba68584f9aa9e39b",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+            "resolvedPath": "",
+            "relativePath": "",
+            "exists": false,
+            "mode": "fit"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 18,
+            "y": 28,
+            "width": 90,
+            "height": 44,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          }
+        },
+        {
+          "blockId": "footer-company",
+          "blockName": "footer-company",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 92,
+            "width": 220,
+            "height": 29
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "09a4b550a4158c0d18b6522118ecffef4b92aabd676bcee9680b7feb87f5c840",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-company",
+            "name": "footer-company",
+            "x": 18,
+            "y": 92,
+            "fill": "#FFFFFF",
+            "content": "FPT Industrie Spa",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 16,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 29
+          }
+        },
+        {
+          "blockId": "footer-address",
+          "blockName": "footer-address",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 128,
+            "width": 320,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "49c5c4c592b888b3aad9c531a962db4b63209a9f2f7a0c5d1613846f7474c78c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-address",
+            "name": "footer-address",
+            "x": 18,
+            "y": 128,
+            "fill": "#E7E7E7",
+            "content": "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 43
+          }
+        },
+        {
+          "blockId": "footer-contact",
+          "blockName": "footer-contact",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 204,
+            "width": 320,
+            "height": 92
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ce0dc92162259027581bdcdd85906f0bee069deb2b3ac70936170e3858df995b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-contact",
+            "name": "footer-contact",
+            "x": 18,
+            "y": 204,
+            "fill": "#E7E7E7",
+            "content": "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 92
+          }
+        },
+        {
+          "blockId": "footer-col1",
+          "blockName": "footer-col1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 330,
+            "width": 130,
+            "height": 80
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "50fab1479c4b8ec6711fc029f38b12ad15c5bea3f4eaac9d03c855aae0e90068",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col1",
+            "name": "footer-col1",
+            "x": 18,
+            "y": 330,
+            "fill": "#FFFFFF",
+            "content": "企业\n历史\n企业系统\nItalian Style",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 80
+          }
+        },
+        {
+          "blockId": "footer-col2",
+          "blockName": "footer-col2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 190,
+            "y": 330,
+            "width": 130,
+            "height": 80
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eaf544dbd9c7fb10b6fce6c63daf9fb58e41dee94b45cb2735d8f35381b72867",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col2",
+            "name": "footer-col2",
+            "x": 190,
+            "y": 330,
+            "fill": "#FFFFFF",
+            "content": "产品\n镗床\n卧式铣床\n立式铣床",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 80
+          }
+        },
+        {
+          "blockId": "footer-col3",
+          "blockName": "footer-col3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 18,
+            "y": 426,
+            "width": 130,
+            "height": 99
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "aeb970710cf4527e19558437293b1feef0675edf32ad7ec06055f542395afe0a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col3",
+            "name": "footer-col3",
+            "x": 18,
+            "y": 426,
+            "fill": "#FFFFFF",
+            "content": "行业\n能源\n航空航天\n汽车\n铁路",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 99
+          }
+        },
+        {
+          "blockId": "footer-lang",
+          "blockName": "footer-lang",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 18,
+            "y": 528,
+            "width": 350,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7a2c12ed0f2868ff3e24d2771d76e5cb38c1406fb6a0e46925746954ae4069d9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-lang",
+            "name": "footer-lang",
+            "x": 18,
+            "y": 528,
+            "fill": "#FFFFFF",
+            "content": "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 350,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 9,
+          "bounds": {
+            "x": 18,
+            "y": 562,
+            "width": 350,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "beb8665eaeaae271b2da735d3ff2352fcf08498d0e68e12506cc0c41e4579088",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 562,
+            "fill": "#E7E7E7",
+            "content": "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 350,
+            "height": 38
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1240,
+        "width": 390,
+        "height": 610,
+        "fill": "#565D66",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 610,
+            "fill": "#565D66"
+          },
+          {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 18,
+            "y": 28,
+            "width": 90,
+            "height": 44,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "footer-company",
+            "name": "footer-company",
+            "x": 18,
+            "y": 92,
+            "fill": "#FFFFFF",
+            "content": "FPT Industrie Spa",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 16,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 29
+          },
+          {
+            "type": "text",
+            "id": "footer-address",
+            "name": "footer-address",
+            "x": 18,
+            "y": 128,
+            "fill": "#E7E7E7",
+            "content": "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 43
+          },
+          {
+            "type": "text",
+            "id": "footer-contact",
+            "name": "footer-contact",
+            "x": 18,
+            "y": 204,
+            "fill": "#E7E7E7",
+            "content": "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 92
+          },
+          {
+            "type": "text",
+            "id": "footer-col1",
+            "name": "footer-col1",
+            "x": 18,
+            "y": 330,
+            "fill": "#FFFFFF",
+            "content": "企业\n历史\n企业系统\nItalian Style",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 80
+          },
+          {
+            "type": "text",
+            "id": "footer-col2",
+            "name": "footer-col2",
+            "x": 190,
+            "y": 330,
+            "fill": "#FFFFFF",
+            "content": "产品\n镗床\n卧式铣床\n立式铣床",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 80
+          },
+          {
+            "type": "text",
+            "id": "footer-col3",
+            "name": "footer-col3",
+            "x": 18,
+            "y": 426,
+            "fill": "#FFFFFF",
+            "content": "行业\n能源\n航空航天\n汽车\n铁路",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 99
+          },
+          {
+            "type": "text",
+            "id": "footer-lang",
+            "name": "footer-lang",
+            "x": 18,
+            "y": 528,
+            "fill": "#FFFFFF",
+            "content": "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 350,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 562,
+            "fill": "#E7E7E7",
+            "content": "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 350,
+            "height": 38
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 17,
+  "looseNodeCount": 35,
+  "looseNodes": [
+    {
+      "id": "page-company-bg",
+      "name": "page-company-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 1760
+    },
+    {
+      "id": "page-company-hero",
+      "name": "page-company-hero",
+      "type": "rectangle",
+      "width": 390,
+      "height": 280
+    },
+    {
+      "id": "page-company-hero-shade",
+      "name": "page-company-hero-shade",
+      "type": "rectangle",
+      "width": 390,
+      "height": 280
+    },
+    {
+      "id": "page-company-crumb",
+      "name": "page-company-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 22
+    },
+    {
+      "id": "page-company-title",
+      "name": "page-company-title",
+      "type": "text",
+      "width": 320,
+      "height": 52
+    },
+    {
+      "id": "page-company-sub",
+      "name": "page-company-sub",
+      "type": "text",
+      "width": 320,
+      "height": 26
+    },
+    {
+      "id": "page-company-home-box",
+      "name": "page-company-home-box",
+      "type": "rectangle",
+      "width": 120,
+      "height": 34
+    },
+    {
+      "id": "page-company-home-text",
+      "name": "page-company-home-text",
+      "type": "text",
+      "width": 88,
+      "height": 18
+    },
+    {
+      "id": "page-company-peer-box",
+      "name": "page-company-peer-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 34
+    },
+    {
+      "id": "page-company-peer-text",
+      "name": "page-company-peer-text",
+      "type": "text",
+      "width": 118,
+      "height": 18
+    },
+    {
+      "id": "page-company-panel",
+      "name": "page-company-panel",
+      "type": "rectangle",
+      "width": 354,
+      "height": 980
+    },
+    {
+      "id": "page-company-panel-kicker",
+      "name": "page-company-panel-kicker",
+      "type": "text",
+      "width": 240,
+      "height": 18
+    },
+    {
+      "id": "page-company-panel-title",
+      "name": "page-company-panel-title",
+      "type": "text",
+      "width": 300,
+      "height": 43
+    },
+    {
+      "id": "page-company-para-0",
+      "name": "page-company-para-0",
+      "type": "text",
+      "width": 300,
+      "height": 136
+    },
+    {
+      "id": "page-company-para-1",
+      "name": "page-company-para-1",
+      "type": "text",
+      "width": 300,
+      "height": 117
+    },
+    {
+      "id": "page-company-para-2",
+      "name": "page-company-para-2",
+      "type": "text",
+      "width": 300,
+      "height": 62
+    },
+    {
+      "id": "page-company-para-3",
+      "name": "page-company-para-3",
+      "type": "text",
+      "width": 300,
+      "height": 43
+    },
+    {
+      "id": "page-company-para-4",
+      "name": "page-company-para-4",
+      "type": "text",
+      "width": 300,
+      "height": 43
+    },
+    {
+      "id": "page-company-image-main",
+      "name": "page-company-image-main",
+      "type": "rectangle",
+      "width": 300,
+      "height": 220
+    },
+    {
+      "id": "page-company-image-side",
+      "name": "page-company-image-side",
+      "type": "rectangle",
+      "width": 300,
+      "height": 180
+    },
+    {
+      "id": "page-company-card-0",
+      "name": "page-company-card-0",
+      "type": "rectangle",
+      "width": 300,
+      "height": 146
+    },
+    {
+      "id": "page-company-card-img-0",
+      "name": "page-company-card-img-0",
+      "type": "rectangle",
+      "width": 300,
+      "height": 84
+    },
+    {
+      "id": "page-company-card-title-0",
+      "name": "page-company-card-title-0",
+      "type": "text",
+      "width": 272,
+      "height": 25
+    },
+    {
+      "id": "page-company-card-body-0",
+      "name": "page-company-card-body-0",
+      "type": "text",
+      "width": 272,
+      "height": 116
+    },
+    {
+      "id": "page-company-card-1",
+      "name": "page-company-card-1",
+      "type": "rectangle",
+      "width": 300,
+      "height": 146
+    },
+    {
+      "id": "page-company-card-img-1",
+      "name": "page-company-card-img-1",
+      "type": "rectangle",
+      "width": 300,
+      "height": 84
+    },
+    {
+      "id": "page-company-card-title-1",
+      "name": "page-company-card-title-1",
+      "type": "text",
+      "width": 272,
+      "height": 25
+    },
+    {
+      "id": "page-company-card-body-1",
+      "name": "page-company-card-body-1",
+      "type": "text",
+      "width": 272,
+      "height": 100
+    },
+    {
+      "id": "page-company-rel-title",
+      "name": "page-company-rel-title",
+      "type": "text",
+      "width": 120,
+      "height": 18
+    },
+    {
+      "id": "page-company-rel-0-box",
+      "name": "page-company-rel-0-box",
+      "type": "rectangle",
+      "width": 160,
+      "height": 34
+    },
+    {
+      "id": "page-company-rel-0-text",
+      "name": "page-company-rel-0-text",
+      "type": "text",
+      "width": 128,
+      "height": 18
+    },
+    {
+      "id": "page-company-rel-1-box",
+      "name": "page-company-rel-1-box",
+      "type": "rectangle",
+      "width": 160,
+      "height": 34
+    },
+    {
+      "id": "page-company-rel-1-text",
+      "name": "page-company-rel-1-text",
+      "type": "text",
+      "width": 128,
+      "height": 18
+    },
+    {
+      "id": "page-company-rel-2-box",
+      "name": "page-company-rel-2-box",
+      "type": "rectangle",
+      "width": 160,
+      "height": 34
+    },
+    {
+      "id": "page-company-rel-2-text",
+      "name": "page-company-rel-2-text",
+      "type": "text",
+      "width": 128,
+      "height": 18
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-company-hero-f1e1baa1.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-company-hero-f1e1baa1.jpg",
+      "relativePath": "assets-structured/fpt/page-company-hero-f1e1baa1.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-company-1-d3393866.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-company-1-d3393866.jpg",
+      "relativePath": "assets-structured/fpt/page-company-1-d3393866.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-company-2-036217fb.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-company-2-036217fb.jpg",
+      "relativePath": "assets-structured/fpt/page-company-2-036217fb.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-company-0-f1e1baa1.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-company-0-f1e1baa1.jpg",
+      "relativePath": "assets-structured/fpt/page-company-0-f1e1baa1.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-company-1-d3393866.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-company-1-d3393866.jpg",
+      "relativePath": "assets-structured/fpt/page-company-1-d3393866.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-company",
+    "name": "企业",
+    "x": 520,
+    "y": 0,
+    "width": 390,
+    "height": 1760,
+    "fill": "#ECECEC",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-company-bg",
+        "name": "page-company-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 1760,
+        "fill": "#ECECEC"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-hero",
+        "name": "page-company-hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 280,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-company-hero-f1e1baa1.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-hero-shade",
+        "name": "page-company-hero-shade",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 280,
+        "fill": "#00000044"
+      },
+      {
+        "type": "frame",
+        "id": "page-company-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 72,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "page-company-navbar-bg",
+            "name": "page-company-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 72,
+            "fill": "#000000A0"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-company-navbar-logo",
+            "name": "page-company-navbar-logo",
+            "x": 18,
+            "y": 16,
+            "width": 72,
+            "height": 40,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "page-company-navbar-lang",
+            "name": "page-company-navbar-lang",
+            "x": 326,
+            "y": 26,
+            "fill": "#FFFFFF",
+            "content": "ZH",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 30,
+            "height": 24
+          },
+          {
+            "type": "rectangle",
+            "id": "page-company-navbar-menu-hit",
+            "name": "page-company-navbar-menu-hit",
+            "x": 362,
+            "y": 22,
+            "width": 16,
+            "height": 16,
+            "fill": "#00000000",
+            "href": "#page-products"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-company-navbar-menu-line1",
+            "name": "page-company-navbar-menu-line1",
+            "x": 362,
+            "y": 24,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-company-navbar-menu-line2",
+            "name": "page-company-navbar-menu-line2",
+            "x": 362,
+            "y": 30,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-company-navbar-menu-line3",
+            "name": "page-company-navbar-menu-line3",
+            "x": 362,
+            "y": 36,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-company-crumb",
+        "name": "page-company-crumb",
+        "x": 18,
+        "y": 98,
+        "fill": "#FFFFFF",
+        "content": "Home / 企业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 22
+      },
+      {
+        "type": "text",
+        "id": "page-company-title",
+        "name": "page-company-title",
+        "x": 18,
+        "y": 132,
+        "fill": "#FFFFFF",
+        "content": "企业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 32,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 52
+      },
+      {
+        "type": "text",
+        "id": "page-company-sub",
+        "name": "page-company-sub",
+        "x": 18,
+        "y": 204,
+        "fill": "#EFEFEF",
+        "content": "一家成立 50 多年的意大利企业的历史",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 26
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-home-box",
+        "name": "page-company-home-box",
+        "x": 18,
+        "y": 260,
+        "width": 120,
+        "height": 34,
+        "fill": "#E8C400",
+        "href": "#page-home",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "page-company-home-text",
+        "name": "page-company-home-text",
+        "x": 34,
+        "y": 268,
+        "fill": "#565D66",
+        "content": "首页",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 88,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-peer-box",
+        "name": "page-company-peer-box",
+        "x": 154,
+        "y": 260,
+        "width": 150,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-italian-style",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "page-company-peer-text",
+        "name": "page-company-peer-text",
+        "x": 170,
+        "y": 268,
+        "fill": "#3E4248",
+        "content": "三级页面",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 118,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-italian-style",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-panel",
+        "name": "page-company-panel",
+        "x": 18,
+        "y": 316,
+        "width": 354,
+        "height": 980,
+        "fill": "#F6F6F6",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "cornerRadius": 2
+      },
+      {
+        "type": "text",
+        "id": "page-company-panel-kicker",
+        "name": "page-company-panel-kicker",
+        "x": 42,
+        "y": 342,
+        "fill": "#72787F",
+        "content": "企业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-company-panel-title",
+        "name": "page-company-panel-title",
+        "x": 42,
+        "y": 372,
+        "fill": "#3E4248",
+        "content": "企业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 26,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 43
+      },
+      {
+        "type": "text",
+        "id": "page-company-para-0",
+        "name": "page-company-para-0",
+        "x": 42,
+        "y": 432,
+        "fill": "#3E4248",
+        "content": "企业 历史 企业系统 Italian Style 我们的认证 Governance 03:24 一家成立 50 多年的意大利企业的历史 FPT INDUSTRIE S.p.A. 自 1969 年以来一直为通用机械行业和模具制造行业生产数控镗床和铣床。从成立到现在， FPT INDUSTRIE S.p.A. 显著增加和巩固了其在意大利和国际市场的影响力，肯定了其品牌作为技术、精度和可靠性的代名词。企业的发展并没有随着时间的推移而放缓，这证实了其生产和商业战略的成功。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 136
+      },
+      {
+        "type": "text",
+        "id": "page-company-para-1",
+        "name": "page-company-para-1",
+        "x": 42,
+        "y": 588,
+        "fill": "#3E4248",
+        "content": "1997 年， FPT INDUSTRIE S.p.A. 完成了对 CASTEL 公司的收购，它是移动立柱式镗床生产行业的意大利知名品牌，从而使我们扩大了生产范围，并在竞争中扩大了市场份额。 FPT INDUSTRIE S.p.A. 的成功归功于创新理念的不断产生，尤其是在改进流程、产品、服务及其企业形象的背景下不断进行研究工作。这项研究特别关注市场需求，同时对最终客户服务可靠性的重要性非常敏感。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 117
+      },
+      {
+        "type": "text",
+        "id": "page-company-para-2",
+        "name": "page-company-para-2",
+        "x": 42,
+        "y": 725,
+        "fill": "#3E4248",
+        "content": "FPT 是生产中大型镗床和铣床的领先企业。 FPT INDUSTRIE S.p.A. 配备了极为现代化的工厂和非常先进的生产设备，提供具有非常高技术含量的机器，能够完成和改进与最重要、最精细的机械加工相关的传统生产工艺。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 62
+      },
+      {
+        "type": "text",
+        "id": "page-company-para-3",
+        "name": "page-company-para-3",
+        "x": 42,
+        "y": 807,
+        "fill": "#3E4248",
+        "content": "超过 280 名机械、电气、电子专业技术人员和程序员参与车间内极高质量产品的组装，旨在确保高生产灵活性。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 43
+      },
+      {
+        "type": "text",
+        "id": "page-company-para-4",
+        "name": "page-company-para-4",
+        "x": 42,
+        "y": 870,
+        "fill": "#3E4248",
+        "content": "凭借在该领域最先进的模拟技术和所积累的经验，FPT 能够响应客户的各种生产需求，并优化新投资的技术和经济效益。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 43
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-image-main",
+        "name": "page-company-image-main",
+        "x": 42,
+        "y": 356,
+        "width": 300,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-company-1-d3393866.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-image-side",
+        "name": "page-company-image-side",
+        "x": 42,
+        "y": 600,
+        "width": 300,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-company-2-036217fb.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-card-0",
+        "name": "page-company-card-0",
+        "x": 42,
+        "y": 820,
+        "width": 300,
+        "height": 146,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-italian-style"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-card-img-0",
+        "name": "page-company-card-img-0",
+        "x": 42,
+        "y": 820,
+        "width": 300,
+        "height": 84,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-company-0-f1e1baa1.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "page-company-card-title-0",
+        "name": "page-company-card-title-0",
+        "x": 56,
+        "y": 916,
+        "fill": "#3E4248",
+        "content": "一家成立 50 多年的意大利企业的历史",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 272,
+        "height": 25
+      },
+      {
+        "type": "text",
+        "id": "page-company-card-body-0",
+        "name": "page-company-card-body-0",
+        "x": 56,
+        "y": 942,
+        "fill": "#72787F",
+        "content": "企业 历史 企业系统 Italian Style 我们的认证 Governance 03:24 一家成立 50 多年的意大利企业的历史 FPT INDUSTRIE S.p.A. 自 1969 年以来一直为通用机械行业和模具制造行业生产数控镗床和铣床。从成立到现在， FPT INDUSTRIE S.p.A. 显著增加和巩固了其在意大利和国际市场的影响力，肯定了其品牌作为技术、精度和可靠性的代名词。企业的发展并没有随着时间的推移而放缓，这证实了其生产和商业战略的成功。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 272,
+        "height": 116
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-card-1",
+        "name": "page-company-card-1",
+        "x": 42,
+        "y": 982,
+        "width": 300,
+        "height": 146,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-services"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-card-img-1",
+        "name": "page-company-card-img-1",
+        "x": 42,
+        "y": 982,
+        "width": 300,
+        "height": 84,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-company-1-d3393866.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "page-company-card-title-1",
+        "name": "page-company-card-title-1",
+        "x": 56,
+        "y": 1078,
+        "fill": "#3E4248",
+        "content": "Organizational model",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 272,
+        "height": 25
+      },
+      {
+        "type": "text",
+        "id": "page-company-card-body-1",
+        "name": "page-company-card-body-1",
+        "x": 56,
+        "y": 1104,
+        "fill": "#72787F",
+        "content": "1997 年， FPT INDUSTRIE S.p.A. 完成了对 CASTEL 公司的收购，它是移动立柱式镗床生产行业的意大利知名品牌，从而使我们扩大了生产范围，并在竞争中扩大了市场份额。 FPT INDUSTRIE S.p.A. 的成功归功于创新理念的不断产生，尤其是在改进流程、产品、服务及其企业形象的背景下不断进行研究工作。这项研究特别关注市场需求，同时对最终客户服务可靠性的重要性非常敏感。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 272,
+        "height": 100
+      },
+      {
+        "type": "text",
+        "id": "page-company-rel-title",
+        "name": "page-company-rel-title",
+        "x": 42,
+        "y": 1490,
+        "fill": "#72787F",
+        "content": "相关页面",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-rel-0-box",
+        "name": "page-company-rel-0-box",
+        "x": 42,
+        "y": 1520,
+        "width": 160,
+        "height": 34,
+        "fill": "#E8C400",
+        "href": "#page-italian-style",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "page-company-rel-0-text",
+        "name": "page-company-rel-0-text",
+        "x": 58,
+        "y": 1528,
+        "fill": "#565D66",
+        "content": "Italian Style",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 128,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-italian-style",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-rel-1-box",
+        "name": "page-company-rel-1-box",
+        "x": 214,
+        "y": 1520,
+        "width": 160,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-services",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "page-company-rel-1-text",
+        "name": "page-company-rel-1-text",
+        "x": 230,
+        "y": 1528,
+        "fill": "#3E4248",
+        "content": "销售工程",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 128,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-services",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-company-rel-2-box",
+        "name": "page-company-rel-2-box",
+        "x": 42,
+        "y": 1566,
+        "width": 160,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-contacts",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "page-company-rel-2-text",
+        "name": "page-company-rel-2-text",
+        "x": 58,
+        "y": 1574,
+        "fill": "#3E4248",
+        "content": "联系方式",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 128,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-contacts",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1240,
+        "width": 390,
+        "height": 610,
+        "fill": "#565D66",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 610,
+            "fill": "#565D66"
+          },
+          {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 18,
+            "y": 28,
+            "width": 90,
+            "height": 44,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "footer-company",
+            "name": "footer-company",
+            "x": 18,
+            "y": 92,
+            "fill": "#FFFFFF",
+            "content": "FPT Industrie Spa",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 16,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 29
+          },
+          {
+            "type": "text",
+            "id": "footer-address",
+            "name": "footer-address",
+            "x": 18,
+            "y": 128,
+            "fill": "#E7E7E7",
+            "content": "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 43
+          },
+          {
+            "type": "text",
+            "id": "footer-contact",
+            "name": "footer-contact",
+            "x": 18,
+            "y": 204,
+            "fill": "#E7E7E7",
+            "content": "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 92
+          },
+          {
+            "type": "text",
+            "id": "footer-col1",
+            "name": "footer-col1",
+            "x": 18,
+            "y": 330,
+            "fill": "#FFFFFF",
+            "content": "企业\n历史\n企业系统\nItalian Style",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 80
+          },
+          {
+            "type": "text",
+            "id": "footer-col2",
+            "name": "footer-col2",
+            "x": 190,
+            "y": 330,
+            "fill": "#FFFFFF",
+            "content": "产品\n镗床\n卧式铣床\n立式铣床",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 80
+          },
+          {
+            "type": "text",
+            "id": "footer-col3",
+            "name": "footer-col3",
+            "x": 18,
+            "y": 426,
+            "fill": "#FFFFFF",
+            "content": "行业\n能源\n航空航天\n汽车\n铁路",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 99
+          },
+          {
+            "type": "text",
+            "id": "footer-lang",
+            "name": "footer-lang",
+            "x": 18,
+            "y": 528,
+            "fill": "#FFFFFF",
+            "content": "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 350,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 562,
+            "fill": "#E7E7E7",
+            "content": "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 350,
+            "height": 38
+          }
+        ]
+      }
+    ]
+  }
+}

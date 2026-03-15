@@ -1,0 +1,679 @@
+{
+  "sectionId": "fjJRU",
+  "sectionName": "footer",
+  "sectionKind": "footer",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 27,
+  "treeHash": "0cc02f635b5203504a9739fed35ca0d6954e1c9823f183f3b0008647857fd5b9",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "QAxFr",
+      "blockName": "cols",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 21,
+      "treeHash": "af3c52ee4072d92dec0c5d3bd3c91ffb2f5e411d3efb9664aea9efe59ab10ab5"
+    },
+    {
+      "blockId": "sdXUb",
+      "blockName": "",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": 1
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "90de19a2d26edba51bf3ec0db5fac466440eeb6e8a80af9b48cc25e33521a84b"
+    },
+    {
+      "blockId": "tb4AJ",
+      "blockName": "bottom",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": 34
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 4,
+      "treeHash": "57f43df311bf9f2e0e18951198ba70d6ef76a9c30acdd78e1d0b4dbfafbe5ab9"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "QAxFr",
+      "blockName": "cols",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 21,
+      "treeHash": "af3c52ee4072d92dec0c5d3bd3c91ffb2f5e411d3efb9664aea9efe59ab10ab5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "QAxFr",
+        "name": "cols",
+        "width": "fill_container",
+        "justifyContent": "space_between",
+        "children": [
+          {
+            "type": "frame",
+            "id": "hGJMP",
+            "name": "col1",
+            "width": 180,
+            "layout": "vertical",
+            "gap": 12,
+            "children": [
+              {
+                "type": "text",
+                "id": "1I4Ka",
+                "fill": "#FFFFFF",
+                "content": "Company",
+                "fontFamily": "Inter",
+                "fontSize": 30,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "dyODK",
+                "fill": "#C5CBD3",
+                "textGrowth": "fixed-width",
+                "width": 180,
+                "content": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+                "lineHeight": 1.8,
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "D2RGd",
+            "name": "col2",
+            "width": 180,
+            "layout": "vertical",
+            "gap": 12,
+            "children": [
+              {
+                "type": "text",
+                "id": "2xFwT",
+                "fill": "#FFFFFF",
+                "content": "Social",
+                "fontFamily": "Inter",
+                "fontSize": 30,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "DEw7o",
+                "fill": "#C5CBD3",
+                "textGrowth": "fixed-width",
+                "width": 180,
+                "content": "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+                "lineHeight": 1.8,
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "QNDGI",
+            "name": "col3",
+            "width": 220,
+            "layout": "vertical",
+            "gap": 12,
+            "children": [
+              {
+                "type": "text",
+                "id": "iCRu3",
+                "fill": "#FFFFFF",
+                "content": "Community",
+                "fontFamily": "Inter",
+                "fontSize": 30,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "hTTZH",
+                "fill": "#C5CBD3",
+                "textGrowth": "fixed-width",
+                "width": 220,
+                "content": "Community Forum\nSupport\nRepair Guides",
+                "lineHeight": 1.8,
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "iS8ry",
+            "name": "col4",
+            "width": 220,
+            "layout": "vertical",
+            "gap": 12,
+            "children": [
+              {
+                "type": "text",
+                "id": "fPlrV",
+                "fill": "#FFFFFF",
+                "content": "Shop all",
+                "fontFamily": "Inter",
+                "fontSize": 30,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "2yRFl",
+                "fill": "#C5CBD3",
+                "textGrowth": "fixed-width",
+                "width": 220,
+                "content": "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+                "lineHeight": 1.8,
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "hRWry",
+            "name": "col5",
+            "width": 360,
+            "layout": "vertical",
+            "gap": 16,
+            "children": [
+              {
+                "type": "text",
+                "id": "emZE2",
+                "fill": "#FFFFFF",
+                "content": "Subscribe",
+                "fontFamily": "Inter",
+                "fontSize": 30,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "3UqrE",
+                "fill": "#C5CBD3",
+                "textGrowth": "fixed-width",
+                "width": 360,
+                "content": "Stay up to date with the Framework Newsletter (a few times a month)",
+                "lineHeight": 1.4,
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "frame",
+                "id": "Edv1L",
+                "name": "sub",
+                "width": "fill_container",
+                "height": 52,
+                "gap": 10,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "zVlAV",
+                    "width": 250,
+                    "height": 52,
+                    "fill": "#F3F3EF",
+                    "cornerRadius": 12,
+                    "padding": [
+                      0,
+                      16
+                    ],
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "jurAM",
+                        "fill": "#8C9198",
+                        "content": "Your email",
+                        "fontFamily": "Inter",
+                        "fontSize": 16,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "yl6Wq",
+                    "width": 100,
+                    "height": 52,
+                    "fill": "#F46E35",
+                    "cornerRadius": 26,
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "VuX1z",
+                        "fill": "#111111",
+                        "content": "Sign up",
+                        "fontFamily": "Inter",
+                        "fontSize": 22,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "sdXUb",
+      "blockName": "",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": 1
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "90de19a2d26edba51bf3ec0db5fac466440eeb6e8a80af9b48cc25e33521a84b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "sdXUb",
+        "width": "fill_container",
+        "height": 1,
+        "fill": "#2B2E33"
+      }
+    },
+    {
+      "blockId": "tb4AJ",
+      "blockName": "bottom",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": 34
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 4,
+      "treeHash": "57f43df311bf9f2e0e18951198ba70d6ef76a9c30acdd78e1d0b4dbfafbe5ab9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "tb4AJ",
+        "name": "bottom",
+        "width": "fill_container",
+        "height": 34,
+        "justifyContent": "space_between",
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "n5Q0U",
+            "fill": "#7D838B",
+            "content": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "frame",
+            "id": "f2iuG",
+            "name": "lang",
+            "width": 86,
+            "height": 34,
+            "cornerRadius": 18,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#6C7076"
+            },
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "HL1Oz",
+                "fill": "#D5D9DE",
+                "content": "USD",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "fjJRU",
+    "name": "footer",
+    "width": "fill_container",
+    "fill": "#16181D",
+    "layout": "vertical",
+    "gap": 28,
+    "padding": [
+      44,
+      84,
+      24,
+      84
+    ],
+    "children": [
+      {
+        "type": "frame",
+        "id": "QAxFr",
+        "name": "cols",
+        "width": "fill_container",
+        "justifyContent": "space_between",
+        "children": [
+          {
+            "type": "frame",
+            "id": "hGJMP",
+            "name": "col1",
+            "width": 180,
+            "layout": "vertical",
+            "gap": 12,
+            "children": [
+              {
+                "type": "text",
+                "id": "1I4Ka",
+                "fill": "#FFFFFF",
+                "content": "Company",
+                "fontFamily": "Inter",
+                "fontSize": 30,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "dyODK",
+                "fill": "#C5CBD3",
+                "textGrowth": "fixed-width",
+                "width": 180,
+                "content": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+                "lineHeight": 1.8,
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "D2RGd",
+            "name": "col2",
+            "width": 180,
+            "layout": "vertical",
+            "gap": 12,
+            "children": [
+              {
+                "type": "text",
+                "id": "2xFwT",
+                "fill": "#FFFFFF",
+                "content": "Social",
+                "fontFamily": "Inter",
+                "fontSize": 30,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "DEw7o",
+                "fill": "#C5CBD3",
+                "textGrowth": "fixed-width",
+                "width": 180,
+                "content": "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+                "lineHeight": 1.8,
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "QNDGI",
+            "name": "col3",
+            "width": 220,
+            "layout": "vertical",
+            "gap": 12,
+            "children": [
+              {
+                "type": "text",
+                "id": "iCRu3",
+                "fill": "#FFFFFF",
+                "content": "Community",
+                "fontFamily": "Inter",
+                "fontSize": 30,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "hTTZH",
+                "fill": "#C5CBD3",
+                "textGrowth": "fixed-width",
+                "width": 220,
+                "content": "Community Forum\nSupport\nRepair Guides",
+                "lineHeight": 1.8,
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "iS8ry",
+            "name": "col4",
+            "width": 220,
+            "layout": "vertical",
+            "gap": 12,
+            "children": [
+              {
+                "type": "text",
+                "id": "fPlrV",
+                "fill": "#FFFFFF",
+                "content": "Shop all",
+                "fontFamily": "Inter",
+                "fontSize": 30,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "2yRFl",
+                "fill": "#C5CBD3",
+                "textGrowth": "fixed-width",
+                "width": 220,
+                "content": "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+                "lineHeight": 1.8,
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "hRWry",
+            "name": "col5",
+            "width": 360,
+            "layout": "vertical",
+            "gap": 16,
+            "children": [
+              {
+                "type": "text",
+                "id": "emZE2",
+                "fill": "#FFFFFF",
+                "content": "Subscribe",
+                "fontFamily": "Inter",
+                "fontSize": 30,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "3UqrE",
+                "fill": "#C5CBD3",
+                "textGrowth": "fixed-width",
+                "width": 360,
+                "content": "Stay up to date with the Framework Newsletter (a few times a month)",
+                "lineHeight": 1.4,
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "frame",
+                "id": "Edv1L",
+                "name": "sub",
+                "width": "fill_container",
+                "height": 52,
+                "gap": 10,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "zVlAV",
+                    "width": 250,
+                    "height": 52,
+                    "fill": "#F3F3EF",
+                    "cornerRadius": 12,
+                    "padding": [
+                      0,
+                      16
+                    ],
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "jurAM",
+                        "fill": "#8C9198",
+                        "content": "Your email",
+                        "fontFamily": "Inter",
+                        "fontSize": 16,
+                        "fontWeight": "normal"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "frame",
+                    "id": "yl6Wq",
+                    "width": 100,
+                    "height": 52,
+                    "fill": "#F46E35",
+                    "cornerRadius": 26,
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "children": [
+                      {
+                        "type": "text",
+                        "id": "VuX1z",
+                        "fill": "#111111",
+                        "content": "Sign up",
+                        "fontFamily": "Inter",
+                        "fontSize": 22,
+                        "fontWeight": "700"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "sdXUb",
+        "width": "fill_container",
+        "height": 1,
+        "fill": "#2B2E33"
+      },
+      {
+        "type": "frame",
+        "id": "tb4AJ",
+        "name": "bottom",
+        "width": "fill_container",
+        "height": 34,
+        "justifyContent": "space_between",
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "n5Q0U",
+            "fill": "#7D838B",
+            "content": "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "frame",
+            "id": "f2iuG",
+            "name": "lang",
+            "width": 86,
+            "height": 34,
+            "cornerRadius": 18,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#6C7076"
+            },
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "HL1Oz",
+                "fill": "#D5D9DE",
+                "content": "USD",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

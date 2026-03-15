@@ -1,0 +1,296 @@
+{
+  "sectionId": "aAriK",
+  "sectionName": "Hero",
+  "sectionKind": "hero",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 90,
+    "width": 1440,
+    "height": 510
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 6,
+  "treeHash": "2df854a952514930b0956083481f078bb37f05f46a1ae2dc6538f148f0c7d3da",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "9wNRw",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 80,
+        "y": 120,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6202e0aad574e5a322559d5508149fff2ea7a698546e088dadf4bea634a182c5"
+    },
+    {
+      "blockId": "rEZGK",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 80,
+        "y": 294,
+        "width": 470,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e0290e0ee88383155da6bcf650553ffbbd018ec5a67c4526f3ba4db115633d97"
+    },
+    {
+      "blockId": "D7xZW",
+      "blockName": "heroBtn",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 80,
+        "y": 372,
+        "width": 175,
+        "height": 42
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "a0324cb2a22200e8918129c3d630f8fee5f18ba910a561654e02907b1f182122"
+    },
+    {
+      "blockId": "fIpnA",
+      "blockName": "heroVisual",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 784,
+        "y": 40,
+        "width": 598,
+        "height": 430
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8c02f8ca0d3b789023f21f36260c3d617df0b8418abc36ee25779e890feebd2b"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "9wNRw",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 80,
+        "y": 120,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6202e0aad574e5a322559d5508149fff2ea7a698546e088dadf4bea634a182c5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "9wNRw",
+        "x": 80,
+        "y": 120,
+        "name": "heroTitle",
+        "fill": "#23303D",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "打造一流产品，\n实现美好未来",
+        "lineHeight": 1.08,
+        "fontFamily": "Inter",
+        "fontSize": 58,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "rEZGK",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 80,
+        "y": 294,
+        "width": 470,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e0290e0ee88383155da6bcf650553ffbbd018ec5a67c4526f3ba4db115633d97",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "rEZGK",
+        "x": 80,
+        "y": 294,
+        "name": "heroDesc",
+        "fill": "#65717D",
+        "textGrowth": "fixed-width",
+        "width": 470,
+        "content": "您值得信赖的设计、制造和服务合作伙伴",
+        "lineHeight": 1.4,
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "D7xZW",
+      "blockName": "heroBtn",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 80,
+        "y": 372,
+        "width": 175,
+        "height": 42
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "a0324cb2a22200e8918129c3d630f8fee5f18ba910a561654e02907b1f182122",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "D7xZW",
+        "x": 80,
+        "y": 372,
+        "name": "heroBtn",
+        "width": 175,
+        "height": 42,
+        "fill": "#C70041",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "NRElq",
+            "x": 25,
+            "y": 11,
+            "name": "heroBtnTxt",
+            "fill": "#FFFFFF",
+            "content": "了解我们的解决方案",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "fIpnA",
+      "blockName": "heroVisual",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 784,
+        "y": 40,
+        "width": 598,
+        "height": 430
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8c02f8ca0d3b789023f21f36260c3d617df0b8418abc36ee25779e890feebd2b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "fIpnA",
+        "x": 784,
+        "y": 40,
+        "name": "heroVisual",
+        "width": 598,
+        "height": 430,
+        "fill": "#D6DBE0",
+        "cornerRadius": 8,
+        "layout": "none"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "aAriK",
+    "x": 0,
+    "y": 90,
+    "name": "Hero",
+    "width": 1440,
+    "height": 510,
+    "fill": "#f2f2f2ff",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "9wNRw",
+        "x": 80,
+        "y": 120,
+        "name": "heroTitle",
+        "fill": "#23303D",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "打造一流产品，\n实现美好未来",
+        "lineHeight": 1.08,
+        "fontFamily": "Inter",
+        "fontSize": 58,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "rEZGK",
+        "x": 80,
+        "y": 294,
+        "name": "heroDesc",
+        "fill": "#65717D",
+        "textGrowth": "fixed-width",
+        "width": 470,
+        "content": "您值得信赖的设计、制造和服务合作伙伴",
+        "lineHeight": 1.4,
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "D7xZW",
+        "x": 80,
+        "y": 372,
+        "name": "heroBtn",
+        "width": 175,
+        "height": 42,
+        "fill": "#C70041",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "NRElq",
+            "x": 25,
+            "y": 11,
+            "name": "heroBtnTxt",
+            "fill": "#FFFFFF",
+            "content": "了解我们的解决方案",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "fIpnA",
+        "x": 784,
+        "y": 40,
+        "name": "heroVisual",
+        "width": 598,
+        "height": 430,
+        "fill": "#D6DBE0",
+        "cornerRadius": 8,
+        "layout": "none"
+      }
+    ]
+  }
+}

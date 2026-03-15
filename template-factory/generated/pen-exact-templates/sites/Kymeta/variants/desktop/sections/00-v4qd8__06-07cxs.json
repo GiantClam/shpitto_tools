@@ -1,0 +1,160 @@
+{
+  "sectionId": "07cxS",
+  "sectionName": "sec1",
+  "sectionKind": "generic",
+  "order": 6,
+  "bounds": {
+    "x": 0,
+    "y": 1243,
+    "width": 1440,
+    "height": 414
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "fab5a7df6d5a6e14b8651d73b400f52ba4d0989ee50c28a6b7d2232867d72e3a",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "KComg",
+      "blockName": "sec1title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 357,
+        "y": 94,
+        "width": 726,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7492fba790c2f1ed7771ddfdc8f3df27dae590b1e1e5d7fbbeb3187a381ca863"
+    },
+    {
+      "blockId": "5aVWk",
+      "blockName": "sec1desc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 355,
+        "y": 185,
+        "width": 730,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ea6a664f29bba277c8019fefe40d1cc30cf07a1e8da5736b0a0102551d6ad992"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "KComg",
+      "blockName": "sec1title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 357,
+        "y": 94,
+        "width": 726,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7492fba790c2f1ed7771ddfdc8f3df27dae590b1e1e5d7fbbeb3187a381ca863",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "KComg",
+        "x": 357,
+        "y": 94,
+        "name": "sec1title",
+        "fill": "#1B232F",
+        "textGrowth": "fixed-width",
+        "width": 726,
+        "content": "Land and maritime defense",
+        "lineHeight": 1.1,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 54,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "5aVWk",
+      "blockName": "sec1desc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 355,
+        "y": 185,
+        "width": 730,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ea6a664f29bba277c8019fefe40d1cc30cf07a1e8da5736b0a0102551d6ad992",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "5aVWk",
+        "x": 355,
+        "y": 185,
+        "name": "sec1desc",
+        "fill": "#4E5663",
+        "textGrowth": "fixed-width",
+        "width": 730,
+        "content": "We are driven by a singular mission: to empower those who safeguard our nations and communities. Our resilient technologies are designed with usability in mind, including extreme environments, to integrate seamlessly with military vehicles and vessels, providing reliable tactical connectivity on the move, on land and at sea.",
+        "lineHeight": 1.55,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "07cxS",
+    "x": 0,
+    "y": 1243,
+    "name": "sec1",
+    "width": 1440,
+    "height": 414,
+    "fill": "#ffffffff",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "KComg",
+        "x": 357,
+        "y": 94,
+        "name": "sec1title",
+        "fill": "#1B232F",
+        "textGrowth": "fixed-width",
+        "width": 726,
+        "content": "Land and maritime defense",
+        "lineHeight": 1.1,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 54,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "5aVWk",
+        "x": 355,
+        "y": 185,
+        "name": "sec1desc",
+        "fill": "#4E5663",
+        "textGrowth": "fixed-width",
+        "width": 730,
+        "content": "We are driven by a singular mission: to empower those who safeguard our nations and communities. Our resilient technologies are designed with usability in mind, including extreme environments, to integrate seamlessly with military vehicles and vessels, providing reliable tactical connectivity on the move, on land and at sea.",
+        "lineHeight": 1.55,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

@@ -1,0 +1,558 @@
+{
+  "sectionId": "insights",
+  "sectionName": "Insights",
+  "sectionKind": "story",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 1290,
+    "width": 390,
+    "height": 420
+  },
+  "directChildCount": 8,
+  "recursiveNodeCount": 9,
+  "treeHash": "1248549a0b0be419195647b747dd0c81abb51cb04cf977d81c5882ca3299633e",
+  "blockCount": 8,
+  "blockIndex": [
+    {
+      "blockId": "insight-card-0",
+      "blockName": "insight-card-0",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 20,
+        "y": 20,
+        "width": 350,
+        "height": 168
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "afda09d4632a5c4e0b2ecfb39911327058c796dd809db5fa6474190cac53e9d9"
+    },
+    {
+      "blockId": "insight-k-0",
+      "blockName": "insight-k-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 42,
+        "width": 160,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6b1dc3154beecdfcc9ac6d19da83be9436b544725e017e37af2509afc837ba31"
+    },
+    {
+      "blockId": "insight-t-0",
+      "blockName": "insight-t-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 40,
+        "y": 66,
+        "width": 136,
+        "height": 35
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "609186670ffc5a3d7404310cdc6cb5f89bd64d17ad45a29c58d2fcbbdb1e5fc8"
+    },
+    {
+      "blockId": "insight-b-0",
+      "blockName": "insight-b-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 40,
+        "y": 118,
+        "width": 136,
+        "height": 100
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "00a7a2e8b015908f62568e601ff7f9811f2c00854cb195cb5e445eded92606f8"
+    },
+    {
+      "blockId": "insight-card-1",
+      "blockName": "insight-card-1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 4,
+      "bounds": {
+        "x": 20,
+        "y": 208,
+        "width": 350,
+        "height": 168
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8215c630c154e0e4df961f430733fafc7b6ba05b445c4a8cebff091371246081"
+    },
+    {
+      "blockId": "insight-k-1",
+      "blockName": "insight-k-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 40,
+        "y": 230,
+        "width": 160,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e98352b91f6beca835631466bc6deba0ee84afa5025452bfedf8f2ad76e3cfba"
+    },
+    {
+      "blockId": "insight-t-1",
+      "blockName": "insight-t-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 40,
+        "y": 254,
+        "width": 136,
+        "height": 63
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "01a705e119e85922f069bf1a72e97d86423f8a0edde13ffc90556898a34fce3f"
+    },
+    {
+      "blockId": "insight-b-1",
+      "blockName": "insight-b-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 40,
+        "y": 306,
+        "width": 136,
+        "height": 131
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "53989b5d646bbf912c746b43f1a46ef8aee8bd29afe573b068caba1f53b5a54c"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "insight-card-0",
+      "blockName": "insight-card-0",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 20,
+        "y": 20,
+        "width": 350,
+        "height": 168
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "afda09d4632a5c4e0b2ecfb39911327058c796dd809db5fa6474190cac53e9d9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "insight-card-0",
+        "name": "insight-card-0",
+        "x": 20,
+        "y": 20,
+        "width": 350,
+        "height": 168,
+        "fill": "#151515",
+        "stroke": {
+          "fill": "#D8DDD4",
+          "thickness": 1
+        },
+        "href": "#page-our-story",
+        "cornerRadius": 20
+      }
+    },
+    {
+      "blockId": "insight-k-0",
+      "blockName": "insight-k-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 42,
+        "width": 160,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6b1dc3154beecdfcc9ac6d19da83be9436b544725e017e37af2509afc837ba31",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "insight-k-0",
+        "name": "insight-k-0",
+        "x": 40,
+        "y": 42,
+        "fill": "#ECF8E1",
+        "content": "Story",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 160,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-our-story"
+      }
+    },
+    {
+      "blockId": "insight-t-0",
+      "blockName": "insight-t-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 40,
+        "y": 66,
+        "width": 136,
+        "height": 35
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "609186670ffc5a3d7404310cdc6cb5f89bd64d17ad45a29c58d2fcbbdb1e5fc8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "insight-t-0",
+        "name": "insight-t-0",
+        "x": 40,
+        "y": 66,
+        "fill": "#FFFFFF",
+        "content": "Our Story",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 20,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 136,
+        "height": 35,
+        "href": "#page-our-story"
+      }
+    },
+    {
+      "blockId": "insight-b-0",
+      "blockName": "insight-b-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 40,
+        "y": 118,
+        "width": 136,
+        "height": 100
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "00a7a2e8b015908f62568e601ff7f9811f2c00854cb195cb5e445eded92606f8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "insight-b-0",
+        "name": "insight-b-0",
+        "x": 40,
+        "y": 118,
+        "fill": "#EAE6DF",
+        "content": "Our tech smart e-bikes are designed for the city. Discover more about our story on city mobility.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 136,
+        "height": 100,
+        "href": "#page-our-story"
+      }
+    },
+    {
+      "blockId": "insight-card-1",
+      "blockName": "insight-card-1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 4,
+      "bounds": {
+        "x": 20,
+        "y": 208,
+        "width": 350,
+        "height": 168
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8215c630c154e0e4df961f430733fafc7b6ba05b445c4a8cebff091371246081",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "insight-card-1",
+        "name": "insight-card-1",
+        "x": 20,
+        "y": 208,
+        "width": 350,
+        "height": 168,
+        "fill": "#EEF0E9",
+        "stroke": {
+          "fill": "#D8DDD4",
+          "thickness": 1
+        },
+        "href": "#page-shipping-delivery",
+        "cornerRadius": 20
+      }
+    },
+    {
+      "blockId": "insight-k-1",
+      "blockName": "insight-k-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 40,
+        "y": 230,
+        "width": 160,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e98352b91f6beca835631466bc6deba0ee84afa5025452bfedf8f2ad76e3cfba",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "insight-k-1",
+        "name": "insight-k-1",
+        "x": 40,
+        "y": 230,
+        "fill": "#7AC943",
+        "content": "Support",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 160,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-shipping-delivery"
+      }
+    },
+    {
+      "blockId": "insight-t-1",
+      "blockName": "insight-t-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 40,
+        "y": 254,
+        "width": 136,
+        "height": 63
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "01a705e119e85922f069bf1a72e97d86423f8a0edde13ffc90556898a34fce3f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "insight-t-1",
+        "name": "insight-t-1",
+        "x": 40,
+        "y": 254,
+        "fill": "#151515",
+        "content": "Shipping & Delivery",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 20,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 136,
+        "height": 63,
+        "href": "#page-shipping-delivery"
+      }
+    },
+    {
+      "blockId": "insight-b-1",
+      "blockName": "insight-b-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 40,
+        "y": 306,
+        "width": 136,
+        "height": 131
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "53989b5d646bbf912c746b43f1a46ef8aee8bd29afe573b068caba1f53b5a54c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "insight-b-1",
+        "name": "insight-b-1",
+        "x": 40,
+        "y": 306,
+        "fill": "#646A62",
+        "content": "We ship our e-bikes to 19 countries and counting. Your bike arrives pre-assembled, and will be ready to ride in minutes. Find out more.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 136,
+        "height": 131,
+        "href": "#page-shipping-delivery"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "insights",
+    "name": "Insights",
+    "x": 0,
+    "y": 1290,
+    "width": 390,
+    "height": 420,
+    "fill": "#F4F5F0",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "insight-card-0",
+        "name": "insight-card-0",
+        "x": 20,
+        "y": 20,
+        "width": 350,
+        "height": 168,
+        "fill": "#151515",
+        "stroke": {
+          "fill": "#D8DDD4",
+          "thickness": 1
+        },
+        "href": "#page-our-story",
+        "cornerRadius": 20
+      },
+      {
+        "type": "text",
+        "id": "insight-k-0",
+        "name": "insight-k-0",
+        "x": 40,
+        "y": 42,
+        "fill": "#ECF8E1",
+        "content": "Story",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 160,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-our-story"
+      },
+      {
+        "type": "text",
+        "id": "insight-t-0",
+        "name": "insight-t-0",
+        "x": 40,
+        "y": 66,
+        "fill": "#FFFFFF",
+        "content": "Our Story",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 20,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 136,
+        "height": 35,
+        "href": "#page-our-story"
+      },
+      {
+        "type": "text",
+        "id": "insight-b-0",
+        "name": "insight-b-0",
+        "x": 40,
+        "y": 118,
+        "fill": "#EAE6DF",
+        "content": "Our tech smart e-bikes are designed for the city. Discover more about our story on city mobility.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 136,
+        "height": 100,
+        "href": "#page-our-story"
+      },
+      {
+        "type": "rectangle",
+        "id": "insight-card-1",
+        "name": "insight-card-1",
+        "x": 20,
+        "y": 208,
+        "width": 350,
+        "height": 168,
+        "fill": "#EEF0E9",
+        "stroke": {
+          "fill": "#D8DDD4",
+          "thickness": 1
+        },
+        "href": "#page-shipping-delivery",
+        "cornerRadius": 20
+      },
+      {
+        "type": "text",
+        "id": "insight-k-1",
+        "name": "insight-k-1",
+        "x": 40,
+        "y": 230,
+        "fill": "#7AC943",
+        "content": "Support",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 160,
+        "height": 16,
+        "letterSpacing": "0.08em",
+        "href": "#page-shipping-delivery"
+      },
+      {
+        "type": "text",
+        "id": "insight-t-1",
+        "name": "insight-t-1",
+        "x": 40,
+        "y": 254,
+        "fill": "#151515",
+        "content": "Shipping & Delivery",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 20,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 136,
+        "height": 63,
+        "href": "#page-shipping-delivery"
+      },
+      {
+        "type": "text",
+        "id": "insight-b-1",
+        "name": "insight-b-1",
+        "x": 40,
+        "y": 306,
+        "fill": "#646A62",
+        "content": "We ship our e-bikes to 19 countries and counting. Your bike arrives pre-assembled, and will be ready to ride in minutes. Find out more.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 136,
+        "height": 131,
+        "href": "#page-shipping-delivery"
+      }
+    ]
+  }
+}

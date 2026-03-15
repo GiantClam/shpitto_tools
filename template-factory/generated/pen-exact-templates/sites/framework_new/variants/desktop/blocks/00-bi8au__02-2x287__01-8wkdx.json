@@ -1,0 +1,110 @@
+{
+  "blockId": "8WKDx",
+  "blockName": "hero2r",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 706,
+    "height": "fill_container"
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 8,
+  "treeHash": "c8a6c61ddf154cc762858e6ec4c3b5d18f42abd464ab09d03cc4374e360d978f",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "8WKDx",
+    "name": "hero2r",
+    "width": 706,
+    "height": "fill_container",
+    "layout": "vertical",
+    "gap": 12,
+    "justifyContent": "center",
+    "children": [
+      {
+        "type": "text",
+        "id": "OUXOD",
+        "name": "h2t1",
+        "fill": "#202020",
+        "textGrowth": "fixed-width",
+        "width": 588,
+        "content": "Configure once. Upgrade\nwhere you need.",
+        "lineHeight": 1.08,
+        "fontFamily": "Inter",
+        "fontSize": 42,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "7MeY0",
+        "name": "h2t2",
+        "fill": "#202020",
+        "content": "Starting at $399",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "frame",
+        "id": "3FlM6",
+        "name": "row2",
+        "height": 34,
+        "gap": 8,
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "frame",
+            "id": "I9oMS",
+            "name": "h2b",
+            "width": 112,
+            "height": 34,
+            "fill": "#F46E35",
+            "cornerRadius": 17,
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "eNGam",
+                "name": "h2bt",
+                "fill": "#111111",
+                "content": "Configure now",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "r8jU1",
+            "name": "lm2",
+            "width": 96,
+            "height": 34,
+            "cornerRadius": 17,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#9CA3AA"
+            },
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "DXTV6",
+                "fill": "#5E6369",
+                "content": "Learn more",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "600"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

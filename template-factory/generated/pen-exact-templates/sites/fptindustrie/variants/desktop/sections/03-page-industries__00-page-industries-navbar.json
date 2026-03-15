@@ -1,0 +1,820 @@
+{
+  "sectionId": "page-industries-navbar",
+  "sectionName": "Navbar",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 86
+  },
+  "directChildCount": 13,
+  "recursiveNodeCount": 14,
+  "treeHash": "b4b6441f94ea16244ecc7f37516951ec9df279b1946eb42da5c76b2098cb4c32",
+  "blockCount": 13,
+  "blockIndex": [
+    {
+      "blockId": "page-industries-navbar-bg",
+      "blockName": "page-industries-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "18e84e9b4976f4c2103a5dd35219027d0dc781e4f50444e8a3b67db2017669a6"
+    },
+    {
+      "blockId": "page-industries-navbar-logo",
+      "blockName": "page-industries-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 10,
+        "width": 106,
+        "height": 64
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1bf3f447df01cf46c40dc018bcfada61d84cb4ce8c289a002e4531520ba9fe56"
+    },
+    {
+      "blockId": "page-industries-navbar-lang",
+      "blockName": "page-industries-navbar-lang",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 1340,
+        "y": 30,
+        "width": 30,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b34ea1e87670c562a0420b8673ac79fbcc7ba4793ede4882e2cc7894099f2a70"
+    },
+    {
+      "blockId": "page-industries-navbar-企业",
+      "blockName": "page-industries-navbar-企业",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 310,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b9515d19e56e9b97a3c766a8b6373266d34226e6a84db29ea819ffd271c53a95"
+    },
+    {
+      "blockId": "page-industries-navbar-产品",
+      "blockName": "page-industries-navbar-产品",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 366,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2f734616de1fce4e615c836d04dcd179ed8267ddca62693695a3d950e2657ccc"
+    },
+    {
+      "blockId": "page-industries-navbar-行业",
+      "blockName": "page-industries-navbar-行业",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 422,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1cca1c847f79c9b158a0fb2051eb04b54cbc03b837b35c1616b068c6cda8f815"
+    },
+    {
+      "blockId": "page-industries-navbar-技术",
+      "blockName": "page-industries-navbar-技术",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 478,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "085379876af0f961372054d1eb1861b96a1955e7eae8dbd82a1093aef0b95639"
+    },
+    {
+      "blockId": "page-industries-navbar-通信",
+      "blockName": "page-industries-navbar-通信",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 534,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a47b616c6ad9c37c126a5e193b5e1c9338e4648da04760c75e1a9f2ab76f61af"
+    },
+    {
+      "blockId": "page-industries-navbar-联系方式",
+      "blockName": "page-industries-navbar-联系方式",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 590,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8738df93969f20d6f3a85e9cf592e74a4edde20faa9b0a0f85fc716c37bad033"
+    },
+    {
+      "blockId": "page-industries-navbar-menu-hit",
+      "blockName": "page-industries-navbar-menu-hit",
+      "blockType": "rectangle",
+      "order": 9,
+      "bounds": {
+        "x": 1390,
+        "y": 28,
+        "width": 16,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cfc4cae2e838f28cb660ce4f518963aaf3391e14bec75cf6b81435a3ab9af39a"
+    },
+    {
+      "blockId": "page-industries-navbar-menu-line1",
+      "blockName": "page-industries-navbar-menu-line1",
+      "blockType": "rectangle",
+      "order": 10,
+      "bounds": {
+        "x": 1390,
+        "y": 30,
+        "width": 16,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b76bc5535b8afc88cea61433f8002df2abfe5bdb8f84814fed3e57a0a7923141"
+    },
+    {
+      "blockId": "page-industries-navbar-menu-line2",
+      "blockName": "page-industries-navbar-menu-line2",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 1390,
+        "y": 36,
+        "width": 16,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ae927882785f3d6e01afa039e5f193c814bda5e2c77e4c2cdbdf91645952ad5a"
+    },
+    {
+      "blockId": "page-industries-navbar-menu-line3",
+      "blockName": "page-industries-navbar-menu-line3",
+      "blockType": "rectangle",
+      "order": 12,
+      "bounds": {
+        "x": 1390,
+        "y": 42,
+        "width": 16,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dce68e81de98ebd7573c9975ff52bb8c1676c9dc5d3cdb20ab518842193b8d3e"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "page-industries-navbar-bg",
+      "blockName": "page-industries-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "18e84e9b4976f4c2103a5dd35219027d0dc781e4f50444e8a3b67db2017669a6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-industries-navbar-bg",
+        "name": "page-industries-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 86,
+        "fill": "#000000A0"
+      }
+    },
+    {
+      "blockId": "page-industries-navbar-logo",
+      "blockName": "page-industries-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 10,
+        "width": 106,
+        "height": 64
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1bf3f447df01cf46c40dc018bcfada61d84cb4ce8c289a002e4531520ba9fe56",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-industries-navbar-logo",
+        "name": "page-industries-navbar-logo",
+        "x": 40,
+        "y": 10,
+        "width": 106,
+        "height": 64,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "page-industries-navbar-lang",
+      "blockName": "page-industries-navbar-lang",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 1340,
+        "y": 30,
+        "width": 30,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b34ea1e87670c562a0420b8673ac79fbcc7ba4793ede4882e2cc7894099f2a70",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-industries-navbar-lang",
+        "name": "page-industries-navbar-lang",
+        "x": 1340,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "ZH",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 30,
+        "height": 24
+      }
+    },
+    {
+      "blockId": "page-industries-navbar-企业",
+      "blockName": "page-industries-navbar-企业",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 310,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b9515d19e56e9b97a3c766a8b6373266d34226e6a84db29ea819ffd271c53a95",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-industries-navbar-企业",
+        "name": "page-industries-navbar-企业",
+        "x": 310,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "企业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-company"
+      }
+    },
+    {
+      "blockId": "page-industries-navbar-产品",
+      "blockName": "page-industries-navbar-产品",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 366,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2f734616de1fce4e615c836d04dcd179ed8267ddca62693695a3d950e2657ccc",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-industries-navbar-产品",
+        "name": "page-industries-navbar-产品",
+        "x": 366,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "产品",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "page-industries-navbar-行业",
+      "blockName": "page-industries-navbar-行业",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 422,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1cca1c847f79c9b158a0fb2051eb04b54cbc03b837b35c1616b068c6cda8f815",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-industries-navbar-行业",
+        "name": "page-industries-navbar-行业",
+        "x": 422,
+        "y": 30,
+        "fill": "#E8C400",
+        "content": "行业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-industries"
+      }
+    },
+    {
+      "blockId": "page-industries-navbar-技术",
+      "blockName": "page-industries-navbar-技术",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 478,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "085379876af0f961372054d1eb1861b96a1955e7eae8dbd82a1093aef0b95639",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-industries-navbar-技术",
+        "name": "page-industries-navbar-技术",
+        "x": 478,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "技术",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-technology"
+      }
+    },
+    {
+      "blockId": "page-industries-navbar-通信",
+      "blockName": "page-industries-navbar-通信",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 534,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a47b616c6ad9c37c126a5e193b5e1c9338e4648da04760c75e1a9f2ab76f61af",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-industries-navbar-通信",
+        "name": "page-industries-navbar-通信",
+        "x": 534,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "通信",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-services"
+      }
+    },
+    {
+      "blockId": "page-industries-navbar-联系方式",
+      "blockName": "page-industries-navbar-联系方式",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 590,
+        "y": 30,
+        "width": 56,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8738df93969f20d6f3a85e9cf592e74a4edde20faa9b0a0f85fc716c37bad033",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-industries-navbar-联系方式",
+        "name": "page-industries-navbar-联系方式",
+        "x": 590,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "联系方式",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-contacts"
+      }
+    },
+    {
+      "blockId": "page-industries-navbar-menu-hit",
+      "blockName": "page-industries-navbar-menu-hit",
+      "blockType": "rectangle",
+      "order": 9,
+      "bounds": {
+        "x": 1390,
+        "y": 28,
+        "width": 16,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cfc4cae2e838f28cb660ce4f518963aaf3391e14bec75cf6b81435a3ab9af39a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-industries-navbar-menu-hit",
+        "name": "page-industries-navbar-menu-hit",
+        "x": 1390,
+        "y": 28,
+        "width": 16,
+        "height": 16,
+        "fill": "#00000000",
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "page-industries-navbar-menu-line1",
+      "blockName": "page-industries-navbar-menu-line1",
+      "blockType": "rectangle",
+      "order": 10,
+      "bounds": {
+        "x": 1390,
+        "y": 30,
+        "width": 16,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b76bc5535b8afc88cea61433f8002df2abfe5bdb8f84814fed3e57a0a7923141",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-industries-navbar-menu-line1",
+        "name": "page-industries-navbar-menu-line1",
+        "x": 1390,
+        "y": 30,
+        "width": 16,
+        "height": 2,
+        "fill": "#FFFFFF"
+      }
+    },
+    {
+      "blockId": "page-industries-navbar-menu-line2",
+      "blockName": "page-industries-navbar-menu-line2",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 1390,
+        "y": 36,
+        "width": 16,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ae927882785f3d6e01afa039e5f193c814bda5e2c77e4c2cdbdf91645952ad5a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-industries-navbar-menu-line2",
+        "name": "page-industries-navbar-menu-line2",
+        "x": 1390,
+        "y": 36,
+        "width": 16,
+        "height": 2,
+        "fill": "#FFFFFF"
+      }
+    },
+    {
+      "blockId": "page-industries-navbar-menu-line3",
+      "blockName": "page-industries-navbar-menu-line3",
+      "blockType": "rectangle",
+      "order": 12,
+      "bounds": {
+        "x": 1390,
+        "y": 42,
+        "width": 16,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dce68e81de98ebd7573c9975ff52bb8c1676c9dc5d3cdb20ab518842193b8d3e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-industries-navbar-menu-line3",
+        "name": "page-industries-navbar-menu-line3",
+        "x": 1390,
+        "y": 42,
+        "width": 16,
+        "height": 2,
+        "fill": "#FFFFFF"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "page-industries-navbar",
+    "name": "Navbar",
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 86,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-industries-navbar-bg",
+        "name": "page-industries-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 86,
+        "fill": "#000000A0"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-industries-navbar-logo",
+        "name": "page-industries-navbar-logo",
+        "x": 40,
+        "y": 10,
+        "width": 106,
+        "height": 64,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "page-industries-navbar-lang",
+        "name": "page-industries-navbar-lang",
+        "x": 1340,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "ZH",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 30,
+        "height": 24
+      },
+      {
+        "type": "text",
+        "id": "page-industries-navbar-企业",
+        "name": "page-industries-navbar-企业",
+        "x": 310,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "企业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-company"
+      },
+      {
+        "type": "text",
+        "id": "page-industries-navbar-产品",
+        "name": "page-industries-navbar-产品",
+        "x": 366,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "产品",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "page-industries-navbar-行业",
+        "name": "page-industries-navbar-行业",
+        "x": 422,
+        "y": 30,
+        "fill": "#E8C400",
+        "content": "行业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-industries"
+      },
+      {
+        "type": "text",
+        "id": "page-industries-navbar-技术",
+        "name": "page-industries-navbar-技术",
+        "x": 478,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "技术",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-technology"
+      },
+      {
+        "type": "text",
+        "id": "page-industries-navbar-通信",
+        "name": "page-industries-navbar-通信",
+        "x": 534,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "通信",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-services"
+      },
+      {
+        "type": "text",
+        "id": "page-industries-navbar-联系方式",
+        "name": "page-industries-navbar-联系方式",
+        "x": 590,
+        "y": 30,
+        "fill": "#FFFFFF",
+        "content": "联系方式",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 56,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-contacts"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-industries-navbar-menu-hit",
+        "name": "page-industries-navbar-menu-hit",
+        "x": 1390,
+        "y": 28,
+        "width": 16,
+        "height": 16,
+        "fill": "#00000000",
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-industries-navbar-menu-line1",
+        "name": "page-industries-navbar-menu-line1",
+        "x": 1390,
+        "y": 30,
+        "width": 16,
+        "height": 2,
+        "fill": "#FFFFFF"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-industries-navbar-menu-line2",
+        "name": "page-industries-navbar-menu-line2",
+        "x": 1390,
+        "y": 36,
+        "width": 16,
+        "height": 2,
+        "fill": "#FFFFFF"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-industries-navbar-menu-line3",
+        "name": "page-industries-navbar-menu-line3",
+        "x": 1390,
+        "y": 42,
+        "width": 16,
+        "height": 2,
+        "fill": "#FFFFFF"
+      }
+    ]
+  }
+}

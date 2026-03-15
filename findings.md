@@ -1,20 +1,858 @@
 # Findings
 
-- The current builder-side LC-CNC shaping mostly lives in `/Users/beihuang/.codex/worktrees/2cb1/shpitto_tools/builder/src/lib/agent/p2w-graph.ts` and covers structured-brief parsing, page-specific copy overrides, and image semantic rewriting.
-- `template-factory` already had the right publish pattern: `style-profiles.generated.json` plus sibling sidecars such as `template-exclusive-components.generated.json` and `template-block-catalog.generated.json`.
-- The migration can be done safely by adding one more sibling sidecar rather than changing existing profile semantics.
-- Implemented in this phase:
-  - `run-template-factory` now emits `templateGenerationContracts` into run/publish library payloads.
-  - `run-template-factory` now writes `template-generation-contracts.generated.json` next to the existing generated assets.
-  - `section-template-registry.ts` now loads generation contracts from the library payload or sidecar and can derive fallback contracts from `styleProfiles/pageSpecs` if the new sidecar is absent.
-  - `p2w-graph.ts` now resolves page intent through `resolvePublishedPageGenerationContract(...)` before path-only fallback, so builder begins consuming published page contracts instead of relying purely on local path heuristics.
-- The enriched contract now carries ordered section semantics: `kind`, `blockType`, `source`, `editableFields`, optional `baseBlockType`, and semantic fields `slotId`, `role`, `imageIntent`, plus shared `navigation/footer` contracts.
-- `template-from-pen` had a duplicate publish path that originally skipped generation-contract emission; that path is now patched so PEN-first publishing produces the same contract metadata as the main run path.
-- Builder-side image rewriting is now partially contract-driven: published `imageIntent` values such as `cnc-hero`, `cnc-product`, and `cnc-case` are consumed during structured-brief overrides instead of relying only on page-path heuristics.
-- Builder-side template shaping no longer depends primarily on source-template page paths; the remaining runtime adaptation now keys off published section semantics (`role`, `slotId`, `imageIntent`).
-- Publish-time page classification needed one more fix: source `pageSpec.pageType` sometimes carried the literal value `generic`, which masked better path/title classification. The publish pipeline now treats `generic` as fallback-only and reclassifies from path/title.
-- After that fix, the published Unistellar contracts expose non-generic semantics for the major subpages:
-  - smart telescopes/binoculars as `products`
-  - technologies as `solutions`
-  - use-cases/reviews as `cases`
-- At this point, the remaining prompt-specific copy generation still belongs in builder by design, because it depends on user input at creation time; the site/template-specific structure and image semantics are now published assets rather than local heuristics.
+- `/Users/beihuang/Documents/opencode/shpitto_tools/pen/*.pen` are JSON files and can be parsed directly without Pencil.
+- The corpus contains 27 `.pen` files across 16 sites:
+  - 11 sites have both desktop and mobile variants
+  - 5 sites are desktop-only: `framework_new`, `ionq`, `Kymeta`, `plexus`, `sandvik`
+- Top-level `frame` nodes in each `.pen` document are pages. Child `frame` nodes under each page are sections. Direct children inside each section can be treated as block entries while preserving their nested raw tree.
+- The exact-template generator outputs per-variant artifacts to `/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates`.
+- Current exact-template output includes:
+  - `manifest.json`
+  - `sites/<site>/variants/<variant>/template.json`
+  - `sites/<site>/variants/<variant>/pages/*.json`
+  - `sites/<site>/variants/<variant>/theme.tokens.json`
+  - `sites/<site>/site.bundle.json`
+- The strict validator rebuilds expected templates directly from source `.pen` and compares:
+  - `sourceHash`
+  - `rawDocument` hash
+  - page count
+  - section count
+  - total node count
+  - per-page hashes
+  - per-section tree hashes
+- Validation result from the current run:
+  - 27 total files
+  - 27 structural passes
+  - 27 overall failures, all due to Pencil verification
+- Pencil root-cause narrowed down:
+  - `open /Applications/Pencil.app` exits during launch in this environment
+  - direct execution of `/Applications/Pencil.app/Contents/MacOS/Pencil` succeeds, starts the app, and opens a websocket server
+  - once the direct executable is running, `builder/template-factory/pencil-export-payload.mjs` can connect and write an output file
+  - a major Pencil mismatch source was stale-document reads: `batch_get` without `filePath` could return the previously opened document; adding `filePath: penFile` to the export request fixed obvious cross-file contamination
+  - even after fixing stale-document reads, Pencil payload still diverges from source-derived payload on most files due to semantic reshaping inside the Pencil bridge or its search/export layer
+- The first-pass normalized output in `template-factory/generated/pen-site-templates` is no longer sufficient because it skipped desktop-only sites and used representative inspection instead of full validation.
+- Latest strict validation state from `template-factory/generated/pen-exact-templates/validation/manifest.json`:
+  - 27/27 files structural pass
+  - 16/16 site templates pass
+  - 16/16 site bundles pass
+  - 4/4 global catalogs pass
+  - 27/27 files fully pass including Pencil
+  - remaining file failures: 0
+- Representative Pencil mismatch evidence:
+  - `pagani-mobile.pen` moved from `nodeCount: 0` to a correct 10-page export after binding `batch_get.filePath`
+  - `plexus.pen` still shows payload text segmentation differences between source-derived export and Pencil-exported payload even when page order and keys match
+- Final Pencil root causes and resolutions:
+  - `Kymeta.pen` and `sandvik.pen` differed only because Pencil injects scalar defaults such as `fontWeight: "normal"` and `height: 0` that do not exist in source JSON; the validator now falls back to observed Pencil values when the source omits a scalar.
+  - `fptindustrie.pen` differed because `batch_get` abbreviates path `geometry` to `"..."` unless `includePathGeometry: true` is requested; enabling that flag removed the last raw tree hash mismatch.
+- Release-hardening improvements added after correctness was achieved:
+  - `generate_pen_exact_templates.mjs` now accepts `--source-dir` and `--out-dir` while keeping positional compatibility.
+  - `validate_pen_exact_templates.mjs` now accepts `--source-dir`, `--out-dir`, `--skip-pencil`, and `--require-pencil`.
+  - `release_pen_exact_templates.mjs` runs generate + full Pencil-required validation and emits `release-manifest.json`.
+  - Default output path is now repo-relative instead of tied to the current Codex worktree absolute path.
+  - A manual self-hosted macOS GitHub Actions workflow now exists for running the exact same release gate on a machine with Pencil installed.
+- Visual validation findings:
+  - Hard-gating against Pencil `get_screenshot` is not reliable enough for commercial visual release checks because the bridge can return thumbnail-like captures and omit image fills.
+  - The deterministic visual gate is `visual-qa/scripts/validate-pen-exact-visuals.mjs`, which renders both the source `.pen` page and the generated template page through the same renderer and diffs the resulting PNGs.
+  - The first real visual mismatch surfaced on `Kymeta` and traced back to timing rather than content: source renders were captured before remote images loaded, while later template renders benefited from cache warmth.
+  - Fixes applied to the visual validator:
+    - remote image fills are converted to data URIs before rendering
+    - `page.setContent()` now waits for `domcontentloaded` instead of `load`
+    - screenshot timeout increased to 120 seconds to allow long pages and font loading to settle
+  - Fresh full-corpus visual aggregation result:
+    - expected pages: 261
+    - reported pages: 261
+    - passed pages: 261
+    - failed pages: 0
+    - `minSimilarity: 1`
+- Site-level sandbox runtime findings:
+  - Home-page-only sandbox links were not sufficient because they pointed at comparison HTML, not a real multi-page site runtime.
+  - A full variant-level sandbox payload now exists for all 27 exact templates and covers all 261 pages.
+  - Explicit internal hrefs can be safely rewritten to sandbox page URLs and explicit invalid hrefs can be stripped without affecting default page pixels.
+  - That rewrite/cleanup step reduced `invalidLinkVariants` to `0`.
+  - The remaining navigation/footer problem is semantic, not syntactic:
+    - many sites still have incomplete explicit page coverage in nav/footer
+    - several sites encode nav/footer as plain text blobs instead of explicit links
+  - Known collapsed-text variants include:
+    - `framework_new` desktop: collapsed text nav, footer text columns
+    - `Kymeta` desktop: collapsed text nav and footer
+    - `plexus` desktop: collapsed text nav and footer
+    - `sandvik` desktop: partially collapsed text nav/footer
+    - `ionq` desktop: text-only nav/footer despite richer footer copy
+  - Representative collapsed-text examples:
+    - `framework_new`: `Products   Laptops   Desktops   Marketplace`
+    - `Kymeta`: `Why Kymeta     Applications     Products & Services     Support     About`
+    - `plexus`: `解决方案 ▾    市场领域 ▾    关于我们 ▾    资源 ▾`
+  - Because those templates are raw `.pen` previews, there is currently no per-link href to preserve; to make them clickable without changing the visible design, the runtime must add non-visual overlays or hidden menus.
+  - Motion currently fails by design in the site sandbox audit because the runtime embeds static HTML in an iframe with `theme.motion = "off"` and no section-level reveal/parallax logic.
+- Runtime repair findings after the second-pass implementation:
+  - Transparent overlay links plus hidden menus can restore navigation/footer behavior for text-only `.pen` nav/footer without changing the default rendered pixels.
+  - `allow-top-navigation-by-user-activation` is required on the preview iframe; without it, `_top` links render but do not navigate.
+  - Switching the sandbox preview shell to production (`builder` `build + start`) is necessary for browser verification because `next dev` on `/creation/sandbox` can OOM while compiling/serializing the sandbox route.
+  - The functional audit now passes for all 27 variants, but browser automation remains sensitive to transparent-hotspot overlap:
+    - some pages have multiple valid hotspots stacked over the same visual region
+    - Playwright may fail to click the intended hotspot even though a real user can still navigate via the topmost hotspot or the hidden menu
+  - Browser-validation failures seen in the latest runs are primarily of two kinds:
+    - overlapping transparent nav/footer hotspots intercepting each other
+    - menu popover items competing with underlying page links during synthetic hit-testing
+- Skinnable-template findings:
+  - The exact-template corpus already contains enough raw structure to extract a fully explicit editable model without losing page/section/block identity.
+  - A practical skinnable definition for this repo is:
+    - theme tokens remain available at site level
+    - text, image, link, and style slots are extracted at node level
+    - the renderer accepts node-id keyed overrides and applies them before HTML generation
+  - Fresh corpus-wide slot extraction produced:
+    - 5274 text slots
+    - 616 image slots
+    - 2389 link slots
+    - 9172 style slots
+  - Some variants have few or no explicit `href` slots in source data (for example `framework_new` desktop has `linkSlotCount: 0`) because the original `.pen` navigation is text-only, but they still remain skinnable for copy/images/style and can continue using the interaction-enhancement layer for functional preview.
+- Skinnable sandbox integration findings:
+  - The existing sandbox payload contract can absorb skinnable behavior without introducing a second preview runtime; adding page-level `skinnable` metadata beside `data` is sufficient.
+  - Live skinning in preview mode does not require re-running the exact HTML renderer on every keystroke; for the current exact-preview architecture, patching the iframe DOM by `data-pen-node` is fast enough and preserves the exact-render baseline.
+  - Per-page draft persistence works well with a `siteKey + pageId` localStorage key because sandbox page navigation already reloads by URL.
+  - Slot precedence matters:
+    - image nodes also receive style slots because their raw node styles include `fill`
+    - if style defaults are applied after image overrides, the original image is restored and image skinning appears broken
+    - applying style defaults first, then text/image/link overrides, resolves the conflict
+  - The current `playwright` skill wrapper is unusable in this environment because `npx --package @playwright/mcp playwright-cli` resolves without exposing a `playwright-cli` binary; direct use of the repo's installed `playwright` package is a workable fallback.
+- Site publish bundle findings:
+  - The existing builder pen-first publish flow already supports multi-artifact JSON bundles through `loadPenBundle`, so desktop/mobile pairing can be introduced without rewriting the builder API.
+  - A commercial publish boundary should be `site`, not `variant`.
+- LC-CNC Breton-site findings:
+  - The previous LC-CNC custom site looked too generic because it leaned on generic `Navbar/HeroSplit/CardsGrid/Footer` blocks even when the prompt targeted Breton/PAMA/Sandvik.
+  - The most reliable Breton-backed path for this site is hybrid:
+    - use actual Breton template-exclusive blocks for the sections that carry the strongest visual identity (`hero`, `4-up visual grid`, `numbers`, `editorial cards`)
+    - use custom LC-CNC blocks for navigation, contact capture, and footer, because Breton's published nav/footer prop surfaces do not map cleanly to LC-CNC's six-link IA and quote-driven footer
+  - For sandbox screenshots, `npx playwright screenshot` must wait for a selector and a timeout on the LC-CNC site; otherwise the home route can capture the initial `等待生成内容…` placeholder state.
+  - Direct `playwright` scripting via `require("playwright")` fails from the repo root because the package is installed in `builder/`.
+  - Breton's `TemplateExclusivePenSiteHomeCtaNewsfrombretonworldpenAlt7` is visually strong but semantically wrong for LC-CNC's case-strip requirement; when repurposed it leaves too much editorial/news baggage. Replacing it with a dedicated `LCCncCaseStrip` produces a more credible industrial case rail on both the home and cases pages.
+  - The correct bridging format is:
+    - one `site.pen-bundle.json` per site
+    - one `site.pen-review.json` per site
+    - paired sites include both desktop and mobile artifacts
+    - desktop-only sites still declare both responsive modes, with mobile marked as `responsive-derived-from-desktop`
+  - The bundle layer can be verified independently of builder publish by checking:
+    - exact template variants match bundle artifacts
+    - pen files and sandbox payloads exist
+    - review items are approved
+    - structural/visual/runtime source gates are still green
+  - Real publish consumption was validated with the existing builder command:
+    - `npm run template:factory -- --mode template-from-pen --run-id tf-analogue-site-bundle-smoke --pen-file .../sites/analogue/site.pen-bundle.json --pen-review-file .../sites/analogue/site.pen-review.json --no-publish`
+    - this succeeded and generated a run library plus materialized components from the site bundle
+  - A latent syntax bug in `builder/template-factory/enterprise-site-structure.mjs` blocked the publish smoke:
+    - residual TypeScript `as const` syntax had been left in a `.mjs` file
+    - removing those casts restored the publish flow
+- Builder-library publish findings:
+  - Publishing all 16 site bundles into `builder/template-factory/library/*.generated.json` succeeds without changing the existing `template:factory` interface.
+  - After publish, the shared style-profile library contains 35 profiles total:
+    - 8 pre-existing profiles
+    - 27 new pen-derived variant profiles
+  - A site-level published registry is now maintained at `builder/template-factory/library/pen-site-registry.generated.json`, and it correctly groups the 27 variants back into 16 sites after slug normalization.
+  - The main post-publish commercial gap was prompt hit quality, not library availability:
+    - brand prompts were initially losing to old semantic profiles because keyword matches were only worth `+1`
+    - examples before hardening:
+      - `like Pagani` selected `transpa-rent-mobile`
+      - `inspired by VanMoof` selected `pamamachinetools-mobile`
+      - `like Kymeta` selected `auto_siemens-home`
+  - Two selector changes fixed this:
+    - pen-derived published profiles now emit stronger identity keywords from `siteId`, `siteName`, `siteGroupId`, `caseId`, and `sourceDomain`
+    - `selectStyleProfile` now has:
+      - explicit reference extraction for phrases like `like X`, `inspired by X`, `similar to X`
+      - stronger identity-token scoring for `profile.id` / `profile.name` / domain-derived tokens
+      - a viewport preference rule that defaults website-style prompts to `desktop` and only prefers `mobile` when the prompt explicitly asks for it
+  - Fresh selector verification after hardening:
+    - `like Pagani` -> `pagani-desktop`
+    - `inspired by VanMoof` -> `vanmoof-desktop`
+    - `like Nothing Tech` -> `nothing-tech-desktop`
+    - `like Kymeta` -> `kymeta-desktop`
+    - `like Framework New` -> `framework-new-desktop`
+    - `like Fptindustrie` -> `fptindustrie-desktop`
+    - `Create a mobile ... like Pagani` -> `pagani-mobile`
+- Builder-orchestration findings:
+  - The repo already had most of the “automatic best generation” stack in production code:
+    - `architectSystemPrompt` + blueprint tool in `builder/src/lib/agent/prompts.ts`
+    - blueprint generation in `architectNode`
+    - structured brief extraction via `parseStructuredBrief`
+    - page/section planning via `buildSiteBlueprint`
+    - template retrieval and page/section planning via `resolveTemplatePlan`
+    - nav/footer normalization via `buildSiteLinkGraph`
+    - output QA scoring via `evaluateGenerationQa`
+    - section-level repair/refinement plus template recovery inside `builderNode`
+  - The main missing piece was candidate orchestration:
+    - generation already supported `template_first`, `hybrid`, and `llm_first`
+    - but only one global strategy was executed per run, so the system could not compare alternatives and choose the best result
+  - A low-risk reuse path is to keep architect output fixed and replay builder with multiple strategies against the same blueprint:
+    - architect is already resumable when `state.blueprint` is provided
+    - builder behavior can be switched by injecting `generationStrategy` into graph state
+    - candidate quality can be ranked using the existing `qaReport` plus fallback/error counts and resolution-layer preferences
+  - UI observability was also missing:
+    - `creation-client.tsx` previously showed only `blueprint` and raw errors
+    - exposing `resolvedByLayer` and `qaReport` makes strategy choice and quality scoring inspectable without opening logs
+- Live regression + commercial hardening findings:
+  - The strategy-comparison harness initially produced all-fail results for the new pen-brand prompts, but the failure mode was environmental rather than logical:
+    - `builder/.env.local` existed in the main worktree, not this Codex worktree
+    - the regression runner started `next dev` inside the worktree and therefore hit `missing_api_key`
+    - fixing the runner to auto-load env from sibling/main worktrees restored real generation runs
+  - The next bottleneck was architect latency, not template selection:
+    - strong brand prompts such as `like Pagani` still ran the heavy architect LLM path
+    - logs showed repeated `architect_timeout` and `tool_empty` even though the template resolver already had a perfect brand hit
+    - adding a template-seeded architect fast path lets those prompts build the blueprint directly from published template plans, bypassing the slow architect stage entirely
+  - Multi-candidate evaluation also needed an early-stop rule:
+    - after the template-seeded primary candidate returned `qaReport.overallScore = 1` with `resolutionLayer = "full-site"` and zero errors, AUTO still kept running extra strategies
+    - short-circuiting in that case reduced brand-prompt regressions from long-running multi-candidate jobs to low-second responses
+  - A screenshot smoke then exposed a real runtime defect that structural/QA gates were missing:
+    - generated home pages showed `Missing block renderer: PublishedSection_1/2`
+    - root cause: template-exclusive blocks were aliased to synthetic `PublishedSection_*` names that had no renderer registration in sandbox
+    - fix: keep the real `TemplateExclusive...` block types and inject their block source code as dynamic runtime components when needed
+  - Fresh regression evidence after those fixes:
+    - `compare-20260312-190318.json`: AUTO group, 6/6 pen-brand cases passed, all selected `template_first`, all `shortCircuited: true`, all `qaOverallScore: 1`
+    - durations:
+      - `pagani-brand`: 2152 ms
+      - `vanmoof-brand`: 478 ms
+      - `nothing-tech-brand`: 297 ms
+      - `kymeta-enterprise`: 325 ms
+      - `framework-modular`: 171 ms
+      - `fptindustrie-industrial`: 169 ms
+    - `compare-20260312-190814.json`: Pagani `home` screenshot smoke passed with `pages=1`, `statusCode=200`, `selectedStrategy = template_first`
+    - the section screenshot text samples no longer contain `Missing block renderer`; `result.json` now includes runtime components for:
+      - `TemplateExclusivePenSiteHomeHeroHeropenPrimary`
+      - `TemplateExclusivePenSiteHomeStoryHistoryparentpenAlt1`
+  - Remaining non-brand gap after the same hardening:
+ - Family-wide assembly optimization was not actually family-wide yet, even after earlier `assemblyPolicy` work:
+   - the policy gates (`normalizeHomeHero / normalizeHomeProducts / normalizeHomeFeatures`) were scenario-wide
+   - but the actual replacements still depended on narrow block-name regexes such as `TemplateExclusivePenSiteHomeHeroHeropenAlt1` and `StoryCategoriespen`
+   - this meant `sandvik` benefited fully, while `breton`, `pagani`, and `pamamachinetools` still preserved more of their template-exclusive home blocks
+ - Root cause:
+   - home normalization was keying off a few original block names instead of the page-role/position structure already available in generation
+   - as a result, non-matching families entered the policy but skipped the replacement path
+ - Tool-level fix now applied in `builder/src/lib/agent/p2w-graph.ts`:
+   - `applyStructuredBriefOverrides()` now normalizes industrial home pages by structural slot rather than family-specific original block names
+   - first eligible home body section -> `HeroSplit`
+   - second eligible home body section -> `CardsGrid`
+   - third eligible home body section -> `FeatureWithMedia`
+   - header/footer normalization remains shared and still uses the common business shell logic
+ - Fresh verification after the slot-based fix:
+   - `npm run build` passed
+   - `npx tsc --noEmit --pretty false` passed after build
+   - fresh prompt-driven generations on a new prod server (`:3174`) succeeded for:
+     - `sandvik`
+     - `breton`
+     - `pamamachinetools`
+     - `pagani`
+   - all four returned `qaReport.pass = true`
+   - all four home preview URLs returned `HTTP 200`
+   - all four home pages now share the same optimized shell/core block sequence:
+     - `Navbar > HeroSplit > CardsGrid > FeatureWithMedia > ... > LeadCaptureCTA > Footer`
+- Template-adaptation hardening is now integrated instead of sitting unused:
+   - `builder/src/lib/agent/template-adaptation.ts` already had the right primitives (known template families, known scenarios, page contracts, brand-residue and forbidden-block detection), but it was not wired into the runtime audit or generation scoring path.
+   - `builder/src/lib/site-payload-audit.ts` now merges adaptation findings into the main audit report and exposes an `adaptation` summary alongside structure metrics.
+   - `builder/src/app/api/creation/route.ts` and `builder/src/app/api/creation/save/route.ts` now pass `prompt` plus `resolvedByLayer.templatePlanProfile` into the audit, which is required for family/scenario-aware validation.
+   - `builder/src/lib/agent/p2w-graph.ts` now computes adaptation diagnostics for generated pages and feeds them into `resolvedByLayer.adaptation`; candidate scoring penalizes adaptation errors/warnings and short-circuiting is disabled when adaptation errors exist.
+   - The first pass of industrial page contracts was too strict for real template-first adaptations such as LC-CNC:
+     - custom product grids often surface as `CardGrid`/`content` rather than explicit `products`
+     - industrial home pages may satisfy the commercial requirement with `content + contact` instead of a literal `products` block
+   - Relaxing the industrial contract from `required: products` to `anyOf: products|content` for `home` and `products` pages preserves quality control while avoiding false negatives on valid custom-template adaptations.
+  - Fresh production-route verification on port `3112`:
+    - good LC-CNC Breton payload -> `200 OK`, `issueCount = 0`, adaptation findings empty
+    - mutated payload with `TemplateExclusivePenSiteHomeCtaNewsfrombretonworldpenAlt7` and `Breton Hydra` copy -> `422 payload_audit_failed`
+    - failure codes are the expected:
+      - `template_brand_residue`
+      - `template_semantic_mismatch`
+- Template-adaptation coverage is now broader than the initial `breton/pama/sandvik + industrial` slice:
+  - new recognized families:
+    - `sixtine`
+    - `ionq`
+    - `framework_new` (now also matching plain `framework`)
+    - `transpa_rent` (matching `transpa-rent` and `transparent`)
+  - new page types:
+    - `support`
+    - `blog`
+  - new scenario page contracts:
+    - `luxury_editorial`
+    - `ai_saas`
+    - `developer_tooling`
+    - `design_led_ecommerce`
+  - `ContentStory` must resolve to `content` before the broader `Story` matcher runs; otherwise valid blog/content pages are misclassified as `story` and falsely fail the new non-industrial contracts.
+  - non-generic known-family adaptations now enforce semantic mismatch checks even outside the industrial scenario, which allows the audit to catch template-family-specific leakage for:
+    - `framework`
+    - `ionq`
+    - `transparent`
+- Added family-level residue and forbidden-pattern coverage for the new template families:
+  - `ionq`: brand terms such as `IonQ Forte / Aria / Harmony / Tempo` and forbidden block patterns like `Topannouncement` / `QuantumWorldCongress` / `BlogFooter`
+  - `framework`: brand terms plus forbidden newsletter/support-footer carry-over patterns
+  - `transpa_rent`: `Transparent / Transparent Speaker / Transparent Turntable` plus product-specific block patterns
+  - `sixtine`: brand-residue coverage for editorial clone leakage
+- Deterministic fixture validation on fresh prod server `3114`:
+  - passing cases:
+    - `sixtine_good`
+    - `framework_good`
+    - `ionq_good`
+    - `transpa_good`
+  - failing cases:
+    - `sixtine_bad_brand_residue`
+    - `framework_bad_semantic`
+    - `ionq_bad_semantic`
+    - `transpa_bad_semantic`
+    - `framework_bad_contract`
+- Additional family coverage is now in place for the remaining high-signal published brand templates:
+  - newly recognized families:
+    - `pagani`
+    - `nothing_tech`
+    - `vanmoof`
+    - `analogue`
+    - `teenage_engineering`
+  - new family prompt-token matching:
+    - `nothing / nothing-tech / cmf`
+    - `teenage engineering`
+  - new family brand-residue terms:
+    - `Pagani / Utopia / Huayra / Zonda`
+    - `Nothing / CMF / Nothing Phone`
+    - `VanMoof / VanMoof A5 / VanMoof S5`
+    - `Analogue / Analogue Pocket`
+    - `Teenage Engineering / OP-1 / Field System`
+  - new family forbidden-block patterns:
+    - broad family-name patterns for the new brand-specific `TemplateExclusive...` block names
+- Scenario-inference refinement was required for consumer hardware brands:
+  - prompts like `industrial consumer hardware` were being misclassified as `industrial_manufacturer` because `industrial` matched earlier than the consumer-brand intent
+  - `design_led_ecommerce` detection now runs first for consumer-tech / consumer-hardware / audio-hardware / urban-mobility / smartphone style prompts
+- Fresh prod-server fixture validation on port `3116`:
+  - passing family adaptations:
+    - `pagani_good`
+    - `nothing_good`
+    - `vanmoof_good`
+    - `analogue_good`
+    - `teenage_good`
+  - failing family adaptations with expected codes:
+    - `pagani_bad`
+    - `nothing_bad`
+    - `vanmoof_bad`
+    - `analogue_bad`
+    - `teenage_bad`
+    - the first generic baseline case (`luxury-interior-sixtine`) now also short-circuits successfully through `template_first`
+    - but the next generic industrial B2B prompt still selected a weakly related profile (`auto_devialet-home`) and fell back to the slow architect path
+    - this means the commercial bottleneck has moved from runtime correctness to generic semantic retrieval quality for prompts without explicit brand/reference anchors
+- Generic prompt routing findings:
+  - The old selector logic silently discarded Chinese tokens in both prompts and profile keywords because `normalizeToken()` stripped everything except ASCII alphanumerics.
+  - Taxonomy matching also suffered from short-token substring collisions:
+    - `app` could match `approach`
+    - `ai` could match unrelated words
+    - this inflated `technology` intent on prompts that were actually luxury/editorial or other non-tech requests
+  - Fixes applied in `builder/src/lib/agent/section-template-registry.ts`:
+    - added CJK-aware semantic token matching helpers
+    - switched keyword and taxonomy matching to semantic inclusion instead of pure normalized ASCII substring search
+    - expanded taxonomy coverage for Chinese industrial/luxury/creative/minimal/elegant/corporate vocabulary
+    - added intent-structure scoring:
+      - industrial/B2B prompts now reward profiles with stronger industrial/manufacturing semantics plus `products/solutions/support` coverage
+      - technology/SaaS prompts now reward software/platform/support/blog signals and penalize consumer-hardware/ecommerce traits when ecommerce intent is absent
+  - Fresh direct selector verification after those fixes:
+    - industrial B2B Chinese prompt -> `breton-desktop`
+    - premium AI SaaS prompt -> `ionq-desktop`
+    - luxury interior/editorial Chinese prompt -> `auto_sixtine-reference`
+  - Fixing the selector alone was not enough for industrial/B2B:
+    - the builder still timed out if architect stayed on the slow generic path
+    - widening `buildTemplateSeedBlueprint()` in `builder/src/lib/agent/p2w-graph.ts` to allow template-seeded blueprints for high-coverage site templates with clear website/homepage intent removed that bottleneck
+  - A secondary quality issue surfaced during the industrial run:
+    - `buildFallbackBlueprint()` treated all non-medical prompts as `technology`
+    - this polluted downstream section prompts even when the selected template was industrial
+    - fallback industry inference now distinguishes `industrial-manufacturing` and changes `styleDNA`, `imageMood`, `coreProducts`, and `themeContract.voice` accordingly
+  - Live evidence from `builder/logs/creation.log` after the fast-path change:
+    - industrial prompt now resumes directly into an 8-page `breton-desktop` blueprint
+    - no immediate `architect_timeout`
+    - builder starts with `templatePlanProfile: "breton-desktop"` and `resolutionLayer: "page"`
+  - Fresh baseline regression report now exists:
+    - `builder/regression/strategy-comparison/compare-20260312-200430.json`
+    - `luxury-interior-sixtine`: PASS, `templatePlanProfile = auto_sixtine-reference`, `selectedStrategy = template_first`, `qaOverallScore = 1`, `durationMs = 11514`
+    - `industrial-b2b`: PASS, `templatePlanProfile = breton-desktop`, `selectedStrategy = template_first`, `qaOverallScore = 1`, `durationMs = 242952`
+  - The industrial case is now correct but still slower than commercial target:
+    - candidate selection did not short-circuit
+    - both `template_first` and `hybrid` completed with perfect QA
+    - `hybrid` added runtime cost without improving the winning score
+    - next tuning target should be an early-stop rule for high-confidence generic full-site matches, similar to what already exists for explicit brand prompts
+  - Targeted AI SaaS validation is also on the correct path:
+    - `creation.log` shows `template-library:profile_selected {"profileId":"ionq-desktop"...}`
+    - then `architect:template_seed {"profileId":"ionq-desktop","pages":1,"sections":8}`
+    - then `builder:start ... "templatePlanProfile":"ionq-desktop","resolutionLayer":"full-site","matchedPageCoverage":1`
+    - the request then continues into the expected `template_first` + `hybrid` candidate sweep
+  - The targeted AI SaaS API run completed successfully:
+    - HTTP `200`
+    - `id = p2w_1773320219690`
+    - `qaPass = true`
+    - `qaOverallScore = 1`
+    - `selectedStrategy = template_first`
+    - `templatePlanProfile = ionq-desktop`
+    - `resolutionLayer = full-site`
+    - `pages = 1`
+  - This confirms the three critical generic prompt classes now have live evidence:
+    - luxury/editorial -> `auto_sixtine-reference`
+    - industrial/B2B -> `breton-desktop`
+    - AI SaaS -> `ionq-desktop`
+  - The generic short-circuit optimization is now proven live, not just by logs:
+    - After expanding `shouldShortCircuitCandidateSelection()` to allow high-confidence generic full-site matches, the industrial prompt no longer runs `hybrid`
+    - direct API verification with env-correct local server:
+      - industrial B2B prompt -> `status 200`, `id = p2w_1773320579928`, `shortCircuited = true`, `templatePlanProfile = breton-desktop`, `pages = 8`, `durationMs = 4172`
+      - AI SaaS prompt -> `status 200`, `id = p2w_1773320596014`, `shortCircuited = true`, `templatePlanProfile = ionq-desktop`, `pages = 1`, `durationMs = 434`
+    - both responses retained `qaOverallScore = 1` and selected only the `template_first` candidate
+  - Quantified runtime improvement:
+    - industrial prompt previously needed about `242952ms` when `hybrid` was still evaluated
+    - the same prompt now completes in about `4172ms`
+    - this removes the biggest known runtime outlier in the generic commercial path
+- Sector-specific generic selector hardening is now validated live:
+  - direct selector sweep over `builder/regression/prompts.baseline.json` now resolves:
+    - `fintech-app` -> `ionq-desktop`
+    - `wellness-clinic` -> `auto_sixtine-reference`
+    - `ecommerce-brand` -> `transpa-rent-desktop`
+    - `education-platform` -> `framework-new-desktop`
+    - `travel-hospitality` -> `pagani-desktop`
+    - `developer-tooling` -> `framework-new-desktop`
+  - the key fixes in `builder/src/lib/agent/section-template-registry.ts` were:
+    - broader finance/ecommerce/education/health/travel/developer taxonomy coverage
+    - narrower ecommerce prompt triggers by removing overly broad `brand/品牌` style tokens
+    - explicit B2B mismatch penalties so industrial/product-manufacturing templates stop winning generic ecommerce or wellness prompts
+    - stricter viewport preference so `移动端友好` does not force a mobile variant
+- The remaining generic baseline failures were not selector failures; they were section-plan failures:
+  - `agency-portfolio`, `education-platform`, and `developer-tooling` all selected sensible templates but lost `approach` in the final rendered page
+  - root cause:
+    - `builder/src/lib/agent/template-resolver.ts` did not merge prompt-driven kinds into `page/full-site` home-page plans
+    - `home` default kinds therefore omitted `approach` unless the matched template already contained it
+  - fix:
+    - added prompt-driven kind inference to `template-resolver.ts`
+    - added the same Chinese/English `approach` vocabulary (`价值点 / 优势 / 能力 / 方法 / 指标 / 流程 / 特性 / 亮点`) to both `template-resolver.ts` and `p2w-graph.ts`
+  - live targeted verification after the fix:
+    - `agency-portfolio` now renders `FeaturesSection` and detects `approach`
+    - `developer-tooling` now renders `TemplateExclusivePenSiteHomeApproachFeaturepenAlt5`
+    - `education-platform` now renders `TemplateExclusivePenSiteHomeApproachFeaturepenAlt5`
+- Fresh generic baseline regression now passes completely:
+  - report: `builder/regression/reports/creation-baseline-20260312-212941.json`
+  - summary:
+    - `total = 10`
+    - `passed = 10`
+    - `failed = 0`
+    - `successRate = 100%`
+    - `fallbackRate = 0%`
+    - `timeoutRate = 0%`
+  - critical repaired cases:
+    - `agency-portfolio`: PASS, `missing=[]`, `types=8`
+    - `education-platform`: PASS, `missing=[]`, `types=7`
+    - `developer-tooling`: PASS, `missing=[]`, `types=7`
+- The remaining ecommerce runtime outlier was also root-caused and removed:
+  - prior failing report: `builder/regression/reports/creation-baseline-20260312-214447.json`
+  - symptom:
+    - `ecommerce-brand` expanded to `8` pages
+    - `durationMs = 224853`
+    - `usageInputTokens = 327383`
+    - `usageOutputTokens = 66316`
+  - root cause:
+    - `builder/src/lib/agent/enterprise-site-structure.ts`
+    - `looksLikeEnterpriseWebsite()` treated section-level terms such as `产品` as explicit multi-page route intent
+    - the ecommerce homepage prompt therefore entered the enterprise expansion path and inflated into the default 8-page enterprise site shape
+  - fix:
+    - replaced the broad multi-page signal with explicit route/page-level detection only
+    - single-page homepage prompts now require true page/navigation intent such as `关于页 / 联系页 / 产品页 / 隐私页 / solutions page / contact page` before enterprise expansion can happen
+  - direct verification after the fix:
+    - ecommerce homepage prompt -> `looksLikeEnterpriseWebsite = false`
+    - industrial multi-page website prompt -> `looksLikeEnterpriseWebsite = true`
+    - medical homepage prompt -> `looksLikeEnterpriseWebsite = false`
+- Live API verification after the ecommerce enterprise-intent fix:
+  - ecommerce homepage prompt:
+    - `status = 200`
+    - `id = p2w_1773323329318`
+    - `templatePlanProfile = transpa-rent-desktop`
+    - `resolutionLayer = full-site`
+    - `matchedPageCoverage = 1`
+    - `shortCircuited = true`
+    - `durationMs = 9551`
+  - commercial impact:
+    - `ecommerce-brand` no longer expands into 8 enterprise pages
+    - runtime dropped from `224853ms` to `9551ms` on direct API verification
+- Fresh full baseline after the ecommerce fix:
+  - command: `cd builder && node regression/run-creation-baseline.mjs --base-url http://localhost:3110`
+  - report: `builder/regression/reports/creation-baseline-20260312-215001.json`
+  - summary:
+    - `total = 10`
+    - `passed = 10`
+    - `failed = 0`
+    - `successRate = 100%`
+    - `fallbackRate = 0%`
+    - `timeoutRate = 0%`
+    - `tokens input = 20797`
+    - `tokens output = 2901`
+  - latency checkpoints:
+    - `luxury-interior-sixtine = 8.76s`
+    - `industrial-b2b = 6.62s`
+    - `wellness-clinic = 10.08s`
+    - `ecommerce-brand = 1.65s`
+    - `agency-portfolio = 8.56s`
+- Expanded commercial regression (`26` prompts) exposed a real template post-processing defect:
+  - `framework-brand-en` planned a homepage `products` section but final output dropped it
+  - root cause:
+    - `builder/src/lib/agent/section-template-registry.ts` selected a `kymeta-desktop` `style-family-block` fallback whose block type was `TemplateExclusivePenSiteProductsProductsProductscontactpenAlt1`
+    - `builder/src/lib/agent/p2w-graph.ts` later classified that block as contact-like because the type string contained `contact`
+    - canonical page assembly removed it from the non-theme-driven body, so the final homepage lost the product section
+- Expanded regression also exposed a finance selector gap on Chinese prompts:
+  - `fintech-app` initially resolved to `pagani-desktop`
+  - root cause:
+    - finance scoring did not reward technology-heavy enterprise profiles strongly enough when the prompt had no explicit brand token
+    - general high-quality luxury profiles could still win with weak/no semantic evidence
+- Fixes:
+  - `builder/src/lib/agent/section-template-registry.ts`
+    - added `computeKindFitBonus()` so `products` fallback ranking prefers true product/catalog blocks and downranks contact-shaped blocks
+    - strengthened finance routing toward tech-heavy enterprise profiles and penalized zero-finance/zero-tech mismatches
+  - `builder/src/lib/agent/p2w-graph.ts`
+    - `isContactLikeBlock()` / `isCtaLikeBlock()` now explicitly exclude product/catalog block types
+- Targeted verification:
+  - direct `framework-brand-en` API run now includes `TemplateExclusivePenSiteProductsProductsProductsmainpenAlt5`
+  - direct `kymeta-enterprise-multipage` API run now preserves product blocks across the generated site pages
+  - direct selector check for the Chinese finance prompt now resolves to `ionq-desktop`
+- Fresh expanded regression result:
+  - report: `builder/regression/reports/creation-baseline-20260312-222408.json`
+  - summary:
+    - `total = 26`
+    - `passed = 26`
+    - `failed = 0`
+    - `successRate = 100%`
+    - `fallbackRate = 0%`
+    - `timeoutRate = 0%`
+    - `assertionFailureRate = 0%`
+- A second breadth-oriented commercial suite (`28` cases) exposed additional selector/planner gaps that were not visible in the first 26-case set:
+  - explicit bilingual brand references using Chinese phrasing (`类似 Kymeta`, `inspired by VanMoof。需要 ...`) were not parsed reliably by `extractExplicitReferenceTokens()`
+  - `technology section / tech highlights / 技术亮点` did not map into `approach`, so some deep-tech homepages missed their required capability section
+  - niche generic intents still fell through to older or generic profiles:
+    - `3D printing` -> `auto_siemens-home` / `breton-mobile`
+    - `satellite connectivity` -> `breton-desktop`
+    - `retro-tech editorial` -> `ionq-desktop`
+    - `premium audio hardware` -> `pamamachinetools-desktop` / `fptindustrie-mobile`
+    - `design-led lifestyle ecommerce` -> `auto_audeze-home`
+- Fixes applied:
+  - `builder/src/lib/agent/section-template-registry.ts`
+    - Chinese explicit reference parsing now supports `类似 / 像 / 参考 / 参照 / 对标 / 仿照`
+    - added specialized intent scoring for:
+      - additive manufacturing -> `carbon3d`
+      - satellite connectivity -> `kymeta`
+      - retro editorial tech -> `analogue`
+      - premium audio hardware -> `teenage-engineering`
+      - design-led lifestyle ecommerce -> `transpa-rent`
+  - `builder/src/lib/agent/template-resolver.ts`
+  - `builder/src/lib/agent/p2w-graph.ts`
+    - expanded prompt-driven `approach` vocabulary to include `technology / technical / tech highlights / innovation / 技术 / 科技`
+- Fresh second-suite regression:
+  - report: `builder/regression/reports/creation-baseline-20260312-224645.json`
+  - summary:
+    - `total = 28`
+    - `passed = 28`
+    - `failed = 0`
+    - `successRate = 100%`
+    - `fallbackRate = 0%`
+    - `timeoutRate = 0%`
+    - `assertionFailureRate = 0%`
+- New commercial risk surfaced by the second suite:
+  - `kymeta-brand-cn-multipage`
+    - correctness passed, but latency did not
+    - `durationMs = 241913`
+    - `usageInputTokens = 348303`
+    - `usageOutputTokens = 69572`
+  - this is the current dominant commercial risk: not correctness, but a severe multipage performance outlier that should be optimized before calling the system broadly scalable
+- Root cause for the `kymeta-brand-cn-multipage` outlier is now closed:
+  - `builder/src/lib/agent/p2w-graph.ts`
+    - explicit-template detection did not treat Chinese phrasing like `类似 Kymeta` as a reference prompt
+    - because of that, candidate selection did not short-circuit after a full-score `template_first` result and unnecessarily ran `hybrid`
+  - fix:
+    - Chinese reference parsing now feeds `hasExplicitTemplateReference()`, `extractBrandNameFromPromptLite()`, and `extractSourceBrandTokens()`
+  - targeted retest:
+    - same Chinese multipage Kymeta prompt now completes in about `7.5s`
+    - `shortCircuited = true`
+    - `selectedStrategy = template_first`
+- Root cause for the build/type release blocker is also closed:
+  - the previous `npm run build` hang after `Compiled successfully` was caused by the template-exclusive registration strategy, not by Next itself
+  - old state:
+    - `src/puck/config.generated.ts` statically imported hundreds of generated pen blocks
+    - `tsconfig` also scanned the entire `src/components/blocks/template-exclusive-*` tree
+    - independent `npx tsc --noEmit --extendedDiagnostics` would not finish within `120s`
+  - fix:
+    - new shared runtime renderer: `builder/src/components/blocks/template-exclusive-runtime/block.tsx`
+    - generator now writes `builder/src/puck/template-exclusive-runtime.generated.json`
+    - `builder/src/puck/config.generated.ts` now registers runtime definitions instead of importing each generated block module
+    - `builder/tsconfig.json` excludes old generated block folders from the TS program
+  - fresh verification:
+    - `npx tsc --noEmit --extendedDiagnostics` completes in `3.17s`
+    - `npm run build` completes successfully and exits with code `0`
+- LC-CNC website generation findings:
+  - prompt-only creation against `/api/creation` could reach the `breton-desktop` industrial family, but the resulting output still had placeholder copy and duplicate uppercase routes, so it was not suitable for direct delivery.
+  - the reliable path for this request is deterministic assembly with builder-native blocks plus a minimal amount of custom payload component code.
+  - the generated LC-CNC site lives at:
+    - `asset-factory/out/p2w/lc-cnc-industrial-sea/result.json`
+    - `asset-factory/out/p2w/lc-cnc-industrial-sea/sandbox/payload.json`
+  - the site currently ships `8` pages:
+    - `/`
+    - `/3c-machines`
+    - `/custom-solutions`
+    - `/cases`
+    - `/about`
+    - `/contact`
+    - `/privacy`
+    - `/sitemap`
+  - footer support links are therefore valid without inventing broken placeholders.
+  - reused builder-native blocks:
+    - `Navbar`
+    - `HeroSplit`
+    - `CardsGrid`
+    - `FeatureGrid`
+    - `CaseStudies`
+    - `CreationFallbackSection`
+    - `Footer`
+  - custom payload-only components added for this site:
+    - `LCCncCertificationStrip`
+    - `LCCncContactCapture`
+    - `LCCncFloatingWhatsApp`
+  - fresh verification:
+    - `node --check scripts/generate_lc_cnc_site.mjs`
+    - `node scripts/generate_lc_cnc_site.mjs`
+    - `curl -I http://localhost:3110/creation/sandbox?mode=preview&siteKey=lc-cnc-industrial-sea&page=%2F` -> `200`
+    - `curl -I http://localhost:3110/creation/sandbox?mode=preview&siteKey=lc-cnc-industrial-sea&page=%2Fcontact` -> `200`
+    - Playwright smoke confirms:
+      - home hero title visible
+      - contact `Quick Quote Form` visible
+- Cross-template follow-up findings after the LC-CNC fixes:
+  - the `CreationFallbackSection` runtime failure was local to the LC-CNC site payload and not a library-wide regression.
+  - a new audit script now exists at `scripts/audit_generated_site_payloads.mjs`.
+  - fresh static audit result:
+    - `payloadCount = 286`
+    - `exactPreviewCount = 54`
+    - `generatedSiteCount = 232`
+    - `generatedProblemCount = 0`
+  - interpretation:
+    - the 54 `pen-exact-*` payloads all use `ExactPenHomePreview` or `ExactPenPagePreview` by design; they are wrappers around exact `.pen` pages, so identical wrapper block shape is expected and not a “same template everywhere” defect.
+    - across the 232 real generated site payloads, there are currently no other payloads with:
+      - `CreationFallbackSection` in page content
+      - high page-shape reuse under the current audit threshold
+  - fresh browser audit result:
+    - checked `232` generated payload home pages
+    - `failures = 0` for `Missing block renderer`
+- Generation-flow guardrail is now wired into the runtime save path:
+  - new shared helper: `builder/src/lib/site-payload-audit.ts`
+  - audited conditions:
+    - disallow `CreationFallbackSection` in saved/generated payloads
+    - reject unknown block types unless they are:
+      - registered built-ins from the current builder block surface
+      - payload-local custom components
+      - template-exclusive / published-section runtime patterns
+    - reject duplicate page paths
+    - warn on very high multi-page block-shape reuse for generated sites
+    - classify `pen-exact-*` wrapper payloads as `exact-preview` so they are exempt from the multi-page reuse warning
+  - `builder/src/app/api/creation/route.ts`
+    - now audits generated payloads before persistence and before returning the final JSON response
+    - returns `422 payload_audit_failed` on audit errors
+    - persists `audit.json` alongside `result.json` and `sandbox/payload.json`
+  - `builder/src/app/api/creation/save/route.ts`
+    - now audits manual saves
+    - returns `422 payload_audit_failed` on audit errors
+    - also persists `audit.json`
+- Fresh verification for the guardrail:
+  - `cd builder && npx tsc --noEmit --pretty false` -> pass
+  - valid save:
+    - `POST /api/creation/save` with the current LC-CNC payload -> `200`
+    - `asset-factory/out/p2w/lc-cnc-audit-smoke/audit.json` written with `ok: true`
+  - invalid save:
+    - `POST /api/creation/save` with a payload containing `CreationFallbackSection` -> `422`
+    - response includes `payload_audit_failed` and issue details
+- Tightened the reuse guardrail from literal block-sequence matching to semantic role-shape analysis:
+  - `builder/src/lib/site-payload-audit.ts`
+    - now records per-page `roles` and `roleShape`
+    - computes `sameRoleShapeCount`, `averageRoleSimilarity`, `maxRoleSimilarity`, and `highlySimilarPageCount`
+    - can warn on `high_structural_similarity` when pages are near-identical even if block types differ
+  - `scripts/audit_generated_site_payloads.mjs`
+    - mirrors the same semantic analysis for offline corpus checks
+- Fresh semantic audit results:
+  - offline corpus:
+    - `payloadCount = 287`
+    - `exactPreviewCount = 54`
+    - `generatedSiteCount = 233`
+    - `generatedProblemCount = 0`
+  - LC-CNC smoke payload:
+    - `issueCount = 0`
+    - `averageRoleSimilarity = 0.5077`
+    - `sameRoleShapeCount = 1`
+    - confirms the site is no longer close to “all pages use the home template”
+- LC-CNC follow-up root cause and fix:
+  - the complaint about “multiple pages using the same template” was valid for the custom LC-CNC assembly script, not for the global resolver. The script had converged most inner pages onto one shell: `LCCncPageIntroBand + content block + LCCncCtaBand`.
+  - `scripts/generate_lc_cnc_site.mjs` now uses distinct core-page structures:
+    - `/3c-machines`: `LCCncPageIntroBand`
+    - `/custom-solutions`: `LCCncProcessRail`
+    - `/cases`: `HeroSplit`
+    - `/about`: `HeroSplit + LCCncFactoryStorySection`
+  - the `Commercial CTA` height issue was caused by an invalid Tailwind class `py-18`; computed browser styles showed `paddingTop = 0` and `paddingBottom = 0`. Replacing it with valid spacing and a grid layout increased the about-page CTA section height to `400px` with `96px / 96px` vertical padding.
+- Template-adaptation family coverage now spans the remaining published enterprise/technology/audio/mobility templates:
+  - newly supported families in `builder/src/lib/agent/template-adaptation.ts`:
+    - `carbon3d`
+    - `plexus`
+    - `ridecake`
+    - `siemens`
+    - `audeze`
+    - `devialet`
+    - `unistellar`
+    - `masterdynamic`
+  - scenario inference now also understands:
+    - additive/digital manufacturing: `3d printing`, `additive manufacturing`, `digital manufacturing`, `electronics manufacturing`, `contract manufacturing`
+    - premium audio / consumer-brand commerce: `headphones`, `hi-fi`, `home audio`, `premium audio`
+    - smart-telescope commerce: `telescope`, `smart telescope`, `astrophotography`, `astronomy gear`
+  - a false-positive SaaS route was fixed:
+    - `LogoCloud` fixture titles were previously matching the plain `cloud` substring and misclassifying `pagani`/`analogue` as `ai_saas`
+    - the SaaS detector now requires `\\bcloud\\b`, `cloud platform`, or `cloud software`
+  - added a reusable save-route regression runner:
+    - `builder/regression/run-template-adaptation-save-fixtures.mjs`
+    - package entry: `npm run regression:adaptation`
+  - the runner posts deterministic positive/negative payloads to `/api/creation/save`, injects `resolvedByLayer.templatePlanProfile`, and asserts:
+    - good fixture -> `200` and zero audit issues
+    - bad fixture -> `422` with the expected adaptation codes
+  - fresh full-matrix verification on a production build/server (`http://127.0.0.1:3118`) is green:
+    - report: `builder/regression/reports/template-adaptation-save-20260313164755.json`
+    - `fixtureCount = 44`
+    - `passedCount = 44`
+    - `failedCount = 0`
+    - `successRate = 1`
+
+- Fresh commercial validation on `2026-03-14` initially showed the system was not yet release-ready:
+  - `builder/regression/reports/creation-baseline-20260314-005602.json`
+  - `passed = 19/26`
+  - `failed = 7/26`
+  - failures split into two buckets:
+    - prompt/template residue not fully sanitized for explicit reference-brand prompts
+    - industrial multipage page-contract rules were too strict for valid template-first full-site outputs
+- Root causes and fixes:
+  - `builder/src/lib/agent/p2w-graph.ts`
+    - separated target-brand extraction from reference-brand extraction
+    - expanded reference-brand phrase parsing for English prompts: `like`, `inspired by`, `similar to`, `based on`, `using`, `modeled on`
+    - upgraded final sanitization from prompt-only tokens to `prompt tokens + matched template-family brand terms`
+    - final sanitization now receives `profileId` so template-internal family terms such as `Utopia`, `CMF`, `Hydra`, `Transparent Speaker` can be scrubbed before audit
+  - `builder/src/lib/agent/template-adaptation.ts`
+    - industrial page contracts now allow valid full-site industrial home/about/products/solutions/cases pages that lead with `story/content/features` instead of requiring explicit `hero` on every page
+    - adaptation text collection now ignores internal metadata keys such as `__publishedOriginalType`, preventing false brand-residue hits from non-visible template metadata
+- Fresh verification after the fixes:
+  - `cd builder && npm run build` -> pass
+  - `cd builder && npx tsc --noEmit --pretty false` -> pass
+  - `cd builder && npm run regression:adaptation -- --base-url http://127.0.0.1:3125` -> pass
+    - `fixtureCount = 44`
+    - `passedCount = 44`
+    - `failedCount = 0`
+    - report: `builder/regression/reports/template-adaptation-save-20260313171805.json`
+  - `cd builder && node regression/run-creation-baseline.mjs --base-url http://127.0.0.1:3125 --prompts regression/prompts.commercial-expanded.json` -> pass
+    - `26/26`
+    - report: `builder/regression/reports/creation-baseline-20260314-011839.json`
+  - `cd builder && node regression/run-creation-baseline.mjs --base-url http://127.0.0.1:3125 --prompts regression/prompts.commercial-scale.json` -> pass
+    - `28/28`
+    - report: `builder/regression/reports/creation-baseline-20260314-011516.json`
+- Current commercial-gate status on the latest build:
+  - adaptation save fixtures: `44/44`
+  - commercial-expanded: `26/26`
+  - commercial-scale: `28/28`
+  - aggregate prompt coverage verified this round: `54/54`
+  - `fallbackRate = 0`
+  - `timeoutRate = 0`
+
+- Prompt-direct template generation had a separate IA bug:
+  - explicit page names written in business language were not treated as requested routes unless the prompt used literal `/path` syntax
+  - this caused enterprise prompts like `home, 3C Machines, Custom Solutions, Cases, About, Contact, and Privacy pages` to regress into template-default routes such as `/core-product` and `/products`
+  - root causes:
+    - `extractRequestedPagesFromPrompt` only extracted slash-prefixed paths
+    - enterprise autofill still ran even when the prompt clearly defined the desired page set
+    - product-page inference did not classify `machines / cnc / equipment / centers` aliases as `products`
+  - fixes landed in:
+    - `builder/src/lib/agent/p2w-graph.ts`
+    - `builder/src/lib/agent/template-resolver.ts`
+    - `builder/src/lib/agent/enterprise-site-structure.ts`
+  - fresh verification:
+    - `Sandvik`, `PAMA`, and `Breton` prompt-direct runs now all preserve:
+      - `/`
+      - `/3c-machines`
+      - `/custom-solutions`
+    - `/cases`
+    - `/about`
+    - `/contact`
+    - `/privacy`
+
+- `sandvik-desktop` had a publish-time theme regression that explains the user-visible low contrast:
+  - the corresponding source `.pen` and exact validated template use a light neutral background with dark foreground text
+  - the published style profile instead contained:
+    - `palette.bg = #F3F3F2`
+    - `palette.text = #FFFFFF`
+    - `palette.primary = #4F77FF`
+  - that yields a text/background contrast ratio of only `1.11`, which matches the reported “大量 section 文字与背景对比度太低”
+  - root cause was not prompt generation and not runtime rendering:
+    - `builder/template-factory/run-template-factory.mjs`
+    - `buildPayloadFromPenDocument()` rebuilt theme from `buildThemeFromPenPage()` heuristics
+    - the publish flow ignored the already validated exact template theme available from the pen site bundle artifact
+  - fix landed by making the publish flow prefer exact theme tokens from `artifact.exactTemplatePath` / `theme.tokens.json`
+  - after republishing `sandvik`, the published theme became:
+    - `bg = #F3F3F2`
+    - `text = #1F1F1F`
+    - `primary = #6D614E`
+  - new text/background contrast ratio is `14.85`
+
+- The publish-time theme issue was broader than `sandvik`:
+  - once the library was republished with exact-theme preference, a full contrast audit still found:
+    - `ionq-desktop`
+    - `pagani-desktop`
+    - `pagani-mobile`
+  - those remaining failures showed two more root causes in the theme extractor:
+    - body text selection used coarse dark/light heuristics instead of an actual contrast score
+    - transparent colors such as `#00000000` were still eligible and could be selected as theme text
+  - the final extractor now:
+    - scores text candidates by real contrast ratio against the chosen background
+    - falls back to the overall color palette if text tokens do not provide a readable body color
+    - excludes transparent colors from all theme candidate sets
+  - after a second full republish, all `27` published pen profiles passed the contrast audit (`0` failures)
+
+- 2026-03-14 sandvik published visual regression follow-up:
+  - `home` and `products` published previews are visually close to the exact pen baseline once compared in the same coordinate space:
+    - `home` full-page similarity `0.9442`
+    - `products` full-page similarity `0.9639`
+  - the initial `about` failure was a false negative caused by live sandbox reveal motion:
+    - bottom sections `serviceBar` and `footer` rendered in the iframe DOM with `opacity: 0.001` before entering viewport
+    - this made full-page screenshot regression treat them as “missing”, even though the DOM nodes and content were present
+  - root cause was in the screenshot stabilization layer, not in the published template:
+    - `visual-qa/scripts/common.ts`
+    - browser-side scroll/reveal preparation did not normalize sandbox iframe section motion before capture
+    - the same file also contained a `page.evaluate()` / `tsx` browser-script failure (`ReferenceError: __name is not defined`)
+  - fix:
+    - moved browser-side auto-scroll logic to string-evaluated scripts to avoid `__name` helper injection
+    - sandbox iframe stabilization now:
+      - disables animation/transition inside the iframe
+      - forces all `[data-pen-section='true']` nodes visible
+      - pre-scrolls the iframe content to trigger lazy/reveal state
+  - after forcing motion off, `sandvik-about` returns to expected visual range:
+    - full-page similarity `0.9333`
+    - average section similarity `0.9308`
+    - footer section similarity `0.9613`
+2026-03-15 (continued)
+  - the Lingchuang prompt-generated sites for `breton`, `pama`, and `sandvik` are now stable at the screenshot layer under repeated capture
+  - repeated section-level pixel diff regression across all `21` pages produced exact matches on the second pass:
+    - `fullSimilarity = 1.0`
+    - `avgSectionSimilarity = 1.0`
+    - `minSectionSimilarity = 1.0`
+  - this result means the current runtime path is deterministic once the preview is stabilized; there is no residual section drift between captures for these three template families
+  - output bundle:
+    - `output/playwright/lc-cnc-template-family-section-visual-regression/summary.json`
+2026-03-15 (interior assembly)
+  - root cause:
+    - the home-page normalization had already been generalized, but interior pages still depended on family-specific block shapes, so different template families received uneven optimization strength on `products / solutions / cases / about / contact`
+    - this also allowed duplicate canonical sections to survive when the template family already carried a proof/story block next to the normalized structured block
+  - fix:
+    - added family-agnostic interior page normalization in `builder/src/lib/agent/p2w-graph.ts`
+    - interior pages now map structural slots by page type:
+      - `products -> HeroSplit / CardsGrid / FeatureGrid / TestimonialsGrid`
+      - `solutions -> HeroSplit / FeatureGrid / CardsGrid / TestimonialsGrid`
+      - `cases -> HeroSplit / CardsGrid / FeatureGrid / TestimonialsGrid`
+      - `about -> HeroSplit / ContentStory / CardsGrid / TestimonialsGrid`
+      - `contact -> HeroSplit / FeatureGrid / TestimonialsGrid`
+    - duplicate canonical interior sections are pruned with a preference for the normalized `structured-*` blocks
+  - evidence:
+    - `npm run build` passes
+    - `npx tsc --noEmit --pretty false` passes
+    - fresh family runs confirm normalized inner-page skeletons:
+      - `sandvik-desktop`
+      - `breton-desktop`
+      - `pamamachinetools-desktop`
+      - `pagani-desktop`
+    - representative post-fix shapes:
+      - `pagani /3c-machines -> Navbar > HeroSplit > CardsGrid > FeatureGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
+      - `pagani /custom-solutions -> Navbar > HeroSplit > FeatureGrid > CardsGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
+      - `pagani /about -> Navbar > HeroSplit > ContentStory > CardsGrid > TestimonialsGrid > LeadCaptureCTA > Footer`

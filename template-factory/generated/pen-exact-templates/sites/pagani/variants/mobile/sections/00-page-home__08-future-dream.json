@@ -1,0 +1,1098 @@
+{
+  "sectionId": "future-dream",
+  "sectionName": "Future Dream",
+  "sectionKind": "story",
+  "order": 8,
+  "bounds": {
+    "x": 0,
+    "y": 5964,
+    "width": 390,
+    "height": 740
+  },
+  "directChildCount": 17,
+  "recursiveNodeCount": 18,
+  "treeHash": "86a81dd85656c24ad04cb9ca023e2d3fb301bf376db449c2bd5ee94fb6686370",
+  "blockCount": 17,
+  "blockIndex": [
+    {
+      "blockId": "future-dream-bg",
+      "blockName": "future-dream-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 740
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c8e6ef933622486c15875b91200e7e10077d4fb01148f8cd921ac64790409e96"
+    },
+    {
+      "blockId": "future-dream-shade",
+      "blockName": "future-dream-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 740
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4bda683eef37e19385ebfce39758f74ed5a79064857865b3d96fb32e3c64b5c7"
+    },
+    {
+      "blockId": "future-dream-shell",
+      "blockName": "future-dream-shell",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 170,
+        "width": 330,
+        "height": 380
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a3e363e012de6023019e8e4b12a0b92522935093a7d37bfe600f8f1a2eff968a"
+    },
+    {
+      "blockId": "future-dream-chapter",
+      "blockName": "future-dream-chapter",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 44,
+        "y": 194,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b4cbfcaca044c3313ed652706789678dded4a98caa258320bf69b61c8a19b662"
+    },
+    {
+      "blockId": "future-dream-count",
+      "blockName": "future-dream-count",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 268,
+        "y": 194,
+        "width": 80,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a13c697a565f37112c733f5607b85e9af2da09a39720d24fd90e0ef20ca0ba22"
+    },
+    {
+      "blockId": "future-dream-title",
+      "blockName": "future-dream-title",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 44,
+        "y": 240,
+        "width": 280,
+        "height": 48
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "47503b6854eb2882f934e2c7abed03c409f437c38fe1d19bbf43f76ee4ee993e"
+    },
+    {
+      "blockId": "future-dream-body",
+      "blockName": "future-dream-body",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 44,
+        "y": 316,
+        "width": 280,
+        "height": 126
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "15aa3369e45a478dcc9806801f0baae9dd81b7af1efda310fa6c5551c1e9cf59"
+    },
+    {
+      "blockId": "future-dream-nav-chip-0",
+      "blockName": "future-dream-nav-chip-0",
+      "blockType": "rectangle",
+      "order": 7,
+      "bounds": {
+        "x": 44,
+        "y": 420,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ac34398b62fb2cac97cd788f0fedaac54be744803255e110703bc21ac9be1a46"
+    },
+    {
+      "blockId": "future-dream-nav-chip-text-0",
+      "blockName": "future-dream-nav-chip-text-0",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 56,
+        "y": 429,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "98006dfbfdb69638ef3d0951c2f520bad662a5e69a50337e043fb5d827261af3"
+    },
+    {
+      "blockId": "future-dream-nav-chip-1",
+      "blockName": "future-dream-nav-chip-1",
+      "blockType": "rectangle",
+      "order": 9,
+      "bounds": {
+        "x": 128,
+        "y": 420,
+        "width": 110.4,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4aafd4fa77ed8935adafaa5b738f385bf8036bc8365e13de1991e3f855d6126a"
+    },
+    {
+      "blockId": "future-dream-nav-chip-text-1",
+      "blockName": "future-dream-nav-chip-text-1",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 140,
+        "y": 429,
+        "width": 86.4,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f7d08f5f8111c0b3a7df7c4f386a489159b956ba1e6cfcd9eb83394d4ace9ce9"
+    },
+    {
+      "blockId": "future-dream-nav-chip-2",
+      "blockName": "future-dream-nav-chip-2",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 248.4,
+        "y": 420,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d22ecc0249ddba6b0e75aa3fa4f8c3ab0059f961db3b164919616291efb53117"
+    },
+    {
+      "blockId": "future-dream-nav-chip-text-2",
+      "blockName": "future-dream-nav-chip-text-2",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 260.4,
+        "y": 429,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c77d5507d5f83961afad82df9986523dde2b6811d5b324dec29715517cd78645"
+    },
+    {
+      "blockId": "future-dream-nav-chip-3",
+      "blockName": "future-dream-nav-chip-3",
+      "blockType": "rectangle",
+      "order": 13,
+      "bounds": {
+        "x": 44,
+        "y": 460,
+        "width": 88.8,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fe82251f18a1d2443bef90b2ed73d100313c0b72a621705c9e6f392ceff8fe56"
+    },
+    {
+      "blockId": "future-dream-nav-chip-text-3",
+      "blockName": "future-dream-nav-chip-text-3",
+      "blockType": "text",
+      "order": 14,
+      "bounds": {
+        "x": 56,
+        "y": 469,
+        "width": 64.8,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d8b278aec4e0d6cf1ce03d660384c6a3f0d722269802773186f80c28ec6f96cf"
+    },
+    {
+      "blockId": "future-dream-nav-chip-4",
+      "blockName": "future-dream-nav-chip-4",
+      "blockType": "rectangle",
+      "order": 15,
+      "bounds": {
+        "x": 142.8,
+        "y": 460,
+        "width": 88.8,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b945b6a8d6945f194d0beb1e623480a65032fb5862824998a9ea4d4cc0cc7174"
+    },
+    {
+      "blockId": "future-dream-nav-chip-text-4",
+      "blockName": "future-dream-nav-chip-text-4",
+      "blockType": "text",
+      "order": 16,
+      "bounds": {
+        "x": 154.8,
+        "y": 469,
+        "width": 64.8,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4cdca6c6d8c8ece09e5cbfe6ef64487ea6487b0f358e9b80ea241d1eb0f41066"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/future-dream.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/future-dream.jpg",
+      "relativePath": "assets-structured/pagani/future-dream.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "future-dream-bg",
+      "blockName": "future-dream-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 740
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c8e6ef933622486c15875b91200e7e10077d4fb01148f8cd921ac64790409e96",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/future-dream.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/future-dream.jpg",
+        "relativePath": "assets-structured/pagani/future-dream.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-dream-bg",
+        "x": 0,
+        "y": 0,
+        "name": "future-dream-bg",
+        "width": 390,
+        "height": 740,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/future-dream.jpg",
+          "mode": "fill"
+        }
+      }
+    },
+    {
+      "blockId": "future-dream-shade",
+      "blockName": "future-dream-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 740
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4bda683eef37e19385ebfce39758f74ed5a79064857865b3d96fb32e3c64b5c7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-dream-shade",
+        "x": 0,
+        "y": 0,
+        "name": "future-dream-shade",
+        "width": 390,
+        "height": 740,
+        "fill": "#0000005A"
+      }
+    },
+    {
+      "blockId": "future-dream-shell",
+      "blockName": "future-dream-shell",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 170,
+        "width": 330,
+        "height": 380
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a3e363e012de6023019e8e4b12a0b92522935093a7d37bfe600f8f1a2eff968a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-dream-shell",
+        "x": 18,
+        "y": 170,
+        "name": "future-dream-shell",
+        "width": 330,
+        "height": 380,
+        "fill": "#0A0A0ACF"
+      }
+    },
+    {
+      "blockId": "future-dream-chapter",
+      "blockName": "future-dream-chapter",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 44,
+        "y": 194,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b4cbfcaca044c3313ed652706789678dded4a98caa258320bf69b61c8a19b662",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-dream-chapter",
+        "x": 44,
+        "y": 194,
+        "name": "future-dream-chapter",
+        "fill": "#B9B3AB",
+        "content": "Future",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.22em"
+      }
+    },
+    {
+      "blockId": "future-dream-count",
+      "blockName": "future-dream-count",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 268,
+        "y": 194,
+        "width": 80,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a13c697a565f37112c733f5607b85e9af2da09a39720d24fd90e0ef20ca0ba22",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-dream-count",
+        "x": 268,
+        "y": 194,
+        "name": "future-dream-count",
+        "fill": "#B9B3AB",
+        "content": "4 / 5",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 80,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      }
+    },
+    {
+      "blockId": "future-dream-title",
+      "blockName": "future-dream-title",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 44,
+        "y": 240,
+        "width": 280,
+        "height": 48
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "47503b6854eb2882f934e2c7abed03c409f437c38fe1d19bbf43f76ee4ee993e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-dream-title",
+        "x": 44,
+        "y": 240,
+        "name": "future-dream-title",
+        "fill": "#F3F2ED",
+        "content": "The Dream",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 30,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 280,
+        "height": 48
+      }
+    },
+    {
+      "blockId": "future-dream-body",
+      "blockName": "future-dream-body",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 44,
+        "y": 316,
+        "width": 280,
+        "height": 126
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "15aa3369e45a478dcc9806801f0baae9dd81b7af1efda310fa6c5551c1e9cf59",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-dream-body",
+        "x": 44,
+        "y": 316,
+        "name": "future-dream-body",
+        "fill": "#F3F2ED",
+        "content": "Past and present melt into one: the experience of Horacio, the energy and passion of his team, and the knowledge that turns every Pagani project into an impossible dream that feels close to reality.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 280,
+        "height": 126
+      }
+    },
+    {
+      "blockId": "future-dream-nav-chip-0",
+      "blockName": "future-dream-nav-chip-0",
+      "blockType": "rectangle",
+      "order": 7,
+      "bounds": {
+        "x": 44,
+        "y": 420,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ac34398b62fb2cac97cd788f0fedaac54be744803255e110703bc21ac9be1a46",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-dream-nav-chip-0",
+        "x": 44,
+        "y": 420,
+        "name": "future-dream-nav-chip-0",
+        "width": 74,
+        "height": 32,
+        "fill": "#FFFFFF14",
+        "stroke": {
+          "fill": "#C9B28B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-dream-nav-chip-text-0",
+      "blockName": "future-dream-nav-chip-text-0",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 56,
+        "y": 429,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "98006dfbfdb69638ef3d0951c2f520bad662a5e69a50337e043fb5d827261af3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-dream-nav-chip-text-0",
+        "x": 56,
+        "y": 429,
+        "name": "future-dream-nav-chip-text-0",
+        "fill": "#F3F2ED",
+        "content": "Intro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-dream-nav-chip-1",
+      "blockName": "future-dream-nav-chip-1",
+      "blockType": "rectangle",
+      "order": 9,
+      "bounds": {
+        "x": 128,
+        "y": 420,
+        "width": 110.4,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4aafd4fa77ed8935adafaa5b738f385bf8036bc8365e13de1991e3f855d6126a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-dream-nav-chip-1",
+        "x": 128,
+        "y": 420,
+        "name": "future-dream-nav-chip-1",
+        "width": 110.4,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-dream-nav-chip-text-1",
+      "blockName": "future-dream-nav-chip-text-1",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 140,
+        "y": 429,
+        "width": 86.4,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f7d08f5f8111c0b3a7df7c4f386a489159b956ba1e6cfcd9eb83394d4ace9ce9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-dream-nav-chip-text-1",
+        "x": 140,
+        "y": 429,
+        "name": "future-dream-nav-chip-text-1",
+        "fill": "#B9B3AB",
+        "content": "The Research",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 86.4,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-dream-nav-chip-2",
+      "blockName": "future-dream-nav-chip-2",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 248.4,
+        "y": 420,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d22ecc0249ddba6b0e75aa3fa4f8c3ab0059f961db3b164919616291efb53117",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-dream-nav-chip-2",
+        "x": 248.4,
+        "y": 420,
+        "name": "future-dream-nav-chip-2",
+        "width": 74,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-dream-nav-chip-text-2",
+      "blockName": "future-dream-nav-chip-text-2",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 260.4,
+        "y": 429,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c77d5507d5f83961afad82df9986523dde2b6811d5b324dec29715517cd78645",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-dream-nav-chip-text-2",
+        "x": 260.4,
+        "y": 429,
+        "name": "future-dream-nav-chip-text-2",
+        "fill": "#B9B3AB",
+        "content": "Beauty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-dream-nav-chip-3",
+      "blockName": "future-dream-nav-chip-3",
+      "blockType": "rectangle",
+      "order": 13,
+      "bounds": {
+        "x": 44,
+        "y": 460,
+        "width": 88.8,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fe82251f18a1d2443bef90b2ed73d100313c0b72a621705c9e6f392ceff8fe56",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-dream-nav-chip-3",
+        "x": 44,
+        "y": 460,
+        "name": "future-dream-nav-chip-3",
+        "width": 88.8,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-dream-nav-chip-text-3",
+      "blockName": "future-dream-nav-chip-text-3",
+      "blockType": "text",
+      "order": 14,
+      "bounds": {
+        "x": 56,
+        "y": 469,
+        "width": 64.8,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d8b278aec4e0d6cf1ce03d660384c6a3f0d722269802773186f80c28ec6f96cf",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-dream-nav-chip-text-3",
+        "x": 56,
+        "y": 469,
+        "name": "future-dream-nav-chip-text-3",
+        "fill": "#B9B3AB",
+        "content": "The Dream",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 64.8,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-dream-nav-chip-4",
+      "blockName": "future-dream-nav-chip-4",
+      "blockType": "rectangle",
+      "order": 15,
+      "bounds": {
+        "x": 142.8,
+        "y": 460,
+        "width": 88.8,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b945b6a8d6945f194d0beb1e623480a65032fb5862824998a9ea4d4cc0cc7174",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "future-dream-nav-chip-4",
+        "x": 142.8,
+        "y": 460,
+        "name": "future-dream-nav-chip-4",
+        "width": 88.8,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "future-dream-nav-chip-text-4",
+      "blockName": "future-dream-nav-chip-text-4",
+      "blockType": "text",
+      "order": 16,
+      "bounds": {
+        "x": 154.8,
+        "y": 469,
+        "width": 64.8,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4cdca6c6d8c8ece09e5cbfe6ef64487ea6487b0f358e9b80ea241d1eb0f41066",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "future-dream-nav-chip-text-4",
+        "x": 154.8,
+        "y": 469,
+        "name": "future-dream-nav-chip-text-4",
+        "fill": "#B9B3AB",
+        "content": "Certainty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 64.8,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "future-dream",
+    "x": 0,
+    "y": 5964,
+    "width": 390,
+    "height": 740,
+    "name": "Future Dream",
+    "fill": "#060606",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "future-dream-bg",
+        "x": 0,
+        "y": 0,
+        "name": "future-dream-bg",
+        "width": 390,
+        "height": 740,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/future-dream.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "future-dream-shade",
+        "x": 0,
+        "y": 0,
+        "name": "future-dream-shade",
+        "width": 390,
+        "height": 740,
+        "fill": "#0000005A"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-dream-shell",
+        "x": 18,
+        "y": 170,
+        "name": "future-dream-shell",
+        "width": 330,
+        "height": 380,
+        "fill": "#0A0A0ACF"
+      },
+      {
+        "type": "text",
+        "id": "future-dream-chapter",
+        "x": 44,
+        "y": 194,
+        "name": "future-dream-chapter",
+        "fill": "#B9B3AB",
+        "content": "Future",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.22em"
+      },
+      {
+        "type": "text",
+        "id": "future-dream-count",
+        "x": 268,
+        "y": 194,
+        "name": "future-dream-count",
+        "fill": "#B9B3AB",
+        "content": "4 / 5",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 80,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      },
+      {
+        "type": "text",
+        "id": "future-dream-title",
+        "x": 44,
+        "y": 240,
+        "name": "future-dream-title",
+        "fill": "#F3F2ED",
+        "content": "The Dream",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 30,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 280,
+        "height": 48
+      },
+      {
+        "type": "text",
+        "id": "future-dream-body",
+        "x": 44,
+        "y": 316,
+        "name": "future-dream-body",
+        "fill": "#F3F2ED",
+        "content": "Past and present melt into one: the experience of Horacio, the energy and passion of his team, and the knowledge that turns every Pagani project into an impossible dream that feels close to reality.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 280,
+        "height": 126
+      },
+      {
+        "type": "rectangle",
+        "id": "future-dream-nav-chip-0",
+        "x": 44,
+        "y": 420,
+        "name": "future-dream-nav-chip-0",
+        "width": 74,
+        "height": 32,
+        "fill": "#FFFFFF14",
+        "stroke": {
+          "fill": "#C9B28B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-dream-nav-chip-text-0",
+        "x": 56,
+        "y": 429,
+        "name": "future-dream-nav-chip-text-0",
+        "fill": "#F3F2ED",
+        "content": "Intro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-dream-nav-chip-1",
+        "x": 128,
+        "y": 420,
+        "name": "future-dream-nav-chip-1",
+        "width": 110.4,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-dream-nav-chip-text-1",
+        "x": 140,
+        "y": 429,
+        "name": "future-dream-nav-chip-text-1",
+        "fill": "#B9B3AB",
+        "content": "The Research",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 86.4,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-dream-nav-chip-2",
+        "x": 248.4,
+        "y": 420,
+        "name": "future-dream-nav-chip-2",
+        "width": 74,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-dream-nav-chip-text-2",
+        "x": 260.4,
+        "y": 429,
+        "name": "future-dream-nav-chip-text-2",
+        "fill": "#B9B3AB",
+        "content": "Beauty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-dream-nav-chip-3",
+        "x": 44,
+        "y": 460,
+        "name": "future-dream-nav-chip-3",
+        "width": 88.8,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-dream-nav-chip-text-3",
+        "x": 56,
+        "y": 469,
+        "name": "future-dream-nav-chip-text-3",
+        "fill": "#B9B3AB",
+        "content": "The Dream",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 64.8,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "rectangle",
+        "id": "future-dream-nav-chip-4",
+        "x": 142.8,
+        "y": 460,
+        "name": "future-dream-nav-chip-4",
+        "width": 88.8,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "text",
+        "id": "future-dream-nav-chip-text-4",
+        "x": 154.8,
+        "y": 469,
+        "name": "future-dream-nav-chip-text-4",
+        "fill": "#B9B3AB",
+        "content": "Certainty",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 64.8,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-pagani-utopia"
+      }
+    ]
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "blockId": "wk0uw",
+  "blockName": "pager",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 7,
+  "bounds": {
+    "x": 960,
+    "y": 1538,
+    "width": 182,
+    "height": 30
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 8,
+  "treeHash": "124aa330f6940d95779fb6f0254bdd6758a5e07d549d9564a5511126b52c1a13",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "wk0uw",
+    "x": 960,
+    "y": 1538,
+    "name": "pager",
+    "width": 182,
+    "height": 30,
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "vOaYR",
+        "x": 0,
+        "y": 0,
+        "name": "p1",
+        "width": 24,
+        "height": 24,
+        "fill": "#FF6A00",
+        "cornerRadius": 12,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "T2rM4",
+            "x": 8,
+            "y": 6,
+            "name": "p1t",
+            "fill": "#FFFFFF",
+            "content": "1",
+            "fontFamily": "Inter",
+            "fontSize": 11,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "SRXaz",
+        "x": 34,
+        "y": 5,
+        "name": "p2",
+        "fill": "#8A929D",
+        "content": "2",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "QAPs6",
+        "x": 52,
+        "y": 5,
+        "name": "p3",
+        "fill": "#8A929D",
+        "content": "3",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "2irY3",
+        "x": 70,
+        "y": 5,
+        "name": "dots",
+        "fill": "#8A929D",
+        "content": "...",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "3vY5W",
+        "x": 95,
+        "y": 5,
+        "name": "p9",
+        "fill": "#8A929D",
+        "content": "9",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "afE4n",
+        "x": 112,
+        "y": 5,
+        "name": "next",
+        "fill": "#8A929D",
+        "content": "›",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

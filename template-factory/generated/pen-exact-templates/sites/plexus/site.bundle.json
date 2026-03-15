@@ -1,0 +1,25 @@
+{
+  "siteId": "plexus",
+  "siteName": "Plexus",
+  "bundleHash": "ca67610972a259cb60682fd8d20d2e18c176c8fd5d04ed4bd69fc02c339df6ae",
+  "variants": [
+    {
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/plexus.pen",
+      "sourceHash": "aa0ec1a62210567670c2c5cff19825c3df9b41fd0824f953b4c3ded6248f8a18",
+      "pageCount": 6,
+      "sectionCount": 47,
+      "blockCount": 319,
+      "output": {
+        "templatePath": "sites/plexus/variants/desktop/template.json",
+        "themePath": "sites/plexus/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/plexus/variants/desktop/pages",
+        "sectionsDir": "sites/plexus/variants/desktop/sections",
+        "blocksDir": "sites/plexus/variants/desktop/blocks"
+      }
+    }
+  ],
+  "output": {
+    "siteTemplatePath": "sites/plexus/site.template.json"
+  }
+}

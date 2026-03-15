@@ -1,0 +1,113 @@
+{
+  "blockId": "9trqq",
+  "blockName": "career",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 12,
+  "bounds": {
+    "x": 32,
+    "y": 688,
+    "width": 1136,
+    "height": 230
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 6,
+  "treeHash": "19ebfca3a4254cdfd8eb7fe6224e47551112e39ef5fec1b812ea596761d9738e",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "9trqq",
+    "x": 32,
+    "y": 688,
+    "name": "career",
+    "width": 1136,
+    "height": 230,
+    "fill": "#0A0F15",
+    "cornerRadius": 14,
+    "stroke": {
+      "thickness": 1,
+      "fill": "#283241"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "zwmn2",
+        "x": 40,
+        "y": 28,
+        "name": "carT",
+        "fill": "#F1F5FA",
+        "textGrowth": "fixed-width",
+        "width": 560,
+        "content": "Make history.\nBuild the future of computing.",
+        "lineHeight": 1.1,
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "RleVL",
+        "x": 40,
+        "y": 106,
+        "name": "carD",
+        "fill": "#A1ACB8",
+        "textGrowth": "fixed-width",
+        "width": 620,
+        "content": "Join the quantum revolution at IonQ. Meet some of the leaders behind our mission to tackle the world’s toughest problems, and why they chose to work with the brilliant minds at IonQ.",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "yDSo8",
+        "x": 40,
+        "y": 170,
+        "name": "carBtn",
+        "width": 140,
+        "height": 34,
+        "fill": "#FF6A00",
+        "cornerRadius": 8,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "egFkI",
+            "x": 10,
+            "y": 9,
+            "name": "carBtnT",
+            "fill": "#FFFFFF",
+            "content": "View open positions",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "L2yp4",
+        "x": 729,
+        "y": 0,
+        "name": "carImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "silverkblack",
+          "link": "https://unsplash.com/@silverkblack",
+          "author": "Vitaly Gariev"
+        },
+        "width": 407,
+        "height": 230,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1758522965291-36664fbdac9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNTI1NDV8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 14
+      }
+    ]
+  }
+}

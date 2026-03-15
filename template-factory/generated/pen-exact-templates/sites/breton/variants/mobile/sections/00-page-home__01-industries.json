@@ -1,0 +1,707 @@
+{
+  "sectionId": "industries",
+  "sectionName": "Industries",
+  "sectionKind": "generic",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 328,
+    "width": 390,
+    "height": 270
+  },
+  "directChildCount": 10,
+  "recursiveNodeCount": 11,
+  "treeHash": "cdc942ea0c2e92a86cef7bde23a60519dc7a50646b6f3375cdab17f7d9738393",
+  "blockCount": 10,
+  "blockIndex": [
+    {
+      "blockId": "ind-bg",
+      "blockName": "ind-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 270
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1153858a72cf5cda875df4db1fe99acd2702afc645aabc4a3c669d27c592d888"
+    },
+    {
+      "blockId": "ind-title",
+      "blockName": "ind-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 26,
+        "width": 220,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b986827f50ca0e826a73993ccab74a1411c99aede04b878dcadcee0771dc9ea5"
+    },
+    {
+      "blockId": "ind-img-0",
+      "blockName": "ind-img-0",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 2,
+      "bounds": {
+        "x": 20,
+        "y": 66,
+        "width": 164,
+        "height": 98
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d80e6e6a27fc037471a568475a044c71d4b4e88b210b1a41b9bb677d031c3c9a"
+    },
+    {
+      "blockId": "ind-t-0",
+      "blockName": "ind-t-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 20,
+        "y": 172,
+        "width": 164,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7f597d572f955bd8a6998e5edee54c4dce22a9009eea904823f5a6b1e1b3381b"
+    },
+    {
+      "blockId": "ind-img-1",
+      "blockName": "ind-img-1",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 4,
+      "bounds": {
+        "x": 194,
+        "y": 66,
+        "width": 164,
+        "height": 98
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fe846078d1cb861070abba8d46283a2232de8be9a95670f33ebacb7320cd6221"
+    },
+    {
+      "blockId": "ind-t-1",
+      "blockName": "ind-t-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 194,
+        "y": 172,
+        "width": 164,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "16dfb86896f4d48e719e4b1e6b85482f223e70b4f0b7a06dacbf79ac47f221c5"
+    },
+    {
+      "blockId": "ind-img-2",
+      "blockName": "ind-img-2",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 6,
+      "bounds": {
+        "x": 20,
+        "y": 182,
+        "width": 164,
+        "height": 98
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ff50b4fcb89751c99b23d2f47158baa558a60c9141a504df1aa0af47c74a792d"
+    },
+    {
+      "blockId": "ind-t-2",
+      "blockName": "ind-t-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 20,
+        "y": 288,
+        "width": 164,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "af44d3b6063ae2b5655786e08dd922d73b93f7270544af5c6615727497b410ef"
+    },
+    {
+      "blockId": "ind-img-3",
+      "blockName": "ind-img-3",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 8,
+      "bounds": {
+        "x": 194,
+        "y": 182,
+        "width": 164,
+        "height": 98
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "76ae53d2ed8f092dcaec9b61942bed637d16ca47e6843841696abaca9d99952c"
+    },
+    {
+      "blockId": "ind-t-3",
+      "blockName": "ind-t-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 194,
+        "y": 288,
+        "width": 164,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "45cf2b1995199f31a77d3b1f3e178c74a787d49d085adcd8444adeccdcdfed57"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/viper-dc97c26f.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/viper-dc97c26f.jpg",
+      "relativePath": "assets-structured/breton/viper-dc97c26f.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/hawx-09d10c43.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/hawx-09d10c43.jpg",
+      "relativePath": "assets-structured/breton/hawx-09d10c43.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/tetrix-c8316cf5.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/tetrix-c8316cf5.jpg",
+      "relativePath": "assets-structured/breton/tetrix-c8316cf5.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/3d-service-b0b7aef3.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/3d-service-b0b7aef3.jpg",
+      "relativePath": "assets-structured/breton/3d-service-b0b7aef3.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "ind-bg",
+      "blockName": "ind-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 270
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1153858a72cf5cda875df4db1fe99acd2702afc645aabc4a3c669d27c592d888",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "ind-bg",
+        "name": "ind-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 270,
+        "fill": "#ECECEC"
+      }
+    },
+    {
+      "blockId": "ind-title",
+      "blockName": "ind-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 26,
+        "width": 220,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b986827f50ca0e826a73993ccab74a1411c99aede04b878dcadcee0771dc9ea5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ind-title",
+        "name": "ind-title",
+        "x": 18,
+        "y": 26,
+        "fill": "#232529",
+        "content": "Industries",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 32
+      }
+    },
+    {
+      "blockId": "ind-img-0",
+      "blockName": "ind-img-0",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 2,
+      "bounds": {
+        "x": 20,
+        "y": 66,
+        "width": 164,
+        "height": 98
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d80e6e6a27fc037471a568475a044c71d4b4e88b210b1a41b9bb677d031c3c9a",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/viper-dc97c26f.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/viper-dc97c26f.jpg",
+        "relativePath": "assets-structured/breton/viper-dc97c26f.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "ind-img-0",
+        "name": "ind-img-0",
+        "x": 20,
+        "y": 66,
+        "width": 164,
+        "height": 98,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/viper-dc97c26f.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-engineering"
+      }
+    },
+    {
+      "blockId": "ind-t-0",
+      "blockName": "ind-t-0",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 20,
+        "y": 172,
+        "width": 164,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7f597d572f955bd8a6998e5edee54c4dce22a9009eea904823f5a6b1e1b3381b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ind-t-0",
+        "name": "ind-t-0",
+        "x": 20,
+        "y": 172,
+        "fill": "#232529",
+        "content": "Stone",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 164,
+        "height": 18
+      }
+    },
+    {
+      "blockId": "ind-img-1",
+      "blockName": "ind-img-1",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 4,
+      "bounds": {
+        "x": 194,
+        "y": 66,
+        "width": 164,
+        "height": 98
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fe846078d1cb861070abba8d46283a2232de8be9a95670f33ebacb7320cd6221",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/hawx-09d10c43.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/hawx-09d10c43.jpg",
+        "relativePath": "assets-structured/breton/hawx-09d10c43.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "ind-img-1",
+        "name": "ind-img-1",
+        "x": 194,
+        "y": 66,
+        "width": 164,
+        "height": 98,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/hawx-09d10c43.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-engineering"
+      }
+    },
+    {
+      "blockId": "ind-t-1",
+      "blockName": "ind-t-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 194,
+        "y": 172,
+        "width": 164,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "16dfb86896f4d48e719e4b1e6b85482f223e70b4f0b7a06dacbf79ac47f221c5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ind-t-1",
+        "name": "ind-t-1",
+        "x": 194,
+        "y": 172,
+        "fill": "#232529",
+        "content": "Metals",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 164,
+        "height": 18
+      }
+    },
+    {
+      "blockId": "ind-img-2",
+      "blockName": "ind-img-2",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 6,
+      "bounds": {
+        "x": 20,
+        "y": 182,
+        "width": 164,
+        "height": 98
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ff50b4fcb89751c99b23d2f47158baa558a60c9141a504df1aa0af47c74a792d",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/tetrix-c8316cf5.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/tetrix-c8316cf5.jpg",
+        "relativePath": "assets-structured/breton/tetrix-c8316cf5.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "ind-img-2",
+        "name": "ind-img-2",
+        "x": 20,
+        "y": 182,
+        "width": 164,
+        "height": 98,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/tetrix-c8316cf5.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-engineering"
+      }
+    },
+    {
+      "blockId": "ind-t-2",
+      "blockName": "ind-t-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 20,
+        "y": 288,
+        "width": 164,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "af44d3b6063ae2b5655786e08dd922d73b93f7270544af5c6615727497b410ef",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ind-t-2",
+        "name": "ind-t-2",
+        "x": 20,
+        "y": 288,
+        "fill": "#232529",
+        "content": "Composites",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 164,
+        "height": 18
+      }
+    },
+    {
+      "blockId": "ind-img-3",
+      "blockName": "ind-img-3",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 8,
+      "bounds": {
+        "x": 194,
+        "y": 182,
+        "width": 164,
+        "height": 98
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "76ae53d2ed8f092dcaec9b61942bed637d16ca47e6843841696abaca9d99952c",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/3d-service-b0b7aef3.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/3d-service-b0b7aef3.jpg",
+        "relativePath": "assets-structured/breton/3d-service-b0b7aef3.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "ind-img-3",
+        "name": "ind-img-3",
+        "x": 194,
+        "y": 182,
+        "width": 164,
+        "height": 98,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/3d-service-b0b7aef3.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-engineering"
+      }
+    },
+    {
+      "blockId": "ind-t-3",
+      "blockName": "ind-t-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 194,
+        "y": 288,
+        "width": 164,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "45cf2b1995199f31a77d3b1f3e178c74a787d49d085adcd8444adeccdcdfed57",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ind-t-3",
+        "name": "ind-t-3",
+        "x": 194,
+        "y": 288,
+        "fill": "#232529",
+        "content": "Additive",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 164,
+        "height": 18
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "industries",
+    "name": "Industries",
+    "x": 0,
+    "y": 328,
+    "width": 390,
+    "height": 270,
+    "fill": "#ECECEC",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "ind-bg",
+        "name": "ind-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 270,
+        "fill": "#ECECEC"
+      },
+      {
+        "type": "text",
+        "id": "ind-title",
+        "name": "ind-title",
+        "x": 18,
+        "y": 26,
+        "fill": "#232529",
+        "content": "Industries",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 32
+      },
+      {
+        "type": "rectangle",
+        "id": "ind-img-0",
+        "name": "ind-img-0",
+        "x": 20,
+        "y": 66,
+        "width": 164,
+        "height": 98,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/viper-dc97c26f.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-engineering"
+      },
+      {
+        "type": "text",
+        "id": "ind-t-0",
+        "name": "ind-t-0",
+        "x": 20,
+        "y": 172,
+        "fill": "#232529",
+        "content": "Stone",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 164,
+        "height": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "ind-img-1",
+        "name": "ind-img-1",
+        "x": 194,
+        "y": 66,
+        "width": 164,
+        "height": 98,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/hawx-09d10c43.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-engineering"
+      },
+      {
+        "type": "text",
+        "id": "ind-t-1",
+        "name": "ind-t-1",
+        "x": 194,
+        "y": 172,
+        "fill": "#232529",
+        "content": "Metals",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 164,
+        "height": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "ind-img-2",
+        "name": "ind-img-2",
+        "x": 20,
+        "y": 182,
+        "width": 164,
+        "height": 98,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/tetrix-c8316cf5.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-engineering"
+      },
+      {
+        "type": "text",
+        "id": "ind-t-2",
+        "name": "ind-t-2",
+        "x": 20,
+        "y": 288,
+        "fill": "#232529",
+        "content": "Composites",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 164,
+        "height": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "ind-img-3",
+        "name": "ind-img-3",
+        "x": 194,
+        "y": 182,
+        "width": 164,
+        "height": 98,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/3d-service-b0b7aef3.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-engineering"
+      },
+      {
+        "type": "text",
+        "id": "ind-t-3",
+        "name": "ind-t-3",
+        "x": 194,
+        "y": 288,
+        "fill": "#232529",
+        "content": "Additive",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 164,
+        "height": 18
+      }
+    ]
+  }
+}

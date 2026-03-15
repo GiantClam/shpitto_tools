@@ -1,0 +1,307 @@
+{
+  "sectionId": "nJlgT",
+  "sectionName": "aboutContact",
+  "sectionKind": "contact",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 3107,
+    "width": 1440,
+    "height": 656
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 8,
+  "treeHash": "03a8c25119d9507f91bd00055b72d296edf8662b576819daf7f60f2493788110",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "XcJI2",
+      "blockName": "contactImg",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 78,
+        "width": 663,
+        "height": 500
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1a337e8bcf5569c9121f23bf8cfc32bcd9d770ec403491a54102184dc6ca7527"
+    },
+    {
+      "blockId": "cSsk3",
+      "blockName": "contactCard",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 631,
+        "y": 163,
+        "width": 768,
+        "height": 330
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 6,
+      "treeHash": "c71630593f36203a929dee7d7c6711646ebaec4eacc6bfbe08412159a9350606"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1758518729912-bf3a84c400e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxOTcwNzV8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "XcJI2",
+      "blockName": "contactImg",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 78,
+        "width": 663,
+        "height": 500
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1a337e8bcf5569c9121f23bf8cfc32bcd9d770ec403491a54102184dc6ca7527",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1758518729912-bf3a84c400e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxOTcwNzV8&ixlib=rb-4.1.0&q=80&w=1080",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "XcJI2",
+        "x": 32,
+        "y": 78,
+        "name": "contactImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "silverkblack",
+          "link": "https://unsplash.com/@silverkblack",
+          "author": "Vitaly Gariev"
+        },
+        "width": 663,
+        "height": 500,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1758518729912-bf3a84c400e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxOTcwNzV8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      }
+    },
+    {
+      "blockId": "cSsk3",
+      "blockName": "contactCard",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 631,
+        "y": 163,
+        "width": 768,
+        "height": 330
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 6,
+      "treeHash": "c71630593f36203a929dee7d7c6711646ebaec4eacc6bfbe08412159a9350606",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "cSsk3",
+        "x": 631,
+        "y": 163,
+        "name": "contactCard",
+        "width": 768,
+        "height": 330,
+        "fill": "#E9E9EA",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "BafFt",
+            "x": 70,
+            "y": 62,
+            "name": "contactTag",
+            "fill": "#D5164A",
+            "width": 42,
+            "height": 8
+          },
+          {
+            "type": "text",
+            "id": "6g38z",
+            "x": 126,
+            "y": 56,
+            "name": "contactTagTxt",
+            "fill": "#5D6772",
+            "content": "联系我们的团队",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "c7TyV",
+            "x": 70,
+            "y": 94,
+            "name": "contactTitle",
+            "fill": "#3A434B",
+            "textGrowth": "fixed-width",
+            "width": 440,
+            "content": "在Plexus，您的成功就是我们的承诺。",
+            "lineHeight": 1.16,
+            "fontFamily": "Inter",
+            "fontSize": 44,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "XZed7",
+            "x": 70,
+            "y": 222,
+            "name": "contactBtn",
+            "width": 160,
+            "height": 52,
+            "fill": "#C70041",
+            "cornerRadius": 4,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "7iROY",
+                "x": 31,
+                "y": 16,
+                "name": "contactBtnTxt",
+                "fill": "#FFFFFF",
+                "content": "联系我们的团队",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "nJlgT",
+    "x": 0,
+    "y": 3107,
+    "name": "aboutContact",
+    "width": 1440,
+    "height": 656,
+    "fill": "#ffffff",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "XcJI2",
+        "x": 32,
+        "y": 78,
+        "name": "contactImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "silverkblack",
+          "link": "https://unsplash.com/@silverkblack",
+          "author": "Vitaly Gariev"
+        },
+        "width": 663,
+        "height": 500,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1758518729912-bf3a84c400e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxOTcwNzV8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "frame",
+        "id": "cSsk3",
+        "x": 631,
+        "y": 163,
+        "name": "contactCard",
+        "width": 768,
+        "height": 330,
+        "fill": "#E9E9EA",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "BafFt",
+            "x": 70,
+            "y": 62,
+            "name": "contactTag",
+            "fill": "#D5164A",
+            "width": 42,
+            "height": 8
+          },
+          {
+            "type": "text",
+            "id": "6g38z",
+            "x": 126,
+            "y": 56,
+            "name": "contactTagTxt",
+            "fill": "#5D6772",
+            "content": "联系我们的团队",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "c7TyV",
+            "x": 70,
+            "y": 94,
+            "name": "contactTitle",
+            "fill": "#3A434B",
+            "textGrowth": "fixed-width",
+            "width": 440,
+            "content": "在Plexus，您的成功就是我们的承诺。",
+            "lineHeight": 1.16,
+            "fontFamily": "Inter",
+            "fontSize": 44,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "XZed7",
+            "x": 70,
+            "y": 222,
+            "name": "contactBtn",
+            "width": 160,
+            "height": 52,
+            "fill": "#C70041",
+            "cornerRadius": 4,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "7iROY",
+                "x": 31,
+                "y": 16,
+                "name": "contactBtnTxt",
+                "fill": "#FFFFFF",
+                "content": "联系我们的团队",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

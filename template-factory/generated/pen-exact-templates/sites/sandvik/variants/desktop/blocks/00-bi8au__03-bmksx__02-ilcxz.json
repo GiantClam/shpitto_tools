@@ -1,0 +1,62 @@
+{
+  "blockId": "ILcxz",
+  "blockName": "newsCard1",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 2,
+  "bounds": {
+    "x": 10,
+    "y": 117,
+    "width": 343,
+    "height": 360
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "b167ddf38a55e95883deeb3fba97290d81e8ebdc796f24114f01491766acfb9b",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "ILcxz",
+    "x": 10,
+    "y": 117,
+    "name": "newsCard1",
+    "metadata": {
+      "type": "unsplash",
+      "username": "travisjohansen",
+      "link": "https://unsplash.com/@travisjohansen",
+      "author": "Travis Johansen"
+    },
+    "width": 343,
+    "height": 360,
+    "fill": "#F3F3F1",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "MA0fs",
+        "x": 0,
+        "y": 300,
+        "name": "newsCard1T",
+        "fill": "#6A665E",
+        "content": "新闻: 2026-02-16",
+        "fontFamily": "Inter",
+        "fontSize": 10,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "DpMCL",
+        "x": 0,
+        "y": 322,
+        "name": "newsCard1S",
+        "fill": "#222222",
+        "textGrowth": "fixed-width",
+        "width": 332,
+        "content": "展望2026年，以人为本、技术和可持续投资驱动行业发展",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

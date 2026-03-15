@@ -1,0 +1,231 @@
+{
+  "sectionId": "b4cNA",
+  "sectionName": "splitSection",
+  "sectionKind": "generic",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 1896,
+    "width": 1440,
+    "height": 315
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 5,
+  "treeHash": "78982fc8cbc6f20d6d50433276a44c7700460a2176c01c5974c453eee5a0673d",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "njfjN",
+      "blockName": "splitImg",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 788,
+        "height": 315
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "284d85b7ac1e4f3b02cb0e949e842fe595621cf784ade63235a7ca7396b5916e"
+    },
+    {
+      "blockId": "rR7bM",
+      "blockName": "splitTxt",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 788,
+        "y": 0,
+        "width": 652,
+        "height": 315
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "480929f9751a550a02848d0a69f44dc2f650eba8266d3cf6d1c1e1cd7d26fa99"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "njfjN",
+      "blockName": "splitImg",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 788,
+        "height": 315
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "284d85b7ac1e4f3b02cb0e949e842fe595621cf784ade63235a7ca7396b5916e",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=80",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "njfjN",
+        "x": 0,
+        "y": 0,
+        "name": "splitImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "adigold1",
+          "link": "https://unsplash.com/@adigold1",
+          "author": "Adi Goldstein"
+        },
+        "width": 788,
+        "height": 315,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=80",
+          "mode": "fill"
+        },
+        "layout": "none"
+      }
+    },
+    {
+      "blockId": "rR7bM",
+      "blockName": "splitTxt",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 788,
+        "y": 0,
+        "width": 652,
+        "height": 315
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "480929f9751a550a02848d0a69f44dc2f650eba8266d3cf6d1c1e1cd7d26fa99",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "rR7bM",
+        "x": 788,
+        "y": 0,
+        "name": "splitTxt",
+        "width": 652,
+        "height": 315,
+        "fill": "#ECEBE8",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "iTcWm",
+            "x": 40,
+            "y": 195,
+            "name": "rightTag",
+            "fill": "#6E685E",
+            "content": "工程项目",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "MJZCa",
+            "x": 40,
+            "y": 221,
+            "name": "rightTitle",
+            "fill": "#222222",
+            "content": "将生产挑战转化为竞争优势  ›",
+            "fontFamily": "Inter",
+            "fontSize": 40,
+            "fontWeight": "600"
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "b4cNA",
+    "x": 0,
+    "y": 1896,
+    "name": "splitSection",
+    "width": 1440,
+    "height": 315,
+    "fill": "#F3F3F1",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "njfjN",
+        "x": 0,
+        "y": 0,
+        "name": "splitImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "adigold1",
+          "link": "https://unsplash.com/@adigold1",
+          "author": "Adi Goldstein"
+        },
+        "width": 788,
+        "height": 315,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=80",
+          "mode": "fill"
+        },
+        "layout": "none"
+      },
+      {
+        "type": "frame",
+        "id": "rR7bM",
+        "x": 788,
+        "y": 0,
+        "name": "splitTxt",
+        "width": 652,
+        "height": 315,
+        "fill": "#ECEBE8",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "iTcWm",
+            "x": 40,
+            "y": 195,
+            "name": "rightTag",
+            "fill": "#6E685E",
+            "content": "工程项目",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "MJZCa",
+            "x": 40,
+            "y": 221,
+            "name": "rightTitle",
+            "fill": "#222222",
+            "content": "将生产挑战转化为竞争优势  ›",
+            "fontFamily": "Inter",
+            "fontSize": 40,
+            "fontWeight": "600"
+          }
+        ]
+      }
+    ]
+  }
+}

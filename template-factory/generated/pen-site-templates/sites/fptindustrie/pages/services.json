@@ -1,0 +1,3439 @@
+{
+  "pageId": "page-services",
+  "pageKey": "services",
+  "pageName": "销售工程",
+  "pageType": "catalog",
+  "devices": {
+    "desktop": {
+      "bounds": {
+        "width": 1440,
+        "height": 1860
+      },
+      "supportBlocks": [
+        {
+          "id": "page-services-bg",
+          "name": "page-services-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1860
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#ECECEC"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09"
+          }
+        },
+        {
+          "id": "page-services-hero",
+          "name": "page-services-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 420
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-services-hero-8df7ae4c.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-services-hero-8df7ae4c.jpg",
+            "relativePath": "assets-structured/fpt/page-services-hero-8df7ae4c.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-services-hero-shade",
+          "name": "page-services-hero-shade",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 420
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#00000044"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color12"
+          }
+        },
+        {
+          "id": "page-services-crumb",
+          "name": "page-services-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 40,
+            "y": 112,
+            "width": 220,
+            "height": 22
+          },
+          "href": "",
+          "content": "Home / 销售工程",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-title",
+          "name": "page-services-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 146,
+            "width": 780,
+            "height": 83
+          },
+          "href": "",
+          "content": "销售工程",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 54,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size11",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-sub",
+          "name": "page-services-sub",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 40,
+            "y": 224,
+            "width": 700,
+            "height": 32
+          },
+          "href": "",
+          "content": "企业",
+          "style": {
+            "fill": "#EFEFEF",
+            "typography": {
+              "fill": "#EFEFEF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 18,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color13",
+            "textColor": "textColor.palette.text06",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size06",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-home-box",
+          "name": "page-services-home-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 40,
+            "y": 270,
+            "width": 120,
+            "height": 34
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#E8C400",
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-services-home-text",
+          "name": "page-services-home-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 56,
+            "y": 278,
+            "width": 88,
+            "height": 18
+          },
+          "href": "#page-home",
+          "content": "首页",
+          "style": {
+            "fill": "#565D66",
+            "typography": {
+              "fill": "#565D66",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-peer-box",
+          "name": "page-services-peer-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 176,
+            "y": 270,
+            "width": 150,
+            "height": 34
+          },
+          "href": "#page-company",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D8",
+              "thickness": 1
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-services-peer-text",
+          "name": "page-services-peer-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 192,
+            "y": 278,
+            "width": 118,
+            "height": 18
+          },
+          "href": "#page-company",
+          "content": "三级页面",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-panel",
+          "name": "page-services-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 40,
+            "y": 456,
+            "width": 1360,
+            "height": 1040
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#F6F6F6",
+            "stroke": {
+              "color": "#D8D8D8",
+              "thickness": 1
+            },
+            "cornerRadius": 2
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color14",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius02"
+          }
+        },
+        {
+          "id": "page-services-panel-kicker",
+          "name": "page-services-panel-kicker",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 482,
+            "width": 240,
+            "height": 18
+          },
+          "href": "",
+          "content": "销售工程",
+          "style": {
+            "fill": "#72787F",
+            "typography": {
+              "fill": "#72787F",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-panel-title",
+          "name": "page-services-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 512,
+            "width": 580,
+            "height": 63
+          },
+          "href": "",
+          "content": "销售工程",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 40,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size12",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-para-0",
+          "name": "page-services-para-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 584,
+            "width": 560,
+            "height": 49
+          },
+          "href": "",
+          "content": "销售工程 项目经理 培训课程 Assistance service 物流中心 销售工程 凭借在该领域最先进的模拟技术和所积累的经验，FPT 能够响应客户的各种生产需求，并优化新投资的技术和经济效益。",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size05",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-para-1",
+          "name": "page-services-para-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 653,
+            "width": 560,
+            "height": 28
+          },
+          "href": "",
+          "content": "一个特定的工程师团队能够在整个技术流程的开发过程中协助客户，并在机械、工厂布局和加工循环的选择方面制定有针对性的建议。",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size05",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-para-2",
+          "name": "page-services-para-2",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 701,
+            "width": 560,
+            "height": 28
+          },
+          "href": "",
+          "content": "30036 S. Maria di Sala (Ve), Italia",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size05",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-image-main",
+          "name": "page-services-image-main",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 880,
+            "y": 496,
+            "width": 480,
+            "height": 320
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-services-1-156890d8.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-services-1-156890d8.jpg",
+            "relativePath": "assets-structured/fpt/page-services-1-156890d8.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-services-image-side",
+          "name": "page-services-image-side",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 880,
+            "y": 840,
+            "width": 480,
+            "height": 220
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-services-1-156890d8.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-services-1-156890d8.jpg",
+            "relativePath": "assets-structured/fpt/page-services-1-156890d8.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-services-card-0",
+          "name": "page-services-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1120,
+            "width": 260,
+            "height": 220
+          },
+          "href": "#page-company",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D8",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03"
+          }
+        },
+        {
+          "id": "page-services-card-img-0",
+          "name": "page-services-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 64,
+            "y": 1120,
+            "width": 260,
+            "height": 120
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-services-0-8df7ae4c.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-services-0-8df7ae4c.jpg",
+            "relativePath": "assets-structured/fpt/page-services-0-8df7ae4c.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-services-card-title-0",
+          "name": "page-services-card-title-0",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 78,
+            "y": 1252,
+            "width": 232,
+            "height": 28
+          },
+          "href": "",
+          "content": "企业",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size05",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-card-body-0",
+          "name": "page-services-card-body-0",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 78,
+            "y": 1284,
+            "width": 232,
+            "height": 75
+          },
+          "href": "",
+          "content": "销售工程 项目经理 培训课程 Assistance service 物流中心 销售工程 凭借在该领域最先进的模拟技术和所积累的经验，FPT 能够响应客户的各种生产需求，并优化新投资的技术和经济效益。",
+          "style": {
+            "fill": "#72787F",
+            "typography": {
+              "fill": "#72787F",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-card-1",
+          "name": "page-services-card-1",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 348,
+            "y": 1120,
+            "width": 260,
+            "height": 220
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D8",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03"
+          }
+        },
+        {
+          "id": "page-services-card-img-1",
+          "name": "page-services-card-img-1",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 348,
+            "y": 1120,
+            "width": 260,
+            "height": 120
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-services-1-156890d8.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-services-1-156890d8.jpg",
+            "relativePath": "assets-structured/fpt/page-services-1-156890d8.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-services-card-title-1",
+          "name": "page-services-card-title-1",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 362,
+            "y": 1252,
+            "width": 232,
+            "height": 28
+          },
+          "href": "",
+          "content": "产品",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size05",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-card-body-1",
+          "name": "page-services-card-body-1",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 362,
+            "y": 1284,
+            "width": 232,
+            "height": 58
+          },
+          "href": "",
+          "content": "一个特定的工程师团队能够在整个技术流程的开发过程中协助客户，并在机械、工厂布局和加工循环的选择方面制定有针对性的建议。",
+          "style": {
+            "fill": "#72787F",
+            "typography": {
+              "fill": "#72787F",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-rel-title",
+          "name": "page-services-rel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 1490,
+            "width": 120,
+            "height": 18
+          },
+          "href": "",
+          "content": "相关页面",
+          "style": {
+            "fill": "#72787F",
+            "typography": {
+              "fill": "#72787F",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-rel-0-box",
+          "name": "page-services-rel-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1520,
+            "width": 180,
+            "height": 34
+          },
+          "href": "#page-company",
+          "content": "",
+          "style": {
+            "fill": "#E8C400",
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-services-rel-0-text",
+          "name": "page-services-rel-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 80,
+            "y": 1528,
+            "width": 148,
+            "height": 18
+          },
+          "href": "#page-company",
+          "content": "企业",
+          "style": {
+            "fill": "#565D66",
+            "typography": {
+              "fill": "#565D66",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-rel-1-box",
+          "name": "page-services-rel-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 256,
+            "y": 1520,
+            "width": 180,
+            "height": 34
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D8",
+              "thickness": 1
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-services-rel-1-text",
+          "name": "page-services-rel-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 272,
+            "y": 1528,
+            "width": 148,
+            "height": 18
+          },
+          "href": "#page-products",
+          "content": "产品",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-rel-2-box",
+          "name": "page-services-rel-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 448,
+            "y": 1520,
+            "width": 180,
+            "height": 34
+          },
+          "href": "#page-contacts",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D8",
+              "thickness": 1
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-services-rel-2-text",
+          "name": "page-services-rel-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 464,
+            "y": 1528,
+            "width": 148,
+            "height": 18
+          },
+          "href": "#page-contacts",
+          "content": "联系方式",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        }
+      ]
+    },
+    "mobile": {
+      "bounds": {
+        "width": 390,
+        "height": 1760
+      },
+      "supportBlocks": [
+        {
+          "id": "page-services-bg",
+          "name": "page-services-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 1760
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#ECECEC"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09"
+          }
+        },
+        {
+          "id": "page-services-hero",
+          "name": "page-services-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 280
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-services-hero-8df7ae4c.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-services-hero-8df7ae4c.jpg",
+            "relativePath": "assets-structured/fpt/page-services-hero-8df7ae4c.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-services-hero-shade",
+          "name": "page-services-hero-shade",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 280
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#00000044"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color12"
+          }
+        },
+        {
+          "id": "page-services-crumb",
+          "name": "page-services-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 18,
+            "y": 98,
+            "width": 220,
+            "height": 22
+          },
+          "href": "",
+          "content": "Home / 销售工程",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-title",
+          "name": "page-services-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 132,
+            "width": 320,
+            "height": 52
+          },
+          "href": "",
+          "content": "销售工程",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 32,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size10",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-sub",
+          "name": "page-services-sub",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 18,
+            "y": 204,
+            "width": 320,
+            "height": 26
+          },
+          "href": "",
+          "content": "企业",
+          "style": {
+            "fill": "#EFEFEF",
+            "typography": {
+              "fill": "#EFEFEF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 14,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color13",
+            "textColor": "textColor.palette.text06",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-home-box",
+          "name": "page-services-home-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 18,
+            "y": 260,
+            "width": 120,
+            "height": 34
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#E8C400",
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-services-home-text",
+          "name": "page-services-home-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 34,
+            "y": 268,
+            "width": 88,
+            "height": 18
+          },
+          "href": "#page-home",
+          "content": "首页",
+          "style": {
+            "fill": "#565D66",
+            "typography": {
+              "fill": "#565D66",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-peer-box",
+          "name": "page-services-peer-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 154,
+            "y": 260,
+            "width": 150,
+            "height": 34
+          },
+          "href": "#page-company",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D8",
+              "thickness": 1
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-services-peer-text",
+          "name": "page-services-peer-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 170,
+            "y": 268,
+            "width": 118,
+            "height": 18
+          },
+          "href": "#page-company",
+          "content": "三级页面",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-panel",
+          "name": "page-services-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 18,
+            "y": 316,
+            "width": 354,
+            "height": 980
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#F6F6F6",
+            "stroke": {
+              "color": "#D8D8D8",
+              "thickness": 1
+            },
+            "cornerRadius": 2
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color14",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius02"
+          }
+        },
+        {
+          "id": "page-services-panel-kicker",
+          "name": "page-services-panel-kicker",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 342,
+            "width": 240,
+            "height": 18
+          },
+          "href": "",
+          "content": "销售工程",
+          "style": {
+            "fill": "#72787F",
+            "typography": {
+              "fill": "#72787F",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-panel-title",
+          "name": "page-services-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 372,
+            "width": 300,
+            "height": 43
+          },
+          "href": "",
+          "content": "销售工程",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 26,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size09",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-para-0",
+          "name": "page-services-para-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 432,
+            "width": 300,
+            "height": 62
+          },
+          "href": "",
+          "content": "销售工程 项目经理 培训课程 Assistance service 物流中心 销售工程 凭借在该领域最先进的模拟技术和所积累的经验，FPT 能够响应客户的各种生产需求，并优化新投资的技术和经济效益。",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-para-1",
+          "name": "page-services-para-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 514,
+            "width": 300,
+            "height": 43
+          },
+          "href": "",
+          "content": "一个特定的工程师团队能够在整个技术流程的开发过程中协助客户，并在机械、工厂布局和加工循环的选择方面制定有针对性的建议。",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-para-2",
+          "name": "page-services-para-2",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 577,
+            "width": 300,
+            "height": 25
+          },
+          "href": "",
+          "content": "30036 S. Maria di Sala (Ve), Italia",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-image-main",
+          "name": "page-services-image-main",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 356,
+            "width": 300,
+            "height": 220
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-services-1-156890d8.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-services-1-156890d8.jpg",
+            "relativePath": "assets-structured/fpt/page-services-1-156890d8.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-services-image-side",
+          "name": "page-services-image-side",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 600,
+            "width": 300,
+            "height": 180
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-services-1-156890d8.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-services-1-156890d8.jpg",
+            "relativePath": "assets-structured/fpt/page-services-1-156890d8.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-services-card-0",
+          "name": "page-services-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 820,
+            "width": 300,
+            "height": 146
+          },
+          "href": "#page-company",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D8",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03"
+          }
+        },
+        {
+          "id": "page-services-card-img-0",
+          "name": "page-services-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 820,
+            "width": 300,
+            "height": 84
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-services-0-8df7ae4c.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-services-0-8df7ae4c.jpg",
+            "relativePath": "assets-structured/fpt/page-services-0-8df7ae4c.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-services-card-title-0",
+          "name": "page-services-card-title-0",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 56,
+            "y": 916,
+            "width": 272,
+            "height": 25
+          },
+          "href": "",
+          "content": "企业",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-card-body-0",
+          "name": "page-services-card-body-0",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 56,
+            "y": 942,
+            "width": 272,
+            "height": 53
+          },
+          "href": "",
+          "content": "销售工程 项目经理 培训课程 Assistance service 物流中心 销售工程 凭借在该领域最先进的模拟技术和所积累的经验，FPT 能够响应客户的各种生产需求，并优化新投资的技术和经济效益。",
+          "style": {
+            "fill": "#72787F",
+            "typography": {
+              "fill": "#72787F",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-card-1",
+          "name": "page-services-card-1",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 982,
+            "width": 300,
+            "height": 146
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D8",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03"
+          }
+        },
+        {
+          "id": "page-services-card-img-1",
+          "name": "page-services-card-img-1",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 982,
+            "width": 300,
+            "height": 84
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-services-1-156890d8.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-services-1-156890d8.jpg",
+            "relativePath": "assets-structured/fpt/page-services-1-156890d8.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-services-card-title-1",
+          "name": "page-services-card-title-1",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 56,
+            "y": 1078,
+            "width": 272,
+            "height": 25
+          },
+          "href": "",
+          "content": "产品",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-card-body-1",
+          "name": "page-services-card-body-1",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 56,
+            "y": 1104,
+            "width": 272,
+            "height": 38
+          },
+          "href": "",
+          "content": "一个特定的工程师团队能够在整个技术流程的开发过程中协助客户，并在机械、工厂布局和加工循环的选择方面制定有针对性的建议。",
+          "style": {
+            "fill": "#72787F",
+            "typography": {
+              "fill": "#72787F",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-services-rel-title",
+          "name": "page-services-rel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 1490,
+            "width": 120,
+            "height": 18
+          },
+          "href": "",
+          "content": "相关页面",
+          "style": {
+            "fill": "#72787F",
+            "typography": {
+              "fill": "#72787F",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-rel-0-box",
+          "name": "page-services-rel-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1520,
+            "width": 160,
+            "height": 34
+          },
+          "href": "#page-company",
+          "content": "",
+          "style": {
+            "fill": "#E8C400",
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-services-rel-0-text",
+          "name": "page-services-rel-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 58,
+            "y": 1528,
+            "width": 128,
+            "height": 18
+          },
+          "href": "#page-company",
+          "content": "企业",
+          "style": {
+            "fill": "#565D66",
+            "typography": {
+              "fill": "#565D66",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-rel-1-box",
+          "name": "page-services-rel-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 214,
+            "y": 1520,
+            "width": 160,
+            "height": 34
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D8",
+              "thickness": 1
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-services-rel-1-text",
+          "name": "page-services-rel-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 230,
+            "y": 1528,
+            "width": 128,
+            "height": 18
+          },
+          "href": "#page-products",
+          "content": "产品",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-services-rel-2-box",
+          "name": "page-services-rel-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1566,
+            "width": 160,
+            "height": 34
+          },
+          "href": "#page-contacts",
+          "content": "",
+          "style": {
+            "fill": "#FFFFFF",
+            "stroke": {
+              "color": "#D8D8D8",
+              "thickness": 1
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "strokeColor": "color.palette.color03",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-services-rel-2-text",
+          "name": "page-services-rel-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 58,
+            "y": 1574,
+            "width": 128,
+            "height": 18
+          },
+          "href": "#page-contacts",
+          "content": "联系方式",
+          "style": {
+            "fill": "#3E4248",
+            "typography": {
+              "fill": "#3E4248",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color02",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "sectionId": "page-services-navbar",
+      "sectionKey": "page-services-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 86
+          },
+          "blockCount": 13,
+          "blockTree": {
+            "id": "page-services-navbar",
+            "name": "Navbar",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 86
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color08"
+            },
+            "children": [
+              {
+                "id": "page-services-navbar-bg",
+                "name": "page-services-navbar-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 86
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#000000A0"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color11"
+                }
+              },
+              {
+                "id": "page-services-navbar-logo",
+                "name": "page-services-navbar-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 40,
+                  "y": 10,
+                  "width": 106,
+                  "height": 64
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+                  "resolvedPath": "",
+                  "relativePath": "",
+                  "exists": false,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "page-services-navbar-lang",
+                "name": "page-services-navbar-lang",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1340,
+                  "y": 30,
+                  "width": 30,
+                  "height": 24
+                },
+                "href": "",
+                "content": "ZH",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-services-navbar-企业",
+                "name": "page-services-navbar-企业",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 310,
+                  "y": 30,
+                  "width": 56,
+                  "height": 18
+                },
+                "href": "#page-company",
+                "content": "企业",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "0.03em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-services-navbar-产品",
+                "name": "page-services-navbar-产品",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 366,
+                  "y": 30,
+                  "width": 56,
+                  "height": 18
+                },
+                "href": "#page-products",
+                "content": "产品",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "0.03em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-services-navbar-行业",
+                "name": "page-services-navbar-行业",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 422,
+                  "y": 30,
+                  "width": 56,
+                  "height": 18
+                },
+                "href": "#page-industries",
+                "content": "行业",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "0.03em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-services-navbar-技术",
+                "name": "page-services-navbar-技术",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 478,
+                  "y": 30,
+                  "width": 56,
+                  "height": 18
+                },
+                "href": "#page-technology",
+                "content": "技术",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "0.03em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-services-navbar-通信",
+                "name": "page-services-navbar-通信",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 534,
+                  "y": 30,
+                  "width": 56,
+                  "height": 18
+                },
+                "href": "#page-services",
+                "content": "通信",
+                "style": {
+                  "fill": "#E8C400",
+                  "typography": {
+                    "fill": "#E8C400",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.03em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07",
+                  "textColor": "textColor.palette.text08",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "page-services-navbar-联系方式",
+                "name": "page-services-navbar-联系方式",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 590,
+                  "y": 30,
+                  "width": 56,
+                  "height": 18
+                },
+                "href": "#page-contacts",
+                "content": "联系方式",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "0.03em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-services-navbar-menu-hit",
+                "name": "page-services-navbar-menu-hit",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1390,
+                  "y": 28,
+                  "width": 16,
+                  "height": 16
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#00000000"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color08"
+                }
+              },
+              {
+                "id": "page-services-navbar-menu-line1",
+                "name": "page-services-navbar-menu-line1",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1390,
+                  "y": 30,
+                  "width": 16,
+                  "height": 2
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01"
+                }
+              },
+              {
+                "id": "page-services-navbar-menu-line2",
+                "name": "page-services-navbar-menu-line2",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1390,
+                  "y": 36,
+                  "width": 16,
+                  "height": 2
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01"
+                }
+              },
+              {
+                "id": "page-services-navbar-menu-line3",
+                "name": "page-services-navbar-menu-line3",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1390,
+                  "y": 42,
+                  "width": 16,
+                  "height": 2
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 72
+          },
+          "blockCount": 7,
+          "blockTree": {
+            "id": "page-services-navbar",
+            "name": "Navbar",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 72
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color08"
+            },
+            "children": [
+              {
+                "id": "page-services-navbar-bg",
+                "name": "page-services-navbar-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 72
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#000000A0"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color11"
+                }
+              },
+              {
+                "id": "page-services-navbar-logo",
+                "name": "page-services-navbar-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 18,
+                  "y": 16,
+                  "width": 72,
+                  "height": 40
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+                  "resolvedPath": "",
+                  "relativePath": "",
+                  "exists": false,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "page-services-navbar-lang",
+                "name": "page-services-navbar-lang",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 326,
+                  "y": 26,
+                  "width": 30,
+                  "height": 24
+                },
+                "href": "",
+                "content": "ZH",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-services-navbar-menu-hit",
+                "name": "page-services-navbar-menu-hit",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 362,
+                  "y": 22,
+                  "width": 16,
+                  "height": 16
+                },
+                "href": "#page-products",
+                "content": "",
+                "style": {
+                  "fill": "#00000000"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color08"
+                }
+              },
+              {
+                "id": "page-services-navbar-menu-line1",
+                "name": "page-services-navbar-menu-line1",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 362,
+                  "y": 24,
+                  "width": 16,
+                  "height": 2
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01"
+                }
+              },
+              {
+                "id": "page-services-navbar-menu-line2",
+                "name": "page-services-navbar-menu-line2",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 362,
+                  "y": 30,
+                  "width": 16,
+                  "height": 2
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01"
+                }
+              },
+              {
+                "id": "page-services-navbar-menu-line3",
+                "name": "page-services-navbar-menu-line3",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 362,
+                  "y": 36,
+                  "width": 16,
+                  "height": 2
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#FFFFFF"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionKey": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": {
+        "desktop": 1,
+        "mobile": 1
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 1270,
+            "width": 1440,
+            "height": 590
+          },
+          "blockCount": 15,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1270,
+              "width": 1440,
+              "height": 590
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#565D66",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color05"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 590
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#565D66"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05"
+                }
+              },
+              {
+                "id": "footer-logo",
+                "name": "footer-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 40,
+                  "y": 40,
+                  "width": 120,
+                  "height": 58
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+                  "resolvedPath": "",
+                  "relativePath": "",
+                  "exists": false,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "footer-company",
+                "name": "footer-company",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 126,
+                  "width": 220,
+                  "height": 32
+                },
+                "href": "",
+                "content": "FPT Industrie Spa",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size06",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-address",
+                "name": "footer-address",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 166,
+                  "width": 240,
+                  "height": 66
+                },
+                "href": "",
+                "content": "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+                "style": {
+                  "fill": "#E7E7E7",
+                  "typography": {
+                    "fill": "#E7E7E7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 14,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size04",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-contact",
+                "name": "footer-contact",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 252,
+                  "width": 280,
+                  "height": 99
+                },
+                "href": "",
+                "content": "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+                "style": {
+                  "fill": "#E7E7E7",
+                  "typography": {
+                    "fill": "#E7E7E7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-col-title-1",
+                "name": "footer-col-title-1",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 430,
+                  "y": 72,
+                  "width": 100,
+                  "height": 26
+                },
+                "href": "",
+                "content": "企业",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 14,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size04",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-col-links-1",
+                "name": "footer-col-links-1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 430,
+                  "y": 108,
+                  "width": 130,
+                  "height": 117
+                },
+                "href": "",
+                "content": "企业\n历史\n企业系统\nItalian Style\n我们的认证\nGovernance",
+                "style": {
+                  "fill": "#E7E7E7",
+                  "typography": {
+                    "fill": "#E7E7E7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-col-title-2",
+                "name": "footer-col-title-2",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 640,
+                  "y": 72,
+                  "width": 100,
+                  "height": 26
+                },
+                "href": "",
+                "content": "产品",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 14,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size04",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-col-links-2",
+                "name": "footer-col-links-2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 640,
+                  "y": 108,
+                  "width": 160,
+                  "height": 154
+                },
+                "href": "",
+                "content": "镗床\n卧式铣床\n立式铣床\n车削中心\nT 型铣床\nFriction Stir Welding\nAccessories",
+                "style": {
+                  "fill": "#E7E7E7",
+                  "typography": {
+                    "fill": "#E7E7E7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-col-title-3",
+                "name": "footer-col-title-3",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 850,
+                  "y": 72,
+                  "width": 100,
+                  "height": 26
+                },
+                "href": "",
+                "content": "行业",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 14,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size04",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-col-links-3",
+                "name": "footer-col-links-3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 850,
+                  "y": 108,
+                  "width": 160,
+                  "height": 191
+                },
+                "href": "",
+                "content": "能源\n通用机械\n航空航天\n模板&模具\n汽车\n铁路\n石油&天然气\n土方工程\n船舶\n防务",
+                "style": {
+                  "fill": "#E7E7E7",
+                  "typography": {
+                    "fill": "#E7E7E7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-col-title-4",
+                "name": "footer-col-title-4",
+                "type": "text",
+                "role": "title",
+                "bounds": {
+                  "x": 1080,
+                  "y": 72,
+                  "width": 100,
+                  "height": 26
+                },
+                "href": "",
+                "content": "技术",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 14,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size04",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-col-links-4",
+                "name": "footer-col-links-4",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 1080,
+                  "y": 108,
+                  "width": 150,
+                  "height": 80
+                },
+                "href": "",
+                "content": "FPT 世界\n通信\n联系方式\n加入我们",
+                "style": {
+                  "fill": "#E7E7E7",
+                  "typography": {
+                    "fill": "#E7E7E7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-lang",
+                "name": "footer-lang",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 560,
+                  "y": 478,
+                  "width": 360,
+                  "height": 41
+                },
+                "href": "",
+                "content": "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 40,
+                  "y": 552,
+                  "width": 360,
+                  "height": 38
+                },
+                "href": "",
+                "content": "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款",
+                "style": {
+                  "fill": "#E7E7E7",
+                  "typography": {
+                    "fill": "#E7E7E7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 1240,
+            "width": 390,
+            "height": 610
+          },
+          "blockCount": 10,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1240,
+              "width": 390,
+              "height": 610
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#565D66",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color05"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 610
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#565D66"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05"
+                }
+              },
+              {
+                "id": "footer-logo",
+                "name": "footer-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 18,
+                  "y": 28,
+                  "width": 90,
+                  "height": 44
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+                  "resolvedPath": "",
+                  "relativePath": "",
+                  "exists": false,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "footer-company",
+                "name": "footer-company",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 92,
+                  "width": 220,
+                  "height": 29
+                },
+                "href": "",
+                "content": "FPT Industrie Spa",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 16,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size07",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-address",
+                "name": "footer-address",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 128,
+                  "width": 320,
+                  "height": 43
+                },
+                "href": "",
+                "content": "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+                "style": {
+                  "fill": "#E7E7E7",
+                  "typography": {
+                    "fill": "#E7E7E7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-contact",
+                "name": "footer-contact",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 204,
+                  "width": 320,
+                  "height": 92
+                },
+                "href": "",
+                "content": "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+                "style": {
+                  "fill": "#E7E7E7",
+                  "typography": {
+                    "fill": "#E7E7E7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-col1",
+                "name": "footer-col1",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 330,
+                  "width": 130,
+                  "height": 80
+                },
+                "href": "",
+                "content": "企业\n历史\n企业系统\nItalian Style",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-col2",
+                "name": "footer-col2",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 190,
+                  "y": 330,
+                  "width": 130,
+                  "height": 80
+                },
+                "href": "",
+                "content": "产品\n镗床\n卧式铣床\n立式铣床",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-col3",
+                "name": "footer-col3",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 426,
+                  "width": 130,
+                  "height": 99
+                },
+                "href": "",
+                "content": "行业\n能源\n航空航天\n汽车\n铁路",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-lang",
+                "name": "footer-lang",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 528,
+                  "width": 350,
+                  "height": 38
+                },
+                "href": "",
+                "content": "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 18,
+                  "y": 562,
+                  "width": 350,
+                  "height": 38
+                },
+                "href": "",
+                "content": "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款",
+                "style": {
+                  "fill": "#E7E7E7",
+                  "typography": {
+                    "fill": "#E7E7E7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color04",
+                  "textColor": "textColor.palette.text03",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

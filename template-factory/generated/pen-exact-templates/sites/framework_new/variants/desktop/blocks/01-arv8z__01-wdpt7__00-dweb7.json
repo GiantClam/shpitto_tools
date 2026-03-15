@@ -1,0 +1,120 @@
+{
+  "blockId": "dWeB7",
+  "blockName": "Hero",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1027,
+    "height": ""
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 9,
+  "treeHash": "a0da036f93bfc1ba31e80535abf109fcd513fa074366730af20b077da7c3fd32",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "dWeB7",
+    "name": "Hero",
+    "width": 1027,
+    "layout": "vertical",
+    "gap": 18,
+    "alignItems": "center",
+    "children": [
+      {
+        "type": "text",
+        "id": "gX6R5",
+        "name": "h1",
+        "fill": "#1F2737",
+        "textGrowth": "fixed-width",
+        "width": 860,
+        "content": "Fix Consumer\nElectronics",
+        "lineHeight": 0.95,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 72,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "6qqjJ",
+        "name": "iconRow",
+        "gap": 14,
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "ellipse",
+            "id": "mOmpR",
+            "name": "globe",
+            "fill": "#F46E35",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "type": "frame",
+            "id": "BLfHu",
+            "name": "tool",
+            "width": 12,
+            "height": 42,
+            "fill": "#F46E35",
+            "cornerRadius": 8
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "rGjFr",
+        "name": "p1",
+        "fill": "#4C4F53",
+        "textGrowth": "fixed-width",
+        "width": 1012,
+        "content": "We're here to remake consumer electronics to respect people and the planet. Unlike most products, ours are open for you to repair, customize, upgrade, and own at the deepest level.",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "bOVtC",
+        "name": "p2",
+        "fill": "#4C4F53",
+        "textGrowth": "fixed-width",
+        "width": 1015,
+        "content": "Consumer electronics follows a few of the opposite principles of what makes consumer products useful, reliable, and durable over time. We’ve optimized every experience of use and service over product lifecycle and have done this through decisions that increase short-term business metrics while reducing long-term value.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 15,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "text",
+        "id": "kKlT5",
+        "name": "p3",
+        "fill": "#4C4F53",
+        "textGrowth": "fixed-width",
+        "width": 1016,
+        "content": "It doesn’t have to be this way. There are sensible patterns where products are designed from the start to be repaired and upgraded over years. The constraints in materials, supply chains, and energy use are real, but this is exactly where better design and open standards can create long-term value.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 15,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "text",
+        "id": "2Xpmz",
+        "name": "p4",
+        "fill": "#4C4F53",
+        "textGrowth": "fixed-width",
+        "width": 1014,
+        "content": "Every company can align with this but not every model supports any part of it. We believe that when products are durable, modular, and maintained transparently, customers get better experiences and less waste over time.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 15,
+        "fontWeight": "normal"
+      }
+    ]
+  }
+}

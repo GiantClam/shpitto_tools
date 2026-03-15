@@ -1,0 +1,158 @@
+{
+  "sectionId": "3hL9x",
+  "sectionName": "intro",
+  "sectionKind": "generic",
+  "order": 5,
+  "bounds": {
+    "x": 0,
+    "y": 646,
+    "width": 1440,
+    "height": 597
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "d47c779304cc3d87a94d2fcbfd1b739f35301573a13d821cc9af464b1a16a3b0",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "hzKw1",
+      "blockName": "sec1desc",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 192,
+        "y": 89,
+        "width": 1055,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d6cdbce43cff2c60dfb85ab022a1556e7ae67675ea49cc92b7fd69ecff8ee243"
+    },
+    {
+      "blockId": "GcXlJ",
+      "blockName": "sec1nav",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 384,
+        "y": 486,
+        "width": 672,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "16094eef674d9ba2299740643a5e446955a8688cd71615c1731faa23d91ac50c"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "hzKw1",
+      "blockName": "sec1desc",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 192,
+        "y": 89,
+        "width": 1055,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d6cdbce43cff2c60dfb85ab022a1556e7ae67675ea49cc92b7fd69ecff8ee243",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hzKw1",
+        "x": 192,
+        "y": 89,
+        "name": "sec1desc",
+        "fill": "#ffffff",
+        "textGrowth": "fixed-width",
+        "width": 1055,
+        "content": "In an increasingly complex world, assured connectivity is not merely a convenience — it’s a vital requirement for mission success. Our intelligent communications platforms provide resilient, always-on connectivity and situational awareness, ensuring that military personnel and emergency responders can execute their critical missions effectively and without compromise.",
+        "lineHeight": 1.65,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "GcXlJ",
+      "blockName": "sec1nav",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 384,
+        "y": 486,
+        "width": 672,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "16094eef674d9ba2299740643a5e446955a8688cd71615c1731faa23d91ac50c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "GcXlJ",
+        "x": 384,
+        "y": 486,
+        "name": "sec1nav",
+        "fill": "#ffffff",
+        "textGrowth": "fixed-width",
+        "width": 672,
+        "content": "↘  Latest News      ↘  Vision & Principles      ↘  EmergencyResponse",
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "600"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "3hL9x",
+    "x": 0,
+    "y": 646,
+    "name": "intro",
+    "width": 1440,
+    "height": 597,
+    "fill": "#03070E",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "hzKw1",
+        "x": 192,
+        "y": 89,
+        "name": "sec1desc",
+        "fill": "#ffffff",
+        "textGrowth": "fixed-width",
+        "width": 1055,
+        "content": "In an increasingly complex world, assured connectivity is not merely a convenience — it’s a vital requirement for mission success. Our intelligent communications platforms provide resilient, always-on connectivity and situational awareness, ensuring that military personnel and emergency responders can execute their critical missions effectively and without compromise.",
+        "lineHeight": 1.65,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "GcXlJ",
+        "x": 384,
+        "y": 486,
+        "name": "sec1nav",
+        "fill": "#ffffff",
+        "textGrowth": "fixed-width",
+        "width": 672,
+        "content": "↘  Latest News      ↘  Vision & Principles      ↘  EmergencyResponse",
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

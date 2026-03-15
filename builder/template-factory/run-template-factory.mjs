@@ -18743,6 +18743,13 @@ const loadPenBundle = async (penFilePath) => {
         penFile: String(item?.penFile || "").trim(),
         penSourceFile: String(item?.penSourceFile || "").trim(),
         runLibraryPath: String(item?.runLibraryPath || "").trim(),
+        exactTemplatePath: String(item?.exactTemplatePath || "").trim(),
+        skinnableTemplatePath: String(item?.skinnableTemplatePath || "").trim(),
+        sourceHash: String(item?.sourceHash || "").trim(),
+        sourceUrl: String(item?.sourceUrl || "").trim(),
+        siteId: String(item?.siteId || "").trim(),
+        siteName: String(item?.siteName || "").trim(),
+        siteGroupId: String(item?.siteGroupId || "").trim(),
       }))
       .filter((item) => item.caseId || item.penFile || item.siteKey || item.payloadPath || item.penSourceFile),
   };
@@ -19111,6 +19118,37 @@ const validatePenPayloadQualityGate = ({ payload = {}, caseId = "" } = {}) => {
   };
 };
 
+const buildPenProfileIdentityKeywords = (...values) => {
+  const keywords = new Set();
+  for (const rawValue of values) {
+    const raw = String(rawValue || "").trim();
+    if (!raw) continue;
+
+    const lowered = raw.toLowerCase();
+    const withSpaces = lowered
+      .replace(/[_./-]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    const collapsed = slug(raw);
+    const parts = withSpaces
+      .split(/\s+/)
+      .map((item) => item.trim())
+      .filter((item) => item.length > 1 && !/^(desktop|mobile|homepage|home|site|web|website)$/.test(item));
+
+    [raw, lowered, withSpaces, collapsed, ...parts].forEach((candidate) => {
+      const token = String(candidate || "").trim();
+      if (token) keywords.add(token);
+    });
+
+    if (parts.length > 1) {
+      keywords.add(parts.join(""));
+      keywords.add(parts.join("-"));
+      keywords.add(parts.join("_"));
+    }
+  }
+  return [...keywords];
+};
+
 const buildStyleProfileFromPenPayload = ({
   payload = {},
   artifact = {},
@@ -19150,15 +19188,33 @@ const buildStyleProfileFromPenPayload = ({
     String(exportDoc?.sourceUrl || "").trim() ||
     "";
   const sourceDomain = hostFromUrl(sourceUrl);
+  const siteId =
+    String(artifact?.siteId || "").trim() ||
+    String(artifact?.siteGroupId || "").trim() ||
+    "";
+  const siteName =
+    String(artifact?.siteName || "").trim() ||
+    String(exportDoc?.siteName || "").trim() ||
+    "";
   const profileId =
     slug(String(artifact?.caseId || "").trim()) ||
     slug(path.basename(String(artifact?.penFile || ""), path.extname(String(artifact?.penFile || "")))) ||
     `pen-${slug(runId) || "profile"}`;
   const baseName =
-    String(exportDoc?.siteName || "").trim() ||
+    siteName ||
+    siteId ||
     String(artifact?.caseId || "").trim() ||
     sourceDomain ||
     profileId;
+  const identityKeywords = buildPenProfileIdentityKeywords(
+    profileId,
+    baseName,
+    siteId,
+    siteName,
+    artifact?.siteGroupId,
+    artifact?.caseId,
+    sourceDomain
+  );
   const sanitizedTemplates = sanitizeTemplateAssetTextDeep(templates, {
     siteId: profileId,
   });
@@ -19176,9 +19232,7 @@ const buildStyleProfileFromPenPayload = ({
     id: profileId,
     name: baseName,
     keywords: unique([
-      profileId,
-      baseName,
-      sourceDomain,
+      ...identityKeywords,
       buildProfileSelectorToken(profileId),
       ...pageSpecs.map((page) => page.name),
     ].map((item) => String(item || "").trim()).filter(Boolean)),
@@ -19353,6 +19407,21 @@ const penColorLuminance = (color = "") => {
   };
   const lum = 0.2126 * toLinear(parsed.r) + 0.7152 * toLinear(parsed.g) + 0.0722 * toLinear(parsed.b);
   return { ...parsed, lum };
+};
+
+const penColorContrastRatio = (left = "", right = "") => {
+  const leftParsed = penColorLuminance(left);
+  const rightParsed = penColorLuminance(right);
+  if (!leftParsed || !rightParsed) return 0;
+  const light = Math.max(leftParsed.lum, rightParsed.lum);
+  const dark = Math.min(leftParsed.lum, rightParsed.lum);
+  return (light + 0.05) / (dark + 0.05);
+};
+
+const isPenTransparentColorValue = (color = "") => {
+  const parsed = parsePenHexColorWithAlpha(color) || parsePenRgbaColor(color);
+  if (!parsed) return false;
+  return Number(parsed.a) <= 0.05;
 };
 
 const isPenDarkColorValue = (color = "") => {
@@ -20840,6 +20909,139 @@ const buildThemeFromPenPage = (pageFrame = {}) => {
   };
 };
 
+const sortThemePaletteEntries = (palette = {}) =>
+  Object.values(palette || {})
+    .filter(
+      (entry) =>
+        entry &&
+        typeof entry === "object" &&
+        String(entry?.value || "").trim() &&
+        !isPenTransparentColorValue(String(entry?.value || "").trim())
+    )
+    .sort((left, right) => Number(right?.usageCount || 0) - Number(left?.usageCount || 0));
+
+const firstThemeColor = (entries = [], predicate = () => true, fallback = "") =>
+  String(
+    (entries.find((entry) => predicate(String(entry?.value || "").trim()))?.value || fallback || "")
+  ).trim();
+
+const buildThemeFromExactThemeDoc = (themeDoc = null) => {
+  const doc = themeDoc && typeof themeDoc === "object" ? themeDoc : {};
+  const tokenRoot = doc?.tokens && typeof doc.tokens === "object" ? doc.tokens : {};
+  const colorEntries = sortThemePaletteEntries(tokenRoot?.color?.palette);
+  const textEntries = sortThemePaletteEntries(tokenRoot?.textColor?.palette);
+  const fontEntries = sortThemePaletteEntries(tokenRoot?.fontFamily?.palette);
+
+  const background =
+    firstThemeColor(colorEntries, (value) => !isPenDarkColorValue(value), "") ||
+    firstThemeColor(colorEntries, () => true, "#F3F3EF");
+  const mode = isPenDarkColorValue(background) ? "dark" : "light";
+  const scoreReadableText = (value = "", usageCount = 0) => {
+    const contrast = penColorContrastRatio(background, value);
+    let score = Number(usageCount || 0) + contrast * 10;
+    if (contrast >= 7) score += 120;
+    else if (contrast >= 4.5) score += 60;
+    if (mode === "light" && isPenDarkColorValue(value)) score += 24;
+    if (mode === "dark" && !isPenDarkColorValue(value)) score += 24;
+    return score;
+  };
+  const readableTextEntries = textEntries
+    .map((entry) => ({
+      value: String(entry?.value || "").trim(),
+      usageCount: Number(entry?.usageCount || 0),
+      score: scoreReadableText(String(entry?.value || "").trim(), Number(entry?.usageCount || 0)),
+      contrast: penColorContrastRatio(background, String(entry?.value || "").trim()),
+    }))
+    .filter((entry) => entry.value && entry.value !== background)
+    .sort((left, right) => right.score - left.score);
+  const readableColorEntries = colorEntries
+    .map((entry) => ({
+      value: String(entry?.value || "").trim(),
+      usageCount: Number(entry?.usageCount || 0),
+      score: scoreReadableText(String(entry?.value || "").trim(), Number(entry?.usageCount || 0)),
+      contrast: penColorContrastRatio(background, String(entry?.value || "").trim()),
+    }))
+    .filter((entry) => entry.value && entry.value !== background)
+    .sort((left, right) => right.score - left.score);
+  const bestReadableText = readableTextEntries[0] || null;
+  const foreground =
+    (bestReadableText && bestReadableText.contrast >= 4.5 ? bestReadableText.value : "") ||
+    readableColorEntries.find((entry) => entry.contrast >= 4.5)?.value ||
+    bestReadableText?.value ||
+    (mode === "dark" ? "#F2F2F2" : "#111111");
+  const textSecondary =
+    readableTextEntries.find((entry) => entry.value !== foreground && entry.contrast >= 3)?.value ||
+    readableColorEntries.find((entry) => entry.value !== foreground && entry.contrast >= 3)?.value ||
+    readableTextEntries.find((entry) => entry.value !== foreground)?.value ||
+    readableColorEntries.find((entry) => entry.value !== foreground)?.value ||
+    (mode === "dark" ? "#CFCFCF" : "#5A5A5A");
+  const accent =
+    firstThemeColor(
+      colorEntries,
+      (value) =>
+        !isPenNeutralColorValue(value) &&
+        value !== background &&
+        value !== foreground &&
+        value !== textSecondary,
+      ""
+    ) ||
+    firstThemeColor(colorEntries, (value) => value !== background && value !== foreground, "") ||
+    (mode === "dark" ? "#E4DE37" : "#B79B5D");
+  const dominantFont = String(fontEntries[0]?.value || "Inter").trim() || "Inter";
+
+  return {
+    mode,
+    fontHeading: dominantFont,
+    fontBody: dominantFont,
+    motion: "subtle",
+    fontFamilies: Array.from(
+      new Set(fontEntries.map((entry) => String(entry?.value || "").trim()).filter(Boolean))
+    ),
+    palette: {
+      bg: background,
+      text: foreground,
+      primary: accent,
+      accent,
+      neutral:
+        firstThemeColor(
+          colorEntries.filter((entry) => String(entry?.value || "").trim() !== background),
+          (value) => isPenNeutralColorValue(value),
+          mode === "dark" ? "#1F2937" : "#E5E7EB"
+        ) || (mode === "dark" ? "#1F2937" : "#E5E7EB"),
+      textSecondary,
+    },
+    primaryColor: accent,
+    layoutRules: {
+      maxWidth: "1400px",
+      sectionPadding: "py-24",
+      grid: "12-col",
+    },
+    tokens: {
+      surface: mode === "dark" ? "glass" : "solid",
+      border: "soft",
+      shadow: "dramatic",
+      accent: "glow",
+    },
+  };
+};
+
+const resolveExactThemeDocForArtifact = async (artifact = {}) => {
+  const exactTemplatePath = path.resolve(String(artifact?.exactTemplatePath || "").trim());
+  const candidatePaths = [
+    exactTemplatePath,
+    exactTemplatePath ? path.join(path.dirname(exactTemplatePath), "theme.tokens.json") : "",
+  ].filter(Boolean);
+  for (const candidatePath of candidatePaths) {
+    const doc = await readJsonIfExists(candidatePath);
+    if (!doc || typeof doc !== "object") continue;
+    if (doc?.tokens && typeof doc.tokens === "object") return doc;
+    if (doc?.theme && typeof doc.theme === "object" && doc.theme?.tokens && typeof doc.theme.tokens === "object") {
+      return doc.theme;
+    }
+  }
+  return null;
+};
+
 const normalizePenPageLabel = (value = "") =>
   String(value || "")
     .replace(/^subpage\s*-\s*/i, "")
@@ -21454,13 +21656,19 @@ const parsePenPaddingBox = (value) => {
   return { top: 0, right: 0, bottom: 0, left: 0 };
 };
 
-const buildPayloadFromPenDocument = async ({ penDoc = null, sourceDoc = null, penFile = "" } = {}) => {
+const buildPayloadFromPenDocument = async ({
+  penDoc = null,
+  sourceDoc = null,
+  penFile = "",
+  exactThemeDoc = null,
+} = {}) => {
   const pages = Array.isArray(penDoc?.document?.pages) ? penDoc.document.pages : [];
   if (pages.length) {
+    const exactTheme = exactThemeDoc ? buildThemeFromExactThemeDoc(exactThemeDoc) : null;
     return {
       components: Array.isArray(sourceDoc?.payload?.components) ? cloneJson(sourceDoc.payload.components) : [],
       pages: pages.map((page) => {
-        const pageTheme = page?.theme && typeof page.theme === "object" ? cloneJson(page.theme) : {};
+        const pageTheme = exactTheme || (page?.theme && typeof page.theme === "object" ? cloneJson(page.theme) : {});
         return {
           path: normalizeTemplatePagePath(page?.path || "/"),
           name: String(page?.name || "").trim() || formatTemplatePageName(page?.path || "/"),
@@ -21507,10 +21715,11 @@ const buildPayloadFromPenDocument = async ({ penDoc = null, sourceDoc = null, pe
     slug(String(sourceDoc?.sourceUrl || penDoc?.source?.sourceUrl || "pen-site")) ||
     "pen-site";
   const assetMap = await materializePenAssetMap({ penDoc, penFile, caseId });
+  const exactTheme = exactThemeDoc ? buildThemeFromExactThemeDoc(exactThemeDoc) : null;
   const compiledComponents = [];
   const pagesFromFrames = rootFrames.map((frame, pageIndex) => {
     const pagePath = resolvePenPagePath({ frame, sourcePayload });
-    const pageTheme = buildThemeFromPenPage(frame);
+    const pageTheme = exactTheme || buildThemeFromPenPage(frame);
     const sectionFrames = (Array.isArray(frame?.children) ? frame.children : []).filter(
       (child) => String(child?.type || "").toLowerCase() === "frame"
     );
@@ -21746,6 +21955,7 @@ const exportPayloadFromPenArtifact = async ({ artifact = {}, runDir = "", option
   }
   const sourcePayloadCandidate =
     sourceDoc?.payload && typeof sourceDoc.payload === "object" ? sourceDoc.payload : null;
+  const exactThemeDoc = await resolveExactThemeDocForArtifact(artifact);
   let payloadFromSidecarPath = null;
   const sourcePayloadPath = String(sourceDoc?.payloadPath || "").trim();
   if (!sourcePayloadCandidate && sourcePayloadPath) {
@@ -21754,7 +21964,7 @@ const exportPayloadFromPenArtifact = async ({ artifact = {}, runDir = "", option
       payloadFromSidecarPath = parsedPayloadPathDoc;
     }
   }
-  const inlinePayload = await buildPayloadFromPenDocument({ penDoc, sourceDoc, penFile });
+  const inlinePayload = await buildPayloadFromPenDocument({ penDoc, sourceDoc, penFile, exactThemeDoc });
   if (inlinePayload) {
     const payload = sanitizePayloadForPuck(inlinePayload, caseSlug);
     const sectionDiffReport = buildPenSectionDiffReport({ penDoc, payload, sourceDoc });

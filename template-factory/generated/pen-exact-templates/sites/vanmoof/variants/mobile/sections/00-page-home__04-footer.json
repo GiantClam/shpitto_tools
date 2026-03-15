@@ -1,0 +1,335 @@
+{
+  "sectionId": "footer",
+  "sectionName": "Footer",
+  "sectionKind": "footer",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 1710,
+    "width": 390,
+    "height": 250
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "216d6228ed9e2b4e7018307909b859db314b199cf0cfe73f2130758e54957fcc",
+  "blockCount": 5,
+  "blockIndex": [
+    {
+      "blockId": "footer-bg",
+      "blockName": "footer-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e37a20e8b448081c57f2e83319f021b4530fa387a046f1b7d91e12461bf0ce67"
+    },
+    {
+      "blockId": "footer-brand",
+      "blockName": "footer-brand",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 30,
+        "width": 220,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4f689e58ac3df3dc59363c89444a4b7f85c8ee388df9126ee2a2262eadd0d8b4"
+    },
+    {
+      "blockId": "footer-col-1",
+      "blockName": "footer-col-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 68,
+        "width": 130,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "79069bbd60e7863f635989fa0b9d35b8d5db33d76321f8a05b545b84f5365e33"
+    },
+    {
+      "blockId": "footer-col-2",
+      "blockName": "footer-col-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 182,
+        "y": 68,
+        "width": 130,
+        "height": 53
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ba5e346ec8184bf857c04e664f714267f3dabf0a5ec1cbd250b59cce7cf1bd97"
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 188,
+        "width": 320,
+        "height": 49
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ce010e7497d5fcab5a4ebf8150b268feeb22923b4a6a854b48fbb9d2d15e4058"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "footer-bg",
+      "blockName": "footer-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e37a20e8b448081c57f2e83319f021b4530fa387a046f1b7d91e12461bf0ce67",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "footer-bg",
+        "name": "footer-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250,
+        "fill": "#131714"
+      }
+    },
+    {
+      "blockId": "footer-brand",
+      "blockName": "footer-brand",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 30,
+        "width": 220,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4f689e58ac3df3dc59363c89444a4b7f85c8ee388df9126ee2a2262eadd0d8b4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-brand",
+        "name": "footer-brand",
+        "x": 18,
+        "y": 30,
+        "fill": "#F3F5EE",
+        "content": "VanMoof",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 24
+      }
+    },
+    {
+      "blockId": "footer-col-1",
+      "blockName": "footer-col-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 68,
+        "width": 130,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "79069bbd60e7863f635989fa0b9d35b8d5db33d76321f8a05b545b84f5365e33",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-col-1",
+        "name": "footer-col-1",
+        "x": 18,
+        "y": 68,
+        "fill": "#F3F5EE",
+        "content": "Our Rides Accessories Our Story",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "footer-col-2",
+      "blockName": "footer-col-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 182,
+        "y": 68,
+        "width": 130,
+        "height": 53
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ba5e346ec8184bf857c04e664f714267f3dabf0a5ec1cbd250b59cce7cf1bd97",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-col-2",
+        "name": "footer-col-2",
+        "x": 182,
+        "y": 68,
+        "fill": "#F3F5EE",
+        "content": "Peak Design Shipping & Delivery A5 S6",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 53
+      }
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 188,
+        "width": 320,
+        "height": 49
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ce010e7497d5fcab5a4ebf8150b268feeb22923b4a6a854b48fbb9d2d15e4058",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-copy",
+        "name": "footer-copy",
+        "x": 18,
+        "y": 188,
+        "fill": "#D8D5CE",
+        "content": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "footer",
+    "name": "Footer",
+    "x": 0,
+    "y": 1710,
+    "width": 390,
+    "height": 250,
+    "fill": "#131714",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "footer-bg",
+        "name": "footer-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250,
+        "fill": "#131714"
+      },
+      {
+        "type": "text",
+        "id": "footer-brand",
+        "name": "footer-brand",
+        "x": 18,
+        "y": 30,
+        "fill": "#F3F5EE",
+        "content": "VanMoof",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 24
+      },
+      {
+        "type": "text",
+        "id": "footer-col-1",
+        "name": "footer-col-1",
+        "x": 18,
+        "y": 68,
+        "fill": "#F3F5EE",
+        "content": "Our Rides Accessories Our Story",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "footer-col-2",
+        "name": "footer-col-2",
+        "x": 182,
+        "y": 68,
+        "fill": "#F3F5EE",
+        "content": "Peak Design Shipping & Delivery A5 S6",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 53
+      },
+      {
+        "type": "text",
+        "id": "footer-copy",
+        "name": "footer-copy",
+        "x": 18,
+        "y": 188,
+        "fill": "#D8D5CE",
+        "content": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      }
+    ]
+  }
+}

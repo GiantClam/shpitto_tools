@@ -1,0 +1,5071 @@
+{
+  "pageId": "page-home",
+  "pageName": "VanMoof Homepage Mobile",
+  "pageType": "home",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 1960
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "d001df47295f4a56debeb724d3dffc568a2bce961c7d2e3b405f85b006d638a9",
+  "directChildCount": 6,
+  "recursiveNodeCount": 66,
+  "sectionCount": 5,
+  "sectionIndex": [
+    {
+      "sectionId": "hero",
+      "sectionName": "Hero",
+      "sectionKind": "hero",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 14,
+      "treeHash": "7b8bb874e77ef4dcc64030fef11694abb85909816eac313ddbf1972943004620",
+      "blockCount": 10
+    },
+    {
+      "sectionId": "categories",
+      "sectionName": "Categories",
+      "sectionKind": "navigation",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360
+      },
+      "directChildCount": 18,
+      "recursiveNodeCount": 19,
+      "treeHash": "b7066f999d2b6ca48584eddda5f9b6eb43da30e22a3119b06c98b3f25e3add95",
+      "blockCount": 18
+    },
+    {
+      "sectionId": "featured",
+      "sectionName": "Featured",
+      "sectionKind": "products",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410
+      },
+      "directChildCount": 15,
+      "recursiveNodeCount": 16,
+      "treeHash": "3f6363ca4a48d6113686d692900dfb982f5cacd4072e699ec8b73e63f6e3f85f",
+      "blockCount": 15
+    },
+    {
+      "sectionId": "insights",
+      "sectionName": "Insights",
+      "sectionKind": "story",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420
+      },
+      "directChildCount": 8,
+      "recursiveNodeCount": 9,
+      "treeHash": "1248549a0b0be419195647b747dd0c81abb51cb04cf977d81c5882ca3299633e",
+      "blockCount": 8
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 4,
+      "bounds": {
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "216d6228ed9e2b4e7018307909b859db314b199cf0cfe73f2130758e54957fcc",
+      "blockCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "hero",
+      "sectionName": "Hero",
+      "sectionKind": "hero",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 14,
+      "treeHash": "7b8bb874e77ef4dcc64030fef11694abb85909816eac313ddbf1972943004620",
+      "blockCount": 10,
+      "blockIndex": [
+        {
+          "blockId": "hero-bg",
+          "blockName": "hero-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6b8902de06bf64f6b65cf6e479a8954f1e36f0c09d57121e6ec95770b35e3f51"
+        },
+        {
+          "blockId": "hero-image",
+          "blockName": "hero-image",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a037f5e63f7c3dd5f396f07f292f6855e06144d9a8156efc8bf9a3d896ba3a25"
+        },
+        {
+          "blockId": "header-page-home",
+          "blockName": "Header",
+          "blockType": "frame",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 4,
+          "treeHash": "24d62bb7eae56894c59a09ca0166c2968379535585f2d41bff32c31be582959e"
+        },
+        {
+          "blockId": "hero-kicker",
+          "blockName": "hero-kicker",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 86,
+            "width": 200,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0f2c9f9d8dcf8322550839ffec41291398764c0228cd5dae976b29f0daff0234"
+        },
+        {
+          "blockId": "hero-title",
+          "blockName": "hero-title",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 116,
+            "width": 320,
+            "height": 151
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6a2be03623ddbfd178616903def2be4055e870227d01bff8ebc17bf86bdc16aa"
+        },
+        {
+          "blockId": "hero-subtitle",
+          "blockName": "hero-subtitle",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 240,
+            "width": 320,
+            "height": 66
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dc5e6f78b1495115552a7d2bce5bef34d0ac6fa69e3e74ac57876496c2c170c1"
+        },
+        {
+          "blockId": "hero-primary-box",
+          "blockName": "hero-primary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 6,
+          "bounds": {
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "282b70b6a364d3202d1cf7e868127662046f83ef7c5b30dfb96bbda6b677259d"
+        },
+        {
+          "blockId": "hero-primary-text",
+          "blockName": "hero-primary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 32,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9baf8c1499738a137d93492da2d201fb35249cd50d8d8df32fd0928881c48e96"
+        },
+        {
+          "blockId": "hero-secondary-box",
+          "blockName": "hero-secondary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eadd4a3602e4c501d987789623f64d56e80a96cb5b869c31745d341a3d829b20"
+        },
+        {
+          "blockId": "hero-secondary-text",
+          "blockName": "hero-secondary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 194,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "37be6a08f80d19ce795dc66414250bc44d8e49d990df5deec85b85d20b878806"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
+          "relativePath": "assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "hero-bg",
+          "blockName": "hero-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6b8902de06bf64f6b65cf6e479a8954f1e36f0c09d57121e6ec95770b35e3f51",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-bg",
+            "name": "hero-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520,
+            "fill": "#F4F5F0"
+          }
+        },
+        {
+          "blockId": "hero-image",
+          "blockName": "hero-image",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a037f5e63f7c3dd5f396f07f292f6855e06144d9a8156efc8bf9a3d896ba3a25",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
+            "relativePath": "assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-image",
+            "name": "hero-image",
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
+              "mode": "cover"
+            },
+            "href": "#page-our-rides",
+            "cornerRadius": 28
+          }
+        },
+        {
+          "blockId": "header-page-home",
+          "blockName": "Header",
+          "blockType": "frame",
+          "order": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 4,
+          "treeHash": "24d62bb7eae56894c59a09ca0166c2968379535585f2d41bff32c31be582959e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "header-page-home",
+            "name": "Header",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#00000000",
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "header-bg",
+                "name": "header-bg",
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 64,
+                "fill": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "id": "header-brand",
+                "name": "header-brand",
+                "x": 18,
+                "y": 18,
+                "fill": "#151515",
+                "content": "VanMoof",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 180,
+                "height": 28
+              },
+              {
+                "type": "text",
+                "id": "header-menu",
+                "name": "header-menu",
+                "x": 362,
+                "y": 18,
+                "fill": "#151515",
+                "content": "☰",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 18,
+                "height": 20,
+                "href": "#page-our-rides",
+                "textAlign": "center",
+                "textAlignVertical": "middle"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "hero-kicker",
+          "blockName": "hero-kicker",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 86,
+            "width": 200,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0f2c9f9d8dcf8322550839ffec41291398764c0228cd5dae976b29f0daff0234",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-kicker",
+            "name": "hero-kicker",
+            "x": 18,
+            "y": 86,
+            "fill": "#7AC943",
+            "content": "VANMOOF",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 18,
+            "letterSpacing": "0.12em"
+          }
+        },
+        {
+          "blockId": "hero-title",
+          "blockName": "hero-title",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 116,
+            "width": 320,
+            "height": 151
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6a2be03623ddbfd178616903def2be4055e870227d01bff8ebc17bf86bdc16aa",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-title",
+            "name": "hero-title",
+            "x": 18,
+            "y": 116,
+            "fill": "#151515",
+            "content": "Award-winning e-bikes with high-tech features",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 34,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 151
+          }
+        },
+        {
+          "blockId": "hero-subtitle",
+          "blockName": "hero-subtitle",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 240,
+            "width": 320,
+            "height": 66
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "dc5e6f78b1495115552a7d2bce5bef34d0ac6fa69e3e74ac57876496c2c170c1",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-subtitle",
+            "name": "hero-subtitle",
+            "x": 18,
+            "y": 240,
+            "fill": "#646A62",
+            "content": "smart urban mobility from VanMoof, designed around city riding, integrated hardware and connected services.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 66
+          }
+        },
+        {
+          "blockId": "hero-primary-box",
+          "blockName": "hero-primary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 6,
+          "bounds": {
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "282b70b6a364d3202d1cf7e868127662046f83ef7c5b30dfb96bbda6b677259d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-primary-box",
+            "name": "hero-primary-box",
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#7AC943",
+            "stroke": {
+              "fill": "#7AC943",
+              "thickness": 1
+            },
+            "href": "#page-our-rides",
+            "cornerRadius": 14
+          }
+        },
+        {
+          "blockId": "hero-primary-text",
+          "blockName": "hero-primary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 32,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9baf8c1499738a137d93492da2d201fb35249cd50d8d8df32fd0928881c48e96",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-primary-text",
+            "name": "hero-primary-text",
+            "x": 32,
+            "y": 325,
+            "fill": "#FFFFFF",
+            "content": "Our Rides",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-our-rides",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "hero-secondary-box",
+          "blockName": "hero-secondary-box",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eadd4a3602e4c501d987789623f64d56e80a96cb5b869c31745d341a3d829b20",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "hero-secondary-box",
+            "name": "hero-secondary-box",
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-our-story",
+            "cornerRadius": 14
+          }
+        },
+        {
+          "blockId": "hero-secondary-text",
+          "blockName": "hero-secondary-text",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 194,
+            "y": 325,
+            "width": 120,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "37be6a08f80d19ce795dc66414250bc44d8e49d990df5deec85b85d20b878806",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "hero-secondary-text",
+            "name": "hero-secondary-text",
+            "x": 194,
+            "y": 325,
+            "fill": "#151515",
+            "content": "Our Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-our-story",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "hero",
+        "name": "Hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520,
+        "fill": "#F4F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "hero-bg",
+            "name": "hero-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520,
+            "fill": "#F4F5F0"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-image",
+            "name": "hero-image",
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
+              "mode": "cover"
+            },
+            "href": "#page-our-rides",
+            "cornerRadius": 28
+          },
+          {
+            "type": "frame",
+            "id": "header-page-home",
+            "name": "Header",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#00000000",
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "header-bg",
+                "name": "header-bg",
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 64,
+                "fill": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "id": "header-brand",
+                "name": "header-brand",
+                "x": 18,
+                "y": 18,
+                "fill": "#151515",
+                "content": "VanMoof",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 180,
+                "height": 28
+              },
+              {
+                "type": "text",
+                "id": "header-menu",
+                "name": "header-menu",
+                "x": 362,
+                "y": 18,
+                "fill": "#151515",
+                "content": "☰",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 18,
+                "height": 20,
+                "href": "#page-our-rides",
+                "textAlign": "center",
+                "textAlignVertical": "middle"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "hero-kicker",
+            "name": "hero-kicker",
+            "x": 18,
+            "y": 86,
+            "fill": "#7AC943",
+            "content": "VANMOOF",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 18,
+            "letterSpacing": "0.12em"
+          },
+          {
+            "type": "text",
+            "id": "hero-title",
+            "name": "hero-title",
+            "x": 18,
+            "y": 116,
+            "fill": "#151515",
+            "content": "Award-winning e-bikes with high-tech features",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 34,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 151
+          },
+          {
+            "type": "text",
+            "id": "hero-subtitle",
+            "name": "hero-subtitle",
+            "x": 18,
+            "y": 240,
+            "fill": "#646A62",
+            "content": "smart urban mobility from VanMoof, designed around city riding, integrated hardware and connected services.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 66
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-primary-box",
+            "name": "hero-primary-box",
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#7AC943",
+            "stroke": {
+              "fill": "#7AC943",
+              "thickness": 1
+            },
+            "href": "#page-our-rides",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-primary-text",
+            "name": "hero-primary-text",
+            "x": 32,
+            "y": 325,
+            "fill": "#FFFFFF",
+            "content": "Our Rides",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-our-rides",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-secondary-box",
+            "name": "hero-secondary-box",
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-our-story",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-secondary-text",
+            "name": "hero-secondary-text",
+            "x": 194,
+            "y": 325,
+            "fill": "#151515",
+            "content": "Our Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-our-story",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "categories",
+      "sectionName": "Categories",
+      "sectionKind": "navigation",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360
+      },
+      "directChildCount": 18,
+      "recursiveNodeCount": 19,
+      "treeHash": "b7066f999d2b6ca48584eddda5f9b6eb43da30e22a3119b06c98b3f25e3add95",
+      "blockCount": 18,
+      "blockIndex": [
+        {
+          "blockId": "cat-title",
+          "blockName": "cat-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 22,
+            "width": 200,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "51c8e0f57dabcbc8e9c408de90df6e6d2a107203833fe6ff384644a9dbcc5d50"
+        },
+        {
+          "blockId": "cat-card-0",
+          "blockName": "cat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2726a36e60ce86a8198fb068332294b20b367f84cefc43a7c342563e0e04a373"
+        },
+        {
+          "blockId": "cat-card-img-0",
+          "blockName": "cat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d3512b3e4d00e77eacf89517d63d3d9f16a36eb45a4ffbbcd89fe655b39273c0"
+        },
+        {
+          "blockId": "cat-card-t-0",
+          "blockName": "cat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "df7dc3c18382549deb986cd8306ef60330fa2d4f3c53d029d56d9b7ccfd6bd8d"
+        },
+        {
+          "blockId": "cat-card-b-0",
+          "blockName": "cat-card-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 154,
+            "width": 140,
+            "height": 120
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "248a6619ec087133ff305124e9bd0670028014ea7472cf76bfc01a7201239b42"
+        },
+        {
+          "blockId": "cat-card-1",
+          "blockName": "cat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4f0c3c5dccaa8f609685c3cc519027d3c6f1eaddd020e4e78c079b836dfd1b1f"
+        },
+        {
+          "blockId": "cat-card-t-1",
+          "blockName": "cat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 206,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9b3b707234835440f41fd4a00f99645e65ce96c4f577a14012230af419ea44c8"
+        },
+        {
+          "blockId": "cat-card-b-1",
+          "blockName": "cat-card-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 154,
+            "width": 140,
+            "height": 134
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "722318e1f327a72c935810d7a612c9b1a883d0b5fb9c05362fa3dd04999aa8db"
+        },
+        {
+          "blockId": "cat-card-2",
+          "blockName": "cat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b7b0ee1bf5fb01812773e3a81bc8f3474318db7a38a4c6377444bc2f0996d3fe"
+        },
+        {
+          "blockId": "cat-card-t-2",
+          "blockName": "cat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 32,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ed5e8e89291278c5e0f4e0c9b28d7b5f7e2d811b42eda64b3a0be105d3b40863"
+        },
+        {
+          "blockId": "cat-card-b-2",
+          "blockName": "cat-card-b-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 10,
+          "bounds": {
+            "x": 32,
+            "y": 282,
+            "width": 140,
+            "height": 92
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2824f1fdbb5de3bb5c8ae2e18c822173a97c12c2dfa33907772b1aa312755fbf"
+        },
+        {
+          "blockId": "cat-card-3",
+          "blockName": "cat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 11,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4a9d3260c0b145f6aab9e792f27b5f20531e471fa46374500102188016e0d359"
+        },
+        {
+          "blockId": "cat-card-img-3",
+          "blockName": "cat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 12,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "baba788007af2cbf0ce2fcf969399c8e65e2f163c223b25578bf8504dc1ae7f9"
+        },
+        {
+          "blockId": "cat-card-t-3",
+          "blockName": "cat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 13,
+          "bounds": {
+            "x": 206,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "15d0e3f5fa4fb386ac550de2654746553e1c69f248f0506814fb6cfc6df81b05"
+        },
+        {
+          "blockId": "cat-card-b-3",
+          "blockName": "cat-card-b-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 14,
+          "bounds": {
+            "x": 206,
+            "y": 282,
+            "width": 140,
+            "height": 106
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "659bd3351d19fe1b8ef4f9a6aa82f4f457f1aa5758555db79815028d8ceda1e4"
+        },
+        {
+          "blockId": "cat-card-4",
+          "blockName": "cat-card-4",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 15,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "611569ec185e7c12ef70320ce71f43852760716604a8d663f619cce53c6324ba"
+        },
+        {
+          "blockId": "cat-card-t-4",
+          "blockName": "cat-card-t-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 32,
+            "y": 392,
+            "width": 140,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "436116e0cd49cdaa0e86f8eaed5601ef32d7e19a06f8dea8457755f339848377"
+        },
+        {
+          "blockId": "cat-card-b-4",
+          "blockName": "cat-card-b-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 17,
+          "bounds": {
+            "x": 32,
+            "y": 410,
+            "width": 140,
+            "height": 120
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f37ada180870d5020f1610dbc21c6925113e126a3ed3ec5fb483da1739b1ef6e"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+          "relativePath": "assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+          "relativePath": "assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "cat-title",
+          "blockName": "cat-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 22,
+            "width": 200,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "51c8e0f57dabcbc8e9c408de90df6e6d2a107203833fe6ff384644a9dbcc5d50",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-title",
+            "name": "cat-title",
+            "x": 18,
+            "y": 22,
+            "fill": "#151515",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 32
+          }
+        },
+        {
+          "blockId": "cat-card-0",
+          "blockName": "cat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2726a36e60ce86a8198fb068332294b20b367f84cefc43a7c342563e0e04a373",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-0",
+            "name": "cat-card-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-our-rides",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-0",
+          "blockName": "cat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d3512b3e4d00e77eacf89517d63d3d9f16a36eb45a4ffbbcd89fe655b39273c0",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+            "relativePath": "assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-0",
+            "name": "cat-card-img-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+              "mode": "cover"
+            },
+            "href": "#page-our-rides",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-0",
+          "blockName": "cat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "df7dc3c18382549deb986cd8306ef60330fa2d4f3c53d029d56d9b7ccfd6bd8d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-0",
+            "name": "cat-card-t-0",
+            "x": 32,
+            "y": 136,
+            "fill": "#151515",
+            "content": "Our Rides",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-0",
+          "blockName": "cat-card-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 154,
+            "width": 140,
+            "height": 120
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "248a6619ec087133ff305124e9bd0670028014ea7472cf76bfc01a7201239b42",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-0",
+            "name": "cat-card-b-0",
+            "x": 32,
+            "y": 154,
+            "fill": "#646A62",
+            "content": "The VanMoof A5 is an e-bike perfect for agile city rides. Find out more about this e-bike model, buy now and ride in 7 days.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 120
+          }
+        },
+        {
+          "blockId": "cat-card-1",
+          "blockName": "cat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4f0c3c5dccaa8f609685c3cc519027d3c6f1eaddd020e4e78c079b836dfd1b1f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-1",
+            "name": "cat-card-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-accessories",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-1",
+          "blockName": "cat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 206,
+            "y": 136,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9b3b707234835440f41fd4a00f99645e65ce96c4f577a14012230af419ea44c8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-1",
+            "name": "cat-card-t-1",
+            "x": 206,
+            "y": 136,
+            "fill": "#151515",
+            "content": "Accessories",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-1",
+          "blockName": "cat-card-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 154,
+            "width": 140,
+            "height": 134
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "722318e1f327a72c935810d7a612c9b1a883d0b5fb9c05362fa3dd04999aa8db",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-1",
+            "name": "cat-card-b-1",
+            "x": 206,
+            "y": 154,
+            "fill": "#646A62",
+            "content": "Our Front Rack is compatible with the VanMoof S5 & A5 e-bike. Designed to carry up to 10 kg weight. Includes elastic cord to fasten items.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          }
+        },
+        {
+          "blockId": "cat-card-2",
+          "blockName": "cat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b7b0ee1bf5fb01812773e3a81bc8f3474318db7a38a4c6377444bc2f0996d3fe",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-2",
+            "name": "cat-card-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-our-story",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-2",
+          "blockName": "cat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 9,
+          "bounds": {
+            "x": 32,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ed5e8e89291278c5e0f4e0c9b28d7b5f7e2d811b42eda64b3a0be105d3b40863",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-2",
+            "name": "cat-card-t-2",
+            "x": 32,
+            "y": 264,
+            "fill": "#151515",
+            "content": "Our Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-2",
+          "blockName": "cat-card-b-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 10,
+          "bounds": {
+            "x": 32,
+            "y": 282,
+            "width": 140,
+            "height": 92
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2824f1fdbb5de3bb5c8ae2e18c822173a97c12c2dfa33907772b1aa312755fbf",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-2",
+            "name": "cat-card-b-2",
+            "x": 32,
+            "y": 282,
+            "fill": "#646A62",
+            "content": "Our tech smart e-bikes are designed for the city. Discover more about our story on city mobility.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 92
+          }
+        },
+        {
+          "blockId": "cat-card-3",
+          "blockName": "cat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 11,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4a9d3260c0b145f6aab9e792f27b5f20531e471fa46374500102188016e0d359",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-3",
+            "name": "cat-card-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-peak-design",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-img-3",
+          "blockName": "cat-card-img-3",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 12,
+          "bounds": {
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "baba788007af2cbf0ce2fcf969399c8e65e2f163c223b25578bf8504dc1ae7f9",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "relativePath": "assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-img-3",
+            "name": "cat-card-img-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-peak-design",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-3",
+          "blockName": "cat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 13,
+          "bounds": {
+            "x": 206,
+            "y": 264,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "15d0e3f5fa4fb386ac550de2654746553e1c69f248f0506814fb6cfc6df81b05",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-3",
+            "name": "cat-card-t-3",
+            "x": 206,
+            "y": 264,
+            "fill": "#151515",
+            "content": "Peak Design",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          }
+        },
+        {
+          "blockId": "cat-card-b-3",
+          "blockName": "cat-card-b-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 14,
+          "bounds": {
+            "x": 206,
+            "y": 282,
+            "width": 140,
+            "height": 106
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "659bd3351d19fe1b8ef4f9a6aa82f4f457f1aa5758555db79815028d8ceda1e4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-3",
+            "name": "cat-card-b-3",
+            "x": 206,
+            "y": 282,
+            "fill": "#646A62",
+            "content": "Meet your ultimate phone mount. An exclusive, integrated design built to keep your device smartly locked in and secure.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 106
+          }
+        },
+        {
+          "blockId": "cat-card-4",
+          "blockName": "cat-card-4",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 15,
+          "bounds": {
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "611569ec185e7c12ef70320ce71f43852760716604a8d663f619cce53c6324ba",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "cat-card-4",
+            "name": "cat-card-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-shipping-delivery",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "cat-card-t-4",
+          "blockName": "cat-card-t-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 16,
+          "bounds": {
+            "x": 32,
+            "y": 392,
+            "width": 140,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "436116e0cd49cdaa0e86f8eaed5601ef32d7e19a06f8dea8457755f339848377",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-t-4",
+            "name": "cat-card-t-4",
+            "x": 32,
+            "y": 392,
+            "fill": "#151515",
+            "content": "Shipping & Delivery",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43
+          }
+        },
+        {
+          "blockId": "cat-card-b-4",
+          "blockName": "cat-card-b-4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 17,
+          "bounds": {
+            "x": 32,
+            "y": 410,
+            "width": 140,
+            "height": 120
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f37ada180870d5020f1610dbc21c6925113e126a3ed3ec5fb483da1739b1ef6e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "cat-card-b-4",
+            "name": "cat-card-b-4",
+            "x": 32,
+            "y": 410,
+            "fill": "#646A62",
+            "content": "We ship our e-bikes to 19 countries and counting. Your bike arrives pre-assembled, and will be ready to ride in minutes. Find out more.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 120
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "categories",
+        "name": "Categories",
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360,
+        "fill": "#F4F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "cat-title",
+            "name": "cat-title",
+            "x": 18,
+            "y": 22,
+            "fill": "#151515",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-0",
+            "name": "cat-card-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-our-rides",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-0",
+            "name": "cat-card-img-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+              "mode": "cover"
+            },
+            "href": "#page-our-rides",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-0",
+            "name": "cat-card-t-0",
+            "x": 32,
+            "y": 136,
+            "fill": "#151515",
+            "content": "Our Rides",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-0",
+            "name": "cat-card-b-0",
+            "x": 32,
+            "y": 154,
+            "fill": "#646A62",
+            "content": "The VanMoof A5 is an e-bike perfect for agile city rides. Find out more about this e-bike model, buy now and ride in 7 days.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 120
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-1",
+            "name": "cat-card-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-accessories",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-1",
+            "name": "cat-card-t-1",
+            "x": 206,
+            "y": 136,
+            "fill": "#151515",
+            "content": "Accessories",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-1",
+            "name": "cat-card-b-1",
+            "x": 206,
+            "y": 154,
+            "fill": "#646A62",
+            "content": "Our Front Rack is compatible with the VanMoof S5 & A5 e-bike. Designed to carry up to 10 kg weight. Includes elastic cord to fasten items.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-2",
+            "name": "cat-card-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-our-story",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-2",
+            "name": "cat-card-t-2",
+            "x": 32,
+            "y": 264,
+            "fill": "#151515",
+            "content": "Our Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-2",
+            "name": "cat-card-b-2",
+            "x": 32,
+            "y": 282,
+            "fill": "#646A62",
+            "content": "Our tech smart e-bikes are designed for the city. Discover more about our story on city mobility.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 92
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-3",
+            "name": "cat-card-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-peak-design",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-3",
+            "name": "cat-card-img-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-peak-design",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-3",
+            "name": "cat-card-t-3",
+            "x": 206,
+            "y": 264,
+            "fill": "#151515",
+            "content": "Peak Design",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-3",
+            "name": "cat-card-b-3",
+            "x": 206,
+            "y": 282,
+            "fill": "#646A62",
+            "content": "Meet your ultimate phone mount. An exclusive, integrated design built to keep your device smartly locked in and secure.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 106
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-4",
+            "name": "cat-card-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-shipping-delivery",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-4",
+            "name": "cat-card-t-4",
+            "x": 32,
+            "y": 392,
+            "fill": "#151515",
+            "content": "Shipping & Delivery",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-4",
+            "name": "cat-card-b-4",
+            "x": 32,
+            "y": 410,
+            "fill": "#646A62",
+            "content": "We ship our e-bikes to 19 countries and counting. Your bike arrives pre-assembled, and will be ready to ride in minutes. Find out more.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 120
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "featured",
+      "sectionName": "Featured",
+      "sectionKind": "products",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410
+      },
+      "directChildCount": 15,
+      "recursiveNodeCount": 16,
+      "treeHash": "3f6363ca4a48d6113686d692900dfb982f5cacd4072e699ec8b73e63f6e3f85f",
+      "blockCount": 15,
+      "blockIndex": [
+        {
+          "blockId": "featured-title",
+          "blockName": "featured-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 24,
+            "width": 240,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "785fb414ae8769acb72111f7b16d469dac4b4ff081ba6df971a8164aba54bc00"
+        },
+        {
+          "blockId": "feat-card-0",
+          "blockName": "feat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "35b4110f8dbb28983bcfbf8f8148ce131e5e211cce20b253da2fad831bf200c2"
+        },
+        {
+          "blockId": "feat-card-img-0",
+          "blockName": "feat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6d94ad1b637738ad3ec910bfb30929621a9e78a4d74a962170fddde5e90aae8f"
+        },
+        {
+          "blockId": "feat-card-k-0",
+          "blockName": "feat-card-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "314eb2f85a5ec7908dfdc6697a815ecdfcfeae21fe499ffec08d01c5e6960b37"
+        },
+        {
+          "blockId": "feat-card-t-0",
+          "blockName": "feat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 180,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "689c3055475a27e7d65e0b79b1534cf5c40fd2fd3c1ee0b31ed532fee8ebba87"
+        },
+        {
+          "blockId": "feat-card-1",
+          "blockName": "feat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ad6b512142c50db949bd0041a96ae508f4708b18b05687f7127be7ee9957a36f"
+        },
+        {
+          "blockId": "feat-card-img-1",
+          "blockName": "feat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f668995000ef3d518cc8891797b95d3dda29c46a78591cda049983c8f0843c91"
+        },
+        {
+          "blockId": "feat-card-k-1",
+          "blockName": "feat-card-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b467e4714914e1964020a2653f5d74c6b9e16a9b7f1168d765b1a80366ae1e86"
+        },
+        {
+          "blockId": "feat-card-t-1",
+          "blockName": "feat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 180,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3453120ab4f5d7c7a802969db90072b62f65ae4035e8a5daf6cc66b73a4393cb"
+        },
+        {
+          "blockId": "feat-card-2",
+          "blockName": "feat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2ce4732ea204db0e3e7429d57f1045c5adf9f1fa1c39db30f4da8e9e5eb940a3"
+        },
+        {
+          "blockId": "feat-card-k-2",
+          "blockName": "feat-card-k-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 10,
+          "bounds": {
+            "x": 32,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f5950db719702bcf1f34c9b28c202d608bffc8e6c7a1673ac0db5fde8e309954"
+        },
+        {
+          "blockId": "feat-card-t-2",
+          "blockName": "feat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 334,
+            "width": 140,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d2753f8848945ae650b13c92a49b7247b2c288d135b20626d6b0ffc5946fe6bf"
+        },
+        {
+          "blockId": "feat-card-3",
+          "blockName": "feat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 12,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "984ba6129b191643d1872ad33486dd84a9552057ec11a305e33484fdf0135ea8"
+        },
+        {
+          "blockId": "feat-card-k-3",
+          "blockName": "feat-card-k-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 13,
+          "bounds": {
+            "x": 206,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b9b04ecf876afbcc6799efbe2ae8c9ced581cc8baf32f093069afb45ae0755bb"
+        },
+        {
+          "blockId": "feat-card-t-3",
+          "blockName": "feat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 14,
+          "bounds": {
+            "x": 206,
+            "y": 334,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ea1358215aed598a7dffdafc0c14bd0ae4dcbd7bce8cd06b36cc05b75fe4f616"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+          "relativePath": "assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+          "exists": true
+        },
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+          "relativePath": "assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "featured-title",
+          "blockName": "featured-title",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 18,
+            "y": 24,
+            "width": 240,
+            "height": 32
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "785fb414ae8769acb72111f7b16d469dac4b4ff081ba6df971a8164aba54bc00",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "featured-title",
+            "name": "featured-title",
+            "x": 18,
+            "y": 24,
+            "fill": "#151515",
+            "content": "Featured pages",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 32
+          }
+        },
+        {
+          "blockId": "feat-card-0",
+          "blockName": "feat-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 1,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "35b4110f8dbb28983bcfbf8f8148ce131e5e211cce20b253da2fad831bf200c2",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-0",
+            "name": "feat-card-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-a5",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-0",
+          "blockName": "feat-card-img-0",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 2,
+          "bounds": {
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6d94ad1b637738ad3ec910bfb30929621a9e78a4d74a962170fddde5e90aae8f",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+            "relativePath": "assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-0",
+            "name": "feat-card-img-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+              "mode": "cover"
+            },
+            "href": "#page-a5",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-0",
+          "blockName": "feat-card-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 32,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "314eb2f85a5ec7908dfdc6697a815ecdfcfeae21fe499ffec08d01c5e6960b37",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-0",
+            "name": "feat-card-k-0",
+            "x": 32,
+            "y": 162,
+            "fill": "#7AC943",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-a5"
+          }
+        },
+        {
+          "blockId": "feat-card-t-0",
+          "blockName": "feat-card-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 32,
+            "y": 180,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "689c3055475a27e7d65e0b79b1534cf5c40fd2fd3c1ee0b31ed532fee8ebba87",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-0",
+            "name": "feat-card-t-0",
+            "x": 32,
+            "y": 180,
+            "fill": "#151515",
+            "content": "A5",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-a5"
+          }
+        },
+        {
+          "blockId": "feat-card-1",
+          "blockName": "feat-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ad6b512142c50db949bd0041a96ae508f4708b18b05687f7127be7ee9957a36f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-1",
+            "name": "feat-card-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-s6",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-img-1",
+          "blockName": "feat-card-img-1",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 6,
+          "bounds": {
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f668995000ef3d518cc8891797b95d3dda29c46a78591cda049983c8f0843c91",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+            "relativePath": "assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+            "exists": true,
+            "mode": "cover"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-img-1",
+            "name": "feat-card-img-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-s6",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-1",
+          "blockName": "feat-card-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 206,
+            "y": 162,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b467e4714914e1964020a2653f5d74c6b9e16a9b7f1168d765b1a80366ae1e86",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-1",
+            "name": "feat-card-k-1",
+            "x": 206,
+            "y": 162,
+            "fill": "#7AC943",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-s6"
+          }
+        },
+        {
+          "blockId": "feat-card-t-1",
+          "blockName": "feat-card-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 206,
+            "y": 180,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3453120ab4f5d7c7a802969db90072b62f65ae4035e8a5daf6cc66b73a4393cb",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-1",
+            "name": "feat-card-t-1",
+            "x": 206,
+            "y": 180,
+            "fill": "#151515",
+            "content": "S6",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-s6"
+          }
+        },
+        {
+          "blockId": "feat-card-2",
+          "blockName": "feat-card-2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2ce4732ea204db0e3e7429d57f1045c5adf9f1fa1c39db30f4da8e9e5eb940a3",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-2",
+            "name": "feat-card-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-s5-a5-front-rack",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-2",
+          "blockName": "feat-card-k-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 10,
+          "bounds": {
+            "x": 32,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f5950db719702bcf1f34c9b28c202d608bffc8e6c7a1673ac0db5fde8e309954",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-2",
+            "name": "feat-card-k-2",
+            "x": 32,
+            "y": 316,
+            "fill": "#7AC943",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-s5-a5-front-rack"
+          }
+        },
+        {
+          "blockId": "feat-card-t-2",
+          "blockName": "feat-card-t-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 32,
+            "y": 334,
+            "width": 140,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d2753f8848945ae650b13c92a49b7247b2c288d135b20626d6b0ffc5946fe6bf",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-2",
+            "name": "feat-card-t-2",
+            "x": 32,
+            "y": 334,
+            "fill": "#151515",
+            "content": "S5 & A5 Front Rack",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43,
+            "href": "#page-s5-a5-front-rack"
+          }
+        },
+        {
+          "blockId": "feat-card-3",
+          "blockName": "feat-card-3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 12,
+          "bounds": {
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "984ba6129b191643d1872ad33486dd84a9552057ec11a305e33484fdf0135ea8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "feat-card-3",
+            "name": "feat-card-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-handlebar-risers",
+            "cornerRadius": 18
+          }
+        },
+        {
+          "blockId": "feat-card-k-3",
+          "blockName": "feat-card-k-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 13,
+          "bounds": {
+            "x": 206,
+            "y": 316,
+            "width": 140,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b9b04ecf876afbcc6799efbe2ae8c9ced581cc8baf32f093069afb45ae0755bb",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-k-3",
+            "name": "feat-card-k-3",
+            "x": 206,
+            "y": 316,
+            "fill": "#7AC943",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-handlebar-risers"
+          }
+        },
+        {
+          "blockId": "feat-card-t-3",
+          "blockName": "feat-card-t-3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 14,
+          "bounds": {
+            "x": 206,
+            "y": 334,
+            "width": 140,
+            "height": 25
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ea1358215aed598a7dffdafc0c14bd0ae4dcbd7bce8cd06b36cc05b75fe4f616",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "feat-card-t-3",
+            "name": "feat-card-t-3",
+            "x": 206,
+            "y": 334,
+            "fill": "#151515",
+            "content": "Handlebar Risers",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-handlebar-risers"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "featured",
+        "name": "Featured",
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410,
+        "fill": "#F4F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "featured-title",
+            "name": "featured-title",
+            "x": 18,
+            "y": 24,
+            "fill": "#151515",
+            "content": "Featured pages",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-0",
+            "name": "feat-card-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-a5",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-0",
+            "name": "feat-card-img-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+              "mode": "cover"
+            },
+            "href": "#page-a5",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-0",
+            "name": "feat-card-k-0",
+            "x": 32,
+            "y": 162,
+            "fill": "#7AC943",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-a5"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-0",
+            "name": "feat-card-t-0",
+            "x": 32,
+            "y": 180,
+            "fill": "#151515",
+            "content": "A5",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-a5"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-1",
+            "name": "feat-card-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-s6",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-1",
+            "name": "feat-card-img-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-s6",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-1",
+            "name": "feat-card-k-1",
+            "x": 206,
+            "y": 162,
+            "fill": "#7AC943",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-s6"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-1",
+            "name": "feat-card-t-1",
+            "x": 206,
+            "y": 180,
+            "fill": "#151515",
+            "content": "S6",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-s6"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-2",
+            "name": "feat-card-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-s5-a5-front-rack",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-2",
+            "name": "feat-card-k-2",
+            "x": 32,
+            "y": 316,
+            "fill": "#7AC943",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-s5-a5-front-rack"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-2",
+            "name": "feat-card-t-2",
+            "x": 32,
+            "y": 334,
+            "fill": "#151515",
+            "content": "S5 & A5 Front Rack",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43,
+            "href": "#page-s5-a5-front-rack"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-3",
+            "name": "feat-card-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-handlebar-risers",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-3",
+            "name": "feat-card-k-3",
+            "x": 206,
+            "y": 316,
+            "fill": "#7AC943",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-handlebar-risers"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-3",
+            "name": "feat-card-t-3",
+            "x": 206,
+            "y": 334,
+            "fill": "#151515",
+            "content": "Handlebar Risers",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-handlebar-risers"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "insights",
+      "sectionName": "Insights",
+      "sectionKind": "story",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420
+      },
+      "directChildCount": 8,
+      "recursiveNodeCount": 9,
+      "treeHash": "1248549a0b0be419195647b747dd0c81abb51cb04cf977d81c5882ca3299633e",
+      "blockCount": 8,
+      "blockIndex": [
+        {
+          "blockId": "insight-card-0",
+          "blockName": "insight-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 0,
+          "bounds": {
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "afda09d4632a5c4e0b2ecfb39911327058c796dd809db5fa6474190cac53e9d9"
+        },
+        {
+          "blockId": "insight-k-0",
+          "blockName": "insight-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 42,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6b1dc3154beecdfcc9ac6d19da83be9436b544725e017e37af2509afc837ba31"
+        },
+        {
+          "blockId": "insight-t-0",
+          "blockName": "insight-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 66,
+            "width": 136,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "609186670ffc5a3d7404310cdc6cb5f89bd64d17ad45a29c58d2fcbbdb1e5fc8"
+        },
+        {
+          "blockId": "insight-b-0",
+          "blockName": "insight-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 118,
+            "width": 136,
+            "height": 100
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "00a7a2e8b015908f62568e601ff7f9811f2c00854cb195cb5e445eded92606f8"
+        },
+        {
+          "blockId": "insight-card-1",
+          "blockName": "insight-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 4,
+          "bounds": {
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8215c630c154e0e4df961f430733fafc7b6ba05b445c4a8cebff091371246081"
+        },
+        {
+          "blockId": "insight-k-1",
+          "blockName": "insight-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 5,
+          "bounds": {
+            "x": 40,
+            "y": 230,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e98352b91f6beca835631466bc6deba0ee84afa5025452bfedf8f2ad76e3cfba"
+        },
+        {
+          "blockId": "insight-t-1",
+          "blockName": "insight-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 40,
+            "y": 254,
+            "width": 136,
+            "height": 63
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "01a705e119e85922f069bf1a72e97d86423f8a0edde13ffc90556898a34fce3f"
+        },
+        {
+          "blockId": "insight-b-1",
+          "blockName": "insight-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 40,
+            "y": 306,
+            "width": 136,
+            "height": 131
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "53989b5d646bbf912c746b43f1a46ef8aee8bd29afe573b068caba1f53b5a54c"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "insight-card-0",
+          "blockName": "insight-card-0",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 0,
+          "bounds": {
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "afda09d4632a5c4e0b2ecfb39911327058c796dd809db5fa6474190cac53e9d9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-card-0",
+            "name": "insight-card-0",
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168,
+            "fill": "#151515",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-our-story",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-k-0",
+          "blockName": "insight-k-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 42,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6b1dc3154beecdfcc9ac6d19da83be9436b544725e017e37af2509afc837ba31",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-k-0",
+            "name": "insight-k-0",
+            "x": 40,
+            "y": 42,
+            "fill": "#ECF8E1",
+            "content": "Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-our-story"
+          }
+        },
+        {
+          "blockId": "insight-t-0",
+          "blockName": "insight-t-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 66,
+            "width": 136,
+            "height": 35
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "609186670ffc5a3d7404310cdc6cb5f89bd64d17ad45a29c58d2fcbbdb1e5fc8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-t-0",
+            "name": "insight-t-0",
+            "x": 40,
+            "y": 66,
+            "fill": "#FFFFFF",
+            "content": "Our Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-our-story"
+          }
+        },
+        {
+          "blockId": "insight-b-0",
+          "blockName": "insight-b-0",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 118,
+            "width": 136,
+            "height": 100
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "00a7a2e8b015908f62568e601ff7f9811f2c00854cb195cb5e445eded92606f8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-b-0",
+            "name": "insight-b-0",
+            "x": 40,
+            "y": 118,
+            "fill": "#EAE6DF",
+            "content": "Our tech smart e-bikes are designed for the city. Discover more about our story on city mobility.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 100,
+            "href": "#page-our-story"
+          }
+        },
+        {
+          "blockId": "insight-card-1",
+          "blockName": "insight-card-1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 4,
+          "bounds": {
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8215c630c154e0e4df961f430733fafc7b6ba05b445c4a8cebff091371246081",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "insight-card-1",
+            "name": "insight-card-1",
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168,
+            "fill": "#EEF0E9",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-shipping-delivery",
+            "cornerRadius": 20
+          }
+        },
+        {
+          "blockId": "insight-k-1",
+          "blockName": "insight-k-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 5,
+          "bounds": {
+            "x": 40,
+            "y": 230,
+            "width": 160,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e98352b91f6beca835631466bc6deba0ee84afa5025452bfedf8f2ad76e3cfba",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-k-1",
+            "name": "insight-k-1",
+            "x": 40,
+            "y": 230,
+            "fill": "#7AC943",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-shipping-delivery"
+          }
+        },
+        {
+          "blockId": "insight-t-1",
+          "blockName": "insight-t-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 40,
+            "y": 254,
+            "width": 136,
+            "height": 63
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "01a705e119e85922f069bf1a72e97d86423f8a0edde13ffc90556898a34fce3f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-t-1",
+            "name": "insight-t-1",
+            "x": 40,
+            "y": 254,
+            "fill": "#151515",
+            "content": "Shipping & Delivery",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 63,
+            "href": "#page-shipping-delivery"
+          }
+        },
+        {
+          "blockId": "insight-b-1",
+          "blockName": "insight-b-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 40,
+            "y": 306,
+            "width": 136,
+            "height": 131
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "53989b5d646bbf912c746b43f1a46ef8aee8bd29afe573b068caba1f53b5a54c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "insight-b-1",
+            "name": "insight-b-1",
+            "x": 40,
+            "y": 306,
+            "fill": "#646A62",
+            "content": "We ship our e-bikes to 19 countries and counting. Your bike arrives pre-assembled, and will be ready to ride in minutes. Find out more.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 131,
+            "href": "#page-shipping-delivery"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "insights",
+        "name": "Insights",
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420,
+        "fill": "#F4F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "insight-card-0",
+            "name": "insight-card-0",
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168,
+            "fill": "#151515",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-our-story",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-0",
+            "name": "insight-k-0",
+            "x": 40,
+            "y": 42,
+            "fill": "#ECF8E1",
+            "content": "Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-our-story"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-0",
+            "name": "insight-t-0",
+            "x": 40,
+            "y": 66,
+            "fill": "#FFFFFF",
+            "content": "Our Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-our-story"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-0",
+            "name": "insight-b-0",
+            "x": 40,
+            "y": 118,
+            "fill": "#EAE6DF",
+            "content": "Our tech smart e-bikes are designed for the city. Discover more about our story on city mobility.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 100,
+            "href": "#page-our-story"
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-card-1",
+            "name": "insight-card-1",
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168,
+            "fill": "#EEF0E9",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-shipping-delivery",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-1",
+            "name": "insight-k-1",
+            "x": 40,
+            "y": 230,
+            "fill": "#7AC943",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-shipping-delivery"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-1",
+            "name": "insight-t-1",
+            "x": 40,
+            "y": 254,
+            "fill": "#151515",
+            "content": "Shipping & Delivery",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 63,
+            "href": "#page-shipping-delivery"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-1",
+            "name": "insight-b-1",
+            "x": 40,
+            "y": 306,
+            "fill": "#646A62",
+            "content": "We ship our e-bikes to 19 countries and counting. Your bike arrives pre-assembled, and will be ready to ride in minutes. Find out more.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 131,
+            "href": "#page-shipping-delivery"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 4,
+      "bounds": {
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "216d6228ed9e2b4e7018307909b859db314b199cf0cfe73f2130758e54957fcc",
+      "blockCount": 5,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e37a20e8b448081c57f2e83319f021b4530fa387a046f1b7d91e12461bf0ce67"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4f689e58ac3df3dc59363c89444a4b7f85c8ee388df9126ee2a2262eadd0d8b4"
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "79069bbd60e7863f635989fa0b9d35b8d5db33d76321f8a05b545b84f5365e33"
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ba5e346ec8184bf857c04e664f714267f3dabf0a5ec1cbd250b59cce7cf1bd97"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ce010e7497d5fcab5a4ebf8150b268feeb22923b4a6a854b48fbb9d2d15e4058"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e37a20e8b448081c57f2e83319f021b4530fa387a046f1b7d91e12461bf0ce67",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#131714"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4f689e58ac3df3dc59363c89444a4b7f85c8ee388df9126ee2a2262eadd0d8b4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F3F5EE",
+            "content": "VanMoof",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "79069bbd60e7863f635989fa0b9d35b8d5db33d76321f8a05b545b84f5365e33",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F3F5EE",
+            "content": "Our Rides Accessories Our Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ba5e346ec8184bf857c04e664f714267f3dabf0a5ec1cbd250b59cce7cf1bd97",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F3F5EE",
+            "content": "Peak Design Shipping & Delivery A5 S6",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 53
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ce010e7497d5fcab5a4ebf8150b268feeb22923b4a6a854b48fbb9d2d15e4058",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250,
+        "fill": "#131714",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#131714"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F3F5EE",
+            "content": "VanMoof",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F3F5EE",
+            "content": "Our Rides Accessories Our Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F3F5EE",
+            "content": "Peak Design Shipping & Delivery A5 S6",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 53
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 56,
+  "looseNodeCount": 1,
+  "looseNodes": [
+    {
+      "id": "home-bg",
+      "name": "home-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 1960
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
+      "relativePath": "assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+      "relativePath": "assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+      "relativePath": "assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+      "relativePath": "assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "relativePath": "assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-home",
+    "name": "VanMoof Homepage Mobile",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 1960,
+    "fill": "#F4F5F0",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "home-bg",
+        "name": "home-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 1960,
+        "fill": "#F4F5F0"
+      },
+      {
+        "type": "frame",
+        "id": "hero",
+        "name": "Hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520,
+        "fill": "#F4F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "hero-bg",
+            "name": "hero-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 520,
+            "fill": "#F4F5F0"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-image",
+            "name": "hero-image",
+            "x": 20,
+            "y": 250,
+            "width": 350,
+            "height": 220,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-home-img-1-5454a5fb.png",
+              "mode": "cover"
+            },
+            "href": "#page-our-rides",
+            "cornerRadius": 28
+          },
+          {
+            "type": "frame",
+            "id": "header-page-home",
+            "name": "Header",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#00000000",
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "header-bg",
+                "name": "header-bg",
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 64,
+                "fill": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "id": "header-brand",
+                "name": "header-brand",
+                "x": 18,
+                "y": 18,
+                "fill": "#151515",
+                "content": "VanMoof",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 180,
+                "height": 28
+              },
+              {
+                "type": "text",
+                "id": "header-menu",
+                "name": "header-menu",
+                "x": 362,
+                "y": 18,
+                "fill": "#151515",
+                "content": "☰",
+                "fontFamily": "Helvetica Neue",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "textGrowth": "fixed-width-height",
+                "width": 18,
+                "height": 20,
+                "href": "#page-our-rides",
+                "textAlign": "center",
+                "textAlignVertical": "middle"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "hero-kicker",
+            "name": "hero-kicker",
+            "x": 18,
+            "y": 86,
+            "fill": "#7AC943",
+            "content": "VANMOOF",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 18,
+            "letterSpacing": "0.12em"
+          },
+          {
+            "type": "text",
+            "id": "hero-title",
+            "name": "hero-title",
+            "x": 18,
+            "y": 116,
+            "fill": "#151515",
+            "content": "Award-winning e-bikes with high-tech features",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 34,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 151
+          },
+          {
+            "type": "text",
+            "id": "hero-subtitle",
+            "name": "hero-subtitle",
+            "x": 18,
+            "y": 240,
+            "fill": "#646A62",
+            "content": "smart urban mobility from VanMoof, designed around city riding, integrated hardware and connected services.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 14,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 66
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-primary-box",
+            "name": "hero-primary-box",
+            "x": 18,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#7AC943",
+            "stroke": {
+              "fill": "#7AC943",
+              "thickness": 1
+            },
+            "href": "#page-our-rides",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-primary-text",
+            "name": "hero-primary-text",
+            "x": 32,
+            "y": 325,
+            "fill": "#FFFFFF",
+            "content": "Our Rides",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-our-rides",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "rectangle",
+            "id": "hero-secondary-box",
+            "name": "hero-secondary-box",
+            "x": 180,
+            "y": 314,
+            "width": 148,
+            "height": 40,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-our-story",
+            "cornerRadius": 14
+          },
+          {
+            "type": "text",
+            "id": "hero-secondary-text",
+            "name": "hero-secondary-text",
+            "x": 194,
+            "y": 325,
+            "fill": "#151515",
+            "content": "Our Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18,
+            "letterSpacing": "0.03em",
+            "href": "#page-our-story",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "categories",
+        "name": "Categories",
+        "x": 0,
+        "y": 520,
+        "width": 390,
+        "height": 360,
+        "fill": "#F4F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "cat-title",
+            "name": "cat-title",
+            "x": 18,
+            "y": 22,
+            "fill": "#151515",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 200,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-0",
+            "name": "cat-card-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-our-rides",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-0",
+            "name": "cat-card-img-0",
+            "x": 20,
+            "y": 66,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+              "mode": "cover"
+            },
+            "href": "#page-our-rides",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-0",
+            "name": "cat-card-t-0",
+            "x": 32,
+            "y": 136,
+            "fill": "#151515",
+            "content": "Our Rides",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-0",
+            "name": "cat-card-b-0",
+            "x": 32,
+            "y": 154,
+            "fill": "#646A62",
+            "content": "The VanMoof A5 is an e-bike perfect for agile city rides. Find out more about this e-bike model, buy now and ride in 7 days.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 120
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-1",
+            "name": "cat-card-1",
+            "x": 194,
+            "y": 66,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-accessories",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-1",
+            "name": "cat-card-t-1",
+            "x": 206,
+            "y": 136,
+            "fill": "#151515",
+            "content": "Accessories",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-1",
+            "name": "cat-card-b-1",
+            "x": 206,
+            "y": 154,
+            "fill": "#646A62",
+            "content": "Our Front Rack is compatible with the VanMoof S5 & A5 e-bike. Designed to carry up to 10 kg weight. Includes elastic cord to fasten items.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 134
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-2",
+            "name": "cat-card-2",
+            "x": 20,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-our-story",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-2",
+            "name": "cat-card-t-2",
+            "x": 32,
+            "y": 264,
+            "fill": "#151515",
+            "content": "Our Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-2",
+            "name": "cat-card-b-2",
+            "x": 32,
+            "y": 282,
+            "fill": "#646A62",
+            "content": "Our tech smart e-bikes are designed for the city. Discover more about our story on city mobility.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 92
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-3",
+            "name": "cat-card-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-peak-design",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-img-3",
+            "name": "cat-card-img-3",
+            "x": 194,
+            "y": 194,
+            "width": 164,
+            "height": 60,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-peak-design-img-1-ba82c7eb.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-peak-design",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-3",
+            "name": "cat-card-t-3",
+            "x": 206,
+            "y": 264,
+            "fill": "#151515",
+            "content": "Peak Design",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-3",
+            "name": "cat-card-b-3",
+            "x": 206,
+            "y": 282,
+            "fill": "#646A62",
+            "content": "Meet your ultimate phone mount. An exclusive, integrated design built to keep your device smartly locked in and secure.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 106
+          },
+          {
+            "type": "rectangle",
+            "id": "cat-card-4",
+            "name": "cat-card-4",
+            "x": 20,
+            "y": 322,
+            "width": 164,
+            "height": 108,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-shipping-delivery",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "cat-card-t-4",
+            "name": "cat-card-t-4",
+            "x": 32,
+            "y": 392,
+            "fill": "#151515",
+            "content": "Shipping & Delivery",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43
+          },
+          {
+            "type": "text",
+            "id": "cat-card-b-4",
+            "name": "cat-card-b-4",
+            "x": 32,
+            "y": 410,
+            "fill": "#646A62",
+            "content": "We ship our e-bikes to 19 countries and counting. Your bike arrives pre-assembled, and will be ready to ride in minutes. Find out more.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 120
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "featured",
+        "name": "Featured",
+        "x": 0,
+        "y": 880,
+        "width": 390,
+        "height": 410,
+        "fill": "#F4F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "featured-title",
+            "name": "featured-title",
+            "x": 18,
+            "y": 24,
+            "fill": "#151515",
+            "content": "Featured pages",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 32
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-0",
+            "name": "feat-card-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-a5",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-0",
+            "name": "feat-card-img-0",
+            "x": 20,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-our-rides-img-1-17e1ff50.png",
+              "mode": "cover"
+            },
+            "href": "#page-a5",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-0",
+            "name": "feat-card-k-0",
+            "x": 32,
+            "y": 162,
+            "fill": "#7AC943",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-a5"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-0",
+            "name": "feat-card-t-0",
+            "x": 32,
+            "y": 180,
+            "fill": "#151515",
+            "content": "A5",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-a5"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-1",
+            "name": "feat-card-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-s6",
+            "cornerRadius": 18
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-img-1",
+            "name": "feat-card-img-1",
+            "x": 194,
+            "y": 68,
+            "width": 164,
+            "height": 86,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+              "mode": "cover"
+            },
+            "href": "#page-s6",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-1",
+            "name": "feat-card-k-1",
+            "x": 206,
+            "y": 162,
+            "fill": "#7AC943",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-s6"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-1",
+            "name": "feat-card-t-1",
+            "x": 206,
+            "y": 180,
+            "fill": "#151515",
+            "content": "S6",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-s6"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-2",
+            "name": "feat-card-2",
+            "x": 20,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-s5-a5-front-rack",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-2",
+            "name": "feat-card-k-2",
+            "x": 32,
+            "y": 316,
+            "fill": "#7AC943",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-s5-a5-front-rack"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-2",
+            "name": "feat-card-t-2",
+            "x": 32,
+            "y": 334,
+            "fill": "#151515",
+            "content": "S5 & A5 Front Rack",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 43,
+            "href": "#page-s5-a5-front-rack"
+          },
+          {
+            "type": "rectangle",
+            "id": "feat-card-3",
+            "name": "feat-card-3",
+            "x": 194,
+            "y": 222,
+            "width": 164,
+            "height": 132,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-handlebar-risers",
+            "cornerRadius": 18
+          },
+          {
+            "type": "text",
+            "id": "feat-card-k-3",
+            "name": "feat-card-k-3",
+            "x": 206,
+            "y": 316,
+            "fill": "#7AC943",
+            "content": "THIRD LEVEL",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-handlebar-risers"
+          },
+          {
+            "type": "text",
+            "id": "feat-card-t-3",
+            "name": "feat-card-t-3",
+            "x": 206,
+            "y": 334,
+            "fill": "#151515",
+            "content": "Handlebar Risers",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 25,
+            "href": "#page-handlebar-risers"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "insights",
+        "name": "Insights",
+        "x": 0,
+        "y": 1290,
+        "width": 390,
+        "height": 420,
+        "fill": "#F4F5F0",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "insight-card-0",
+            "name": "insight-card-0",
+            "x": 20,
+            "y": 20,
+            "width": 350,
+            "height": 168,
+            "fill": "#151515",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-our-story",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-0",
+            "name": "insight-k-0",
+            "x": 40,
+            "y": 42,
+            "fill": "#ECF8E1",
+            "content": "Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-our-story"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-0",
+            "name": "insight-t-0",
+            "x": 40,
+            "y": 66,
+            "fill": "#FFFFFF",
+            "content": "Our Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 35,
+            "href": "#page-our-story"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-0",
+            "name": "insight-b-0",
+            "x": 40,
+            "y": 118,
+            "fill": "#EAE6DF",
+            "content": "Our tech smart e-bikes are designed for the city. Discover more about our story on city mobility.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 100,
+            "href": "#page-our-story"
+          },
+          {
+            "type": "rectangle",
+            "id": "insight-card-1",
+            "name": "insight-card-1",
+            "x": 20,
+            "y": 208,
+            "width": 350,
+            "height": 168,
+            "fill": "#EEF0E9",
+            "stroke": {
+              "fill": "#D8DDD4",
+              "thickness": 1
+            },
+            "href": "#page-shipping-delivery",
+            "cornerRadius": 20
+          },
+          {
+            "type": "text",
+            "id": "insight-k-1",
+            "name": "insight-k-1",
+            "x": 40,
+            "y": 230,
+            "fill": "#7AC943",
+            "content": "Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 160,
+            "height": 16,
+            "letterSpacing": "0.08em",
+            "href": "#page-shipping-delivery"
+          },
+          {
+            "type": "text",
+            "id": "insight-t-1",
+            "name": "insight-t-1",
+            "x": 40,
+            "y": 254,
+            "fill": "#151515",
+            "content": "Shipping & Delivery",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 63,
+            "href": "#page-shipping-delivery"
+          },
+          {
+            "type": "text",
+            "id": "insight-b-1",
+            "name": "insight-b-1",
+            "x": 40,
+            "y": 306,
+            "fill": "#646A62",
+            "content": "We ship our e-bikes to 19 countries and counting. Your bike arrives pre-assembled, and will be ready to ride in minutes. Find out more.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 136,
+            "height": 131,
+            "href": "#page-shipping-delivery"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1710,
+        "width": 390,
+        "height": 250,
+        "fill": "#131714",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#131714"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F3F5EE",
+            "content": "VanMoof",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F3F5EE",
+            "content": "Our Rides Accessories Our Story",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F3F5EE",
+            "content": "Peak Design Shipping & Delivery A5 S6",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 53
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "VanMoof structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    ]
+  }
+}

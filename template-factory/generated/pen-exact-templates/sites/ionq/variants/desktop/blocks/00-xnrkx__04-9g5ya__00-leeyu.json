@@ -1,0 +1,110 @@
+{
+  "blockId": "leeyu",
+  "blockName": "head",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 0,
+  "bounds": {
+    "x": 32,
+    "y": 28,
+    "width": 1135,
+    "height": 119
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 7,
+  "treeHash": "afb97523a529785e7bc6b42c0c15fefbe2c272d9d2e7fba32987566882e7bac6",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "leeyu",
+    "x": 32,
+    "y": 28,
+    "name": "head",
+    "width": 1135,
+    "height": 119,
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "FC1Ck",
+        "x": 0,
+        "y": 0,
+        "name": "title",
+        "fill": "#0B0F14",
+        "textGrowth": "fixed-width",
+        "width": 876,
+        "content": "The only full-stack\nquantum platform",
+        "lineHeight": 1.08,
+        "fontFamily": "Inter",
+        "fontSize": 48,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "bKcX2",
+        "x": 1000,
+        "y": 60,
+        "name": "arrows",
+        "width": 106,
+        "height": 48,
+        "gap": 10,
+        "children": [
+          {
+            "type": "frame",
+            "id": "bunD2",
+            "name": "leftBtn",
+            "width": 48,
+            "height": 48,
+            "fill": "#EAECEE",
+            "cornerRadius": 10,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#A8ADB3"
+            },
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "S4Mbi",
+                "name": "leftTxt",
+                "fill": "#73787F",
+                "content": "←",
+                "fontFamily": "Inter",
+                "fontSize": 26,
+                "fontWeight": "600"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "6IKUW",
+            "name": "rightBtn",
+            "width": 48,
+            "height": 48,
+            "fill": "#EAECEE",
+            "cornerRadius": 10,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#A8ADB3"
+            },
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "1QOr5",
+                "name": "rightTxt",
+                "fill": "#73787F",
+                "content": "→",
+                "fontFamily": "Inter",
+                "fontSize": 26,
+                "fontWeight": "600"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

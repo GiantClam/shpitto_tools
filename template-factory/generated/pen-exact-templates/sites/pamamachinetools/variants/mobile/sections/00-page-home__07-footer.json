@@ -1,0 +1,413 @@
+{
+  "sectionId": "footer",
+  "sectionName": "footer",
+  "sectionKind": "footer",
+  "order": 7,
+  "bounds": {
+    "x": 0,
+    "y": 3096,
+    "width": 390,
+    "height": 276
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 7,
+  "treeHash": "35a53ee97be0e238d4d53aaa763be260e9c5b1dfc68c6d742d198abe548d8b6b",
+  "blockCount": 6,
+  "blockIndex": [
+    {
+      "blockId": "footer-bg",
+      "blockName": "footer-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 276
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8abca62f0e69da5589e80b26c9742aaed6e21f34cd965ea76a93a7756e6f10bc"
+    },
+    {
+      "blockId": "footer-logo",
+      "blockName": "footer-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 16,
+        "y": 28,
+        "width": 90,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "828c1beb76aaafb5e46e786ba4525b684e83b8f906e22cbdc705dc96c03d17be"
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 16,
+        "y": 72,
+        "width": 330,
+        "height": 59
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dc73e458ba996efabc3be9b19514a95712c0ac94b9a5cac098857b6d914f807d"
+    },
+    {
+      "blockId": "footer-col-1",
+      "blockName": "footer-col-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 16,
+        "y": 130,
+        "width": 100,
+        "height": 59
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c04ed811acc1576bbf4edc869c8a9221d38f01ff61ab4b7ff55c27a3a5c8a4b1"
+    },
+    {
+      "blockId": "footer-col-2",
+      "blockName": "footer-col-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 140,
+        "y": 130,
+        "width": 110,
+        "height": 59
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2d3c36998da10466915710f594774ade191b7d7556b8a56df6675e018d926aa9"
+    },
+    {
+      "blockId": "footer-col-3",
+      "blockName": "footer-col-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 258,
+        "y": 130,
+        "width": 100,
+        "height": 59
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "eaadbb28730e99aadd5d5938f2798dbe40c87bb0394ef990ac8086007742a8a4"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/pama-logo-white.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "footer-bg",
+      "blockName": "footer-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 276
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8abca62f0e69da5589e80b26c9742aaed6e21f34cd965ea76a93a7756e6f10bc",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "footer-bg",
+        "name": "footer-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 276,
+        "fill": "#05A6B5"
+      }
+    },
+    {
+      "blockId": "footer-logo",
+      "blockName": "footer-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 16,
+        "y": 28,
+        "width": 90,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "828c1beb76aaafb5e46e786ba4525b684e83b8f906e22cbdc705dc96c03d17be",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/pama-logo-white.png",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "footer-logo",
+        "name": "footer-logo",
+        "x": 16,
+        "y": 28,
+        "width": 90,
+        "height": 26,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/pama-logo-white.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 16,
+        "y": 72,
+        "width": 330,
+        "height": 59
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dc73e458ba996efabc3be9b19514a95712c0ac94b9a5cac098857b6d914f807d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-copy",
+        "name": "footer-copy",
+        "x": 16,
+        "y": 72,
+        "fill": "#FFFFFF",
+        "content": "PAMA structured clone pen. Desktop and mobile files use editable text, buttons, cards and image containers.",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 330,
+        "height": 59
+      }
+    },
+    {
+      "blockId": "footer-col-1",
+      "blockName": "footer-col-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 16,
+        "y": 130,
+        "width": 100,
+        "height": 59
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c04ed811acc1576bbf4edc869c8a9221d38f01ff61ab4b7ff55c27a3a5c8a4b1",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-col-1",
+        "name": "footer-col-1",
+        "x": 16,
+        "y": 130,
+        "fill": "#FFFFFF",
+        "content": "SECTORS\nPRODUCTS\nSUPPORT",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 59
+      }
+    },
+    {
+      "blockId": "footer-col-2",
+      "blockName": "footer-col-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 140,
+        "y": 130,
+        "width": 110,
+        "height": 59
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2d3c36998da10466915710f594774ade191b7d7556b8a56df6675e018d926aa9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-col-2",
+        "name": "footer-col-2",
+        "x": 140,
+        "y": 130,
+        "fill": "#FFFFFF",
+        "content": "ABOUT US\nWORLDWIDE\nCONTACT",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 110,
+        "height": 59
+      }
+    },
+    {
+      "blockId": "footer-col-3",
+      "blockName": "footer-col-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 258,
+        "y": 130,
+        "width": 100,
+        "height": 59
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "eaadbb28730e99aadd5d5938f2798dbe40c87bb0394ef990ac8086007742a8a4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-col-3",
+        "name": "footer-col-3",
+        "x": 258,
+        "y": 130,
+        "fill": "#FFFFFF",
+        "content": "NEWS\nMEDIA\nCAREERS",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 59
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "footer",
+    "name": "footer",
+    "x": 0,
+    "y": 3096,
+    "width": 390,
+    "height": 276,
+    "fill": "#05A6B5",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "footer-bg",
+        "name": "footer-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 276,
+        "fill": "#05A6B5"
+      },
+      {
+        "type": "rectangle",
+        "id": "footer-logo",
+        "name": "footer-logo",
+        "x": 16,
+        "y": 28,
+        "width": 90,
+        "height": 26,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/pama-logo-white.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "footer-copy",
+        "name": "footer-copy",
+        "x": 16,
+        "y": 72,
+        "fill": "#FFFFFF",
+        "content": "PAMA structured clone pen. Desktop and mobile files use editable text, buttons, cards and image containers.",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 330,
+        "height": 59
+      },
+      {
+        "type": "text",
+        "id": "footer-col-1",
+        "name": "footer-col-1",
+        "x": 16,
+        "y": 130,
+        "fill": "#FFFFFF",
+        "content": "SECTORS\nPRODUCTS\nSUPPORT",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 59
+      },
+      {
+        "type": "text",
+        "id": "footer-col-2",
+        "name": "footer-col-2",
+        "x": 140,
+        "y": 130,
+        "fill": "#FFFFFF",
+        "content": "ABOUT US\nWORLDWIDE\nCONTACT",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 110,
+        "height": 59
+      },
+      {
+        "type": "text",
+        "id": "footer-col-3",
+        "name": "footer-col-3",
+        "x": 258,
+        "y": 130,
+        "fill": "#FFFFFF",
+        "content": "NEWS\nMEDIA\nCAREERS",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 59
+      }
+    ]
+  }
+}

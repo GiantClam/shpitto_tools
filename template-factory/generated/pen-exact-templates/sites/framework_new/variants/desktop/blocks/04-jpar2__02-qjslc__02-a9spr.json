@@ -1,0 +1,77 @@
+{
+  "blockId": "A9sPR",
+  "blockName": "WorkWithUs",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "6c6e95cc88c4775d2ffb2d1ca89d6d059a34ac586aee3ee8ad6f70ec20b00b7c",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "A9sPR",
+    "name": "WorkWithUs",
+    "width": "fill_container",
+    "layout": "vertical",
+    "gap": 8,
+    "alignItems": "center",
+    "children": [
+      {
+        "type": "text",
+        "id": "koYJ0",
+        "name": "workTitle",
+        "fill": "#1F2737",
+        "content": "Work with us",
+        "fontFamily": "Inter",
+        "fontSize": 46,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "aIUeG",
+        "name": "workSub",
+        "fill": "#5A6168",
+        "content": "Come join us to remake Consumer Electronics!",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "text",
+        "id": "jgfZB",
+        "name": "workLink",
+        "fill": "#2E3339",
+        "content": "View open jobs",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "600"
+      },
+      {
+        "type": "frame",
+        "id": "6opog",
+        "name": "WorkIllustration",
+        "metadata": {
+          "type": "unsplash",
+          "username": "loganvoss",
+          "link": "https://unsplash.com/@loganvoss",
+          "author": "Logan Voss"
+        },
+        "width": 640,
+        "height": 190,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "./images/generated-1773120346359.png",
+          "mode": "fill"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "blockId": "mVlH1",
+  "blockName": "topBar",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 5,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 34
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 6,
+  "treeHash": "af99cbdc851cd8492d8aba39cd42ed2d06aa5eae11ae541ce4592db99e5ce1c3",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "mVlH1",
+    "x": 0,
+    "y": 0,
+    "name": "topBar",
+    "width": 1440,
+    "height": 34,
+    "fill": "#003A47",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "BojUH",
+        "x": 1007,
+        "y": 10,
+        "name": "topLinks",
+        "fill": "#D7E3E7",
+        "content": "投资者网站    客户门户网站    供应商门户网站    职业发展",
+        "fontFamily": "Inter",
+        "fontSize": 10,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "btn6o",
+        "x": 1296,
+        "y": 5,
+        "name": "flagBox",
+        "width": 128,
+        "height": 24,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "thickness": 1,
+          "fill": "#CCD5DB"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "zkjdC",
+            "x": 8,
+            "y": 6,
+            "name": "flag",
+            "fill": "#E23A3A",
+            "width": 18,
+            "height": 12
+          },
+          {
+            "type": "text",
+            "id": "hppP5",
+            "x": 34,
+            "y": 6,
+            "name": "flagTxt",
+            "fill": "#22303D",
+            "content": "ZH",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "BshOO",
+            "x": 106,
+            "y": 6,
+            "name": "langArrow",
+            "fill": "#4B5A64",
+            "content": "▾",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

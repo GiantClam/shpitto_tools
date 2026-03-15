@@ -1,0 +1,40 @@
+{
+  "siteId": "carbon3d",
+  "siteName": "Carbon3d",
+  "bundleHash": "828f715633a9b5b83fc8519a143c4671f9339811b7a0f8f545c99f86ae057c71",
+  "variants": [
+    {
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/carbon3d.pen",
+      "sourceHash": "cd884ac132d8258cf106a21cf0614172da7d0a47e1d55169e289346177d79791",
+      "pageCount": 12,
+      "sectionCount": 27,
+      "blockCount": 370,
+      "output": {
+        "templatePath": "sites/carbon3d/variants/desktop/template.json",
+        "themePath": "sites/carbon3d/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/carbon3d/variants/desktop/pages",
+        "sectionsDir": "sites/carbon3d/variants/desktop/sections",
+        "blocksDir": "sites/carbon3d/variants/desktop/blocks"
+      }
+    },
+    {
+      "variant": "mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/carbon3d-mobile.pen",
+      "sourceHash": "6a24fb011973e93e2bbc8ff88642f44472f5745821b906174f075470d4e5ecd5",
+      "pageCount": 12,
+      "sectionCount": 27,
+      "blockCount": 212,
+      "output": {
+        "templatePath": "sites/carbon3d/variants/mobile/template.json",
+        "themePath": "sites/carbon3d/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/carbon3d/variants/mobile/pages",
+        "sectionsDir": "sites/carbon3d/variants/mobile/sections",
+        "blocksDir": "sites/carbon3d/variants/mobile/blocks"
+      }
+    }
+  ],
+  "output": {
+    "siteTemplatePath": "sites/carbon3d/site.template.json"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "blockId": "u1eDk",
+  "blockName": "s2c2",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 2,
+  "bounds": {
+    "x": 510,
+    "y": 345,
+    "width": 420,
+    "height": 416
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "5b16246d9160654b488471e9abf884b6211d9cb59893ea71b56f4a9c2c0948e5",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "u1eDk",
+    "x": 510,
+    "y": 345,
+    "name": "s2c2",
+    "width": 420,
+    "height": 416,
+    "fill": "#ffffff00",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "Nivsa",
+        "x": 0,
+        "y": 0,
+        "name": "s2c2i",
+        "metadata": {
+          "type": "unsplash",
+          "username": "artinedge",
+          "link": "https://unsplash.com/@artinedge",
+          "author": "Artin Ghorbani"
+        },
+        "width": 420,
+        "height": 210,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1747554451404-e4ff2fc467a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDYzODh8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "layout": "none"
+      },
+      {
+        "type": "text",
+        "id": "SoaHP",
+        "x": 0,
+        "y": 224,
+        "name": "s2c2t",
+        "fill": "#2E3948",
+        "content": "Maritime",
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "bxydu",
+        "x": 0,
+        "y": 275,
+        "name": "s2c2d",
+        "fill": "#2b313a",
+        "textGrowth": "fixed-width",
+        "width": 400,
+        "content": "Uninterrupted communication at sea, from inland waterways to deep oceans, with excellent tracking in rough conditions.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 2,
+        "id": "aqwGc",
+        "x": 0,
+        "y": 366,
+        "name": "btn22",
+        "fill": "#ECECEC",
+        "width": 104,
+        "height": 30,
+        "stroke": {
+          "align": "inside",
+          "thickness": 1,
+          "fill": "#8AA3D3"
+        }
+      },
+      {
+        "type": "text",
+        "id": "MJhzH",
+        "x": 21,
+        "y": 374,
+        "name": "btn22t",
+        "fill": "#2b313a",
+        "content": "Learn more",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

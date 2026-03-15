@@ -1,0 +1,996 @@
+{
+  "sectionId": "qqJhd",
+  "sectionName": "resSec",
+  "sectionKind": "generic",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 2130,
+    "width": 1440,
+    "height": 760
+  },
+  "directChildCount": 13,
+  "recursiveNodeCount": 20,
+  "treeHash": "24af44bf5c4881f4dfb2412dde8d31e15a48fc231d5f6e1168b9a10079fe8b6d",
+  "blockCount": 13,
+  "blockIndex": [
+    {
+      "blockId": "UXEKx",
+      "blockName": "resTag",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 52,
+        "width": 42,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "61c9d40d2b1711462f88953ebcf91d4726693f33f749a1a342f2c613188b6f71"
+    },
+    {
+      "blockId": "shZx2",
+      "blockName": "resTagTxt",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 86,
+        "y": 46,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7e85d534d224dd0280b15ebb3390801b6fcf2eaf48355390ac537bbb2103189b"
+    },
+    {
+      "blockId": "nesJS",
+      "blockName": "resHead",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 94,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4a91b336e045276247ba56a964488bcafc5ba9e31a24d9ecd8be99880a1c4b36"
+    },
+    {
+      "blockId": "5zFI0",
+      "blockName": "resMore",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 1296,
+        "y": 116,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b3b1f30b963ee50e7496b6291c8cda2606318c176f3936be0cd5208138650789"
+    },
+    {
+      "blockId": "vwX2h",
+      "blockName": "r1",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 80,
+        "y": 208,
+        "width": 400,
+        "height": 470
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "cc20f947934e8a7c2b412300d8e1b426428558c7ca5addc71293b85fec786604"
+    },
+    {
+      "blockId": "0rvMI",
+      "blockName": "r2",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 5,
+      "bounds": {
+        "x": 520,
+        "y": 208,
+        "width": 400,
+        "height": 470
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "3234212bdd9c06a2d64b4beabce46af6b1edcab406f79e8363cc892f9a890d6d"
+    },
+    {
+      "blockId": "p131T",
+      "blockName": "r3",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 6,
+      "bounds": {
+        "x": 960,
+        "y": 208,
+        "width": 400,
+        "height": 470
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "8cddebbd3ab390fc878adef6401990fff552938e8cc0d4ef3a8e73e5ec3ec0a6"
+    },
+    {
+      "blockId": "4vpsg",
+      "blockName": "leftCtrl",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 22,
+        "y": 432,
+        "width": 38,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9d9912e971b2a87510e67a1faf797ff8d23d4f432486de8d357b615436e154fb"
+    },
+    {
+      "blockId": "OB7Do",
+      "blockName": "leftCtrlT",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 36,
+        "y": 441,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b563a58e0997f4f955e9ca2c73454032a55b6c1a79f124a1ca8b2871c6bf2378"
+    },
+    {
+      "blockId": "aDmcz",
+      "blockName": "rightCtrl",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 1380,
+        "y": 432,
+        "width": 38,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "db588d264edea757e75d01ba8f6377693c580e91d256a1f3dd1f31b54c0bab2a"
+    },
+    {
+      "blockId": "ZwcWF",
+      "blockName": "rightCtrlT",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 10,
+      "bounds": {
+        "x": 1394,
+        "y": 441,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "904612eaf0f29aaf80f0931464d43e38455adb2bf6b7dd894cc360d23584c53c"
+    },
+    {
+      "blockId": "FB65L",
+      "blockName": "dot1",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 11,
+      "bounds": {
+        "x": 718,
+        "y": 704,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a19304ef197ba3d40694f8de9831575cfeffe21162377d6280efb079fe0d1fd6"
+    },
+    {
+      "blockId": "PUDnY",
+      "blockName": "dot2",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 12,
+      "bounds": {
+        "x": 734,
+        "y": 704,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ba416081cee8db46ca1e299ef46518d067b3dd9afcc11bed6b086c5dc3ab7457"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1733477590442-4c0ec14e6202?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1618835350763-ee971e156096?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1700241956197-0b13f96fd69e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "UXEKx",
+      "blockName": "resTag",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 52,
+        "width": 42,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "61c9d40d2b1711462f88953ebcf91d4726693f33f749a1a342f2c613188b6f71",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "UXEKx",
+        "x": 32,
+        "y": 52,
+        "name": "resTag",
+        "fill": "#D5164A",
+        "width": 42,
+        "height": 8
+      }
+    },
+    {
+      "blockId": "shZx2",
+      "blockName": "resTagTxt",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 86,
+        "y": 46,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7e85d534d224dd0280b15ebb3390801b6fcf2eaf48355390ac537bbb2103189b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "shZx2",
+        "x": 86,
+        "y": 46,
+        "name": "resTagTxt",
+        "fill": "#5A6470",
+        "content": "资源",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "nesJS",
+      "blockName": "resHead",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 94,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4a91b336e045276247ba56a964488bcafc5ba9e31a24d9ecd8be99880a1c4b36",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "nesJS",
+        "x": 32,
+        "y": 94,
+        "name": "resHead",
+        "fill": "#22303D",
+        "content": "了解我们的市场领域",
+        "fontFamily": "Inter",
+        "fontSize": 44,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "5zFI0",
+      "blockName": "resMore",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 1296,
+        "y": 116,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b3b1f30b963ee50e7496b6291c8cda2606318c176f3936be0cd5208138650789",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "5zFI0",
+        "x": 1296,
+        "y": 116,
+        "name": "resMore",
+        "fill": "#0C5A67",
+        "content": "查看更多资源 →",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "vwX2h",
+      "blockName": "r1",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 80,
+        "y": 208,
+        "width": 400,
+        "height": 470
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "cc20f947934e8a7c2b412300d8e1b426428558c7ca5addc71293b85fec786604",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "vwX2h",
+        "x": 80,
+        "y": 208,
+        "name": "r1",
+        "width": 400,
+        "height": 470,
+        "fill": "#F7F8F9",
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "Az31e",
+            "x": 0,
+            "y": 0,
+            "name": "r1i",
+            "metadata": {
+              "type": "unsplash",
+              "username": "rabinkazieasin",
+              "link": "https://unsplash.com/@rabinkazieasin",
+              "author": "Rabin Kazi Easin"
+            },
+            "width": 400,
+            "height": 270,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1733477590442-4c0ec14e6202?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "3klEI",
+            "x": 24,
+            "y": 294,
+            "name": "r1t",
+            "fill": "#22303D",
+            "textGrowth": "fixed-width",
+            "width": 352,
+            "content": "World Engineering Day: Engineering with Purpose in Plexus",
+            "lineHeight": 1.12,
+            "fontFamily": "Inter",
+            "fontSize": 28,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "0rvMI",
+      "blockName": "r2",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 5,
+      "bounds": {
+        "x": 520,
+        "y": 208,
+        "width": 400,
+        "height": 470
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "3234212bdd9c06a2d64b4beabce46af6b1edcab406f79e8363cc892f9a890d6d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "0rvMI",
+        "x": 520,
+        "y": 208,
+        "name": "r2",
+        "width": 400,
+        "height": 470,
+        "fill": "#F7F8F9",
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "FG32D",
+            "x": 0,
+            "y": 0,
+            "name": "r2i",
+            "metadata": {
+              "type": "unsplash",
+              "username": "brett_jordan",
+              "link": "https://unsplash.com/@brett_jordan",
+              "author": "Brett Jordan"
+            },
+            "width": 400,
+            "height": 270,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1618835350763-ee971e156096?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "7QL3x",
+            "x": 24,
+            "y": 294,
+            "name": "r2t",
+            "fill": "#22303D",
+            "textGrowth": "fixed-width",
+            "width": 352,
+            "content": "Plexus to Present at the Raymond James 47th Annual Investors Conference",
+            "lineHeight": 1.12,
+            "fontFamily": "Inter",
+            "fontSize": 28,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "p131T",
+      "blockName": "r3",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 6,
+      "bounds": {
+        "x": 960,
+        "y": 208,
+        "width": 400,
+        "height": 470
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "8cddebbd3ab390fc878adef6401990fff552938e8cc0d4ef3a8e73e5ec3ec0a6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "p131T",
+        "x": 960,
+        "y": 208,
+        "name": "r3",
+        "width": 400,
+        "height": 470,
+        "fill": "#F7F8F9",
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "3GXds",
+            "x": 0,
+            "y": 0,
+            "name": "r3i",
+            "metadata": {
+              "type": "unsplash",
+              "username": "anniespratt",
+              "link": "https://unsplash.com/@anniespratt",
+              "author": "Annie Spratt"
+            },
+            "width": 400,
+            "height": 270,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1700241956197-0b13f96fd69e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "Zf18P",
+            "x": 24,
+            "y": 294,
+            "name": "r3t",
+            "fill": "#22303D",
+            "textGrowth": "fixed-width",
+            "width": 352,
+            "content": "Product Strategy: The Foundation for Product Success",
+            "lineHeight": 1.12,
+            "fontFamily": "Inter",
+            "fontSize": 28,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "4vpsg",
+      "blockName": "leftCtrl",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 22,
+        "y": 432,
+        "width": 38,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9d9912e971b2a87510e67a1faf797ff8d23d4f432486de8d357b615436e154fb",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "4vpsg",
+        "x": 22,
+        "y": 432,
+        "name": "leftCtrl",
+        "fill": "#005060",
+        "width": 38,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "OB7Do",
+      "blockName": "leftCtrlT",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 36,
+        "y": 441,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b563a58e0997f4f955e9ca2c73454032a55b6c1a79f124a1ca8b2871c6bf2378",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "OB7Do",
+        "x": 36,
+        "y": 441,
+        "name": "leftCtrlT",
+        "fill": "#FFFFFF",
+        "content": "←",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "aDmcz",
+      "blockName": "rightCtrl",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 1380,
+        "y": 432,
+        "width": 38,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "db588d264edea757e75d01ba8f6377693c580e91d256a1f3dd1f31b54c0bab2a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "aDmcz",
+        "x": 1380,
+        "y": 432,
+        "name": "rightCtrl",
+        "fill": "#005060",
+        "width": 38,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "ZwcWF",
+      "blockName": "rightCtrlT",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 10,
+      "bounds": {
+        "x": 1394,
+        "y": 441,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "904612eaf0f29aaf80f0931464d43e38455adb2bf6b7dd894cc360d23584c53c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ZwcWF",
+        "x": 1394,
+        "y": 441,
+        "name": "rightCtrlT",
+        "fill": "#FFFFFF",
+        "content": "→",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "FB65L",
+      "blockName": "dot1",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 11,
+      "bounds": {
+        "x": 718,
+        "y": 704,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a19304ef197ba3d40694f8de9831575cfeffe21162377d6280efb079fe0d1fd6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "FB65L",
+        "x": 718,
+        "y": 704,
+        "name": "dot1",
+        "fill": "#005060",
+        "width": 8,
+        "height": 8
+      }
+    },
+    {
+      "blockId": "PUDnY",
+      "blockName": "dot2",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 12,
+      "bounds": {
+        "x": 734,
+        "y": 704,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ba416081cee8db46ca1e299ef46518d067b3dd9afcc11bed6b086c5dc3ab7457",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "PUDnY",
+        "x": 734,
+        "y": 704,
+        "name": "dot2",
+        "fill": "#B6C1C7",
+        "width": 8,
+        "height": 8
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "qqJhd",
+    "x": 0,
+    "y": 2130,
+    "name": "resSec",
+    "width": 1440,
+    "height": 760,
+    "fill": "#F2F2F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "UXEKx",
+        "x": 32,
+        "y": 52,
+        "name": "resTag",
+        "fill": "#D5164A",
+        "width": 42,
+        "height": 8
+      },
+      {
+        "type": "text",
+        "id": "shZx2",
+        "x": 86,
+        "y": 46,
+        "name": "resTagTxt",
+        "fill": "#5A6470",
+        "content": "资源",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "nesJS",
+        "x": 32,
+        "y": 94,
+        "name": "resHead",
+        "fill": "#22303D",
+        "content": "了解我们的市场领域",
+        "fontFamily": "Inter",
+        "fontSize": 44,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "5zFI0",
+        "x": 1296,
+        "y": 116,
+        "name": "resMore",
+        "fill": "#0C5A67",
+        "content": "查看更多资源 →",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "vwX2h",
+        "x": 80,
+        "y": 208,
+        "name": "r1",
+        "width": 400,
+        "height": 470,
+        "fill": "#F7F8F9",
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "Az31e",
+            "x": 0,
+            "y": 0,
+            "name": "r1i",
+            "metadata": {
+              "type": "unsplash",
+              "username": "rabinkazieasin",
+              "link": "https://unsplash.com/@rabinkazieasin",
+              "author": "Rabin Kazi Easin"
+            },
+            "width": 400,
+            "height": 270,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1733477590442-4c0ec14e6202?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "3klEI",
+            "x": 24,
+            "y": 294,
+            "name": "r1t",
+            "fill": "#22303D",
+            "textGrowth": "fixed-width",
+            "width": 352,
+            "content": "World Engineering Day: Engineering with Purpose in Plexus",
+            "lineHeight": 1.12,
+            "fontFamily": "Inter",
+            "fontSize": 28,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "0rvMI",
+        "x": 520,
+        "y": 208,
+        "name": "r2",
+        "width": 400,
+        "height": 470,
+        "fill": "#F7F8F9",
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "FG32D",
+            "x": 0,
+            "y": 0,
+            "name": "r2i",
+            "metadata": {
+              "type": "unsplash",
+              "username": "brett_jordan",
+              "link": "https://unsplash.com/@brett_jordan",
+              "author": "Brett Jordan"
+            },
+            "width": 400,
+            "height": 270,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1618835350763-ee971e156096?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "7QL3x",
+            "x": 24,
+            "y": 294,
+            "name": "r2t",
+            "fill": "#22303D",
+            "textGrowth": "fixed-width",
+            "width": 352,
+            "content": "Plexus to Present at the Raymond James 47th Annual Investors Conference",
+            "lineHeight": 1.12,
+            "fontFamily": "Inter",
+            "fontSize": 28,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "p131T",
+        "x": 960,
+        "y": 208,
+        "name": "r3",
+        "width": 400,
+        "height": 470,
+        "fill": "#F7F8F9",
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "3GXds",
+            "x": 0,
+            "y": 0,
+            "name": "r3i",
+            "metadata": {
+              "type": "unsplash",
+              "username": "anniespratt",
+              "link": "https://unsplash.com/@anniespratt",
+              "author": "Annie Spratt"
+            },
+            "width": 400,
+            "height": 270,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1700241956197-0b13f96fd69e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "Zf18P",
+            "x": 24,
+            "y": 294,
+            "name": "r3t",
+            "fill": "#22303D",
+            "textGrowth": "fixed-width",
+            "width": 352,
+            "content": "Product Strategy: The Foundation for Product Success",
+            "lineHeight": 1.12,
+            "fontFamily": "Inter",
+            "fontSize": 28,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "ellipse",
+        "id": "4vpsg",
+        "x": 22,
+        "y": 432,
+        "name": "leftCtrl",
+        "fill": "#005060",
+        "width": 38,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "OB7Do",
+        "x": 36,
+        "y": 441,
+        "name": "leftCtrlT",
+        "fill": "#FFFFFF",
+        "content": "←",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      },
+      {
+        "type": "ellipse",
+        "id": "aDmcz",
+        "x": 1380,
+        "y": 432,
+        "name": "rightCtrl",
+        "fill": "#005060",
+        "width": 38,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "ZwcWF",
+        "x": 1394,
+        "y": 441,
+        "name": "rightCtrlT",
+        "fill": "#FFFFFF",
+        "content": "→",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      },
+      {
+        "type": "ellipse",
+        "id": "FB65L",
+        "x": 718,
+        "y": 704,
+        "name": "dot1",
+        "fill": "#005060",
+        "width": 8,
+        "height": 8
+      },
+      {
+        "type": "ellipse",
+        "id": "PUDnY",
+        "x": 734,
+        "y": 704,
+        "name": "dot2",
+        "fill": "#B6C1C7",
+        "width": 8,
+        "height": 8
+      }
+    ]
+  }
+}

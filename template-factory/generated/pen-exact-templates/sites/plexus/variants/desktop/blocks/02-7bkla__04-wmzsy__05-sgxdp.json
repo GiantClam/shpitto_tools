@@ -1,0 +1,108 @@
+{
+  "blockId": "SgXDp",
+  "blockName": "valC",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 5,
+  "bounds": {
+    "x": 32,
+    "y": 780,
+    "width": 1376,
+    "height": 260
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 6,
+  "treeHash": "b1c560ce9aa27073e54a6a81e74bae4a5358d52aa95dfcbc0c7196baf56fbfff",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "SgXDp",
+    "x": 32,
+    "y": 780,
+    "name": "valC",
+    "width": 1376,
+    "height": 260,
+    "fill": "#FFFFFF",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "GwXcT",
+        "x": 0,
+        "y": 0,
+        "name": "cImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "hocvienchamsocsacdep",
+          "link": "https://unsplash.com/@hocvienchamsocsacdep",
+          "author": "Học Viện Chăm Sóc Sắc Đẹp Á Âu"
+        },
+        "width": 640,
+        "height": 260,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1740205645173-d2ff3c09d7ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxOTgzNDl8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "iPd3Z",
+        "x": 672,
+        "y": 52,
+        "name": "cTitle",
+        "fill": "#303842",
+        "textGrowth": "fixed-width",
+        "width": 656,
+        "content": "为了我们的世界",
+        "lineHeight": 1.2,
+        "fontFamily": "Inter",
+        "fontSize": 36,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "LtQ9Q",
+        "x": 672,
+        "y": 112,
+        "name": "cText",
+        "fill": "#3F474F",
+        "textGrowth": "fixed-width",
+        "width": 656,
+        "content": "“Plexus 员工的奉献精神始终打动着我们，而这真正延伸到社区建设与长期合作中。Plexus 以客户价值和社会责任驱动成果，让影响深植于每一次行动。”\n\n— 大溪城 Habitat for Humanity 的 John Wyenberg",
+        "lineHeight": 1.55,
+        "fontFamily": "Inter",
+        "fontSize": 15,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "Hxthh",
+        "x": 352,
+        "y": 200,
+        "name": "cBtn",
+        "enabled": false,
+        "width": 126,
+        "height": 36,
+        "fill": "#C70041",
+        "cornerRadius": 3,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "uxcOY",
+            "x": 20,
+            "y": 9,
+            "name": "cBtnTxt",
+            "fill": "#FFFFFF",
+            "content": "了解更多",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

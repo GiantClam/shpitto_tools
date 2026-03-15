@@ -1,0 +1,236 @@
+{
+  "blockId": "V8EyQ",
+  "blockName": "cols",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 21,
+  "treeHash": "20ed2cd0f55d536f4a65b881dbcff413c10bcd9c7126a5b5c51294a0fa59dc2c",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "V8EyQ",
+    "name": "cols",
+    "width": "fill_container",
+    "justifyContent": "space_between",
+    "children": [
+      {
+        "type": "frame",
+        "id": "0FGKu",
+        "name": "col1",
+        "width": 180,
+        "layout": "vertical",
+        "gap": 12,
+        "children": [
+          {
+            "type": "text",
+            "id": "k1dhI",
+            "fill": "#FFFFFF",
+            "content": "Company",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "oVze9",
+            "fill": "#C5CBD3",
+            "textGrowth": "fixed-width",
+            "width": 180,
+            "content": "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+            "lineHeight": 1.8,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "normal"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "9adI7",
+        "name": "col2",
+        "width": 180,
+        "layout": "vertical",
+        "gap": 12,
+        "children": [
+          {
+            "type": "text",
+            "id": "rWRx5",
+            "fill": "#FFFFFF",
+            "content": "Social",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "xgcZP",
+            "fill": "#C5CBD3",
+            "textGrowth": "fixed-width",
+            "width": 180,
+            "content": "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+            "lineHeight": 1.8,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "normal"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "7nuz8",
+        "name": "col3",
+        "width": 220,
+        "layout": "vertical",
+        "gap": 12,
+        "children": [
+          {
+            "type": "text",
+            "id": "1hi5g",
+            "fill": "#FFFFFF",
+            "content": "Community",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "GgtMk",
+            "fill": "#C5CBD3",
+            "textGrowth": "fixed-width",
+            "width": 220,
+            "content": "Community Forum\nSupport\nRepair Guides",
+            "lineHeight": 1.8,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "normal"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "zzYE3",
+        "name": "col4",
+        "width": 220,
+        "layout": "vertical",
+        "gap": 12,
+        "children": [
+          {
+            "type": "text",
+            "id": "sxn6L",
+            "fill": "#FFFFFF",
+            "content": "Shop all",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "gCBUV",
+            "fill": "#C5CBD3",
+            "textGrowth": "fixed-width",
+            "width": 220,
+            "content": "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+            "lineHeight": 1.8,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "normal"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "m79g6",
+        "name": "col5",
+        "width": 360,
+        "layout": "vertical",
+        "gap": 16,
+        "children": [
+          {
+            "type": "text",
+            "id": "XJrRQ",
+            "fill": "#FFFFFF",
+            "content": "Subscribe",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "C47Vs",
+            "fill": "#C5CBD3",
+            "textGrowth": "fixed-width",
+            "width": 360,
+            "content": "Stay up to date with the Framework Newsletter (a few times a month)",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "frame",
+            "id": "Zhd54",
+            "name": "sub",
+            "width": "fill_container",
+            "height": 52,
+            "gap": 10,
+            "children": [
+              {
+                "type": "frame",
+                "id": "KQqDX",
+                "width": 250,
+                "height": 52,
+                "fill": "#F3F3EF",
+                "cornerRadius": 12,
+                "padding": [
+                  0,
+                  16
+                ],
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "fugFk",
+                    "fill": "#8C9198",
+                    "content": "Your email",
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "jfWFu",
+                "width": 100,
+                "height": 52,
+                "fill": "#F46E35",
+                "cornerRadius": 26,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "Ln0k2",
+                    "fill": "#111111",
+                    "content": "Sign up",
+                    "fontFamily": "Inter",
+                    "fontSize": 22,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "blockId": "header-page-home",
+  "blockName": "Header",
+  "blockType": "frame",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 64
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "cc3f7c731d570f4b44f19eaad326673df83447bc7d176036c677cd0deddfbb5c",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "header-page-home",
+    "name": "Header",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 64,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "header-bg",
+        "name": "header-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#FFFFFF"
+      },
+      {
+        "type": "text",
+        "id": "header-brand",
+        "name": "header-brand",
+        "x": 18,
+        "y": 18,
+        "fill": "#141414",
+        "content": "Transparent",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 28
+      },
+      {
+        "type": "text",
+        "id": "header-menu",
+        "name": "header-menu",
+        "x": 362,
+        "y": 18,
+        "fill": "#141414",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 18,
+        "height": 20,
+        "href": "#page-all-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

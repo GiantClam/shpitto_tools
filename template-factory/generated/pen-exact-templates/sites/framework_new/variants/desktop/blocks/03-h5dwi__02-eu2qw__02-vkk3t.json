@@ -1,0 +1,178 @@
+{
+  "blockId": "vKk3t",
+  "blockName": "Press",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 15,
+  "treeHash": "e036c6c8f8404d7ecfda2553b007e37107911aba763a5d5f9df4a7b4e3b0d540",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "vKk3t",
+    "name": "Press",
+    "width": "fill_container",
+    "layout": "vertical",
+    "gap": 12,
+    "children": [
+      {
+        "type": "text",
+        "id": "JbWHU",
+        "name": "pTitle",
+        "fill": "#1F2737",
+        "content": "Press reviews",
+        "fontFamily": "Inter",
+        "fontSize": 38,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "gqZsd",
+        "name": "pRow",
+        "width": "fill_container",
+        "gap": 26,
+        "justifyContent": "space_between",
+        "children": [
+          {
+            "type": "frame",
+            "id": "PLXFf",
+            "name": "colA",
+            "width": 390,
+            "layout": "vertical",
+            "gap": 10,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "ellipse",
+                "id": "ekBAD",
+                "fill": "#3B82F6",
+                "width": 34,
+                "height": 34
+              },
+              {
+                "type": "text",
+                "id": "WT1Iu",
+                "fill": "#3B82F6",
+                "content": "IFIXIT",
+                "fontFamily": "Inter",
+                "fontSize": 18,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "sNZ8J",
+                "fill": "#5E646B",
+                "textGrowth": "fixed-width",
+                "width": 260,
+                "content": "\"Outstanding repairability score\"",
+                "lineHeight": 1.35,
+                "textAlign": "center",
+                "fontFamily": "Inter",
+                "fontSize": 9,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "xvSVE",
+            "name": "colB",
+            "width": 390,
+            "layout": "vertical",
+            "gap": 10,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "frame",
+                "id": "a49Ec",
+                "name": "badgeB",
+                "width": 40,
+                "height": 40,
+                "fill": "#5B3FFF",
+                "cornerRadius": 20,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "De4Zx",
+                    "fill": "#FFFFFF",
+                    "content": "9/10",
+                    "fontFamily": "Inter",
+                    "fontSize": 9,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "IyPTL",
+                "fill": "#5E646B",
+                "textGrowth": "fixed-width",
+                "width": 260,
+                "content": "The environmental benefits shine",
+                "lineHeight": 1.35,
+                "textAlign": "center",
+                "fontFamily": "Inter",
+                "fontSize": 9,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "sDb6Y",
+            "name": "colC",
+            "width": 390,
+            "layout": "vertical",
+            "gap": 10,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "frame",
+                "id": "GvN8X",
+                "name": "badgeC",
+                "width": 78,
+                "height": 36,
+                "fill": "#0F1113",
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "VsSix",
+                    "fill": "#FFFFFF",
+                    "content": "WSJ",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "id": "Pfa7H",
+                "fill": "#5E646B",
+                "textGrowth": "fixed-width",
+                "width": 260,
+                "content": "Modularity could reshape enterprise devices",
+                "lineHeight": 1.35,
+                "textAlign": "center",
+                "fontFamily": "Inter",
+                "fontSize": 9,
+                "fontWeight": "normal"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

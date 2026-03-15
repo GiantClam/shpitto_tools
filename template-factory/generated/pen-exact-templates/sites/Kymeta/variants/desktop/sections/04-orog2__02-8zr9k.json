@@ -1,0 +1,156 @@
+{
+  "sectionId": "8zR9k",
+  "sectionName": "contactIntro",
+  "sectionKind": "contact",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 346,
+    "width": 1440,
+    "height": 190
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "0e5bf0717bdef390691b0ffd64c0b4f944af8af825b377c00a78e270c1e7ca17",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "T601c",
+      "blockName": "introText",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 374,
+        "y": 37,
+        "width": 692,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "92a80c68e18a43b4f29d50f73c04051280eacad04359438edd3dd7c40aaeeacd"
+    },
+    {
+      "blockId": "TLblZ",
+      "blockName": "introLink",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 567,
+        "y": 132,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8e3ad371207ce3f482aaf0503a1891c0ac1ce2bdb013fbedeb42395bfc5d5836"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "T601c",
+      "blockName": "introText",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 374,
+        "y": 37,
+        "width": 692,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "92a80c68e18a43b4f29d50f73c04051280eacad04359438edd3dd7c40aaeeacd",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "T601c",
+        "x": 374,
+        "y": 37,
+        "name": "introText",
+        "fill": "#E7EDF8",
+        "textGrowth": "fixed-width",
+        "width": 692,
+        "content": "Looking to connect with our sales team? Fill out the contact form below, and we'll ensure your inquiry reaches the right person. For service and support related matters, please email",
+        "lineHeight": 1.45,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "TLblZ",
+      "blockName": "introLink",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 567,
+        "y": 132,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8e3ad371207ce3f482aaf0503a1891c0ac1ce2bdb013fbedeb42395bfc5d5836",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "TLblZ",
+        "x": 567,
+        "y": 132,
+        "name": "introLink",
+        "fill": "#D8E4FF",
+        "content": "support@kymetacorp.com directly",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "600"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "8zR9k",
+    "x": 0,
+    "y": 346,
+    "name": "contactIntro",
+    "width": 1440,
+    "height": 190,
+    "fill": "#000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "T601c",
+        "x": 374,
+        "y": 37,
+        "name": "introText",
+        "fill": "#E7EDF8",
+        "textGrowth": "fixed-width",
+        "width": 692,
+        "content": "Looking to connect with our sales team? Fill out the contact form below, and we'll ensure your inquiry reaches the right person. For service and support related matters, please email",
+        "lineHeight": 1.45,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "TLblZ",
+        "x": 567,
+        "y": 132,
+        "name": "introLink",
+        "fill": "#D8E4FF",
+        "content": "support@kymetacorp.com directly",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

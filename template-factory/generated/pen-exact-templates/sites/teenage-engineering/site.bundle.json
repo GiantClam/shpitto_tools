@@ -1,0 +1,40 @@
+{
+  "siteId": "teenage-engineering",
+  "siteName": "Teenage Engineering",
+  "bundleHash": "81cd4bb112a4f6ac4f679526320e99c3f15ff05917a304aaa5fc453904482931",
+  "variants": [
+    {
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/teenage-engineering.pen",
+      "sourceHash": "6db73e202fec4c624236f7cebfd65a7da589b3af95641dac68bc45014ba9c573",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 211,
+      "output": {
+        "templatePath": "sites/teenage-engineering/variants/desktop/template.json",
+        "themePath": "sites/teenage-engineering/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/teenage-engineering/variants/desktop/pages",
+        "sectionsDir": "sites/teenage-engineering/variants/desktop/sections",
+        "blocksDir": "sites/teenage-engineering/variants/desktop/blocks"
+      }
+    },
+    {
+      "variant": "mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/teenage-engineering-mobile.pen",
+      "sourceHash": "f30b36545104468dcda785f1ebbf50c626924578d9ce7af82484c54aabffcf18",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 135,
+      "output": {
+        "templatePath": "sites/teenage-engineering/variants/mobile/template.json",
+        "themePath": "sites/teenage-engineering/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/teenage-engineering/variants/mobile/pages",
+        "sectionsDir": "sites/teenage-engineering/variants/mobile/sections",
+        "blocksDir": "sites/teenage-engineering/variants/mobile/blocks"
+      }
+    }
+  ],
+  "output": {
+    "siteTemplatePath": "sites/teenage-engineering/site.template.json"
+  }
+}

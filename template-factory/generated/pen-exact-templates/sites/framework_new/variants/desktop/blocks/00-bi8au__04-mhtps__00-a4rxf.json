@@ -1,0 +1,110 @@
+{
+  "blockId": "a4rxf",
+  "blockName": "hero4l",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 500,
+    "height": "fill_container"
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 8,
+  "treeHash": "f48e70dae0b13ceac919f725c99fc6343653f175b36271755f3150b41ae2fea4",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "a4rxf",
+    "name": "hero4l",
+    "width": 500,
+    "height": "fill_container",
+    "layout": "vertical",
+    "gap": 12,
+    "justifyContent": "center",
+    "children": [
+      {
+        "type": "text",
+        "id": "FouRa",
+        "name": "h4t1",
+        "fill": "#1F2A1F",
+        "textGrowth": "fixed-width",
+        "width": 470,
+        "content": "Computers shouldn't be boring.",
+        "lineHeight": 1.08,
+        "fontFamily": "Inter",
+        "fontSize": 40,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "sf4sd",
+        "name": "h4t2",
+        "fill": "#1F2A1F",
+        "content": "Starting at $799",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "frame",
+        "id": "gTKsB",
+        "name": "row4",
+        "height": 34,
+        "gap": 8,
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "frame",
+            "id": "b2DLz",
+            "name": "h4b",
+            "width": 112,
+            "height": 34,
+            "fill": "#F46E35",
+            "cornerRadius": 17,
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "2BxAx",
+                "name": "h4bt",
+                "fill": "#111111",
+                "content": "Configure now",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "N8n31",
+            "name": "lm4",
+            "width": 96,
+            "height": 34,
+            "cornerRadius": 17,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#9CA3AA"
+            },
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "DSvsN",
+                "fill": "#5E6369",
+                "content": "Learn more",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "600"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "analogue-brand-desktop",
+      "description": "Analogue 风格桌面端品牌首页",
+      "requiredCategories": ["navigation", "hero", "story", "cta", "footer"],
+      "expectedProfileId": "analogue-desktop",
+      "maxPages": 1,
+      "prompt": "Create a nostalgic editorial hardware homepage like Analogue with navigation, hero, brand story, CTA, and footer."
+    },
+    {
+      "id": "analogue-brand-mobile",
+      "description": "Analogue 风格移动端品牌首页",
+      "requiredCategories": ["navigation", "hero", "story", "cta", "footer"],
+      "expectedProfileId": "analogue-mobile",
+      "maxPages": 1,
+      "prompt": "生成一个 mobile 端、类似 Analogue 的复古科技品牌首页，包含导航、Hero、品牌故事、CTA 和页脚。"
+    },
+    {
+      "id": "carbon3d-brand-desktop",
+      "description": "Carbon3D 风格桌面端工业科技首页",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "cta", "footer"],
+      "expectedProfileId": "carbon3d-desktop",
+      "maxPages": 1,
+      "prompt": "Create a deep-tech manufacturing homepage like Carbon3D with navigation, hero, technology section, product applications, CTA, and footer."
+    },
+    {
+      "id": "carbon3d-brand-mobile",
+      "description": "Carbon3D 风格移动端工业科技首页",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "cta", "footer"],
+      "expectedProfileId": "carbon3d-mobile",
+      "maxPages": 1,
+      "prompt": "生成一个 mobile 端、类似 Carbon3D 的工业科技首页，需要导航、Hero、技术亮点、产品应用、CTA 和页脚。"
+    },
+    {
+      "id": "pama-brand-desktop",
+      "description": "Pamamachinetools 风格桌面端机床首页",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "cta", "footer"],
+      "expectedProfileId": "pamamachinetools-desktop",
+      "maxPages": 1,
+      "prompt": "Create a machine tools company homepage like Pamamachinetools with navigation, hero, product lines, capabilities, CTA, and footer."
+    },
+    {
+      "id": "pama-brand-mobile",
+      "description": "Pamamachinetools 风格移动端机床首页",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "cta", "footer"],
+      "expectedProfileId": "pamamachinetools-mobile",
+      "maxPages": 1,
+      "prompt": "生成一个 mobile 端、类似 Pamamachinetools 的机床企业首页，包含导航、Hero、产品系列、能力亮点、CTA 和页脚。"
+    },
+    {
+      "id": "ridecake-brand-desktop",
+      "description": "Ridecake 风格桌面端品牌首页",
+      "requiredCategories": ["navigation", "hero", "products", "story", "cta", "footer"],
+      "expectedProfileId": "ridecake-desktop",
+      "maxPages": 1,
+      "prompt": "Create a bold urban mobility homepage like Ridecake with navigation, hero, product showcase, brand story, CTA, and footer."
+    },
+    {
+      "id": "ridecake-brand-mobile",
+      "description": "Ridecake 风格移动端品牌首页",
+      "requiredCategories": ["navigation", "hero", "products", "cta", "footer"],
+      "expectedProfileId": "ridecake-mobile",
+      "maxPages": 1,
+      "prompt": "生成一个 mobile 端、类似 Ridecake 的城市出行品牌首页，包含导航、Hero、产品展示、购买 CTA 和页脚。"
+    },
+    {
+      "id": "teenage-brand-desktop",
+      "description": "Teenage Engineering 风格桌面端首页",
+      "requiredCategories": ["navigation", "hero", "products", "story", "cta", "footer"],
+      "expectedProfileId": "teenage-engineering-desktop",
+      "maxPages": 1,
+      "prompt": "Create a playful premium hardware homepage like Teenage Engineering with navigation, hero, products, brand story, CTA, and footer."
+    },
+    {
+      "id": "teenage-brand-mobile",
+      "description": "Teenage Engineering 风格移动端首页",
+      "requiredCategories": ["navigation", "hero", "products", "cta", "footer"],
+      "expectedProfileId": "teenage-engineering-mobile",
+      "maxPages": 1,
+      "prompt": "生成一个 mobile 端、类似 Teenage Engineering 的创意硬件首页，包含导航、Hero、产品卡片、CTA 和页脚。"
+    },
+    {
+      "id": "sandvik-brand-desktop",
+      "description": "Sandvik 风格工业品牌首页",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "cta", "footer"],
+      "expectedProfileId": "sandvik-desktop",
+      "maxPages": 1,
+      "prompt": "Create an industrial engineering homepage like Sandvik with navigation, hero, capabilities, product portfolio, CTA, and footer."
+    },
+    {
+      "id": "breton-brand-mobile",
+      "description": "Breton 风格移动端工业首页",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "cta", "footer"],
+      "expectedProfileId": "breton-mobile",
+      "maxPages": 1,
+      "prompt": "Create a mobile-first industrial manufacturer homepage like Breton with navigation, hero, capability section, products, CTA, and footer."
+    },
+    {
+      "id": "fptindustrie-brand-mobile",
+      "description": "Fptindustrie 风格移动端工业首页",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "cta", "footer"],
+      "expectedProfileId": "fptindustrie-mobile",
+      "maxPages": 1,
+      "prompt": "Create a mobile-first machinery company homepage like Fptindustrie with navigation, hero, process section, product catalog, CTA, and footer."
+    },
+    {
+      "id": "transpa-rent-brand-mobile",
+      "description": "Transpa Rent 风格移动端消费品牌首页",
+      "requiredCategories": ["navigation", "hero", "products", "cta", "footer"],
+      "expectedProfileId": "transpa-rent-mobile",
+      "maxPages": 1,
+      "prompt": "生成一个 mobile 端、类似 Transpa Rent 的生活方式消费品牌首页，包含导航、Hero、精选产品、CTA 和页脚。"
+    },
+    {
+      "id": "vanmoof-brand-bilingual-desktop",
+      "description": "VanMoof 风格双语桌面端首页",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "cta", "footer"],
+      "expectedProfileId": "vanmoof-desktop",
+      "maxPages": 1,
+      "prompt": "Generate a premium e-bike homepage inspired by VanMoof。需要 navigation、Hero、产品阵列、technology highlights、CTA、footer。"
+    },
+    {
+      "id": "nothing-brand-bilingual-desktop",
+      "description": "Nothing Tech 风格双语桌面端首页",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "cta", "footer"],
+      "expectedProfileId": "nothing-tech-desktop",
+      "maxPages": 1,
+      "prompt": "Generate a minimalist consumer tech homepage inspired by Nothing Tech。必须有 navigation、Hero、product showcase、feature strip、CTA、footer。"
+    },
+    {
+      "id": "pagani-brand-bilingual-mobile",
+      "description": "Pagani 风格双语移动端首页",
+      "requiredCategories": ["navigation", "hero", "story", "products", "cta", "footer"],
+      "expectedProfileId": "pagani-mobile",
+      "maxPages": 1,
+      "prompt": "Generate a mobile supercar homepage like Pagani。需要 navigation、Hero、品牌故事、车型展示、CTA、footer。"
+    },
+    {
+      "id": "ionq-brand-cn-home",
+      "description": "IonQ 风格中文深科技首页",
+      "requiredCategories": ["navigation", "hero", "approach", "socialproof", "cta", "footer"],
+      "expectedProfileId": "ionq-desktop",
+      "maxPages": 1,
+      "prompt": "生成类似 IonQ 的深科技企业官网首页，需要导航、Hero、能力与指标、客户信任背书、CTA 和页脚。"
+    },
+    {
+      "id": "kymeta-brand-cn-multipage",
+      "description": "Kymeta 风格中文多页企业站",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "contact", "cta", "footer"],
+      "expectedProfileId": "kymeta-desktop",
+      "minPages": 6,
+      "categoryScope": "site",
+      "prompt": "生成类似 Kymeta 的企业科技官网，需要首页、产品页、解决方案页、关于页、联系页和隐私页。整站要有导航、Hero、能力亮点、产品、联系路径、CTA 和页脚。"
+    },
+    {
+      "id": "framework-brand-cn-home",
+      "description": "Framework 风格中文模块化硬件首页",
+      "requiredCategories": ["navigation", "hero", "products", "story", "cta", "footer"],
+      "expectedProfileId": "framework-new-desktop",
+      "maxPages": 1,
+      "prompt": "生成类似 Framework New 的模块化硬件品牌首页，要有导航、Hero、产品阵列、品牌故事、CTA 和页脚。"
+    },
+    {
+      "id": "generic-3d-printing-b2b",
+      "description": "泛化 3D 打印 B2B 首页",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "cta", "footer"],
+      "expectedProfileId": "carbon3d-desktop",
+      "maxPages": 1,
+      "prompt": "Create a B2B 3D printing technology homepage for enterprise buyers with navigation, hero, manufacturing advantages, application showcase, CTA, and footer."
+    },
+    {
+      "id": "generic-3d-printing-mobile",
+      "description": "泛化 3D 打印移动端首页",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "cta", "footer"],
+      "expectedProfileId": "carbon3d-mobile",
+      "maxPages": 1,
+      "prompt": "生成一个 mobile 端的 3D 打印科技首页，服务企业客户，必须有导航、Hero、技术优势、应用展示、CTA 和页脚。"
+    },
+    {
+      "id": "generic-satellite-connectivity-cn",
+      "description": "泛化卫星连接企业首页",
+      "requiredCategories": ["navigation", "hero", "approach", "products", "cta", "footer"],
+      "expectedProfileId": "kymeta-desktop",
+      "maxPages": 1,
+      "prompt": "生成卫星连接与移动通信企业官网首页，需要导航、Hero、核心能力、产品方案、CTA 和页脚，风格专业可信。"
+    },
+    {
+      "id": "generic-machine-tools-en",
+      "description": "泛化机床制造企业首页",
+      "requiredCategories": ["navigation", "hero", "products", "approach", "cta", "footer"],
+      "expectedProfilePattern": "pamamachinetools-desktop|fptindustrie-desktop|breton-desktop",
+      "maxPages": 1,
+      "prompt": "Create a machine tools manufacturer homepage for industrial buyers with navigation, hero, product categories, capability section, CTA, and footer."
+    },
+    {
+      "id": "generic-editorial-analogue",
+      "description": "泛化复古编辑感科技首页",
+      "requiredCategories": ["navigation", "hero", "story", "cta", "footer"],
+      "expectedProfileId": "analogue-desktop",
+      "maxPages": 1,
+      "prompt": "Create an editorial retro-tech homepage with nostalgic product storytelling, strong hero imagery, a founder/story section, CTA, and footer."
+    },
+    {
+      "id": "generic-premium-audio-desktop",
+      "description": "泛化高端音频硬件首页",
+      "requiredCategories": ["navigation", "hero", "products", "story", "cta", "footer"],
+      "expectedProfileId": "teenage-engineering-desktop",
+      "maxPages": 1,
+      "prompt": "Create a premium audio hardware homepage with playful industrial design, hero, product cards, brand story, CTA, and footer."
+    },
+    {
+      "id": "generic-premium-audio-mobile",
+      "description": "泛化高端音频硬件移动端首页",
+      "requiredCategories": ["navigation", "hero", "products", "cta", "footer"],
+      "expectedProfileId": "teenage-engineering-mobile",
+      "maxPages": 1,
+      "prompt": "生成一个 mobile 端高端音频硬件首页，风格有趣又高级，必须有导航、Hero、产品卡片、CTA 和页脚。"
+    },
+    {
+      "id": "generic-lifestyle-ecommerce-mobile",
+      "description": "泛化生活方式消费品牌移动端首页",
+      "requiredCategories": ["navigation", "hero", "products", "cta", "footer"],
+      "expectedProfileId": "transpa-rent-mobile",
+      "maxPages": 1,
+      "prompt": "Create a mobile-first lifestyle ecommerce landing page with navigation, hero, featured products, CTA, and footer. Keep it clean and design-led."
+    }
+  ]
+}

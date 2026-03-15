@@ -1,0 +1,504 @@
+{
+  "schemaVersion": "pen-exact-template-manifest.v2",
+  "generatedAt": "2026-03-12T03:58:28.657Z",
+  "sourceDir": "/Users/beihuang/Documents/opencode/shpitto_tools/pen",
+  "penFileCount": 27,
+  "siteCount": 16,
+  "pageCount": 261,
+  "sectionCount": 752,
+  "blockCount": 6621,
+  "entries": [
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/analogue-mobile.pen",
+      "siteId": "analogue",
+      "siteName": "Analogue",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 135,
+      "totalNodeCount": 442,
+      "sourceHash": "557516116847288ff0346c2186a91fe98a8a60064324d60c2475961f8690086b",
+      "output": {
+        "templatePath": "sites/analogue/variants/mobile/template.json",
+        "themePath": "sites/analogue/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/analogue/variants/mobile/pages",
+        "sectionsDir": "sites/analogue/variants/mobile/sections",
+        "blocksDir": "sites/analogue/variants/mobile/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/analogue.pen",
+      "siteId": "analogue",
+      "siteName": "Analogue",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 211,
+      "totalNodeCount": 530,
+      "sourceHash": "f71ba8d6cb1b8ba9d07bd14162063818366aa2d6e1958deafc294cee081322ea",
+      "output": {
+        "templatePath": "sites/analogue/variants/desktop/template.json",
+        "themePath": "sites/analogue/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/analogue/variants/desktop/pages",
+        "sectionsDir": "sites/analogue/variants/desktop/sections",
+        "blocksDir": "sites/analogue/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/breton-mobile.pen",
+      "siteId": "breton",
+      "siteName": "Breton",
+      "variant": "mobile",
+      "pageCount": 12,
+      "sectionCount": 34,
+      "blockCount": 320,
+      "totalNodeCount": 740,
+      "sourceHash": "153ede78874f10746c1ab1c47e796fdb4adab16583450d9c4a4c5c78a4dc8e4d",
+      "output": {
+        "templatePath": "sites/breton/variants/mobile/template.json",
+        "themePath": "sites/breton/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/breton/variants/mobile/pages",
+        "sectionsDir": "sites/breton/variants/mobile/sections",
+        "blocksDir": "sites/breton/variants/mobile/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/breton.pen",
+      "siteId": "breton",
+      "siteName": "Breton",
+      "variant": "desktop",
+      "pageCount": 12,
+      "sectionCount": 34,
+      "blockCount": 387,
+      "totalNodeCount": 833,
+      "sourceHash": "c45f43fac8c260bacdce5ee424cd44a0c46fa1de4b6f935090e98e0bcdc7be6c",
+      "output": {
+        "templatePath": "sites/breton/variants/desktop/template.json",
+        "themePath": "sites/breton/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/breton/variants/desktop/pages",
+        "sectionsDir": "sites/breton/variants/desktop/sections",
+        "blocksDir": "sites/breton/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/carbon3d-mobile.pen",
+      "siteId": "carbon3d",
+      "siteName": "Carbon3d",
+      "variant": "mobile",
+      "pageCount": 12,
+      "sectionCount": 27,
+      "blockCount": 212,
+      "totalNodeCount": 629,
+      "sourceHash": "6a24fb011973e93e2bbc8ff88642f44472f5745821b906174f075470d4e5ecd5",
+      "output": {
+        "templatePath": "sites/carbon3d/variants/mobile/template.json",
+        "themePath": "sites/carbon3d/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/carbon3d/variants/mobile/pages",
+        "sectionsDir": "sites/carbon3d/variants/mobile/sections",
+        "blocksDir": "sites/carbon3d/variants/mobile/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/carbon3d.pen",
+      "siteId": "carbon3d",
+      "siteName": "Carbon3d",
+      "variant": "desktop",
+      "pageCount": 12,
+      "sectionCount": 27,
+      "blockCount": 370,
+      "totalNodeCount": 825,
+      "sourceHash": "cd884ac132d8258cf106a21cf0614172da7d0a47e1d55169e289346177d79791",
+      "output": {
+        "templatePath": "sites/carbon3d/variants/desktop/template.json",
+        "themePath": "sites/carbon3d/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/carbon3d/variants/desktop/pages",
+        "sectionsDir": "sites/carbon3d/variants/desktop/sections",
+        "blocksDir": "sites/carbon3d/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/fptindustrie-mobile.pen",
+      "siteId": "fptindustrie",
+      "siteName": "Fptindustrie",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sectionCount": 26,
+      "blockCount": 254,
+      "totalNodeCount": 586,
+      "sourceHash": "6c9c0ef247e4ab86382b0e3b4101e99970e6051f581638de16f2a497bfd0ba32",
+      "output": {
+        "templatePath": "sites/fptindustrie/variants/mobile/template.json",
+        "themePath": "sites/fptindustrie/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/fptindustrie/variants/mobile/pages",
+        "sectionsDir": "sites/fptindustrie/variants/mobile/sections",
+        "blocksDir": "sites/fptindustrie/variants/mobile/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/fptindustrie.pen",
+      "siteId": "fptindustrie",
+      "siteName": "Fptindustrie",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sectionCount": 27,
+      "blockCount": 378,
+      "totalNodeCount": 763,
+      "sourceHash": "69e1a907210aff5b6363f1a871c6c3a8189dca38ea478b0f0b856beb6ba18f40",
+      "output": {
+        "templatePath": "sites/fptindustrie/variants/desktop/template.json",
+        "themePath": "sites/fptindustrie/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/fptindustrie/variants/desktop/pages",
+        "sectionsDir": "sites/fptindustrie/variants/desktop/sections",
+        "blocksDir": "sites/fptindustrie/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/framework_new.pen",
+      "siteId": "framework_new",
+      "siteName": "Framework New",
+      "variant": "desktop",
+      "pageCount": 6,
+      "sectionCount": 29,
+      "blockCount": 85,
+      "totalNodeCount": 622,
+      "sourceHash": "15e68394f4d95e095c64e3c92bad168609f0ad745a2aff508e1243d48f233023",
+      "output": {
+        "templatePath": "sites/framework_new/variants/desktop/template.json",
+        "themePath": "sites/framework_new/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/framework_new/variants/desktop/pages",
+        "sectionsDir": "sites/framework_new/variants/desktop/sections",
+        "blocksDir": "sites/framework_new/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/ionq.pen",
+      "siteId": "ionq",
+      "siteName": "Ionq",
+      "variant": "desktop",
+      "pageCount": 6,
+      "sectionCount": 43,
+      "blockCount": 451,
+      "totalNodeCount": 872,
+      "sourceHash": "b213e2e11cea5930671f7fb734e099569b1241059be76b56b7068d42989ff158",
+      "output": {
+        "templatePath": "sites/ionq/variants/desktop/template.json",
+        "themePath": "sites/ionq/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/ionq/variants/desktop/pages",
+        "sectionsDir": "sites/ionq/variants/desktop/sections",
+        "blocksDir": "sites/ionq/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/Kymeta.pen",
+      "siteId": "Kymeta",
+      "siteName": "Kymeta",
+      "variant": "desktop",
+      "pageCount": 6,
+      "sectionCount": 43,
+      "blockCount": 294,
+      "totalNodeCount": 551,
+      "sourceHash": "b0747b91396e84fb6d56280b7ec8524486137e139e8bb4619fad8436551e3d3b",
+      "output": {
+        "templatePath": "sites/Kymeta/variants/desktop/template.json",
+        "themePath": "sites/Kymeta/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/Kymeta/variants/desktop/pages",
+        "sectionsDir": "sites/Kymeta/variants/desktop/sections",
+        "blocksDir": "sites/Kymeta/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/nothing-tech-mobile.pen",
+      "siteId": "nothing-tech",
+      "siteName": "Nothing Tech",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 135,
+      "totalNodeCount": 461,
+      "sourceHash": "5a1c77474f223a31aad9c80c2632902a94cf96415ee915ed487d531d67cd4af6",
+      "output": {
+        "templatePath": "sites/nothing-tech/variants/mobile/template.json",
+        "themePath": "sites/nothing-tech/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/nothing-tech/variants/mobile/pages",
+        "sectionsDir": "sites/nothing-tech/variants/mobile/sections",
+        "blocksDir": "sites/nothing-tech/variants/mobile/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/nothing-tech.pen",
+      "siteId": "nothing-tech",
+      "siteName": "Nothing Tech",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 211,
+      "totalNodeCount": 569,
+      "sourceHash": "a10c26361326d899d27df937e117a1aa130546eb7d8a7293c10c9e92f2a12480",
+      "output": {
+        "templatePath": "sites/nothing-tech/variants/desktop/template.json",
+        "themePath": "sites/nothing-tech/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/nothing-tech/variants/desktop/pages",
+        "sectionsDir": "sites/nothing-tech/variants/desktop/sections",
+        "blocksDir": "sites/nothing-tech/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/pagani-mobile.pen",
+      "siteId": "pagani",
+      "siteName": "Pagani",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sectionCount": 20,
+      "blockCount": 194,
+      "totalNodeCount": 438,
+      "sourceHash": "1978e5e3b5e6b49b6559616cab7356985120b65f6cb48889d2fe658e957bb41a",
+      "output": {
+        "templatePath": "sites/pagani/variants/mobile/template.json",
+        "themePath": "sites/pagani/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/pagani/variants/mobile/pages",
+        "sectionsDir": "sites/pagani/variants/mobile/sections",
+        "blocksDir": "sites/pagani/variants/mobile/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/pagani.pen",
+      "siteId": "pagani",
+      "siteName": "Pagani",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sectionCount": 21,
+      "blockCount": 267,
+      "totalNodeCount": 512,
+      "sourceHash": "d8841f59a2b6a424d47143ce3e5a7e98c01a5c59d24bf8a8ab7bb209d43202e4",
+      "output": {
+        "templatePath": "sites/pagani/variants/desktop/template.json",
+        "themePath": "sites/pagani/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/pagani/variants/desktop/pages",
+        "sectionsDir": "sites/pagani/variants/desktop/sections",
+        "blocksDir": "sites/pagani/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/pamamachinetools-mobile.pen",
+      "siteId": "pamamachinetools",
+      "siteName": "Pamamachinetools",
+      "variant": "mobile",
+      "pageCount": 11,
+      "sectionCount": 28,
+      "blockCount": 253,
+      "totalNodeCount": 934,
+      "sourceHash": "d6c1493c158baa61ced1a029b83767c635108f1872a2eebb2ec3bed5c79181ea",
+      "output": {
+        "templatePath": "sites/pamamachinetools/variants/mobile/template.json",
+        "themePath": "sites/pamamachinetools/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/pamamachinetools/variants/mobile/pages",
+        "sectionsDir": "sites/pamamachinetools/variants/mobile/sections",
+        "blocksDir": "sites/pamamachinetools/variants/mobile/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/pamamachinetools.pen",
+      "siteId": "pamamachinetools",
+      "siteName": "Pamamachinetools",
+      "variant": "desktop",
+      "pageCount": 11,
+      "sectionCount": 28,
+      "blockCount": 385,
+      "totalNodeCount": 1070,
+      "sourceHash": "74d73d200c08a4bfab0a46f35476eb5a2c3481dc8fb7629dd4bc18c2bad4c34e",
+      "output": {
+        "templatePath": "sites/pamamachinetools/variants/desktop/template.json",
+        "themePath": "sites/pamamachinetools/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/pamamachinetools/variants/desktop/pages",
+        "sectionsDir": "sites/pamamachinetools/variants/desktop/sections",
+        "blocksDir": "sites/pamamachinetools/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/plexus.pen",
+      "siteId": "plexus",
+      "siteName": "Plexus",
+      "variant": "desktop",
+      "pageCount": 6,
+      "sectionCount": 47,
+      "blockCount": 319,
+      "totalNodeCount": 652,
+      "sourceHash": "aa0ec1a62210567670c2c5cff19825c3df9b41fd0824f953b4c3ded6248f8a18",
+      "output": {
+        "templatePath": "sites/plexus/variants/desktop/template.json",
+        "themePath": "sites/plexus/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/plexus/variants/desktop/pages",
+        "sectionsDir": "sites/plexus/variants/desktop/sections",
+        "blocksDir": "sites/plexus/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/ridecake-mobile.pen",
+      "siteId": "ridecake",
+      "siteName": "Ridecake",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 135,
+      "totalNodeCount": 478,
+      "sourceHash": "a35bfb54c8d261ec16e7a21d80476cb7a99a553038118d126382abd3e861455c",
+      "output": {
+        "templatePath": "sites/ridecake/variants/mobile/template.json",
+        "themePath": "sites/ridecake/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/ridecake/variants/mobile/pages",
+        "sectionsDir": "sites/ridecake/variants/mobile/sections",
+        "blocksDir": "sites/ridecake/variants/mobile/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/ridecake.pen",
+      "siteId": "ridecake",
+      "siteName": "Ridecake",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 211,
+      "totalNodeCount": 578,
+      "sourceHash": "283a7fed2664ac1b2557d47f67f585dbded993136c7820bb07f933a0130785c2",
+      "output": {
+        "templatePath": "sites/ridecake/variants/desktop/template.json",
+        "themePath": "sites/ridecake/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/ridecake/variants/desktop/pages",
+        "sectionsDir": "sites/ridecake/variants/desktop/sections",
+        "blocksDir": "sites/ridecake/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/sandvik.pen",
+      "siteId": "sandvik",
+      "siteName": "Sandvik",
+      "variant": "desktop",
+      "pageCount": 7,
+      "sectionCount": 42,
+      "blockCount": 390,
+      "totalNodeCount": 726,
+      "sourceHash": "0f60fa9735812ffa1818c313defe829bcbe752e386259db939f874e4d4e9edf2",
+      "output": {
+        "templatePath": "sites/sandvik/variants/desktop/template.json",
+        "themePath": "sites/sandvik/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/sandvik/variants/desktop/pages",
+        "sectionsDir": "sites/sandvik/variants/desktop/sections",
+        "blocksDir": "sites/sandvik/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/teenage-engineering-mobile.pen",
+      "siteId": "teenage-engineering",
+      "siteName": "Teenage Engineering",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 135,
+      "totalNodeCount": 450,
+      "sourceHash": "f30b36545104468dcda785f1ebbf50c626924578d9ce7af82484c54aabffcf18",
+      "output": {
+        "templatePath": "sites/teenage-engineering/variants/mobile/template.json",
+        "themePath": "sites/teenage-engineering/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/teenage-engineering/variants/mobile/pages",
+        "sectionsDir": "sites/teenage-engineering/variants/mobile/sections",
+        "blocksDir": "sites/teenage-engineering/variants/mobile/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/teenage-engineering.pen",
+      "siteId": "teenage-engineering",
+      "siteName": "Teenage Engineering",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 211,
+      "totalNodeCount": 558,
+      "sourceHash": "6db73e202fec4c624236f7cebfd65a7da589b3af95641dac68bc45014ba9c573",
+      "output": {
+        "templatePath": "sites/teenage-engineering/variants/desktop/template.json",
+        "themePath": "sites/teenage-engineering/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/teenage-engineering/variants/desktop/pages",
+        "sectionsDir": "sites/teenage-engineering/variants/desktop/sections",
+        "blocksDir": "sites/teenage-engineering/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/transpa-rent-mobile.pen",
+      "siteId": "transpa-rent",
+      "siteName": "Transpa Rent",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 135,
+      "totalNodeCount": 478,
+      "sourceHash": "d19e29157b1377b5f89e39bcbac4510d7c4a57abd5fe7859da3e5e2ab3f7c96a",
+      "output": {
+        "templatePath": "sites/transpa-rent/variants/mobile/template.json",
+        "themePath": "sites/transpa-rent/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/transpa-rent/variants/mobile/pages",
+        "sectionsDir": "sites/transpa-rent/variants/mobile/sections",
+        "blocksDir": "sites/transpa-rent/variants/mobile/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/transpa-rent.pen",
+      "siteId": "transpa-rent",
+      "siteName": "Transpa Rent",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 211,
+      "totalNodeCount": 594,
+      "sourceHash": "b6eb7b1b4056bc414f30be15cbe011ec410bd0792fdf9deb92c123784eca3b05",
+      "output": {
+        "templatePath": "sites/transpa-rent/variants/desktop/template.json",
+        "themePath": "sites/transpa-rent/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/transpa-rent/variants/desktop/pages",
+        "sectionsDir": "sites/transpa-rent/variants/desktop/sections",
+        "blocksDir": "sites/transpa-rent/variants/desktop/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/vanmoof-mobile.pen",
+      "siteId": "vanmoof",
+      "siteName": "Vanmoof",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 128,
+      "totalNodeCount": 382,
+      "sourceHash": "e4e3824db200d6d72def4a39c1fa2e2286bf3c63c46f5a71b5a663f87293b993",
+      "output": {
+        "templatePath": "sites/vanmoof/variants/mobile/template.json",
+        "themePath": "sites/vanmoof/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/vanmoof/variants/mobile/pages",
+        "sectionsDir": "sites/vanmoof/variants/mobile/sections",
+        "blocksDir": "sites/vanmoof/variants/mobile/blocks"
+      }
+    },
+    {
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/vanmoof.pen",
+      "siteId": "vanmoof",
+      "siteName": "Vanmoof",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 204,
+      "totalNodeCount": 462,
+      "sourceHash": "1db1e8cfd454a5533d24137c070bb9b631f62934c8ae65e2bd3f7c6fca25c736",
+      "output": {
+        "templatePath": "sites/vanmoof/variants/desktop/template.json",
+        "themePath": "sites/vanmoof/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/vanmoof/variants/desktop/pages",
+        "sectionsDir": "sites/vanmoof/variants/desktop/sections",
+        "blocksDir": "sites/vanmoof/variants/desktop/blocks"
+      }
+    }
+  ],
+  "catalogs": {
+    "siteCatalog": "site-catalog.json",
+    "pageCatalog": "page-catalog.json",
+    "sectionCatalog": "section-catalog.json",
+    "blockCatalog": "block-catalog.json"
+  }
+}

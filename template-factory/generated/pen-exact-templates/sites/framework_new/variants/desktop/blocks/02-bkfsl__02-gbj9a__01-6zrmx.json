@@ -1,0 +1,211 @@
+{
+  "blockId": "6ZrMx",
+  "blockName": "GuidesSection",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 15,
+  "treeHash": "5daa1695190c37e9959c9fad250789ebdb4f5ade2bf4e98f1b5d83ed9e23b254",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "6ZrMx",
+    "name": "GuidesSection",
+    "width": "fill_container",
+    "layout": "vertical",
+    "gap": 18,
+    "children": [
+      {
+        "type": "frame",
+        "id": "o0Zeb",
+        "name": "GuidesHead",
+        "width": "fill_container",
+        "justifyContent": "space_between",
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "85vVo",
+            "name": "guidesTitle",
+            "fill": "#1F2737",
+            "content": "Setup, Upgrade, and Repair Guides",
+            "fontFamily": "Inter",
+            "fontSize": 40,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "5hRC3",
+            "name": "viewBtn",
+            "width": 122,
+            "height": 34,
+            "cornerRadius": 17,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#A6A9AE"
+            },
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "mLR9N",
+                "name": "viewTxt",
+                "fill": "#44484D",
+                "content": "View All Guides",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "600"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "t1DVu",
+        "name": "GuideCards",
+        "width": "fill_container",
+        "gap": 19,
+        "children": [
+          {
+            "type": "frame",
+            "id": "5DEan",
+            "name": "card1",
+            "width": 394,
+            "layout": "vertical",
+            "gap": 8,
+            "children": [
+              {
+                "type": "frame",
+                "id": "a77fC",
+                "name": "img1",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "shuttergames",
+                  "link": "https://unsplash.com/@shuttergames",
+                  "author": "Shuttergames"
+                },
+                "width": 394,
+                "height": 170,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                },
+                "cornerRadius": 2
+              },
+              {
+                "type": "text",
+                "id": "ok16w",
+                "name": "cap1",
+                "fill": "#30343A",
+                "textGrowth": "fixed-width",
+                "width": 394,
+                "content": "Framework Laptop 13 DIY (Intel Core Ultra Series 1) Quick Start / Editor's Guide, Black Edition",
+                "lineHeight": 1.35,
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "JbNQP",
+            "name": "card2",
+            "width": 394,
+            "layout": "vertical",
+            "gap": 8,
+            "children": [
+              {
+                "type": "frame",
+                "id": "Ffvyh",
+                "name": "img2",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "muxin_250",
+                  "link": "https://unsplash.com/@muxin_250",
+                  "author": "muxin alkayis"
+                },
+                "width": 394,
+                "height": 170,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                },
+                "cornerRadius": 2
+              },
+              {
+                "type": "text",
+                "id": "nXvsF",
+                "name": "cap2",
+                "fill": "#30343A",
+                "textGrowth": "fixed-width",
+                "width": 394,
+                "content": "Mainboard Replacements Guide",
+                "lineHeight": 1.35,
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "normal"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "WG35z",
+            "name": "card3",
+            "width": 394,
+            "layout": "vertical",
+            "gap": 8,
+            "children": [
+              {
+                "type": "frame",
+                "id": "nZDoT",
+                "name": "img3",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "unsplash",
+                  "link": "https://unsplash.com/@unsplash",
+                  "author": "Unsplash"
+                },
+                "width": 394,
+                "height": 170,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                },
+                "cornerRadius": 2
+              },
+              {
+                "type": "text",
+                "id": "P7JQZ",
+                "name": "cap3",
+                "fill": "#30343A",
+                "textGrowth": "fixed-width",
+                "width": 394,
+                "content": "Framework Laptop 13 Fully DIY Quick Start Guide",
+                "lineHeight": 1.35,
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "normal"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

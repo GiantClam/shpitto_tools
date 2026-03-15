@@ -1,0 +1,1475 @@
+{
+  "pageId": "page-announcements",
+  "pageName": "Announcements",
+  "pageType": "generic",
+  "order": 3,
+  "bounds": {
+    "x": 520,
+    "y": 2908,
+    "width": 390,
+    "height": 1918
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "427623e2fb9103650872c8f012c4651e6772aee4fd4605ccdad545e5ac42c538",
+  "directChildCount": 32,
+  "recursiveNodeCount": 41,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "header-page-announcements",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "8893fc7bed64c2a88a9a487ef266bd5e450a8ddd127e76e2414843d5f87e5597",
+      "blockCount": 3
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1668,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "28875e209414dfec5669f74240d912894116ce0eeb241c503f5665b8f0bd34ca",
+      "blockCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "header-page-announcements",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "8893fc7bed64c2a88a9a487ef266bd5e450a8ddd127e76e2414843d5f87e5597",
+      "blockCount": 3,
+      "blockIndex": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db"
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3fad64e1f240e063c860a01267c07ed7d0586511d161c7b06e96fda59e76e6ae"
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b087b3d99c81249062fabb708d5043227c430fd8e4166762497fe0cc8764e110"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3fad64e1f240e063c860a01267c07ed7d0586511d161c7b06e96fda59e76e6ae",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          }
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b087b3d99c81249062fabb708d5043227c430fd8e4166762497fe0cc8764e110",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "header-page-announcements",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1668,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "28875e209414dfec5669f74240d912894116ce0eeb241c503f5665b8f0bd34ca",
+      "blockCount": 5,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f376df9ebf891ed1d89c5236f30961671f267ef85a1da8f44fb69cacae859970"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "35ba42ab8a6d205c35d35c6cee99806fee7ecdc591b1d7810c207c2a2fa7795f"
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "04e10cf421512ebfaf3feb95206ba60841bff4e04cb7cdee2f0f585972c64499"
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eaad21fdb86f142f396255c27dd69d7adbe1012c3bd45623f5dd21d29a786897"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "83bd82b9157dff5ec541c00599715d7fba85a7eec79776766b3ad3ff7ee51f72"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f376df9ebf891ed1d89c5236f30961671f267ef85a1da8f44fb69cacae859970",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#121212"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "35ba42ab8a6d205c35d35c6cee99806fee7ecdc591b1d7810c207c2a2fa7795f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F2F0EC",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "04e10cf421512ebfaf3feb95206ba60841bff4e04cb7cdee2f0f585972c64499",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Products Support Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eaad21fdb86f142f396255c27dd69d7adbe1012c3bd45623f5dd21d29a786897",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Developer Editions 3D Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "83bd82b9157dff5ec541c00599715d7fba85a7eec79776766b3ad3ff7ee51f72",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1668,
+        "width": 390,
+        "height": 250,
+        "fill": "#121212",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#121212"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F2F0EC",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Products Support Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Developer Editions 3D Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 8,
+  "looseNodeCount": 30,
+  "looseNodes": [
+    {
+      "id": "page-announcements-bg",
+      "name": "page-announcements-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 100
+    },
+    {
+      "id": "page-announcements-hero",
+      "name": "page-announcements-hero",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-announcements-overlay",
+      "name": "page-announcements-overlay",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-announcements-panel",
+      "name": "page-announcements-panel",
+      "type": "rectangle",
+      "width": 354,
+      "height": 1304
+    },
+    {
+      "id": "page-announcements-crumb",
+      "name": "page-announcements-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 18
+    },
+    {
+      "id": "page-announcements-title",
+      "name": "page-announcements-title",
+      "type": "text",
+      "width": 320,
+      "height": 92
+    },
+    {
+      "id": "page-announcements-subtitle",
+      "name": "page-announcements-subtitle",
+      "type": "text",
+      "width": 320,
+      "height": 25
+    },
+    {
+      "id": "page-announcements-btn-home-box",
+      "name": "page-announcements-btn-home-box",
+      "type": "rectangle",
+      "width": 128,
+      "height": 38
+    },
+    {
+      "id": "page-announcements-btn-home-text",
+      "name": "page-announcements-btn-home-text",
+      "type": "text",
+      "width": 100,
+      "height": 18
+    },
+    {
+      "id": "page-announcements-btn-peer-box",
+      "name": "page-announcements-btn-peer-box",
+      "type": "rectangle",
+      "width": 148,
+      "height": 38
+    },
+    {
+      "id": "page-announcements-btn-peer-text",
+      "name": "page-announcements-btn-peer-text",
+      "type": "text",
+      "width": 120,
+      "height": 18
+    },
+    {
+      "id": "page-announcements-kicker",
+      "name": "page-announcements-kicker",
+      "type": "text",
+      "width": 306,
+      "height": 18
+    },
+    {
+      "id": "page-announcements-panel-title",
+      "name": "page-announcements-panel-title",
+      "type": "text",
+      "width": 306,
+      "height": 41
+    },
+    {
+      "id": "page-announcements-p-0",
+      "name": "page-announcements-p-0",
+      "type": "text",
+      "width": 306,
+      "height": 25
+    },
+    {
+      "id": "page-announcements-p-1",
+      "name": "page-announcements-p-1",
+      "type": "text",
+      "width": 306,
+      "height": 265
+    },
+    {
+      "id": "page-announcements-p-2",
+      "name": "page-announcements-p-2",
+      "type": "text",
+      "width": 306,
+      "height": 450
+    },
+    {
+      "id": "page-announcements-p-3",
+      "name": "page-announcements-p-3",
+      "type": "text",
+      "width": 306,
+      "height": 62
+    },
+    {
+      "id": "page-announcements-feature",
+      "name": "page-announcements-feature",
+      "type": "rectangle",
+      "width": 306,
+      "height": 220
+    },
+    {
+      "id": "page-announcements-feature-2",
+      "name": "page-announcements-feature-2",
+      "type": "rectangle",
+      "width": 306,
+      "height": 180
+    },
+    {
+      "id": "page-announcements-card-0",
+      "name": "page-announcements-card-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 136
+    },
+    {
+      "id": "page-announcements-card-img-0",
+      "name": "page-announcements-card-img-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 82
+    },
+    {
+      "id": "page-announcements-card-title-0",
+      "name": "page-announcements-card-title-0",
+      "type": "text",
+      "width": 286,
+      "height": 18
+    },
+    {
+      "id": "page-announcements-card-copy-0",
+      "name": "page-announcements-card-copy-0",
+      "type": "text",
+      "width": 286,
+      "height": 38
+    },
+    {
+      "id": "page-announcements-related-title",
+      "name": "page-announcements-related-title",
+      "type": "text",
+      "width": 180,
+      "height": 18
+    },
+    {
+      "id": "page-announcements-related-0-box",
+      "name": "page-announcements-related-0-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-announcements-related-0-text",
+      "name": "page-announcements-related-0-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-announcements-related-1-box",
+      "name": "page-announcements-related-1-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-announcements-related-1-text",
+      "name": "page-announcements-related-1-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-announcements-related-2-box",
+      "name": "page-announcements-related-2-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-announcements-related-2-text",
+      "name": "page-announcements-related-2-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "relativePath": "assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "relativePath": "assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "relativePath": "assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "relativePath": "assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-announcements",
+    "name": "Announcements",
+    "x": 520,
+    "y": 2908,
+    "width": 390,
+    "height": 1918,
+    "fill": "#F6F4F1",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-announcements-bg",
+        "name": "page-announcements-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 100,
+        "fill": "#F6F4F1"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-announcements-hero",
+        "name": "page-announcements-hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+          "mode": "cover"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-announcements-overlay",
+        "name": "page-announcements-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": "#00000055"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-announcements-panel",
+        "name": "page-announcements-panel",
+        "x": 18,
+        "y": 344,
+        "width": 354,
+        "height": 1304,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "cornerRadius": 20
+      },
+      {
+        "type": "frame",
+        "id": "header-page-announcements",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-crumb",
+        "name": "page-announcements-crumb",
+        "x": 18,
+        "y": 82,
+        "fill": "#FFFFFF",
+        "content": "Home / Announcements",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-title",
+        "name": "page-announcements-title",
+        "x": 18,
+        "y": 106,
+        "fill": "#FFFFFF",
+        "content": "Announcements - Analogue",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 30,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 92
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-subtitle",
+        "name": "page-announcements-subtitle",
+        "x": 18,
+        "y": 184,
+        "fill": "#F0F0EE",
+        "content": "The latest announcements from Analogue",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 25
+      },
+      {
+        "type": "rectangle",
+        "id": "page-announcements-btn-home-box",
+        "name": "page-announcements-btn-home-box",
+        "x": 18,
+        "y": 252,
+        "width": 128,
+        "height": 38,
+        "fill": "#1C4BFF",
+        "stroke": {
+          "fill": "#1C4BFF",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-btn-home-text",
+        "name": "page-announcements-btn-home-text",
+        "x": 32,
+        "y": 262,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-announcements-btn-peer-box",
+        "name": "page-announcements-btn-peer-box",
+        "x": 158,
+        "y": 252,
+        "width": 148,
+        "height": 38,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "href": "#page-3d",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-btn-peer-text",
+        "name": "page-announcements-btn-peer-text",
+        "x": 172,
+        "y": 262,
+        "fill": "#111111",
+        "content": "Product page",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-3d",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-kicker",
+        "name": "page-announcements-kicker",
+        "x": 42,
+        "y": 368,
+        "fill": "#1C4BFF",
+        "content": "SECOND LEVEL PAGE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 18,
+        "letterSpacing": "0.1em"
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-panel-title",
+        "name": "page-announcements-panel-title",
+        "x": 42,
+        "y": 390,
+        "fill": "#111111",
+        "content": "Announcements",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 24,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 41
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-p-0",
+        "name": "page-announcements-p-0",
+        "x": 42,
+        "y": 422,
+        "fill": "#111111",
+        "content": "The latest announcements from Analogue",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 25
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-p-1",
+        "name": "page-announcements-p-1",
+        "x": 42,
+        "y": 465,
+        "fill": "#111111",
+        "content": "Oct 16. 2025 Analogue 3D - October 16th Update Analogue 3D remains on target to ship in Q4 of this year. There is no change in price or added cost for all open preorders. read more Aug 20. 2025 Analogue 3D - Shipping in Q4 Nonetheless, we know this sucks. Another delay, announced late, after months of patience. We feel it too. Analogue 3D has been in development for 4 years, obsessively. It’s at 99%. Hardware, system, packaging — the full kit — been set for months. The last 1% is where we’re focused.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 265
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-p-2",
+        "name": "page-announcements-p-2",
+        "x": 42,
+        "y": 748,
+        "fill": "#111111",
+        "content": "Jul 15. 2025 Analogue 3D - Shipping Next Month Following last week’s sudden tariff changes, Analogue 3D will now begin shipping next month. We’re absorbing the costs—your preorder price stays the same. No additional charges. read more Mar 18. 2025 Analogue 3D Shipping by July 2025, Pocket White Restock, Pocket OS and Duo OS Firmware Updates Analogue 3D shipping is delayed and is now shipping by July 2025. Analogue Pocket [white] is back in stock and shipping. read more Oct 16. 2024 Analogue OS is now product-specific: Pocket OS , Duo OS , 3D OS Analogue OS is now product-specific: Pocket OS for Pocket, Duo OS for Duo, 3D OS for 3D read more Sep 10. 2024 Analogue Pocket GBC Colors Limited Editions, Regular Editions Back In Stock, OS 2.3 Release An homage to the iconic original GBC Colors. Color matched. On sale September 12th 8am PDT and shipping September 16th. Released in limited quantities.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 450
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-p-3",
+        "name": "page-announcements-p-3",
+        "x": 42,
+        "y": 1216,
+        "fill": "#111111",
+        "content": "May 06. 2024 Analogue Pocket Back In Stock + Analogue Dock + Pocket to Pocket Link Cable",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 62
+      },
+      {
+        "type": "rectangle",
+        "id": "page-announcements-feature",
+        "name": "page-announcements-feature",
+        "x": 42,
+        "y": 368,
+        "width": 306,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-announcements",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-announcements-feature-2",
+        "name": "page-announcements-feature-2",
+        "x": 42,
+        "y": 606,
+        "width": 306,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-announcements",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-announcements-card-0",
+        "name": "page-announcements-card-0",
+        "x": 42,
+        "y": 1318,
+        "width": 306,
+        "height": 136,
+        "fill": "#F1EFEB",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "href": "#page-3d",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-announcements-card-img-0",
+        "name": "page-announcements-card-img-0",
+        "x": 42,
+        "y": 1318,
+        "width": 306,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/analogue/page-announcements-img-1-ca257553.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-3d",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-card-title-0",
+        "name": "page-announcements-card-title-0",
+        "x": 52,
+        "y": 1408,
+        "fill": "#111111",
+        "content": "3D",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 18,
+        "href": "#page-3d"
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-card-copy-0",
+        "name": "page-announcements-card-copy-0",
+        "x": 52,
+        "y": 1426,
+        "fill": "#5F5C57",
+        "content": "The latest announcements from Analogue",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 38,
+        "href": "#page-3d"
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-related-title",
+        "name": "page-announcements-related-title",
+        "x": 42,
+        "y": 1482,
+        "fill": "#1C4BFF",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-announcements-related-0-box",
+        "name": "page-announcements-related-0-box",
+        "x": 42,
+        "y": 1508,
+        "width": 150,
+        "height": 36,
+        "fill": "#1C4BFF",
+        "stroke": {
+          "fill": "#1C4BFF",
+          "thickness": 1
+        },
+        "href": "#page-3d",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-related-0-text",
+        "name": "page-announcements-related-0-text",
+        "x": 56,
+        "y": 1517,
+        "fill": "#FFFFFF",
+        "content": "3D",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-3d",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-announcements-related-1-box",
+        "name": "page-announcements-related-1-box",
+        "x": 204,
+        "y": 1508,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "href": "#page-pocket",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-related-1-text",
+        "name": "page-announcements-related-1-text",
+        "x": 218,
+        "y": 1517,
+        "fill": "#111111",
+        "content": "Pocket",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-pocket",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-announcements-related-2-box",
+        "name": "page-announcements-related-2-box",
+        "x": 42,
+        "y": 1556,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D9D5CF",
+          "thickness": 1
+        },
+        "href": "#page-duo",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-announcements-related-2-text",
+        "name": "page-announcements-related-2-text",
+        "x": 56,
+        "y": 1565,
+        "fill": "#111111",
+        "content": "Duo",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-duo",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1668,
+        "width": 390,
+        "height": 250,
+        "fill": "#121212",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#121212"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F2F0EC",
+            "content": "Analogue",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Products Support Announcements",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F2F0EC",
+            "content": "Developer Editions 3D Pocket",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Analogue structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    ]
+  }
+}

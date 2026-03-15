@@ -1,0 +1,263 @@
+{
+  "blockId": "VKhzL",
+  "blockName": "TopGrid",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 22,
+  "treeHash": "da34849caa02b9f6410c7ca3f49b6f74c0fc984e05b381539ed6f072a4a9d2e7",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "VKhzL",
+    "name": "TopGrid",
+    "width": "fill_container",
+    "layout": "vertical",
+    "gap": 36,
+    "children": [
+      {
+        "type": "frame",
+        "id": "BVz3z",
+        "name": "KBRow",
+        "width": "fill_container",
+        "gap": 54,
+        "children": [
+          {
+            "type": "frame",
+            "id": "5EjuM",
+            "name": "KBLeft",
+            "width": 556,
+            "layout": "vertical",
+            "gap": 10,
+            "padding": [
+              0,
+              0,
+              0,
+              4
+            ],
+            "children": [
+              {
+                "type": "text",
+                "id": "3Pqir",
+                "name": "kbTitle",
+                "fill": "#1F2737",
+                "content": "Knowledge Base",
+                "fontFamily": "Inter",
+                "fontSize": 38,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "hDOfc",
+                "name": "kbDesc",
+                "fill": "#6A6F74",
+                "textGrowth": "fixed-width",
+                "width": 510,
+                "content": "A collection of frequently asked questions around ordering, product specs, software debugging, and troubleshooting.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 13,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "frame",
+                "id": "pz6Kc",
+                "name": "kbLinks",
+                "width": 510,
+                "layout": "vertical",
+                "padding": [
+                  8,
+                  0,
+                  0,
+                  0
+                ],
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "bDAcy",
+                    "name": "kbL1",
+                    "fill": "#2C3037",
+                    "content": "Orders & Shipping",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "KmYpj",
+                    "name": "kbSep1",
+                    "width": "fill_container",
+                    "height": 1,
+                    "fill": "#CACFD3"
+                  },
+                  {
+                    "type": "text",
+                    "id": "KmgCF",
+                    "name": "kbL2",
+                    "fill": "#2C3037",
+                    "content": "Account & Profile",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "P9NIU",
+                    "name": "kbSep2",
+                    "width": "fill_container",
+                    "height": 1,
+                    "fill": "#CACFD3"
+                  },
+                  {
+                    "type": "text",
+                    "id": "cs35u",
+                    "name": "kbL3",
+                    "fill": "#2C3037",
+                    "content": "Products",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  },
+                  {
+                    "type": "frame",
+                    "id": "By2RC",
+                    "name": "kbSep3",
+                    "width": "fill_container",
+                    "height": 1,
+                    "fill": "#CACFD3"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "TldaS",
+            "name": "KBIconCard",
+            "width": 520,
+            "height": 250,
+            "fill": "#DFEAEC",
+            "gap": 12,
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "icon_font",
+                "id": "VYue1",
+                "name": "msgIcon",
+                "width": 70,
+                "height": 70,
+                "iconFontName": "message-square",
+                "iconFontFamily": "lucide",
+                "fill": "#2E353D"
+              },
+              {
+                "type": "icon_font",
+                "id": "eKLFU",
+                "name": "searchIcon",
+                "width": 44,
+                "height": 44,
+                "iconFontName": "search",
+                "iconFontFamily": "lucide",
+                "fill": "#2E353D"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "GQtJA",
+        "name": "CommunityRow",
+        "width": "fill_container",
+        "gap": 54,
+        "children": [
+          {
+            "type": "frame",
+            "id": "z0u4u",
+            "name": "CommunityImage",
+            "metadata": {
+              "type": "unsplash",
+              "username": "nublson",
+              "link": "https://unsplash.com/@nublson",
+              "author": "Nubelson Fernandes"
+            },
+            "width": 520,
+            "height": 276,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            },
+            "cornerRadius": 2
+          },
+          {
+            "type": "frame",
+            "id": "OmuGG",
+            "name": "CommunityText",
+            "width": 520,
+            "layout": "vertical",
+            "gap": 10,
+            "justifyContent": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "58f9m",
+                "name": "commTitle",
+                "fill": "#1F2737",
+                "content": "Community",
+                "fontFamily": "Inter",
+                "fontSize": 40,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "v85jD",
+                "name": "commDesc",
+                "fill": "#6A6F74",
+                "textGrowth": "fixed-width",
+                "width": 470,
+                "content": "A community forum where users can ask questions, get advice, and brainstorm projects, and participate in discussions topics around Framework products.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 13,
+                "fontWeight": "normal"
+              },
+              {
+                "type": "frame",
+                "id": "6PHT8",
+                "name": "askBtn",
+                "width": 136,
+                "height": 34,
+                "fill": "#F26B2D",
+                "cornerRadius": 17,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "e3AEE",
+                    "name": "askTxt",
+                    "fill": "#121416",
+                    "content": "Ask the Community",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

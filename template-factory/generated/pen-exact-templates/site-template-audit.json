@@ -1,0 +1,4372 @@
+{
+  "schemaVersion": "pen-site-template-audit.v1",
+  "generatedAt": "2026-03-12T06:48:44.734Z",
+  "outDir": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates",
+  "variantCount": 27,
+  "failingVariants": 0,
+  "navigationIssues": 0,
+  "footerIssues": 0,
+  "invalidLinkVariants": 0,
+  "motionFailVariants": 0,
+  "variants": [
+    {
+      "siteId": "analogue",
+      "siteName": "Analogue",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-analogue-mobile",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-analogue-mobile/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 19,
+        "linkedPages": [
+          "/3d",
+          "/announcements",
+          "/contact-support",
+          "/developer",
+          "/duo",
+          "/editions",
+          "/pocket",
+          "/products",
+          "/support",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/3d",
+          "/announcements",
+          "/contact-support",
+          "/developer",
+          "/duo",
+          "/editions",
+          "/pocket",
+          "/products",
+          "/support",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/products",
+          "/support",
+          "/announcements",
+          "/developer",
+          "/editions",
+          "/3d",
+          "/contact-support",
+          "/duo",
+          "/pocket",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 18
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/products",
+        "/support",
+        "/announcements",
+        "/developer",
+        "/editions",
+        "/3d",
+        "/pocket",
+        "/duo",
+        "/contact-support"
+      ]
+    },
+    {
+      "siteId": "analogue",
+      "siteName": "Analogue",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-analogue-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-analogue-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 55,
+        "linkedPages": [
+          "/3d",
+          "/announcements",
+          "/contact-support",
+          "/developer",
+          "/duo",
+          "/editions",
+          "/pocket",
+          "/products",
+          "/support",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/3d",
+          "/announcements",
+          "/contact-support",
+          "/developer",
+          "/duo",
+          "/editions",
+          "/pocket",
+          "/products",
+          "/support",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/products",
+          "/support",
+          "/announcements",
+          "/developer",
+          "/editions",
+          "/3d",
+          "/contact-support",
+          "/duo",
+          "/pocket",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 50
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/products",
+        "/support",
+        "/announcements",
+        "/developer",
+        "/editions",
+        "/3d",
+        "/pocket",
+        "/duo",
+        "/contact-support"
+      ]
+    },
+    {
+      "siteId": "breton",
+      "siteName": "Breton",
+      "variant": "mobile",
+      "pageCount": 12,
+      "sandboxSiteKey": "pen-exact-site-breton-mobile",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-breton-mobile/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 44,
+        "linkedPages": [
+          "/about",
+          "/bit",
+          "/breton-hydra",
+          "/breton-kappa-g",
+          "/contacts",
+          "/engineering",
+          "/news-events",
+          "/nikolaus-bagnara",
+          "/products",
+          "/revolutionizing-manufacturing",
+          "/services",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 108,
+        "linkedPages": [
+          "/about",
+          "/bit",
+          "/breton-hydra",
+          "/breton-kappa-g",
+          "/contacts",
+          "/engineering",
+          "/news-events",
+          "/nikolaus-bagnara",
+          "/products",
+          "/revolutionizing-manufacturing",
+          "/services",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "home",
+          "/products",
+          "/about",
+          "/bit",
+          "/breton-hydra",
+          "/breton-kappa-g",
+          "/contacts",
+          "/engineering",
+          "/news-events",
+          "/nikolaus-bagnara",
+          "/revolutionizing-manufacturing",
+          "/services"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "page-home",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-engineering",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-products",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-services",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-bit",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-news-events",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-about",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-contacts",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-breton-hydra",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-breton-kappa-g",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-revolutionizing-manufacturing",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-nikolaus-bagnara",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 140
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 12,
+        "visualPagesPassed": 12,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/engineering",
+        "/products",
+        "/services",
+        "/bit",
+        "/news-events",
+        "/about",
+        "/contacts",
+        "/breton-hydra",
+        "/breton-kappa-g",
+        "/revolutionizing-manufacturing",
+        "/nikolaus-bagnara"
+      ]
+    },
+    {
+      "siteId": "breton",
+      "siteName": "Breton",
+      "variant": "desktop",
+      "pageCount": 12,
+      "sandboxSiteKey": "pen-exact-site-breton-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-breton-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 110,
+        "linkedPages": [
+          "/about",
+          "/bit",
+          "/breton-hydra",
+          "/breton-kappa-g",
+          "/contacts",
+          "/engineering",
+          "/news-events",
+          "/nikolaus-bagnara",
+          "/products",
+          "/revolutionizing-manufacturing",
+          "/services",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 108,
+        "linkedPages": [
+          "/about",
+          "/bit",
+          "/breton-hydra",
+          "/breton-kappa-g",
+          "/contacts",
+          "/engineering",
+          "/news-events",
+          "/nikolaus-bagnara",
+          "/products",
+          "/revolutionizing-manufacturing",
+          "/services",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "home",
+          "/products",
+          "/services",
+          "/bit",
+          "/contacts",
+          "/about",
+          "/breton-hydra",
+          "/breton-kappa-g",
+          "/engineering",
+          "/news-events",
+          "/nikolaus-bagnara",
+          "/revolutionizing-manufacturing"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "page-home",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-engineering",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-products",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-services",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-bit",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-news-events",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-about",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-contacts",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-breton-hydra",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-breton-kappa-g",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-revolutionizing-manufacturing",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          },
+          {
+            "pageId": "page-nikolaus-bagnara",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-follow",
+              "footer-vat"
+            ],
+            "samples": [
+              "Follow Breton on: Facebook • LinkedIn • YouTube",
+              "VAT: 01880270267 • © 2026 Breton S.p.A. All rights reserved."
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 200
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 12,
+        "visualPagesPassed": 12,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/engineering",
+        "/products",
+        "/services",
+        "/bit",
+        "/news-events",
+        "/about",
+        "/contacts",
+        "/breton-hydra",
+        "/breton-kappa-g",
+        "/revolutionizing-manufacturing",
+        "/nikolaus-bagnara"
+      ]
+    },
+    {
+      "siteId": "carbon3d",
+      "siteName": "Carbon3d",
+      "variant": "mobile",
+      "pageCount": 12,
+      "sandboxSiteKey": "pen-exact-site-carbon3d-mobile",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-carbon3d-mobile/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 33,
+        "linkedPages": [
+          "/about",
+          "/ao-backpack",
+          "/contact",
+          "/footwear",
+          "/industries",
+          "/m3-printer",
+          "/news-events",
+          "/partners",
+          "/platform",
+          "/products",
+          "/resources",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 12,
+        "linkedPages": [
+          "/about",
+          "/ao-backpack",
+          "/contact",
+          "/footwear",
+          "/industries",
+          "/m3-printer",
+          "/news-events",
+          "/partners",
+          "/platform",
+          "/products",
+          "/resources",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "home",
+          "/products",
+          "/about",
+          "/ao-backpack",
+          "/contact",
+          "/footwear",
+          "/industries",
+          "/m3-printer",
+          "/news-events",
+          "/partners",
+          "/platform",
+          "/resources"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "page-home",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware",
+              "M3 Printer\nM2 Printer\nL1 Printer",
+              "About Carbon\nNewsroom\nContact"
+            ]
+          },
+          {
+            "pageId": "page-platform",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware",
+              "M3 Printer\nM2 Printer\nL1 Printer",
+              "About Carbon\nNewsroom\nContact"
+            ]
+          },
+          {
+            "pageId": "page-products",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware",
+              "M3 Printer\nM2 Printer\nL1 Printer",
+              "About Carbon\nNewsroom\nContact"
+            ]
+          },
+          {
+            "pageId": "page-industries",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware",
+              "M3 Printer\nM2 Printer\nL1 Printer",
+              "About Carbon\nNewsroom\nContact"
+            ]
+          },
+          {
+            "pageId": "page-partners",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware",
+              "M3 Printer\nM2 Printer\nL1 Printer",
+              "About Carbon\nNewsroom\nContact"
+            ]
+          },
+          {
+            "pageId": "page-resources",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware",
+              "M3 Printer\nM2 Printer\nL1 Printer",
+              "About Carbon\nNewsroom\nContact"
+            ]
+          },
+          {
+            "pageId": "page-about",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware",
+              "M3 Printer\nM2 Printer\nL1 Printer",
+              "About Carbon\nNewsroom\nContact"
+            ]
+          },
+          {
+            "pageId": "page-contact",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware",
+              "M3 Printer\nM2 Printer\nL1 Printer",
+              "About Carbon\nNewsroom\nContact"
+            ]
+          },
+          {
+            "pageId": "page-footwear",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware",
+              "M3 Printer\nM2 Printer\nL1 Printer",
+              "About Carbon\nNewsroom\nContact"
+            ]
+          },
+          {
+            "pageId": "page-m3-printer",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware",
+              "M3 Printer\nM2 Printer\nL1 Printer",
+              "About Carbon\nNewsroom\nContact"
+            ]
+          },
+          {
+            "pageId": "page-ao-backpack",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware",
+              "M3 Printer\nM2 Printer\nL1 Printer",
+              "About Carbon\nNewsroom\nContact"
+            ]
+          },
+          {
+            "pageId": "page-news-events",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware",
+              "M3 Printer\nM2 Printer\nL1 Printer",
+              "About Carbon\nNewsroom\nContact"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 42
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 12,
+        "visualPagesPassed": 12,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/platform",
+        "/products",
+        "/industries",
+        "/partners",
+        "/resources",
+        "/about",
+        "/contact",
+        "/footwear",
+        "/m3-printer",
+        "/ao-backpack",
+        "/news-events"
+      ]
+    },
+    {
+      "siteId": "carbon3d",
+      "siteName": "Carbon3d",
+      "variant": "desktop",
+      "pageCount": 12,
+      "sandboxSiteKey": "pen-exact-site-carbon3d-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-carbon3d-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 88,
+        "linkedPages": [
+          "/about",
+          "/ao-backpack",
+          "/contact",
+          "/footwear",
+          "/industries",
+          "/m3-printer",
+          "/news-events",
+          "/partners",
+          "/platform",
+          "/products",
+          "/resources",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 12,
+        "linkedPages": [
+          "/about",
+          "/ao-backpack",
+          "/contact",
+          "/footwear",
+          "/industries",
+          "/m3-printer",
+          "/news-events",
+          "/partners",
+          "/platform",
+          "/products",
+          "/resources",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "home",
+          "/industries",
+          "/partners",
+          "/resources",
+          "/about",
+          "/contact",
+          "/ao-backpack",
+          "/footwear",
+          "/m3-printer",
+          "/news-events",
+          "/platform",
+          "/products"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "page-home",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-Industries-body",
+              "footer-Resources-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware\nHardware",
+              "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+              "Consumer\nDental\nOrthodontics\nIndustrial",
+              "Blog\nCase studies\nCourses\nDatasheets",
+              "About Carbon\nNewsroom\nContact Us\nPartners"
+            ]
+          },
+          {
+            "pageId": "page-platform",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-Industries-body",
+              "footer-Resources-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware\nHardware",
+              "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+              "Consumer\nDental\nOrthodontics\nIndustrial",
+              "Blog\nCase studies\nCourses\nDatasheets",
+              "About Carbon\nNewsroom\nContact Us\nPartners"
+            ]
+          },
+          {
+            "pageId": "page-products",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-Industries-body",
+              "footer-Resources-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware\nHardware",
+              "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+              "Consumer\nDental\nOrthodontics\nIndustrial",
+              "Blog\nCase studies\nCourses\nDatasheets",
+              "About Carbon\nNewsroom\nContact Us\nPartners"
+            ]
+          },
+          {
+            "pageId": "page-industries",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-Industries-body",
+              "footer-Resources-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware\nHardware",
+              "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+              "Consumer\nDental\nOrthodontics\nIndustrial",
+              "Blog\nCase studies\nCourses\nDatasheets",
+              "About Carbon\nNewsroom\nContact Us\nPartners"
+            ]
+          },
+          {
+            "pageId": "page-partners",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-Industries-body",
+              "footer-Resources-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware\nHardware",
+              "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+              "Consumer\nDental\nOrthodontics\nIndustrial",
+              "Blog\nCase studies\nCourses\nDatasheets",
+              "About Carbon\nNewsroom\nContact Us\nPartners"
+            ]
+          },
+          {
+            "pageId": "page-resources",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-Industries-body",
+              "footer-Resources-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware\nHardware",
+              "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+              "Consumer\nDental\nOrthodontics\nIndustrial",
+              "Blog\nCase studies\nCourses\nDatasheets",
+              "About Carbon\nNewsroom\nContact Us\nPartners"
+            ]
+          },
+          {
+            "pageId": "page-about",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-Industries-body",
+              "footer-Resources-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware\nHardware",
+              "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+              "Consumer\nDental\nOrthodontics\nIndustrial",
+              "Blog\nCase studies\nCourses\nDatasheets",
+              "About Carbon\nNewsroom\nContact Us\nPartners"
+            ]
+          },
+          {
+            "pageId": "page-contact",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-Industries-body",
+              "footer-Resources-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware\nHardware",
+              "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+              "Consumer\nDental\nOrthodontics\nIndustrial",
+              "Blog\nCase studies\nCourses\nDatasheets",
+              "About Carbon\nNewsroom\nContact Us\nPartners"
+            ]
+          },
+          {
+            "pageId": "page-footwear",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-Industries-body",
+              "footer-Resources-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware\nHardware",
+              "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+              "Consumer\nDental\nOrthodontics\nIndustrial",
+              "Blog\nCase studies\nCourses\nDatasheets",
+              "About Carbon\nNewsroom\nContact Us\nPartners"
+            ]
+          },
+          {
+            "pageId": "page-m3-printer",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-Industries-body",
+              "footer-Resources-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware\nHardware",
+              "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+              "Consumer\nDental\nOrthodontics\nIndustrial",
+              "Blog\nCase studies\nCourses\nDatasheets",
+              "About Carbon\nNewsroom\nContact Us\nPartners"
+            ]
+          },
+          {
+            "pageId": "page-ao-backpack",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-Industries-body",
+              "footer-Resources-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware\nHardware",
+              "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+              "Consumer\nDental\nOrthodontics\nIndustrial",
+              "Blog\nCase studies\nCourses\nDatasheets",
+              "About Carbon\nNewsroom\nContact Us\nPartners"
+            ]
+          },
+          {
+            "pageId": "page-news-events",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-Platform-body",
+              "footer-Products-body",
+              "footer-Industries-body",
+              "footer-Resources-body",
+              "footer-About-body"
+            ],
+            "samples": [
+              "How it Works\nMaterials\nSoftware\nHardware",
+              "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+              "Consumer\nDental\nOrthodontics\nIndustrial",
+              "Blog\nCase studies\nCourses\nDatasheets",
+              "About Carbon\nNewsroom\nContact Us\nPartners"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 92
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 12,
+        "visualPagesPassed": 12,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/platform",
+        "/products",
+        "/industries",
+        "/partners",
+        "/resources",
+        "/about",
+        "/contact",
+        "/footwear",
+        "/m3-printer",
+        "/ao-backpack",
+        "/news-events"
+      ]
+    },
+    {
+      "siteId": "fptindustrie",
+      "siteName": "Fptindustrie",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-fptindustrie-mobile",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-fptindustrie-mobile/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 20,
+        "linkedPages": [
+          "/company",
+          "/contacts",
+          "/industries",
+          "/italian-style",
+          "/mecspe-2026",
+          "/products",
+          "/services",
+          "/technology",
+          "/warcom-news",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 10,
+        "linkedPages": [
+          "/company",
+          "/contacts",
+          "/industries",
+          "/italian-style",
+          "/mecspe-2026",
+          "/products",
+          "/services",
+          "/technology",
+          "/warcom-news",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/products",
+          "/company",
+          "/contacts",
+          "/industries",
+          "/italian-style",
+          "/mecspe-2026",
+          "/services",
+          "/technology",
+          "/warcom-news",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "page-home",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col1",
+              "footer-col2",
+              "footer-col3",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style",
+              "产品\n镗床\n卧式铣床\n立式铣床",
+              "行业\n能源\n航空航天\n汽车\n铁路",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-company",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col1",
+              "footer-col2",
+              "footer-col3",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style",
+              "产品\n镗床\n卧式铣床\n立式铣床",
+              "行业\n能源\n航空航天\n汽车\n铁路",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-products",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col1",
+              "footer-col2",
+              "footer-col3",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style",
+              "产品\n镗床\n卧式铣床\n立式铣床",
+              "行业\n能源\n航空航天\n汽车\n铁路",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-industries",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col1",
+              "footer-col2",
+              "footer-col3",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style",
+              "产品\n镗床\n卧式铣床\n立式铣床",
+              "行业\n能源\n航空航天\n汽车\n铁路",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-technology",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col1",
+              "footer-col2",
+              "footer-col3",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style",
+              "产品\n镗床\n卧式铣床\n立式铣床",
+              "行业\n能源\n航空航天\n汽车\n铁路",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-contacts",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col1",
+              "footer-col2",
+              "footer-col3",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style",
+              "产品\n镗床\n卧式铣床\n立式铣床",
+              "行业\n能源\n航空航天\n汽车\n铁路",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-services",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col1",
+              "footer-col2",
+              "footer-col3",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style",
+              "产品\n镗床\n卧式铣床\n立式铣床",
+              "行业\n能源\n航空航天\n汽车\n铁路",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-italian-style",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col1",
+              "footer-col2",
+              "footer-col3",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style",
+              "产品\n镗床\n卧式铣床\n立式铣床",
+              "行业\n能源\n航空航天\n汽车\n铁路",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-warcom-news",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col1",
+              "footer-col2",
+              "footer-col3",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style",
+              "产品\n镗床\n卧式铣床\n立式铣床",
+              "行业\n能源\n航空航天\n汽车\n铁路",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-mecspe-2026",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col1",
+              "footer-col2",
+              "footer-col3",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style",
+              "产品\n镗床\n卧式铣床\n立式铣床",
+              "行业\n能源\n航空航天\n汽车\n铁路",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 27
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/company",
+        "/products",
+        "/industries",
+        "/technology",
+        "/contacts",
+        "/services",
+        "/italian-style",
+        "/warcom-news",
+        "/mecspe-2026"
+      ]
+    },
+    {
+      "siteId": "fptindustrie",
+      "siteName": "Fptindustrie",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-fptindustrie-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-fptindustrie-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 79,
+        "linkedPages": [
+          "/company",
+          "/contacts",
+          "/industries",
+          "/italian-style",
+          "/mecspe-2026",
+          "/products",
+          "/services",
+          "/technology",
+          "/warcom-news",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 10,
+        "linkedPages": [
+          "/company",
+          "/contacts",
+          "/industries",
+          "/italian-style",
+          "/mecspe-2026",
+          "/products",
+          "/services",
+          "/technology",
+          "/warcom-news",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/company",
+          "/products",
+          "/industries",
+          "/technology",
+          "/services",
+          "/contacts",
+          "/italian-style",
+          "/mecspe-2026",
+          "/warcom-news",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "page-home",
+            "sectionId": "4ry2q",
+            "blockIds": [
+              "WgPav",
+              "Bz4TB",
+              "JucKC",
+              "0mHaP",
+              "p6n24",
+              "47Q6l",
+              "cuxL4",
+              "R1r1W",
+              "4c3zy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style\n我们的认证\nGovernance",
+              "镗床\n卧式铣床\n立式铣床\n车削中心\nT 型铣床\nFriction Stir Welding\nAccessories",
+              "能源\n通用机械\n航空航天\n模板&模具\n汽车\n铁路\n石油&天然气\n土方工程\n船舶\n防务",
+              "FPT 世界\n通信\n联系方式\n加入我们",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款",
+              "FAST MILL Clamping\nSystem\nMARES PLATFORM 4.0+\nFRICTION STIR WELDING\nPRODUCTS"
+            ]
+          },
+          {
+            "pageId": "page-company",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col-links-1",
+              "footer-col-links-2",
+              "footer-col-links-3",
+              "footer-col-links-4",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style\n我们的认证\nGovernance",
+              "镗床\n卧式铣床\n立式铣床\n车削中心\nT 型铣床\nFriction Stir Welding\nAccessories",
+              "能源\n通用机械\n航空航天\n模板&模具\n汽车\n铁路\n石油&天然气\n土方工程\n船舶\n防务",
+              "FPT 世界\n通信\n联系方式\n加入我们",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-products",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col-links-1",
+              "footer-col-links-2",
+              "footer-col-links-3",
+              "footer-col-links-4",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style\n我们的认证\nGovernance",
+              "镗床\n卧式铣床\n立式铣床\n车削中心\nT 型铣床\nFriction Stir Welding\nAccessories",
+              "能源\n通用机械\n航空航天\n模板&模具\n汽车\n铁路\n石油&天然气\n土方工程\n船舶\n防务",
+              "FPT 世界\n通信\n联系方式\n加入我们",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-industries",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col-links-1",
+              "footer-col-links-2",
+              "footer-col-links-3",
+              "footer-col-links-4",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style\n我们的认证\nGovernance",
+              "镗床\n卧式铣床\n立式铣床\n车削中心\nT 型铣床\nFriction Stir Welding\nAccessories",
+              "能源\n通用机械\n航空航天\n模板&模具\n汽车\n铁路\n石油&天然气\n土方工程\n船舶\n防务",
+              "FPT 世界\n通信\n联系方式\n加入我们",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-technology",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col-links-1",
+              "footer-col-links-2",
+              "footer-col-links-3",
+              "footer-col-links-4",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style\n我们的认证\nGovernance",
+              "镗床\n卧式铣床\n立式铣床\n车削中心\nT 型铣床\nFriction Stir Welding\nAccessories",
+              "能源\n通用机械\n航空航天\n模板&模具\n汽车\n铁路\n石油&天然气\n土方工程\n船舶\n防务",
+              "FPT 世界\n通信\n联系方式\n加入我们",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-contacts",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col-links-1",
+              "footer-col-links-2",
+              "footer-col-links-3",
+              "footer-col-links-4",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style\n我们的认证\nGovernance",
+              "镗床\n卧式铣床\n立式铣床\n车削中心\nT 型铣床\nFriction Stir Welding\nAccessories",
+              "能源\n通用机械\n航空航天\n模板&模具\n汽车\n铁路\n石油&天然气\n土方工程\n船舶\n防务",
+              "FPT 世界\n通信\n联系方式\n加入我们",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-services",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col-links-1",
+              "footer-col-links-2",
+              "footer-col-links-3",
+              "footer-col-links-4",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style\n我们的认证\nGovernance",
+              "镗床\n卧式铣床\n立式铣床\n车削中心\nT 型铣床\nFriction Stir Welding\nAccessories",
+              "能源\n通用机械\n航空航天\n模板&模具\n汽车\n铁路\n石油&天然气\n土方工程\n船舶\n防务",
+              "FPT 世界\n通信\n联系方式\n加入我们",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-italian-style",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col-links-1",
+              "footer-col-links-2",
+              "footer-col-links-3",
+              "footer-col-links-4",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style\n我们的认证\nGovernance",
+              "镗床\n卧式铣床\n立式铣床\n车削中心\nT 型铣床\nFriction Stir Welding\nAccessories",
+              "能源\n通用机械\n航空航天\n模板&模具\n汽车\n铁路\n石油&天然气\n土方工程\n船舶\n防务",
+              "FPT 世界\n通信\n联系方式\n加入我们",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-warcom-news",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col-links-1",
+              "footer-col-links-2",
+              "footer-col-links-3",
+              "footer-col-links-4",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style\n我们的认证\nGovernance",
+              "镗床\n卧式铣床\n立式铣床\n车削中心\nT 型铣床\nFriction Stir Welding\nAccessories",
+              "能源\n通用机械\n航空航天\n模板&模具\n汽车\n铁路\n石油&天然气\n土方工程\n船舶\n防务",
+              "FPT 世界\n通信\n联系方式\n加入我们",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          },
+          {
+            "pageId": "page-mecspe-2026",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-address",
+              "footer-contact",
+              "footer-col-links-1",
+              "footer-col-links-2",
+              "footer-col-links-3",
+              "footer-col-links-4",
+              "footer-lang",
+              "footer-copy"
+            ],
+            "samples": [
+              "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+              "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+              "企业\n历史\n企业系统\nItalian Style\n我们的认证\nGovernance",
+              "镗床\n卧式铣床\n立式铣床\n车削中心\nT 型铣床\nFriction Stir Welding\nAccessories",
+              "能源\n通用机械\n航空航天\n模板&模具\n汽车\n铁路\n石油&天然气\n土方工程\n船舶\n防务",
+              "FPT 世界\n通信\n联系方式\n加入我们",
+              "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+              "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 81
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/company",
+        "/products",
+        "/industries",
+        "/technology",
+        "/contacts",
+        "/services",
+        "/italian-style",
+        "/warcom-news",
+        "/mecspe-2026"
+      ]
+    },
+    {
+      "siteId": "framework_new",
+      "siteName": "Framework New",
+      "variant": "desktop",
+      "pageCount": 6,
+      "sandboxSiteKey": "pen-exact-site-framework_new-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-framework_new-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 0,
+        "linkedPages": [
+          "/about",
+          "/blog",
+          "/contact",
+          "/products",
+          "/support",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "bi8Au",
+            "sectionId": "1dXGT",
+            "blockIds": [
+              "FfSUj",
+              "utCTH"
+            ],
+            "samples": [
+              "Products   Laptops   Desktops   Marketplace",
+              "Support   Sign In   Cart"
+            ]
+          },
+          {
+            "pageId": "ARV8z",
+            "sectionId": "qG45q",
+            "blockIds": [
+              "EsYux",
+              "OYGri"
+            ],
+            "samples": [
+              "Products   Laptops   Desktops   Marketplace",
+              "Support   Sign In   Cart"
+            ]
+          },
+          {
+            "pageId": "bKfsl",
+            "sectionId": "ZWNtu",
+            "blockIds": [
+              "v6LkF",
+              "aZ05d"
+            ],
+            "samples": [
+              "Products   Laptops   Desktops   Marketplace",
+              "Support   Sign In   Cart"
+            ]
+          },
+          {
+            "pageId": "H5dwI",
+            "sectionId": "4fScJ",
+            "blockIds": [
+              "ljcyN",
+              "iR903"
+            ],
+            "samples": [
+              "Products   Laptops   Desktops   Marketplace",
+              "Support   Sign In   Cart"
+            ]
+          },
+          {
+            "pageId": "jPAr2",
+            "sectionId": "VESxn",
+            "blockIds": [
+              "0QJik",
+              "sH40y"
+            ],
+            "samples": [
+              "Products   Laptops   Desktops   Marketplace",
+              "Support   Sign In   Cart"
+            ]
+          },
+          {
+            "pageId": "Q3oSI",
+            "sectionId": "Cl2fZ",
+            "blockIds": [
+              "TqHfc",
+              "544lz"
+            ],
+            "samples": [
+              "Products   Laptops   Desktops   Marketplace",
+              "Support   Sign In   Cart"
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/about",
+          "/blog",
+          "/contact",
+          "/products",
+          "/support",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/about",
+          "/blog",
+          "/contact",
+          "/products",
+          "/support",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "ARV8z",
+            "sectionId": "VdTK9",
+            "blockIds": [
+              "ImZ8D",
+              "1Mbhb",
+              "HY3sB",
+              "8G0oU",
+              "2VB8X"
+            ],
+            "samples": [
+              "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+              "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+              "Community Forum\nSupport\nRepair Guides",
+              "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+              "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy"
+            ]
+          },
+          {
+            "pageId": "bKfsl",
+            "sectionId": "nTRCw",
+            "blockIds": [
+              "pCFSk",
+              "RDotc",
+              "NQUGs",
+              "Tn1ZN",
+              "IrP3A"
+            ],
+            "samples": [
+              "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+              "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+              "Community Forum\nSupport\nRepair Guides",
+              "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+              "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy"
+            ]
+          },
+          {
+            "pageId": "H5dwI",
+            "sectionId": "fjJRU",
+            "blockIds": [
+              "dyODK",
+              "DEw7o",
+              "hTTZH",
+              "2yRFl",
+              "n5Q0U"
+            ],
+            "samples": [
+              "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+              "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+              "Community Forum\nSupport\nRepair Guides",
+              "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+              "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy"
+            ]
+          },
+          {
+            "pageId": "jPAr2",
+            "sectionId": "xVCho",
+            "blockIds": [
+              "MqBMr",
+              "hOWyb",
+              "T3Cx4",
+              "puZ92",
+              "4dmqi"
+            ],
+            "samples": [
+              "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+              "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+              "Community Forum\nSupport\nRepair Guides",
+              "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+              "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy"
+            ]
+          },
+          {
+            "pageId": "Q3oSI",
+            "sectionId": "hYNFr",
+            "blockIds": [
+              "BoAhr",
+              "Uj2cK",
+              "tfjHs",
+              "09GZY",
+              "XsAtp"
+            ],
+            "samples": [
+              "About Us\nSustainability\nOur Blog\nContact Us\nFor Business",
+              "Twitter\nYouTube\nInstagram\nFacebook\nLinkedIn\nBluesky\nMastodon\nGitHub\nRSS",
+              "Community Forum\nSupport\nRepair Guides",
+              "View All\nOutlet\nFramework Laptop\nFramework Desktop\nMainboards\nExpansion Cards\nMemory & Storage\nKeyboards\nParts\nCustomization\nTools\nSoftware\nMerch",
+              "© 2026 Framework Computer Inc   Terms of Service   Privacy Policy   Warranty   Terms of Sale   Cookie Policy"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 0
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 6,
+        "visualPagesPassed": 6,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/about",
+        "/support",
+        "/products",
+        "/contact",
+        "/blog"
+      ]
+    },
+    {
+      "siteId": "ionq",
+      "siteName": "Ionq",
+      "variant": "desktop",
+      "pageCount": 6,
+      "sandboxSiteKey": "pen-exact-site-ionq-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-ionq-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 0,
+        "linkedPages": [
+          "/about",
+          "/blog",
+          "/contact",
+          "/product",
+          "/technology",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "XNrKx",
+            "sectionId": "Vxxah",
+            "blockIds": [
+              "FnPFV"
+            ],
+            "samples": [
+              "Products   Company   Resources   Careers   Roadmap   Blog"
+            ]
+          },
+          {
+            "pageId": "cQ9wf",
+            "sectionId": "745Av",
+            "blockIds": [
+              "jFyDz"
+            ],
+            "samples": [
+              "Products   Company   Resources   Careers   Roadmap   Blog"
+            ]
+          },
+          {
+            "pageId": "as1Lf",
+            "sectionId": "EKwWV",
+            "blockIds": [
+              "waqpF"
+            ],
+            "samples": [
+              "Products   Company   Resources   Careers   Roadmap   Blog"
+            ]
+          },
+          {
+            "pageId": "qFoix",
+            "sectionId": "5jZu7",
+            "blockIds": [
+              "zHo6t"
+            ],
+            "samples": [
+              "Products   Company   Resources   Careers   Roadmap   Blog"
+            ]
+          },
+          {
+            "pageId": "DD8yn",
+            "sectionId": "4vu49",
+            "blockIds": [
+              "Edzsu"
+            ],
+            "samples": [
+              "Products   Company   Resources   Careers   Roadmap   Blog"
+            ]
+          },
+          {
+            "pageId": "TTIMH",
+            "sectionId": "shLnJ",
+            "blockIds": [
+              "I6SwV"
+            ],
+            "samples": [
+              "Products   Company   Resources   Careers   Roadmap   Blog"
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/about",
+          "/blog",
+          "/contact",
+          "/product",
+          "/technology",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/about",
+          "/blog",
+          "/contact",
+          "/product",
+          "/technology",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 0
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 6,
+        "visualPagesPassed": 6,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/about",
+        "/product",
+        "/contact",
+        "/blog",
+        "/technology"
+      ]
+    },
+    {
+      "siteId": "Kymeta",
+      "siteName": "Kymeta",
+      "variant": "desktop",
+      "pageCount": 6,
+      "sandboxSiteKey": "pen-exact-site-Kymeta-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-Kymeta-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 0,
+        "linkedPages": [
+          "/about",
+          "/application",
+          "/contact",
+          "/products",
+          "/support",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "v4qd8",
+            "sectionId": "HYyXP",
+            "blockIds": [
+              "ainOZ",
+              "dXlAz"
+            ],
+            "samples": [
+              "Why Kymeta     Applications     Products & Services     Support     About",
+              "Contact     Sign in ↗"
+            ]
+          },
+          {
+            "pageId": "ewPmv",
+            "sectionId": "iFlBi",
+            "blockIds": [
+              "cvkVF",
+              "PkvMW"
+            ],
+            "samples": [
+              "Why Kymeta     Applications     Products & Services     Support     About",
+              "Contact     Sign in ↗"
+            ]
+          },
+          {
+            "pageId": "KP8yX",
+            "sectionId": "hmeqg",
+            "blockIds": [
+              "LOXyF",
+              "RTrK8"
+            ],
+            "samples": [
+              "Why Kymeta     Applications     Products & Services     Support     About",
+              "Contact     Sign in ↗"
+            ]
+          },
+          {
+            "pageId": "bi8Au",
+            "sectionId": "RMvlA",
+            "blockIds": [
+              "A70R8",
+              "ly0uo"
+            ],
+            "samples": [
+              "Why Kymeta     Applications     Products & Services     Support     About",
+              "Contact     Sign in ↗"
+            ]
+          },
+          {
+            "pageId": "orOG2",
+            "sectionId": "12iAw",
+            "blockIds": [
+              "sIvXZ",
+              "DDMM6"
+            ],
+            "samples": [
+              "Why Kymeta     Applications     Products & Services     Support     About",
+              "Contact     Sign in ↗"
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/about",
+          "/application",
+          "/contact",
+          "/products",
+          "/support",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/about",
+          "/application",
+          "/contact",
+          "/products",
+          "/support",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "v4qd8",
+            "sectionId": "zP35x",
+            "blockIds": [
+              "0vNA8",
+              "8C11o",
+              "HeMTz",
+              "Mtvgb",
+              "E3MLC"
+            ],
+            "samples": [
+              "Why Kymeta\nMilitary & Government\nMaritime\nLand\nProducts",
+              "Connectivity\nResources\nTraining\nPolicies & warranties\nCompany Overview",
+              "News & Insights\nLeadership\nCareers\nContact",
+              "© 2026 Kymeta Corporation. All rights reserved.   Legal",
+              "Kymeta Corporation (Headquarters)\n12277 134th Court NE\nRedmond, WA 98052\n\nKymeta Corporation (Woodinville office)\n14120 NE 200th St\nWoodinville, WA 98072\n\nKymeta Government & Defense\n2000 Corporate Ridge Rd, Suite 525\nMcLean, VA 22102\n\ninfo@kymetacorp.com\nsupport@kymetacorp.com"
+            ]
+          },
+          {
+            "pageId": "ewPmv",
+            "sectionId": "XH0WV",
+            "blockIds": [
+              "jvWHb",
+              "utakJ",
+              "yfQFN",
+              "bFdjZ",
+              "QCGXe"
+            ],
+            "samples": [
+              "Why Kymeta\nMilitary & Government\nMaritime\nLand\nProducts",
+              "Connectivity\nResources\nTraining\nPolicies & warranties\nCompany Overview",
+              "News & Insights\nLeadership\nCareers\nContact",
+              "© 2026 Kymeta Corporation. All rights reserved.   Legal",
+              "Kymeta Corporation (Headquarters)\n12277 134th Court NE\nRedmond, WA 98052\n\nKymeta Corporation (Woodinville office)\n14120 NE 200th St\nWoodinville, WA 98072\n\nKymeta Government & Defense\n2000 Corporate Ridge Rd, Suite 525\nMcLean, VA 22102\n\ninfo@kymetacorp.com\nsupport@kymetacorp.com"
+            ]
+          },
+          {
+            "pageId": "KP8yX",
+            "sectionId": "28z4T",
+            "blockIds": [
+              "yXqOG",
+              "BFlNf",
+              "fjTsF",
+              "ltrVK",
+              "OtEh2"
+            ],
+            "samples": [
+              "Why Kymeta\nMilitary & Government\nMaritime\nLand\nProducts",
+              "Connectivity\nResources\nTraining\nPolicies & warranties\nCompany Overview",
+              "News & Insights\nLeadership\nCareers\nContact",
+              "© 2026 Kymeta Corporation. All rights reserved.   Legal",
+              "Kymeta Corporation (Headquarters)\n12277 134th Court NE\nRedmond, WA 98052\n\nKymeta Corporation (Woodinville office)\n14120 NE 200th St\nWoodinville, WA 98072\n\nKymeta Government & Defense\n2000 Corporate Ridge Rd, Suite 525\nMcLean, VA 22102\n\ninfo@kymetacorp.com\nsupport@kymetacorp.com"
+            ]
+          },
+          {
+            "pageId": "bi8Au",
+            "sectionId": "hVpbr",
+            "blockIds": [
+              "Vmmb4",
+              "SYH9x",
+              "wI4gb",
+              "O9DFn",
+              "P5Kkc"
+            ],
+            "samples": [
+              "Why Kymeta\nMilitary & Government\nMaritime\nLand\nProducts",
+              "Connectivity\nResources\nTraining\nPolicies & warranties\nCompany Overview",
+              "News & Insights\nLeadership\nCareers\nContact",
+              "© 2026 Kymeta Corporation. All rights reserved.   Legal",
+              "Kymeta Corporation (Headquarters)\n12277 134th Court NE\nRedmond, WA 98052\n\nKymeta Corporation (Woodinville office)\n14120 NE 200th St\nWoodinville, WA 98072\n\nKymeta Government & Defense\n2000 Corporate Ridge Rd, Suite 525\nMcLean, VA 22102\n\ninfo@kymetacorp.com\nsupport@kymetacorp.com"
+            ]
+          },
+          {
+            "pageId": "orOG2",
+            "sectionId": "a5tEe",
+            "blockIds": [
+              "SbpPI",
+              "qvtqw",
+              "DedXW",
+              "x1dOW",
+              "sMHCL"
+            ],
+            "samples": [
+              "Why Kymeta\nMilitary & Government\nMaritime\nLand\nProducts",
+              "Connectivity\nResources\nTraining\nPolicies & warranties\nCompany Overview",
+              "News & Insights\nLeadership\nCareers\nContact",
+              "© 2026 Kymeta Corporation. All rights reserved.   Legal",
+              "Kymeta Corporation (Headquarters)\n12277 134th Court NE\nRedmond, WA 98052\n\nKymeta Corporation (Woodinville office)\n14120 NE 200th St\nWoodinville, WA 98072\n\nKymeta Government & Defense\n2000 Corporate Ridge Rd, Suite 525\nMcLean, VA 22102\n\ninfo@kymetacorp.com\nsupport@kymetacorp.com"
+            ]
+          },
+          {
+            "pageId": "rbYG7",
+            "sectionId": "xT4BA",
+            "blockIds": [
+              "DF1Ij",
+              "U8buS",
+              "YGzvY",
+              "LE2Fa",
+              "nKtlt"
+            ],
+            "samples": [
+              "Why Kymeta\nMilitary & Government\nMaritime\nLand\nProducts",
+              "Connectivity\nResources\nTraining\nPolicies & warranties\nCompany Overview",
+              "News & Insights\nLeadership\nCareers\nContact",
+              "© 2026 Kymeta Corporation. All rights reserved.   Legal",
+              "Kymeta Corporation (Headquarters)\n12277 134th Court NE\nRedmond, WA 98052\n\nKymeta Corporation (Woodinville office)\n14120 NE 200th St\nWoodinville, WA 98072\n\nKymeta Government & Defense\n2000 Corporate Ridge Rd, Suite 525\nMcLean, VA 22102\n\ninfo@kymetacorp.com\nsupport@kymetacorp.com"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 0
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 6,
+        "visualPagesPassed": 6,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "/application",
+        "/products",
+        "/about",
+        "home",
+        "/contact",
+        "/support"
+      ]
+    },
+    {
+      "siteId": "nothing-tech",
+      "siteName": "Nothing Tech",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-nothing-tech-mobile",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-nothing-tech-mobile/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 19,
+        "linkedPages": [
+          "/audio",
+          "/cmf-phone-2-pro",
+          "/contact-support",
+          "/ear-3",
+          "/headphone-1",
+          "/offers",
+          "/phone-3a-pro",
+          "/phones",
+          "/support-centre",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/audio",
+          "/cmf-phone-2-pro",
+          "/contact-support",
+          "/ear-3",
+          "/headphone-1",
+          "/offers",
+          "/phone-3a-pro",
+          "/phones",
+          "/support-centre",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/offers",
+          "/phones",
+          "/audio",
+          "/support-centre",
+          "/contact-support",
+          "/cmf-phone-2-pro",
+          "/ear-3",
+          "/headphone-1",
+          "/phone-3a-pro",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 18
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/offers",
+        "/phones",
+        "/audio",
+        "/support-centre",
+        "/contact-support",
+        "/phone-3a-pro",
+        "/ear-3",
+        "/cmf-phone-2-pro",
+        "/headphone-1"
+      ]
+    },
+    {
+      "siteId": "nothing-tech",
+      "siteName": "Nothing Tech",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-nothing-tech-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-nothing-tech-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 55,
+        "linkedPages": [
+          "/audio",
+          "/cmf-phone-2-pro",
+          "/contact-support",
+          "/ear-3",
+          "/headphone-1",
+          "/offers",
+          "/phone-3a-pro",
+          "/phones",
+          "/support-centre",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/audio",
+          "/cmf-phone-2-pro",
+          "/contact-support",
+          "/ear-3",
+          "/headphone-1",
+          "/offers",
+          "/phone-3a-pro",
+          "/phones",
+          "/support-centre",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/offers",
+          "/phones",
+          "/audio",
+          "/support-centre",
+          "/contact-support",
+          "/cmf-phone-2-pro",
+          "/ear-3",
+          "/headphone-1",
+          "/phone-3a-pro",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 50
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/offers",
+        "/phones",
+        "/audio",
+        "/support-centre",
+        "/contact-support",
+        "/phone-3a-pro",
+        "/ear-3",
+        "/cmf-phone-2-pro",
+        "/headphone-1"
+      ]
+    },
+    {
+      "siteId": "pagani",
+      "siteName": "Pagani",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-pagani-mobile",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-pagani-mobile/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 10,
+        "linkedPages": [
+          "/contact-us",
+          "/dealers",
+          "/guided-tours",
+          "/history",
+          "/huayra-r",
+          "/pagani-puro",
+          "/pagani-utopia",
+          "/utopia-roadster",
+          "/zonda-c12",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 5,
+        "linkedPages": [
+          "/contact-us",
+          "/dealers",
+          "/guided-tours",
+          "/history",
+          "/huayra-r",
+          "/pagani-puro",
+          "/pagani-utopia",
+          "/utopia-roadster",
+          "/zonda-c12",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/contact-us",
+          "/dealers",
+          "/guided-tours",
+          "/history",
+          "/huayra-r",
+          "/pagani-puro",
+          "/pagani-utopia",
+          "/utopia-roadster",
+          "/zonda-c12",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "page-home",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-links-1",
+              "footer-links-2"
+            ],
+            "samples": [
+              "Home\nHistory\nDealers\nUtopia",
+              "Guided tours\nContact us\nHuayra R\nZonda C12"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 11
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/history",
+        "/dealers",
+        "/guided-tours",
+        "/pagani-puro",
+        "/contact-us",
+        "/pagani-utopia",
+        "/utopia-roadster",
+        "/huayra-r",
+        "/zonda-c12"
+      ]
+    },
+    {
+      "siteId": "pagani",
+      "siteName": "Pagani",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-pagani-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-pagani-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 70,
+        "linkedPages": [
+          "/contact-us",
+          "/dealers",
+          "/guided-tours",
+          "/history",
+          "/huayra-r",
+          "/pagani-puro",
+          "/pagani-utopia",
+          "/utopia-roadster",
+          "/zonda-c12",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 5,
+        "linkedPages": [
+          "/contact-us",
+          "/dealers",
+          "/guided-tours",
+          "/history",
+          "/huayra-r",
+          "/pagani-puro",
+          "/pagani-utopia",
+          "/utopia-roadster",
+          "/zonda-c12",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/history",
+          "/dealers",
+          "/guided-tours",
+          "/pagani-utopia",
+          "/contact-us",
+          "/huayra-r",
+          "/pagani-puro",
+          "/utopia-roadster",
+          "/zonda-c12",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "page-home",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-links-1",
+              "footer-links-2",
+              "footer-links-3"
+            ],
+            "samples": [
+              "Home\nHistory\nDealers\nGuided Tours",
+              "Pagani Utopia\nUtopia Roadster\nHuayra R\nZonda C12",
+              "Pagani S.P.A.\nP.IVA 02054560368\nStructured pen clone"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 65
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/history",
+        "/dealers",
+        "/guided-tours",
+        "/pagani-puro",
+        "/contact-us",
+        "/pagani-utopia",
+        "/utopia-roadster",
+        "/huayra-r",
+        "/zonda-c12"
+      ]
+    },
+    {
+      "siteId": "pamamachinetools",
+      "siteName": "Pamamachinetools",
+      "variant": "mobile",
+      "pageCount": 11,
+      "sandboxSiteKey": "pen-exact-site-pamamachinetools-mobile",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-pamamachinetools-mobile/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 50,
+        "linkedPages": [
+          "/about-us",
+          "/aerospace-sector",
+          "/contact-us",
+          "/machining-centers",
+          "/maintenance",
+          "/pama-worldwide",
+          "/products",
+          "/sector",
+          "/solution-provider",
+          "/support",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 11,
+        "linkedPages": [
+          "/about-us",
+          "/aerospace-sector",
+          "/contact-us",
+          "/machining-centers",
+          "/maintenance",
+          "/pama-worldwide",
+          "/products",
+          "/sector",
+          "/solution-provider",
+          "/support",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "home",
+          "/contact-us",
+          "/products",
+          "/about-us",
+          "/aerospace-sector",
+          "/machining-centers",
+          "/maintenance",
+          "/pama-worldwide",
+          "/sector",
+          "/solution-provider",
+          "/support"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "page-home",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1",
+              "footer-col-2",
+              "footer-col-3"
+            ],
+            "samples": [
+              "SECTORS\nPRODUCTS\nSUPPORT",
+              "ABOUT US\nWORLDWIDE\nCONTACT",
+              "NEWS\nMEDIA\nCAREERS"
+            ]
+          },
+          {
+            "pageId": "page-sector",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1",
+              "footer-col-2",
+              "footer-col-3"
+            ],
+            "samples": [
+              "SECTORS\nPRODUCTS\nSUPPORT",
+              "ABOUT US\nWORLDWIDE\nCONTACT",
+              "NEWS\nMEDIA\nCAREERS"
+            ]
+          },
+          {
+            "pageId": "page-products",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1",
+              "footer-col-2",
+              "footer-col-3"
+            ],
+            "samples": [
+              "SECTORS\nPRODUCTS\nSUPPORT",
+              "ABOUT US\nWORLDWIDE\nCONTACT",
+              "NEWS\nMEDIA\nCAREERS"
+            ]
+          },
+          {
+            "pageId": "page-support",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1",
+              "footer-col-2",
+              "footer-col-3"
+            ],
+            "samples": [
+              "SECTORS\nPRODUCTS\nSUPPORT",
+              "ABOUT US\nWORLDWIDE\nCONTACT",
+              "NEWS\nMEDIA\nCAREERS"
+            ]
+          },
+          {
+            "pageId": "page-about-us",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1",
+              "footer-col-2",
+              "footer-col-3"
+            ],
+            "samples": [
+              "SECTORS\nPRODUCTS\nSUPPORT",
+              "ABOUT US\nWORLDWIDE\nCONTACT",
+              "NEWS\nMEDIA\nCAREERS"
+            ]
+          },
+          {
+            "pageId": "page-pama-worldwide",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1",
+              "footer-col-2",
+              "footer-col-3"
+            ],
+            "samples": [
+              "SECTORS\nPRODUCTS\nSUPPORT",
+              "ABOUT US\nWORLDWIDE\nCONTACT",
+              "NEWS\nMEDIA\nCAREERS"
+            ]
+          },
+          {
+            "pageId": "page-contact-us",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1",
+              "footer-col-2",
+              "footer-col-3"
+            ],
+            "samples": [
+              "SECTORS\nPRODUCTS\nSUPPORT",
+              "ABOUT US\nWORLDWIDE\nCONTACT",
+              "NEWS\nMEDIA\nCAREERS"
+            ]
+          },
+          {
+            "pageId": "page-aerospace-sector",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1",
+              "footer-col-2",
+              "footer-col-3"
+            ],
+            "samples": [
+              "SECTORS\nPRODUCTS\nSUPPORT",
+              "ABOUT US\nWORLDWIDE\nCONTACT",
+              "NEWS\nMEDIA\nCAREERS"
+            ]
+          },
+          {
+            "pageId": "page-machining-centers",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1",
+              "footer-col-2",
+              "footer-col-3"
+            ],
+            "samples": [
+              "SECTORS\nPRODUCTS\nSUPPORT",
+              "ABOUT US\nWORLDWIDE\nCONTACT",
+              "NEWS\nMEDIA\nCAREERS"
+            ]
+          },
+          {
+            "pageId": "page-maintenance",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1",
+              "footer-col-2",
+              "footer-col-3"
+            ],
+            "samples": [
+              "SECTORS\nPRODUCTS\nSUPPORT",
+              "ABOUT US\nWORLDWIDE\nCONTACT",
+              "NEWS\nMEDIA\nCAREERS"
+            ]
+          },
+          {
+            "pageId": "page-solution-provider",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1",
+              "footer-col-2",
+              "footer-col-3"
+            ],
+            "samples": [
+              "SECTORS\nPRODUCTS\nSUPPORT",
+              "ABOUT US\nWORLDWIDE\nCONTACT",
+              "NEWS\nMEDIA\nCAREERS"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 56
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 11,
+        "visualPagesPassed": 11,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/sector",
+        "/products",
+        "/support",
+        "/about-us",
+        "/pama-worldwide",
+        "/contact-us",
+        "/aerospace-sector",
+        "/machining-centers",
+        "/maintenance",
+        "/solution-provider"
+      ]
+    },
+    {
+      "siteId": "pamamachinetools",
+      "siteName": "Pamamachinetools",
+      "variant": "desktop",
+      "pageCount": 11,
+      "sandboxSiteKey": "pen-exact-site-pamamachinetools-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-pamamachinetools-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 90,
+        "linkedPages": [
+          "/about-us",
+          "/aerospace-sector",
+          "/contact-us",
+          "/machining-centers",
+          "/maintenance",
+          "/pama-worldwide",
+          "/products",
+          "/sector",
+          "/solution-provider",
+          "/support",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 55,
+        "linkedPages": [
+          "/about-us",
+          "/aerospace-sector",
+          "/contact-us",
+          "/machining-centers",
+          "/maintenance",
+          "/pama-worldwide",
+          "/products",
+          "/sector",
+          "/solution-provider",
+          "/support",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "home",
+          "/products",
+          "/support",
+          "/about-us",
+          "/contact-us",
+          "/aerospace-sector",
+          "/machining-centers",
+          "/maintenance",
+          "/pama-worldwide",
+          "/sector",
+          "/solution-provider"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "page-home",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1-links",
+              "footer-col-2-links",
+              "footer-col-3-links"
+            ],
+            "samples": [
+              "About us\nSolution provider\nPAMA Worldwide",
+              "Machining centers\nMilling machines\nAutomation",
+              "Maintenance\nContact us\nTechnology services"
+            ]
+          },
+          {
+            "pageId": "page-sector",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1-links",
+              "footer-col-2-links",
+              "footer-col-3-links"
+            ],
+            "samples": [
+              "About us\nSolution provider\nPAMA Worldwide",
+              "Machining centers\nMilling machines\nAutomation",
+              "Maintenance\nContact us\nTechnology services"
+            ]
+          },
+          {
+            "pageId": "page-products",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1-links",
+              "footer-col-2-links",
+              "footer-col-3-links"
+            ],
+            "samples": [
+              "About us\nSolution provider\nPAMA Worldwide",
+              "Machining centers\nMilling machines\nAutomation",
+              "Maintenance\nContact us\nTechnology services"
+            ]
+          },
+          {
+            "pageId": "page-support",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1-links",
+              "footer-col-2-links",
+              "footer-col-3-links"
+            ],
+            "samples": [
+              "About us\nSolution provider\nPAMA Worldwide",
+              "Machining centers\nMilling machines\nAutomation",
+              "Maintenance\nContact us\nTechnology services"
+            ]
+          },
+          {
+            "pageId": "page-about-us",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1-links",
+              "footer-col-2-links",
+              "footer-col-3-links"
+            ],
+            "samples": [
+              "About us\nSolution provider\nPAMA Worldwide",
+              "Machining centers\nMilling machines\nAutomation",
+              "Maintenance\nContact us\nTechnology services"
+            ]
+          },
+          {
+            "pageId": "page-pama-worldwide",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1-links",
+              "footer-col-2-links",
+              "footer-col-3-links"
+            ],
+            "samples": [
+              "About us\nSolution provider\nPAMA Worldwide",
+              "Machining centers\nMilling machines\nAutomation",
+              "Maintenance\nContact us\nTechnology services"
+            ]
+          },
+          {
+            "pageId": "page-contact-us",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1-links",
+              "footer-col-2-links",
+              "footer-col-3-links"
+            ],
+            "samples": [
+              "About us\nSolution provider\nPAMA Worldwide",
+              "Machining centers\nMilling machines\nAutomation",
+              "Maintenance\nContact us\nTechnology services"
+            ]
+          },
+          {
+            "pageId": "page-aerospace-sector",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1-links",
+              "footer-col-2-links",
+              "footer-col-3-links"
+            ],
+            "samples": [
+              "About us\nSolution provider\nPAMA Worldwide",
+              "Machining centers\nMilling machines\nAutomation",
+              "Maintenance\nContact us\nTechnology services"
+            ]
+          },
+          {
+            "pageId": "page-machining-centers",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1-links",
+              "footer-col-2-links",
+              "footer-col-3-links"
+            ],
+            "samples": [
+              "About us\nSolution provider\nPAMA Worldwide",
+              "Machining centers\nMilling machines\nAutomation",
+              "Maintenance\nContact us\nTechnology services"
+            ]
+          },
+          {
+            "pageId": "page-maintenance",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1-links",
+              "footer-col-2-links",
+              "footer-col-3-links"
+            ],
+            "samples": [
+              "About us\nSolution provider\nPAMA Worldwide",
+              "Machining centers\nMilling machines\nAutomation",
+              "Maintenance\nContact us\nTechnology services"
+            ]
+          },
+          {
+            "pageId": "page-solution-provider",
+            "sectionId": "footer",
+            "blockIds": [
+              "footer-col-1-links",
+              "footer-col-2-links",
+              "footer-col-3-links"
+            ],
+            "samples": [
+              "About us\nSolution provider\nPAMA Worldwide",
+              "Machining centers\nMilling machines\nAutomation",
+              "Maintenance\nContact us\nTechnology services"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 132
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 11,
+        "visualPagesPassed": 11,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/sector",
+        "/products",
+        "/support",
+        "/about-us",
+        "/pama-worldwide",
+        "/contact-us",
+        "/aerospace-sector",
+        "/machining-centers",
+        "/maintenance",
+        "/solution-provider"
+      ]
+    },
+    {
+      "siteId": "plexus",
+      "siteName": "Plexus",
+      "variant": "desktop",
+      "pageCount": 6,
+      "sandboxSiteKey": "pen-exact-site-plexus-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-plexus-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 0,
+        "linkedPages": [
+          "/about",
+          "/contact",
+          "/market",
+          "/resources",
+          "/solution",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "WcGnv",
+            "sectionId": "DtnPB",
+            "blockIds": [
+              "8iEnk",
+              "082eI"
+            ],
+            "samples": [
+              "解决方案 ▾    市场领域 ▾    关于我们 ▾    资源 ▾",
+              "投资者网站    客户门户网站    供应商门户网站    职业发展"
+            ]
+          },
+          {
+            "pageId": "kYJlL",
+            "sectionId": "IKaQC",
+            "blockIds": [
+              "HBfXP",
+              "5070Q"
+            ],
+            "samples": [
+              "解决方案 ▾    市场领域 ▾    关于我们 ▾    资源 ▾",
+              "投资者网站    客户门户网站    供应商门户网站    职业发展"
+            ]
+          },
+          {
+            "pageId": "7bkla",
+            "sectionId": "NMfJC",
+            "blockIds": [
+              "50rWf",
+              "zVyzx"
+            ],
+            "samples": [
+              "解决方案 ▾    市场领域 ▾    关于我们 ▾    资源 ▾",
+              "投资者网站    客户门户网站    供应商门户网站    职业发展"
+            ]
+          },
+          {
+            "pageId": "bi8Au",
+            "sectionId": "dKBWB",
+            "blockIds": [
+              "SnhxA",
+              "BojUH"
+            ],
+            "samples": [
+              "解决方案 ▾    市场领域 ▾    关于我们 ▾    资源 ▾",
+              "投资者网站    客户门户网站    供应商门户网站    职业发展"
+            ]
+          },
+          {
+            "pageId": "C2Mqk",
+            "sectionId": "Xukfj",
+            "blockIds": [
+              "OYKjc",
+              "LMYNx"
+            ],
+            "samples": [
+              "解决方案 ▾    市场领域 ▾    关于我们 ▾    资源 ▾",
+              "投资者网站    客户门户网站    供应商门户网站    职业发展"
+            ]
+          },
+          {
+            "pageId": "LJCdr",
+            "sectionId": "JOBO6",
+            "blockIds": [
+              "lgo4Z",
+              "BlW4C"
+            ],
+            "samples": [
+              "解决方案 ▾    市场领域 ▾    关于我们 ▾    资源 ▾",
+              "投资者网站    客户门户网站    供应商门户网站    职业发展"
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/about",
+          "/contact",
+          "/market",
+          "/resources",
+          "/solution",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/about",
+          "/contact",
+          "/market",
+          "/resources",
+          "/solution",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "WcGnv",
+            "sectionId": "jnlM7",
+            "blockIds": [
+              "wHgAp",
+              "TEyWS"
+            ],
+            "samples": [
+              "解决方案        市场领域        关于我们        资源        职业发展        订阅",
+              "Plexus Corp. OnePlexus Way, P.O. Box 156, Neenah, WI 54956 | +1 888 208 9005"
+            ]
+          },
+          {
+            "pageId": "kYJlL",
+            "sectionId": "so6lp",
+            "blockIds": [
+              "ZKQRb",
+              "j3upT"
+            ],
+            "samples": [
+              "解决方案        市场领域        关于我们        资源        职业发展        订阅",
+              "Plexus Corp. OnePlexus Way, P.O. Box 156, Neenah, WI 54956 | +1 888 208 9005"
+            ]
+          },
+          {
+            "pageId": "7bkla",
+            "sectionId": "JZlN3",
+            "blockIds": [
+              "SpY6Z",
+              "vPnO4"
+            ],
+            "samples": [
+              "解决方案        市场领域        关于我们        资源        职业发展        订阅",
+              "Plexus Corp. OnePlexus Way, P.O. Box 156, Neenah, WI 54956 | +1 888 208 9005"
+            ]
+          },
+          {
+            "pageId": "C2Mqk",
+            "sectionId": "oIMIH",
+            "blockIds": [
+              "7IcbC",
+              "EuUA2"
+            ],
+            "samples": [
+              "解决方案        市场领域        关于我们        资源        职业发展        订阅",
+              "Plexus Corp. OnePlexus Way, P.O. Box 156, Neenah, WI 54956 | +1 888 208 9005"
+            ]
+          },
+          {
+            "pageId": "LJCdr",
+            "sectionId": "APpRu",
+            "blockIds": [
+              "fZ0yw",
+              "BkM7Q"
+            ],
+            "samples": [
+              "解决方案        市场领域        关于我们        资源        职业发展        订阅",
+              "Plexus Corp. OnePlexus Way, P.O. Box 156, Neenah, WI 54956 | +1 888 208 9005"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 0
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 6,
+        "visualPagesPassed": 6,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "/contact",
+        "/solution",
+        "/about",
+        "home",
+        "/market",
+        "/resources"
+      ]
+    },
+    {
+      "siteId": "ridecake",
+      "siteName": "Ridecake",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-ridecake-mobile",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-ridecake-mobile/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 19,
+        "linkedPages": [
+          "/all-our-bikes",
+          "/bukk",
+          "/contact-us",
+          "/friends",
+          "/makka",
+          "/makka-work",
+          "/osa",
+          "/service-support",
+          "/work",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "page-home",
+            "sectionId": "categories",
+            "blockIds": [
+              "cat-card-b-0"
+            ],
+            "samples": [
+              "The CAKE family | Premium electric commuter motorcycles and mopeds"
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/all-our-bikes",
+          "/bukk",
+          "/contact-us",
+          "/friends",
+          "/makka",
+          "/makka-work",
+          "/osa",
+          "/service-support",
+          "/work",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/all-our-bikes",
+          "/work",
+          "/friends",
+          "/service-support",
+          "/contact-us",
+          "/bukk",
+          "/makka",
+          "/makka-work",
+          "/osa",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 18
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/all-our-bikes",
+        "/work",
+        "/friends",
+        "/contact-us",
+        "/service-support",
+        "/bukk",
+        "/makka",
+        "/osa",
+        "/makka-work"
+      ]
+    },
+    {
+      "siteId": "ridecake",
+      "siteName": "Ridecake",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-ridecake-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-ridecake-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 55,
+        "linkedPages": [
+          "/all-our-bikes",
+          "/bukk",
+          "/contact-us",
+          "/friends",
+          "/makka",
+          "/makka-work",
+          "/osa",
+          "/service-support",
+          "/work",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "page-home",
+            "sectionId": "categories",
+            "blockIds": [
+              "cat-card-b-0"
+            ],
+            "samples": [
+              "The CAKE family | Premium electric commuter motorcycles and mopeds"
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/all-our-bikes",
+          "/bukk",
+          "/contact-us",
+          "/friends",
+          "/makka",
+          "/makka-work",
+          "/osa",
+          "/service-support",
+          "/work",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/all-our-bikes",
+          "/work",
+          "/friends",
+          "/service-support",
+          "/contact-us",
+          "/bukk",
+          "/makka",
+          "/makka-work",
+          "/osa",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 50
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/all-our-bikes",
+        "/work",
+        "/friends",
+        "/contact-us",
+        "/service-support",
+        "/bukk",
+        "/makka",
+        "/osa",
+        "/makka-work"
+      ]
+    },
+    {
+      "siteId": "sandvik",
+      "siteName": "Sandvik",
+      "variant": "desktop",
+      "pageCount": 7,
+      "sandboxSiteKey": "pen-exact-site-sandvik-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-sandvik-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 0,
+        "linkedPages": [
+          "/sandvik-about",
+          "/sandvik-contact",
+          "/sandvik-customer-service",
+          "/sandvik-news",
+          "/sandvik-products",
+          "/sandvik-service",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "bi8Au",
+            "sectionId": "OxbQr",
+            "blockIds": [
+              "4qT2p",
+              "itGFf"
+            ],
+            "samples": [
+              "SANDVIK\ncoromant",
+              "刀具        知识        服务        支持"
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/sandvik-about",
+          "/sandvik-contact",
+          "/sandvik-customer-service",
+          "/sandvik-news",
+          "/sandvik-products",
+          "/sandvik-service"
+        ],
+        "overlapWithNavigation": [
+          "/sandvik-about",
+          "/sandvik-contact",
+          "/sandvik-customer-service",
+          "/sandvik-news",
+          "/sandvik-products",
+          "/sandvik-service"
+        ],
+        "pagesWithCollapsedMultiLinkText": [
+          {
+            "pageId": "bi8Au",
+            "sectionId": "fCb8C",
+            "blockIds": [
+              "WFxsk",
+              "l8rhF",
+              "5pf6M",
+              "BHao1"
+            ],
+            "samples": [
+              "Contact Center 客服中心\n☎ +86 800-820-2623(座机)/+86 400-820-2623(手机)\n沪ICP备20012694号-1\n京公网安备 11010502044395号",
+              "法律声明      隐私政策      安全      通用条款和条件",
+              "◉   ♪   ▶   知   ∞   微   RSS",
+              "中国 | 中文   ›"
+            ]
+          },
+          {
+            "pageId": "GHPvk",
+            "sectionId": "PoLi9",
+            "blockIds": [
+              "1I9Sw",
+              "cxdaS",
+              "q1xqE",
+              "5KuGS"
+            ],
+            "samples": [
+              "Contact Center 客服中心\n☎ +86 800-820-2623(座机)/+86 400-820-2623(手机)\n沪ICP备20012694号-1\n京公网安备 11010502044395号",
+              "法律声明      隐私政策      安全      通用条款和条件",
+              "◉   ♪   ▶   知   ∞   微   RSS",
+              "中国 | 中文   ›"
+            ]
+          }
+        ]
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 0
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 7,
+        "visualPagesPassed": 7,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/sandvik-about",
+        "/sandvik-products",
+        "/sandvik-service",
+        "/sandvik-news",
+        "/sandvik-contact",
+        "/sandvik-customer-service"
+      ]
+    },
+    {
+      "siteId": "teenage-engineering",
+      "siteName": "Teenage Engineering",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-teenage-engineering-mobile",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-teenage-engineering-mobile/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 19,
+        "linkedPages": [
+          "/contact",
+          "/design-popixel",
+          "/designs",
+          "/downloads",
+          "/guide-op-xy",
+          "/guides",
+          "/op-xy",
+          "/products",
+          "/tx-6",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/contact",
+          "/design-popixel",
+          "/designs",
+          "/downloads",
+          "/guide-op-xy",
+          "/guides",
+          "/op-xy",
+          "/products",
+          "/tx-6",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/products",
+          "/designs",
+          "/guides",
+          "/downloads",
+          "/contact",
+          "/design-popixel",
+          "/guide-op-xy",
+          "/op-xy",
+          "/tx-6",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 18
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/products",
+        "/guides",
+        "/downloads",
+        "/designs",
+        "/contact",
+        "/tx-6",
+        "/op-xy",
+        "/guide-op-xy",
+        "/design-popixel"
+      ]
+    },
+    {
+      "siteId": "teenage-engineering",
+      "siteName": "Teenage Engineering",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-teenage-engineering-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-teenage-engineering-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 55,
+        "linkedPages": [
+          "/contact",
+          "/design-popixel",
+          "/designs",
+          "/downloads",
+          "/guide-op-xy",
+          "/guides",
+          "/op-xy",
+          "/products",
+          "/tx-6",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/contact",
+          "/design-popixel",
+          "/designs",
+          "/downloads",
+          "/guide-op-xy",
+          "/guides",
+          "/op-xy",
+          "/products",
+          "/tx-6",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/products",
+          "/designs",
+          "/guides",
+          "/downloads",
+          "/contact",
+          "/design-popixel",
+          "/guide-op-xy",
+          "/op-xy",
+          "/tx-6",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 50
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/products",
+        "/guides",
+        "/downloads",
+        "/designs",
+        "/contact",
+        "/tx-6",
+        "/op-xy",
+        "/guide-op-xy",
+        "/design-popixel"
+      ]
+    },
+    {
+      "siteId": "transpa-rent",
+      "siteName": "Transpa Rent",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-transpa-rent-mobile",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-transpa-rent-mobile/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 19,
+        "linkedPages": [
+          "/about",
+          "/all-products",
+          "/aroma-diffuser",
+          "/light-speaker-white",
+          "/modular-system",
+          "/sound-room",
+          "/support",
+          "/transparent-speaker-black-wifi",
+          "/turntable-black",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/about",
+          "/all-products",
+          "/aroma-diffuser",
+          "/light-speaker-white",
+          "/modular-system",
+          "/sound-room",
+          "/support",
+          "/transparent-speaker-black-wifi",
+          "/turntable-black",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/all-products",
+          "/modular-system",
+          "/sound-room",
+          "/support",
+          "/about",
+          "/aroma-diffuser",
+          "/light-speaker-white",
+          "/transparent-speaker-black-wifi",
+          "/turntable-black",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 18
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/all-products",
+        "/modular-system",
+        "/sound-room",
+        "/support",
+        "/about",
+        "/transparent-speaker-black-wifi",
+        "/turntable-black",
+        "/light-speaker-white",
+        "/aroma-diffuser"
+      ]
+    },
+    {
+      "siteId": "transpa-rent",
+      "siteName": "Transpa Rent",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-transpa-rent-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-transpa-rent-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 55,
+        "linkedPages": [
+          "/about",
+          "/all-products",
+          "/aroma-diffuser",
+          "/light-speaker-white",
+          "/modular-system",
+          "/sound-room",
+          "/support",
+          "/transparent-speaker-black-wifi",
+          "/turntable-black",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/about",
+          "/all-products",
+          "/aroma-diffuser",
+          "/light-speaker-white",
+          "/modular-system",
+          "/sound-room",
+          "/support",
+          "/transparent-speaker-black-wifi",
+          "/turntable-black",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/all-products",
+          "/modular-system",
+          "/sound-room",
+          "/support",
+          "/about",
+          "/aroma-diffuser",
+          "/light-speaker-white",
+          "/transparent-speaker-black-wifi",
+          "/turntable-black",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 50
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/all-products",
+        "/modular-system",
+        "/sound-room",
+        "/support",
+        "/about",
+        "/transparent-speaker-black-wifi",
+        "/turntable-black",
+        "/light-speaker-white",
+        "/aroma-diffuser"
+      ]
+    },
+    {
+      "siteId": "vanmoof",
+      "siteName": "Vanmoof",
+      "variant": "mobile",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-vanmoof-mobile",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-vanmoof-mobile/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 16,
+        "linkedPages": [
+          "/a5",
+          "/accessories",
+          "/handlebar-risers",
+          "/our-rides",
+          "/our-story",
+          "/peak-design",
+          "/s5-a5-front-rack",
+          "/s6",
+          "/shipping-delivery",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/a5",
+          "/accessories",
+          "/handlebar-risers",
+          "/our-rides",
+          "/our-story",
+          "/peak-design",
+          "/s5-a5-front-rack",
+          "/s6",
+          "/shipping-delivery",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/our-rides",
+          "/accessories",
+          "/our-story",
+          "/peak-design",
+          "/shipping-delivery",
+          "/a5",
+          "/handlebar-risers",
+          "/s5-a5-front-rack",
+          "/s6",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 15
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/our-rides",
+        "/accessories",
+        "/our-story",
+        "/peak-design",
+        "/shipping-delivery",
+        "/a5",
+        "/s6",
+        "/s5-a5-front-rack",
+        "/handlebar-risers"
+      ]
+    },
+    {
+      "siteId": "vanmoof",
+      "siteName": "Vanmoof",
+      "variant": "desktop",
+      "pageCount": 10,
+      "sandboxSiteKey": "pen-exact-site-vanmoof-desktop",
+      "sandboxPayloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-vanmoof-desktop/sandbox/payload.json",
+      "navigation": {
+        "totalNavLinks": 52,
+        "linkedPages": [
+          "/a5",
+          "/accessories",
+          "/handlebar-risers",
+          "/our-rides",
+          "/our-story",
+          "/peak-design",
+          "/s5-a5-front-rack",
+          "/s6",
+          "/shipping-delivery",
+          "home"
+        ],
+        "missingPagesFromNavigation": [],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "footer": {
+        "totalFooterLinks": 0,
+        "linkedPages": [
+          "/a5",
+          "/accessories",
+          "/handlebar-risers",
+          "/our-rides",
+          "/our-story",
+          "/peak-design",
+          "/s5-a5-front-rack",
+          "/s6",
+          "/shipping-delivery",
+          "home"
+        ],
+        "overlapWithNavigation": [
+          "/our-rides",
+          "/accessories",
+          "/our-story",
+          "/peak-design",
+          "/shipping-delivery",
+          "/a5",
+          "/handlebar-risers",
+          "/s5-a5-front-rack",
+          "/s6",
+          "home"
+        ],
+        "pagesWithCollapsedMultiLinkText": []
+      },
+      "links": {
+        "invalidLinkCount": 0,
+        "invalidLinks": [],
+        "cleanedInvalidHrefCount": 0,
+        "rewrittenInternalHrefCount": 47
+      },
+      "styleParity": {
+        "status": "pass",
+        "source": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/visual-validation/manifest.json",
+        "visualPagesExpected": 10,
+        "visualPagesPassed": 10,
+        "note": "Visual parity inherits the existing 261/261 source-render validation."
+      },
+      "motion": {
+        "status": "pass",
+        "magicUiBased": true,
+        "note": "Sandbox preview now uses a Magic UI-backed shell with subtle entrance motion plus iframe-level section reveal hooks."
+      },
+      "overall": {
+        "readyForFunctionalPreview": true
+      },
+      "pages": [
+        "home",
+        "/our-rides",
+        "/accessories",
+        "/our-story",
+        "/peak-design",
+        "/shipping-delivery",
+        "/a5",
+        "/s6",
+        "/s5-a5-front-rack",
+        "/handlebar-risers"
+      ]
+    }
+  ]
+}

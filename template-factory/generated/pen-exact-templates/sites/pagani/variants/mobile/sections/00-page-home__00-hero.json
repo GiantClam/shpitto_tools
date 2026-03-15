@@ -1,0 +1,860 @@
+{
+  "sectionId": "hero",
+  "sectionName": "Hero",
+  "sectionKind": "hero",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 844
+  },
+  "directChildCount": 13,
+  "recursiveNodeCount": 14,
+  "treeHash": "c9880ea4b25f34752b079d697b7f19ec79ed1715fb2a7b6b901c39c68f3d72fc",
+  "blockCount": 13,
+  "blockIndex": [
+    {
+      "blockId": "hero-bg",
+      "blockName": "hero-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e6b46eafe7bbce8dd99bcac46cd0536b80476fe65d59b501b05ab9ee7d10f254"
+    },
+    {
+      "blockId": "hero-shade",
+      "blockName": "hero-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2e0c3fa6121f13fac799270380b521d18261c45c0e272911030503c328bba691"
+    },
+    {
+      "blockId": "hero-eyebrow",
+      "blockName": "hero-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 24,
+        "y": 128,
+        "width": 220,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7e32ac56cd437277a4a04ce432391aa784c54a333bdfda791986e696860ae6db"
+    },
+    {
+      "blockId": "hero-logo",
+      "blockName": "hero-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 3,
+      "bounds": {
+        "x": 18,
+        "y": 160,
+        "width": 184,
+        "height": 46
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f142aa1cfea820d6cb55aff12f8aaf6daf59f2dd3076b938179b9de919825542"
+    },
+    {
+      "blockId": "hero-title",
+      "blockName": "hero-title",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 226,
+        "width": 320,
+        "height": 132
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "245a4f70e4d7110a0f162481049866034d571477028c6362eb562a62555bb338"
+    },
+    {
+      "blockId": "hero-sub",
+      "blockName": "hero-sub",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 18,
+        "y": 424,
+        "width": 320,
+        "height": 106
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9bfae185dede9c911487ecc808b6ea5e03967cc21f5f9fd8ad5ce0613a5f6d00"
+    },
+    {
+      "blockId": "hero-cta-1-box",
+      "blockName": "hero-cta-1-box",
+      "blockType": "rectangle",
+      "order": 6,
+      "bounds": {
+        "x": 18,
+        "y": 546,
+        "width": 148,
+        "height": 42
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "da6d2ac3c95182455b892c3f937bdccdc57e7c929a3191714bdb039a5eb0a9f8"
+    },
+    {
+      "blockId": "hero-cta-1-text",
+      "blockName": "hero-cta-1-text",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 32,
+        "y": 558,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3d4575f2f46d422b45865e9284979f79d2612c05655d39e6988bdd11e2988309"
+    },
+    {
+      "blockId": "hero-cta-2-box",
+      "blockName": "hero-cta-2-box",
+      "blockType": "rectangle",
+      "order": 8,
+      "bounds": {
+        "x": 178,
+        "y": 546,
+        "width": 142,
+        "height": 42
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "24c0f8cc424836759afc7c44c7c597c0029104c0273569c3511818d5cab6c491"
+    },
+    {
+      "blockId": "hero-cta-2-text",
+      "blockName": "hero-cta-2-text",
+      "blockType": "text",
+      "order": 9,
+      "bounds": {
+        "x": 192,
+        "y": 558,
+        "width": 114,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c848b0c3a94e9beab448b50cca2e301459252b26610fc1a0a2778871b3fc2763"
+    },
+    {
+      "blockId": "scroll-indicator-pill",
+      "blockName": "scroll-indicator-pill",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 10,
+      "bounds": {
+        "x": 18,
+        "y": 760,
+        "width": 26,
+        "height": 42
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0c34f1b489d97ed3c9816510d0c824c9da573901394e097d426baeb4a84509ec"
+    },
+    {
+      "blockId": "scroll-indicator-dot",
+      "blockName": "scroll-indicator-dot",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 11,
+      "bounds": {
+        "x": 29,
+        "y": 770,
+        "width": 4,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0659d7efdc7a0d6cce2a7040c4c6463c636b61d046065c275034d64f31829dd6"
+    },
+    {
+      "blockId": "scroll-indicator-label",
+      "blockName": "scroll-indicator-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 12,
+      "bounds": {
+        "x": 58,
+        "y": 773,
+        "width": 180,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bcc467568442ca4f26ff4e2e7dc9ad4b759c20042d47e559043b72a0639fea3a"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/hero.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/hero.jpg",
+      "relativePath": "assets-structured/pagani/hero.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/hero-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/hero-logo.png",
+      "relativePath": "assets-structured/pagani/hero-logo.png",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "hero-bg",
+      "blockName": "hero-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e6b46eafe7bbce8dd99bcac46cd0536b80476fe65d59b501b05ab9ee7d10f254",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/hero.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/hero.jpg",
+        "relativePath": "assets-structured/pagani/hero.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-bg",
+        "x": 0,
+        "y": 0,
+        "name": "hero-bg",
+        "width": 390,
+        "height": 844,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/hero.jpg",
+          "mode": "fill"
+        }
+      }
+    },
+    {
+      "blockId": "hero-shade",
+      "blockName": "hero-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2e0c3fa6121f13fac799270380b521d18261c45c0e272911030503c328bba691",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-shade",
+        "x": 0,
+        "y": 0,
+        "name": "hero-shade",
+        "width": 390,
+        "height": 844,
+        "fill": "#0000005A"
+      }
+    },
+    {
+      "blockId": "hero-eyebrow",
+      "blockName": "hero-eyebrow",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 24,
+        "y": 128,
+        "width": 220,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7e32ac56cd437277a4a04ce432391aa784c54a333bdfda791986e696860ae6db",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-eyebrow",
+        "x": 24,
+        "y": 128,
+        "name": "hero-eyebrow",
+        "fill": "#B9B3AB",
+        "content": "Act Three, Scene Two",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 22
+      }
+    },
+    {
+      "blockId": "hero-logo",
+      "blockName": "hero-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 3,
+      "bounds": {
+        "x": 18,
+        "y": 160,
+        "width": 184,
+        "height": 46
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f142aa1cfea820d6cb55aff12f8aaf6daf59f2dd3076b938179b9de919825542",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/hero-logo.png",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/hero-logo.png",
+        "relativePath": "assets-structured/pagani/hero-logo.png",
+        "exists": true,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-logo",
+        "x": 18,
+        "y": 160,
+        "name": "hero-logo",
+        "width": 184,
+        "height": 46,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/hero-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-utopia-roadster"
+      }
+    },
+    {
+      "blockId": "hero-title",
+      "blockName": "hero-title",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 226,
+        "width": 320,
+        "height": 132
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "245a4f70e4d7110a0f162481049866034d571477028c6362eb562a62555bb338",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-title",
+        "x": 18,
+        "y": 226,
+        "name": "hero-title",
+        "fill": "#F3F2ED",
+        "content": "Pagani Utopia Roadster.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 44,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 132,
+        "letterSpacing": "-0.04em",
+        "href": "#page-utopia-roadster"
+      }
+    },
+    {
+      "blockId": "hero-sub",
+      "blockName": "hero-sub",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 18,
+        "y": 424,
+        "width": 320,
+        "height": 106
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9bfae185dede9c911487ecc808b6ea5e03967cc21f5f9fd8ad5ce0613a5f6d00",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-sub",
+        "x": 18,
+        "y": 424,
+        "name": "hero-sub",
+        "fill": "#B9B3AB",
+        "content": "The open-top interpretation of Utopia keeps mechanical purity, lightness and timeless proportion at the center of the stage, with a calmer and more precise visual language.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 106
+      }
+    },
+    {
+      "blockId": "hero-cta-1-box",
+      "blockName": "hero-cta-1-box",
+      "blockType": "rectangle",
+      "order": 6,
+      "bounds": {
+        "x": 18,
+        "y": 546,
+        "width": 148,
+        "height": 42
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "da6d2ac3c95182455b892c3f937bdccdc57e7c929a3191714bdb039a5eb0a9f8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-cta-1-box",
+        "x": 18,
+        "y": 546,
+        "name": "hero-cta-1-box",
+        "width": 148,
+        "height": 42,
+        "fill": "#111111",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-utopia-roadster"
+      }
+    },
+    {
+      "blockId": "hero-cta-1-text",
+      "blockName": "hero-cta-1-text",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 32,
+        "y": 558,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3d4575f2f46d422b45865e9284979f79d2612c05655d39e6988bdd11e2988309",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-cta-1-text",
+        "x": 32,
+        "y": 558,
+        "name": "hero-cta-1-text",
+        "fill": "#F3F2ED",
+        "content": "Discover More",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.18em",
+        "href": "#page-utopia-roadster"
+      }
+    },
+    {
+      "blockId": "hero-cta-2-box",
+      "blockName": "hero-cta-2-box",
+      "blockType": "rectangle",
+      "order": 8,
+      "bounds": {
+        "x": 178,
+        "y": 546,
+        "width": 142,
+        "height": 42
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "24c0f8cc424836759afc7c44c7c597c0029104c0273569c3511818d5cab6c491",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-cta-2-box",
+        "x": 178,
+        "y": 546,
+        "name": "hero-cta-2-box",
+        "width": 142,
+        "height": 42,
+        "fill": "#111111",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "hero-cta-2-text",
+      "blockName": "hero-cta-2-text",
+      "blockType": "text",
+      "order": 9,
+      "bounds": {
+        "x": 192,
+        "y": 558,
+        "width": 114,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c848b0c3a94e9beab448b50cca2e301459252b26610fc1a0a2778871b3fc2763",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-cta-2-text",
+        "x": 192,
+        "y": 558,
+        "name": "hero-cta-2-text",
+        "fill": "#F3F2ED",
+        "content": "History",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 114,
+        "height": 18,
+        "letterSpacing": "0.18em",
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "scroll-indicator-pill",
+      "blockName": "scroll-indicator-pill",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 10,
+      "bounds": {
+        "x": 18,
+        "y": 760,
+        "width": 26,
+        "height": 42
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0c34f1b489d97ed3c9816510d0c824c9da573901394e097d426baeb4a84509ec",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "scroll-indicator-pill",
+        "x": 18,
+        "y": 760,
+        "name": "scroll-indicator-pill",
+        "width": 26,
+        "height": 42,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        }
+      }
+    },
+    {
+      "blockId": "scroll-indicator-dot",
+      "blockName": "scroll-indicator-dot",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 11,
+      "bounds": {
+        "x": 29,
+        "y": 770,
+        "width": 4,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0659d7efdc7a0d6cce2a7040c4c6463c636b61d046065c275034d64f31829dd6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "scroll-indicator-dot",
+        "x": 29,
+        "y": 770,
+        "name": "scroll-indicator-dot",
+        "width": 4,
+        "height": 8,
+        "fill": "#C9B28B"
+      }
+    },
+    {
+      "blockId": "scroll-indicator-label",
+      "blockName": "scroll-indicator-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 12,
+      "bounds": {
+        "x": 58,
+        "y": 773,
+        "width": 180,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bcc467568442ca4f26ff4e2e7dc9ad4b759c20042d47e559043b72a0639fea3a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "scroll-indicator-label",
+        "x": 58,
+        "y": 773,
+        "name": "scroll-indicator-label",
+        "fill": "#B9B3AB",
+        "content": "SCROLL DOWN",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 18,
+        "letterSpacing": "0.22em"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "hero",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 844,
+    "name": "Hero",
+    "fill": "#060606",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "hero-bg",
+        "x": 0,
+        "y": 0,
+        "name": "hero-bg",
+        "width": 390,
+        "height": 844,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/hero.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-shade",
+        "x": 0,
+        "y": 0,
+        "name": "hero-shade",
+        "width": 390,
+        "height": 844,
+        "fill": "#0000005A"
+      },
+      {
+        "type": "text",
+        "id": "hero-eyebrow",
+        "x": 24,
+        "y": 128,
+        "name": "hero-eyebrow",
+        "fill": "#B9B3AB",
+        "content": "Act Three, Scene Two",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 22
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-logo",
+        "x": 18,
+        "y": 160,
+        "name": "hero-logo",
+        "width": 184,
+        "height": 46,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/hero-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-utopia-roadster"
+      },
+      {
+        "type": "text",
+        "id": "hero-title",
+        "x": 18,
+        "y": 226,
+        "name": "hero-title",
+        "fill": "#F3F2ED",
+        "content": "Pagani Utopia Roadster.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 44,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 132,
+        "letterSpacing": "-0.04em",
+        "href": "#page-utopia-roadster"
+      },
+      {
+        "type": "text",
+        "id": "hero-sub",
+        "x": 18,
+        "y": 424,
+        "name": "hero-sub",
+        "fill": "#B9B3AB",
+        "content": "The open-top interpretation of Utopia keeps mechanical purity, lightness and timeless proportion at the center of the stage, with a calmer and more precise visual language.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 106
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-cta-1-box",
+        "x": 18,
+        "y": 546,
+        "name": "hero-cta-1-box",
+        "width": 148,
+        "height": 42,
+        "fill": "#111111",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-utopia-roadster"
+      },
+      {
+        "type": "text",
+        "id": "hero-cta-1-text",
+        "x": 32,
+        "y": 558,
+        "name": "hero-cta-1-text",
+        "fill": "#F3F2ED",
+        "content": "Discover More",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.18em",
+        "href": "#page-utopia-roadster"
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-cta-2-box",
+        "x": 178,
+        "y": 546,
+        "name": "hero-cta-2-box",
+        "width": 142,
+        "height": 42,
+        "fill": "#111111",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      },
+      {
+        "type": "text",
+        "id": "hero-cta-2-text",
+        "x": 192,
+        "y": 558,
+        "name": "hero-cta-2-text",
+        "fill": "#F3F2ED",
+        "content": "History",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 114,
+        "height": 18,
+        "letterSpacing": "0.18em",
+        "href": "#page-history"
+      },
+      {
+        "type": "rectangle",
+        "id": "scroll-indicator-pill",
+        "x": 18,
+        "y": 760,
+        "name": "scroll-indicator-pill",
+        "width": 26,
+        "height": 42,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "scroll-indicator-dot",
+        "x": 29,
+        "y": 770,
+        "name": "scroll-indicator-dot",
+        "width": 4,
+        "height": 8,
+        "fill": "#C9B28B"
+      },
+      {
+        "type": "text",
+        "id": "scroll-indicator-label",
+        "x": 58,
+        "y": 773,
+        "name": "scroll-indicator-label",
+        "fill": "#B9B3AB",
+        "content": "SCROLL DOWN",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 18,
+        "letterSpacing": "0.22em"
+      }
+    ]
+  }
+}

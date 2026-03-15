@@ -1,0 +1,602 @@
+{
+  "sectionId": "BWrIE",
+  "sectionName": "section1",
+  "sectionKind": "generic",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 588,
+    "width": 1200,
+    "height": 660
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 14,
+  "treeHash": "d6ddad9fb3403a974e0f7af98bab8ffc296d2b06324db394f5c88ea8291c153b",
+  "blockCount": 6,
+  "blockIndex": [
+    {
+      "blockId": "FSuzh",
+      "blockName": "introTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 62,
+        "y": 64,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0c4c98f0e99ad500545816ee2329b7983e8e1c0c3521cff3505202d297bd6416"
+    },
+    {
+      "blockId": "3r7CL",
+      "blockName": "newTitle",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 62,
+        "y": 98,
+        "width": 799,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5707d0457899f2c435cb61b72b5f1cb08222a941b7e618782fd1d44d640c574c"
+    },
+    {
+      "blockId": "cc5GF",
+      "blockName": "iconWrap",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 1030,
+        "y": 84,
+        "width": 92,
+        "height": 92
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "b8de751c425554be6f6c24d347ddc5352ca4384a5586a8526b57149d2fb65cce"
+    },
+    {
+      "blockId": "afHvv",
+      "blockName": "col1",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 62,
+        "y": 236,
+        "width": 344,
+        "height": 382
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "f31642d5594094f1be09e5735bacd35c57c2a2130f4eae0666343160f601432d"
+    },
+    {
+      "blockId": "UxBet",
+      "blockName": "col2",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 428,
+        "y": 236,
+        "width": 344,
+        "height": 382
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "ae85faf7f8732594970224b18b202f7172c0c64558c299da4d94f97cf24ac2c5"
+    },
+    {
+      "blockId": "Ml5x9",
+      "blockName": "col3",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 5,
+      "bounds": {
+        "x": 794,
+        "y": 236,
+        "width": 344,
+        "height": 382
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "769fc3b018107f7b7349c3b19b31005df96729232a947d2e0ff33a89a82140e8"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "FSuzh",
+      "blockName": "introTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 62,
+        "y": 64,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0c4c98f0e99ad500545816ee2329b7983e8e1c0c3521cff3505202d297bd6416",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "FSuzh",
+        "x": 62,
+        "y": 64,
+        "name": "introTag",
+        "fill": "#8E99A8",
+        "content": "[ Introduction ]",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "3r7CL",
+      "blockName": "newTitle",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 62,
+        "y": 98,
+        "width": 799,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5707d0457899f2c435cb61b72b5f1cb08222a941b7e618782fd1d44d640c574c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "3r7CL",
+        "x": 62,
+        "y": 98,
+        "name": "newTitle",
+        "fill": "#F2F6FB",
+        "textGrowth": "fixed-width",
+        "width": 799,
+        "content": "Atoms make better\nquantum computers.",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 56,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "cc5GF",
+      "blockName": "iconWrap",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 1030,
+        "y": 84,
+        "width": 92,
+        "height": 92
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "b8de751c425554be6f6c24d347ddc5352ca4384a5586a8526b57149d2fb65cce",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "cc5GF",
+        "x": 1030,
+        "y": 84,
+        "name": "iconWrap",
+        "width": 92,
+        "height": 92,
+        "layout": "none",
+        "children": [
+          {
+            "type": "ellipse",
+            "id": "hywiz",
+            "x": 8,
+            "y": 32,
+            "name": "i1",
+            "width": 76,
+            "height": 28,
+            "stroke": {
+              "thickness": 2,
+              "fill": "#AAB3BF"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "ne8Z4",
+            "x": 8,
+            "y": 32,
+            "name": "i2",
+            "rotation": 59.99999999999999,
+            "width": 76,
+            "height": 28,
+            "stroke": {
+              "thickness": 2,
+              "fill": "#AAB3BF"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "EI4Fo",
+            "x": 8,
+            "y": 32,
+            "name": "i3",
+            "rotation": -59.99999999999999,
+            "width": 76,
+            "height": 28,
+            "stroke": {
+              "thickness": 2,
+              "fill": "#FF6A00"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "63N1G",
+            "x": 42,
+            "y": 42,
+            "name": "core",
+            "fill": "#F2F6FB",
+            "width": 8,
+            "height": 8
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "afHvv",
+      "blockName": "col1",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 62,
+        "y": 236,
+        "width": 344,
+        "height": 382
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "f31642d5594094f1be09e5735bacd35c57c2a2130f4eae0666343160f601432d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "afHvv",
+        "x": 62,
+        "y": 236,
+        "name": "col1",
+        "width": 344,
+        "height": 382,
+        "cornerRadius": 10,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#525B67"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "LIU4C",
+            "x": 20,
+            "y": 20,
+            "name": "col1t",
+            "fill": "#BAC3CF",
+            "textGrowth": "fixed-width",
+            "width": 304,
+            "content": "At its core, a quantum computer is a machine that uses a quantum system, like the spin of an electron, to do a very specific type of math.\n\nThis math takes advantage of the uniquely complex behavior of quantum systems, namely entanglement and superposition, to perform calculations that are fundamentally unlike the calculations ordinary computers based on classical physics can perform.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "UxBet",
+      "blockName": "col2",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 428,
+        "y": 236,
+        "width": 344,
+        "height": 382
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "ae85faf7f8732594970224b18b202f7172c0c64558c299da4d94f97cf24ac2c5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "UxBet",
+        "x": 428,
+        "y": 236,
+        "name": "col2",
+        "width": 344,
+        "height": 382,
+        "cornerRadius": 10,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#525B67"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "Eb7lW",
+            "x": 20,
+            "y": 20,
+            "name": "col2t",
+            "fill": "#BAC3CF",
+            "textGrowth": "fixed-width",
+            "width": 304,
+            "content": "Many quantum hardware developers use \"synthetic\" quantum systems for their quantum bits (qubits for short), like loops of superconducting wire, intentional imperfections in crystalline silicon, or other designs carefully coaxed to behave as quantum systems.\n\nAt IonQ, we take a different approach. We use a naturally occurring quantum system: individual atoms.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "Ml5x9",
+      "blockName": "col3",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 5,
+      "bounds": {
+        "x": 794,
+        "y": 236,
+        "width": 344,
+        "height": 382
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "769fc3b018107f7b7349c3b19b31005df96729232a947d2e0ff33a89a82140e8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "Ml5x9",
+        "x": 794,
+        "y": 236,
+        "name": "col3",
+        "width": 344,
+        "height": 382,
+        "cornerRadius": 10,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#525B67"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "P4Ku3",
+            "x": 20,
+            "y": 20,
+            "name": "col3t",
+            "fill": "#BAC3CF",
+            "textGrowth": "fixed-width",
+            "width": 304,
+            "content": "These atoms are the heart of our quantum processing units. We trap them in 3D space, and then use lasers to do everything from initial preparation to final readout.\n\nIt requires counterintuitive physics, precision optical and mechanical engineering, and fine-grained firmware control over a variety of components, but the superior results speak for themselves.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "BWrIE",
+    "x": 0,
+    "y": 588,
+    "name": "section1",
+    "width": 1200,
+    "height": 660,
+    "fill": "#11161D",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "FSuzh",
+        "x": 62,
+        "y": 64,
+        "name": "introTag",
+        "fill": "#8E99A8",
+        "content": "[ Introduction ]",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "3r7CL",
+        "x": 62,
+        "y": 98,
+        "name": "newTitle",
+        "fill": "#F2F6FB",
+        "textGrowth": "fixed-width",
+        "width": 799,
+        "content": "Atoms make better\nquantum computers.",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 56,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "cc5GF",
+        "x": 1030,
+        "y": 84,
+        "name": "iconWrap",
+        "width": 92,
+        "height": 92,
+        "layout": "none",
+        "children": [
+          {
+            "type": "ellipse",
+            "id": "hywiz",
+            "x": 8,
+            "y": 32,
+            "name": "i1",
+            "width": 76,
+            "height": 28,
+            "stroke": {
+              "thickness": 2,
+              "fill": "#AAB3BF"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "ne8Z4",
+            "x": 8,
+            "y": 32,
+            "name": "i2",
+            "rotation": 59.99999999999999,
+            "width": 76,
+            "height": 28,
+            "stroke": {
+              "thickness": 2,
+              "fill": "#AAB3BF"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "EI4Fo",
+            "x": 8,
+            "y": 32,
+            "name": "i3",
+            "rotation": -59.99999999999999,
+            "width": 76,
+            "height": 28,
+            "stroke": {
+              "thickness": 2,
+              "fill": "#FF6A00"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "63N1G",
+            "x": 42,
+            "y": 42,
+            "name": "core",
+            "fill": "#F2F6FB",
+            "width": 8,
+            "height": 8
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "afHvv",
+        "x": 62,
+        "y": 236,
+        "name": "col1",
+        "width": 344,
+        "height": 382,
+        "cornerRadius": 10,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#525B67"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "LIU4C",
+            "x": 20,
+            "y": 20,
+            "name": "col1t",
+            "fill": "#BAC3CF",
+            "textGrowth": "fixed-width",
+            "width": 304,
+            "content": "At its core, a quantum computer is a machine that uses a quantum system, like the spin of an electron, to do a very specific type of math.\n\nThis math takes advantage of the uniquely complex behavior of quantum systems, namely entanglement and superposition, to perform calculations that are fundamentally unlike the calculations ordinary computers based on classical physics can perform.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "UxBet",
+        "x": 428,
+        "y": 236,
+        "name": "col2",
+        "width": 344,
+        "height": 382,
+        "cornerRadius": 10,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#525B67"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "Eb7lW",
+            "x": 20,
+            "y": 20,
+            "name": "col2t",
+            "fill": "#BAC3CF",
+            "textGrowth": "fixed-width",
+            "width": 304,
+            "content": "Many quantum hardware developers use \"synthetic\" quantum systems for their quantum bits (qubits for short), like loops of superconducting wire, intentional imperfections in crystalline silicon, or other designs carefully coaxed to behave as quantum systems.\n\nAt IonQ, we take a different approach. We use a naturally occurring quantum system: individual atoms.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "Ml5x9",
+        "x": 794,
+        "y": 236,
+        "name": "col3",
+        "width": 344,
+        "height": 382,
+        "cornerRadius": 10,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#525B67"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "P4Ku3",
+            "x": 20,
+            "y": 20,
+            "name": "col3t",
+            "fill": "#BAC3CF",
+            "textGrowth": "fixed-width",
+            "width": 304,
+            "content": "These atoms are the heart of our quantum processing units. We trap them in 3D space, and then use lasers to do everything from initial preparation to final readout.\n\nIt requires counterintuitive physics, precision optical and mechanical engineering, and fine-grained firmware control over a variety of components, but the superior results speak for themselves.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    ]
+  }
+}

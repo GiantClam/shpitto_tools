@@ -1,0 +1,140 @@
+{
+  "blockId": "WTJHd",
+  "blockName": "row3",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 760,
+    "width": 1440,
+    "height": 360
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 9,
+  "treeHash": "4276927a16d8ec399894fc054e2e5b4fc9b2b0b17e2398ae793154d7555e6f11",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "WTJHd",
+    "x": 0,
+    "y": 760,
+    "name": "row3",
+    "width": 1440,
+    "height": 360,
+    "fill": "#FFFFFF",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "TeOed",
+        "x": 0,
+        "y": 0,
+        "name": "row3img",
+        "metadata": {
+          "type": "unsplash",
+          "username": "zoshuacolah",
+          "link": "https://unsplash.com/@zoshuacolah",
+          "author": "Zoshua Colah"
+        },
+        "width": 720,
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1751150271171-5133ca1b6725?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDMzMzd8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "layout": "none"
+      },
+      {
+        "type": "frame",
+        "id": "EYfRC",
+        "x": 720,
+        "y": 0,
+        "name": "row3txt",
+        "width": 720,
+        "height": 360,
+        "fill": "#FFFFFF",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "0oEaR",
+            "x": 88,
+            "y": 96,
+            "name": "r3tag",
+            "fill": "#D5164A",
+            "width": 36,
+            "height": 6
+          },
+          {
+            "type": "text",
+            "id": "kpWA5",
+            "x": 88,
+            "y": 116,
+            "name": "r3title",
+            "fill": "#22303D",
+            "content": "工业",
+            "fontFamily": "Inter",
+            "fontSize": 42,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "RWCRz",
+            "x": 88,
+            "y": 180,
+            "name": "r3desc",
+            "fill": "#6B7783",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "先进工业技术促进建设更美好的世界",
+            "lineHeight": 1.5,
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "lSRoy",
+            "x": 88,
+            "y": 248,
+            "name": "r3btn",
+            "width": 86,
+            "height": 30,
+            "fill": "#C70041",
+            "cornerRadius": 2,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "IpGGR",
+                "x": 20,
+                "y": 8,
+                "name": "r3btnT",
+                "fill": "#FFFFFF",
+                "content": "了解更多",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "0hb86",
+            "x": 150,
+            "y": 89,
+            "name": "resTagTxt",
+            "fill": "#5A6470",
+            "content": "我们的市场领域",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

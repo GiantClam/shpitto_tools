@@ -1,0 +1,348 @@
+{
+  "sectionId": "eyxpn",
+  "sectionName": "Hero1",
+  "sectionKind": "hero",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": 270
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 10,
+  "treeHash": "b6ea3247c30a81b0f137f371a39bda12d10ca4a4236b8b4edfe14533e6535d10",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "8SLYy",
+      "blockName": "hero1l",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 658,
+        "height": "fill_container"
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 8,
+      "treeHash": "a6d9ed580c61967e7127110653e662b8be6a3caef50e7faa02952cc7144564fa"
+    },
+    {
+      "blockId": "HcMPu",
+      "blockName": "hero1r",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 553,
+        "height": "fill_container"
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9cb85f941c2fdfa6309535de9a0c18a55adff2d5e97530fc8c99219b5039b164"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "8SLYy",
+      "blockName": "hero1l",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 658,
+        "height": "fill_container"
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 8,
+      "treeHash": "a6d9ed580c61967e7127110653e662b8be6a3caef50e7faa02952cc7144564fa",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "8SLYy",
+        "name": "hero1l",
+        "width": 658,
+        "height": "fill_container",
+        "layout": "vertical",
+        "gap": 12,
+        "justifyContent": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "SKJjW",
+            "name": "h1t1",
+            "fill": "#F3F6F0",
+            "textGrowth": "fixed-width",
+            "width": 589,
+            "content": "Framework Laptop 13\nisn't our computer. It's\nyours.",
+            "lineHeight": 1.08,
+            "fontFamily": "Inter",
+            "fontSize": 44,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "mu1te",
+            "name": "h1t2",
+            "fill": "#E9EEE8",
+            "textGrowth": "fixed-width",
+            "width": 470,
+            "content": "Start computing from $899.00",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "frame",
+            "id": "pKj3P",
+            "name": "row1",
+            "height": 34,
+            "gap": 8,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "frame",
+                "id": "3sILt",
+                "name": "h1b",
+                "width": 112,
+                "height": 34,
+                "fill": "#F46E35",
+                "cornerRadius": 17,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "WjcPU",
+                    "name": "h1bt",
+                    "fill": "#111111",
+                    "content": "Configure now",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "nuxPp",
+                "name": "lm1",
+                "width": 96,
+                "height": 34,
+                "cornerRadius": 17,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#9CA3AA"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "AkwVV",
+                    "fill": "#5E6369",
+                    "content": "Learn more",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "HcMPu",
+      "blockName": "hero1r",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 553,
+        "height": "fill_container"
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9cb85f941c2fdfa6309535de9a0c18a55adff2d5e97530fc8c99219b5039b164",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "HcMPu",
+        "name": "hero1r",
+        "metadata": {
+          "type": "unsplash",
+          "username": "shuttergames",
+          "link": "https://unsplash.com/@shuttergames",
+          "author": "Shuttergames"
+        },
+        "width": 553,
+        "height": "fill_container",
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 4
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "eyxpn",
+    "name": "Hero1",
+    "width": "fill_container",
+    "height": 270,
+    "fill": "#78956F",
+    "cornerRadius": 6,
+    "gap": 20,
+    "padding": [
+      24,
+      20
+    ],
+    "children": [
+      {
+        "type": "frame",
+        "id": "8SLYy",
+        "name": "hero1l",
+        "width": 658,
+        "height": "fill_container",
+        "layout": "vertical",
+        "gap": 12,
+        "justifyContent": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "SKJjW",
+            "name": "h1t1",
+            "fill": "#F3F6F0",
+            "textGrowth": "fixed-width",
+            "width": 589,
+            "content": "Framework Laptop 13\nisn't our computer. It's\nyours.",
+            "lineHeight": 1.08,
+            "fontFamily": "Inter",
+            "fontSize": 44,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "mu1te",
+            "name": "h1t2",
+            "fill": "#E9EEE8",
+            "textGrowth": "fixed-width",
+            "width": 470,
+            "content": "Start computing from $899.00",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "frame",
+            "id": "pKj3P",
+            "name": "row1",
+            "height": 34,
+            "gap": 8,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "frame",
+                "id": "3sILt",
+                "name": "h1b",
+                "width": 112,
+                "height": 34,
+                "fill": "#F46E35",
+                "cornerRadius": 17,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "WjcPU",
+                    "name": "h1bt",
+                    "fill": "#111111",
+                    "content": "Configure now",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "nuxPp",
+                "name": "lm1",
+                "width": 96,
+                "height": 34,
+                "cornerRadius": 17,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#9CA3AA"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "AkwVV",
+                    "fill": "#5E6369",
+                    "content": "Learn more",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "HcMPu",
+        "name": "hero1r",
+        "metadata": {
+          "type": "unsplash",
+          "username": "shuttergames",
+          "link": "https://unsplash.com/@shuttergames",
+          "author": "Shuttergames"
+        },
+        "width": 553,
+        "height": "fill_container",
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 4
+      }
+    ]
+  }
+}

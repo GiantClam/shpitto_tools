@@ -1,0 +1,103 @@
+{
+  "blockId": "home-navbar",
+  "blockName": "Navbar",
+  "blockType": "frame",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 62
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "6fb7da9a29701bbcca58a815e1567fc2da9eb44ba395c72e16e054fde8f9565d",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "home-navbar",
+    "name": "Navbar",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 62,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "home-navbar-bg",
+        "name": "home-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 62,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "home-navbar-logo",
+        "name": "home-navbar-logo",
+        "x": 18,
+        "y": 14,
+        "width": 92,
+        "height": 32,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "home-navbar-search",
+        "name": "home-navbar-search",
+        "x": 278,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 24,
+        "height": 24,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "home-navbar-lang",
+        "name": "home-navbar-lang",
+        "x": 310,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "🌐",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 16,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-about"
+      },
+      {
+        "type": "text",
+        "id": "home-navbar-menu",
+        "name": "home-navbar-menu",
+        "x": 352,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-products"
+      }
+    ]
+  }
+}

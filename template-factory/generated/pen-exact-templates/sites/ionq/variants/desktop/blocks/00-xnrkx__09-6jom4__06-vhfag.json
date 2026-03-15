@@ -1,0 +1,74 @@
+{
+  "blockId": "vhfaG",
+  "blockName": "card1",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 6,
+  "bounds": {
+    "x": 32,
+    "y": 182,
+    "width": 368,
+    "height": 230
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "9d685339d9f852c53009aadf88976b70c739c3638c802827dfbe09406140351e",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "vhfaG",
+    "x": 32,
+    "y": 182,
+    "name": "card1",
+    "width": 368,
+    "height": 230,
+    "fill": "#111A24",
+    "cornerRadius": 14,
+    "stroke": {
+      "thickness": 1,
+      "fill": "#273241"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "L4oKR",
+        "x": 24,
+        "y": 22,
+        "name": "c1t",
+        "fill": "#F1F5FA",
+        "textGrowth": "fixed-width",
+        "width": 320,
+        "content": "Breaking the decoding\nbottleneck: Fast and accurate\nsoftware decoding for\nQuantum LDPC codes",
+        "lineHeight": 1.2,
+        "fontFamily": "Inter",
+        "fontSize": 17,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "5UMNq",
+        "x": 24,
+        "y": 172,
+        "name": "c1m",
+        "fill": "#98A4B2",
+        "content": "@ IonQ Staff",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "IXWHr",
+        "x": 24,
+        "y": 198,
+        "name": "c1r",
+        "fill": "#FF6A00",
+        "content": "Read more  ->",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

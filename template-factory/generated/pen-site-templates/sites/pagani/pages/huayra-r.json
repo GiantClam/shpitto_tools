@@ -1,0 +1,2028 @@
+{
+  "pageId": "page-huayra-r",
+  "pageKey": "huayra-r",
+  "pageName": "Huayra R",
+  "pageType": "product-detail",
+  "devices": {
+    "desktop": {
+      "bounds": {
+        "width": 1440,
+        "height": 1912
+      },
+      "supportBlocks": [
+        {
+          "id": "page-huayra-r-bg",
+          "name": "page-huayra-r-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1912
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#060606"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06"
+          }
+        },
+        {
+          "id": "page-huayra-r-hero-bg",
+          "name": "page-huayra-r-hero-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 560
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/page-huayra-r-hero-RENDER_02_OPEN-1980x1400.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/page-huayra-r-hero-RENDER_02_OPEN-1980x1400.jpg",
+            "relativePath": "assets-structured/pagani/page-huayra-r-hero-RENDER_02_OPEN-1980x1400.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-huayra-r-hero-shade",
+          "name": "page-huayra-r-hero-shade",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 560
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0000005C"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08"
+          }
+        },
+        {
+          "id": "page-huayra-r-eyebrow",
+          "name": "page-huayra-r-eyebrow",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 40,
+            "y": 150,
+            "width": 220,
+            "height": 18
+          },
+          "href": "",
+          "content": "THIRD LEVEL PAGE",
+          "style": {
+            "fill": "#B9B3AB",
+            "typography": {
+              "fill": "#B9B3AB",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "0.22em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-logo",
+          "name": "page-huayra-r-logo",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 40,
+            "y": 182,
+            "width": 280,
+            "height": 68
+          },
+          "href": "#page-huayra-r",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fit"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/page-huayra-r-logo-00_Huayra-R_Logo.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/page-huayra-r-logo-00_Huayra-R_Logo.png",
+            "relativePath": "assets-structured/pagani/page-huayra-r-logo-00_Huayra-R_Logo.png",
+            "exists": true,
+            "mode": "fit"
+          }
+        },
+        {
+          "id": "page-huayra-r-title",
+          "name": "page-huayra-r-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 272,
+            "width": 760,
+            "height": 86
+          },
+          "href": "",
+          "content": "The Huayra R",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 56,
+              "fontWeight": "600",
+              "letterSpacing": "-0.02em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size10",
+            "fontWeight": "fontWeight.palette.weight03"
+          }
+        },
+        {
+          "id": "page-huayra-r-subtitle",
+          "name": "page-huayra-r-subtitle",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 384,
+            "width": 720,
+            "height": 29
+          },
+          "href": "",
+          "content": "Pagani Automobili’s latest creation.",
+          "style": {
+            "fill": "#B9B3AB",
+            "typography": {
+              "fill": "#B9B3AB",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 17,
+              "fontWeight": "400",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size06",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-huayra-r-back-home-box",
+          "name": "page-huayra-r-back-home-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 40,
+            "y": 474,
+            "width": 138,
+            "height": 42
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#111111",
+            "stroke": {
+              "color": "#6A635B",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02"
+          }
+        },
+        {
+          "id": "page-huayra-r-back-home-text",
+          "name": "page-huayra-r-back-home-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 54,
+            "y": 486,
+            "width": 110,
+            "height": 18
+          },
+          "href": "#page-home",
+          "content": "Homepage",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "0.18em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-related-box",
+          "name": "page-huayra-r-related-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 194,
+            "y": 474,
+            "width": 182,
+            "height": 42
+          },
+          "href": "#page-history",
+          "content": "",
+          "style": {
+            "fill": "#111111",
+            "stroke": {
+              "color": "#6A635B",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02"
+          }
+        },
+        {
+          "id": "page-huayra-r-related-text",
+          "name": "page-huayra-r-related-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 208,
+            "y": 486,
+            "width": 154,
+            "height": 18
+          },
+          "href": "#page-history",
+          "content": "History page",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "0.18em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-content-panel",
+          "name": "page-huayra-r-content-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 40,
+            "y": 632,
+            "width": 1360,
+            "height": 1200
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0A0A0AF0"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09"
+          }
+        },
+        {
+          "id": "page-huayra-r-content-kicker",
+          "name": "page-huayra-r-content-kicker",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 656,
+            "width": 200,
+            "height": 18
+          },
+          "href": "",
+          "content": "HUAYRA R",
+          "style": {
+            "fill": "#B9B3AB",
+            "typography": {
+              "fill": "#B9B3AB",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "0.22em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-content-title",
+          "name": "page-huayra-r-content-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 692,
+            "width": 620,
+            "height": 65
+          },
+          "href": "",
+          "content": "The Huayra R",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 42,
+              "fontWeight": "600",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size08",
+            "fontWeight": "fontWeight.palette.weight03"
+          }
+        },
+        {
+          "id": "page-huayra-r-para-782",
+          "name": "page-huayra-r-para-782",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 782,
+            "width": 560,
+            "height": 468
+          },
+          "href": "",
+          "content": "Scroll Down The Pagani Huayra R SCULPTED IN PERFORMANCE - The most extreme Pagani Hypercar made exclusively for use on the track - The new Pagani V12-R, the exclusive beating heart of the Huayra R - A naturally aspirated V12 generating 850 HP output and 750 Nm of torque - Maximum track performance up to the red line of 9000 rpm - A laboratory car that incorporates the technology of future Pagani models - Celebration of performance, technology and art applied to a track car - The pinnacle of Pagani Automobili technological development, packed into just 1,050 kg - Safety at the highest standards - Arte in Pista: a new, exclusive chapter of tailor-made customer experiences - Limited to just 30 examples READ MORE Photogallery The Pagani Huayra R San Cesario Sul Panaro, 18 March 2021 – On the wings of a wind that blows ever-stronger, the Huayra R is released to express its full character in total freedom. Pure, passionate, mighty and captivating. It knows no limits. The new track-focused Hypercar from Pagani combines the highest level of automotive engineering and aerodynamic know-how with unprecedented aesthetic sensitivity in an exercise of style that represents the full expression of Pagani Automobili’s technological development.",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 16,
+              "fontWeight": "400",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size05",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-huayra-r-para-1272",
+          "name": "page-huayra-r-para-1272",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 1272,
+            "width": 560,
+            "height": 120
+          },
+          "href": "",
+          "content": "What is freedom, if not the courage to dream and choose to surpass oneself and one’s limits, the need to express an emotion that refuses to be constrained? A concept that by its very nature escapes definition and labels, but which has always deeply moved the human spirit and determined its needs and intuitions.",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 16,
+              "fontWeight": "400",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size05",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-huayra-r-para-1414",
+          "name": "page-huayra-r-para-1414",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 1414,
+            "width": 560,
+            "height": 236
+          },
+          "href": "",
+          "content": "The profound need for creative freedom at the heart of the Huayra R is embodied by the clean lines and timeless appeal of the Le Mans and World Sports-Prototype Championship cars of the 1960s and 1970s. Symbols of freedom par excellence and protagonists of an era of motorsport that was synonymous with battles and tension, tears and triumphs, ecstasy and sweat; endurance races that turned drivers into heroes and sensational cars into eternal legends. This concept of freedom and purity inspires the bold lines of the Huayra R, a quintessential celebration of performance, technology and art applied to a track car.",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 16,
+              "fontWeight": "400",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size05",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-huayra-r-feature-image",
+          "name": "page-huayra-r-feature-image",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 860,
+            "y": 796,
+            "width": 516,
+            "height": 360
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/page-huayra-r-image-1-RENDER09-1980x1400.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/page-huayra-r-image-1-RENDER09-1980x1400.jpg",
+            "relativePath": "assets-structured/pagani/page-huayra-r-image-1-RENDER09-1980x1400.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-huayra-r-related-heading",
+          "name": "page-huayra-r-related-heading",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 1732,
+            "width": 160,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related Pages",
+          "style": {
+            "fill": "#B9B3AB",
+            "typography": {
+              "fill": "#B9B3AB",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "0.22em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-rel-0-box",
+          "name": "page-huayra-r-rel-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1762,
+            "width": 180,
+            "height": 40
+          },
+          "href": "#page-history",
+          "content": "",
+          "style": {
+            "fill": "#111111",
+            "stroke": {
+              "color": "#6A635B",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02"
+          }
+        },
+        {
+          "id": "page-huayra-r-rel-0-text",
+          "name": "page-huayra-r-rel-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 78,
+            "y": 1774,
+            "width": 152,
+            "height": 18
+          },
+          "href": "#page-history",
+          "content": "History",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "0.18em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-rel-1-box",
+          "name": "page-huayra-r-rel-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 260,
+            "y": 1762,
+            "width": 180,
+            "height": 40
+          },
+          "href": "#page-dealers",
+          "content": "",
+          "style": {
+            "fill": "#111111",
+            "stroke": {
+              "color": "#6A635B",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02"
+          }
+        },
+        {
+          "id": "page-huayra-r-rel-1-text",
+          "name": "page-huayra-r-rel-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 274,
+            "y": 1774,
+            "width": 152,
+            "height": 18
+          },
+          "href": "#page-dealers",
+          "content": "Dealers",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "0.18em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-rel-2-box",
+          "name": "page-huayra-r-rel-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 456,
+            "y": 1762,
+            "width": 180,
+            "height": 40
+          },
+          "href": "#page-contact-us",
+          "content": "",
+          "style": {
+            "fill": "#111111",
+            "stroke": {
+              "color": "#6A635B",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02"
+          }
+        },
+        {
+          "id": "page-huayra-r-rel-2-text",
+          "name": "page-huayra-r-rel-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 470,
+            "y": 1774,
+            "width": 152,
+            "height": 18
+          },
+          "href": "#page-contact-us",
+          "content": "Contact",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "0.18em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    },
+    "mobile": {
+      "bounds": {
+        "width": 390,
+        "height": 2450
+      },
+      "supportBlocks": [
+        {
+          "id": "page-huayra-r-bg",
+          "name": "page-huayra-r-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 2450
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#060606"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06"
+          }
+        },
+        {
+          "id": "page-huayra-r-hero-bg",
+          "name": "page-huayra-r-hero-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 440
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/page-huayra-r-hero-RENDER_02_OPEN-1980x1400.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/page-huayra-r-hero-RENDER_02_OPEN-1980x1400.jpg",
+            "relativePath": "assets-structured/pagani/page-huayra-r-hero-RENDER_02_OPEN-1980x1400.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-huayra-r-hero-shade",
+          "name": "page-huayra-r-hero-shade",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 440
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0000005C"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08"
+          }
+        },
+        {
+          "id": "page-huayra-r-eyebrow",
+          "name": "page-huayra-r-eyebrow",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 18,
+            "y": 124,
+            "width": 220,
+            "height": 18
+          },
+          "href": "",
+          "content": "THIRD LEVEL PAGE",
+          "style": {
+            "fill": "#B9B3AB",
+            "typography": {
+              "fill": "#B9B3AB",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "0.22em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-logo",
+          "name": "page-huayra-r-logo",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 18,
+            "y": 156,
+            "width": 170,
+            "height": 42
+          },
+          "href": "#page-huayra-r",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fit"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/page-huayra-r-logo-00_Huayra-R_Logo.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/page-huayra-r-logo-00_Huayra-R_Logo.png",
+            "relativePath": "assets-structured/pagani/page-huayra-r-logo-00_Huayra-R_Logo.png",
+            "exists": true,
+            "mode": "fit"
+          }
+        },
+        {
+          "id": "page-huayra-r-title",
+          "name": "page-huayra-r-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 216,
+            "width": 320,
+            "height": 54
+          },
+          "href": "",
+          "content": "The Huayra R",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 34,
+              "fontWeight": "600",
+              "letterSpacing": "-0.02em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size09",
+            "fontWeight": "fontWeight.palette.weight03"
+          }
+        },
+        {
+          "id": "page-huayra-r-subtitle",
+          "name": "page-huayra-r-subtitle",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 338,
+            "width": 320,
+            "height": 25
+          },
+          "href": "",
+          "content": "Pagani Automobili’s latest creation.",
+          "style": {
+            "fill": "#B9B3AB",
+            "typography": {
+              "fill": "#B9B3AB",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 14,
+              "fontWeight": "400",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-huayra-r-back-home-box",
+          "name": "page-huayra-r-back-home-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 18,
+            "y": 404,
+            "width": 138,
+            "height": 42
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#111111",
+            "stroke": {
+              "color": "#6A635B",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02"
+          }
+        },
+        {
+          "id": "page-huayra-r-back-home-text",
+          "name": "page-huayra-r-back-home-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 32,
+            "y": 416,
+            "width": 110,
+            "height": 18
+          },
+          "href": "#page-home",
+          "content": "Homepage",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "0.18em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-related-box",
+          "name": "page-huayra-r-related-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 172,
+            "y": 404,
+            "width": 150,
+            "height": 42
+          },
+          "href": "#page-history",
+          "content": "",
+          "style": {
+            "fill": "#111111",
+            "stroke": {
+              "color": "#6A635B",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02"
+          }
+        },
+        {
+          "id": "page-huayra-r-related-text",
+          "name": "page-huayra-r-related-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 186,
+            "y": 416,
+            "width": 122,
+            "height": 18
+          },
+          "href": "#page-history",
+          "content": "History page",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "0.18em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-content-panel",
+          "name": "page-huayra-r-content-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 18,
+            "y": 512,
+            "width": 354,
+            "height": 1882
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0A0A0AF0"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09"
+          }
+        },
+        {
+          "id": "page-huayra-r-content-kicker",
+          "name": "page-huayra-r-content-kicker",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 536,
+            "width": 200,
+            "height": 18
+          },
+          "href": "",
+          "content": "HUAYRA R",
+          "style": {
+            "fill": "#B9B3AB",
+            "typography": {
+              "fill": "#B9B3AB",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "0.22em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-content-title",
+          "name": "page-huayra-r-content-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 572,
+            "width": 280,
+            "height": 45
+          },
+          "href": "",
+          "content": "The Huayra R",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 28,
+              "fontWeight": "600",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size07",
+            "fontWeight": "fontWeight.palette.weight03"
+          }
+        },
+        {
+          "id": "page-huayra-r-para-654",
+          "name": "page-huayra-r-para-654",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 654,
+            "width": 300,
+            "height": 695
+          },
+          "href": "",
+          "content": "Scroll Down The Pagani Huayra R SCULPTED IN PERFORMANCE - The most extreme Pagani Hypercar made exclusively for use on the track - The new Pagani V12-R, the exclusive beating heart of the Huayra R - A naturally aspirated V12 generating 850 HP output and 750 Nm of torque - Maximum track performance up to the red line of 9000 rpm - A laboratory car that incorporates the technology of future Pagani models - Celebration of performance, technology and art applied to a track car - The pinnacle of Pagani Automobili technological development, packed into just 1,050 kg - Safety at the highest standards - Arte in Pista: a new, exclusive chapter of tailor-made customer experiences - Limited to just 30 examples READ MORE Photogallery The Pagani Huayra R San Cesario Sul Panaro, 18 March 2021 – On the wings of a wind that blows ever-stronger, the Huayra R is released to express its full character in total freedom. Pure, passionate, mighty and captivating. It knows no limits. The new track-focused Hypercar from Pagani combines the highest level of automotive engineering and aerodynamic know-how with unprecedented aesthetic sensitivity in an exercise of style that represents the full expression of Pagani Automobili’s technological development.",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 14,
+              "fontWeight": "400",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-huayra-r-para-1371",
+          "name": "page-huayra-r-para-1371",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 1371,
+            "width": 300,
+            "height": 187
+          },
+          "href": "",
+          "content": "What is freedom, if not the courage to dream and choose to surpass oneself and one’s limits, the need to express an emotion that refuses to be constrained? A concept that by its very nature escapes definition and labels, but which has always deeply moved the human spirit and determined its needs and intuitions.",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 14,
+              "fontWeight": "400",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-huayra-r-para-1580",
+          "name": "page-huayra-r-para-1580",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 1580,
+            "width": 300,
+            "height": 350
+          },
+          "href": "",
+          "content": "The profound need for creative freedom at the heart of the Huayra R is embodied by the clean lines and timeless appeal of the Le Mans and World Sports-Prototype Championship cars of the 1960s and 1970s. Symbols of freedom par excellence and protagonists of an era of motorsport that was synonymous with battles and tension, tears and triumphs, ecstasy and sweat; endurance races that turned drivers into heroes and sensational cars into eternal legends. This concept of freedom and purity inspires the bold lines of the Huayra R, a quintessential celebration of performance, technology and art applied to a track car.",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 14,
+              "fontWeight": "400",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-huayra-r-feature-image",
+          "name": "page-huayra-r-feature-image",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 1980,
+            "width": 300,
+            "height": 220
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/page-huayra-r-image-1-RENDER09-1980x1400.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/page-huayra-r-image-1-RENDER09-1980x1400.jpg",
+            "relativePath": "assets-structured/pagani/page-huayra-r-image-1-RENDER09-1980x1400.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-huayra-r-related-heading",
+          "name": "page-huayra-r-related-heading",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 2234,
+            "width": 160,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related Pages",
+          "style": {
+            "fill": "#B9B3AB",
+            "typography": {
+              "fill": "#B9B3AB",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "0.22em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color03",
+            "textColor": "textColor.palette.text02",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-rel-0-box",
+          "name": "page-huayra-r-rel-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 2264,
+            "width": 150,
+            "height": 40
+          },
+          "href": "#page-history",
+          "content": "",
+          "style": {
+            "fill": "#111111",
+            "stroke": {
+              "color": "#6A635B",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02"
+          }
+        },
+        {
+          "id": "page-huayra-r-rel-0-text",
+          "name": "page-huayra-r-rel-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 56,
+            "y": 2276,
+            "width": 122,
+            "height": 18
+          },
+          "href": "#page-history",
+          "content": "History",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "0.18em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-rel-1-box",
+          "name": "page-huayra-r-rel-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 208,
+            "y": 2264,
+            "width": 150,
+            "height": 40
+          },
+          "href": "#page-dealers",
+          "content": "",
+          "style": {
+            "fill": "#111111",
+            "stroke": {
+              "color": "#6A635B",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02"
+          }
+        },
+        {
+          "id": "page-huayra-r-rel-1-text",
+          "name": "page-huayra-r-rel-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 222,
+            "y": 2276,
+            "width": 122,
+            "height": 18
+          },
+          "href": "#page-dealers",
+          "content": "Dealers",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "0.18em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-huayra-r-rel-2-box",
+          "name": "page-huayra-r-rel-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 2314,
+            "width": 150,
+            "height": 40
+          },
+          "href": "#page-contact-us",
+          "content": "",
+          "style": {
+            "fill": "#111111",
+            "stroke": {
+              "color": "#6A635B",
+              "thickness": 1
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02"
+          }
+        },
+        {
+          "id": "page-huayra-r-rel-2-text",
+          "name": "page-huayra-r-rel-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 56,
+            "y": 2326,
+            "width": 122,
+            "height": 18
+          },
+          "href": "#page-contact-us",
+          "content": "Contact",
+          "style": {
+            "fill": "#F3F2ED",
+            "typography": {
+              "fill": "#F3F2ED",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "0.18em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "sectionId": "navbar-huayra-r",
+      "sectionKey": "navbar-huayra-r",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "blockCount": 12,
+          "blockTree": {
+            "id": "navbar-huayra-r",
+            "name": "Navbar",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 84
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color05"
+            },
+            "children": [
+              {
+                "id": "header-bg-huayra-r",
+                "name": "header-bg-huayra-r",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 84
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#000000DD"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07"
+                }
+              },
+              {
+                "id": "brand-logo-huayra-r",
+                "name": "brand-logo-huayra-r",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 40,
+                  "y": 16,
+                  "width": 152,
+                  "height": 46
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/pagani-logo.png",
+                  "relativePath": "assets-structured/pagani/pagani-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "nav-huayra-r-0",
+                "name": "nav-huayra-r-0",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 330,
+                  "y": 32,
+                  "width": 110,
+                  "height": 20
+                },
+                "href": "#page-home",
+                "content": "Home",
+                "style": {
+                  "fill": "#F3F2ED",
+                  "typography": {
+                    "fill": "#F3F2ED",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "400",
+                    "letterSpacing": "0.16em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "nav-huayra-r-1",
+                "name": "nav-huayra-r-1",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 438,
+                  "y": 32,
+                  "width": 110,
+                  "height": 20
+                },
+                "href": "#page-history",
+                "content": "History",
+                "style": {
+                  "fill": "#F3F2ED",
+                  "typography": {
+                    "fill": "#F3F2ED",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "400",
+                    "letterSpacing": "0.16em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "nav-huayra-r-2",
+                "name": "nav-huayra-r-2",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 546,
+                  "y": 32,
+                  "width": 110,
+                  "height": 20
+                },
+                "href": "#page-dealers",
+                "content": "Dealers",
+                "style": {
+                  "fill": "#F3F2ED",
+                  "typography": {
+                    "fill": "#F3F2ED",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "400",
+                    "letterSpacing": "0.16em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "nav-huayra-r-3",
+                "name": "nav-huayra-r-3",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 654,
+                  "y": 32,
+                  "width": 110,
+                  "height": 20
+                },
+                "href": "#page-guided-tours",
+                "content": "Tours",
+                "style": {
+                  "fill": "#F3F2ED",
+                  "typography": {
+                    "fill": "#F3F2ED",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "400",
+                    "letterSpacing": "0.16em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "nav-huayra-r-4",
+                "name": "nav-huayra-r-4",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 762,
+                  "y": 32,
+                  "width": 110,
+                  "height": 20
+                },
+                "href": "#page-pagani-utopia",
+                "content": "Utopia",
+                "style": {
+                  "fill": "#F3F2ED",
+                  "typography": {
+                    "fill": "#F3F2ED",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "400",
+                    "letterSpacing": "0.16em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "nav-huayra-r-5",
+                "name": "nav-huayra-r-5",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 870,
+                  "y": 32,
+                  "width": 110,
+                  "height": 20
+                },
+                "href": "#page-contact-us",
+                "content": "Contact",
+                "style": {
+                  "fill": "#F3F2ED",
+                  "typography": {
+                    "fill": "#F3F2ED",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 13,
+                    "fontWeight": "400",
+                    "letterSpacing": "0.16em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size03",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "menu-box-huayra-r",
+                "name": "menu-box-huayra-r",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1344,
+                  "y": 14,
+                  "width": 56,
+                  "height": 56
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#00000000",
+                  "stroke": {
+                    "color": "#6A635B",
+                    "thickness": 1
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "strokeColor": "color.palette.color02"
+                }
+              },
+              {
+                "id": "menu-line-1-huayra-r",
+                "name": "menu-line-1-huayra-r",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1362,
+                  "y": 32,
+                  "width": 18,
+                  "height": 2
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#F3F2ED"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01"
+                }
+              },
+              {
+                "id": "menu-line-2-huayra-r",
+                "name": "menu-line-2-huayra-r",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1362,
+                  "y": 39,
+                  "width": 18,
+                  "height": 2
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#F3F2ED"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01"
+                }
+              },
+              {
+                "id": "menu-line-3-huayra-r",
+                "name": "menu-line-3-huayra-r",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1362,
+                  "y": 46,
+                  "width": 18,
+                  "height": 2
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#F3F2ED"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 72
+          },
+          "blockCount": 6,
+          "blockTree": {
+            "id": "navbar-huayra-r",
+            "name": "Navbar",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 72
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color05"
+            },
+            "children": [
+              {
+                "id": "header-bg-huayra-r",
+                "name": "header-bg-huayra-r",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 72
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#000000DD"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color07"
+                }
+              },
+              {
+                "id": "brand-logo-huayra-r",
+                "name": "brand-logo-huayra-r",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 18,
+                  "y": 22,
+                  "width": 108,
+                  "height": 30
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/pagani-logo.png",
+                  "relativePath": "assets-structured/pagani/pagani-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "menu-box-huayra-r",
+                "name": "menu-box-huayra-r",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 316,
+                  "y": 10,
+                  "width": 56,
+                  "height": 56
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#00000000",
+                  "stroke": {
+                    "color": "#6A635B",
+                    "thickness": 1
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color05",
+                  "strokeColor": "color.palette.color02"
+                }
+              },
+              {
+                "id": "menu-line-1-huayra-r",
+                "name": "menu-line-1-huayra-r",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 334,
+                  "y": 28,
+                  "width": 18,
+                  "height": 2
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#F3F2ED"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01"
+                }
+              },
+              {
+                "id": "menu-line-2-huayra-r",
+                "name": "menu-line-2-huayra-r",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 334,
+                  "y": 35,
+                  "width": 18,
+                  "height": 2
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#F3F2ED"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01"
+                }
+              },
+              {
+                "id": "menu-line-3-huayra-r",
+                "name": "menu-line-3-huayra-r",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 334,
+                  "y": 42,
+                  "width": 18,
+                  "height": 2
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#F3F2ED"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

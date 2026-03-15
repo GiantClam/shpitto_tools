@@ -1,0 +1,412 @@
+{
+  "sectionId": "progress-rail",
+  "sectionName": "Progress Rail",
+  "sectionKind": "generic",
+  "order": 11,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 40,
+    "height": 8080
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 7,
+  "treeHash": "1586e5313b6d18c578d5efb2b7ae7b48bb5050bb7352e1d0b350dbbc813e38cc",
+  "blockCount": 6,
+  "blockIndex": [
+    {
+      "blockId": "rail-dot-0",
+      "blockName": "rail-dot-0",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 420,
+        "width": 10,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c05ee1cc884d89a9318ccf1280c258954a1b9496d2fbd7f6f8539a8e94bd2888"
+    },
+    {
+      "blockId": "rail-dot-1",
+      "blockName": "rail-dot-1",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 436,
+        "width": 10,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a850c6f68073ac009b7393dc00771f767e44317efa06bed6f5568fc1a9ea63ba"
+    },
+    {
+      "blockId": "rail-dot-2",
+      "blockName": "rail-dot-2",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 452,
+        "width": 10,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c4bd45e91844cb9edc6fa63e87d4583e3a82a4abfe5c0a323db57c44f742fef6"
+    },
+    {
+      "blockId": "rail-dot-3",
+      "blockName": "rail-dot-3",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 18,
+        "y": 468,
+        "width": 10,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3aeb30fbbc3291765c7a8a974c0b25bcc34f3a44bb1fd2d975198d908297b829"
+    },
+    {
+      "blockId": "rail-dot-4",
+      "blockName": "rail-dot-4",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 484,
+        "width": 10,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "82e07bfa61f82fc422231e19c03afb48f27f0eb5102bf9329835118c0e5c976c"
+    },
+    {
+      "blockId": "rail-dot-5",
+      "blockName": "rail-dot-5",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 18,
+        "y": 500,
+        "width": 10,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2f4891019644b3c25cf2f19e77c4ac812133d80f20103f5842de0480061de8a5"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "rail-dot-0",
+      "blockName": "rail-dot-0",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 420,
+        "width": 10,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c05ee1cc884d89a9318ccf1280c258954a1b9496d2fbd7f6f8539a8e94bd2888",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "rail-dot-0",
+        "x": 18,
+        "y": 420,
+        "name": "rail-dot-0",
+        "width": 10,
+        "height": 10,
+        "fill": "#C9B28B",
+        "stroke": {
+          "fill": "#C9B28B",
+          "thickness": 1
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "rail-dot-1",
+      "blockName": "rail-dot-1",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 436,
+        "width": 10,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a850c6f68073ac009b7393dc00771f767e44317efa06bed6f5568fc1a9ea63ba",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "rail-dot-1",
+        "x": 18,
+        "y": 436,
+        "name": "rail-dot-1",
+        "width": 10,
+        "height": 10,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "rail-dot-2",
+      "blockName": "rail-dot-2",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 452,
+        "width": 10,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c4bd45e91844cb9edc6fa63e87d4583e3a82a4abfe5c0a323db57c44f742fef6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "rail-dot-2",
+        "x": 18,
+        "y": 452,
+        "name": "rail-dot-2",
+        "width": 10,
+        "height": 10,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      }
+    },
+    {
+      "blockId": "rail-dot-3",
+      "blockName": "rail-dot-3",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 18,
+        "y": 468,
+        "width": 10,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3aeb30fbbc3291765c7a8a974c0b25bcc34f3a44bb1fd2d975198d908297b829",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "rail-dot-3",
+        "x": 18,
+        "y": 468,
+        "name": "rail-dot-3",
+        "width": 10,
+        "height": 10,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-huayra-r"
+      }
+    },
+    {
+      "blockId": "rail-dot-4",
+      "blockName": "rail-dot-4",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 484,
+        "width": 10,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "82e07bfa61f82fc422231e19c03afb48f27f0eb5102bf9329835118c0e5c976c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "rail-dot-4",
+        "x": 18,
+        "y": 484,
+        "name": "rail-dot-4",
+        "width": 10,
+        "height": 10,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-contact-us"
+      }
+    },
+    {
+      "blockId": "rail-dot-5",
+      "blockName": "rail-dot-5",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 5,
+      "bounds": {
+        "x": 18,
+        "y": 500,
+        "width": 10,
+        "height": 10
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2f4891019644b3c25cf2f19e77c4ac812133d80f20103f5842de0480061de8a5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "rail-dot-5",
+        "x": 18,
+        "y": 500,
+        "name": "rail-dot-5",
+        "width": 10,
+        "height": 10,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-zonda-c12"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "progress-rail",
+    "x": 0,
+    "y": 0,
+    "width": 40,
+    "height": 8080,
+    "name": "Progress Rail",
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "ellipse",
+        "id": "rail-dot-0",
+        "x": 18,
+        "y": 420,
+        "name": "rail-dot-0",
+        "width": 10,
+        "height": 10,
+        "fill": "#C9B28B",
+        "stroke": {
+          "fill": "#C9B28B",
+          "thickness": 1
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "ellipse",
+        "id": "rail-dot-1",
+        "x": 18,
+        "y": 436,
+        "name": "rail-dot-1",
+        "width": 10,
+        "height": 10,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      },
+      {
+        "type": "ellipse",
+        "id": "rail-dot-2",
+        "x": 18,
+        "y": 452,
+        "name": "rail-dot-2",
+        "width": 10,
+        "height": 10,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-pagani-utopia"
+      },
+      {
+        "type": "ellipse",
+        "id": "rail-dot-3",
+        "x": 18,
+        "y": 468,
+        "name": "rail-dot-3",
+        "width": 10,
+        "height": 10,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-huayra-r"
+      },
+      {
+        "type": "ellipse",
+        "id": "rail-dot-4",
+        "x": 18,
+        "y": 484,
+        "name": "rail-dot-4",
+        "width": 10,
+        "height": 10,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-contact-us"
+      },
+      {
+        "type": "ellipse",
+        "id": "rail-dot-5",
+        "x": 18,
+        "y": 500,
+        "name": "rail-dot-5",
+        "width": 10,
+        "height": 10,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-zonda-c12"
+      }
+    ]
+  }
+}

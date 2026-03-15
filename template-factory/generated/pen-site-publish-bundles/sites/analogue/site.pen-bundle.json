@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "template-factory.pen.v1",
+  "kind": "site-pen-bundle",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "siteId": "analogue",
+  "siteName": "Analogue",
+  "reviewMode": "site-level",
+  "requiredVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "availableVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "responsiveModes": {
+    "desktop": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "exact-source"
+    },
+    "mobile": {
+      "supported": true,
+      "sourceVariant": "mobile",
+      "mode": "exact-source"
+    }
+  },
+  "capabilities": {
+    "exactTemplate": true,
+    "skinnable": true,
+    "sandboxPreview": true,
+    "dualModeReady": true,
+    "exactMobileSource": true
+  },
+  "commercialReadiness": {
+    "structuralValidationPassed": true,
+    "visualValidationPassed": true,
+    "sandboxRuntimePassed": true,
+    "skinnableReady": true,
+    "publishInputReady": true
+  },
+  "artifacts": [
+    {
+      "caseId": "analogue-desktop",
+      "siteId": "analogue",
+      "siteName": "Analogue",
+      "siteGroupId": "analogue",
+      "variant": "desktop",
+      "siteKey": "pen-exact-site-analogue-desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/analogue.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-analogue-desktop/sandbox/payload.json",
+      "sourceHash": "f71ba8d6cb1b8ba9d07bd14162063818366aa2d6e1958deafc294cee081322ea",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 211,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/analogue/variants/desktop/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/analogue/variants/desktop/template.skin.json",
+      "previewPages": 10,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-analogue-desktop&page=home"
+    },
+    {
+      "caseId": "analogue-mobile",
+      "siteId": "analogue",
+      "siteName": "Analogue",
+      "siteGroupId": "analogue",
+      "variant": "mobile",
+      "siteKey": "pen-exact-site-analogue-mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/analogue-mobile.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-analogue-mobile/sandbox/payload.json",
+      "sourceHash": "557516116847288ff0346c2186a91fe98a8a60064324d60c2475961f8690086b",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 135,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/analogue/variants/mobile/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/analogue/variants/mobile/template.skin.json",
+      "previewPages": 10,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-analogue-mobile&page=home"
+    }
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "sectionId": "feckw",
+  "sectionName": "employeeSec",
+  "sectionKind": "generic",
+  "order": 11,
+  "bounds": {
+    "x": 0,
+    "y": 2765,
+    "width": 1440,
+    "height": 760
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "86f420b6732de351e53048b30f9a68a31e135cf97254beedbff744fcbae8f41d",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "8q2yI",
+      "blockName": "empTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 20,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bbbd55197da996a9ad2d6fc9af8351c090da6a76fefa489cb78b285ab32ed82a"
+    },
+    {
+      "blockId": "19S3m",
+      "blockName": "empBody",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 360,
+        "y": 24,
+        "width": 1020,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "81d65c896252ae816170acfe64a916ef37eb4fefaadc8f053fa0d77b535dc1c9"
+    },
+    {
+      "blockId": "WoAvE",
+      "blockName": "empLink",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 360,
+        "y": 98,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c89a30ee0f39bd434e71fb506c2ef92a6545c702663783f5addd53502249c0cc"
+    },
+    {
+      "blockId": "83qhv",
+      "blockName": "empImage",
+      "blockType": "frame",
+      "order": 3,
+      "bounds": {
+        "x": 18,
+        "y": 142,
+        "width": 1404,
+        "height": 600
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e9342a4f16be3c2717678fb2d3653f3b4998c16774033c9ff20dc384ada3d4ab"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1758470584241-b50ea5cf7b79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMzE3NDN8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "8q2yI",
+      "blockName": "empTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 20,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bbbd55197da996a9ad2d6fc9af8351c090da6a76fefa489cb78b285ab32ed82a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "8q2yI",
+        "x": 18,
+        "y": 20,
+        "name": "empTitle",
+        "fill": "#1F1F1F",
+        "content": "我们的员工",
+        "fontFamily": "Inter",
+        "fontSize": 40,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "19S3m",
+      "blockName": "empBody",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 360,
+        "y": 24,
+        "width": 1020,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "81d65c896252ae816170acfe64a916ef37eb4fefaadc8f053fa0d77b535dc1c9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "19S3m",
+        "x": 360,
+        "y": 24,
+        "name": "empBody",
+        "fill": "#303030",
+        "textGrowth": "fixed-width",
+        "width": 1020,
+        "content": "我们的员工占力我们实现一切，是他们对于创新、对持续发展、优化业务和工程应用的热情帮助我们走在行业前沿。很重要的是，正是得益于我们的员工们，我们提供的合作伙伴、我们才得益于他们的个性连接与交互现实。我们的足迹遍布150多个国家，拥有员工140,000名。加入我们，机会无限。",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "normal"
+      }
+    },
+    {
+      "blockId": "WoAvE",
+      "blockName": "empLink",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 360,
+        "y": 98,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c89a30ee0f39bd434e71fb506c2ef92a6545c702663783f5addd53502249c0cc",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "WoAvE",
+        "x": 360,
+        "y": 98,
+        "name": "empLink",
+        "fill": "#1F1F1F",
+        "content": "职业机会  ›",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "83qhv",
+      "blockName": "empImage",
+      "blockType": "frame",
+      "order": 3,
+      "bounds": {
+        "x": 18,
+        "y": 142,
+        "width": 1404,
+        "height": 600
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "e9342a4f16be3c2717678fb2d3653f3b4998c16774033c9ff20dc384ada3d4ab",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1758470584241-b50ea5cf7b79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMzE3NDN8&ixlib=rb-4.1.0&q=80&w=1080",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "83qhv",
+        "x": 18,
+        "y": 142,
+        "name": "empImage",
+        "metadata": {
+          "type": "unsplash",
+          "username": "jackyfish_image",
+          "link": "https://unsplash.com/@jackyfish_image",
+          "author": "Jacky Yu"
+        },
+        "width": 1404,
+        "height": 600,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1758470584241-b50ea5cf7b79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMzE3NDN8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "feckw",
+    "x": 0,
+    "y": 2765,
+    "name": "employeeSec",
+    "width": 1440,
+    "height": 760,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "8q2yI",
+        "x": 18,
+        "y": 20,
+        "name": "empTitle",
+        "fill": "#1F1F1F",
+        "content": "我们的员工",
+        "fontFamily": "Inter",
+        "fontSize": 40,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "19S3m",
+        "x": 360,
+        "y": 24,
+        "name": "empBody",
+        "fill": "#303030",
+        "textGrowth": "fixed-width",
+        "width": 1020,
+        "content": "我们的员工占力我们实现一切，是他们对于创新、对持续发展、优化业务和工程应用的热情帮助我们走在行业前沿。很重要的是，正是得益于我们的员工们，我们提供的合作伙伴、我们才得益于他们的个性连接与交互现实。我们的足迹遍布150多个国家，拥有员工140,000名。加入我们，机会无限。",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "text",
+        "id": "WoAvE",
+        "x": 360,
+        "y": 98,
+        "name": "empLink",
+        "fill": "#1F1F1F",
+        "content": "职业机会  ›",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "83qhv",
+        "x": 18,
+        "y": 142,
+        "name": "empImage",
+        "metadata": {
+          "type": "unsplash",
+          "username": "jackyfish_image",
+          "link": "https://unsplash.com/@jackyfish_image",
+          "author": "Jacky Yu"
+        },
+        "width": 1404,
+        "height": 600,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1758470584241-b50ea5cf7b79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMzE3NDN8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      }
+    ]
+  }
+}

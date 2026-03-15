@@ -1,0 +1,102 @@
+{
+  "blockId": "EqPjm",
+  "blockName": "navRight",
+  "blockType": "frame",
+  "order": 1,
+  "bounds": {
+    "x": 525,
+    "y": 17,
+    "width": 643,
+    "height": 44
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 7,
+  "treeHash": "055f7cb491bb98eac0a7cf68d86b99a392f584d14a250f225574ebbb52218d61",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "EqPjm",
+    "x": 525,
+    "y": 17,
+    "name": "navRight",
+    "width": 643,
+    "height": 44,
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "waqpF",
+        "x": -60,
+        "y": 13,
+        "name": "navMenu",
+        "fill": "#E7EDF4",
+        "content": "Products   Company   Resources   Careers   Roadmap   Blog",
+        "fontFamily": "Inter",
+        "fontSize": 15,
+        "fontWeight": "600"
+      },
+      {
+        "type": "frame",
+        "id": "m98TB",
+        "x": 403,
+        "y": 0,
+        "name": "navActions",
+        "width": 240,
+        "height": 44,
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "jnzNU",
+            "x": 0,
+            "y": 0,
+            "name": "getStartedBtn",
+            "width": 124,
+            "height": 44,
+            "fill": "#FF6A00",
+            "cornerRadius": 10,
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "ZWo6v",
+                "name": "getStartedTxt",
+                "fill": "#FFFFFF",
+                "content": "Get started",
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "6A29P",
+            "x": 138,
+            "y": 0,
+            "name": "signInBtn",
+            "width": 102,
+            "height": 44,
+            "fill": "#2B2F36",
+            "cornerRadius": 10,
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "PyNW2",
+                "name": "signInTxt",
+                "fill": "#FFFFFF",
+                "content": "Sign in",
+                "fontFamily": "Inter",
+                "fontSize": 15,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

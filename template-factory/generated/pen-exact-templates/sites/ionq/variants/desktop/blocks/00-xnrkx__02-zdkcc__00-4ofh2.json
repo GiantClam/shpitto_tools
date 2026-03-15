@@ -1,0 +1,111 @@
+{
+  "blockId": "4OfH2",
+  "blockName": "heroLeft",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 0,
+  "bounds": {
+    "x": 32,
+    "y": 100,
+    "width": 700,
+    "height": 286
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 7,
+  "treeHash": "d98c2ece736cb5279b68376e0972f81bbdf16e5a66cf92802430e95b4f188f2d",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "4OfH2",
+    "x": 32,
+    "y": 100,
+    "name": "heroLeft",
+    "width": 700,
+    "height": 286,
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "PJoGu",
+        "x": 0,
+        "y": 0,
+        "name": "badgeFrame",
+        "width": 480,
+        "height": 34,
+        "fill": "#0F1218CC",
+        "cornerRadius": 4,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#FF6A00"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "05GRO",
+            "x": 14,
+            "y": 10.5,
+            "name": "badgeText",
+            "fill": "#FF8A3D",
+            "content": "IonQ Earns ISO 14001 Certification, Advancing Enterprise-Ready Quantum Innovation",
+            "fontFamily": "Inter",
+            "fontSize": 11,
+            "fontWeight": "600"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "4VIw6",
+        "x": 0,
+        "y": 52,
+        "name": "heroTitle",
+        "fill": "#FFFFFF",
+        "content": "Quantum is now.",
+        "fontFamily": "Inter",
+        "fontSize": 84,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "Dqpoa",
+        "x": 0,
+        "y": 172,
+        "name": "heroDesc",
+        "fill": "#D5DCE4",
+        "textGrowth": "fixed-width",
+        "width": 620,
+        "content": "Quantum computing is changing the world, and IonQ is leading the way across quantum computing, networking, sensing, and security.",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "v9OaM",
+        "x": 0,
+        "y": 234,
+        "name": "heroBtn",
+        "width": 250,
+        "height": 52,
+        "fill": "#FF6A00",
+        "cornerRadius": 8,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "lxfdo",
+            "x": 17.5,
+            "y": 16.5,
+            "name": "heroBtnTxt",
+            "fill": "#11151B",
+            "content": "Start your quantum journey",
+            "fontFamily": "Inter",
+            "fontSize": 16,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

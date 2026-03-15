@@ -1,0 +1,158 @@
+{
+  "sectionId": "obhbm",
+  "sectionName": "sec2",
+  "sectionKind": "generic",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 646,
+    "width": 1440,
+    "height": 597
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "f9ba46a24f1e50c717240924c7666ed003ed03dfeedea5fcc143f193dacff074",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "LvGPE",
+      "blockName": "sec1desc",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 192,
+        "y": 89,
+        "width": 1055,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "865621daeffe7eced4039d9030f71b69187c32691be23ac0acd67865742ac507"
+    },
+    {
+      "blockId": "7mJ6b",
+      "blockName": "sec1nav",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 384,
+        "y": 486,
+        "width": 672,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "82cf16f3f32ef4e9b9d9c22f8e50a1c36052eb0e5b30e6c3efeadb4097800956"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "LvGPE",
+      "blockName": "sec1desc",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 192,
+        "y": 89,
+        "width": 1055,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "865621daeffe7eced4039d9030f71b69187c32691be23ac0acd67865742ac507",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "LvGPE",
+        "x": 192,
+        "y": 89,
+        "name": "sec1desc",
+        "fill": "#4B5563",
+        "textGrowth": "fixed-width",
+        "width": 1055,
+        "content": "Built upon fundamental metamaterials research at Duke University, Kymeta's disruptive technology is supported by a world-class R&D facility, and a team that includes some of the brightest minds in the industry. Together, we are building and delivering an Intelligent Communications Platform to enable network access and spatial intelligence, anytime and everywhere.",
+        "lineHeight": 1.65,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "7mJ6b",
+      "blockName": "sec1nav",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 384,
+        "y": 486,
+        "width": 672,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "82cf16f3f32ef4e9b9d9c22f8e50a1c36052eb0e5b30e6c3efeadb4097800956",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "7mJ6b",
+        "x": 384,
+        "y": 486,
+        "name": "sec1nav",
+        "fill": "#374151",
+        "textGrowth": "fixed-width",
+        "width": 672,
+        "content": "↘  Timeline      ↘  Latest News      ↘  Vision & Principles      ↘  Leadership",
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "600"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "obhbm",
+    "x": 0,
+    "y": 646,
+    "name": "sec2",
+    "width": 1440,
+    "height": 597,
+    "fill": "#ffffffff",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "LvGPE",
+        "x": 192,
+        "y": 89,
+        "name": "sec1desc",
+        "fill": "#4B5563",
+        "textGrowth": "fixed-width",
+        "width": 1055,
+        "content": "Built upon fundamental metamaterials research at Duke University, Kymeta's disruptive technology is supported by a world-class R&D facility, and a team that includes some of the brightest minds in the industry. Together, we are building and delivering an Intelligent Communications Platform to enable network access and spatial intelligence, anytime and everywhere.",
+        "lineHeight": 1.65,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "7mJ6b",
+        "x": 384,
+        "y": 486,
+        "name": "sec1nav",
+        "fill": "#374151",
+        "textGrowth": "fixed-width",
+        "width": 672,
+        "content": "↘  Timeline      ↘  Latest News      ↘  Vision & Principles      ↘  Leadership",
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

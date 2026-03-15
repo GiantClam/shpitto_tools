@@ -1,0 +1,472 @@
+{
+  "sectionId": "CoJ3Y",
+  "sectionName": "hero",
+  "sectionKind": "hero",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 118,
+    "width": 1200,
+    "height": 470
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 13,
+  "treeHash": "7fb68cb238b667516e77b8be4b8d9f0760f2e95d4666d2749c6ca57a00ef10d3",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "wY4qF",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 62,
+        "y": 52,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "af11011d6ac9e1ddef53d5354beadb31ce02a5128ef665098848f7a25c5e70c0"
+    },
+    {
+      "blockId": "4CS8E",
+      "blockName": "heroSub",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 62,
+        "y": 346,
+        "width": 470,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a2668150fd323ea86c711888ef3dff82220b6dbdb1b95fa88058c669589d1ec2"
+    },
+    {
+      "blockId": "YEjPO",
+      "blockName": "orb",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 760,
+        "y": 36,
+        "width": 370,
+        "height": 370
+      },
+      "directChildCount": 8,
+      "recursiveNodeCount": 9,
+      "treeHash": "0349924196786827808f225068515a2f6257956541a7d194e0d3e2a68dcce1d7"
+    },
+    {
+      "blockId": "aJQMZ",
+      "blockName": "pre",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 62,
+        "y": 28,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9ab7f17b1f22e89f8084e4a3baa3ac46208964ce4b29ff25ae4342b1b9db2a01"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "wY4qF",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 62,
+        "y": 52,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "af11011d6ac9e1ddef53d5354beadb31ce02a5128ef665098848f7a25c5e70c0",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "wY4qF",
+        "x": 62,
+        "y": 52,
+        "name": "heroTitle",
+        "fill": "#F4F7FB",
+        "content": "The atom.",
+        "fontFamily": "Inter",
+        "fontSize": 94,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "4CS8E",
+      "blockName": "heroSub",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 62,
+        "y": 346,
+        "width": 470,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a2668150fd323ea86c711888ef3dff82220b6dbdb1b95fa88058c669589d1ec2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "4CS8E",
+        "x": 62,
+        "y": 346,
+        "name": "heroSub",
+        "fill": "#9CA7B5",
+        "textGrowth": "fixed-width",
+        "width": 470,
+        "content": "IonQ’s trapped ion quantum systems are designed to solve challenges no classical computer can touch—from logistics and drug discovery to national defense.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "YEjPO",
+      "blockName": "orb",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 760,
+        "y": 36,
+        "width": 370,
+        "height": 370
+      },
+      "directChildCount": 8,
+      "recursiveNodeCount": 9,
+      "treeHash": "0349924196786827808f225068515a2f6257956541a7d194e0d3e2a68dcce1d7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "YEjPO",
+        "x": 760,
+        "y": 36,
+        "name": "orb",
+        "width": 370,
+        "height": 370,
+        "fill": "#05080D",
+        "cornerRadius": 20,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#5B6472"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "ellipse",
+            "id": "P02Ux",
+            "x": 155,
+            "y": 152,
+            "name": "orbGlow",
+            "width": 60,
+            "height": 60
+          },
+          {
+            "type": "ellipse",
+            "id": "xHecz",
+            "x": 82,
+            "y": 130,
+            "name": "orb1",
+            "rotation": 28,
+            "width": 206,
+            "height": 104,
+            "stroke": {
+              "thickness": 3,
+              "fill": "#EFA95D"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "XS40Y",
+            "x": 82,
+            "y": 130,
+            "name": "orb2",
+            "rotation": -28,
+            "width": 206,
+            "height": 104,
+            "stroke": {
+              "thickness": 3,
+              "fill": "#D86A9E"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "6JFNZ",
+            "x": 82,
+            "y": 130,
+            "name": "orb3",
+            "width": 206,
+            "height": 104,
+            "stroke": {
+              "thickness": 3,
+              "fill": "#C4B47A"
+            }
+          },
+          {
+            "type": "text",
+            "id": "c0gRG",
+            "x": 18,
+            "y": 14,
+            "name": "plus1",
+            "fill": "#EAF0F8",
+            "content": "+",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "5SuTO",
+            "x": 332,
+            "y": 14,
+            "name": "plus2",
+            "fill": "#EAF0F8",
+            "content": "+",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "HVYFj",
+            "x": 18,
+            "y": 332,
+            "name": "plus3",
+            "fill": "#EAF0F8",
+            "content": "+",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "GKHSu",
+            "x": 332,
+            "y": 332,
+            "name": "plus4",
+            "fill": "#EAF0F8",
+            "content": "+",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "aJQMZ",
+      "blockName": "pre",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 62,
+        "y": 28,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9ab7f17b1f22e89f8084e4a3baa3ac46208964ce4b29ff25ae4342b1b9db2a01",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "aJQMZ",
+        "x": 62,
+        "y": 28,
+        "name": "pre",
+        "fill": "#9CA7B5",
+        "content": "Quantum built on nature’s most perfect building block:",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "500"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "CoJ3Y",
+    "x": 0,
+    "y": 118,
+    "name": "hero",
+    "width": 1200,
+    "height": 470,
+    "fill": "#080B10",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "wY4qF",
+        "x": 62,
+        "y": 52,
+        "name": "heroTitle",
+        "fill": "#F4F7FB",
+        "content": "The atom.",
+        "fontFamily": "Inter",
+        "fontSize": 94,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "4CS8E",
+        "x": 62,
+        "y": 346,
+        "name": "heroSub",
+        "fill": "#9CA7B5",
+        "textGrowth": "fixed-width",
+        "width": 470,
+        "content": "IonQ’s trapped ion quantum systems are designed to solve challenges no classical computer can touch—from logistics and drug discovery to national defense.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "YEjPO",
+        "x": 760,
+        "y": 36,
+        "name": "orb",
+        "width": 370,
+        "height": 370,
+        "fill": "#05080D",
+        "cornerRadius": 20,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#5B6472"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "ellipse",
+            "id": "P02Ux",
+            "x": 155,
+            "y": 152,
+            "name": "orbGlow",
+            "width": 60,
+            "height": 60
+          },
+          {
+            "type": "ellipse",
+            "id": "xHecz",
+            "x": 82,
+            "y": 130,
+            "name": "orb1",
+            "rotation": 28,
+            "width": 206,
+            "height": 104,
+            "stroke": {
+              "thickness": 3,
+              "fill": "#EFA95D"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "XS40Y",
+            "x": 82,
+            "y": 130,
+            "name": "orb2",
+            "rotation": -28,
+            "width": 206,
+            "height": 104,
+            "stroke": {
+              "thickness": 3,
+              "fill": "#D86A9E"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "6JFNZ",
+            "x": 82,
+            "y": 130,
+            "name": "orb3",
+            "width": 206,
+            "height": 104,
+            "stroke": {
+              "thickness": 3,
+              "fill": "#C4B47A"
+            }
+          },
+          {
+            "type": "text",
+            "id": "c0gRG",
+            "x": 18,
+            "y": 14,
+            "name": "plus1",
+            "fill": "#EAF0F8",
+            "content": "+",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "5SuTO",
+            "x": 332,
+            "y": 14,
+            "name": "plus2",
+            "fill": "#EAF0F8",
+            "content": "+",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "HVYFj",
+            "x": 18,
+            "y": 332,
+            "name": "plus3",
+            "fill": "#EAF0F8",
+            "content": "+",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "GKHSu",
+            "x": 332,
+            "y": 332,
+            "name": "plus4",
+            "fill": "#EAF0F8",
+            "content": "+",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "aJQMZ",
+        "x": 62,
+        "y": 28,
+        "name": "pre",
+        "fill": "#9CA7B5",
+        "content": "Quantum built on nature’s most perfect building block:",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

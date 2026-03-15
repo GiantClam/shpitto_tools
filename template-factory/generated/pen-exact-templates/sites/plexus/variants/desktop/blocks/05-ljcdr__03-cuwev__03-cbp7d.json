@@ -1,0 +1,140 @@
+{
+  "blockId": "cbP7D",
+  "blockName": "row4",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 1140,
+    "width": 1440,
+    "height": 360
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 9,
+  "treeHash": "c02e7abc333453343271c6d7c9ce132b1914de8cc529443698fa18fae83d2bf6",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "cbP7D",
+    "x": 0,
+    "y": 1140,
+    "name": "row4",
+    "width": 1440,
+    "height": 360,
+    "fill": "#FFFFFF",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "PgL0h",
+        "x": 0,
+        "y": 0,
+        "name": "row4txt",
+        "width": 720,
+        "height": 360,
+        "fill": "#FFFFFF",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "Oo0BR",
+            "x": 88,
+            "y": 96,
+            "name": "r4tag",
+            "fill": "#D5164A",
+            "width": 36,
+            "height": 6
+          },
+          {
+            "type": "text",
+            "id": "Iqp0v",
+            "x": 88,
+            "y": 116,
+            "name": "r4title",
+            "fill": "#22303D",
+            "content": "半导体资本设备",
+            "fontFamily": "Inter",
+            "fontSize": 42,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "pVQwR",
+            "x": 88,
+            "y": 180,
+            "name": "r4desc",
+            "fill": "#6B7783",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "对半导体资本设备的重视与品质的承诺",
+            "lineHeight": 1.5,
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "YUqB7",
+            "x": 88,
+            "y": 248,
+            "name": "r4btn",
+            "width": 86,
+            "height": 30,
+            "fill": "#C70041",
+            "cornerRadius": 2,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "4jJFZ",
+                "x": 20,
+                "y": 8,
+                "name": "r4btnT",
+                "fill": "#FFFFFF",
+                "content": "了解更多",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "PDTuf",
+            "x": 150,
+            "y": 89,
+            "name": "resTagTxt",
+            "fill": "#5A6470",
+            "content": "我们的市场行业",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "yi2BS",
+        "x": 720,
+        "y": 0,
+        "name": "row4img",
+        "metadata": {
+          "type": "unsplash",
+          "username": "greener_30",
+          "link": "https://unsplash.com/@greener_30",
+          "author": "Brandon"
+        },
+        "width": 720,
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1562906343-23eff3c3a118?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDMzMzd8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "layout": "none"
+      }
+    ]
+  }
+}

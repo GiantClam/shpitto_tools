@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "template-factory.pen.v1",
+  "kind": "site-pen-bundle",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "siteId": "vanmoof",
+  "siteName": "Vanmoof",
+  "reviewMode": "site-level",
+  "requiredVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "availableVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "responsiveModes": {
+    "desktop": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "exact-source"
+    },
+    "mobile": {
+      "supported": true,
+      "sourceVariant": "mobile",
+      "mode": "exact-source"
+    }
+  },
+  "capabilities": {
+    "exactTemplate": true,
+    "skinnable": true,
+    "sandboxPreview": true,
+    "dualModeReady": true,
+    "exactMobileSource": true
+  },
+  "commercialReadiness": {
+    "structuralValidationPassed": true,
+    "visualValidationPassed": true,
+    "sandboxRuntimePassed": true,
+    "skinnableReady": true,
+    "publishInputReady": true
+  },
+  "artifacts": [
+    {
+      "caseId": "vanmoof-desktop",
+      "siteId": "vanmoof",
+      "siteName": "Vanmoof",
+      "siteGroupId": "vanmoof",
+      "variant": "desktop",
+      "siteKey": "pen-exact-site-vanmoof-desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/vanmoof.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-vanmoof-desktop/sandbox/payload.json",
+      "sourceHash": "1db1e8cfd454a5533d24137c070bb9b631f62934c8ae65e2bd3f7c6fca25c736",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 204,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/vanmoof/variants/desktop/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/vanmoof/variants/desktop/template.skin.json",
+      "previewPages": 10,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-vanmoof-desktop&page=home"
+    },
+    {
+      "caseId": "vanmoof-mobile",
+      "siteId": "vanmoof",
+      "siteName": "Vanmoof",
+      "siteGroupId": "vanmoof",
+      "variant": "mobile",
+      "siteKey": "pen-exact-site-vanmoof-mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/vanmoof-mobile.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-vanmoof-mobile/sandbox/payload.json",
+      "sourceHash": "e4e3824db200d6d72def4a39c1fa2e2286bf3c63c46f5a71b5a663f87293b993",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 128,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/vanmoof/variants/mobile/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/vanmoof/variants/mobile/template.skin.json",
+      "previewPages": 10,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-vanmoof-mobile&page=home"
+    }
+  ]
+}

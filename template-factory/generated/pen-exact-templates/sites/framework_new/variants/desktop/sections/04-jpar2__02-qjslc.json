@@ -1,0 +1,1165 @@
+{
+  "sectionId": "qJSlC",
+  "sectionName": "ContactMain",
+  "sectionKind": "contact",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 51,
+  "treeHash": "c6e0108bd9385ac778a336ff5316da167e46ee312a8eb95fc99c7719870bf5fe",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "7PBfS",
+      "blockName": "ContactMethods",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 22,
+      "treeHash": "81839914aec4d732d592f16e3fc8d9606937ae560a9683ef87411492ea5d05c3"
+    },
+    {
+      "blockId": "UcPOk",
+      "blockName": "Impressum",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 23,
+      "treeHash": "61ebba0c7538a0a294adafda2d35c5a6e010ddcf8abcd3666acb602c50adb7a4"
+    },
+    {
+      "blockId": "A9sPR",
+      "blockName": "WorkWithUs",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "6c6e95cc88c4775d2ffb2d1ca89d6d059a34ac586aee3ee8ad6f70ec20b00b7c"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "./images/generated-1773120346359.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "7PBfS",
+      "blockName": "ContactMethods",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 22,
+      "treeHash": "81839914aec4d732d592f16e3fc8d9606937ae560a9683ef87411492ea5d05c3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "7PBfS",
+        "name": "ContactMethods",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 18,
+        "children": [
+          {
+            "type": "frame",
+            "id": "BbV2b",
+            "name": "MethodRow",
+            "width": "fill_container",
+            "gap": 22,
+            "children": [
+              {
+                "type": "frame",
+                "id": "XIO5u",
+                "name": "c1",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "uwbgv",
+                    "name": "i1",
+                    "width": 58,
+                    "height": 58,
+                    "iconFontName": "message-square",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2F3338"
+                  },
+                  {
+                    "type": "text",
+                    "id": "hRMUF",
+                    "name": "t1",
+                    "fill": "#2A2F34",
+                    "content": "Contact Support",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "nTlx0",
+                    "name": "l1",
+                    "fill": "#4A4F55",
+                    "content": "Submit a support request",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "oawY3",
+                "name": "c2",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "J7eXs",
+                    "name": "i2",
+                    "width": 58,
+                    "height": 58,
+                    "iconFontName": "shopping-bag",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2F3338"
+                  },
+                  {
+                    "type": "text",
+                    "id": "HxIZ0",
+                    "name": "t2",
+                    "fill": "#2A2F34",
+                    "content": "Business Ordering",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "TNEy4",
+                    "name": "l2",
+                    "fill": "#4A4F55",
+                    "content": "framework.for.business",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "5gL2T",
+                "name": "c3",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "8z5Ei",
+                    "name": "i3",
+                    "width": 58,
+                    "height": 58,
+                    "iconFontName": "newspaper",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2F3338"
+                  },
+                  {
+                    "type": "text",
+                    "id": "PwSBP",
+                    "name": "t3",
+                    "fill": "#2A2F34",
+                    "content": "Press Inquiries",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "wCKNH",
+                    "name": "l3",
+                    "fill": "#4A4F55",
+                    "content": "media@frame.work",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "HRUoL",
+                "name": "c4",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "NIF3J",
+                    "name": "i4",
+                    "width": 58,
+                    "height": 58,
+                    "iconFontName": "globe",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2F3338"
+                  },
+                  {
+                    "type": "text",
+                    "id": "2441C",
+                    "name": "t4",
+                    "fill": "#2A2F34",
+                    "content": "Ask the Community",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "o6hGO",
+                    "name": "l4",
+                    "fill": "#4A4F55",
+                    "content": "community.frame.work",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "30TQN",
+                "name": "c5",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "motAz",
+                    "name": "i5",
+                    "width": 58,
+                    "height": 58,
+                    "iconFontName": "heart-handshake",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2F3338"
+                  },
+                  {
+                    "type": "text",
+                    "id": "wuyqO",
+                    "name": "t5",
+                    "fill": "#2A2F34",
+                    "content": "Sponsorships Inquiries",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "4UpJV",
+                    "name": "l5",
+                    "fill": "#4A4F55",
+                    "content": "Fill out the sponsorship form",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "UcPOk",
+      "blockName": "Impressum",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 23,
+      "treeHash": "61ebba0c7538a0a294adafda2d35c5a6e010ddcf8abcd3666acb602c50adb7a4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "UcPOk",
+        "name": "Impressum",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 16,
+        "children": [
+          {
+            "type": "text",
+            "id": "Sm7WO",
+            "name": "impTitle",
+            "fill": "#1F2737",
+            "content": "Impressum",
+            "fontFamily": "Inter",
+            "fontSize": 48,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "yPXco",
+            "name": "impLine",
+            "width": "fill_container",
+            "height": 1,
+            "fill": "#D8DCE0"
+          },
+          {
+            "type": "frame",
+            "id": "Xjff9",
+            "name": "impRow1",
+            "width": "fill_container",
+            "gap": 36,
+            "children": [
+              {
+                "type": "frame",
+                "id": "f4hlX",
+                "name": "impC1",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "EIyhk",
+                    "name": "i11",
+                    "fill": "#2F353B",
+                    "content": "Company Name",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "lrT2z",
+                    "name": "i12",
+                    "fill": "#5A6067",
+                    "content": "Framework* Computer Inc",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "3Ld7O",
+                "name": "impC2",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "4Yil1",
+                    "name": "i21",
+                    "fill": "#2F353B",
+                    "content": "Headquarters Address",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "zoSja",
+                    "name": "i22",
+                    "fill": "#5A6067",
+                    "textGrowth": "fixed-width",
+                    "width": "fill_container",
+                    "content": "447 Sutter St, PMB 135, San Francisco, CA 94108-4928, United States",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "JLBYC",
+                "name": "impC3",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "e3gSn",
+                    "name": "i31",
+                    "fill": "#2F353B",
+                    "content": "Managing Director",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "UqySO",
+                    "name": "i32",
+                    "fill": "#5A6067",
+                    "content": "Nirav Patel",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "normal"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "RQSvZ",
+            "name": "impRow2",
+            "width": "fill_container",
+            "gap": 36,
+            "children": [
+              {
+                "type": "frame",
+                "id": "iqpMK",
+                "name": "impC4",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "Gs34p",
+                    "name": "i41",
+                    "fill": "#2F353B",
+                    "content": "Contact",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "rjBqW",
+                    "name": "i42",
+                    "fill": "#5A6067",
+                    "textGrowth": "fixed-width",
+                    "width": "fill_container",
+                    "content": "media@frame.work, +1 (415) 475-1196",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "4SnGb",
+                "name": "impC5",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "PBXEe",
+                    "name": "i51",
+                    "fill": "#2F353B",
+                    "content": "VAT number",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "mPGF8",
+                    "name": "i52",
+                    "fill": "#5A6067",
+                    "content": "NL864036020B01",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "RsOzl",
+                "name": "impC6",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "U6cMf",
+                    "name": "i61",
+                    "fill": "#2F353B",
+                    "content": "Trademark",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "rbZuw",
+                    "name": "i62",
+                    "fill": "#5A6067",
+                    "textGrowth": "fixed-width",
+                    "width": "fill_container",
+                    "content": "Framework® is Registered in U.S. Patent and Trademark Office",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "normal"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "A9sPR",
+      "blockName": "WorkWithUs",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "fill_container",
+        "height": ""
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "6c6e95cc88c4775d2ffb2d1ca89d6d059a34ac586aee3ee8ad6f70ec20b00b7c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "A9sPR",
+        "name": "WorkWithUs",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 8,
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "koYJ0",
+            "name": "workTitle",
+            "fill": "#1F2737",
+            "content": "Work with us",
+            "fontFamily": "Inter",
+            "fontSize": 46,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "aIUeG",
+            "name": "workSub",
+            "fill": "#5A6168",
+            "content": "Come join us to remake Consumer Electronics!",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "text",
+            "id": "jgfZB",
+            "name": "workLink",
+            "fill": "#2E3339",
+            "content": "View open jobs",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "6opog",
+            "name": "WorkIllustration",
+            "metadata": {
+              "type": "unsplash",
+              "username": "loganvoss",
+              "link": "https://unsplash.com/@loganvoss",
+              "author": "Logan Voss"
+            },
+            "width": 640,
+            "height": 190,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "./images/generated-1773120346359.png",
+              "mode": "fill"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "qJSlC",
+    "name": "ContactMain",
+    "width": "fill_container",
+    "layout": "vertical",
+    "gap": 58,
+    "padding": [
+      12,
+      92,
+      54,
+      92
+    ],
+    "children": [
+      {
+        "type": "frame",
+        "id": "7PBfS",
+        "name": "ContactMethods",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 18,
+        "children": [
+          {
+            "type": "frame",
+            "id": "BbV2b",
+            "name": "MethodRow",
+            "width": "fill_container",
+            "gap": 22,
+            "children": [
+              {
+                "type": "frame",
+                "id": "XIO5u",
+                "name": "c1",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "uwbgv",
+                    "name": "i1",
+                    "width": 58,
+                    "height": 58,
+                    "iconFontName": "message-square",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2F3338"
+                  },
+                  {
+                    "type": "text",
+                    "id": "hRMUF",
+                    "name": "t1",
+                    "fill": "#2A2F34",
+                    "content": "Contact Support",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "nTlx0",
+                    "name": "l1",
+                    "fill": "#4A4F55",
+                    "content": "Submit a support request",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "oawY3",
+                "name": "c2",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "J7eXs",
+                    "name": "i2",
+                    "width": 58,
+                    "height": 58,
+                    "iconFontName": "shopping-bag",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2F3338"
+                  },
+                  {
+                    "type": "text",
+                    "id": "HxIZ0",
+                    "name": "t2",
+                    "fill": "#2A2F34",
+                    "content": "Business Ordering",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "TNEy4",
+                    "name": "l2",
+                    "fill": "#4A4F55",
+                    "content": "framework.for.business",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "5gL2T",
+                "name": "c3",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "8z5Ei",
+                    "name": "i3",
+                    "width": 58,
+                    "height": 58,
+                    "iconFontName": "newspaper",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2F3338"
+                  },
+                  {
+                    "type": "text",
+                    "id": "PwSBP",
+                    "name": "t3",
+                    "fill": "#2A2F34",
+                    "content": "Press Inquiries",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "wCKNH",
+                    "name": "l3",
+                    "fill": "#4A4F55",
+                    "content": "media@frame.work",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "HRUoL",
+                "name": "c4",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "NIF3J",
+                    "name": "i4",
+                    "width": 58,
+                    "height": 58,
+                    "iconFontName": "globe",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2F3338"
+                  },
+                  {
+                    "type": "text",
+                    "id": "2441C",
+                    "name": "t4",
+                    "fill": "#2A2F34",
+                    "content": "Ask the Community",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "o6hGO",
+                    "name": "l4",
+                    "fill": "#4A4F55",
+                    "content": "community.frame.work",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "30TQN",
+                "name": "c5",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "motAz",
+                    "name": "i5",
+                    "width": 58,
+                    "height": 58,
+                    "iconFontName": "heart-handshake",
+                    "iconFontFamily": "lucide",
+                    "fill": "#2F3338"
+                  },
+                  {
+                    "type": "text",
+                    "id": "wuyqO",
+                    "name": "t5",
+                    "fill": "#2A2F34",
+                    "content": "Sponsorships Inquiries",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "4UpJV",
+                    "name": "l5",
+                    "fill": "#4A4F55",
+                    "content": "Fill out the sponsorship form",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "UcPOk",
+        "name": "Impressum",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 16,
+        "children": [
+          {
+            "type": "text",
+            "id": "Sm7WO",
+            "name": "impTitle",
+            "fill": "#1F2737",
+            "content": "Impressum",
+            "fontFamily": "Inter",
+            "fontSize": 48,
+            "fontWeight": "700"
+          },
+          {
+            "type": "frame",
+            "id": "yPXco",
+            "name": "impLine",
+            "width": "fill_container",
+            "height": 1,
+            "fill": "#D8DCE0"
+          },
+          {
+            "type": "frame",
+            "id": "Xjff9",
+            "name": "impRow1",
+            "width": "fill_container",
+            "gap": 36,
+            "children": [
+              {
+                "type": "frame",
+                "id": "f4hlX",
+                "name": "impC1",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "EIyhk",
+                    "name": "i11",
+                    "fill": "#2F353B",
+                    "content": "Company Name",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "lrT2z",
+                    "name": "i12",
+                    "fill": "#5A6067",
+                    "content": "Framework* Computer Inc",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "3Ld7O",
+                "name": "impC2",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "4Yil1",
+                    "name": "i21",
+                    "fill": "#2F353B",
+                    "content": "Headquarters Address",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "zoSja",
+                    "name": "i22",
+                    "fill": "#5A6067",
+                    "textGrowth": "fixed-width",
+                    "width": "fill_container",
+                    "content": "447 Sutter St, PMB 135, San Francisco, CA 94108-4928, United States",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "JLBYC",
+                "name": "impC3",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "e3gSn",
+                    "name": "i31",
+                    "fill": "#2F353B",
+                    "content": "Managing Director",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "UqySO",
+                    "name": "i32",
+                    "fill": "#5A6067",
+                    "content": "Nirav Patel",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "normal"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "RQSvZ",
+            "name": "impRow2",
+            "width": "fill_container",
+            "gap": 36,
+            "children": [
+              {
+                "type": "frame",
+                "id": "iqpMK",
+                "name": "impC4",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "Gs34p",
+                    "name": "i41",
+                    "fill": "#2F353B",
+                    "content": "Contact",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "rjBqW",
+                    "name": "i42",
+                    "fill": "#5A6067",
+                    "textGrowth": "fixed-width",
+                    "width": "fill_container",
+                    "content": "media@frame.work, +1 (415) 475-1196",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "4SnGb",
+                "name": "impC5",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "PBXEe",
+                    "name": "i51",
+                    "fill": "#2F353B",
+                    "content": "VAT number",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "mPGF8",
+                    "name": "i52",
+                    "fill": "#5A6067",
+                    "content": "NL864036020B01",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "RsOzl",
+                "name": "impC6",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 6,
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "U6cMf",
+                    "name": "i61",
+                    "fill": "#2F353B",
+                    "content": "Trademark",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "rbZuw",
+                    "name": "i62",
+                    "fill": "#5A6067",
+                    "textGrowth": "fixed-width",
+                    "width": "fill_container",
+                    "content": "Framework® is Registered in U.S. Patent and Trademark Office",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontWeight": "normal"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "A9sPR",
+        "name": "WorkWithUs",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 8,
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "koYJ0",
+            "name": "workTitle",
+            "fill": "#1F2737",
+            "content": "Work with us",
+            "fontFamily": "Inter",
+            "fontSize": 46,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "aIUeG",
+            "name": "workSub",
+            "fill": "#5A6168",
+            "content": "Come join us to remake Consumer Electronics!",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "text",
+            "id": "jgfZB",
+            "name": "workLink",
+            "fill": "#2E3339",
+            "content": "View open jobs",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "6opog",
+            "name": "WorkIllustration",
+            "metadata": {
+              "type": "unsplash",
+              "username": "loganvoss",
+              "link": "https://unsplash.com/@loganvoss",
+              "author": "Logan Voss"
+            },
+            "width": 640,
+            "height": 190,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "./images/generated-1773120346359.png",
+              "mode": "fill"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

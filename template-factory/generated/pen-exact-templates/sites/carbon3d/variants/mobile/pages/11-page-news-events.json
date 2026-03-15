@@ -1,0 +1,1909 @@
+{
+  "pageId": "page-news-events",
+  "pageName": "News & Events",
+  "pageType": "blog",
+  "order": 11,
+  "bounds": {
+    "x": 1120,
+    "y": 5268,
+    "width": 390,
+    "height": 1700
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "e21fa08594b924e666166675b6e81412650930ff4a46b3503d5ff38b6cf45bf6",
+  "directChildCount": 32,
+  "recursiveNodeCount": 46,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "page-news-events-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "05d0e4d8b2f3b1c11861068d5eb4dbb77b8edf0a978bf2feb3eb90f04f0876a4",
+      "blockCount": 4
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1340,
+        "width": 390,
+        "height": 360
+      },
+      "directChildCount": 9,
+      "recursiveNodeCount": 10,
+      "treeHash": "d652c2bd6ec30096c45f36f3ae3da99eb72011953111b6111c279596bebd5b79",
+      "blockCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "page-news-events-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "05d0e4d8b2f3b1c11861068d5eb4dbb77b8edf0a978bf2feb3eb90f04f0876a4",
+      "blockCount": 4,
+      "blockIndex": [
+        {
+          "blockId": "page-news-events-navbar-bg",
+          "blockName": "page-news-events-navbar-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 68
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "27ad64d8bc83b34618db6385844d83c9fc63b2902a55958ccd3e8c7c9a535735"
+        },
+        {
+          "blockId": "page-news-events-navbar-logo",
+          "blockName": "page-news-events-navbar-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 22,
+            "width": 84,
+            "height": 26
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f9c00026e0b53675a8fb567f30068fa184629daaadf94e20be15f5da3e2d81e3"
+        },
+        {
+          "blockId": "page-news-events-navbar-menu",
+          "blockName": "page-news-events-navbar-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 350,
+            "y": 24,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7b13ecbd2f15a0d9879e6128f7db40dc004a1ac16dc510fba8bae333eda15c5c"
+        },
+        {
+          "blockId": "page-news-events-navbar-search",
+          "blockName": "page-news-events-navbar-search",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 308,
+            "y": 26,
+            "width": 18,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5616d7bbaf88c3cafcfe0dd21b2944444461f6e94514e18a3070b9a80bbe979b"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+          "relativePath": "assets-structured/carbon/carbon-logo.png",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "page-news-events-navbar-bg",
+          "blockName": "page-news-events-navbar-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 68
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "27ad64d8bc83b34618db6385844d83c9fc63b2902a55958ccd3e8c7c9a535735",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-news-events-navbar-bg",
+            "name": "page-news-events-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 68,
+            "fill": "#000000"
+          }
+        },
+        {
+          "blockId": "page-news-events-navbar-logo",
+          "blockName": "page-news-events-navbar-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 22,
+            "width": 84,
+            "height": 26
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f9c00026e0b53675a8fb567f30068fa184629daaadf94e20be15f5da3e2d81e3",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+            "relativePath": "assets-structured/carbon/carbon-logo.png",
+            "exists": true,
+            "mode": "fit"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-news-events-navbar-logo",
+            "name": "page-news-events-navbar-logo",
+            "x": 18,
+            "y": 22,
+            "width": 84,
+            "height": 26,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          }
+        },
+        {
+          "blockId": "page-news-events-navbar-menu",
+          "blockName": "page-news-events-navbar-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 350,
+            "y": 24,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7b13ecbd2f15a0d9879e6128f7db40dc004a1ac16dc510fba8bae333eda15c5c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-news-events-navbar-menu",
+            "name": "page-news-events-navbar-menu",
+            "x": 350,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products"
+          }
+        },
+        {
+          "blockId": "page-news-events-navbar-search",
+          "blockName": "page-news-events-navbar-search",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 308,
+            "y": 26,
+            "width": 18,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5616d7bbaf88c3cafcfe0dd21b2944444461f6e94514e18a3070b9a80bbe979b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-news-events-navbar-search",
+            "name": "page-news-events-navbar-search",
+            "x": 308,
+            "y": 26,
+            "fill": "#FFFFFF",
+            "content": "⌕",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 18,
+            "href": "#page-products"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "page-news-events-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "page-news-events-navbar-bg",
+            "name": "page-news-events-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 68,
+            "fill": "#000000"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-news-events-navbar-logo",
+            "name": "page-news-events-navbar-logo",
+            "x": 18,
+            "y": 22,
+            "width": 84,
+            "height": 26,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "page-news-events-navbar-menu",
+            "name": "page-news-events-navbar-menu",
+            "x": 350,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products"
+          },
+          {
+            "type": "text",
+            "id": "page-news-events-navbar-search",
+            "name": "page-news-events-navbar-search",
+            "x": 308,
+            "y": 26,
+            "fill": "#FFFFFF",
+            "content": "⌕",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 18,
+            "href": "#page-products"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1340,
+        "width": 390,
+        "height": 360
+      },
+      "directChildCount": 9,
+      "recursiveNodeCount": 10,
+      "treeHash": "d652c2bd6ec30096c45f36f3ae3da99eb72011953111b6111c279596bebd5b79",
+      "blockCount": 9,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 360
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "738045e278f48f33056c92857e8c3886a992891e03f13259442daee546e8ac8d"
+        },
+        {
+          "blockId": "footer-logo",
+          "blockName": "footer-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 24,
+            "width": 84,
+            "height": 26
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "11052d480b0832fd0ce4872e38e3ec45baf31116956934c375a21e27304f9921"
+        },
+        {
+          "blockId": "footer-Platform",
+          "blockName": "footer-Platform",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 74,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e41f838870c1e8f7417a230194d63203dc64c818157ee066ba3dbb1d277bfac4"
+        },
+        {
+          "blockId": "footer-Platform-body",
+          "blockName": "footer-Platform-body",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 98,
+            "width": 100,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5247067fb65d775f9e00719a648fe6a8c2724769620604d829af541b0b704b21"
+        },
+        {
+          "blockId": "footer-Products",
+          "blockName": "footer-Products",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 140,
+            "y": 74,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "103b86369bcf6e75dce3da1b7427a00fb15c83c4643355208adda115034a2b89"
+        },
+        {
+          "blockId": "footer-Products-body",
+          "blockName": "footer-Products-body",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 140,
+            "y": 98,
+            "width": 100,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "72c283f85fba6ba55674b1371b13ad867850df0c334247f36fc176ce53d97a97"
+        },
+        {
+          "blockId": "footer-About",
+          "blockName": "footer-About",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 262,
+            "y": 74,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5c4d8069a14b6d32e9045e6a7f7f20d6196314753650824aaeba7c798544377a"
+        },
+        {
+          "blockId": "footer-About-body",
+          "blockName": "footer-About-body",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 262,
+            "y": 98,
+            "width": 100,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "419e175a8f9b500a55e148da3dcf2f8b0c6d4675dd98c2350ccc9a3efc380c20"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 18,
+            "y": 322,
+            "width": 330,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a21b5c155b8924a40393c74e0e8561039cbf520706e9841af5b7f077e769e639"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+          "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+          "relativePath": "assets-structured/carbon/carbon-logo.png",
+          "exists": true
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 360
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "738045e278f48f33056c92857e8c3886a992891e03f13259442daee546e8ac8d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 360,
+            "fill": "#070A14"
+          }
+        },
+        {
+          "blockId": "footer-logo",
+          "blockName": "footer-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 24,
+            "width": 84,
+            "height": 26
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "11052d480b0832fd0ce4872e38e3ec45baf31116956934c375a21e27304f9921",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+            "relativePath": "assets-structured/carbon/carbon-logo.png",
+            "exists": true,
+            "mode": "fit"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 18,
+            "y": 24,
+            "width": 84,
+            "height": 26,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          }
+        },
+        {
+          "blockId": "footer-Platform",
+          "blockName": "footer-Platform",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 74,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e41f838870c1e8f7417a230194d63203dc64c818157ee066ba3dbb1d277bfac4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Platform",
+            "name": "footer-Platform",
+            "x": 18,
+            "y": 74,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-Platform-body",
+          "blockName": "footer-Platform-body",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 98,
+            "width": 100,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5247067fb65d775f9e00719a648fe6a8c2724769620604d829af541b0b704b21",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Platform-body",
+            "name": "footer-Platform-body",
+            "x": 18,
+            "y": 98,
+            "fill": "#C7CEE7",
+            "content": "How it Works\nMaterials\nSoftware",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 53
+          }
+        },
+        {
+          "blockId": "footer-Products",
+          "blockName": "footer-Products",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 140,
+            "y": 74,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "103b86369bcf6e75dce3da1b7427a00fb15c83c4643355208adda115034a2b89",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Products",
+            "name": "footer-Products",
+            "x": 140,
+            "y": 74,
+            "fill": "#FFFFFF",
+            "content": "PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-Products-body",
+          "blockName": "footer-Products-body",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 140,
+            "y": 98,
+            "width": 100,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "72c283f85fba6ba55674b1371b13ad867850df0c334247f36fc176ce53d97a97",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-Products-body",
+            "name": "footer-Products-body",
+            "x": 140,
+            "y": 98,
+            "fill": "#C7CEE7",
+            "content": "M3 Printer\nM2 Printer\nL1 Printer",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 53
+          }
+        },
+        {
+          "blockId": "footer-About",
+          "blockName": "footer-About",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 262,
+            "y": 74,
+            "width": 140,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5c4d8069a14b6d32e9045e6a7f7f20d6196314753650824aaeba7c798544377a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-About",
+            "name": "footer-About",
+            "x": 262,
+            "y": 74,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-About-body",
+          "blockName": "footer-About-body",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 262,
+            "y": 98,
+            "width": 100,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "419e175a8f9b500a55e148da3dcf2f8b0c6d4675dd98c2350ccc9a3efc380c20",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-About-body",
+            "name": "footer-About-body",
+            "x": 262,
+            "y": 98,
+            "fill": "#C7CEE7",
+            "content": "About Carbon\nNewsroom\nContact",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 53
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 18,
+            "y": 322,
+            "width": 330,
+            "height": 53
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a21b5c155b8924a40393c74e0e8561039cbf520706e9841af5b7f077e769e639",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 322,
+            "fill": "#B9C0DA",
+            "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 330,
+            "height": 53
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1340,
+        "width": 390,
+        "height": 360,
+        "fill": "#070A14",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 360,
+            "fill": "#070A14"
+          },
+          {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 18,
+            "y": 24,
+            "width": 84,
+            "height": 26,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "footer-Platform",
+            "name": "footer-Platform",
+            "x": 18,
+            "y": 74,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Platform-body",
+            "name": "footer-Platform-body",
+            "x": 18,
+            "y": 98,
+            "fill": "#C7CEE7",
+            "content": "How it Works\nMaterials\nSoftware",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 53
+          },
+          {
+            "type": "text",
+            "id": "footer-Products",
+            "name": "footer-Products",
+            "x": 140,
+            "y": 74,
+            "fill": "#FFFFFF",
+            "content": "PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Products-body",
+            "name": "footer-Products-body",
+            "x": 140,
+            "y": 98,
+            "fill": "#C7CEE7",
+            "content": "M3 Printer\nM2 Printer\nL1 Printer",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 53
+          },
+          {
+            "type": "text",
+            "id": "footer-About",
+            "name": "footer-About",
+            "x": 262,
+            "y": 74,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-About-body",
+            "name": "footer-About-body",
+            "x": 262,
+            "y": 98,
+            "fill": "#C7CEE7",
+            "content": "About Carbon\nNewsroom\nContact",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 53
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 322,
+            "fill": "#B9C0DA",
+            "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 330,
+            "height": 53
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 13,
+  "looseNodeCount": 30,
+  "looseNodes": [
+    {
+      "id": "page-news-events-bg",
+      "name": "page-news-events-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 1700
+    },
+    {
+      "id": "page-news-events-hero",
+      "name": "page-news-events-hero",
+      "type": "rectangle",
+      "width": 390,
+      "height": 260
+    },
+    {
+      "id": "page-news-events-hero-overlay",
+      "name": "page-news-events-hero-overlay",
+      "type": "rectangle",
+      "width": 390,
+      "height": 260
+    },
+    {
+      "id": "page-news-events-crumb",
+      "name": "page-news-events-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 22
+    },
+    {
+      "id": "page-news-events-title",
+      "name": "page-news-events-title",
+      "type": "text",
+      "width": 320,
+      "height": 49
+    },
+    {
+      "id": "page-news-events-subtitle",
+      "name": "page-news-events-subtitle",
+      "type": "text",
+      "width": 330,
+      "height": 25
+    },
+    {
+      "id": "page-news-events-home-btn-box",
+      "name": "page-news-events-home-btn-box",
+      "type": "rectangle",
+      "width": 120,
+      "height": 38
+    },
+    {
+      "id": "page-news-events-home-btn-text",
+      "name": "page-news-events-home-btn-text",
+      "type": "text",
+      "width": 84,
+      "height": 20
+    },
+    {
+      "id": "page-news-events-more-btn-box",
+      "name": "page-news-events-more-btn-box",
+      "type": "rectangle",
+      "width": 160,
+      "height": 38
+    },
+    {
+      "id": "page-news-events-more-btn-text",
+      "name": "page-news-events-more-btn-text",
+      "type": "text",
+      "width": 124,
+      "height": 20
+    },
+    {
+      "id": "page-news-events-panel",
+      "name": "page-news-events-panel",
+      "type": "rectangle",
+      "width": 354,
+      "height": 980
+    },
+    {
+      "id": "page-news-events-eyebrow",
+      "name": "page-news-events-eyebrow",
+      "type": "text",
+      "width": 240,
+      "height": 18
+    },
+    {
+      "id": "page-news-events-panel-title",
+      "name": "page-news-events-panel-title",
+      "type": "text",
+      "width": 300,
+      "height": 41
+    },
+    {
+      "id": "page-news-events-img-main",
+      "name": "page-news-events-img-main",
+      "type": "rectangle",
+      "width": 300,
+      "height": 220
+    },
+    {
+      "id": "page-news-events-img-side",
+      "name": "page-news-events-img-side",
+      "type": "rectangle",
+      "width": 300,
+      "height": 180
+    },
+    {
+      "id": "page-news-events-card-0",
+      "name": "page-news-events-card-0",
+      "type": "rectangle",
+      "width": 300,
+      "height": 146
+    },
+    {
+      "id": "page-news-events-card-img-0",
+      "name": "page-news-events-card-img-0",
+      "type": "rectangle",
+      "width": 276,
+      "height": 82
+    },
+    {
+      "id": "page-news-events-card-title-0",
+      "name": "page-news-events-card-title-0",
+      "type": "text",
+      "width": 276,
+      "height": 25
+    },
+    {
+      "id": "page-news-events-card-body-0",
+      "name": "page-news-events-card-body-0",
+      "type": "text",
+      "width": 276,
+      "height": 22
+    },
+    {
+      "id": "page-news-events-card-1",
+      "name": "page-news-events-card-1",
+      "type": "rectangle",
+      "width": 300,
+      "height": 146
+    },
+    {
+      "id": "page-news-events-card-img-1",
+      "name": "page-news-events-card-img-1",
+      "type": "rectangle",
+      "width": 276,
+      "height": 82
+    },
+    {
+      "id": "page-news-events-card-title-1",
+      "name": "page-news-events-card-title-1",
+      "type": "text",
+      "width": 276,
+      "height": 25
+    },
+    {
+      "id": "page-news-events-card-body-1",
+      "name": "page-news-events-card-body-1",
+      "type": "text",
+      "width": 276,
+      "height": 22
+    },
+    {
+      "id": "page-news-events-rel-title",
+      "name": "page-news-events-rel-title",
+      "type": "text",
+      "width": 200,
+      "height": 18
+    },
+    {
+      "id": "page-news-events-rel-0-box",
+      "name": "page-news-events-rel-0-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 38
+    },
+    {
+      "id": "page-news-events-rel-0-text",
+      "name": "page-news-events-rel-0-text",
+      "type": "text",
+      "width": 114,
+      "height": 20
+    },
+    {
+      "id": "page-news-events-rel-1-box",
+      "name": "page-news-events-rel-1-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 38
+    },
+    {
+      "id": "page-news-events-rel-1-text",
+      "name": "page-news-events-rel-1-text",
+      "type": "text",
+      "width": 114,
+      "height": 20
+    },
+    {
+      "id": "page-news-events-rel-2-box",
+      "name": "page-news-events-rel-2-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 38
+    },
+    {
+      "id": "page-news-events-rel-2-text",
+      "name": "page-news-events-rel-2-text",
+      "type": "text",
+      "width": 114,
+      "height": 20
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-news-events-0-f027a513.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-news-events-0-f027a513.jpg",
+      "relativePath": "assets-structured/carbon/page-news-events-0-f027a513.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+      "relativePath": "assets-structured/carbon/carbon-logo.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-news-events-1-612aa05f.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-news-events-1-612aa05f.jpg",
+      "relativePath": "assets-structured/carbon/page-news-events-1-612aa05f.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-news-events-2-977d2345.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-news-events-2-977d2345.jpg",
+      "relativePath": "assets-structured/carbon/page-news-events-2-977d2345.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-news-events-0-f027a513.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-news-events-0-f027a513.jpg",
+      "relativePath": "assets-structured/carbon/page-news-events-0-f027a513.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-news-events-1-612aa05f.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-news-events-1-612aa05f.jpg",
+      "relativePath": "assets-structured/carbon/page-news-events-1-612aa05f.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+      "relativePath": "assets-structured/carbon/carbon-logo.png",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-news-events",
+    "name": "News & Events",
+    "x": 1120,
+    "y": 5268,
+    "width": 390,
+    "height": 1700,
+    "fill": "#0D1022",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-news-events-bg",
+        "name": "page-news-events-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 1700,
+        "fill": "#0D1022"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-hero",
+        "name": "page-news-events-hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 260,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-news-events-0-f027a513.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-hero-overlay",
+        "name": "page-news-events-hero-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 260,
+        "fill": "#0000004A"
+      },
+      {
+        "type": "frame",
+        "id": "page-news-events-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 68,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "page-news-events-navbar-bg",
+            "name": "page-news-events-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 68,
+            "fill": "#000000"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-news-events-navbar-logo",
+            "name": "page-news-events-navbar-logo",
+            "x": 18,
+            "y": 22,
+            "width": 84,
+            "height": 26,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "page-news-events-navbar-menu",
+            "name": "page-news-events-navbar-menu",
+            "x": 350,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-products"
+          },
+          {
+            "type": "text",
+            "id": "page-news-events-navbar-search",
+            "name": "page-news-events-navbar-search",
+            "x": 308,
+            "y": 26,
+            "fill": "#FFFFFF",
+            "content": "⌕",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 18,
+            "href": "#page-products"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-crumb",
+        "name": "page-news-events-crumb",
+        "x": 18,
+        "y": 92,
+        "fill": "#FFFFFF",
+        "content": "Home / News & Events",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 22
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-title",
+        "name": "page-news-events-title",
+        "x": 18,
+        "y": 126,
+        "fill": "#FFFFFF",
+        "content": "News & Events",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 30,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-subtitle",
+        "name": "page-news-events-subtitle",
+        "x": 18,
+        "y": 186,
+        "fill": "#E3E7F5",
+        "content": "Additive Manufacturing Strategies",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 330,
+        "height": 25
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-home-btn-box",
+        "name": "page-news-events-home-btn-box",
+        "x": 18,
+        "y": 248,
+        "width": 120,
+        "height": 38,
+        "fill": "#7256FF",
+        "href": "#page-home",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-home-btn-text",
+        "name": "page-news-events-home-btn-text",
+        "x": 36,
+        "y": 257,
+        "fill": "#FFFFFF",
+        "content": "HOME",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 84,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-more-btn-box",
+        "name": "page-news-events-more-btn-box",
+        "x": 154,
+        "y": 248,
+        "width": 160,
+        "height": 38,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-resources",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-more-btn-text",
+        "name": "page-news-events-more-btn-text",
+        "x": 172,
+        "y": 257,
+        "fill": "#FFFFFF",
+        "content": "RELATED",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 124,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-resources",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-panel",
+        "name": "page-news-events-panel",
+        "x": 18,
+        "y": 296,
+        "width": 354,
+        "height": 980,
+        "fill": "#20243A",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-eyebrow",
+        "name": "page-news-events-eyebrow",
+        "x": 42,
+        "y": 318,
+        "fill": "#5FD3FF",
+        "content": "NEWS & EVENTS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-panel-title",
+        "name": "page-news-events-panel-title",
+        "x": 42,
+        "y": 350,
+        "fill": "#FFFFFF",
+        "content": "News & Events",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 24,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 41
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-img-main",
+        "name": "page-news-events-img-main",
+        "x": 42,
+        "y": 320,
+        "width": 300,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-news-events-1-612aa05f.jpg",
+          "mode": "contain"
+        },
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-img-side",
+        "name": "page-news-events-img-side",
+        "x": 42,
+        "y": 560,
+        "width": 300,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-news-events-2-977d2345.jpg",
+          "mode": "contain"
+        },
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-card-0",
+        "name": "page-news-events-card-0",
+        "x": 42,
+        "y": 808,
+        "width": 300,
+        "height": 146,
+        "fill": "#151827",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-resources",
+        "cornerRadius": 14
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-card-img-0",
+        "name": "page-news-events-card-img-0",
+        "x": 54,
+        "y": 820,
+        "width": 276,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-news-events-0-f027a513.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-resources",
+        "cornerRadius": 10
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-card-title-0",
+        "name": "page-news-events-card-title-0",
+        "x": 54,
+        "y": 912,
+        "fill": "#FFFFFF",
+        "content": "Zahntechnik Plus",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 276,
+        "height": 25,
+        "href": "#page-resources"
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-card-body-0",
+        "name": "page-news-events-card-body-0",
+        "x": 54,
+        "y": 932,
+        "fill": "#AAB0D0",
+        "content": "News & Events",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 276,
+        "height": 22,
+        "href": "#page-resources"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-card-1",
+        "name": "page-news-events-card-1",
+        "x": 42,
+        "y": 970,
+        "width": 300,
+        "height": 146,
+        "fill": "#151827",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-about",
+        "cornerRadius": 14
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-card-img-1",
+        "name": "page-news-events-card-img-1",
+        "x": 54,
+        "y": 982,
+        "width": 276,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-news-events-1-612aa05f.jpg",
+          "mode": "contain"
+        },
+        "href": "#page-about",
+        "cornerRadius": 10
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-card-title-1",
+        "name": "page-news-events-card-title-1",
+        "x": 54,
+        "y": 1074,
+        "fill": "#FFFFFF",
+        "content": "Stride USA",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 276,
+        "height": 25,
+        "href": "#page-about"
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-card-body-1",
+        "name": "page-news-events-card-body-1",
+        "x": 54,
+        "y": 1094,
+        "fill": "#AAB0D0",
+        "content": "News & Events",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 276,
+        "height": 22,
+        "href": "#page-about"
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-rel-title",
+        "name": "page-news-events-rel-title",
+        "x": 42,
+        "y": 1460,
+        "fill": "#5FD3FF",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-rel-0-box",
+        "name": "page-news-events-rel-0-box",
+        "x": 42,
+        "y": 1488,
+        "width": 150,
+        "height": 38,
+        "fill": "#7256FF",
+        "href": "#page-resources",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-rel-0-text",
+        "name": "page-news-events-rel-0-text",
+        "x": 60,
+        "y": 1497,
+        "fill": "#FFFFFF",
+        "content": "Resources",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 114,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-resources",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-rel-1-box",
+        "name": "page-news-events-rel-1-box",
+        "x": 204,
+        "y": 1488,
+        "width": 150,
+        "height": 38,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-about",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-rel-1-text",
+        "name": "page-news-events-rel-1-text",
+        "x": 222,
+        "y": 1497,
+        "fill": "#FFFFFF",
+        "content": "About",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 114,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-about",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-news-events-rel-2-box",
+        "name": "page-news-events-rel-2-box",
+        "x": 42,
+        "y": 1536,
+        "width": 150,
+        "height": 38,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#31375A",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 12
+      },
+      {
+        "type": "text",
+        "id": "page-news-events-rel-2-text",
+        "name": "page-news-events-rel-2-text",
+        "x": 60,
+        "y": 1545,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 114,
+        "height": 20,
+        "letterSpacing": "0.02em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1340,
+        "width": 390,
+        "height": 360,
+        "fill": "#070A14",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 360,
+            "fill": "#070A14"
+          },
+          {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 18,
+            "y": 24,
+            "width": 84,
+            "height": 26,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "footer-Platform",
+            "name": "footer-Platform",
+            "x": 18,
+            "y": 74,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Platform-body",
+            "name": "footer-Platform-body",
+            "x": 18,
+            "y": 98,
+            "fill": "#C7CEE7",
+            "content": "How it Works\nMaterials\nSoftware",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 53
+          },
+          {
+            "type": "text",
+            "id": "footer-Products",
+            "name": "footer-Products",
+            "x": 140,
+            "y": 74,
+            "fill": "#FFFFFF",
+            "content": "PRODUCTS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-Products-body",
+            "name": "footer-Products-body",
+            "x": 140,
+            "y": 98,
+            "fill": "#C7CEE7",
+            "content": "M3 Printer\nM2 Printer\nL1 Printer",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 53
+          },
+          {
+            "type": "text",
+            "id": "footer-About",
+            "name": "footer-About",
+            "x": 262,
+            "y": 74,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 140,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-About-body",
+            "name": "footer-About-body",
+            "x": 262,
+            "y": 98,
+            "fill": "#C7CEE7",
+            "content": "About Carbon\nNewsroom\nContact",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 53
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 322,
+            "fill": "#B9C0DA",
+            "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 330,
+            "height": 53
+          }
+        ]
+      }
+    ]
+  }
+}

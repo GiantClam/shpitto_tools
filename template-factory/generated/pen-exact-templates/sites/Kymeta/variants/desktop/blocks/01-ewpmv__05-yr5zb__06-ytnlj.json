@@ -1,0 +1,298 @@
+{
+  "blockId": "YTNlj",
+  "blockName": "accessoriesSection",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 6,
+  "bounds": {
+    "x": 0,
+    "y": 1336,
+    "width": 1440,
+    "height": 790
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 20,
+  "treeHash": "dbdfb3d8ab5e5c1c0dca4428991d91173dc9b448bb80524cb24a8aaa23c675fa",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "YTNlj",
+    "x": 0,
+    "y": 1336,
+    "name": "accessoriesSection",
+    "width": 1440,
+    "height": 790,
+    "fill": "#ffffffff",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "ysqOE",
+        "x": 38,
+        "y": 0,
+        "name": "accLeft",
+        "width": 500,
+        "height": 820,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "aStuc",
+            "x": 0,
+            "y": 92,
+            "name": "accTitle",
+            "fill": "#101828",
+            "textGrowth": "fixed-width",
+            "width": 551,
+            "content": "Popular accessories",
+            "fontFamily": "Inter",
+            "fontSize": 54
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 5,
+            "id": "Q7GlL",
+            "x": 0,
+            "y": 250,
+            "name": "accBtn",
+            "fill": "#F6F8FC",
+            "width": 120,
+            "height": 36,
+            "stroke": {
+              "align": "inside",
+              "thickness": 1,
+              "fill": "#85A5D8"
+            }
+          },
+          {
+            "type": "text",
+            "id": "oy4DA",
+            "x": 15,
+            "y": 260,
+            "name": "accBtnText",
+            "fill": "#1F2937",
+            "content": "All Accessories",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "Ig6RC",
+        "x": 626,
+        "y": 40,
+        "name": "accRight",
+        "width": 748,
+        "height": 740,
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "BEmYf",
+            "x": 0,
+            "y": 0,
+            "name": "accRow1",
+            "width": 748,
+            "height": 210,
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "sEm3D",
+                "x": 0,
+                "y": 8,
+                "name": "acc1Img",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "mkal1375",
+                  "link": "https://unsplash.com/@mkal1375",
+                  "author": "Mahdi Kalhor"
+                },
+                "width": 210,
+                "height": 178,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1552331110-899d3be50233?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMTk0Mjd8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "pNttF",
+                "x": 250,
+                "y": 8,
+                "name": "acc1Title",
+                "fill": "#101828",
+                "content": "Transport Cases",
+                "fontFamily": "Inter",
+                "fontSize": 22,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "QMGm1",
+                "x": 250,
+                "y": 64,
+                "name": "acc1Desc",
+                "fill": "#374151",
+                "textGrowth": "fixed-width",
+                "width": 488,
+                "content": "Hard-shell cases with tie-down points safely and securely transport terminal systems. Rugged construction ensures reliable protection during transport.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 12
+              }
+            ]
+          },
+          {
+            "type": "line",
+            "id": "knLdU",
+            "x": 0,
+            "y": 228,
+            "name": "accLine1",
+            "width": 748,
+            "height": 0,
+            "stroke": {
+              "thickness": 2,
+              "fill": "#D0D5DD"
+            }
+          },
+          {
+            "type": "frame",
+            "id": "zgOnd",
+            "x": 0,
+            "y": 252,
+            "name": "accRow2",
+            "width": 748,
+            "height": 210,
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "yrvQy",
+                "x": 0,
+                "y": 8,
+                "name": "acc2Img",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "jenspeter",
+                  "link": "https://unsplash.com/@jenspeter",
+                  "author": "Jens Peter Olesen"
+                },
+                "width": 210,
+                "height": 178,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1665865455078-4f9f8e2259db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMTk0Mjh8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "ajAGM",
+                "x": 250,
+                "y": 8,
+                "name": "acc2Title",
+                "fill": "#101828",
+                "content": "Mounting Systems",
+                "fontFamily": "Inter",
+                "fontSize": 22,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "DTrTa",
+                "x": 250,
+                "y": 64,
+                "name": "acc2Desc",
+                "fill": "#374151",
+                "textGrowth": "fixed-width",
+                "width": 488,
+                "content": "Mounting systems attach terminal hardware to poles, roof racks, and marine vessels so equipment is secured for stationary or on-the-move operation.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 12
+              }
+            ]
+          },
+          {
+            "type": "line",
+            "id": "8BMxI",
+            "x": 0,
+            "y": 480,
+            "name": "accLine2",
+            "width": 748,
+            "height": 0,
+            "stroke": {
+              "thickness": 2,
+              "fill": "#D0D5DD"
+            }
+          },
+          {
+            "type": "frame",
+            "id": "yky8p",
+            "x": 0,
+            "y": 504,
+            "name": "accRow3",
+            "width": 748,
+            "height": 210,
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "z8GyS",
+                "x": 0,
+                "y": 8,
+                "name": "acc3Img",
+                "metadata": {
+                  "type": "unsplash",
+                  "username": "sarguninder",
+                  "link": "https://unsplash.com/@sarguninder",
+                  "author": "Sarguninder Singh"
+                },
+                "width": 210,
+                "height": 178,
+                "fill": {
+                  "type": "image",
+                  "enabled": true,
+                  "url": "https://images.unsplash.com/photo-1742188251966-29e76e721c7c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMTk0Mjl8&ixlib=rb-4.1.0&q=80&w=1080",
+                  "mode": "fill"
+                }
+              },
+              {
+                "type": "text",
+                "id": "aATt0",
+                "x": 250,
+                "y": 8,
+                "name": "acc3Title",
+                "fill": "#101828",
+                "content": "Power Supplies",
+                "fontFamily": "Inter",
+                "fontSize": 22,
+                "fontWeight": "500"
+              },
+              {
+                "type": "text",
+                "id": "X6aEC",
+                "x": 250,
+                "y": 64,
+                "name": "acc3Desc",
+                "fill": "#374151",
+                "textGrowth": "fixed-width",
+                "width": 488,
+                "content": "AC and DC power kits include everything needed to connect terminal systems to vehicle or building power infrastructure.",
+                "lineHeight": 1.45,
+                "fontFamily": "Inter",
+                "fontSize": 12
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

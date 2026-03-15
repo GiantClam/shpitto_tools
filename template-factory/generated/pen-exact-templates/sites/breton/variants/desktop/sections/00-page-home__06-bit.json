@@ -1,0 +1,480 @@
+{
+  "sectionId": "bit",
+  "sectionName": "BIT",
+  "sectionKind": "generic",
+  "order": 6,
+  "bounds": {
+    "x": 0,
+    "y": 2000,
+    "width": 1440,
+    "height": 360
+  },
+  "directChildCount": 7,
+  "recursiveNodeCount": 8,
+  "treeHash": "60584f33b83e3a10b8743b180c1cf85d0798c11bb4df5011f532f333f8f9f5b7",
+  "blockCount": 7,
+  "blockIndex": [
+    {
+      "blockId": "bit-left",
+      "blockName": "bit-left",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 20,
+        "y": 40,
+        "width": 420,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "71cd70527730dee6e194037f57a205af7db5d1c2f5d785e36774d4ec4eec19c8"
+    },
+    {
+      "blockId": "bit-kicker",
+      "blockName": "bit-kicker",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 44,
+        "y": 64,
+        "width": 240,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6f993e8518ab69207b2516768a4e2014b1e00b5b83838723920cc83ce9c59692"
+    },
+    {
+      "blockId": "bit-title",
+      "blockName": "bit-title",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 44,
+        "y": 92,
+        "width": 340,
+        "height": 168
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "41ed6edf43234f67f523d254ff0561350592256cf3722bdc7aaa12c804d0c682"
+    },
+    {
+      "blockId": "bit-copy",
+      "blockName": "bit-copy",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 44,
+        "y": 168,
+        "width": 300,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "211d43c8934c338c5dd5042d190ad4cacccecdf96aa1f540bd842e706287a3c7"
+    },
+    {
+      "blockId": "bit-btn-box",
+      "blockName": "bit-btn-box",
+      "blockType": "rectangle",
+      "order": 4,
+      "bounds": {
+        "x": 44,
+        "y": 224,
+        "width": 120,
+        "height": 34
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c693cd0f43908570393466301f1b0ff9f562743533d024ea1e0339e1e15f3f4b"
+    },
+    {
+      "blockId": "bit-btn-text",
+      "blockName": "bit-btn-text",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 58,
+        "y": 232,
+        "width": 92,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8fd377c487ec610236e069e3634fd57b6ef9f9bd8909eba3dca436e78ba92004"
+    },
+    {
+      "blockId": "bit-img",
+      "blockName": "bit-img",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 6,
+      "bounds": {
+        "x": 460,
+        "y": 40,
+        "width": 880,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ff59ee7701df0efe3c9a7184890e9fb4dea425462886433049df22d1debb33a9"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/bit-559da0ba.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/bit-559da0ba.jpg",
+      "relativePath": "assets-structured/breton/bit-559da0ba.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "bit-left",
+      "blockName": "bit-left",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 20,
+        "y": 40,
+        "width": 420,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "71cd70527730dee6e194037f57a205af7db5d1c2f5d785e36774d4ec4eec19c8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "bit-left",
+        "name": "bit-left",
+        "x": 20,
+        "y": 40,
+        "width": 420,
+        "height": 250,
+        "fill": "#202329"
+      }
+    },
+    {
+      "blockId": "bit-kicker",
+      "blockName": "bit-kicker",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 44,
+        "y": 64,
+        "width": 240,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6f993e8518ab69207b2516768a4e2014b1e00b5b83838723920cc83ce9c59692",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "bit-kicker",
+        "name": "bit-kicker",
+        "x": 44,
+        "y": 64,
+        "fill": "#D2D6DC",
+        "content": "WHERE TECHNOLOGICAL INNOVATION IS BORN",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      }
+    },
+    {
+      "blockId": "bit-title",
+      "blockName": "bit-title",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 44,
+        "y": 92,
+        "width": 340,
+        "height": 168
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "41ed6edf43234f67f523d254ff0561350592256cf3722bdc7aaa12c804d0c682",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "bit-title",
+        "name": "bit-title",
+        "x": 44,
+        "y": 92,
+        "fill": "#FFFFFF",
+        "content": "BIT - Breton Institute\nof Technology",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 38,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 340,
+        "height": 168
+      }
+    },
+    {
+      "blockId": "bit-copy",
+      "blockName": "bit-copy",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 44,
+        "y": 168,
+        "width": 300,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "211d43c8934c338c5dd5042d190ad4cacccecdf96aa1f540bd842e706287a3c7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "bit-copy",
+        "name": "bit-copy",
+        "x": 44,
+        "y": 168,
+        "fill": "#D2D6DC",
+        "content": "Pioneer in the development of innovative processes, materials, machines and plants, Breton has always been committed to research.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 86
+      }
+    },
+    {
+      "blockId": "bit-btn-box",
+      "blockName": "bit-btn-box",
+      "blockType": "rectangle",
+      "order": 4,
+      "bounds": {
+        "x": 44,
+        "y": 224,
+        "width": 120,
+        "height": 34
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c693cd0f43908570393466301f1b0ff9f562743533d024ea1e0339e1e15f3f4b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "bit-btn-box",
+        "name": "bit-btn-box",
+        "x": 44,
+        "y": 224,
+        "width": 120,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        },
+        "href": "#page-bit",
+        "cornerRadius": 0
+      }
+    },
+    {
+      "blockId": "bit-btn-text",
+      "blockName": "bit-btn-text",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 58,
+        "y": 232,
+        "width": 92,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8fd377c487ec610236e069e3634fd57b6ef9f9bd8909eba3dca436e78ba92004",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "bit-btn-text",
+        "name": "bit-btn-text",
+        "x": 58,
+        "y": 232,
+        "fill": "#232529",
+        "content": "Discover more",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 92,
+        "height": 18,
+        "letterSpacing": "0.04em",
+        "href": "#page-bit"
+      }
+    },
+    {
+      "blockId": "bit-img",
+      "blockName": "bit-img",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 6,
+      "bounds": {
+        "x": 460,
+        "y": 40,
+        "width": 880,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ff59ee7701df0efe3c9a7184890e9fb4dea425462886433049df22d1debb33a9",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/bit-559da0ba.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/bit-559da0ba.jpg",
+        "relativePath": "assets-structured/breton/bit-559da0ba.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "bit-img",
+        "name": "bit-img",
+        "x": 460,
+        "y": 40,
+        "width": 880,
+        "height": 250,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/bit-559da0ba.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-bit"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "bit",
+    "name": "BIT",
+    "x": 0,
+    "y": 2000,
+    "width": 1440,
+    "height": 360,
+    "fill": "#ECECEC",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "bit-left",
+        "name": "bit-left",
+        "x": 20,
+        "y": 40,
+        "width": 420,
+        "height": 250,
+        "fill": "#202329"
+      },
+      {
+        "type": "text",
+        "id": "bit-kicker",
+        "name": "bit-kicker",
+        "x": 44,
+        "y": 64,
+        "fill": "#D2D6DC",
+        "content": "WHERE TECHNOLOGICAL INNOVATION IS BORN",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "bit-title",
+        "name": "bit-title",
+        "x": 44,
+        "y": 92,
+        "fill": "#FFFFFF",
+        "content": "BIT - Breton Institute\nof Technology",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 38,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 340,
+        "height": 168
+      },
+      {
+        "type": "text",
+        "id": "bit-copy",
+        "name": "bit-copy",
+        "x": 44,
+        "y": 168,
+        "fill": "#D2D6DC",
+        "content": "Pioneer in the development of innovative processes, materials, machines and plants, Breton has always been committed to research.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 86
+      },
+      {
+        "type": "rectangle",
+        "id": "bit-btn-box",
+        "name": "bit-btn-box",
+        "x": 44,
+        "y": 224,
+        "width": 120,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D7D8DA",
+          "thickness": 1
+        },
+        "href": "#page-bit",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "bit-btn-text",
+        "name": "bit-btn-text",
+        "x": 58,
+        "y": 232,
+        "fill": "#232529",
+        "content": "Discover more",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 92,
+        "height": 18,
+        "letterSpacing": "0.04em",
+        "href": "#page-bit"
+      },
+      {
+        "type": "rectangle",
+        "id": "bit-img",
+        "name": "bit-img",
+        "x": 460,
+        "y": 40,
+        "width": 880,
+        "height": 250,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/bit-559da0ba.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-bit"
+      }
+    ]
+  }
+}

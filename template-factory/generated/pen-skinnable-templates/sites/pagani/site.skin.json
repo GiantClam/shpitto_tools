@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "pen-skinnable-site-bundle.v1",
+  "generatedAt": "2026-03-12T08:24:47.032Z",
+  "siteId": "pagani",
+  "siteName": "Pagani",
+  "variantCount": 2,
+  "variants": [
+    {
+      "siteId": "pagani",
+      "siteName": "Pagani",
+      "variant": "mobile",
+      "counts": {
+        "pageCount": 10,
+        "textSlotCount": 75,
+        "imageSlotCount": 21,
+        "linkSlotCount": 78,
+        "styleSlotCount": 214
+      },
+      "templatePath": "sites/pagani/variants/mobile/template.skin.json",
+      "editableCatalogPath": "sites/pagani/variants/mobile/editable.catalog.json"
+    },
+    {
+      "siteId": "pagani",
+      "siteName": "Pagani",
+      "variant": "desktop",
+      "counts": {
+        "pageCount": 10,
+        "textSlotCount": 139,
+        "imageSlotCount": 21,
+        "linkSlotCount": 145,
+        "styleSlotCount": 288
+      },
+      "templatePath": "sites/pagani/variants/desktop/template.skin.json",
+      "editableCatalogPath": "sites/pagani/variants/desktop/editable.catalog.json"
+    }
+  ],
+  "counts": {
+    "pageCount": 20,
+    "textSlotCount": 214,
+    "imageSlotCount": 42,
+    "linkSlotCount": 223,
+    "styleSlotCount": 502
+  }
+}

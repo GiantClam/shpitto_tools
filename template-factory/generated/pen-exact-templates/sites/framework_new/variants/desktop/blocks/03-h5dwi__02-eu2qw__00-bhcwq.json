@@ -1,0 +1,290 @@
+{
+  "blockId": "bHCwQ",
+  "blockName": "Customize",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": ""
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 22,
+  "treeHash": "310b00f08523e985d8a85c5e2ab5f24c9cc1f796bde95b034cc827e48d81ea9e",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "bHCwQ",
+    "name": "Customize",
+    "width": "fill_container",
+    "layout": "vertical",
+    "gap": 14,
+    "children": [
+      {
+        "type": "text",
+        "id": "jbqs0",
+        "name": "cTitle",
+        "fill": "#1F2737",
+        "textGrowth": "fixed-width",
+        "width": 560,
+        "content": "Customize, upgrade,\nrepair: The choice is yours",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 42,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "bAJCV",
+        "name": "cSub",
+        "enabled": false,
+        "fill": "#5C636A",
+        "textGrowth": "fixed-width",
+        "width": 760,
+        "content": "Standardize devices that can be upgraded and repaired in-house. Reduce e-waste and total cost of ownership.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "frame",
+        "id": "6nHIG",
+        "name": "cGrid",
+        "width": "fill_container",
+        "layout": "vertical",
+        "gap": 14,
+        "children": [
+          {
+            "type": "frame",
+            "id": "1QIYk",
+            "name": "cRow1",
+            "width": "fill_container",
+            "gap": 14,
+            "children": [
+              {
+                "type": "frame",
+                "id": "MH8GM",
+                "name": "c1",
+                "width": 603,
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "L5dj2",
+                    "name": "c1img",
+                    "metadata": {
+                      "type": "unsplash",
+                      "username": "shuttergames",
+                      "link": "https://unsplash.com/@shuttergames",
+                      "author": "Shuttergames"
+                    },
+                    "width": "fill_container",
+                    "height": 210,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+                      "mode": "fill"
+                    },
+                    "cornerRadius": 2
+                  },
+                  {
+                    "type": "text",
+                    "id": "kPd1r",
+                    "name": "c1txt",
+                    "fill": "#2B3138",
+                    "content": "Framework Laptop 13",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "600"
+                  },
+                  {
+                    "type": "text",
+                    "id": "aCJQh",
+                    "fill": "#5B6066",
+                    "textGrowth": "fixed-width",
+                    "width": 298,
+                    "content": "Configure your laptop the way you work. Upgrade and repair when your needs evolve over time.",
+                    "lineHeight": 1.35,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "VCEle",
+                "name": "c2",
+                "width": 603,
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "OrUci",
+                    "name": "c2img",
+                    "metadata": {
+                      "type": "unsplash",
+                      "username": "unsplash",
+                      "link": "https://unsplash.com/@unsplash",
+                      "author": "Unsplash"
+                    },
+                    "width": "fill_container",
+                    "height": 210,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1559163454-e7d1e00a4e54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                      "mode": "fill"
+                    },
+                    "cornerRadius": 2
+                  },
+                  {
+                    "type": "text",
+                    "id": "xyl7Q",
+                    "name": "c2txt",
+                    "fill": "#2B3138",
+                    "content": "Framework Laptop 16",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "600"
+                  },
+                  {
+                    "type": "text",
+                    "id": "Ng7Y8",
+                    "fill": "#5B6066",
+                    "textGrowth": "fixed-width",
+                    "width": 298,
+                    "content": "Scale up performance with modular options. Keep devices in service with easy parts replacement.",
+                    "lineHeight": 1.35,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "normal"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "Y7O7l",
+            "name": "cRow2",
+            "width": "fill_container",
+            "gap": 14,
+            "children": [
+              {
+                "type": "frame",
+                "id": "YgsCW",
+                "name": "c3",
+                "width": 603,
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "JlaGN",
+                    "name": "c3img",
+                    "metadata": {
+                      "type": "unsplash",
+                      "username": "muxin_250",
+                      "link": "https://unsplash.com/@muxin_250",
+                      "author": "muxin alkayis"
+                    },
+                    "width": "fill_container",
+                    "height": 210,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1666430163005-3cd92302a865?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+                      "mode": "fill"
+                    },
+                    "cornerRadius": 2
+                  },
+                  {
+                    "type": "text",
+                    "id": "8uOYw",
+                    "name": "c3txt",
+                    "fill": "#2B3138",
+                    "content": "Framework Desktop",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "600"
+                  },
+                  {
+                    "type": "text",
+                    "id": "mYVVr",
+                    "fill": "#5B6066",
+                    "textGrowth": "fixed-width",
+                    "width": 298,
+                    "content": "Compact desktop power with maintainable internals. Built for long-term fleet reliability.",
+                    "lineHeight": 1.35,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "normal"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "Xp18f",
+                "name": "c4",
+                "width": 603,
+                "layout": "vertical",
+                "gap": 8,
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "86GiI",
+                    "name": "c4img",
+                    "metadata": {
+                      "type": "unsplash",
+                      "username": "nublson",
+                      "link": "https://unsplash.com/@nublson",
+                      "author": "Nubelson Fernandes"
+                    },
+                    "width": "fill_container",
+                    "height": 210,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+                      "mode": "fill"
+                    },
+                    "cornerRadius": 2
+                  },
+                  {
+                    "type": "text",
+                    "id": "Jt4MA",
+                    "name": "c4txt",
+                    "fill": "#2B3138",
+                    "content": "Expansion modules",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "600"
+                  },
+                  {
+                    "type": "text",
+                    "id": "MCt7J",
+                    "fill": "#5B6066",
+                    "textGrowth": "fixed-width",
+                    "width": 298,
+                    "content": "Choose ports and modules for each role. Swap and customize without replacing the whole device.",
+                    "lineHeight": 1.35,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "normal"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

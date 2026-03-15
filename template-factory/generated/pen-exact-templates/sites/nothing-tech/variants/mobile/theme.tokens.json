@@ -1,0 +1,236 @@
+{
+  "schemaVersion": "pen-exact-theme.v1",
+  "siteId": "nothing-tech",
+  "tokens": {
+    "color": {
+      "palette": {
+        "color01": {
+          "value": "#111111",
+          "raw": "#111111",
+          "usageCount": 111
+        },
+        "color02": {
+          "value": "#FFFFFF",
+          "raw": "#FFFFFF",
+          "usageCount": 94
+        },
+        "color03": {
+          "value": "#D8D8D2",
+          "raw": "#D8D8D2",
+          "usageCount": 65
+        },
+        "color04": {
+          "value": "#E63E3E",
+          "raw": "#E63E3E",
+          "usageCount": 62
+        },
+        "color05": {
+          "value": "#F4F4F1",
+          "raw": "#F4F4F1",
+          "usageCount": 30
+        },
+        "color06": {
+          "value": "#F3F3F0",
+          "raw": "#F3F3F0",
+          "usageCount": 25
+        },
+        "color07": {
+          "value": "#6B6B66",
+          "raw": "#6B6B66",
+          "usageCount": 24
+        },
+        "color08": {
+          "value": "#0F0F10",
+          "raw": "#0F0F10",
+          "usageCount": 20
+        },
+        "color09": {
+          "value": "#ECECE8",
+          "raw": "#ECECE8",
+          "usageCount": 18
+        },
+        "color10": {
+          "value": "#00000000",
+          "raw": "#00000000",
+          "usageCount": 10
+        },
+        "color11": {
+          "value": "#D8D5CE",
+          "raw": "#D8D5CE",
+          "usageCount": 10
+        },
+        "color12": {
+          "value": "#00000055",
+          "raw": "#00000055",
+          "usageCount": 9
+        },
+        "color13": {
+          "value": "#F0F0EE",
+          "raw": "#F0F0EE",
+          "usageCount": 9
+        },
+        "color14": {
+          "value": "#EAE6DF",
+          "raw": "#EAE6DF",
+          "usageCount": 1
+        },
+        "color15": {
+          "value": "#FFE9E9",
+          "raw": "#FFE9E9",
+          "usageCount": 1
+        }
+      }
+    },
+    "textColor": {
+      "palette": {
+        "text01": {
+          "value": "#111111",
+          "raw": "#111111",
+          "usageCount": 110
+        },
+        "text02": {
+          "value": "#FFFFFF",
+          "raw": "#FFFFFF",
+          "usageCount": 38
+        },
+        "text03": {
+          "value": "#F4F4F1",
+          "raw": "#F4F4F1",
+          "usageCount": 30
+        },
+        "text04": {
+          "value": "#6B6B66",
+          "raw": "#6B6B66",
+          "usageCount": 24
+        },
+        "text05": {
+          "value": "#E63E3E",
+          "raw": "#E63E3E",
+          "usageCount": 24
+        },
+        "text06": {
+          "value": "#D8D5CE",
+          "raw": "#D8D5CE",
+          "usageCount": 10
+        },
+        "text07": {
+          "value": "#F0F0EE",
+          "raw": "#F0F0EE",
+          "usageCount": 9
+        },
+        "text08": {
+          "value": "#EAE6DF",
+          "raw": "#EAE6DF",
+          "usageCount": 1
+        },
+        "text09": {
+          "value": "#FFE9E9",
+          "raw": "#FFE9E9",
+          "usageCount": 1
+        }
+      }
+    },
+    "fontFamily": {
+      "palette": {
+        "family01": {
+          "value": "Helvetica Neue",
+          "raw": "Helvetica Neue",
+          "usageCount": 247
+        }
+      }
+    },
+    "fontSize": {
+      "palette": {
+        "size01": {
+          "value": 11,
+          "raw": "11",
+          "usageCount": 114
+        },
+        "size02": {
+          "value": 13,
+          "raw": "13",
+          "usageCount": 41
+        },
+        "size03": {
+          "value": 18,
+          "raw": "18",
+          "usageCount": 32
+        },
+        "size04": {
+          "value": 10,
+          "raw": "10",
+          "usageCount": 21
+        },
+        "size05": {
+          "value": 12,
+          "raw": "12",
+          "usageCount": 17
+        },
+        "size06": {
+          "value": 24,
+          "raw": "24",
+          "usageCount": 9
+        },
+        "size07": {
+          "value": 30,
+          "raw": "30",
+          "usageCount": 9
+        },
+        "size08": {
+          "value": 20,
+          "raw": "20",
+          "usageCount": 2
+        },
+        "size09": {
+          "value": 14,
+          "raw": "14",
+          "usageCount": 1
+        },
+        "size10": {
+          "value": 34,
+          "raw": "34",
+          "usageCount": 1
+        }
+      }
+    },
+    "fontWeight": {
+      "palette": {
+        "weight01": {
+          "value": "700",
+          "raw": "700",
+          "usageCount": 160
+        },
+        "weight02": {
+          "value": "500",
+          "raw": "500",
+          "usageCount": 87
+        }
+      }
+    },
+    "radius": {
+      "palette": {
+        "radius01": {
+          "value": 0,
+          "raw": "0",
+          "usageCount": 131
+        }
+      }
+    }
+  },
+  "skinSlots": {
+    "background": "color.palette.color01",
+    "textPrimary": "textColor.palette.text01",
+    "textSecondary": "textColor.palette.text02",
+    "accent": "color.palette.color02",
+    "fontPrimary": "fontFamily.palette.family01",
+    "fontSecondary": "fontFamily.palette.family01"
+  },
+  "stats": {
+    "colorCount": 15,
+    "textColorCount": 9,
+    "fontFamilyCount": 1,
+    "fontSizeCount": 10,
+    "fontWeightCount": 2,
+    "radiusCount": 1
+  }
+}

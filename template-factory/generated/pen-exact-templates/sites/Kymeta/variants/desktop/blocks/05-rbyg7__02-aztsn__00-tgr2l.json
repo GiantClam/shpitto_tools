@@ -1,0 +1,105 @@
+{
+  "blockId": "tgr2L",
+  "blockName": "c1",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 644,
+    "height": 640
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "8cdd24fb07f0bd9552a0de514dd18106ac901d66719d448dd50aec28199f9671",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "tgr2L",
+    "x": 0,
+    "y": 0,
+    "name": "c1",
+    "width": 644,
+    "height": 640,
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "BENFL",
+        "x": 0,
+        "y": 0,
+        "name": "c1img",
+        "metadata": {
+          "type": "unsplash",
+          "username": "gemafv85",
+          "link": "https://unsplash.com/@gemafv85",
+          "author": "Gerardo Martin Fernandez Vallejo"
+        },
+        "width": 644,
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1762271232351-30d1dde5d53b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjM1MDB8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "OTeu1",
+        "x": 0,
+        "y": 386,
+        "name": "c1t",
+        "fill": "#2A313C",
+        "content": "Resources",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "hmtWl",
+        "x": 0,
+        "y": 420,
+        "name": "c1d",
+        "fill": "#5E6776",
+        "textGrowth": "fixed-width",
+        "width": 620,
+        "content": "Visit our resources page for everything from how-to videos to product documentation, data sheets, technical documentation and much more.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 3,
+        "id": "Okkxl",
+        "x": 0,
+        "y": 496,
+        "name": "c1b",
+        "fill": "#F5F8FD",
+        "width": 106,
+        "height": 28,
+        "stroke": {
+          "align": "inside",
+          "thickness": 1,
+          "fill": "#9AB0D7"
+        }
+      },
+      {
+        "type": "text",
+        "id": "pen9T",
+        "x": 5,
+        "y": 503,
+        "name": "c1bt",
+        "fill": "#2E446D",
+        "content": "Access resources",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

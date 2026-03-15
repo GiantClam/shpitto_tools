@@ -1,0 +1,375 @@
+{
+  "sectionId": "navbar-home",
+  "sectionName": "Navbar",
+  "sectionKind": "navigation",
+  "order": 10,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 72
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 7,
+  "treeHash": "6a641cb2c9d3584e381a338dbf463dbe73e6a02c472496861ce4b8089f46a5c6",
+  "blockCount": 6,
+  "blockIndex": [
+    {
+      "blockId": "header-bg-home",
+      "blockName": "header-bg-home",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 72
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "811f200c77f63a76702f593757d27e02fd8e7f277f8ea0fe0b6b61848fc390ea"
+    },
+    {
+      "blockId": "brand-logo-home",
+      "blockName": "brand-logo-home",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 22,
+        "width": 108,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9aa93d661cf5e4b65a1faa223fa24163a68ee4e876992399f2f134585c06a27f"
+    },
+    {
+      "blockId": "menu-box-home",
+      "blockName": "menu-box-home",
+      "blockType": "rectangle",
+      "order": 2,
+      "bounds": {
+        "x": 316,
+        "y": 10,
+        "width": 56,
+        "height": 56
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8527fd44efb730475ee84bb60257c7197f5de273e218742c2a847b7fa0dc6173"
+    },
+    {
+      "blockId": "menu-line-1-home",
+      "blockName": "menu-line-1-home",
+      "blockType": "rectangle",
+      "order": 3,
+      "bounds": {
+        "x": 334,
+        "y": 28,
+        "width": 18,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1ef6f1f68fc3f92d76cc08069492f944baa7a6eb7d908868e147b1c60582debf"
+    },
+    {
+      "blockId": "menu-line-2-home",
+      "blockName": "menu-line-2-home",
+      "blockType": "rectangle",
+      "order": 4,
+      "bounds": {
+        "x": 334,
+        "y": 35,
+        "width": 18,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "94b1453902628a25ad4bc3b16e951abd63873cd841e72c5822f702e0e5dbc4ef"
+    },
+    {
+      "blockId": "menu-line-3-home",
+      "blockName": "menu-line-3-home",
+      "blockType": "rectangle",
+      "order": 5,
+      "bounds": {
+        "x": 334,
+        "y": 42,
+        "width": 18,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8515b2d84e3e055a84152011e8f5066a6a04becbe76e46f796c05345e73d0af3"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/pagani-logo.png",
+      "relativePath": "assets-structured/pagani/pagani-logo.png",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "header-bg-home",
+      "blockName": "header-bg-home",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 72
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "811f200c77f63a76702f593757d27e02fd8e7f277f8ea0fe0b6b61848fc390ea",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "header-bg-home",
+        "x": 0,
+        "y": 0,
+        "name": "header-bg-home",
+        "width": 390,
+        "height": 72,
+        "fill": "#000000DD"
+      }
+    },
+    {
+      "blockId": "brand-logo-home",
+      "blockName": "brand-logo-home",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 22,
+        "width": 108,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9aa93d661cf5e4b65a1faa223fa24163a68ee4e876992399f2f134585c06a27f",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/pagani-logo.png",
+        "relativePath": "assets-structured/pagani/pagani-logo.png",
+        "exists": true,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "brand-logo-home",
+        "x": 18,
+        "y": 22,
+        "name": "brand-logo-home",
+        "width": 108,
+        "height": 30,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "menu-box-home",
+      "blockName": "menu-box-home",
+      "blockType": "rectangle",
+      "order": 2,
+      "bounds": {
+        "x": 316,
+        "y": 10,
+        "width": 56,
+        "height": 56
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8527fd44efb730475ee84bb60257c7197f5de273e218742c2a847b7fa0dc6173",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "menu-box-home",
+        "x": 316,
+        "y": 10,
+        "name": "menu-box-home",
+        "width": 56,
+        "height": 56,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        }
+      }
+    },
+    {
+      "blockId": "menu-line-1-home",
+      "blockName": "menu-line-1-home",
+      "blockType": "rectangle",
+      "order": 3,
+      "bounds": {
+        "x": 334,
+        "y": 28,
+        "width": 18,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1ef6f1f68fc3f92d76cc08069492f944baa7a6eb7d908868e147b1c60582debf",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "menu-line-1-home",
+        "x": 334,
+        "y": 28,
+        "name": "menu-line-1-home",
+        "width": 18,
+        "height": 2,
+        "fill": "#F3F2ED"
+      }
+    },
+    {
+      "blockId": "menu-line-2-home",
+      "blockName": "menu-line-2-home",
+      "blockType": "rectangle",
+      "order": 4,
+      "bounds": {
+        "x": 334,
+        "y": 35,
+        "width": 18,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "94b1453902628a25ad4bc3b16e951abd63873cd841e72c5822f702e0e5dbc4ef",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "menu-line-2-home",
+        "x": 334,
+        "y": 35,
+        "name": "menu-line-2-home",
+        "width": 18,
+        "height": 2,
+        "fill": "#F3F2ED"
+      }
+    },
+    {
+      "blockId": "menu-line-3-home",
+      "blockName": "menu-line-3-home",
+      "blockType": "rectangle",
+      "order": 5,
+      "bounds": {
+        "x": 334,
+        "y": 42,
+        "width": 18,
+        "height": 2
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8515b2d84e3e055a84152011e8f5066a6a04becbe76e46f796c05345e73d0af3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "menu-line-3-home",
+        "x": 334,
+        "y": 42,
+        "name": "menu-line-3-home",
+        "width": 18,
+        "height": 2,
+        "fill": "#F3F2ED"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "navbar-home",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 72,
+    "name": "Navbar",
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "header-bg-home",
+        "x": 0,
+        "y": 0,
+        "name": "header-bg-home",
+        "width": 390,
+        "height": 72,
+        "fill": "#000000DD"
+      },
+      {
+        "type": "rectangle",
+        "id": "brand-logo-home",
+        "x": 18,
+        "y": 22,
+        "name": "brand-logo-home",
+        "width": 108,
+        "height": 30,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "rectangle",
+        "id": "menu-box-home",
+        "x": 316,
+        "y": 10,
+        "name": "menu-box-home",
+        "width": 56,
+        "height": 56,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "menu-line-1-home",
+        "x": 334,
+        "y": 28,
+        "name": "menu-line-1-home",
+        "width": 18,
+        "height": 2,
+        "fill": "#F3F2ED"
+      },
+      {
+        "type": "rectangle",
+        "id": "menu-line-2-home",
+        "x": 334,
+        "y": 35,
+        "name": "menu-line-2-home",
+        "width": 18,
+        "height": 2,
+        "fill": "#F3F2ED"
+      },
+      {
+        "type": "rectangle",
+        "id": "menu-line-3-home",
+        "x": 334,
+        "y": 42,
+        "name": "menu-line-3-home",
+        "width": 18,
+        "height": 2,
+        "fill": "#F3F2ED"
+      }
+    ]
+  }
+}

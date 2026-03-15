@@ -1,0 +1,2337 @@
+{
+  "pageId": "page-makka",
+  "pageName": "Makka",
+  "pageType": "generic",
+  "order": 7,
+  "bounds": {
+    "x": 3280,
+    "y": 1658,
+    "width": 1440,
+    "height": 1538
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "ba8b6fdef94e89965aafddb733326616039a99d20c235def68b712b46f5a3717",
+  "directChildCount": 40,
+  "recursiveNodeCount": 57,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "header-page-makka",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "e29f34cf0b9d489088a4218b09c0bad32d08d34ea049a71b5f767caf6788568c",
+      "blockCount": 7
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1308,
+        "width": 1440,
+        "height": 230
+      },
+      "directChildCount": 9,
+      "recursiveNodeCount": 10,
+      "treeHash": "eef1caa62af9bd3b61271b4c3f95e108f36447a104d1864499c88c06276407da",
+      "blockCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "header-page-makka",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "e29f34cf0b9d489088a4218b09c0bad32d08d34ea049a71b5f767caf6788568c",
+      "blockCount": 7,
+      "blockIndex": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7"
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 24,
+            "width": 240,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2d35b6633d40f6b72994e88262605817de7894998003c6b23458a36e4f908809"
+        },
+        {
+          "blockId": "nav-page-all-our-bikes",
+          "blockName": "nav-page-all-our-bikes",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 840,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "85e6dd34ace7cb54fa18d83341a5e365779879ce8f723bc4bf568aaacc559f9d"
+        },
+        {
+          "blockId": "nav-page-work",
+          "blockName": "nav-page-work",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 948,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "016b57cb6e5b89e358b1c652285f7b2546f280bbb721feaa4a720d044c497dd9"
+        },
+        {
+          "blockId": "nav-page-friends",
+          "blockName": "nav-page-friends",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 1056,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "de28c991bcac066a7f3aeba70ef0cbd0b96cebc9d9b00b619e4386ba4d4809ed"
+        },
+        {
+          "blockId": "nav-page-contact-us",
+          "blockName": "nav-page-contact-us",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 1164,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b1d9915cd6ee21b8eea4f96a2e13e690940a746bbf63804679a0ad24e7d3436d"
+        },
+        {
+          "blockId": "nav-page-service-support",
+          "blockName": "nav-page-service-support",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1272,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eba43a4706165a26af6ce81f7cbefea569fe6b393c7204ae430f02c42a28b813"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 24,
+            "width": 240,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2d35b6633d40f6b72994e88262605817de7894998003c6b23458a36e4f908809",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#121212",
+            "content": "CAKE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          }
+        },
+        {
+          "blockId": "nav-page-all-our-bikes",
+          "blockName": "nav-page-all-our-bikes",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 840,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "85e6dd34ace7cb54fa18d83341a5e365779879ce8f723bc4bf568aaacc559f9d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-all-our-bikes",
+            "name": "nav-page-all-our-bikes",
+            "x": 840,
+            "y": 30,
+            "fill": "#121212",
+            "content": "ALL OUR BIKES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-all-our-bikes",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-work",
+          "blockName": "nav-page-work",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 948,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "016b57cb6e5b89e358b1c652285f7b2546f280bbb721feaa4a720d044c497dd9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-work",
+            "name": "nav-page-work",
+            "x": 948,
+            "y": 30,
+            "fill": "#121212",
+            "content": "WORK",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-work",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-friends",
+          "blockName": "nav-page-friends",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 1056,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "de28c991bcac066a7f3aeba70ef0cbd0b96cebc9d9b00b619e4386ba4d4809ed",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-friends",
+            "name": "nav-page-friends",
+            "x": 1056,
+            "y": 30,
+            "fill": "#121212",
+            "content": "FRIENDS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-friends",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-contact-us",
+          "blockName": "nav-page-contact-us",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 1164,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b1d9915cd6ee21b8eea4f96a2e13e690940a746bbf63804679a0ad24e7d3436d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-contact-us",
+            "name": "nav-page-contact-us",
+            "x": 1164,
+            "y": 30,
+            "fill": "#121212",
+            "content": "CONTACT US",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-contact-us",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-service-support",
+          "blockName": "nav-page-service-support",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1272,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eba43a4706165a26af6ce81f7cbefea569fe6b393c7204ae430f02c42a28b813",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-service-support",
+            "name": "nav-page-service-support",
+            "x": 1272,
+            "y": 30,
+            "fill": "#121212",
+            "content": "SERVICE & SUPPORT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-service-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "header-page-makka",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#121212",
+            "content": "CAKE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "nav-page-all-our-bikes",
+            "name": "nav-page-all-our-bikes",
+            "x": 840,
+            "y": 30,
+            "fill": "#121212",
+            "content": "ALL OUR BIKES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-all-our-bikes",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-work",
+            "name": "nav-page-work",
+            "x": 948,
+            "y": 30,
+            "fill": "#121212",
+            "content": "WORK",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-work",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-friends",
+            "name": "nav-page-friends",
+            "x": 1056,
+            "y": 30,
+            "fill": "#121212",
+            "content": "FRIENDS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-friends",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-contact-us",
+            "name": "nav-page-contact-us",
+            "x": 1164,
+            "y": 30,
+            "fill": "#121212",
+            "content": "CONTACT US",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-contact-us",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-service-support",
+            "name": "nav-page-service-support",
+            "x": 1272,
+            "y": 30,
+            "fill": "#121212",
+            "content": "SERVICE & SUPPORT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-service-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1308,
+        "width": 1440,
+        "height": 230
+      },
+      "directChildCount": 9,
+      "recursiveNodeCount": 10,
+      "treeHash": "eef1caa62af9bd3b61271b4c3f95e108f36447a104d1864499c88c06276407da",
+      "blockCount": 9,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ef3a8e0fe902872bae5b591502f8048e220385c5c7ce084b38b7edfd67db0810"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "00d857a411600899d20502817e92a1f01f6212f95fd67ed76da6087a1262026c"
+        },
+        {
+          "blockId": "footer-title-0",
+          "blockName": "footer-title-0",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a6924fe54658cf9fb9312df57004cd40b419a84ab471174a0d483102fb84a816"
+        },
+        {
+          "blockId": "footer-body-0",
+          "blockName": "footer-body-0",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4bf1383fab13e1f20e1adb1e898d6d2f093897e141b9c2cd757fe1a898948922"
+        },
+        {
+          "blockId": "footer-title-1",
+          "blockName": "footer-title-1",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 260,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1913df794f1ae49a9449e8211e84062e0a08b6976e39d2dddaf38ee736d3907e"
+        },
+        {
+          "blockId": "footer-body-1",
+          "blockName": "footer-body-1",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 260,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "41ff8ffe47aaeec106fc830758e1aa1a353eb678b0eb87e8b683993ba99fec7e"
+        },
+        {
+          "blockId": "footer-title-2",
+          "blockName": "footer-title-2",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 480,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b5f5032e2d0a304c5f7a11f47022be3d514ac1c11731e26e71d18d5cd16123f6"
+        },
+        {
+          "blockId": "footer-body-2",
+          "blockName": "footer-body-2",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 480,
+            "y": 100,
+            "width": 180,
+            "height": 41
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "207704d1bb0939466a57a4d87b8c4ec7fa157bc33201a3e55854e3452351378e"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 1020,
+            "y": 150,
+            "width": 320,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "79046f23f91ce80d1bf6123fe7eefc931af0435e7c151e262e8b1a7da33f2911"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ef3a8e0fe902872bae5b591502f8048e220385c5c7ce084b38b7edfd67db0810",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230,
+            "fill": "#151515"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "00d857a411600899d20502817e92a1f01f6212f95fd67ed76da6087a1262026c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 40,
+            "y": 30,
+            "fill": "#F1EFE8",
+            "content": "CAKE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-title-0",
+          "blockName": "footer-title-0",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a6924fe54658cf9fb9312df57004cd40b419a84ab471174a0d483102fb84a816",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-title-0",
+            "name": "footer-title-0",
+            "x": 40,
+            "y": 76,
+            "fill": "#F1EFE8",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-body-0",
+          "blockName": "footer-body-0",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "4bf1383fab13e1f20e1adb1e898d6d2f093897e141b9c2cd757fe1a898948922",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-body-0",
+            "name": "footer-body-0",
+            "x": 40,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "All Our Bikes Work",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-title-1",
+          "blockName": "footer-title-1",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 260,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1913df794f1ae49a9449e8211e84062e0a08b6976e39d2dddaf38ee736d3907e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-title-1",
+            "name": "footer-title-1",
+            "x": 260,
+            "y": 76,
+            "fill": "#F1EFE8",
+            "content": "Explore",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-body-1",
+          "blockName": "footer-body-1",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 260,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "41ff8ffe47aaeec106fc830758e1aa1a353eb678b0eb87e8b683993ba99fec7e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-body-1",
+            "name": "footer-body-1",
+            "x": 260,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Friends Contact Us",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-title-2",
+          "blockName": "footer-title-2",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 480,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b5f5032e2d0a304c5f7a11f47022be3d514ac1c11731e26e71d18d5cd16123f6",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-title-2",
+            "name": "footer-title-2",
+            "x": 480,
+            "y": 76,
+            "fill": "#F1EFE8",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-body-2",
+          "blockName": "footer-body-2",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 480,
+            "y": 100,
+            "width": 180,
+            "height": 41
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "207704d1bb0939466a57a4d87b8c4ec7fa157bc33201a3e55854e3452351378e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-body-2",
+            "name": "footer-body-2",
+            "x": 480,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Service & Support Bukk Makka",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 41
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 1020,
+            "y": 150,
+            "width": 320,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "79046f23f91ce80d1bf6123fe7eefc931af0435e7c151e262e8b1a7da33f2911",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 1020,
+            "y": 150,
+            "fill": "#D8D5CE",
+            "content": "CAKE structured clone pen with desktop and mobile page sets.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 38
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1308,
+        "width": 1440,
+        "height": 230,
+        "fill": "#151515",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230,
+            "fill": "#151515"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 40,
+            "y": 30,
+            "fill": "#F1EFE8",
+            "content": "CAKE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-0",
+            "name": "footer-title-0",
+            "x": 40,
+            "y": 76,
+            "fill": "#F1EFE8",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-0",
+            "name": "footer-body-0",
+            "x": 40,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "All Our Bikes Work",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-1",
+            "name": "footer-title-1",
+            "x": 260,
+            "y": 76,
+            "fill": "#F1EFE8",
+            "content": "Explore",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-1",
+            "name": "footer-body-1",
+            "x": 260,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Friends Contact Us",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-2",
+            "name": "footer-title-2",
+            "x": 480,
+            "y": 76,
+            "fill": "#F1EFE8",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-2",
+            "name": "footer-body-2",
+            "x": 480,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Service & Support Bukk Makka",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 41
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 1020,
+            "y": 150,
+            "fill": "#D8D5CE",
+            "content": "CAKE structured clone pen with desktop and mobile page sets.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 38
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 16,
+  "looseNodeCount": 38,
+  "looseNodes": [
+    {
+      "id": "page-makka-bg",
+      "name": "page-makka-bg",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 100
+    },
+    {
+      "id": "page-makka-hero",
+      "name": "page-makka-hero",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 420
+    },
+    {
+      "id": "page-makka-overlay",
+      "name": "page-makka-overlay",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 420
+    },
+    {
+      "id": "page-makka-panel",
+      "name": "page-makka-panel",
+      "type": "rectangle",
+      "width": 1360,
+      "height": 824
+    },
+    {
+      "id": "page-makka-crumb",
+      "name": "page-makka-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 18
+    },
+    {
+      "id": "page-makka-title",
+      "name": "page-makka-title",
+      "type": "text",
+      "width": 760,
+      "height": 86
+    },
+    {
+      "id": "page-makka-subtitle",
+      "name": "page-makka-subtitle",
+      "type": "text",
+      "width": 620,
+      "height": 31
+    },
+    {
+      "id": "page-makka-btn-home-box",
+      "name": "page-makka-btn-home-box",
+      "type": "rectangle",
+      "width": 128,
+      "height": 38
+    },
+    {
+      "id": "page-makka-btn-home-text",
+      "name": "page-makka-btn-home-text",
+      "type": "text",
+      "width": 100,
+      "height": 18
+    },
+    {
+      "id": "page-makka-btn-peer-box",
+      "name": "page-makka-btn-peer-box",
+      "type": "rectangle",
+      "width": 148,
+      "height": 38
+    },
+    {
+      "id": "page-makka-btn-peer-text",
+      "name": "page-makka-btn-peer-text",
+      "type": "text",
+      "width": 120,
+      "height": 18
+    },
+    {
+      "id": "page-makka-kicker",
+      "name": "page-makka-kicker",
+      "type": "text",
+      "width": 520,
+      "height": 18
+    },
+    {
+      "id": "page-makka-panel-title",
+      "name": "page-makka-panel-title",
+      "type": "text",
+      "width": 520,
+      "height": 60
+    },
+    {
+      "id": "page-makka-p-0",
+      "name": "page-makka-p-0",
+      "type": "text",
+      "width": 520,
+      "height": 28
+    },
+    {
+      "id": "page-makka-p-1",
+      "name": "page-makka-p-1",
+      "type": "text",
+      "width": 520,
+      "height": 28
+    },
+    {
+      "id": "page-makka-p-2",
+      "name": "page-makka-p-2",
+      "type": "text",
+      "width": 520,
+      "height": 28
+    },
+    {
+      "id": "page-makka-p-3",
+      "name": "page-makka-p-3",
+      "type": "text",
+      "width": 520,
+      "height": 28
+    },
+    {
+      "id": "page-makka-feature",
+      "name": "page-makka-feature",
+      "type": "rectangle",
+      "width": 390,
+      "height": 260
+    },
+    {
+      "id": "page-makka-feature-2",
+      "name": "page-makka-feature-2",
+      "type": "rectangle",
+      "width": 390,
+      "height": 180
+    },
+    {
+      "id": "page-makka-card-0",
+      "name": "page-makka-card-0",
+      "type": "rectangle",
+      "width": 196,
+      "height": 178
+    },
+    {
+      "id": "page-makka-card-img-0",
+      "name": "page-makka-card-img-0",
+      "type": "rectangle",
+      "width": 196,
+      "height": 96
+    },
+    {
+      "id": "page-makka-card-title-0",
+      "name": "page-makka-card-title-0",
+      "type": "text",
+      "width": 176,
+      "height": 18
+    },
+    {
+      "id": "page-makka-card-copy-0",
+      "name": "page-makka-card-copy-0",
+      "type": "text",
+      "width": 176,
+      "height": 53
+    },
+    {
+      "id": "page-makka-card-1",
+      "name": "page-makka-card-1",
+      "type": "rectangle",
+      "width": 196,
+      "height": 178
+    },
+    {
+      "id": "page-makka-card-img-1",
+      "name": "page-makka-card-img-1",
+      "type": "rectangle",
+      "width": 196,
+      "height": 96
+    },
+    {
+      "id": "page-makka-card-title-1",
+      "name": "page-makka-card-title-1",
+      "type": "text",
+      "width": 176,
+      "height": 18
+    },
+    {
+      "id": "page-makka-card-copy-1",
+      "name": "page-makka-card-copy-1",
+      "type": "text",
+      "width": 176,
+      "height": 53
+    },
+    {
+      "id": "page-makka-card-2",
+      "name": "page-makka-card-2",
+      "type": "rectangle",
+      "width": 196,
+      "height": 178
+    },
+    {
+      "id": "page-makka-card-img-2",
+      "name": "page-makka-card-img-2",
+      "type": "rectangle",
+      "width": 196,
+      "height": 96
+    },
+    {
+      "id": "page-makka-card-title-2",
+      "name": "page-makka-card-title-2",
+      "type": "text",
+      "width": 176,
+      "height": 18
+    },
+    {
+      "id": "page-makka-card-copy-2",
+      "name": "page-makka-card-copy-2",
+      "type": "text",
+      "width": 176,
+      "height": 53
+    },
+    {
+      "id": "page-makka-related-title",
+      "name": "page-makka-related-title",
+      "type": "text",
+      "width": 180,
+      "height": 18
+    },
+    {
+      "id": "page-makka-related-0-box",
+      "name": "page-makka-related-0-box",
+      "type": "rectangle",
+      "width": 180,
+      "height": 36
+    },
+    {
+      "id": "page-makka-related-0-text",
+      "name": "page-makka-related-0-text",
+      "type": "text",
+      "width": 152,
+      "height": 18
+    },
+    {
+      "id": "page-makka-related-1-box",
+      "name": "page-makka-related-1-box",
+      "type": "rectangle",
+      "width": 180,
+      "height": 36
+    },
+    {
+      "id": "page-makka-related-1-text",
+      "name": "page-makka-related-1-text",
+      "type": "text",
+      "width": 152,
+      "height": 18
+    },
+    {
+      "id": "page-makka-related-2-box",
+      "name": "page-makka-related-2-box",
+      "type": "rectangle",
+      "width": 180,
+      "height": 36
+    },
+    {
+      "id": "page-makka-related-2-text",
+      "name": "page-makka-related-2-text",
+      "type": "text",
+      "width": 152,
+      "height": 18
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-makka-img-1-dc28681e.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/ridecake/page-makka-img-1-dc28681e.jpg",
+      "relativePath": "assets-structured/ridecake/page-makka-img-1-dc28681e.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-makka-img-1-dc28681e.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/ridecake/page-makka-img-1-dc28681e.jpg",
+      "relativePath": "assets-structured/ridecake/page-makka-img-1-dc28681e.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-makka-img-2-ed24fded.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/ridecake/page-makka-img-2-ed24fded.png",
+      "relativePath": "assets-structured/ridecake/page-makka-img-2-ed24fded.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-makka-img-1-dc28681e.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/ridecake/page-makka-img-1-dc28681e.jpg",
+      "relativePath": "assets-structured/ridecake/page-makka-img-1-dc28681e.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-makka-img-2-ed24fded.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/ridecake/page-makka-img-2-ed24fded.png",
+      "relativePath": "assets-structured/ridecake/page-makka-img-2-ed24fded.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-makka-img-3-85831820.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/ridecake/page-makka-img-3-85831820.jpg",
+      "relativePath": "assets-structured/ridecake/page-makka-img-3-85831820.jpg",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-makka",
+    "name": "Makka",
+    "x": 3280,
+    "y": 1658,
+    "width": 1440,
+    "height": 1538,
+    "fill": "#F5F1E9",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-makka-bg",
+        "name": "page-makka-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 100,
+        "fill": "#F5F1E9"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-hero",
+        "name": "page-makka-hero",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 420,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-makka-img-1-dc28681e.jpg",
+          "mode": "cover"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-overlay",
+        "name": "page-makka-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 420,
+        "fill": "#00000055"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-panel",
+        "name": "page-makka-panel",
+        "x": 40,
+        "y": 444,
+        "width": 1360,
+        "height": 824,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D2C8B8",
+          "thickness": 1
+        },
+        "cornerRadius": 20
+      },
+      {
+        "type": "frame",
+        "id": "header-page-makka",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#121212",
+            "content": "CAKE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "nav-page-all-our-bikes",
+            "name": "nav-page-all-our-bikes",
+            "x": 840,
+            "y": 30,
+            "fill": "#121212",
+            "content": "ALL OUR BIKES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-all-our-bikes",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-work",
+            "name": "nav-page-work",
+            "x": 948,
+            "y": 30,
+            "fill": "#121212",
+            "content": "WORK",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-work",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-friends",
+            "name": "nav-page-friends",
+            "x": 1056,
+            "y": 30,
+            "fill": "#121212",
+            "content": "FRIENDS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-friends",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-contact-us",
+            "name": "nav-page-contact-us",
+            "x": 1164,
+            "y": 30,
+            "fill": "#121212",
+            "content": "CONTACT US",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-contact-us",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-service-support",
+            "name": "nav-page-service-support",
+            "x": 1272,
+            "y": 30,
+            "fill": "#121212",
+            "content": "SERVICE & SUPPORT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-service-support",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-makka-crumb",
+        "name": "page-makka-crumb",
+        "x": 40,
+        "y": 102,
+        "fill": "#FFFFFF",
+        "content": "Home / Makka",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-makka-title",
+        "name": "page-makka-title",
+        "x": 40,
+        "y": 126,
+        "fill": "#FFFFFF",
+        "content": "Makka",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 56,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 760,
+        "height": 86
+      },
+      {
+        "type": "text",
+        "id": "page-makka-subtitle",
+        "name": "page-makka-subtitle",
+        "x": 40,
+        "y": 226,
+        "fill": "#F0F0EE",
+        "content": "Built to last, with an all-electric approach.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 17,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 31
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-btn-home-box",
+        "name": "page-makka-btn-home-box",
+        "x": 40,
+        "y": 298,
+        "width": 128,
+        "height": 38,
+        "fill": "#D9912E",
+        "stroke": {
+          "fill": "#D9912E",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-makka-btn-home-text",
+        "name": "page-makka-btn-home-text",
+        "x": 54,
+        "y": 308,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-btn-peer-box",
+        "name": "page-makka-btn-peer-box",
+        "x": 180,
+        "y": 298,
+        "width": 148,
+        "height": 38,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D2C8B8",
+          "thickness": 1
+        },
+        "href": "#page-all-our-bikes",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-makka-btn-peer-text",
+        "name": "page-makka-btn-peer-text",
+        "x": 194,
+        "y": 308,
+        "fill": "#121212",
+        "content": "Section",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-all-our-bikes",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "page-makka-kicker",
+        "name": "page-makka-kicker",
+        "x": 64,
+        "y": 468,
+        "fill": "#D9912E",
+        "content": "THIRD LEVEL PAGE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 18,
+        "letterSpacing": "0.1em"
+      },
+      {
+        "type": "text",
+        "id": "page-makka-panel-title",
+        "name": "page-makka-panel-title",
+        "x": 64,
+        "y": 490,
+        "fill": "#121212",
+        "content": "Makka",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 38,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 60
+      },
+      {
+        "type": "text",
+        "id": "page-makka-p-0",
+        "name": "page-makka-p-0",
+        "x": 64,
+        "y": 522,
+        "fill": "#121212",
+        "content": "Built to last, with an all-electric approach.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 28
+      },
+      {
+        "type": "text",
+        "id": "page-makka-p-1",
+        "name": "page-makka-p-1",
+        "x": 64,
+        "y": 568,
+        "fill": "#121212",
+        "content": "Electric moped with category-leading performance",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 28
+      },
+      {
+        "type": "text",
+        "id": "page-makka-p-2",
+        "name": "page-makka-p-2",
+        "x": 64,
+        "y": 614,
+        "fill": "#121212",
+        "content": "Next level of light electric off-road motorcycles",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 28
+      },
+      {
+        "type": "text",
+        "id": "page-makka-p-3",
+        "name": "page-makka-p-3",
+        "x": 64,
+        "y": 660,
+        "fill": "#121212",
+        "content": "The heavy-duty series, developed for professionals",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 28
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-feature",
+        "name": "page-makka-feature",
+        "x": 970,
+        "y": 468,
+        "width": 390,
+        "height": 260,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-makka-img-1-dc28681e.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-makka",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-feature-2",
+        "name": "page-makka-feature-2",
+        "x": 970,
+        "y": 746,
+        "width": 390,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-makka-img-2-ed24fded.png",
+          "mode": "cover"
+        },
+        "href": "#page-makka",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-card-0",
+        "name": "page-makka-card-0",
+        "x": 64,
+        "y": 938,
+        "width": 196,
+        "height": 178,
+        "fill": "#EEE7DB",
+        "stroke": {
+          "fill": "#D2C8B8",
+          "thickness": 1
+        },
+        "href": "#page-all-our-bikes",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-card-img-0",
+        "name": "page-makka-card-img-0",
+        "x": 64,
+        "y": 938,
+        "width": 196,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-makka-img-1-dc28681e.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-all-our-bikes",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-makka-card-title-0",
+        "name": "page-makka-card-title-0",
+        "x": 74,
+        "y": 1042,
+        "fill": "#121212",
+        "content": "All Our Bikes",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 18,
+        "href": "#page-all-our-bikes"
+      },
+      {
+        "type": "text",
+        "id": "page-makka-card-copy-0",
+        "name": "page-makka-card-copy-0",
+        "x": 74,
+        "y": 1062,
+        "fill": "#6E675D",
+        "content": "Built to last, with an all-electric approach.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 53,
+        "href": "#page-all-our-bikes"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-card-1",
+        "name": "page-makka-card-1",
+        "x": 284,
+        "y": 938,
+        "width": 196,
+        "height": 178,
+        "fill": "#EEE7DB",
+        "stroke": {
+          "fill": "#D2C8B8",
+          "thickness": 1
+        },
+        "href": "#page-work",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-card-img-1",
+        "name": "page-makka-card-img-1",
+        "x": 284,
+        "y": 938,
+        "width": 196,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-makka-img-2-ed24fded.png",
+          "mode": "cover"
+        },
+        "href": "#page-work",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-makka-card-title-1",
+        "name": "page-makka-card-title-1",
+        "x": 294,
+        "y": 1042,
+        "fill": "#121212",
+        "content": "Work",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 18,
+        "href": "#page-work"
+      },
+      {
+        "type": "text",
+        "id": "page-makka-card-copy-1",
+        "name": "page-makka-card-copy-1",
+        "x": 294,
+        "y": 1062,
+        "fill": "#6E675D",
+        "content": "Electric moped with category-leading performance",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 53,
+        "href": "#page-work"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-card-2",
+        "name": "page-makka-card-2",
+        "x": 504,
+        "y": 938,
+        "width": 196,
+        "height": 178,
+        "fill": "#EEE7DB",
+        "stroke": {
+          "fill": "#D2C8B8",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-card-img-2",
+        "name": "page-makka-card-img-2",
+        "x": 504,
+        "y": 938,
+        "width": 196,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-makka-img-3-85831820.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-home",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-makka-card-title-2",
+        "name": "page-makka-card-title-2",
+        "x": 514,
+        "y": 1042,
+        "fill": "#121212",
+        "content": "Homepage",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 18,
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "page-makka-card-copy-2",
+        "name": "page-makka-card-copy-2",
+        "x": 514,
+        "y": 1062,
+        "fill": "#6E675D",
+        "content": "Next level of light electric off-road motorcycles",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 53,
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "page-makka-related-title",
+        "name": "page-makka-related-title",
+        "x": 64,
+        "y": 1150,
+        "fill": "#D9912E",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-related-0-box",
+        "name": "page-makka-related-0-box",
+        "x": 64,
+        "y": 1176,
+        "width": 180,
+        "height": 36,
+        "fill": "#D9912E",
+        "stroke": {
+          "fill": "#D9912E",
+          "thickness": 1
+        },
+        "href": "#page-all-our-bikes",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-makka-related-0-text",
+        "name": "page-makka-related-0-text",
+        "x": 78,
+        "y": 1185,
+        "fill": "#FFFFFF",
+        "content": "All Our Bikes",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 152,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-all-our-bikes",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-related-1-box",
+        "name": "page-makka-related-1-box",
+        "x": 256,
+        "y": 1176,
+        "width": 180,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D2C8B8",
+          "thickness": 1
+        },
+        "href": "#page-work",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-makka-related-1-text",
+        "name": "page-makka-related-1-text",
+        "x": 270,
+        "y": 1185,
+        "fill": "#121212",
+        "content": "Work",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 152,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-work",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-makka-related-2-box",
+        "name": "page-makka-related-2-box",
+        "x": 448,
+        "y": 1176,
+        "width": 180,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D2C8B8",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-makka-related-2-text",
+        "name": "page-makka-related-2-text",
+        "x": 462,
+        "y": 1185,
+        "fill": "#121212",
+        "content": "Homepage",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 152,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1308,
+        "width": 1440,
+        "height": 230,
+        "fill": "#151515",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230,
+            "fill": "#151515"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 40,
+            "y": 30,
+            "fill": "#F1EFE8",
+            "content": "CAKE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-0",
+            "name": "footer-title-0",
+            "x": 40,
+            "y": 76,
+            "fill": "#F1EFE8",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-0",
+            "name": "footer-body-0",
+            "x": 40,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "All Our Bikes Work",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-1",
+            "name": "footer-title-1",
+            "x": 260,
+            "y": 76,
+            "fill": "#F1EFE8",
+            "content": "Explore",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-1",
+            "name": "footer-body-1",
+            "x": 260,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Friends Contact Us",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-2",
+            "name": "footer-title-2",
+            "x": 480,
+            "y": 76,
+            "fill": "#F1EFE8",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-2",
+            "name": "footer-body-2",
+            "x": 480,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Service & Support Bukk Makka",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 41
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 1020,
+            "y": 150,
+            "fill": "#D8D5CE",
+            "content": "CAKE structured clone pen with desktop and mobile page sets.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 38
+          }
+        ]
+      }
+    ]
+  }
+}

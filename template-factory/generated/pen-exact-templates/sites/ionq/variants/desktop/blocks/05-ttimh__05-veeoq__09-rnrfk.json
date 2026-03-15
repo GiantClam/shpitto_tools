@@ -1,0 +1,289 @@
+{
+  "blockId": "rNRFK",
+  "blockName": "BrowseBlog",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 9,
+  "bounds": {
+    "x": 0,
+    "y": 980,
+    "width": 1200,
+    "height": 463
+  },
+  "directChildCount": 9,
+  "recursiveNodeCount": 20,
+  "treeHash": "93e0229de44502298da8c08469746e79b9ae713b93f2b770afc044d1f21354b6",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "rNRFK",
+    "x": 0,
+    "y": 980,
+    "name": "BrowseBlog",
+    "width": 1200,
+    "height": 463,
+    "fill": "#06080C",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "rpbij",
+        "x": 32,
+        "y": 36,
+        "name": "tab1",
+        "fill": "#FF6A00",
+        "content": "Our blog",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "O80s4",
+        "x": 124,
+        "y": 36,
+        "name": "tab2",
+        "fill": "#9AA4AF",
+        "content": "Our publications",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "ciPk4",
+        "x": 272,
+        "y": 36,
+        "name": "tab3",
+        "fill": "#9AA4AF",
+        "content": "News & announcements",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "600"
+      },
+      {
+        "type": "frame",
+        "id": "EwBmV",
+        "x": 32,
+        "y": 64,
+        "name": "div",
+        "width": 1136,
+        "height": 1,
+        "fill": "#20252D"
+      },
+      {
+        "type": "text",
+        "id": "7dUwv",
+        "x": 32,
+        "y": 98,
+        "name": "head",
+        "fill": "#F1F5FA",
+        "content": "Browse blogs",
+        "fontFamily": "Inter",
+        "fontSize": 56,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "yenCK",
+        "x": 1014,
+        "y": 94,
+        "name": "viewBtn",
+        "width": 154,
+        "height": 40,
+        "fill": "#0C1016",
+        "cornerRadius": 10,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#586271"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "iB13u",
+            "x": 24,
+            "y": 10,
+            "name": "viewTxt",
+            "fill": "#E7EDF4",
+            "content": "View all blogs",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "600"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "6A2cm",
+        "x": 32,
+        "y": 182,
+        "name": "card1",
+        "width": 368,
+        "height": 230,
+        "fill": "#111A24",
+        "cornerRadius": 14,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#273241"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "K9cwr",
+            "x": 24,
+            "y": 22,
+            "name": "c1t",
+            "fill": "#F1F5FA",
+            "textGrowth": "fixed-width",
+            "width": 320,
+            "content": "Breaking the decoding\nbottleneck: Fast and accurate\nsoftware decoding for\nQuantum LDPC codes",
+            "lineHeight": 1.2,
+            "fontFamily": "Inter",
+            "fontSize": 17,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "djUTu",
+            "x": 24,
+            "y": 172,
+            "name": "c1m",
+            "fill": "#98A4B2",
+            "content": "@ IonQ Staff",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "ndRDY",
+            "x": 24,
+            "y": 198,
+            "name": "c1r",
+            "fill": "#FF6A00",
+            "content": "Read more  ->",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "7zm4M",
+        "x": 416,
+        "y": 182,
+        "name": "card2",
+        "width": 368,
+        "height": 230,
+        "fill": "#111A24",
+        "cornerRadius": 14,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#273241"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "J4EvR",
+            "x": 24,
+            "y": 22,
+            "name": "c2t",
+            "fill": "#F1F5FA",
+            "textGrowth": "fixed-width",
+            "width": 320,
+            "content": "The Birth of Quantum\nComputers: How Dr. Chris\nMonroe Ignited the Quantum\nComputing Revolution",
+            "lineHeight": 1.2,
+            "fontFamily": "Inter",
+            "fontSize": 17,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "VDdeb",
+            "x": 24,
+            "y": 172,
+            "name": "c2m",
+            "fill": "#98A4B2",
+            "content": "@ IonQ Staff",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "YzabA",
+            "x": 24,
+            "y": 198,
+            "name": "c2r",
+            "fill": "#FF6A00",
+            "content": "Read more  ->",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "am7nA",
+        "x": 800,
+        "y": 182,
+        "name": "card3",
+        "width": 368,
+        "height": 230,
+        "fill": "#111A24",
+        "cornerRadius": 14,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#273241"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "P9JBO",
+            "x": 24,
+            "y": 22,
+            "name": "c3t",
+            "fill": "#F1F5FA",
+            "textGrowth": "fixed-width",
+            "width": 320,
+            "content": "Demystifying Logical Qubits\nand Fault Tolerance",
+            "lineHeight": 1.2,
+            "fontFamily": "Inter",
+            "fontSize": 17,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "XATF5",
+            "x": 24,
+            "y": 172,
+            "name": "c3m",
+            "fill": "#98A4B2",
+            "content": "@ IonQ Staff",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "nE0Hd",
+            "x": 24,
+            "y": 198,
+            "name": "c3r",
+            "fill": "#FF6A00",
+            "content": "Read more  ->",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

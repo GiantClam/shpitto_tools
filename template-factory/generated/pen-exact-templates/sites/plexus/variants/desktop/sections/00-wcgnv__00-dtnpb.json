@@ -1,0 +1,617 @@
+{
+  "sectionId": "DtnPB",
+  "sectionName": "contactHeader",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 90
+  },
+  "directChildCount": 7,
+  "recursiveNodeCount": 15,
+  "treeHash": "c45b17c4aadd635a629d56eaa4459edc4e074a587f6af6456c2a3d8d60686ad6",
+  "blockCount": 7,
+  "blockIndex": [
+    {
+      "blockId": "oZFmC",
+      "blockName": "logo",
+      "blockType": "frame",
+      "order": 0,
+      "bounds": {
+        "x": 16,
+        "y": 49,
+        "width": 128,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3aab45ec537d3357c25cf0f8621983f772ab82cc12899365f629b834d78de7bf"
+    },
+    {
+      "blockId": "H5BTz",
+      "blockName": "logoText",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 30,
+        "y": 54,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3c00a28e3120ada1535817d16f1ee3bde8811b702d878c57a962ee3c87c6d767"
+    },
+    {
+      "blockId": "8iEnk",
+      "blockName": "nav",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 892,
+        "y": 52,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bb092320d1ea5289aa313e0e47a1afb48fcace8e2f9b5834f7aa26eb3c704bf8"
+    },
+    {
+      "blockId": "M9roT",
+      "blockName": "lang",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 1278,
+        "y": 51,
+        "width": 64,
+        "height": 26
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "682b161846b323dda6375fb79e6ba19e1c6f77aa8d2182f4e496fad655f453e5"
+    },
+    {
+      "blockId": "lxw0V",
+      "blockName": "ctaH",
+      "blockType": "frame",
+      "order": 4,
+      "bounds": {
+        "x": 1294,
+        "y": 48,
+        "width": 130,
+        "height": 32
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "c94642d82ebfe7f245b0774eda43ebb407a918408cf15dea65aa714797834c3c"
+    },
+    {
+      "blockId": "66eGt",
+      "blockName": "topBar",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 5,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 34
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 6,
+      "treeHash": "4253f84ba0550d336eb679475c97dd8db0d12a5f4be8c429a5e5897a76f0e679"
+    },
+    {
+      "blockId": "oLevM",
+      "blockName": "searchIcon",
+      "blockType": "icon_font",
+      "blockRole": "icon_font",
+      "order": 6,
+      "bounds": {
+        "x": 1246,
+        "y": 57,
+        "width": 16,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "30190213f36cc5dab20d49a5943fc29faf9dd646042f0c755562ab425dfe0d5e"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "oZFmC",
+      "blockName": "logo",
+      "blockType": "frame",
+      "order": 0,
+      "bounds": {
+        "x": 16,
+        "y": 49,
+        "width": 128,
+        "height": 28
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3aab45ec537d3357c25cf0f8621983f772ab82cc12899365f629b834d78de7bf",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "oZFmC",
+        "x": 16,
+        "y": 49,
+        "name": "logo",
+        "width": 128,
+        "height": 28,
+        "fill": "#C70041",
+        "cornerRadius": 2
+      }
+    },
+    {
+      "blockId": "H5BTz",
+      "blockName": "logoText",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 30,
+        "y": 54,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3c00a28e3120ada1535817d16f1ee3bde8811b702d878c57a962ee3c87c6d767",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "H5BTz",
+        "x": 30,
+        "y": 54,
+        "name": "logoText",
+        "fill": "#FFFFFF",
+        "content": "PLEXUS",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "8iEnk",
+      "blockName": "nav",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 892,
+        "y": 52,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bb092320d1ea5289aa313e0e47a1afb48fcace8e2f9b5834f7aa26eb3c704bf8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "8iEnk",
+        "x": 892,
+        "y": 52,
+        "name": "nav",
+        "fill": "#3B4651",
+        "content": "解决方案 ▾    市场领域 ▾    关于我们 ▾    资源 ▾",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "600"
+      }
+    },
+    {
+      "blockId": "M9roT",
+      "blockName": "lang",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 1278,
+        "y": 51,
+        "width": 64,
+        "height": 26
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "682b161846b323dda6375fb79e6ba19e1c6f77aa8d2182f4e496fad655f453e5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "M9roT",
+        "x": 1278,
+        "y": 51,
+        "name": "lang",
+        "enabled": false,
+        "width": 64,
+        "height": 26,
+        "fill": "#FFFFFF",
+        "cornerRadius": 2,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#C8D0D6"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "LbjCz",
+            "x": 24,
+            "y": 7,
+            "name": "langTxt",
+            "fill": "#22303D",
+            "content": "ZH",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "lxw0V",
+      "blockName": "ctaH",
+      "blockType": "frame",
+      "order": 4,
+      "bounds": {
+        "x": 1294,
+        "y": 48,
+        "width": 130,
+        "height": 32
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "c94642d82ebfe7f245b0774eda43ebb407a918408cf15dea65aa714797834c3c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "lxw0V",
+        "x": 1294,
+        "y": 48,
+        "name": "ctaH",
+        "width": 130,
+        "height": 32,
+        "fill": "#C70041",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "Gja1Y",
+            "x": 16,
+            "y": 6,
+            "name": "ctaHTxt",
+            "fill": "#FFFFFF",
+            "content": "联系我们的团队",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "66eGt",
+      "blockName": "topBar",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 5,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 34
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 6,
+      "treeHash": "4253f84ba0550d336eb679475c97dd8db0d12a5f4be8c429a5e5897a76f0e679",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "66eGt",
+        "x": 0,
+        "y": 0,
+        "name": "topBar",
+        "width": 1440,
+        "height": 34,
+        "fill": "#003A47",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "082eI",
+            "x": 1007,
+            "y": 10,
+            "name": "topLinks",
+            "fill": "#D7E3E7",
+            "content": "投资者网站    客户门户网站    供应商门户网站    职业发展",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "n5Auo",
+            "x": 1296,
+            "y": 5,
+            "name": "flagBox",
+            "width": 128,
+            "height": 24,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "thickness": 1,
+              "fill": "#CCD5DB"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "eKxzp",
+                "x": 8,
+                "y": 6,
+                "name": "flag",
+                "fill": "#E23A3A",
+                "width": 18,
+                "height": 12
+              },
+              {
+                "type": "text",
+                "id": "JrHSv",
+                "x": 34,
+                "y": 6,
+                "name": "flagTxt",
+                "fill": "#22303D",
+                "content": "ZH",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "WpsIk",
+                "x": 106,
+                "y": 6,
+                "name": "langArrow",
+                "fill": "#4B5A64",
+                "content": "▾",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "oLevM",
+      "blockName": "searchIcon",
+      "blockType": "icon_font",
+      "blockRole": "icon_font",
+      "order": 6,
+      "bounds": {
+        "x": 1246,
+        "y": 57,
+        "width": 16,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "30190213f36cc5dab20d49a5943fc29faf9dd646042f0c755562ab425dfe0d5e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "icon_font",
+        "id": "oLevM",
+        "x": 1246,
+        "y": 57,
+        "name": "searchIcon",
+        "width": 16,
+        "height": 16,
+        "iconFontName": "search",
+        "iconFontFamily": "lucide",
+        "fill": "#2E3B45"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "DtnPB",
+    "x": 0,
+    "y": 0,
+    "name": "contactHeader",
+    "width": 1440,
+    "height": 90,
+    "fill": "#FFFFFF",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "oZFmC",
+        "x": 16,
+        "y": 49,
+        "name": "logo",
+        "width": 128,
+        "height": 28,
+        "fill": "#C70041",
+        "cornerRadius": 2
+      },
+      {
+        "type": "text",
+        "id": "H5BTz",
+        "x": 30,
+        "y": 54,
+        "name": "logoText",
+        "fill": "#FFFFFF",
+        "content": "PLEXUS",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "8iEnk",
+        "x": 892,
+        "y": 52,
+        "name": "nav",
+        "fill": "#3B4651",
+        "content": "解决方案 ▾    市场领域 ▾    关于我们 ▾    资源 ▾",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "600"
+      },
+      {
+        "type": "frame",
+        "id": "M9roT",
+        "x": 1278,
+        "y": 51,
+        "name": "lang",
+        "enabled": false,
+        "width": 64,
+        "height": 26,
+        "fill": "#FFFFFF",
+        "cornerRadius": 2,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#C8D0D6"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "LbjCz",
+            "x": 24,
+            "y": 7,
+            "name": "langTxt",
+            "fill": "#22303D",
+            "content": "ZH",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "lxw0V",
+        "x": 1294,
+        "y": 48,
+        "name": "ctaH",
+        "width": 130,
+        "height": 32,
+        "fill": "#C70041",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "Gja1Y",
+            "x": 16,
+            "y": 6,
+            "name": "ctaHTxt",
+            "fill": "#FFFFFF",
+            "content": "联系我们的团队",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "66eGt",
+        "x": 0,
+        "y": 0,
+        "name": "topBar",
+        "width": 1440,
+        "height": 34,
+        "fill": "#003A47",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "082eI",
+            "x": 1007,
+            "y": 10,
+            "name": "topLinks",
+            "fill": "#D7E3E7",
+            "content": "投资者网站    客户门户网站    供应商门户网站    职业发展",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "n5Auo",
+            "x": 1296,
+            "y": 5,
+            "name": "flagBox",
+            "width": 128,
+            "height": 24,
+            "fill": "#FFFFFF",
+            "stroke": {
+              "thickness": 1,
+              "fill": "#CCD5DB"
+            },
+            "layout": "none",
+            "children": [
+              {
+                "type": "rectangle",
+                "id": "eKxzp",
+                "x": 8,
+                "y": 6,
+                "name": "flag",
+                "fill": "#E23A3A",
+                "width": 18,
+                "height": 12
+              },
+              {
+                "type": "text",
+                "id": "JrHSv",
+                "x": 34,
+                "y": 6,
+                "name": "flagTxt",
+                "fill": "#22303D",
+                "content": "ZH",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "WpsIk",
+                "x": 106,
+                "y": 6,
+                "name": "langArrow",
+                "fill": "#4B5A64",
+                "content": "▾",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "icon_font",
+        "id": "oLevM",
+        "x": 1246,
+        "y": 57,
+        "name": "searchIcon",
+        "width": 16,
+        "height": 16,
+        "iconFontName": "search",
+        "iconFontFamily": "lucide",
+        "fill": "#2E3B45"
+      }
+    ]
+  }
+}

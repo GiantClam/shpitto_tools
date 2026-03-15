@@ -1,0 +1,3531 @@
+{
+  "pageId": "page-ao-backpack",
+  "pageKey": "ao-backpack",
+  "pageName": "AO Backpack",
+  "pageType": "product-detail",
+  "devices": {
+    "desktop": {
+      "bounds": {
+        "width": 1440,
+        "height": 1880
+      },
+      "supportBlocks": [
+        {
+          "id": "page-ao-backpack-bg",
+          "name": "page-ao-backpack-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1880
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0D1022"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07"
+          }
+        },
+        {
+          "id": "page-ao-backpack-hero",
+          "name": "page-ao-backpack-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 360
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-ao-backpack-0-7a1ea45e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-ao-backpack-0-7a1ea45e.jpg",
+            "relativePath": "assets-structured/carbon/page-ao-backpack-0-7a1ea45e.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-ao-backpack-hero-overlay",
+          "name": "page-ao-backpack-hero-overlay",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 360
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0000004A"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color14"
+          }
+        },
+        {
+          "id": "page-ao-backpack-crumb",
+          "name": "page-ao-backpack-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 40,
+            "y": 108,
+            "width": 220,
+            "height": 22
+          },
+          "href": "",
+          "content": "Home / AO Backpack",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-title",
+          "name": "page-ao-backpack-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 142,
+            "width": 760,
+            "height": 148
+          },
+          "href": "",
+          "content": "Non-Stop Production, Maximum Efficiency",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 50,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size10",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-subtitle",
+          "name": "page-ao-backpack-subtitle",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 40,
+            "y": 210,
+            "width": 700,
+            "height": 29
+          },
+          "href": "",
+          "content": "Automated Print Turnover & Part Collection",
+          "style": {
+            "fill": "#E3E7F5",
+            "typography": {
+              "fill": "#E3E7F5",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 16,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color16",
+            "textColor": "textColor.palette.text07",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size06",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-home-btn-box",
+          "name": "page-ao-backpack-home-btn-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 40,
+            "y": 264,
+            "width": 120,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-home-btn-text",
+          "name": "page-ao-backpack-home-btn-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 58,
+            "y": 273,
+            "width": 84,
+            "height": 20
+          },
+          "href": "#page-home",
+          "content": "HOME",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-more-btn-box",
+          "name": "page-ao-backpack-more-btn-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 176,
+            "y": 264,
+            "width": 160,
+            "height": 38
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-more-btn-text",
+          "name": "page-ao-backpack-more-btn-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 194,
+            "y": 273,
+            "width": 124,
+            "height": 20
+          },
+          "href": "#page-products",
+          "content": "RELATED",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-panel",
+          "name": "page-ao-backpack-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 40,
+            "y": 396,
+            "width": 1360,
+            "height": 1120
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#20243A",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color15",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-eyebrow",
+          "name": "page-ao-backpack-eyebrow",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 418,
+            "width": 240,
+            "height": 18
+          },
+          "href": "",
+          "content": "AO BACKPACK",
+          "style": {
+            "fill": "#5FD3FF",
+            "typography": {
+              "fill": "#5FD3FF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-panel-title",
+          "name": "page-ao-backpack-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 450,
+            "width": 580,
+            "height": 120
+          },
+          "href": "",
+          "content": "Non-Stop Production, Maximum Efficiency",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 40,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size08",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-p-0",
+          "name": "page-ao-backpack-p-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 510,
+            "width": 560,
+            "height": 92
+          },
+          "href": "",
+          "content": "Unlock around-the-clock production with the AO Backpack for M3. Run continuous print cycles with automatic part removal, unused resin capture, resin refill, and part collection with minimal downtime between cycles.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-p-1",
+          "name": "page-ao-backpack-p-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 620,
+            "width": 560,
+            "height": 49
+          },
+          "href": "",
+          "content": "This is awesome! A reliable, consistent game changer. Ed Peay CAD/CAM Manager, Utah Valley Dental Lab",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-p-2",
+          "name": "page-ao-backpack-p-2",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 687,
+            "width": 560,
+            "height": 92
+          },
+          "href": "",
+          "content": "Say goodbye to the hammer you’ve been using to separate parts from the build plate. The automatic separation blade uses incremental tolerances to consistently separate parts from the build plate between every print.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-p-3",
+          "name": "page-ao-backpack-p-3",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 797,
+            "width": 560,
+            "height": 92
+          },
+          "href": "",
+          "content": "Collect parts from multiple prints automatically, printing up to 12 hours and collecting upwards of 230 parts, depending on design and geometry. Wake up to a batch of ready-to-go parts and keep production flowing effortlessly as the Backpack starts the next job.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-p-4",
+          "name": "page-ao-backpack-p-4",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 64,
+            "y": 907,
+            "width": 560,
+            "height": 113
+          },
+          "href": "",
+          "content": "The AO Backpack’s parts collection basket is engineered to capture unused resin from recently printed parts. Its proven design allows for the reclamation of resin by draining it away from the printed parts, leading to a more cost-effective and sustainable production process.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-img-main",
+          "name": "page-ao-backpack-img-main",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 880,
+            "y": 420,
+            "width": 480,
+            "height": 300
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-ao-backpack-img-side",
+          "name": "page-ao-backpack-img-side",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 880,
+            "y": 752,
+            "width": 480,
+            "height": 220
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-0",
+          "name": "page-ao-backpack-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1080,
+            "width": 260,
+            "height": 220
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#151827",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color10",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius04"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-img-0",
+          "name": "page-ao-backpack-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 76,
+            "y": 1092,
+            "width": 236,
+            "height": 120
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 10
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius03"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-ao-backpack-0-7a1ea45e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-ao-backpack-0-7a1ea45e.jpg",
+            "relativePath": "assets-structured/carbon/page-ao-backpack-0-7a1ea45e.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-title-0",
+          "name": "page-ao-backpack-card-title-0",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 76,
+            "y": 1224,
+            "width": 236,
+            "height": 28
+          },
+          "href": "#page-products",
+          "content": "Integrated Resin Refill",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-body-0",
+          "name": "page-ao-backpack-card-body-0",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 76,
+            "y": 1250,
+            "width": 236,
+            "height": 109
+          },
+          "href": "#page-products",
+          "content": "Unlock around-the-clock production with the AO Backpack for M3. Run continuous print cycles with automatic part removal, unused resin capture, resin r",
+          "style": {
+            "fill": "#AAB0D0",
+            "typography": {
+              "fill": "#AAB0D0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-1",
+          "name": "page-ao-backpack-card-1",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 360,
+            "y": 1080,
+            "width": 260,
+            "height": 220
+          },
+          "href": "#page-m3-printer",
+          "content": "",
+          "style": {
+            "fill": "#151827",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color10",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius04"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-img-1",
+          "name": "page-ao-backpack-card-img-1",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 372,
+            "y": 1092,
+            "width": 236,
+            "height": 120
+          },
+          "href": "#page-m3-printer",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 10
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius03"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-title-1",
+          "name": "page-ao-backpack-card-title-1",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 372,
+            "y": 1224,
+            "width": 236,
+            "height": 49
+          },
+          "href": "#page-m3-printer",
+          "content": "High-Capacity Part Collection (Holds 260 Models)",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 15,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size04",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-body-1",
+          "name": "page-ao-backpack-card-body-1",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 372,
+            "y": 1250,
+            "width": 236,
+            "height": 75
+          },
+          "href": "#page-m3-printer",
+          "content": "This is awesome! A reliable, consistent game changer. Ed Peay CAD/CAM Manager, Utah Valley Dental Lab",
+          "style": {
+            "fill": "#AAB0D0",
+            "typography": {
+              "fill": "#AAB0D0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-title",
+          "name": "page-ao-backpack-rel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 64,
+            "y": 1540,
+            "width": 200,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related pages",
+          "style": {
+            "fill": "#5FD3FF",
+            "typography": {
+              "fill": "#5FD3FF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-0-box",
+          "name": "page-ao-backpack-rel-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 64,
+            "y": 1568,
+            "width": 186,
+            "height": 38
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-0-text",
+          "name": "page-ao-backpack-rel-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 82,
+            "y": 1577,
+            "width": 150,
+            "height": 20
+          },
+          "href": "#page-products",
+          "content": "Products",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-1-box",
+          "name": "page-ao-backpack-rel-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 262,
+            "y": 1568,
+            "width": 186,
+            "height": 38
+          },
+          "href": "#page-m3-printer",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-1-text",
+          "name": "page-ao-backpack-rel-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 280,
+            "y": 1577,
+            "width": 150,
+            "height": 20
+          },
+          "href": "#page-m3-printer",
+          "content": "M3 3D Printer",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-2-box",
+          "name": "page-ao-backpack-rel-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 460,
+            "y": 1568,
+            "width": 186,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-2-text",
+          "name": "page-ao-backpack-rel-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 478,
+            "y": 1577,
+            "width": 150,
+            "height": 20
+          },
+          "href": "#page-home",
+          "content": "Home",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size02",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    },
+    "mobile": {
+      "bounds": {
+        "width": 390,
+        "height": 1700
+      },
+      "supportBlocks": [
+        {
+          "id": "page-ao-backpack-bg",
+          "name": "page-ao-backpack-bg",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 1700
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0D1022"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color07"
+          }
+        },
+        {
+          "id": "page-ao-backpack-hero",
+          "name": "page-ao-backpack-hero",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 260
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "fill"
+            }
+          },
+          "tokenRefs": {},
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-ao-backpack-0-7a1ea45e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-ao-backpack-0-7a1ea45e.jpg",
+            "relativePath": "assets-structured/carbon/page-ao-backpack-0-7a1ea45e.jpg",
+            "exists": true,
+            "mode": "fill"
+          }
+        },
+        {
+          "id": "page-ao-backpack-hero-overlay",
+          "name": "page-ao-backpack-hero-overlay",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 260
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#0000004A"
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color14"
+          }
+        },
+        {
+          "id": "page-ao-backpack-crumb",
+          "name": "page-ao-backpack-crumb",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 18,
+            "y": 92,
+            "width": 220,
+            "height": 22
+          },
+          "href": "",
+          "content": "Home / AO Backpack",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-title",
+          "name": "page-ao-backpack-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 126,
+            "width": 320,
+            "height": 134
+          },
+          "href": "",
+          "content": "Non-Stop Production, Maximum Efficiency",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 30,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size07",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-subtitle",
+          "name": "page-ao-backpack-subtitle",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 18,
+            "y": 186,
+            "width": 330,
+            "height": 43
+          },
+          "href": "",
+          "content": "Automated Print Turnover & Part Collection",
+          "style": {
+            "fill": "#E3E7F5",
+            "typography": {
+              "fill": "#E3E7F5",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color16",
+            "textColor": "textColor.palette.text07",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-home-btn-box",
+          "name": "page-ao-backpack-home-btn-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 18,
+            "y": 248,
+            "width": 120,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-home-btn-text",
+          "name": "page-ao-backpack-home-btn-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 36,
+            "y": 257,
+            "width": 84,
+            "height": 20
+          },
+          "href": "#page-home",
+          "content": "HOME",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-more-btn-box",
+          "name": "page-ao-backpack-more-btn-box",
+          "type": "rectangle",
+          "role": "button",
+          "bounds": {
+            "x": 154,
+            "y": 248,
+            "width": 160,
+            "height": 38
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-more-btn-text",
+          "name": "page-ao-backpack-more-btn-text",
+          "type": "text",
+          "role": "button",
+          "bounds": {
+            "x": 172,
+            "y": 257,
+            "width": 124,
+            "height": 20
+          },
+          "href": "#page-products",
+          "content": "RELATED",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-panel",
+          "name": "page-ao-backpack-panel",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 18,
+            "y": 296,
+            "width": 354,
+            "height": 980
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": "#20243A",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color15",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-eyebrow",
+          "name": "page-ao-backpack-eyebrow",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 318,
+            "width": 240,
+            "height": 18
+          },
+          "href": "",
+          "content": "AO BACKPACK",
+          "style": {
+            "fill": "#5FD3FF",
+            "typography": {
+              "fill": "#5FD3FF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-panel-title",
+          "name": "page-ao-backpack-panel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 350,
+            "width": 300,
+            "height": 75
+          },
+          "href": "",
+          "content": "Non-Stop Production, Maximum Efficiency",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 24,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size09",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-p-0",
+          "name": "page-ao-backpack-p-0",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 410,
+            "width": 300,
+            "height": 117
+          },
+          "href": "",
+          "content": "Unlock around-the-clock production with the AO Backpack for M3. Run continuous print cycles with automatic part removal, unused resin capture, resin refill, and part collection with minimal downtime between cycles.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-p-1",
+          "name": "page-ao-backpack-p-1",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 545,
+            "width": 300,
+            "height": 62
+          },
+          "href": "",
+          "content": "This is awesome! A reliable, consistent game changer. Ed Peay CAD/CAM Manager, Utah Valley Dental Lab",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-p-2",
+          "name": "page-ao-backpack-p-2",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 625,
+            "width": 300,
+            "height": 117
+          },
+          "href": "",
+          "content": "Say goodbye to the hammer you’ve been using to separate parts from the build plate. The automatic separation blade uses incremental tolerances to consistently separate parts from the build plate between every print.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-p-3",
+          "name": "page-ao-backpack-p-3",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 760,
+            "width": 300,
+            "height": 154
+          },
+          "href": "",
+          "content": "Collect parts from multiple prints automatically, printing up to 12 hours and collecting upwards of 230 parts, depending on design and geometry. Wake up to a batch of ready-to-go parts and keep production flowing effortlessly as the Backpack starts the next job.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-p-4",
+          "name": "page-ao-backpack-p-4",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 42,
+            "y": 932,
+            "width": 300,
+            "height": 154
+          },
+          "href": "",
+          "content": "The AO Backpack’s parts collection basket is engineered to capture unused resin from recently printed parts. Its proven design allows for the reclamation of resin by draining it away from the printed parts, leading to a more cost-effective and sustainable production process.",
+          "style": {
+            "fill": "#D9DDF0",
+            "typography": {
+              "fill": "#D9DDF0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color05",
+            "textColor": "textColor.palette.text03",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-img-main",
+          "name": "page-ao-backpack-img-main",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 320,
+            "width": 300,
+            "height": 220
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-ao-backpack-img-side",
+          "name": "page-ao-backpack-img-side",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 42,
+            "y": 560,
+            "width": 300,
+            "height": 180
+          },
+          "href": "",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 18
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius02"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-0",
+          "name": "page-ao-backpack-card-0",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 808,
+            "width": 300,
+            "height": 146
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#151827",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color10",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius04"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-img-0",
+          "name": "page-ao-backpack-card-img-0",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 54,
+            "y": 820,
+            "width": 276,
+            "height": 82
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 10
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius03"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-ao-backpack-0-7a1ea45e.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-ao-backpack-0-7a1ea45e.jpg",
+            "relativePath": "assets-structured/carbon/page-ao-backpack-0-7a1ea45e.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-title-0",
+          "name": "page-ao-backpack-card-title-0",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 54,
+            "y": 912,
+            "width": 276,
+            "height": 25
+          },
+          "href": "#page-products",
+          "content": "Integrated Resin Refill",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-body-0",
+          "name": "page-ao-backpack-card-body-0",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 54,
+            "y": 932,
+            "width": 276,
+            "height": 85
+          },
+          "href": "#page-products",
+          "content": "Unlock around-the-clock production with the AO Backpack for M3. Run continuous print cycles with automatic part removal, unused resin capture, resin r",
+          "style": {
+            "fill": "#AAB0D0",
+            "typography": {
+              "fill": "#AAB0D0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-1",
+          "name": "page-ao-backpack-card-1",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 970,
+            "width": 300,
+            "height": 146
+          },
+          "href": "#page-m3-printer",
+          "content": "",
+          "style": {
+            "fill": "#151827",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 14
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color10",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius04"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-img-1",
+          "name": "page-ao-backpack-card-img-1",
+          "type": "rectangle",
+          "role": "image",
+          "bounds": {
+            "x": 54,
+            "y": 982,
+            "width": 276,
+            "height": 82
+          },
+          "href": "#page-m3-printer",
+          "content": "",
+          "style": {
+            "fill": {
+              "type": "image",
+              "mode": "contain"
+            },
+            "cornerRadius": 10
+          },
+          "tokenRefs": {
+            "cornerRadius": "radius.palette.radius03"
+          },
+          "asset": {
+            "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "relativePath": "assets-structured/carbon/page-ao-backpack-1-adf3909b.jpg",
+            "exists": true,
+            "mode": "contain"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-title-1",
+          "name": "page-ao-backpack-card-title-1",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 54,
+            "y": 1074,
+            "width": 276,
+            "height": 43
+          },
+          "href": "#page-m3-printer",
+          "content": "High-Capacity Part Collection (Holds 260 Models)",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size03",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-card-body-1",
+          "name": "page-ao-backpack-card-body-1",
+          "type": "text",
+          "role": "subtitle",
+          "bounds": {
+            "x": 54,
+            "y": 1094,
+            "width": 276,
+            "height": 53
+          },
+          "href": "#page-m3-printer",
+          "content": "This is awesome! A reliable, consistent game changer. Ed Peay CAD/CAM Manager, Utah Valley Dental Lab",
+          "style": {
+            "fill": "#AAB0D0",
+            "typography": {
+              "fill": "#AAB0D0",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "500",
+              "letterSpacing": "",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color08",
+            "textColor": "textColor.palette.text04",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight02"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-title",
+          "name": "page-ao-backpack-rel-title",
+          "type": "text",
+          "role": "title",
+          "bounds": {
+            "x": 42,
+            "y": 1460,
+            "width": 200,
+            "height": 18
+          },
+          "href": "",
+          "content": "Related pages",
+          "style": {
+            "fill": "#5FD3FF",
+            "typography": {
+              "fill": "#5FD3FF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.08em",
+              "textAlign": "",
+              "textAlignVertical": ""
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color09",
+            "textColor": "textColor.palette.text05",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-0-box",
+          "name": "page-ao-backpack-rel-0-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1488,
+            "width": 150,
+            "height": 38
+          },
+          "href": "#page-products",
+          "content": "",
+          "style": {
+            "fill": "#7256FF",
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color06",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-0-text",
+          "name": "page-ao-backpack-rel-0-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 60,
+            "y": 1497,
+            "width": 114,
+            "height": 20
+          },
+          "href": "#page-products",
+          "content": "Products",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-1-box",
+          "name": "page-ao-backpack-rel-1-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 204,
+            "y": 1488,
+            "width": 150,
+            "height": 38
+          },
+          "href": "#page-m3-printer",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-1-text",
+          "name": "page-ao-backpack-rel-1-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 222,
+            "y": 1497,
+            "width": 114,
+            "height": 20
+          },
+          "href": "#page-m3-printer",
+          "content": "M3 3D Printer",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-2-box",
+          "name": "page-ao-backpack-rel-2-box",
+          "type": "rectangle",
+          "role": "shape",
+          "bounds": {
+            "x": 42,
+            "y": 1536,
+            "width": 150,
+            "height": 38
+          },
+          "href": "#page-home",
+          "content": "",
+          "style": {
+            "fill": "#00000000",
+            "stroke": {
+              "color": "#31375A",
+              "thickness": 1
+            },
+            "cornerRadius": 12
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color04",
+            "strokeColor": "color.palette.color02",
+            "cornerRadius": "radius.palette.radius01"
+          }
+        },
+        {
+          "id": "page-ao-backpack-rel-2-text",
+          "name": "page-ao-backpack-rel-2-text",
+          "type": "text",
+          "role": "text",
+          "bounds": {
+            "x": 60,
+            "y": 1545,
+            "width": 114,
+            "height": 20
+          },
+          "href": "#page-home",
+          "content": "Home",
+          "style": {
+            "fill": "#FFFFFF",
+            "typography": {
+              "fill": "#FFFFFF",
+              "fontFamily": "Helvetica Neue",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": "0.02em",
+              "textAlign": "center",
+              "textAlignVertical": "middle"
+            }
+          },
+          "tokenRefs": {
+            "fill": "color.palette.color01",
+            "textColor": "textColor.palette.text01",
+            "fontFamily": "fontFamily.palette.family01",
+            "fontSize": "fontSize.palette.size01",
+            "fontWeight": "fontWeight.palette.weight01"
+          }
+        }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "sectionId": "page-ao-backpack-navbar",
+      "sectionKey": "page-ao-backpack-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": {
+        "desktop": 0,
+        "mobile": 0
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "blockCount": 14,
+          "blockTree": {
+            "id": "page-ao-backpack-navbar",
+            "name": "Navbar",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 84
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color04"
+            },
+            "children": [
+              {
+                "id": "page-ao-backpack-navbar-bg",
+                "name": "page-ao-backpack-navbar-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 84
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#000000"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color12"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-logo",
+                "name": "page-ao-backpack-navbar-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 40,
+                  "y": 20,
+                  "width": 110,
+                  "height": 34
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-search",
+                "name": "page-ao-backpack-navbar-search",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 474,
+                  "y": 24,
+                  "width": 70,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Search...",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-intl",
+                "name": "page-ao-backpack-navbar-intl",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 584,
+                  "y": 24,
+                  "width": 92,
+                  "height": 18
+                },
+                "href": "",
+                "content": "International",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-design",
+                "name": "page-ao-backpack-navbar-design",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 732,
+                  "y": 24,
+                  "width": 110,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Design Engine",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-support",
+                "name": "page-ao-backpack-navbar-support",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 850,
+                  "y": 24,
+                  "width": 130,
+                  "height": 18
+                },
+                "href": "",
+                "content": "Customer Support",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "600",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight03"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-iso",
+                "name": "page-ao-backpack-navbar-iso",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1022,
+                  "y": 24,
+                  "width": 120,
+                  "height": 18
+                },
+                "href": "",
+                "content": "ISO 9001:2015",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-PLATFORM",
+                "name": "page-ao-backpack-navbar-PLATFORM",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 540,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-platform",
+                "content": "PLATFORM",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-INDUSTRIES",
+                "name": "page-ao-backpack-navbar-INDUSTRIES",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 656,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-industries",
+                "content": "INDUSTRIES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-PARTNERS",
+                "name": "page-ao-backpack-navbar-PARTNERS",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 782,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-partners",
+                "content": "PARTNERS",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-RESOURCES",
+                "name": "page-ao-backpack-navbar-RESOURCES",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 898,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-resources",
+                "content": "RESOURCES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-ABOUT",
+                "name": "page-ao-backpack-navbar-ABOUT",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1014,
+                  "y": 54,
+                  "width": 100,
+                  "height": 18
+                },
+                "href": "#page-about",
+                "content": "ABOUT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-contact-box",
+                "name": "page-ao-backpack-navbar-contact-box",
+                "type": "rectangle",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1280,
+                  "y": 32,
+                  "width": 106,
+                  "height": 40
+                },
+                "href": "#page-contact",
+                "content": "",
+                "style": {
+                  "fill": "#7256FF",
+                  "cornerRadius": 12
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color06",
+                  "cornerRadius": "radius.palette.radius01"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-contact-text",
+                "name": "page-ao-backpack-navbar-contact-text",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 1298,
+                  "y": 42,
+                  "width": 70,
+                  "height": 20
+                },
+                "href": "#page-contact",
+                "content": "CONTACT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.02em",
+                    "textAlign": "center",
+                    "textAlignVertical": "middle"
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 68
+          },
+          "blockCount": 4,
+          "blockTree": {
+            "id": "page-ao-backpack-navbar",
+            "name": "Navbar",
+            "type": "frame",
+            "role": "navigation",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 68
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#00000000",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color04"
+            },
+            "children": [
+              {
+                "id": "page-ao-backpack-navbar-bg",
+                "name": "page-ao-backpack-navbar-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 68
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#000000"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color12"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-logo",
+                "name": "page-ao-backpack-navbar-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 18,
+                  "y": 22,
+                  "width": 84,
+                  "height": 26
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-menu",
+                "name": "page-ao-backpack-navbar-menu",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 350,
+                  "y": 24,
+                  "width": 18,
+                  "height": 20
+                },
+                "href": "#page-products",
+                "content": "☰",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "700",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "page-ao-backpack-navbar-search",
+                "name": "page-ao-backpack-navbar-search",
+                "type": "text",
+                "role": "navigation",
+                "bounds": {
+                  "x": 308,
+                  "y": 26,
+                  "width": 18,
+                  "height": 18
+                },
+                "href": "#page-products",
+                "content": "⌕",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 18,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size05",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionKey": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": {
+        "desktop": 1,
+        "mobile": 1
+      },
+      "devices": {
+        "desktop": {
+          "bounds": {
+            "x": 0,
+            "y": 1560,
+            "width": 1440,
+            "height": 320
+          },
+          "blockCount": 13,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1560,
+              "width": 1440,
+              "height": 320
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#070A14",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color11"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1440,
+                  "height": 320
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#070A14"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color11"
+                }
+              },
+              {
+                "id": "footer-logo",
+                "name": "footer-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 40,
+                  "y": 28,
+                  "width": 110,
+                  "height": 34
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "footer-Platform",
+                "name": "footer-Platform",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 40,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PLATFORM",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Platform-body",
+                "name": "footer-Platform-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 40,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "How it Works\nMaterials\nSoftware\nHardware",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Products",
+                "name": "footer-Products",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 260,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PRODUCTS",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Products-body",
+                "name": "footer-Products-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 260,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "M3 3D Printer\nM2 3D Printer\nL1 3D Printer\nAO Suite",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Industries",
+                "name": "footer-Industries",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 500,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "INDUSTRIES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Industries-body",
+                "name": "footer-Industries-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 500,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "Consumer\nDental\nOrthodontics\nIndustrial",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Resources",
+                "name": "footer-Resources",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 760,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "RESOURCES",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Resources-body",
+                "name": "footer-Resources-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 760,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "Blog\nCase studies\nCourses\nDatasheets",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-About",
+                "name": "footer-About",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 1020,
+                  "y": 90,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "ABOUT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-About-body",
+                "name": "footer-About-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 1020,
+                  "y": 114,
+                  "width": 160,
+                  "height": 75
+                },
+                "href": "",
+                "content": "About Carbon\nNewsroom\nContact Us\nPartners",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 12,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size02",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 40,
+                  "y": 282,
+                  "width": 520,
+                  "height": 38
+                },
+                "href": "",
+                "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+                "style": {
+                  "fill": "#B9C0DA",
+                  "typography": {
+                    "fill": "#B9C0DA",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color13",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "bounds": {
+            "x": 0,
+            "y": 1340,
+            "width": 390,
+            "height": 360
+          },
+          "blockCount": 9,
+          "blockTree": {
+            "id": "footer",
+            "name": "Footer",
+            "type": "frame",
+            "role": "container",
+            "bounds": {
+              "x": 0,
+              "y": 1340,
+              "width": 390,
+              "height": 360
+            },
+            "href": "",
+            "content": "",
+            "style": {
+              "fill": "#070A14",
+              "layout": "none"
+            },
+            "tokenRefs": {
+              "fill": "color.palette.color11"
+            },
+            "children": [
+              {
+                "id": "footer-bg",
+                "name": "footer-bg",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 390,
+                  "height": 360
+                },
+                "href": "",
+                "content": "",
+                "style": {
+                  "fill": "#070A14"
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color11"
+                }
+              },
+              {
+                "id": "footer-logo",
+                "name": "footer-logo",
+                "type": "rectangle",
+                "role": "image",
+                "bounds": {
+                  "x": 18,
+                  "y": 24,
+                  "width": 84,
+                  "height": 26
+                },
+                "href": "#page-home",
+                "content": "",
+                "style": {
+                  "fill": {
+                    "type": "image",
+                    "mode": "fit"
+                  }
+                },
+                "tokenRefs": {},
+                "asset": {
+                  "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+                  "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+                  "relativePath": "assets-structured/carbon/carbon-logo.png",
+                  "exists": true,
+                  "mode": "fit"
+                }
+              },
+              {
+                "id": "footer-Platform",
+                "name": "footer-Platform",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 18,
+                  "y": 74,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PLATFORM",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Platform-body",
+                "name": "footer-Platform-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 18,
+                  "y": 98,
+                  "width": 100,
+                  "height": 53
+                },
+                "href": "",
+                "content": "How it Works\nMaterials\nSoftware",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-Products",
+                "name": "footer-Products",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 140,
+                  "y": 74,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "PRODUCTS",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-Products-body",
+                "name": "footer-Products-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 140,
+                  "y": 98,
+                  "width": 100,
+                  "height": 53
+                },
+                "href": "",
+                "content": "M3 Printer\nM2 Printer\nL1 Printer",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-About",
+                "name": "footer-About",
+                "type": "text",
+                "role": "text",
+                "bounds": {
+                  "x": 262,
+                  "y": 74,
+                  "width": 140,
+                  "height": 18
+                },
+                "href": "",
+                "content": "ABOUT",
+                "style": {
+                  "fill": "#FFFFFF",
+                  "typography": {
+                    "fill": "#FFFFFF",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "700",
+                    "letterSpacing": "0.08em",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color01",
+                  "textColor": "textColor.palette.text01",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight01"
+                }
+              },
+              {
+                "id": "footer-About-body",
+                "name": "footer-About-body",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 262,
+                  "y": 98,
+                  "width": 100,
+                  "height": 53
+                },
+                "href": "",
+                "content": "About Carbon\nNewsroom\nContact",
+                "style": {
+                  "fill": "#C7CEE7",
+                  "typography": {
+                    "fill": "#C7CEE7",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color03",
+                  "textColor": "textColor.palette.text02",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              },
+              {
+                "id": "footer-copy",
+                "name": "footer-copy",
+                "type": "text",
+                "role": "subtitle",
+                "bounds": {
+                  "x": 18,
+                  "y": 322,
+                  "width": 330,
+                  "height": 53
+                },
+                "href": "",
+                "content": "Carbon structured clone pen. Desktop and mobile files contain editable text, cards, buttons and image containers.",
+                "style": {
+                  "fill": "#B9C0DA",
+                  "typography": {
+                    "fill": "#B9C0DA",
+                    "fontFamily": "Helvetica Neue",
+                    "fontSize": 11,
+                    "fontWeight": "500",
+                    "letterSpacing": "",
+                    "textAlign": "",
+                    "textAlignVertical": ""
+                  }
+                },
+                "tokenRefs": {
+                  "fill": "color.palette.color13",
+                  "textColor": "textColor.palette.text06",
+                  "fontFamily": "fontFamily.palette.family01",
+                  "fontSize": "fontSize.palette.size01",
+                  "fontWeight": "fontWeight.palette.weight02"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

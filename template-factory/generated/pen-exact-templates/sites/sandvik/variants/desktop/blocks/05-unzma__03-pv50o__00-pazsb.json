@@ -1,0 +1,86 @@
+{
+  "blockId": "pazSb",
+  "blockName": "leftFilters",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 0,
+  "bounds": {
+    "x": 24,
+    "y": 40,
+    "width": 180,
+    "height": 220
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "5c6af1e22e3ef7fa05e115f29450f57dc2d4f6826a4ea5477b7602055443f8eb",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "pazSb",
+    "x": 24,
+    "y": 40,
+    "name": "leftFilters",
+    "width": 180,
+    "height": 220,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "W14Mh",
+        "x": 0,
+        "y": 0,
+        "name": "fltT",
+        "fill": "#606060",
+        "content": "按下列条件",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "Q7foD",
+        "x": 0,
+        "y": 34,
+        "name": "flt1",
+        "fill": "#1F1F1F",
+        "content": "类型",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "600"
+      },
+      {
+        "type": "rectangle",
+        "id": "PRURd",
+        "x": 0,
+        "y": 58,
+        "name": "l1",
+        "fill": "#D6D6D6",
+        "width": 150,
+        "height": 1
+      },
+      {
+        "type": "text",
+        "id": "d6w4L",
+        "x": 0,
+        "y": 76,
+        "name": "flt2",
+        "fill": "#1F1F1F",
+        "content": "国家/地区",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "600"
+      },
+      {
+        "type": "rectangle",
+        "id": "qFtZb",
+        "x": 0,
+        "y": 100,
+        "name": "l2",
+        "fill": "#D6D6D6",
+        "width": 150,
+        "height": 1
+      }
+    ]
+  }
+}

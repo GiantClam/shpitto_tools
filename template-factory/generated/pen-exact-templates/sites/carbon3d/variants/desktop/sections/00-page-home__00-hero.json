@@ -1,0 +1,1438 @@
+{
+  "sectionId": "hero",
+  "sectionName": "Hero",
+  "sectionKind": "hero",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 760
+  },
+  "directChildCount": 15,
+  "recursiveNodeCount": 30,
+  "treeHash": "81a1d49a227e915abbcdf6c348fa2505393f27d3fd803c12aeb0d35e382de1f3",
+  "blockCount": 15,
+  "blockIndex": [
+    {
+      "blockId": "hero-bg",
+      "blockName": "hero-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 760
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5de9e40ae22ee2ec8a92096118d92e14cb73ad887f525873e5f04e0a835ee0e6"
+    },
+    {
+      "blockId": "hero-banner",
+      "blockName": "hero-banner",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 360,
+        "y": 146,
+        "width": 620,
+        "height": 66
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dd2308d3d038e26709f9e1391d1aec4d07b96418416a42c13b404238db872518"
+    },
+    {
+      "blockId": "hero-banner-overlay",
+      "blockName": "hero-banner-overlay",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 360,
+        "y": 146,
+        "width": 620,
+        "height": 66
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "88a981d3c4fc76e8bcd8607169076c94e0dcdcd0397d19854a77731ab170b229"
+    },
+    {
+      "blockId": "hero-banner-dot",
+      "blockName": "hero-banner-dot",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 384,
+        "y": 164,
+        "width": 16,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9a72b9f7fc9bdfae6a77d6456bfb0a14cf865981d8cd810a1de7f7571adcabd8"
+    },
+    {
+      "blockId": "hero-banner-badge",
+      "blockName": "hero-banner-badge",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 4,
+      "bounds": {
+        "x": 970,
+        "y": 138,
+        "width": 94,
+        "height": 94
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1cf8d21522e1ef6752707d4583efe6261bc2efc8ddc97ad674888f781ae2d03e"
+    },
+    {
+      "blockId": "home-navbar",
+      "blockName": "Navbar",
+      "blockType": "frame",
+      "order": 5,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 14,
+      "recursiveNodeCount": 15,
+      "treeHash": "d2035032db7afb9fe9a9d879612148932a204675b5801e5f70ec971cb3addbc3"
+    },
+    {
+      "blockId": "hero-banner-text",
+      "blockName": "hero-banner-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 438,
+        "y": 164,
+        "width": 420,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4ebc6f71ed85ee7ef3bbe68f813c5cf5c8bd62585854388da3a00d7bad1647ff"
+    },
+    {
+      "blockId": "hero-kicker",
+      "blockName": "hero-kicker",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 474,
+        "y": 276,
+        "width": 520,
+        "height": 34
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b53fa99427b2fed73c5743b501fbc938ba74f1fca0156adcf729e1c2e250f9f4"
+    },
+    {
+      "blockId": "hero-title",
+      "blockName": "hero-title",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 212,
+        "y": 336,
+        "width": 980,
+        "height": 211
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d0620e141a2170be7862f50e2b28568d46ba0c23edcf52bea269cb9498a46fea"
+    },
+    {
+      "blockId": "hero-card-left",
+      "blockName": "hero-card-left",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 132,
+        "y": 508,
+        "width": 430,
+        "height": 270
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f250e9929eb92ed0db36ea16c4cafed43d0de7ad1b6bfd2ce874d168338a6474"
+    },
+    {
+      "blockId": "hero-card-right",
+      "blockName": "hero-card-right",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 10,
+      "bounds": {
+        "x": 658,
+        "y": 508,
+        "width": 452,
+        "height": 270
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d768b693ddc99e868817eb43f966c0de5171c6d04660c1dc4811dbe332aa016d"
+    },
+    {
+      "blockId": "hero-card-left-image",
+      "blockName": "hero-card-left-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 11,
+      "bounds": {
+        "x": 190,
+        "y": 472,
+        "width": 270,
+        "height": 268
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "49635ce51da69607ec1a4e6e33f8b2fac12d68493747f2dcbca9e1cddaabaa03"
+    },
+    {
+      "blockId": "hero-card-right-image",
+      "blockName": "hero-card-right-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 12,
+      "bounds": {
+        "x": 706,
+        "y": 462,
+        "width": 360,
+        "height": 286
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1cf75257e0894f19e28f0562e4ed889d665101e528052282b67ad3e744e5d3b4"
+    },
+    {
+      "blockId": "hero-card-left-label",
+      "blockName": "hero-card-left-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 13,
+      "bounds": {
+        "x": 170,
+        "y": 692,
+        "width": 260,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "75c5cb69db20b93df00b716c8231fb914624f183b28226e137c967a16700a325"
+    },
+    {
+      "blockId": "hero-card-right-label",
+      "blockName": "hero-card-right-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 14,
+      "bounds": {
+        "x": 778,
+        "y": 692,
+        "width": 220,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c8baab290a9fbc6ec397c75452adeaab44cd2031aad2c83c0bb02ab5c238dc58"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-hero-787a4dd2.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-hero-787a4dd2.jpg",
+      "relativePath": "assets-structured/carbon/home-hero-787a4dd2.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-hero-787a4dd2.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-hero-787a4dd2.jpg",
+      "relativePath": "assets-structured/carbon/home-hero-787a4dd2.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/carbon-logo.png",
+      "relativePath": "assets-structured/carbon/carbon-logo.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-tech-224715e8.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-tech-224715e8.png",
+      "relativePath": "assets-structured/carbon/home-tech-224715e8.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-results-3ac2f4d6.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-results-3ac2f4d6.png",
+      "relativePath": "assets-structured/carbon/home-results-3ac2f4d6.png",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "hero-bg",
+      "blockName": "hero-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 760
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5de9e40ae22ee2ec8a92096118d92e14cb73ad887f525873e5f04e0a835ee0e6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-bg",
+        "name": "hero-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 760,
+        "fill": "#1C1143"
+      }
+    },
+    {
+      "blockId": "hero-banner",
+      "blockName": "hero-banner",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 360,
+        "y": 146,
+        "width": 620,
+        "height": 66
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dd2308d3d038e26709f9e1391d1aec4d07b96418416a42c13b404238db872518",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-hero-787a4dd2.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-hero-787a4dd2.jpg",
+        "relativePath": "assets-structured/carbon/home-hero-787a4dd2.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-banner",
+        "name": "hero-banner",
+        "x": 360,
+        "y": 146,
+        "width": 620,
+        "height": 66,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-hero-787a4dd2.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-products",
+        "cornerRadius": 30
+      }
+    },
+    {
+      "blockId": "hero-banner-overlay",
+      "blockName": "hero-banner-overlay",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 360,
+        "y": 146,
+        "width": 620,
+        "height": 66
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "88a981d3c4fc76e8bcd8607169076c94e0dcdcd0397d19854a77731ab170b229",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-banner-overlay",
+        "name": "hero-banner-overlay",
+        "x": 360,
+        "y": 146,
+        "width": 620,
+        "height": 66,
+        "fill": "#00000033",
+        "href": "#page-products",
+        "cornerRadius": 30
+      }
+    },
+    {
+      "blockId": "hero-banner-dot",
+      "blockName": "hero-banner-dot",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 384,
+        "y": 164,
+        "width": 16,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9a72b9f7fc9bdfae6a77d6456bfb0a14cf865981d8cd810a1de7f7571adcabd8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "hero-banner-dot",
+        "name": "hero-banner-dot",
+        "x": 384,
+        "y": 164,
+        "width": 16,
+        "height": 16,
+        "fill": "#5FD3FF"
+      }
+    },
+    {
+      "blockId": "hero-banner-badge",
+      "blockName": "hero-banner-badge",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 4,
+      "bounds": {
+        "x": 970,
+        "y": 138,
+        "width": 94,
+        "height": 94
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1cf8d21522e1ef6752707d4583efe6261bc2efc8ddc97ad674888f781ae2d03e",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-hero-787a4dd2.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-hero-787a4dd2.jpg",
+        "relativePath": "assets-structured/carbon/home-hero-787a4dd2.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-banner-badge",
+        "name": "hero-banner-badge",
+        "x": 970,
+        "y": 138,
+        "width": 94,
+        "height": 94,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-hero-787a4dd2.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-products",
+        "cornerRadius": 47
+      }
+    },
+    {
+      "blockId": "home-navbar",
+      "blockName": "Navbar",
+      "blockType": "frame",
+      "order": 5,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 14,
+      "recursiveNodeCount": 15,
+      "treeHash": "d2035032db7afb9fe9a9d879612148932a204675b5801e5f70ec971cb3addbc3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "home-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "home-navbar-bg",
+            "name": "home-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#000000"
+          },
+          {
+            "type": "rectangle",
+            "id": "home-navbar-logo",
+            "name": "home-navbar-logo",
+            "x": 40,
+            "y": 20,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-search",
+            "name": "home-navbar-search",
+            "x": 474,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Search...",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-intl",
+            "name": "home-navbar-intl",
+            "x": 584,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "International",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 92,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-design",
+            "name": "home-navbar-design",
+            "x": 732,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Design Engine",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 110,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-support",
+            "name": "home-navbar-support",
+            "x": 850,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Customer Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-iso",
+            "name": "home-navbar-iso",
+            "x": 1022,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "ISO 9001:2015",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-PLATFORM",
+            "name": "home-navbar-PLATFORM",
+            "x": 540,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-platform"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-INDUSTRIES",
+            "name": "home-navbar-INDUSTRIES",
+            "x": 656,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-industries"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-PARTNERS",
+            "name": "home-navbar-PARTNERS",
+            "x": 782,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PARTNERS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-partners"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-RESOURCES",
+            "name": "home-navbar-RESOURCES",
+            "x": 898,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-resources"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-ABOUT",
+            "name": "home-navbar-ABOUT",
+            "x": 1014,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-about"
+          },
+          {
+            "type": "rectangle",
+            "id": "home-navbar-contact-box",
+            "name": "home-navbar-contact-box",
+            "x": 1280,
+            "y": 32,
+            "width": 106,
+            "height": 40,
+            "fill": "#7256FF",
+            "href": "#page-contact",
+            "cornerRadius": 12
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-contact-text",
+            "name": "home-navbar-contact-text",
+            "x": 1298,
+            "y": 42,
+            "fill": "#FFFFFF",
+            "content": "CONTACT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 20,
+            "letterSpacing": "0.02em",
+            "href": "#page-contact",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "hero-banner-text",
+      "blockName": "hero-banner-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 438,
+        "y": 164,
+        "width": 420,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4ebc6f71ed85ee7ef3bbe68f813c5cf5c8bd62585854388da3a00d7bad1647ff",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-banner-text",
+        "name": "hero-banner-text",
+        "x": 438,
+        "y": 164,
+        "fill": "#FFFFFF",
+        "content": "Introducing EPU Pro 50 & EPU Pro 90",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 16,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 420,
+        "height": 24
+      }
+    },
+    {
+      "blockId": "hero-kicker",
+      "blockName": "hero-kicker",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 474,
+        "y": 276,
+        "width": 520,
+        "height": 34
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b53fa99427b2fed73c5743b501fbc938ba74f1fca0156adcf729e1c2e250f9f4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-kicker",
+        "name": "hero-kicker",
+        "x": 474,
+        "y": 276,
+        "fill": "#FFFFFF",
+        "content": "DESIGN, DEVELOP, AND PRINT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 26,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 34,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "hero-title",
+      "blockName": "hero-title",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 212,
+        "y": 336,
+        "width": 980,
+        "height": 211
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d0620e141a2170be7862f50e2b28568d46ba0c23edcf52bea269cb9498a46fea",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-title",
+        "name": "hero-title",
+        "x": 212,
+        "y": 336,
+        "fill": "#5FD3FF",
+        "content": "Radically Better Products",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 72,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 980,
+        "height": 211
+      }
+    },
+    {
+      "blockId": "hero-card-left",
+      "blockName": "hero-card-left",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 132,
+        "y": 508,
+        "width": 430,
+        "height": 270
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f250e9929eb92ed0db36ea16c4cafed43d0de7ad1b6bfd2ce874d168338a6474",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-card-left",
+        "name": "hero-card-left",
+        "x": 132,
+        "y": 508,
+        "width": 430,
+        "height": 270,
+        "fill": "#26125D",
+        "href": "#page-platform",
+        "cornerRadius": 34
+      }
+    },
+    {
+      "blockId": "hero-card-right",
+      "blockName": "hero-card-right",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 10,
+      "bounds": {
+        "x": 658,
+        "y": 508,
+        "width": 452,
+        "height": 270
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d768b693ddc99e868817eb43f966c0de5171c6d04660c1dc4811dbe332aa016d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-card-right",
+        "name": "hero-card-right",
+        "x": 658,
+        "y": 508,
+        "width": 452,
+        "height": 270,
+        "fill": "#2BBEB1",
+        "href": "#page-products",
+        "cornerRadius": 34
+      }
+    },
+    {
+      "blockId": "hero-card-left-image",
+      "blockName": "hero-card-left-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 11,
+      "bounds": {
+        "x": 190,
+        "y": 472,
+        "width": 270,
+        "height": 268
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "49635ce51da69607ec1a4e6e33f8b2fac12d68493747f2dcbca9e1cddaabaa03",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-tech-224715e8.png",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-tech-224715e8.png",
+        "relativePath": "assets-structured/carbon/home-tech-224715e8.png",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-card-left-image",
+        "name": "hero-card-left-image",
+        "x": 190,
+        "y": 472,
+        "width": 270,
+        "height": 268,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-tech-224715e8.png",
+          "mode": "contain"
+        },
+        "href": "#page-platform"
+      }
+    },
+    {
+      "blockId": "hero-card-right-image",
+      "blockName": "hero-card-right-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 12,
+      "bounds": {
+        "x": 706,
+        "y": 462,
+        "width": 360,
+        "height": 286
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1cf75257e0894f19e28f0562e4ed889d665101e528052282b67ad3e744e5d3b4",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-results-3ac2f4d6.png",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-results-3ac2f4d6.png",
+        "relativePath": "assets-structured/carbon/home-results-3ac2f4d6.png",
+        "exists": true,
+        "mode": "contain"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-card-right-image",
+        "name": "hero-card-right-image",
+        "x": 706,
+        "y": 462,
+        "width": 360,
+        "height": 286,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-results-3ac2f4d6.png",
+          "mode": "contain"
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "hero-card-left-label",
+      "blockName": "hero-card-left-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 13,
+      "bounds": {
+        "x": 170,
+        "y": 692,
+        "width": 260,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "75c5cb69db20b93df00b716c8231fb914624f183b28226e137c967a16700a325",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-card-left-label",
+        "name": "hero-card-left-label",
+        "x": 170,
+        "y": 692,
+        "fill": "#FFFFFF",
+        "content": "Our Technology",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 28,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 260,
+        "height": 32,
+        "href": "#page-platform",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "hero-card-right-label",
+      "blockName": "hero-card-right-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 14,
+      "bounds": {
+        "x": 778,
+        "y": 692,
+        "width": 220,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c8baab290a9fbc6ec397c75452adeaab44cd2031aad2c83c0bb02ab5c238dc58",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-card-right-label",
+        "name": "hero-card-right-label",
+        "x": 778,
+        "y": 692,
+        "fill": "#FFFFFF",
+        "content": "Your Results",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 28,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 32,
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "hero",
+    "name": "Hero",
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 760,
+    "fill": "#1C1143",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "hero-bg",
+        "name": "hero-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 760,
+        "fill": "#1C1143"
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-banner",
+        "name": "hero-banner",
+        "x": 360,
+        "y": 146,
+        "width": 620,
+        "height": 66,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-hero-787a4dd2.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-products",
+        "cornerRadius": 30
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-banner-overlay",
+        "name": "hero-banner-overlay",
+        "x": 360,
+        "y": 146,
+        "width": 620,
+        "height": 66,
+        "fill": "#00000033",
+        "href": "#page-products",
+        "cornerRadius": 30
+      },
+      {
+        "type": "ellipse",
+        "id": "hero-banner-dot",
+        "name": "hero-banner-dot",
+        "x": 384,
+        "y": 164,
+        "width": 16,
+        "height": 16,
+        "fill": "#5FD3FF"
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-banner-badge",
+        "name": "hero-banner-badge",
+        "x": 970,
+        "y": 138,
+        "width": 94,
+        "height": 94,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-hero-787a4dd2.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-products",
+        "cornerRadius": 47
+      },
+      {
+        "type": "frame",
+        "id": "home-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "home-navbar-bg",
+            "name": "home-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#000000"
+          },
+          {
+            "type": "rectangle",
+            "id": "home-navbar-logo",
+            "name": "home-navbar-logo",
+            "x": 40,
+            "y": 20,
+            "width": 110,
+            "height": 34,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/carbon-logo.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-search",
+            "name": "home-navbar-search",
+            "x": 474,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Search...",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-intl",
+            "name": "home-navbar-intl",
+            "x": 584,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "International",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 92,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-design",
+            "name": "home-navbar-design",
+            "x": 732,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Design Engine",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 110,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-support",
+            "name": "home-navbar-support",
+            "x": 850,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "Customer Support",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-iso",
+            "name": "home-navbar-iso",
+            "x": 1022,
+            "y": 24,
+            "fill": "#FFFFFF",
+            "content": "ISO 9001:2015",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 120,
+            "height": 18
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-PLATFORM",
+            "name": "home-navbar-PLATFORM",
+            "x": 540,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PLATFORM",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-platform"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-INDUSTRIES",
+            "name": "home-navbar-INDUSTRIES",
+            "x": 656,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "INDUSTRIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-industries"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-PARTNERS",
+            "name": "home-navbar-PARTNERS",
+            "x": 782,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "PARTNERS",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-partners"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-RESOURCES",
+            "name": "home-navbar-RESOURCES",
+            "x": 898,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "RESOURCES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-resources"
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-ABOUT",
+            "name": "home-navbar-ABOUT",
+            "x": 1014,
+            "y": 54,
+            "fill": "#FFFFFF",
+            "content": "ABOUT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "href": "#page-about"
+          },
+          {
+            "type": "rectangle",
+            "id": "home-navbar-contact-box",
+            "name": "home-navbar-contact-box",
+            "x": 1280,
+            "y": 32,
+            "width": 106,
+            "height": 40,
+            "fill": "#7256FF",
+            "href": "#page-contact",
+            "cornerRadius": 12
+          },
+          {
+            "type": "text",
+            "id": "home-navbar-contact-text",
+            "name": "home-navbar-contact-text",
+            "x": 1298,
+            "y": 42,
+            "fill": "#FFFFFF",
+            "content": "CONTACT",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 70,
+            "height": 20,
+            "letterSpacing": "0.02em",
+            "href": "#page-contact",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "hero-banner-text",
+        "name": "hero-banner-text",
+        "x": 438,
+        "y": 164,
+        "fill": "#FFFFFF",
+        "content": "Introducing EPU Pro 50 & EPU Pro 90",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 16,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 420,
+        "height": 24
+      },
+      {
+        "type": "text",
+        "id": "hero-kicker",
+        "name": "hero-kicker",
+        "x": 474,
+        "y": 276,
+        "fill": "#FFFFFF",
+        "content": "DESIGN, DEVELOP, AND PRINT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 26,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 34,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "hero-title",
+        "name": "hero-title",
+        "x": 212,
+        "y": 336,
+        "fill": "#5FD3FF",
+        "content": "Radically Better Products",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 72,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 980,
+        "height": 211
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-card-left",
+        "name": "hero-card-left",
+        "x": 132,
+        "y": 508,
+        "width": 430,
+        "height": 270,
+        "fill": "#26125D",
+        "href": "#page-platform",
+        "cornerRadius": 34
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-card-right",
+        "name": "hero-card-right",
+        "x": 658,
+        "y": 508,
+        "width": 452,
+        "height": 270,
+        "fill": "#2BBEB1",
+        "href": "#page-products",
+        "cornerRadius": 34
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-card-left-image",
+        "name": "hero-card-left-image",
+        "x": 190,
+        "y": 472,
+        "width": 270,
+        "height": 268,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-tech-224715e8.png",
+          "mode": "contain"
+        },
+        "href": "#page-platform"
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-card-right-image",
+        "name": "hero-card-right-image",
+        "x": 706,
+        "y": 462,
+        "width": 360,
+        "height": 286,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-results-3ac2f4d6.png",
+          "mode": "contain"
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "hero-card-left-label",
+        "name": "hero-card-left-label",
+        "x": 170,
+        "y": 692,
+        "fill": "#FFFFFF",
+        "content": "Our Technology",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 28,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 260,
+        "height": 32,
+        "href": "#page-platform",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "hero-card-right-label",
+        "name": "hero-card-right-label",
+        "x": 778,
+        "y": 692,
+        "fill": "#FFFFFF",
+        "content": "Your Results",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 28,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 32,
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

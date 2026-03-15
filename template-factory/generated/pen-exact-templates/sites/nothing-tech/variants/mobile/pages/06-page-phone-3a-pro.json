@@ -1,0 +1,1552 @@
+{
+  "pageId": "page-phone-3a-pro",
+  "pageName": "Phone (3a) Pro",
+  "pageType": "product-detail",
+  "order": 6,
+  "bounds": {
+    "x": 1040,
+    "y": 0,
+    "width": 390,
+    "height": 3373
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "ecc1d24def3c58f13e84cc321965bbd759b8c29017cba2afb97d88da5e5ee9ce",
+  "directChildCount": 35,
+  "recursiveNodeCount": 44,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "header-page-phone-3a-pro",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "799dc9c30092be838ab0a09e78e2694956ccc130713213df631fd953b67fc696",
+      "blockCount": 3
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 3123,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "d42f223d3e3c76bca6ea67c18338949d90a94bfbb4b773ae4440b53b83d5e762",
+      "blockCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "header-page-phone-3a-pro",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "799dc9c30092be838ab0a09e78e2694956ccc130713213df631fd953b67fc696",
+      "blockCount": 3,
+      "blockIndex": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db"
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9e5190dcb5c93eb72c5017089729cc71e53923d9b3aba31f4b43690989aaac3b"
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0043ae504f0701095ff630564b52e0fc6eb7a2aeaa9cbbebc0a5c64a6518000b"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9e5190dcb5c93eb72c5017089729cc71e53923d9b3aba31f4b43690989aaac3b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          }
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0043ae504f0701095ff630564b52e0fc6eb7a2aeaa9cbbebc0a5c64a6518000b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-offers",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "header-page-phone-3a-pro",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-offers",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 3123,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "d42f223d3e3c76bca6ea67c18338949d90a94bfbb4b773ae4440b53b83d5e762",
+      "blockCount": 5,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3030104b6da362da5e686eac8b2c7efbbacc8ecf411b83d292b7f2012fb81484"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "de3ddbeed7009949da6210aa92ef4af84d4894c9ca38a9989d68c0d5e9d0d792"
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "939a95b64652641822a351b91715fc75bba72d3fc84dc2be2d0a4e6c5417b71f"
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 69
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1e2864beef8a3c11aba71f07a87f8d1b397d535aee2481cef5b368b8ed7b361e"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2b960f0fe42d50228d4289941093da358cbad2b8f4dc9e1b472c49d2bb354bfd"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3030104b6da362da5e686eac8b2c7efbbacc8ecf411b83d292b7f2012fb81484",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#0F0F10"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "de3ddbeed7009949da6210aa92ef4af84d4894c9ca38a9989d68c0d5e9d0d792",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F4F4F1",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "939a95b64652641822a351b91715fc75bba72d3fc84dc2be2d0a4e6c5417b71f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F4F4F1",
+            "content": "Offers Phones Audio",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 69
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1e2864beef8a3c11aba71f07a87f8d1b397d535aee2481cef5b368b8ed7b361e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F4F4F1",
+            "content": "Support Centre Contact Support Phone (3a) Pro Ear (3)",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 69
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2b960f0fe42d50228d4289941093da358cbad2b8f4dc9e1b472c49d2bb354bfd",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Nothing structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 3123,
+        "width": 390,
+        "height": 250,
+        "fill": "#0F0F10",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#0F0F10"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F4F4F1",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F4F4F1",
+            "content": "Offers Phones Audio",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F4F4F1",
+            "content": "Support Centre Contact Support Phone (3a) Pro Ear (3)",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 69
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Nothing structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 8,
+  "looseNodeCount": 33,
+  "looseNodes": [
+    {
+      "id": "page-phone-3a-pro-bg",
+      "name": "page-phone-3a-pro-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 100
+    },
+    {
+      "id": "page-phone-3a-pro-hero",
+      "name": "page-phone-3a-pro-hero",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-phone-3a-pro-overlay",
+      "name": "page-phone-3a-pro-overlay",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-phone-3a-pro-panel",
+      "name": "page-phone-3a-pro-panel",
+      "type": "rectangle",
+      "width": 354,
+      "height": 2759
+    },
+    {
+      "id": "page-phone-3a-pro-crumb",
+      "name": "page-phone-3a-pro-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 18
+    },
+    {
+      "id": "page-phone-3a-pro-title",
+      "name": "page-phone-3a-pro-title",
+      "type": "text",
+      "width": 320,
+      "height": 92
+    },
+    {
+      "id": "page-phone-3a-pro-subtitle",
+      "name": "page-phone-3a-pro-subtitle",
+      "type": "text",
+      "width": 320,
+      "height": 80
+    },
+    {
+      "id": "page-phone-3a-pro-btn-home-box",
+      "name": "page-phone-3a-pro-btn-home-box",
+      "type": "rectangle",
+      "width": 128,
+      "height": 38
+    },
+    {
+      "id": "page-phone-3a-pro-btn-home-text",
+      "name": "page-phone-3a-pro-btn-home-text",
+      "type": "text",
+      "width": 100,
+      "height": 18
+    },
+    {
+      "id": "page-phone-3a-pro-btn-peer-box",
+      "name": "page-phone-3a-pro-btn-peer-box",
+      "type": "rectangle",
+      "width": 148,
+      "height": 38
+    },
+    {
+      "id": "page-phone-3a-pro-btn-peer-text",
+      "name": "page-phone-3a-pro-btn-peer-text",
+      "type": "text",
+      "width": 120,
+      "height": 18
+    },
+    {
+      "id": "page-phone-3a-pro-kicker",
+      "name": "page-phone-3a-pro-kicker",
+      "type": "text",
+      "width": 306,
+      "height": 18
+    },
+    {
+      "id": "page-phone-3a-pro-panel-title",
+      "name": "page-phone-3a-pro-panel-title",
+      "type": "text",
+      "width": 306,
+      "height": 41
+    },
+    {
+      "id": "page-phone-3a-pro-p-0",
+      "name": "page-phone-3a-pro-p-0",
+      "type": "text",
+      "width": 306,
+      "height": 80
+    },
+    {
+      "id": "page-phone-3a-pro-p-1",
+      "name": "page-phone-3a-pro-p-1",
+      "type": "text",
+      "width": 306,
+      "height": 2000
+    },
+    {
+      "id": "page-phone-3a-pro-p-2",
+      "name": "page-phone-3a-pro-p-2",
+      "type": "text",
+      "width": 306,
+      "height": 43
+    },
+    {
+      "id": "page-phone-3a-pro-feature",
+      "name": "page-phone-3a-pro-feature",
+      "type": "rectangle",
+      "width": 306,
+      "height": 220
+    },
+    {
+      "id": "page-phone-3a-pro-feature-2",
+      "name": "page-phone-3a-pro-feature-2",
+      "type": "rectangle",
+      "width": 306,
+      "height": 180
+    },
+    {
+      "id": "page-phone-3a-pro-card-0",
+      "name": "page-phone-3a-pro-card-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 136
+    },
+    {
+      "id": "page-phone-3a-pro-card-img-0",
+      "name": "page-phone-3a-pro-card-img-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 82
+    },
+    {
+      "id": "page-phone-3a-pro-card-title-0",
+      "name": "page-phone-3a-pro-card-title-0",
+      "type": "text",
+      "width": 286,
+      "height": 18
+    },
+    {
+      "id": "page-phone-3a-pro-card-copy-0",
+      "name": "page-phone-3a-pro-card-copy-0",
+      "type": "text",
+      "width": 286,
+      "height": 53
+    },
+    {
+      "id": "page-phone-3a-pro-card-1",
+      "name": "page-phone-3a-pro-card-1",
+      "type": "rectangle",
+      "width": 306,
+      "height": 136
+    },
+    {
+      "id": "page-phone-3a-pro-card-img-1",
+      "name": "page-phone-3a-pro-card-img-1",
+      "type": "rectangle",
+      "width": 306,
+      "height": 82
+    },
+    {
+      "id": "page-phone-3a-pro-card-title-1",
+      "name": "page-phone-3a-pro-card-title-1",
+      "type": "text",
+      "width": 286,
+      "height": 18
+    },
+    {
+      "id": "page-phone-3a-pro-card-copy-1",
+      "name": "page-phone-3a-pro-card-copy-1",
+      "type": "text",
+      "width": 286,
+      "height": 53
+    },
+    {
+      "id": "page-phone-3a-pro-related-title",
+      "name": "page-phone-3a-pro-related-title",
+      "type": "text",
+      "width": 180,
+      "height": 18
+    },
+    {
+      "id": "page-phone-3a-pro-related-0-box",
+      "name": "page-phone-3a-pro-related-0-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-phone-3a-pro-related-0-text",
+      "name": "page-phone-3a-pro-related-0-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-phone-3a-pro-related-1-box",
+      "name": "page-phone-3a-pro-related-1-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-phone-3a-pro-related-1-text",
+      "name": "page-phone-3a-pro-related-1-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-phone-3a-pro-related-2-box",
+      "name": "page-phone-3a-pro-related-2-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-phone-3a-pro-related-2-text",
+      "name": "page-phone-3a-pro-related-2-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-phone-3a-pro-img-1-60b3965b.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-phone-3a-pro-img-1-60b3965b.png",
+      "relativePath": "assets-structured/nothing-tech/page-phone-3a-pro-img-1-60b3965b.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-phone-3a-pro-img-1-60b3965b.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-phone-3a-pro-img-1-60b3965b.png",
+      "relativePath": "assets-structured/nothing-tech/page-phone-3a-pro-img-1-60b3965b.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-phone-3a-pro-img-3-77e2ca8f.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-phone-3a-pro-img-3-77e2ca8f.jpg",
+      "relativePath": "assets-structured/nothing-tech/page-phone-3a-pro-img-3-77e2ca8f.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-phone-3a-pro-img-1-60b3965b.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-phone-3a-pro-img-1-60b3965b.png",
+      "relativePath": "assets-structured/nothing-tech/page-phone-3a-pro-img-1-60b3965b.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-phone-3a-pro-img-3-77e2ca8f.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-phone-3a-pro-img-3-77e2ca8f.jpg",
+      "relativePath": "assets-structured/nothing-tech/page-phone-3a-pro-img-3-77e2ca8f.jpg",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-phone-3a-pro",
+    "name": "Phone (3a) Pro",
+    "x": 1040,
+    "y": 0,
+    "width": 390,
+    "height": 3373,
+    "fill": "#F3F3F0",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-bg",
+        "name": "page-phone-3a-pro-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 100,
+        "fill": "#F3F3F0"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-hero",
+        "name": "page-phone-3a-pro-hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-phone-3a-pro-img-1-60b3965b.png",
+          "mode": "cover"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-overlay",
+        "name": "page-phone-3a-pro-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": "#00000055"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-panel",
+        "name": "page-phone-3a-pro-panel",
+        "x": 18,
+        "y": 344,
+        "width": 354,
+        "height": 2759,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "cornerRadius": 0
+      },
+      {
+        "type": "frame",
+        "id": "header-page-phone-3a-pro",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-offers",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-crumb",
+        "name": "page-phone-3a-pro-crumb",
+        "x": 18,
+        "y": 82,
+        "fill": "#FFFFFF",
+        "content": "Home / Phone (3a) Pro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-title",
+        "name": "page-phone-3a-pro-title",
+        "x": 18,
+        "y": 106,
+        "fill": "#FFFFFF",
+        "content": "Phone (3a) Pro | Smartphone",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 30,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 92
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-subtitle",
+        "name": "page-phone-3a-pro-subtitle",
+        "x": 18,
+        "y": 184,
+        "fill": "#F0F0EE",
+        "content": "Nothing Phone (3a) Pro with Snapdragon 7s Gen 3, 50 periscope camera and front camera, 6.77\" AMOLED, AI-driven essential space & 5000 mAh battery.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 80
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-btn-home-box",
+        "name": "page-phone-3a-pro-btn-home-box",
+        "x": 18,
+        "y": 252,
+        "width": 128,
+        "height": 38,
+        "fill": "#E63E3E",
+        "stroke": {
+          "fill": "#E63E3E",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-btn-home-text",
+        "name": "page-phone-3a-pro-btn-home-text",
+        "x": 32,
+        "y": 262,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-btn-peer-box",
+        "name": "page-phone-3a-pro-btn-peer-box",
+        "x": 158,
+        "y": 252,
+        "width": 148,
+        "height": 38,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-offers",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-btn-peer-text",
+        "name": "page-phone-3a-pro-btn-peer-text",
+        "x": 172,
+        "y": 262,
+        "fill": "#111111",
+        "content": "Section",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-offers",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-kicker",
+        "name": "page-phone-3a-pro-kicker",
+        "x": 42,
+        "y": 368,
+        "fill": "#E63E3E",
+        "content": "THIRD LEVEL PAGE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 18,
+        "letterSpacing": "0.1em"
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-panel-title",
+        "name": "page-phone-3a-pro-panel-title",
+        "x": 42,
+        "y": 390,
+        "fill": "#111111",
+        "content": "Nothing (R)",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 24,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 41
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-p-0",
+        "name": "page-phone-3a-pro-p-0",
+        "x": 42,
+        "y": 422,
+        "fill": "#111111",
+        "content": "Nothing Phone (3a) Pro with Snapdragon 7s Gen 3, 50 periscope camera and front camera, 6.77\" AMOLED, AI-driven essential space & 5000 mAh battery.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 80
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-p-1",
+        "name": "page-phone-3a-pro-p-1",
+        "x": 42,
+        "y": 520,
+        "fill": "#111111",
+        "content": "Nothing (R) Explore Offers Learn More Phone ( 3a ) Pro 2-day battery 20 gb ram booster Pro camera system Grey Grey Black 12+256GB £322 £449 Add to bag Disclaimer 1. Appearance disclaimer: The smartphone&#x27;s appearance showcased on the page is for reference purposes only. Colours and finishes may slightly vary in different environments. 2. Illustrative feature images: Creative feature images displayed on the page are purely illustrative and do not represent the actual device structure; they are intended for demonstration purposes. 3. Camera performance comparison: Focus speed is benchmarked against Nothing Phone (3a) and the maximum pixel light intake is benchmarked against Nothing Phone (3a) as per Nothing testing laboratory results. 4. Processor performance comparison: All comparisons regarding the processor are benchmarked against Nothing Phone (2a) as per Nothing testing laboratory results.5. Vapour chamber comparison: The vapour chamber cooling performance is benchmarked against a Nothing phone without vapour chamber, based on results from the Nothing testing laboratory. 5. BGMI gaming data source: BGMI gaming data is based on the phone connected to Wi-Fi under default settings and lasted for 1 hour of Battlegrounds Mobile India with 88.7 fps average frame rate under 90 fps high framerate mode. 6. Vapour chamber comparison: The vapour chamber cooling performance is benchmarked against a Nothing phone without vapour chamber, based on results from the Nothing testing laboratory. 7. Charging and battery data source: All data regarding charging and battery life on this page are sourced from Nothing testing laboratories. Actual results may vary due to differences in software versions, environments, and phone models and may not exactly reflect the performance of the actual product. 8. Charge time varies with device settings and environmental factors. Actual results will vary. 9. Display performance comparison: Screen peak brightness and touch sampling rate are benchmarked against Nothing Phone (2a) Plus as per Nothing testing laboratory results. 10. Water and dust resistance certification: The device is certified IP64 for resistance to splash, water, and dust under specific laboratory conditions. However, this water resistance is applicable only in controlled environments and may not correspond to typical consumer use. Ingress protection is not guaranteed outside test conditions. Testing by users is not recommended, and the product is not advised for beach or pool use. Ingress protection may degrade due to daily wear, physical damage, or disassembly required for repair. Charging, operating physical buttons, or removing the sim tray in moist conditions is discouraged. Liquid damage in environments beyond IP64 conditions is not covered by the warranty. 11. Caution on testing water resistance: Users are strongly advised against testing water resistance independently, and the product is not suitable for beach or pool use. Ingress protection may degrade due to daily wear, physical damage, or disassembly needed for repair. 12. Memory and storage variation clarification: Actual available memory and storage capacity may vary or be reduced due to factors such as the operating system occupying part of the memory (RAM) and pre-installed programs using part of the flash memory (ROM). 13. RAM and ROM relationship clarification: The 20GB RAM specification is based on the 12GB RAM version. Creating additional RAM will utilise a selected amount of ROM storage on the device. Memory extension is possible when sufficient storage space is available, and the extension capacity varies across different models. 14. 5G and NFC variation notice: 5G functionality requires support from local telecom operator services and may not be available in all regions. NFC functions may vary in some markets. *Phone (3a) Series will get updates for six years, starting from when the device first became available on the market. This includes three Android updates, and six years of security updates, corrective updates and functionality updates.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 2000
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-p-2",
+        "name": "page-phone-3a-pro-p-2",
+        "x": 42,
+        "y": 2538,
+        "fill": "#111111",
+        "content": "A smartphone with strong camera focus, AMOLED display and Nothing OS.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 43
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-feature",
+        "name": "page-phone-3a-pro-feature",
+        "x": 42,
+        "y": 368,
+        "width": 306,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-phone-3a-pro-img-1-60b3965b.png",
+          "mode": "cover"
+        },
+        "href": "#page-phone-3a-pro",
+        "cornerRadius": 0
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-feature-2",
+        "name": "page-phone-3a-pro-feature-2",
+        "x": 42,
+        "y": 606,
+        "width": 306,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-phone-3a-pro-img-3-77e2ca8f.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-phone-3a-pro",
+        "cornerRadius": 0
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-card-0",
+        "name": "page-phone-3a-pro-card-0",
+        "x": 42,
+        "y": 2621,
+        "width": 306,
+        "height": 136,
+        "fill": "#ECECE8",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-offers",
+        "cornerRadius": 0
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-card-img-0",
+        "name": "page-phone-3a-pro-card-img-0",
+        "x": 42,
+        "y": 2621,
+        "width": 306,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-phone-3a-pro-img-1-60b3965b.png",
+          "mode": "cover"
+        },
+        "href": "#page-offers",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-card-title-0",
+        "name": "page-phone-3a-pro-card-title-0",
+        "x": 52,
+        "y": 2711,
+        "fill": "#111111",
+        "content": "Offers",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 18,
+        "href": "#page-offers"
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-card-copy-0",
+        "name": "page-phone-3a-pro-card-copy-0",
+        "x": 52,
+        "y": 2729,
+        "fill": "#6B6B66",
+        "content": "Nothing Phone (3a) Pro with Snapdragon 7s Gen 3, 50 periscope camera and front camera, 6.7",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 53,
+        "href": "#page-offers"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-card-1",
+        "name": "page-phone-3a-pro-card-1",
+        "x": 42,
+        "y": 2773,
+        "width": 306,
+        "height": 136,
+        "fill": "#ECECE8",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-phones",
+        "cornerRadius": 0
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-card-img-1",
+        "name": "page-phone-3a-pro-card-img-1",
+        "x": 42,
+        "y": 2773,
+        "width": 306,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-phone-3a-pro-img-3-77e2ca8f.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-phones",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-card-title-1",
+        "name": "page-phone-3a-pro-card-title-1",
+        "x": 52,
+        "y": 2863,
+        "fill": "#111111",
+        "content": "Phones",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 18,
+        "href": "#page-phones"
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-card-copy-1",
+        "name": "page-phone-3a-pro-card-copy-1",
+        "x": 52,
+        "y": 2881,
+        "fill": "#6B6B66",
+        "content": "Nothing (R) Explore Offers Learn More Phone ( 3a ) Pro 2-day battery 20 gb ram booster Pro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 53,
+        "href": "#page-phones"
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-related-title",
+        "name": "page-phone-3a-pro-related-title",
+        "x": 42,
+        "y": 2937,
+        "fill": "#E63E3E",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-related-0-box",
+        "name": "page-phone-3a-pro-related-0-box",
+        "x": 42,
+        "y": 2963,
+        "width": 150,
+        "height": 36,
+        "fill": "#E63E3E",
+        "stroke": {
+          "fill": "#E63E3E",
+          "thickness": 1
+        },
+        "href": "#page-offers",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-related-0-text",
+        "name": "page-phone-3a-pro-related-0-text",
+        "x": 56,
+        "y": 2972,
+        "fill": "#FFFFFF",
+        "content": "Offers",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-offers",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-related-1-box",
+        "name": "page-phone-3a-pro-related-1-box",
+        "x": 204,
+        "y": 2963,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-phones",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-related-1-text",
+        "name": "page-phone-3a-pro-related-1-text",
+        "x": 218,
+        "y": 2972,
+        "fill": "#111111",
+        "content": "Phones",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-phones",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-phone-3a-pro-related-2-box",
+        "name": "page-phone-3a-pro-related-2-box",
+        "x": 42,
+        "y": 3011,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-phone-3a-pro-related-2-text",
+        "name": "page-phone-3a-pro-related-2-text",
+        "x": 56,
+        "y": 3020,
+        "fill": "#111111",
+        "content": "Homepage",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 3123,
+        "width": 390,
+        "height": 250,
+        "fill": "#0F0F10",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#0F0F10"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F4F4F1",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F4F4F1",
+            "content": "Offers Phones Audio",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F4F4F1",
+            "content": "Support Centre Contact Support Phone (3a) Pro Ear (3)",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 69
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Nothing structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    ]
+  }
+}

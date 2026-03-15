@@ -1,0 +1,750 @@
+{
+  "sectionId": "QNNec",
+  "sectionName": "sec5",
+  "sectionKind": "generic",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 2630,
+    "width": 1440,
+    "height": 931
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 22,
+  "treeHash": "446f22091adc28410e44a8b01ba2bc950ee711e9bf02070a1a14bd030895d93b",
+  "blockCount": 6,
+  "blockIndex": [
+    {
+      "blockId": "HGnu8",
+      "blockName": "title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 58,
+        "width": 1440,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3a36b1bd02ff8fb401a4032df4350ce56c0b981f82450102648d938996775812"
+    },
+    {
+      "blockId": "JjZp0",
+      "blockName": "sub",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 309,
+        "y": 136,
+        "width": 821,
+        "height": 60
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7b074fa4651de909c3f0a3e8b27bbbdacbc75a4c83a2e896746bf19e9c16905e"
+    },
+    {
+      "blockId": "Taus2",
+      "blockName": "card1",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 38,
+        "y": 262,
+        "width": 666,
+        "height": 206
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "3b7f79b25dfeb9c2a0ce33f165ac16b2dd8d946d1d5a13d2732dcd369167eb3e"
+    },
+    {
+      "blockId": "d1Omt",
+      "blockName": "card2",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 736,
+        "y": 262,
+        "width": 666,
+        "height": 206
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "654a5b9032d27458f574d70adcc1c808c28782efa2b971d5e454edb3bd7db585"
+    },
+    {
+      "blockId": "pcJWD",
+      "blockName": "card3",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 38,
+        "y": 498,
+        "width": 1364,
+        "height": 292
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "0f293d0c0e2bc5e3f83d6f37566721e597f21de4ba2bd6cd5f2f61191209c55b"
+    },
+    {
+      "blockId": "bUWNl",
+      "blockName": "card4",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 5,
+      "bounds": {
+        "x": 889,
+        "y": 518,
+        "width": 401,
+        "height": 251
+      },
+      "directChildCount": 6,
+      "recursiveNodeCount": 7,
+      "treeHash": "4f83ccc98cc6b560de9c1dc5060cc784d18806ee86316eb65da9fdae6078916b"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "HGnu8",
+      "blockName": "title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 58,
+        "width": 1440,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3a36b1bd02ff8fb401a4032df4350ce56c0b981f82450102648d938996775812",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "HGnu8",
+        "x": 0,
+        "y": 58,
+        "name": "title",
+        "fill": "#202734",
+        "textGrowth": "fixed-width",
+        "width": 1440,
+        "content": "What drives us",
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 54,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "JjZp0",
+      "blockName": "sub",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 309,
+        "y": 136,
+        "width": 821,
+        "height": 60
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7b074fa4651de909c3f0a3e8b27bbbdacbc75a4c83a2e896746bf19e9c16905e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "JjZp0",
+        "x": 309,
+        "y": 136,
+        "name": "sub",
+        "fill": "#6B7280",
+        "textGrowth": "fixed-width-height",
+        "width": 821,
+        "height": 60,
+        "content": "We are united by a common vision and key values, informed by shared principles that guide our work today and into the future.",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "Taus2",
+      "blockName": "card1",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 38,
+        "y": 262,
+        "width": 666,
+        "height": 206
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "3b7f79b25dfeb9c2a0ce33f165ac16b2dd8d946d1d5a13d2732dcd369167eb3e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "Taus2",
+        "x": 38,
+        "y": 262,
+        "name": "card1",
+        "width": 666,
+        "height": 206,
+        "fill": "#F1F3F6",
+        "layout": "none",
+        "children": [
+          {
+            "type": "icon_font",
+            "id": "ZrVLU",
+            "x": 36,
+            "y": 34,
+            "width": 28,
+            "height": 28,
+            "iconFontName": "eye",
+            "iconFontFamily": "phosphor",
+            "fill": "#7C9BFF"
+          },
+          {
+            "type": "text",
+            "id": "I079Y",
+            "x": 36.05706272320049,
+            "y": 87.77171233952595,
+            "rotation": -0.14144809214718732,
+            "fill": "#232B39",
+            "content": "Our vision",
+            "fontFamily": "Inter",
+            "fontSize": 38,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "AEhOg",
+            "x": 36,
+            "y": 148,
+            "fill": "#6B7280",
+            "textGrowth": "fixed-width",
+            "width": 580,
+            "content": "Securing the future with revolutionary technology.",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "d1Omt",
+      "blockName": "card2",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 736,
+        "y": 262,
+        "width": 666,
+        "height": 206
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "654a5b9032d27458f574d70adcc1c808c28782efa2b971d5e454edb3bd7db585",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "d1Omt",
+        "x": 736,
+        "y": 262,
+        "name": "card2",
+        "width": 666,
+        "height": 206,
+        "fill": "#F1F3F6",
+        "layout": "none",
+        "children": [
+          {
+            "type": "icon_font",
+            "id": "TxSDx",
+            "x": 36,
+            "y": 34,
+            "width": 28,
+            "height": 28,
+            "iconFontName": "target",
+            "iconFontFamily": "phosphor",
+            "fill": "#7C9BFF"
+          },
+          {
+            "type": "text",
+            "id": "wK3PH",
+            "x": 36,
+            "y": 88,
+            "fill": "#232B39",
+            "content": "Our mission",
+            "fontFamily": "Inter",
+            "fontSize": 38,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "eWael",
+            "x": 36,
+            "y": 136,
+            "fill": "#6B7280",
+            "textGrowth": "fixed-width",
+            "width": 580,
+            "content": "Leveraging our disruptive technology, we deliver intelligent communication platforms that empower resilient connectivity and spatial intelligence, anytime and anywhere.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "pcJWD",
+      "blockName": "card3",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 38,
+        "y": 498,
+        "width": 1364,
+        "height": 292
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "0f293d0c0e2bc5e3f83d6f37566721e597f21de4ba2bd6cd5f2f61191209c55b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "pcJWD",
+        "x": 38,
+        "y": 498,
+        "name": "card3",
+        "width": 1364,
+        "height": 292,
+        "fill": "#F1F3F6",
+        "layout": "none",
+        "children": [
+          {
+            "type": "icon_font",
+            "id": "H9n3J",
+            "x": 36,
+            "y": 34,
+            "width": 28,
+            "height": 28,
+            "iconFontName": "feather",
+            "iconFontFamily": "phosphor",
+            "fill": "#7C9BFF"
+          },
+          {
+            "type": "text",
+            "id": "AREsE",
+            "x": 36,
+            "y": 88,
+            "fill": "#232B39",
+            "content": "Our core principles",
+            "fontFamily": "Inter",
+            "fontSize": 38,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "53VAM",
+            "x": 36,
+            "y": 142,
+            "fill": "#6B7280",
+            "textGrowth": "fixed-width",
+            "width": 679,
+            "content": "Kymeta's core principles define the character and spirit of our employees and focus our experts. We are committed to fostering a workplace rooted in trust by creating a diverse, equitable, and inclusive work environment that is rooted in accountability, employee well-being and corporate social responsibility.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "bUWNl",
+      "blockName": "card4",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 5,
+      "bounds": {
+        "x": 889,
+        "y": 518,
+        "width": 401,
+        "height": 251
+      },
+      "directChildCount": 6,
+      "recursiveNodeCount": 7,
+      "treeHash": "4f83ccc98cc6b560de9c1dc5060cc784d18806ee86316eb65da9fdae6078916b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "bUWNl",
+        "x": 889,
+        "y": 518,
+        "name": "card4",
+        "width": 401,
+        "height": 251,
+        "fill": "#ffffff",
+        "layout": "none",
+        "children": [
+          {
+            "type": "icon_font",
+            "id": "LXkye",
+            "x": 36,
+            "y": 34,
+            "width": 28,
+            "height": 28,
+            "iconFontName": "arrow-up-right",
+            "iconFontFamily": "phosphor",
+            "fill": "#7C9BFF"
+          },
+          {
+            "type": "text",
+            "id": "JmJEc",
+            "x": 36,
+            "y": 88,
+            "fill": "#232B39",
+            "textGrowth": "fixed-width",
+            "width": 328,
+            "content": "Drive customers success",
+            "lineHeight": 1.15,
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "YjO04",
+            "x": 37,
+            "y": 141,
+            "fill": "#6B7280",
+            "textGrowth": "fixed-width",
+            "width": 328,
+            "content": "We deliver solutions that delight our customers",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "icon_font",
+            "id": "A0y7q",
+            "x": 36,
+            "y": 213,
+            "width": 16,
+            "height": 16,
+            "iconFontName": "arrow-circle-left",
+            "iconFontFamily": "phosphor",
+            "fill": "#8CA3D1"
+          },
+          {
+            "type": "icon_font",
+            "id": "WALY0",
+            "x": 66,
+            "y": 213,
+            "width": 16,
+            "height": 16,
+            "iconFontName": "arrow-circle-right",
+            "iconFontFamily": "phosphor",
+            "fill": "#8CA3D1"
+          },
+          {
+            "type": "rectangle",
+            "id": "sjchX",
+            "x": 0,
+            "y": 247,
+            "fill": "#5A84FF",
+            "width": 82,
+            "height": 4
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "QNNec",
+    "x": 0,
+    "y": 2630,
+    "name": "sec5",
+    "width": 1440,
+    "height": 931,
+    "fill": "#ffffff00",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "HGnu8",
+        "x": 0,
+        "y": 58,
+        "name": "title",
+        "fill": "#202734",
+        "textGrowth": "fixed-width",
+        "width": 1440,
+        "content": "What drives us",
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 54,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "JjZp0",
+        "x": 309,
+        "y": 136,
+        "name": "sub",
+        "fill": "#6B7280",
+        "textGrowth": "fixed-width-height",
+        "width": 821,
+        "height": 60,
+        "content": "We are united by a common vision and key values, informed by shared principles that guide our work today and into the future.",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "Taus2",
+        "x": 38,
+        "y": 262,
+        "name": "card1",
+        "width": 666,
+        "height": 206,
+        "fill": "#F1F3F6",
+        "layout": "none",
+        "children": [
+          {
+            "type": "icon_font",
+            "id": "ZrVLU",
+            "x": 36,
+            "y": 34,
+            "width": 28,
+            "height": 28,
+            "iconFontName": "eye",
+            "iconFontFamily": "phosphor",
+            "fill": "#7C9BFF"
+          },
+          {
+            "type": "text",
+            "id": "I079Y",
+            "x": 36.05706272320049,
+            "y": 87.77171233952595,
+            "rotation": -0.14144809214718732,
+            "fill": "#232B39",
+            "content": "Our vision",
+            "fontFamily": "Inter",
+            "fontSize": 38,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "AEhOg",
+            "x": 36,
+            "y": 148,
+            "fill": "#6B7280",
+            "textGrowth": "fixed-width",
+            "width": 580,
+            "content": "Securing the future with revolutionary technology.",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "d1Omt",
+        "x": 736,
+        "y": 262,
+        "name": "card2",
+        "width": 666,
+        "height": 206,
+        "fill": "#F1F3F6",
+        "layout": "none",
+        "children": [
+          {
+            "type": "icon_font",
+            "id": "TxSDx",
+            "x": 36,
+            "y": 34,
+            "width": 28,
+            "height": 28,
+            "iconFontName": "target",
+            "iconFontFamily": "phosphor",
+            "fill": "#7C9BFF"
+          },
+          {
+            "type": "text",
+            "id": "wK3PH",
+            "x": 36,
+            "y": 88,
+            "fill": "#232B39",
+            "content": "Our mission",
+            "fontFamily": "Inter",
+            "fontSize": 38,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "eWael",
+            "x": 36,
+            "y": 136,
+            "fill": "#6B7280",
+            "textGrowth": "fixed-width",
+            "width": 580,
+            "content": "Leveraging our disruptive technology, we deliver intelligent communication platforms that empower resilient connectivity and spatial intelligence, anytime and anywhere.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "pcJWD",
+        "x": 38,
+        "y": 498,
+        "name": "card3",
+        "width": 1364,
+        "height": 292,
+        "fill": "#F1F3F6",
+        "layout": "none",
+        "children": [
+          {
+            "type": "icon_font",
+            "id": "H9n3J",
+            "x": 36,
+            "y": 34,
+            "width": 28,
+            "height": 28,
+            "iconFontName": "feather",
+            "iconFontFamily": "phosphor",
+            "fill": "#7C9BFF"
+          },
+          {
+            "type": "text",
+            "id": "AREsE",
+            "x": 36,
+            "y": 88,
+            "fill": "#232B39",
+            "content": "Our core principles",
+            "fontFamily": "Inter",
+            "fontSize": 38,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "53VAM",
+            "x": 36,
+            "y": 142,
+            "fill": "#6B7280",
+            "textGrowth": "fixed-width",
+            "width": 679,
+            "content": "Kymeta's core principles define the character and spirit of our employees and focus our experts. We are committed to fostering a workplace rooted in trust by creating a diverse, equitable, and inclusive work environment that is rooted in accountability, employee well-being and corporate social responsibility.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "bUWNl",
+        "x": 889,
+        "y": 518,
+        "name": "card4",
+        "width": 401,
+        "height": 251,
+        "fill": "#ffffff",
+        "layout": "none",
+        "children": [
+          {
+            "type": "icon_font",
+            "id": "LXkye",
+            "x": 36,
+            "y": 34,
+            "width": 28,
+            "height": 28,
+            "iconFontName": "arrow-up-right",
+            "iconFontFamily": "phosphor",
+            "fill": "#7C9BFF"
+          },
+          {
+            "type": "text",
+            "id": "JmJEc",
+            "x": 36,
+            "y": 88,
+            "fill": "#232B39",
+            "textGrowth": "fixed-width",
+            "width": 328,
+            "content": "Drive customers success",
+            "lineHeight": 1.15,
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "YjO04",
+            "x": 37,
+            "y": 141,
+            "fill": "#6B7280",
+            "textGrowth": "fixed-width",
+            "width": 328,
+            "content": "We deliver solutions that delight our customers",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "icon_font",
+            "id": "A0y7q",
+            "x": 36,
+            "y": 213,
+            "width": 16,
+            "height": 16,
+            "iconFontName": "arrow-circle-left",
+            "iconFontFamily": "phosphor",
+            "fill": "#8CA3D1"
+          },
+          {
+            "type": "icon_font",
+            "id": "WALY0",
+            "x": 66,
+            "y": 213,
+            "width": 16,
+            "height": 16,
+            "iconFontName": "arrow-circle-right",
+            "iconFontFamily": "phosphor",
+            "fill": "#8CA3D1"
+          },
+          {
+            "type": "rectangle",
+            "id": "sjchX",
+            "x": 0,
+            "y": 247,
+            "fill": "#5A84FF",
+            "width": 82,
+            "height": 4
+          }
+        ]
+      }
+    ]
+  }
+}

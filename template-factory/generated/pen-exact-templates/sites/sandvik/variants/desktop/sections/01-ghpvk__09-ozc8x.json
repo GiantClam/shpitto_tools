@@ -1,0 +1,274 @@
+{
+  "sectionId": "OZC8X",
+  "sectionName": "serviceBar",
+  "sectionKind": "generic",
+  "order": 9,
+  "bounds": {
+    "x": 0,
+    "y": 3695,
+    "width": 1440,
+    "height": 116
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "edb44b9d92ab89695c0f5eccace0780fe8625229e3157204879684c6f6e840b8",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "9yRE0",
+      "blockName": "svc1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 106,
+        "y": 30,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "55696e7f18e69afead767434ca34610ef861991ce142fbc661887c4c716abc74"
+    },
+    {
+      "blockId": "ZZsBx",
+      "blockName": "svc2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 827,
+        "y": 30,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "35754b4a7f00217d72a073f14601ef69607820472cc026b9b058acbcc35ad0e6"
+    },
+    {
+      "blockId": "y9i1V",
+      "blockName": "si1",
+      "blockType": "icon_font",
+      "blockRole": "icon_font",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 35,
+        "width": 46,
+        "height": 46
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "029d33fcb70e7b1aa8ecd28df6a23aa7346a095c46a873d9daefb80cff34006c"
+    },
+    {
+      "blockId": "da6w1",
+      "blockName": "si2",
+      "blockType": "icon_font",
+      "blockRole": "icon_font",
+      "order": 3,
+      "bounds": {
+        "x": 749,
+        "y": 35,
+        "width": 46,
+        "height": 46
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3d1444adafb5b577c13721775e7e70c28aa7e98be12a5a2ee49f06a6d2d504c7"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "9yRE0",
+      "blockName": "svc1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 106,
+        "y": 30,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "55696e7f18e69afead767434ca34610ef861991ce142fbc661887c4c716abc74",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "9yRE0",
+        "x": 106,
+        "y": 30,
+        "name": "svc1",
+        "fill": "#171717",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "创建账户  ›\n下订单、查看价格并检查刀具供货情况",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 20,
+        "fontWeight": "600"
+      }
+    },
+    {
+      "blockId": "ZZsBx",
+      "blockName": "svc2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 827,
+        "y": 30,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "35754b4a7f00217d72a073f14601ef69607820472cc026b9b058acbcc35ad0e6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "ZZsBx",
+        "x": 827,
+        "y": 30,
+        "name": "svc2",
+        "fill": "#171717",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "订阅我们的时事通讯  ›\n加入我们，获取最新信息！",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 20,
+        "fontWeight": "600"
+      }
+    },
+    {
+      "blockId": "y9i1V",
+      "blockName": "si1",
+      "blockType": "icon_font",
+      "blockRole": "icon_font",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 35,
+        "width": 46,
+        "height": 46
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "029d33fcb70e7b1aa8ecd28df6a23aa7346a095c46a873d9daefb80cff34006c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "icon_font",
+        "id": "y9i1V",
+        "x": 32,
+        "y": 35,
+        "name": "si1",
+        "width": 46,
+        "height": 46,
+        "iconFontName": "account_circle",
+        "iconFontFamily": "Material Symbols Rounded",
+        "fill": "#756A53"
+      }
+    },
+    {
+      "blockId": "da6w1",
+      "blockName": "si2",
+      "blockType": "icon_font",
+      "blockRole": "icon_font",
+      "order": 3,
+      "bounds": {
+        "x": 749,
+        "y": 35,
+        "width": 46,
+        "height": 46
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3d1444adafb5b577c13721775e7e70c28aa7e98be12a5a2ee49f06a6d2d504c7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "icon_font",
+        "id": "da6w1",
+        "x": 749,
+        "y": 35,
+        "name": "si2",
+        "width": 46,
+        "height": 46,
+        "iconFontName": "mail",
+        "iconFontFamily": "Material Symbols Rounded",
+        "fill": "#756A53"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "OZC8X",
+    "x": 0,
+    "y": 3695,
+    "name": "serviceBar",
+    "width": 1440,
+    "height": 116,
+    "fill": "#BBAF90",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "9yRE0",
+        "x": 106,
+        "y": 30,
+        "name": "svc1",
+        "fill": "#171717",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "创建账户  ›\n下订单、查看价格并检查刀具供货情况",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 20,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "ZZsBx",
+        "x": 827,
+        "y": 30,
+        "name": "svc2",
+        "fill": "#171717",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "订阅我们的时事通讯  ›\n加入我们，获取最新信息！",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 20,
+        "fontWeight": "600"
+      },
+      {
+        "type": "icon_font",
+        "id": "y9i1V",
+        "x": 32,
+        "y": 35,
+        "name": "si1",
+        "width": 46,
+        "height": 46,
+        "iconFontName": "account_circle",
+        "iconFontFamily": "Material Symbols Rounded",
+        "fill": "#756A53"
+      },
+      {
+        "type": "icon_font",
+        "id": "da6w1",
+        "x": 749,
+        "y": 35,
+        "name": "si2",
+        "width": 46,
+        "height": 46,
+        "iconFontName": "mail",
+        "iconFontFamily": "Material Symbols Rounded",
+        "fill": "#756A53"
+      }
+    ]
+  }
+}

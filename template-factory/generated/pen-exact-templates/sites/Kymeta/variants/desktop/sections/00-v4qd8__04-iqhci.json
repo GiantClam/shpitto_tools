@@ -1,0 +1,314 @@
+{
+  "sectionId": "iqHCI",
+  "sectionName": "hero",
+  "sectionKind": "hero",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 86,
+    "width": 1440,
+    "height": 560
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "8424ae6159776630822c6c75ad8c3b95e06e1d38cc88b4aa9f5c69c9b24e04ed",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "9zNCn",
+      "blockName": "heroOver",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 560
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "edf4ee5d978a4a168ac4b7ae0e24e373efee4ce68c96c9db81382ee8ae40ac29"
+    },
+    {
+      "blockId": "LO78K",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 36,
+        "y": 196,
+        "width": 950,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2080a06f7fbf5c876ee43f08821dbd0b8979758560d8c0015d1b65f3cd94f2f0"
+    },
+    {
+      "blockId": "fnuHV",
+      "blockName": "heroTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 36,
+        "y": 88,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ebdac480d44b38f37c9fbd4e84ef87465b3261b83bd87d565095bf386d461bd4"
+    },
+    {
+      "blockId": "VIk7F",
+      "blockName": "heroTagLine",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 36,
+        "y": 160,
+        "width": 72,
+        "height": 3
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7bf0d5821712e9b6c97de2228532e0d4d3e034ad3caa93d649decd49ff32b148"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1493238792000-8113da705763?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHNlYXJjaHwxfHxtaWxpdGFyeSUyMHZlaGljbGUlMjBkZXNlcnR8ZW58MHx8fHwxNzczMjcxOTQ2fDA&ixlib=rb-4.1.0&q=80&w=1600",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "9zNCn",
+      "blockName": "heroOver",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 560
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "edf4ee5d978a4a168ac4b7ae0e24e373efee4ce68c96c9db81382ee8ae40ac29",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "9zNCn",
+        "x": 0,
+        "y": 0,
+        "name": "heroOver",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 90,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#03070ECC",
+              "position": 0
+            },
+            {
+              "color": "#03070E66",
+              "position": 0.45
+            },
+            {
+              "color": "#03070E20",
+              "position": 1
+            }
+          ]
+        },
+        "width": 1440,
+        "height": 560
+      }
+    },
+    {
+      "blockId": "LO78K",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 36,
+        "y": 196,
+        "width": 950,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2080a06f7fbf5c876ee43f08821dbd0b8979758560d8c0015d1b65f3cd94f2f0",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "LO78K",
+        "x": 36,
+        "y": 196,
+        "name": "heroTitle",
+        "fill": "#F2F5FA",
+        "textGrowth": "fixed-width",
+        "width": 950,
+        "content": "Serving\nthe front",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 90,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "fnuHV",
+      "blockName": "heroTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 36,
+        "y": 88,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ebdac480d44b38f37c9fbd4e84ef87465b3261b83bd87d565095bf386d461bd4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "fnuHV",
+        "x": 36,
+        "y": 88,
+        "name": "heroTag",
+        "fill": "#AAB7CC",
+        "content": "Military & Government",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "VIk7F",
+      "blockName": "heroTagLine",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 36,
+        "y": 160,
+        "width": 72,
+        "height": 3
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7bf0d5821712e9b6c97de2228532e0d4d3e034ad3caa93d649decd49ff32b148",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "VIk7F",
+        "x": 36,
+        "y": 160,
+        "name": "heroTagLine",
+        "fill": "#5A84FF",
+        "width": 72,
+        "height": 3
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "iqHCI",
+    "x": 0,
+    "y": 86,
+    "name": "hero",
+    "width": 1440,
+    "height": 560,
+    "fill": {
+      "type": "image",
+      "enabled": true,
+      "url": "https://images.unsplash.com/photo-1493238792000-8113da705763?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHNlYXJjaHwxfHxtaWxpdGFyeSUyMHZlaGljbGUlMjBkZXNlcnR8ZW58MHx8fHwxNzczMjcxOTQ2fDA&ixlib=rb-4.1.0&q=80&w=1600",
+      "mode": "fill"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "9zNCn",
+        "x": 0,
+        "y": 0,
+        "name": "heroOver",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 90,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#03070ECC",
+              "position": 0
+            },
+            {
+              "color": "#03070E66",
+              "position": 0.45
+            },
+            {
+              "color": "#03070E20",
+              "position": 1
+            }
+          ]
+        },
+        "width": 1440,
+        "height": 560
+      },
+      {
+        "type": "text",
+        "id": "LO78K",
+        "x": 36,
+        "y": 196,
+        "name": "heroTitle",
+        "fill": "#F2F5FA",
+        "textGrowth": "fixed-width",
+        "width": 950,
+        "content": "Serving\nthe front",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 90,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "fnuHV",
+        "x": 36,
+        "y": 88,
+        "name": "heroTag",
+        "fill": "#AAB7CC",
+        "content": "Military & Government",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "id": "VIk7F",
+        "x": 36,
+        "y": 160,
+        "name": "heroTagLine",
+        "fill": "#5A84FF",
+        "width": 72,
+        "height": 3
+      }
+    ]
+  }
+}

@@ -1,0 +1,559 @@
+{
+  "sectionId": "HyNAl",
+  "sectionName": "section2",
+  "sectionKind": "generic",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 1248,
+    "width": 1200,
+    "height": 942
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 14,
+  "treeHash": "2b576fdd0d2041e9e57cb30f3b642e4655b7025ee12738584697bb04b7c01c06",
+  "blockCount": 5,
+  "blockIndex": [
+    {
+      "blockId": "0GW4V",
+      "blockName": "sec2Title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 62,
+        "y": 96,
+        "width": 600,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ce3ff9fae00a3f25c266ddb6c41036a046ff59e41e350c88e316047a12e33244"
+    },
+    {
+      "blockId": "YQTAd",
+      "blockName": "journey",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 62,
+        "y": 56,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "408bf10d927e47e35f394e733de22f7f725d53c4235bb954d24a0a1f34ea6e45"
+    },
+    {
+      "blockId": "eE5zg",
+      "blockName": "intro",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 600,
+        "y": 106,
+        "width": 540,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f805f995a5f48234a8768fc08b49baa94efd6168c20b5f46b81ed9e48fdb1fe6"
+    },
+    {
+      "blockId": "YYvMW",
+      "blockName": "visual",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 62,
+        "y": 300,
+        "width": 566,
+        "height": 560
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "d0947a9050d76e963256318557c5fb5ce377af64c304893efcec9b900ac7b6e0"
+    },
+    {
+      "blockId": "iJL71",
+      "blockName": "panel",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 662,
+        "y": 300,
+        "width": 478,
+        "height": 560
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "7ac767563d0ddf0eb00bbe0eec626353e22e10e5bddbd017269214e6b33bd756"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "0GW4V",
+      "blockName": "sec2Title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 62,
+        "y": 96,
+        "width": 600,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ce3ff9fae00a3f25c266ddb6c41036a046ff59e41e350c88e316047a12e33244",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "0GW4V",
+        "x": 62,
+        "y": 96,
+        "name": "sec2Title",
+        "fill": "#0F141B",
+        "textGrowth": "fixed-width",
+        "width": 600,
+        "content": "Not just quantum\n—better quantum",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 56,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "YQTAd",
+      "blockName": "journey",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 62,
+        "y": 56,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "408bf10d927e47e35f394e733de22f7f725d53c4235bb954d24a0a1f34ea6e45",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "YQTAd",
+        "x": 62,
+        "y": 56,
+        "name": "journey",
+        "fill": "#8D96A1",
+        "content": "[ Quantum Journey ]",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "600"
+      }
+    },
+    {
+      "blockId": "eE5zg",
+      "blockName": "intro",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 600,
+        "y": 106,
+        "width": 540,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f805f995a5f48234a8768fc08b49baa94efd6168c20b5f46b81ed9e48fdb1fe6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "eE5zg",
+        "x": 600,
+        "y": 106,
+        "name": "intro",
+        "fill": "#434C58",
+        "textGrowth": "fixed-width",
+        "width": 540,
+        "content": "Most quantum computers rely on superconducting circuits or exotic materials. IonQ takes a simpler, more powerful approach: we use single atoms—identical, stable, and natural—as the building blocks of computation.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "YYvMW",
+      "blockName": "visual",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 62,
+        "y": 300,
+        "width": 566,
+        "height": 560
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "d0947a9050d76e963256318557c5fb5ce377af64c304893efcec9b900ac7b6e0",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "YYvMW",
+        "x": 62,
+        "y": 300,
+        "name": "visual",
+        "width": 566,
+        "height": 560,
+        "fill": "#05080D",
+        "cornerRadius": 16,
+        "layout": "none",
+        "children": [
+          {
+            "type": "ellipse",
+            "id": "c5Joe",
+            "x": 178,
+            "y": 178,
+            "name": "vdot",
+            "width": 210,
+            "height": 210
+          },
+          {
+            "type": "ellipse",
+            "id": "cC0oa",
+            "x": 112,
+            "y": 220,
+            "name": "v1",
+            "rotation": 18,
+            "width": 340,
+            "height": 130,
+            "stroke": {
+              "thickness": 4,
+              "fill": "#D86A9E"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "jv91d",
+            "x": 112,
+            "y": 220,
+            "name": "v2",
+            "rotation": -18,
+            "width": 340,
+            "height": 130,
+            "stroke": {
+              "thickness": 4,
+              "fill": "#EFA95D"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "kaAlT",
+            "x": 112,
+            "y": 220,
+            "name": "v3",
+            "width": 340,
+            "height": 130,
+            "stroke": {
+              "thickness": 4,
+              "fill": "#C4B47A"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "iJL71",
+      "blockName": "panel",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 662,
+        "y": 300,
+        "width": 478,
+        "height": 560
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "7ac767563d0ddf0eb00bbe0eec626353e22e10e5bddbd017269214e6b33bd756",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "iJL71",
+        "x": 662,
+        "y": 300,
+        "name": "panel",
+        "width": 478,
+        "height": 560,
+        "fill": "#F1F2F4",
+        "cornerRadius": 10,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#9EA7B2"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "izm7g",
+            "x": 22,
+            "y": 48,
+            "name": "idx1",
+            "fill": "#596270",
+            "content": "001",
+            "fontFamily": "Inter",
+            "fontSize": 25,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "h8rK9",
+            "x": 22,
+            "y": 108,
+            "name": "pTitle",
+            "fill": "#2D3540",
+            "textGrowth": "fixed-width",
+            "width": 430,
+            "content": "The atom: nature’s qubit",
+            "lineHeight": 1.08,
+            "fontFamily": "Inter",
+            "fontSize": 36,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "ldfL7",
+            "x": 22,
+            "y": 189,
+            "name": "pBody1",
+            "fill": "#505A67",
+            "textGrowth": "fixed-width",
+            "width": 430,
+            "content": "The most important part of any quantum computer are its quantum bits, or qubits. IonQ’s qubits are ionized ytterbium atoms, a silvery rare-earth metal. Each ytterbium atom is perfectly identical to every other ytterbium atom in the universe.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "MOMSC",
+            "x": 22,
+            "y": 347,
+            "name": "pBody2",
+            "fill": "#505A67",
+            "textGrowth": "fixed-width",
+            "width": 430,
+            "content": "Moreover, once prepared in a particular stable quantum state, they can remain in that state for very long periods of time — they’re so consistent they’re used in one of the most accurate atomic clocks ever built.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "HyNAl",
+    "x": 0,
+    "y": 1248,
+    "name": "section2",
+    "width": 1200,
+    "height": 942,
+    "fill": "#F1F2F4",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "0GW4V",
+        "x": 62,
+        "y": 96,
+        "name": "sec2Title",
+        "fill": "#0F141B",
+        "textGrowth": "fixed-width",
+        "width": 600,
+        "content": "Not just quantum\n—better quantum",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 56,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "YQTAd",
+        "x": 62,
+        "y": 56,
+        "name": "journey",
+        "fill": "#8D96A1",
+        "content": "[ Quantum Journey ]",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "eE5zg",
+        "x": 600,
+        "y": 106,
+        "name": "intro",
+        "fill": "#434C58",
+        "textGrowth": "fixed-width",
+        "width": 540,
+        "content": "Most quantum computers rely on superconducting circuits or exotic materials. IonQ takes a simpler, more powerful approach: we use single atoms—identical, stable, and natural—as the building blocks of computation.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "YYvMW",
+        "x": 62,
+        "y": 300,
+        "name": "visual",
+        "width": 566,
+        "height": 560,
+        "fill": "#05080D",
+        "cornerRadius": 16,
+        "layout": "none",
+        "children": [
+          {
+            "type": "ellipse",
+            "id": "c5Joe",
+            "x": 178,
+            "y": 178,
+            "name": "vdot",
+            "width": 210,
+            "height": 210
+          },
+          {
+            "type": "ellipse",
+            "id": "cC0oa",
+            "x": 112,
+            "y": 220,
+            "name": "v1",
+            "rotation": 18,
+            "width": 340,
+            "height": 130,
+            "stroke": {
+              "thickness": 4,
+              "fill": "#D86A9E"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "jv91d",
+            "x": 112,
+            "y": 220,
+            "name": "v2",
+            "rotation": -18,
+            "width": 340,
+            "height": 130,
+            "stroke": {
+              "thickness": 4,
+              "fill": "#EFA95D"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "kaAlT",
+            "x": 112,
+            "y": 220,
+            "name": "v3",
+            "width": 340,
+            "height": 130,
+            "stroke": {
+              "thickness": 4,
+              "fill": "#C4B47A"
+            }
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "iJL71",
+        "x": 662,
+        "y": 300,
+        "name": "panel",
+        "width": 478,
+        "height": 560,
+        "fill": "#F1F2F4",
+        "cornerRadius": 10,
+        "stroke": {
+          "thickness": 1,
+          "fill": "#9EA7B2"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "izm7g",
+            "x": 22,
+            "y": 48,
+            "name": "idx1",
+            "fill": "#596270",
+            "content": "001",
+            "fontFamily": "Inter",
+            "fontSize": 25,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "h8rK9",
+            "x": 22,
+            "y": 108,
+            "name": "pTitle",
+            "fill": "#2D3540",
+            "textGrowth": "fixed-width",
+            "width": 430,
+            "content": "The atom: nature’s qubit",
+            "lineHeight": 1.08,
+            "fontFamily": "Inter",
+            "fontSize": 36,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "ldfL7",
+            "x": 22,
+            "y": 189,
+            "name": "pBody1",
+            "fill": "#505A67",
+            "textGrowth": "fixed-width",
+            "width": 430,
+            "content": "The most important part of any quantum computer are its quantum bits, or qubits. IonQ’s qubits are ionized ytterbium atoms, a silvery rare-earth metal. Each ytterbium atom is perfectly identical to every other ytterbium atom in the universe.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "MOMSC",
+            "x": 22,
+            "y": 347,
+            "name": "pBody2",
+            "fill": "#505A67",
+            "textGrowth": "fixed-width",
+            "width": 430,
+            "content": "Moreover, once prepared in a particular stable quantum state, they can remain in that state for very long periods of time — they’re so consistent they’re used in one of the most accurate atomic clocks ever built.",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "500"
+          }
+        ]
+      }
+    ]
+  }
+}

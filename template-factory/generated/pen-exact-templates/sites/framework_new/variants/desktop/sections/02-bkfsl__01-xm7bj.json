@@ -1,0 +1,85 @@
+{
+  "sectionId": "Xm7BJ",
+  "sectionName": "SupportHero",
+  "sectionKind": "hero",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": 154
+  },
+  "directChildCount": 1,
+  "recursiveNodeCount": 2,
+  "treeHash": "11b77ca2eb39778338d633e2ffd3f717cb9a98f284982ca2283f971e6cb9f7ea",
+  "blockCount": 1,
+  "blockIndex": [
+    {
+      "blockId": "rqgTO",
+      "blockName": "HeroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bf3b5e4f05183fcd3aabf7bf98bb6f2b73cf7d4bccf445ad7f95fd81e9d3ff43"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "rqgTO",
+      "blockName": "HeroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bf3b5e4f05183fcd3aabf7bf98bb6f2b73cf7d4bccf445ad7f95fd81e9d3ff43",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "rqgTO",
+        "name": "HeroTitle",
+        "fill": "#1F2737",
+        "content": "Hi, how can we help?",
+        "fontFamily": "Inter",
+        "fontSize": 53,
+        "fontWeight": "700"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "Xm7BJ",
+    "name": "SupportHero",
+    "width": "fill_container",
+    "height": 154,
+    "fill": "#BECBCD",
+    "layout": "vertical",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "children": [
+      {
+        "type": "text",
+        "id": "rqgTO",
+        "name": "HeroTitle",
+        "fill": "#1F2737",
+        "content": "Hi, how can we help?",
+        "fontFamily": "Inter",
+        "fontSize": 53,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

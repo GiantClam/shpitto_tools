@@ -1,0 +1,707 @@
+{
+  "sectionId": "YcB38",
+  "sectionName": "Intro",
+  "sectionKind": "generic",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 590,
+    "width": 1200,
+    "height": 546
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 25,
+  "treeHash": "52fcd561b6a2c0ece1b69853665b5652d32bb0c07222fa4494224937f9071b7a",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "rnOH9",
+      "blockName": "missionTop",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 54,
+        "width": 1108,
+        "height": 255
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 8,
+      "treeHash": "a7bd73757437e3a893c176370dc6bddc0f748f506d6c223625e187ec7337c3b1"
+    },
+    {
+      "blockId": "HXmYV",
+      "blockName": "partnersRow",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 32,
+        "y": 337,
+        "width": 1136,
+        "height": 84
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 8,
+      "treeHash": "cf77df57f6609cd4b4e72a4d678a8bc1e9d7f247f94c12c8b19e43a3ae3b953b"
+    },
+    {
+      "blockId": "LZgDu",
+      "blockName": "partnersRow",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 433,
+        "width": 1136,
+        "height": 84
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 8,
+      "treeHash": "2de61bb1026682bb55126b0e7779c7cb76f4905b6ec17fe0fd7d1b73ec1bf6a8"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "rnOH9",
+      "blockName": "missionTop",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 54,
+        "width": 1108,
+        "height": 255
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 8,
+      "treeHash": "a7bd73757437e3a893c176370dc6bddc0f748f506d6c223625e187ec7337c3b1",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "rnOH9",
+        "x": 32,
+        "y": 54,
+        "name": "missionTop",
+        "width": 1108,
+        "height": 255,
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "HceNh",
+            "x": 0,
+            "y": 0,
+            "name": "missionLeft",
+            "width": 710,
+            "height": 255,
+            "layout": "vertical",
+            "gap": 14,
+            "children": [
+              {
+                "type": "text",
+                "id": "5P4GC",
+                "name": "missionTag",
+                "fill": "#FF6A00",
+                "content": "[ Our mission ]",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "DGDQl",
+                "name": "missionTitle",
+                "fill": "#0B0F14",
+                "textGrowth": "fixed-width",
+                "width": 682,
+                "content": "To develop the world's best quantum technology to solve the world's most complex problems",
+                "fontFamily": "Inter",
+                "fontSize": 48,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "kiNcK",
+            "x": 783,
+            "y": 134,
+            "name": "missionRight",
+            "width": 325,
+            "height": 121,
+            "layout": "vertical",
+            "gap": 20,
+            "children": [
+              {
+                "type": "text",
+                "id": "1SLC5",
+                "name": "missionDesc",
+                "fill": "#3A3F46",
+                "textGrowth": "fixed-width",
+                "width": 349,
+                "content": "Building on over 30 years of research, we've brought quantum computing out of the lab and into the real world.",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              },
+              {
+                "type": "frame",
+                "id": "RPsTk",
+                "name": "missionBtn",
+                "width": 300,
+                "height": 44,
+                "fill": "#EAECEE",
+                "cornerRadius": 10,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#FF6A00"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "LmsLk",
+                    "name": "missionBtnTxt",
+                    "fill": "#FF6A00",
+                    "content": "View all partners and customers",
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "HXmYV",
+      "blockName": "partnersRow",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 32,
+        "y": 337,
+        "width": 1136,
+        "height": 84
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 8,
+      "treeHash": "cf77df57f6609cd4b4e72a4d678a8bc1e9d7f247f94c12c8b19e43a3ae3b953b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "HXmYV",
+        "x": 32,
+        "y": 337,
+        "name": "partnersRow",
+        "width": 1136,
+        "height": 84,
+        "fill": "#EAECEE",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "oxmCQ",
+            "x": 0,
+            "y": 30,
+            "name": "partLabel",
+            "fill": "#272C33",
+            "content": "Our partners",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "DrOyN",
+            "x": 161,
+            "y": 0,
+            "name": "partBox",
+            "width": 950,
+            "height": 84,
+            "fill": "#F5F6F7",
+            "cornerRadius": 14,
+            "padding": [
+              0,
+              22
+            ],
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "rhWNt",
+                "name": "pLogo1",
+                "fill": "#1E2329",
+                "content": "Google Cloud",
+                "fontFamily": "Inter",
+                "fontSize": 24,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "2wogf",
+                "name": "pLogo2",
+                "fill": "#1E2329",
+                "content": "AIST",
+                "fontFamily": "Inter",
+                "fontSize": 26,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "m0J03",
+                "name": "pLogo3",
+                "fill": "#1E2329",
+                "content": "NVIDIA",
+                "fontFamily": "Inter",
+                "fontSize": 26,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "nI6b1",
+                "name": "pLogo4",
+                "fill": "#1E2329",
+                "content": "DELL",
+                "fontFamily": "Inter",
+                "fontSize": 34,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "MyvOE",
+                "name": "pLogo5",
+                "fill": "#1E2329",
+                "content": "LOCKHEED MARTIN",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "LZgDu",
+      "blockName": "partnersRow",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 433,
+        "width": 1136,
+        "height": 84
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 8,
+      "treeHash": "2de61bb1026682bb55126b0e7779c7cb76f4905b6ec17fe0fd7d1b73ec1bf6a8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "LZgDu",
+        "x": 32,
+        "y": 433,
+        "name": "partnersRow",
+        "width": 1136,
+        "height": 84,
+        "fill": "#EAECEE",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "VzKsE",
+            "x": 0,
+            "y": 30,
+            "name": "partLabel",
+            "fill": "#272C33",
+            "content": "Our customers",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "VI0zG",
+            "x": 160,
+            "y": 0,
+            "name": "partBox",
+            "width": 950,
+            "height": 84,
+            "fill": "#F5F6F7",
+            "cornerRadius": 14,
+            "padding": [
+              0,
+              22
+            ],
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "NqHEl",
+                "name": "pLogo1",
+                "fill": "#1E2329",
+                "content": "Google Cloud",
+                "fontFamily": "Inter",
+                "fontSize": 24,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "CqqOV",
+                "name": "pLogo2",
+                "fill": "#1E2329",
+                "content": "AIST",
+                "fontFamily": "Inter",
+                "fontSize": 26,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "mw5JD",
+                "name": "pLogo3",
+                "fill": "#1E2329",
+                "content": "NVIDIA",
+                "fontFamily": "Inter",
+                "fontSize": 26,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "ICl03",
+                "name": "pLogo4",
+                "fill": "#1E2329",
+                "content": "DELL",
+                "fontFamily": "Inter",
+                "fontSize": 34,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "oSHxG",
+                "name": "pLogo5",
+                "fill": "#1E2329",
+                "content": "LOCKHEED MARTIN",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "YcB38",
+    "x": 0,
+    "y": 590,
+    "name": "Intro",
+    "width": 1200,
+    "height": 546,
+    "fill": "#EAECEE",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "rnOH9",
+        "x": 32,
+        "y": 54,
+        "name": "missionTop",
+        "width": 1108,
+        "height": 255,
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "HceNh",
+            "x": 0,
+            "y": 0,
+            "name": "missionLeft",
+            "width": 710,
+            "height": 255,
+            "layout": "vertical",
+            "gap": 14,
+            "children": [
+              {
+                "type": "text",
+                "id": "5P4GC",
+                "name": "missionTag",
+                "fill": "#FF6A00",
+                "content": "[ Our mission ]",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "DGDQl",
+                "name": "missionTitle",
+                "fill": "#0B0F14",
+                "textGrowth": "fixed-width",
+                "width": 682,
+                "content": "To develop the world's best quantum technology to solve the world's most complex problems",
+                "fontFamily": "Inter",
+                "fontSize": 48,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "kiNcK",
+            "x": 783,
+            "y": 134,
+            "name": "missionRight",
+            "width": 325,
+            "height": 121,
+            "layout": "vertical",
+            "gap": 20,
+            "children": [
+              {
+                "type": "text",
+                "id": "1SLC5",
+                "name": "missionDesc",
+                "fill": "#3A3F46",
+                "textGrowth": "fixed-width",
+                "width": 349,
+                "content": "Building on over 30 years of research, we've brought quantum computing out of the lab and into the real world.",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontWeight": "500"
+              },
+              {
+                "type": "frame",
+                "id": "RPsTk",
+                "name": "missionBtn",
+                "width": 300,
+                "height": 44,
+                "fill": "#EAECEE",
+                "cornerRadius": 10,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#FF6A00"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "LmsLk",
+                    "name": "missionBtnTxt",
+                    "fill": "#FF6A00",
+                    "content": "View all partners and customers",
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "HXmYV",
+        "x": 32,
+        "y": 337,
+        "name": "partnersRow",
+        "width": 1136,
+        "height": 84,
+        "fill": "#EAECEE",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "oxmCQ",
+            "x": 0,
+            "y": 30,
+            "name": "partLabel",
+            "fill": "#272C33",
+            "content": "Our partners",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "DrOyN",
+            "x": 161,
+            "y": 0,
+            "name": "partBox",
+            "width": 950,
+            "height": 84,
+            "fill": "#F5F6F7",
+            "cornerRadius": 14,
+            "padding": [
+              0,
+              22
+            ],
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "rhWNt",
+                "name": "pLogo1",
+                "fill": "#1E2329",
+                "content": "Google Cloud",
+                "fontFamily": "Inter",
+                "fontSize": 24,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "2wogf",
+                "name": "pLogo2",
+                "fill": "#1E2329",
+                "content": "AIST",
+                "fontFamily": "Inter",
+                "fontSize": 26,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "m0J03",
+                "name": "pLogo3",
+                "fill": "#1E2329",
+                "content": "NVIDIA",
+                "fontFamily": "Inter",
+                "fontSize": 26,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "nI6b1",
+                "name": "pLogo4",
+                "fill": "#1E2329",
+                "content": "DELL",
+                "fontFamily": "Inter",
+                "fontSize": 34,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "MyvOE",
+                "name": "pLogo5",
+                "fill": "#1E2329",
+                "content": "LOCKHEED MARTIN",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "LZgDu",
+        "x": 32,
+        "y": 433,
+        "name": "partnersRow",
+        "width": 1136,
+        "height": 84,
+        "fill": "#EAECEE",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "VzKsE",
+            "x": 0,
+            "y": 30,
+            "name": "partLabel",
+            "fill": "#272C33",
+            "content": "Our customers",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "VI0zG",
+            "x": 160,
+            "y": 0,
+            "name": "partBox",
+            "width": 950,
+            "height": 84,
+            "fill": "#F5F6F7",
+            "cornerRadius": 14,
+            "padding": [
+              0,
+              22
+            ],
+            "justifyContent": "space_between",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "NqHEl",
+                "name": "pLogo1",
+                "fill": "#1E2329",
+                "content": "Google Cloud",
+                "fontFamily": "Inter",
+                "fontSize": 24,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "CqqOV",
+                "name": "pLogo2",
+                "fill": "#1E2329",
+                "content": "AIST",
+                "fontFamily": "Inter",
+                "fontSize": 26,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "mw5JD",
+                "name": "pLogo3",
+                "fill": "#1E2329",
+                "content": "NVIDIA",
+                "fontFamily": "Inter",
+                "fontSize": 26,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "ICl03",
+                "name": "pLogo4",
+                "fill": "#1E2329",
+                "content": "DELL",
+                "fontFamily": "Inter",
+                "fontSize": 34,
+                "fontWeight": "700"
+              },
+              {
+                "type": "text",
+                "id": "oSHxG",
+                "name": "pLogo5",
+                "fill": "#1E2329",
+                "content": "LOCKHEED MARTIN",
+                "fontFamily": "Inter",
+                "fontSize": 20,
+                "fontWeight": "700"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

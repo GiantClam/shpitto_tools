@@ -1,0 +1,817 @@
+{
+  "sectionId": "footer",
+  "sectionName": "Footer",
+  "sectionKind": "footer",
+  "order": 9,
+  "bounds": {
+    "x": 0,
+    "y": 7700,
+    "width": 1440,
+    "height": 380
+  },
+  "directChildCount": 12,
+  "recursiveNodeCount": 13,
+  "treeHash": "0c944762a605c26194929368b4d86e65eac08957ec95168a19991200ac0b7c65",
+  "blockCount": 12,
+  "blockIndex": [
+    {
+      "blockId": "footer-logo",
+      "blockName": "footer-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 40,
+        "y": 74,
+        "width": 168,
+        "height": 54
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8a1e78ec91051b0aa4002ad51d39fab7157b21ba7bcacc60fe9555dd0af026f3"
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 150,
+        "width": 520,
+        "height": 45
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d3ab4f6b55d23b57fa6b09d6833481866398a2390cb1f10ac56ef840a74ce50b"
+    },
+    {
+      "blockId": "footer-heading-1",
+      "blockName": "footer-heading-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 760,
+        "y": 82,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "af2e13040e6595c41e46b5f0bc25dbc14cf948d3df9407dbba819bad2c7665bc"
+    },
+    {
+      "blockId": "footer-links-1",
+      "blockName": "footer-links-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 760,
+        "y": 110,
+        "width": 160,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b4136977cb4d543aff80fe37c3ca5a0fde82a09c6f502d5e20b13be55b3dddee"
+    },
+    {
+      "blockId": "footer-heading-2",
+      "blockName": "footer-heading-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 940,
+        "y": 82,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "556fe96cd073df943ee0ce9aab8952451abaae980ce3a2e008c62320f7e8b01f"
+    },
+    {
+      "blockId": "footer-links-2",
+      "blockName": "footer-links-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 940,
+        "y": 110,
+        "width": 180,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1d3cc244a2545374d6be43e7ea7357f44071a9f1bc232615b9d735d45843eb98"
+    },
+    {
+      "blockId": "footer-heading-3",
+      "blockName": "footer-heading-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 1160,
+        "y": 82,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "551dc3613dad17923e938e5d3f937b689a2d47c54cf48a203606983800453873"
+    },
+    {
+      "blockId": "footer-links-3",
+      "blockName": "footer-links-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 1160,
+        "y": 110,
+        "width": 200,
+        "height": 65
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4fa7a770ea44c49c32deb82435146d1aaa62bf4ca86ccbac78aab0d4474f1f22"
+    },
+    {
+      "blockId": "footer-top-box",
+      "blockName": "footer-top-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 40,
+        "y": 300,
+        "width": 130,
+        "height": 42
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7a70d16f465e62735756f724d8f85aac3988b3d0af4da822e98b31aea7b62e71"
+    },
+    {
+      "blockId": "footer-top-text",
+      "blockName": "footer-top-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 54,
+        "y": 312,
+        "width": 102,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "595b56d9d9c7ab83b2e5fc94b243dc9232a4a051e0436c1a269c5d949749e726"
+    },
+    {
+      "blockId": "footer-contact-box",
+      "blockName": "footer-contact-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 10,
+      "bounds": {
+        "x": 186,
+        "y": 300,
+        "width": 170,
+        "height": 42
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "03643e6a6e8e8dc840a096af142ffaf5f618688beee27f19382f57ff5ca80cfb"
+    },
+    {
+      "blockId": "footer-contact-text",
+      "blockName": "footer-contact-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 11,
+      "bounds": {
+        "x": 200,
+        "y": 312,
+        "width": 142,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "30b62f05451b674d500ebc28ce57102eab37734aba49d4a70b88b06c3bd4e998"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/pagani-logo.png",
+      "relativePath": "assets-structured/pagani/pagani-logo.png",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "footer-logo",
+      "blockName": "footer-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 40,
+        "y": 74,
+        "width": 168,
+        "height": 54
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8a1e78ec91051b0aa4002ad51d39fab7157b21ba7bcacc60fe9555dd0af026f3",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/pagani-logo.png",
+        "relativePath": "assets-structured/pagani/pagani-logo.png",
+        "exists": true,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "footer-logo",
+        "x": 40,
+        "y": 74,
+        "name": "footer-logo",
+        "width": 168,
+        "height": 54,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 40,
+        "y": 150,
+        "width": 520,
+        "height": 45
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d3ab4f6b55d23b57fa6b09d6833481866398a2390cb1f10ac56ef840a74ce50b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-copy",
+        "x": 40,
+        "y": 150,
+        "name": "footer-copy",
+        "fill": "#B9B3AB",
+        "content": "Structured Pagani homepage clone. Text, buttons, chips, rails and image containers are editable nodes, not a flattened screenshot.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 45
+      }
+    },
+    {
+      "blockId": "footer-heading-1",
+      "blockName": "footer-heading-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 760,
+        "y": 82,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "af2e13040e6595c41e46b5f0bc25dbc14cf948d3df9407dbba819bad2c7665bc",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-heading-1",
+        "x": 760,
+        "y": 82,
+        "name": "footer-heading-1",
+        "fill": "#B9B3AB",
+        "content": "Chapters",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      }
+    },
+    {
+      "blockId": "footer-links-1",
+      "blockName": "footer-links-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 760,
+        "y": 110,
+        "width": 160,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b4136977cb4d543aff80fe37c3ca5a0fde82a09c6f502d5e20b13be55b3dddee",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-links-1",
+        "x": 760,
+        "y": 110,
+        "name": "footer-links-1",
+        "fill": "#F3F2ED",
+        "content": "Home\nHistory\nDealers\nGuided Tours",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 160,
+        "height": 86
+      }
+    },
+    {
+      "blockId": "footer-heading-2",
+      "blockName": "footer-heading-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 940,
+        "y": 82,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "556fe96cd073df943ee0ce9aab8952451abaae980ce3a2e008c62320f7e8b01f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-heading-2",
+        "x": 940,
+        "y": 82,
+        "name": "footer-heading-2",
+        "fill": "#B9B3AB",
+        "content": "Models",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      }
+    },
+    {
+      "blockId": "footer-links-2",
+      "blockName": "footer-links-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 940,
+        "y": 110,
+        "width": 180,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1d3cc244a2545374d6be43e7ea7357f44071a9f1bc232615b9d735d45843eb98",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-links-2",
+        "x": 940,
+        "y": 110,
+        "name": "footer-links-2",
+        "fill": "#F3F2ED",
+        "content": "Pagani Utopia\nUtopia Roadster\nHuayra R\nZonda C12",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 86
+      }
+    },
+    {
+      "blockId": "footer-heading-3",
+      "blockName": "footer-heading-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 1160,
+        "y": 82,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "551dc3613dad17923e938e5d3f937b689a2d47c54cf48a203606983800453873",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-heading-3",
+        "x": 1160,
+        "y": 82,
+        "name": "footer-heading-3",
+        "fill": "#B9B3AB",
+        "content": "Meta",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      }
+    },
+    {
+      "blockId": "footer-links-3",
+      "blockName": "footer-links-3",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 1160,
+        "y": 110,
+        "width": 200,
+        "height": 65
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4fa7a770ea44c49c32deb82435146d1aaa62bf4ca86ccbac78aab0d4474f1f22",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-links-3",
+        "x": 1160,
+        "y": 110,
+        "name": "footer-links-3",
+        "fill": "#F3F2ED",
+        "content": "Pagani S.P.A.\nP.IVA 02054560368\nStructured pen clone",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 65
+      }
+    },
+    {
+      "blockId": "footer-top-box",
+      "blockName": "footer-top-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 40,
+        "y": 300,
+        "width": 130,
+        "height": 42
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7a70d16f465e62735756f724d8f85aac3988b3d0af4da822e98b31aea7b62e71",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "footer-top-box",
+        "x": 40,
+        "y": 300,
+        "name": "footer-top-box",
+        "width": 130,
+        "height": 42,
+        "fill": "#111111",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "footer-top-text",
+      "blockName": "footer-top-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 54,
+        "y": 312,
+        "width": 102,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "595b56d9d9c7ab83b2e5fc94b243dc9232a4a051e0436c1a269c5d949749e726",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-top-text",
+        "x": 54,
+        "y": 312,
+        "name": "footer-top-text",
+        "fill": "#F3F2ED",
+        "content": "Back to top",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 102,
+        "height": 18,
+        "letterSpacing": "0.18em",
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "footer-contact-box",
+      "blockName": "footer-contact-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 10,
+      "bounds": {
+        "x": 186,
+        "y": 300,
+        "width": 170,
+        "height": 42
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "03643e6a6e8e8dc840a096af142ffaf5f618688beee27f19382f57ff5ca80cfb",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "footer-contact-box",
+        "x": 186,
+        "y": 300,
+        "name": "footer-contact-box",
+        "width": 170,
+        "height": 42,
+        "fill": "#111111",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-contact-us"
+      }
+    },
+    {
+      "blockId": "footer-contact-text",
+      "blockName": "footer-contact-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 11,
+      "bounds": {
+        "x": 200,
+        "y": 312,
+        "width": 142,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "30b62f05451b674d500ebc28ce57102eab37734aba49d4a70b88b06c3bd4e998",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-contact-text",
+        "x": 200,
+        "y": 312,
+        "name": "footer-contact-text",
+        "fill": "#F3F2ED",
+        "content": "Contact Pagani",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 142,
+        "height": 18,
+        "letterSpacing": "0.18em",
+        "href": "#page-contact-us"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "footer",
+    "x": 0,
+    "y": 7700,
+    "width": 1440,
+    "height": 380,
+    "name": "Footer",
+    "fill": "#0C0C0C",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "footer-logo",
+        "x": 40,
+        "y": 74,
+        "name": "footer-logo",
+        "width": 168,
+        "height": 54,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/pagani-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "footer-copy",
+        "x": 40,
+        "y": 150,
+        "name": "footer-copy",
+        "fill": "#B9B3AB",
+        "content": "Structured Pagani homepage clone. Text, buttons, chips, rails and image containers are editable nodes, not a flattened screenshot.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 45
+      },
+      {
+        "type": "text",
+        "id": "footer-heading-1",
+        "x": 760,
+        "y": 82,
+        "name": "footer-heading-1",
+        "fill": "#B9B3AB",
+        "content": "Chapters",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      },
+      {
+        "type": "text",
+        "id": "footer-links-1",
+        "x": 760,
+        "y": 110,
+        "name": "footer-links-1",
+        "fill": "#F3F2ED",
+        "content": "Home\nHistory\nDealers\nGuided Tours",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 160,
+        "height": 86
+      },
+      {
+        "type": "text",
+        "id": "footer-heading-2",
+        "x": 940,
+        "y": 82,
+        "name": "footer-heading-2",
+        "fill": "#B9B3AB",
+        "content": "Models",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      },
+      {
+        "type": "text",
+        "id": "footer-links-2",
+        "x": 940,
+        "y": 110,
+        "name": "footer-links-2",
+        "fill": "#F3F2ED",
+        "content": "Pagani Utopia\nUtopia Roadster\nHuayra R\nZonda C12",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 86
+      },
+      {
+        "type": "text",
+        "id": "footer-heading-3",
+        "x": 1160,
+        "y": 82,
+        "name": "footer-heading-3",
+        "fill": "#B9B3AB",
+        "content": "Meta",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      },
+      {
+        "type": "text",
+        "id": "footer-links-3",
+        "x": 1160,
+        "y": 110,
+        "name": "footer-links-3",
+        "fill": "#F3F2ED",
+        "content": "Pagani S.P.A.\nP.IVA 02054560368\nStructured pen clone",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 65
+      },
+      {
+        "type": "rectangle",
+        "id": "footer-top-box",
+        "x": 40,
+        "y": 300,
+        "name": "footer-top-box",
+        "width": 130,
+        "height": 42,
+        "fill": "#111111",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "footer-top-text",
+        "x": 54,
+        "y": 312,
+        "name": "footer-top-text",
+        "fill": "#F3F2ED",
+        "content": "Back to top",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 102,
+        "height": 18,
+        "letterSpacing": "0.18em",
+        "href": "#page-home"
+      },
+      {
+        "type": "rectangle",
+        "id": "footer-contact-box",
+        "x": 186,
+        "y": 300,
+        "name": "footer-contact-box",
+        "width": 170,
+        "height": 42,
+        "fill": "#111111",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-contact-us"
+      },
+      {
+        "type": "text",
+        "id": "footer-contact-text",
+        "x": 200,
+        "y": 312,
+        "name": "footer-contact-text",
+        "fill": "#F3F2ED",
+        "content": "Contact Pagani",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 142,
+        "height": 18,
+        "letterSpacing": "0.18em",
+        "href": "#page-contact-us"
+      }
+    ]
+  }
+}

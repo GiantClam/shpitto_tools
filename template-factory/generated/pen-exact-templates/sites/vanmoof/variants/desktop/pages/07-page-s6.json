@@ -1,0 +1,2095 @@
+{
+  "pageId": "page-s6",
+  "pageName": "S6",
+  "pageType": "generic",
+  "order": 7,
+  "bounds": {
+    "x": 3280,
+    "y": 1658,
+    "width": 1440,
+    "height": 1538
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "52cde99a96aaf8a991a6070e256b5400082c6f269feb40743b369991d2ae76f3",
+  "directChildCount": 30,
+  "recursiveNodeCount": 47,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "header-page-s6",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "66bebd452d5970cc8a16baaf77e5d85b623756ed8c9c2f109a97f245f7bc92bd",
+      "blockCount": 7
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1308,
+        "width": 1440,
+        "height": 230
+      },
+      "directChildCount": 9,
+      "recursiveNodeCount": 10,
+      "treeHash": "60fc4b6e3ac7d703bc33683fcab47aa2e5cb00ce0dd75f1f379168d4347ab8a5",
+      "blockCount": 9
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "header-page-s6",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "66bebd452d5970cc8a16baaf77e5d85b623756ed8c9c2f109a97f245f7bc92bd",
+      "blockCount": 7,
+      "blockIndex": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7"
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 24,
+            "width": 240,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a9a175d37c5f4f763b6bcafadd643626fc6e338057defeb380158506d0500d3d"
+        },
+        {
+          "blockId": "nav-page-our-rides",
+          "blockName": "nav-page-our-rides",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 840,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2bdc1af7aa04ef13ad3eedcd82af24350d5528aba3bd48b546c7e4cd44b142ac"
+        },
+        {
+          "blockId": "nav-page-accessories",
+          "blockName": "nav-page-accessories",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 948,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a62825a743446b54ed886ccecfb79606f1db811da1be49473f96afe0e9f992f7"
+        },
+        {
+          "blockId": "nav-page-our-story",
+          "blockName": "nav-page-our-story",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 1056,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "88dc5e28e00ccd915782a88ca20acd88c890657210368d396a6ec802a1debb5d"
+        },
+        {
+          "blockId": "nav-page-peak-design",
+          "blockName": "nav-page-peak-design",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 1164,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3b5ce98cba0f591f564b22bdcf29faac0be2382869aea2357bc3c20b648b509"
+        },
+        {
+          "blockId": "nav-page-shipping-delivery",
+          "blockName": "nav-page-shipping-delivery",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1272,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "61e92119e4933cb59acd27dfb07b345cfc63017e69f897216b86ebab5520fd75"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "94706af44a9b2fff5b92be3546433c49f700fbfba4ca9e234244d8b5cece03b7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 24,
+            "width": 240,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a9a175d37c5f4f763b6bcafadd643626fc6e338057defeb380158506d0500d3d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#151515",
+            "content": "VanMoof",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          }
+        },
+        {
+          "blockId": "nav-page-our-rides",
+          "blockName": "nav-page-our-rides",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 840,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2bdc1af7aa04ef13ad3eedcd82af24350d5528aba3bd48b546c7e4cd44b142ac",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-our-rides",
+            "name": "nav-page-our-rides",
+            "x": 840,
+            "y": 30,
+            "fill": "#151515",
+            "content": "OUR RIDES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-our-rides",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-accessories",
+          "blockName": "nav-page-accessories",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 948,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a62825a743446b54ed886ccecfb79606f1db811da1be49473f96afe0e9f992f7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-accessories",
+            "name": "nav-page-accessories",
+            "x": 948,
+            "y": 30,
+            "fill": "#151515",
+            "content": "ACCESSORIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-accessories",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-our-story",
+          "blockName": "nav-page-our-story",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 1056,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "88dc5e28e00ccd915782a88ca20acd88c890657210368d396a6ec802a1debb5d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-our-story",
+            "name": "nav-page-our-story",
+            "x": 1056,
+            "y": 30,
+            "fill": "#151515",
+            "content": "OUR STORY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-our-story",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-peak-design",
+          "blockName": "nav-page-peak-design",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 1164,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3b5ce98cba0f591f564b22bdcf29faac0be2382869aea2357bc3c20b648b509",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-peak-design",
+            "name": "nav-page-peak-design",
+            "x": 1164,
+            "y": 30,
+            "fill": "#151515",
+            "content": "PEAK DESIGN",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-peak-design",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        },
+        {
+          "blockId": "nav-page-shipping-delivery",
+          "blockName": "nav-page-shipping-delivery",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1272,
+            "y": 30,
+            "width": 100,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "61e92119e4933cb59acd27dfb07b345cfc63017e69f897216b86ebab5520fd75",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "nav-page-shipping-delivery",
+            "name": "nav-page-shipping-delivery",
+            "x": 1272,
+            "y": 30,
+            "fill": "#151515",
+            "content": "SHIPPING & DELIVERY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-shipping-delivery",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "header-page-s6",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#151515",
+            "content": "VanMoof",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "nav-page-our-rides",
+            "name": "nav-page-our-rides",
+            "x": 840,
+            "y": 30,
+            "fill": "#151515",
+            "content": "OUR RIDES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-our-rides",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-accessories",
+            "name": "nav-page-accessories",
+            "x": 948,
+            "y": 30,
+            "fill": "#151515",
+            "content": "ACCESSORIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-accessories",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-our-story",
+            "name": "nav-page-our-story",
+            "x": 1056,
+            "y": 30,
+            "fill": "#151515",
+            "content": "OUR STORY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-our-story",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-peak-design",
+            "name": "nav-page-peak-design",
+            "x": 1164,
+            "y": 30,
+            "fill": "#151515",
+            "content": "PEAK DESIGN",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-peak-design",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-shipping-delivery",
+            "name": "nav-page-shipping-delivery",
+            "x": 1272,
+            "y": 30,
+            "fill": "#151515",
+            "content": "SHIPPING & DELIVERY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-shipping-delivery",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1308,
+        "width": 1440,
+        "height": 230
+      },
+      "directChildCount": 9,
+      "recursiveNodeCount": 10,
+      "treeHash": "60fc4b6e3ac7d703bc33683fcab47aa2e5cb00ce0dd75f1f379168d4347ab8a5",
+      "blockCount": 9,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d56f56b1a323ea3c4e502ff948ab24f8462abf2c1bf4167beb4f6efca088d237"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ad3b0adf53fdec58647fdcb26d23a13b1421c8046a00a74d3e85f449361532c0"
+        },
+        {
+          "blockId": "footer-title-0",
+          "blockName": "footer-title-0",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "684154c1bbcdc02d3cc8f9b46837449ea0df1e023d1a4551a64f7855b2e76ef8"
+        },
+        {
+          "blockId": "footer-body-0",
+          "blockName": "footer-body-0",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "632c3b186dcdd173fb9b72844869f229a00de8f1b2609d5725cf54424edd3c89"
+        },
+        {
+          "blockId": "footer-title-1",
+          "blockName": "footer-title-1",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 260,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c56cda84454d6b65e4b2d8fdcb846ce64b3c9726a784c830d61ef0757c566c93"
+        },
+        {
+          "blockId": "footer-body-1",
+          "blockName": "footer-body-1",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 260,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ea71bf2532a2fb7999435ef46d28065a7e2da7082a9b5e51b47b28387ecadafc"
+        },
+        {
+          "blockId": "footer-title-2",
+          "blockName": "footer-title-2",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 480,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "305a8d696220663a934520a64eee85b96a45d07c42131256f7e838023531c8a5"
+        },
+        {
+          "blockId": "footer-body-2",
+          "blockName": "footer-body-2",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 480,
+            "y": 100,
+            "width": 180,
+            "height": 41
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bbd8130d621205131dd35506482dc5297b22ee995b1397e63c4c1eeb7f3e705d"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 1020,
+            "y": 150,
+            "width": 320,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "876429484d794194a960a2872a136516fdae73cc8bb035a4567cc39fbd9a7f38"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d56f56b1a323ea3c4e502ff948ab24f8462abf2c1bf4167beb4f6efca088d237",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230,
+            "fill": "#131714"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 40,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ad3b0adf53fdec58647fdcb26d23a13b1421c8046a00a74d3e85f449361532c0",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 40,
+            "y": 30,
+            "fill": "#F3F5EE",
+            "content": "VanMoof",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-title-0",
+          "blockName": "footer-title-0",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 40,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "684154c1bbcdc02d3cc8f9b46837449ea0df1e023d1a4551a64f7855b2e76ef8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-title-0",
+            "name": "footer-title-0",
+            "x": 40,
+            "y": 76,
+            "fill": "#F3F5EE",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-body-0",
+          "blockName": "footer-body-0",
+          "blockType": "text",
+          "order": 3,
+          "bounds": {
+            "x": 40,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "632c3b186dcdd173fb9b72844869f229a00de8f1b2609d5725cf54424edd3c89",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-body-0",
+            "name": "footer-body-0",
+            "x": 40,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Our Rides Accessories",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-title-1",
+          "blockName": "footer-title-1",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 260,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c56cda84454d6b65e4b2d8fdcb846ce64b3c9726a784c830d61ef0757c566c93",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-title-1",
+            "name": "footer-title-1",
+            "x": 260,
+            "y": 76,
+            "fill": "#F3F5EE",
+            "content": "Explore",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-body-1",
+          "blockName": "footer-body-1",
+          "blockType": "text",
+          "order": 5,
+          "bounds": {
+            "x": 260,
+            "y": 100,
+            "width": 180,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ea71bf2532a2fb7999435ef46d28065a7e2da7082a9b5e51b47b28387ecadafc",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-body-1",
+            "name": "footer-body-1",
+            "x": 260,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Our Story Peak Design",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-title-2",
+          "blockName": "footer-title-2",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 480,
+            "y": 76,
+            "width": 180,
+            "height": 18
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "305a8d696220663a934520a64eee85b96a45d07c42131256f7e838023531c8a5",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-title-2",
+            "name": "footer-title-2",
+            "x": 480,
+            "y": 76,
+            "fill": "#F3F5EE",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          }
+        },
+        {
+          "blockId": "footer-body-2",
+          "blockName": "footer-body-2",
+          "blockType": "text",
+          "order": 7,
+          "bounds": {
+            "x": 480,
+            "y": 100,
+            "width": 180,
+            "height": 41
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bbd8130d621205131dd35506482dc5297b22ee995b1397e63c4c1eeb7f3e705d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-body-2",
+            "name": "footer-body-2",
+            "x": 480,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Shipping & Delivery A5 S6",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 41
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 8,
+          "bounds": {
+            "x": 1020,
+            "y": 150,
+            "width": 320,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "876429484d794194a960a2872a136516fdae73cc8bb035a4567cc39fbd9a7f38",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 1020,
+            "y": 150,
+            "fill": "#D8D5CE",
+            "content": "VanMoof structured clone pen with desktop and mobile page sets.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 38
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1308,
+        "width": 1440,
+        "height": 230,
+        "fill": "#131714",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230,
+            "fill": "#131714"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 40,
+            "y": 30,
+            "fill": "#F3F5EE",
+            "content": "VanMoof",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-0",
+            "name": "footer-title-0",
+            "x": 40,
+            "y": 76,
+            "fill": "#F3F5EE",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-0",
+            "name": "footer-body-0",
+            "x": 40,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Our Rides Accessories",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-1",
+            "name": "footer-title-1",
+            "x": 260,
+            "y": 76,
+            "fill": "#F3F5EE",
+            "content": "Explore",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-1",
+            "name": "footer-body-1",
+            "x": 260,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Our Story Peak Design",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-2",
+            "name": "footer-title-2",
+            "x": 480,
+            "y": 76,
+            "fill": "#F3F5EE",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-2",
+            "name": "footer-body-2",
+            "x": 480,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Shipping & Delivery A5 S6",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 41
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 1020,
+            "y": 150,
+            "fill": "#D8D5CE",
+            "content": "VanMoof structured clone pen with desktop and mobile page sets.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 38
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 16,
+  "looseNodeCount": 28,
+  "looseNodes": [
+    {
+      "id": "page-s6-bg",
+      "name": "page-s6-bg",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 100
+    },
+    {
+      "id": "page-s6-hero",
+      "name": "page-s6-hero",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 420
+    },
+    {
+      "id": "page-s6-overlay",
+      "name": "page-s6-overlay",
+      "type": "rectangle",
+      "width": 1440,
+      "height": 420
+    },
+    {
+      "id": "page-s6-panel",
+      "name": "page-s6-panel",
+      "type": "rectangle",
+      "width": 1360,
+      "height": 824
+    },
+    {
+      "id": "page-s6-crumb",
+      "name": "page-s6-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 18
+    },
+    {
+      "id": "page-s6-title",
+      "name": "page-s6-title",
+      "type": "text",
+      "width": 760,
+      "height": 245
+    },
+    {
+      "id": "page-s6-subtitle",
+      "name": "page-s6-subtitle",
+      "type": "text",
+      "width": 620,
+      "height": 79
+    },
+    {
+      "id": "page-s6-btn-home-box",
+      "name": "page-s6-btn-home-box",
+      "type": "rectangle",
+      "width": 128,
+      "height": 38
+    },
+    {
+      "id": "page-s6-btn-home-text",
+      "name": "page-s6-btn-home-text",
+      "type": "text",
+      "width": 100,
+      "height": 18
+    },
+    {
+      "id": "page-s6-btn-peer-box",
+      "name": "page-s6-btn-peer-box",
+      "type": "rectangle",
+      "width": 148,
+      "height": 38
+    },
+    {
+      "id": "page-s6-btn-peer-text",
+      "name": "page-s6-btn-peer-text",
+      "type": "text",
+      "width": 120,
+      "height": 18
+    },
+    {
+      "id": "page-s6-kicker",
+      "name": "page-s6-kicker",
+      "type": "text",
+      "width": 520,
+      "height": 18
+    },
+    {
+      "id": "page-s6-panel-title",
+      "name": "page-s6-panel-title",
+      "type": "text",
+      "width": 520,
+      "height": 60
+    },
+    {
+      "id": "page-s6-p-0",
+      "name": "page-s6-p-0",
+      "type": "text",
+      "width": 520,
+      "height": 70
+    },
+    {
+      "id": "page-s6-p-1",
+      "name": "page-s6-p-1",
+      "type": "text",
+      "width": 520,
+      "height": 49
+    },
+    {
+      "id": "page-s6-feature",
+      "name": "page-s6-feature",
+      "type": "rectangle",
+      "width": 390,
+      "height": 260
+    },
+    {
+      "id": "page-s6-feature-2",
+      "name": "page-s6-feature-2",
+      "type": "rectangle",
+      "width": 390,
+      "height": 180
+    },
+    {
+      "id": "page-s6-card-0",
+      "name": "page-s6-card-0",
+      "type": "rectangle",
+      "width": 196,
+      "height": 178
+    },
+    {
+      "id": "page-s6-card-img-0",
+      "name": "page-s6-card-img-0",
+      "type": "rectangle",
+      "width": 196,
+      "height": 96
+    },
+    {
+      "id": "page-s6-card-title-0",
+      "name": "page-s6-card-title-0",
+      "type": "text",
+      "width": 176,
+      "height": 18
+    },
+    {
+      "id": "page-s6-card-copy-0",
+      "name": "page-s6-card-copy-0",
+      "type": "text",
+      "width": 176,
+      "height": 85
+    },
+    {
+      "id": "page-s6-related-title",
+      "name": "page-s6-related-title",
+      "type": "text",
+      "width": 180,
+      "height": 18
+    },
+    {
+      "id": "page-s6-related-0-box",
+      "name": "page-s6-related-0-box",
+      "type": "rectangle",
+      "width": 180,
+      "height": 36
+    },
+    {
+      "id": "page-s6-related-0-text",
+      "name": "page-s6-related-0-text",
+      "type": "text",
+      "width": 152,
+      "height": 18
+    },
+    {
+      "id": "page-s6-related-1-box",
+      "name": "page-s6-related-1-box",
+      "type": "rectangle",
+      "width": 180,
+      "height": 36
+    },
+    {
+      "id": "page-s6-related-1-text",
+      "name": "page-s6-related-1-text",
+      "type": "text",
+      "width": 152,
+      "height": 18
+    },
+    {
+      "id": "page-s6-related-2-box",
+      "name": "page-s6-related-2-box",
+      "type": "rectangle",
+      "width": 180,
+      "height": 36
+    },
+    {
+      "id": "page-s6-related-2-text",
+      "name": "page-s6-related-2-text",
+      "type": "text",
+      "width": 152,
+      "height": 18
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "relativePath": "assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "relativePath": "assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "relativePath": "assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "relativePath": "assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-s6",
+    "name": "S6",
+    "x": 3280,
+    "y": 1658,
+    "width": 1440,
+    "height": 1538,
+    "fill": "#F4F5F0",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-s6-bg",
+        "name": "page-s6-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 100,
+        "fill": "#F4F5F0"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-s6-hero",
+        "name": "page-s6-hero",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 420,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+          "mode": "cover"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-s6-overlay",
+        "name": "page-s6-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 420,
+        "fill": "#00000055"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-s6-panel",
+        "name": "page-s6-panel",
+        "x": 40,
+        "y": 444,
+        "width": 1360,
+        "height": 824,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8DDD4",
+          "thickness": 1
+        },
+        "cornerRadius": 20
+      },
+      {
+        "type": "frame",
+        "id": "header-page-s6",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 84,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 84,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 40,
+            "y": 24,
+            "fill": "#151515",
+            "content": "VanMoof",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 22,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 240,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "nav-page-our-rides",
+            "name": "nav-page-our-rides",
+            "x": 840,
+            "y": 30,
+            "fill": "#151515",
+            "content": "OUR RIDES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-our-rides",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-accessories",
+            "name": "nav-page-accessories",
+            "x": 948,
+            "y": 30,
+            "fill": "#151515",
+            "content": "ACCESSORIES",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-accessories",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-our-story",
+            "name": "nav-page-our-story",
+            "x": 1056,
+            "y": 30,
+            "fill": "#151515",
+            "content": "OUR STORY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-our-story",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-peak-design",
+            "name": "nav-page-peak-design",
+            "x": 1164,
+            "y": 30,
+            "fill": "#151515",
+            "content": "PEAK DESIGN",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-peak-design",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          },
+          {
+            "type": "text",
+            "id": "nav-page-shipping-delivery",
+            "name": "nav-page-shipping-delivery",
+            "x": 1272,
+            "y": 30,
+            "fill": "#151515",
+            "content": "SHIPPING & DELIVERY",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "600",
+            "textGrowth": "fixed-width-height",
+            "width": 100,
+            "height": 18,
+            "letterSpacing": "0.08em",
+            "href": "#page-shipping-delivery",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-s6-crumb",
+        "name": "page-s6-crumb",
+        "x": 40,
+        "y": 102,
+        "fill": "#FFFFFF",
+        "content": "Home / S6",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-s6-title",
+        "name": "page-s6-title",
+        "x": 40,
+        "y": 126,
+        "fill": "#FFFFFF",
+        "content": "The new VanMoof S6 series electric bikes | VanMoof",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 56,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 760,
+        "height": 245
+      },
+      {
+        "type": "text",
+        "id": "page-s6-subtitle",
+        "name": "page-s6-subtitle",
+        "x": 40,
+        "y": 226,
+        "fill": "#F0F0EE",
+        "content": "Built for total harmony between rider and road, the S6 and S6 Open are the culmination of 5 generations and 11 years of e-bike innovation.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 17,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 79
+      },
+      {
+        "type": "rectangle",
+        "id": "page-s6-btn-home-box",
+        "name": "page-s6-btn-home-box",
+        "x": 40,
+        "y": 298,
+        "width": 128,
+        "height": 38,
+        "fill": "#7AC943",
+        "stroke": {
+          "fill": "#7AC943",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-s6-btn-home-text",
+        "name": "page-s6-btn-home-text",
+        "x": 54,
+        "y": 308,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-s6-btn-peer-box",
+        "name": "page-s6-btn-peer-box",
+        "x": 180,
+        "y": 298,
+        "width": 148,
+        "height": 38,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8DDD4",
+          "thickness": 1
+        },
+        "href": "#page-our-rides",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-s6-btn-peer-text",
+        "name": "page-s6-btn-peer-text",
+        "x": 194,
+        "y": 308,
+        "fill": "#151515",
+        "content": "Section",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-our-rides",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "page-s6-kicker",
+        "name": "page-s6-kicker",
+        "x": 64,
+        "y": 468,
+        "fill": "#7AC943",
+        "content": "THIRD LEVEL PAGE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 18,
+        "letterSpacing": "0.1em"
+      },
+      {
+        "type": "text",
+        "id": "page-s6-panel-title",
+        "name": "page-s6-panel-title",
+        "x": 64,
+        "y": 490,
+        "fill": "#151515",
+        "content": "S6",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 38,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 60
+      },
+      {
+        "type": "text",
+        "id": "page-s6-p-0",
+        "name": "page-s6-p-0",
+        "x": 64,
+        "y": 522,
+        "fill": "#151515",
+        "content": "Built for total harmony between rider and road, the S6 and S6 Open are the culmination of 5 generations and 11 years of e-bike innovation.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 70
+      },
+      {
+        "type": "text",
+        "id": "page-s6-p-1",
+        "name": "page-s6-p-1",
+        "x": 64,
+        "y": 610,
+        "fill": "#151515",
+        "content": "Next generation VanMoof ride designed for a balanced rider-road connection.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 15,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 520,
+        "height": 49
+      },
+      {
+        "type": "rectangle",
+        "id": "page-s6-feature",
+        "name": "page-s6-feature",
+        "x": 970,
+        "y": 468,
+        "width": 390,
+        "height": 260,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-s6",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-s6-feature-2",
+        "name": "page-s6-feature-2",
+        "x": 970,
+        "y": 746,
+        "width": 390,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-s6",
+        "cornerRadius": 18
+      },
+      {
+        "type": "rectangle",
+        "id": "page-s6-card-0",
+        "name": "page-s6-card-0",
+        "x": 64,
+        "y": 938,
+        "width": 196,
+        "height": 178,
+        "fill": "#EEF0E9",
+        "stroke": {
+          "fill": "#D8DDD4",
+          "thickness": 1
+        },
+        "href": "#page-our-rides",
+        "cornerRadius": 16
+      },
+      {
+        "type": "rectangle",
+        "id": "page-s6-card-img-0",
+        "name": "page-s6-card-img-0",
+        "x": 64,
+        "y": 938,
+        "width": 196,
+        "height": 96,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/vanmoof/page-s6-img-1-6c433dac.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-our-rides",
+        "cornerRadius": 16
+      },
+      {
+        "type": "text",
+        "id": "page-s6-card-title-0",
+        "name": "page-s6-card-title-0",
+        "x": 74,
+        "y": 1042,
+        "fill": "#151515",
+        "content": "Our Rides",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 18,
+        "href": "#page-our-rides"
+      },
+      {
+        "type": "text",
+        "id": "page-s6-card-copy-0",
+        "name": "page-s6-card-copy-0",
+        "x": 74,
+        "y": 1062,
+        "fill": "#646A62",
+        "content": "Built for total harmony between rider and road, the S6 and S6 Open are the culmination of",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 176,
+        "height": 85,
+        "href": "#page-our-rides"
+      },
+      {
+        "type": "text",
+        "id": "page-s6-related-title",
+        "name": "page-s6-related-title",
+        "x": 64,
+        "y": 1150,
+        "fill": "#7AC943",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-s6-related-0-box",
+        "name": "page-s6-related-0-box",
+        "x": 64,
+        "y": 1176,
+        "width": 180,
+        "height": 36,
+        "fill": "#7AC943",
+        "stroke": {
+          "fill": "#7AC943",
+          "thickness": 1
+        },
+        "href": "#page-our-rides",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-s6-related-0-text",
+        "name": "page-s6-related-0-text",
+        "x": 78,
+        "y": 1185,
+        "fill": "#FFFFFF",
+        "content": "Our Rides",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 152,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-our-rides",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-s6-related-1-box",
+        "name": "page-s6-related-1-box",
+        "x": 256,
+        "y": 1176,
+        "width": 180,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8DDD4",
+          "thickness": 1
+        },
+        "href": "#page-accessories",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-s6-related-1-text",
+        "name": "page-s6-related-1-text",
+        "x": 270,
+        "y": 1185,
+        "fill": "#151515",
+        "content": "Accessories",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 152,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-accessories",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-s6-related-2-box",
+        "name": "page-s6-related-2-box",
+        "x": 448,
+        "y": 1176,
+        "width": 180,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8DDD4",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "page-s6-related-2-text",
+        "name": "page-s6-related-2-text",
+        "x": 462,
+        "y": 1185,
+        "fill": "#151515",
+        "content": "Homepage",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 152,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1308,
+        "width": 1440,
+        "height": 230,
+        "fill": "#131714",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 230,
+            "fill": "#131714"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 40,
+            "y": 30,
+            "fill": "#F3F5EE",
+            "content": "VanMoof",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 20,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-0",
+            "name": "footer-title-0",
+            "x": 40,
+            "y": 76,
+            "fill": "#F3F5EE",
+            "content": "Sections",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-0",
+            "name": "footer-body-0",
+            "x": 40,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Our Rides Accessories",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-1",
+            "name": "footer-title-1",
+            "x": 260,
+            "y": 76,
+            "fill": "#F3F5EE",
+            "content": "Explore",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-1",
+            "name": "footer-body-1",
+            "x": 260,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Our Story Peak Design",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-title-2",
+            "name": "footer-title-2",
+            "x": 480,
+            "y": 76,
+            "fill": "#F3F5EE",
+            "content": "Products",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 18,
+            "letterSpacing": "0.08em"
+          },
+          {
+            "type": "text",
+            "id": "footer-body-2",
+            "name": "footer-body-2",
+            "x": 480,
+            "y": 100,
+            "fill": "#D8D5CE",
+            "content": "Shipping & Delivery A5 S6",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 41
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 1020,
+            "y": 150,
+            "fill": "#D8D5CE",
+            "content": "VanMoof structured clone pen with desktop and mobile page sets.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 38
+          }
+        ]
+      }
+    ]
+  }
+}

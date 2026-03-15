@@ -1,0 +1,227 @@
+{
+  "sectionId": "vQcBX",
+  "sectionName": "resourceStrip",
+  "sectionKind": "generic",
+  "order": 7,
+  "bounds": {
+    "x": 32,
+    "y": 390,
+    "width": 1376,
+    "height": 90
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 5,
+  "treeHash": "c1aac19e380781063a171fd9a3d59cf158bad53dd2f13ba63c1d9f62a3678774",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "EacqV",
+      "blockName": "stripTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 84,
+        "y": 21,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "503842bae6c149ef5dad5462a91d0d6f755c8982bff5b5a65d1201fde697e717"
+    },
+    {
+      "blockId": "JqBP7",
+      "blockName": "stripDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 577,
+        "y": 33,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8e0c90a51047d263473c81be185beca001b855918fc0eb7f6295f6050844353a"
+    },
+    {
+      "blockId": "e75RU",
+      "blockName": "stripBtn",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 1220,
+        "y": 28,
+        "width": 120,
+        "height": 34
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "74a18ac9cae3923b4f10ba9456d824739da4f63e70db8eed7c3c7f0dfa2eb196"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "EacqV",
+      "blockName": "stripTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 84,
+        "y": 21,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "503842bae6c149ef5dad5462a91d0d6f755c8982bff5b5a65d1201fde697e717",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "EacqV",
+        "x": 84,
+        "y": 21,
+        "name": "stripTitle",
+        "fill": "#FFFFFF",
+        "content": "不要错过任何一个帖子。",
+        "fontFamily": "Inter",
+        "fontSize": 28,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "JqBP7",
+      "blockName": "stripDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 577,
+        "y": 33,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8e0c90a51047d263473c81be185beca001b855918fc0eb7f6295f6050844353a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "JqBP7",
+        "x": 577,
+        "y": 33,
+        "name": "stripDesc",
+        "fill": "#ffffff",
+        "content": "订阅后，您将收到来自行业专家的最新见解、观点和故事。",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "e75RU",
+      "blockName": "stripBtn",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 1220,
+        "y": 28,
+        "width": 120,
+        "height": 34
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "74a18ac9cae3923b4f10ba9456d824739da4f63e70db8eed7c3c7f0dfa2eb196",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "e75RU",
+        "x": 1220,
+        "y": 28,
+        "name": "stripBtn",
+        "width": 120,
+        "height": 34,
+        "fill": "#C70041",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "0AQ8B",
+            "x": 32,
+            "y": 7,
+            "name": "stripBtnT",
+            "fill": "#FFFFFF",
+            "content": "立即订阅",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "vQcBX",
+    "x": 32,
+    "y": 390,
+    "name": "resourceStrip",
+    "width": 1376,
+    "height": 90,
+    "fill": "#005060",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "EacqV",
+        "x": 84,
+        "y": 21,
+        "name": "stripTitle",
+        "fill": "#FFFFFF",
+        "content": "不要错过任何一个帖子。",
+        "fontFamily": "Inter",
+        "fontSize": 28,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "JqBP7",
+        "x": 577,
+        "y": 33,
+        "name": "stripDesc",
+        "fill": "#ffffff",
+        "content": "订阅后，您将收到来自行业专家的最新见解、观点和故事。",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "e75RU",
+        "x": 1220,
+        "y": 28,
+        "name": "stripBtn",
+        "width": 120,
+        "height": 34,
+        "fill": "#C70041",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "0AQ8B",
+            "x": 32,
+            "y": 7,
+            "name": "stripBtnT",
+            "fill": "#FFFFFF",
+            "content": "立即订阅",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

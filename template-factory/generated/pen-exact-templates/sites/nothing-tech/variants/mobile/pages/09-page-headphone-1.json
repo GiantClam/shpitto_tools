@@ -1,0 +1,1508 @@
+{
+  "pageId": "page-headphone-1",
+  "pageName": "Headphone (1)",
+  "pageType": "product-detail",
+  "order": 9,
+  "bounds": {
+    "x": 1040,
+    "y": 7868,
+    "width": 390,
+    "height": 1550
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "5540cf940365ec883d4586f16cab6a417bec0ec9ab4358e3fbd647b867f92b45",
+  "directChildCount": 33,
+  "recursiveNodeCount": 42,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "header-page-headphone-1",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "235a12489d8180cc4bb18c0430f797b9d1cea692a17e49bcd3e656cf9722b0d4",
+      "blockCount": 3
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1300,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "dff584f25b3da7854efdee5037030a17e261b02c00d3a20b7ce91fc775eda242",
+      "blockCount": 5
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "header-page-headphone-1",
+      "sectionName": "Header",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "235a12489d8180cc4bb18c0430f797b9d1cea692a17e49bcd3e656cf9722b0d4",
+      "blockCount": 3,
+      "blockIndex": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db"
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9e5190dcb5c93eb72c5017089729cc71e53923d9b3aba31f4b43690989aaac3b"
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0043ae504f0701095ff630564b52e0fc6eb7a2aeaa9cbbebc0a5c64a6518000b"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "header-bg",
+          "blockName": "header-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f3e5361fb4a50603dfb765609ed5b23db7e5954bc8da133c814d49f32d8495db",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "header-brand",
+          "blockName": "header-brand",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 18,
+            "width": 180,
+            "height": 28
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9e5190dcb5c93eb72c5017089729cc71e53923d9b3aba31f4b43690989aaac3b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          }
+        },
+        {
+          "blockId": "header-menu",
+          "blockName": "header-menu",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 362,
+            "y": 18,
+            "width": 18,
+            "height": 20
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0043ae504f0701095ff630564b52e0fc6eb7a2aeaa9cbbebc0a5c64a6518000b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-offers",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "header-page-headphone-1",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-offers",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1300,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 5,
+      "recursiveNodeCount": 6,
+      "treeHash": "dff584f25b3da7854efdee5037030a17e261b02c00d3a20b7ce91fc775eda242",
+      "blockCount": 5,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3030104b6da362da5e686eac8b2c7efbbacc8ecf411b83d292b7f2012fb81484"
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "de3ddbeed7009949da6210aa92ef4af84d4894c9ca38a9989d68c0d5e9d0d792"
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "939a95b64652641822a351b91715fc75bba72d3fc84dc2be2d0a4e6c5417b71f"
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 69
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1e2864beef8a3c11aba71f07a87f8d1b397d535aee2481cef5b368b8ed7b361e"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2b960f0fe42d50228d4289941093da358cbad2b8f4dc9e1b472c49d2bb354bfd"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3030104b6da362da5e686eac8b2c7efbbacc8ecf411b83d292b7f2012fb81484",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#0F0F10"
+          }
+        },
+        {
+          "blockId": "footer-brand",
+          "blockName": "footer-brand",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 30,
+            "width": 220,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "de3ddbeed7009949da6210aa92ef4af84d4894c9ca38a9989d68c0d5e9d0d792",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F4F4F1",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "footer-col-1",
+          "blockName": "footer-col-1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 68,
+            "width": 130,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "939a95b64652641822a351b91715fc75bba72d3fc84dc2be2d0a4e6c5417b71f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F4F4F1",
+            "content": "Offers Phones Audio",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-col-2",
+          "blockName": "footer-col-2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 182,
+            "y": 68,
+            "width": 130,
+            "height": 69
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1e2864beef8a3c11aba71f07a87f8d1b397d535aee2481cef5b368b8ed7b361e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F4F4F1",
+            "content": "Support Centre Contact Support Phone (3a) Pro Ear (3)",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 69
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 188,
+            "width": 320,
+            "height": 49
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2b960f0fe42d50228d4289941093da358cbad2b8f4dc9e1b472c49d2bb354bfd",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Nothing structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1300,
+        "width": 390,
+        "height": 250,
+        "fill": "#0F0F10",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#0F0F10"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F4F4F1",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F4F4F1",
+            "content": "Offers Phones Audio",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F4F4F1",
+            "content": "Support Centre Contact Support Phone (3a) Pro Ear (3)",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 69
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Nothing structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 8,
+  "looseNodeCount": 31,
+  "looseNodes": [
+    {
+      "id": "page-headphone-1-bg",
+      "name": "page-headphone-1-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 100
+    },
+    {
+      "id": "page-headphone-1-hero",
+      "name": "page-headphone-1-hero",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-headphone-1-overlay",
+      "name": "page-headphone-1-overlay",
+      "type": "rectangle",
+      "width": 390,
+      "height": 320
+    },
+    {
+      "id": "page-headphone-1-panel",
+      "name": "page-headphone-1-panel",
+      "type": "rectangle",
+      "width": 354,
+      "height": 936
+    },
+    {
+      "id": "page-headphone-1-crumb",
+      "name": "page-headphone-1-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 18
+    },
+    {
+      "id": "page-headphone-1-title",
+      "name": "page-headphone-1-title",
+      "type": "text",
+      "width": 320,
+      "height": 92
+    },
+    {
+      "id": "page-headphone-1-subtitle",
+      "name": "page-headphone-1-subtitle",
+      "type": "text",
+      "width": 320,
+      "height": 43
+    },
+    {
+      "id": "page-headphone-1-btn-home-box",
+      "name": "page-headphone-1-btn-home-box",
+      "type": "rectangle",
+      "width": 128,
+      "height": 38
+    },
+    {
+      "id": "page-headphone-1-btn-home-text",
+      "name": "page-headphone-1-btn-home-text",
+      "type": "text",
+      "width": 100,
+      "height": 18
+    },
+    {
+      "id": "page-headphone-1-btn-peer-box",
+      "name": "page-headphone-1-btn-peer-box",
+      "type": "rectangle",
+      "width": 148,
+      "height": 38
+    },
+    {
+      "id": "page-headphone-1-btn-peer-text",
+      "name": "page-headphone-1-btn-peer-text",
+      "type": "text",
+      "width": 120,
+      "height": 18
+    },
+    {
+      "id": "page-headphone-1-kicker",
+      "name": "page-headphone-1-kicker",
+      "type": "text",
+      "width": 306,
+      "height": 18
+    },
+    {
+      "id": "page-headphone-1-panel-title",
+      "name": "page-headphone-1-panel-title",
+      "type": "text",
+      "width": 306,
+      "height": 41
+    },
+    {
+      "id": "page-headphone-1-p-0",
+      "name": "page-headphone-1-p-0",
+      "type": "text",
+      "width": 306,
+      "height": 43
+    },
+    {
+      "id": "page-headphone-1-feature",
+      "name": "page-headphone-1-feature",
+      "type": "rectangle",
+      "width": 306,
+      "height": 220
+    },
+    {
+      "id": "page-headphone-1-feature-2",
+      "name": "page-headphone-1-feature-2",
+      "type": "rectangle",
+      "width": 306,
+      "height": 180
+    },
+    {
+      "id": "page-headphone-1-card-0",
+      "name": "page-headphone-1-card-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 136
+    },
+    {
+      "id": "page-headphone-1-card-img-0",
+      "name": "page-headphone-1-card-img-0",
+      "type": "rectangle",
+      "width": 306,
+      "height": 82
+    },
+    {
+      "id": "page-headphone-1-card-title-0",
+      "name": "page-headphone-1-card-title-0",
+      "type": "text",
+      "width": 286,
+      "height": 18
+    },
+    {
+      "id": "page-headphone-1-card-copy-0",
+      "name": "page-headphone-1-card-copy-0",
+      "type": "text",
+      "width": 286,
+      "height": 53
+    },
+    {
+      "id": "page-headphone-1-card-1",
+      "name": "page-headphone-1-card-1",
+      "type": "rectangle",
+      "width": 306,
+      "height": 136
+    },
+    {
+      "id": "page-headphone-1-card-img-1",
+      "name": "page-headphone-1-card-img-1",
+      "type": "rectangle",
+      "width": 306,
+      "height": 82
+    },
+    {
+      "id": "page-headphone-1-card-title-1",
+      "name": "page-headphone-1-card-title-1",
+      "type": "text",
+      "width": 286,
+      "height": 18
+    },
+    {
+      "id": "page-headphone-1-card-copy-1",
+      "name": "page-headphone-1-card-copy-1",
+      "type": "text",
+      "width": 286,
+      "height": 53
+    },
+    {
+      "id": "page-headphone-1-related-title",
+      "name": "page-headphone-1-related-title",
+      "type": "text",
+      "width": 180,
+      "height": 18
+    },
+    {
+      "id": "page-headphone-1-related-0-box",
+      "name": "page-headphone-1-related-0-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-headphone-1-related-0-text",
+      "name": "page-headphone-1-related-0-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-headphone-1-related-1-box",
+      "name": "page-headphone-1-related-1-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-headphone-1-related-1-text",
+      "name": "page-headphone-1-related-1-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    },
+    {
+      "id": "page-headphone-1-related-2-box",
+      "name": "page-headphone-1-related-2-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 36
+    },
+    {
+      "id": "page-headphone-1-related-2-text",
+      "name": "page-headphone-1-related-2-text",
+      "type": "text",
+      "width": 122,
+      "height": 18
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-headphone-1-img-1-077201a8.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-headphone-1-img-1-077201a8.png",
+      "relativePath": "assets-structured/nothing-tech/page-headphone-1-img-1-077201a8.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-headphone-1-img-1-077201a8.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-headphone-1-img-1-077201a8.png",
+      "relativePath": "assets-structured/nothing-tech/page-headphone-1-img-1-077201a8.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-headphone-1-img-3-7b184e6a.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-headphone-1-img-3-7b184e6a.jpg",
+      "relativePath": "assets-structured/nothing-tech/page-headphone-1-img-3-7b184e6a.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-headphone-1-img-1-077201a8.png",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-headphone-1-img-1-077201a8.png",
+      "relativePath": "assets-structured/nothing-tech/page-headphone-1-img-1-077201a8.png",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-headphone-1-img-3-7b184e6a.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/nothing-tech/page-headphone-1-img-3-7b184e6a.jpg",
+      "relativePath": "assets-structured/nothing-tech/page-headphone-1-img-3-7b184e6a.jpg",
+      "exists": true
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-headphone-1",
+    "name": "Headphone (1)",
+    "x": 1040,
+    "y": 7868,
+    "width": 390,
+    "height": 1550,
+    "fill": "#F3F3F0",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-bg",
+        "name": "page-headphone-1-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 100,
+        "fill": "#F3F3F0"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-hero",
+        "name": "page-headphone-1-hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-headphone-1-img-1-077201a8.png",
+          "mode": "cover"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-overlay",
+        "name": "page-headphone-1-overlay",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 320,
+        "fill": "#00000055"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-panel",
+        "name": "page-headphone-1-panel",
+        "x": 18,
+        "y": 344,
+        "width": 354,
+        "height": 936,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "cornerRadius": 0
+      },
+      {
+        "type": "frame",
+        "id": "header-page-headphone-1",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#111111",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#111111",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-offers",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-crumb",
+        "name": "page-headphone-1-crumb",
+        "x": 18,
+        "y": 82,
+        "fill": "#FFFFFF",
+        "content": "Home / Headphone (1)",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-title",
+        "name": "page-headphone-1-title",
+        "x": 18,
+        "y": 106,
+        "fill": "#FFFFFF",
+        "content": "Headphone (1) | Audio",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 30,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 92
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-subtitle",
+        "name": "page-headphone-1-subtitle",
+        "x": 18,
+        "y": 184,
+        "fill": "#F0F0EE",
+        "content": "Over-ear audio product from Nothing with reduced, iconic form language.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 43
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-btn-home-box",
+        "name": "page-headphone-1-btn-home-box",
+        "x": 18,
+        "y": 252,
+        "width": 128,
+        "height": 38,
+        "fill": "#E63E3E",
+        "stroke": {
+          "fill": "#E63E3E",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-btn-home-text",
+        "name": "page-headphone-1-btn-home-text",
+        "x": 32,
+        "y": 262,
+        "fill": "#FFFFFF",
+        "content": "Home",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 100,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-btn-peer-box",
+        "name": "page-headphone-1-btn-peer-box",
+        "x": 158,
+        "y": 252,
+        "width": 148,
+        "height": 38,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-offers",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-btn-peer-text",
+        "name": "page-headphone-1-btn-peer-text",
+        "x": 172,
+        "y": 262,
+        "fill": "#111111",
+        "content": "Section",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-offers",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-kicker",
+        "name": "page-headphone-1-kicker",
+        "x": 42,
+        "y": 368,
+        "fill": "#E63E3E",
+        "content": "THIRD LEVEL PAGE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 18,
+        "letterSpacing": "0.1em"
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-panel-title",
+        "name": "page-headphone-1-panel-title",
+        "x": 42,
+        "y": 390,
+        "fill": "#111111",
+        "content": "Nothing (R)",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 24,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 41
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-p-0",
+        "name": "page-headphone-1-p-0",
+        "x": 42,
+        "y": 422,
+        "fill": "#111111",
+        "content": "Over-ear audio product from Nothing with reduced, iconic form language.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 306,
+        "height": 43
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-feature",
+        "name": "page-headphone-1-feature",
+        "x": 42,
+        "y": 368,
+        "width": 306,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-headphone-1-img-1-077201a8.png",
+          "mode": "cover"
+        },
+        "href": "#page-headphone-1",
+        "cornerRadius": 0
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-feature-2",
+        "name": "page-headphone-1-feature-2",
+        "x": 42,
+        "y": 606,
+        "width": 306,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-headphone-1-img-3-7b184e6a.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-headphone-1",
+        "cornerRadius": 0
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-card-0",
+        "name": "page-headphone-1-card-0",
+        "x": 42,
+        "y": 798,
+        "width": 306,
+        "height": 136,
+        "fill": "#ECECE8",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-offers",
+        "cornerRadius": 0
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-card-img-0",
+        "name": "page-headphone-1-card-img-0",
+        "x": 42,
+        "y": 798,
+        "width": 306,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-headphone-1-img-1-077201a8.png",
+          "mode": "cover"
+        },
+        "href": "#page-offers",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-card-title-0",
+        "name": "page-headphone-1-card-title-0",
+        "x": 52,
+        "y": 888,
+        "fill": "#111111",
+        "content": "Offers",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 18,
+        "href": "#page-offers"
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-card-copy-0",
+        "name": "page-headphone-1-card-copy-0",
+        "x": 52,
+        "y": 906,
+        "fill": "#6B6B66",
+        "content": "Over-ear audio product from Nothing with reduced, iconic form language.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 53,
+        "href": "#page-offers"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-card-1",
+        "name": "page-headphone-1-card-1",
+        "x": 42,
+        "y": 950,
+        "width": 306,
+        "height": 136,
+        "fill": "#ECECE8",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-phones",
+        "cornerRadius": 0
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-card-img-1",
+        "name": "page-headphone-1-card-img-1",
+        "x": 42,
+        "y": 950,
+        "width": 306,
+        "height": 82,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/nothing-tech/page-headphone-1-img-3-7b184e6a.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-phones",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-card-title-1",
+        "name": "page-headphone-1-card-title-1",
+        "x": 52,
+        "y": 1040,
+        "fill": "#111111",
+        "content": "Phones",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 18,
+        "href": "#page-phones"
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-card-copy-1",
+        "name": "page-headphone-1-card-copy-1",
+        "x": 52,
+        "y": 1058,
+        "fill": "#6B6B66",
+        "content": "Over-ear audio product from Nothing with reduced, iconic form language.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 286,
+        "height": 53,
+        "href": "#page-phones"
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-related-title",
+        "name": "page-headphone-1-related-title",
+        "x": 42,
+        "y": 1114,
+        "fill": "#E63E3E",
+        "content": "Related pages",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 180,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-related-0-box",
+        "name": "page-headphone-1-related-0-box",
+        "x": 42,
+        "y": 1140,
+        "width": 150,
+        "height": 36,
+        "fill": "#E63E3E",
+        "stroke": {
+          "fill": "#E63E3E",
+          "thickness": 1
+        },
+        "href": "#page-offers",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-related-0-text",
+        "name": "page-headphone-1-related-0-text",
+        "x": 56,
+        "y": 1149,
+        "fill": "#FFFFFF",
+        "content": "Offers",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-offers",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-related-1-box",
+        "name": "page-headphone-1-related-1-box",
+        "x": 204,
+        "y": 1140,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-phones",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-related-1-text",
+        "name": "page-headphone-1-related-1-text",
+        "x": 218,
+        "y": 1149,
+        "fill": "#111111",
+        "content": "Phones",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-phones",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-headphone-1-related-2-box",
+        "name": "page-headphone-1-related-2-box",
+        "x": 42,
+        "y": 1188,
+        "width": 150,
+        "height": 36,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D2",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 0
+      },
+      {
+        "type": "text",
+        "id": "page-headphone-1-related-2-text",
+        "name": "page-headphone-1-related-2-text",
+        "x": 56,
+        "y": 1197,
+        "fill": "#111111",
+        "content": "Homepage",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 122,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1300,
+        "width": 390,
+        "height": 250,
+        "fill": "#0F0F10",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 250,
+            "fill": "#0F0F10"
+          },
+          {
+            "type": "text",
+            "id": "footer-brand",
+            "name": "footer-brand",
+            "x": 18,
+            "y": 30,
+            "fill": "#F4F4F1",
+            "content": "Nothing",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 24
+          },
+          {
+            "type": "text",
+            "id": "footer-col-1",
+            "name": "footer-col-1",
+            "x": 18,
+            "y": 68,
+            "fill": "#F4F4F1",
+            "content": "Offers Phones Audio",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-col-2",
+            "name": "footer-col-2",
+            "x": 182,
+            "y": 68,
+            "fill": "#F4F4F1",
+            "content": "Support Centre Contact Support Phone (3a) Pro Ear (3)",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 69
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 188,
+            "fill": "#D8D5CE",
+            "content": "Nothing structured clone pen. Editable text, cards, buttons and image containers.",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 10,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 49
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,431 @@
+{
+  "sectionId": "company-profile",
+  "sectionName": "Company Profile",
+  "sectionKind": "generic",
+  "order": 10,
+  "bounds": {
+    "x": 0,
+    "y": 2678,
+    "width": 390,
+    "height": 320
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 7,
+  "treeHash": "1436cec26146b30bd2a54d803002047757f29809ef2af9699c4658b7a93e461f",
+  "blockCount": 6,
+  "blockIndex": [
+    {
+      "blockId": "profile-title",
+      "blockName": "profile-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 20,
+        "width": 300,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "63931f6fae8859b07f0ae75e1bafae3d1c48bc201f61d245ad60fe6beff0f0d7"
+    },
+    {
+      "blockId": "profile-copy",
+      "blockName": "profile-copy",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 60,
+        "width": 340,
+        "height": 75
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "758dfb96f5fc73bd5483b3f75f973cd0389c87b90e4247d6852b9e839df98351"
+    },
+    {
+      "blockId": "profile-img-0",
+      "blockName": "profile-img-0",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 2,
+      "bounds": {
+        "x": 20,
+        "y": 118,
+        "width": 164,
+        "height": 120
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "884fee3fcf24d3dac04162310bbd6b91940d8f661ee77d89a01e256166cd9e08"
+    },
+    {
+      "blockId": "profile-img-1",
+      "blockName": "profile-img-1",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 3,
+      "bounds": {
+        "x": 194,
+        "y": 118,
+        "width": 164,
+        "height": 120
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "342b78b57d3d9139a1123fae6eb9c28c01504a19382601c9c847af25ce403a1c"
+    },
+    {
+      "blockId": "chat-mobile",
+      "blockName": "chat-mobile",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 4,
+      "bounds": {
+        "x": 250,
+        "y": 264,
+        "width": 140,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "87aa41931f65120af46cbafb570492949bb71d9a8e7ba6f7f9ff8eff4dd0835d"
+    },
+    {
+      "blockId": "chat-mobile-label",
+      "blockName": "chat-mobile-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 268,
+        "y": 276,
+        "width": 120,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fc588029ad7bd6d26273b64b974a90cec9ec068d0cd653da0f0e66a51f6f43ef"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/bio-142e1546.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/bio-142e1546.jpg",
+      "relativePath": "assets-structured/breton/bio-142e1546.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/nik-815f020e.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/nik-815f020e.jpg",
+      "relativePath": "assets-structured/breton/nik-815f020e.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "profile-title",
+      "blockName": "profile-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 20,
+        "width": 300,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "63931f6fae8859b07f0ae75e1bafae3d1c48bc201f61d245ad60fe6beff0f0d7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "profile-title",
+        "name": "profile-title",
+        "x": 18,
+        "y": 20,
+        "fill": "#232529",
+        "content": "Breton Company profile",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 32
+      }
+    },
+    {
+      "blockId": "profile-copy",
+      "blockName": "profile-copy",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 60,
+        "width": 340,
+        "height": 75
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "758dfb96f5fc73bd5483b3f75f973cd0389c87b90e4247d6852b9e839df98351",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "profile-copy",
+        "name": "profile-copy",
+        "x": 18,
+        "y": 60,
+        "fill": "#666B73",
+        "content": "Breton is a global industrial group focused on advanced technologies, materials and process innovation, with a strong emphasis on research and long-term partnerships.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 340,
+        "height": 75
+      }
+    },
+    {
+      "blockId": "profile-img-0",
+      "blockName": "profile-img-0",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 2,
+      "bounds": {
+        "x": 20,
+        "y": 118,
+        "width": 164,
+        "height": 120
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "884fee3fcf24d3dac04162310bbd6b91940d8f661ee77d89a01e256166cd9e08",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/bio-142e1546.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/bio-142e1546.jpg",
+        "relativePath": "assets-structured/breton/bio-142e1546.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "profile-img-0",
+        "name": "profile-img-0",
+        "x": 20,
+        "y": 118,
+        "width": 164,
+        "height": 120,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/bio-142e1546.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-about"
+      }
+    },
+    {
+      "blockId": "profile-img-1",
+      "blockName": "profile-img-1",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 3,
+      "bounds": {
+        "x": 194,
+        "y": 118,
+        "width": 164,
+        "height": 120
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "342b78b57d3d9139a1123fae6eb9c28c01504a19382601c9c847af25ce403a1c",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/nik-815f020e.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/breton/nik-815f020e.jpg",
+        "relativePath": "assets-structured/breton/nik-815f020e.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "profile-img-1",
+        "name": "profile-img-1",
+        "x": 194,
+        "y": 118,
+        "width": 164,
+        "height": 120,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/nik-815f020e.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-about"
+      }
+    },
+    {
+      "blockId": "chat-mobile",
+      "blockName": "chat-mobile",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 4,
+      "bounds": {
+        "x": 250,
+        "y": 264,
+        "width": 140,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "87aa41931f65120af46cbafb570492949bb71d9a8e7ba6f7f9ff8eff4dd0835d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "chat-mobile",
+        "name": "chat-mobile",
+        "x": 250,
+        "y": 264,
+        "width": 140,
+        "height": 38,
+        "fill": "#B00046",
+        "href": "#page-contacts"
+      }
+    },
+    {
+      "blockId": "chat-mobile-label",
+      "blockName": "chat-mobile-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 268,
+        "y": 276,
+        "width": 120,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fc588029ad7bd6d26273b64b974a90cec9ec068d0cd653da0f0e66a51f6f43ef",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "chat-mobile-label",
+        "name": "chat-mobile-label",
+        "x": 268,
+        "y": 276,
+        "fill": "#FFFFFF",
+        "content": "• CHAT WITH US",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 16,
+        "href": "#page-contacts"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "company-profile",
+    "name": "Company Profile",
+    "x": 0,
+    "y": 2678,
+    "width": 390,
+    "height": 320,
+    "fill": "#ECECEC",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "profile-title",
+        "name": "profile-title",
+        "x": 18,
+        "y": 20,
+        "fill": "#232529",
+        "content": "Breton Company profile",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 32
+      },
+      {
+        "type": "text",
+        "id": "profile-copy",
+        "name": "profile-copy",
+        "x": 18,
+        "y": 60,
+        "fill": "#666B73",
+        "content": "Breton is a global industrial group focused on advanced technologies, materials and process innovation, with a strong emphasis on research and long-term partnerships.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 340,
+        "height": 75
+      },
+      {
+        "type": "rectangle",
+        "id": "profile-img-0",
+        "name": "profile-img-0",
+        "x": 20,
+        "y": 118,
+        "width": 164,
+        "height": 120,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/bio-142e1546.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-about"
+      },
+      {
+        "type": "rectangle",
+        "id": "profile-img-1",
+        "name": "profile-img-1",
+        "x": 194,
+        "y": 118,
+        "width": 164,
+        "height": 120,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/nik-815f020e.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-about"
+      },
+      {
+        "type": "rectangle",
+        "id": "chat-mobile",
+        "name": "chat-mobile",
+        "x": 250,
+        "y": 264,
+        "width": 140,
+        "height": 38,
+        "fill": "#B00046",
+        "href": "#page-contacts"
+      },
+      {
+        "type": "text",
+        "id": "chat-mobile-label",
+        "name": "chat-mobile-label",
+        "x": 268,
+        "y": 276,
+        "fill": "#FFFFFF",
+        "content": "• CHAT WITH US",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 16,
+        "href": "#page-contacts"
+      }
+    ]
+  }
+}

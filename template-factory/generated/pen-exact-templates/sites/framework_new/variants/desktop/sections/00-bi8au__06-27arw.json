@@ -1,0 +1,200 @@
+{
+  "sectionId": "27ARw",
+  "sectionName": "MidTitle",
+  "sectionKind": "generic",
+  "order": 6,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": 220
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "79fb4d01186176b5ca80b7b88250ae0b51f0b647609c4b414f1d80f15a48d8ed",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "THdEe",
+      "blockName": "mid1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "89c0fe3bcc6b44573775a0e992117812a7166a4ce39e57e35011b76bd862379f"
+    },
+    {
+      "blockId": "dsfCw",
+      "blockName": "mid2",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 220,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "05f2831fbb26c3c55734502813dcda41974badcafbde82882be357acc99a01ac"
+    },
+    {
+      "blockId": "WpSrl",
+      "blockName": "fixline",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4973067723fb869f05358bc9c7b79451848d369e210580f9188ef3bb49a57e0f"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "THdEe",
+      "blockName": "mid1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "89c0fe3bcc6b44573775a0e992117812a7166a4ce39e57e35011b76bd862379f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "THdEe",
+        "name": "mid1",
+        "fill": "#2D2D2D",
+        "content": "Upgrade, customize, and repair.",
+        "fontFamily": "Inter",
+        "fontSize": 44,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "dsfCw",
+      "blockName": "mid2",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 220,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "05f2831fbb26c3c55734502813dcda41974badcafbde82882be357acc99a01ac",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "dsfCw",
+        "name": "mid2",
+        "width": 220,
+        "height": 22,
+        "fill": "#2A2A2A",
+        "cornerRadius": 11
+      }
+    },
+    {
+      "blockId": "WpSrl",
+      "blockName": "fixline",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4973067723fb869f05358bc9c7b79451848d369e210580f9188ef3bb49a57e0f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "WpSrl",
+        "name": "fixline",
+        "fill": "#5A5A5A",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "Keep track of what we're\nworking on with the Framework\nNewsletter.",
+        "lineHeight": 1.35,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "normal"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "27ARw",
+    "name": "MidTitle",
+    "width": "fill_container",
+    "height": 220,
+    "fill": "#F3F3EF",
+    "layout": "vertical",
+    "gap": 16,
+    "justifyContent": "center",
+    "alignItems": "center",
+    "children": [
+      {
+        "type": "text",
+        "id": "THdEe",
+        "name": "mid1",
+        "fill": "#2D2D2D",
+        "content": "Upgrade, customize, and repair.",
+        "fontFamily": "Inter",
+        "fontSize": 44,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "dsfCw",
+        "name": "mid2",
+        "width": 220,
+        "height": 22,
+        "fill": "#2A2A2A",
+        "cornerRadius": 11
+      },
+      {
+        "type": "text",
+        "id": "WpSrl",
+        "name": "fixline",
+        "fill": "#5A5A5A",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "Keep track of what we're\nworking on with the Framework\nNewsletter.",
+        "lineHeight": 1.35,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "normal"
+      }
+    ]
+  }
+}

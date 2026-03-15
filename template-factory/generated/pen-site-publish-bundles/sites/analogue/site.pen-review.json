@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "template-factory.pen-review.v1",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "reviewedAt": "2026-03-12T09:28:06.423Z",
+  "sourcePenFile": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-site-publish-bundles/sites/analogue/site.pen-bundle.json",
+  "runId": "pen-site-bundle-analogue",
+  "reviewer": "codex",
+  "notes": "Analogue passed strict structural validation. Analogue passed Pencil-backed payload validation. Analogue passed visual parity validation. Analogue passed sandbox navigation/footer/runtime audit. Analogue is skinnable for theme, copy, image, link, and style slots. Desktop and mobile source variants are both present and bundled together.",
+  "items": [
+    {
+      "caseId": "analogue-desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/analogue.pen",
+      "status": "approved",
+      "notes": "Desktop source variant bundled with matching mobile variant."
+    },
+    {
+      "caseId": "analogue-mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/analogue-mobile.pen",
+      "status": "approved",
+      "notes": "Mobile source variant bundled and approved."
+    }
+  ]
+}

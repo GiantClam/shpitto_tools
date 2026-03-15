@@ -1,0 +1,335 @@
+{
+  "sectionId": "footer",
+  "sectionName": "Footer",
+  "sectionKind": "footer",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 1710,
+    "width": 390,
+    "height": 250
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "d6d697ddb4b9a8001f36b5df6ba23f2531d72f50fa525ac7cd72776bb494a43f",
+  "blockCount": 5,
+  "blockIndex": [
+    {
+      "blockId": "footer-bg",
+      "blockName": "footer-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b88a5b9ed2a096a8e296d09ad6d3e1ef08da5885003d5ed4b36c4f7dc2aa4dc8"
+    },
+    {
+      "blockId": "footer-brand",
+      "blockName": "footer-brand",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 30,
+        "width": 220,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0d561b775b81032d117dd7845ddd8b01fec7e4747ea165d21991b31138166ef9"
+    },
+    {
+      "blockId": "footer-col-1",
+      "blockName": "footer-col-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 68,
+        "width": 130,
+        "height": 53
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "be7e9b7368d12db1ea95ec576ddb361494f81ca38430a8c59fd2fa9149082d63"
+    },
+    {
+      "blockId": "footer-col-2",
+      "blockName": "footer-col-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 182,
+        "y": 68,
+        "width": 130,
+        "height": 85
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6c2634d43f4cf19913436fb769f46dc4c4d198ed449dbef4ab5585b1051e8ea7"
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 188,
+        "width": 320,
+        "height": 49
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cd9c46af0683cdaf7957fd6b7e51bb6ead7947ef0014e1761343478c574ee137"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "footer-bg",
+      "blockName": "footer-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b88a5b9ed2a096a8e296d09ad6d3e1ef08da5885003d5ed4b36c4f7dc2aa4dc8",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "footer-bg",
+        "name": "footer-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250,
+        "fill": "#131313"
+      }
+    },
+    {
+      "blockId": "footer-brand",
+      "blockName": "footer-brand",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 30,
+        "width": 220,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0d561b775b81032d117dd7845ddd8b01fec7e4747ea165d21991b31138166ef9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-brand",
+        "name": "footer-brand",
+        "x": 18,
+        "y": 30,
+        "fill": "#F4F4EF",
+        "content": "Transparent",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 24
+      }
+    },
+    {
+      "blockId": "footer-col-1",
+      "blockName": "footer-col-1",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 18,
+        "y": 68,
+        "width": 130,
+        "height": 53
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "be7e9b7368d12db1ea95ec576ddb361494f81ca38430a8c59fd2fa9149082d63",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-col-1",
+        "name": "footer-col-1",
+        "x": 18,
+        "y": 68,
+        "fill": "#F4F4EF",
+        "content": "All Products Modular System Sound Room",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 53
+      }
+    },
+    {
+      "blockId": "footer-col-2",
+      "blockName": "footer-col-2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 182,
+        "y": 68,
+        "width": 130,
+        "height": 85
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6c2634d43f4cf19913436fb769f46dc4c4d198ed449dbef4ab5585b1051e8ea7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-col-2",
+        "name": "footer-col-2",
+        "x": 182,
+        "y": 68,
+        "fill": "#F4F4EF",
+        "content": "Support About Transparent Speaker Black Wi‑Fi Transparent Turntable",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 85
+      }
+    },
+    {
+      "blockId": "footer-copy",
+      "blockName": "footer-copy",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 188,
+        "width": 320,
+        "height": 49
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cd9c46af0683cdaf7957fd6b7e51bb6ead7947ef0014e1761343478c574ee137",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "footer-copy",
+        "name": "footer-copy",
+        "x": 18,
+        "y": 188,
+        "fill": "#D8D5CE",
+        "content": "Transparent structured clone pen. Editable text, cards, buttons and image containers.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "footer",
+    "name": "Footer",
+    "x": 0,
+    "y": 1710,
+    "width": 390,
+    "height": 250,
+    "fill": "#131313",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "footer-bg",
+        "name": "footer-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 250,
+        "fill": "#131313"
+      },
+      {
+        "type": "text",
+        "id": "footer-brand",
+        "name": "footer-brand",
+        "x": 18,
+        "y": 30,
+        "fill": "#F4F4EF",
+        "content": "Transparent",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 24
+      },
+      {
+        "type": "text",
+        "id": "footer-col-1",
+        "name": "footer-col-1",
+        "x": 18,
+        "y": 68,
+        "fill": "#F4F4EF",
+        "content": "All Products Modular System Sound Room",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 53
+      },
+      {
+        "type": "text",
+        "id": "footer-col-2",
+        "name": "footer-col-2",
+        "x": 182,
+        "y": 68,
+        "fill": "#F4F4EF",
+        "content": "Support About Transparent Speaker Black Wi‑Fi Transparent Turntable",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 130,
+        "height": 85
+      },
+      {
+        "type": "text",
+        "id": "footer-copy",
+        "name": "footer-copy",
+        "x": 18,
+        "y": 188,
+        "fill": "#D8D5CE",
+        "content": "Transparent structured clone pen. Editable text, cards, buttons and image containers.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 10,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 49
+      }
+    ]
+  }
+}

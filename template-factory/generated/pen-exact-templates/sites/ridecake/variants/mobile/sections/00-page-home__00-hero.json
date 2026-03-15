@@ -1,0 +1,767 @@
+{
+  "sectionId": "hero",
+  "sectionName": "Hero",
+  "sectionKind": "hero",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 520
+  },
+  "directChildCount": 10,
+  "recursiveNodeCount": 14,
+  "treeHash": "2d7039a5728a2500cfe8a53c841d9bfa099038f866b351e11d7af49ee21ea38f",
+  "blockCount": 10,
+  "blockIndex": [
+    {
+      "blockId": "hero-bg",
+      "blockName": "hero-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0a43f27b02f1369a12ec59fc0b635942465132017e833c2e135dde271ef4ab5e"
+    },
+    {
+      "blockId": "hero-image",
+      "blockName": "hero-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 20,
+        "y": 250,
+        "width": 350,
+        "height": 220
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "91d57a4b3a8863b3bfeaf7247246737b21acb5084740b85b840e224b5f967762"
+    },
+    {
+      "blockId": "header-page-home",
+      "blockName": "Header",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "2d0c2fb02739119098afa4c914ce6c665aa1b42128a889b8ade5ed491651ccb6"
+    },
+    {
+      "blockId": "hero-kicker",
+      "blockName": "hero-kicker",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 18,
+        "y": 86,
+        "width": 200,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7ecd354e3f0c6a744b5f5c14ef26e1232257e1693692e1317a1563577b536dd7"
+    },
+    {
+      "blockId": "hero-title",
+      "blockName": "hero-title",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 116,
+        "width": 320,
+        "height": 151
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "062ae5bb4c0400c51cd84d877cd89d9778342f55baca2c80114e02ba8f721a90"
+    },
+    {
+      "blockId": "hero-subtitle",
+      "blockName": "hero-subtitle",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 18,
+        "y": 240,
+        "width": 320,
+        "height": 66
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "19e5e6e0cf0bf9af4f4f9785c5a37ab6980b521ce0dfe945f2933296a85768bf"
+    },
+    {
+      "blockId": "hero-primary-box",
+      "blockName": "hero-primary-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 18,
+        "y": 314,
+        "width": 148,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b88b44373cc6acc705557d76c8710ca0a741f44dade6161b2a77faa73ca8efda"
+    },
+    {
+      "blockId": "hero-primary-text",
+      "blockName": "hero-primary-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 32,
+        "y": 325,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8645bc2cff50e920730817665e55430da449127c297e1a3ea48f2a8effcab0c6"
+    },
+    {
+      "blockId": "hero-secondary-box",
+      "blockName": "hero-secondary-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 180,
+        "y": 314,
+        "width": 148,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1642809494fcc1f437e145340d6437569b1c34a7761736e7912254310e3ed3e5"
+    },
+    {
+      "blockId": "hero-secondary-text",
+      "blockName": "hero-secondary-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 194,
+        "y": 325,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4fe6955f09fa80ea0080d90e8e902ba8d84f37a94c91fcf2026d0ace358ad0c2"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-home-img-1-a6e7f822.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/ridecake/page-home-img-1-a6e7f822.jpg",
+      "relativePath": "assets-structured/ridecake/page-home-img-1-a6e7f822.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "hero-bg",
+      "blockName": "hero-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0a43f27b02f1369a12ec59fc0b635942465132017e833c2e135dde271ef4ab5e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-bg",
+        "name": "hero-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520,
+        "fill": "#F5F1E9"
+      }
+    },
+    {
+      "blockId": "hero-image",
+      "blockName": "hero-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 20,
+        "y": 250,
+        "width": 350,
+        "height": 220
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "91d57a4b3a8863b3bfeaf7247246737b21acb5084740b85b840e224b5f967762",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-home-img-1-a6e7f822.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/ridecake/page-home-img-1-a6e7f822.jpg",
+        "relativePath": "assets-structured/ridecake/page-home-img-1-a6e7f822.jpg",
+        "exists": true,
+        "mode": "cover"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-image",
+        "name": "hero-image",
+        "x": 20,
+        "y": 250,
+        "width": 350,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-home-img-1-a6e7f822.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-all-our-bikes",
+        "cornerRadius": 28
+      }
+    },
+    {
+      "blockId": "header-page-home",
+      "blockName": "Header",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 4,
+      "treeHash": "2d0c2fb02739119098afa4c914ce6c665aa1b42128a889b8ade5ed491651ccb6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "header-page-home",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#121212",
+            "content": "CAKE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#121212",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-all-our-bikes",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "hero-kicker",
+      "blockName": "hero-kicker",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 18,
+        "y": 86,
+        "width": 200,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7ecd354e3f0c6a744b5f5c14ef26e1232257e1693692e1317a1563577b536dd7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-kicker",
+        "name": "hero-kicker",
+        "x": 18,
+        "y": 86,
+        "fill": "#D9912E",
+        "content": "CAKE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 18,
+        "letterSpacing": "0.12em"
+      }
+    },
+    {
+      "blockId": "hero-title",
+      "blockName": "hero-title",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 18,
+        "y": 116,
+        "width": 320,
+        "height": 151
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "062ae5bb4c0400c51cd84d877cd89d9778342f55baca2c80114e02ba8f721a90",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-title",
+        "name": "hero-title",
+        "x": 18,
+        "y": 116,
+        "fill": "#121212",
+        "content": "High performance electric motorbikes",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 34,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 151
+      }
+    },
+    {
+      "blockId": "hero-subtitle",
+      "blockName": "hero-subtitle",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 18,
+        "y": 240,
+        "width": 320,
+        "height": 66
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "19e5e6e0cf0bf9af4f4f9785c5a37ab6980b521ce0dfe945f2933296a85768bf",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-subtitle",
+        "name": "hero-subtitle",
+        "x": 18,
+        "y": 240,
+        "fill": "#6E675D",
+        "content": "light, quiet and clean machines designed for commuting, work and off-road riding.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 66
+      }
+    },
+    {
+      "blockId": "hero-primary-box",
+      "blockName": "hero-primary-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 6,
+      "bounds": {
+        "x": 18,
+        "y": 314,
+        "width": 148,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b88b44373cc6acc705557d76c8710ca0a741f44dade6161b2a77faa73ca8efda",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-primary-box",
+        "name": "hero-primary-box",
+        "x": 18,
+        "y": 314,
+        "width": 148,
+        "height": 40,
+        "fill": "#D9912E",
+        "stroke": {
+          "fill": "#D9912E",
+          "thickness": 1
+        },
+        "href": "#page-all-our-bikes",
+        "cornerRadius": 14
+      }
+    },
+    {
+      "blockId": "hero-primary-text",
+      "blockName": "hero-primary-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 7,
+      "bounds": {
+        "x": 32,
+        "y": 325,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8645bc2cff50e920730817665e55430da449127c297e1a3ea48f2a8effcab0c6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-primary-text",
+        "name": "hero-primary-text",
+        "x": 32,
+        "y": 325,
+        "fill": "#FFFFFF",
+        "content": "All Our Bikes",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-all-our-bikes",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "hero-secondary-box",
+      "blockName": "hero-secondary-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 8,
+      "bounds": {
+        "x": 180,
+        "y": 314,
+        "width": 148,
+        "height": 40
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1642809494fcc1f437e145340d6437569b1c34a7761736e7912254310e3ed3e5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "hero-secondary-box",
+        "name": "hero-secondary-box",
+        "x": 180,
+        "y": 314,
+        "width": 148,
+        "height": 40,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D2C8B8",
+          "thickness": 1
+        },
+        "href": "#page-service-support",
+        "cornerRadius": 14
+      }
+    },
+    {
+      "blockId": "hero-secondary-text",
+      "blockName": "hero-secondary-text",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 194,
+        "y": 325,
+        "width": 120,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4fe6955f09fa80ea0080d90e8e902ba8d84f37a94c91fcf2026d0ace358ad0c2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "hero-secondary-text",
+        "name": "hero-secondary-text",
+        "x": 194,
+        "y": 325,
+        "fill": "#121212",
+        "content": "Service & Support",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-service-support",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "hero",
+    "name": "Hero",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 520,
+    "fill": "#F5F1E9",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "hero-bg",
+        "name": "hero-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 520,
+        "fill": "#F5F1E9"
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-image",
+        "name": "hero-image",
+        "x": 20,
+        "y": 250,
+        "width": 350,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/ridecake/page-home-img-1-a6e7f822.jpg",
+          "mode": "cover"
+        },
+        "href": "#page-all-our-bikes",
+        "cornerRadius": 28
+      },
+      {
+        "type": "frame",
+        "id": "header-page-home",
+        "name": "Header",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 64,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "header-bg",
+            "name": "header-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 64,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "text",
+            "id": "header-brand",
+            "name": "header-brand",
+            "x": 18,
+            "y": 18,
+            "fill": "#121212",
+            "content": "CAKE",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 180,
+            "height": 28
+          },
+          {
+            "type": "text",
+            "id": "header-menu",
+            "name": "header-menu",
+            "x": 362,
+            "y": 18,
+            "fill": "#121212",
+            "content": "☰",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 18,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 18,
+            "height": 20,
+            "href": "#page-all-our-bikes",
+            "textAlign": "center",
+            "textAlignVertical": "middle"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "hero-kicker",
+        "name": "hero-kicker",
+        "x": 18,
+        "y": 86,
+        "fill": "#D9912E",
+        "content": "CAKE",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 18,
+        "letterSpacing": "0.12em"
+      },
+      {
+        "type": "text",
+        "id": "hero-title",
+        "name": "hero-title",
+        "x": 18,
+        "y": 116,
+        "fill": "#121212",
+        "content": "High performance electric motorbikes",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 34,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 151
+      },
+      {
+        "type": "text",
+        "id": "hero-subtitle",
+        "name": "hero-subtitle",
+        "x": 18,
+        "y": 240,
+        "fill": "#6E675D",
+        "content": "light, quiet and clean machines designed for commuting, work and off-road riding.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 66
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-primary-box",
+        "name": "hero-primary-box",
+        "x": 18,
+        "y": 314,
+        "width": 148,
+        "height": 40,
+        "fill": "#D9912E",
+        "stroke": {
+          "fill": "#D9912E",
+          "thickness": 1
+        },
+        "href": "#page-all-our-bikes",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "hero-primary-text",
+        "name": "hero-primary-text",
+        "x": 32,
+        "y": 325,
+        "fill": "#FFFFFF",
+        "content": "All Our Bikes",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-all-our-bikes",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "hero-secondary-box",
+        "name": "hero-secondary-box",
+        "x": 180,
+        "y": 314,
+        "width": 148,
+        "height": 40,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D2C8B8",
+          "thickness": 1
+        },
+        "href": "#page-service-support",
+        "cornerRadius": 14
+      },
+      {
+        "type": "text",
+        "id": "hero-secondary-text",
+        "name": "hero-secondary-text",
+        "x": 194,
+        "y": 325,
+        "fill": "#121212",
+        "content": "Service & Support",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.03em",
+        "href": "#page-service-support",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

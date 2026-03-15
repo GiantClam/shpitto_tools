@@ -1,0 +1,350 @@
+{
+  "sectionId": "fusion",
+  "sectionName": "Fusion",
+  "sectionKind": "generic",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 1280,
+    "width": 1440,
+    "height": 430
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "3f3bd0c4111acdba697e35fab59ff99a57bde38f44071e1c07f7a671c8990abf",
+  "blockCount": 5,
+  "blockIndex": [
+    {
+      "blockId": "fusion-bg",
+      "blockName": "fusion-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 430
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "929687657954d39089e9b008c9e8da8adfc24897d4edeb8be8aa3827cc0ac17e"
+    },
+    {
+      "blockId": "fusion-title",
+      "blockName": "fusion-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 350,
+        "y": 34,
+        "width": 760,
+        "height": 103
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "87c9708f6eb1b0c5c92a24036b83a7d0b8c0671edbe59211f2fb7b5f9ed2cadd"
+    },
+    {
+      "blockId": "fusion-video",
+      "blockName": "fusion-video",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 2,
+      "bounds": {
+        "x": 290,
+        "y": 108,
+        "width": 860,
+        "height": 260
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cbf8dee02dd86dd3da68e09cbae367a632e971682388dfb9329f872d2e531c7f"
+    },
+    {
+      "blockId": "fusion-play-bg",
+      "blockName": "fusion-play-bg",
+      "blockType": "rectangle",
+      "order": 3,
+      "bounds": {
+        "x": 694,
+        "y": 205,
+        "width": 58,
+        "height": 58
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "635239d25d69062c6b232257fea6c0fbe17410512943d107d87035810a439123"
+    },
+    {
+      "blockId": "fusion-play",
+      "blockName": "fusion-play",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 716,
+        "y": 217,
+        "width": 22,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5241545fe4605bce889727b640c3b3e1558450c9b0aadd3c733a12bc84171578"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-video-619161bb.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-video-619161bb.jpg",
+      "relativePath": "assets-structured/carbon/home-video-619161bb.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "fusion-bg",
+      "blockName": "fusion-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 430
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "929687657954d39089e9b008c9e8da8adfc24897d4edeb8be8aa3827cc0ac17e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "fusion-bg",
+        "name": "fusion-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 430,
+        "fill": "#2C245B"
+      }
+    },
+    {
+      "blockId": "fusion-title",
+      "blockName": "fusion-title",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 350,
+        "y": 34,
+        "width": 760,
+        "height": 103
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "87c9708f6eb1b0c5c92a24036b83a7d0b8c0671edbe59211f2fb7b5f9ed2cadd",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "fusion-title",
+        "name": "fusion-title",
+        "x": 350,
+        "y": 34,
+        "fill": "#FFFFFF",
+        "content": "A Fusion of Innovative Tools and Your Imagination",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 34,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 760,
+        "height": 103,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "fusion-video",
+      "blockName": "fusion-video",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 2,
+      "bounds": {
+        "x": 290,
+        "y": 108,
+        "width": 860,
+        "height": 260
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cbf8dee02dd86dd3da68e09cbae367a632e971682388dfb9329f872d2e531c7f",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-video-619161bb.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/carbon/home-video-619161bb.jpg",
+        "relativePath": "assets-structured/carbon/home-video-619161bb.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "fusion-video",
+        "name": "fusion-video",
+        "x": 290,
+        "y": 108,
+        "width": 860,
+        "height": 260,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-video-619161bb.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-platform",
+        "cornerRadius": 20
+      }
+    },
+    {
+      "blockId": "fusion-play-bg",
+      "blockName": "fusion-play-bg",
+      "blockType": "rectangle",
+      "order": 3,
+      "bounds": {
+        "x": 694,
+        "y": 205,
+        "width": 58,
+        "height": 58
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "635239d25d69062c6b232257fea6c0fbe17410512943d107d87035810a439123",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "fusion-play-bg",
+        "name": "fusion-play-bg",
+        "x": 694,
+        "y": 205,
+        "width": 58,
+        "height": 58,
+        "fill": "#7256FF",
+        "href": "#page-platform",
+        "cornerRadius": 29
+      }
+    },
+    {
+      "blockId": "fusion-play",
+      "blockName": "fusion-play",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 716,
+        "y": 217,
+        "width": 22,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5241545fe4605bce889727b640c3b3e1558450c9b0aadd3c733a12bc84171578",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "fusion-play",
+        "name": "fusion-play",
+        "x": 716,
+        "y": 217,
+        "fill": "#FFFFFF",
+        "content": "▶",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 20,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 22,
+        "height": 22,
+        "href": "#page-platform"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "fusion",
+    "name": "Fusion",
+    "x": 0,
+    "y": 1280,
+    "width": 1440,
+    "height": 430,
+    "fill": "#2C245B",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "fusion-bg",
+        "name": "fusion-bg",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 430,
+        "fill": "#2C245B"
+      },
+      {
+        "type": "text",
+        "id": "fusion-title",
+        "name": "fusion-title",
+        "x": 350,
+        "y": 34,
+        "fill": "#FFFFFF",
+        "content": "A Fusion of Innovative Tools and Your Imagination",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 34,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 760,
+        "height": 103,
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "fusion-video",
+        "name": "fusion-video",
+        "x": 290,
+        "y": 108,
+        "width": 860,
+        "height": 260,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/carbon/home-video-619161bb.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-platform",
+        "cornerRadius": 20
+      },
+      {
+        "type": "rectangle",
+        "id": "fusion-play-bg",
+        "name": "fusion-play-bg",
+        "x": 694,
+        "y": 205,
+        "width": 58,
+        "height": 58,
+        "fill": "#7256FF",
+        "href": "#page-platform",
+        "cornerRadius": 29
+      },
+      {
+        "type": "text",
+        "id": "fusion-play",
+        "name": "fusion-play",
+        "x": 716,
+        "y": 217,
+        "fill": "#FFFFFF",
+        "content": "▶",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 20,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 22,
+        "height": 22,
+        "href": "#page-platform"
+      }
+    ]
+  }
+}

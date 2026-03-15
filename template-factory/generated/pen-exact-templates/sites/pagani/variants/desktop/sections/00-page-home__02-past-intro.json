@@ -1,0 +1,1098 @@
+{
+  "sectionId": "past-intro",
+  "sectionName": "Past Intro",
+  "sectionKind": "story",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 1680,
+    "width": 1440,
+    "height": 860
+  },
+  "directChildCount": 17,
+  "recursiveNodeCount": 18,
+  "treeHash": "463e36ab28ec068c38b80bb1a3637d98b6ccc27801c980dbfae7e85644afd3bf",
+  "blockCount": 17,
+  "blockIndex": [
+    {
+      "blockId": "past-intro-bg",
+      "blockName": "past-intro-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 860
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "daf6277ad71f4e42a5abcba5b0db2cc8c601e9f19c8a05131ad5e338807d8a1d"
+    },
+    {
+      "blockId": "past-intro-shade",
+      "blockName": "past-intro-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 860
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a66df773537494fc894feb615ae9ae97766d606c3da07be93aebe316d378446b"
+    },
+    {
+      "blockId": "past-shell",
+      "blockName": "past-shell",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 40,
+        "y": 210,
+        "width": 760,
+        "height": 300
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "67db1c4b646fce7f555b384445ffcfca1cb3ef227b7ccf7714e527d78d16f7d5"
+    },
+    {
+      "blockId": "past-chapter",
+      "blockName": "past-chapter",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 66,
+        "y": 234,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "569ce9ef41e152e387d16f0e498c82e9caa7b742ec6865d6389e6e5ce5e29e81"
+    },
+    {
+      "blockId": "past-count",
+      "blockName": "past-count",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 710,
+        "y": 234,
+        "width": 80,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "20d5b048e3bc6dac182267e7d566d3d11c0542b21719733039110d3b1b17e8df"
+    },
+    {
+      "blockId": "past-title",
+      "blockName": "past-title",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 66,
+        "y": 280,
+        "width": 640,
+        "height": 80
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "48ce4e39bbb07ab08f2c0cd9103f6b804436b3f8d78571d2958282a856522392"
+    },
+    {
+      "blockId": "past-body",
+      "blockName": "past-body",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 66,
+        "y": 360,
+        "width": 620,
+        "height": 103
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3467f5af3980fd818f72770de01b715207466e78308bba8428bc79fce9f48b85"
+    },
+    {
+      "blockId": "past-nav-chip-0",
+      "blockName": "past-nav-chip-0",
+      "blockType": "rectangle",
+      "order": 7,
+      "bounds": {
+        "x": 66,
+        "y": 448,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1c53b2d3d9a8bf4ac317b65629c1f67a153592c9c59638010239294b447fcac4"
+    },
+    {
+      "blockId": "past-nav-chip-text-0",
+      "blockName": "past-nav-chip-text-0",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 78,
+        "y": 457,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a659f4c0bb6ed196cdbb737849e5633070a3927dd63a1edb2623be6e6e0f3224"
+    },
+    {
+      "blockId": "past-nav-chip-1",
+      "blockName": "past-nav-chip-1",
+      "blockType": "rectangle",
+      "order": 9,
+      "bounds": {
+        "x": 150,
+        "y": 448,
+        "width": 130.6,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f2aa825791c66a9b7b0b68a7c0013112dbd3e19c1cbcae63a6b4d626465a8a08"
+    },
+    {
+      "blockId": "past-nav-chip-text-1",
+      "blockName": "past-nav-chip-text-1",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 162,
+        "y": 457,
+        "width": 106.6,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c71610ee68e471a82b2d9fc092afee903a19a54237d2f6f9769ea4ff76b656a9"
+    },
+    {
+      "blockId": "past-nav-chip-2",
+      "blockName": "past-nav-chip-2",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 290.6,
+        "y": 448,
+        "width": 89.6,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1ef424f753cb313ceafde04dd6ad19d2e65fed4027efd6f41f0cd05e5874ecff"
+    },
+    {
+      "blockId": "past-nav-chip-text-2",
+      "blockName": "past-nav-chip-text-2",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 302.6,
+        "y": 457,
+        "width": 65.6,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bc501793b2ba2818164dcbb29fcb9fb45b387a1c59b6197e645d8ea00f4f7a71"
+    },
+    {
+      "blockId": "past-nav-chip-3",
+      "blockName": "past-nav-chip-3",
+      "blockType": "rectangle",
+      "order": 13,
+      "bounds": {
+        "x": 390.20000000000005,
+        "y": 448,
+        "width": 106,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9f9a5c062bbc10bf80613deba5c0953c840755b4322c4c0cc942282385e1725c"
+    },
+    {
+      "blockId": "past-nav-chip-text-3",
+      "blockName": "past-nav-chip-text-3",
+      "blockType": "text",
+      "order": 14,
+      "bounds": {
+        "x": 402.20000000000005,
+        "y": 457,
+        "width": 82,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4cc4b7f21d773683c1bd30f188aef72661ed3d7a2db5fcc4b4aa891fe8a071bf"
+    },
+    {
+      "blockId": "past-nav-chip-4",
+      "blockName": "past-nav-chip-4",
+      "blockType": "rectangle",
+      "order": 15,
+      "bounds": {
+        "x": 506.20000000000005,
+        "y": 448,
+        "width": 106,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1ab40cf18aa459d2df6b6c44631ab55bd138d7ea63236b7f6a2d9655c2760f7f"
+    },
+    {
+      "blockId": "past-nav-chip-text-4",
+      "blockName": "past-nav-chip-text-4",
+      "blockType": "text",
+      "order": 16,
+      "bounds": {
+        "x": 518.2,
+        "y": 457,
+        "width": 82,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d72b5ecbca5b3ded44570dc5918c939cead00542cd055b73ab6eaebf29125429"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/past-intro.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/past-intro.jpg",
+      "relativePath": "assets-structured/pagani/past-intro.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "past-intro-bg",
+      "blockName": "past-intro-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 860
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "daf6277ad71f4e42a5abcba5b0db2cc8c601e9f19c8a05131ad5e338807d8a1d",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/past-intro.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/past-intro.jpg",
+        "relativePath": "assets-structured/pagani/past-intro.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "past-intro-bg",
+        "x": 0,
+        "y": 0,
+        "name": "past-intro-bg",
+        "width": 1440,
+        "height": 860,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/past-intro.jpg",
+          "mode": "fill"
+        }
+      }
+    },
+    {
+      "blockId": "past-intro-shade",
+      "blockName": "past-intro-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 860
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a66df773537494fc894feb615ae9ae97766d606c3da07be93aebe316d378446b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "past-intro-shade",
+        "x": 0,
+        "y": 0,
+        "name": "past-intro-shade",
+        "width": 1440,
+        "height": 860,
+        "fill": "#0000005A"
+      }
+    },
+    {
+      "blockId": "past-shell",
+      "blockName": "past-shell",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 40,
+        "y": 210,
+        "width": 760,
+        "height": 300
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "67db1c4b646fce7f555b384445ffcfca1cb3ef227b7ccf7714e527d78d16f7d5",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "past-shell",
+        "x": 40,
+        "y": 210,
+        "name": "past-shell",
+        "width": 760,
+        "height": 300,
+        "fill": "#0A0A0ACF"
+      }
+    },
+    {
+      "blockId": "past-chapter",
+      "blockName": "past-chapter",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 66,
+        "y": 234,
+        "width": 90,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "569ce9ef41e152e387d16f0e498c82e9caa7b742ec6865d6389e6e5ce5e29e81",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "past-chapter",
+        "x": 66,
+        "y": 234,
+        "name": "past-chapter",
+        "fill": "#B9B3AB",
+        "content": "Past",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.22em"
+      }
+    },
+    {
+      "blockId": "past-count",
+      "blockName": "past-count",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 710,
+        "y": 234,
+        "width": 80,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "20d5b048e3bc6dac182267e7d566d3d11c0542b21719733039110d3b1b17e8df",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "past-count",
+        "x": 710,
+        "y": 234,
+        "name": "past-count",
+        "fill": "#B9B3AB",
+        "content": "1 / 5",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 80,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      }
+    },
+    {
+      "blockId": "past-title",
+      "blockName": "past-title",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 66,
+        "y": 280,
+        "width": 640,
+        "height": 80
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "48ce4e39bbb07ab08f2c0cd9103f6b804436b3f8d78571d2958282a856522392",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "past-title",
+        "x": 66,
+        "y": 280,
+        "name": "past-title",
+        "fill": "#F3F2ED",
+        "content": "Wind blows round.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 52,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 640,
+        "height": 80
+      }
+    },
+    {
+      "blockId": "past-body",
+      "blockName": "past-body",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 66,
+        "y": 360,
+        "width": 620,
+        "height": 103
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3467f5af3980fd818f72770de01b715207466e78308bba8428bc79fce9f48b85",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "past-body",
+        "x": 66,
+        "y": 360,
+        "name": "past-body",
+        "fill": "#F3F2ED",
+        "content": "That of Horacio Pagani is the great adventure of an art and engineering crusade. How did the myth of Pagani Automobili come to life, the brand for which cars the richest men in the world are willing to spend a crazy amount of money?",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 17,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 103
+      }
+    },
+    {
+      "blockId": "past-nav-chip-0",
+      "blockName": "past-nav-chip-0",
+      "blockType": "rectangle",
+      "order": 7,
+      "bounds": {
+        "x": 66,
+        "y": 448,
+        "width": 74,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1c53b2d3d9a8bf4ac317b65629c1f67a153592c9c59638010239294b447fcac4",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "past-nav-chip-0",
+        "x": 66,
+        "y": 448,
+        "name": "past-nav-chip-0",
+        "width": 74,
+        "height": 32,
+        "fill": "#FFFFFF14",
+        "stroke": {
+          "fill": "#C9B28B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "past-nav-chip-text-0",
+      "blockName": "past-nav-chip-text-0",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 78,
+        "y": 457,
+        "width": 50,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a659f4c0bb6ed196cdbb737849e5633070a3927dd63a1edb2623be6e6e0f3224",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "past-nav-chip-text-0",
+        "x": 78,
+        "y": 457,
+        "name": "past-nav-chip-text-0",
+        "fill": "#F3F2ED",
+        "content": "Intro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "past-nav-chip-1",
+      "blockName": "past-nav-chip-1",
+      "blockType": "rectangle",
+      "order": 9,
+      "bounds": {
+        "x": 150,
+        "y": 448,
+        "width": 130.6,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f2aa825791c66a9b7b0b68a7c0013112dbd3e19c1cbcae63a6b4d626465a8a08",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "past-nav-chip-1",
+        "x": 150,
+        "y": 448,
+        "name": "past-nav-chip-1",
+        "width": 130.6,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "past-nav-chip-text-1",
+      "blockName": "past-nav-chip-text-1",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 162,
+        "y": 457,
+        "width": 106.6,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c71610ee68e471a82b2d9fc092afee903a19a54237d2f6f9769ea4ff76b656a9",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "past-nav-chip-text-1",
+        "x": 162,
+        "y": 457,
+        "name": "past-nav-chip-text-1",
+        "fill": "#B9B3AB",
+        "content": "The Challenge",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 106.6,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "past-nav-chip-2",
+      "blockName": "past-nav-chip-2",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 290.6,
+        "y": 448,
+        "width": 89.6,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1ef424f753cb313ceafde04dd6ad19d2e65fed4027efd6f41f0cd05e5874ecff",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "past-nav-chip-2",
+        "x": 290.6,
+        "y": 448,
+        "name": "past-nav-chip-2",
+        "width": 89.6,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "past-nav-chip-text-2",
+      "blockName": "past-nav-chip-text-2",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 302.6,
+        "y": 457,
+        "width": 65.6,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "bc501793b2ba2818164dcbb29fcb9fb45b387a1c59b6197e645d8ea00f4f7a71",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "past-nav-chip-text-2",
+        "x": 302.6,
+        "y": 457,
+        "name": "past-nav-chip-text-2",
+        "fill": "#B9B3AB",
+        "content": "Leonardo",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 65.6,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "past-nav-chip-3",
+      "blockName": "past-nav-chip-3",
+      "blockType": "rectangle",
+      "order": 13,
+      "bounds": {
+        "x": 390.20000000000005,
+        "y": 448,
+        "width": 106,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9f9a5c062bbc10bf80613deba5c0953c840755b4322c4c0cc942282385e1725c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "past-nav-chip-3",
+        "x": 390.20000000000005,
+        "y": 448,
+        "name": "past-nav-chip-3",
+        "width": 106,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "past-nav-chip-text-3",
+      "blockName": "past-nav-chip-text-3",
+      "blockType": "text",
+      "order": 14,
+      "bounds": {
+        "x": 402.20000000000005,
+        "y": 457,
+        "width": 82,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4cc4b7f21d773683c1bd30f188aef72661ed3d7a2db5fcc4b4aa891fe8a071bf",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "past-nav-chip-text-3",
+        "x": 402.20000000000005,
+        "y": 457,
+        "name": "past-nav-chip-text-3",
+        "fill": "#B9B3AB",
+        "content": "Perfection",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 82,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "past-nav-chip-4",
+      "blockName": "past-nav-chip-4",
+      "blockType": "rectangle",
+      "order": 15,
+      "bounds": {
+        "x": 506.20000000000005,
+        "y": 448,
+        "width": 106,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1ab40cf18aa459d2df6b6c44631ab55bd138d7ea63236b7f6a2d9655c2760f7f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "past-nav-chip-4",
+        "x": 506.20000000000005,
+        "y": 448,
+        "name": "past-nav-chip-4",
+        "width": 106,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      }
+    },
+    {
+      "blockId": "past-nav-chip-text-4",
+      "blockName": "past-nav-chip-text-4",
+      "blockType": "text",
+      "order": 16,
+      "bounds": {
+        "x": 518.2,
+        "y": 457,
+        "width": 82,
+        "height": 16
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d72b5ecbca5b3ded44570dc5918c939cead00542cd055b73ab6eaebf29125429",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "past-nav-chip-text-4",
+        "x": 518.2,
+        "y": 457,
+        "name": "past-nav-chip-text-4",
+        "fill": "#B9B3AB",
+        "content": "The Belief",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 82,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "past-intro",
+    "x": 0,
+    "y": 1680,
+    "width": 1440,
+    "height": 860,
+    "name": "Past Intro",
+    "fill": "#060606",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "past-intro-bg",
+        "x": 0,
+        "y": 0,
+        "name": "past-intro-bg",
+        "width": 1440,
+        "height": 860,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/past-intro.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "past-intro-shade",
+        "x": 0,
+        "y": 0,
+        "name": "past-intro-shade",
+        "width": 1440,
+        "height": 860,
+        "fill": "#0000005A"
+      },
+      {
+        "type": "rectangle",
+        "id": "past-shell",
+        "x": 40,
+        "y": 210,
+        "name": "past-shell",
+        "width": 760,
+        "height": 300,
+        "fill": "#0A0A0ACF"
+      },
+      {
+        "type": "text",
+        "id": "past-chapter",
+        "x": 66,
+        "y": 234,
+        "name": "past-chapter",
+        "fill": "#B9B3AB",
+        "content": "Past",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 90,
+        "height": 18,
+        "letterSpacing": "0.22em"
+      },
+      {
+        "type": "text",
+        "id": "past-count",
+        "x": 710,
+        "y": 234,
+        "name": "past-count",
+        "fill": "#B9B3AB",
+        "content": "1 / 5",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 80,
+        "height": 18,
+        "letterSpacing": "0.18em"
+      },
+      {
+        "type": "text",
+        "id": "past-title",
+        "x": 66,
+        "y": 280,
+        "name": "past-title",
+        "fill": "#F3F2ED",
+        "content": "Wind blows round.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 52,
+        "fontWeight": "600",
+        "textGrowth": "fixed-width-height",
+        "width": 640,
+        "height": 80
+      },
+      {
+        "type": "text",
+        "id": "past-body",
+        "x": 66,
+        "y": 360,
+        "name": "past-body",
+        "fill": "#F3F2ED",
+        "content": "That of Horacio Pagani is the great adventure of an art and engineering crusade. How did the myth of Pagani Automobili come to life, the brand for which cars the richest men in the world are willing to spend a crazy amount of money?",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 17,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 620,
+        "height": 103
+      },
+      {
+        "type": "rectangle",
+        "id": "past-nav-chip-0",
+        "x": 66,
+        "y": 448,
+        "name": "past-nav-chip-0",
+        "width": 74,
+        "height": 32,
+        "fill": "#FFFFFF14",
+        "stroke": {
+          "fill": "#C9B28B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      },
+      {
+        "type": "text",
+        "id": "past-nav-chip-text-0",
+        "x": 78,
+        "y": 457,
+        "name": "past-nav-chip-text-0",
+        "fill": "#F3F2ED",
+        "content": "Intro",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 50,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      },
+      {
+        "type": "rectangle",
+        "id": "past-nav-chip-1",
+        "x": 150,
+        "y": 448,
+        "name": "past-nav-chip-1",
+        "width": 130.6,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      },
+      {
+        "type": "text",
+        "id": "past-nav-chip-text-1",
+        "x": 162,
+        "y": 457,
+        "name": "past-nav-chip-text-1",
+        "fill": "#B9B3AB",
+        "content": "The Challenge",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 106.6,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      },
+      {
+        "type": "rectangle",
+        "id": "past-nav-chip-2",
+        "x": 290.6,
+        "y": 448,
+        "name": "past-nav-chip-2",
+        "width": 89.6,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      },
+      {
+        "type": "text",
+        "id": "past-nav-chip-text-2",
+        "x": 302.6,
+        "y": 457,
+        "name": "past-nav-chip-text-2",
+        "fill": "#B9B3AB",
+        "content": "Leonardo",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 65.6,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      },
+      {
+        "type": "rectangle",
+        "id": "past-nav-chip-3",
+        "x": 390.20000000000005,
+        "y": 448,
+        "name": "past-nav-chip-3",
+        "width": 106,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      },
+      {
+        "type": "text",
+        "id": "past-nav-chip-text-3",
+        "x": 402.20000000000005,
+        "y": 457,
+        "name": "past-nav-chip-text-3",
+        "fill": "#B9B3AB",
+        "content": "Perfection",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 82,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      },
+      {
+        "type": "rectangle",
+        "id": "past-nav-chip-4",
+        "x": 506.20000000000005,
+        "y": 448,
+        "name": "past-nav-chip-4",
+        "width": 106,
+        "height": 32,
+        "fill": "#00000000",
+        "stroke": {
+          "fill": "#6A635B",
+          "thickness": 1
+        },
+        "href": "#page-history"
+      },
+      {
+        "type": "text",
+        "id": "past-nav-chip-text-4",
+        "x": 518.2,
+        "y": 457,
+        "name": "past-nav-chip-text-4",
+        "fill": "#B9B3AB",
+        "content": "The Belief",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 82,
+        "height": 16,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      }
+    ]
+  }
+}

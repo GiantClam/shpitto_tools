@@ -1,0 +1,66 @@
+{
+  "blockId": "NztFA",
+  "blockName": "r1",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 4,
+  "bounds": {
+    "x": 80,
+    "y": 208,
+    "width": 400,
+    "height": 470
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "ea297fc3b0c4bb9e8775d14029d3ca85b7f3ffec2c063d7462918786923d21c3",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "NztFA",
+    "x": 80,
+    "y": 208,
+    "name": "r1",
+    "width": 400,
+    "height": 470,
+    "fill": "#F7F8F9",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "KsqSy",
+        "x": 0,
+        "y": 0,
+        "name": "r1i",
+        "metadata": {
+          "type": "unsplash",
+          "username": "rabinkazieasin",
+          "link": "https://unsplash.com/@rabinkazieasin",
+          "author": "Rabin Kazi Easin"
+        },
+        "width": 400,
+        "height": 270,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1733477590442-4c0ec14e6202?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "r0ES7",
+        "x": 24,
+        "y": 294,
+        "name": "r1t",
+        "fill": "#22303D",
+        "textGrowth": "fixed-width",
+        "width": 352,
+        "content": "World Engineering Day: Engineering with Purpose in Plexus",
+        "lineHeight": 1.12,
+        "fontFamily": "Inter",
+        "fontSize": 28,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

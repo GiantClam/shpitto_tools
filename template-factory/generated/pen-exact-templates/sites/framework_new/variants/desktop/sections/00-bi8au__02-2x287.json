@@ -1,0 +1,342 @@
+{
+  "sectionId": "2x287",
+  "sectionName": "Hero2",
+  "sectionKind": "hero",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": "fill_container",
+    "height": 270
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 10,
+  "treeHash": "797dde3777edb7d37a889cd8001b281034be508132299ad7aff93db1ad6c6f6a",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "NysbZ",
+      "blockName": "hero2l",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 420,
+        "height": "fill_container"
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c118bf1d312f0acde1d3704288c4fc9e7e0d2adbc2c1ef864f6821e64832b4db"
+    },
+    {
+      "blockId": "8WKDx",
+      "blockName": "hero2r",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 706,
+        "height": "fill_container"
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 8,
+      "treeHash": "c8a6c61ddf154cc762858e6ec4c3b5d18f42abd464ab09d03cc4374e360d978f"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "NysbZ",
+      "blockName": "hero2l",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 420,
+        "height": "fill_container"
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c118bf1d312f0acde1d3704288c4fc9e7e0d2adbc2c1ef864f6821e64832b4db",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "NysbZ",
+        "name": "hero2l",
+        "metadata": {
+          "type": "unsplash",
+          "username": "nublson",
+          "link": "https://unsplash.com/@nublson",
+          "author": "Nubelson Fernandes"
+        },
+        "width": 420,
+        "height": "fill_container",
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 4
+      }
+    },
+    {
+      "blockId": "8WKDx",
+      "blockName": "hero2r",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 706,
+        "height": "fill_container"
+      },
+      "directChildCount": 3,
+      "recursiveNodeCount": 8,
+      "treeHash": "c8a6c61ddf154cc762858e6ec4c3b5d18f42abd464ab09d03cc4374e360d978f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "8WKDx",
+        "name": "hero2r",
+        "width": 706,
+        "height": "fill_container",
+        "layout": "vertical",
+        "gap": 12,
+        "justifyContent": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "OUXOD",
+            "name": "h2t1",
+            "fill": "#202020",
+            "textGrowth": "fixed-width",
+            "width": 588,
+            "content": "Configure once. Upgrade\nwhere you need.",
+            "lineHeight": 1.08,
+            "fontFamily": "Inter",
+            "fontSize": 42,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "7MeY0",
+            "name": "h2t2",
+            "fill": "#202020",
+            "content": "Starting at $399",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "frame",
+            "id": "3FlM6",
+            "name": "row2",
+            "height": 34,
+            "gap": 8,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "frame",
+                "id": "I9oMS",
+                "name": "h2b",
+                "width": 112,
+                "height": 34,
+                "fill": "#F46E35",
+                "cornerRadius": 17,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "eNGam",
+                    "name": "h2bt",
+                    "fill": "#111111",
+                    "content": "Configure now",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "r8jU1",
+                "name": "lm2",
+                "width": 96,
+                "height": 34,
+                "cornerRadius": 17,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#9CA3AA"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "DXTV6",
+                    "fill": "#5E6369",
+                    "content": "Learn more",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "2x287",
+    "name": "Hero2",
+    "width": "fill_container",
+    "height": 270,
+    "fill": "#E7BC52",
+    "cornerRadius": 6,
+    "gap": 20,
+    "padding": [
+      24,
+      20
+    ],
+    "children": [
+      {
+        "type": "frame",
+        "id": "NysbZ",
+        "name": "hero2l",
+        "metadata": {
+          "type": "unsplash",
+          "username": "nublson",
+          "link": "https://unsplash.com/@nublson",
+          "author": "Nubelson Fernandes"
+        },
+        "width": 420,
+        "height": "fill_container",
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1618410325698-018bb3eb2318?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMwNzg2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 4
+      },
+      {
+        "type": "frame",
+        "id": "8WKDx",
+        "name": "hero2r",
+        "width": 706,
+        "height": "fill_container",
+        "layout": "vertical",
+        "gap": 12,
+        "justifyContent": "center",
+        "children": [
+          {
+            "type": "text",
+            "id": "OUXOD",
+            "name": "h2t1",
+            "fill": "#202020",
+            "textGrowth": "fixed-width",
+            "width": 588,
+            "content": "Configure once. Upgrade\nwhere you need.",
+            "lineHeight": 1.08,
+            "fontFamily": "Inter",
+            "fontSize": 42,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "7MeY0",
+            "name": "h2t2",
+            "fill": "#202020",
+            "content": "Starting at $399",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "normal"
+          },
+          {
+            "type": "frame",
+            "id": "3FlM6",
+            "name": "row2",
+            "height": 34,
+            "gap": 8,
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "frame",
+                "id": "I9oMS",
+                "name": "h2b",
+                "width": 112,
+                "height": 34,
+                "fill": "#F46E35",
+                "cornerRadius": 17,
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "eNGam",
+                    "name": "h2bt",
+                    "fill": "#111111",
+                    "content": "Configure now",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "r8jU1",
+                "name": "lm2",
+                "width": 96,
+                "height": 34,
+                "cornerRadius": 17,
+                "stroke": {
+                  "thickness": 1,
+                  "fill": "#9CA3AA"
+                },
+                "justifyContent": "center",
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "text",
+                    "id": "DXTV6",
+                    "fill": "#5E6369",
+                    "content": "Learn more",
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "600"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

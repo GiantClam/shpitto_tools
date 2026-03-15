@@ -1,0 +1,113 @@
+{
+  "blockId": "8SLYy",
+  "blockName": "hero1l",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 658,
+    "height": "fill_container"
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 8,
+  "treeHash": "a6d9ed580c61967e7127110653e662b8be6a3caef50e7faa02952cc7144564fa",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "8SLYy",
+    "name": "hero1l",
+    "width": 658,
+    "height": "fill_container",
+    "layout": "vertical",
+    "gap": 12,
+    "justifyContent": "center",
+    "children": [
+      {
+        "type": "text",
+        "id": "SKJjW",
+        "name": "h1t1",
+        "fill": "#F3F6F0",
+        "textGrowth": "fixed-width",
+        "width": 589,
+        "content": "Framework Laptop 13\nisn't our computer. It's\nyours.",
+        "lineHeight": 1.08,
+        "fontFamily": "Inter",
+        "fontSize": 44,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "mu1te",
+        "name": "h1t2",
+        "fill": "#E9EEE8",
+        "textGrowth": "fixed-width",
+        "width": 470,
+        "content": "Start computing from $899.00",
+        "lineHeight": 1.4,
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "frame",
+        "id": "pKj3P",
+        "name": "row1",
+        "height": 34,
+        "gap": 8,
+        "alignItems": "center",
+        "children": [
+          {
+            "type": "frame",
+            "id": "3sILt",
+            "name": "h1b",
+            "width": 112,
+            "height": 34,
+            "fill": "#F46E35",
+            "cornerRadius": 17,
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "WjcPU",
+                "name": "h1bt",
+                "fill": "#111111",
+                "content": "Configure now",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "nuxPp",
+            "name": "lm1",
+            "width": 96,
+            "height": 34,
+            "cornerRadius": 17,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#9CA3AA"
+            },
+            "justifyContent": "center",
+            "alignItems": "center",
+            "children": [
+              {
+                "type": "text",
+                "id": "AkwVV",
+                "fill": "#5E6369",
+                "content": "Learn more",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontWeight": "600"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

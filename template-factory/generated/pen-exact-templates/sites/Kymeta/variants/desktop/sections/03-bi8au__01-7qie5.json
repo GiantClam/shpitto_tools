@@ -1,0 +1,342 @@
+{
+  "sectionId": "7QIe5",
+  "sectionName": "hero",
+  "sectionKind": "hero",
+  "order": 1,
+  "bounds": {
+    "x": 0,
+    "y": 86,
+    "width": 1440,
+    "height": 615
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "54c701aa4d48b6f9cf43d6e5c6d5c67b2e823734b34d8ead05054b1c58e96520",
+  "blockCount": 4,
+  "blockIndex": [
+    {
+      "blockId": "fZ8xi",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 36,
+        "y": 161,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6554f2b69d0b5f5e3184fed924d6fe77a977e4e12eccbcad0e6a44f509e50f84"
+    },
+    {
+      "blockId": "L0JNk",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 36,
+        "y": 423,
+        "width": 490,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f0e12677e114b6693543beddad39de4b813679d024ee7b1b2d0435977725151d"
+    },
+    {
+      "blockId": "lnGv6",
+      "blockName": "heroOrb",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 598,
+        "y": 137,
+        "width": 770,
+        "height": 222
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "234e5ce8cc91113ac737f63674dc931bc1ef188931aea830cdde946a4614d7f3"
+    },
+    {
+      "blockId": "HAXA5",
+      "blockName": "orbShadow",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 658,
+        "y": 253,
+        "width": 700,
+        "height": 170
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0756734432736f8b39d4c0e43b8af564fd55efb136727ddc7038dff5254db2b2"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "fZ8xi",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 36,
+        "y": 161,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "6554f2b69d0b5f5e3184fed924d6fe77a977e4e12eccbcad0e6a44f509e50f84",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "fZ8xi",
+        "x": 36,
+        "y": 161,
+        "name": "heroTitle",
+        "fill": "#FFFFFF",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "We all have\na mission",
+        "lineHeight": 1.1,
+        "fontFamily": "Inter",
+        "fontSize": 90,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "L0JNk",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 36,
+        "y": 423,
+        "width": 490,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "f0e12677e114b6693543beddad39de4b813679d024ee7b1b2d0435977725151d",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "L0JNk",
+        "x": 36,
+        "y": 423,
+        "name": "heroDesc",
+        "fill": "#ffffff",
+        "textGrowth": "fixed-width",
+        "width": 490,
+        "content": "Ours is delivering platforms that empower resilient connectivity from anywhere on Earth",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 26,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "lnGv6",
+      "blockName": "heroOrb",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 598,
+        "y": 137,
+        "width": 770,
+        "height": 222
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "234e5ce8cc91113ac737f63674dc931bc1ef188931aea830cdde946a4614d7f3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "lnGv6",
+        "x": 598,
+        "y": 137,
+        "name": "heroOrb",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 86,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#BFE5FF",
+              "position": 0
+            },
+            {
+              "color": "#4D6EA0",
+              "position": 0.55
+            },
+            {
+              "color": "#0B1220",
+              "position": 1
+            }
+          ]
+        },
+        "width": 770,
+        "height": 222
+      }
+    },
+    {
+      "blockId": "HAXA5",
+      "blockName": "orbShadow",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 658,
+        "y": 253,
+        "width": 700,
+        "height": 170
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0756734432736f8b39d4c0e43b8af564fd55efb136727ddc7038dff5254db2b2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "HAXA5",
+        "x": 658,
+        "y": 253,
+        "name": "orbShadow",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 90,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#1B2A43AA",
+              "position": 0
+            },
+            {
+              "color": "#00000000",
+              "position": 1
+            }
+          ]
+        },
+        "width": 700,
+        "height": 170
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "7QIe5",
+    "x": 0,
+    "y": 86,
+    "name": "hero",
+    "width": 1440,
+    "height": 615,
+    "fill": "#000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "fZ8xi",
+        "x": 36,
+        "y": 161,
+        "name": "heroTitle",
+        "fill": "#FFFFFF",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "We all have\na mission",
+        "lineHeight": 1.1,
+        "fontFamily": "Inter",
+        "fontSize": 90,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "L0JNk",
+        "x": 36,
+        "y": 423,
+        "name": "heroDesc",
+        "fill": "#ffffff",
+        "textGrowth": "fixed-width",
+        "width": 490,
+        "content": "Ours is delivering platforms that empower resilient connectivity from anywhere on Earth",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 26,
+        "fontWeight": "500"
+      },
+      {
+        "type": "ellipse",
+        "id": "lnGv6",
+        "x": 598,
+        "y": 137,
+        "name": "heroOrb",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 86,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#BFE5FF",
+              "position": 0
+            },
+            {
+              "color": "#4D6EA0",
+              "position": 0.55
+            },
+            {
+              "color": "#0B1220",
+              "position": 1
+            }
+          ]
+        },
+        "width": 770,
+        "height": 222
+      },
+      {
+        "type": "ellipse",
+        "id": "HAXA5",
+        "x": 658,
+        "y": 253,
+        "name": "orbShadow",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 90,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#1B2A43AA",
+              "position": 0
+            },
+            {
+              "color": "#00000000",
+              "position": 1
+            }
+          ]
+        },
+        "width": 700,
+        "height": 170
+      }
+    ]
+  }
+}

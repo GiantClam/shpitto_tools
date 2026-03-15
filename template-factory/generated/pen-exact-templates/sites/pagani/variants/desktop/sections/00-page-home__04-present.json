@@ -1,0 +1,710 @@
+{
+  "sectionId": "present",
+  "sectionName": "Present",
+  "sectionKind": "story",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 3520,
+    "width": 1440,
+    "height": 900
+  },
+  "directChildCount": 11,
+  "recursiveNodeCount": 12,
+  "treeHash": "47e9977a39e6c076e661d9a842571845db0364dd46d007f05d2403609cc9d284",
+  "blockCount": 11,
+  "blockIndex": [
+    {
+      "blockId": "present-bg",
+      "blockName": "present-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2d34abde0222761a737ccb8d80de85c143614239bc6ea58b6d49cbd005040177"
+    },
+    {
+      "blockId": "present-shade",
+      "blockName": "present-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4945399810f68608a5a25e5ba3a00eac17fad2433914ba966888655ed3fb85fd"
+    },
+    {
+      "blockId": "present-overlay",
+      "blockName": "present-overlay",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a073704bfd4c9d8de67b9a262c8e510ebabb9594c81701b22ef92847b5addb38"
+    },
+    {
+      "blockId": "present-left-marker-line1",
+      "blockName": "present-left-marker-line1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 34,
+        "y": 602,
+        "width": 1,
+        "height": 124
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0fb716fbc146e21a061c9b409962ad49a467cd413538d22185674dbb24108b0e"
+    },
+    {
+      "blockId": "present-left-marker-line2",
+      "blockName": "present-left-marker-line2",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 4,
+      "bounds": {
+        "x": 34,
+        "y": 684,
+        "width": 236,
+        "height": 1
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9fb6e6fec6c15af807efdafb7c97ca682337638e0abfc6c2c8211458ed43b3f1"
+    },
+    {
+      "blockId": "present-left-marker-num",
+      "blockName": "present-left-marker-num",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 60,
+        "y": 560,
+        "width": 40,
+        "height": 31
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9cb872636ab958b62077f8bcf97fcb2b8228043fc110d26b43907a5925af4a1a"
+    },
+    {
+      "blockId": "present-left-marker-label",
+      "blockName": "present-left-marker-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 182,
+        "y": 562,
+        "width": 120,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fde7456c5b1b3b78131dfc8c96bf31ad3610b508545729f817ac9914afe120fe"
+    },
+    {
+      "blockId": "present-title",
+      "blockName": "present-title",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 390,
+        "y": 298,
+        "width": 760,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ece727345793cae6828232c20446e5a4c152bd07827c9fe2e600f056dc0090d7"
+    },
+    {
+      "blockId": "present-body",
+      "blockName": "present-body",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 530,
+        "y": 438,
+        "width": 680,
+        "height": 135
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "21bfab39817bddade86343d43b71ccdfd8840924d3e195e44a6f9354e932b2de"
+    },
+    {
+      "blockId": "present-link",
+      "blockName": "present-link",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 642,
+        "y": 682,
+        "width": 280,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8f9f1ad1811b66c0af73f4c83bcb3e15774f1bf5772e9436fa51517148904be6"
+    },
+    {
+      "blockId": "present-right-rail",
+      "blockName": "present-right-rail",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 10,
+      "bounds": {
+        "x": 1410,
+        "y": 420,
+        "width": 320,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dac1d2679197ff0d6d725d7bc7251d1809de277c8667281452e2edfaea282f29"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/present.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/present.jpg",
+      "relativePath": "assets-structured/pagani/present.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "present-bg",
+      "blockName": "present-bg",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2d34abde0222761a737ccb8d80de85c143614239bc6ea58b6d49cbd005040177",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/present.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pagani/present.jpg",
+        "relativePath": "assets-structured/pagani/present.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "present-bg",
+        "x": 0,
+        "y": 0,
+        "name": "present-bg",
+        "width": 1440,
+        "height": 900,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/present.jpg",
+          "mode": "fill"
+        }
+      }
+    },
+    {
+      "blockId": "present-shade",
+      "blockName": "present-shade",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4945399810f68608a5a25e5ba3a00eac17fad2433914ba966888655ed3fb85fd",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "present-shade",
+        "x": 0,
+        "y": 0,
+        "name": "present-shade",
+        "width": 1440,
+        "height": 900,
+        "fill": "#0000005A"
+      }
+    },
+    {
+      "blockId": "present-overlay",
+      "blockName": "present-overlay",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a073704bfd4c9d8de67b9a262c8e510ebabb9594c81701b22ef92847b5addb38",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "present-overlay",
+        "x": 0,
+        "y": 0,
+        "name": "present-overlay",
+        "width": 1440,
+        "height": 900,
+        "fill": "#00000044"
+      }
+    },
+    {
+      "blockId": "present-left-marker-line1",
+      "blockName": "present-left-marker-line1",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 3,
+      "bounds": {
+        "x": 34,
+        "y": 602,
+        "width": 1,
+        "height": 124
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "0fb716fbc146e21a061c9b409962ad49a467cd413538d22185674dbb24108b0e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "present-left-marker-line1",
+        "x": 34,
+        "y": 602,
+        "name": "present-left-marker-line1",
+        "width": 1,
+        "height": 124,
+        "fill": "#FFFFFF55"
+      }
+    },
+    {
+      "blockId": "present-left-marker-line2",
+      "blockName": "present-left-marker-line2",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 4,
+      "bounds": {
+        "x": 34,
+        "y": 684,
+        "width": 236,
+        "height": 1
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9fb6e6fec6c15af807efdafb7c97ca682337638e0abfc6c2c8211458ed43b3f1",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "present-left-marker-line2",
+        "x": 34,
+        "y": 684,
+        "name": "present-left-marker-line2",
+        "width": 236,
+        "height": 1,
+        "fill": "#FFFFFF55"
+      }
+    },
+    {
+      "blockId": "present-left-marker-num",
+      "blockName": "present-left-marker-num",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 5,
+      "bounds": {
+        "x": 60,
+        "y": 560,
+        "width": 40,
+        "height": 31
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9cb872636ab958b62077f8bcf97fcb2b8228043fc110d26b43907a5925af4a1a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "present-left-marker-num",
+        "x": 60,
+        "y": 560,
+        "name": "present-left-marker-num",
+        "fill": "#F3F2ED",
+        "content": "01",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 40,
+        "height": 31
+      }
+    },
+    {
+      "blockId": "present-left-marker-label",
+      "blockName": "present-left-marker-label",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 6,
+      "bounds": {
+        "x": 182,
+        "y": 562,
+        "width": 120,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fde7456c5b1b3b78131dfc8c96bf31ad3610b508545729f817ac9914afe120fe",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "present-left-marker-label",
+        "x": 182,
+        "y": 562,
+        "name": "present-left-marker-label",
+        "fill": "#F3F2ED",
+        "content": "PRESENT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 24,
+        "letterSpacing": "0.12em"
+      }
+    },
+    {
+      "blockId": "present-title",
+      "blockName": "present-title",
+      "blockType": "text",
+      "order": 7,
+      "bounds": {
+        "x": 390,
+        "y": 298,
+        "width": 760,
+        "height": 86
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ece727345793cae6828232c20446e5a4c152bd07827c9fe2e600f056dc0090d7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "present-title",
+        "x": 390,
+        "y": 298,
+        "name": "present-title",
+        "fill": "#F3F2ED",
+        "content": "WE'VE GONE THIS FAR, DRIVEN BY THE WINDS OF ALL TIMES.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 28,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 760,
+        "height": 86,
+        "letterSpacing": "0.16em"
+      }
+    },
+    {
+      "blockId": "present-body",
+      "blockName": "present-body",
+      "blockType": "text",
+      "order": 8,
+      "bounds": {
+        "x": 530,
+        "y": 438,
+        "width": 680,
+        "height": 135
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "21bfab39817bddade86343d43b71ccdfd8840924d3e195e44a6f9354e932b2de",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "present-body",
+        "x": 530,
+        "y": 438,
+        "name": "present-body",
+        "fill": "#F3F2ED",
+        "content": "Designed to celebrate the harmony between art and science, these cars can catch the moment. Past and future meet at the perfect time, at the exact instant when the wind of creativity starts to blow. And that’s how Huayra Roadster was born: a car of unique beauty, like a work of art made from a block of Carrara marble.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 680,
+        "height": 135,
+        "letterSpacing": "0.08em"
+      }
+    },
+    {
+      "blockId": "present-link",
+      "blockName": "present-link",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 9,
+      "bounds": {
+        "x": 642,
+        "y": 682,
+        "width": 280,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8f9f1ad1811b66c0af73f4c83bcb3e15774f1bf5772e9436fa51517148904be6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "present-link",
+        "x": 642,
+        "y": 682,
+        "name": "present-link",
+        "fill": "#F3F2ED",
+        "content": "HUAYRA ROADSTER",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 17,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 280,
+        "height": 24,
+        "letterSpacing": "0.12em",
+        "href": "#page-huayra-r"
+      }
+    },
+    {
+      "blockId": "present-right-rail",
+      "blockName": "present-right-rail",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 10,
+      "bounds": {
+        "x": 1410,
+        "y": 420,
+        "width": 320,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "dac1d2679197ff0d6d725d7bc7251d1809de277c8667281452e2edfaea282f29",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "present-right-rail",
+        "x": 1410,
+        "y": 420,
+        "name": "present-right-rail",
+        "fill": "#F3F2ED",
+        "content": "BACK TO HISTORY OF A DREAM",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 24,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "present",
+    "x": 0,
+    "y": 3520,
+    "width": 1440,
+    "height": 900,
+    "name": "Present",
+    "fill": "#060606",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "present-bg",
+        "x": 0,
+        "y": 0,
+        "name": "present-bg",
+        "width": 1440,
+        "height": 900,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pagani/present.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "present-shade",
+        "x": 0,
+        "y": 0,
+        "name": "present-shade",
+        "width": 1440,
+        "height": 900,
+        "fill": "#0000005A"
+      },
+      {
+        "type": "rectangle",
+        "id": "present-overlay",
+        "x": 0,
+        "y": 0,
+        "name": "present-overlay",
+        "width": 1440,
+        "height": 900,
+        "fill": "#00000044"
+      },
+      {
+        "type": "rectangle",
+        "id": "present-left-marker-line1",
+        "x": 34,
+        "y": 602,
+        "name": "present-left-marker-line1",
+        "width": 1,
+        "height": 124,
+        "fill": "#FFFFFF55"
+      },
+      {
+        "type": "rectangle",
+        "id": "present-left-marker-line2",
+        "x": 34,
+        "y": 684,
+        "name": "present-left-marker-line2",
+        "width": 236,
+        "height": 1,
+        "fill": "#FFFFFF55"
+      },
+      {
+        "type": "text",
+        "id": "present-left-marker-num",
+        "x": 60,
+        "y": 560,
+        "name": "present-left-marker-num",
+        "fill": "#F3F2ED",
+        "content": "01",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 40,
+        "height": 31
+      },
+      {
+        "type": "text",
+        "id": "present-left-marker-label",
+        "x": 182,
+        "y": 562,
+        "name": "present-left-marker-label",
+        "fill": "#F3F2ED",
+        "content": "PRESENT",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 24,
+        "letterSpacing": "0.12em"
+      },
+      {
+        "type": "text",
+        "id": "present-title",
+        "x": 390,
+        "y": 298,
+        "name": "present-title",
+        "fill": "#F3F2ED",
+        "content": "WE'VE GONE THIS FAR, DRIVEN BY THE WINDS OF ALL TIMES.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 28,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 760,
+        "height": 86,
+        "letterSpacing": "0.16em"
+      },
+      {
+        "type": "text",
+        "id": "present-body",
+        "x": 530,
+        "y": 438,
+        "name": "present-body",
+        "fill": "#F3F2ED",
+        "content": "Designed to celebrate the harmony between art and science, these cars can catch the moment. Past and future meet at the perfect time, at the exact instant when the wind of creativity starts to blow. And that’s how Huayra Roadster was born: a car of unique beauty, like a work of art made from a block of Carrara marble.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "400",
+        "textGrowth": "fixed-width-height",
+        "width": 680,
+        "height": 135,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "present-link",
+        "x": 642,
+        "y": 682,
+        "name": "present-link",
+        "fill": "#F3F2ED",
+        "content": "HUAYRA ROADSTER",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 17,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 280,
+        "height": 24,
+        "letterSpacing": "0.12em",
+        "href": "#page-huayra-r"
+      },
+      {
+        "type": "text",
+        "id": "present-right-rail",
+        "x": 1410,
+        "y": 420,
+        "name": "present-right-rail",
+        "fill": "#F3F2ED",
+        "content": "BACK TO HISTORY OF A DREAM",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 24,
+        "letterSpacing": "0.12em",
+        "href": "#page-history"
+      }
+    ]
+  }
+}

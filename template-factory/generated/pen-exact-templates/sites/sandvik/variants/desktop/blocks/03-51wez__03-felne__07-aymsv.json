@@ -1,0 +1,80 @@
+{
+  "blockId": "aYmsV",
+  "blockName": "c6",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 7,
+  "bounds": {
+    "x": 1032,
+    "y": 430,
+    "width": 390,
+    "height": 282
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "af076c1740f796620c2fc5e1ad47ae50ef0908fcb63799f79e4af885717d501b",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "aYmsV",
+    "x": 1032,
+    "y": 430,
+    "name": "c6",
+    "width": 390,
+    "height": 282,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "Dx8Kk",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 138,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?auto=format&fit=crop&w=1200&q=80",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "Ovosb",
+        "x": 0,
+        "y": 152,
+        "fill": "#1F1F1F",
+        "content": "库存",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "OQKLy",
+        "x": 0,
+        "y": 176,
+        "fill": "#2F2F2F",
+        "textGrowth": "fixed-width",
+        "width": 390,
+        "content": "协同库存策略，降低周转成本并提升交付稳定性。",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "text",
+        "id": "Sl5CV",
+        "x": 0,
+        "y": 250,
+        "fill": "#6F5F43",
+        "content": "了解更多  ›",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "blockId": "p6UXX",
+  "blockName": "Who",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 3,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1040,
+    "height": ""
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 25,
+  "treeHash": "88bef50b8b9e62ef76b6a2786294205be7232f040c86a91ee26827d12199a80b",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "p6UXX",
+    "name": "Who",
+    "width": 1040,
+    "gap": 88,
+    "children": [
+      {
+        "type": "frame",
+        "id": "KMR5H",
+        "name": "leftCol",
+        "width": 220,
+        "layout": "vertical",
+        "gap": 8,
+        "children": [
+          {
+            "type": "text",
+            "id": "aawka",
+            "fill": "#1F2737",
+            "content": "Who",
+            "fontFamily": "Inter",
+            "fontSize": 68,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "MQ7TM",
+            "fill": "#F46E35",
+            "content": "we are",
+            "fontFamily": "Inter",
+            "fontSize": 68,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "LHlHU",
+        "name": "rightCol",
+        "width": 760,
+        "layout": "vertical",
+        "gap": 56,
+        "children": [
+          {
+            "type": "frame",
+            "id": "UHwyB",
+            "name": "row1",
+            "width": "fill_container",
+            "gap": 34,
+            "children": [
+              {
+                "type": "frame",
+                "id": "rFm9w",
+                "name": "card1",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 12,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "itg2i",
+                    "name": "avatar1",
+                    "width": 170,
+                    "height": 170,
+                    "fill": "#F8B91A",
+                    "cornerRadius": 85
+                  },
+                  {
+                    "type": "text",
+                    "id": "gfKki",
+                    "fill": "#24262B",
+                    "textGrowth": "fixed-width",
+                    "width": "fill_container",
+                    "content": "Nirav Patel\nFounder\n🌐  in  𝕏",
+                    "lineHeight": 1.55,
+                    "textAlign": "center",
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "eHQNJ",
+                "name": "card2",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 12,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "ybdKb",
+                    "name": "avatar2",
+                    "width": 170,
+                    "height": 170,
+                    "fill": "#DED4A7",
+                    "cornerRadius": 85
+                  },
+                  {
+                    "type": "text",
+                    "id": "C7mvM",
+                    "fill": "#24262B",
+                    "textGrowth": "fixed-width",
+                    "width": "fill_container",
+                    "content": "Kieran L\nDirector, Device Software\n🌐  in  𝕏  ◎",
+                    "lineHeight": 1.55,
+                    "textAlign": "center",
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "YOY1K",
+                "name": "card3",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 12,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "ZWEHB",
+                    "name": "avatar3",
+                    "width": 170,
+                    "height": 170,
+                    "fill": "#FC7A00",
+                    "cornerRadius": 85
+                  },
+                  {
+                    "type": "text",
+                    "id": "z6bFH",
+                    "fill": "#24262B",
+                    "textGrowth": "fixed-width",
+                    "width": "fill_container",
+                    "content": "Po Yu C\nHead of Industrial Design\nin  𝕏",
+                    "lineHeight": 1.55,
+                    "textAlign": "center",
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "IvOFx",
+            "name": "row2",
+            "width": "fill_container",
+            "gap": 34,
+            "children": [
+              {
+                "type": "frame",
+                "id": "d1riw",
+                "name": "card4",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 12,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "Wn3gI",
+                    "width": 170,
+                    "height": 170,
+                    "fill": "#74C5E8",
+                    "cornerRadius": 85
+                  },
+                  {
+                    "type": "text",
+                    "id": "uDgJe",
+                    "fill": "#24262B",
+                    "textGrowth": "fixed-width",
+                    "width": "fill_container",
+                    "content": "Kate C\nTechnical Program Manager\nin",
+                    "lineHeight": 1.55,
+                    "textAlign": "center",
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "wxY7T",
+                "name": "card5",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 12,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "kfjeq",
+                    "width": 170,
+                    "height": 170,
+                    "fill": "#EBB7CC",
+                    "cornerRadius": 85
+                  },
+                  {
+                    "type": "text",
+                    "id": "0GTwN",
+                    "fill": "#24262B",
+                    "textGrowth": "fixed-width",
+                    "width": "fill_container",
+                    "content": "Mendy N\nChief Operating Officer\nin",
+                    "lineHeight": 1.55,
+                    "textAlign": "center",
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "5MIst",
+                "name": "card6",
+                "width": "fill_container",
+                "layout": "vertical",
+                "gap": 12,
+                "alignItems": "center",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "dBeCk",
+                    "width": 170,
+                    "height": 170,
+                    "fill": "#FF1A9A",
+                    "cornerRadius": 85
+                  },
+                  {
+                    "type": "text",
+                    "id": "uzSGV",
+                    "fill": "#24262B",
+                    "textGrowth": "fixed-width",
+                    "width": "fill_container",
+                    "content": "Adila L\nSenior Global Supply Manager\nin",
+                    "lineHeight": 1.55,
+                    "textAlign": "center",
+                    "fontFamily": "Inter",
+                    "fontSize": 16,
+                    "fontWeight": "700"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "template-factory.pen.v1",
+  "kind": "site-pen-bundle",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "siteId": "ionq",
+  "siteName": "Ionq",
+  "reviewMode": "site-level",
+  "requiredVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "availableVariants": [
+    "desktop"
+  ],
+  "responsiveModes": {
+    "desktop": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "exact-source"
+    },
+    "mobile": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "responsive-derived-from-desktop"
+    }
+  },
+  "capabilities": {
+    "exactTemplate": true,
+    "skinnable": true,
+    "sandboxPreview": true,
+    "dualModeReady": true,
+    "exactMobileSource": false
+  },
+  "commercialReadiness": {
+    "structuralValidationPassed": true,
+    "visualValidationPassed": true,
+    "sandboxRuntimePassed": true,
+    "skinnableReady": true,
+    "publishInputReady": true
+  },
+  "artifacts": [
+    {
+      "caseId": "ionq-desktop",
+      "siteId": "ionq",
+      "siteName": "Ionq",
+      "siteGroupId": "ionq",
+      "variant": "desktop",
+      "siteKey": "pen-exact-site-ionq-desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/ionq.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-ionq-desktop/sandbox/payload.json",
+      "sourceHash": "b213e2e11cea5930671f7fb734e099569b1241059be76b56b7068d42989ff158",
+      "pageCount": 6,
+      "sectionCount": 43,
+      "blockCount": 451,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/ionq/variants/desktop/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/ionq/variants/desktop/template.skin.json",
+      "previewPages": 6,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-ionq-desktop&page=home"
+    }
+  ]
+}

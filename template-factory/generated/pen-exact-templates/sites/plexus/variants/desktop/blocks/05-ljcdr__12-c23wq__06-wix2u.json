@@ -1,0 +1,70 @@
+{
+  "blockId": "wix2U",
+  "blockName": "r3",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 6,
+  "bounds": {
+    "x": 960,
+    "y": 130,
+    "width": 400,
+    "height": 350
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "6cc5682ad4878adb596387e3ffbcbd4e474f1a41280102f3841747238ec09525",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "wix2U",
+    "x": 960,
+    "y": 130,
+    "name": "r3",
+    "width": 400,
+    "height": 350,
+    "fill": "#FFFFFF",
+    "stroke": {
+      "thickness": 1,
+      "fill": "#D8DEE3"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "Xg9zg",
+        "x": 0,
+        "y": 0,
+        "name": "r3i",
+        "metadata": {
+          "type": "unsplash",
+          "username": "anniespratt",
+          "link": "https://unsplash.com/@anniespratt",
+          "author": "Annie Spratt"
+        },
+        "width": 400,
+        "height": 190,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1700241956197-0b13f96fd69e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "uyQbv",
+        "x": 24,
+        "y": 220,
+        "name": "r3t",
+        "fill": "#22303D",
+        "textGrowth": "fixed-width",
+        "width": 352,
+        "content": "Product Strategy: The Foundation for Product Success",
+        "lineHeight": 1.12,
+        "fontFamily": "Inter",
+        "fontSize": 22,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

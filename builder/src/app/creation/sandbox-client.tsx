@@ -10,6 +10,7 @@ import { compileJIT } from "@/lib/runtime";
 import { MotionProvider } from "@/components/theme/motion";
 import { normalizePuckData } from "@/lib/design-system-enforcer";
 import { puckConfig } from "@/puck/config";
+import type { SandboxPageSkinnable } from "@/lib/sandbox-payload";
 
 const DEFAULT_THEME_LIGHT = {
   background: "0 0% 100%",
@@ -175,7 +176,7 @@ type IncomingMessage =
 
 type SandboxLoadPayload = {
   components: Array<{ name: string; code: string }>;
-  page: { data: Data };
+  page: { data: Data; skinnable?: SandboxPageSkinnable };
   availablePagePaths?: string[];
   theme?: Record<string, any>;
   pageIndex?: number;
@@ -183,6 +184,353 @@ type SandboxLoadPayload = {
 
 type CreationSandboxClientProps = {
   initialPayload?: SandboxLoadPayload;
+};
+
+type SkinDraftState = {
+  text: Record<string, string>;
+  image: Record<string, string>;
+  link: Record<string, string>;
+  style: Record<string, string>;
+};
+
+const createEmptySkinDraft = (): SkinDraftState => ({
+  text: {},
+  image: {},
+  link: {},
+  style: {},
+});
+
+const toCssPx = (value: unknown) => (typeof value === "number" && Number.isFinite(value) ? `${value}px` : "");
+
+const normalizeStylePadding = (value: unknown) => {
+  if (!Array.isArray(value) || !value.length) return "";
+  if (value.length === 1 && typeof value[0] === "number") return `${value[0]}px`;
+  if (value.length === 2 && value.every((item) => typeof item === "number")) {
+    return `${value[0]}px ${value[1]}px`;
+  }
+  if (value.length === 4 && value.every((item) => typeof item === "number")) {
+    return `${value[0]}px ${value[1]}px ${value[2]}px ${value[3]}px`;
+  }
+  return "";
+};
+
+const alignKeyword = (value?: unknown) =>
+  ({
+    start: "flex-start",
+    end: "flex-end",
+    center: "center",
+    stretch: "stretch",
+    space_between: "space-between",
+    space_around: "space-around",
+    space_evenly: "space-evenly",
+  })[String(value || "").trim().toLowerCase()] || "";
+
+const imageFitMode = (value?: unknown) =>
+  ({
+    fill: "cover",
+    fit: "contain",
+    stretch: "100% 100%",
+  })[String(value || "").trim().toLowerCase()] || "cover";
+
+const escapeCssSelector = (value: string) => {
+  if (typeof window !== "undefined" && window.CSS?.escape) return window.CSS.escape(value);
+  return value.replace(/["\\]/g, "\\$&");
+};
+
+const cloneJson = <T,>(value: T): T => JSON.parse(JSON.stringify(value));
+
+const deepMergePlainObject = (base: Record<string, unknown>, patch: Record<string, unknown>) => {
+  const next: Record<string, unknown> = { ...base };
+  for (const [key, value] of Object.entries(patch)) {
+    if (
+      value &&
+      typeof value === "object" &&
+      !Array.isArray(value) &&
+      next[key] &&
+      typeof next[key] === "object" &&
+      !Array.isArray(next[key])
+    ) {
+      next[key] = deepMergePlainObject(next[key] as Record<string, unknown>, value as Record<string, unknown>);
+      continue;
+    }
+    next[key] = value;
+  }
+  return next;
+};
+
+const linearGradientFromFill = (fill: Record<string, unknown>) => {
+  const colors = Array.isArray(fill.colors) ? fill.colors : [];
+  if (!colors.length) return "";
+  const rotation = typeof fill.rotation === "number" ? fill.rotation : 180;
+  const stops = colors
+    .map((entry) => {
+      if (!entry || typeof entry !== "object") return "";
+      const color = String((entry as Record<string, unknown>).color || "").trim();
+      const position = Number((entry as Record<string, unknown>).position || 0);
+      if (!color) return "";
+      return `${color} ${Math.round(position * 10000) / 100}%`;
+    })
+    .filter(Boolean);
+  if (!stops.length) return "";
+  return `linear-gradient(${rotation}deg, ${stops.join(", ")})`;
+};
+
+const skinStorageKey = (siteKey: string, pageId: string) => `creation-sandbox-skin:${siteKey}:${pageId}`;
+
+const defaultStyleDraft = (defaults?: Record<string, unknown>) => JSON.stringify(defaults || {}, null, 2);
+
+const loadDraftFromStorage = (siteKey: string, pageId: string): SkinDraftState => {
+  if (typeof window === "undefined" || !siteKey || !pageId) return createEmptySkinDraft();
+  try {
+    const raw = window.localStorage.getItem(skinStorageKey(siteKey, pageId));
+    if (!raw) return createEmptySkinDraft();
+    const parsed = JSON.parse(raw) as Partial<SkinDraftState>;
+    return {
+      text: parsed?.text && typeof parsed.text === "object" ? { ...(parsed.text as Record<string, string>) } : {},
+      image: parsed?.image && typeof parsed.image === "object" ? { ...(parsed.image as Record<string, string>) } : {},
+      link: parsed?.link && typeof parsed.link === "object" ? { ...(parsed.link as Record<string, string>) } : {},
+      style: parsed?.style && typeof parsed.style === "object" ? { ...(parsed.style as Record<string, string>) } : {},
+    };
+  } catch {
+    return createEmptySkinDraft();
+  }
+};
+
+const persistDraftToStorage = (siteKey: string, pageId: string, draft: SkinDraftState) => {
+  if (typeof window === "undefined" || !siteKey || !pageId) return;
+  try {
+    window.localStorage.setItem(skinStorageKey(siteKey, pageId), JSON.stringify(draft));
+  } catch {}
+};
+
+const removeDraftSlot = (
+  draft: SkinDraftState,
+  group: keyof SkinDraftState,
+  slotId: string
+): SkinDraftState => {
+  const nextGroup = { ...draft[group] };
+  delete nextGroup[slotId];
+  return { ...draft, [group]: nextGroup };
+};
+
+const findPenNode = (doc: Document, nodeId: string) =>
+  doc.querySelector<HTMLElement>(`[data-pen-node="${escapeCssSelector(nodeId)}"]`);
+
+const isTextNodeType = (nodeType?: string) => nodeType === "text" || nodeType === "icon_font";
+
+const applyFillStyle = (element: HTMLElement, fill: unknown, nodeType?: string) => {
+  if (typeof fill === "string") {
+    if (isTextNodeType(nodeType)) {
+      element.style.color = fill;
+    } else {
+      element.style.background = fill;
+      element.style.removeProperty("background-image");
+    }
+    return;
+  }
+  if (!fill || typeof fill !== "object") return;
+  const nextFill = fill as Record<string, unknown>;
+  if (nextFill.type === "image") {
+    const url = String(nextFill.url || "").trim();
+    if (url) {
+      element.style.backgroundImage = `url("${url.replace(/"/g, "%22")}")`;
+    } else {
+      element.style.removeProperty("background-image");
+    }
+    element.style.backgroundRepeat = "no-repeat";
+    element.style.backgroundPosition = "center center";
+    element.style.backgroundSize = imageFitMode(nextFill.mode);
+    return;
+  }
+  if (nextFill.type === "gradient") {
+    const gradient = linearGradientFromFill(nextFill);
+    if (gradient) element.style.backgroundImage = gradient;
+  }
+};
+
+const applyStrokeStyle = (element: HTMLElement, stroke: unknown) => {
+  if (!stroke || typeof stroke !== "object") return;
+  const nextStroke = stroke as Record<string, unknown>;
+  const fill = String(nextStroke.fill || "").trim();
+  const thickness = Number(nextStroke.thickness || 0);
+  if (fill && Number.isFinite(thickness) && thickness > 0) {
+    element.style.border = `${thickness}px solid ${fill}`;
+  }
+};
+
+const applyEffectStyle = (element: HTMLElement, effect: unknown) => {
+  if (!effect || typeof effect !== "object") return;
+  const nextEffect = effect as Record<string, unknown>;
+  if (nextEffect.type !== "shadow") return;
+  const offset = nextEffect.offset && typeof nextEffect.offset === "object"
+    ? (nextEffect.offset as Record<string, unknown>)
+    : {};
+  const offsetX = Number(offset.x || 0);
+  const offsetY = Number(offset.y || 0);
+  const blur = Number(nextEffect.blur || 0);
+  const color = String(nextEffect.color || "").trim();
+  if (color) {
+    element.style.boxShadow = `${offsetX}px ${offsetY}px ${blur}px ${color}`;
+  }
+};
+
+const applyStyleObject = (element: HTMLElement, stylePatch: Record<string, unknown>, nodeType?: string) => {
+  if ("fill" in stylePatch) applyFillStyle(element, stylePatch.fill, nodeType);
+  if ("stroke" in stylePatch) applyStrokeStyle(element, stylePatch.stroke);
+  if ("effect" in stylePatch) applyEffectStyle(element, stylePatch.effect);
+  if ("cornerRadius" in stylePatch) element.style.borderRadius = toCssPx(stylePatch.cornerRadius);
+  if ("padding" in stylePatch) element.style.padding = normalizeStylePadding(stylePatch.padding);
+  if ("gap" in stylePatch) element.style.gap = toCssPx(stylePatch.gap);
+  if ("layout" in stylePatch) {
+    const layout = String(stylePatch.layout || "").trim();
+    if (layout === "vertical" || layout === "horizontal") {
+      element.style.display = "flex";
+      element.style.flexDirection = layout === "vertical" ? "column" : "row";
+    }
+  }
+  if ("justifyContent" in stylePatch) element.style.justifyContent = alignKeyword(stylePatch.justifyContent);
+  if ("alignItems" in stylePatch) element.style.alignItems = alignKeyword(stylePatch.alignItems);
+  if ("width" in stylePatch) {
+    element.style.width = stylePatch.width === "fill_container" ? "100%" : toCssPx(stylePatch.width) || String(stylePatch.width || "");
+  }
+  if ("height" in stylePatch) {
+    element.style.height = stylePatch.height === "fill_container" ? "100%" : toCssPx(stylePatch.height) || String(stylePatch.height || "");
+  }
+  if ("opacity" in stylePatch && stylePatch.opacity !== undefined && stylePatch.opacity !== null) {
+    element.style.opacity = String(stylePatch.opacity);
+  }
+  if ("rotation" in stylePatch && stylePatch.rotation !== undefined && stylePatch.rotation !== null) {
+    const rotation = Number(stylePatch.rotation);
+    if (Number.isFinite(rotation)) {
+      const unit = Math.abs(rotation) <= Math.PI * 2 ? "rad" : "deg";
+      element.style.transform = `rotate(${rotation}${unit})`;
+      element.style.transformOrigin = "top left";
+    }
+  }
+  if ("fontFamily" in stylePatch && stylePatch.fontFamily) {
+    element.style.fontFamily = `"${String(stylePatch.fontFamily)}", "Helvetica Neue", Arial, sans-serif`;
+  }
+  if ("fontSize" in stylePatch) element.style.fontSize = toCssPx(stylePatch.fontSize);
+  if ("fontWeight" in stylePatch && stylePatch.fontWeight) element.style.fontWeight = String(stylePatch.fontWeight);
+  if ("lineHeight" in stylePatch && stylePatch.lineHeight !== undefined && stylePatch.lineHeight !== null) {
+    const lineHeight = Number(stylePatch.lineHeight);
+    element.style.lineHeight =
+      Number.isFinite(lineHeight) && lineHeight <= 4 ? String(lineHeight) : toCssPx(stylePatch.lineHeight);
+  }
+  if ("letterSpacing" in stylePatch) element.style.letterSpacing = toCssPx(stylePatch.letterSpacing);
+  if ("textAlign" in stylePatch && stylePatch.textAlign) element.style.textAlign = String(stylePatch.textAlign);
+  if ("textAlignVertical" in stylePatch && stylePatch.textAlignVertical) {
+    element.style.display = "flex";
+    element.style.alignItems =
+      ({
+        top: "flex-start",
+        middle: "center",
+        center: "center",
+        bottom: "flex-end",
+      })[String(stylePatch.textAlignVertical || "").trim().toLowerCase()] || element.style.alignItems;
+  }
+};
+
+const applySkinnableDraftToDocument = (
+  doc: Document,
+  skinnable: SandboxPageSkinnable,
+  draft: SkinDraftState
+) => {
+  const styleErrors: Record<string, string> = {};
+
+  for (const slot of skinnable.editable.styleSlots || []) {
+    const element = findPenNode(doc, slot.nodeId);
+    if (!element) continue;
+    const raw = draft.style[slot.slotId];
+    const base = cloneJson(slot.defaults || {});
+    let next = base;
+    if (typeof raw === "string" && raw.trim()) {
+      try {
+        const parsed = JSON.parse(raw) as Record<string, unknown>;
+        if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+          next = deepMergePlainObject(base, parsed);
+        }
+      } catch (error) {
+        styleErrors[slot.slotId] = error instanceof Error ? error.message : "Invalid JSON";
+      }
+    }
+    applyStyleObject(element, next, slot.nodeType);
+  }
+
+  for (const slot of skinnable.editable.textSlots || []) {
+    const element = findPenNode(doc, slot.nodeId);
+    if (!element) continue;
+    element.textContent = draft.text[slot.slotId] ?? slot.defaultValue;
+  }
+
+  for (const slot of skinnable.editable.imageSlots || []) {
+    const element = findPenNode(doc, slot.nodeId);
+    if (!element) continue;
+    const url = (draft.image[slot.slotId] ?? slot.defaultUrl).trim();
+    if (url) {
+      element.style.backgroundImage = `url("${url.replace(/"/g, "%22")}")`;
+      element.style.backgroundRepeat = "no-repeat";
+      element.style.backgroundPosition = "center center";
+      element.style.backgroundSize = imageFitMode(slot.defaultMode);
+    } else {
+      element.style.removeProperty("background-image");
+    }
+  }
+
+  for (const slot of skinnable.editable.linkSlots || []) {
+    const element = findPenNode(doc, slot.nodeId);
+    if (!element) continue;
+    const href = (draft.link[slot.slotId] ?? slot.defaultHref).trim();
+    if (element instanceof HTMLAnchorElement) {
+      if (href) element.setAttribute("href", href);
+      else element.removeAttribute("href");
+    }
+  }
+
+  return { styleErrors };
+};
+
+const buildSkinOverrideExport = (skinnable: SandboxPageSkinnable, draft: SkinDraftState) => {
+  const overrideMap: Record<string, Record<string, unknown>> = {};
+  for (const slot of skinnable.editable.textSlots || []) {
+    const next = draft.text[slot.slotId];
+    if (typeof next === "string" && next !== slot.defaultValue) {
+      overrideMap[slot.nodeId] = { ...(overrideMap[slot.nodeId] || {}), content: next };
+    }
+  }
+  for (const slot of skinnable.editable.imageSlots || []) {
+    const next = draft.image[slot.slotId];
+    if (typeof next === "string" && next !== slot.defaultUrl) {
+      overrideMap[slot.nodeId] = {
+        ...(overrideMap[slot.nodeId] || {}),
+        fill: {
+          type: "image",
+          url: next,
+          mode: slot.defaultMode || "fill",
+        },
+      };
+    }
+  }
+  for (const slot of skinnable.editable.linkSlots || []) {
+    const next = draft.link[slot.slotId];
+    if (typeof next === "string" && next !== slot.defaultHref) {
+      overrideMap[slot.nodeId] = { ...(overrideMap[slot.nodeId] || {}), href: next };
+    }
+  }
+  for (const slot of skinnable.editable.styleSlots || []) {
+    const raw = draft.style[slot.slotId];
+    if (!raw || raw === defaultStyleDraft(slot.defaults)) continue;
+    try {
+      const parsed = JSON.parse(raw) as Record<string, unknown>;
+      if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+        overrideMap[slot.nodeId] = deepMergePlainObject(
+          (overrideMap[slot.nodeId] || {}) as Record<string, unknown>,
+          parsed
+        );
+      }
+    } catch {}
+  }
+  return overrideMap;
 };
 
 const detectPrimitiveArrayFields = (code: string) => {
@@ -356,6 +704,12 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
   const [themeCss, setThemeCss] = React.useState<string>("");
   const [motionMode, setMotionMode] = React.useState<"off" | "subtle" | "showcase">("showcase");
   const [pageKey, setPageKey] = React.useState<string>("page-0");
+  const [skinnable, setSkinnable] = React.useState<SandboxPageSkinnable | null>(null);
+  const [skinOpen, setSkinOpen] = React.useState(false);
+  const [skinFilter, setSkinFilter] = React.useState("");
+  const [skinDraft, setSkinDraft] = React.useState<SkinDraftState>(createEmptySkinDraft);
+  const [skinStyleErrors, setSkinStyleErrors] = React.useState<Record<string, string>>({});
+  const [skinCopied, setSkinCopied] = React.useState(false);
   const pageIndexRef = React.useRef<number>(0);
   const postToHost = React.useCallback((message: unknown) => {
     window.parent?.postMessage(message, "*");
@@ -500,6 +854,7 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
       setAvailablePagePaths(nextPagePaths.length ? nextPagePaths : ["/"]);
       setThemeCss(buildThemeCss(payload.theme));
       setMotionMode((payload.theme?.motion as any) || "showcase");
+      setSkinnable(payload.page.skinnable || null);
       document.documentElement.classList.toggle("dark", payload.theme?.mode === "dark");
     },
     [postToHost]
@@ -509,6 +864,55 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
     if (!initialPayload) return;
     applyLoadPayload(initialPayload);
   }, [applyLoadPayload, initialPayload]);
+
+  React.useEffect(() => {
+    if (!skinnable?.pageId || !siteKey) {
+      setSkinDraft(createEmptySkinDraft());
+      setSkinStyleErrors({});
+      return;
+    }
+    setSkinDraft(loadDraftFromStorage(siteKey, skinnable.pageId));
+    setSkinStyleErrors({});
+    setSkinCopied(false);
+    setSkinFilter("");
+  }, [siteKey, skinnable?.pageId]);
+
+  React.useEffect(() => {
+    if (isEdit || !skinnable?.pageId || !siteKey) return;
+    persistDraftToStorage(siteKey, skinnable.pageId, skinDraft);
+  }, [isEdit, siteKey, skinnable?.pageId, skinDraft]);
+
+  React.useEffect(() => {
+    if (isEdit || !skinnable) return;
+    let cancelled = false;
+    let attempts = 0;
+    const applyToFrame = () => {
+      if (cancelled) return true;
+      const frame = document.querySelector<HTMLIFrameElement>('iframe[data-pen-preview-frame="true"]');
+      const doc = frame?.contentDocument;
+      if (!frame || !doc || !doc.body) return false;
+      const result = applySkinnableDraftToDocument(doc, skinnable, skinDraft);
+      if (!cancelled) setSkinStyleErrors(result.styleErrors);
+      return true;
+    };
+    const onLoad = () => {
+      applyToFrame();
+    };
+    const interval = window.setInterval(() => {
+      attempts += 1;
+      if (applyToFrame() || attempts > 40) window.clearInterval(interval);
+    }, 150);
+    const frame = document.querySelector<HTMLIFrameElement>('iframe[data-pen-preview-frame="true"]');
+    frame?.addEventListener("load", onLoad);
+    window.requestAnimationFrame(() => {
+      applyToFrame();
+    });
+    return () => {
+      cancelled = true;
+      window.clearInterval(interval);
+      frame?.removeEventListener("load", onLoad);
+    };
+  }, [isEdit, pageKey, skinnable, skinDraft, data]);
 
   React.useEffect(() => {
     const onMessage = (event: MessageEvent<IncomingMessage>) => {
@@ -533,6 +937,32 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
     },
     [postToHost]
   );
+
+  const filteredTextSlots = (skinnable?.editable.textSlots || []).filter((slot) =>
+    slot.label.toLowerCase().includes(skinFilter.trim().toLowerCase())
+  );
+  const filteredImageSlots = (skinnable?.editable.imageSlots || []).filter((slot) =>
+    slot.label.toLowerCase().includes(skinFilter.trim().toLowerCase())
+  );
+  const filteredLinkSlots = (skinnable?.editable.linkSlots || []).filter((slot) =>
+    slot.label.toLowerCase().includes(skinFilter.trim().toLowerCase())
+  );
+  const filteredStyleSlots = (skinnable?.editable.styleSlots || []).filter((slot) =>
+    slot.label.toLowerCase().includes(skinFilter.trim().toLowerCase())
+  );
+
+  const handleCopyOverrides = React.useCallback(async () => {
+    if (!skinnable || typeof window === "undefined" || !navigator.clipboard) return;
+    const overrideMap = buildSkinOverrideExport(skinnable, skinDraft);
+    await navigator.clipboard.writeText(JSON.stringify(overrideMap, null, 2));
+    setSkinCopied(true);
+    window.setTimeout(() => setSkinCopied(false), 1200);
+  }, [skinnable, skinDraft]);
+
+  const handleResetAllSkins = React.useCallback(() => {
+    setSkinDraft(createEmptySkinDraft());
+    setSkinStyleErrors({});
+  }, []);
 
   return (
     <div
@@ -568,6 +998,200 @@ export default function CreationSandboxClient({ initialPayload }: CreationSandbo
           等待生成内容…
         </div>
       )}
+      {!isEdit && skinnable ? (
+        <>
+          <button
+            type="button"
+            onClick={() => setSkinOpen((open) => !open)}
+            className="fixed bottom-5 right-5 z-[60] rounded-full border border-slate-300 bg-white/92 px-4 py-2 text-sm font-medium text-slate-900 shadow-lg backdrop-blur"
+          >
+            {skinOpen ? "Hide Skins" : "Open Skins"}
+          </button>
+          {skinOpen ? (
+            <aside className="fixed right-0 top-0 z-[55] h-screen w-full max-w-md overflow-y-auto border-l border-slate-200 bg-white/96 p-5 shadow-2xl backdrop-blur">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Skinnable Preview</p>
+                  <h2 className="mt-1 text-lg font-semibold text-slate-950">{skinnable.pageName}</h2>
+                  <p className="mt-1 text-sm text-slate-600">
+                    Text {skinnable.counts?.textSlotCount || 0} · Images {skinnable.counts?.imageSlotCount || 0} · Links{" "}
+                    {skinnable.counts?.linkSlotCount || 0} · Styles {skinnable.counts?.styleSlotCount || 0}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSkinOpen(false)}
+                  className="rounded-full border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700"
+                >
+                  Close
+                </button>
+              </div>
+
+              <div className="mt-4 flex gap-2">
+                <button
+                  type="button"
+                  onClick={handleCopyOverrides}
+                  className="rounded-full border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700"
+                >
+                  {skinCopied ? "Copied" : "Copy overrideMap"}
+                </button>
+                <button
+                  type="button"
+                  onClick={handleResetAllSkins}
+                  className="rounded-full border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700"
+                >
+                  Reset all
+                </button>
+              </div>
+
+              <label className="mt-4 block">
+                <span className="mb-1 block text-xs font-medium uppercase tracking-[0.14em] text-slate-500">Filter</span>
+                <input
+                  value={skinFilter}
+                  onChange={(event) => setSkinFilter(event.target.value)}
+                  placeholder="Search slots"
+                  className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none ring-0"
+                />
+              </label>
+
+              <details className="mt-5" open>
+                <summary className="cursor-pointer text-sm font-semibold text-slate-900">
+                  Text slots ({filteredTextSlots.length})
+                </summary>
+                <div className="mt-3 space-y-4">
+                  {filteredTextSlots.map((slot) => (
+                    <label key={slot.slotId} className="block rounded-2xl border border-slate-200 p-3">
+                      <span className="block text-xs font-medium uppercase tracking-[0.14em] text-slate-500">
+                        {slot.label}
+                      </span>
+                      <textarea
+                        rows={3}
+                        value={skinDraft.text[slot.slotId] ?? slot.defaultValue}
+                        onChange={(event) =>
+                          setSkinDraft((draft) => ({
+                            ...draft,
+                            text: { ...draft.text, [slot.slotId]: event.target.value },
+                          }))
+                        }
+                        className="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setSkinDraft((draft) => removeDraftSlot(draft, "text", slot.slotId))}
+                        className="mt-2 text-xs font-medium text-slate-500"
+                      >
+                        Reset
+                      </button>
+                    </label>
+                  ))}
+                </div>
+              </details>
+
+              <details className="mt-5" open>
+                <summary className="cursor-pointer text-sm font-semibold text-slate-900">
+                  Image slots ({filteredImageSlots.length})
+                </summary>
+                <div className="mt-3 space-y-4">
+                  {filteredImageSlots.map((slot) => (
+                    <label key={slot.slotId} className="block rounded-2xl border border-slate-200 p-3">
+                      <span className="block text-xs font-medium uppercase tracking-[0.14em] text-slate-500">
+                        {slot.label}
+                      </span>
+                      <input
+                        value={skinDraft.image[slot.slotId] ?? slot.defaultUrl}
+                        onChange={(event) =>
+                          setSkinDraft((draft) => ({
+                            ...draft,
+                            image: { ...draft.image, [slot.slotId]: event.target.value },
+                          }))
+                        }
+                        className="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setSkinDraft((draft) => removeDraftSlot(draft, "image", slot.slotId))}
+                        className="mt-2 text-xs font-medium text-slate-500"
+                      >
+                        Reset
+                      </button>
+                    </label>
+                  ))}
+                </div>
+              </details>
+
+              <details className="mt-5">
+                <summary className="cursor-pointer text-sm font-semibold text-slate-900">
+                  Link slots ({filteredLinkSlots.length})
+                </summary>
+                <div className="mt-3 space-y-4">
+                  {filteredLinkSlots.map((slot) => (
+                    <label key={slot.slotId} className="block rounded-2xl border border-slate-200 p-3">
+                      <span className="block text-xs font-medium uppercase tracking-[0.14em] text-slate-500">
+                        {slot.label}
+                      </span>
+                      <input
+                        value={skinDraft.link[slot.slotId] ?? slot.defaultHref}
+                        onChange={(event) =>
+                          setSkinDraft((draft) => ({
+                            ...draft,
+                            link: { ...draft.link, [slot.slotId]: event.target.value },
+                          }))
+                        }
+                        className="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setSkinDraft((draft) => removeDraftSlot(draft, "link", slot.slotId))}
+                        className="mt-2 text-xs font-medium text-slate-500"
+                      >
+                        Reset
+                      </button>
+                    </label>
+                  ))}
+                </div>
+              </details>
+
+              <details className="mt-5">
+                <summary className="cursor-pointer text-sm font-semibold text-slate-900">
+                  Style slots ({filteredStyleSlots.length})
+                </summary>
+                <div className="mt-3 space-y-4">
+                  {filteredStyleSlots.map((slot) => (
+                    <label key={slot.slotId} className="block rounded-2xl border border-slate-200 p-3">
+                      <span className="block text-xs font-medium uppercase tracking-[0.14em] text-slate-500">
+                        {slot.label}
+                      </span>
+                      <textarea
+                        rows={8}
+                        value={skinDraft.style[slot.slotId] ?? defaultStyleDraft(slot.defaults)}
+                        onChange={(event) =>
+                          setSkinDraft((draft) => ({
+                            ...draft,
+                            style: { ...draft.style, [slot.slotId]: event.target.value },
+                          }))
+                        }
+                        className={`mt-2 w-full rounded-xl border px-3 py-2 text-xs text-slate-900 outline-none ${
+                          skinStyleErrors[slot.slotId] ? "border-red-400 bg-red-50" : "border-slate-300"
+                        }`}
+                      />
+                      {skinStyleErrors[slot.slotId] ? (
+                        <p className="mt-2 text-xs text-red-600">{skinStyleErrors[slot.slotId]}</p>
+                      ) : null}
+                      <button
+                        type="button"
+                        onClick={() => setSkinDraft((draft) => removeDraftSlot(draft, "style", slot.slotId))}
+                        className="mt-2 text-xs font-medium text-slate-500"
+                      >
+                        Reset
+                      </button>
+                    </label>
+                  ))}
+                </div>
+              </details>
+            </aside>
+          ) : null}
+        </>
+      ) : null}
     </div>
   );
 }

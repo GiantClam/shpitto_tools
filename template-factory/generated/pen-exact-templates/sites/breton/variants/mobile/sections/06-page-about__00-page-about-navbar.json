@@ -1,0 +1,352 @@
+{
+  "sectionId": "page-about-navbar",
+  "sectionName": "Navbar",
+  "sectionKind": "navigation",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 62
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 6,
+  "treeHash": "ba4e597592ea961a8d056d1436faa975e15fef8f7cf917f081e208d736969ebb",
+  "blockCount": 5,
+  "blockIndex": [
+    {
+      "blockId": "page-about-navbar-bg",
+      "blockName": "page-about-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 62
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1eb51abbdd21d17d2934cc1a6dda6297fe18ce66c383ca81b1c69b51705419f3"
+    },
+    {
+      "blockId": "page-about-navbar-logo",
+      "blockName": "page-about-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 14,
+        "width": 92,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1e73e847ac34f6ae02a7c2b5364220549506fadf38d51edb35c90847f8b219c1"
+    },
+    {
+      "blockId": "page-about-navbar-search",
+      "blockName": "page-about-navbar-search",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 278,
+        "y": 22,
+        "width": 24,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7a063b0432ed00c947c1fd00270def7395c5b391cd79f74a53fbd46a7b026c18"
+    },
+    {
+      "blockId": "page-about-navbar-lang",
+      "blockName": "page-about-navbar-lang",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 310,
+        "y": 24,
+        "width": 20,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b50315a8a47816efe2cae757648ff1ef88c42951a62d64890ef3c009da51baac"
+    },
+    {
+      "blockId": "page-about-navbar-menu",
+      "blockName": "page-about-navbar-menu",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 352,
+        "y": 22,
+        "width": 20,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "10f5a8d6b198f0880e48241057c5e29a8363cc5d0065fe2ead872036e9bb1c36"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "page-about-navbar-bg",
+      "blockName": "page-about-navbar-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 62
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1eb51abbdd21d17d2934cc1a6dda6297fe18ce66c383ca81b1c69b51705419f3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-about-navbar-bg",
+        "name": "page-about-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 62,
+        "fill": "#B00046"
+      }
+    },
+    {
+      "blockId": "page-about-navbar-logo",
+      "blockName": "page-about-navbar-logo",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 14,
+        "width": 92,
+        "height": 32
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1e73e847ac34f6ae02a7c2b5364220549506fadf38d51edb35c90847f8b219c1",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fit"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "page-about-navbar-logo",
+        "name": "page-about-navbar-logo",
+        "x": 18,
+        "y": 14,
+        "width": 92,
+        "height": 32,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      }
+    },
+    {
+      "blockId": "page-about-navbar-search",
+      "blockName": "page-about-navbar-search",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 278,
+        "y": 22,
+        "width": 24,
+        "height": 24
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7a063b0432ed00c947c1fd00270def7395c5b391cd79f74a53fbd46a7b026c18",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-about-navbar-search",
+        "name": "page-about-navbar-search",
+        "x": 278,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 24,
+        "height": 24,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "page-about-navbar-lang",
+      "blockName": "page-about-navbar-lang",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 310,
+        "y": 24,
+        "width": 20,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b50315a8a47816efe2cae757648ff1ef88c42951a62d64890ef3c009da51baac",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-about-navbar-lang",
+        "name": "page-about-navbar-lang",
+        "x": 310,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "🌐",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 16,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-about"
+      }
+    },
+    {
+      "blockId": "page-about-navbar-menu",
+      "blockName": "page-about-navbar-menu",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 352,
+        "y": 22,
+        "width": 20,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "10f5a8d6b198f0880e48241057c5e29a8363cc5d0065fe2ead872036e9bb1c36",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "page-about-navbar-menu",
+        "name": "page-about-navbar-menu",
+        "x": 352,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-products"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "page-about-navbar",
+    "name": "Navbar",
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 62,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-about-navbar-bg",
+        "name": "page-about-navbar-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 62,
+        "fill": "#B00046"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-about-navbar-logo",
+        "name": "page-about-navbar-logo",
+        "x": 18,
+        "y": 14,
+        "width": 92,
+        "height": 32,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/breton/breton-logo.png",
+          "mode": "fit"
+        },
+        "href": "#page-home"
+      },
+      {
+        "type": "text",
+        "id": "page-about-navbar-search",
+        "name": "page-about-navbar-search",
+        "x": 278,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "⌕",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 24,
+        "height": 24,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "page-about-navbar-lang",
+        "name": "page-about-navbar-lang",
+        "x": 310,
+        "y": 24,
+        "fill": "#FFFFFF",
+        "content": "🌐",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 16,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-about"
+      },
+      {
+        "type": "text",
+        "id": "page-about-navbar-menu",
+        "name": "page-about-navbar-menu",
+        "x": 352,
+        "y": 22,
+        "fill": "#FFFFFF",
+        "content": "☰",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 18,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 20,
+        "height": 20,
+        "href": "#page-products"
+      }
+    ]
+  }
+}

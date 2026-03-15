@@ -1,0 +1,40 @@
+{
+  "siteId": "breton",
+  "siteName": "Breton",
+  "bundleHash": "0f9cc2250ad5b0aa58e8cd0c4ee38ebca5c1b948b20560cda163281d028becaf",
+  "variants": [
+    {
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/breton.pen",
+      "sourceHash": "c45f43fac8c260bacdce5ee424cd44a0c46fa1de4b6f935090e98e0bcdc7be6c",
+      "pageCount": 12,
+      "sectionCount": 34,
+      "blockCount": 387,
+      "output": {
+        "templatePath": "sites/breton/variants/desktop/template.json",
+        "themePath": "sites/breton/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/breton/variants/desktop/pages",
+        "sectionsDir": "sites/breton/variants/desktop/sections",
+        "blocksDir": "sites/breton/variants/desktop/blocks"
+      }
+    },
+    {
+      "variant": "mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/breton-mobile.pen",
+      "sourceHash": "153ede78874f10746c1ab1c47e796fdb4adab16583450d9c4a4c5c78a4dc8e4d",
+      "pageCount": 12,
+      "sectionCount": 34,
+      "blockCount": 320,
+      "output": {
+        "templatePath": "sites/breton/variants/mobile/template.json",
+        "themePath": "sites/breton/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/breton/variants/mobile/pages",
+        "sectionsDir": "sites/breton/variants/mobile/sections",
+        "blocksDir": "sites/breton/variants/mobile/blocks"
+      }
+    }
+  ],
+  "output": {
+    "siteTemplatePath": "sites/breton/site.template.json"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "siteId": "pagani",
+  "siteName": "Pagani",
+  "bundleHash": "04a223eddc05d7d6265777ade078c4163b7780e61f251d55bf858b8ff998d202",
+  "variants": [
+    {
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/pagani.pen",
+      "sourceHash": "d8841f59a2b6a424d47143ce3e5a7e98c01a5c59d24bf8a8ab7bb209d43202e4",
+      "pageCount": 10,
+      "sectionCount": 21,
+      "blockCount": 267,
+      "output": {
+        "templatePath": "sites/pagani/variants/desktop/template.json",
+        "themePath": "sites/pagani/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/pagani/variants/desktop/pages",
+        "sectionsDir": "sites/pagani/variants/desktop/sections",
+        "blocksDir": "sites/pagani/variants/desktop/blocks"
+      }
+    },
+    {
+      "variant": "mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/pagani-mobile.pen",
+      "sourceHash": "1978e5e3b5e6b49b6559616cab7356985120b65f6cb48889d2fe658e957bb41a",
+      "pageCount": 10,
+      "sectionCount": 20,
+      "blockCount": 194,
+      "output": {
+        "templatePath": "sites/pagani/variants/mobile/template.json",
+        "themePath": "sites/pagani/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/pagani/variants/mobile/pages",
+        "sectionsDir": "sites/pagani/variants/mobile/sections",
+        "blocksDir": "sites/pagani/variants/mobile/blocks"
+      }
+    }
+  ],
+  "output": {
+    "siteTemplatePath": "sites/pagani/site.template.json"
+  }
+}

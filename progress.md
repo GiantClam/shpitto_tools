@@ -1,30 +1,1030 @@
 # Progress
 
-## 2026-03-10
-- Started migration of builder-side generation shaping into template-factory publish artifacts.
-- Confirmed publish insertion point in `/Users/beihuang/.codex/worktrees/2cb1/shpitto_tools/builder/template-factory/run-template-factory.mjs`.
-- Confirmed consumer insertion point in `/Users/beihuang/.codex/worktrees/2cb1/shpitto_tools/builder/src/lib/agent/section-template-registry.ts`.
-- Added a new published artifact shape: `template-generation-contracts.generated.json`.
-- Extended `run-template-factory` run-library and publish-library outputs to include `templateGenerationContracts` plus the new sidecar file.
-- Extended `section-template-registry.ts` to load generation contracts from the library payload or sidecar, with fallback derivation from `styleProfiles/pageSpecs` when no sidecar exists yet.
-- Added `resolvePublishedPageGenerationContract(...)` so builder can consume page contracts through the registry instead of inferring everything locally.
-- Updated `p2w-graph.ts` structured-brief overrides to resolve page intent via published page contracts before path-based fallback.
-- Extended published section contracts with `slotId`, `role`, and `imageIntent` so builder can match sections by semantic slot instead of page-path counters.
-- Patched both `run-template-factory` publish paths so PEN-driven publishes also emit the enriched contracts.
-- Re-ran `template:factory` from PEN with run id `tf-unistellar-contracts-20260310-r3` and verified the published sidecar contains `slotId`, `role`, and `imageIntent`.
-- Updated `p2w-graph.ts` to consume `imageIntent` from the published contract and apply contract-driven image rewriting during structured-brief overrides.
-- Refactored builder-side structured brief shaping so core page sections are matched by published `role`/`slotId` instead of `pageType + item.type` branches tied to a specific source template.
-- Aligned `template-factory` page-type inference with builder registry semantics and fixed the bug where `pageSpec.pageType = generic` blocked publish-time reclassification.
-- Re-ran PEN publish with run id `tf-unistellar-contracts-20260310-r6`; published contracts now classify:
-  - `/smart-telescopes -> products`
-  - `/smart-binoculars -> products`
-  - `/technologies -> solutions`
-  - `/use-cases -> cases`
-  with non-generic roles such as `product-context`, `solution-context`, and `case-narrative`.
-- Verification:
-  - `node --check /Users/beihuang/.codex/worktrees/2cb1/shpitto_tools/builder/template-factory/run-template-factory.mjs` passed.
-  - `cd /Users/beihuang/.codex/worktrees/2cb1/shpitto_tools/builder && NODE_OPTIONS=--max-old-space-size=8192 npx tsc --noEmit` passed.
-  - `cd /Users/beihuang/.codex/worktrees/2cb1/shpitto_tools/builder && npm run build` passed.
-  - Live creation smoke passed against `POST http://127.0.0.1:3000/api/creation`, producing `p2w_1773104092898`.
-  - Generated output for `p2w_1773104092898` shows contract-driven industrial image URLs applied to home hero/story/products sections.
-  - Additional live creation smoke produced `p2w_1773109557215` with the migrated published contracts loaded from the library and QA gate passing.
+## 2026-03-12
+- Read `brainstorming` and `planning-with-files` skill instructions relevant to this task.
+- Verified that the source `.pen` files are JSON and inspected representative desktop/mobile files (`pagani`, `nothing-tech`, `teenage-engineering`).
+- Confirmed the structural hierarchy needed for normalization:
+  - site files pair by filename
+  - pages live at root frames
+  - sections live at frame children inside each page
+  - blocks are direct/nested child nodes inside sections
+- Replaced prior unrelated plan files with this task-specific plan.
+- Added `/Users/beihuang/.codex/worktrees/266d/shpitto_tools/scripts/generate_pen_site_templates.mjs`.
+- Implemented direct `.pen` parsing, desktop/mobile pairing, theme token extraction, asset-path resolution, and page/section/block normalization.
+- Generated artifacts under `/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-site-templates`.
+- Verified sample outputs for `pagani`, `nothing-tech`, and `teenage-engineering`.
+- Fixed section ordering so merged sections keep the page flow order from desktop/mobile source files instead of alphabetical order.
+- Final output stats:
+  - paired sites: 11
+  - skipped sites: 5
+  - page entries: 115
+  - section entries: 282
+  - block kind buckets: 14
+- User tightened the requirement to full-file strict validation and inclusion of desktop-only sites.
+- Added `/Users/beihuang/.codex/worktrees/266d/shpitto_tools/scripts/lib/pen-exact-template-utils.mjs`.
+- Added `/Users/beihuang/.codex/worktrees/266d/shpitto_tools/scripts/generate_pen_exact_templates.mjs`.
+- Added `/Users/beihuang/.codex/worktrees/266d/shpitto_tools/scripts/validate_pen_exact_templates.mjs`.
+- Generated exact-template artifacts under `/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates`.
+- Ran syntax checks for all three exact-template scripts with `node --check`.
+- Ran full exact-template generation:
+  - pen files: 27
+  - sites: 16
+- Ran full exact-template validation:
+  - structural passes: 27
+  - overall passes: 0
+  - blocker: Pencil verification unavailable
+- Investigated Pencil launch behavior:
+  - `open /Applications/Pencil.app` still exits during launch
+  - `/Applications/Pencil.app/Contents/MacOS/Pencil` starts successfully and opens the websocket bridge
+  - `builder/template-factory/pencil-export-payload.mjs` then connects, but currently exports `nodeCount: 0` and a fallback single-page payload
+- Extended exact outputs with explicit `site/page/section/block` artifacts:
+  - `site-catalog.json`
+  - `page-catalog.json`
+  - `section-catalog.json`
+  - `block-catalog.json`
+  - per-site `site.template.json`
+  - per-variant `pages/`, `sections/`, `blocks/`
+- Reworked the validator to check:
+  - source `.pen` -> variant template equality
+  - split `page/section/block` file equality
+  - per-site `site.template.json` and `site.bundle.json`
+  - global catalog equality
+  - Pencil payload export against source-derived payload signatures
+- Diagnosed a stale-document bug in the Pencil export path and fixed `builder/template-factory/pencil-export-payload.mjs` to call `batch_get` with `filePath: penFile`.
+- Re-ran full generation and strict validation after the export-path fix.
+- Fresh verified result from `node scripts/validate_pen_exact_templates.mjs`:
+  - total files: 27
+  - structural passes: 27
+  - full passes including Pencil: 3
+  - failing files: 24
+  - global site template failures: 0
+  - global catalog failures: 0
+- Fully passing files:
+  - `pagani.pen`
+  - `pagani-mobile.pen`
+  - `sandvik.pen`
+- Remaining failures are isolated to Pencil payload mismatch, not template structure mismatch.
+- Identified the last three Pencil mismatch root causes:
+  - `Kymeta.pen` and `sandvik.pen` needed validator-side fallback to observed Pencil scalar defaults where source fields were absent.
+  - `fptindustrie.pen` needed `includePathGeometry: true` in `batch_get` because path geometry was abbreviated as `"..."`.
+- Updated `builder/template-factory/pencil-export-payload.mjs` to request full path geometry from Pencil MCP.
+- Updated `scripts/validate_pen_exact_templates.mjs` so source-to-Pencil projection preserves observed defaults for source-missing scalar values.
+- Re-ran syntax checks:
+  - `node --check builder/template-factory/pencil-export-payload.mjs`
+  - `node --check scripts/validate_pen_exact_templates.mjs`
+- Re-ran full strict validation with Pencil:
+  - `node scripts/validate_pen_exact_templates.mjs`
+  - verified result:
+    - total files: 27
+    - passed files: 27
+    - structural passes: 27
+    - Pencil passes: 27
+    - global failures: 0
+- Parameterized the exact-template pipeline:
+  - `scripts/lib/pen-exact-template-utils.mjs` now uses repo-relative output defaults and supports env overrides.
+  - `scripts/generate_pen_exact_templates.mjs` now accepts `--source-dir` and `--out-dir`.
+  - `scripts/validate_pen_exact_templates.mjs` now accepts `--skip-pencil` and `--require-pencil`.
+- Added `scripts/release_pen_exact_templates.mjs` to enforce the commercial release gate in one command.
+- Added release documentation at `docs/pen-exact-template-release.md`.
+- Added manual self-hosted release workflow at `.github/workflows/pen-exact-template-release.yml`.
+- Re-ran fresh verification for the new interfaces:
+  - `node --check scripts/lib/pen-exact-template-utils.mjs`
+  - `node --check scripts/generate_pen_exact_templates.mjs`
+  - `node --check scripts/validate_pen_exact_templates.mjs`
+  - `node --check scripts/release_pen_exact_templates.mjs`
+  - `node scripts/generate_pen_exact_templates.mjs --source-dir /Users/beihuang/Documents/opencode/shpitto_tools/pen --out-dir template-factory/generated/pen-exact-templates`
+  - `node scripts/validate_pen_exact_templates.mjs --source-dir /Users/beihuang/Documents/opencode/shpitto_tools/pen --out-dir template-factory/generated/pen-exact-templates --skip-pencil`
+  - `node scripts/release_pen_exact_templates.mjs --source-dir /Users/beihuang/Documents/opencode/shpitto_tools/pen --out-dir template-factory/generated/pen-exact-templates`
+- Fresh release-gate result:
+  - `releaseReady: true`
+  - `failedFiles: 0`
+  - `structuralPassedFiles: 27`
+  - `pencilPassedFiles: 27`
+  - `globalFailureCount: 0`
+- Added `visual-qa/scripts/validate-pen-exact-visuals.mjs` for per-page visual verification of exact templates.
+- Installed visual QA dependencies in `visual-qa/` and Chromium for Playwright.
+- Debugged and fixed visual-validator nondeterminism:
+  - escaped inline CSS safely in generated HTML
+  - rewrote asset URLs for temporary `.pen` files used by Pencil references
+  - converted remote image fills to data URIs during render
+  - changed render wait mode to `domcontentloaded`
+  - increased screenshot timeout to 120s
+- Ran focused smoke checks and confirmed `framework_new` and `Kymeta` both reach `similarity: 1`.
+- Completed full visual validation across the corpus by combining the interrupted earlier run with targeted resume runs for the remaining sites:
+  - `ridecake` mobile + desktop
+  - `sandvik` desktop
+  - `teenage-engineering` mobile + desktop
+  - `transpa-rent` mobile + desktop
+  - `vanmoof` mobile + desktop
+- Rebuilt the aggregated visual manifest at `template-factory/generated/pen-exact-templates/visual-validation/manifest.json`.
+- Final visual validation result:
+- Rebuilt the dedicated LC-CNC site generator as a Breton-based commercial site:
+  - rewrote `scripts/generate_lc_cnc_site.mjs`
+  - added `builder/public/assets/lc-cnc/lc-cnc-wordmark.svg`
+  - replaced the previous generic industrial block mix with a template-first hybrid:
+    - `TemplateExclusivePenSiteHomeHeroHeropenPrimary_369485b5`
+    - `TemplateExclusivePenSiteHomeStoryIndustriespenAlt1`
+    - `TemplateExclusivePenSiteHomeStoryNumberspenAlt8`
+    - `TemplateExclusivePenSiteHomeCtaNewsfrombretonworldpenAlt7`
+    - custom Breton-matched blocks for navbar, page hero, quote capture, certification, and footer
+- Regenerated LC-CNC sandbox payload:
+  - `node scripts/generate_lc_cnc_site.mjs`
+  - fresh result: `pageCount = 7`
+  - routes: `/`, `/3c-machines`, `/custom-solutions`, `/cases`, `/about`, `/contact`, `/privacy`
+- Verified runtime health:
+  - `node --check scripts/generate_lc_cnc_site.mjs`
+  - scanned all 7 preview routes and found no `Missing block renderer`
+- Captured updated preview screenshots with selector waits:
+  - `output/playwright/lc-cnc-breton-home-final.png`
+  - `output/playwright/lc-cnc-breton-about-final.png`
+  - `output/playwright/lc-cnc-breton-machines-final.png`
+- Iterated once more on the Breton version:
+  - added `LCCncCaseStrip` and replaced the reused Breton editorial/news strip on the home and cases pages
+  - regenerated the site and confirmed the route list is still 7 pages
+  - refreshed screenshots:
+    - `output/playwright/lc-cnc-breton-home-v2.png`
+    - `output/playwright/lc-cnc-breton-home-fold.png`
+    - `output/playwright/lc-cnc-breton-cases-v2.png`
+    - `output/playwright/lc-cnc-breton-cases-fold.png`
+    - `output/playwright/lc-cnc-breton-contact-v2.png`
+- Re-verified all preview routes for runtime issues:
+  - no `Missing block renderer`
+  - no `Unknown block type`
+  - no `payload_audit_failed`
+- Final LC-CNC refinement pass:
+  - navbar/footer no longer depend on the SVG wordmark to avoid broken-image rendering in the sandbox shell; both now fall back to a stable `LC` badge mark
+  - replaced the weak `custom-solutions` lower section with `LCCncSolutionsRail`, a dedicated dark process-flow section that reads like a real solution/program page instead of a misused editorial module
+  - regenerated and refreshed screenshots:
+    - `output/playwright/lc-cnc-breton-home-v3-fold.png`
+    - `output/playwright/lc-cnc-breton-solutions-v2.png`
+    - `output/playwright/lc-cnc-breton-contact-v3.png`
+- Added production-grade template-adaptation enforcement to the shared generation path instead of keeping it as an unused helper:
+  - updated `builder/src/lib/agent/template-adaptation.ts`
+    - broader reference-mode detection (`using`, `template base`, `视觉模板`, `风格参考`)
+    - industrial semantic mismatch checks now run for known template families even when the issue is block misuse rather than explicit brand residue
+    - industrial page contracts now allow `products|content` for `home` and `products` pages to avoid false negatives on custom card-grid implementations
+  - updated `builder/src/lib/site-payload-audit.ts`
+    - new audit codes:
+      - `scenario_page_contract_violation`
+      - `template_semantic_mismatch`
+      - `template_brand_residue`
+    - audit report now includes `adaptation`
+  - updated API routes:
+    - `builder/src/app/api/creation/route.ts`
+    - `builder/src/app/api/creation/save/route.ts`
+    - both now pass `prompt` and `resolvedByLayer` into the audit
+  - updated `builder/src/lib/agent/p2w-graph.ts`
+    - generated results now expose `resolvedByLayer.adaptation`
+    - candidate scoring penalizes adaptation issues
+    - candidate short-circuiting no longer fires when adaptation errors exist
+- Fresh verification after the adaptation integration:
+  - `cd builder && npx tsc --noEmit --pretty false` -> pass
+  - `cd builder && npm run build` -> pass
+  - fresh production server on `http://127.0.0.1:3112`
+  - positive save-route smoke:
+    - `POST /api/creation/save` with current LC-CNC Breton payload -> `200`
+    - audit result: `ok = true`, `issueCount = 0`
+  - negative save-route smoke:
+    - injected `TemplateExclusivePenSiteHomeCtaNewsfrombretonworldpenAlt7` + `Breton Hydra` copy
+    - `POST /api/creation/save` -> `422`
+    - audit result contains:
+      - `template_brand_residue`
+      - `template_semantic_mismatch`
+- Expanded template-adaptation coverage beyond the original industrial families:
+  - updated `builder/src/lib/agent/template-adaptation.ts`
+    - added families:
+      - `ionq`
+      - `sixtine`
+      - `transpa_rent`
+      - broadened `framework_new` matching to plain `framework`
+    - added page types:
+      - `support`
+      - `blog`
+    - added page contracts for:
+      - `luxury_editorial`
+      - `ai_saas`
+      - `developer_tooling`
+      - `design_led_ecommerce`
+    - added family prompt token matching for better explicit-reference detection
+    - added new family brand-residue terms and forbidden-block patterns
+    - widened semantic-mismatch enforcement from industrial-only to all non-generic known-family adaptations
+  - fixed a real classification bug:
+    - `ContentStory` now resolves to `content` before the generic `Story` matcher
+    - without that fix, valid `ai_saas`/`developer_tooling` blog pages falsely failed page contracts
+- Fresh verification after the rule expansion:
+  - `cd builder && npm run build` -> pass
+  - `cd builder && npx tsc --noEmit --pretty false` -> pass (when run after build completes)
+  - fresh production server on `http://127.0.0.1:3114`
+  - deterministic save-route fixture suite:
+    - pass:
+      - `sixtine_good`
+## 2026-03-15
+- Audited the “family-wide assembly optimization” claim and confirmed it was still incomplete:
+  - `sandvik` home pages were fully normalized
+  - `breton`, `pagani`, and `pamamachinetools` still retained template-exclusive home hero/story blocks because replacement logic was tied to a few original block names
+- Reworked `builder/src/lib/agent/p2w-graph.ts` so industrial home normalization is based on structural slot order instead of family-specific block-name regexes:
+  - first eligible home section becomes `HeroSplit`
+  - second becomes `CardsGrid`
+  - third becomes `FeatureWithMedia`
+  - shared header/footer normalization is unchanged and still applies across known families
+- Re-ran fresh verification:
+  - `cd builder && npm run build`
+  - `cd builder && npx tsc --noEmit --pretty false`
+  - started a fresh prod server on `http://127.0.0.1:3174`
+  - generated LC-CNC via prompt-driven `template_first` against four template families:
+    - `sandvik`
+    - `breton`
+    - `pamamachinetools`
+    - `pagani`
+- Verified the resulting home-page block structures directly from generation output:
+  - all four now normalize to `Navbar > HeroSplit > CardsGrid > FeatureWithMedia > ... > LeadCaptureCTA > Footer`
+- Verified runtime accessibility:
+  - all four home preview URLs returned `HTTP 200`
+      - `framework_good`
+      - `ionq_good`
+      - `transpa_good`
+    - fail with expected audit codes:
+      - `sixtine_bad_brand_residue`
+      - `framework_bad_semantic`
+      - `ionq_bad_semantic`
+      - `transpa_bad_semantic`
+      - `framework_bad_contract`
+- Extended adaptation-family coverage to the remaining published consumer/luxury brands:
+  - updated `builder/src/lib/agent/template-adaptation.ts`
+    - added families:
+      - `pagani`
+      - `nothing_tech`
+      - `vanmoof`
+      - `analogue`
+      - `teenage_engineering`
+    - added prompt-token matching and family residue/mismatch patterns for all five families
+    - refined scenario inference so consumer-hardware prompts (`consumer tech`, `consumer hardware`, `audio hardware`, `urban mobility`, `smartphone`) resolve to `design_led_ecommerce` before the broader `industrial` matcher can misclassify them
+- Fresh verification after the second family-expansion pass:
+  - `cd builder && npm run build` -> pass
+  - `cd builder && npx tsc --noEmit --pretty false` -> pass (again only after build completes)
+  - fresh production server on `http://127.0.0.1:3116`
+  - deterministic save-route fixture suite for the 5 new families:
+    - pass:
+      - `pagani_good`
+      - `nothing_good`
+      - `vanmoof_good`
+      - `analogue_good`
+      - `teenage_good`
+    - fail with expected codes:
+      - `pagani_bad`
+      - `nothing_bad`
+      - `vanmoof_bad`
+      - `analogue_bad`
+      - `teenage_bad`
+  - expected pages: 261
+  - reported pages: 261
+  - passed pages: 261
+  - failed pages: 0
+  - average similarity: 1
+  - minimum similarity: 1
+- User then tightened the runtime requirement from exact static parity to functional site previews inside sandbox:
+  - navigation and footer links must be valid/clickable
+  - pages must be associated correctly in navigation and some also in footer
+  - hero/section/theme/font spacing must remain faithful to the source `.pen`
+  - motion should exist and be suitable for commercial preview, ideally aligned with the existing Magic UI stack
+- Added `scripts/lib/pen-site-sandbox-utils.mjs`.
+- Added `scripts/generate_pen_site_sandbox_payloads.mjs`.
+- Added `scripts/audit_pen_site_templates.mjs`.
+- Extended `scripts/lib/pen-page-html-render.mjs` to support:
+  - `hrefTransform`
+  - `linkTarget`
+  - `extraHeadHtml`
+  - link-node rendering that can rewrite or strip hrefs at HTML-build time
+- Built full variant-level sandbox payloads with `node scripts/generate_pen_site_sandbox_payloads.mjs`:
+  - variants: 27
+  - pages: 261
+  - output manifest: `template-factory/generated/pen-exact-templates/site-sandbox-payloads.json`
+- Confirmed those payloads now use full-size raw `.pen` page HTML rather than thumbnail comparison HTML.
+- Added a first-pass audit with `node scripts/audit_pen_site_templates.mjs`.
+- First site-runtime audit result:
+  - `variantCount: 27`
+  - `failingVariants: 27`
+  - `navigationIssues: 27`
+  - `footerIssues: 18`
+  - `invalidLinkVariants: 0`
+  - `motionFailVariants: 27`
+- Investigated representative failing variants:
+  - `framework_new` desktop: nav/footer encoded as plain text, not explicit links
+  - `Kymeta` desktop: nav/footer encoded as plain text, not explicit links
+  - `plexus` desktop: nav/footer encoded as plain text, not explicit links
+  - `ionq` desktop: nav/footer are text-only even though the footer includes recoverable page labels
+  - `sandvik` desktop: mixed nav/footer with partially recoverable text labels
+- Confirmed that the main remaining blocker is semantic restoration, not broken href cleanup.
+- Recorded the site-runtime phase in the planning files.
+- Extended `scripts/lib/pen-site-sandbox-utils.mjs` to infer page links from text-only nav/footer content and to generate non-visual interaction enhancements plus fallback site-map menus.
+- Extended `scripts/lib/pen-page-html-render.mjs` to inject:
+  - transparent clickable overlay links for inferred nav/footer labels
+  - hidden site-map menus for missing pages
+  - section-level reveal hooks and hero ambient motion
+  - metadata attributes for runtime/browser validation
+- Updated `scripts/generate_pen_site_sandbox_payloads.mjs` to:
+  - generate interaction-enhanced page HTML
+  - emit section-kind metadata to the renderer
+  - wrap previews in a Magic UI-backed shell (`Particles` + motion)
+  - allow top-level navigation from the iframe with `allow-top-navigation-by-user-activation`
+  - set sandbox payload theme motion to `subtle`
+- Updated `scripts/audit_pen_site_templates.mjs` to evaluate final sandbox behavior instead of raw source-only hrefs.
+- Re-ran syntax checks for the updated site-runtime scripts.
+- Re-ran `node scripts/generate_pen_site_sandbox_payloads.mjs`.
+- Re-ran `node scripts/audit_pen_site_templates.mjs`.
+- Current audited site-runtime result:
+  - `variantCount: 27`
+  - `failingVariants: 0`
+  - `navigationIssues: 0`
+  - `footerIssues: 0`
+  - `invalidLinkVariants: 0`
+  - `motionFailVariants: 0`
+- Added browser-level runtime validator:
+  - `visual-qa/scripts/validate-pen-site-preview-runtime.mjs`
+  - supports `--site-id`, `--variant`, `--max-pages`, and `--home-only`
+- Confirmed the builder can serve sandbox previews in production mode:
+  - `npm run build` passes in `builder/`
+  - `npm run start` serves `/creation/sandbox`
+- Browser-validation status:
+  - targeted runtime validation now passes for:
+    - `framework_new` desktop home
+    - `Kymeta` desktop home
+    - `analogue` mobile first 2 pages (before the later menu-priority validator change)
+- full 27-home click sweep remains flaky because Playwright hit-testing on transparent overlays and hidden menus is still nondeterministic on some overlay-dense home pages
+- the current blocker is browser automation against overlapping transparent hotspots, not missing/invalid sandbox URLs
+- User then required all templates to be genuinely skinnable, not just exact-theme replicas.
+- Added `scripts/lib/pen-skinnable-template-utils.mjs`.
+- Added `scripts/generate_pen_skinnable_templates.mjs`.
+- Added `scripts/verify_pen_skinnable_templates.mjs`.
+- Extended `scripts/lib/pen-page-html-render.mjs` with `overrideMap` support so content/image/style overrides can be applied directly to raw page trees during render.
+- Generated skinnable output under `template-factory/generated/pen-skinnable-templates`.
+- Fresh skinnable generation result:
+  - sites: 16
+  - variants: 27
+  - pages: 261
+  - text slots: 5274
+  - image slots: 616
+  - link slots: 2389
+  - style slots: 9172
+- Verified the skinnable layer with `node scripts/verify_pen_skinnable_templates.mjs`.
+- Verification result:
+  - `variantCount: 27`
+  - `failureCount: 0`
+  - sampled text overrides render into output HTML
+  - sampled image overrides render into output HTML
+- Added page-level skinnable metadata to site sandbox payloads via `scripts/generate_pen_site_sandbox_payloads.mjs`.
+- Extended `builder/src/lib/sandbox-payload.ts` to parse and preserve skinnable page payloads.
+- Extended `builder/src/app/creation/sandbox-client.tsx` with a preview-only skinnable drawer:
+  - text/image/link/style slot editors
+  - live patching into the exact iframe output
+  - local draft persistence and override export
+- Added site-level publish bridge scripts:
+  - `scripts/generate_pen_site_publish_bundles.mjs`
+  - `scripts/verify_pen_site_publish_bundles.mjs`
+  - `scripts/smoke_publish_pen_site_bundles.mjs`
+  - `scripts/publish_pen_site_bundles_to_builder_library.mjs`
+- Fixed builder publish compatibility by removing invalid TypeScript `as const` syntax from `builder/template-factory/enterprise-site-structure.mjs`.
+- Generated and verified commercial publish bundles for all 16 sites:
+  - `node scripts/generate_pen_site_publish_bundles.mjs`
+  - `node scripts/verify_pen_site_publish_bundles.mjs`
+  - result: `16/16` sites passed bundle verification
+- Proved existing builder publish flow consumes site bundles with:
+  - `cd builder && npm run template:factory -- --mode template-from-pen --run-id tf-analogue-site-bundle-smoke --pen-file .../sites/analogue/site.pen-bundle.json --pen-review-file .../sites/analogue/site.pen-review.json --no-publish`
+- Ran full smoke publish across all site bundles:
+  - `node scripts/smoke_publish_pen_site_bundles.mjs`
+  - result: `16/16` sites passed
+- Published all 16 site bundles into the builder shared library:
+  - `node scripts/publish_pen_site_bundles_to_builder_library.mjs`
+  - result:
+    - attempted sites: 16
+    - published sites: 16
+    - failed sites: 0
+    - total style profiles in library: 35
+- Hardened pen-derived profile generation in `builder/template-factory/run-template-factory.mjs`:
+  - published profiles now emit identity keywords from `siteId`, `siteName`, `siteGroupId`, `caseId`, and `sourceDomain`
+- Hardened selection logic in `builder/src/lib/agent/section-template-registry.ts`:
+  - explicit reference parsing for `like`, `inspired by`, `similar to`, `based on`
+  - stronger identity-match scoring
+  - viewport preference scoring so website-like prompts default to desktop and explicit phone/mobile prompts select mobile
+- Re-published the 16 site bundles after the keyword-generation change:
+  - `node scripts/publish_pen_site_bundles_to_builder_library.mjs`
+  - result: `16/16` published again, `failedSites: 0`
+- Verified real prompt hits through the production selector:
+  - `like Pagani` -> `pagani-desktop`
+  - `inspired by VanMoof` -> `vanmoof-desktop`
+  - `like Nothing Tech` -> `nothing-tech-desktop`
+  - `like Kymeta` -> `kymeta-desktop`
+  - `like Framework New` -> `framework-new-desktop`
+  - `like Fptindustrie` -> `fptindustrie-desktop`
+- Added regression env auto-discovery for strategy comparison:
+  - new helper: `builder/regression/regression-env.mjs`
+  - `run-strategy-comparison.mjs` now loads `.env` / `.env.local` from the current builder worktree plus sibling/main worktrees before starting Next
+  - regression markdown now also includes error summaries
+- Added faster strategy-comparison capture modes:
+  - new CLI flag `--capture home|all|none`
+  - default capture now resolves to `home` via env/CLI so strategy tuning is no longer dominated by full-page and per-section screenshots
+  - documented the new flow in `builder/regression/README.md`
+- Ran the old pen-brand strategy comparison once after env loading and confirmed the previous all-fail result was caused by `missing_api_key`, not generation logic:
+  - report: `builder/regression/strategy-comparison/compare-20260312-185108.json`
+  - log evidence: `[creation] missing_api_key`
+- Added a template-seeded architect fast path in `builder/src/lib/agent/p2w-graph.ts`:
+  - strong brand/reference prompts now bypass the architect LLM and build blueprints directly from published template plans
+  - verified by log: `architect:template_seed {"profileId":"pagani-desktop","pages":8,"sections":56}`
+- Added multi-candidate early exit in `generateP2WProject`:
+  - if the first candidate on a strong template prompt already has near-perfect QA and zero fallback/error cost, AUTO stops instead of evaluating the remaining strategies
+- Fixed preview rendering for published pen sections:
+  - removed synthetic `PublishedSection_*` aliasing
+  - runtime now injects `TemplateExclusive...` block source code into `result.components` when static Puck registration is missing
+  - verified that generated `result.json` includes:
+    - `TemplateExclusivePenSiteHomeHeroHeropenPrimary`
+    - `TemplateExclusivePenSiteHomeStoryHistoryparentpenAlt1`
+- Fresh verification commands completed:
+  - `node --check builder/regression/regression-env.mjs`
+  - `node --check builder/regression/run-strategy-comparison.mjs`
+  - `node --check builder/src/lib/agent/p2w-graph.ts`
+  - `cd builder && npx --yes tsx -e "import('./src/lib/agent/p2w-graph.ts')..."`
+- Fresh live regression results:
+  - `node regression/run-strategy-comparison.mjs --prompts regression/prompts.pen-published.json --groups AUTO_multi_candidate --capture none`
+  - report: `builder/regression/strategy-comparison/compare-20260312-190318.json`
+  - result: `6/6` pen-brand prompts passed, all selected `template_first`, all `shortCircuited: true`, all `qaOverallScore: 1`
+- Fresh screenshot smoke:
+  - `node regression/run-strategy-comparison.mjs --prompts regression/prompts.pen-published.json --groups AUTO_multi_candidate --max-cases 1 --capture home`
+  - report: `builder/regression/strategy-comparison/compare-20260312-190814.json`
+  - result: `pagani-brand PASS`, `statusCode: 200`, `durationMs: 2048`, `pages: 1`
+  - section screenshot text no longer contains `Missing block renderer`
+- Started a generic prompt smoke with `regression/prompts.baseline.json`:
+  - `luxury-interior-sixtine` passed in `9480ms`
+  - logs show `profileId: auto_sixtine-reference`, `selectedStrategy: template_first`, `shortCircuited: true`
+  - the next case (`industrial-b2b`) exposed the remaining commercial gap:
+    - it initially selected `auto_devialet-home`
+    - it still entered the slow architect path and hit `architect_timeout`
+  - I stopped the long-running generic sweep after capturing that root cause so the next tuning pass can focus on retrieval quality rather than burning more runtime
+  - `Create a mobile ... like Pagani` -> `pagani-mobile`
+- Audited the builder creation stack for the “arbitrary prompt” goal and confirmed most layers already exist in repo code:
+  - architect blueprint generation
+  - structured brief parsing
+  - site planner
+  - template resolver
+  - link graph
+  - QA gate
+  - section repair/refinement
+- Added runtime strategy injection to `builder/src/lib/agent/p2w-graph.ts` via graph state `generationStrategy`.
+- Reused the existing `template_first` / `hybrid` / `llm_first` strategies to implement candidate orchestration in `generateP2WProject`:
+  - resolve candidate strategies per prompt
+  - run the primary candidate normally
+  - reuse the same architect blueprint for additional candidates
+  - score candidates with existing `qaReport` plus fallback/error penalties and resolution-layer preference
+  - return the best candidate and attach `candidateSelection` metadata under `resolvedByLayer`
+- Updated `builder/src/app/creation/creation-client.tsx` to surface:
+  - `resolvedByLayer`
+  - `qaReport`
+  alongside the existing blueprint panel
+- Fresh verification:
+  - `node --check builder/src/lib/agent/p2w-graph.ts`
+  - `cd builder && npx --yes tsx -e "import('./src/lib/agent/p2w-graph.ts')..."`
+  - `cd builder && npx --yes tsx -e "import('./src/app/creation/creation-client.tsx')..."`
+  - both module-import checks passed
+- Attempted `cd builder && npm run build`:
+  - build reached `✓ Compiled successfully`
+  - then remained in Next.js lint/type phase without a clean exit before manual termination
+  - this run is not being counted as a full passing verification
+  - localStorage-backed per-page draft persistence
+  - `Copy overrideMap` export
+  - live iframe DOM patching against exact rendered page output
+- Fixed a slot-precedence bug where style-slot defaults overwrote image-slot overrides; the runtime now applies style defaults before text/image/link overrides.
+- Rebuilt `builder/` successfully after the skinnable sandbox integration.
+- Regenerated site sandbox payloads:
+  - variants: 27
+  - pages: 261
+  - output manifest: `template-factory/generated/pen-exact-templates/site-sandbox-payloads.json`
+- Browser smoke verification against the live sandbox now passes for:
+  - `analogue` desktop home: text slot update reflected inside iframe (`Sections Customized`)
+  - `analogue` desktop home: style slot update reflected inside iframe (`hero` background became `rgb(0, 0, 0)`)
+  - `analogue` mobile home: image slot update reflected inside iframe (`hero-image` background-image became the injected data URI)
+- Environment notes from this phase:
+  - the `playwright` skill wrapper currently fails because `npx --package @playwright/mcp playwright-cli` does not expose `playwright-cli` in this environment
+  - an old `next start` process on port `3000` initially served stale code, so the local builder server had to be restarted after rebuild
+- Added `scripts/generate_pen_site_publish_bundles.mjs`.
+- Added `scripts/verify_pen_site_publish_bundles.mjs`.
+- Added `scripts/smoke_publish_pen_site_bundles.mjs`.
+- Added publish-bridge documentation at `docs/pen-site-publish-bundles.md`.
+- Generated site-level publish bundles under `template-factory/generated/pen-site-publish-bundles`.
+- Fresh bundle generation result:
+  - sites: 16
+  - paired sites: 11
+  - desktop-only sites: 5
+  - exact mobile sites: 11
+  - derived mobile sites: 5
+- Fresh bundle verification result:
+  - total sites: 16
+  - passed sites: 16
+  - failed sites: 0
+- Confirmed bundle structure on a representative paired site:
+  - `analogue` bundle contains both desktop and mobile artifacts plus dual responsive mode metadata
+- Fixed a blocking builder syntax bug in `builder/template-factory/enterprise-site-structure.mjs`:
+  - removed leftover `as const` TypeScript casts from the `.mjs` file
+- Ran a real publish smoke using the existing builder workflow against a generated site bundle:
+  - `cd builder && npm run template:factory -- --mode template-from-pen --run-id tf-analogue-site-bundle-smoke --pen-file .../sites/analogue/site.pen-bundle.json --pen-review-file .../sites/analogue/site.pen-review.json --no-publish`
+  - result: success
+  - emitted run library: `builder/template-factory/runs/tf-analogue-site-bundle-smoke/style-profiles.generated.json`
+  - emitted publish summary: `builder/template-factory/runs/tf-analogue-site-bundle-smoke/pen-publish-summary.json`
+- Added a reusable smoke wrapper and verified it:
+  - `node scripts/smoke_publish_pen_site_bundles.mjs --site-id analogue`
+  - result: `passedSites: 1`, `failedSites: 0`
+- Expanded publish smoke to the full site corpus:
+  - `node scripts/smoke_publish_pen_site_bundles.mjs`
+  - result: `siteCount: 16`, `passedSites: 16`, `failedSites: 0`
+  - report: `template-factory/generated/pen-site-publish-bundles/smoke-publish.json`
+- Hardened generic selector logic in `builder/src/lib/agent/section-template-registry.ts`:
+  - added CJK-aware semantic token matching helpers
+  - expanded industrial/luxury/creative/minimal/elegant/corporate taxonomies with Chinese vocabulary
+  - added industrial and technology intent-structure boosts/penalties
+  - fixed short-token false positives by requiring word-style matching for short ASCII terms like `ai` and `app`
+- Fresh selector spot checks after the selector hardening:
+  - Chinese industrial B2B prompt -> `breton-desktop`
+  - premium AI SaaS prompt -> `ionq-desktop`
+  - Chinese luxury editorial interior prompt -> `auto_sixtine-reference`
+- Widened the architect template-seed fast path in `builder/src/lib/agent/p2w-graph.ts`:
+  - high-coverage site templates with obvious website/homepage intent can now seed a blueprint without requiring an explicit `like Brand` reference
+- Improved fallback industry inference in `builder/src/lib/agent/p2w-graph.ts`:
+  - non-medical prompts are no longer forced to `technology`
+  - industrial/manufacturing prompts now resolve to `industrial-manufacturing` with matching `styleDNA`, `imageMood`, `coreProducts`, and theme voice
+- Verification run:
+  - `node --check builder/src/lib/agent/section-template-registry.ts`
+  - `node --check builder/src/lib/agent/p2w-graph.ts`
+  - `cd builder && npx --yes tsx -e "import { selectStyleProfile } from './src/lib/agent/section-template-registry.ts'; ..."`
+  - selector output matched the intended template families for the three critical prompt classes above
+- Regression execution status:
+  - `STRATEGY_COMPARE_SERVER_MODE=auto node regression/run-strategy-comparison.mjs --prompts regression/prompts.baseline.json --groups AUTO_multi_candidate --max-cases 2 --capture none`
+  - first case (`luxury-interior-sixtine`) passed again
+  - live `creation.log` shows the second case (`industrial-b2b`) now entering `breton-desktop -> template_seed -> 8-page builder` instead of failing immediately in `architect_timeout`
+  - the full regression process had not yet written its final report at the time of this log entry
+- Baseline regression now completed and wrote:
+  - `builder/regression/strategy-comparison/compare-20260312-200430.json`
+  - `builder/regression/strategy-comparison/compare-20260312-200430.md`
+- Confirmed results from that report:
+  - `luxury-interior-sixtine`: PASS, `durationMs=11514`, `selectedStrategy=template_first`, `shortCircuited=true`
+  - `industrial-b2b`: PASS, `durationMs=242952`, `selectedStrategy=template_first`, `templatePlanProfile=breton-desktop`, `qaOverallScore=1`
+- Inspected the industrial run in `builder/logs/creation.log`:
+  - downstream section prompts now carry `industry: "industrial-manufacturing"`
+  - `styleDNA`, `imageMood`, and `voice` also switched to industrial values
+  - generated hero/approach/story content is now industrial instead of generic tech
+- Started an additional 3-case baseline sweep and a targeted API validation for `ai-saas`.
+- Confirmed from `builder/logs/creation.log` that `ai-saas` now uses:
+  - `profileId = ionq-desktop`
+  - `architect:template_seed`
+  - `templatePlanProfile = ionq-desktop`
+  - `resolutionLayer = full-site`
+  - `matchedPageCoverage = 1`
+- Targeted `ai-saas` API validation completed:
+  - `POST http://localhost:3110/api/creation`
+  - response: `status=200`
+  - `id=p2w_1773320219690`
+  - `qaPass=true`
+  - `qaOverallScore=1`
+  - `selectedStrategy=template_first`
+  - candidate details:
+    - `template_first`: `score=19.04`, `profileId=ionq-desktop`, `layer=full-site`
+    - `hybrid`: `score=19.03`, `profileId=ionq-desktop`, `layer=page`
+- Validation status after this pass:
+  - generic luxury/editorial prompt: verified PASS
+  - generic industrial/B2B prompt: verified PASS
+  - generic AI SaaS prompt: verified PASS
+- The remaining commercial issue after this verification pass is now narrowed further:
+  - generic technology/industrial prompts are routing correctly
+  - the major remaining inefficiency is candidate runtime, especially when `hybrid` runs after a perfect full-site `template_first` result
+- Extended `shouldShortCircuitCandidateSelection()` in `builder/src/lib/agent/p2w-graph.ts` so high-confidence generic website/homepage matches can stop after `template_first` when:
+  - `templatePlanProfile` exists
+  - `resolutionLayer = full-site`
+  - `matchedPageCoverage >= 0.85`
+  - QA is effectively perfect with no fallback/error cost
+- Restarted local builder server with env loaded from:
+  - `/Users/beihuang/Documents/opencode/shpitto_tools/.env`
+  - `/Users/beihuang/Documents/opencode/shpitto_tools/builder/.env.local`
+- Fresh live API verification after the short-circuit change:
+  - industrial B2B prompt:
+    - `status=200`
+    - `id=p2w_1773320579928`
+    - `selectedStrategy=template_first`
+    - `shortCircuited=true`
+    - `templatePlanProfile=breton-desktop`
+    - `resolutionLayer=full-site`
+    - `matchedPageCoverage=0.875`
+    - `pages=8`
+    - `durationMs=4172`
+  - AI SaaS prompt:
+    - `status=200`
+    - `id=p2w_1773320596014`
+    - `selectedStrategy=template_first`
+    - `shortCircuited=true`
+    - `templatePlanProfile=ionq-desktop`
+    - `resolutionLayer=full-site`
+    - `matchedPageCoverage=1`
+    - `pages=1`
+    - `durationMs=434`
+- Commercial impact of this pass:
+  - the previous worst generic outlier (`industrial-b2b`) dropped from ~243s to ~4.2s without losing QA quality
+  - generic full-site prompt routing is now both correct and operationally fast for the verified luxury/editorial, industrial/B2B, and AI SaaS classes
+- Follow-up generic hardening completed:
+  - `builder/src/lib/agent/section-template-registry.ts`
+    - added sector-specific selector heuristics for finance/ecommerce/education/health/travel/developer-tooling
+    - removed overly broad ecommerce triggers (`brand/品牌`) that were polluting wellness/travel prompts
+    - tightened mobile preference detection so `移动端友好` no longer forces a mobile variant
+  - `builder/src/lib/agent/template-resolver.ts`
+    - added prompt-driven section-kind inference
+    - merged prompt-required kinds into `page/full-site` plans so `approach` is preserved even when the matched home template lacks a native approach section
+  - `builder/src/lib/agent/p2w-graph.ts`
+    - mirrored the expanded Chinese/English `approach` pattern set for planning consistency
+- Live selector verification after the above changes:
+  - `fintech-app` -> `ionq-desktop`
+  - `wellness-clinic` -> `auto_sixtine-reference`
+  - `ecommerce-brand` -> `transpa-rent-desktop`
+  - `education-platform` -> `framework-new-desktop`
+  - `travel-hospitality` -> `pagani-desktop`
+  - `developer-tooling` -> `framework-new-desktop`
+- Live API verification after the section-plan fix:
+  - `agency-portfolio` now includes `FeaturesSection` and detects `approach`
+  - `developer-tooling` now includes `TemplateExclusivePenSiteHomeApproachFeaturepenAlt5`
+  - `education-platform` now includes `TemplateExclusivePenSiteHomeApproachFeaturepenAlt5`
+- Fresh full baseline:
+  - command: `cd builder && node regression/run-creation-baseline.mjs --base-url http://localhost:3110`
+  - report: `builder/regression/reports/creation-baseline-20260312-212941.json`
+  - result:
+    - `passed = 10/10`
+    - `successRate = 100%`
+    - `fallbackRate = 0%`
+    - `timeoutRate = 0%`
+- Continued performance debugging on the remaining generic outlier (`ecommerce-brand`) using `creation.log` plus the latest baseline report.
+- Confirmed the real issue was not selector quality:
+  - `transpa-rent-desktop` was still the correct profile
+  - the prompt was being misclassified as an enterprise multi-page request during template seeding
+  - this expanded the homepage prompt to the default 8-page enterprise skeleton
+- Hardened `builder/src/lib/agent/enterprise-site-structure.ts`:
+  - replaced overly broad multi-page prompt detection with explicit page/route-level cues only
+  - preserved enterprise expansion for true industrial/B2B multi-page prompts
+  - prevented single-page homepage prompts from expanding just because they mention product or solution sections
+- Verification after the enterprise intent fix:
+  - direct `tsx` check:
+    - ecommerce homepage prompt -> `false`
+    - industrial multi-page website prompt -> `true`
+    - medical homepage prompt -> `false`
+  - direct API check:
+    - ecommerce homepage prompt -> `status=200`, `id=p2w_1773323329318`, `templatePlanProfile=transpa-rent-desktop`, `matchedPageCoverage=1`, `shortCircuited=true`, `durationMs=9551`
+- Fresh baseline rerun:
+  - command: `cd builder && node regression/run-creation-baseline.mjs --base-url http://localhost:3110`
+  - report: `builder/regression/reports/creation-baseline-20260312-215001.json`
+  - result:
+    - `passed = 10/10`
+    - `successRate = 100%`
+    - `fallbackRate = 0%`
+    - `timeoutRate = 0%`
+    - `total input tokens = 20797`
+    - `total output tokens = 2901`
+  - notable case timings:
+    - `luxury-interior-sixtine = 8.76s`
+    - `industrial-b2b = 6.62s`
+    - `wellness-clinic = 10.08s`
+    - `ecommerce-brand = 1.65s`
+    - `agency-portfolio = 8.56s`
+- Expanded the regression harness for commercial-scale coverage:
+  - added `builder/regression/prompts.commercial-expanded.json` with `26` cases spanning generic, bilingual, brand, mobile, and multipage prompts
+  - extended `builder/regression/run-creation-baseline.mjs` with profile/layer/page-count/short-circuit assertions plus site-scope category validation
+- Fixed the real framework product-drop defect:
+  - `builder/src/lib/agent/section-template-registry.ts`
+    - block fallback ranking now favors product/catalog blocks when resolving `products`
+  - `builder/src/lib/agent/p2w-graph.ts`
+    - product/catalog blocks are no longer misclassified as contact/cta blocks during canonical page assembly
+- Fixed the remaining finance selector miss:
+  - `builder/src/lib/agent/section-template-registry.ts`
+    - finance prompts now prefer technology-heavy enterprise profiles and penalize irrelevant zero-finance/zero-tech luxury matches
+- Targeted verification after the fixes:
+  - `framework-brand-en` API response now includes `TemplateExclusivePenSiteProductsProductsProductsmainpenAlt5`
+  - `kymeta-enterprise-multipage` API response now preserves product sections across the generated site pages
+  - Chinese `fintech-app` prompt now resolves to `ionq-desktop`
+- Fresh expanded commercial baseline:
+  - command: `cd builder && node regression/run-creation-baseline.mjs --base-url http://localhost:3110 --prompts regression/prompts.commercial-expanded.json`
+  - report: `builder/regression/reports/creation-baseline-20260312-222408.json`
+  - result:
+    - `passed = 26/26`
+    - `successRate = 100%`
+    - `fallbackRate = 0%`
+    - `timeoutRate = 0%`
+    - `assertionFailureRate = 0%`
+    - `total input tokens = 20494`
+    - `total output tokens = 2757`
+- Added a second breadth-oriented commercial suite:
+  - file: `builder/regression/prompts.commercial-scale.json`
+  - scope: `28` additional prompts covering the remaining pen-published variants plus niche generic commercial intents
+- Selector and planner hardening completed for the second suite:
+  - Chinese explicit brand-reference parsing now supports `类似 / 像 / 参考 / 参照 / 对标 / 仿照`
+  - prompt-driven `approach` inference now includes `technology / technical / tech highlights / innovation / 技术 / 科技`
+  - specialized routing now exists for:
+    - `3D printing` -> `carbon3d`
+    - `satellite connectivity` -> `kymeta`
+    - `retro-tech editorial` -> `analogue`
+    - `premium audio hardware` -> `teenage-engineering`
+    - `design-led lifestyle ecommerce` -> `transpa-rent`
+- Fresh breadth regression:
+  - command: `cd builder && node regression/run-creation-baseline.mjs --base-url http://localhost:3110 --prompts regression/prompts.commercial-scale.json`
+  - report: `builder/regression/reports/creation-baseline-20260312-224645.json`
+  - result:
+    - `passed = 28/28`
+    - `successRate = 100%`
+    - `fallbackRate = 0%`
+    - `timeoutRate = 0%`
+    - `assertionFailureRate = 0%`
+    - `total input tokens = 348303`
+    - `total output tokens = 69572`
+- Current aggregate commercial verification:
+  - latest two suites combined:
+    - `total = 54`
+    - `passed = 54`
+    - `failed = 0`
+  - current risk signal:
+    - `kymeta-brand-cn-multipage = 241913ms`
+    - correctness passed, but it remains a severe latency outlier
+- Production build check:
+  - command: `cd builder && npm run build`
+  - status:
+    - Next compiled successfully in `11.2s`
+    - process did not exit cleanly afterward and was interrupted manually
+- Performance outlier fixed:
+  - Chinese Kymeta multipage prompt now short-circuits correctly after `template_first`
+  - targeted API retest:
+    - `profile = kymeta-desktop`
+    - `selectedStrategy = template_first`
+    - `shortCircuited = true`
+    - `elapsedMs ≈ 7486`
+- Build/runtime registry refactor complete:
+  - added `builder/src/components/blocks/template-exclusive-runtime/block.tsx`
+  - generator `builder/template-factory/materialize-custom-components.mjs` now emits:
+    - `builder/src/puck/config.generated.ts`
+    - `builder/src/puck/template-exclusive-runtime.generated.json`
+  - regenerated config result:
+    - `739` runtime-registered components
+    - `0` static generated imports in `config.generated.ts`
+  - `builder/tsconfig.json` now excludes old generated block directories
+- Fresh release verification:
+  - `cd builder && npx tsc --noEmit --extendedDiagnostics`
+    - pass
+    - `Total time = 3.17s`
+  - `cd builder && npm run build`
+    - pass
+    - compile `9.2s`
+    - lint/type pass
+    - page-data/build-trace/finalize pass
+    - clean exit code `0`
+  - runtime smoke:
+    - `npm run start -- -p 3112`
+    - `GET /editor -> 200`
+    - `GET /creation/sandbox?mode=preview&siteKey=pen-exact-home-analogue-desktop&page=home -> 200`
+- Added `scripts/generate_lc_cnc_site.mjs`.
+- Implemented a deterministic LC-CNC industrial site generator that writes:
+  - `asset-factory/out/p2w/lc-cnc-industrial-sea/result.json`
+  - `asset-factory/out/p2w/lc-cnc-industrial-sea/sandbox/payload.json`
+- Built an `8`-page English site for LC-CNC:
+  - `/`
+  - `/3c-machines`
+  - `/custom-solutions`
+  - `/cases`
+  - `/about`
+  - `/contact`
+  - `/privacy`
+  - `/sitemap`
+- Reused builder-native blocks for the main page composition and added three payload-local custom components:
+  - `LCCncCertificationStrip`
+  - `LCCncContactCapture`
+  - `LCCncFloatingWhatsApp`
+- Fresh verification for the LC-CNC site:
+  - `node --check scripts/generate_lc_cnc_site.mjs`
+  - `node scripts/generate_lc_cnc_site.mjs`
+  - `curl -I http://localhost:3110/creation/sandbox?mode=preview&siteKey=lc-cnc-industrial-sea&page=%2F` -> `200`
+  - `curl -I http://localhost:3110/creation/sandbox?mode=preview&siteKey=lc-cnc-industrial-sea&page=%2Fcontact` -> `200`
+  - Playwright smoke:
+    - home hero title visible
+    - contact quick quote form visible
+- Captured fresh screenshots:
+  - `tmp-lc-cnc-home.png`
+  - `tmp-lc-cnc-contact.png`
+- Fixed the LC-CNC follow-up defects:
+  - navbar/footer contrast corrected
+  - logo fallback corrected from `Site` to `LC-CNC™`
+  - replaced unregistered `CreationFallbackSection` usage with payload-local `LCCncCtaBand`
+  - introduced `LCCncPageIntroBand` so inner pages no longer reuse the home hero pattern
+- Fresh LC-CNC verification after the fix:
+  - about/machines pages no longer show `Missing block renderer`
+  - home/about/machines now resolve to distinct heading sets in browser verification
+  - captured `tmp-lc-cnc-header-fixed.png`, `tmp-lc-cnc-footer-fixed.png`, `tmp-lc-cnc-about-fixed.png`
+- Added `scripts/audit_generated_site_payloads.mjs`.
+- Ran cross-template payload audit:
+  - `payloadCount = 286`
+  - `generatedSiteCount = 232`
+  - `generatedProblemCount = 0`
+  - `exactPreviewCount = 54` (expected wrapper-based `pen-exact-*` previews)
+- Ran browser-level home-page sweep for all `232` generated site payloads:
+  - `failures = 0` for `Missing block renderer`
+- Added `builder/src/lib/site-payload-audit.ts`.
+- Wired payload audit into:
+  - `builder/src/app/api/creation/route.ts`
+  - `builder/src/app/api/creation/save/route.ts`
+- Guardrail behavior now:
+  - saves/generations persist `audit.json`
+  - audit failures return `422 payload_audit_failed`
+  - `CreationFallbackSection` is explicitly blocked in saved/generated payloads
+  - exact `.pen` preview wrappers are classified as `exact-preview` and not falsely flagged for wrapper reuse
+- Fresh verification:
+  - `cd builder && npx tsc --noEmit --pretty false` -> pass
+  - `POST /api/creation/save` with valid LC-CNC payload -> `200`
+  - `POST /api/creation/save` with invalid `CreationFallbackSection` payload -> `422`
+  - valid save wrote `asset-factory/out/p2w/lc-cnc-audit-smoke/audit.json`
+- Upgraded the payload audit from exact block-shape reuse detection to semantic structure scoring:
+  - pages now emit `roles` and `roleShape`
+  - audits now include a `structure` section with similarity metrics
+  - high structural similarity can be flagged even when pages use different block type names
+- Re-ran the offline audit after the semantic-shape change:
+  - `payloadCount = 287`
+  - `generatedSiteCount = 233`
+  - `exactPreviewCount = 54`
+  - `generatedProblemCount = 0`
+- Re-saved the LC-CNC payload through `/api/creation/save` and confirmed:
+  - `issueCount = 0`
+  - `audit.json` now includes the new `structure` metrics
+  - home vs inner-page role shapes are distinct across the 8-page site
+- Fixed the LC-CNC page-template over-reuse issue in `scripts/generate_lc_cnc_site.mjs`:
+  - added `LCCncProcessRail`
+  - added `LCCncFactoryStorySection`
+  - changed `/cases` and `/about` to use `HeroSplit`
+  - preserved distinct product/contact/utility page structures
+- Fixed the LC-CNC CTA compression issue:
+  - `LCCncCtaBand` no longer uses invalid `py-18`
+  - updated to a valid padded grid layout with `py-20 md:py-24`
+  - fresh browser verification on `/about` now reports CTA height `400px`, `paddingTop = 96px`, `paddingBottom = 96px`
+- Regenerated the LC-CNC payload and confirmed current page structures:
+  - `/custom-solutions` -> `Navbar > LCCncProcessRail > FeatureGrid > CardsGrid > LCCncCtaBand > LCCncFloatingWhatsApp > Footer`
+  - `/cases` -> `Navbar > HeroSplit > CaseStudies > CardsGrid > LCCncCtaBand > LCCncFloatingWhatsApp > Footer`
+  - `/about` -> `Navbar > HeroSplit > LCCncFactoryStorySection > LCCncCertificationStrip > LCCncCtaBand > LCCncFloatingWhatsApp > Footer`
+- Extended `builder/src/lib/agent/template-adaptation.ts` to cover the remaining published enterprise/technology/audio/mobility families:
+  - `carbon3d`
+  - `plexus`
+  - `ridecake`
+  - `siemens`
+  - `audeze`
+  - `devialet`
+  - `unistellar`
+  - `masterdynamic`
+- Broadened scenario inference for:
+  - additive / digital manufacturing
+  - premium audio hardware commerce
+  - smart-telescope commerce
+- Fixed an adaptation inference bug where generic `LogoCloud` fixture content was falsely matching the SaaS `cloud` keyword and forcing `pagani`/`analogue` into the `ai_saas` page contract.
+- Added reusable adaptation regression coverage:
+  - new runner: `builder/regression/run-template-adaptation-save-fixtures.mjs`
+  - new npm script: `npm run regression:adaptation`
+  - README usage documented in `builder/regression/README.md`
+- Fresh verification after the family-matrix expansion:
+  - `cd builder && npm run build` -> pass
+  - `cd builder && npx tsc --noEmit --pretty false` -> pass
+  - fresh production server on `http://127.0.0.1:3118`
+  - `node regression/run-template-adaptation-save-fixtures.mjs --base-url http://127.0.0.1:3118` -> pass
+  - output report:
+    - `builder/regression/reports/template-adaptation-save-20260313164755.json`
+    - `builder/regression/reports/template-adaptation-save-20260313164755.md`
+  - result summary:
+    - `fixtureCount = 44`
+    - `passedCount = 44`
+    - `failedCount = 0`
+    - `successRate = 1`
+
+- 2026-03-14 commercial follow-up:
+  - reran fresh validation and found the previous “commercial ready” claim had regressed on the current tree:
+    - `builder/regression/reports/creation-baseline-20260314-005602.json`
+    - only `19/26` passed
+  - fixed two real release blockers:
+    - reference-template residue cleanup in `builder/src/lib/agent/p2w-graph.ts`
+    - industrial multipage contract strictness and metadata false-positives in `builder/src/lib/agent/template-adaptation.ts`
+  - rebuilt and revalidated on fresh production server `http://127.0.0.1:3125`
+  - current release-gate evidence:
+    - `npm run build` -> pass
+    - `npx tsc --noEmit --pretty false` -> pass
+    - `npm run regression:adaptation -- --base-url http://127.0.0.1:3125` -> `44/44`
+    - `node regression/run-creation-baseline.mjs --base-url http://127.0.0.1:3125 --prompts regression/prompts.commercial-expanded.json` -> `26/26`
+    - `node regression/run-creation-baseline.mjs --base-url http://127.0.0.1:3125 --prompts regression/prompts.commercial-scale.json` -> `28/28`
+  - aggregate commercial prompt verification on the latest build is now `54/54`
+
+- 2026-03-14 prompt-direct IA preservation:
+  - fixed explicit template-reference parsing for `Use <brand> as the template/style reference|base`
+  - requested-page extraction now recognizes natural-language page lists from:
+    - `Navigation: Home | 3C Machines | Custom Solutions | Cases | About | Contact`
+    - `with home, 3C Machines, Custom Solutions, Cases, About, Contact, and Privacy pages`
+  - enterprise default page injection now yields to explicit page sets, so prompt-defined IA is preserved instead of appending `/core-product` and `/products`
+  - product-page inference now treats `machines / cnc / equipment / centers / models / series` as `products`
+  - fresh verification on the current tree:
+    - `cd builder && npx tsc --noEmit --pretty false` -> pass
+    - `Sandvik` prompt-direct generation -> `/, /3c-machines, /custom-solutions, /cases, /about, /contact, /privacy`
+    - `PAMA` prompt-direct generation -> `/, /3c-machines, /custom-solutions, /cases, /about, /contact, /privacy`
+    - `Breton` prompt-direct generation -> `/, /3c-machines, /custom-solutions, /cases, /about, /contact, /privacy`
+
+- 2026-03-14 sandvik contrast root-cause fix:
+  - traced the low-contrast regression to the publish pipeline, not the renderer:
+    - published `sandvik-desktop` was carrying `bg = #F3F3F2`, `text = #FFFFFF`, `primary = #4F77FF`
+    - the exact validated pen theme is dark-text-on-light-background, not white-on-light
+  - root cause:
+    - `builder/template-factory/run-template-factory.mjs`
+    - `template-from-pen` rebuilt page/block theme from `buildThemeFromPenPage()` heuristics instead of using the already validated exact template theme
+    - on `sandvik.pen`, that heuristic picked a light background and a light foreground, producing a contrast ratio of only `1.11`
+  - fix:
+    - preserved `exactTemplatePath` metadata when loading pen bundle artifacts
+    - added exact-theme resolution from `artifact.exactTemplatePath` / nearby `theme.tokens.json`
+    - `buildPayloadFromPenDocument()` now prefers exact theme tokens over heuristic page theme inference
+    - republished `sandvik` via `npm run template:factory -- --mode template-from-pen ...site.pen-bundle.json`
+  - fresh verification:
+    - `node --check builder/template-factory/run-template-factory.mjs` -> pass
+    - `cd builder && npm run template:factory -- --mode template-from-pen --run-id tf-sandvik-contrast-fix --pen-file template-factory/generated/pen-site-publish-bundles/sites/sandvik/site.pen-bundle.json --pen-review-file template-factory/generated/pen-site-publish-bundles/sites/sandvik/site.pen-review.json` -> pass
+    - `cd builder && npm run build` -> pass
+    - published `sandvik-desktop` theme is now:
+      - `bg = #F3F3F2`
+      - `text = #1F1F1F`
+      - `primary = #6D614E`
+    - contrast ratio improved from `1.11` to `14.85`
+  - generalized the exact-theme publish fix across the whole pen site library:
+    - first full republish surfaced remaining low-contrast profiles: `ionq-desktop`, `pagani-desktop`, `pagani-mobile`
+    - tightened exact-theme text-color selection to score by true contrast ratio instead of only dark/light heuristics
+    - added fallback to overall color palette when text tokens do not contain a readable body color
+    - excluded transparent colors (for example `#00000000`) from theme selection
+    - reran full publish:
+      - `node scripts/publish_pen_site_bundles_to_builder_library.mjs` -> `16/16`
+      - `cd builder && npm run build` -> pass
+    - final contrast audit on published pen profiles:
+      - checked profiles: `27`
+      - low-contrast failures: `0`
+    - sample fixed profiles:
+        - `sandvik-desktop`: `14.85`
+        - `ionq-desktop`: `10.07`
+        - `pagani-desktop`: `16.85`
+        - `pagani-mobile`: `16.85`
+
+- 2026-03-14 sandvik published visual regression hardening:
+  - extended published-preview regression beyond home and checked `home`, `about`, `products`
+  - structural section alignment remains exact per publish-time diff:
+    - `home`: `9/9`
+    - `about`: `13/13`
+    - `products`: `4/4`
+  - published-preview screenshot artifacts generated under:
+    - `output/playwright/sandvik-published-multipage-regression`
+  - confirmed full-page visual similarity on live published preview:
+    - `home`: `0.9442`
+    - `products`: `0.9639`
+  - initially saw `about` drop to `0.7733`; root cause was not template drift:
+    - bottom iframe sections `serviceBar` and `footer` were present in DOM but rendered at `opacity: 0.001`
+    - this came from sandbox reveal motion, so static full-page screenshoting produced a false failure
+  - hardened `visual-qa/scripts/common.ts`:
+    - removed generic `iframe { visibility: hidden }` from stabilization CSS
+    - replaced callback-style browser `evaluate()` bodies with string-evaluated browser scripts, eliminating the `ReferenceError: __name is not defined` failure in `tsx`
+    - added sandbox iframe stabilization that disables motion, forces sections visible, and pre-scrolls iframe content
+  - verification after the fix:
+    - `cd visual-qa && SITE_KEY=sandvik-about-stabilized ... npx tsx scripts/run.ts` now completes end-to-end instead of failing during `Capture original`
+    - with motion forced off, `sandvik-about` rises to:
+      - full-page similarity `0.9333`
+      - average section similarity `0.9308`
+      - footer section similarity `0.9613`
+2026-03-15 (continued)
+  - upgraded the Lingchuang template-family runtime sweep from section presence/count to repeated section-level pixel diff regression
+  - reused the existing first-pass captures under:
+    - `output/playwright/lc-cnc-template-family-section-regression`
+  - recaptured all `21` pages (`Breton / PAMA / Sandvik`, `7` pages each), then diffed:
+    - full-page baseline vs recapture
+    - every section crop baseline vs recapture
+  - wrote the new regression bundle under:
+    - `output/playwright/lc-cnc-template-family-section-visual-regression`
+  - final stability summary:
+    - `totalPages: 21`
+    - `passedPages: 21`
+    - `failedPages: 0`
+    - `avgFullSimilarity: 1.0`
+    - `avgSectionSimilarity: 1.0`
+    - `minSectionSimilarity: 1.0`
+  - family breakdown:
+    - `breton: 7/7`
+    - `pama: 7/7`
+    - `sandvik: 7/7`
+  - representative per-page reports:
+    - `output/playwright/lc-cnc-template-family-section-visual-regression/sandvik/home/report.json`
+    - `output/playwright/lc-cnc-template-family-section-visual-regression/pama/about/report.json`
+2026-03-15 (interior assembly)
+  - extended the family-agnostic assembly policy from `home` into `products / solutions / cases / about / contact`
+  - added structured interior slot builders in `builder/src/lib/agent/p2w-graph.ts`
+  - normalized page skeletons by page role instead of family-specific block names
+  - added duplicate canonical-section pruning so template-native proof/story sections do not survive next to the normalized block
+  - verified on a fresh prod server:
+    - `sandvik-desktop`
+    - `breton-desktop`
+    - `pamamachinetools-desktop`
+    - `pagani-desktop`
+  - post-fix shape examples:
+    - `/3c-machines -> Navbar > HeroSplit > CardsGrid > FeatureGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
+    - `/custom-solutions -> Navbar > HeroSplit > FeatureGrid > CardsGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
+    - `/about -> Navbar > HeroSplit > ContentStory > CardsGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
+    - `/contact -> Navbar > HeroSplit > FeatureGrid > TestimonialsGrid > LeadCaptureCTA > Footer`
+  - verification:
+    - `cd builder && npm run build`
+    - `cd builder && npx tsc --noEmit --pretty false`

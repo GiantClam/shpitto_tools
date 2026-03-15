@@ -1,0 +1,123 @@
+{
+  "blockId": "RJaIW",
+  "blockName": "mapWrap",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 1,
+  "bounds": {
+    "x": 32,
+    "y": 120,
+    "width": 1130,
+    "height": 460
+  },
+  "directChildCount": 7,
+  "recursiveNodeCount": 8,
+  "treeHash": "dbd71b9032ef2a86eaf087230974aefef7d06fcf05113cd4944515f0523634a9",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "RJaIW",
+    "x": 32,
+    "y": 120,
+    "name": "mapWrap",
+    "width": 1130,
+    "height": 460,
+    "fill": "#031224",
+    "cornerRadius": 12,
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "HkpBW",
+        "x": 28,
+        "y": 24,
+        "name": "mapTitle",
+        "fill": "#F4F7FB",
+        "content": "IonQ’s Expanding",
+        "fontFamily": "Inter",
+        "fontSize": 26,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "YGUR6",
+        "x": 300,
+        "y": 78,
+        "name": "mapSub",
+        "fill": "#E8EEF6",
+        "textGrowth": "fixed-width",
+        "width": 500,
+        "content": "🇺🇸  🇨🇦  🇬🇧  🇨🇭  🇸🇪  🇮🇹  🇰🇷",
+        "lineHeight": 1.4,
+        "fontFamily": "Inter",
+        "fontSize": 38,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "K5QaC",
+        "x": 28,
+        "y": 146,
+        "name": "mapRect",
+        "width": 1044,
+        "height": 286,
+        "fill": "#061529",
+        "cornerRadius": 8
+      },
+      {
+        "type": "text",
+        "id": "bLChR",
+        "x": 310,
+        "y": 24,
+        "name": "gf",
+        "fill": "#FF6A00",
+        "content": "Global Footprint",
+        "fontFamily": "Inter",
+        "fontSize": 26,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "sExUD",
+        "x": 20,
+        "y": 130,
+        "name": "leftCities",
+        "fill": "#DDE6F0",
+        "textGrowth": "fixed-width",
+        "width": 250,
+        "content": "Boston, MA, USA\n\nChattanooga, TN, USA\n\nWashington DC, USA\n\nCollege Park, MD, USA\n\nSeattle, WA, USA\n\nSan Francisco, CA, USA",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "BYxNi",
+        "x": 820,
+        "y": 130,
+        "name": "rightCities",
+        "fill": "#DDE6F0",
+        "textGrowth": "fixed-width",
+        "width": 260,
+        "content": "Toronto, Canada\n\nGothenburg, Sweden\n\nOxford, United Kingdom\n\nSeoul, South Korea\n\nRome, Italy\n\nBasel, Switzerland\n\nGeneva, Switzerland",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "600"
+      },
+      {
+        "type": "text",
+        "id": "T1Y7H",
+        "x": 760,
+        "y": 420,
+        "name": "copy",
+        "fill": "#C8D2DF",
+        "content": "Copyright © 2025 IonQ, Inc. All Rights Reserved.",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

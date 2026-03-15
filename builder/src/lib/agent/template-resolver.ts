@@ -55,7 +55,7 @@ const sectionPatterns: Record<TemplatePlanSectionKind, RegExp[]> = {
   navigation: [/navigation|navbar|header|topnav|menu/],
   hero: [/hero|masthead|pagehero|banner|intro/],
   story: [/story|about|narrative|philosophy|studio|editorial|mission|vision|who/],
-  approach: [/approach|metric|stats|feature|value|process|capability|benefit|numbers?/],
+  approach: [/approach|metric|stats|feature|value|process|capability|benefit|numbers?|technology|technical|tech(?:\s|-)?highlight|innovation|science|价值点|优势|能力|方法|指标|流程|特性|亮点|技术|科技/],
   products: [/product|catalog|collection|pricing|plan|showcase|gallery|module|offer|package/],
   socialproof: [/social|proof|testimonial|review|trust|logo|collaborator|partner/],
   contact: [/contact|lead|inquiry|form|quote|consult/],
@@ -99,6 +99,15 @@ const normalizeKind = (value: unknown): TemplatePlanSectionKind | null => {
   return sectionOrder.includes(token) ? token : null;
 };
 
+const inferPromptDrivenKinds = (prompt: string): TemplatePlanSectionKind[] => {
+  const raw = String(prompt || "").trim();
+  if (!raw) return [];
+  return sectionOrder.filter((kind) => {
+    if (kind === "navigation" || kind === "hero" || kind === "footer") return false;
+    return sectionPatterns[kind].some((pattern) => pattern.test(raw));
+  });
+};
+
 const inferPageType = (pathValue: unknown, nameValue: unknown): TemplatePageType => {
   const pathToken = String(pathValue || "").trim().toLowerCase();
   const nameToken = String(nameValue || "").trim().toLowerCase();
@@ -114,7 +123,11 @@ const inferPageType = (pathValue: unknown, nameValue: unknown): TemplatePageType
     return "cases";
   if (/(solution|service|capabilit|workflow|industry|technology|technologies|integration)/.test(token))
     return "solutions";
-  if (/(product|catalog|collection|pricing|plan|store|shop|telescope|binocular|device|hardware)/.test(token))
+  if (
+    /(product|catalog|collection|pricing|plan|store|shop|telescope|binocular|device|hardware|machine|machines|equipment|center|centres|cnc|model|models|series|frame|shell|bezel|keypad|lineup)/.test(
+      token
+    )
+  )
     return "products";
   return "generic";
 };
@@ -317,21 +330,25 @@ const planPageSections = (input: {
   profilePage?: ProfilePageLike;
   fallbackKinds: TemplatePlanSectionKind[];
   pageType: TemplatePageType;
+  promptKinds?: TemplatePlanSectionKind[];
+  strategy: "llm_first" | "hybrid" | "template_first";
 }) => {
   const defaultKinds = defaultKindsByPageType[input.pageType] || defaultKindsByPageType.generic;
   const profileKinds = input.profilePage?.kinds?.length ? input.profilePage.kinds : [];
+  const promptKinds = Array.isArray(input.promptKinds) ? input.promptKinds : [];
+  const preserveProfileSkeleton =
+    input.strategy === "template_first" && profileKinds.length > 0;
   const shouldPreferDefaultKinds =
-    input.pageType === "solutions" ||
-    input.pageType === "cases" ||
-    (input.pageType === "about" && !input.profilePage);
-  const orderedDefaults =
-    shouldPreferDefaultKinds
-      ? defaultKinds
-      : dedupeKinds([...profileKinds, ...(input.fallbackKinds || []), ...defaultKinds]);
+    !preserveProfileSkeleton &&
+    (input.pageType === "solutions" ||
+      input.pageType === "cases" ||
+      (input.pageType === "about" && !input.profilePage));
   const pageKinds =
-    shouldPreferDefaultKinds
-      ? dedupeKinds([...orderedDefaults, ...profileKinds])
-      : orderedDefaults;
+    preserveProfileSkeleton
+      ? dedupeKinds([...profileKinds])
+      : shouldPreferDefaultKinds
+        ? dedupeKinds([...defaultKinds, ...profileKinds, ...promptKinds])
+        : dedupeKinds([...profileKinds, ...promptKinds, ...(input.fallbackKinds || []), ...defaultKinds]);
   if (!pageKinds.length) return input.page;
 
   const sourceSections = Array.isArray(input.page.sections)
@@ -374,6 +391,7 @@ export const resolveTemplatePlan = (input: {
   strategy: "llm_first" | "hybrid" | "template_first";
 }): LayeredTemplateResolution => {
   const profile = chooseProfile(input.prompt, input.pages);
+  const promptKinds = inferPromptDrivenKinds(input.prompt);
   if (!profile || input.strategy === "llm_first") {
     return {
       profileId: profile?.id ?? null,
@@ -511,6 +529,8 @@ export const resolveTemplatePlan = (input: {
       profilePage,
       fallbackKinds,
       pageType,
+      promptKinds,
+      strategy: input.strategy,
     });
   });
 

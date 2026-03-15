@@ -1,0 +1,591 @@
+{
+  "schemaVersion": "pen-site-publish-bundles-manifest.v1",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "exactOutDir": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates",
+  "skinOutDir": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates",
+  "outDir": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-site-publish-bundles",
+  "totalSites": 16,
+  "pairedSiteCount": 11,
+  "desktopOnlySiteCount": 5,
+  "exactMobileSiteCount": 11,
+  "derivedMobileSiteCount": 5,
+  "qualityGates": {
+    "structuralValidationPassed": true,
+    "visualValidationPassed": true,
+    "sandboxRuntimePassed": true,
+    "publishInputReady": true
+  },
+  "sites": [
+    {
+      "siteId": "analogue",
+      "siteName": "Analogue",
+      "bundlePath": "sites/analogue/site.pen-bundle.json",
+      "reviewPath": "sites/analogue/site.pen-review.json",
+      "readinessPath": "sites/analogue/site.publish.ready.json",
+      "variantCount": 2,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "mobile",
+          "mode": "exact-source"
+        }
+      },
+      "exactMobileSource": true,
+      "counts": {
+        "pageCount": 20,
+        "textSlotCount": 262,
+        "imageSlotCount": 24,
+        "linkSlotCount": 142,
+        "styleSlotCount": 402
+      }
+    },
+    {
+      "siteId": "breton",
+      "siteName": "Breton",
+      "bundlePath": "sites/breton/site.pen-bundle.json",
+      "reviewPath": "sites/breton/site.pen-review.json",
+      "readinessPath": "sites/breton/site.publish.ready.json",
+      "variantCount": 2,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "mobile",
+          "mode": "exact-source"
+        }
+      },
+      "exactMobileSource": true,
+      "counts": {
+        "pageCount": 24,
+        "textSlotCount": 427,
+        "imageSlotCount": 64,
+        "linkSlotCount": 517,
+        "styleSlotCount": 791
+      }
+    },
+    {
+      "siteId": "carbon3d",
+      "siteName": "Carbon3d",
+      "bundlePath": "sites/carbon3d/site.pen-bundle.json",
+      "reviewPath": "sites/carbon3d/site.pen-review.json",
+      "readinessPath": "sites/carbon3d/site.publish.ready.json",
+      "variantCount": 2,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "mobile",
+          "mode": "exact-source"
+        }
+      },
+      "exactMobileSource": true,
+      "counts": {
+        "pageCount": 24,
+        "textSlotCount": 416,
+        "imageSlotCount": 76,
+        "linkSlotCount": 244,
+        "styleSlotCount": 654
+      }
+    },
+    {
+      "siteId": "fptindustrie",
+      "siteName": "Fptindustrie",
+      "bundlePath": "sites/fptindustrie/site.pen-bundle.json",
+      "reviewPath": "sites/fptindustrie/site.pen-review.json",
+      "readinessPath": "sites/fptindustrie/site.publish.ready.json",
+      "variantCount": 2,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "mobile",
+          "mode": "exact-source"
+        }
+      },
+      "exactMobileSource": true,
+      "counts": {
+        "pageCount": 20,
+        "textSlotCount": 401,
+        "imageSlotCount": 66,
+        "linkSlotCount": 199,
+        "styleSlotCount": 719
+      }
+    },
+    {
+      "siteId": "framework_new",
+      "siteName": "Framework New",
+      "bundlePath": "sites/framework_new/site.pen-bundle.json",
+      "reviewPath": "sites/framework_new/site.pen-review.json",
+      "readinessPath": "sites/framework_new/site.publish.ready.json",
+      "variantCount": 1,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "responsive-derived-from-desktop"
+        }
+      },
+      "exactMobileSource": false,
+      "counts": {
+        "pageCount": 6,
+        "textSlotCount": 293,
+        "imageSlotCount": 28,
+        "linkSlotCount": 0,
+        "styleSlotCount": 616
+      }
+    },
+    {
+      "siteId": "ionq",
+      "siteName": "Ionq",
+      "bundlePath": "sites/ionq/site.pen-bundle.json",
+      "reviewPath": "sites/ionq/site.pen-review.json",
+      "readinessPath": "sites/ionq/site.publish.ready.json",
+      "variantCount": 1,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "responsive-derived-from-desktop"
+        }
+      },
+      "exactMobileSource": false,
+      "counts": {
+        "pageCount": 6,
+        "textSlotCount": 572,
+        "imageSlotCount": 20,
+        "linkSlotCount": 0,
+        "styleSlotCount": 866
+      }
+    },
+    {
+      "siteId": "Kymeta",
+      "siteName": "Kymeta",
+      "bundlePath": "sites/Kymeta/site.pen-bundle.json",
+      "reviewPath": "sites/Kymeta/site.pen-review.json",
+      "readinessPath": "sites/Kymeta/site.publish.ready.json",
+      "variantCount": 1,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "responsive-derived-from-desktop"
+        }
+      },
+      "exactMobileSource": false,
+      "counts": {
+        "pageCount": 6,
+        "textSlotCount": 269,
+        "imageSlotCount": 39,
+        "linkSlotCount": 0,
+        "styleSlotCount": 545
+      }
+    },
+    {
+      "siteId": "nothing-tech",
+      "siteName": "Nothing Tech",
+      "bundlePath": "sites/nothing-tech/site.pen-bundle.json",
+      "reviewPath": "sites/nothing-tech/site.pen-review.json",
+      "readinessPath": "sites/nothing-tech/site.publish.ready.json",
+      "variantCount": 2,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "mobile",
+          "mode": "exact-source"
+        }
+      },
+      "exactMobileSource": true,
+      "counts": {
+        "pageCount": 20,
+        "textSlotCount": 262,
+        "imageSlotCount": 24,
+        "linkSlotCount": 142,
+        "styleSlotCount": 402
+      }
+    },
+    {
+      "siteId": "pagani",
+      "siteName": "Pagani",
+      "bundlePath": "sites/pagani/site.pen-bundle.json",
+      "reviewPath": "sites/pagani/site.pen-review.json",
+      "readinessPath": "sites/pagani/site.publish.ready.json",
+      "variantCount": 2,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "mobile",
+          "mode": "exact-source"
+        }
+      },
+      "exactMobileSource": true,
+      "counts": {
+        "pageCount": 20,
+        "textSlotCount": 214,
+        "imageSlotCount": 42,
+        "linkSlotCount": 223,
+        "styleSlotCount": 502
+      }
+    },
+    {
+      "siteId": "pamamachinetools",
+      "siteName": "Pamamachinetools",
+      "bundlePath": "sites/pamamachinetools/site.pen-bundle.json",
+      "reviewPath": "sites/pamamachinetools/site.pen-review.json",
+      "readinessPath": "sites/pamamachinetools/site.publish.ready.json",
+      "variantCount": 2,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "mobile",
+          "mode": "exact-source"
+        }
+      },
+      "exactMobileSource": true,
+      "counts": {
+        "pageCount": 22,
+        "textSlotCount": 364,
+        "imageSlotCount": 66,
+        "linkSlotCount": 368,
+        "styleSlotCount": 716
+      }
+    },
+    {
+      "siteId": "plexus",
+      "siteName": "Plexus",
+      "bundlePath": "sites/plexus/site.pen-bundle.json",
+      "reviewPath": "sites/plexus/site.pen-review.json",
+      "readinessPath": "sites/plexus/site.publish.ready.json",
+      "variantCount": 1,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "responsive-derived-from-desktop"
+        }
+      },
+      "exactMobileSource": false,
+      "counts": {
+        "pageCount": 6,
+        "textSlotCount": 322,
+        "imageSlotCount": 43,
+        "linkSlotCount": 0,
+        "styleSlotCount": 646
+      }
+    },
+    {
+      "siteId": "ridecake",
+      "siteName": "Ridecake",
+      "bundlePath": "sites/ridecake/site.pen-bundle.json",
+      "reviewPath": "sites/ridecake/site.pen-review.json",
+      "readinessPath": "sites/ridecake/site.publish.ready.json",
+      "variantCount": 2,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "mobile",
+          "mode": "exact-source"
+        }
+      },
+      "exactMobileSource": true,
+      "counts": {
+        "pageCount": 20,
+        "textSlotCount": 262,
+        "imageSlotCount": 24,
+        "linkSlotCount": 142,
+        "styleSlotCount": 402
+      }
+    },
+    {
+      "siteId": "sandvik",
+      "siteName": "Sandvik",
+      "bundlePath": "sites/sandvik/site.pen-bundle.json",
+      "reviewPath": "sites/sandvik/site.pen-review.json",
+      "readinessPath": "sites/sandvik/site.publish.ready.json",
+      "variantCount": 1,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "responsive-derived-from-desktop"
+        }
+      },
+      "exactMobileSource": false,
+      "counts": {
+        "pageCount": 7,
+        "textSlotCount": 424,
+        "imageSlotCount": 42,
+        "linkSlotCount": 0,
+        "styleSlotCount": 719
+      }
+    },
+    {
+      "siteId": "teenage-engineering",
+      "siteName": "Teenage Engineering",
+      "bundlePath": "sites/teenage-engineering/site.pen-bundle.json",
+      "reviewPath": "sites/teenage-engineering/site.pen-review.json",
+      "readinessPath": "sites/teenage-engineering/site.publish.ready.json",
+      "variantCount": 2,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "mobile",
+          "mode": "exact-source"
+        }
+      },
+      "exactMobileSource": true,
+      "counts": {
+        "pageCount": 20,
+        "textSlotCount": 262,
+        "imageSlotCount": 24,
+        "linkSlotCount": 142,
+        "styleSlotCount": 402
+      }
+    },
+    {
+      "siteId": "transpa-rent",
+      "siteName": "Transpa Rent",
+      "bundlePath": "sites/transpa-rent/site.pen-bundle.json",
+      "reviewPath": "sites/transpa-rent/site.pen-review.json",
+      "readinessPath": "sites/transpa-rent/site.publish.ready.json",
+      "variantCount": 2,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "mobile",
+          "mode": "exact-source"
+        }
+      },
+      "exactMobileSource": true,
+      "counts": {
+        "pageCount": 20,
+        "textSlotCount": 262,
+        "imageSlotCount": 24,
+        "linkSlotCount": 142,
+        "styleSlotCount": 402
+      }
+    },
+    {
+      "siteId": "vanmoof",
+      "siteName": "Vanmoof",
+      "bundlePath": "sites/vanmoof/site.pen-bundle.json",
+      "reviewPath": "sites/vanmoof/site.pen-review.json",
+      "readinessPath": "sites/vanmoof/site.publish.ready.json",
+      "variantCount": 2,
+      "requiredVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "availableVariants": [
+        "desktop",
+        "mobile"
+      ],
+      "responsiveModes": {
+        "desktop": {
+          "supported": true,
+          "sourceVariant": "desktop",
+          "mode": "exact-source"
+        },
+        "mobile": {
+          "supported": true,
+          "sourceVariant": "mobile",
+          "mode": "exact-source"
+        }
+      },
+      "exactMobileSource": true,
+      "counts": {
+        "pageCount": 20,
+        "textSlotCount": 262,
+        "imageSlotCount": 10,
+        "linkSlotCount": 128,
+        "styleSlotCount": 388
+      }
+    }
+  ]
+}

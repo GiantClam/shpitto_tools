@@ -56,8 +56,26 @@ export const ENTERPRISE_SITE_STRUCTURE_BRIEF = ENTERPRISE_SITE_PAGES.map(
 const ENTERPRISE_PROMPT_PATTERN =
   /(企业官网|公司官网|官方网站|企业站|官网|企业|公司|制造商|工厂|工业|设备|机械|manufacturer|manufactur|factory|industrial|machinery|equipment|b2b|corporate|enterprise|official website|company website)/i;
 
-const ENTERPRISE_PAGE_SIGNAL_PATTERN =
-  /(core product|flagship|featured product|products?|catalog|solutions?|cases?|case studies|about|company|contact|privacy|policy|核心产品|旗舰产品|明星产品|产品|解决方案|案例|关于|联系|隐私)/i;
+const SINGLE_PAGE_HOMEPAGE_PATTERN =
+  /(homepage|home page|landing page|single page|one page|首页|官网首页|单页|落地页)/i;
+
+const STRONG_ENTERPRISE_BUSINESS_PATTERN =
+  /(企业官网|公司官网|官方网站|制造商|工厂|工业|设备|机械|manufacturer|manufactur|factory|industrial|machinery|equipment|b2b|corporate|enterprise|official website|company website)/i;
+
+const ENTERPRISE_MULTI_PAGE_ROUTE_PATTERNS = [
+  /(?:about(?:\s+us)?|company|team|mission|history)\s*(?:page|pages|route|routes|nav|menu|menus)|(?:关于(?:我们)?|公司简介|品牌故事)(?:页面|页|导航|栏目)/i,
+  /(?:contact|contact us|get[-\s]?in[-\s]?touch|sales|support)\s*(?:page|pages|route|routes|nav|menu|menus)|(?:联系(?:我们)?|咨询|询价)(?:页面|页|导航|栏目)/i,
+  /(?:privacy|policy|terms?|legal|gdpr|cookie)\s*(?:page|pages|route|routes|nav|menu|menus)|(?:隐私|政策|条款)(?:页面|页|导航|栏目)/i,
+  /(?:solutions?|services?|capabilities|workflow|industr(?:y|ies))\s*(?:page|pages|route|routes|nav|menu|menus)|(?:解决方案|服务|能力|行业方案)(?:页面|页|导航|栏目)/i,
+  /(?:cases?|case studies|customers?|portfolio|projects?)\s*(?:page|pages|route|routes|nav|menu|menus)|(?:案例|客户案例|项目案例)(?:页面|页|导航|栏目)/i,
+  /(?:products?|catalog|shop|collection|collections|product catalog|product page)\s*(?:page|pages|route|routes|nav|menu|menus)?|(?:产品页|产品中心|产品列表|商城|商品列表|商品页)/i,
+  /(?:core product|flagship|featured product)\s*(?:page|pages|route|routes|nav|menu|menus)|(?:核心产品|旗舰产品|明星产品)(?:页面|页|导航|栏目)/i,
+] as const;
+
+const countExplicitMultiPageSignals = (prompt: string) => {
+  const rawPrompt = String(prompt || "");
+  return ENTERPRISE_MULTI_PAGE_ROUTE_PATTERNS.reduce((count, pattern) => count + (pattern.test(rawPrompt) ? 1 : 0), 0);
+};
 
 const pageDepth = (path: string) => normalizeEnterprisePagePath(path).split("/").filter(Boolean).length;
 
@@ -84,7 +102,15 @@ const isProductsListingPage = (page: PageLike) => {
   const path = normalizeEnterprisePagePath(page?.path || "/");
   const token = tokenFromPage(page);
   if (/^\/products?\/?$/.test(path)) return true;
-  return /(all products|product catalog|products|catalog|产品中心|全部产品|产品列表)/.test(token);
+  if (
+    /^\/(?:machines?|equipment|models?|series|portfolio|catalog|lineup|centers?)\/?$/.test(path) ||
+    /^\/[a-z0-9-]*(?:machines?|equipment|models?|series|portfolio|catalog|lineup|centers?)[a-z0-9-]*\/?$/.test(path)
+  ) {
+    return true;
+  }
+  return /(all products|product catalog|products|catalog|machines?|equipment|cnc|machining centers?|产品中心|全部产品|产品列表|设备列表|机型列表)/.test(
+    token
+  );
 };
 
 const isCoreProductPage = (page: PageLike, pages: PageLike[]) => {
@@ -115,8 +141,11 @@ const matchesEnterpriseKey = (page: PageLike, key: EnterpriseSitePageKey, pages:
 
 export const looksLikeEnterpriseWebsite = ({ prompt = "", pages = [] }: EnterpriseIntentInput) => {
   const rawPrompt = String(prompt || "");
+  const singlePageHomepageIntent = SINGLE_PAGE_HOMEPAGE_PATTERN.test(rawPrompt);
+  const explicitMultiPageSignals = countExplicitMultiPageSignals(rawPrompt) >= 2;
+  if (singlePageHomepageIntent && !explicitMultiPageSignals) return false;
   if (ENTERPRISE_PROMPT_PATTERN.test(rawPrompt)) return true;
-  if (ENTERPRISE_PAGE_SIGNAL_PATTERN.test(rawPrompt) && /(about|contact|privacy|products?|solutions?|cases?)/i.test(rawPrompt)) {
+  if (explicitMultiPageSignals) {
     return true;
   }
   const normalizedPages = Array.isArray(pages) ? pages : [];

@@ -1,0 +1,116 @@
+{
+  "blockId": "7f3eu",
+  "blockName": "benefitCard3",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 7,
+  "bounds": {
+    "x": 794,
+    "y": 224,
+    "width": 344,
+    "height": 132
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 7,
+  "treeHash": "fc9e7391736862138501297df4fed5e9ccbda783cd04d6a6deaa84b985645708",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "7f3eu",
+    "x": 794,
+    "y": 224,
+    "name": "benefitCard3",
+    "width": 344,
+    "height": 132,
+    "fill": "#F1F2F4",
+    "cornerRadius": 10,
+    "stroke": {
+      "thickness": 1,
+      "fill": "#B8C0CA"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "NjPA1",
+        "x": 24,
+        "y": 16,
+        "name": "icon3",
+        "width": 34,
+        "height": 28,
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "cornerRadius": 3,
+            "id": "ZtoRV",
+            "x": 0,
+            "y": 0,
+            "name": "i3a",
+            "width": 14,
+            "height": 14,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#FF6A00"
+            }
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 3,
+            "id": "mDWic",
+            "x": 10,
+            "y": 10,
+            "name": "i3b",
+            "width": 14,
+            "height": 14,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#8FA0B2"
+            }
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 3,
+            "id": "Pli6g",
+            "x": 20,
+            "y": 0,
+            "name": "i3c",
+            "width": 14,
+            "height": 14,
+            "stroke": {
+              "thickness": 1,
+              "fill": "#8FA0B2"
+            }
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "jSxvQ",
+        "x": 24,
+        "y": 56,
+        "name": "t3",
+        "fill": "#1A212B",
+        "content": "Long coherence",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "6hgEG",
+        "x": 24,
+        "y": 88,
+        "name": "d3",
+        "fill": "#5E6774",
+        "textGrowth": "fixed-width",
+        "width": 294,
+        "content": "Ions can remain in superposition for longer than other qubit types.",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

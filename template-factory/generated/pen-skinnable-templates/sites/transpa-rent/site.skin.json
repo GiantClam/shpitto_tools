@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "pen-skinnable-site-bundle.v1",
+  "generatedAt": "2026-03-12T08:24:47.151Z",
+  "siteId": "transpa-rent",
+  "siteName": "Transpa Rent",
+  "variantCount": 2,
+  "variants": [
+    {
+      "siteId": "transpa-rent",
+      "siteName": "Transpa Rent",
+      "variant": "mobile",
+      "counts": {
+        "pageCount": 10,
+        "textSlotCount": 91,
+        "imageSlotCount": 12,
+        "linkSlotCount": 51,
+        "styleSlotCount": 161
+      },
+      "templatePath": "sites/transpa-rent/variants/mobile/template.skin.json",
+      "editableCatalogPath": "sites/transpa-rent/variants/mobile/editable.catalog.json"
+    },
+    {
+      "siteId": "transpa-rent",
+      "siteName": "Transpa Rent",
+      "variant": "desktop",
+      "counts": {
+        "pageCount": 10,
+        "textSlotCount": 171,
+        "imageSlotCount": 12,
+        "linkSlotCount": 91,
+        "styleSlotCount": 241
+      },
+      "templatePath": "sites/transpa-rent/variants/desktop/template.skin.json",
+      "editableCatalogPath": "sites/transpa-rent/variants/desktop/editable.catalog.json"
+    }
+  ],
+  "counts": {
+    "pageCount": 20,
+    "textSlotCount": 262,
+    "imageSlotCount": 24,
+    "linkSlotCount": 142,
+    "styleSlotCount": 402
+  }
+}

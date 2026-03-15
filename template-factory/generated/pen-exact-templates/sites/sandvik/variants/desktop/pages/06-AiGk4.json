@@ -1,0 +1,4655 @@
+{
+  "pageId": "AiGk4",
+  "pageName": "SANDVIK_CUSTOMER_SERVICE",
+  "pageType": "generic",
+  "order": 6,
+  "bounds": {
+    "x": 9360,
+    "y": 0,
+    "width": 1440,
+    "height": 2054
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": true
+  },
+  "pageHash": "4e96c4235c1e8e6fc40f1f18aa782526768a76553d4ce4ddb3ac8b8cc4844db2",
+  "directChildCount": 4,
+  "recursiveNodeCount": 80,
+  "sectionCount": 4,
+  "sectionIndex": [
+    {
+      "sectionId": "CzPFl",
+      "sectionName": "head",
+      "sectionKind": "generic",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 116
+      },
+      "directChildCount": 8,
+      "recursiveNodeCount": 9,
+      "treeHash": "a2fa68b2f239a73f08e2d64d43aa9be86cddced93a948d1e3462a58f36c57174",
+      "blockCount": 8
+    },
+    {
+      "sectionId": "BS6gK",
+      "sectionName": "svc",
+      "sectionKind": "generic",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1252,
+        "width": 1440,
+        "height": 116
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "88df60fc21c912f8a50dc1d1314a77bf6aff2579471195a29d42a0e0bb247ca7",
+      "blockCount": 4
+    },
+    {
+      "sectionId": "tqUlb",
+      "sectionName": "foot",
+      "sectionKind": "generic",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 1368,
+        "width": 1440,
+        "height": 682
+      },
+      "directChildCount": 23,
+      "recursiveNodeCount": 24,
+      "treeHash": "1faa1cfc4e08f97a928a1ed29989e3f4463b2a12ae90d3c8d5d9698c21696ad6",
+      "blockCount": 23
+    },
+    {
+      "sectionId": "rmHvh",
+      "sectionName": "customerMain",
+      "sectionKind": "generic",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 116,
+        "width": 1440,
+        "height": 1136
+      },
+      "directChildCount": 12,
+      "recursiveNodeCount": 41,
+      "treeHash": "e15de69c793aca86bba179660f0451da214c15d0a3d7b3601a2d94df9fb9e205",
+      "blockCount": 12
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "CzPFl",
+      "sectionName": "head",
+      "sectionKind": "generic",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 116
+      },
+      "directChildCount": 8,
+      "recursiveNodeCount": 9,
+      "treeHash": "a2fa68b2f239a73f08e2d64d43aa9be86cddced93a948d1e3462a58f36c57174",
+      "blockCount": 8,
+      "blockIndex": [
+        {
+          "blockId": "OHom2",
+          "blockName": "logo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 10,
+            "y": 10,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8d305ad2422bf9c2600100f8e4c406ca3742c9f7bc8a1ce344803a89595988f5"
+        },
+        {
+          "blockId": "yLnqn",
+          "blockName": "nav",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 10,
+            "y": 78,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ba105d97ff65e6bd605761b07d44cfc976bc5d377d6624e6d5536b7f71f173b1"
+        },
+        {
+          "blockId": "Z1Jpf",
+          "blockName": "actions",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 1318,
+            "y": 28,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a431d4a9e4dc34ee23d130ea384cf4af3c26b9ff0ba9bf8988457134c39c77ef"
+        },
+        {
+          "blockId": "Iv74B",
+          "blockName": "searchBg",
+          "blockType": "rectangle",
+          "order": 3,
+          "bounds": {
+            "x": 124,
+            "y": 14,
+            "width": 1040,
+            "height": 42
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2f71e872974532d548dfd1de505d19c27f2ebaee09f44956ea241f532a978922"
+        },
+        {
+          "blockId": "0uEHt",
+          "blockName": "searchTxt",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 170,
+            "y": 27,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "faf10b743fea0697052bb89c50cf19822c7f93feba777ff6782388d8717841cf"
+        },
+        {
+          "blockId": "ni24Q",
+          "blockName": "loginBtn",
+          "blockType": "rectangle",
+          "order": 5,
+          "bounds": {
+            "x": 1188,
+            "y": 14,
+            "width": 116,
+            "height": 42
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2b2addad53b69bb3ddcacfe0f50c4455ac63ba907f4b62b962a8f9bab02cfcfb"
+        },
+        {
+          "blockId": "LC7Lj",
+          "blockName": "loginTxt",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1232,
+            "y": 25,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b05de4bdcac3c6f221d30455a04724ad25ac909fc2662e4f51a712dd19abd8f0"
+        },
+        {
+          "blockId": "2xLyD",
+          "blockName": "heroDivider",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 7,
+          "bounds": {
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6b5f2db592eb97bcf3845f5baa1098c6f42921feb8a2810861b566f8b0ffab8b"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "OHom2",
+          "blockName": "logo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 10,
+            "y": 10,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8d305ad2422bf9c2600100f8e4c406ca3742c9f7bc8a1ce344803a89595988f5",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "OHom2",
+            "x": 10,
+            "y": 10,
+            "name": "logo",
+            "fill": "#222222",
+            "content": "SANDVIK\ncoromant",
+            "lineHeight": 1.05,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "yLnqn",
+          "blockName": "nav",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 10,
+            "y": 78,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ba105d97ff65e6bd605761b07d44cfc976bc5d377d6624e6d5536b7f71f173b1",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "yLnqn",
+            "x": 10,
+            "y": 78,
+            "name": "nav",
+            "fill": "#282828",
+            "content": "刀具        知识        服务        支持",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "Z1Jpf",
+          "blockName": "actions",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 1318,
+            "y": 28,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a431d4a9e4dc34ee23d130ea384cf4af3c26b9ff0ba9bf8988457134c39c77ef",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "Z1Jpf",
+            "x": 1318,
+            "y": 28,
+            "name": "actions",
+            "fill": "#1F1F1F",
+            "content": "购物车",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "Iv74B",
+          "blockName": "searchBg",
+          "blockType": "rectangle",
+          "order": 3,
+          "bounds": {
+            "x": 124,
+            "y": 14,
+            "width": 1040,
+            "height": 42
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2f71e872974532d548dfd1de505d19c27f2ebaee09f44956ea241f532a978922",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "cornerRadius": 21,
+            "id": "Iv74B",
+            "x": 124,
+            "y": 14,
+            "name": "searchBg",
+            "fill": "#DCD8CF",
+            "width": 1040,
+            "height": 42,
+            "stroke": {
+              "align": "inside",
+              "thickness": 1,
+              "fill": "#C5BFAF"
+            }
+          }
+        },
+        {
+          "blockId": "0uEHt",
+          "blockName": "searchTxt",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 170,
+            "y": 27,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "faf10b743fea0697052bb89c50cf19822c7f93feba777ff6782388d8717841cf",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "0uEHt",
+            "x": 170,
+            "y": 27,
+            "name": "searchTxt",
+            "fill": "#575246",
+            "content": "搜索",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "ni24Q",
+          "blockName": "loginBtn",
+          "blockType": "rectangle",
+          "order": 5,
+          "bounds": {
+            "x": 1188,
+            "y": 14,
+            "width": 116,
+            "height": 42
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "2b2addad53b69bb3ddcacfe0f50c4455ac63ba907f4b62b962a8f9bab02cfcfb",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "cornerRadius": 4,
+            "id": "ni24Q",
+            "x": 1188,
+            "y": 14,
+            "name": "loginBtn",
+            "fill": "#111111",
+            "width": 116,
+            "height": 42
+          }
+        },
+        {
+          "blockId": "LC7Lj",
+          "blockName": "loginTxt",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 1232,
+            "y": 25,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b05de4bdcac3c6f221d30455a04724ad25ac909fc2662e4f51a712dd19abd8f0",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "LC7Lj",
+            "x": 1232,
+            "y": 25,
+            "name": "loginTxt",
+            "fill": "#FFFFFF",
+            "content": "登录",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "2xLyD",
+          "blockName": "heroDivider",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 7,
+          "bounds": {
+            "x": 0,
+            "y": 116,
+            "width": 1440,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6b5f2db592eb97bcf3845f5baa1098c6f42921feb8a2810861b566f8b0ffab8b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "2xLyD",
+            "x": 0,
+            "y": 116,
+            "name": "heroDivider",
+            "fill": "#E4E4E1",
+            "width": 1440,
+            "height": 1
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "CzPFl",
+        "x": 0,
+        "y": 0,
+        "name": "head",
+        "width": 1440,
+        "height": 116,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "OHom2",
+            "x": 10,
+            "y": 10,
+            "name": "logo",
+            "fill": "#222222",
+            "content": "SANDVIK\ncoromant",
+            "lineHeight": 1.05,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "yLnqn",
+            "x": 10,
+            "y": 78,
+            "name": "nav",
+            "fill": "#282828",
+            "content": "刀具        知识        服务        支持",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "Z1Jpf",
+            "x": 1318,
+            "y": 28,
+            "name": "actions",
+            "fill": "#1F1F1F",
+            "content": "购物车",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 21,
+            "id": "Iv74B",
+            "x": 124,
+            "y": 14,
+            "name": "searchBg",
+            "fill": "#DCD8CF",
+            "width": 1040,
+            "height": 42,
+            "stroke": {
+              "align": "inside",
+              "thickness": 1,
+              "fill": "#C5BFAF"
+            }
+          },
+          {
+            "type": "text",
+            "id": "0uEHt",
+            "x": 170,
+            "y": 27,
+            "name": "searchTxt",
+            "fill": "#575246",
+            "content": "搜索",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 4,
+            "id": "ni24Q",
+            "x": 1188,
+            "y": 14,
+            "name": "loginBtn",
+            "fill": "#111111",
+            "width": 116,
+            "height": 42
+          },
+          {
+            "type": "text",
+            "id": "LC7Lj",
+            "x": 1232,
+            "y": 25,
+            "name": "loginTxt",
+            "fill": "#FFFFFF",
+            "content": "登录",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "id": "2xLyD",
+            "x": 0,
+            "y": 116,
+            "name": "heroDivider",
+            "fill": "#E4E4E1",
+            "width": 1440,
+            "height": 1
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "BS6gK",
+      "sectionName": "svc",
+      "sectionKind": "generic",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1252,
+        "width": 1440,
+        "height": 116
+      },
+      "directChildCount": 4,
+      "recursiveNodeCount": 5,
+      "treeHash": "88df60fc21c912f8a50dc1d1314a77bf6aff2579471195a29d42a0e0bb247ca7",
+      "blockCount": 4,
+      "blockIndex": [
+        {
+          "blockId": "iMWO5",
+          "blockName": "svc1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 0,
+          "bounds": {
+            "x": 106,
+            "y": 30,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7582569bbe748f1bdcd6613297bd84f77bf97c21c375558b5ce18b345816b8b6"
+        },
+        {
+          "blockId": "tlvBq",
+          "blockName": "svc2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 827,
+            "y": 30,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a85a0aac36f496eb1a25dedd86cd0c3a19f2441e25225356dbda1933eaf90eb9"
+        },
+        {
+          "blockId": "N1zIa",
+          "blockName": "si1",
+          "blockType": "icon_font",
+          "blockRole": "icon_font",
+          "order": 2,
+          "bounds": {
+            "x": 32,
+            "y": 35,
+            "width": 46,
+            "height": 46
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d624136838edfbc7c971c0c2793fe08b526ec2a2e2c115233c122e71a1478105"
+        },
+        {
+          "blockId": "PQqnH",
+          "blockName": "si2",
+          "blockType": "icon_font",
+          "blockRole": "icon_font",
+          "order": 3,
+          "bounds": {
+            "x": 749,
+            "y": 35,
+            "width": 46,
+            "height": 46
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "198b25805128d7fb47cdd77c86d45bd2a8f915683dcd362e23063f5e61f2e5b4"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "iMWO5",
+          "blockName": "svc1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 0,
+          "bounds": {
+            "x": 106,
+            "y": 30,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7582569bbe748f1bdcd6613297bd84f77bf97c21c375558b5ce18b345816b8b6",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "iMWO5",
+            "x": 106,
+            "y": 30,
+            "name": "svc1",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "创建账户  ›\n下订单、查看价格并检查刀具供货情况",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "tlvBq",
+          "blockName": "svc2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 1,
+          "bounds": {
+            "x": 827,
+            "y": 30,
+            "width": 520,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "a85a0aac36f496eb1a25dedd86cd0c3a19f2441e25225356dbda1933eaf90eb9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "tlvBq",
+            "x": 827,
+            "y": 30,
+            "name": "svc2",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "订阅我们的时事通讯  ›\n加入我们，获取最新信息！",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "N1zIa",
+          "blockName": "si1",
+          "blockType": "icon_font",
+          "blockRole": "icon_font",
+          "order": 2,
+          "bounds": {
+            "x": 32,
+            "y": 35,
+            "width": 46,
+            "height": 46
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d624136838edfbc7c971c0c2793fe08b526ec2a2e2c115233c122e71a1478105",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "icon_font",
+            "id": "N1zIa",
+            "x": 32,
+            "y": 35,
+            "name": "si1",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "account_circle",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          }
+        },
+        {
+          "blockId": "PQqnH",
+          "blockName": "si2",
+          "blockType": "icon_font",
+          "blockRole": "icon_font",
+          "order": 3,
+          "bounds": {
+            "x": 749,
+            "y": 35,
+            "width": 46,
+            "height": 46
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "198b25805128d7fb47cdd77c86d45bd2a8f915683dcd362e23063f5e61f2e5b4",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "icon_font",
+            "id": "PQqnH",
+            "x": 749,
+            "y": 35,
+            "name": "si2",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "mail",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "BS6gK",
+        "x": 0,
+        "y": 1252,
+        "name": "svc",
+        "width": 1440,
+        "height": 116,
+        "fill": "#BBAF90",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "iMWO5",
+            "x": 106,
+            "y": 30,
+            "name": "svc1",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "创建账户  ›\n下订单、查看价格并检查刀具供货情况",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "tlvBq",
+            "x": 827,
+            "y": 30,
+            "name": "svc2",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "订阅我们的时事通讯  ›\n加入我们，获取最新信息！",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "icon_font",
+            "id": "N1zIa",
+            "x": 32,
+            "y": 35,
+            "name": "si1",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "account_circle",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          },
+          {
+            "type": "icon_font",
+            "id": "PQqnH",
+            "x": 749,
+            "y": 35,
+            "name": "si2",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "mail",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "tqUlb",
+      "sectionName": "foot",
+      "sectionKind": "generic",
+      "order": 2,
+      "bounds": {
+        "x": 0,
+        "y": 1368,
+        "width": 1440,
+        "height": 682
+      },
+      "directChildCount": 23,
+      "recursiveNodeCount": 24,
+      "treeHash": "1faa1cfc4e08f97a928a1ed29989e3f4463b2a12ae90d3c8d5d9698c21696ad6",
+      "blockCount": 23,
+      "blockIndex": [
+        {
+          "blockId": "aoVNb",
+          "blockName": "flogo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 10,
+            "y": 38,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bc8ade4e47b654c8826ee41cc1efd91cd6ad90755df0dc5f2369c86853e41ab2"
+        },
+        {
+          "blockId": "FNDOe",
+          "blockName": "fdesc",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 10,
+            "y": 300,
+            "width": 665,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5ea44535eb6b92c7bdf591fabdf105db769a6c4f867a204dd73015dfdcd0b40e"
+        },
+        {
+          "blockId": "xAI2p",
+          "blockName": "fcol1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 750,
+            "y": 60,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "891af8597f0a287a36e9ebb80348c62d73d39f969fe10daeea5c0713ec4f935f"
+        },
+        {
+          "blockId": "OuWp6",
+          "blockName": "fcol2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 750,
+            "y": 180,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bc370d8887dff9a759acf37c568d97cfc07a118d32bbce277bd93600ab861537"
+        },
+        {
+          "blockId": "tiwjP",
+          "blockName": "fcol3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 750,
+            "y": 300,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "16fbfa3e21bd361b91734c6c2e29ec63f9ab7fd0759ddc480957889a7e450f75"
+        },
+        {
+          "blockId": "95YyI",
+          "blockName": "fline",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 24,
+            "y": 580,
+            "width": 1392,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ad0843b378c33a73779a3ccc81fc81281b45634b027770297fd79c4043fbbb27"
+        },
+        {
+          "blockId": "V0gvg",
+          "blockName": "fcopy",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 10,
+            "y": 600,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "320c062654ddd0c595eb0cc03e0d47383edc66e97d791e431698f2471dd116f8"
+        },
+        {
+          "blockId": "3DQGX",
+          "blockName": "rb",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 750,
+            "y": 420,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d4c7d9aeaf7aa6bf00f8113a78135c392944f82390e67cdcb53a54ec5d329600"
+        },
+        {
+          "blockId": "WgTG7",
+          "blockName": "rl1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 750,
+            "y": 150,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "45ec2f051a252d3547c2c5dd9913691539edc2ec9b7cba2eb1810a85650c6e51"
+        },
+        {
+          "blockId": "lrJEF",
+          "blockName": "rl2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 750,
+            "y": 270,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "03470b7206aaa0c8e34aca44aceae85ec9afd9735fb3981b149eda0c3182ab92"
+        },
+        {
+          "blockId": "VKo6y",
+          "blockName": "rl3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 10,
+          "bounds": {
+            "x": 750,
+            "y": 390,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b03b160e1ec7c5f5eee0dda03c8732446826531dad5e663518d9891272cee364"
+        },
+        {
+          "blockId": "bueRA",
+          "blockName": "ch1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1380,
+            "y": 60,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1a58320dcaf0bfc5cc7f07d0f85cc15b66faa84fa60af592e8b067759891f13d"
+        },
+        {
+          "blockId": "t0zmG",
+          "blockName": "ch2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 1380,
+            "y": 180,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e1699feade020ffd71f664f7777d1d4464a9e6f1756d7af55d42544aeed3a15b"
+        },
+        {
+          "blockId": "4wfbg",
+          "blockName": "ch3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 13,
+          "bounds": {
+            "x": 1380,
+            "y": 300,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fec9c7a314e3497b61070b74b25d270abdb31494b3be4b06d5fedec17ec9f034"
+        },
+        {
+          "blockId": "oxPnB",
+          "blockName": "ch4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 14,
+          "bounds": {
+            "x": 1380,
+            "y": 420,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f4d2ed0c058bc1c5abf9777a60eeeb9aec415d5858c0af263246954c2957eb1c"
+        },
+        {
+          "blockId": "wvLsf",
+          "blockName": "soc",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 10,
+            "y": 479,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "681adc83403158059a05f00fcc1248ab615a3d6ec53381b3aaac85e55c32de35"
+        },
+        {
+          "blockId": "oAxr0",
+          "blockName": "r1",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 16,
+          "bounds": {
+            "x": 1012,
+            "y": 600,
+            "width": 24,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "89d23734c3d8d6c396d4e994f1e73a3f9e86b39461c57a985b72447d49735b91"
+        },
+        {
+          "blockId": "EWbJh",
+          "blockName": "r1d",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 17,
+          "bounds": {
+            "x": 1018,
+            "y": 606,
+            "width": 12,
+            "height": 12
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "da87dfca245f5923a62e547a8a66633e3210469828cfa04334c23a2d15d650b2"
+        },
+        {
+          "blockId": "KSsKr",
+          "blockName": "r2",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 18,
+          "bounds": {
+            "x": 1102,
+            "y": 600,
+            "width": 24,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e318c9fd671d206ef3049ae513353c3b7cfaecca0d5de587cb7eee607cf8f905"
+        },
+        {
+          "blockId": "Wht5X",
+          "blockName": "rt1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 1043,
+            "y": 596,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9e033d1bc690818b333246e5436ea72b1997f4e27fb8f3afb733585ad9ff93eb"
+        },
+        {
+          "blockId": "bvL4V",
+          "blockName": "rt2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 1136,
+            "y": 597,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c32bd92668cb7bb2841e7ee3c6db9c6823d9f82e99926256a1ccf51cd9fa8cd8"
+        },
+        {
+          "blockId": "2oigx",
+          "blockName": "loc",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 21,
+          "bounds": {
+            "x": 1214,
+            "y": 596,
+            "width": 202,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9fa8fe2879ece3bf9cdae7dc22ec7c42bbc7b4b93cfe594a5368f81cc0a64e40"
+        },
+        {
+          "blockId": "Vhk2c",
+          "blockName": "loct",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 22,
+          "bounds": {
+            "x": 1240,
+            "y": 598,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "020f8ab7880756c4578ccd0bff8eb50d54a0a4c56e280d674ecce70ddc194d67"
+        }
+      ],
+      "assetRefs": [],
+      "blocks": [
+        {
+          "blockId": "aoVNb",
+          "blockName": "flogo",
+          "blockType": "text",
+          "order": 0,
+          "bounds": {
+            "x": 10,
+            "y": 38,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bc8ade4e47b654c8826ee41cc1efd91cd6ad90755df0dc5f2369c86853e41ab2",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "aoVNb",
+            "x": 10,
+            "y": 38,
+            "name": "flogo",
+            "fill": "#F1F1F1",
+            "content": "&",
+            "fontFamily": "Inter",
+            "fontSize": 84,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "FNDOe",
+          "blockName": "fdesc",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 10,
+            "y": 300,
+            "width": 665,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "5ea44535eb6b92c7bdf591fabdf105db769a6c4f867a204dd73015dfdcd0b40e",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "FNDOe",
+            "x": 10,
+            "y": 300,
+            "name": "fdesc",
+            "fill": "#E6E6E6",
+            "textGrowth": "fixed-width",
+            "width": 665,
+            "content": "Contact Center 客服中心\n☎ +86 800-820-2623(座机)/+86 400-820-2623(手机)\n沪ICP备20012694号-1\n京公网安备 11010502044395号",
+            "lineHeight": 1.42,
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "xAI2p",
+          "blockName": "fcol1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 750,
+            "y": 60,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "891af8597f0a287a36e9ebb80348c62d73d39f969fe10daeea5c0713ec4f935f",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "xAI2p",
+            "x": 750,
+            "y": 60,
+            "name": "fcol1",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "产品",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "OuWp6",
+          "blockName": "fcol2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 750,
+            "y": 180,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "bc370d8887dff9a759acf37c568d97cfc07a118d32bbce277bd93600ab861537",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "OuWp6",
+            "x": 750,
+            "y": 180,
+            "name": "fcol2",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "服务",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "tiwjP",
+          "blockName": "fcol3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 750,
+            "y": 300,
+            "width": 160,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "16fbfa3e21bd361b91734c6c2e29ec63f9ab7fd0759ddc480957889a7e450f75",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "tiwjP",
+            "x": 750,
+            "y": 300,
+            "name": "fcol3",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "订购",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "95YyI",
+          "blockName": "fline",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 24,
+            "y": 580,
+            "width": 1392,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ad0843b378c33a73779a3ccc81fc81281b45634b027770297fd79c4043fbbb27",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "95YyI",
+            "x": 24,
+            "y": 580,
+            "name": "fline",
+            "fill": "#43464D",
+            "width": 1392,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "V0gvg",
+          "blockName": "fcopy",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 10,
+            "y": 600,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "320c062654ddd0c595eb0cc03e0d47383edc66e97d791e431698f2471dd116f8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "V0gvg",
+            "x": 10,
+            "y": 600,
+            "name": "fcopy",
+            "fill": "#E8E8E8",
+            "content": "法律声明      隐私政策      安全      通用条款和条件",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "3DQGX",
+          "blockName": "rb",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 750,
+            "y": 420,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d4c7d9aeaf7aa6bf00f8113a78135c392944f82390e67cdcb53a54ec5d329600",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "3DQGX",
+            "x": 750,
+            "y": 420,
+            "name": "rb",
+            "fill": "#F0F0F0",
+            "content": "关于我们",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "WgTG7",
+          "blockName": "rl1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 8,
+          "bounds": {
+            "x": 750,
+            "y": 150,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "45ec2f051a252d3547c2c5dd9913691539edc2ec9b7cba2eb1810a85650c6e51",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "WgTG7",
+            "x": 750,
+            "y": 150,
+            "name": "rl1",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "lrJEF",
+          "blockName": "rl2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 9,
+          "bounds": {
+            "x": 750,
+            "y": 270,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "03470b7206aaa0c8e34aca44aceae85ec9afd9735fb3981b149eda0c3182ab92",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "lrJEF",
+            "x": 750,
+            "y": 270,
+            "name": "rl2",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "VKo6y",
+          "blockName": "rl3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 10,
+          "bounds": {
+            "x": 750,
+            "y": 390,
+            "width": 666,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b03b160e1ec7c5f5eee0dda03c8732446826531dad5e663518d9891272cee364",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "VKo6y",
+            "x": 750,
+            "y": 390,
+            "name": "rl3",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "bueRA",
+          "blockName": "ch1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 11,
+          "bounds": {
+            "x": 1380,
+            "y": 60,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "1a58320dcaf0bfc5cc7f07d0f85cc15b66faa84fa60af592e8b067759891f13d",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "bueRA",
+            "x": 1380,
+            "y": 60,
+            "name": "ch1",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "t0zmG",
+          "blockName": "ch2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 12,
+          "bounds": {
+            "x": 1380,
+            "y": 180,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e1699feade020ffd71f664f7777d1d4464a9e6f1756d7af55d42544aeed3a15b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "t0zmG",
+            "x": 1380,
+            "y": 180,
+            "name": "ch2",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "4wfbg",
+          "blockName": "ch3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 13,
+          "bounds": {
+            "x": 1380,
+            "y": 300,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fec9c7a314e3497b61070b74b25d270abdb31494b3be4b06d5fedec17ec9f034",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "4wfbg",
+            "x": 1380,
+            "y": 300,
+            "name": "ch3",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "oxPnB",
+          "blockName": "ch4",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 14,
+          "bounds": {
+            "x": 1380,
+            "y": 420,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "f4d2ed0c058bc1c5abf9777a60eeeb9aec415d5858c0af263246954c2957eb1c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "oxPnB",
+            "x": 1380,
+            "y": 420,
+            "name": "ch4",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          }
+        },
+        {
+          "blockId": "wvLsf",
+          "blockName": "soc",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 15,
+          "bounds": {
+            "x": 10,
+            "y": 479,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "681adc83403158059a05f00fcc1248ab615a3d6ec53381b3aaac85e55c32de35",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "wvLsf",
+            "x": 10,
+            "y": 479,
+            "name": "soc",
+            "fill": "#F1F1F1",
+            "content": "◉   ♪   ▶   知   ∞   微   RSS",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "oAxr0",
+          "blockName": "r1",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 16,
+          "bounds": {
+            "x": 1012,
+            "y": 600,
+            "width": 24,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "89d23734c3d8d6c396d4e994f1e73a3f9e86b39461c57a985b72447d49735b91",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "ellipse",
+            "id": "oAxr0",
+            "x": 1012,
+            "y": 600,
+            "name": "r1",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          }
+        },
+        {
+          "blockId": "EWbJh",
+          "blockName": "r1d",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 17,
+          "bounds": {
+            "x": 1018,
+            "y": 606,
+            "width": 12,
+            "height": 12
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "da87dfca245f5923a62e547a8a66633e3210469828cfa04334c23a2d15d650b2",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "ellipse",
+            "id": "EWbJh",
+            "x": 1018,
+            "y": 606,
+            "name": "r1d",
+            "fill": "#E8E8E8",
+            "width": 12,
+            "height": 12
+          }
+        },
+        {
+          "blockId": "KSsKr",
+          "blockName": "r2",
+          "blockType": "ellipse",
+          "blockRole": "shape",
+          "order": 18,
+          "bounds": {
+            "x": 1102,
+            "y": 600,
+            "width": 24,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e318c9fd671d206ef3049ae513353c3b7cfaecca0d5de587cb7eee607cf8f905",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "ellipse",
+            "id": "KSsKr",
+            "x": 1102,
+            "y": 600,
+            "name": "r2",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          }
+        },
+        {
+          "blockId": "Wht5X",
+          "blockName": "rt1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 19,
+          "bounds": {
+            "x": 1043,
+            "y": 596,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9e033d1bc690818b333246e5436ea72b1997f4e27fb8f3afb733585ad9ff93eb",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "Wht5X",
+            "x": 1043,
+            "y": 596,
+            "name": "rt1",
+            "fill": "#E8E8E8",
+            "content": "公制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "bvL4V",
+          "blockName": "rt2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 20,
+          "bounds": {
+            "x": 1136,
+            "y": 597,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c32bd92668cb7bb2841e7ee3c6db9c6823d9f82e99926256a1ccf51cd9fa8cd8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "bvL4V",
+            "x": 1136,
+            "y": 597,
+            "name": "rt2",
+            "fill": "#E8E8E8",
+            "content": "英制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "2oigx",
+          "blockName": "loc",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 21,
+          "bounds": {
+            "x": 1214,
+            "y": 596,
+            "width": 202,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "9fa8fe2879ece3bf9cdae7dc22ec7c42bbc7b4b93cfe594a5368f81cc0a64e40",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "cornerRadius": 6,
+            "id": "2oigx",
+            "x": 1214,
+            "y": 596,
+            "name": "loc",
+            "fill": "#0F1114",
+            "width": 202,
+            "height": 40
+          }
+        },
+        {
+          "blockId": "Vhk2c",
+          "blockName": "loct",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 22,
+          "bounds": {
+            "x": 1240,
+            "y": 598,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "020f8ab7880756c4578ccd0bff8eb50d54a0a4c56e280d674ecce70ddc194d67",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "Vhk2c",
+            "x": 1240,
+            "y": 598,
+            "name": "loct",
+            "fill": "#FFFFFF",
+            "content": "中国 | 中文   ›",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "tqUlb",
+        "x": 0,
+        "y": 1368,
+        "name": "foot",
+        "width": 1440,
+        "height": 682,
+        "fill": "#212226",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "aoVNb",
+            "x": 10,
+            "y": 38,
+            "name": "flogo",
+            "fill": "#F1F1F1",
+            "content": "&",
+            "fontFamily": "Inter",
+            "fontSize": 84,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "FNDOe",
+            "x": 10,
+            "y": 300,
+            "name": "fdesc",
+            "fill": "#E6E6E6",
+            "textGrowth": "fixed-width",
+            "width": 665,
+            "content": "Contact Center 客服中心\n☎ +86 800-820-2623(座机)/+86 400-820-2623(手机)\n沪ICP备20012694号-1\n京公网安备 11010502044395号",
+            "lineHeight": 1.42,
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "xAI2p",
+            "x": 750,
+            "y": 60,
+            "name": "fcol1",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "产品",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "OuWp6",
+            "x": 750,
+            "y": 180,
+            "name": "fcol2",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "服务",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "tiwjP",
+            "x": 750,
+            "y": 300,
+            "name": "fcol3",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "订购",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "rectangle",
+            "id": "95YyI",
+            "x": 24,
+            "y": 580,
+            "name": "fline",
+            "fill": "#43464D",
+            "width": 1392,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "V0gvg",
+            "x": 10,
+            "y": 600,
+            "name": "fcopy",
+            "fill": "#E8E8E8",
+            "content": "法律声明      隐私政策      安全      通用条款和条件",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "3DQGX",
+            "x": 750,
+            "y": 420,
+            "name": "rb",
+            "fill": "#F0F0F0",
+            "content": "关于我们",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "rectangle",
+            "id": "WgTG7",
+            "x": 750,
+            "y": 150,
+            "name": "rl1",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "id": "lrJEF",
+            "x": 750,
+            "y": 270,
+            "name": "rl2",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "id": "VKo6y",
+            "x": 750,
+            "y": 390,
+            "name": "rl3",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "bueRA",
+            "x": 1380,
+            "y": 60,
+            "name": "ch1",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "t0zmG",
+            "x": 1380,
+            "y": 180,
+            "name": "ch2",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "4wfbg",
+            "x": 1380,
+            "y": 300,
+            "name": "ch3",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "oxPnB",
+            "x": 1380,
+            "y": 420,
+            "name": "ch4",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "wvLsf",
+            "x": 10,
+            "y": 479,
+            "name": "soc",
+            "fill": "#F1F1F1",
+            "content": "◉   ♪   ▶   知   ∞   微   RSS",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "ellipse",
+            "id": "oAxr0",
+            "x": 1012,
+            "y": 600,
+            "name": "r1",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "EWbJh",
+            "x": 1018,
+            "y": 606,
+            "name": "r1d",
+            "fill": "#E8E8E8",
+            "width": 12,
+            "height": 12
+          },
+          {
+            "type": "ellipse",
+            "id": "KSsKr",
+            "x": 1102,
+            "y": 600,
+            "name": "r2",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          },
+          {
+            "type": "text",
+            "id": "Wht5X",
+            "x": 1043,
+            "y": 596,
+            "name": "rt1",
+            "fill": "#E8E8E8",
+            "content": "公制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "bvL4V",
+            "x": 1136,
+            "y": 597,
+            "name": "rt2",
+            "fill": "#E8E8E8",
+            "content": "英制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 6,
+            "id": "2oigx",
+            "x": 1214,
+            "y": 596,
+            "name": "loc",
+            "fill": "#0F1114",
+            "width": 202,
+            "height": 40
+          },
+          {
+            "type": "text",
+            "id": "Vhk2c",
+            "x": 1240,
+            "y": 598,
+            "name": "loct",
+            "fill": "#FFFFFF",
+            "content": "中国 | 中文   ›",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "rmHvh",
+      "sectionName": "customerMain",
+      "sectionKind": "generic",
+      "order": 3,
+      "bounds": {
+        "x": 0,
+        "y": 116,
+        "width": 1440,
+        "height": 1136
+      },
+      "directChildCount": 12,
+      "recursiveNodeCount": 41,
+      "treeHash": "e15de69c793aca86bba179660f0451da214c15d0a3d7b3601a2d94df9fb9e205",
+      "blockCount": 12,
+      "blockIndex": [
+        {
+          "blockId": "9bODw",
+          "blockName": "bread",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 0,
+          "bounds": {
+            "x": 24,
+            "y": 14,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "baf0024d54b7d5648b3ef01d1c7299d9f2f13c1507a606f86576b98d21816d93"
+        },
+        {
+          "blockId": "bMZL1",
+          "blockName": "title",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 24,
+            "y": 52,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3380896e1746a505c2a95f1d42bba12eb170cd11092f2ce4abb05aa7204ba24a"
+        },
+        {
+          "blockId": "h7l3A",
+          "blockName": "intro",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 24,
+            "y": 132,
+            "width": 1120,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b1de761380957c9d037726c2832bb46711d21ab81ea827e66f01d0ef761ad5fc"
+        },
+        {
+          "blockId": "Xj4mz",
+          "blockName": "bar1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 3,
+          "bounds": {
+            "x": 0,
+            "y": 214,
+            "width": 1440,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ad716148d4f54a365dd544b6af080d8d4e76567ff4287c0a042d24ad7ab74da5"
+        },
+        {
+          "blockId": "4Cyst",
+          "blockName": "menu1",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 24,
+            "y": 238,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c0cd30ea8ad41d890bf39618ddf83a9b0729c7fd301e95d8b48a8fb355fc69e7"
+        },
+        {
+          "blockId": "ZXo8u",
+          "blockName": "bar2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 0,
+            "y": 290,
+            "width": 1440,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d2d5c58752b8eb6342f5a7da771d8331cf935ef7059534720055db5197014bdc"
+        },
+        {
+          "blockId": "89unY",
+          "blockName": "menu2",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 24,
+            "y": 314,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "16bc177ed69d4a3009133e9038a9311bdca3dcb7a11582ae297dddfeb01d1d81"
+        },
+        {
+          "blockId": "xGnw7",
+          "blockName": "heroCards",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 7,
+          "bounds": {
+            "x": 24,
+            "y": 368,
+            "width": 1392,
+            "height": 360
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 13,
+          "treeHash": "7bde6ea20e58f0de9f8ee14b739f27a3a4027f7baa4c5de54ad65ad8b8bc8726"
+        },
+        {
+          "blockId": "Dqcjo",
+          "blockName": "boxA",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 8,
+          "bounds": {
+            "x": 24,
+            "y": 760,
+            "width": 680,
+            "height": 80
+          },
+          "directChildCount": 2,
+          "recursiveNodeCount": 3,
+          "treeHash": "3d23f9924bdb2ed34bf37af60883f300e95fc7f77ac58553436d9bfb48f7eae0"
+        },
+        {
+          "blockId": "CiT0D",
+          "blockName": "boxB",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 9,
+          "bounds": {
+            "x": 736,
+            "y": 760,
+            "width": 680,
+            "height": 80
+          },
+          "directChildCount": 2,
+          "recursiveNodeCount": 3,
+          "treeHash": "5dd02b5f0905b5d4e1aa0f9dedcced6438217e8cfef664c5962208ae595e791a"
+        },
+        {
+          "blockId": "2fh9l",
+          "blockName": "line3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 10,
+          "bounds": {
+            "x": 0,
+            "y": 872,
+            "width": 1440,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8042e67770b161e4eab270533da494a330129e7e58d7793d0b348ffdf5f98f30"
+        },
+        {
+          "blockId": "pIss8",
+          "blockName": "contactRow",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 11,
+          "bounds": {
+            "x": 24,
+            "y": 914,
+            "width": 1392,
+            "height": 220
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 13,
+          "treeHash": "d64d8f195d69b3701a0352b799ca18f6134f8334da06985af071f57bdf73e2be"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        },
+        {
+          "rawUrl": "https://images.unsplash.com/photo-1516383740770-fbcc5ccbece0?auto=format&fit=crop&w=900&q=80",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        },
+        {
+          "rawUrl": "https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&w=900&q=80",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "9bODw",
+          "blockName": "bread",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 0,
+          "bounds": {
+            "x": 24,
+            "y": 14,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "baf0024d54b7d5648b3ef01d1c7299d9f2f13c1507a606f86576b98d21816d93",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "9bODw",
+            "x": 24,
+            "y": 14,
+            "name": "bread",
+            "fill": "#6E6E6E",
+            "content": "首页 / 客户服务",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "bMZL1",
+          "blockName": "title",
+          "blockType": "text",
+          "order": 1,
+          "bounds": {
+            "x": 24,
+            "y": 52,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3380896e1746a505c2a95f1d42bba12eb170cd11092f2ce4abb05aa7204ba24a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "bMZL1",
+            "x": 24,
+            "y": 52,
+            "name": "title",
+            "fill": "#1E1E1E",
+            "content": "您好，我们能为您提供什么帮助？",
+            "fontFamily": "Inter",
+            "fontSize": 58,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "h7l3A",
+          "blockName": "intro",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 24,
+            "y": 132,
+            "width": 1120,
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "b1de761380957c9d037726c2832bb46711d21ab81ea827e66f01d0ef761ad5fc",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "h7l3A",
+            "x": 24,
+            "y": 132,
+            "name": "intro",
+            "fill": "#3D3D3D",
+            "textGrowth": "fixed-width",
+            "width": 1120,
+            "content": "无论是问题排查、周期性维护还是产品与服务升级，我们都可为不同阶段的项目提供协助，您可以通过在线聊天、电话或表单联系我们。",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          }
+        },
+        {
+          "blockId": "Xj4mz",
+          "blockName": "bar1",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 3,
+          "bounds": {
+            "x": 0,
+            "y": 214,
+            "width": 1440,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ad716148d4f54a365dd544b6af080d8d4e76567ff4287c0a042d24ad7ab74da5",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "Xj4mz",
+            "x": 0,
+            "y": 214,
+            "name": "bar1",
+            "fill": "#DFDFDF",
+            "width": 1440,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "4Cyst",
+          "blockName": "menu1",
+          "blockType": "text",
+          "order": 4,
+          "bounds": {
+            "x": 24,
+            "y": 238,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "c0cd30ea8ad41d890bf39618ddf83a9b0729c7fd301e95d8b48a8fb355fc69e7",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "4Cyst",
+            "x": 24,
+            "y": 238,
+            "name": "menu1",
+            "fill": "#1F1F1F",
+            "content": "订单",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "ZXo8u",
+          "blockName": "bar2",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 5,
+          "bounds": {
+            "x": 0,
+            "y": 290,
+            "width": 1440,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "d2d5c58752b8eb6342f5a7da771d8331cf935ef7059534720055db5197014bdc",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "ZXo8u",
+            "x": 0,
+            "y": 290,
+            "name": "bar2",
+            "fill": "#DFDFDF",
+            "width": 1440,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "89unY",
+          "blockName": "menu2",
+          "blockType": "text",
+          "order": 6,
+          "bounds": {
+            "x": 24,
+            "y": 314,
+            "width": "",
+            "height": ""
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "16bc177ed69d4a3009133e9038a9311bdca3dcb7a11582ae297dddfeb01d1d81",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "89unY",
+            "x": 24,
+            "y": 314,
+            "name": "menu2",
+            "fill": "#1F1F1F",
+            "content": "产品",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        },
+        {
+          "blockId": "xGnw7",
+          "blockName": "heroCards",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 7,
+          "bounds": {
+            "x": 24,
+            "y": 368,
+            "width": 1392,
+            "height": 360
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 13,
+          "treeHash": "7bde6ea20e58f0de9f8ee14b739f27a3a4027f7baa4c5de54ad65ad8b8bc8726",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "xGnw7",
+            "x": 24,
+            "y": 368,
+            "name": "heroCards",
+            "width": 1392,
+            "height": 360,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "GJGyk",
+                "x": 0,
+                "y": 0,
+                "name": "c1",
+                "width": 448,
+                "height": 360,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "9B6iY",
+                    "x": 0,
+                    "y": 0,
+                    "name": "img1",
+                    "width": 430,
+                    "height": 230,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
+                      "mode": "fill"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "id": "pKvuZ",
+                    "x": 0,
+                    "y": 246,
+                    "fill": "#1F1F1F",
+                    "content": "订单支持",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "TagnO",
+                    "x": 0,
+                    "y": 266,
+                    "fill": "#5D5D5D",
+                    "textGrowth": "fixed-width",
+                    "width": 410,
+                    "content": "跟踪交付状态、发票和账户信息。",
+                    "lineHeight": 1.4,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "DM82i",
+                "x": 472,
+                "y": 0,
+                "name": "c2",
+                "width": 448,
+                "height": 360,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "v0UEI",
+                    "x": 0,
+                    "y": 0,
+                    "name": "img1",
+                    "width": 430,
+                    "height": 230,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1516383740770-fbcc5ccbece0?auto=format&fit=crop&w=900&q=80",
+                      "mode": "fill"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "id": "KQfzA",
+                    "x": 0,
+                    "y": 246,
+                    "fill": "#1F1F1F",
+                    "content": "计算器和数据",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "Q8E3c",
+                    "x": 0,
+                    "y": 266,
+                    "fill": "#5D5D5D",
+                    "textGrowth": "fixed-width",
+                    "width": 410,
+                    "content": "下载切削参数和加工建议，帮助快速完成工艺验证。",
+                    "lineHeight": 1.4,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "N9gHh",
+                "x": 944,
+                "y": 0,
+                "name": "c3",
+                "width": 448,
+                "height": 360,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "yUhcz",
+                    "x": 0,
+                    "y": 0,
+                    "name": "img1",
+                    "width": 430,
+                    "height": 230,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&w=900&q=80",
+                      "mode": "fill"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "id": "V8BNT",
+                    "x": 0,
+                    "y": 246,
+                    "fill": "#1F1F1F",
+                    "content": "备件和备件",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "tok3U",
+                    "x": 0,
+                    "y": 266,
+                    "fill": "#5D5D5D",
+                    "textGrowth": "fixed-width",
+                    "width": 410,
+                    "content": "我们的专家将帮助您在刀具与夹具的选择和维护方面取得更高效率。",
+                    "lineHeight": 1.4,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "Dqcjo",
+          "blockName": "boxA",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 8,
+          "bounds": {
+            "x": 24,
+            "y": 760,
+            "width": 680,
+            "height": 80
+          },
+          "directChildCount": 2,
+          "recursiveNodeCount": 3,
+          "treeHash": "3d23f9924bdb2ed34bf37af60883f300e95fc7f77ac58553436d9bfb48f7eae0",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "Dqcjo",
+            "x": 24,
+            "y": 760,
+            "name": "boxA",
+            "width": 680,
+            "height": 80,
+            "fill": "#EFEDE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "OHIKG",
+                "x": 24,
+                "y": 18,
+                "fill": "#1F1F1F",
+                "content": "联系我们",
+                "fontFamily": "Inter",
+                "fontSize": 22,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "LGlh1",
+                "x": 24,
+                "y": 50,
+                "fill": "#6A5B43",
+                "content": "相关资源  ›",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "600"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "CiT0D",
+          "blockName": "boxB",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 9,
+          "bounds": {
+            "x": 736,
+            "y": 760,
+            "width": 680,
+            "height": 80
+          },
+          "directChildCount": 2,
+          "recursiveNodeCount": 3,
+          "treeHash": "5dd02b5f0905b5d4e1aa0f9dedcced6438217e8cfef664c5962208ae595e791a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "CiT0D",
+            "x": 736,
+            "y": 760,
+            "name": "boxB",
+            "width": 680,
+            "height": 80,
+            "fill": "#EFEDE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "v6PFN",
+                "x": 24,
+                "y": 18,
+                "fill": "#1F1F1F",
+                "content": "向我们一个问题",
+                "fontFamily": "Inter",
+                "fontSize": 22,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "7aPke",
+                "x": 24,
+                "y": 50,
+                "fill": "#6A5B43",
+                "content": "提交请求  ›",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "600"
+              }
+            ]
+          }
+        },
+        {
+          "blockId": "2fh9l",
+          "blockName": "line3",
+          "blockType": "rectangle",
+          "blockRole": "shape",
+          "order": 10,
+          "bounds": {
+            "x": 0,
+            "y": 872,
+            "width": 1440,
+            "height": 1
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8042e67770b161e4eab270533da494a330129e7e58d7793d0b348ffdf5f98f30",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "2fh9l",
+            "x": 0,
+            "y": 872,
+            "name": "line3",
+            "fill": "#DFDFDF",
+            "width": 1440,
+            "height": 1
+          }
+        },
+        {
+          "blockId": "pIss8",
+          "blockName": "contactRow",
+          "blockType": "frame",
+          "blockRole": "container",
+          "order": 11,
+          "bounds": {
+            "x": 24,
+            "y": 914,
+            "width": 1392,
+            "height": 220
+          },
+          "directChildCount": 3,
+          "recursiveNodeCount": 13,
+          "treeHash": "d64d8f195d69b3701a0352b799ca18f6134f8334da06985af071f57bdf73e2be",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "frame",
+            "id": "pIss8",
+            "x": 24,
+            "y": 914,
+            "name": "contactRow",
+            "width": 1392,
+            "height": 220,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "MerKs",
+                "x": 0,
+                "y": 0,
+                "name": "ct1",
+                "width": 448,
+                "height": 180,
+                "fill": "#EFEDE8",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "jHPPL",
+                    "x": 20,
+                    "y": 22,
+                    "width": 34,
+                    "height": 34,
+                    "iconFontName": "chat",
+                    "iconFontFamily": "Material Symbols Rounded",
+                    "fill": "#8D7A57"
+                  },
+                  {
+                    "type": "text",
+                    "id": "hDYPC",
+                    "x": 20,
+                    "y": 68,
+                    "fill": "#1E1E1E",
+                    "content": "与我们聊天",
+                    "fontFamily": "Inter",
+                    "fontSize": 24,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "58gux",
+                    "x": 20,
+                    "y": 103,
+                    "fill": "#4F4F4F",
+                    "textGrowth": "fixed-width",
+                    "width": 390,
+                    "content": "每周工作日 8:00 到 17:00 CST\n由客服支持，立即获取解答。",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "faKOq",
+                "x": 472,
+                "y": 0,
+                "name": "ct2",
+                "width": 448,
+                "height": 180,
+                "fill": "#EFEDE8",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "PYoyU",
+                    "x": 20,
+                    "y": 22,
+                    "width": 34,
+                    "height": 34,
+                    "iconFontName": "call",
+                    "iconFontFamily": "Material Symbols Rounded",
+                    "fill": "#8D7A57"
+                  },
+                  {
+                    "type": "text",
+                    "id": "w6OUS",
+                    "x": 20,
+                    "y": 68,
+                    "fill": "#1E1E1E",
+                    "content": "致电我们",
+                    "fontFamily": "Inter",
+                    "fontSize": 24,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "jM9Ut",
+                    "x": 20,
+                    "y": 103,
+                    "fill": "#4F4F4F",
+                    "textGrowth": "fixed-width",
+                    "width": 390,
+                    "content": "客服专线可为您解答订单与应用问题。\n座机 400 820 2623(座机)/+86 400 820 2623(手机)",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "xMQfU",
+                "x": 944,
+                "y": 0,
+                "name": "ct3",
+                "width": 448,
+                "height": 180,
+                "fill": "#EFEDE8",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "U1HB7",
+                    "x": 20,
+                    "y": 22,
+                    "width": 34,
+                    "height": 34,
+                    "iconFontName": "mail",
+                    "iconFontFamily": "Material Symbols Rounded",
+                    "fill": "#8D7A57"
+                  },
+                  {
+                    "type": "text",
+                    "id": "EWBMd",
+                    "x": 20,
+                    "y": 68,
+                    "fill": "#1E1E1E",
+                    "content": "给我们填写电子邮件",
+                    "fontFamily": "Inter",
+                    "fontSize": 24,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "LH0BB",
+                    "x": 20,
+                    "y": 100,
+                    "fill": "#4F4F4F",
+                    "textGrowth": "fixed-width",
+                    "width": 390,
+                    "content": "通过表单提交需求，客服团队将在工作时间内尽快回复。",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "rmHvh",
+        "x": 0,
+        "y": 116,
+        "name": "customerMain",
+        "width": 1440,
+        "height": 1136,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "9bODw",
+            "x": 24,
+            "y": 14,
+            "name": "bread",
+            "fill": "#6E6E6E",
+            "content": "首页 / 客户服务",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "bMZL1",
+            "x": 24,
+            "y": 52,
+            "name": "title",
+            "fill": "#1E1E1E",
+            "content": "您好，我们能为您提供什么帮助？",
+            "fontFamily": "Inter",
+            "fontSize": 58,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "h7l3A",
+            "x": 24,
+            "y": 132,
+            "name": "intro",
+            "fill": "#3D3D3D",
+            "textGrowth": "fixed-width",
+            "width": 1120,
+            "content": "无论是问题排查、周期性维护还是产品与服务升级，我们都可为不同阶段的项目提供协助，您可以通过在线聊天、电话或表单联系我们。",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "id": "Xj4mz",
+            "x": 0,
+            "y": 214,
+            "name": "bar1",
+            "fill": "#DFDFDF",
+            "width": 1440,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "4Cyst",
+            "x": 24,
+            "y": 238,
+            "name": "menu1",
+            "fill": "#1F1F1F",
+            "content": "订单",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "id": "ZXo8u",
+            "x": 0,
+            "y": 290,
+            "name": "bar2",
+            "fill": "#DFDFDF",
+            "width": 1440,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "89unY",
+            "x": 24,
+            "y": 314,
+            "name": "menu2",
+            "fill": "#1F1F1F",
+            "content": "产品",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "xGnw7",
+            "x": 24,
+            "y": 368,
+            "name": "heroCards",
+            "width": 1392,
+            "height": 360,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "GJGyk",
+                "x": 0,
+                "y": 0,
+                "name": "c1",
+                "width": 448,
+                "height": 360,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "9B6iY",
+                    "x": 0,
+                    "y": 0,
+                    "name": "img1",
+                    "width": 430,
+                    "height": 230,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
+                      "mode": "fill"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "id": "pKvuZ",
+                    "x": 0,
+                    "y": 246,
+                    "fill": "#1F1F1F",
+                    "content": "订单支持",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "TagnO",
+                    "x": 0,
+                    "y": 266,
+                    "fill": "#5D5D5D",
+                    "textGrowth": "fixed-width",
+                    "width": 410,
+                    "content": "跟踪交付状态、发票和账户信息。",
+                    "lineHeight": 1.4,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "DM82i",
+                "x": 472,
+                "y": 0,
+                "name": "c2",
+                "width": 448,
+                "height": 360,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "v0UEI",
+                    "x": 0,
+                    "y": 0,
+                    "name": "img1",
+                    "width": 430,
+                    "height": 230,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1516383740770-fbcc5ccbece0?auto=format&fit=crop&w=900&q=80",
+                      "mode": "fill"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "id": "KQfzA",
+                    "x": 0,
+                    "y": 246,
+                    "fill": "#1F1F1F",
+                    "content": "计算器和数据",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "Q8E3c",
+                    "x": 0,
+                    "y": 266,
+                    "fill": "#5D5D5D",
+                    "textGrowth": "fixed-width",
+                    "width": 410,
+                    "content": "下载切削参数和加工建议，帮助快速完成工艺验证。",
+                    "lineHeight": 1.4,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "N9gHh",
+                "x": 944,
+                "y": 0,
+                "name": "c3",
+                "width": 448,
+                "height": 360,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "yUhcz",
+                    "x": 0,
+                    "y": 0,
+                    "name": "img1",
+                    "width": 430,
+                    "height": 230,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&w=900&q=80",
+                      "mode": "fill"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "id": "V8BNT",
+                    "x": 0,
+                    "y": 246,
+                    "fill": "#1F1F1F",
+                    "content": "备件和备件",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "tok3U",
+                    "x": 0,
+                    "y": 266,
+                    "fill": "#5D5D5D",
+                    "textGrowth": "fixed-width",
+                    "width": 410,
+                    "content": "我们的专家将帮助您在刀具与夹具的选择和维护方面取得更高效率。",
+                    "lineHeight": 1.4,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "Dqcjo",
+            "x": 24,
+            "y": 760,
+            "name": "boxA",
+            "width": 680,
+            "height": 80,
+            "fill": "#EFEDE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "OHIKG",
+                "x": 24,
+                "y": 18,
+                "fill": "#1F1F1F",
+                "content": "联系我们",
+                "fontFamily": "Inter",
+                "fontSize": 22,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "LGlh1",
+                "x": 24,
+                "y": 50,
+                "fill": "#6A5B43",
+                "content": "相关资源  ›",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "600"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "CiT0D",
+            "x": 736,
+            "y": 760,
+            "name": "boxB",
+            "width": 680,
+            "height": 80,
+            "fill": "#EFEDE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "v6PFN",
+                "x": 24,
+                "y": 18,
+                "fill": "#1F1F1F",
+                "content": "向我们一个问题",
+                "fontFamily": "Inter",
+                "fontSize": 22,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "7aPke",
+                "x": 24,
+                "y": 50,
+                "fill": "#6A5B43",
+                "content": "提交请求  ›",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "600"
+              }
+            ]
+          },
+          {
+            "type": "rectangle",
+            "id": "2fh9l",
+            "x": 0,
+            "y": 872,
+            "name": "line3",
+            "fill": "#DFDFDF",
+            "width": 1440,
+            "height": 1
+          },
+          {
+            "type": "frame",
+            "id": "pIss8",
+            "x": 24,
+            "y": 914,
+            "name": "contactRow",
+            "width": 1392,
+            "height": 220,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "MerKs",
+                "x": 0,
+                "y": 0,
+                "name": "ct1",
+                "width": 448,
+                "height": 180,
+                "fill": "#EFEDE8",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "jHPPL",
+                    "x": 20,
+                    "y": 22,
+                    "width": 34,
+                    "height": 34,
+                    "iconFontName": "chat",
+                    "iconFontFamily": "Material Symbols Rounded",
+                    "fill": "#8D7A57"
+                  },
+                  {
+                    "type": "text",
+                    "id": "hDYPC",
+                    "x": 20,
+                    "y": 68,
+                    "fill": "#1E1E1E",
+                    "content": "与我们聊天",
+                    "fontFamily": "Inter",
+                    "fontSize": 24,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "58gux",
+                    "x": 20,
+                    "y": 103,
+                    "fill": "#4F4F4F",
+                    "textGrowth": "fixed-width",
+                    "width": 390,
+                    "content": "每周工作日 8:00 到 17:00 CST\n由客服支持，立即获取解答。",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "faKOq",
+                "x": 472,
+                "y": 0,
+                "name": "ct2",
+                "width": 448,
+                "height": 180,
+                "fill": "#EFEDE8",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "PYoyU",
+                    "x": 20,
+                    "y": 22,
+                    "width": 34,
+                    "height": 34,
+                    "iconFontName": "call",
+                    "iconFontFamily": "Material Symbols Rounded",
+                    "fill": "#8D7A57"
+                  },
+                  {
+                    "type": "text",
+                    "id": "w6OUS",
+                    "x": 20,
+                    "y": 68,
+                    "fill": "#1E1E1E",
+                    "content": "致电我们",
+                    "fontFamily": "Inter",
+                    "fontSize": 24,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "jM9Ut",
+                    "x": 20,
+                    "y": 103,
+                    "fill": "#4F4F4F",
+                    "textGrowth": "fixed-width",
+                    "width": 390,
+                    "content": "客服专线可为您解答订单与应用问题。\n座机 400 820 2623(座机)/+86 400 820 2623(手机)",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "xMQfU",
+                "x": 944,
+                "y": 0,
+                "name": "ct3",
+                "width": 448,
+                "height": 180,
+                "fill": "#EFEDE8",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "U1HB7",
+                    "x": 20,
+                    "y": 22,
+                    "width": 34,
+                    "height": 34,
+                    "iconFontName": "mail",
+                    "iconFontFamily": "Material Symbols Rounded",
+                    "fill": "#8D7A57"
+                  },
+                  {
+                    "type": "text",
+                    "id": "EWBMd",
+                    "x": 20,
+                    "y": 68,
+                    "fill": "#1E1E1E",
+                    "content": "给我们填写电子邮件",
+                    "fontFamily": "Inter",
+                    "fontSize": 24,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "LH0BB",
+                    "x": 20,
+                    "y": 100,
+                    "fill": "#4F4F4F",
+                    "textGrowth": "fixed-width",
+                    "width": 390,
+                    "content": "通过表单提交需求，客服团队将在工作时间内尽快回复。",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 47,
+  "looseNodeCount": 0,
+  "looseNodes": [],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1516383740770-fbcc5ccbece0?auto=format&fit=crop&w=900&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&w=900&q=80",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "AiGk4",
+    "x": 9360,
+    "y": 0,
+    "name": "SANDVIK_CUSTOMER_SERVICE",
+    "clip": true,
+    "width": 1440,
+    "height": 2054,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "CzPFl",
+        "x": 0,
+        "y": 0,
+        "name": "head",
+        "width": 1440,
+        "height": 116,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "OHom2",
+            "x": 10,
+            "y": 10,
+            "name": "logo",
+            "fill": "#222222",
+            "content": "SANDVIK\ncoromant",
+            "lineHeight": 1.05,
+            "fontFamily": "Inter",
+            "fontSize": 18,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "yLnqn",
+            "x": 10,
+            "y": 78,
+            "name": "nav",
+            "fill": "#282828",
+            "content": "刀具        知识        服务        支持",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "Z1Jpf",
+            "x": 1318,
+            "y": 28,
+            "name": "actions",
+            "fill": "#1F1F1F",
+            "content": "购物车",
+            "fontFamily": "Inter",
+            "fontSize": 13,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 21,
+            "id": "Iv74B",
+            "x": 124,
+            "y": 14,
+            "name": "searchBg",
+            "fill": "#DCD8CF",
+            "width": 1040,
+            "height": 42,
+            "stroke": {
+              "align": "inside",
+              "thickness": 1,
+              "fill": "#C5BFAF"
+            }
+          },
+          {
+            "type": "text",
+            "id": "0uEHt",
+            "x": 170,
+            "y": 27,
+            "name": "searchTxt",
+            "fill": "#575246",
+            "content": "搜索",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 4,
+            "id": "ni24Q",
+            "x": 1188,
+            "y": 14,
+            "name": "loginBtn",
+            "fill": "#111111",
+            "width": 116,
+            "height": 42
+          },
+          {
+            "type": "text",
+            "id": "LC7Lj",
+            "x": 1232,
+            "y": 25,
+            "name": "loginTxt",
+            "fill": "#FFFFFF",
+            "content": "登录",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "id": "2xLyD",
+            "x": 0,
+            "y": 116,
+            "name": "heroDivider",
+            "fill": "#E4E4E1",
+            "width": 1440,
+            "height": 1
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "BS6gK",
+        "x": 0,
+        "y": 1252,
+        "name": "svc",
+        "width": 1440,
+        "height": 116,
+        "fill": "#BBAF90",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "iMWO5",
+            "x": 106,
+            "y": 30,
+            "name": "svc1",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "创建账户  ›\n下订单、查看价格并检查刀具供货情况",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "tlvBq",
+            "x": 827,
+            "y": 30,
+            "name": "svc2",
+            "fill": "#171717",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "订阅我们的时事通讯  ›\n加入我们，获取最新信息！",
+            "lineHeight": 1.35,
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "icon_font",
+            "id": "N1zIa",
+            "x": 32,
+            "y": 35,
+            "name": "si1",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "account_circle",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          },
+          {
+            "type": "icon_font",
+            "id": "PQqnH",
+            "x": 749,
+            "y": 35,
+            "name": "si2",
+            "width": 46,
+            "height": 46,
+            "iconFontName": "mail",
+            "iconFontFamily": "Material Symbols Rounded",
+            "fill": "#756A53"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "tqUlb",
+        "x": 0,
+        "y": 1368,
+        "name": "foot",
+        "width": 1440,
+        "height": 682,
+        "fill": "#212226",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "aoVNb",
+            "x": 10,
+            "y": 38,
+            "name": "flogo",
+            "fill": "#F1F1F1",
+            "content": "&",
+            "fontFamily": "Inter",
+            "fontSize": 84,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "FNDOe",
+            "x": 10,
+            "y": 300,
+            "name": "fdesc",
+            "fill": "#E6E6E6",
+            "textGrowth": "fixed-width",
+            "width": 665,
+            "content": "Contact Center 客服中心\n☎ +86 800-820-2623(座机)/+86 400-820-2623(手机)\n沪ICP备20012694号-1\n京公网安备 11010502044395号",
+            "lineHeight": 1.42,
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "xAI2p",
+            "x": 750,
+            "y": 60,
+            "name": "fcol1",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "产品",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "OuWp6",
+            "x": 750,
+            "y": 180,
+            "name": "fcol2",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "服务",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "tiwjP",
+            "x": 750,
+            "y": 300,
+            "name": "fcol3",
+            "fill": "#F0F0F0",
+            "textGrowth": "fixed-width",
+            "width": 160,
+            "content": "订购",
+            "lineHeight": 2,
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "rectangle",
+            "id": "95YyI",
+            "x": 24,
+            "y": 580,
+            "name": "fline",
+            "fill": "#43464D",
+            "width": 1392,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "V0gvg",
+            "x": 10,
+            "y": 600,
+            "name": "fcopy",
+            "fill": "#E8E8E8",
+            "content": "法律声明      隐私政策      安全      通用条款和条件",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "3DQGX",
+            "x": 750,
+            "y": 420,
+            "name": "rb",
+            "fill": "#F0F0F0",
+            "content": "关于我们",
+            "fontFamily": "Inter",
+            "fontSize": 30,
+            "fontWeight": "700"
+          },
+          {
+            "type": "rectangle",
+            "id": "WgTG7",
+            "x": 750,
+            "y": 150,
+            "name": "rl1",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "id": "lrJEF",
+            "x": 750,
+            "y": 270,
+            "name": "rl2",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "rectangle",
+            "id": "VKo6y",
+            "x": 750,
+            "y": 390,
+            "name": "rl3",
+            "fill": "#43464D",
+            "width": 666,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "bueRA",
+            "x": 1380,
+            "y": 60,
+            "name": "ch1",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "t0zmG",
+            "x": 1380,
+            "y": 180,
+            "name": "ch2",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "4wfbg",
+            "x": 1380,
+            "y": 300,
+            "name": "ch3",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "oxPnB",
+            "x": 1380,
+            "y": 420,
+            "name": "ch4",
+            "fill": "#F0F0F0",
+            "content": "⌄",
+            "fontFamily": "Inter",
+            "fontSize": 54,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "wvLsf",
+            "x": 10,
+            "y": 479,
+            "name": "soc",
+            "fill": "#F1F1F1",
+            "content": "◉   ♪   ▶   知   ∞   微   RSS",
+            "fontFamily": "Inter",
+            "fontSize": 24,
+            "fontWeight": "600"
+          },
+          {
+            "type": "ellipse",
+            "id": "oAxr0",
+            "x": 1012,
+            "y": 600,
+            "name": "r1",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          },
+          {
+            "type": "ellipse",
+            "id": "EWbJh",
+            "x": 1018,
+            "y": 606,
+            "name": "r1d",
+            "fill": "#E8E8E8",
+            "width": 12,
+            "height": 12
+          },
+          {
+            "type": "ellipse",
+            "id": "KSsKr",
+            "x": 1102,
+            "y": 600,
+            "name": "r2",
+            "fill": "#212226",
+            "width": 24,
+            "height": 24,
+            "stroke": {
+              "align": "inside",
+              "thickness": 2,
+              "fill": "#E8E8E8"
+            }
+          },
+          {
+            "type": "text",
+            "id": "Wht5X",
+            "x": 1043,
+            "y": 596,
+            "name": "rt1",
+            "fill": "#E8E8E8",
+            "content": "公制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "bvL4V",
+            "x": 1136,
+            "y": 597,
+            "name": "rt2",
+            "fill": "#E8E8E8",
+            "content": "英制",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 6,
+            "id": "2oigx",
+            "x": 1214,
+            "y": 596,
+            "name": "loc",
+            "fill": "#0F1114",
+            "width": 202,
+            "height": 40
+          },
+          {
+            "type": "text",
+            "id": "Vhk2c",
+            "x": 1240,
+            "y": 598,
+            "name": "loct",
+            "fill": "#FFFFFF",
+            "content": "中国 | 中文   ›",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "rmHvh",
+        "x": 0,
+        "y": 116,
+        "name": "customerMain",
+        "width": 1440,
+        "height": 1136,
+        "fill": "#F3F3F2",
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "9bODw",
+            "x": 24,
+            "y": 14,
+            "name": "bread",
+            "fill": "#6E6E6E",
+            "content": "首页 / 客户服务",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "bMZL1",
+            "x": 24,
+            "y": 52,
+            "name": "title",
+            "fill": "#1E1E1E",
+            "content": "您好，我们能为您提供什么帮助？",
+            "fontFamily": "Inter",
+            "fontSize": 58,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "h7l3A",
+            "x": 24,
+            "y": 132,
+            "name": "intro",
+            "fill": "#3D3D3D",
+            "textGrowth": "fixed-width",
+            "width": 1120,
+            "content": "无论是问题排查、周期性维护还是产品与服务升级，我们都可为不同阶段的项目提供协助，您可以通过在线聊天、电话或表单联系我们。",
+            "lineHeight": 1.45,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "rectangle",
+            "id": "Xj4mz",
+            "x": 0,
+            "y": 214,
+            "name": "bar1",
+            "fill": "#DFDFDF",
+            "width": 1440,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "4Cyst",
+            "x": 24,
+            "y": 238,
+            "name": "menu1",
+            "fill": "#1F1F1F",
+            "content": "订单",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "rectangle",
+            "id": "ZXo8u",
+            "x": 0,
+            "y": 290,
+            "name": "bar2",
+            "fill": "#DFDFDF",
+            "width": 1440,
+            "height": 1
+          },
+          {
+            "type": "text",
+            "id": "89unY",
+            "x": 24,
+            "y": 314,
+            "name": "menu2",
+            "fill": "#1F1F1F",
+            "content": "产品",
+            "fontFamily": "Inter",
+            "fontSize": 20,
+            "fontWeight": "600"
+          },
+          {
+            "type": "frame",
+            "id": "xGnw7",
+            "x": 24,
+            "y": 368,
+            "name": "heroCards",
+            "width": 1392,
+            "height": 360,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "GJGyk",
+                "x": 0,
+                "y": 0,
+                "name": "c1",
+                "width": 448,
+                "height": 360,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "9B6iY",
+                    "x": 0,
+                    "y": 0,
+                    "name": "img1",
+                    "width": 430,
+                    "height": 230,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
+                      "mode": "fill"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "id": "pKvuZ",
+                    "x": 0,
+                    "y": 246,
+                    "fill": "#1F1F1F",
+                    "content": "订单支持",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "TagnO",
+                    "x": 0,
+                    "y": 266,
+                    "fill": "#5D5D5D",
+                    "textGrowth": "fixed-width",
+                    "width": 410,
+                    "content": "跟踪交付状态、发票和账户信息。",
+                    "lineHeight": 1.4,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "DM82i",
+                "x": 472,
+                "y": 0,
+                "name": "c2",
+                "width": 448,
+                "height": 360,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "v0UEI",
+                    "x": 0,
+                    "y": 0,
+                    "name": "img1",
+                    "width": 430,
+                    "height": 230,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1516383740770-fbcc5ccbece0?auto=format&fit=crop&w=900&q=80",
+                      "mode": "fill"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "id": "KQfzA",
+                    "x": 0,
+                    "y": 246,
+                    "fill": "#1F1F1F",
+                    "content": "计算器和数据",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "Q8E3c",
+                    "x": 0,
+                    "y": 266,
+                    "fill": "#5D5D5D",
+                    "textGrowth": "fixed-width",
+                    "width": 410,
+                    "content": "下载切削参数和加工建议，帮助快速完成工艺验证。",
+                    "lineHeight": 1.4,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "N9gHh",
+                "x": 944,
+                "y": 0,
+                "name": "c3",
+                "width": 448,
+                "height": 360,
+                "fill": "#F3F3F2",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "frame",
+                    "id": "yUhcz",
+                    "x": 0,
+                    "y": 0,
+                    "name": "img1",
+                    "width": 430,
+                    "height": 230,
+                    "fill": {
+                      "type": "image",
+                      "enabled": true,
+                      "url": "https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&w=900&q=80",
+                      "mode": "fill"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "id": "V8BNT",
+                    "x": 0,
+                    "y": 246,
+                    "fill": "#1F1F1F",
+                    "content": "备件和备件",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "tok3U",
+                    "x": 0,
+                    "y": 266,
+                    "fill": "#5D5D5D",
+                    "textGrowth": "fixed-width",
+                    "width": 410,
+                    "content": "我们的专家将帮助您在刀具与夹具的选择和维护方面取得更高效率。",
+                    "lineHeight": 1.4,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "Dqcjo",
+            "x": 24,
+            "y": 760,
+            "name": "boxA",
+            "width": 680,
+            "height": 80,
+            "fill": "#EFEDE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "OHIKG",
+                "x": 24,
+                "y": 18,
+                "fill": "#1F1F1F",
+                "content": "联系我们",
+                "fontFamily": "Inter",
+                "fontSize": 22,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "LGlh1",
+                "x": 24,
+                "y": 50,
+                "fill": "#6A5B43",
+                "content": "相关资源  ›",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "600"
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "id": "CiT0D",
+            "x": 736,
+            "y": 760,
+            "name": "boxB",
+            "width": 680,
+            "height": 80,
+            "fill": "#EFEDE8",
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "v6PFN",
+                "x": 24,
+                "y": 18,
+                "fill": "#1F1F1F",
+                "content": "向我们一个问题",
+                "fontFamily": "Inter",
+                "fontSize": 22,
+                "fontWeight": "600"
+              },
+              {
+                "type": "text",
+                "id": "7aPke",
+                "x": 24,
+                "y": 50,
+                "fill": "#6A5B43",
+                "content": "提交请求  ›",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontWeight": "600"
+              }
+            ]
+          },
+          {
+            "type": "rectangle",
+            "id": "2fh9l",
+            "x": 0,
+            "y": 872,
+            "name": "line3",
+            "fill": "#DFDFDF",
+            "width": 1440,
+            "height": 1
+          },
+          {
+            "type": "frame",
+            "id": "pIss8",
+            "x": 24,
+            "y": 914,
+            "name": "contactRow",
+            "width": 1392,
+            "height": 220,
+            "fill": "#F3F3F2",
+            "layout": "none",
+            "children": [
+              {
+                "type": "frame",
+                "id": "MerKs",
+                "x": 0,
+                "y": 0,
+                "name": "ct1",
+                "width": 448,
+                "height": 180,
+                "fill": "#EFEDE8",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "jHPPL",
+                    "x": 20,
+                    "y": 22,
+                    "width": 34,
+                    "height": 34,
+                    "iconFontName": "chat",
+                    "iconFontFamily": "Material Symbols Rounded",
+                    "fill": "#8D7A57"
+                  },
+                  {
+                    "type": "text",
+                    "id": "hDYPC",
+                    "x": 20,
+                    "y": 68,
+                    "fill": "#1E1E1E",
+                    "content": "与我们聊天",
+                    "fontFamily": "Inter",
+                    "fontSize": 24,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "58gux",
+                    "x": 20,
+                    "y": 103,
+                    "fill": "#4F4F4F",
+                    "textGrowth": "fixed-width",
+                    "width": 390,
+                    "content": "每周工作日 8:00 到 17:00 CST\n由客服支持，立即获取解答。",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "faKOq",
+                "x": 472,
+                "y": 0,
+                "name": "ct2",
+                "width": 448,
+                "height": 180,
+                "fill": "#EFEDE8",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "PYoyU",
+                    "x": 20,
+                    "y": 22,
+                    "width": 34,
+                    "height": 34,
+                    "iconFontName": "call",
+                    "iconFontFamily": "Material Symbols Rounded",
+                    "fill": "#8D7A57"
+                  },
+                  {
+                    "type": "text",
+                    "id": "w6OUS",
+                    "x": 20,
+                    "y": 68,
+                    "fill": "#1E1E1E",
+                    "content": "致电我们",
+                    "fontFamily": "Inter",
+                    "fontSize": 24,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "jM9Ut",
+                    "x": 20,
+                    "y": 103,
+                    "fill": "#4F4F4F",
+                    "textGrowth": "fixed-width",
+                    "width": 390,
+                    "content": "客服专线可为您解答订单与应用问题。\n座机 400 820 2623(座机)/+86 400 820 2623(手机)",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              },
+              {
+                "type": "frame",
+                "id": "xMQfU",
+                "x": 944,
+                "y": 0,
+                "name": "ct3",
+                "width": 448,
+                "height": 180,
+                "fill": "#EFEDE8",
+                "layout": "none",
+                "children": [
+                  {
+                    "type": "icon_font",
+                    "id": "U1HB7",
+                    "x": 20,
+                    "y": 22,
+                    "width": 34,
+                    "height": 34,
+                    "iconFontName": "mail",
+                    "iconFontFamily": "Material Symbols Rounded",
+                    "fill": "#8D7A57"
+                  },
+                  {
+                    "type": "text",
+                    "id": "EWBMd",
+                    "x": 20,
+                    "y": 68,
+                    "fill": "#1E1E1E",
+                    "content": "给我们填写电子邮件",
+                    "fontFamily": "Inter",
+                    "fontSize": 24,
+                    "fontWeight": "700"
+                  },
+                  {
+                    "type": "text",
+                    "id": "LH0BB",
+                    "x": 20,
+                    "y": 100,
+                    "fill": "#4F4F4F",
+                    "textGrowth": "fixed-width",
+                    "width": 390,
+                    "content": "通过表单提交需求，客服团队将在工作时间内尽快回复。",
+                    "lineHeight": 1.45,
+                    "fontFamily": "Inter",
+                    "fontSize": 10,
+                    "fontWeight": "500"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

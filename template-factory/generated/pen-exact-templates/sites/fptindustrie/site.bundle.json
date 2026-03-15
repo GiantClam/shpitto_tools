@@ -1,0 +1,40 @@
+{
+  "siteId": "fptindustrie",
+  "siteName": "Fptindustrie",
+  "bundleHash": "d5cccbac609b290c7078deeb2ef29c43e5d5355194d61f2a824e33650f3135a9",
+  "variants": [
+    {
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/fptindustrie.pen",
+      "sourceHash": "69e1a907210aff5b6363f1a871c6c3a8189dca38ea478b0f0b856beb6ba18f40",
+      "pageCount": 10,
+      "sectionCount": 27,
+      "blockCount": 378,
+      "output": {
+        "templatePath": "sites/fptindustrie/variants/desktop/template.json",
+        "themePath": "sites/fptindustrie/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/fptindustrie/variants/desktop/pages",
+        "sectionsDir": "sites/fptindustrie/variants/desktop/sections",
+        "blocksDir": "sites/fptindustrie/variants/desktop/blocks"
+      }
+    },
+    {
+      "variant": "mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/fptindustrie-mobile.pen",
+      "sourceHash": "6c9c0ef247e4ab86382b0e3b4101e99970e6051f581638de16f2a497bfd0ba32",
+      "pageCount": 10,
+      "sectionCount": 26,
+      "blockCount": 254,
+      "output": {
+        "templatePath": "sites/fptindustrie/variants/mobile/template.json",
+        "themePath": "sites/fptindustrie/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/fptindustrie/variants/mobile/pages",
+        "sectionsDir": "sites/fptindustrie/variants/mobile/sections",
+        "blocksDir": "sites/fptindustrie/variants/mobile/blocks"
+      }
+    }
+  ],
+  "output": {
+    "siteTemplatePath": "sites/fptindustrie/site.template.json"
+  }
+}

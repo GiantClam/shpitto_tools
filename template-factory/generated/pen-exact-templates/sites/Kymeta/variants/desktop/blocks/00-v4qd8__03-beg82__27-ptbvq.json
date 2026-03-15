@@ -1,0 +1,407 @@
+{
+  "blockId": "ptbvQ",
+  "blockName": "trustSec",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 27,
+  "bounds": {
+    "x": 0,
+    "y": 2324,
+    "width": 1440,
+    "height": 806
+  },
+  "directChildCount": 9,
+  "recursiveNodeCount": 28,
+  "treeHash": "d2b76446819745fe91d17fa7ea48b0d2b6733039d62d775e55c86039d6726848",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "ptbvQ",
+    "x": 0,
+    "y": 2324,
+    "name": "trustSec",
+    "width": 1440,
+    "height": 806,
+    "fill": "#FFFFFF",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "DUJQp",
+        "x": 56,
+        "y": 70,
+        "name": "trustTag",
+        "fill": "#6F8BC0",
+        "content": "RELATED NEWS & RESOURCES",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "aDMDs",
+        "x": 56,
+        "y": 106,
+        "name": "trustTitle2",
+        "fill": "#2A313C",
+        "textGrowth": "fixed-width",
+        "width": 620,
+        "content": "Trusted for mission-\ncritical operations",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 54,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 3,
+        "id": "X9nmD",
+        "x": 1090,
+        "y": 156,
+        "name": "btnNews",
+        "fill": "#F5F8FD",
+        "width": 160,
+        "height": 34,
+        "stroke": {
+          "align": "inside",
+          "thickness": 1,
+          "fill": "#8AA3D3"
+        }
+      },
+      {
+        "type": "text",
+        "id": "WwSkp",
+        "x": 1114,
+        "y": 166,
+        "name": "btnNewsT",
+        "fill": "#2E446D",
+        "content": "All News & Insights",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "600"
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 3,
+        "id": "Lu08J",
+        "x": 1266,
+        "y": 156,
+        "name": "btnRes",
+        "fill": "#F5F8FD",
+        "width": 118,
+        "height": 34,
+        "stroke": {
+          "align": "inside",
+          "thickness": 1,
+          "fill": "#8AA3D3"
+        }
+      },
+      {
+        "type": "text",
+        "id": "loQy9",
+        "x": 1285,
+        "y": 166,
+        "name": "btnResT",
+        "fill": "#2E446D",
+        "content": "All Resources",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "600"
+      },
+      {
+        "type": "frame",
+        "id": "qRR7U",
+        "x": 56,
+        "y": 266,
+        "name": "card1",
+        "width": 432,
+        "height": 430,
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "V90Gm",
+            "x": 0,
+            "y": 0,
+            "name": "c1img",
+            "metadata": {
+              "type": "unsplash",
+              "username": "mirrors_are_more_fun",
+              "link": "https://unsplash.com/@mirrors_are_more_fun",
+              "author": "Red Shuheart"
+            },
+            "width": 432,
+            "height": 240,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1759746503130-a2093e32860b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjA1NDl8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 2,
+            "id": "UY5wB",
+            "x": 12,
+            "y": 12,
+            "name": "c1badge",
+            "fill": "#FFFFFFCC",
+            "width": 50,
+            "height": 20
+          },
+          {
+            "type": "text",
+            "id": "IMSha",
+            "x": 22,
+            "y": 17,
+            "name": "c1badgeT",
+            "fill": "#2A313C",
+            "content": "Videos",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "zoREk",
+            "x": 0,
+            "y": 258,
+            "name": "c1t",
+            "fill": "#2A313C",
+            "textGrowth": "fixed-width",
+            "width": 420,
+            "content": "Kymeta Osprey™ u8: Mission-Ready Multi-Orbit Terminal",
+            "lineHeight": 1.15,
+            "fontFamily": "Inter",
+            "fontSize": 28,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "4v9Ex",
+            "x": 0,
+            "y": 336,
+            "name": "c1d",
+            "fill": "#4E5663",
+            "textGrowth": "fixed-width",
+            "width": 420,
+            "content": "The Kymeta Osprey™ u8 – hybrid-GEO-LEO and bundled services is the first truly turnkey solution developed for military and government users to take full advantage of multi-orbit and multi...",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "rILPK",
+            "x": 0,
+            "y": 408,
+            "name": "c1l",
+            "fill": "#2A313C",
+            "content": "Watch now",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "44wZx",
+        "x": 504,
+        "y": 266,
+        "name": "card2",
+        "width": 432,
+        "height": 430,
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "utElD",
+            "x": 0,
+            "y": 0,
+            "name": "c2img",
+            "metadata": {
+              "type": "unsplash",
+              "username": "sortagamer",
+              "link": "https://unsplash.com/@sortagamer",
+              "author": "Jamie Webster"
+            },
+            "width": 432,
+            "height": 240,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1759167625074-4c61493a8c40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjA1NTB8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 2,
+            "id": "LI2PQ",
+            "x": 12,
+            "y": 12,
+            "name": "c2badge",
+            "fill": "#FFFFFFCC",
+            "width": 64,
+            "height": 20
+          },
+          {
+            "type": "text",
+            "id": "i0NPz",
+            "x": 22,
+            "y": 17,
+            "name": "c2badgeT",
+            "fill": "#2A313C",
+            "content": "Use Cases",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "RBA7h",
+            "x": 0,
+            "y": 258,
+            "name": "c2t",
+            "fill": "#2A313C",
+            "textGrowth": "fixed-width",
+            "width": 420,
+            "content": "The Kymeta Osprey™ u8 Advancing On-The-Move",
+            "lineHeight": 1.15,
+            "fontFamily": "Inter",
+            "fontSize": 28,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "9crCP",
+            "x": 0,
+            "y": 350,
+            "name": "c2d",
+            "fill": "#4E5663",
+            "textGrowth": "fixed-width",
+            "width": 420,
+            "content": "U.S. Army's I/IIA C5 Executive Communications Team transforms the Stryker Combat Vehicle into a fully functional mobile command post with on-the-move communications capability",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "LM5tt",
+            "x": 0,
+            "y": 408,
+            "name": "c2l",
+            "fill": "#2A313C",
+            "content": "Download",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "PhOCr",
+        "x": 952,
+        "y": 266,
+        "name": "card3",
+        "width": 432,
+        "height": 430,
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "zYPS2",
+            "x": 0,
+            "y": 0,
+            "name": "c3img",
+            "metadata": {
+              "type": "unsplash",
+              "username": "yespanioly",
+              "link": "https://unsplash.com/@yespanioly",
+              "author": "Yousef Espanioly"
+            },
+            "width": 432,
+            "height": 240,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1512818908771-583ff7531c14?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMjA1NzZ8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "rectangle",
+            "cornerRadius": 2,
+            "id": "x7doK",
+            "x": 12,
+            "y": 12,
+            "name": "c3badge",
+            "fill": "#FFFFFFCC",
+            "width": 46,
+            "height": 20
+          },
+          {
+            "type": "text",
+            "id": "EUUVV",
+            "x": 22,
+            "y": 17,
+            "name": "c3badgeT",
+            "fill": "#2A313C",
+            "content": "News",
+            "fontFamily": "Inter",
+            "fontSize": 10,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "VbKdD",
+            "x": 0,
+            "y": 256,
+            "name": "c3t",
+            "fill": "#2A313C",
+            "textGrowth": "fixed-width",
+            "width": 420,
+            "content": "Kymeta Unveils its Second Multi-Orbit",
+            "lineHeight": 1.1,
+            "fontFamily": "Inter",
+            "fontSize": 28,
+            "fontWeight": "600"
+          },
+          {
+            "type": "text",
+            "id": "kHo6k",
+            "x": 0,
+            "y": 350,
+            "name": "c3d",
+            "fill": "#4E5663",
+            "textGrowth": "fixed-width",
+            "width": 420,
+            "content": "Leading the way in the Multi-X Revolution the Kymeta Goshawk u8, a hybrid GEO-LEO antenna, is in production.",
+            "lineHeight": 1.4,
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "500"
+          },
+          {
+            "type": "text",
+            "id": "DQ2CS",
+            "x": 0,
+            "y": 408,
+            "name": "c3l",
+            "fill": "#2A313C",
+            "content": "Read more",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

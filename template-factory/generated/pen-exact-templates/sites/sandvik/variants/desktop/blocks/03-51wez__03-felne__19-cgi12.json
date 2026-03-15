@@ -1,0 +1,80 @@
+{
+  "blockId": "CgI12",
+  "blockName": "c11",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 19,
+  "bounds": {
+    "x": 658,
+    "y": 1038,
+    "width": 356,
+    "height": 282
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "6daeb43b1a758dec68a1c74da7dad4a10c6fbfd45df0772c34db856365a88a4c",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "CgI12",
+    "x": 658,
+    "y": 1038,
+    "name": "c11",
+    "width": 356,
+    "height": 282,
+    "fill": "#F3F3F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "MKZ2J",
+        "x": 0,
+        "y": 0,
+        "width": 356,
+        "height": 138,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "RbK7V",
+        "x": 0,
+        "y": 152,
+        "fill": "#1F1F1F",
+        "content": "Pay per part",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "Ddxky",
+        "x": 0,
+        "y": 176,
+        "fill": "#2F2F2F",
+        "textGrowth": "fixed-width",
+        "width": 356,
+        "content": "通过按件计费模型优化刀具成本与库存压力，让生产计划更可控。",
+        "lineHeight": 1.35,
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "normal"
+      },
+      {
+        "type": "text",
+        "id": "Irn5s",
+        "x": 0,
+        "y": 250,
+        "fill": "#6F5F43",
+        "content": "了解更多  ›",
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontWeight": "600"
+      }
+    ]
+  }
+}

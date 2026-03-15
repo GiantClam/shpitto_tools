@@ -1,0 +1,1036 @@
+{
+  "sectionId": "7aEpx",
+  "sectionName": "eventSec",
+  "sectionKind": "generic",
+  "order": 11,
+  "bounds": {
+    "x": 0,
+    "y": 2140,
+    "width": 1440,
+    "height": 520
+  },
+  "directChildCount": 13,
+  "recursiveNodeCount": 20,
+  "treeHash": "f08f7b18fd86d104ffed4a88979344e1f8885f962d66574f252f2120c26bbcf3",
+  "blockCount": 13,
+  "blockIndex": [
+    {
+      "blockId": "zIhIY",
+      "blockName": "resTag",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 52,
+        "width": 42,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5eeb05e0eacf172fe27102f486ce1092165affb93422b65d267329358f29897c"
+    },
+    {
+      "blockId": "xpgsj",
+      "blockName": "resTagTxt",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 86,
+        "y": 46,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4ed509f6b039b880229b3cc6e887d2519969b1ec3e52d8f73c9a0ea650a9b492"
+    },
+    {
+      "blockId": "jNPmx",
+      "blockName": "resHead",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 44,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5580671378780bedbfec8500b0c87e2d33c65978f31c208524270c5a875be18a"
+    },
+    {
+      "blockId": "mJzy9",
+      "blockName": "resMore",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 1260,
+        "y": 64,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b277e6a2fe1384b856a3f4183b80148dd89898342105ae6b9bac32a1a0fc3c91"
+    },
+    {
+      "blockId": "jwhuw",
+      "blockName": "r1",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 80,
+        "y": 130,
+        "width": 400,
+        "height": 350
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "02d61f9ccc3397cbadc6e801d0f00e03b78b881e8f6768ba2e2c7d8ae0436ede"
+    },
+    {
+      "blockId": "ZeAXn",
+      "blockName": "r2",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 5,
+      "bounds": {
+        "x": 520,
+        "y": 130,
+        "width": 400,
+        "height": 350
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "16a3946538a21c7098499ffab6a473e1b1b331571f66f3dd8573a26fd291038a"
+    },
+    {
+      "blockId": "Nado1",
+      "blockName": "r3",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 6,
+      "bounds": {
+        "x": 960,
+        "y": 130,
+        "width": 400,
+        "height": 350
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "516b452bfcad38d49a39b5b24ea6ee56fffc72e794b2b707b7ebeb5aeb080c14"
+    },
+    {
+      "blockId": "rgB3P",
+      "blockName": "leftCtrl",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 22,
+        "y": 432,
+        "width": 38,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "837580df798ba7c1ca300e16f7e035b2215539bbf1ec69b1b25f99063a5c84d6"
+    },
+    {
+      "blockId": "sM9QO",
+      "blockName": "leftCtrlT",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 36,
+        "y": 441,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "afa315eb6c2b564887e3b323e21c278d0ce9192a48725ce32d0fea6c8c5de2e6"
+    },
+    {
+      "blockId": "9arnz",
+      "blockName": "rightCtrl",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 1380,
+        "y": 432,
+        "width": 38,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2c35565ea80dc9faa50d66f461b92d7b15e7bd004e5f7c0474087d66efdf6c1f"
+    },
+    {
+      "blockId": "YpRkA",
+      "blockName": "rightCtrlT",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 10,
+      "bounds": {
+        "x": 1394,
+        "y": 441,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fbb2b518805a6e8acbb4d606fe2a51eab4da69e1a7761e032625295c2e2e8b70"
+    },
+    {
+      "blockId": "jupyt",
+      "blockName": "dot1",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 11,
+      "bounds": {
+        "x": 718,
+        "y": 704,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "95a3b3bf45108e1e9c62790dd0e8a00566dfba858a4158fa8e527ae8e8af170c"
+    },
+    {
+      "blockId": "NfNlu",
+      "blockName": "dot2",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 12,
+      "bounds": {
+        "x": 734,
+        "y": 704,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "abf17d65b2c8ee4b79f79ed7a2b6c8e978d60ab51e00e471cd8e14c2cffea6e0"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1733477590442-4c0ec14e6202?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1618835350763-ee971e156096?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1700241956197-0b13f96fd69e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "zIhIY",
+      "blockName": "resTag",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 52,
+        "width": 42,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5eeb05e0eacf172fe27102f486ce1092165affb93422b65d267329358f29897c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "zIhIY",
+        "x": 32,
+        "y": 52,
+        "name": "resTag",
+        "enabled": false,
+        "fill": "#D5164A",
+        "width": 42,
+        "height": 8
+      }
+    },
+    {
+      "blockId": "xpgsj",
+      "blockName": "resTagTxt",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 86,
+        "y": 46,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "4ed509f6b039b880229b3cc6e887d2519969b1ec3e52d8f73c9a0ea650a9b492",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "xpgsj",
+        "x": 86,
+        "y": 46,
+        "name": "resTagTxt",
+        "enabled": false,
+        "fill": "#5A6470",
+        "content": "新闻",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "jNPmx",
+      "blockName": "resHead",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 2,
+      "bounds": {
+        "x": 32,
+        "y": 44,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5580671378780bedbfec8500b0c87e2d33c65978f31c208524270c5a875be18a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "jNPmx",
+        "x": 32,
+        "y": 44,
+        "name": "resHead",
+        "fill": "#22303D",
+        "content": "活动",
+        "fontFamily": "Inter",
+        "fontSize": 48,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "mJzy9",
+      "blockName": "resMore",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 3,
+      "bounds": {
+        "x": 1260,
+        "y": 64,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b277e6a2fe1384b856a3f4183b80148dd89898342105ae6b9bac32a1a0fc3c91",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "mJzy9",
+        "x": 1260,
+        "y": 64,
+        "name": "resMore",
+        "fill": "#0C5A67",
+        "content": "查看更多活动 →",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "jwhuw",
+      "blockName": "r1",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 4,
+      "bounds": {
+        "x": 80,
+        "y": 130,
+        "width": 400,
+        "height": 350
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "02d61f9ccc3397cbadc6e801d0f00e03b78b881e8f6768ba2e2c7d8ae0436ede",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "jwhuw",
+        "x": 80,
+        "y": 130,
+        "name": "r1",
+        "width": 400,
+        "height": 350,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "thickness": 1,
+          "fill": "#D8DEE3"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "1LJ4c",
+            "x": 0,
+            "y": 0,
+            "name": "r1i",
+            "metadata": {
+              "type": "unsplash",
+              "username": "rabinkazieasin",
+              "link": "https://unsplash.com/@rabinkazieasin",
+              "author": "Rabin Kazi Easin"
+            },
+            "width": 400,
+            "height": 190,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1733477590442-4c0ec14e6202?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "rwhPE",
+            "x": 24,
+            "y": 220,
+            "name": "r1t",
+            "fill": "#22303D",
+            "textGrowth": "fixed-width",
+            "width": 352,
+            "content": "World Engineering Day: Engineering with Purpose in Plexus",
+            "lineHeight": 1.12,
+            "fontFamily": "Inter",
+            "fontSize": 22,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "ZeAXn",
+      "blockName": "r2",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 5,
+      "bounds": {
+        "x": 520,
+        "y": 130,
+        "width": 400,
+        "height": 350
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "16a3946538a21c7098499ffab6a473e1b1b331571f66f3dd8573a26fd291038a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "ZeAXn",
+        "x": 520,
+        "y": 130,
+        "name": "r2",
+        "width": 400,
+        "height": 350,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "thickness": 1,
+          "fill": "#D8DEE3"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "GPT8D",
+            "x": 0,
+            "y": 0,
+            "name": "r2i",
+            "metadata": {
+              "type": "unsplash",
+              "username": "brett_jordan",
+              "link": "https://unsplash.com/@brett_jordan",
+              "author": "Brett Jordan"
+            },
+            "width": 400,
+            "height": 190,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1618835350763-ee971e156096?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "3yc9U",
+            "x": 24,
+            "y": 220,
+            "name": "r2t",
+            "fill": "#22303D",
+            "textGrowth": "fixed-width",
+            "width": 352,
+            "content": "Plexus to Present at the Raymond James 47th Annual Investors Conference",
+            "lineHeight": 1.12,
+            "fontFamily": "Inter",
+            "fontSize": 22,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "Nado1",
+      "blockName": "r3",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 6,
+      "bounds": {
+        "x": 960,
+        "y": 130,
+        "width": 400,
+        "height": 350
+      },
+      "directChildCount": 2,
+      "recursiveNodeCount": 3,
+      "treeHash": "516b452bfcad38d49a39b5b24ea6ee56fffc72e794b2b707b7ebeb5aeb080c14",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "Nado1",
+        "x": 960,
+        "y": 130,
+        "name": "r3",
+        "width": 400,
+        "height": 350,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "thickness": 1,
+          "fill": "#D8DEE3"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "X1DWQ",
+            "x": 0,
+            "y": 0,
+            "name": "r3i",
+            "metadata": {
+              "type": "unsplash",
+              "username": "anniespratt",
+              "link": "https://unsplash.com/@anniespratt",
+              "author": "Annie Spratt"
+            },
+            "width": 400,
+            "height": 190,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1700241956197-0b13f96fd69e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "AswDd",
+            "x": 24,
+            "y": 220,
+            "name": "r3t",
+            "fill": "#22303D",
+            "textGrowth": "fixed-width",
+            "width": 352,
+            "content": "Product Strategy: The Foundation for Product Success",
+            "lineHeight": 1.12,
+            "fontFamily": "Inter",
+            "fontSize": 22,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "rgB3P",
+      "blockName": "leftCtrl",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 22,
+        "y": 432,
+        "width": 38,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "837580df798ba7c1ca300e16f7e035b2215539bbf1ec69b1b25f99063a5c84d6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "rgB3P",
+        "x": 22,
+        "y": 432,
+        "name": "leftCtrl",
+        "enabled": false,
+        "fill": "#005060",
+        "width": 38,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "sM9QO",
+      "blockName": "leftCtrlT",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 8,
+      "bounds": {
+        "x": 36,
+        "y": 441,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "afa315eb6c2b564887e3b323e21c278d0ce9192a48725ce32d0fea6c8c5de2e6",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "sM9QO",
+        "x": 36,
+        "y": 441,
+        "name": "leftCtrlT",
+        "enabled": false,
+        "fill": "#FFFFFF",
+        "content": "←",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "9arnz",
+      "blockName": "rightCtrl",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 9,
+      "bounds": {
+        "x": 1380,
+        "y": 432,
+        "width": 38,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2c35565ea80dc9faa50d66f461b92d7b15e7bd004e5f7c0474087d66efdf6c1f",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "9arnz",
+        "x": 1380,
+        "y": 432,
+        "name": "rightCtrl",
+        "enabled": false,
+        "fill": "#005060",
+        "width": 38,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "YpRkA",
+      "blockName": "rightCtrlT",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 10,
+      "bounds": {
+        "x": 1394,
+        "y": 441,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fbb2b518805a6e8acbb4d606fe2a51eab4da69e1a7761e032625295c2e2e8b70",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "YpRkA",
+        "x": 1394,
+        "y": 441,
+        "name": "rightCtrlT",
+        "enabled": false,
+        "fill": "#FFFFFF",
+        "content": "→",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "jupyt",
+      "blockName": "dot1",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 11,
+      "bounds": {
+        "x": 718,
+        "y": 704,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "95a3b3bf45108e1e9c62790dd0e8a00566dfba858a4158fa8e527ae8e8af170c",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "jupyt",
+        "x": 718,
+        "y": 704,
+        "name": "dot1",
+        "enabled": false,
+        "fill": "#005060",
+        "width": 8,
+        "height": 8
+      }
+    },
+    {
+      "blockId": "NfNlu",
+      "blockName": "dot2",
+      "blockType": "ellipse",
+      "blockRole": "shape",
+      "order": 12,
+      "bounds": {
+        "x": 734,
+        "y": 704,
+        "width": 8,
+        "height": 8
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "abf17d65b2c8ee4b79f79ed7a2b6c8e978d60ab51e00e471cd8e14c2cffea6e0",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "ellipse",
+        "id": "NfNlu",
+        "x": 734,
+        "y": 704,
+        "name": "dot2",
+        "enabled": false,
+        "fill": "#B6C1C7",
+        "width": 8,
+        "height": 8
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "7aEpx",
+    "x": 0,
+    "y": 2140,
+    "name": "eventSec",
+    "width": 1440,
+    "height": 520,
+    "fill": "#F2F2F2",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "zIhIY",
+        "x": 32,
+        "y": 52,
+        "name": "resTag",
+        "enabled": false,
+        "fill": "#D5164A",
+        "width": 42,
+        "height": 8
+      },
+      {
+        "type": "text",
+        "id": "xpgsj",
+        "x": 86,
+        "y": 46,
+        "name": "resTagTxt",
+        "enabled": false,
+        "fill": "#5A6470",
+        "content": "新闻",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "jNPmx",
+        "x": 32,
+        "y": 44,
+        "name": "resHead",
+        "fill": "#22303D",
+        "content": "活动",
+        "fontFamily": "Inter",
+        "fontSize": 48,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "mJzy9",
+        "x": 1260,
+        "y": 64,
+        "name": "resMore",
+        "fill": "#0C5A67",
+        "content": "查看更多活动 →",
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "jwhuw",
+        "x": 80,
+        "y": 130,
+        "name": "r1",
+        "width": 400,
+        "height": 350,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "thickness": 1,
+          "fill": "#D8DEE3"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "1LJ4c",
+            "x": 0,
+            "y": 0,
+            "name": "r1i",
+            "metadata": {
+              "type": "unsplash",
+              "username": "rabinkazieasin",
+              "link": "https://unsplash.com/@rabinkazieasin",
+              "author": "Rabin Kazi Easin"
+            },
+            "width": 400,
+            "height": 190,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1733477590442-4c0ec14e6202?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "rwhPE",
+            "x": 24,
+            "y": 220,
+            "name": "r1t",
+            "fill": "#22303D",
+            "textGrowth": "fixed-width",
+            "width": 352,
+            "content": "World Engineering Day: Engineering with Purpose in Plexus",
+            "lineHeight": 1.12,
+            "fontFamily": "Inter",
+            "fontSize": 22,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "ZeAXn",
+        "x": 520,
+        "y": 130,
+        "name": "r2",
+        "width": 400,
+        "height": 350,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "thickness": 1,
+          "fill": "#D8DEE3"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "GPT8D",
+            "x": 0,
+            "y": 0,
+            "name": "r2i",
+            "metadata": {
+              "type": "unsplash",
+              "username": "brett_jordan",
+              "link": "https://unsplash.com/@brett_jordan",
+              "author": "Brett Jordan"
+            },
+            "width": 400,
+            "height": 190,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1618835350763-ee971e156096?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "3yc9U",
+            "x": 24,
+            "y": 220,
+            "name": "r2t",
+            "fill": "#22303D",
+            "textGrowth": "fixed-width",
+            "width": 352,
+            "content": "Plexus to Present at the Raymond James 47th Annual Investors Conference",
+            "lineHeight": 1.12,
+            "fontFamily": "Inter",
+            "fontSize": 22,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "Nado1",
+        "x": 960,
+        "y": 130,
+        "name": "r3",
+        "width": 400,
+        "height": 350,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "thickness": 1,
+          "fill": "#D8DEE3"
+        },
+        "layout": "none",
+        "children": [
+          {
+            "type": "frame",
+            "id": "X1DWQ",
+            "x": 0,
+            "y": 0,
+            "name": "r3i",
+            "metadata": {
+              "type": "unsplash",
+              "username": "anniespratt",
+              "link": "https://unsplash.com/@anniespratt",
+              "author": "Annie Spratt"
+            },
+            "width": 400,
+            "height": 190,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "https://images.unsplash.com/photo-1700241956197-0b13f96fd69e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDE0OTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+              "mode": "fill"
+            }
+          },
+          {
+            "type": "text",
+            "id": "AswDd",
+            "x": 24,
+            "y": 220,
+            "name": "r3t",
+            "fill": "#22303D",
+            "textGrowth": "fixed-width",
+            "width": 352,
+            "content": "Product Strategy: The Foundation for Product Success",
+            "lineHeight": 1.12,
+            "fontFamily": "Inter",
+            "fontSize": 22,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "ellipse",
+        "id": "rgB3P",
+        "x": 22,
+        "y": 432,
+        "name": "leftCtrl",
+        "enabled": false,
+        "fill": "#005060",
+        "width": 38,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "sM9QO",
+        "x": 36,
+        "y": 441,
+        "name": "leftCtrlT",
+        "enabled": false,
+        "fill": "#FFFFFF",
+        "content": "←",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      },
+      {
+        "type": "ellipse",
+        "id": "9arnz",
+        "x": 1380,
+        "y": 432,
+        "name": "rightCtrl",
+        "enabled": false,
+        "fill": "#005060",
+        "width": 38,
+        "height": 38
+      },
+      {
+        "type": "text",
+        "id": "YpRkA",
+        "x": 1394,
+        "y": 441,
+        "name": "rightCtrlT",
+        "enabled": false,
+        "fill": "#FFFFFF",
+        "content": "→",
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontWeight": "700"
+      },
+      {
+        "type": "ellipse",
+        "id": "jupyt",
+        "x": 718,
+        "y": 704,
+        "name": "dot1",
+        "enabled": false,
+        "fill": "#005060",
+        "width": 8,
+        "height": 8
+      },
+      {
+        "type": "ellipse",
+        "id": "NfNlu",
+        "x": 734,
+        "y": 704,
+        "name": "dot2",
+        "enabled": false,
+        "fill": "#B6C1C7",
+        "width": 8,
+        "height": 8
+      }
+    ]
+  }
+}

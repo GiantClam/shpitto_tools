@@ -1,0 +1,353 @@
+{
+  "sectionId": "cLZ2O",
+  "sectionName": "aboutHero",
+  "sectionKind": "hero",
+  "order": 5,
+  "bounds": {
+    "x": 0,
+    "y": 90,
+    "width": 1440,
+    "height": 510
+  },
+  "directChildCount": 5,
+  "recursiveNodeCount": 7,
+  "treeHash": "f26a865c057af8abf0a507ba82751a8164652443c939640fd0394a26c9d9c752",
+  "blockCount": 5,
+  "blockIndex": [
+    {
+      "blockId": "blPhs",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 80,
+        "y": 188,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d0567b7f8c1359aae954f72b51bce56bb5e8a78504e8787880d38be2e012e704"
+    },
+    {
+      "blockId": "f5ZNO",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 80,
+        "y": 294,
+        "width": 470,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "52925d8a4576c2f3627300eea6d01c4d038b54e1d0e4aa4e50ad20ceedeaf3ae"
+    },
+    {
+      "blockId": "JrtGC",
+      "blockName": "heroBtn",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 80,
+        "y": 372,
+        "width": 146,
+        "height": 42
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "dff45c381891cda669c319571631b8356d0a3bdca3248a507b20b0b14965f7bc"
+    },
+    {
+      "blockId": "p5Tur",
+      "blockName": "heroVisual",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 784,
+        "y": 40,
+        "width": 598,
+        "height": 430
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8223d5bb6cb4e9a2c42dcf1301689f1ac778ed20ee79d1da64f2ac7ed3f3f538"
+    },
+    {
+      "blockId": "1B2tP",
+      "blockName": "heroTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 80,
+        "y": 104,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "475b17112d4775467c4333246f89a43cc6eb380deca17f1520794aef25bc8f0e"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "blPhs",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 80,
+        "y": 188,
+        "width": 520,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d0567b7f8c1359aae954f72b51bce56bb5e8a78504e8787880d38be2e012e704",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "blPhs",
+        "x": 80,
+        "y": 188,
+        "name": "heroTitle",
+        "fill": "#23303D",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "About Plexus",
+        "lineHeight": 1.08,
+        "fontFamily": "Inter",
+        "fontSize": 58,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "f5ZNO",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 80,
+        "y": 294,
+        "width": 470,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "52925d8a4576c2f3627300eea6d01c4d038b54e1d0e4aa4e50ad20ceedeaf3ae",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "f5ZNO",
+        "x": 80,
+        "y": 294,
+        "name": "heroDesc",
+        "fill": "#65717D",
+        "textGrowth": "fixed-width",
+        "width": 470,
+        "content": "打造一流产品，实现美好未来",
+        "lineHeight": 1.4,
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "JrtGC",
+      "blockName": "heroBtn",
+      "blockType": "frame",
+      "order": 2,
+      "bounds": {
+        "x": 80,
+        "y": 372,
+        "width": 146,
+        "height": 42
+      },
+      "directChildCount": 1,
+      "recursiveNodeCount": 2,
+      "treeHash": "dff45c381891cda669c319571631b8356d0a3bdca3248a507b20b0b14965f7bc",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "JrtGC",
+        "x": 80,
+        "y": 372,
+        "name": "heroBtn",
+        "width": 146,
+        "height": 42,
+        "fill": "#C70041",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "aQ3qV",
+            "x": 24,
+            "y": 11,
+            "name": "heroBtnTxt",
+            "fill": "#FFFFFF",
+            "content": "联系我们的团队",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    },
+    {
+      "blockId": "p5Tur",
+      "blockName": "heroVisual",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 3,
+      "bounds": {
+        "x": 784,
+        "y": 40,
+        "width": 598,
+        "height": 430
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8223d5bb6cb4e9a2c42dcf1301689f1ac778ed20ee79d1da64f2ac7ed3f3f538",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "p5Tur",
+        "x": 784,
+        "y": 40,
+        "name": "heroVisual",
+        "width": 598,
+        "height": 430,
+        "fill": "#D6DBE0",
+        "cornerRadius": 8,
+        "layout": "none"
+      }
+    },
+    {
+      "blockId": "1B2tP",
+      "blockName": "heroTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 4,
+      "bounds": {
+        "x": 80,
+        "y": 104,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "475b17112d4775467c4333246f89a43cc6eb380deca17f1520794aef25bc8f0e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "1B2tP",
+        "x": 80,
+        "y": 104,
+        "name": "heroTag",
+        "fill": "#5A6470",
+        "content": "首页  >  关于PLEXUS",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "700"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "cLZ2O",
+    "x": 0,
+    "y": 90,
+    "name": "aboutHero",
+    "width": 1440,
+    "height": 510,
+    "fill": "#f2f2f2ff",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "blPhs",
+        "x": 80,
+        "y": 188,
+        "name": "heroTitle",
+        "fill": "#23303D",
+        "textGrowth": "fixed-width",
+        "width": 520,
+        "content": "About Plexus",
+        "lineHeight": 1.08,
+        "fontFamily": "Inter",
+        "fontSize": 58,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "f5ZNO",
+        "x": 80,
+        "y": 294,
+        "name": "heroDesc",
+        "fill": "#65717D",
+        "textGrowth": "fixed-width",
+        "width": 470,
+        "content": "打造一流产品，实现美好未来",
+        "lineHeight": 1.4,
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "JrtGC",
+        "x": 80,
+        "y": 372,
+        "name": "heroBtn",
+        "width": 146,
+        "height": 42,
+        "fill": "#C70041",
+        "cornerRadius": 2,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "aQ3qV",
+            "x": 24,
+            "y": 11,
+            "name": "heroBtnTxt",
+            "fill": "#FFFFFF",
+            "content": "联系我们的团队",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      },
+      {
+        "type": "frame",
+        "id": "p5Tur",
+        "x": 784,
+        "y": 40,
+        "name": "heroVisual",
+        "width": 598,
+        "height": 430,
+        "fill": "#D6DBE0",
+        "cornerRadius": 8,
+        "layout": "none"
+      },
+      {
+        "type": "text",
+        "id": "1B2tP",
+        "x": 80,
+        "y": 104,
+        "name": "heroTag",
+        "fill": "#5A6470",
+        "content": "首页  >  关于PLEXUS",
+        "fontFamily": "Inter",
+        "fontSize": 14,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

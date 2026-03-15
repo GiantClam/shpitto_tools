@@ -1,0 +1,40 @@
+{
+  "siteId": "nothing-tech",
+  "siteName": "Nothing Tech",
+  "bundleHash": "fbaadf2c5e067f844e5751d87e02adb2be427f24ddad1e7e2248884a308a5802",
+  "variants": [
+    {
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/nothing-tech.pen",
+      "sourceHash": "a10c26361326d899d27df937e117a1aa130546eb7d8a7293c10c9e92f2a12480",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 211,
+      "output": {
+        "templatePath": "sites/nothing-tech/variants/desktop/template.json",
+        "themePath": "sites/nothing-tech/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/nothing-tech/variants/desktop/pages",
+        "sectionsDir": "sites/nothing-tech/variants/desktop/sections",
+        "blocksDir": "sites/nothing-tech/variants/desktop/blocks"
+      }
+    },
+    {
+      "variant": "mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/nothing-tech-mobile.pen",
+      "sourceHash": "5a1c77474f223a31aad9c80c2632902a94cf96415ee915ed487d531d67cd4af6",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 135,
+      "output": {
+        "templatePath": "sites/nothing-tech/variants/mobile/template.json",
+        "themePath": "sites/nothing-tech/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/nothing-tech/variants/mobile/pages",
+        "sectionsDir": "sites/nothing-tech/variants/mobile/sections",
+        "blocksDir": "sites/nothing-tech/variants/mobile/blocks"
+      }
+    }
+  ],
+  "output": {
+    "siteTemplatePath": "sites/nothing-tech/site.template.json"
+  }
+}

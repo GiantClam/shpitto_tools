@@ -1,0 +1,2247 @@
+{
+  "pageId": "page-warcom-news",
+  "pageName": "Warcom News",
+  "pageType": "blog",
+  "order": 8,
+  "bounds": {
+    "x": 1040,
+    "y": 1816,
+    "width": 390,
+    "height": 1760
+  },
+  "layout": {
+    "layout": "none",
+    "gap": "",
+    "padding": "",
+    "clip": false
+  },
+  "pageHash": "927b6fbb6addda4b59e3524841b4e268803a92f1b2244e2004477f28e2b3c27e",
+  "directChildCount": 37,
+  "recursiveNodeCount": 55,
+  "sectionCount": 2,
+  "sectionIndex": [
+    {
+      "sectionId": "page-warcom-news-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 72
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "e83b27093e40a6d81c4200ccedf50502fd70954bc000327b471bcb31438a9ea5",
+      "blockCount": 7
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1240,
+        "width": 390,
+        "height": 610
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 11,
+      "treeHash": "fa8cd26dadc90da4c12b2c79c116966bd4709b2e5c1cb1cf9c73b95a31b3ebb6",
+      "blockCount": 10
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "page-warcom-news-navbar",
+      "sectionName": "Navbar",
+      "sectionKind": "navigation",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 72
+      },
+      "directChildCount": 7,
+      "recursiveNodeCount": 8,
+      "treeHash": "e83b27093e40a6d81c4200ccedf50502fd70954bc000327b471bcb31438a9ea5",
+      "blockCount": 7,
+      "blockIndex": [
+        {
+          "blockId": "page-warcom-news-navbar-bg",
+          "blockName": "page-warcom-news-navbar-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 72
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "30e1a39a246dfedffe6f0df82245412c443f2cddb7835f8be1fc011f6a32c012"
+        },
+        {
+          "blockId": "page-warcom-news-navbar-logo",
+          "blockName": "page-warcom-news-navbar-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 16,
+            "width": 72,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8535cd029d4a8f05d816a4fee4cbe8fd595c82296aebeabc59c3c67e791521fb"
+        },
+        {
+          "blockId": "page-warcom-news-navbar-lang",
+          "blockName": "page-warcom-news-navbar-lang",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 326,
+            "y": 26,
+            "width": 30,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0fe062e8f3553ab4d95ffe9fb1afe09e8712e818171c9cdd197d1ceeaf84dda3"
+        },
+        {
+          "blockId": "page-warcom-news-navbar-menu-hit",
+          "blockName": "page-warcom-news-navbar-menu-hit",
+          "blockType": "rectangle",
+          "order": 3,
+          "bounds": {
+            "x": 362,
+            "y": 22,
+            "width": 16,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6f7d9fb253bf22efc76769f526e620399cb83865848d4c3c9d90848561aa68cc"
+        },
+        {
+          "blockId": "page-warcom-news-navbar-menu-line1",
+          "blockName": "page-warcom-news-navbar-menu-line1",
+          "blockType": "rectangle",
+          "order": 4,
+          "bounds": {
+            "x": 362,
+            "y": 24,
+            "width": 16,
+            "height": 2
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8761649f0d4b353f5763fdcd01576977b784bd9b8b9a110390e00aa9f4bbf7a2"
+        },
+        {
+          "blockId": "page-warcom-news-navbar-menu-line2",
+          "blockName": "page-warcom-news-navbar-menu-line2",
+          "blockType": "rectangle",
+          "order": 5,
+          "bounds": {
+            "x": 362,
+            "y": 30,
+            "width": 16,
+            "height": 2
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3b1e79775ec62ba28a41ea387d7e74f685b747923c69f0bdfc904bcd421781e8"
+        },
+        {
+          "blockId": "page-warcom-news-navbar-menu-line3",
+          "blockName": "page-warcom-news-navbar-menu-line3",
+          "blockType": "rectangle",
+          "order": 6,
+          "bounds": {
+            "x": 362,
+            "y": 36,
+            "width": 16,
+            "height": 2
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fb9de6a8734d7f9d7a6fa2bbd8a2fd6941d795b5a4b3d7d7adc41591d1155341"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "page-warcom-news-navbar-bg",
+          "blockName": "page-warcom-news-navbar-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 72
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "30e1a39a246dfedffe6f0df82245412c443f2cddb7835f8be1fc011f6a32c012",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-bg",
+            "name": "page-warcom-news-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 72,
+            "fill": "#000000A0"
+          }
+        },
+        {
+          "blockId": "page-warcom-news-navbar-logo",
+          "blockName": "page-warcom-news-navbar-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 16,
+            "width": 72,
+            "height": 40
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8535cd029d4a8f05d816a4fee4cbe8fd595c82296aebeabc59c3c67e791521fb",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+            "resolvedPath": "",
+            "relativePath": "",
+            "exists": false,
+            "mode": "fit"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-logo",
+            "name": "page-warcom-news-navbar-logo",
+            "x": 18,
+            "y": 16,
+            "width": 72,
+            "height": 40,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          }
+        },
+        {
+          "blockId": "page-warcom-news-navbar-lang",
+          "blockName": "page-warcom-news-navbar-lang",
+          "blockType": "text",
+          "order": 2,
+          "bounds": {
+            "x": 326,
+            "y": 26,
+            "width": 30,
+            "height": 24
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "0fe062e8f3553ab4d95ffe9fb1afe09e8712e818171c9cdd197d1ceeaf84dda3",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "page-warcom-news-navbar-lang",
+            "name": "page-warcom-news-navbar-lang",
+            "x": 326,
+            "y": 26,
+            "fill": "#FFFFFF",
+            "content": "ZH",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 30,
+            "height": 24
+          }
+        },
+        {
+          "blockId": "page-warcom-news-navbar-menu-hit",
+          "blockName": "page-warcom-news-navbar-menu-hit",
+          "blockType": "rectangle",
+          "order": 3,
+          "bounds": {
+            "x": 362,
+            "y": 22,
+            "width": 16,
+            "height": 16
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "6f7d9fb253bf22efc76769f526e620399cb83865848d4c3c9d90848561aa68cc",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-menu-hit",
+            "name": "page-warcom-news-navbar-menu-hit",
+            "x": 362,
+            "y": 22,
+            "width": 16,
+            "height": 16,
+            "fill": "#00000000",
+            "href": "#page-products"
+          }
+        },
+        {
+          "blockId": "page-warcom-news-navbar-menu-line1",
+          "blockName": "page-warcom-news-navbar-menu-line1",
+          "blockType": "rectangle",
+          "order": 4,
+          "bounds": {
+            "x": 362,
+            "y": 24,
+            "width": 16,
+            "height": 2
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "8761649f0d4b353f5763fdcd01576977b784bd9b8b9a110390e00aa9f4bbf7a2",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-menu-line1",
+            "name": "page-warcom-news-navbar-menu-line1",
+            "x": 362,
+            "y": 24,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "page-warcom-news-navbar-menu-line2",
+          "blockName": "page-warcom-news-navbar-menu-line2",
+          "blockType": "rectangle",
+          "order": 5,
+          "bounds": {
+            "x": 362,
+            "y": 30,
+            "width": 16,
+            "height": 2
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "3b1e79775ec62ba28a41ea387d7e74f685b747923c69f0bdfc904bcd421781e8",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-menu-line2",
+            "name": "page-warcom-news-navbar-menu-line2",
+            "x": 362,
+            "y": 30,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          }
+        },
+        {
+          "blockId": "page-warcom-news-navbar-menu-line3",
+          "blockName": "page-warcom-news-navbar-menu-line3",
+          "blockType": "rectangle",
+          "order": 6,
+          "bounds": {
+            "x": 362,
+            "y": 36,
+            "width": 16,
+            "height": 2
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "fb9de6a8734d7f9d7a6fa2bbd8a2fd6941d795b5a4b3d7d7adc41591d1155341",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-menu-line3",
+            "name": "page-warcom-news-navbar-menu-line3",
+            "x": 362,
+            "y": 36,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "page-warcom-news-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 72,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-bg",
+            "name": "page-warcom-news-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 72,
+            "fill": "#000000A0"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-logo",
+            "name": "page-warcom-news-navbar-logo",
+            "x": 18,
+            "y": 16,
+            "width": 72,
+            "height": 40,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "page-warcom-news-navbar-lang",
+            "name": "page-warcom-news-navbar-lang",
+            "x": 326,
+            "y": 26,
+            "fill": "#FFFFFF",
+            "content": "ZH",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 30,
+            "height": 24
+          },
+          {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-menu-hit",
+            "name": "page-warcom-news-navbar-menu-hit",
+            "x": 362,
+            "y": 22,
+            "width": 16,
+            "height": 16,
+            "fill": "#00000000",
+            "href": "#page-products"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-menu-line1",
+            "name": "page-warcom-news-navbar-menu-line1",
+            "x": 362,
+            "y": 24,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-menu-line2",
+            "name": "page-warcom-news-navbar-menu-line2",
+            "x": 362,
+            "y": 30,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-menu-line3",
+            "name": "page-warcom-news-navbar-menu-line3",
+            "x": 362,
+            "y": 36,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "footer",
+      "sectionName": "Footer",
+      "sectionKind": "footer",
+      "order": 1,
+      "bounds": {
+        "x": 0,
+        "y": 1240,
+        "width": 390,
+        "height": 610
+      },
+      "directChildCount": 10,
+      "recursiveNodeCount": 11,
+      "treeHash": "fa8cd26dadc90da4c12b2c79c116966bd4709b2e5c1cb1cf9c73b95a31b3ebb6",
+      "blockCount": 10,
+      "blockIndex": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 610
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e9faef11331fe9e085cbbcfd3816823575afa42242405922969a36caaddfdd49"
+        },
+        {
+          "blockId": "footer-logo",
+          "blockName": "footer-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 28,
+            "width": 90,
+            "height": 44
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "451d03fdcce80735a1eaab54d3e6092791a5996eca00a5efba68584f9aa9e39b"
+        },
+        {
+          "blockId": "footer-company",
+          "blockName": "footer-company",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 92,
+            "width": 220,
+            "height": 29
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "09a4b550a4158c0d18b6522118ecffef4b92aabd676bcee9680b7feb87f5c840"
+        },
+        {
+          "blockId": "footer-address",
+          "blockName": "footer-address",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 128,
+            "width": 320,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "49c5c4c592b888b3aad9c531a962db4b63209a9f2f7a0c5d1613846f7474c78c"
+        },
+        {
+          "blockId": "footer-contact",
+          "blockName": "footer-contact",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 204,
+            "width": 320,
+            "height": 92
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ce0dc92162259027581bdcdd85906f0bee069deb2b3ac70936170e3858df995b"
+        },
+        {
+          "blockId": "footer-col1",
+          "blockName": "footer-col1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 330,
+            "width": 130,
+            "height": 80
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "50fab1479c4b8ec6711fc029f38b12ad15c5bea3f4eaac9d03c855aae0e90068"
+        },
+        {
+          "blockId": "footer-col2",
+          "blockName": "footer-col2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 190,
+            "y": 330,
+            "width": 130,
+            "height": 80
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eaf544dbd9c7fb10b6fce6c63daf9fb58e41dee94b45cb2735d8f35381b72867"
+        },
+        {
+          "blockId": "footer-col3",
+          "blockName": "footer-col3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 18,
+            "y": 426,
+            "width": 130,
+            "height": 99
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "aeb970710cf4527e19558437293b1feef0675edf32ad7ec06055f542395afe0a"
+        },
+        {
+          "blockId": "footer-lang",
+          "blockName": "footer-lang",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 18,
+            "y": 528,
+            "width": 350,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7a2c12ed0f2868ff3e24d2771d76e5cb38c1406fb6a0e46925746954ae4069d9"
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 9,
+          "bounds": {
+            "x": 18,
+            "y": 562,
+            "width": 350,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "beb8665eaeaae271b2da735d3ff2352fcf08498d0e68e12506cc0c41e4579088"
+        }
+      ],
+      "assetRefs": [
+        {
+          "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+          "resolvedPath": "",
+          "relativePath": "",
+          "exists": false
+        }
+      ],
+      "blocks": [
+        {
+          "blockId": "footer-bg",
+          "blockName": "footer-bg",
+          "blockType": "rectangle",
+          "order": 0,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 610
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "e9faef11331fe9e085cbbcfd3816823575afa42242405922969a36caaddfdd49",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 610,
+            "fill": "#565D66"
+          }
+        },
+        {
+          "blockId": "footer-logo",
+          "blockName": "footer-logo",
+          "blockType": "rectangle",
+          "blockRole": "image",
+          "order": 1,
+          "bounds": {
+            "x": 18,
+            "y": 28,
+            "width": 90,
+            "height": 44
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "451d03fdcce80735a1eaab54d3e6092791a5996eca00a5efba68584f9aa9e39b",
+          "assetRef": {
+            "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+            "resolvedPath": "",
+            "relativePath": "",
+            "exists": false,
+            "mode": "fit"
+          },
+          "rawBlockNode": {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 18,
+            "y": 28,
+            "width": 90,
+            "height": 44,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          }
+        },
+        {
+          "blockId": "footer-company",
+          "blockName": "footer-company",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 2,
+          "bounds": {
+            "x": 18,
+            "y": 92,
+            "width": 220,
+            "height": 29
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "09a4b550a4158c0d18b6522118ecffef4b92aabd676bcee9680b7feb87f5c840",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-company",
+            "name": "footer-company",
+            "x": 18,
+            "y": 92,
+            "fill": "#FFFFFF",
+            "content": "FPT Industrie Spa",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 16,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 29
+          }
+        },
+        {
+          "blockId": "footer-address",
+          "blockName": "footer-address",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 3,
+          "bounds": {
+            "x": 18,
+            "y": 128,
+            "width": 320,
+            "height": 43
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "49c5c4c592b888b3aad9c531a962db4b63209a9f2f7a0c5d1613846f7474c78c",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-address",
+            "name": "footer-address",
+            "x": 18,
+            "y": 128,
+            "fill": "#E7E7E7",
+            "content": "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 43
+          }
+        },
+        {
+          "blockId": "footer-contact",
+          "blockName": "footer-contact",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 4,
+          "bounds": {
+            "x": 18,
+            "y": 204,
+            "width": 320,
+            "height": 92
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "ce0dc92162259027581bdcdd85906f0bee069deb2b3ac70936170e3858df995b",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-contact",
+            "name": "footer-contact",
+            "x": 18,
+            "y": 204,
+            "fill": "#E7E7E7",
+            "content": "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 92
+          }
+        },
+        {
+          "blockId": "footer-col1",
+          "blockName": "footer-col1",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 5,
+          "bounds": {
+            "x": 18,
+            "y": 330,
+            "width": 130,
+            "height": 80
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "50fab1479c4b8ec6711fc029f38b12ad15c5bea3f4eaac9d03c855aae0e90068",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col1",
+            "name": "footer-col1",
+            "x": 18,
+            "y": 330,
+            "fill": "#FFFFFF",
+            "content": "企业\n历史\n企业系统\nItalian Style",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 80
+          }
+        },
+        {
+          "blockId": "footer-col2",
+          "blockName": "footer-col2",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 6,
+          "bounds": {
+            "x": 190,
+            "y": 330,
+            "width": 130,
+            "height": 80
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "eaf544dbd9c7fb10b6fce6c63daf9fb58e41dee94b45cb2735d8f35381b72867",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col2",
+            "name": "footer-col2",
+            "x": 190,
+            "y": 330,
+            "fill": "#FFFFFF",
+            "content": "产品\n镗床\n卧式铣床\n立式铣床",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 80
+          }
+        },
+        {
+          "blockId": "footer-col3",
+          "blockName": "footer-col3",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 7,
+          "bounds": {
+            "x": 18,
+            "y": 426,
+            "width": 130,
+            "height": 99
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "aeb970710cf4527e19558437293b1feef0675edf32ad7ec06055f542395afe0a",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-col3",
+            "name": "footer-col3",
+            "x": 18,
+            "y": 426,
+            "fill": "#FFFFFF",
+            "content": "行业\n能源\n航空航天\n汽车\n铁路",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 99
+          }
+        },
+        {
+          "blockId": "footer-lang",
+          "blockName": "footer-lang",
+          "blockType": "text",
+          "blockRole": "text",
+          "order": 8,
+          "bounds": {
+            "x": 18,
+            "y": 528,
+            "width": 350,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "7a2c12ed0f2868ff3e24d2771d76e5cb38c1406fb6a0e46925746954ae4069d9",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-lang",
+            "name": "footer-lang",
+            "x": 18,
+            "y": 528,
+            "fill": "#FFFFFF",
+            "content": "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 350,
+            "height": 38
+          }
+        },
+        {
+          "blockId": "footer-copy",
+          "blockName": "footer-copy",
+          "blockType": "text",
+          "order": 9,
+          "bounds": {
+            "x": 18,
+            "y": 562,
+            "width": 350,
+            "height": 38
+          },
+          "directChildCount": 0,
+          "recursiveNodeCount": 1,
+          "treeHash": "beb8665eaeaae271b2da735d3ff2352fcf08498d0e68e12506cc0c41e4579088",
+          "assetRef": null,
+          "rawBlockNode": {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 562,
+            "fill": "#E7E7E7",
+            "content": "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 350,
+            "height": 38
+          }
+        }
+      ],
+      "rawSectionNode": {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1240,
+        "width": 390,
+        "height": 610,
+        "fill": "#565D66",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 610,
+            "fill": "#565D66"
+          },
+          {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 18,
+            "y": 28,
+            "width": 90,
+            "height": 44,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "footer-company",
+            "name": "footer-company",
+            "x": 18,
+            "y": 92,
+            "fill": "#FFFFFF",
+            "content": "FPT Industrie Spa",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 16,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 29
+          },
+          {
+            "type": "text",
+            "id": "footer-address",
+            "name": "footer-address",
+            "x": 18,
+            "y": 128,
+            "fill": "#E7E7E7",
+            "content": "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 43
+          },
+          {
+            "type": "text",
+            "id": "footer-contact",
+            "name": "footer-contact",
+            "x": 18,
+            "y": 204,
+            "fill": "#E7E7E7",
+            "content": "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 92
+          },
+          {
+            "type": "text",
+            "id": "footer-col1",
+            "name": "footer-col1",
+            "x": 18,
+            "y": 330,
+            "fill": "#FFFFFF",
+            "content": "企业\n历史\n企业系统\nItalian Style",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 80
+          },
+          {
+            "type": "text",
+            "id": "footer-col2",
+            "name": "footer-col2",
+            "x": 190,
+            "y": 330,
+            "fill": "#FFFFFF",
+            "content": "产品\n镗床\n卧式铣床\n立式铣床",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 80
+          },
+          {
+            "type": "text",
+            "id": "footer-col3",
+            "name": "footer-col3",
+            "x": 18,
+            "y": 426,
+            "fill": "#FFFFFF",
+            "content": "行业\n能源\n航空航天\n汽车\n铁路",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 99
+          },
+          {
+            "type": "text",
+            "id": "footer-lang",
+            "name": "footer-lang",
+            "x": 18,
+            "y": 528,
+            "fill": "#FFFFFF",
+            "content": "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 350,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 562,
+            "fill": "#E7E7E7",
+            "content": "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 350,
+            "height": 38
+          }
+        ]
+      }
+    }
+  ],
+  "blockCount": 17,
+  "looseNodeCount": 35,
+  "looseNodes": [
+    {
+      "id": "page-warcom-news-bg",
+      "name": "page-warcom-news-bg",
+      "type": "rectangle",
+      "width": 390,
+      "height": 1760
+    },
+    {
+      "id": "page-warcom-news-hero",
+      "name": "page-warcom-news-hero",
+      "type": "rectangle",
+      "width": 390,
+      "height": 280
+    },
+    {
+      "id": "page-warcom-news-hero-shade",
+      "name": "page-warcom-news-hero-shade",
+      "type": "rectangle",
+      "width": 390,
+      "height": 280
+    },
+    {
+      "id": "page-warcom-news-crumb",
+      "name": "page-warcom-news-crumb",
+      "type": "text",
+      "width": 220,
+      "height": 22
+    },
+    {
+      "id": "page-warcom-news-title",
+      "name": "page-warcom-news-title",
+      "type": "text",
+      "width": 320,
+      "height": 52
+    },
+    {
+      "id": "page-warcom-news-sub",
+      "name": "page-warcom-news-sub",
+      "type": "text",
+      "width": 320,
+      "height": 46
+    },
+    {
+      "id": "page-warcom-news-home-box",
+      "name": "page-warcom-news-home-box",
+      "type": "rectangle",
+      "width": 120,
+      "height": 34
+    },
+    {
+      "id": "page-warcom-news-home-text",
+      "name": "page-warcom-news-home-text",
+      "type": "text",
+      "width": 88,
+      "height": 18
+    },
+    {
+      "id": "page-warcom-news-peer-box",
+      "name": "page-warcom-news-peer-box",
+      "type": "rectangle",
+      "width": 150,
+      "height": 34
+    },
+    {
+      "id": "page-warcom-news-peer-text",
+      "name": "page-warcom-news-peer-text",
+      "type": "text",
+      "width": 118,
+      "height": 18
+    },
+    {
+      "id": "page-warcom-news-panel",
+      "name": "page-warcom-news-panel",
+      "type": "rectangle",
+      "width": 354,
+      "height": 980
+    },
+    {
+      "id": "page-warcom-news-panel-kicker",
+      "name": "page-warcom-news-panel-kicker",
+      "type": "text",
+      "width": 240,
+      "height": 18
+    },
+    {
+      "id": "page-warcom-news-panel-title",
+      "name": "page-warcom-news-panel-title",
+      "type": "text",
+      "width": 300,
+      "height": 43
+    },
+    {
+      "id": "page-warcom-news-para-0",
+      "name": "page-warcom-news-para-0",
+      "type": "text",
+      "width": 300,
+      "height": 1557
+    },
+    {
+      "id": "page-warcom-news-para-1",
+      "name": "page-warcom-news-para-1",
+      "type": "text",
+      "width": 300,
+      "height": 80
+    },
+    {
+      "id": "page-warcom-news-para-2",
+      "name": "page-warcom-news-para-2",
+      "type": "text",
+      "width": 300,
+      "height": 173
+    },
+    {
+      "id": "page-warcom-news-para-3",
+      "name": "page-warcom-news-para-3",
+      "type": "text",
+      "width": 300,
+      "height": 228
+    },
+    {
+      "id": "page-warcom-news-para-4",
+      "name": "page-warcom-news-para-4",
+      "type": "text",
+      "width": 300,
+      "height": 505
+    },
+    {
+      "id": "page-warcom-news-image-main",
+      "name": "page-warcom-news-image-main",
+      "type": "rectangle",
+      "width": 300,
+      "height": 220
+    },
+    {
+      "id": "page-warcom-news-image-side",
+      "name": "page-warcom-news-image-side",
+      "type": "rectangle",
+      "width": 300,
+      "height": 180
+    },
+    {
+      "id": "page-warcom-news-card-0",
+      "name": "page-warcom-news-card-0",
+      "type": "rectangle",
+      "width": 300,
+      "height": 146
+    },
+    {
+      "id": "page-warcom-news-card-img-0",
+      "name": "page-warcom-news-card-img-0",
+      "type": "rectangle",
+      "width": 300,
+      "height": 84
+    },
+    {
+      "id": "page-warcom-news-card-title-0",
+      "name": "page-warcom-news-card-title-0",
+      "type": "text",
+      "width": 272,
+      "height": 43
+    },
+    {
+      "id": "page-warcom-news-card-body-0",
+      "name": "page-warcom-news-card-body-0",
+      "type": "text",
+      "width": 272,
+      "height": 1444
+    },
+    {
+      "id": "page-warcom-news-card-1",
+      "name": "page-warcom-news-card-1",
+      "type": "rectangle",
+      "width": 300,
+      "height": 146
+    },
+    {
+      "id": "page-warcom-news-card-img-1",
+      "name": "page-warcom-news-card-img-1",
+      "type": "rectangle",
+      "width": 300,
+      "height": 84
+    },
+    {
+      "id": "page-warcom-news-card-title-1",
+      "name": "page-warcom-news-card-title-1",
+      "type": "text",
+      "width": 272,
+      "height": 25
+    },
+    {
+      "id": "page-warcom-news-card-body-1",
+      "name": "page-warcom-news-card-body-1",
+      "type": "text",
+      "width": 272,
+      "height": 85
+    },
+    {
+      "id": "page-warcom-news-rel-title",
+      "name": "page-warcom-news-rel-title",
+      "type": "text",
+      "width": 120,
+      "height": 18
+    },
+    {
+      "id": "page-warcom-news-rel-0-box",
+      "name": "page-warcom-news-rel-0-box",
+      "type": "rectangle",
+      "width": 160,
+      "height": 34
+    },
+    {
+      "id": "page-warcom-news-rel-0-text",
+      "name": "page-warcom-news-rel-0-text",
+      "type": "text",
+      "width": 128,
+      "height": 18
+    },
+    {
+      "id": "page-warcom-news-rel-1-box",
+      "name": "page-warcom-news-rel-1-box",
+      "type": "rectangle",
+      "width": 160,
+      "height": 34
+    },
+    {
+      "id": "page-warcom-news-rel-1-text",
+      "name": "page-warcom-news-rel-1-text",
+      "type": "text",
+      "width": 128,
+      "height": 18
+    },
+    {
+      "id": "page-warcom-news-rel-2-box",
+      "name": "page-warcom-news-rel-2-box",
+      "type": "rectangle",
+      "width": 160,
+      "height": 34
+    },
+    {
+      "id": "page-warcom-news-rel-2-text",
+      "name": "page-warcom-news-rel-2-text",
+      "type": "text",
+      "width": 128,
+      "height": 18
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-warcom-news-hero-f23e228b.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-warcom-news-hero-f23e228b.jpg",
+      "relativePath": "assets-structured/fpt/page-warcom-news-hero-f23e228b.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-warcom-news-1-a33ae7b1.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-warcom-news-1-a33ae7b1.jpg",
+      "relativePath": "assets-structured/fpt/page-warcom-news-1-a33ae7b1.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-warcom-news-2-cb987ca8.webp",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-warcom-news-2-cb987ca8.webp",
+      "relativePath": "assets-structured/fpt/page-warcom-news-2-cb987ca8.webp",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-warcom-news-0-f23e228b.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-warcom-news-0-f23e228b.jpg",
+      "relativePath": "assets-structured/fpt/page-warcom-news-0-f23e228b.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-warcom-news-1-a33ae7b1.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/fpt/page-warcom-news-1-a33ae7b1.jpg",
+      "relativePath": "assets-structured/fpt/page-warcom-news-1-a33ae7b1.jpg",
+      "exists": true
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "rawPageNode": {
+    "type": "frame",
+    "id": "page-warcom-news",
+    "name": "Warcom News",
+    "x": 1040,
+    "y": 1816,
+    "width": 390,
+    "height": 1760,
+    "fill": "#ECECEC",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-bg",
+        "name": "page-warcom-news-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 1760,
+        "fill": "#ECECEC"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-hero",
+        "name": "page-warcom-news-hero",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 280,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-warcom-news-hero-f23e228b.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-hero-shade",
+        "name": "page-warcom-news-hero-shade",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 280,
+        "fill": "#00000044"
+      },
+      {
+        "type": "frame",
+        "id": "page-warcom-news-navbar",
+        "name": "Navbar",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 72,
+        "fill": "#00000000",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-bg",
+            "name": "page-warcom-news-navbar-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 72,
+            "fill": "#000000A0"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-logo",
+            "name": "page-warcom-news-navbar-logo",
+            "x": 18,
+            "y": 16,
+            "width": 72,
+            "height": 40,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "page-warcom-news-navbar-lang",
+            "name": "page-warcom-news-navbar-lang",
+            "x": 326,
+            "y": 26,
+            "fill": "#FFFFFF",
+            "content": "ZH",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 30,
+            "height": 24
+          },
+          {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-menu-hit",
+            "name": "page-warcom-news-navbar-menu-hit",
+            "x": 362,
+            "y": 22,
+            "width": 16,
+            "height": 16,
+            "fill": "#00000000",
+            "href": "#page-products"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-menu-line1",
+            "name": "page-warcom-news-navbar-menu-line1",
+            "x": 362,
+            "y": 24,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-menu-line2",
+            "name": "page-warcom-news-navbar-menu-line2",
+            "x": 362,
+            "y": 30,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          },
+          {
+            "type": "rectangle",
+            "id": "page-warcom-news-navbar-menu-line3",
+            "name": "page-warcom-news-navbar-menu-line3",
+            "x": 362,
+            "y": 36,
+            "width": 16,
+            "height": 2,
+            "fill": "#FFFFFF"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-crumb",
+        "name": "page-warcom-news-crumb",
+        "x": 18,
+        "y": 98,
+        "fill": "#FFFFFF",
+        "content": "Home / Warcom News",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 22
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-title",
+        "name": "page-warcom-news-title",
+        "x": 18,
+        "y": 132,
+        "fill": "#FFFFFF",
+        "content": "Share",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 32,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 52
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-sub",
+        "name": "page-warcom-news-sub",
+        "x": 18,
+        "y": 204,
+        "fill": "#EFEFEF",
+        "content": "Warcom and FPT: a legacy of innovation and shared quality",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 320,
+        "height": 46
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-home-box",
+        "name": "page-warcom-news-home-box",
+        "x": 18,
+        "y": 260,
+        "width": 120,
+        "height": 34,
+        "fill": "#E8C400",
+        "href": "#page-home",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-home-text",
+        "name": "page-warcom-news-home-text",
+        "x": 34,
+        "y": 268,
+        "fill": "#565D66",
+        "content": "首页",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 88,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-peer-box",
+        "name": "page-warcom-news-peer-box",
+        "x": 154,
+        "y": 260,
+        "width": 150,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-mecspe-2026",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-peer-text",
+        "name": "page-warcom-news-peer-text",
+        "x": 170,
+        "y": 268,
+        "fill": "#3E4248",
+        "content": "二级页面",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 118,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-mecspe-2026",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-panel",
+        "name": "page-warcom-news-panel",
+        "x": 18,
+        "y": 316,
+        "width": 354,
+        "height": 980,
+        "fill": "#F6F6F6",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "cornerRadius": 2
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-panel-kicker",
+        "name": "page-warcom-news-panel-kicker",
+        "x": 42,
+        "y": 342,
+        "fill": "#72787F",
+        "content": "WARCOM NEWS",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 240,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-panel-title",
+        "name": "page-warcom-news-panel-title",
+        "x": 42,
+        "y": 372,
+        "fill": "#3E4248",
+        "content": "Share",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 26,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 43
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-para-0",
+        "name": "page-warcom-news-para-0",
+        "x": 42,
+        "y": 432,
+        "fill": "#3E4248",
+        "content": "arrow-down-thin arrow-down arrow-left-bold arrow-left-light arrow-left-thin arrow-left arrow-right-bold arrow-right-light arrow-right-thin arrow-right arrow-up-thin bottom .st0{fill:#FFFFFF;} box cat-icon_1 cat-icon_2 cat-icon_3 cat-icon_4 chevron-left chevron-right close-2 close download-2 download edit email fpt-industrie-spa fpt-industrie-spa_me .st0{fill:#4A5055;} info-filled info layers left-arrow-thin link list mail marker messenger next-arrow overlapping-squares pager-arrow-left pager-arrow-right play prev-arrow right-arrow-thin search share-2 share social-facebook social-instagram social-linkedin social-pinterest social-twitter social-whatsapp social-youtube squares telephone times Italiano English Deutsch Français Español Português Svenska русский 한국인 中国人 عربى FPT Industries 企业 产品 镗床 Ronin 300/400 SBS Kenta Spirit CASTEL 卧式铣床 Tessen EVO Verus 250/360 ORIGIN 300/400 Ronin 300/400 Kenta Spirit 100 Raptocut 立式铣床 Stinger Dinospin Dinox 220 IAT Dinox 350 IAT SCUDERIA Dinomax Dinomek Dinostar Dinowide 车削中心 Dinomax Vertigo T 型铣床 CASTEL CASTEL Terus 180 CASTEL Terus 250 Friction Stir Welding StirROB StirLAB StirSPACE StirWALL Accessories Heads Tables 补充技术 Friction Stir Welding Products --> Mares Platform 4.0+ Fast Mill Clamping System 特价商品 --> 技术 行业 服务 联系方式 FPT 世界 联系我们 --> zh 菜单 企业 产品 镗床 卧式铣床 立式铣床 车削中心 T 型铣床 Friction Stir Welding Accessories 补充技术 技术 行业 服务 联系方式 FPT 世界 联系我们 企业 --> 材料 --> 通信 参考 --> 加入我们 IT EN DE FR ES PT SV RU KO ZH AR --> Home 通信 NEWS 当前页面: Warcom And Fpt: A Legacy Of Innovation And Shared Quality 前一个 下一个 Share Facebook Twitter Linkedin Email WhatsApp NEWS Warcom and FPT: a legacy of innovation and shared quality A family-driven industrial vision Sixty-five years of history cannot be enclosed in a paragraph, it needs space to be told, explained and above all understood, since it coincides with the history of a family. The history of Warcom , founded in 1979, began some 20 years earlier, in 1959 to be precise, when- Giovanni Robazza decided that there was an opportunity to carve out a space for himself in the market for sheet metal processing machines , and shears in particular. From that intuition came the first mechanical cast iron shear and the Robazza/Romea brand. It was from the ashes of the Romea brand in 1979 that Giovanni’s son Walter founded Warcom, which took up Romea’s historical ideas but brought an absolutely industrial vision of the product and its production cycle. Warcom thus quickly became synonymous with CNC-controlled machine presses, press brakes and shears . To which have been added over time the laser machines (2011) and more recently the laser machine dedicated to pipe processing , making Warcom also a company that has few equals in terms of offer range and ability to cover several technological areas precisely to find the best possible solutions. This turns out to be an advantage both in the supply of standardised machines and systems, and in cases where it is necessary to provide a real work cell made to measure and equipped with all the interlocking systems and automation necessary for large-scale production.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 1557
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-para-1",
+        "name": "page-warcom-news-para-1",
+        "x": 42,
+        "y": 2009,
+        "fill": "#3E4248",
+        "content": "Today, Warcom is managed by Alberto and Paolo, Walter’s sons, who represent the third generation of the family in the machine tool industry.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 80
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-para-2",
+        "name": "page-warcom-news-para-2",
+        "x": 42,
+        "y": 2109,
+        "fill": "#3E4248",
+        "content": "With a healthy turnover and a commitment to continue growing by expanding Warcom’s footprint in the sheet metal processing sector, the Adro-based company is a magnificent example of what a made in Italy product means today. Because at Warcom, the product is designed and then created in all its components.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 173
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-para-3",
+        "name": "page-warcom-news-para-3",
+        "x": 42,
+        "y": 2302,
+        "fill": "#3E4248",
+        "content": "An integrated production cycle which makes the Brescia company a very interesting example of verticalisation which, having control of all production phases, manages to guarantee a qualitative status that is decidedly above average , not only with regards to the product in the literal sense, but also for the management of production times and consequently programming. A significant guarantee for those who decide to invest in a new machine.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 228
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-para-4",
+        "name": "page-warcom-news-para-4",
+        "x": 42,
+        "y": 2550,
+        "fill": "#3E4248",
+        "content": "One of the choices that distinguish companies lies in the decision to embrace the make or buy philosophy. That is, whether one prefers to produce as many components as possible in-house or whether the choice is to buy the different parts on the market needed for a product and then simply assemble them in-house. Warcom, as we were saying, has embraced the make philosophy, and in order to honour this choice the company has equipped itself with the best tools to guarantee its high quality standard. \"The choice of keeping all production processes in-house is not always the most economical, but it is certainly the one that allows us to have the best quality result, also thanks to the fact that we can directly monitor every single step. In short, spend a little more to get a better quality and more consistent product. One of our strengths lies in the decision to equip ourselves with the best tools necessary to achieve the highest quality in our products.\"",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 300,
+        "height": 505
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-image-main",
+        "name": "page-warcom-news-image-main",
+        "x": 42,
+        "y": 356,
+        "width": 300,
+        "height": 220,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-warcom-news-1-a33ae7b1.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-image-side",
+        "name": "page-warcom-news-image-side",
+        "x": 42,
+        "y": 600,
+        "width": 300,
+        "height": 180,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-warcom-news-2-cb987ca8.webp",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-card-0",
+        "name": "page-warcom-news-card-0",
+        "x": 42,
+        "y": 820,
+        "width": 300,
+        "height": 146,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-mecspe-2026"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-card-img-0",
+        "name": "page-warcom-news-card-img-0",
+        "x": 42,
+        "y": 820,
+        "width": 300,
+        "height": 84,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-warcom-news-0-f23e228b.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-card-title-0",
+        "name": "page-warcom-news-card-title-0",
+        "x": 56,
+        "y": 916,
+        "fill": "#3E4248",
+        "content": "Warcom and FPT: a legacy of innovation and shared quality",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 272,
+        "height": 43
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-card-body-0",
+        "name": "page-warcom-news-card-body-0",
+        "x": 56,
+        "y": 942,
+        "fill": "#72787F",
+        "content": "arrow-down-thin arrow-down arrow-left-bold arrow-left-light arrow-left-thin arrow-left arrow-right-bold arrow-right-light arrow-right-thin arrow-right arrow-up-thin bottom .st0{fill:#FFFFFF;} box cat-icon_1 cat-icon_2 cat-icon_3 cat-icon_4 chevron-left chevron-right close-2 close download-2 download edit email fpt-industrie-spa fpt-industrie-spa_me .st0{fill:#4A5055;} info-filled info layers left-arrow-thin link list mail marker messenger next-arrow overlapping-squares pager-arrow-left pager-arrow-right play prev-arrow right-arrow-thin search share-2 share social-facebook social-instagram social-linkedin social-pinterest social-twitter social-whatsapp social-youtube squares telephone times Italiano English Deutsch Français Español Português Svenska русский 한국인 中国人 عربى FPT Industries 企业 产品 镗床 Ronin 300/400 SBS Kenta Spirit CASTEL 卧式铣床 Tessen EVO Verus 250/360 ORIGIN 300/400 Ronin 300/400 Kenta Spirit 100 Raptocut 立式铣床 Stinger Dinospin Dinox 220 IAT Dinox 350 IAT SCUDERIA Dinomax Dinomek Dinostar Dinowide 车削中心 Dinomax Vertigo T 型铣床 CASTEL CASTEL Terus 180 CASTEL Terus 250 Friction Stir Welding StirROB StirLAB StirSPACE StirWALL Accessories Heads Tables 补充技术 Friction Stir Welding Products --> Mares Platform 4.0+ Fast Mill Clamping System 特价商品 --> 技术 行业 服务 联系方式 FPT 世界 联系我们 --> zh 菜单 企业 产品 镗床 卧式铣床 立式铣床 车削中心 T 型铣床 Friction Stir Welding Accessories 补充技术 技术 行业 服务 联系方式 FPT 世界 联系我们 企业 --> 材料 --> 通信 参考 --> 加入我们 IT EN DE FR ES PT SV RU KO ZH AR --> Home 通信 NEWS 当前页面: Warcom And Fpt: A Legacy Of Innovation And Shared Quality 前一个 下一个 Share Facebook Twitter Linkedin Email WhatsApp NEWS Warcom and FPT: a legacy of innovation and shared quality A family-driven industrial vision Sixty-five years of history cannot be enclosed in a paragraph, it needs space to be told, explained and above all understood, since it coincides with the history of a family. The history of Warcom , founded in 1979, began some 20 years earlier, in 1959 to be precise, when- Giovanni Robazza decided that there was an opportunity to carve out a space for himself in the market for sheet metal processing machines , and shears in particular. From that intuition came the first mechanical cast iron shear and the Robazza/Romea brand. It was from the ashes of the Romea brand in 1979 that Giovanni’s son Walter founded Warcom, which took up Romea’s historical ideas but brought an absolutely industrial vision of the product and its production cycle. Warcom thus quickly became synonymous with CNC-controlled machine presses, press brakes and shears . To which have been added over time the laser machines (2011) and more recently the laser machine dedicated to pipe processing , making Warcom also a company that has few equals in terms of offer range and ability to cover several technological areas precisely to find the best possible solutions. This turns out to be an advantage both in the supply of standardised machines and systems, and in cases where it is necessary to provide a real work cell made to measure and equipped with all the interlocking systems and automation necessary for large-scale production.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 272,
+        "height": 1444
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-card-1",
+        "name": "page-warcom-news-card-1",
+        "x": 42,
+        "y": 982,
+        "width": 300,
+        "height": 146,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-company"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-card-img-1",
+        "name": "page-warcom-news-card-img-1",
+        "x": 42,
+        "y": 982,
+        "width": 300,
+        "height": 84,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/fpt/page-warcom-news-1-a33ae7b1.jpg",
+          "mode": "fill"
+        }
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-card-title-1",
+        "name": "page-warcom-news-card-title-1",
+        "x": 56,
+        "y": 1078,
+        "fill": "#3E4248",
+        "content": "A family-driven industrial vision",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 13,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 272,
+        "height": 25
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-card-body-1",
+        "name": "page-warcom-news-card-body-1",
+        "x": 56,
+        "y": 1104,
+        "fill": "#72787F",
+        "content": "Today, Warcom is managed by Alberto and Paolo, Walter’s sons, who represent the third generation of the family in the machine tool industry.",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 272,
+        "height": 85
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-rel-title",
+        "name": "page-warcom-news-rel-title",
+        "x": 42,
+        "y": 1490,
+        "fill": "#72787F",
+        "content": "相关页面",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 12,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 18,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-rel-0-box",
+        "name": "page-warcom-news-rel-0-box",
+        "x": 42,
+        "y": 1520,
+        "width": 160,
+        "height": 34,
+        "fill": "#E8C400",
+        "href": "#page-mecspe-2026",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-rel-0-text",
+        "name": "page-warcom-news-rel-0-text",
+        "x": 58,
+        "y": 1528,
+        "fill": "#565D66",
+        "content": "MECSPE 2026",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 128,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-mecspe-2026",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-rel-1-box",
+        "name": "page-warcom-news-rel-1-box",
+        "x": 214,
+        "y": 1520,
+        "width": 160,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-company",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-rel-1-text",
+        "name": "page-warcom-news-rel-1-text",
+        "x": 230,
+        "y": 1528,
+        "fill": "#3E4248",
+        "content": "企业",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 128,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-company",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "page-warcom-news-rel-2-box",
+        "name": "page-warcom-news-rel-2-box",
+        "x": 42,
+        "y": 1566,
+        "width": 160,
+        "height": 34,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-home",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "page-warcom-news-rel-2-text",
+        "name": "page-warcom-news-rel-2-text",
+        "x": 58,
+        "y": 1574,
+        "fill": "#3E4248",
+        "content": "首页",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 128,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-home",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "frame",
+        "id": "footer",
+        "name": "Footer",
+        "x": 0,
+        "y": 1240,
+        "width": 390,
+        "height": 610,
+        "fill": "#565D66",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "footer-bg",
+            "name": "footer-bg",
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 610,
+            "fill": "#565D66"
+          },
+          {
+            "type": "rectangle",
+            "id": "footer-logo",
+            "name": "footer-logo",
+            "x": 18,
+            "y": 28,
+            "width": 90,
+            "height": 44,
+            "fill": {
+              "type": "image",
+              "enabled": true,
+              "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/logo-fpt.png",
+              "mode": "fit"
+            },
+            "href": "#page-home"
+          },
+          {
+            "type": "text",
+            "id": "footer-company",
+            "name": "footer-company",
+            "x": 18,
+            "y": 92,
+            "fill": "#FFFFFF",
+            "content": "FPT Industrie Spa",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 16,
+            "fontWeight": "700",
+            "textGrowth": "fixed-width-height",
+            "width": 220,
+            "height": 29
+          },
+          {
+            "type": "text",
+            "id": "footer-address",
+            "name": "footer-address",
+            "x": 18,
+            "y": 128,
+            "fill": "#E7E7E7",
+            "content": "Via Enrico Fermi, 18\n30036 S. Maria di Sala (Ve), Italia",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 43
+          },
+          {
+            "type": "text",
+            "id": "footer-contact",
+            "name": "footer-contact",
+            "x": 18,
+            "y": 204,
+            "fill": "#E7E7E7",
+            "content": "电话号码. +39 041 5768111 / Fax +39 041 487528\ninfocom@fptindustrie.com\nsales@fptindustrie.com\nservice@fptindustrie.com",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 12,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 320,
+            "height": 92
+          },
+          {
+            "type": "text",
+            "id": "footer-col1",
+            "name": "footer-col1",
+            "x": 18,
+            "y": 330,
+            "fill": "#FFFFFF",
+            "content": "企业\n历史\n企业系统\nItalian Style",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 80
+          },
+          {
+            "type": "text",
+            "id": "footer-col2",
+            "name": "footer-col2",
+            "x": 190,
+            "y": 330,
+            "fill": "#FFFFFF",
+            "content": "产品\n镗床\n卧式铣床\n立式铣床",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 80
+          },
+          {
+            "type": "text",
+            "id": "footer-col3",
+            "name": "footer-col3",
+            "x": 18,
+            "y": 426,
+            "fill": "#FFFFFF",
+            "content": "行业\n能源\n航空航天\n汽车\n铁路",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 13,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 130,
+            "height": 99
+          },
+          {
+            "type": "text",
+            "id": "footer-lang",
+            "name": "footer-lang",
+            "x": 18,
+            "y": 528,
+            "fill": "#FFFFFF",
+            "content": "IT   EN   DE   FR   ES   PT   SV   RU   KO   ZH   AR",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 350,
+            "height": 38
+          },
+          {
+            "type": "text",
+            "id": "footer-copy",
+            "name": "footer-copy",
+            "x": 18,
+            "y": 562,
+            "fill": "#E7E7E7",
+            "content": "© 2026 FPT Industrie Spa   隐私政策   Cookie 政策   条款",
+            "fontFamily": "Helvetica Neue",
+            "fontSize": 11,
+            "fontWeight": "500",
+            "textGrowth": "fixed-width-height",
+            "width": 350,
+            "height": 38
+          }
+        ]
+      }
+    ]
+  }
+}

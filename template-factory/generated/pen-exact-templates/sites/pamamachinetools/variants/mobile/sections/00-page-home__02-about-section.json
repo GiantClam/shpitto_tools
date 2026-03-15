@@ -1,0 +1,533 @@
+{
+  "sectionId": "about-section",
+  "sectionName": "about-section",
+  "sectionKind": "story",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 888,
+    "width": 390,
+    "height": 360
+  },
+  "directChildCount": 8,
+  "recursiveNodeCount": 9,
+  "treeHash": "23085114d91c4c6f32f601b1013d9220f0398795af19c99f5f70bf52cd89a219",
+  "blockCount": 8,
+  "blockIndex": [
+    {
+      "blockId": "about-bg",
+      "blockName": "about-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 360
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9ac8bb406b966d4ba472e0aa32aa6dd84e3377e65c62075bb4dfb1c65fd6b369"
+    },
+    {
+      "blockId": "about-kicker",
+      "blockName": "about-kicker",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 16,
+        "y": 32,
+        "width": 220,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cbe7de851db32106e6a94e0353368eaa738877c38566e6d6d2835e5d1013596a"
+    },
+    {
+      "blockId": "about-title",
+      "blockName": "about-title",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 16,
+        "y": 62,
+        "width": 334,
+        "height": 128
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "049303d6daa5ef07af0d17119962ce4be21d8bfb64051e84e54e56c79ee899f7"
+    },
+    {
+      "blockId": "about-copy",
+      "blockName": "about-copy",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 16,
+        "y": 148,
+        "width": 334,
+        "height": 111
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9053d1afdd7a8ee4a27b78a917701964b363357354f182db5f88a8ae5140a71b"
+    },
+    {
+      "blockId": "about-cta-box",
+      "blockName": "about-cta-box",
+      "blockType": "rectangle",
+      "order": 4,
+      "bounds": {
+        "x": 16,
+        "y": 246,
+        "width": 148,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8805668d6764934e17a5026ad894d2c4b5fdbb9213cd2c17fccddb4139745182"
+    },
+    {
+      "blockId": "about-cta-text",
+      "blockName": "about-cta-text",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 30,
+        "y": 256,
+        "width": 108,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a7a1a787c02c10e2876d812262a651657ff335ec2d72710cecd8597abc9f34fa"
+    },
+    {
+      "blockId": "about-cta-arrow",
+      "blockName": "about-cta-arrow",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 144,
+        "y": 256,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b3a3ed831bd2a0a8f06e49232090492d63e1ee1faee326cb5e8ba9d8276cecb2"
+    },
+    {
+      "blockId": "about-image",
+      "blockName": "about-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 7,
+      "bounds": {
+        "x": 20,
+        "y": 298,
+        "width": 350,
+        "height": 120
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "59f6b92ca4191cd175b4867ce4023119e3c2bc7e9485ab2a90151f673f6ab456"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/about-77effc9b.jpg",
+      "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/about-77effc9b.jpg",
+      "relativePath": "assets-structured/pama/about-77effc9b.jpg",
+      "exists": true
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "about-bg",
+      "blockName": "about-bg",
+      "blockType": "rectangle",
+      "order": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 360
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9ac8bb406b966d4ba472e0aa32aa6dd84e3377e65c62075bb4dfb1c65fd6b369",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "about-bg",
+        "name": "about-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 360,
+        "fill": "#F4F4F1"
+      }
+    },
+    {
+      "blockId": "about-kicker",
+      "blockName": "about-kicker",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 16,
+        "y": 32,
+        "width": 220,
+        "height": 20
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cbe7de851db32106e6a94e0353368eaa738877c38566e6d6d2835e5d1013596a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "about-kicker",
+        "name": "about-kicker",
+        "x": 16,
+        "y": 32,
+        "fill": "#008D99",
+        "content": "OUR STORY",
+        "fontFamily": "Raleway",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 20,
+        "letterSpacing": "0.08em"
+      }
+    },
+    {
+      "blockId": "about-title",
+      "blockName": "about-title",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 16,
+        "y": 62,
+        "width": 334,
+        "height": 128
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "049303d6daa5ef07af0d17119962ce4be21d8bfb64051e84e54e56c79ee899f7",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "about-title",
+        "name": "about-title",
+        "x": 16,
+        "y": 62,
+        "fill": "#1A1F24",
+        "content": "One Italian story, over 90 years of machine-tool expertise.",
+        "fontFamily": "Raleway",
+        "fontSize": 28,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 334,
+        "height": 128
+      }
+    },
+    {
+      "blockId": "about-copy",
+      "blockName": "about-copy",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 16,
+        "y": 148,
+        "width": 334,
+        "height": 111
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9053d1afdd7a8ee4a27b78a917701964b363357354f182db5f88a8ae5140a71b",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "about-copy",
+        "name": "about-copy",
+        "x": 16,
+        "y": 148,
+        "fill": "#66707A",
+        "content": "PAMA is an Italian company that has been present in the machine tool market for over 90 years, known for building large and medium-large units, well appreciated in all sectors where maximum rigidity and high precision are required.",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 334,
+        "height": 111
+      }
+    },
+    {
+      "blockId": "about-cta-box",
+      "blockName": "about-cta-box",
+      "blockType": "rectangle",
+      "order": 4,
+      "bounds": {
+        "x": 16,
+        "y": 246,
+        "width": 148,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "8805668d6764934e17a5026ad894d2c4b5fdbb9213cd2c17fccddb4139745182",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "about-cta-box",
+        "name": "about-cta-box",
+        "x": 16,
+        "y": 246,
+        "width": 148,
+        "height": 38,
+        "fill": "#00A7B5",
+        "href": "#page-about-us",
+        "cornerRadius": 2
+      }
+    },
+    {
+      "blockId": "about-cta-text",
+      "blockName": "about-cta-text",
+      "blockType": "text",
+      "order": 5,
+      "bounds": {
+        "x": 30,
+        "y": 256,
+        "width": 108,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "a7a1a787c02c10e2876d812262a651657ff335ec2d72710cecd8597abc9f34fa",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "about-cta-text",
+        "name": "about-cta-text",
+        "x": 30,
+        "y": 256,
+        "fill": "#FFFFFF",
+        "content": "DISCOVER MORE",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 108,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-about-us"
+      }
+    },
+    {
+      "blockId": "about-cta-arrow",
+      "blockName": "about-cta-arrow",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 144,
+        "y": 256,
+        "width": 12,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "b3a3ed831bd2a0a8f06e49232090492d63e1ee1faee326cb5e8ba9d8276cecb2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "about-cta-arrow",
+        "name": "about-cta-arrow",
+        "x": 144,
+        "y": 256,
+        "fill": "#FFFFFF",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-about-us"
+      }
+    },
+    {
+      "blockId": "about-image",
+      "blockName": "about-image",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 7,
+      "bounds": {
+        "x": 20,
+        "y": 298,
+        "width": 350,
+        "height": 120
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "59f6b92ca4191cd175b4867ce4023119e3c2bc7e9485ab2a90151f673f6ab456",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/about-77effc9b.jpg",
+        "resolvedPath": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/assets-structured/pama/about-77effc9b.jpg",
+        "relativePath": "assets-structured/pama/about-77effc9b.jpg",
+        "exists": true,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "about-image",
+        "name": "about-image",
+        "x": 20,
+        "y": 298,
+        "width": 350,
+        "height": 120,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/about-77effc9b.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-about-us"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "about-section",
+    "name": "about-section",
+    "x": 0,
+    "y": 888,
+    "width": 390,
+    "height": 360,
+    "fill": "#F4F4F1",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "about-bg",
+        "name": "about-bg",
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 360,
+        "fill": "#F4F4F1"
+      },
+      {
+        "type": "text",
+        "id": "about-kicker",
+        "name": "about-kicker",
+        "x": 16,
+        "y": 32,
+        "fill": "#008D99",
+        "content": "OUR STORY",
+        "fontFamily": "Raleway",
+        "fontSize": 15,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 220,
+        "height": 20,
+        "letterSpacing": "0.08em"
+      },
+      {
+        "type": "text",
+        "id": "about-title",
+        "name": "about-title",
+        "x": 16,
+        "y": 62,
+        "fill": "#1A1F24",
+        "content": "One Italian story, over 90 years of machine-tool expertise.",
+        "fontFamily": "Raleway",
+        "fontSize": 28,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 334,
+        "height": 128
+      },
+      {
+        "type": "text",
+        "id": "about-copy",
+        "name": "about-copy",
+        "x": 16,
+        "y": 148,
+        "fill": "#66707A",
+        "content": "PAMA is an Italian company that has been present in the machine tool market for over 90 years, known for building large and medium-large units, well appreciated in all sectors where maximum rigidity and high precision are required.",
+        "fontFamily": "Raleway",
+        "fontSize": 12,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 334,
+        "height": 111
+      },
+      {
+        "type": "rectangle",
+        "id": "about-cta-box",
+        "name": "about-cta-box",
+        "x": 16,
+        "y": 246,
+        "width": 148,
+        "height": 38,
+        "fill": "#00A7B5",
+        "href": "#page-about-us",
+        "cornerRadius": 2
+      },
+      {
+        "type": "text",
+        "id": "about-cta-text",
+        "name": "about-cta-text",
+        "x": 30,
+        "y": 256,
+        "fill": "#FFFFFF",
+        "content": "DISCOVER MORE",
+        "fontFamily": "Raleway",
+        "fontSize": 10,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 108,
+        "height": 18,
+        "letterSpacing": "0.08em",
+        "href": "#page-about-us"
+      },
+      {
+        "type": "text",
+        "id": "about-cta-arrow",
+        "name": "about-cta-arrow",
+        "x": 144,
+        "y": 256,
+        "fill": "#FFFFFF",
+        "content": "›",
+        "fontFamily": "Raleway",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 12,
+        "height": 18,
+        "href": "#page-about-us"
+      },
+      {
+        "type": "rectangle",
+        "id": "about-image",
+        "name": "about-image",
+        "x": 20,
+        "y": 298,
+        "width": 350,
+        "height": 120,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/website-clone-pen-pack-20260309/assets-structured/pama/about-77effc9b.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-about-us"
+      }
+    ]
+  }
+}

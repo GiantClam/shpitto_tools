@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "pen-site-runtime-validation.v1",
+  "generatedAt": "2026-03-12T07:11:33.475Z",
+  "outDir": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates",
+  "totalPages": 1,
+  "passedPages": 0,
+  "failedPages": 1,
+  "failures": [
+    {
+      "siteId": "analogue",
+      "variant": "mobile",
+      "pageId": "page-home",
+      "pagePath": "/",
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-analogue-mobile&page=home",
+      "summary": {
+        "nodeCount": 73,
+        "navSegmentCount": 5,
+        "navMenuCount": 6,
+        "footerSegmentCount": 1,
+        "footerMenuCount": 9,
+        "bodyTextLength": 1214,
+        "sectionCount": 5
+      },
+      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.pen-overlay-menu-item[data-location=\"navigation\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <a data-location=\"navigation\" data-page-param=\"/products\" data-pen-overlay=\"menu-item\" class=\"pen-overlay-menu-item\" href=\"/creation/sandbox?mode=preview&siteKey=pen-exact-site-analogue-mobile&page=%2Fproducts\">Products</a>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m  - element was detached from the DOM, retrying\u001b[22m\n\u001b[2m    - locator resolved to <a data-location=\"navigation\" data-page-param=\"/products\" data-pen-overlay=\"menu-item\" class=\"pen-overlay-menu-item\" href=\"/creation/sandbox?mode=preview&siteKey=pen-exact-site-analogue-mobile&page=%2Fproducts\">Products</a>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <a target=\"_top\" rel=\"noopener noreferrer\" data-pen-node=\"cat-card-img-0\" href=\"/creation/sandbox?mode=preview&siteKey=pen-exact-site-analogue-mobile&page=%2Fproducts\"></a> from <div data-pen-node=\"page-home\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m  - element was detached from the DOM, retrying\u001b[22m\n\u001b[2m    - locator resolved to <a data-location=\"navigation\" data-page-param=\"/products\" data-pen-overlay=\"menu-item\" class=\"pen-overlay-menu-item\" href=\"/creation/sandbox?mode=preview&siteKey=pen-exact-site-analogue-mobile&page=%2Fproducts\">Products</a>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - performing click action\u001b[22m\n\u001b[2m    - <div data-pen-node=\"cat-title\">Sections</div> from <div data-pen-node=\"page-home\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m  - element was detached from the DOM, retrying\u001b[22m\n\u001b[2m    - locator resolved to <a data-location=\"navigation\" data-page-param=\"/products\" data-pen-overlay=\"menu-item\" class=\"pen-overlay-menu-item\" href=\"/creation/sandbox?mode=preview&siteKey=pen-exact-site-analogue-mobile&page=%2Fproducts\">Products</a>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <a target=\"_top\" rel=\"noopener noreferrer\" data-pen-node=\"cat-card-img-0\" href=\"/creation/sandbox?mode=preview&siteKey=pen-exact-site-analogue-mobile&page=%2Fproducts\"></a> from <div data-pen-node=\"page-home\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m  - element was detached from the DOM, retrying\u001b[22m\n\u001b[2m    - locator resolved to <a data-location=\"navigation\" data-page-param=\"/products\" data-pen-overlay=\"menu-item\" class=\"pen-overlay-menu-item\" href=\"/creation/sandbox?mode=preview&siteKey=pen-exact-site-analogue-mobile&page=%2Fproducts\">Products</a>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <a target=\"_top\" rel=\"noopener noreferrer\" data-pen-node=\"cat-card-img-0\" href=\"/creation/sandbox?mode=preview&siteKey=pen-exact-site-analogue-mobile&page=%2Fproducts\"></a> from <div data-pen-node=\"page-home\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n"
+    }
+  ],
+  "variants": [
+    {
+      "siteId": "analogue",
+      "variant": "mobile",
+      "pageCount": 1,
+      "passedPages": 0,
+      "failedPages": 1
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "blockId": "uZpy8",
+  "blockName": "systemsWrap",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 8,
+  "bounds": {
+    "x": 62,
+    "y": 738,
+    "width": 1076,
+    "height": 220
+  },
+  "directChildCount": 6,
+  "recursiveNodeCount": 7,
+  "treeHash": "fdc8aaea171d504ebb8a08061e91410229fbf98624b727e3336a46e1742a6e7e",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "uZpy8",
+    "x": 62,
+    "y": 738,
+    "name": "systemsWrap",
+    "width": 1076,
+    "height": 220,
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "cornerRadius": 8,
+        "id": "w3ycS",
+        "x": 0,
+        "y": 48,
+        "name": "rearSystem",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 90,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#9AA2AB",
+              "position": 0
+            },
+            {
+              "color": "#5D646E",
+              "position": 1
+            }
+          ]
+        },
+        "width": 300,
+        "height": 148
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 8,
+        "id": "GBKob",
+        "x": 280,
+        "y": 70,
+        "name": "midSystem",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 90,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#5E6672",
+              "position": 0
+            },
+            {
+              "color": "#2F3540",
+              "position": 1
+            }
+          ]
+        },
+        "width": 520,
+        "height": 132
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 8,
+        "id": "Pda1w",
+        "x": 400,
+        "y": 82,
+        "name": "frontSystem",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 90,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#4C535E",
+              "position": 0
+            },
+            {
+              "color": "#222833",
+              "position": 1
+            }
+          ]
+        },
+        "width": 548,
+        "height": 128
+      },
+      {
+        "type": "rectangle",
+        "cornerRadius": 8,
+        "id": "ltQNc",
+        "x": 916,
+        "y": 84,
+        "name": "rightSystem",
+        "fill": {
+          "type": "gradient",
+          "gradientType": "linear",
+          "enabled": true,
+          "rotation": 90,
+          "size": {
+            "height": 1
+          },
+          "colors": [
+            {
+              "color": "#707782",
+              "position": 0
+            },
+            {
+              "color": "#3A404A",
+              "position": 1
+            }
+          ]
+        },
+        "width": 160,
+        "height": 122
+      },
+      {
+        "type": "text",
+        "id": "dLweg",
+        "x": 438,
+        "y": 96,
+        "name": "frontLogo",
+        "fill": "#AAB2BD",
+        "content": "IONQ",
+        "fontFamily": "Inter",
+        "fontSize": 22,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "2opye",
+        "x": 92,
+        "y": 66,
+        "name": "rearLogo",
+        "fill": "#AAB2BD",
+        "content": "IONQ",
+        "fontFamily": "Inter",
+        "fontSize": 22,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

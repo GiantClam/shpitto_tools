@@ -1,0 +1,92 @@
+{
+  "blockId": "iJL71",
+  "blockName": "panel",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 4,
+  "bounds": {
+    "x": 662,
+    "y": 300,
+    "width": 478,
+    "height": 560
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 5,
+  "treeHash": "7ac767563d0ddf0eb00bbe0eec626353e22e10e5bddbd017269214e6b33bd756",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "iJL71",
+    "x": 662,
+    "y": 300,
+    "name": "panel",
+    "width": 478,
+    "height": 560,
+    "fill": "#F1F2F4",
+    "cornerRadius": 10,
+    "stroke": {
+      "thickness": 1,
+      "fill": "#9EA7B2"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "izm7g",
+        "x": 22,
+        "y": 48,
+        "name": "idx1",
+        "fill": "#596270",
+        "content": "001",
+        "fontFamily": "Inter",
+        "fontSize": 25,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "h8rK9",
+        "x": 22,
+        "y": 108,
+        "name": "pTitle",
+        "fill": "#2D3540",
+        "textGrowth": "fixed-width",
+        "width": 430,
+        "content": "The atom: nature’s qubit",
+        "lineHeight": 1.08,
+        "fontFamily": "Inter",
+        "fontSize": 36,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "ldfL7",
+        "x": 22,
+        "y": 189,
+        "name": "pBody1",
+        "fill": "#505A67",
+        "textGrowth": "fixed-width",
+        "width": 430,
+        "content": "The most important part of any quantum computer are its quantum bits, or qubits. IonQ’s qubits are ionized ytterbium atoms, a silvery rare-earth metal. Each ytterbium atom is perfectly identical to every other ytterbium atom in the universe.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "MOMSC",
+        "x": 22,
+        "y": 347,
+        "name": "pBody2",
+        "fill": "#505A67",
+        "textGrowth": "fixed-width",
+        "width": 430,
+        "content": "Moreover, once prepared in a particular stable quantum state, they can remain in that state for very long periods of time — they’re so consistent they’re used in one of the most accurate atomic clocks ever built.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

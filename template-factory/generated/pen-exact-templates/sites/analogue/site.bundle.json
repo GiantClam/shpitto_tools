@@ -1,0 +1,40 @@
+{
+  "siteId": "analogue",
+  "siteName": "Analogue",
+  "bundleHash": "6e845463a8cdb37be0ab8fdb570da19388664959049c32d2291082554589d74e",
+  "variants": [
+    {
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/analogue.pen",
+      "sourceHash": "f71ba8d6cb1b8ba9d07bd14162063818366aa2d6e1958deafc294cee081322ea",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 211,
+      "output": {
+        "templatePath": "sites/analogue/variants/desktop/template.json",
+        "themePath": "sites/analogue/variants/desktop/theme.tokens.json",
+        "pagesDir": "sites/analogue/variants/desktop/pages",
+        "sectionsDir": "sites/analogue/variants/desktop/sections",
+        "blocksDir": "sites/analogue/variants/desktop/blocks"
+      }
+    },
+    {
+      "variant": "mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/analogue-mobile.pen",
+      "sourceHash": "557516116847288ff0346c2186a91fe98a8a60064324d60c2475961f8690086b",
+      "pageCount": 10,
+      "sectionCount": 23,
+      "blockCount": 135,
+      "output": {
+        "templatePath": "sites/analogue/variants/mobile/template.json",
+        "themePath": "sites/analogue/variants/mobile/theme.tokens.json",
+        "pagesDir": "sites/analogue/variants/mobile/pages",
+        "sectionsDir": "sites/analogue/variants/mobile/sections",
+        "blocksDir": "sites/analogue/variants/mobile/blocks"
+      }
+    }
+  ],
+  "output": {
+    "siteTemplatePath": "sites/analogue/site.template.json"
+  }
+}

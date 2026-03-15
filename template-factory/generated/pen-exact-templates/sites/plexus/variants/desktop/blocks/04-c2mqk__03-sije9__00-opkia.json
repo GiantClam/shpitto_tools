@@ -1,0 +1,140 @@
+{
+  "blockId": "opkia",
+  "blockName": "row1",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 0,
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 360
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 9,
+  "treeHash": "e5fba5943fa81896e5fe429379bcbea564aecda6d3787e213852941c6cc897f7",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "opkia",
+    "x": 0,
+    "y": 0,
+    "name": "row1",
+    "width": 1440,
+    "height": 360,
+    "fill": "#FFFFFF",
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "W1x9F",
+        "x": 0,
+        "y": 0,
+        "name": "row1img",
+        "metadata": {
+          "type": "unsplash",
+          "username": "vansil",
+          "link": "https://unsplash.com/@vansil",
+          "author": "Silvan Rüegg"
+        },
+        "width": 720,
+        "height": 360,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1668076476189-7664ff0e7a91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMyMDMyODB8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "layout": "none"
+      },
+      {
+        "type": "frame",
+        "id": "qZmxz",
+        "x": 720,
+        "y": 0,
+        "name": "row1txt",
+        "width": 720,
+        "height": 360,
+        "fill": "#FFFFFF",
+        "layout": "none",
+        "children": [
+          {
+            "type": "rectangle",
+            "id": "GDzOS",
+            "x": 88,
+            "y": 96,
+            "name": "r1tag",
+            "fill": "#D5164A",
+            "width": 36,
+            "height": 6
+          },
+          {
+            "type": "text",
+            "id": "KlnFY",
+            "x": 88,
+            "y": 116,
+            "name": "r1title",
+            "fill": "#22303D",
+            "content": "航空航天/国防",
+            "fontFamily": "Inter",
+            "fontSize": 42,
+            "fontWeight": "700"
+          },
+          {
+            "type": "text",
+            "id": "7aFFF",
+            "x": 88,
+            "y": 180,
+            "name": "r1desc",
+            "fill": "#6B7783",
+            "textGrowth": "fixed-width",
+            "width": 520,
+            "content": "与可信赖的合作伙伴一起交付关键任务技术。",
+            "lineHeight": 1.5,
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "500"
+          },
+          {
+            "type": "frame",
+            "id": "GSfLi",
+            "x": 88,
+            "y": 248,
+            "name": "r1btn",
+            "width": 86,
+            "height": 30,
+            "fill": "#C70041",
+            "cornerRadius": 2,
+            "layout": "none",
+            "children": [
+              {
+                "type": "text",
+                "id": "InDOC",
+                "x": 20,
+                "y": 8,
+                "name": "r1btnT",
+                "fill": "#FFFFFF",
+                "content": "了解更多",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontWeight": "700"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "1hIoF",
+            "x": 150,
+            "y": 89,
+            "name": "resTagTxt",
+            "fill": "#5A6470",
+            "content": "我们的市场领域",
+            "fontFamily": "Inter",
+            "fontSize": 12,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

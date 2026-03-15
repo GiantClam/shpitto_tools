@@ -1,0 +1,63 @@
+{
+  "blockId": "OVq9U",
+  "blockName": "person1",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 2,
+  "bounds": {
+    "x": 32,
+    "y": 92,
+    "width": 269,
+    "height": 250
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "764a4596185c0c75146f1467284270850d6f12d72f33c42e69951465b7530c8e",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "OVq9U",
+    "x": 32,
+    "y": 92,
+    "name": "person1",
+    "width": 269,
+    "height": 250,
+    "layout": "none",
+    "children": [
+      {
+        "type": "frame",
+        "id": "NrV2X",
+        "x": 0,
+        "y": 0,
+        "name": "photo",
+        "width": 269,
+        "height": 190,
+        "fill": "#DDE6F0"
+      },
+      {
+        "type": "text",
+        "id": "x2lIv",
+        "x": 0,
+        "y": 202,
+        "name": "name",
+        "fill": "#12161B",
+        "content": "Niccolo de Masi",
+        "fontFamily": "Inter",
+        "fontSize": 15,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "OY72s",
+        "x": 0,
+        "y": 226,
+        "name": "role",
+        "fill": "#5A6573",
+        "content": "Chief Executive Officer",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

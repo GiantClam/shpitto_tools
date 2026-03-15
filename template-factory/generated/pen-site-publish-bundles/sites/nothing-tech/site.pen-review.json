@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "template-factory.pen-review.v1",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "reviewedAt": "2026-03-12T09:28:06.423Z",
+  "sourcePenFile": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-site-publish-bundles/sites/nothing-tech/site.pen-bundle.json",
+  "runId": "pen-site-bundle-nothing-tech",
+  "reviewer": "codex",
+  "notes": "Nothing Tech passed strict structural validation. Nothing Tech passed Pencil-backed payload validation. Nothing Tech passed visual parity validation. Nothing Tech passed sandbox navigation/footer/runtime audit. Nothing Tech is skinnable for theme, copy, image, link, and style slots. Desktop and mobile source variants are both present and bundled together.",
+  "items": [
+    {
+      "caseId": "nothing-tech-desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/nothing-tech.pen",
+      "status": "approved",
+      "notes": "Desktop source variant bundled with matching mobile variant."
+    },
+    {
+      "caseId": "nothing-tech-mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/nothing-tech-mobile.pen",
+      "status": "approved",
+      "notes": "Mobile source variant bundled and approved."
+    }
+  ]
+}

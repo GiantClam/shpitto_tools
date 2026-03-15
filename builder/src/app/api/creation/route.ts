@@ -4,8 +4,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 import manifest from "@/skills/manifest.json";
 import { PlanningFiles } from "@/lib/agent/planning-files";
-import { generateP2WProject } from "@/lib/agent/p2w-graph";
+import { canGenerateTemplateOnly, generateP2WProject } from "@/lib/agent/p2w-graph";
 import { logError, logInfo, logWarn } from "@/lib/logger";
+import { auditSitePayload } from "@/lib/site-payload-audit";
 
 const ensureDir = async (dir: string) => {
   await fs.mkdir(dir, { recursive: true });
@@ -68,6 +69,21 @@ const persistSandboxPayload = async (outDir: string, value: unknown) => {
   const sandboxDir = path.join(outDir, "sandbox");
   await ensureDir(sandboxDir);
   const sandboxPayload = toSandboxPayload(value);
+  const payloadRecord = (value && typeof value === "object" ? value : {}) as Record<string, unknown>;
+  const resolvedByLayer =
+    payloadRecord.resolvedByLayer && typeof payloadRecord.resolvedByLayer === "object"
+      ? (payloadRecord.resolvedByLayer as Record<string, unknown>)
+      : null;
+  const audit = auditSitePayload(sandboxPayload, {
+    prompt: typeof payloadRecord.prompt === "string" ? payloadRecord.prompt : undefined,
+    resolvedByLayer,
+  });
+  await fs.writeFile(path.join(outDir, "audit.json"), JSON.stringify(audit, null, 2));
+  if (!audit.ok) {
+    const error = new Error("payload_audit_failed");
+    (error as Error & { details?: unknown }).details = audit;
+    throw error;
+  }
   await fs.writeFile(path.join(sandboxDir, "payload.json"), JSON.stringify(sandboxPayload, null, 2));
 };
 
@@ -81,7 +97,7 @@ const persistGeneratedResult = async (options: {
 }) => {
   const { outDir, prompt, requestId, id, result, logLabel = "persisted" } = options;
   await fs.writeFile(path.join(outDir, "result.json"), JSON.stringify({ prompt, ...result }, null, 2));
-  await persistSandboxPayload(outDir, result);
+  await persistSandboxPayload(outDir, { prompt, ...result });
   logInfo("[creation] " + logLabel, { requestId, id, outDir });
   const planner = await PlanningFiles.init({ rootDir: outDir, prompt, requestId });
   await planner.markPersistComplete();
@@ -205,9 +221,17 @@ export async function POST(request: NextRequest) {
       logWarn("[creation] empty_prompt", { requestId });
       return NextResponse.json({ error: "prompt_required", requestId }, { status: 400 });
     }
-    if (!process.env.AIBERM_API_KEY && !process.env.OPENROUTER_API_KEY && !process.env.ANTHROPIC_API_KEY) {
+    const hasLlmProvider =
+      Boolean(process.env.AIBERM_API_KEY) ||
+      Boolean(process.env.OPENROUTER_API_KEY) ||
+      Boolean(process.env.ANTHROPIC_API_KEY);
+    const templateOnlyEligible = canGenerateTemplateOnly(prompt);
+    if (!hasLlmProvider && !templateOnlyEligible) {
       logError("[creation] missing_api_key", { requestId });
       return NextResponse.json({ error: "missing_api_key", requestId }, { status: 500 });
+    }
+    if (!hasLlmProvider && templateOnlyEligible) {
+      logInfo("[creation] template_only_without_api_key", { requestId });
     }
 
     const id = resumeId || `p2w_${Date.now()}`;
@@ -291,6 +315,21 @@ export async function POST(request: NextRequest) {
     }
 
     const result = generated.result;
+    const audit = auditSitePayload(toSandboxPayload(result), {
+      prompt,
+      resolvedByLayer:
+        result.resolvedByLayer && typeof result.resolvedByLayer === "object"
+          ? (result.resolvedByLayer as Record<string, unknown>)
+          : null,
+    });
+    if (!audit.ok) {
+      logWarn("[creation] payload_audit_failed", {
+        requestId,
+        id,
+        issues: audit.issues,
+      });
+      return NextResponse.json({ error: "payload_audit_failed", requestId, id, audit }, { status: 422 });
+    }
     logInfo("[creation] generated", {
       requestId,
       id,
@@ -309,7 +348,7 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    return NextResponse.json({ requestId, id, prompt, durationMs: Date.now() - startedAt, ...result });
+    return NextResponse.json({ requestId, id, prompt, durationMs: Date.now() - startedAt, audit, ...result });
   } catch (error: any) {
     logError("[creation] error", {
       requestId,

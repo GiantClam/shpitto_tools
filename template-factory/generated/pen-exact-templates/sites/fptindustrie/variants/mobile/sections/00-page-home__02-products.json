@@ -1,0 +1,880 @@
+{
+  "sectionId": "products",
+  "sectionName": "Products",
+  "sectionKind": "products",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 556,
+    "width": 390,
+    "height": 280
+  },
+  "directChildCount": 13,
+  "recursiveNodeCount": 14,
+  "treeHash": "3340938cafa7174d4668e034825f4ad937b21535f2994283aaae47e23159eb2b",
+  "blockCount": 13,
+  "blockIndex": [
+    {
+      "blockId": "products-title",
+      "blockName": "products-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 10,
+        "width": 120,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "07d1af5ee884157b367e27260e240c77a4110ea7a07df248d00fad3ae1c61272"
+    },
+    {
+      "blockId": "prod-card-1-box",
+      "blockName": "prod-card-1-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 48,
+        "width": 354,
+        "height": 148
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9f5ab28c8f35d9ecce7fe92972d011321ab819f46a259c4de31ea45ba5d727c3"
+    },
+    {
+      "blockId": "prod-card-1-img",
+      "blockName": "prod-card-1-img",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 2,
+      "bounds": {
+        "x": 28,
+        "y": 58,
+        "width": 110,
+        "height": 88
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "17432bd2eca5481a0198c0c51b1ab00e24f7fdbd79b9a6d96603bc2d9b123d4e"
+    },
+    {
+      "blockId": "prod-card-1-title",
+      "blockName": "prod-card-1-title",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 150,
+        "y": 66,
+        "width": 200,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "691a0f603c0e764eef8a3d067d998aa495308199a428bcc11daf0e5f590f38c3"
+    },
+    {
+      "blockId": "prod-card-1-body",
+      "blockName": "prod-card-1-body",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 150,
+        "y": 100,
+        "width": 200,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cbe1912fcaffd9a4e364cb5170c5672cc1457517b9e0940259404f8805877219"
+    },
+    {
+      "blockId": "prod-card-1-btn-box",
+      "blockName": "prod-card-1-btn-box",
+      "blockType": "rectangle",
+      "order": 5,
+      "bounds": {
+        "x": 150,
+        "y": 148,
+        "width": 120,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d57d3877a8f6c94a73658acfbaa1f1b6bc654c090dd81b6090c6f7f71dcda1a2"
+    },
+    {
+      "blockId": "prod-card-1-btn-text",
+      "blockName": "prod-card-1-btn-text",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 166,
+        "y": 154,
+        "width": 88,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "08027843024700262424dcbc89bb4f9eaf01cf70923d14806e65393437d92063"
+    },
+    {
+      "blockId": "prod-card-2-box",
+      "blockName": "prod-card-2-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 18,
+        "y": 204,
+        "width": 354,
+        "height": 148
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2f12cda0d6f0c0726c2859fb87c7f2d6e26b32fae5decebc9b2277b4c38a7814"
+    },
+    {
+      "blockId": "prod-card-2-img",
+      "blockName": "prod-card-2-img",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 8,
+      "bounds": {
+        "x": 28,
+        "y": 214,
+        "width": 110,
+        "height": 88
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "592c5869eeb0c50faf9a9087c45fa1be95d7e8dc28b19cc08dacacffca84b394"
+    },
+    {
+      "blockId": "prod-card-2-title",
+      "blockName": "prod-card-2-title",
+      "blockType": "text",
+      "order": 9,
+      "bounds": {
+        "x": 150,
+        "y": 222,
+        "width": 200,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "78b1709b707a2d45497ec0d2688c60008dc9260944e4613d7d0c1262e6af3ccf"
+    },
+    {
+      "blockId": "prod-card-2-body",
+      "blockName": "prod-card-2-body",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 150,
+        "y": 256,
+        "width": 200,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1d814cca8030194adcac64d16af84bdc5ac9b4b61406334eec21c24285dfb87a"
+    },
+    {
+      "blockId": "prod-card-2-btn-box",
+      "blockName": "prod-card-2-btn-box",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 150,
+        "y": 304,
+        "width": 120,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ba5be9ec1a425f50c10c1509eb435bc15509ebef90dab5d79eb55634e7139b00"
+    },
+    {
+      "blockId": "prod-card-2-btn-text",
+      "blockName": "prod-card-2-btn-text",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 166,
+        "y": 310,
+        "width": 88,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5566be2270a1f08ca50367fc7730538bfc1972b6930df0694ad1c731d01c9e65"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-general.jpg",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    },
+    {
+      "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-energy.jpg",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "products-title",
+      "blockName": "products-title",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 18,
+        "y": 10,
+        "width": 120,
+        "height": 38
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "07d1af5ee884157b367e27260e240c77a4110ea7a07df248d00fad3ae1c61272",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "products-title",
+        "name": "products-title",
+        "x": 18,
+        "y": 10,
+        "fill": "#3E4248",
+        "content": "产品",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 38
+      }
+    },
+    {
+      "blockId": "prod-card-1-box",
+      "blockName": "prod-card-1-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 18,
+        "y": 48,
+        "width": 354,
+        "height": 148
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "9f5ab28c8f35d9ecce7fe92972d011321ab819f46a259c4de31ea45ba5d727c3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "prod-card-1-box",
+        "name": "prod-card-1-box",
+        "x": 18,
+        "y": 48,
+        "width": 354,
+        "height": 148,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 2
+      }
+    },
+    {
+      "blockId": "prod-card-1-img",
+      "blockName": "prod-card-1-img",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 2,
+      "bounds": {
+        "x": 28,
+        "y": 58,
+        "width": 110,
+        "height": 88
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "17432bd2eca5481a0198c0c51b1ab00e24f7fdbd79b9a6d96603bc2d9b123d4e",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-general.jpg",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "prod-card-1-img",
+        "name": "prod-card-1-img",
+        "x": 28,
+        "y": 58,
+        "width": 110,
+        "height": 88,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-general.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "prod-card-1-title",
+      "blockName": "prod-card-1-title",
+      "blockType": "text",
+      "order": 3,
+      "bounds": {
+        "x": 150,
+        "y": 66,
+        "width": 200,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "691a0f603c0e764eef8a3d067d998aa495308199a428bcc11daf0e5f590f38c3",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "prod-card-1-title",
+        "name": "prod-card-1-title",
+        "x": 150,
+        "y": 66,
+        "fill": "#3E4248",
+        "content": "镗床",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 26,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "prod-card-1-body",
+      "blockName": "prod-card-1-body",
+      "blockType": "text",
+      "order": 4,
+      "bounds": {
+        "x": 150,
+        "y": 100,
+        "width": 200,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "cbe1912fcaffd9a4e364cb5170c5672cc1457517b9e0940259404f8805877219",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "prod-card-1-body",
+        "name": "prod-card-1-body",
+        "x": 150,
+        "y": 100,
+        "fill": "#72787F",
+        "content": "面向大型结构件与通用加工。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 22,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "prod-card-1-btn-box",
+      "blockName": "prod-card-1-btn-box",
+      "blockType": "rectangle",
+      "order": 5,
+      "bounds": {
+        "x": 150,
+        "y": 148,
+        "width": 120,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d57d3877a8f6c94a73658acfbaa1f1b6bc654c090dd81b6090c6f7f71dcda1a2",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "prod-card-1-btn-box",
+        "name": "prod-card-1-btn-box",
+        "x": 150,
+        "y": 148,
+        "width": 120,
+        "height": 30,
+        "fill": "#E8C400",
+        "href": "#page-products",
+        "cornerRadius": 18
+      }
+    },
+    {
+      "blockId": "prod-card-1-btn-text",
+      "blockName": "prod-card-1-btn-text",
+      "blockType": "text",
+      "order": 6,
+      "bounds": {
+        "x": 166,
+        "y": 154,
+        "width": 88,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "08027843024700262424dcbc89bb4f9eaf01cf70923d14806e65393437d92063",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "prod-card-1-btn-text",
+        "name": "prod-card-1-btn-text",
+        "x": 166,
+        "y": 154,
+        "fill": "#565D66",
+        "content": "了解更多",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 88,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    },
+    {
+      "blockId": "prod-card-2-box",
+      "blockName": "prod-card-2-box",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 7,
+      "bounds": {
+        "x": 18,
+        "y": 204,
+        "width": 354,
+        "height": 148
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2f12cda0d6f0c0726c2859fb87c7f2d6e26b32fae5decebc9b2277b4c38a7814",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "prod-card-2-box",
+        "name": "prod-card-2-box",
+        "x": 18,
+        "y": 204,
+        "width": 354,
+        "height": 148,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 2
+      }
+    },
+    {
+      "blockId": "prod-card-2-img",
+      "blockName": "prod-card-2-img",
+      "blockType": "rectangle",
+      "blockRole": "image",
+      "order": 8,
+      "bounds": {
+        "x": 28,
+        "y": 214,
+        "width": 110,
+        "height": 88
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "592c5869eeb0c50faf9a9087c45fa1be95d7e8dc28b19cc08dacacffca84b394",
+      "assetRef": {
+        "rawUrl": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-energy.jpg",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "prod-card-2-img",
+        "name": "prod-card-2-img",
+        "x": 28,
+        "y": 214,
+        "width": 110,
+        "height": 88,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-energy.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "prod-card-2-title",
+      "blockName": "prod-card-2-title",
+      "blockType": "text",
+      "order": 9,
+      "bounds": {
+        "x": 150,
+        "y": 222,
+        "width": 200,
+        "height": 26
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "78b1709b707a2d45497ec0d2688c60008dc9260944e4613d7d0c1262e6af3ccf",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "prod-card-2-title",
+        "name": "prod-card-2-title",
+        "x": 150,
+        "y": 222,
+        "fill": "#3E4248",
+        "content": "卧式铣床",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 26,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "prod-card-2-body",
+      "blockName": "prod-card-2-body",
+      "blockType": "text",
+      "order": 10,
+      "bounds": {
+        "x": 150,
+        "y": 256,
+        "width": 200,
+        "height": 22
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "1d814cca8030194adcac64d16af84bdc5ac9b4b61406334eec21c24285dfb87a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "prod-card-2-body",
+        "name": "prod-card-2-body",
+        "x": 150,
+        "y": 256,
+        "fill": "#72787F",
+        "content": "高刚性、高动态的精密加工。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 22,
+        "href": "#page-products"
+      }
+    },
+    {
+      "blockId": "prod-card-2-btn-box",
+      "blockName": "prod-card-2-btn-box",
+      "blockType": "rectangle",
+      "order": 11,
+      "bounds": {
+        "x": 150,
+        "y": 304,
+        "width": 120,
+        "height": 30
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ba5be9ec1a425f50c10c1509eb435bc15509ebef90dab5d79eb55634e7139b00",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "prod-card-2-btn-box",
+        "name": "prod-card-2-btn-box",
+        "x": 150,
+        "y": 304,
+        "width": 120,
+        "height": 30,
+        "fill": "#E8C400",
+        "href": "#page-products",
+        "cornerRadius": 18
+      }
+    },
+    {
+      "blockId": "prod-card-2-btn-text",
+      "blockName": "prod-card-2-btn-text",
+      "blockType": "text",
+      "order": 12,
+      "bounds": {
+        "x": 166,
+        "y": 310,
+        "width": 88,
+        "height": 18
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "5566be2270a1f08ca50367fc7730538bfc1972b6930df0694ad1c731d01c9e65",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "prod-card-2-btn-text",
+        "name": "prod-card-2-btn-text",
+        "x": 166,
+        "y": 310,
+        "fill": "#565D66",
+        "content": "了解更多",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 88,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "products",
+    "name": "Products",
+    "x": 0,
+    "y": 556,
+    "width": 390,
+    "height": 280,
+    "fill": "#00000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "products-title",
+        "name": "products-title",
+        "x": 18,
+        "y": 10,
+        "fill": "#3E4248",
+        "content": "产品",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 120,
+        "height": 38
+      },
+      {
+        "type": "rectangle",
+        "id": "prod-card-1-box",
+        "name": "prod-card-1-box",
+        "x": 18,
+        "y": 48,
+        "width": 354,
+        "height": 148,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 2
+      },
+      {
+        "type": "rectangle",
+        "id": "prod-card-1-img",
+        "name": "prod-card-1-img",
+        "x": 28,
+        "y": 58,
+        "width": 110,
+        "height": 88,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-general.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "prod-card-1-title",
+        "name": "prod-card-1-title",
+        "x": 150,
+        "y": 66,
+        "fill": "#3E4248",
+        "content": "镗床",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 26,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "prod-card-1-body",
+        "name": "prod-card-1-body",
+        "x": 150,
+        "y": 100,
+        "fill": "#72787F",
+        "content": "面向大型结构件与通用加工。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 22,
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "prod-card-1-btn-box",
+        "name": "prod-card-1-btn-box",
+        "x": 150,
+        "y": 148,
+        "width": 120,
+        "height": 30,
+        "fill": "#E8C400",
+        "href": "#page-products",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "prod-card-1-btn-text",
+        "name": "prod-card-1-btn-text",
+        "x": 166,
+        "y": 154,
+        "fill": "#565D66",
+        "content": "了解更多",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 88,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      },
+      {
+        "type": "rectangle",
+        "id": "prod-card-2-box",
+        "name": "prod-card-2-box",
+        "x": 18,
+        "y": 204,
+        "width": 354,
+        "height": 148,
+        "fill": "#FFFFFF",
+        "stroke": {
+          "fill": "#D8D8D8",
+          "thickness": 1
+        },
+        "href": "#page-products",
+        "cornerRadius": 2
+      },
+      {
+        "type": "rectangle",
+        "id": "prod-card-2-img",
+        "name": "prod-card-2-img",
+        "x": 28,
+        "y": 214,
+        "width": 110,
+        "height": 88,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "/Users/andai007/Desktop/shpitto_tools-main/assets/fpt218/app-energy.jpg",
+          "mode": "fill"
+        },
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "prod-card-2-title",
+        "name": "prod-card-2-title",
+        "x": 150,
+        "y": 222,
+        "fill": "#3E4248",
+        "content": "卧式铣床",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 14,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 26,
+        "href": "#page-products"
+      },
+      {
+        "type": "text",
+        "id": "prod-card-2-body",
+        "name": "prod-card-2-body",
+        "x": 150,
+        "y": 256,
+        "fill": "#72787F",
+        "content": "高刚性、高动态的精密加工。",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "500",
+        "textGrowth": "fixed-width-height",
+        "width": 200,
+        "height": 22,
+        "href": "#page-products"
+      },
+      {
+        "type": "rectangle",
+        "id": "prod-card-2-btn-box",
+        "name": "prod-card-2-btn-box",
+        "x": 150,
+        "y": 304,
+        "width": 120,
+        "height": 30,
+        "fill": "#E8C400",
+        "href": "#page-products",
+        "cornerRadius": 18
+      },
+      {
+        "type": "text",
+        "id": "prod-card-2-btn-text",
+        "name": "prod-card-2-btn-text",
+        "x": 166,
+        "y": 310,
+        "fill": "#565D66",
+        "content": "了解更多",
+        "fontFamily": "Helvetica Neue",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "textGrowth": "fixed-width-height",
+        "width": 88,
+        "height": 18,
+        "letterSpacing": "0.02em",
+        "href": "#page-products",
+        "textAlign": "center",
+        "textAlignVertical": "middle"
+      }
+    ]
+  }
+}

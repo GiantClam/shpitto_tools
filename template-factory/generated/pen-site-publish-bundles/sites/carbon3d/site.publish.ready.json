@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "pen-site-publish-readiness.v1",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "siteId": "carbon3d",
+  "siteName": "Carbon3d",
+  "requiredVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "availableVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "responsiveModes": {
+    "desktop": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "exact-source"
+    },
+    "mobile": {
+      "supported": true,
+      "sourceVariant": "mobile",
+      "mode": "exact-source"
+    }
+  },
+  "qualityGates": {
+    "structuralValidationPassed": true,
+    "visualValidationPassed": true,
+    "sandboxRuntimePassed": true,
+    "skinnableReady": true
+  },
+  "bundlePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-site-publish-bundles/sites/carbon3d/site.pen-bundle.json",
+  "reviewPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-site-publish-bundles/sites/carbon3d/site.pen-review.json",
+  "artifacts": [
+    {
+      "caseId": "carbon3d-desktop",
+      "variant": "desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/carbon3d.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-carbon3d-desktop/sandbox/payload.json",
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-carbon3d-desktop&page=home"
+    },
+    {
+      "caseId": "carbon3d-mobile",
+      "variant": "mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/carbon3d-mobile.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-carbon3d-mobile/sandbox/payload.json",
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-carbon3d-mobile&page=home"
+    }
+  ]
+}

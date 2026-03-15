@@ -1,0 +1,246 @@
+{
+  "sectionId": "xGADt",
+  "sectionName": "productHero",
+  "sectionKind": "hero",
+  "order": 2,
+  "bounds": {
+    "x": 0,
+    "y": 118,
+    "width": 1200,
+    "height": 550
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "8b4a382fcf800fa3305b41f0b495360d6fc90b7c4047735f5f27d9c0f5345e7b",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "BSdiK",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 128,
+        "width": 722,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3da2a9f49aa2cf6078da278565ce7d3b7df7b54dba2f01a6e88fc6bed3f31cfb"
+    },
+    {
+      "blockId": "e0Am2",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 32,
+        "y": 299,
+        "width": 611,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7c7b8f6309c7bd50a2e6531d970ee497b425b9598041e8fa0dc5fd35831b3f4e"
+    },
+    {
+      "blockId": "tXMCw",
+      "blockName": "heroImg",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 699,
+        "y": 89,
+        "width": 463,
+        "height": 353
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d66809fc6af49551444eab91dec3b478b45b2ddabbae807ee3e34b8844af0c4f"
+    }
+  ],
+  "assetRefs": [
+    {
+      "rawUrl": "https://images.unsplash.com/photo-1755053757526-84af4c260204?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNTgwNTB8&ixlib=rb-4.1.0&q=80&w=1080",
+      "resolvedPath": "",
+      "relativePath": "",
+      "exists": false
+    }
+  ],
+  "blocks": [
+    {
+      "blockId": "BSdiK",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 32,
+        "y": 128,
+        "width": 722,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "3da2a9f49aa2cf6078da278565ce7d3b7df7b54dba2f01a6e88fc6bed3f31cfb",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "BSdiK",
+        "x": 32,
+        "y": 128,
+        "name": "heroTitle",
+        "fill": "#10151C",
+        "textGrowth": "fixed-width",
+        "width": 722,
+        "content": "The full-stack\nquantum platform",
+        "lineHeight": 0.98,
+        "fontFamily": "Inter",
+        "fontSize": 70,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "e0Am2",
+      "blockName": "heroDesc",
+      "blockType": "text",
+      "order": 1,
+      "bounds": {
+        "x": 32,
+        "y": 299,
+        "width": 611,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "7c7b8f6309c7bd50a2e6531d970ee497b425b9598041e8fa0dc5fd35831b3f4e",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "e0Am2",
+        "x": 32,
+        "y": 299,
+        "name": "heroDesc",
+        "fill": "#555D67",
+        "textGrowth": "fixed-width",
+        "width": 611,
+        "content": "IonQ, the only full-stack quantum platform, is solving the world’s most complex problems with products and services spanning across quantum compute, quantum networking, quantum sensing, quantum security, and quantum space infrastructure.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "tXMCw",
+      "blockName": "heroImg",
+      "blockType": "frame",
+      "blockRole": "container",
+      "order": 2,
+      "bounds": {
+        "x": 699,
+        "y": 89,
+        "width": 463,
+        "height": 353
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "d66809fc6af49551444eab91dec3b478b45b2ddabbae807ee3e34b8844af0c4f",
+      "assetRef": {
+        "rawUrl": "https://images.unsplash.com/photo-1755053757526-84af4c260204?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNTgwNTB8&ixlib=rb-4.1.0&q=80&w=1080",
+        "resolvedPath": "",
+        "relativePath": "",
+        "exists": false,
+        "mode": "fill"
+      },
+      "rawBlockNode": {
+        "type": "frame",
+        "id": "tXMCw",
+        "x": 699,
+        "y": 89,
+        "name": "heroImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "ziontech",
+          "link": "https://unsplash.com/@ziontech",
+          "author": "I'M ZION"
+        },
+        "width": 463,
+        "height": 353,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1755053757526-84af4c260204?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNTgwNTB8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 20
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "xGADt",
+    "x": 0,
+    "y": 118,
+    "name": "productHero",
+    "width": 1200,
+    "height": 550,
+    "fill": "#EFEFF1",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "BSdiK",
+        "x": 32,
+        "y": 128,
+        "name": "heroTitle",
+        "fill": "#10151C",
+        "textGrowth": "fixed-width",
+        "width": 722,
+        "content": "The full-stack\nquantum platform",
+        "lineHeight": 0.98,
+        "fontFamily": "Inter",
+        "fontSize": 70,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "e0Am2",
+        "x": 32,
+        "y": 299,
+        "name": "heroDesc",
+        "fill": "#555D67",
+        "textGrowth": "fixed-width",
+        "width": 611,
+        "content": "IonQ, the only full-stack quantum platform, is solving the world’s most complex problems with products and services spanning across quantum compute, quantum networking, quantum sensing, quantum security, and quantum space infrastructure.",
+        "lineHeight": 1.45,
+        "fontFamily": "Inter",
+        "fontSize": 18,
+        "fontWeight": "500"
+      },
+      {
+        "type": "frame",
+        "id": "tXMCw",
+        "x": 699,
+        "y": 89,
+        "name": "heroImg",
+        "metadata": {
+          "type": "unsplash",
+          "username": "ziontech",
+          "link": "https://unsplash.com/@ziontech",
+          "author": "I'M ZION"
+        },
+        "width": 463,
+        "height": 353,
+        "fill": {
+          "type": "image",
+          "enabled": true,
+          "url": "https://images.unsplash.com/photo-1755053757526-84af4c260204?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzMxNTgwNTB8&ixlib=rb-4.1.0&q=80&w=1080",
+          "mode": "fill"
+        },
+        "cornerRadius": 20
+      }
+    ]
+  }
+}

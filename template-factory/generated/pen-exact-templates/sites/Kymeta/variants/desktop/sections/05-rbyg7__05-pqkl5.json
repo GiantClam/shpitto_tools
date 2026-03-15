@@ -1,0 +1,205 @@
+{
+  "sectionId": "pQkl5",
+  "sectionName": "hero",
+  "sectionKind": "hero",
+  "order": 5,
+  "bounds": {
+    "x": 0,
+    "y": 86,
+    "width": 1440,
+    "height": 458
+  },
+  "directChildCount": 3,
+  "recursiveNodeCount": 4,
+  "treeHash": "2ea1c2c7026763784b803a39120ec2f90bbd73cb6ca88e5e96d6f81c9afbfd47",
+  "blockCount": 3,
+  "blockIndex": [
+    {
+      "blockId": "H0zXh",
+      "blockName": "heroTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 36,
+        "y": 88,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ecaad7625afc888defddd130e7e44b467fdafb1b0244e5595dd608d3d750f160"
+    },
+    {
+      "blockId": "Ac7vm",
+      "blockName": "heroTagLine",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 36,
+        "y": 160,
+        "width": 72,
+        "height": 3
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2cdf36b38904ad815f57ca502b43d3e4ecfea1da3c96b173158f99718c94b1ea"
+    },
+    {
+      "blockId": "EhWPu",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 36,
+        "y": 196,
+        "width": 886,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c4464e424116498341ee0823f35c62f2d3b13878f80fbac05543d03291549527"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "H0zXh",
+      "blockName": "heroTag",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 0,
+      "bounds": {
+        "x": 36,
+        "y": 88,
+        "width": "",
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "ecaad7625afc888defddd130e7e44b467fdafb1b0244e5595dd608d3d750f160",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "H0zXh",
+        "x": 36,
+        "y": 88,
+        "name": "heroTag",
+        "fill": "#AAB7CC",
+        "content": "Support",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      }
+    },
+    {
+      "blockId": "Ac7vm",
+      "blockName": "heroTagLine",
+      "blockType": "rectangle",
+      "blockRole": "shape",
+      "order": 1,
+      "bounds": {
+        "x": 36,
+        "y": 160,
+        "width": 72,
+        "height": 3
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "2cdf36b38904ad815f57ca502b43d3e4ecfea1da3c96b173158f99718c94b1ea",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "rectangle",
+        "id": "Ac7vm",
+        "x": 36,
+        "y": 160,
+        "name": "heroTagLine",
+        "fill": "#5A84FF",
+        "width": 72,
+        "height": 3
+      }
+    },
+    {
+      "blockId": "EhWPu",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 2,
+      "bounds": {
+        "x": 36,
+        "y": 196,
+        "width": 886,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "c4464e424116498341ee0823f35c62f2d3b13878f80fbac05543d03291549527",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "EhWPu",
+        "x": 36,
+        "y": 196,
+        "name": "heroTitle",
+        "fill": "#F2F5FA",
+        "textGrowth": "fixed-width",
+        "width": 886,
+        "content": "How can we help?\n",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 90,
+        "fontWeight": "500"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "pQkl5",
+    "x": 0,
+    "y": 86,
+    "name": "hero",
+    "width": 1440,
+    "height": 458,
+    "fill": "#000000",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "H0zXh",
+        "x": 36,
+        "y": 88,
+        "name": "heroTag",
+        "fill": "#AAB7CC",
+        "content": "Support",
+        "fontFamily": "Inter",
+        "fontSize": 32,
+        "fontWeight": "500"
+      },
+      {
+        "type": "rectangle",
+        "id": "Ac7vm",
+        "x": 36,
+        "y": 160,
+        "name": "heroTagLine",
+        "fill": "#5A84FF",
+        "width": 72,
+        "height": 3
+      },
+      {
+        "type": "text",
+        "id": "EhWPu",
+        "x": 36,
+        "y": 196,
+        "name": "heroTitle",
+        "fill": "#F2F5FA",
+        "textGrowth": "fixed-width",
+        "width": 886,
+        "content": "How can we help?\n",
+        "lineHeight": 1.02,
+        "fontFamily": "Inter",
+        "fontSize": 90,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

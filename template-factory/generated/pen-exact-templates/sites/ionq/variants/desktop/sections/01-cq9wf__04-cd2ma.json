@@ -1,0 +1,160 @@
+{
+  "sectionId": "Cd2MA",
+  "sectionName": "aboutHero",
+  "sectionKind": "hero",
+  "order": 4,
+  "bounds": {
+    "x": 0,
+    "y": 118,
+    "width": 1200,
+    "height": 360
+  },
+  "directChildCount": 2,
+  "recursiveNodeCount": 3,
+  "treeHash": "2cbf80a6835f9c4d9fd7c9a035637f7fd7a2cd7e7fd3ff88eb973617908cc9fd",
+  "blockCount": 2,
+  "blockIndex": [
+    {
+      "blockId": "9HFzA",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 125,
+        "y": 92,
+        "width": 950,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "05db7f54721780717a52371512a6306c01dfc05b3406e165f1581a985a36482a"
+    },
+    {
+      "blockId": "MaiiN",
+      "blockName": "mission2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 460,
+        "y": 38,
+        "width": 280,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fdd8c62726300a8f483a5a1ea8edfd483d9e187e04b555554be3f5d44d04dd82"
+    }
+  ],
+  "assetRefs": [],
+  "blocks": [
+    {
+      "blockId": "9HFzA",
+      "blockName": "heroTitle",
+      "blockType": "text",
+      "order": 0,
+      "bounds": {
+        "x": 125,
+        "y": 92,
+        "width": 950,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "05db7f54721780717a52371512a6306c01dfc05b3406e165f1581a985a36482a",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "9HFzA",
+        "x": 125,
+        "y": 92,
+        "name": "heroTitle",
+        "fill": "#11151B",
+        "textGrowth": "fixed-width",
+        "width": 950,
+        "content": "To develop the world’s best quantum technology to solve the world’s most complex problems.",
+        "lineHeight": 1.2,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 52,
+        "fontWeight": "700"
+      }
+    },
+    {
+      "blockId": "MaiiN",
+      "blockName": "mission2",
+      "blockType": "text",
+      "blockRole": "text",
+      "order": 1,
+      "bounds": {
+        "x": 460,
+        "y": 38,
+        "width": 280,
+        "height": ""
+      },
+      "directChildCount": 0,
+      "recursiveNodeCount": 1,
+      "treeHash": "fdd8c62726300a8f483a5a1ea8edfd483d9e187e04b555554be3f5d44d04dd82",
+      "assetRef": null,
+      "rawBlockNode": {
+        "type": "text",
+        "id": "MaiiN",
+        "x": 460,
+        "y": 38,
+        "name": "mission2",
+        "fill": "#FF6A00",
+        "textGrowth": "fixed-width",
+        "width": 280,
+        "content": "Our mission",
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "700"
+      }
+    }
+  ],
+  "rawSectionNode": {
+    "type": "frame",
+    "id": "Cd2MA",
+    "x": 0,
+    "y": 118,
+    "name": "aboutHero",
+    "width": 1200,
+    "height": 360,
+    "fill": "#ECEDEE",
+    "layout": "none",
+    "children": [
+      {
+        "type": "text",
+        "id": "9HFzA",
+        "x": 125,
+        "y": 92,
+        "name": "heroTitle",
+        "fill": "#11151B",
+        "textGrowth": "fixed-width",
+        "width": 950,
+        "content": "To develop the world’s best quantum technology to solve the world’s most complex problems.",
+        "lineHeight": 1.2,
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 52,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "MaiiN",
+        "x": 460,
+        "y": 38,
+        "name": "mission2",
+        "fill": "#FF6A00",
+        "textGrowth": "fixed-width",
+        "width": 280,
+        "content": "Our mission",
+        "textAlign": "center",
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "700"
+      }
+    ]
+  }
+}

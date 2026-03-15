@@ -1,0 +1,133 @@
+{
+  "blockId": "YEjPO",
+  "blockName": "orb",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 2,
+  "bounds": {
+    "x": 760,
+    "y": 36,
+    "width": 370,
+    "height": 370
+  },
+  "directChildCount": 8,
+  "recursiveNodeCount": 9,
+  "treeHash": "0349924196786827808f225068515a2f6257956541a7d194e0d3e2a68dcce1d7",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "YEjPO",
+    "x": 760,
+    "y": 36,
+    "name": "orb",
+    "width": 370,
+    "height": 370,
+    "fill": "#05080D",
+    "cornerRadius": 20,
+    "stroke": {
+      "thickness": 1,
+      "fill": "#5B6472"
+    },
+    "layout": "none",
+    "children": [
+      {
+        "type": "ellipse",
+        "id": "P02Ux",
+        "x": 155,
+        "y": 152,
+        "name": "orbGlow",
+        "width": 60,
+        "height": 60
+      },
+      {
+        "type": "ellipse",
+        "id": "xHecz",
+        "x": 82,
+        "y": 130,
+        "name": "orb1",
+        "rotation": 28,
+        "width": 206,
+        "height": 104,
+        "stroke": {
+          "thickness": 3,
+          "fill": "#EFA95D"
+        }
+      },
+      {
+        "type": "ellipse",
+        "id": "XS40Y",
+        "x": 82,
+        "y": 130,
+        "name": "orb2",
+        "rotation": -28,
+        "width": 206,
+        "height": 104,
+        "stroke": {
+          "thickness": 3,
+          "fill": "#D86A9E"
+        }
+      },
+      {
+        "type": "ellipse",
+        "id": "6JFNZ",
+        "x": 82,
+        "y": 130,
+        "name": "orb3",
+        "width": 206,
+        "height": 104,
+        "stroke": {
+          "thickness": 3,
+          "fill": "#C4B47A"
+        }
+      },
+      {
+        "type": "text",
+        "id": "c0gRG",
+        "x": 18,
+        "y": 14,
+        "name": "plus1",
+        "fill": "#EAF0F8",
+        "content": "+",
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "5SuTO",
+        "x": 332,
+        "y": 14,
+        "name": "plus2",
+        "fill": "#EAF0F8",
+        "content": "+",
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "HVYFj",
+        "x": 18,
+        "y": 332,
+        "name": "plus3",
+        "fill": "#EAF0F8",
+        "content": "+",
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "500"
+      },
+      {
+        "type": "text",
+        "id": "GKHSu",
+        "x": 332,
+        "y": 332,
+        "name": "plus4",
+        "fill": "#EAF0F8",
+        "content": "+",
+        "fontFamily": "Inter",
+        "fontSize": 24,
+        "fontWeight": "500"
+      }
+    ]
+  }
+}

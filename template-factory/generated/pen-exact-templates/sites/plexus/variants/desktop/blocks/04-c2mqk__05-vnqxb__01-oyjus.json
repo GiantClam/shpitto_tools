@@ -1,0 +1,93 @@
+{
+  "blockId": "OyjUS",
+  "blockName": "contactCard",
+  "blockType": "frame",
+  "blockRole": "container",
+  "order": 1,
+  "bounds": {
+    "x": 631,
+    "y": 163,
+    "width": 768,
+    "height": 330
+  },
+  "directChildCount": 4,
+  "recursiveNodeCount": 6,
+  "treeHash": "1fe95b3e34216cae060c47b6c29975d0e99ce185579ee2dfaade73e61780a75b",
+  "assetRef": null,
+  "rawBlockNode": {
+    "type": "frame",
+    "id": "OyjUS",
+    "x": 631,
+    "y": 163,
+    "name": "contactCard",
+    "width": 768,
+    "height": 330,
+    "fill": "#E9E9EA",
+    "layout": "none",
+    "children": [
+      {
+        "type": "rectangle",
+        "id": "y2loV",
+        "x": 70,
+        "y": 62,
+        "name": "contactTag",
+        "fill": "#D5164A",
+        "width": 42,
+        "height": 8
+      },
+      {
+        "type": "text",
+        "id": "Omv3H",
+        "x": 126,
+        "y": 56,
+        "name": "contactTagTxt",
+        "fill": "#5D6772",
+        "content": "联系我们的团队",
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontWeight": "700"
+      },
+      {
+        "type": "text",
+        "id": "xvrgU",
+        "x": 70,
+        "y": 94,
+        "name": "contactTitle",
+        "fill": "#3A434B",
+        "textGrowth": "fixed-width",
+        "width": 509,
+        "content": "准备好寻找一个致力于您的成功的合作伙伴吗？",
+        "lineHeight": 1.16,
+        "fontFamily": "Inter",
+        "fontSize": 44,
+        "fontWeight": "700"
+      },
+      {
+        "type": "frame",
+        "id": "kvntR",
+        "x": 70,
+        "y": 222,
+        "name": "contactBtn",
+        "width": 160,
+        "height": 52,
+        "fill": "#C70041",
+        "cornerRadius": 4,
+        "layout": "none",
+        "children": [
+          {
+            "type": "text",
+            "id": "ZH4MK",
+            "x": 31,
+            "y": 16,
+            "name": "contactBtnTxt",
+            "fill": "#FFFFFF",
+            "content": "联系我们的团队",
+            "fontFamily": "Inter",
+            "fontSize": 14,
+            "fontWeight": "700"
+          }
+        ]
+      }
+    ]
+  }
+}

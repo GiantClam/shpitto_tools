@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "template-factory.pen.v1",
+  "kind": "site-pen-bundle",
+  "generatedAt": "2026-03-12T09:28:06.423Z",
+  "siteId": "breton",
+  "siteName": "Breton",
+  "reviewMode": "site-level",
+  "requiredVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "availableVariants": [
+    "desktop",
+    "mobile"
+  ],
+  "responsiveModes": {
+    "desktop": {
+      "supported": true,
+      "sourceVariant": "desktop",
+      "mode": "exact-source"
+    },
+    "mobile": {
+      "supported": true,
+      "sourceVariant": "mobile",
+      "mode": "exact-source"
+    }
+  },
+  "capabilities": {
+    "exactTemplate": true,
+    "skinnable": true,
+    "sandboxPreview": true,
+    "dualModeReady": true,
+    "exactMobileSource": true
+  },
+  "commercialReadiness": {
+    "structuralValidationPassed": true,
+    "visualValidationPassed": true,
+    "sandboxRuntimePassed": true,
+    "skinnableReady": true,
+    "publishInputReady": true
+  },
+  "artifacts": [
+    {
+      "caseId": "breton-desktop",
+      "siteId": "breton",
+      "siteName": "Breton",
+      "siteGroupId": "breton",
+      "variant": "desktop",
+      "siteKey": "pen-exact-site-breton-desktop",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/breton.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-breton-desktop/sandbox/payload.json",
+      "sourceHash": "c45f43fac8c260bacdce5ee424cd44a0c46fa1de4b6f935090e98e0bcdc7be6c",
+      "pageCount": 12,
+      "sectionCount": 34,
+      "blockCount": 387,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/breton/variants/desktop/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/breton/variants/desktop/template.skin.json",
+      "previewPages": 12,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-breton-desktop&page=home"
+    },
+    {
+      "caseId": "breton-mobile",
+      "siteId": "breton",
+      "siteName": "Breton",
+      "siteGroupId": "breton",
+      "variant": "mobile",
+      "siteKey": "pen-exact-site-breton-mobile",
+      "penFile": "/Users/beihuang/Documents/opencode/shpitto_tools/pen/breton-mobile.pen",
+      "payloadPath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/asset-factory/out/p2w/pen-exact-site-breton-mobile/sandbox/payload.json",
+      "sourceHash": "153ede78874f10746c1ab1c47e796fdb4adab16583450d9c4a4c5c78a4dc8e4d",
+      "pageCount": 12,
+      "sectionCount": 34,
+      "blockCount": 320,
+      "exactTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-exact-templates/sites/breton/variants/mobile/template.json",
+      "skinnableTemplatePath": "/Users/beihuang/.codex/worktrees/266d/shpitto_tools/template-factory/generated/pen-skinnable-templates/sites/breton/variants/mobile/template.skin.json",
+      "previewPages": 12,
+      "previewUrl": "http://localhost:3000/creation/sandbox?mode=preview&siteKey=pen-exact-site-breton-mobile&page=home"
+    }
+  ]
+}
